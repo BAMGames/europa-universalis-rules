@@ -8,8 +8,8 @@ if [ "$TEX" = 1 ]; then
 fi
 grep ^release= "${HOMEDIR}/doc/release.txt"|cut -f2 -d=|xargs printf
 printf "%s" .
-LC_ALL=C svn info "${HOMEDIR}"| grep ^Revision:|cut -f2 -d' '|xargs printf
-a=$(svn status ${HOMEDIR}|grep -v \?|wc -l |xargs printf); if [ "$a" -gt 0 ]; then printf "+$a"; fi
+LC_ALL=C git rev-parse --verify HEAD|xargs printf "%s"
+#a=$(svn status ${HOMEDIR}|grep -v \?|wc -l |xargs printf); if [ "$a" -gt 0 ]; then printf "+$a"; fi
 ${BINDIR}/displaybranch
 if [ "$TEX" = 1 ]; then
     printf '}'

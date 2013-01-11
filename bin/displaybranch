@@ -1,12 +1,16 @@
 #!/bin/sh
 disp=${1:-"%s"}    
-a=$(cd $HOMEDIR;LC_ALL=C svn info|grep ^URL|cut -f2 -d' ')
-b=$(echo "$a"|cut -f6- -d/)
-if [ "${b#branches/}" != "$b" ]; then
-  c=${b#branches/}
-  disp="${2:-%s}"
+
+branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
+branch_name="(unnamed branch)"     # detached HEAD
+
+branch_name=${branch_name##refs/heads/}
+
+if [ "${branch_name}" != "master" ]; then
+    c="$b"
+    disp="${2:-%s}"
 else
-  c=''
+    c=''
 fi
 printf "$disp" "$c"
 exit 0
