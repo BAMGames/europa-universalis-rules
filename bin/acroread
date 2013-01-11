@@ -1,0 +1,16 @@
+#!/bin/sh
+if [ -x /usr/bin/acroread ]; then
+  ACROREAD="/usr/bin/acroread"
+elif [ -d /Applications/ ]; then
+  ACROPLACE=$(ls -d /Applications/Adobe\ Reader*/*.app| sort -r|head -1)
+  ACROREAD="exec open -a"
+elif [ -x /usr/bin/xpdf ]; then
+  ACROREAD="/usr/bin/xpdf"
+else
+  ACROREAD="see"
+fi
+if [ -n "$ACROPLACE" ]; then
+$ACROREAD "$ACROPLACE" "$@"
+else
+$ACROREAD "$@"
+fi

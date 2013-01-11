@@ -1,0 +1,992 @@
+\definechapterbackground{Incomes}{incomes}
+\chapter{Incomes}\label{chapter:Incomes}
+%\begin{designnote}[Incomes]
+\aparag[Overview] 
+The Income segment of the administrative phase is detailed here. It is
+played mostly independently (the only information that one may need from
+the other players is their \terme{Gross Land Income} if they are at war
+or doing Trade Refusal). Each player will compute the income of their
+country, coming from various sources.%, and manage their loans.
+% (Jym) Now an admin action resolved later.
+% If in a state of war, they also may levy exceptional taxes. 
+All this is summed up to form their new \RT. It helps to refer to the
+\terme{Economic Record Sheet (B)} included in this chapter to understand
+everything.
+
+The \terme{Economic Record Sheet (B)} serves as a register for all
+financial operations of the country. The \RT and on-going loans are
+stored (and computed) on the other ERS (A and C).
+%can be computed there  after each phase.
+
+Computation of income is only the first segment of the administrative
+phase. However, it is separated from the rest of the phase for clarity.
+
+Part of the income is differed (gold form \ROTW, Convoys, Exceptional
+taxes) and only perceived at the end of the turn (usually with some
+hazards on the way). They are however briefly described here in order to
+have all the income sources together. Check the corresponding Chapters
+for a complete definition of these incomes.
+
+%However, since the comprehension of this chapter would be hard if the
+%concepts of Colonies, Trading-Posts, Exotic Resources, Manufactures and
+%Commercial Fleets were not explained, an explanation of those will also
+%be provided.
+%\end{designnote}
+
+%\aparag[Sequence.]
+%\IncomeDetails
+
+\section{Land income}\label{chIncomes:LandIncome}
+\aparag The player registers three kinds of land income:
+\begin{itemize}
+\item The income of all his provinces in \lignebudget{Provinces income};
+\item The income of all the provinces of his vassal minor countries in
+  \lignebudget{Vassal provinces income};
+\item In negative, all the provinces (either his of his vassals') that
+  are inexploitable (due to revolts, military occupation, looting, enemy
+  control, or corrupted pashas) are recorded in \lignebudget{Pillages,
+    Revolts, Pashas}.
+% or \lignebudget{10},
+%  according to the affected provinces.
+\item Some random events (e.g.~\eventref{eco:Agricultural Crisis}) mark their
+gains or losses in \lignebudget{Event}.
+%, as well as the cost of corrupted pashas for
+%\TUR (see~\ruleref{chSpecific:Turkey:Pashas}).
+\end{itemize}
+\bparag The sum of all this is the \terme{Land Income}, and goes in
+\lignebudget{Land income}.
+
+\begin{todo}
+  Add partial ERS to the examples.
+\end{todo}
+
+\begin{exemple}
+  All along, the examples will details the income phase of the first
+  turn for \POR.
+
+  At the beginning of turn 1, \POR owns the provinces of
+  \province{Tras-os-Montes} (income 5), \provinceBeira (3),
+  \provinceTejo (6), \provinceAlentejo (6), \provinceAlgarve (5),
+  \provinceTanger (2) and \provinceAcores (2) (counted as an European
+  province even if located on the \ROTW map). Thus, its \terme{Provinces
+    incomes} is 29\ducats, written in line \ERSshort{Provinces
+    income}.
+
+  At the beginning of the game, \POR has no minor ally, especially no
+  \VASSAL and no \terme{Vassal provinces income}. However, since the
+  Diplomatic phase occurs before the income segment, it is possible that
+  a lucky Diplomatic action succeeded in getting \POR a \VASSAL. This is
+  unlikely and we'll suppose it did not happen. So \POR has no
+  \terme{Vassal provinces income} and can leave line \ERSshort{Vassal
+    provinces income} empty (or write 0 in it, but leaving it empty is
+  usually more readable).
+
+  Let's suppose that the events of turn 1 resulted in a revolt in
+  \provinceBeira. Then \POR write -3 in line \ERSshort{Pillages,
+    Revolts, Pashas}. Notice that it is easier to do this count in
+  negative because the content of line \ERSshort{Provinces income}
+  will usually be the same every turn (except when one annexes or loses
+  provinces) while the revolts change almost every turn. This avoid
+  tedious recomputation of incomes each turn.
+
+  Thus, the \terme{Land income} of \POR is 29+0-3=26\ducats, written in
+  line \ERSshort{Land income}.
+\end{exemple}
+
+\NPincludeA4{accounting-income}{Economic Record sheet B}{economic-record-sheet}
+
+\section{Industrial income}\label{chIncomes:IndustrialIncome}
+\subsection{Manufactures}\label{chIncomes:Manufactures}
+\aparag Manufactures represent industries of all types developed by the
+player (triangular-shaped counters).
+%\bparag These manufactures are created by the administrative operation
+%of \terme{Manufacture Creation}. The front side of the counter is used
+%to represent 1 level of manufacture of the given type, the back
+%indicates that there are 2 levels of the same type.
+\aparag The manufactures all have a \terme{fixed income}.
+\bparag The sum of all the \terme{fixed incomes} of the manufactures
+goes in \lignebudget{Manufactures val.}
+\bparag The income of resources exploited by various manufactures
+(fishing, salt) is not recorded here.
+\bparag A \MNU brings no income if the province it is located also
+brings no income (due to revolt, pillage, corrupted pashas or military
+occupation).
+
+\aparag All manufactures bring other advantages than their incomes.
+\bparag If there is a \textetoile on the counter (\RES{Metal},
+\RES{Instruments} and \RES{Art} manufactures), only one such \MNU per
+country provides the bonus (that is, only consider the \MNU of this type
+of higher level).
+\bparag Otherwise, the advantage is summed for all manufactures of this
+type.
+\bparag Quick summary of the advantages: \RES{Metal} \MNU enhance land
+technology research ; \RES{Instruments} \MNU enhance naval technology
+research ; \RES{Art} \MNU help increase \STAB ; \RES{Cloth} and \RES{Wine}
+\MNU increase the income from foreign trade ; \RES{Cereals} \MNU increase
+the income from domestic trade ; \RES{Salt}, \RES{Fish} and \RES{Wood}
+\MNU produce resources of Salt, Fish or Wood.
+
+\begin{exemple}
+  At turn 1, \POR has two \MNU. The \RES{Instruments} \MNU in
+  \provinceTejo has a fixed income of 7\ducats while the \RES{Wine} \MNU
+  in \province{Tras-os-Montes} has a fixed income of 4\ducats.
+
+  Since none of them are in the revolted province of \provinceBeira,
+  both provide their income. Thus, the \terme{Fixed income} is
+  7+4=11\ducats (written in line \ERSshort{Manufactures val.}).
+\end{exemple}
+
+\subsection{European Gold}
+\aparag Each European mine brings a fixed income of 20\ducats as long as
+that mine is not depleted (this may happen following~\eventref{eco:Mine
+  Depletion}). The European mine income is registered on
+\lignebudget{European mines}.
+\bparag Mines located in a looted province or out of the control of a
+player (by military occupation, revolt, etc.) bring no income.
+\aparag The income of mines located outside of Europe is processed
+separately, because it has to be repatriated to Europe before it can be
+credited to the player's treasury.
+\bparag[Exception: Elmina] If \POR is a major country and owns a \TP in
+\granderegion{Cotedor}, it exploits two gold mines as European mines
+(for a total of 40\ducats). Destruction or loss of ownership of this \TP
+definitely cancels this effect.
+
+\begin{exemple}
+  As per Specific rules, \POR can exploit two gold mines in
+  \construction{Elmina} as if it were European gold (see above
+  and~\ref{chSpecific:Portugal:African Gold}). Thus, its \terme{European
+    mines income} is 40\ducats (20\ducats per mine), recorded in line
+  \ERSshort{European mines}.
+\end{exemple}
+
+\subsection{Industrial income}
+\aparag The sum of all these incomes is put in \lignebudget{Industrial
+  income}.
+
+\begin{exemple}
+  The \terme{Industrial income} of \POR is 11+40=51\ducats.
+\end{exemple}
+
+\section{Trade income}\label{chIncomes:Trade Income}
+\subsection{Domestic trade}
+\aparag The Domestic Trade is computed by cross-indexing the
+\terme{Total provinces Income} (the sum of \lignebudget{Provinces
+  income} and \lignebudget{Vassal provinces income}, that is the
+province income of both the country and its vassals without considering
+pillages, revolts, military occupation or other hazards)
+added to bonuses provided by \MNU against the \DTI of the country
+in~\ref{table:Domestic Trade Income}.
+%\bparag The \terme{Land Income} to use there is the sum of line~7
+%and \lignebudget{9}.
+\bparag Each level of \RES{Cereals} \MNU owned by the country adds
+20\ducats to the \terme{Total provinces Income} for this computation
+only.
+% PB: TBD -
+% \bparag A power having less than 6 (currently active) levels of
+% commercial fleet of any nationality in its \CTZ (if any) has its \DTI
+% reduced by one for this calculus (minimum is 1).
+\bparag The result is put in \lignebudget{Domestic trade income}.
+
+\GTtable{domestictrade}
+
+\begin{exemple}
+  The \terme{Total provinces income} of \POR is 29+0=29\ducats (the
+  revolt in \provinceBeira does not change it). Since \POR has no
+  \RES{Cereals} \MNU, it stays unchanged. Thus, \POR will look in line
+  1-40.
+
+  The \DTI of \POR is 3, so \POR looks in column 3, the result is
+  3\ducats written in line \ERSshort{Domestic trade income}.
+
+  Notice that if \POR decide to build a \RES{Cereals} \MNU (and
+  succeed), its Land income would become 29+20=49\ducats (for this
+  computation) allowing it to look in the second line (41-80) for a
+  total of 9\ducats. So, in addition to its fixed and variable incomes,
+  this \MNU would bring 6\ducats of \terme{Domestic trade income} each
+  turn and will quickly refund itself\ldots (it may, however, not be the
+  best strategical choice to do immediately).
+\end{exemple}
+
+\subsection{Foreign trade}\label{chIncomes:Foreign Trade}
+\aparag The Foreign Trade is computed according to the \terme{Blocked
+  trade} and the \FTI of the country.
+
+\aparag Each country has a \terme{Basic blocked trade} (corresponding to
+its Domestic market), expressed below~\ref{table:Foreign Trade
+  Income}. 
+\bparag For some countries, this is fixed and for some other it depends
+on the provinces owned.
+\bparag Note: \POR has a \terme{Basic blocked trade} of 0\ducats. \RUS
+also has a \terme{Basic blocked trade} of 0\ducats before it fulfils the
+condition indicated in the table.
+
+\aparag Each country has an \terme{Extra blocked trade} which is the sum
+of its vassals income, trade refusal (including due to wars) and some
+other events.
+\bparag The \terme{Extra blocked trade} \textbf{only} is reduced by
+50\ducats for each side of \RES{Wine} or \RES{Cloth} \MNU owned by the
+country (thus 100\ducats for a level 2 \MNU).
+\bparag Note that the \terme{Basic blocked trade} is never reduced.
+
+\aparag The sum of the \terme{Basic blocked trade} and the \terme{Extra
+  blocked trade} is the \terme{Blocked trade}.
+\bparag Locate the line corresponding to the \terme{Blocked trade}
+in~\ref{table:Foreign Trade Income}.
+\bparag If \pays{usa} exists and is at peace use the line immediately
+above, otherwise, use this line.
+\bparag Cross-referencing the line for the \terme{Blocked trade} with
+the column corresponding to the \FTI of the country gives the
+\terme{Foreign trade income}, to be put in \lignebudget{Foreign trade
+  income}.
+%\bparag The \terme{Blocked trade} is obtained by adding the value of the
+%Inaccessible trade due to the Domestic market (see~\ref{table:Foreign
+%  Trade Income}), to trade refusals (i.e. the sum of \terme{Gross Land
+%  Income} of all opponents), and to Vassal incomes.
+%\bparag The \terme{Blocked trade} is then reduced by \MNU; each level of
+%  \RES{Cloth} or \RES{Wine} \MNU subtracts 50\ducats to the
+%  \terme{Blocked trade}.
+%\bparag The result of the table is put in \lignebudget{Foreign trade income}.
+
+%\bparag The \terme{Base trade} is obtained by make the difference
+%between a \terme{Fixed  Base Trade} (that depends of the country, see
+%\tableref{commerceexterieur}) the land income of all vassals
+%(\lignebudget{9}), the trade refusal (either due to wars or events),
+%and other values due to events.
+%\aparag The \terme{Fixed Base trade} can be decreased for some countries if
+%some conditions are filled, i.e. that they own (or have vassalized) at least a
+%certain number of provinces in minor countries that exist in 1492:
+%\bparag \SPA if at least two among: 4 or more provinces in \pays{bourgogne}, 3
+%or more provinces in \pays{provincesne}, 2 or more in \pays{naples}.
+%\bparag \AUT if at least two among: 4 or more provinces (initially) in
+%\pays{bourgogne}, 2 or more provinces in \pays{boheme} or 6 or more in \pays{hongrie}.
+%\bparag \TUR if at least two among: 6 or more provinces in \pays{hongrie},
+%\pays{damas} was conquered, \pays{mamelouks} was conquered and has not
+%revolted yet.
+%\bparag \RUS if at least three khanates or cossack tribes were conquered
+%(\pays{astrakhan}, \pays{kazan}, \pays{crimee}, \pays{cosaquesdon},
+%\pays{kazan}, \pays{steppes}, \pays{siberie}, \pays{ukraine}).
+%\bparag For all these countries, they begin with the trade value of the line
+%above their name.
+%\bparag The result is put in \lignebudget{18}
+%\begin{tablehere}
+%{\graytabular\countrow=-1\begin{tabular}{|p{25mm}|c|*{4}{r}r|} \hline
+%Country	& Trade \global\countcol=0& \multicolumn{5}{c|}{\FTI} \\\hline\ghline
+%
+%                             &200& 1	& 2	& 3	& 4	& 5 \\\ghline
+%			     &400& 3	& 6	& 9	& 12	& 15 \\\ghline
+%			     &600& 5	& 10	& 15	& 20	& 25 \\\ghline
+%			     &800& 7	& 15	& 20	& 30	& 35 \\\ghline
+%			     &1000& 10	& 20	& 30	& 40	& 50 \\\ghline
+%			     &1150& 13	& 25	& 40	& 50	& 65 \\\ghline
+%\FRA                         &1250& 16	& 30	& 50	& 60	& 80 \\\ghline
+%\TUR \ENG                    &1350& 20	& 40	& 60	& 80	& 110 \\\ghline
+%\small\SPA \AUT \POL \SUE \HOL     &1400& 25	& 45	& 70	& 90	& 135 \\\ghline
+%\RUS \VEN \PRU \POR          &1450& 30	& 50	& 80	& 100	& 150 \\\ghline 
+%\hline
+%\end{tabular}}
+%\caption{External trade}
+%\end{tablehere}
+
+\GTtable{foreigntrade}
+
+\begin{exemple}
+  \POR has a \terme{Basic blocked trade} of 0. Let's suppose it declared
+  war on \paysMaroc on turn 1 and \TUR chose to defend \paysMaroc\ldots
+  Then \paysMaroc is refusing trade to \POR, creating an \terme{Extra
+    blocked trade} of 12\ducats (the sum of the incomes of its
+  provinces). Similarly, \TUR refuses trade to \POR creating an
+  \terme{Extra blocked trade} of 88\ducats. The total \terme{Extra
+    blocked trade} of \POR is 12+88=100\ducats.
+
+  However, \POR has a \RES{Wine} \MNU of level 1. This allows it to
+  reduce its \terme{Extra blocked trade} by 50\ducats for a final value
+  of 100-50=50\ducats.
+
+  The \terme{Blocked trade} of \POR is 0+50=50\ducats, so it will look
+  its \terme{Foreign trade income} in the second line of the table
+  (50-99). Its \FTI is 2 (never use special \FTI here), so \POR looks in
+  the second column and find the result of 54\ducats for its
+  \terme{Foreign trade income}, written in line \ERSshort{Foreign
+    trade income}.
+
+  What happens with \TUR? At turn 1, it has a \terme{Basic blocked
+    trade} of 100\ducats. \POR creates an \terme{Extra blocked trade} of
+  29\ducats. Even if \TUR had a \RES{Cloth} \MNU (this is not the case
+  at turn 1), it would only reduce the \textbf{Extra} blocked trade by
+  50\ducats. So it will actually reduce it by 29\ducats and the extra
+  21\ducats of bonus would be lost.
+\end{exemple}
+
+\subsection{Commercial fleets}
+\subsubsection{Trading zones}
+\aparag Each \TradeFLEET bears a letter for identification and has a
+level between 1 and 6 recorded in the \terme{Commercial fleet table}
+situated on bottom left of the \terme{Colonial record sheet}.
+\bparag The counter is to be placed on its \Faceplus side if the level
+is between 4 and 6, on its \Facemoins side otherwise.
+\bparag Counters are placed in a \CTZ or a \STZ. Each country can have
+only one \TradeFLEET per \CTZ or \STZ.
+\bparag For easy reference, a global Trade fleet sheet is also provided
+to record the level of each country in each sea zone. It is best kept by
+a player with heavy commercial activity (\POR, \HOL or \ANG, usually).
+\aparag A commercial fleet in a \STZ brings an income of 1\ducats per
+level.
+\bparag A commercial fleet in a \CTZ brings an income of 2\ducats per
+level
+\bparag[Exception: Baltic] Each level of \TradeFLEET in \stz{Baltique}
+brings an income of 2\ducats, as if it were a \CTZ.
+\bparag These incomes are reported in \lignebudget{STZ+CTZ level
+  income}.
+
+\begin{designnote}
+  There is no CTZ for Sweden, Poland and Prussia, that went through the
+  Baltic Sea for their trade. However, there was an intense flux of
+  merchandise going through this area.
+\end{designnote}
+
+%\bparag The economic value of the Baltic sea is 40\ducats. The
+%\stz{Baltique} is represented as a \CTZ, and gives 2\ducats for each
+%fleet level. Furthermore, it is bound to specific rules bound to the
+%Sund taxes, see \ruleref{chSpecific:Sund Levies}.
+
+\begin{exemple}
+  At turn 1, \POR has a \TradeFLEET of level 3 in \stz{Canarias},
+  bringing 3\ducats of \terme{Level income} (1\ducats per level in \STZ)
+  and a \TradeFLEET of level 1 in \stz{Guinee} for another 1\ducats of
+  \terme{Level income}.
+
+  So, its total \terme{STZ+CTZ level income} is 3+1=4\ducats written in
+  line \ERSshort{STZ+CTZ level income}.
+\end{exemple}
+
+\subsubsection{Monopolies}
+\aparag If in any \CTZ or \STZ, a country has a \TradeFLEET of level 6,
+it has a \terme{total monopoly} and can register the sum inscribed in
+large print in the \CTZ or \STZ symbol in \lignebudget{STZ+CTZ monopoly
+  income}.
+\bparag Note that in this case, no other country may have a \TradeFLEET
+in this \CTZ or \STZ. See~\ref{chExpenses:Competition}.
+\aparag Otherwise, if it has a \TradeFLEET\faceplus, it has a
+\terme{partial monopoly} and can register half the sum inscribed in
+large print in the \CTZ or \STZ symbol in \lignebudget{STZ+CTZ monopoly
+  income} (round down).
+\bparag Only one country may have a \TradeFLEET\faceplus in a given \CTZ
+or \STZ. See~\ref{chExpenses:Competition}.
+%\aparag Only one country can have a \Faceplus commercial fleet in each
+%\STZ, and if a country has a commercial fleet of level 6, then no other
+%player may have a commercial fleet in the \STZ, because of automatic
+%competition (\ruleref{chExpenses:Trade Competition Mandatory}).
+\aparag For each \CTZ or \STZ where a country has a
+\TradeFLEET\facemoins, it can register the sum inscribed in small print
+in the \CTZ or \STZ symbol in \lignebudget{STZ+CTZ monopoly income}.
+\bparag This sum is usually 1/10\th of the large sum, or 1/5\th on the
+\ROTW map.
+
+\aparag Players also register the \textbf{number} of partial and total
+monopolies they have in Trade Zones as these bring \VPs. This is
+recorded in \lignebudget{Partial/Total monopolies (trade)}. This is used
+for \VPs computation.
+
+\begin{exemple}
+  \POR has no monopoly. However, it has \TradeFLEET in two \STZ and
+  still gets a presence bonus equal to the number in small print in
+  these \STZ. For \stz{Canarias}, this is 4\ducats while for
+  \stz{Guinee}, this is 3\ducats. Thus, its \terme{STZ+CTZ monopoly
+    income} is 4+3=7\ducats written in line \ERSshort{STZ+CTZ
+    monopoly income}.
+
+  Since it has no monopolies, it has nothing to write in line
+  \ERSshort{Partial/Total monopolies (trade)}
+\end{exemple}
+
+\subsection{Trade centres and convoys}
+\subsubsection{Trade centres}
+\aparag Trade centres represent the main hubs of trade in selected areas
+of the World. They are given to the country dominating the trade in
+these areas (usually by having more \TradeFLEET) and bring a substantial
+income. Trade centres must be located in a province of the owning
+country.
+
+\aparag There are four \terme{Trade Centres}, marked by counters:
+\emph{Great Orient}, \emph{Atlantic}, \emph{Mediterranean} and
+\emph{Indian}.
+\bparag Position of the Trade Centres change during the Interphase (at
+the end of turn). However, we remind here how they are attributed.
+See~\ruleref{chPeace:TradeCentres} for details.
+
+\aparag The initial positions are \provinceNil for the \emph{Great
+  Orient} centre, \provinceVeneto for the \emph{Mediterranean} centre,
+\provinceVlaandern for the \emph{Atlantic} centre and \villeDiu for
+the \emph{Indian} centre.
+
+\aparag If the province in which the Trade Centre is located is
+militarily occupied, the trade centre does not bring any income this
+turn.
+% (Jym), added to avoid too harsh situations
+\bparag Revolts, pashas or pillages do not impact the Trade Centres
+income.
+
+\subsubsection{The Great Orient centre}
+\aparag The \emph{Great Orient} centre is initially located in
+\provinceNil and moves to \provinceIzmir as soon as \provinceNil is not
+own by \paysEgypte (usually at the time of conquest by \TUR).
+\aparag The income of the \emph{Great Orient} centre is 100\ducats, plus
+modifiers.
+\bparag 10\ducats are added for every complete group of 3 non-European
+\COL or \TP counters (any side).
+\bparag Exception: If a minor is giving its colonial income to a
+Christian major other than \VEN due to
+\ref{chDiplo:AdenOmanExoticResources}, do not count its establishments
+as non-European ones (don't count them as European ones either).
+\bparag 10\ducats are subtracted per complete set of 5 \COL or \TP
+counters (any side) in \continent{Asia} (except \continent{Siberia}) of
+a Christian player (all but \TUR).
+\bparag 10\ducats are added for Muslim control of \province{Ormuz};
+10\ducats for \province{Socotra}; and 10\ducats for either
+\province{Malacca S} or \province{Sumatra C}. For these rule, these
+provinces are considered controlled, in decreasing order of precedence
+by (i) a major (other than \VEN) having a \dipAT with a country with a
+\COL/\TP in the province ; (ii) any country (major or minor) having a
+\COL/\TP in the province ; (iii) Muslim controlled if the province is
+empty.
+% (control is: having a \TP or \COL or \dipAT of a power owning it).
+\bparag 10\ducats are subtracted per Christian \TradeFLEET counter (any
+side)in \stz{Oman} and \stz{Indien}, with maximum of -50\ducats.
+\bparag 50\ducats are subtracted if \TUR and \pays{perse} are at war.
+\bparag It can never be negative. At worse, it becomes 0\ducats.
+\bparag Therefore, the income at turn 1 of the \emph{Great Orient}
+centre is 170\ducats, since there are 10 \TP of \pays{gujarat}, 1 \TP
+and 1 \COL of \pays{aden} and 1 \COL of \pays{oman} and the 3 straits
+are controlled by Muslims (\paysGujarat for \province{Malacca S} and
+\provinceOrmuz and empty for \provinceSocotra).
+\bparag Notice that if \POR signs an \dipAT with \paysAden, then its
+\COL and \TP are not counted as ``non-European'' anymore (without being
+counted as ``Christian''), thus there will only be 11 non-European
+establishment instead of 13 and the income of the centre will drop to
+160\ducats.
+\bparag This income is registered in \lignebudget{Trade centres income}
+of the country owning the centre.
+
+\begin{histoire}
+  All along the 16th century, there was a commercial (and sometime
+  military) fight to bring the goods from Orient (pepper and other
+  spices, silk, \ldots) to Europe. The historical road went mostly
+  through land with the Silk road from China and the indo-arab trade in
+  the Red sea. Portuguese opened a sea road going round Africa.
+
+  The land road went through Egypt and Turkey, both of them raising
+  heavy taxes on this trade represented by the Trade centre
+  income. Venice was principally in charge of distributing it in the
+  Mediterranean, again with heavy profit, thus building its commercial
+  empire.
+
+  As soon as Christian found a new road for these good, they try to get
+  rid of the Turks and Venetian in between. Portuguese, then Dutch and
+  English merchant seized the spice trade.
+
+  Thus, the ``land road'' income decrease with the number of Christian
+  establishment buying or producing goods and sending them to Europe
+  along the ``sea road''. Venice is an exception to this because it
+  still wanted to use the ``land road'' rather than the ``sea
+  road''. Minor countries tend to keep the old (land) road except if
+  they have specific agreement with majors. Controlling the straits also
+  allows to control the trade.
+
+  The growth of the ``sea road'' is reflected in the appearance of the
+  East Indies convoy described after the Trade centres.
+\end{histoire}
+
+\aparag As long as the \emph{Great Orient} centre is in \province{Nil}:
+\bparag One half of its income is gained by \paysEgypte if at war ; or \VEN
+otherwise.
+\bparag The other half is gained by \paysDamas if at war ; or \TUR if
+\paysDamas is either conquered or not at war and on the turkish
+diplomatic track.
+
+%\bparag \VEN (or \pays{venise}) gains 50\% of the \emph{Great Orient}
+%income %as long as \pays{egypte} was not conquered by \TUR and
+%if \pays{egypte} is not at war.
+%\bparag \pays{egypte} gains 50\% of its income when at war.
+%%\bparag \TUR gains 50\% of this value if \pays{Damas} is on its
+%diplomatic track and not at war or if \paysDamas was conquered by \TUR.
+%\bparag \pays{damas} gains 50\% of this value when at war.
+%%\aparag See~\ruleref{chPeace:TradeCentres} for the displacement of the
+%%centre.
+\aparag The Great Orient centre moves to \TUR when \paysEgypte is
+conquered. 
+
+\subsubsection{Atlantic, Mediterranean and Indian Ocean centres}\label{chIncomes:Trade Centres}
+\aparag The Atlantic and the Mediterranean trade centres bring a fixed
+income to their owner of 100\ducats.
+\bparag The Indian Ocean trade centre brings a fixed income to its owner
+of 50\ducats.
+%TBD: or 30\ducats if the \emph{Great Orient} centre has income 100\ducats or higher.
+\bparag They are given to the country having the most levels of
+\TradeFLEET in the corresponding \STZ and \CTZ.
+See~\ruleref{chPeace:TradeCentres} for details.
+\bparag This income is registered in \lignebudget{Trade centres
+  income}.
+
+\subsubsection{Trade centres losses}
+\aparag ``\terme{Guerre de course}'' is not reliable for a country which
+is dominating trade in a region as privateers are likely to turn against
+the most numerous vessels rather than against the sparser enemy ships.
+
+\aparag If a \corsaire belonging to a country allied with the owner of
+a Trade centre (including the owner himself) causes permanent losses on
+an enemy \TradeFLEET in a \STZ or \CTZ belonging to this centre, then
+the income of the centre is decreased by 10\ducats per permanent loss
+caused for the next turn.
+\bparag See~\ref{chPeace:CorsairAttack} for details.
+
+\aparag This loss is recorded (in negative) in \lignebudget{Trade centre
+  losses}.
+
+\subsubsection{Convoys}
+\aparag Convoys represent heavy trade of specific resources (gold or
+spices). They are given to the country dominating trade in this resource
+(usually by exploiting most of it). They do not bring income per se but
+must be brought back to Europe where the gold they carry can be
+unloaded. However, the journey can be dangerous and convoys can be
+attacked and seized by pirates, privateers or enemy fleet.
+\bparag Convoys are not taken into account during the Income
+segment. However, they do bring income at the end of turn (especially
+the Spanish gold fleets) so we remind here how they are
+attributed.
+
+\aparag There are four possible convoys: the \terme{Levant} fleet of
+\bazar{Izmir}, the \terme{East Indies} convoy, the \terme{Flota de Oro},
+and the \terme{Flota del Per\'u}.
+\bparag Convoys are attributed during the Interphase.
+\bparag Each convoy represent a certain number of ships carrying
+gold. During the Military phase they must be moved toward Europe and can
+be attacked by \corsaire or enemy \FLEET.
+\bparag When a convoy safely reaches Europe, its gold is unloaded into
+the country's \RT (\lignebudget{Gold from ROTW and Convoys}).
+
+\aparag The \terme{Flota de Oro} and \terme{Flota del Per\'u} convoys are
+given to \SPA when it exploits sufficiently many gold in
+\continent{America}.
+
+\aparag The \terme{Levant} convoy is given to \TUR as soon as it owns
+the Great Orient trade centre. \TUR must send it to another player each
+turn.
+
+\aparag The \terme{East Indies} convoy is given to the country who
+exploits the most of the following resources: \RES{Silk}, \RES{Product
+  of Orient} and \RES{Spices} if it exploits at least 10 of them.
+
+\subsection{Trade income}
+\aparag The sum of all these incomes is put in \lignebudget{Trade
+  income}.
+
+\begin{exemple}
+  \POR does not own any Trade centre at the beginning of the game, so it
+  has nothing to write in lines \ERSshort{Trade centres income} and
+  \ERSshort{Trade centre losses}.
+
+  Thus, its \terme{Trade income} is 3+54+4+7+0-0=68\ducats written in
+  line \ERSshort{Trade income}.
+\end{exemple}
+
+\section{Colonial income}\label{chIncomes:ColonialIncome}
+\subsection{Colonies \& Trading-posts}
+%\aparag Trading-posts are small outposts that allow the contact with
+%local merchants, whereas colonies are large establishment with European
+%implantation. All of those have a level between 1 and 6, recorded in the
+%\terme{Colonial Record Sheet}.
+%\bparag The counter is to be placed on its \Faceplus side if the level
+%is between 4 and 6, on its \Facemoins side else.
+
+\aparag Each \COL brings an income registered in \lignebudget{Colonies}:
+\bparag A \COL\facemoins brings 1\ducats per level, and as many \ducats
+as the income value of the \Area (first number, see
+\ruleref{chBasics:ROTW Areas}).
+\bparag A \COL\faceplus brings 1\ducats per level, and twice the income
+value of the Area.
+\bparag However, \COL exploiting gold do not provide income. See
+\ruleref{chIncomes:GoldColonies}.
+
+\aparag Each \TP brings an income registered in \lignebudget{Trading
+  posts}:
+\bparag A \TP\facemoins brings 1\ducats.
+\bparag A \TP\faceplus brings 2\ducats.
+
+\bparag \COL and \TP do not bring any income if they are pillaged,
+revolted or military occupied.
+
+\begin{exemple}
+  At turn 1, \POR has a \COL of level 3 in \province{Cabo Verde}
+  bringing an income of 3 (level) + 1 (one time the income of the
+  \granderegion{Cabo Verde} area) = 4\ducats written in line
+  \ERSshort{Colonies}.
+
+  It has a \TP of level 3 in \construction{Elmina}, bringing an income
+  of 1\ducats (it is side \Facemoins and the income of
+  \granderegionCotedor is not taken into account for \TP) written in
+  line \ERSshort{Trading posts}.
+\end{exemple}
+
+\subsection{Exotic resources}
+\label{chIncomes:Exotic ressources}
+\aparag \COL and \TP, as well as certain \MNU in Europe can exploit a
+limited number of exotic resources.
+\bparag The income of the exotic resources is the product of the number
+of exploited resources of each kind, multiplied by the price of each
+resource (computed as per~\ref{chExpenses:ExoticResourcesPrices})
+\bparag This is recorded in \lignebudget{Exotic resources}.
+\bparag Players exploiting sufficiently many resource can speculate to
+try and increase the price. See~\ref{chExpenses:Speculation}.
+%\bparag The number of exploited levels comes from administrative actions
+%(see~\ruleref{chThePowers:ResourcesExploitation}).
+
+\begin{exemple}
+  At turn 1, the \TP in \construction{Elmina} can exploit 3 \RES{Slaves}
+  as it is level 3 (and does so even if it produces gold as per
+  Portuguese special rule). The initial price of \RES{Slaves} is
+  2\ducats, so \POR gains 3$\times$2=6\ducats, written in
+  \ERSshort{Exotic resources}.
+\end{exemple}
+
+\aparag[Manufactures] \MNU can have only 2 levels per counter.
+\bparag A Fishery (\RES{Fish} \MNU) may only be built in a coastal
+province. It exploits as many \RES{Fish} as its level (1 or 2).
+\bparag A Salter (\RES{Salt} \MNU) may only be built in a province with
+\RES{Salt} resource (the number indicating the quantity).
+\bparag A Salter of level 1 exploits 1 \RES{Salt}.
+\bparag A Salter of level 2 exploits all \RES{Salt} from the province (up to
+3).
+\bparag \textbf{Exception:} A Venetian Salter of level 2 in \provinceVeneto
+exploits all the \RES{Salt} from Venetian coastal provinces.
+
+\aparag[Square resources.]
+\bparag In \continent{Asia}, it requires 3 \TP levels or 2 \COL levels to
+exploit 1 unit of \RES{Sugar}, \RES{Cotton} or \RES{Products of America},
+without need for Slaves.
+\bparag Outside of \continent{Asia}, it requires 2 \COL levels to exploit 1
+unit of \RES{Sugar}, \RES{Cotton} or \RES{Products of America}. Furthermore,
+those resources are subject to the need of Slaves in \continent{America} (see
+\ruleref{chIncomes:NeedSlaves}).
+
+\aparag[Fish.] It requires 1 \COL level to exploit 1 unit of \RES{Fish}.
+
+\aparag[Fur.]
+\bparag Each \TP level can exploit up to 2 units of \RES{Fur}.
+\bparag A \COL can exploit all the \RES{Fur} in an \Area. However, each
+\COL\faceplus in the \Area reduces the number of available \RES{Fur} by 1
+unit.
+
+\aparag[Circled resources.] For all other resources (\RES{Products of Orient},
+\RES{Salt}, \RES{Silk}, \RES{Slaves}, \RES{Spices}), one level of \COL or of
+\TP exploits up to 1 unit of the resource.
+
+\aparag[Gold.] See \ruleref{chIncomes:GoldColonies} if there is a gold mine in
+the province where a \COL is.
+
+\aparag[Wood.] \RES{Wood} does not bring income as other resources, but
+it brings advantages in naval constructions and can be sold to other
+countries. See~\ref{chIncomes:Wood} for exploiting and selling
+\RES{Wood} and~\ref{chExpenses:Effect of Wood Maintenance}
+and~\ref{chExpenses:Effect of Wood Purchase} for the effects of
+\RES{Wood}.
+
+\aparag A \ROTW minor country will exploit resources if and only if it has \TP
+or \COL to exploit them, following the same rules as major countries.
+
+\aparag Exotic resources on the \ROTW map are shared for a whole \Area (see
+\ruleref{chBasics:ROTW Areas}).; if there is only two resources of Spices in
+an \Area, two outposts in different provinces of the same \Area will have to
+share the exploitation.
+\bparag If there is disagreement for the exploitation of resources, this is
+settled through the \terme{competition mechanism}
+(\ruleref{chExpenses:Competition}), that eliminates levels until there can no
+more be disagreement.
+
+\aparag[New exploitation] There are only a few cases where there might be a
+disagreement for the exploitation of a resource: a new resource appeared
+(through events, because of competition or military intervention in the
+previous turn, because it is one of the resources that appear late), or the
+number of levels available to exploit the resource changed in this turn.
+\bparag Those two cases will lead to \terme{automatic competition}. At the end
+of the administrative phase, a \terme{competition} will take place until there
+are enough resources (or no more enough levels) for everybody to be satisfied
+with the current attribution of resources.
+
+\bparag If the whole market in an \Area is already attributed, there is no
+\terme{automatic competition}. The players have to spend \terme{competition
+  actions} (see \ruleref{chExpenses:Competition}) to change the market
+repartition, or do it through the use of diplomacy (exotic resources
+exploitation can change in the Diplomatic phase by a simple announce).
+
+\aparag[Slaves and plantations]\label{chIncomes:NeedSlaves}
+Some resources require \RES{Slaves} to be exploited in its plantations
+in \continent{America} (the square ones: \RES{Sugar}, \RES{Products of
+  America} and \RES{Cotton}). At least 1 unit of exploited Slaves is
+required for each unit of exploited resource requiring slavery.
+\bparag[Triangular trade] These units of \RES{Slaves} can come either
+from the same country exploiting it (and gaining income both for the
+\RES{slave} and the other resource), from another major selling its
+\RES{Slaves}, from minors allies or from contraband.
+\bparag[Reselling of slaves] If a major country wants too sell part of
+its \RES{Slaves} production, it is free to do so at any price. He must
+perceive the sum during the diplomatic phase (written in
+\lignebudget{Wood and Slaves}). However, the sold \RES{Slave} units
+cannot be used in his own plantations (obviously).
+\bparag[Contraband of slaves] If a country has at least one level of
+\TradeFLEET in \stz{Oman} or \stz{Guinee}, or if another \MAJ in this
+position gives him this right, he can use the contraband of \RES{Slaves}
+for his colonies. He receives only half the usual income (round down)
+for the exotic resources exploited with contraband \RES{Slaves}.
+%[TBD : Rajouter Tempetes en zone de contrebande d'esclaves ? Jym: bof,
+%pas vraiment dans les ``regions productrices'' historiques.]
+% PB: Non
+\bparag[International contraband] If a country needs \RES{Slaves} but
+does not fill the conditions above, it still can use the contraband of
+\RES{Slaves}, but he will receive no income for the exotic resources
+exploited that way. The resources, however, are considered exploited for
+price variation purpose (it is not possible to ``hold back''
+exploitation).
+\bparag[Slaves of allies] Minor countries can sell for free the
+\RES{Slaves} they exploit to their Diplomatic patron
+(e.g. \pays{portugal} during \eventref{pIII:Portuguese Annexation}).
+
+\aparag Players also register the \textbf{number} of partial and total
+monopolies they have in Trade Zones as these bring \VPs. This is
+recorded in \lignebudget{Partial/Total monopolies (resources)}.
+
+\begin{exemple}[Using Slaves]
+  In the late 17th century, \ANG exploits a total of 6 \RES{Sugar}
+  (price 6) and 3 \RES{Product of America} (price 5). Thus, it should
+  theoretically bring an income of 6$\times$6+3$\times$5=51\ducats.
+
+  However, since all this is done in \continent{America}, \RES{Slaves}
+  are needed to work in the plantations (\continent{Asia} had much more
+  local population that was used as workers in the plantations). \ANG
+  only exploits 4 \RES{Slaves} (price 7).
+
+  If \ANG do not find anyone wanting to sell \RES{Slaves} and has no
+  \TradeFLEET close to \continent{Africa}, it must use international
+  contraband. Thus, its 4 \RES{Slaves} allow to exploit 4 \RES{Sugar}
+  but the rest (2 \RES{Sugar} and 3 \RES{Product of America}) is
+  lost. The income is thus 4$\times$7 (for the \RES{Slaves}) +
+  4$\times$6 (for the \RES{Sugar} exploited with them) + 0 (for the
+  other resources exploited with contraband \RES{Slaves}) = 52.
+
+  Note that (i) \RES{Slaves} both brings income per se and allows other
+  resource to bring income, making it a very valuable resource ; and
+  (ii) \ANG cannot choose not to use contraband \RES{Slaves} and not to
+  exploit the remaining resources (lower exploitation has a better
+  chance of raising prices). If it has sufficient levels of \COL to
+  exploit it, it must do so.
+
+  Now, suppose that the treaty of Methuen has been signed. \paysPortugal
+  is on the Diplomatic track of \ANG and gives its 2 \RES{Slaves} for
+  free, for a total of 6 \RES{Slaves}. Only 3 resources still require
+  \RES{Slaves}. \HIS agrees to sell 1 \RES{Slave} for 3\ducats. \ANG
+  cannot find the last ones but has a \TradeFLEET in \stz{Guinee}
+  allowing for direct contraband.
+
+  Thus, the situation is now:\\
+  For \HIS, the \RES{Slave} both brings an income of 7\ducats during
+  incomes and a ``gift'' of 3\ducats during the Diplomatic phase.\\
+  For \ANG, 3\ducats are payed to \HIS for 1 \RES{Slave} during the
+  Diplomatic phase. So \ANG has a total of 7 \RES{Slaves} (4 of its
+  owns, 2 of its minor ally and 1 brought to \HIS) and must use two from
+  contraband for the last resources. It get to choose which resources
+  use contraband \RES{Slave} and only brings half income, it is better
+  to choose the cheapest one, in this case \RES{Product of America}.\\
+  The final income for \ANG is 4$\times$7 (its \RES{Slaves}) +
+  6$\times$6 (all the \RES{Sugar} is exploited normally) + 1$\times$5 (1
+  \RES{Product of America} can be exploited) + 2$\times$2 (2
+  \RES{Product of America} is exploited at half price, round down) =
+  73\ducats.
+\end{exemple}
+
+\subsection{ROTW gold}
+\begin{note} Gold may be produced by gold mines located in the \ROTW
+  map. This gold is not registered in the country's income immediately,
+  because it has first to be repatriated to Europe. But it is
+  nevertheless produced during the income phase. The repatriation of the
+  gold takes place during the Military phase.
+\end{note}
+\aparag To exploit a gold mine, a \COL (with any number of levels) has
+to be in the province containing the mine symbol. If a player wishes to
+exploit it, he simply has to announce it during the Diplomatic phase.
+\bparag The player is not obliged to exploit a mine even if he has a
+Colony in that province.
+\bparag Once announced, the exploitation is definitive until depletion
+of the mine (by \eventref{eco:Mine Depletion}) and cannot be voluntarily
+stopped.
+\bparag A \ROTW gold mine produce 20\ducats worth of gold (or silver,
+jewels, \ldots) each turn, except for the mine in \villeTenochtitlan
+(\granderegionAzteca), producing 40\ducats, and the mine in
+\bazarPotosi (\granderegionInca East), producing 50\ducats. Both
+these incomes are recalled on the map.
+\bparag\label{chIncomes:GoldColonies} A \COL exploiting a mine produces no
+other income, nor does it exploit Exotic Resources. The gold produced is
+reported on the \terme{Colonial Record Sheet}.
+\bparag No slaves are needed to exploit a gold mine.
+\bparag Gold has a major influence on the variation of inflation,
+see~\ruleref{chPeace:InflationGoldROTW}.
+
+\aparag \label{chIncomes:GoldProduction} Gold can be transported by earth
+during the income phase or during the redeployment phase (see
+\ruleref{chPeace:GoldRepatriation}) (or both).
+\bparag During the income phase, Gold can be stored in any port \COL in
+the \Area where it was produced or an adjacent one.
+\bparag From the ports, the gold has to be repatriated to Europe using
+\NTD, the \emph{Flota de Oro} convoy or the \emph{Flota del
+  Per\'u}. Each \NTD can carry up to 15\ducats worth of gold (each
+Transport point is worth 5\ducats).
+
+\begin{exemple}
+  Since \POR has a specific rule for its gold in \constructionElmina,
+  there is no \ROTW gold for it.
+
+  So, it's \terme{\ROTW Income} is 4+1+6 = 11\ducats.
+\end{exemple}
+
+\section{Other incomes}\label{chIncomes:OtherIncomes}
+\subsection{Events \& diplomatic incomes}
+\aparag Economic events may change the \RT. The economical events all
+tell exactly at which point their effect goes in the \EcoRS. The
+political events usually act between line \ERS{RT at start of turn} and
+\ERS{RT after Events} while the economical ones usually act on lines
+\ERS{RT after Events}, \ERS{Event} and \ERS{Events}.
+\aparag Diplomatic events modify the \RT in two ways: expenses for the
+diplomatic actions, subsidies and gifts or loans between major players.
+The latter go in \lignebudget{Gifts and loans between players}, the
+first and second in \lignebudget{Diplomatic actions},
+\lignebudget{Diplomatic reactions} and \lignebudget{Subsidies and
+  dowries}. Reimbursement of loans between major players also comes at
+this point.
+
+%\subsection{Loans}\label{chIncomes:LoansIncomes}
+%\aparag[Rules for v1 of the economical system]
+%Ignore the paragraph when using v2 comptability. 
+%\aparag There are two kind of loans that can be done by the player, that
+%are not loans (and as such submitted to negotiations as specified in
+%\ruleref{chDiplo:Alliance:Loan Treaty}. They are the national loans, and the
+%international loans. The player can only subscribe to one single type of
+%loan for one given turn. He must first determine for each one, in
+%\tableref{table:Loans}, the offer that is made by the ``market''
+%(capital, interest, duration).
+%\bparag A loan may be refunded by a player at any time before the normal
+%number of turns.
+%\bparag Loans subscribed are recorded in \lignebudget, interests and
+%capital reimbursements are recorded in \lignebudget{30}.
+%\bparag The player is entitled to only one from the two loans and may
+%see all possibilities before choosing.
+%\bparag The duration of a loan entails the current turn. A 1 turn-long
+%loan must therefore be reimbursed on the turn following its subscription.
+%\GTtable{loans}
+% TODO : delete this. Any way, the loan table disappears in accountingv2
+%\begin{tablehere}
+%\loantable
+%\end{tablehere}
+%\aparag[National Loan] The player borrows the money mostly from the
+%medium class of his home country. A National loan need not be refunded
+%by the player that has subscribed it. If he does not refund the capital,
+%he immediately loses 1 \STAB level and will receive the following penalties:
+%\bparag No new national loan may be obtained until the end of the period.
+%\bparag All new International loans receive a -3 die-roll penalty until
+%the end of the current period.
+%\bparag He has to pay one last time the interest on the loan.
+%\aparag[International Loan] This type of loan must to be refunded in its
+%entirety at the end of its length. An international loan can be refunded
+%by another loan (of any type).
+%\bparag If the player cannot refund the loan at the expiration of the
+%last turn of the loan, or if he cannot pay interest at any turn, he
+%suffers an immediate bankruptcy (\ruleref{chThePowers:Bankruptcy}).
+%\aparag[Interest of a Loan] Interest is paid during each turn until the
+%capital has been refunded entirely. Interest is based on the interest
+%rate obtained for the loan. Every turn, the amount of interest is always
+%based on l00\% of the subscribed capital, even if the principal has been
+%partially refunded in previous turns.
+%\bparag No interest is paid the turn the loan is received by the
+%player. But he has to pay interest each following turn, even the turn he
+%pays back all the capital (and even if he chooses to not refund a
+%national loan).
+%\aparag[End of game and Transfers] Any player that has not refunded any
+%current International or National loan at the end of the game or at the
+%moment he has to be transferred loses a number of \VP equal to the
+%double of the \Ducats not refunded (principal and interest combined).
+\subsection{Exceptional taxes}\label{chIncomes:Exceptional Taxes}
+\aparag Exceptional taxes are an administrative operation. However,
+since it brings money, the computation is recalled here.
+\bparag Exceptional taxes being a domestic action, it cannot be
+performed at the same time as another domestic action, and it might be
+forbidden by bankruptcy.
+\bparag Check~\ref{chExpenses:Exceptional Taxes} for details.
+
+\aparag Exceptional taxes may be raised only if at war and if \STAB is
+not -3.
+
+\aparag[Summary.] To compute the exceptional taxes modifier:
+\bparag First, lower \STAB by 1 (except if an enemy stack besiege or
+occupy a province during a non-civil war)?
+\bparag Then, add 3 times the \STAB to the \ADM of the monarch.
+
+\aparag The modifier is written in \lignebudget{Exceptional taxes
+  modifier B} and copied in \lignebudget{Exceptional taxes modifier A}.
+\bparag At the end of turn (only), roll 1d10, add the modifier and
+multiply the result by 10.
+\bparag This is the amount of \ducats gained (or lost in case of a
+negative number) by the taxes.
+
+\section{Summary of the computation}
+\subsection{Gross income}
+\aparag The \terme{Gross income} is the sum of the \terme{Land Income},
+\terme{Industrial Income}, \terme{Trade Income} and \terme{Colonial
+  Income}.
+\bparag The \terme{Land Income} was defined in
+\ruleref{chIncomes:LandIncome} and is the income of owned provinces.
+\bparag The \terme{Industrial Income} is the sum of the various incomes
+of \ruleref{chIncomes:IndustrialIncome}, i.e. Manufactures income and European
+Gold.
+\bparag The \terme{Trade Income} is the sum of the various incomes of
+\ruleref{chIncomes:Trade Income}, i.e. Commercial fleets, Domestic Trade,
+Foreign Trade and Trade Centres (but not Convoys).
+\bparag The \terme{Colonial Income} is the sum of the various incomes of
+\ruleref{chIncomes:ColonialIncome}, i.e. Colonies \& Trading-Posts income and
+Exotic Resources exploitation, but not \ROTW gold.
+\bparag[Stability] The Gross Income has an effect on \STAB at the end of
+the turn (see \ruleref{chPeace:Prosperity}).
+
+\begin{exemple}
+  Thus, for \POR at turn 1 (with a \REVOLT in \provinceBeira and a war
+  against \paysMaroc and \TUR), the results were :
+  \begin{itemize}
+  \item 26\ducats of \terme{Land Income} in \lignebudget{Land income} ;
+  \item 51\ducats of \terme{Industrial Income} in
+    \lignebudget{Industrial income} ;
+  \item 68\ducats of \terme{Trade Income} in \lignebudget{Trade income} ;
+  \item 11\ducats of \terme{\ROTW Income} in \lignebudget{ROTW income}.
+  \end{itemize}
+  For a grand total of 156\ducats written in \lignebudget{Gross income
+    B}. This is not much and should increase quickly as the colonial
+  empire expands. Maybe that war against \paysMaroc and \TUR is not such
+  a great way to start the game\ldots
+\end{exemple}
+
+%\subsection{Net income}
+%\aparag The gross income is then modified by the Stability of the
+%player. There can be a gain or an income loss.
+%\bparag The player earns or loses income according to its Stability
+%level, in the following percentage amounts: Stability +3: +10\%,
+%Stability 0: -10\%, Stability -1: -25\%, Stability -2: -33\%, Stability
+%-3: -50\%.
+%\bparag Round gains up and losses down. The gain or the loss of income
+%is registered in \lignebudget{29}.
+%\bparag After this, the loans income and expenses (for reimbursement) is
+%registered in the following lines, as well as the exception taxes
+%(see~\ruleref{chIncomes:OtherIncomes})
+%\aparag The \terme{Net Income} is the sum of the \terme{Gross Income},
+%the stability bonus, the loans and the exceptional taxes. It is then
+%added to the \RT at the end of the diplomatic phase, already modified by
+%the expenses of the diplomatic and event phase. It forms the \RT at the
+%end of the income phase, reported in \lignebudget{34}.
+
+% LocalWords:  addtolist compte pdf inexploitable AgriculturalCrisis ROTW
+% LocalWords:  MineDepletion interphase 
+

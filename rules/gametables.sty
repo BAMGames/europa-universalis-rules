@@ -1,0 +1,584 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{gametables}[2010/10/10 v1.0]%
+\RequirePackage{tikz}
+
+\usetikzlibrary{positioning,calc,fit,xsize,matrix,decorations.pathreplacing}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{interground}
+\pgfdeclarelayer{overground}
+\pgfsetlayers{background,interground,main,overground}
+\global\let\CELL\pgfmatrixnextcell
+\global\let\ROW\pgfmatrixendrow
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Game tables
+
+\newif\ifGTdebug
+%\GTdebugtrue
+
+% Symbols (probably misplaced)
+
+\def\xxa{\unskip\up{\textdag}}
+\def\xxb{\unskip\up{\textddag}}
+\def\xxc{\unskip\up{\textmultiply}}
+\def\xxd{\unskip\up{\#}}
+\def\xxe{\unskip\up{\o}}
+\def\xxf{\unskip\up{+}}
+\def\filler{\null\hfill\null}
+
+% Some tikz commands
+
+\def\GTglobalscale{1}
+\newdimen\GToffsetx
+\newdimen\GToffsety
+\GToffsetx=0cm
+\GToffsety=0cm
+\def\GTmoveit{
+  \pgflowlevel{\pgftransformxshift{\GToffsetx}}
+  \pgflowlevel{\pgftransformyshift{\GToffsety}}
+  \pgflowlevel{\pgftransformscale{\GTglobalscale}}
+}
+\newcommand{\tikzutw}{\let\tikz@text@width=\pgfutil@empty}
+\newcommand{\xm}[1]{\tikz[overlay,remember picture]{\coordinate (#1) at (0,0);}}
+\newcommand{\xmhigh}[1]{\tikz[overlay,remember picture]{\coordinate (#1) at (0,2ex);}}
+\newcommand{\debugrectangle}[2]{  \draw (#1.south west) rectangle (#1.north east);\draw (#1.south west)--#2--(#1.south east)--#2--(#1.north west)--#2--(#1.north east)--#2;}
+
+% GT* Global environment
+% Here we define GTpage environments and GTpagetitle, GTtable commands
+
+\def\toclevel@tablesheet{0}
+\newcommand*\l@tablesheet{\@dottedtocline{0}{0em}{3em}}
+\newenvironment{GTpage}{\begin{tikzpicture}[remember picture,overlay]}{\useasboundingbox(0,0)rectangle(0,0);
+    % \debugrectangle{current page}{(0,0)}
+  \end{tikzpicture}\forcenewpage}
+\newcommand{\NGTpagetitle}[2]{
+  % x margin: 19bp
+  \coordinate (west border) at ($ (current page.west)+(19bp,0) $);
+  \coordinate (east border) at ($ (west border)+(547bp,0) $);
+  % y margin: 18bp
+  \coordinate (north border) at ($ (current page.north)+(0,-18bp) $);
+  \coordinate (south border) at ($ (north border)+(0,-806bp) $);
+  % \debugrectangle{current page}{(0,0)}
+  \pgfextractx{\GToffsetx}{\pgfpointanchor{current page}{north west}}
+  \pgf@x=-\GTglobalscale\GToffsetx
+  \advance\GToffsetx by \pgf@x
+  \pgfextracty{\GToffsety}{\pgfpointanchor{current page}{north west}}
+  \pgf@y=-\GTglobalscale\GToffsety
+  \advance\GToffsety by \pgf@y
+  \begin{pgfonlayer}{background}\GTmoveit\end{pgfonlayer}
+  \begin{pgfonlayer}{interground}\GTmoveit\end{pgfonlayer}
+  \begin{pgfonlayer}{overground}\GTmoveit\end{pgfonlayer}
+  \GTmoveit
+  \ifGTdebug
+  \begin{pgfonlayer}{overground}
+    \draw[help lines](west border|-current page.north)--(west border|-current page.south);
+    \draw[help lines](east border|-current page.north)--(east border|-current page.south);
+    \draw[help lines](south border-|current page.west)--(south border-|current page.east);
+    \draw[help lines](north border-|current page.west)--(north border-|current page.east);
+  \end{pgfonlayer}
+  \fi
+  \node (pagerelease) [anchor=north west] at (west border|-north border)
+  {\small\release};
+  \node (pagetitle) [bigbox,anchor=north]
+  at ($.5*(north border-|west border)+.5*(north border-|east border) $)
+  {
+    % Use the global counter, since the page prefix may be unsafe
+    % Increase counter, set currentHref to tablesheet.counter
+    % Put anchor there (raised a bit), insert bookmark in file.out, then title
+    % Anchor could be closed behind that instead of in front.
+    \begingroup%
+    \Hy@GlobalStepCount\Hy@linkcounter%
+    \xdef\@currentHref{tablesheet.\the\Hy@linkcounter}%
+    \Hy@raisedlink{\hyper@anchorstart{\@currentHref}\hyper@anchorend}%
+    \endgroup%
+    \Hy@writebookmark{\csname thetablesheet\endcsname}%
+    {#2}%
+    {\@currentHref}%
+    {0}%
+    {toc}%
+    \bf\fontsize{5mm}{0mm}\selectfont\rule[-.5ex]{0pt}{2.5ex}#2%
+  };
+  \node (pagepage) [anchor=north east,bigbox] at
+  (east border|-north border)
+  {\bf\fontsize{8mm}{0mm}\selectfont\rule[-.25ex]{0pt}{2.25ex}#1};
+  \pageprefix{#1}
+  \addtocontents{toc}{\protect\contentsline{tablesheet}{\protect\numberline{[#1]}#2}{\thepage}{\@currentHref}}
+}
+
+\newcommand{\GTtable}[2][\textwidth]{
+  \begin{table}[Hhtbp]%
+    \GTinlinemode%
+    \hfill\begin{minipage}{#1}\hfill
+      \begin{tikzpicture}[remember picture]
+        \GTid{#2}
+        \coordinate(base) at (0,0);
+        \GTpos{base}{0pt,0pt}{north west}
+        \GTcoord{\gtid east}{#1,0}
+        \csname#2\endcsname\useasboundingbox(\gtid box);
+      \end{tikzpicture}
+      \hfill\null\par
+    \end{minipage}%
+    \hfill\null\par
+    \expandafter\caption\expandafter{\gtname}%
+    \autolabel{table:\gtlabel}
+    \GTlargemode
+  \end{table}
+}
+
+% GT* id
+
+\newcommand{\NGTid}[1]{\gdef\gtid{#1}}
+\newcommand{\NGT}[3][\relax]{\xdef\gtid{#2}\gdef\gtname{#3}\gdef\gtpname{#3}\ifx#1\relax\gdef\gtlabel{#3}\else\gdef\gtlabel{#1}\fi\global\xdef\gtauto{}}
+\newcommand{\NGTanchorify}{%
+  \xdef\gtauto{\gtauto (\gtid mainanchorter)}
+  \node(\gtid mainanchor)[line width=0pt,text width=4pt,text height=4pt,inner sep=0pt,outer sep=0pt] at (\gtid point) {};
+  \coordinate(\gtid mainanchorbis) at (\gtid mainanchor.\gtanchor);
+  \coordinate(\gtid mainanchorter) at ($ 2*(\gtid mainanchor)-(\gtid mainanchorbis) $);}
+\newcommand{\IGTanchorify}{%
+  \coordinate(\gtid mainanchorter) at (0,4ex);
+}
+\newcommand{\LGT}[3][]{}
+\newcommand{\GTportablename}[1]{\gdef\gtpname{#1}}
+
+% GT* positioning
+
+\newcommand{\NGTpos}[3]{%
+  \coordinate (\gtid point) at ($ (#1)+(#2) $);
+  \gdef\gtanchor{#3}
+  \ifGTdebug
+  \fill (\gtid point)[red] circle (1pt);
+  \draw (\gtid point)[blue]--++(2pt,0)--++(-4pt,0)--++(2pt,2pt)--++(0,-4pt);
+  \node [above,fill=yellow,outer sep=3pt,fill opacity=.7] at (\gtid point) {\tiny \gtid};
+  \fi
+}
+\newcommand{\NGTcoord}[2]{%
+  \coordinate (#1point) at (#2);
+  \ifGTdebug
+  \fill (#1point)[red] circle (1pt);
+  \draw (#1point)[blue]--++(2pt,0)--++(-4pt,0)--++(2pt,2pt)--++(0,-4pt);
+  \node [above,fill=red,outer sep=3pt,fill opacity=.7] at (#1point) {\tiny #1};
+  \fi
+}
+
+% GTlegend blocks
+
+\newcommand{\NGTlegend}[2][]{%
+  % Init
+  \xdef\gtlname{caption}\xdef\gtlbelow{xsize=(\gtid main)}%
+  \global\let\gtlanchor\relax%
+  \xdef\gtlxoffset{0pt}\xdef\gtlyoffset{0pt}%
+  \gdef\gtlfullfrom{\gtid\gtlfrom.\gtlcorner}%
+  \gdef\gtlxsize{(\gtid\gtlfrom)}%
+  \gdef\gtlxsizeoffset{0pt}%
+  \gdef\gtlysep{0pt}%
+  \gdef\gtlxsep{0pt}%
+  % Keys
+  \pgfkeys{/tikz/captionstyle/.style={#1}}
+  \pgfkeys{/gtlegend/.cd,#1}
+  % Default
+  \ifx\gtlanchor\relax\southwestpos{main}\else\fi
+  \xdef\gtlxsize{\gtlxsize}
+  % Exec
+  \node(\gtid\gtlname)[inner ysep=\gtlysep,inner xsep=\gtlxsep,anchor=\gtlanchor,xsize offset=\gtlxsizeoffset,xsize=\gtlxsize,captionstyle,debug legend] at ( $(\gtlfullfrom)+(\gtlxoffset,\gtlyoffset)$ ) {#2};%
+  % Store
+  \xdef\gtauto{\gtauto (\gtid\gtlname)}
+}
+% Styles
+\def\southpos#1{%
+  \gdef\gtlanchor{north}%
+  \gdef\gtlcorner{south}%
+  \gdef\gtlfrom{#1}%
+  \gdef\gtlyoffset{-2pt}%
+}
+\def\southwestpos#1{%
+  \gdef\gtlanchor{north west}%
+  \gdef\gtlcorner{south west}%
+  \gdef\gtlfrom{#1}%
+  \gdef\gtlyoffset{-2pt}%
+}
+\def\southeastpos#1{%
+  \gdef\gtlanchor{north east}%
+  \gdef\gtlcorner{south east}%
+  \gdef\gtlfrom{#1}%
+  \gdef\gtlyoffset{-2pt}%
+}
+\def\eastnorthpos#1{%
+  \gdef\gtlanchor{north west}%
+  \gdef\gtlcorner{north east}%
+  \gdef\gtlfrom{#1}%
+  \xdef\gtlxoffset{2pt}%
+  \xdef\gtlxsizeoffset{-2pt}%
+}
+\def\eastsouthpos#1{%
+  \gdef\gtlanchor{south west}%
+  \gdef\gtlcorner{south east}%
+  \gdef\gtlfrom{#1}%
+  \xdef\gtlxoffset{2pt}%
+  \xdef\gtlxsizeoffset{-2pt}%
+}
+\def\westsouthpos#1{%
+  \gdef\gtlanchor{south east}%
+  \gdef\gtlcorner{south west}%
+  \gdef\gtlfrom{#1}%
+  \xdef\gtlxoffset{-2pt}%
+  \xdef\gtlxsizeoffset{-2pt}%
+}
+% Keys
+\pgfkeys{/gtlegend/caption/.code=\xdef\gtlname{#1}}
+\pgfkeys{/gtlegend/no margins/.code=\xdef\gtlxoffset{0pt}\xdef\gtlxsizeoffset{0pt}}
+\pgfkeys{/gtlegend/margins/.code=\xdef\gtlxsizeoffset{\gtlxsizeoffset-#1}}
+\pgfkeys{/gtlegend/margins/.default=2pt}
+\pgfkeys{/gtlegend/xoffset/.code=\xdef\gtlxoffset{#1}}
+\pgfkeys{/gtlegend/xoffset/.default=0pt}
+\pgfkeys{/gtlegend/yoffset/.code=\xdef\gtlyoffset{#1}}
+\pgfkeys{/gtlegend/yoffset/.default=0pt}
+\pgfkeys{/gtlegend/south/.code=\southpos{#1}}
+\pgfkeys{/gtlegend/south/.default=main}
+\pgfkeys{/gtlegend/south west/.code=\southwestpos{#1}}
+\pgfkeys{/gtlegend/south west/.default=main}
+\pgfkeys{/gtlegend/south east/.code=\southeastpos{#1}}
+\pgfkeys{/gtlegend/south east/.default=main}
+\pgfkeys{/gtlegend/east north/.code=\eastnorthpos{#1}}
+\pgfkeys{/gtlegend/east north/.default=main}
+\pgfkeys{/gtlegend/east south/.code=\eastsouthpos{#1}}
+\pgfkeys{/gtlegend/east south/.default=main}
+\pgfkeys{/gtlegend/west south/.code=\westsouthpos{#1}}
+\pgfkeys{/gtlegend/west south/.default=main}
+\pgfkeys{/gtlegend/anywhere/.code=\gdef\gtlfullfrom{#1}}
+\pgfkeys{/gtlegend/.unknown/.code={}}
+\pgfkeys{/tikz/caption/.code={}}
+\pgfkeys{/tikz/no margins/.code={}}
+\pgfkeys{/tikz/south/.code={}}
+\pgfkeys{/tikz/south west/.code={}}
+\pgfkeys{/tikz/south east/.code={}}
+\pgfkeys{/tikz/east north/.code={}}
+\pgfkeys{/tikz/margins/.code={}}
+\pgfkeys{/tikz/east south/.code={}}
+\pgfkeys{/tikz/west south/.code={}}
+\pgfkeys{/tikz/anywhere/.code={}}
+\pgfkeys{/tikz/xoffset/.code={}}
+\pgfkeys{/tikz/yoffset/.code={}}
+% Useful aliases
+\pgfkeys{/tikz/eastpoint/.style={xsize=(\gtid point)(\gtid eastpoint)}}
+\pgfkeys{/tikz/to eastpoint/.style={xsize=(\gtid#1.east)(\gtid eastpoint)}}
+\pgfkeys{/tikz/to eastpoint/.default=main}
+\pgfkeys{/gtlegend/to eastpoint/.style={margins}}
+\newcommand{\LGTlegend}[2][]{\ifhmode\par\fi#2}
+
+% GT* blocks
+
+\newcommand{\NGTcontent}[2][]{
+  \GTanchorify
+  \xdef\gtauto{\gtauto (\gtid main)}
+  \node (\gtid main) [anchor=\gtanchor,#1] at 
+  ($ (\gtid mainanchorter)+(0pt,-4ex) $) {#2};
+  \GTtitle
+}
+\newcommand{\NGTdecorate}[1][]{%
+  \GTcomplexdecorate[#1]{
+    \draw [graybox] (\gtid box.south west) rectangle (\gtid box.north east);
+    \draw [fill=white,rounded] ($ (\gtid title.south west)+(-5pt,0pt) $)
+    --(\gtid title.north west)--(\gtid title.north east)
+    --($ (\gtid title.south east)+(5pt,0pt) $)
+    --(\gtid main.north east)--(\gtid main.south east)--(\gtid main.south west)--(\gtid main.north west)--cycle;
+  }
+}
+\newcommand{\NGTcomplexdecorate}[2][]{%
+  \node (\gtid box) [inner sep=2pt,fit=\gtauto #1] {\filler};
+  \node (lastbox) [fit=(\gtid box)]{\filler};
+  \begin{pgfonlayer}{background}
+    #2
+  \end{pgfonlayer}
+}
+\newcommand{\NGTsimpledecorate}[1][]{%
+  \GTcomplexdecorate[#1]{
+    \draw [graybox] (\gtid box.south west) rectangle (\gtid box.north east);
+  }
+}
+\newcommand{\NGTtitle}[1][main]{\node(\gtid title)[inner sep=2pt,anchor=south] at (\gtid #1.north) {\rule[-1ex]{0pt}{3ex}\textbf{\falsecaption{table}{\gtpname}{\gtname}}\autolabel{table:\gtlabel}};
+  \xdef\gtauto{\gtauto (\gtid title)}
+  \begin{pgfonlayer}{overground}
+    \draw [rounded] ($ (\gtid title.south west)+(-5pt,0pt) $)
+    --(\gtid title.north west)--(\gtid title.north east)
+    --($ (\gtid title.south east)+(5pt,0pt) $)
+    --(\gtid main.north east)--(\gtid main.south east)--(\gtid main.south west)--(\gtid main.north west)--cycle;
+    \draw ($ (\gtid title.south west)+(-7pt,0pt) $)--($ (\gtid title.south east)+(7pt,0pt) $);
+  \end{pgfonlayer}}
+\newcommand{\LGTcomplexdecorate}[2][]{}
+\newcommand{\IGTcomplexdecorate}[2][]{%
+  \node (\gtid box) [inner sep=0pt,fit=\gtauto #1] {\filler};
+  % \begin{pgfonlayer}{overground}
+  %   \draw[blue,line width=1pt] (\gtid box.south west)rectangle(\gtid box.north east);
+  % \end{pgfonlayer}
+}
+\newcommand{\IGTdecorate}[1][]{%
+  \GTcomplexdecorate[#1]{
+    \draw [fill=white] (\gtid main.north east)--(\gtid main.south east)--(\gtid main.south west)--(\gtid main.north west)--cycle;
+  }
+}
+\newcommand{\IGTtitle}[1][main]{
+  \begin{pgfonlayer}{overground}
+    \draw (\gtid main.north east)--(\gtid main.south east)--(\gtid main.south west)--(\gtid main.north west)--cycle;
+  \end{pgfonlayer}}
+
+% GTtext* blocks
+
+\newcommand{\NGTtextcontent}[2][]{
+  \GTanchorify
+  \xdef\gtauto{\gtauto (\gtid main)(\gtid mainanchorter)}
+  \node (\gtid main) [anchor=\gtanchor,xsize offset=-4pt,#1] at 
+  (\gtid mainanchorter) {#2};
+}
+\newcommand{\NGTtextdecorate}[1][]{
+  \GTcomplexdecorate[#1]{
+    \draw [graybox] (\gtid box.south west) rectangle (\gtid box.north east);
+  }
+  \GTtexttitle
+}
+\newcommand{\NGTtexttitle}{
+  \begin{pgfonlayer}{overground}
+    \node (\gtid title) [inner sep=1pt,anchor=north east] at (\gtid box.north east) {\rule[-1ex]{0pt}{3ex}\textbf{\gtname}};
+  \end{pgfonlayer}
+  \begin{pgfonlayer}{background}
+    \draw [graybox,fill=white,solid,line width=.5pt]
+    (\gtid title.north east)--
+    ($ (\gtid title.south east)+(0,-2pt) $)--
+    ($ (\gtid title.south east)+(0,0) $)--
+    (\gtid title.south west)--
+    ($ (\gtid title.north west)+(-5pt,0) $)--
+    ($ (\gtid title.north west)+(-7pt,0) $)--
+    ($ (\gtid title.north west)+(-5pt,0) $)--
+    cycle;
+  \end{pgfonlayer}
+}
+
+\newcommand{\LGTtextcontent}[2][]{\ifhmode\par\fi#2}
+\newcommand{\LGTtextdecorate}[1][]{}
+\let\LGTtexttitle\relax
+
+% GTnotabene blocks
+\xdef\gtnb{}
+\newcommand{\NGTnb}[1]{%
+  \xm{notabene#1}\xdef\gtnb{\gtnb(notabene#1)}%
+}
+\newcommand{\NGTnotabene}[3][1]{
+  \node (notabeneavoid) [inner sep=0pt,fit=\gtnb]{\filler};
+  \node (\gtid notabene) [xsize scale=#1,xsize offset=-4pt,#2,anchor=west,transform shape,scale=1/#1] at ($ (notabeneavoid.east)+(4pt,1ex) $) {#3};
+  \draw[decorate,decoration=brace]
+  ($ (notabeneavoid.north east)+(1pt,2ex) $)--
+  ($ (notabeneavoid.south east)+(1pt,0) $);
+  \xdef\gtauto{\gtauto(\gtid notabene)}
+  \xdef\gtnb{}
+}
+
+% GTmore* blocks (syntax is still a mess)
+
+\newcommand{\NGTmorecontent}[5]{
+  \xdef\gtauto{\gtauto (\gtid #1)}
+  \node (\gtid #1) [inner sep=0pt,anchor=#2] at 
+  ($ (#3)+(#4) $) {#5};
+}
+\newcommand{\NGTmoretitle}[2]{\node(\gtid #1title)[inner sep=2pt,outer sep=0pt,anchor=south] at (\gtid #1.north) {\rule[-1ex]{0pt}{3ex}\textbf{#2}};\xdef\gtauto{\gtauto (\gtid #1title)}
+  \begin{pgfonlayer}{interground}
+    \fill[white,rounded] ($ (\gtid #1title.south west)+(-5pt,0pt) $)
+    --(\gtid #1title.north west)--(\gtid #1title.north east)
+    --($ (\gtid #1title.south east)+(5pt,0pt) $)
+    --(\gtid #1.north east)--(\gtid #1.south east)--(\gtid #1.south west)--(\gtid #1.north west)--cycle;
+  \end{pgfonlayer}
+  \begin{pgfonlayer}{overground}
+    \draw [rounded] ($ (\gtid #1title.south west)+(-5pt,0pt) $)
+    --(\gtid #1title.north west)--(\gtid #1title.north east)
+    --($ (\gtid #1title.south east)+(5pt,0pt) $)
+    --(\gtid #1.north east)--(\gtid #1.south east)--(\gtid #1.south west)--(\gtid #1.north west)--cycle;
+    \draw ($ (\gtid #1title.south west)+(-7pt,0pt) $)--($ (\gtid #1title.south east)+(7pt,0pt) $);
+  \end{pgfonlayer}
+}
+\newcommand{\NGTnotitle}[2]{
+  \begin{pgfonlayer}{interground}
+    \fill[white,rounded] (\gtid #1.north east) rectangle (\gtid #1.south west);
+  \end{pgfonlayer}
+  \begin{pgfonlayer}{overground}
+    \draw[rounded] (\gtid #1.north east) rectangle (\gtid #1.south west);
+  \end{pgfonlayer}
+}
+
+% GT* styles
+
+\ifGTdebug
+\tikzset{debug legend/.style={draw}}
+\else
+\tikzset{debug legend/.style={}}
+\fi
+\tikzset{rounded/.style={rounded corners=5pt}}
+\tikzset{graybox/.style={draw=black!30,fill=black!5,line width=1pt,dashed,rounded},inner sep=0pt}
+\tikzset{bigbox/.style={text=white,fill=black,rounded,inner sep=2mm}}
+\tikzset{every node/.style={inner sep=0pt,outer sep=0pt,line width=0pt}}
+
+% List headers
+
+\newcommand{\NGTheader}[2][\null]{%
+  \tikzutw\tikz[baseline=(X.base)]{
+    \node[solid,fill=white,draw,rounded corners=2pt,inner sep=2pt,line width=.5pt](X){\textbf{#2}};
+    \ifx#1\null\else\node[anchor=base west] at ($ (X.base east)+(4pt,0) $){(#1)};\fi
+  }\par%
+}
+\newcommand{\LGTheader}[2][\null]{%
+  \aparag #2\ifx#1\null\else{} (#1)\fi\par
+}
+\newcommand{\NGTitem}[1]{\textbullet~#1\par}
+\newcommand{\LGTitem}[1]{\bparag #1\par}
+\newcommand{\NGTitemitem}[1]{~~\textbullet~#1\par}
+\newcommand{\LGTitemitem}[1]{\textbullet~#1\par}
+
+% GT setup
+
+% We have three modes:
+% * narrow
+% * inline (almost like narrow, but \tableinline does something)
+% * large (most things are ignored: mainly for \GTtextcontent)
+% Each mode must redefine \tablenarrow \tablelarge \tableinline
+% and \tablelargenarrow to either do something or nothing.
+% It must also \global\let each command to its correct definition
+
+\def\GT@error#1{\errmessage{Use of #1 in large mode.}}
+\def\GTignoreone#1{}
+\def\GTignoreone#1{}
+\def\GTignoretwo#1#2{}
+\def\GTignorethree#1#2#3{}
+\newif\ifGTnarrowmode
+\def\GTnarrowmode{
+  \GTnarrowmodetrue
+  \gdef\tablenarrow##1{##1}
+  \gdef\tablelarge##1{}
+  \gdef\tableinline##1{}
+  \gdef\tablelargenarrow##1##2{##2}
+  % grep newcommand gametables.sty |grep NGT|grep -v grep | cut -f2 -d{|cut -f1 -d}|cut -c3- | xargs -n 1 -i echo '\global\let\{}\N{}'
+  \global\let\GTpagetitle\NGTpagetitle
+  \global\let\GTid\NGTid
+  \global\let\GT\NGT
+  \global\let\GTanchorify\NGTanchorify
+  \global\let\GTpos\NGTpos
+  \global\let\GTcoord\NGTcoord
+  \global\let\GTlegend\NGTlegend
+  \global\let\GTcontent\NGTcontent
+  \global\let\GTdecorate\NGTdecorate
+  \global\let\GTcomplexdecorate\NGTcomplexdecorate
+  \global\let\GTsimpledecorate\NGTsimpledecorate
+  \global\let\GTtitle\NGTtitle
+  \global\let\GTtextcontent\NGTtextcontent
+  \global\let\GTtextdecorate\NGTtextdecorate
+  \global\let\GTtexttitle\NGTtexttitle
+  \global\let\GTnb\NGTnb
+  \global\let\GTnotabene\NGTnotabene
+  \global\let\GTmorecontent\NGTmorecontent
+  \global\let\GTmoretitle\NGTmoretitle
+  \global\let\GTnotitle\NGTnotitle
+  \global\let\GTheader\NGTheader
+  \global\let\GTitem\NGTitem
+  \global\let\GTitemitem\NGTitemitem
+}
+\def\GTinlinemode{
+  % Almost similar to narrow mode, but less decoration
+  \GTnarrowmodetrue
+  \gdef\tablenarrow##1{##1}
+  \gdef\tablelarge##1{}
+  \gdef\tableinline##1{##1}
+  \gdef\tablelargenarrow##1##2{##2}
+  \global\let\GTpagetitle\NGTpagetitle
+  \global\let\GTid\NGTid
+  \global\let\GT\NGT
+  \global\let\GTanchorify\IGTanchorify
+  \global\let\GTpos\NGTpos
+  \global\let\GTcoord\NGTcoord
+  \global\let\GTlegend\NGTlegend
+  \global\let\GTcontent\NGTcontent
+  \global\let\GTdecorate\IGTdecorate
+  \global\let\GTcomplexdecorate\IGTcomplexdecorate
+  \global\let\GTsimpledecorate\NGTsimpledecorate
+  \global\let\GTtitle\IGTtitle
+  \global\let\GTtextcontent\NGTtextcontent
+  \global\let\GTtextdecorate\NGTtextdecorate
+  \global\let\GTtexttitle\NGTtexttitle
+  \global\let\GTnb\NGTnb
+  \global\let\GTnotabene\NGTnotabene
+  \global\let\GTmorecontent\NGTmorecontent
+  \global\let\GTmoretitle\NGTmoretitle
+  \global\let\GTnotitle\NGTnotitle
+  \global\let\GTheader\NGTheader
+  \global\let\GTitem\NGTitem
+  \global\let\GTitemitem\NGTitemitem
+}
+\def\GTlargemode{
+  \GTnarrowmodefalse
+  \gdef\tablenarrow##1{}
+  \gdef\tablelarge##1{##1}
+  \gdef\tableinline##1{}
+  \gdef\tablelargenarrow##1##2{##1}
+  \gdef\GTpagetitle{\GT@error{GTpagetitle}}
+  \gdef\GTid{\GT@error{GTid}}
+  \global\let\GT\LGT
+  \gdef\GTanchorify{\GT@error{GTanchorify}}
+  \gdef\GTpos{\GT@error{GTpos}}
+  \gdef\GTcoord{\GT@error{GTcoord}}
+  \global\let\GTlegend\LGTlegend
+  \gdef\GTcontent{\GT@error{GTcontent}}
+  \gdef\GTdecorate{\GT@error{GTdecorate}}
+  \global\let\GTcomplexdecorate\LGTcomplexdecorate
+  \gdef\GTsimpledecorate{\GT@error{GTsimpledecorate}}
+  \gdef\GTtitle{\GT@error{GTtitle}}
+  \global\let\GTtextcontent\LGTtextcontent
+  \global\let\GTtextdecorate\LGTtextdecorate
+  \global\let\GTtexttitle\LGTtexttitle
+  \gdef\GTnb{\GT@error{GTnb}}
+  \gdef\GTnotabene{\GT@error{GTnotabene}}
+  \gdef\GTmorecontent{\GT@error{GTmorecontent}}
+  \gdef\GTmoretitle{\GT@error{GTmoretitle}}
+  \gdef\GTnotitle{\GT@error{GTnotitle}}
+  \global\let\GTheader\LGTheader
+  \global\let\GTitem\LGTitem
+  \global\let\GTitemitem\LGTitemitem
+}
+\GTlargemode
+
+% Table alternatives. Manage forks
+\newcommand{\tablealternate}[2]{#1}
+\newcommand{\alternatetablealternate}{\renewcommand{\tablealternate}[2]{##2}}
+\newcommand{\originaltablealternate}{\renewcommand{\tablealternate}[2]{##1}}
+
+% Hyperref
+
+\newcommand{\autolabel}[1]{\expandafter\ifx\csname auto@table:\gtlabel\endcsname\null\else\label{table:\gtlabel}\global\expandafter\let\csname auto@table:\gtlabel\endcsname\null\fi}
+\def\falsecaption#1#2#3{\def\@captype{#1}\H@refstepcounter\@captype\hyper@makecurrent{\@captype}%
+  \global\let\@currentlabelname#2%
+  \addcontentsline{\csname ext@#1\endcsname}{#1}{%
+    \protect\numberline{\csname the#1\endcsname}{\ignorespaces #2}%
+  }%
+  \begingroup
+  \ifHy@nesting%
+  \hyper@@anchor{\@currentHref}{#3}%
+  \else%
+  \Hy@raisedlink{\hyper@@anchor{\@currentHref}{\relax}}#3%
+  \fi%
+  \endgroup%
+}
+
+
+% BUGFIX: fix bug in pgf2.00
+
+\def\pgf@matrix@startcell{%
+  \let\pgf@nodecallback=\pgf@matrix@nodecallback%
+  \pgfinterruptboundingbox%
+  \pgftransformreset%
+  \setbox\pgf@matrix@cell=\hbox\bgroup\bgroup%
+  \pgf@relevantforpicturesizetrue
+  \pgfsys@beginpicture%
+  \normalbaselines%
+  \pgfutil@ifnextchar\let%
+  {
+    \afterassignment\pgf@matrix@empty@check\let\pgf@matrix@temp=%
+  }
+  {
+    \pgf@matrix@empty@cell@false%
+    \pgfmatrixbegincode%
+  }
+}

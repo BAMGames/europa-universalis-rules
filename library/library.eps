@@ -1,0 +1,88 @@
+%/pagewidth 100 def
+%/pageheight 20 def
+/BLASONDIR HOMEDIR(/blasons)! def
+/IMAGEDIR HOMEDIR(/images)! def
+/SHADOWDIR HOMEDIR(/shadow)! def
+/FONTDIR HOMEDIR(/fonts)! def
+HOMEDIR(/library/pdf_library.eps)! include
+FONTDIR(/encodings.eps)! include
+FONTDIR(/arial_narrow.eps)! include
+/@ {
+    translation {translationdict 1 index known {translationdict exch get}if}if
+}def
+
+/exporttopdf {/todrawcurve exch def
+    {exch display ( )out display ( m\n)out}{exch display ( )out display ( l\n)out}
+    {
+	6 -1 roll display space
+	5 -1 roll display space
+	4 -1 roll display space
+	3 -1 roll display space
+	2 -1 roll display space
+	display ( c\n) out
+    }{todrawcurve out}pathforall
+} def
+/definealpha { /alpha exch def
+    << /Type /ExtGState /CA alpha /ca alpha >> (GSalpha) alpha 20 string cvs ! defobj
+}def
+/definebialpha { /alpha exch def /beta exch def
+    << /Type /ExtGState /CA alpha /ca beta >> (GSalpha) alpha 20 string cvs ! (X) ! beta 20 string cvs ! defobj
+}def
+/beginbialpha {/alpha exch def /beta exch def
+/toto (GSalpha) alpha 20 string cvs !  (X) ! beta 20 string cvs ! def
+objdict toto known not {beta alpha definebialpha}if
+toto /pagegss push (q /)toto ! ( gs\n) ! out
+}def
+/beginalpha {/alpha exch def
+/toto (GSalpha) alpha 20 string cvs ! def
+objdict toto known not {alpha definealpha}if
+toto /pagegss push (q /)toto ! ( gs\n) ! out
+}def
+/endalpha {
+    (Q\n) out
+}def
+/deffunlin {
+    /toto () [col0 col1] {{(:) exch 20 string cvs ! !}forall}forall def
+    objdict (FunctionLin) toto ! known not {
+	<</FunctionType 2 /Domain [0 1] /C0 col0 /C1 col1 /N 1>>
+	(FunctionLin) toto ! defobj
+    }if
+}def
+/deflinshade {/col1 exch def /col0 exch def
+    deffunlin
+    objdict (Shading) toto ! known not {
+	<</Coords [0 0 1 0] /Function (FunctionLin) toto ! R /ShadingType 2 /ColorSpace /DeviceRGB >> (Shading) toto ! defobj
+    }if
+}def
+/useshade {
+    col0 col1 deflinshade
+    (/Shading)toto !( sh\n)! out
+    (Shading)toto ! /pageshadings push
+}def
+%Y [[N1 [r1 g1 b1][rr1 gg1 bb1]][N2 [r2 g2 b2][rr2 gg2 bb2]]] coords (name)
+/defnshade {/name exch def /coords exch def
+    /cols exch def /N cols length def /SN 0 cols {0 get add}forall def
+    /functions [] def
+    objdict (Shading) name !  known not { /functions [
+	0 1 N 1 sub{
+	    /i exch def
+	    /col0 cols i get 1 get def
+	    /col1 cols i get 2 get def
+	    /toto () [col0 col1] {{(:) exch 20 string cvs ! !}forall}forall def
+	    objdict (FunctionLin) toto ! known not {
+		<</FunctionType 2 /Domain [0 1] /C0 col0 /C1 col1 /N 1>>
+		(FunctionLin) toto ! defobj
+	    }if
+	    (FunctionLin) toto ! R
+	}for ] def
+	<</FunctionType 3 /Functions functions /Domain [0 1] /Bounds [0
+	    0 1 N 2 sub {cols exch get 0 get add dup SN div exch}for
+	    pop
+	] /Encode [1 1 N {pop 0 1}for]>> (FunctionStitch) name ! defobj
+	<</Coords coords /Function (FunctionStitch) name ! R /ShadingType 2 /ColorSpace /DeviceRGB >> (Shading)name ! defobj
+    }if
+}def
+/usenshade {defnshade
+    (/Shading)name !( sh\n)! out
+   (Shading)name ! /pageshadings push
+}def

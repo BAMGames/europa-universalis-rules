@@ -1,0 +1,588 @@
+Généraux turcs, new style.
+
+* Bonus au passage :
+Ça va forcer Boka à noter correctement les pachas en fin de séance au
+lieu de juste écrire "10 pachas" ;-)
+
+* Règles :
+** TUR passe à 1G de base, sauf en pIII où il en a 2 (actuellement, 4).
+#   J'hésite même à le mettre à 0 de base, 1 en pIII tant il n'y a pas de
+#   "vrais" généraux TUR dans la période historique (hors Sultans et
+#   Vizirs). Voire 0 tout le temps, il y a des G nommés pour la pIII.
+#** Le Sultan TUR ne peut pas aller dans des provinces non reliées par
+#   terre à Istanbul (il peut prendre le bateau mais pas aller dans les
+#   îles, contrairement aux Timars qui ne peuvent pas prendre le bateau
+#   du tout).
+** Les pachas ne peuvent pas commander de grosse pile.
+
+#   [ => c'est ici que je suis pas trop sûr de la limite à mettre,
+#   plusieurs idées pas toutes satisfaisantes :
+#   * pas de pion A. + : facile. - : pas d'artillerie pour le siège
+#     (alors que sièges balkaniques voire Géorgie) ni de feu en Ren
+#     (alors que flancs face à Perse ou Mamelouks)
+#   * pas de grosse pile. + : limite déjà existante. - : 5LD + pacha, ça
+#     va vite dans les 6/7 LD, donc c'est une pile qui fait ce qu'elle
+#     veut et on ne limite pas les piles de pachas...
+#   * pas plus que 3LD. + : c'est un peu la bonne limite (équivalent à
+#     pas de pion A), c'est une limite existante (attrition des campagnes sans
+#     logistiques). - : ça veut dire que TUR va stocker ses pions A en
+#     A- et pas en A+ et ça va être galère... ça interdit aussi la grosse
+#     concentration en siège (notamment, 0 art dans une A- timar en pI).
+#   * pas plus de 4LD. + : c'est intermédiaire entre les précédents et ça
+#     évite leur inconvénients, ça force un choix intéressant en cas de
+#     perte (pacha/chef ou A+ et ses canons ?). - : c'est une nouvelle
+#     limite de taille de pile.] 
+
+** La réforme M-2 (qui supprime les timars et fait que les pachas ne
+   sont plus des unités militaires) ajoute 2G (ou 3 ?) à la limite de TUR.
+   [on revient au 3 actuels, sauf en pVII où on était qu'à 2, on peut ne
+   rajouter qu'1G en pVII ou laisser tel quel (plus simple)]
+
+** Pour éviter que TUR ne collectionne trop ses pachas (bientôt sur vos
+   DS, Pokemon "pacha edition"), on rajoute un effet "mort d'un pacha" :
+   « Le seul défenseur de la foi catholique [c'est aussi le joueur qui
+   corrompt] peut choisir 1 pacha (corrompu ou non) qui est
+   immédiatement remplacé par 1 autre tiré au hasard (non corrompu). Si
+   il le fait, TUR peut le faire aussi, et ainsi de suite en alternant
+   ». Cet effet se déclenche (i) juste avant la corruption (E-7 b) et
+   (ii) sur un résultat de survie du sultan (modifié) de 5 ou 7. [max de
+   +3 à la survie, donc on est dans des résultats toujours faisables]
+
+   [évite que TUR puisse trop se reposer sur des pachas bourrins
+   puisqu'ils ont 2/10 de mourir à chaque tour. Tout en laissant un
+   choix au SDFC (le pacha 444 ? Celui qui a du siège ? celui qui a 3 LD
+   de troupes ?) L'alternance de morts permet de décorrompre ses pachas
+   "gratuitement" (alors qu'à l'heure actuelle, c'est très coûteux (1
+   STAB), surtout parce que les pachas se corrompent vite (2 sur E-7, 1
+   par taxe exceptionnelle/banqueroute (ce qui empêche de fait d'en
+   faire, elles coûtent 2 de STAB au lieu d'1))). Mais en décorrompant
+   ainsi, on va aussi voir plus de bons mourir. Niark. Choix, choix,
+   choix.]
+** => Éventuellement, supprimer la corruption de pachas sur E-7 mais la
+   mettre sur 6 au jet de survie TUR (auquel cas la corruption ne cause
+   pas de mort en plus). En gros, c'est un jet "d'état interne du pays"
+   au sens large mais seul TUR a un effet autre que la survie de son roi
+   pour cause de structure féodale (et ces effets disparaissent avec les
+   bonnes réformes).
+
+Tous les G TUR non mentionnés ici sont à supprimer. J'ai pas fini de
+regarder les G TUR post 1600, donc il y en aura p'tet un ou 2 de plus.
+
+* Sultans
+On a déjà Soliman en général nommé, je pense qu'il faut rajouter Sélim.
+
+C'est le sultan qui a conquis tout l'Est, notamment les mamelouks
+(batailles de Marj Daqib et Ridaniya) et en Perse (Chaldiran, pas
+vraiment représenté chez nous). Chez nous, il est pas obligatoire (selon
+la mort de Bayezid). En fait, surtout, les sultans turcs sont souvent
+les commandants dans les batailles (surtout au début, je crois qu'il
+faut des conquêtes pour prouver qu'on est un bon sultan). Ce qui
+explique le manque de généraux, mais du coup on peut pas compter sur les
+bons sultans comme généraux... Bref.
+
+Je pense qu'il faut donner des caracs de général fixes à Selim.
+Chaldiran (1514) : avantage techno (renaissance vs Med) + feu.
+Marj Dabiq (1516) : supériorité d'artillerie mais bataille disputée
+avant la victoire finale.
+Ridaniya (1517) : pas de détails.
+
+Donc un truc genre 343 (comme Soliman) peut faire l'affaire. Les Califes
+sont 514/314 et les Shah 433/522, c'est le 522 qui commandait à
+Chaldiran (+2/+1, Perse fuit au premier feu sur 8+, peu de pertes), un
+anonyme à Marj Dabiq (Syrie, pas de chef) (~ +1/+1, Syrie fuit au
+deuxième feu après 1 perte de moral chacun au premier choc) et (+3/-1) à
+Ridaniya.
+
+(new) LEADER;Selim;Yavuz Sultân Selim Khan, Hâdim-ül Haramain-ish Sharifain;I.Selim;;Yavuz Sultân Selim Khan, Hâdim-ül Haramain-ish Sharifain;;;turquie;K;A 3.4.3;;;Father of Suleiman. Gained control of Eastern Anatolia after repulsing Persia at Chaldiran. Conquered the Mameluks states
+
+On peut aussi donner une "santé fragile" à Bayezid. Il a +1 au jet de
+survie pour MIL<7 (6) mais ça arrive qu'il meurt pas et que Sélim soit
+pas là (j'ai testé pour vous). Si on fait de Sélim un vrai général pour
+la capture des mamelouks, il faut augmenter les chances qu'il soit là,
+mettre une santé fragile à Bayezid, même si c'est pas hyper historique,
+ça lui ferait au total +2 au jet de survie, soit 30% de chance de mort
+par tour, les chances de pas avoir Selim passent de 26% à 11%. Ça
+augmente aussi les chances de crise dynastique à sa mort, ce qui
+correspond déjà plus à l'historique (avec une mini guerre civile entre
+les frères).
+
+* Pachas
+Et hop, on booste les pachas.
+** Je les mets tous de rang Z. Ça évite des histoires compliquées
+   d'optimisation des piles pour que machin ait le droit de
+   commander. C'est des gouverneurs locaux, c'est celui qui est présent
+   qui commande et c'est tout.
+** Je rajoute éventuellement des noms (de chefs historiques) avec une
+   connotation plus balkanique et moins turque pour refléter la zone de
+   recrutement de l'empire. J'aime bien l'idée que l'empire n'est pas
+   purement "turc" mais multi-ethnique.
+** je leur donne un score calculé par la somme des caracs, +2 si siège
+   (max -1), +2/5 si 2/3 LD de troupes.
+[anciens]
+[je classe par score, c'est plus facile à lire]
+#Type;Country;Name;LD;Number;Stats
+[0]  PACHA;timar;Selim;1;18;Z 0.0.0
+[1]  PACHA;timar;Aziz;1;6;Q 1.0.0
+[1]  PACHA;timar;Elias;1;9;O 0.1.0
+[2]  PACHA;timar;Mehmet;1;15;I 1.0.1
+[3]  PACHA;timar;Ali;1;1;G 1.1.1
+[4]  PACHA;timar;Amar;2;4;V 1.0.1         # 2 LD
+[4]  PACHA;timar;Karim;1;13;R 2.1.1
+[4]  PACHA;timar;Mustafa;1;16;N 2.1.1
+[5]  PACHA;timar;Abdallah;1;2;J 2.2.1
+[5]  PACHA;timar;Adnan;1;3;H 2.1.2
+[5]  PACHA;timar;Turgut;1;20;Y 4.0.1
+[5]  PACHA;timar;Yussuf;2;22;P 2.1.0      # 2 LD
+[6]  PACHA;timar;Ashraf;1;5;U 2.2.2
+[6]  PACHA;timar;Eren;1;10;Y 2.2.2
+[6]  PACHA;timar;Saleh;1;17;K 3.2.1
+[7]  PACHA;timar;Djamil;2;8;X 3.1.1       # 2 LD
+[7]  PACHA;timar;Ismail;3;11;W 0.2.0      # 3 LD
+[7]  PACHA;timar;Khaled;1;14;T 2.2.3
+[7]  PACHA;timar;Yasser;2;21;X 1.0.4      # 2 LD
+[8]  PACHA;timar;Tarek;2;19;K 3.2.1       # 2 LD
+[9]  PACHA;timar;Bahman;1;7;M 4.2.3
+[14] PACHA;timar;Israf;2;12;S 4.4.4       # 2 LD
+
+
+Scores : 
+0 (!), 1, 1, 2, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 9, 14 (!)
+En gros, 4-7, avec quelques extrêmes vraiment extrêmes (mister 14 est
+abusé).
+
+LD : 3, six 2, quinze 1.
+
+[nouveaux, faut renuméroter, les nouveaux noms sont les n° 23+]
+[j'ai rajouté en commentaire des noms historiques de chefs TUR
+ assimilables à des pachas (cf discussion sur eux plus loin)]
+[je classe par score, c'est plus facile à lire]
+
+#Type;Country;Name;LD;Number;Stats
+[5]  PACHA;timar;Adnan;1;3;Z 2.1.2
+[5]  PACHA;timar;Elias;1;9;Z 1.1.3
+[5]  PACHA;timar;Selim;2;18;Z 1.1.1       # 2 LD
+[6]  PACHA;timar;Ashraf;1;5;Z 2.2.2
+[6]  PACHA;timar;Yussuf;2;22;Z 2.1.1      # 2 LD
+[7]  PACHA;timar;Abdallah;1;2;Z 2.2.1 -1  # siège
+[7]  PACHA;timar;Djamil;2;8;Z 3.1.1       # 2 LD
+[7]  PACHA;timar;Karim;1;13;Z 2.1.4
+[7]  PACHA;timar;Khaled;1;14;Z 2.2.3
+[7]  PACHA;timar;Predojević;2;27;Z 2.1.2  # 2 LD  # "Hasan Predojević"
+[7]  PACHA;timar;Tardić;1;26;Z 2.3.3              # "Murat-beg Tardić"
+[8]  PACHA;timar;Amar;2;4;Z 2.2.2         # 2 LD
+[8]  PACHA;timar;Crnojevic;1;10;Z 2.2.2 -1# siège # "Skender Pasa"/"Iskander"
+[8]  PACHA;timar;Hadim;;24;Z 2.3.3                # "Hadim Yakup Pasa"
+[8]  PACHA;timar;Mustafa;1;16;Z 4.2.2
+[8]  PACHA;timar;Mihajlovic;1;25;Z 3.2.3          # "Skender Pasa"/"Iskander"
+[8]  PACHA;timar;Tarek;2;19;Z 3.2.1       # 2 LD
+[9]  PACHA;timar;Bahman;1;7;Z 4.2.3
+[9]  PACHA;timar;Ismail;3;11;Z 1.2.1      # 3 LD
+[9]  PACHA;timar;Saleh;1;17;Z 3.3.3
+[9]  PACHA;timar;Turgut;1;20;Z 4.4.1
+[10] PACHA;timar;Husrev;1;23;Z 2.3.3 -1   # siège # "Husrev-beg Gazi"
+[10] PACHA;timar;Yasser;2;21;Z 3.2.3      # 2 LD
+[11] PACHA;timar;Ali;1;1;Z 4.4.3                  # "Ali Bey"
+[11] PACHA;timar;Mehmet;1;15;Z 4.2.3 -1   # siège
+[12] PACHA;timar;Israf;1;12;Z 4.4.4
+[13] PACHA;timar;Aziz;3;6;Z 2.3.3         # 3 LD
+
+mister 444 a perdu son 2ème LD mais il y a maintenant 2 pachas à 3LD.
+Il y a 4/27 qui ont du siège. C'est raisonnable sans être abusif, ça
+fait 1/7. J'ai trouvé que 5/27 (1/5,5) ça faisait trop. Vu qu'on peut
+quand même un peu les collectionner, il faut rester dans des proportions
+pas géniales.
+
+Les scores sont maintenant plutôt vers 7-9. Il n'y a plus de gros boulet
+(le pire est sans doute Sélim). Il y a en moyenne moins de LD. TUR a
+donc besoin de fournir des troupes à ses pachas pour qu'ils agissent,
+mais il y en a 16/27 qui ont plus de 2 dans chaque carac (et quelques
+autres pas trop pourri genre 221-1 ou 321 2LD). Donc la moitié des
+pachas TUR devraient être capable de gérer un petit front seul (avec une
+A+) et les autres peuvent servir de supplétifs dans l'armée du
+Sultan/Vizir.
+
+Il y en a 9/27 qui ont 2 ou 3 LD.
+
+* Vizirs anonymes
+#Type;Country;NameA;NameB;NameC;Stats
+VIZIER;turquie;Sadrazam1;Grand Vizier;Sadrazam ?1;A 2.1.2 -1
+VIZIER;turquie;Sadrazam2;Grand Vizier;Sadrazam ?2;A 4.4.4
+VIZIER;turquie;Sadrazam3;Grand Vizier;Sadrazam ?3;A 2.3.2
+VIZIER;turquie;Sadrazam4;Grand Vizier;Sadrazam ?4;A 1.3.3
+VIZIER;turquie;Sadrazam5;Grand Vizier;Sadrazam ?5;A 2.2.4 -1
+VIZIER;turquie;Sadrazam6;Grand Vizier;Sadrazam ?6;A 1.2.2
+
+
+=> éventuellement, les gérer plutôt comme des chefs de remplacement,
+   avec un pion pour indiquer où il est et une ligne spéciale sur la table 
+   des chefs de remplacements. Ça correspond aux valse de vizirs plusieurs 
+   fois par an.
+
+Dans ce cas :
+
+2.1.2 -1/4.4.4/2.3.3/2.2.4 -1/3.2.2 -1/5.3.3/4.1.5 -1/1.2.2/2.3.2 -1/4.3.4
+
+
+* Vizirs nommés (d'autres en pIV+ sont possibles quand j'aurai regardé)
+[discussions sur leur cas plus loin le cas échéant]
+
+(new) LEADER;Borovinic;Hadım Ali Paşa and Hadım Sinan Paşa;Boroviniç;;;1;6;turquie;K;A 3.2.3;;;Two Viziers from the same Bosniac family. Hadım Ali failed at invading the mameluks and died crushing the Şahkulu Rebellion. Hadım Sinan illustratred himself against the mameluk at Khan Yaunis and Ridaniya (where he died)
+(new) LEADER;Ibrahim;Pargalı İbrahim Paşa;İbrahim;;Pargalı İbrahim Paşa;7;10;turquie;K;A 2.2.4;;;Personal friend and first vizir of Suleiman. Skilled diplomat who sealed many deals with Europeans. During a successful expedition to Persia, he gave himself a too high title and was executed on Suleiman's order afterwards.
+LEADER;Sokollu;Mehmed Paşa;Sokollu;;Sokollu Mehmed Paşa;13;18;turquie;K;A 4.1.4;;;Long standing Grand Vizier and de facto ruler of the empire. Seized Transylvania, fought in Persia, crushed several revolts in Europe and Asia. Launched expeditions against Habsbourgs and Russia
+LEADERDOUBLE;Sinan;Sinan Pashë Topojani;Sınan Paşa;;Sinan Pashë Topojani;17;22;turquie;K;A 3.4.4 -1;CR;H 3.4.4;Ottoman soldier and statesman, appointed five times Grand Vizier, conquered Yemen. Fought in the Long War with both victories and defeats
+LEADER;Koprulu;Mehmed, Fazıl Ahmed and Kara Mustafa;Köprülü;;The early Köprülü viziers;V;15;turquie;K;A 4.3.4 -1;;;A dynasty of Grand Viziers that tried to relaunch the Turkish dynamism but ultimately failed at the siege of Vienna led by Kara Mustafa
+
+
+* Autres G nommés (d'autres en pIV+ sont possibles quand j'aurai regardé)
+LEADER;Lala Mustafa;Lala Kara Mustafa Paşa;Lala Mustafa;;Lala Kara Mustafa Paşa;14;18;turquie;G;D 2.2.4;;;Commander at the siege of Malta and conqueror of Cyprus
+(new) LEADERDOUBLE;Osman;Özdemiroğlu;Osman Paşa;;;15;19;turquie;G;A 3.4.4;gR;I 5.3.3;Able governor of Yemen and Ethiopia. Good general in Persia, secured Caucasus at the battle of Torches. Dethroned a reluctant Crimean Khan. Later briefly Grand Vizier
+(new) LEADERDOUBLE;Yusuf Sinan;Cığalazade Yusuf Sinan Paşa;Yusuf Sinan;;Cığalazade Yusuf Sinan Paşa;18;23;turquie;G;C 3.1.3;A;C 3.2.2;Lead the fleet to capture Tunis and apointed two times Kapudan pasha. Lead several campaigns in Persia and Hungary with mitigated success. Briefly Grand Vizier
+
+=> les 3 dans la même période (T14-23), mais 2 sont aussi g/A donc
+utilisables à d'autres fins.
+
+
+Généraux turcs, old style :
+[rédigé avant de passer au new style. Donc trop de gus pour ce qui est
+voulu maintenant, ils sont presque tous devenus pachas avec les caracs
+mentionnées ici, bien sûr ça respecte plus les dates, mais on s'en fout]
+
+* Les frères beyerbeli
+Les G? TUR sont : 233/232/321-1/221-1/333/421
+[somme des caracs : 8/7/7/6/9/7]
+B1 est 334 [10] => nettement mieux.
+B2 est 123 [6] => légèrement moins bien.
+B3 est 232 [7] => dans la moyenne.
+
+Déjà, on va commencer par virer B3, ça va être vite vu. Un chef
+"faussement nommé" de la qualité des anonymes, je vois pas l'intérêt.
+
+B2, y'a un petit intérêt à le garder. Ceci dit, il est en fin de pIII
+(T19-25) à un moment où TUR a 4G de base... ploum, ploum. Ça me semble
+avoir un impact très faible que de le virer. D'autant qu'il est mauvais
+à cause de sa manoeuvre, mais le reste est correct. Bref, il y a
+toujours un endroit où il sera utile sur un théâtre secondaire. Avec 4G,
+c'est facile de le gérer.
+
+B1, lui, a un vrai impact. Il couvre la pII (T9-16) et fournit un bon
+chef à TUR qui en a besoin pour son expansion.
+
+* Généraux TUR
+Dans l'ensemble, ils ont l'air violemment dans les choux. Soliman et les
+vizirs semblent OK (il y a 4 vizirs nommés : Sokullu, Mustafa (pas vizir
+dans le jeu mais vizir que 4 mois en vrai), Sinan et Koprulu).
+
+Par contre, les généraux non vizirs (2 en début de jeu et 1 en fin de
+jeu), j'en retrouve pas trop de traces. J'ai aussi souvenir de Risto
+disant en gros "les chefs TUR, c'est NiMP".
+
+Accessoirement, 7 (8 avec Soliman) généraux nommés pour un pays de
+l'envergure militaire de TUR, c'est quand même un peu faible.
+
+Bref, je vais partir sur la voie du "on efface tout et on
+recommence"... 
+
+C'est le bazar, on trouve plus facilement des infos sur les concubines
+des sultans que sur les généraux...
+
+À noter que je me laisse peut-être un peu (beaucoup) entraîner pas
+l'enthousiasme, donc n'hésiter pas à baisser les caracs de tous les
+nouveaux de 1 si besoin...
+
+
+* Gazi Husrev-beg => Pacha !
+http://en.wikipedia.org/wiki/Gazi_Husrev-beg
+
+Conquète de Bosnie et Montenegro entre 1520-1530, mort en 1541 dans une
+révolte au Montenegro. Conquète de Croatie à la bataille de Krbava en
+1493 (par Hadim Yakup Pasa, mais en GHB est mis comme commandant bien
+que n'ayant que 13 ans (??)). Comme HYP n'a semble-t-il rien fait
+d'autre (google translate sur du turc, c'est pas la fête), je le mets
+pas. Pas des caracs de folie, mais du siège puisque les balkans
+c'est du siège.  Krbava, c'est A-/A- (8000 vs 10000), chez nous c'est
+les hongrois qui sortent pour tenter de repousser une attaque TUR sur
+les Balkans au T1 et qui se prennent une rouste (hum, voire cojones
+attaque Hongrie T1 et finalement on n'annexe qu'une province ?).
+
+GHB n'est pas mentionné sur la page turque de Krbava. Il me semble
+vraiment bizarre à cette bataille. Mais HYP n'a aucune raison d'avoir un
+pion et il faut des chefs TUR potables en début de jeu pour
+l'expansion. Bon, en fait y'aura le suivant, je mets pas HYP et je
+laisse GHB avec dates correctes.
+
+(new) LEADER;Husrev-beg;Gazi;Husrev-beg;;;6;10;turquie;G;B
+2.3.3 -1;Conqueror of Bosnia and Montenegro
+
+* Skender Pasha => Pacha !
+http://en.wikipedia.org/wiki/Skender_Pasha
+http://en.wikipedia.org/wiki/Ali_Bey_Mihaloglu
+http://en.wikipedia.org/wiki/Stani%C5%A1a_Crnojevi%C4%87
+
+Je pense que notre "Iskender" est Skender pasha. Il est plus ou moins
+supposé être le frère de ABM. L'autre solution est qu'il soit
+Skenderberg Crnojevic, mais c'est plus ou moins équivalent.
+
+ABM est actif avant le jeu dans les balkans et finit par une dernière
+campagne dans la guerre de succession Hongroise de 1490-1494 (hum, une
+raison pour TUR d'attaquer la Hongrie à ce moment... mais il faudrait
+faire l'event ou la situation initiale puisque ça commence en 1490) Il
+est rejoint par SP dans sa campagne de 1476 (pré-jeu).
+
+SP fait des campagnes en Dalmatie, ce qui correspond aux "Venetian wars"
+de sa bio actuelle. Il commence actuellement au T2, mais on peut le
+mettre au T1 pour avoir un général potable dès le début. Il cesse d'être
+actif en 1504, mais je trouve pas sa date de mort, donc je laisse (1515).
+
+(mod) LEADER;Skender Pasa;Mihajlovic;Skender Paşa;;Skender Paşa Mihajlovic;1;5;turquie;G;A 3.2.3;;;Took part in Venetian wars and captured parts of Dalmatia
+
+* Ali Bey => Pacha !
+Il est noté chez nous comme "Şehsüvaroğlu" soit sans doute "Şehsüvaroğlu
+Ali Bey, Prince of Dulkadir" :
+http://en.wikipedia.org/wiki/Ali_Bey,_Prince_of_Dulkadir
+Bon, il est exécuté en 1522 pour trahison mais est chez nous T7-12
+(1520-1550)...
+Il est actif dans la conquête des mamelouks et des répressions de
+révoltes dans le coins (révoltes fomentées par la Perse).
+On sait pas trop à partir de quand il est actif, on entend parler de lui
+qu'à partir de 1515.
+
+Je soupçonne que son identification est plus ou moins fausse et qu'il
+pourrait s'agir plutôt d'AB Mihaloglu qui est un peu plus important
+(mais dans les mêmes dates, mort en 1507). Ceci dit, ABM a l'air d'être
+moins bon que ABS et ABS fait un chef pour la conquête des
+mamelouks... Mais qui historiquement n'est connu que sur ces quelques
+années...
+
+Au choix :
+(mod) LEADER;Ali Bey;Gazı Alauddin Ali Bey Mihaloğlu;Ali Bey;;Gazı Alauddin Ali Bey Mihaloğlu;1;4;turquie;G;B 4.4.3;;;Conquered parts of Bosnia. Failed at invading Hungary but lead a campaign in Transylvania
+(mod) LEADER;Ali Bey;Şehsüvaroğlua Ali Bey, Prince of Dulkadir;Ali Bey;;Şehsüvaroğlu Ali Bey, Prince of Dulkadir;1;6;turquie;G;B 4.4.3;;;Took part in the conquest of the Mameluks and crushed revolts on the Persian border.
+
+* Sokullu
+apparaît au T13 (1550) au moment où il est gouverneur de
+Rumélie. Disparaît au T16 (1570) alors qu'il reste Grand Vizir jusqu'en
+1579 (assassiné). => T18.
+
+* Mustafa (Lala Kara Mustafa)
+Déjà, je le renomme en "Lala Mustafa" pour éviter les confusions avec
+"Kara Mustafa" (siège de Vienne de 1683).
+Ensuite, il est T16-23 (1565-1605). 1565, c'est parce qu'il commence à
+être connu au siège de Malte. 1605... Heu... Il meurt en 1580, en tant
+que Vizir, donc pas au combat...
+On peut le faire commencer avant (Beyerbeyi de Damas) et s'arrêter en
+1580. Genre T14-18 (1555-1580).
+
+* Sinan.
+Vizir intermittent et Conquistador le reste du temps. Il est
+actuellement K*/C, ce qui veut dire qu'il change à chaque round mais
+compte toujours comme un Vizir.
+Je propose de le mettre K/C, ce qui veut dire qu'il change à chaque tour
+(moins flexible) et compte pour sa face. Comme les Vizir sont hors
+limite de chefs et que TUR n'a pas de C minimum, ça ne change presque
+rien aux autres chefs. Par contre ça permet :
+1/ de le faire se recouper avec d'autre Vizirs nommés, en précisant la
+règle "TUR ne peut avoir qu'un Vizir en jeu" => en particulier, ses
+expéditions initiales ont été lancées sous Sokullu. Si Sokullu est là,
+la face "Vizir" de Sinan est inutilisable, donc il est forcément C.
+2/ Aux tours où il est pas Vizir, on peut utiliser le pion
+générique. Alors que sinon, techniquement, il compte pour sa face
+étoilée, donc vizir, et on peut pas utiliser le pion même si il sort en
+C.
+
+* Koprulu
+L'event est 1656-1683, ce qui corresponds aux 3 premiers Koprulu
+(Mehmet, Ahmet et Kara Mustafa (adopté)) et va jusqu'au siège de Vienne
+qui arrête l'élan. Il y a d'autres Koprulu plus tard. Je change juste
+les prénoms du chef pour ne garder que les 3 premiers.
+
+* Abdul Karim
+inconnu au bataillon. C'est un prénom assez courant, mais wiki (UK/TUR)
+n'en a aucun dans les périodes qui nous intéressent. La précision "ibn
+muhamad" n'est pas hyper discriminante vu comme c'est commun aussi...
+
+http://www.historyfiles.co.uk/KingListsMiddEast/ArabicHashemites.htm
+me dit juste qu'il était shérif de la Mecque en 1704-1705 puis jusqu'en
+1711, ce qui correspond à ce qu'on a déjà, mais on n'en sait pas plus
+sur ce qu'il a fait (pourquoi ne pas mettre les autres shérifs de la
+Mecque ?) C'est confirmé par d'autres sources, mais sans plus.
+
+Bref, je suis d'avis de supprimer, c'est un anonyme.
+
+* Retour sur les sultans turcs.
+OK, alors l'impression que j'ai, c'est que quand TUR est en "action"
+(attaque/contre-attaque), c'est le Sultan (Sélim, Soliman) ou le Vizir
+(Ibrahim en Perse, Sokullu, Kara Mustafa) qui commande l'armée en
+campagne. Par contre, quand TUR est en "réaction" (défense, flans),
+c'est les pachas/beys locaux qui sont sur place et qui gèrent
+(grignotage des Balkans avec notamment Skender Pasa et Ali Bey
+Mihaloglu, AB S en Égypte/Perse, ...) D'où des attaques "de dos" genre
+de Perse quand Soliman est en Hongrie qui force à envoyer Ibrahim pour
+avoir une armée correcte sur un vrai front. Une proposition globale pour
+gérer ça :
+
+** Booster les caracs des pachas pour virer les '0' et la majorité des
+   '1'. En gros, mettre les pachas entre [5] et [12] de somme de caracs
+   avec du siège pour quelques uns et plusieurs bons.
+** En contrepartie, les pachas n'ont pas le droit de commander des pions
+   A, seulement des LD (et leurs propres troupes). Ils peuvent être dans
+   une pile plus grosse mais c'est pas eu qui commandent (autre G ou
+   chef de remplacement si besoin).
+** Baisser drastiquement la limite de G TUR. Genre 1 par période, ça
+   suffit (les pachas, vizir et sultan sont hors limite).
+** Créer plusieurs Vizirs anonymes pour la variété. 6 est un minimum. 10
+   permet d'en avoir 1 (ou 2) bon (~444) et le reste moyen-médiocre sans
+   pour autant tirer le bon tout le temps.
+** Éventuellement, interdire au Sultan d'aller dans des provinces non
+   reliées par terre à Istanbul [Chypre, Malte, Crète, c'est le Vizir
+   qui y va, pas le Sultan]
+** La réforme qui vire les pachas (A-2 ou M-2, à voir) redonne aussi des
+   vraies limites de G (on passe à une armée "normale").
+
+Du coup, TUR n'a que peu de chefs capables de gérer beaucoup de troupes,
+notamment en mer (Vizir et 1G de base) ce qui empêche d'agir sur plein
+de fronts. TUR a une seule "vraie armée". Les autres fronts, ou les
+flancs de la vraie armée, sont à gérer avec des pachas. Si c'est des
+"vrais" G (genre plus souvent des 333 que des 100), avec 2 ou 3LD et
+leurs troupes propres, en début de jeu ils sont capable d'arrêter une
+armée espagnole. Mais pas de passer vraiment à l'attaque hors Balkans.
+Quand HIS envoie le Gran Capitan en Dalmatie, le front se stabilise sur
+un statu quo parce que personne ne peut avancer correctement...
+
+Le déclin TUR se fait tout seul (pas besoin de mauvais chefs) avec le
+ralentissement technologique et le moral des pachas. La technologie des
+pachas est vraiment pourrie, plus que celle de TUR. En pV+, ça arrête
+plus rien un pacha... (à part en tant que garnison de forteresse).
+
+Du coup, en pI-III, quand le déclin des pachas n'est pas encore un
+facteur, TUR se retrouve avec pleins de bons chefs (pachas) pour tenir
+ses fronts secondaires et éventuellement taper des petits mineurs (Irak,
+Géorgie, Balkans, ...) Mais seulement 1 ou 2 (selon les qualités du
+Sultan et Vizir) gros axes d'attaque où il va écraser. Notamment face à
+une armée orientale (Perse, RUS, POL, Hongrie) sans le +2 de taille et
+avec une grosse pile en face, il faut une vraie armée TUR et pas juste
+un pacha et 2LD.
+
+Après, le déclin des pachas fait qu'ils tiennent plus trop la route tous
+seuls face à AUS et l'absence de Sultan/Vizir nommés de qualité fait
+qu'il n'y a plus beaucoup d'actions possibles.
+
+Bon, je pourrai faire une proposition complète avec des caracs pour tout
+ce monde si vous voulez, en attendant je continue à réfléchir à une TUR
+"normale" (donc avec des chefs comme les autres pays).
+
+Pour les amiraux, par contre, ça va, le Sultan/Vizir ne prend pas
+vraiment la mer et il y a des amiraux comme ailleurs.
+
+
+* Murat-Beg => Pacha !
+http://en.wikipedia.org/wiki/Murat-beg_Tardi%C4%87
+
+Actif entre ~1528 et ~1545 dans les Balkans. Conquête de Jajce et siège
+de Klis (qui avait résisté à diverses tentatives pendant une vingtaine
+d'années avant. Puis gouverneur du coin. Pas un génie, mais correct.
+Sous les ordres de Husrev-beg
+
+(new) LEADER;Murat-beg;Murat-beg Tardić;Murat-beg;;Murat-beg Tardić;7;11;turquie;G;C 2.3.3;;;Conqueror and gouvernor of Klis
+
+* Borovinic
+2 vizirs bosniaques de début de jeu que 
+http://en.wikipedia.org/wiki/List_of_Ottoman_Grand_Viziers
+indique comme provenant de la même famille, donc qui peuvent être
+regroupés.
+http://en.wikipedia.org/wiki/Hadim_Ali_Pasha
+foire les mamelouks en 1488, GV en 1501-1503  puis 1509-1511, tape des
+révoltes et se fait tuer au combat (OK, un peu un guignol)
+http://en.wikipedia.org/wiki/Hadim_Sinan_Pasha
+Gouverneur d'Anatolie, commande l'aile droite à Chaldiran, conquête de
+Dulkadir, GV en 1516, actif dans la conquête des mamelouks, victoire à
+Khan Yunis, présent à Ridaniya où il commandait le centre (contrairement
+à la tradition) et se fait tuer (on le prend pour Sélim).
+
+Ça peut tout à fait remplacer un Sélim avec des caracs fixes, sinon, ça
+fait un GV nommé pour la période I.
+
+(new) LEADER;Borovinic;Hadım Ali Paşa and Hadım Sinan Paşa;Boroviniç;;;1;6;turquie;K;A 3.2.3;;;Two Viziers from the same Bosniac family. Hadım Ali failed at invading the mameluks and died crushing the Şahkulu Rebellion. Hadım Sinan illustratred himself against the mameluk at Khan Yaunis and Ridaniya (where he died)
+
+Pas une flèche, mais potable. C'est un vizir donc à l'heure actuelle il
+remplace le Vizir de base (212-1). en étant meilleur combattant mais
+sans siège.
+
+
+* Ibrahim pasha
+http://en.wikipedia.org/wiki/Pargal%C4%B1_Ibrahim_Pasha
+Le vizir de Soliman qui joue en Perse pendant la chute de la
+Hongrie. C'est aussi l'un des deux chefs TUR à Here I Stand (avec
+Soliman).
+
+Grand vizir et diplomate de talent. Commande en Perse avec succès et se
+fait exécuter pour arrogance peu après. Ça fait un Vizir pour le début
+de pII.
+
+(new) LEADER;Ibrahim;Pargalı İbrahim Paşa;İbrahim;;Pargalı İbrahim Paşa;7;10;turquie;K;A 2.2.4;;;Personal friend and first vizir of Suleiman. Skilled diplomat who sealed many deals with Europeans. During a successful expedition to Persia, he gave himself a too high title and was executed on Suleiman's order afterwards.
+
+
+* Grand Vizir
+http://tr.wikipedia.org/wiki/Sadrazam
+l'appelle simplement "Sadrazam" et pas "Sadr-i Âzam" comme notre
+pion. Je vais faire confiance aux turcs et je laisserai JC
+contre-corriger. 
+
+À noter au passage que pour les fans des écritures d'époque, le turc
+ottoman s'écrivait visiblement comme de l'arabe et le passage à un
+alphabet latin est plus récent (au pif, Ataturk). Donc notre écriture
+systématique en turc moderne est quelque peu anachronique.
+
+* Hasan Predojevic => Pacha !
+http://en.wikipedia.org/wiki/Telli_Hasan_Pasha
+Il arrive à avancer en Croatie quand il y a personne en face de lui puis
+crève comme un con au combat face à une armée moins nombreuse. TUR à 4G
+de base en pIII, des fois, y'aura des merdes.
+
+(je sais pas pourquoi il est "paša" et pas "Paşa" comme ses
+copains... Bon, wiki turc (à la page de Sisak où il meurt) le met bien
+"Paşa" et je vais en faire autant.)
+
+(new) LEADER;Predojevic;Gazi Hasan-Paşa;Predojević;;;20;24;turquie;G;D 2.1.2;;;Governor of Bosnia. Tried to invade Croatia and was killed loosing at Sisak
+
+
+* Hadim Suleyman pasha et Ozdemir pasha
+Anciens mamelouks, expédition en Inde en 1538 (flotte dirigée par Selman
+Reis, capture d'Aden (en exécutant le sultan pro-POR), échec de HSP au
+siège de Diu) dirigée par HSP mais en compagnie d'OP. Puis OP est
+gouverneur du Yémen et envahit l'Éthiopie en 1557 et meurt en 1561.
+
+On doit pouvoir les grouper en un C TUR qui recouvrira un peu Seydi Ali
+mais donnera du punch anti-POR qui, à mon avis, manque. Même si vu les
+gueules des viceroys, ça suffira pas...
+
+(new) LEADER;Ozdemir;Özdemir Paşa;Özdemir;;Özdemir Paşa;11;14;turquie;CR;D 4.2.2;;;Took part in the failed siege of Diu, governor of Yemen, invaded Ethiopia
+
+* Ozdemiroglu Osman Pasa
+http://en.wikipedia.org/wiki/%C3%96zdemiro%C4%9Flu_Osman_Pasha
+fils du précédent.
+Gouverneur efficace au Yémen et en Éthiopie. Commandant efficace en
+Perse notamment à Cildir et aux Torches (plus ou moins sous le
+commandement officiel de Murat III), assure la conquête d'Azerbaidjan,
+Armenie et Georgie (chez nous, que Az, le reste doit être pris aux
+guerres plus précoces). Va changer le Khan de Crimée récalcitrant puis
+grand vizir quelques temps.
+
+Bon, le GV, on s'en fout un peu. Le gouvernorat, à moins d'en faire un
+double face, je vois pas trop comment le gérer. On peut donc faire :
+
+(new) LEADERDOUBLE;Osman;Özdemiroğlu;Osman Paşa;;;15;19;turquie;G;A 3.4.4;gR;I 5.3.3;Able governor of Yemen and Ethiopia. Good general in Persia, secured Caucasus at the battle of Torches. Dethroned a reluctant Crimean Khan. Later briefly Grand Vizier
+
+* Cigalazade Yusuf Sinan
+http://en.wikipedia.org/wiki/Cigalazade_Yusuf_Sinan_Pasha
+
+Amiral qui commande la flotte qui prend Tunis (1574). Gouverneur de Van
+et commandant victorieux en Perse entre 1578-1590, Kapudan Pasha en
+1591, commandant avec succès mitigé en Hongrie en 1596 (grand-vizir 40
+jours), gouverneur de Damas en 97-98, de nouveau KP en 99, puis retour
+sur le front Perse en 1604 sans succès et avec mort en retraite en 1605.
+
+(new) LEADERDOUBLE;Yusuf Sinan;Cığalazade Yusuf Sinan Paşa;Yusuf Sinan;;Cığalazade Yusuf Sinan Paşa;18;23;turquie;G;C 3.1.3;A;C 3.2.2;Lead the fleet to capture Tunis and apointed two times Kapudan pasha. Lead seveeral campaigns in Persia and Hungary with mitigated success. Briefly Grand Vizier
+
+Sur terre, capable du pire comme du meilleur. La première campagne perse
+est contre le chah 522, la deuxième contre le 433... Sur mer, il a
+commandé une grosse flotte mais sans combat, donc on sait pas grand
+chose de lui.

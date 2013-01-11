@@ -1,0 +1,349 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file contains all sort of graphical details about appearance
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{EUtheme}[2010/11/11 v0.1]%
+\RequirePackage{barlist}
+
+%%%% General visual aspect
+
+% Narrow typesetting
+\parindent=0cm
+
+%%%% TOC
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{3em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{0em}{4em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{0em}{5em}}
+% The width of page numbers in TOC
+\renewcommand{\@pnumwidth}{35.5pt}
+% Set level of numbering
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{6}
+
+% taken from report.cls around line 592
+% remove the @mkboth
+
+\renewcommand\tableofcontents{%
+  \chapter*{\contentsname}%
+  \@starttoc{toc}%
+}
+
+%%%% Parts
+% Mostly a copy of report.cls with font changed
+\def\@part[#1]#2{%
+  \ifnum \c@secnumdepth >-2\relax
+  \refstepcounter{part}%
+  \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+  \else
+  \addcontentsline{toc}{part}{#1}%
+  \fi
+  \thispagestyle{empty}
+  \markboth{}{}%
+  {\centering
+    \interlinepenalty \@M
+    \normalfont
+    \ifnum \c@secnumdepth >-2\relax
+    \fontsize{20}{20}\isabellafamily\bfseries \partname\nobreakspace\thepart
+    \par
+    \vskip 20\p@
+    \fi
+    \fontsize{60}{60}\isabellafamily\bfseries #2\par}%
+  \@endpart}
+
+%%%% Chapters
+
+\newif\ifchapterstar\chapterstarfalse
+\renewcommand{\thechapter}{\@Roman\c@chapter}
+
+%%% Definitions of a chapter
+
+% Taken from report.cls around line 339
+% Change pagestyle
+\newcommand\THMchapter{\if@openright\cleardoublepage\else\clearpage\fi
+  \pagestyle{rules}% 
+  \global\@topnum\z@
+  \@afterindentfalse
+  \secdef\@chapter\@schapter}
+% Define a phantomchapter for chapter*
+
+\def\phantomchapter{%
+  \Hy@GlobalStepCount\Hy@linkcounter
+  \xdef\@currentHref{chapter*.\the\Hy@linkcounter}%
+  \Hy@raisedlink{\hyper@anchorstart{\@currentHref}\hyper@anchorend}%
+}
+
+\let\chapter\THMchapter
+
+\def\@makechapterhead#1{%
+  \stepcounter{sectionid}
+  \bgroup\parindent\z@\raggedright\parskip\z@%
+  \reset@font%
+  \expandafter\ifx\csname chapterbackground#1\endcsname\relax%
+  \def\THMchapimg{default}%
+  \else%
+  \expandafter\def\expandafter\THMchapimg\expandafter{\csname chapterbackground#1\endcsname}%
+  \fi%
+  \begin{tikzpicture}
+    \ifchapterstar%
+    \gdef\currentch@pter{#1}%
+    \else%
+    \gdef\currentch@pter{\thechapter\ #1}%
+    \node at (\linewidth,0) [anchor=south east,outer sep=0pt,inner sep=0pt] {\includegraphics[height=3cm]{\THMchapimg}};
+    \node at (0,5mm) [base right=0pt] {\fontsize{20}{20}\isabellafamily\selectfont\@chapapp\ \fontsize{30}{30}\bfseries\thechapter};
+    \fi\chaptermark{#1}
+    \node at (0,2cm) [base right=0pt] {\fontsize{30}{30}\isabellafamily\selectfont\bfseries #1};
+  \end{tikzpicture}
+  \par\egroup
+  \vspace*{1\p@}%
+}
+\def\definechapterbackground#1#2{\expandafter\def%
+  \csname chapterbackground#1\endcsname{#2}}
+
+% Taken from report.cls around line 373
+
+\def\@makeschapterhead#1{\chapterstartrue\@makechapterhead{#1}\chapterstarfalse}
+\def\@schapter#1{
+  \phantomchapter%
+  \chapterstartrue\@makechapterhead{#1}\chapterstarfalse%
+  \@afterheading%
+  \addcontentsline{toc}{chapter}{#1}%
+  \addtocontents{lof}{\protect\addvspace{10\p@}}%
+  \addtocontents{lot}{\protect\addvspace{10\p@}}%
+}
+
+%%%% Headers
+
+\def\ps@rules{%
+  \let\@oddfoot\@empty\let\@evenfoot\@empty
+  \def\@evenhead{\normalfont\rlap{\thepage}\hfil\hbox to 0pt{\hss\rules@section\hss}\hfil}%
+  \def\@oddhead{\rules@chapter --- \release\hfil\llap{\thepage}}%
+  \let\@mkboth\@gobbletwo
+  \def\chaptermark##1{\xdef\rules@chapter{##1}\global\let\rules@section\rules@chapter}
+  \def\sectionmark##1{\def\rules@section{\TUpp ##1}}
+}
+
+%%%% Sections, subsections and subsubsections
+
+\renewcommand{\section}{\@startsection{section}{1}{0.5em}{\bigskipamount}{\bigskipamount}{\sectiondecoration}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0.5em}{\medskipamount}{\medskipamount}{\subsectiondecoration}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0.5em}{\smallskipamount}{\smallskipamount}{\subsubsectiondecoration}}
+
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0mm}{\medskipamount}{-0.3em}{\normalfont\upshape\bfseries\selectfont}}
+\newcommand{\paragraphnoskip}{\@startsection{paragraph}{4}{0mm}{0pt}{-0.3em}{\normalfont\upshape\bfseries\selectfont}}
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{0mm}{\smallskipamount}{-0.3em}{\normalfont\itshape\selectfont}}
+\newcommand{\subparagraphnoskip}{\@startsection{subparagraph}{5}{0mm}{0pt}{-0.3em}{\normalfont\itshape\selectfont}}
+
+\newcommand{\aparag}[1][\null]{\ifx\null#1\paragraphnoskip[]{\hskip -.3em}\else\paragraph{#1}\fi}
+\newcommand{\bparag}[1][\null]{\ifx\null#1\subparagraphnoskip[]{\hskip -.3em}\else\subparagraph{#1}\fi}
+
+
+%%%% Decorations
+
+\def\intercale#1{\vskip0pt plus 6pt\vbox{\centerline{\leaders\hbox{\vrule width5pt height4pt depth-3pt}\hfill{\quad#1\quad}\leaders\hbox{\vrule width5pt height4pt depth-3pt}\hfill}\vskip0pt}\penalty 9999 }
+\def\bfintercale#1{\vskip0pt plus 6pt\vbox{\centerline{\leaders\hbox{\vrule width5pt height4.5pt depth-3pt}\hfill{\quad\textbf{#1}\quad}\leaders\hbox{\vrule width5pt height4.5pt depth-3pt}\hfill}\vspace{0pt}}\penalty 9999 }
+
+\def\bfintercale#1{\par\smallskip{\xdecorate AA0\centerline{#1}\par\vspace{3pt}}\penalty 9999}
+\def\intercale#1{\par\smallskip{\xdecorate 88F\centerline{#1}\par\vspace{3pt}}\penalty 9999}
+
+\def\tikzbox#1#2#3{\tikz[baseline=(X.base)]{\node[#1](X){#2};#3}}
+
+\def\bandeau#1#2#3{\tikzbox{shading=axis,top color=#2,bottom color=white,shading angle=75,minimum width=\linewidth,font=#1}{\rule[-.5ex]{0pt}{3ex}#3}{}}
+\def\bandeaul#1#2#3{\tikzbox{shading=axis,top color=#2,bottom color=white,shading angle=75,minimum width=\linewidth,font=#1}{\rule[-.5ex]{0pt}{3ex}\rlap{#3}\rule{\linewidth}{0pt}\relax}{}}
+\def\cartouche#1#2{\tikzbox{solid,draw=black,rounded corners=2pt,inner sep=2pt,line width=.5pt,fill=#1}{\rule[-.3ex]{0pt}{2.3ex}#2}{}}
+\def\doublespike#1#2#3{%
+  \begin{tikzpicture}[baseline=(X.base)]%
+    \node[font=#1](X){#3};%
+    \coordinate (Z) at ([yshift=1ex]X.base);
+    \coordinate (A) at (-.5\linewidth,0);
+    \coordinate (B) at (A|-Z);
+    \coordinate (C) at ([xshift=3cm]B);
+    \coordinate (D) at ([yshift=.5ex,xshift=-1mm]X.base west);
+    \coordinate (E) at ([yshift=1.5ex,xshift=-1mm]X.base west);
+    \fill (B)..controls (C) and (E)..(D)--(E)..controls (D) and  (C)..(B);
+    \coordinate (A) at (.5\linewidth,0);
+    \coordinate (B) at (A|-Z);
+    \coordinate (C) at ([xshift=-3cm]B);
+    \coordinate (D) at ([yshift=.5ex,xshift=1mm]X.base east);
+    \coordinate (E) at ([yshift=1.5ex,xshift=1mm]X.base east);
+    \fill (B)..controls (C) and (E)..(D)--(E)..controls (D) and  (C)..(B);
+  \end{tikzpicture}%
+}
+
+\def\sectiondecoration#1{\bandeaul{\Large\bfseries\itshape}{orange}{#1}}
+
+\def\subsectiondecoration#1{\bandeaul{\large\bfseries\itshape}{green!30}{#1}}
+\def\eventdecoration#1{\bandeaul{\large\bfseries\scshape}{green!30}{#1}}
+
+\def\subsubsectiondecoration#1{\bandeaul{\normalsize\bfseries\upshape}{blue!30}{#1}}
+\def\digressiondecoration#1{\bandeaul{\normalsize\bfseries\scshape}{blue!30}{#1}}
+
+\def\digressionsdecoration#1{\doublespike{\normalsize\bfseries\upshape}{yellow}{#1}}
+\def\digressionsenddecoration#1{\doublespike{\normalsize\bfseries\upshape}{yellow}{#1}}
+
+\def\eventstablespecdecoration#1{\bandeau{\normalsize\bfseries\upshape}{blue!30}{#1}}
+\def\turndecoration#1{\bandeau{\normalsize\normalfont,text=white}{black}{#1}}
+\def\phasedecoration#1{\cartouche{white,font=\bfseries}{#1}}
+\def\deflistdecoration#1{\cartouche{yellow}{#1}}
+
+\def\intercale#1{\bandeau{\normalsize\normalfont,text centered}{blue}{#1}\par}
+\def\bfintercale#1{\bandeau{\normalsize\bfseries\upshape,text centered}{blue}{#1}\par}
+
+
+%%%% Jym, (sub)section with images included.
+% Dirty code. Need to be cleaned. Can certainly be factorised with the
+% previous section code.
+
+\newcommand{\decoJym}{}
+
+\def\tikzboxJ#1#2#3{\tikz[baseline=(X.base)]{\node[#1](X){#2}; \node(Y)
+    at ([xshift=-2cm]X.east) {#3} ;}}
+
+\def\bandeaulJ#1#2#3#4{\tikzboxJ{shading=axis,top color=#2,bottom color=white,shading angle=75,minimum width=\linewidth,font=#1}{\rule[-.5ex]{0pt}{3ex}\rlap{#3}\rule{\linewidth}{0pt}\relax}{#4}}
+
+\def\sectiondecorationJ#1{\bandeaulJ{\Large\bfseries\itshape}{orange}{#1}{\decoJym}}
+\def\subsectiondecorationJ#1{\bandeaulJ{\large\bfseries\itshape}{green!30}{#1}{\decoJym}}
+\def\subsubsectiondecorationJ#1{\bandeaulJ{\normalsize\bfseries\upshape}{blue!30}{#1}{\decoJym}}
+
+
+\newcommand{\secJ}{\@startsection{section}{1}{0.5em}{\bigskipamount}{\bigskipamount}{\sectiondecorationJ}}
+\newcommand{\sectionJ}[2]{\renewcommand{\decoJym}{#2} \secJ{#1}}
+
+\newcommand{\subsecJ}{\@startsection{subsection}{2}{0.5em}{\medskipamount}{\medskipamount}{\subsectiondecorationJ}}
+\newcommand{\subsectionJ}[2]{\renewcommand{\decoJym}{#2} \subsecJ{#1}}
+
+\newcommand{\subsubsecJ}{\@startsection{subsubsection}{3}{0.5em}{\smallskipamount}{\smallskipamount}{\subsubsectiondecorationJ}}
+\newcommand{\subsubsectionJ}[2]{\renewcommand{\decoJym}{#2} \subsubsecJ{#1}}
+
+%%%% End of Jym's dirty trick.
+
+%%%% Examples and other boxes
+
+%%% Examples
+% Copy everything from figure
+\def\toclevel@example{0}
+\let\l@example\l@figure
+\definecolor{exemple}{rgb}{0.9,0.9,1}
+\newenvironment{exemple}[1][\relax]{%
+  \setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}%
+  \addtolength{\bla}{-2\fboxrule}%
+  \begin{lrbox}{\fmbox}\begin{minipage}{\bla}%
+      \small\itshape\textbf{Example: \ifx#1\relax#1\else#1.--- \fi}%
+      \global\def\tmpex@mple{\addcontentsline{xmp}{example}{#1}}
+    }{%
+    \end{minipage}\end{lrbox}\par\smallskip%
+  \Hy@GlobalStepCount\Hy@linkcounter%
+  \xdef\@currentHref{example.\the\Hy@linkcounter}%
+  \Hy@raisedlink{\hyper@anchorstart{\@currentHref}%
+    \fcolorbox{exemple}{exemple}{\usebox{\fmbox}}\smallskip
+    \hyper@anchorend
+  }\tmpex@mple
+}
+\newcommand{\listofexamples}{%
+  \chapter*{List of Examples}%
+  \@starttoc{xmp}%
+}
+
+%%%% Lists
+
+%%% deflist
+
+\newcommand{\deflabel}[1]{\hfil\deflistdecoration{#1}}
+\newenvironment{deflist}[1][3em]{\ifhmode\par\else\fi%
+  \begin{list}{}{\raggedright%
+      \itemsep\z@\topsep\z@\partopsep\z@\listparindent\z@\parsep\z@%
+      \itemindent\z@\labelsep.5em\labelwidth#1%
+      \leftmargin\labelwidth\advance\leftmargin\labelsep%
+      \let\makelabel\deflabel
+    }}{\end{list}}
+
+%%% itemize and enumerate
+% \squeezedlist is in barlist.sty
+
+\def\@listi{\settowidth{\labelwidth}{\labelitemi}\labelsep.3em\squeezedlist}
+\def\@listii{\settowidth{\labelwidth}{\labelitemii}\labelsep.3em\squeezedlist}
+\def\@listiii{\settowidth{\labelwidth}{\labelitemiii}\labelsep.3em\squeezedlist}
+\def\@listiv{\settowidth{\labelwidth}{\labelitemiv}\labelsep.3em\squeezedlist}
+\def\labelitemi{\textbullet}
+\def\labelitemii{\textbullet}
+\def\labelitemiii{\textbullet}
+\def\labelitemiv{\textbullet}
+
+% \def\@listi{\leftmargin\leftmargini
+% \parsep 3\p@ \@plus3\p@ \@minus3\p@
+% \topsep 3\p@ \@plus3\p@ \@minus3\p@
+% \itemsep2\p@ \@plus1\p@ \@minus2\p@}
+\let\@listI\@listi
+\g@addto@macro\small{\let\@listi\@listI}
+\g@addto@macro\footnotesize{\let\@listi\@listI}
+
+%%%% Defining local groups
+
+\definecolor{grouping}{rgb}{0,.3,.3}
+\def\group#1{%
+  \textcolor{grouping}{\fontencoding{T1}\mdseries\upshape\selectfont #1}}
+\def\defgroup#1#2#3{\expandafter\def\csname #1\endcsname{#2}%
+  \expandafter\def\csname group-#1\endcsname{#3}}
+\def\showgroup#1{\item[\csname #1\endcsname] \csname group-#1\endcsname}
+%\def\showgrouplist#1{\FEforeach{#1}{\showgroup{\loopitem}}{}}
+%\long\def\showgrouplist#1#2{\begin{description}\FEforeach{#1,#2}{\showgroup{\loopitem}}{}\end{description}}
+\long\def\showgrouplist#1#2{\begin{description}\FEforeach{#1}{\showgroup{\loopitem}}{}\ifx\relax#2\relax\else\par\medskip\hrule\par\medskip\fi\FEforeach{#2}{\showgroup{\loopitem}}{}\end{description}}
+
+
+% Color & Boxed environments. Principle is to typeset in a lrbox of the
+% appropriate width, then to put in a color box.
+\newsavebox{\fmbox}
+\newlength{\bla}
+\newlength{\tmpbla}
+\definecolor{note}{rgb}{1,0.9,0.9}
+\definecolor{histoire}{rgb}{1,1,0.8}
+\definecolor{todo}{rgb}{1,0.3,0.3}
+
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+
+\newenvironment{note}[1][\relax]
+{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\textbf{Note: #1}}
+    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{black}{note}{\usebox{\fmbox}}\smallskip}
+\newenvironment{designnote}[1][\relax]
+{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\textbf{Design note: #1}}
+    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{black}{note}{\usebox{\fmbox}}\smallskip}
+\newenvironment{playtip}[1][\relax]
+{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\textbf{Playing
+        tip: #1}}
+    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{black}{note}{\usebox{\fmbox}}\smallskip}
+\newenvironment{histoire}[1][\relax]
+{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\itshape \ifx\relax#1\else \textbf{#1}\fi}
+    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{histoire}{histoire}{\usebox{\fmbox}}\smallskip}
+\newenvironment{todo}[1][\relax]
+{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\textbf{TODO: #1}}
+    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{black}{todo}{\usebox{\fmbox}}\smallskip}
+\newenvironment{oldcompta}[1][\relax]
+{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla} \textbf{Accounting v1:\ifx\relax#1\else#1\fi}\par}%
+    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{histoire}{histoire}{\usebox{\fmbox}}\smallskip}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Not commented below %%%%%%%%%%%%%%%%%
+\newenvironment{tablehere}{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\def\@captype{table}}{\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}\par\smallskip}
+\newenvironment{figurehere}{\setlength{\bla}{\textwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\def\@captype{figure}}{\end{minipage}\end{lrbox}\par\smallskip\fbox{\usebox{\fmbox}}\par\smallskip}
+\renewcommand{\topfraction}{.75}
+\renewcommand{\floatpagefraction}{.75}
+
+%%%% Index
+% Indexation
+\def\printindex{%
+  \clearpage\chapter*{Index}%
+  \begin{multicols}{2}
+    \@input@{\jobname.ind}%
+  \end{multicols}
+}
+
+% Modify sizes
+\renewenvironment{theindex}{\let\item\@idxitem\indexreinitprefix}{\gdef\thec@lumns{2}}
+\renewcommand\@idxitem{\par\hangindent 40\p@}
+\renewcommand\subitem{\@idxitem \hspace*{10\p@}}
+\renewcommand\subsubitem{\@idxitem \hspace*{20\p@}}
+
+% To get all decorations 
+% grep '^.def\\.*decoration#1{' *cls *sty|cut -f1 -d\#|cut -f3 -d\\|sort -u
+% The decorations should take one arg, and display it in a box size linewidth
+% For sections etc. the counter is already included

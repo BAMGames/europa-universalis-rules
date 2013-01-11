@@ -1,0 +1,152 @@
+/outputoutlines false def
+/translation true def
+/loglevel 1 def
+/defaultvalue{1 index where {pop pop pop}{def}ifelse}def
+/pagewidth 595 defaultvalue
+/pageheight 842 defaultvalue
+HOMEDIR(/library/library.eps)! include
+
+/beginpagehook{} def
+/box {
+    /graylines exch def
+    lineheight sub /topbox exch def
+    /lines exch def
+    /processnumber exch def
+    /headers exch def
+    /width 0 2 2 headers length {headers exch get add} for def
+    /bottom topbox lines lineheight mul sub def
+    /row 0 def
+    (0 G 0 g 1 w\n)out
+    headers 0 get display ( ) out topbox display ( ) out width display ( ) out lineheight display
+    ( re B 0.9 g\n) out
+    graylines {
+	false
+	3 3 lines { /i exch def pop true
+	    [headers 0 get topbox lineheight i mul sub width lineheight]
+	    {display( )out}forall (re\n) out
+	} for
+	{(f\n) out}if
+	false
+	0 0 2 headers length 2 sub { /i exch def 
+	    headers i get add
+	    i 3 mod 0 eq {
+		exch pop true exch ( )out
+		[1 index bottom headers i 2 add get lines lineheight mul]
+		{display( )out}forall (re\n) out
+	    }if
+	} for pop
+	{(f\n) out}if
+    }if
+    (1 G 1 g\n) out
+    0 0 2 headers length 2 sub {/i exch def
+	headers i get add dup headers i 2 add get 2 div add headers i 1 add get exch topbox
+	headers i 2 add get lineheight (FontArialNarrow) centertext
+    }for pop
+    (0 G 0 g 0.5 w\n)out
+    1 1 lines { /i exch def
+	i processnumber headers 0 get headers 2 get 2 div add topbox lineheight
+	i mul sub headers 2 get lineheight xfontname centertext
+    } for 
+    1 1 lines { /i exch def
+	headers 0 get display ( ) out topbox lineheight i mul sub dup display
+	( m ) out headers 0 get width add display ( ) out display ( l\n) out
+    } for 
+    (S\n) out
+    /linetop ( ) topbox 10 string cvs ( m ) ! ! def
+    /linebot ( ) bottom 10 string cvs ( l\n) ! ! def
+    (1 w\n) out
+    0 0 2 headers length {/i exch def
+	headers i get add dup display linetop out dup display linebot out
+    }for pop
+    (S\n) out
+    [headers 0 get bottom width lines lineheight mul]{display( )out}forall
+    ( re S\n)out
+}def
+/simplebox {
+    (0.95 g 0 G 1 w\n)out
+    /topbox bottom def
+    /bottom topbox lineheight sub def
+    /xboxes exch def
+    /bwidth exch def
+    /linetop ( ) topbox 10 string cvs ( m ) ! ! def
+    /linebot ( ) bottom 10 string cvs ( l\n) ! ! def
+    0 1 xboxes {20 mul bwidth add startx add dup
+	display linetop out display linebot out
+    } for 
+    [startx bottom bwidth xboxes 20 mul add lineheight]dup{display( )out}forall
+    ( re B\n) out aload pop 4 -1 roll bwidth 2 div add 4 1 roll
+    (0 G 0 g\n) out
+    (FontArialNarrow-Bold) centertext
+}def
+/initcrs {
+    /bottom 812 def
+    /lineheight 15 def
+    /xfontname (FontArialNarrow) def
+    (0 G 0 g\n)out
+    297.5 bottom 200 lineheight (FontArialNarrow-Bold) centertext
+}def
+/tabletp {
+[ 16 (#) 20 (Trading Post Name) 110 (Area) 100 (Tol.) 40 (Level) 30 (Income) 40 (†) 10 (Wo) 20 (Sa) 20 (PO) 20 (Sp) 20 (Fu) 20 (Sl) 20 (Si) 20]
+{( )dup 0 4 -1 roll 96 add put} 3 -1 roll bottom true box
+}def
+/complements {
+    /bottom bottom 3 -1 roll
+    /bottom 812 def
+    /startx headers 0 get width add def
+    {60 1 simplebox} forall
+    def
+}def
+
+/tablecol {
+[ 16 (#) 20 (Colony Name) 110 (Area) 80 (Dif.) 20 (Tol.) 20 (Base) 20 (Level) 30 (Inc) 20 (Gold) 20 (†) 10 (Wo) 20 (Sa) 20 (PO) 20 (Sp) 20 (Fu) 20 (Sl) 20 (Si) 20 (PA) 20 (Su) 20 (Co) 20 (Fi) 20 ]
+{2 string cvs} 3 -1 roll bottom true box
+}def
+
+/tabletz {
+/bottom bottom
+[ 16 (#) 20 (Sea Trade Zone) 110 (CTZ?) 20 (Lev.) 50 (Max.) 30 (Monop.) 30 (Income) 40]
+{( )dup 0 4 -1 roll 64 add put}
+5 -1 roll bottom true box
+def
+}def
+
+/tableprice {
+    /startx headers 0 get width add def
+(Eu+Other) 50 11 simplebox
+(Totals) 50 11 simplebox
+%(Prices) 70 10 simplebox
+}def
+
+/fleetbox {
+    [ startx (Fleet num.) 60 (DN×3) 25 (DTr) 25 (DGa) 25]
+%    {[0 ( ) (Damaged) (At port)]exch get}
+    {[0 ( )]exch get}
+    1 bottom false box
+}def
+
+/tablefleets {
+    /fleetrows exch def
+    /bottom bottom
+    /xfontname (FontArialNarrow-Italic) def
+    fleetrows {fleetbox}repeat
+    /startx startx 135 add def
+    def
+    fleetrows {fleetbox}repeat
+}def
+
+/damagedbox {
+    [ startx (Damaged) 100 (DN) 25 (DTr) 25 (DGa) 25]
+%    {[0 ( ) (Damaged) (At port)]exch get}
+    {[0 (Mediterannean) (Atlantic (EU)) (Atlantic (ROTW)) (Indian) (Pacific) ]exch get}
+    5 bottom false box
+}def
+
+/tabledamaged {
+    /damagedrows exch def
+    /bottom bottom
+    /xfontname (FontArialNarrow-Italic) def
+    damagedrows {damagedbox}repeat
+%    /startx startx 135 add def
+%    def
+%    fleetrows {fleetbox}repeat
+}def

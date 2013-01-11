@@ -1,0 +1,408 @@
+\documentclass[12pt]{article}
+\usepackage{ttf-arialnarrow}
+\usepackage{geometry}
+\geometry{a4paper,left=0mm,right=0mm,top=7mm,bottom=7mm}
+%\geometry{a4paper,hdivide={*,.97\paperwidth},vdivide={*,0.98\paperheight}}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{colortbl}
+\pagestyle{empty}
+
+\definecolor{lightred}{rgb}{1,.5,.5}
+\definecolor{lightgreen}{rgb}{.5,1,.5}
+\definecolor{brown}{rgb}{1,.7,.3}
+
+%% Defines background and text colors by (sub)continent.
+%\newcommand{\amerique}[1]{\textit{#1}}
+\newcommand{\ameriqueNbg}{red}
+\newcommand{\ameriqueNfg}{black}
+\newcommand{\ameriqueCbg}{lightred}
+\newcommand{\ameriqueCfg}{black}
+\newcommand{\ameriqueSbg}{lightred}
+\newcommand{\ameriqueSfg}{black}
+\newcommand{\caraibesbg}{magenta}
+\newcommand{\caraibesfg}{black}
+
+%\newcommand{\asie}[1]{\textbf{#1}}
+\newcommand{\indebg}{green}
+\newcommand{\indefg}{black}
+\newcommand{\persiquebg}{blue}
+\newcommand{\persiquefg}{white}
+\newcommand{\extrorbg}{yellow}
+\newcommand{\extrorfg}{black}
+\newcommand{\siberiebg}{cyan}
+\newcommand{\siberiefg}{black}
+\newcommand{\indonesiebg}{lightgreen}
+\newcommand{\indonesiefg}{black}
+
+\newcommand{\afriquebg}{black}
+\newcommand{\afriquefg}{white}
+
+%% Color boxes for plain text.
+\newcommand{\colortxt}[3]{\fboxsep=0pt\colorbox{#1}{\rule[-1ex]{0pt}{3ex}\color{#2} #3}}
+   %% bgcol, fgcol, text
+
+%\newcommand{\amerique}[1]{\textit{#1}}
+\newcommand{\ameriqueN}[1]{\colortxt{\ameriqueNbg}{\ameriqueNfg}{#1}}
+\newcommand{\ameriqueC}[1]{\colortxt{\ameriqueCbg}{\ameriqueCfg}{#1}}
+\newcommand{\ameriqueS}[1]{\colortxt{\ameriqueSbg}{\ameriqueSfg}{#1}}
+\newcommand{\caraibes}[1]{\colortxt{\caraibesbg}{\caraibesfg}{#1}}
+
+%\newcommand{\asie}[1]{\textbf{#1}}
+\newcommand{\inde}[1]{\colortxt{\indebg}{\indefg}{#1}}
+\newcommand{\persique}[1]{\colortxt{\persiquebg}{\persiquefg}{#1}}
+\newcommand{\extror}[1]{\colortxt{\extrorbg}{\extrorfg}{#1}}
+\newcommand{\siberie}[1]{\colortxt{\siberiebg}{\siberiefg}{#1}}
+\newcommand{\indonesie}[1]{\colortxt{\indonesiebg}{\indonesiefg}{#1}}
+
+\newcommand{\afrique}[1]{\colortxt{\afriquebg}{\afriquefg}{#1}}
+
+%% Background colored cells for tabular.
+\newcommand{\colorcell}[3]{\multicolumn{1}{|>{\columncolor{#1}}c|}{\color{#2}
+    #3}}
+   %% bgcol, fgcol, text
+
+%\newcommand{\ameriquet}[1]{\textit{#1}}
+\newcommand{\ameriqueNt}[1]{\colorcell{\ameriqueNbg}{\ameriqueNfg}{#1}}
+\newcommand{\ameriqueCt}[1]{\colorcell{\ameriqueCbg}{\ameriqueCfg}{#1}}
+\newcommand{\ameriqueSt}[1]{\colorcell{\ameriqueSbg}{\ameriqueSfg}{#1}}
+\newcommand{\caraibest}[1]{\colorcell{\caraibesbg}{\caraibesfg}{#1}}
+
+%\newcommand{\asiet}[1]{\textbf{#1}}
+\newcommand{\indet}[1]{\colorcell{\indebg}{\indefg}{#1}}
+\newcommand{\persiquet}[1]{\colorcell{\persiquebg}{\persiquefg}{#1}}
+\newcommand{\extrort}[1]{\colorcell{\extrorbg}{\extrorfg}{#1}}
+\newcommand{\siberiet}[1]{\colorcell{\siberiebg}{\siberiefg}{#1}}
+\newcommand{\indonesiet}[1]{\colorcell{\indonesiebg}{\indonesiefg}{#1}}
+
+\newcommand{\afriquet}[1]{\colorcell{\afriquebg}{\afriquefg}{#1}}
+
+\newcommand{\poline}{\cline{1-1}}
+\newcommand{\spline}{\cline{3-3}}
+\newcommand{\fuline}{\cline{5-5}}
+\newcommand{\slline}{\cline{7-7}}
+\newcommand{\suline}{\cline{9-9}}
+\newcommand{\filine}{\cline{11-11}}
+\newcommand{\saline}{\cline{13-13}}
+\newcommand{\siline}{\cline{15-15}}
+\newcommand{\paline}{\cline{17-17}}
+\newcommand{\coline}{\cline{19-19}}
+
+\newcommand{\longline}{\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8}
+  \cline{10-10} \cline{12-12} \cline{14-14} \cline{16-16} \cline{18-18}
+  \cline{20-20}}
+\newcommand{\medline}{\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8}
+  \cline{10-10} \cline{12-12}}
+\newcommand{\shortline}{\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8}
+  \cline{10-10}}
+
+\begin{document}
+\begin{tabular}{|*{10}{p{0.9cm}|p{0.2cm}|}}
+\hline
+\multicolumn{2}{|c|}{PO} & \multicolumn{2}{c|}{Spices} &
+\multicolumn{2}{c|}{Furs} & \multicolumn{2}{c|}{Slaves} & 
+\multicolumn{2}{c|}{Sugar} & \multicolumn{2}{c|}{Fish} &
+\multicolumn{2}{c|}{Salt} & \multicolumn{2}{c|}{Silk} &
+\multicolumn{2}{c|}{PA} & \multicolumn{2}{c|}{Cotton} \\ \hline
+
+\persiquet{Orm} & & \afriquet{Cam} & & \ameriqueNt{Ala} & &
+\afriquet{Mau} & & \caraibest{Cub} & & \ameriqueNt{TNe} & &
+\ameriqueNt{Aca} & & \persiquet{Orm} & & \ameriqueNt{Vir} & &
+\ameriqueNt{Car} &\\
+\longline \poline \spline \slline \saline \siline
+
+\indet{Deh} & & \afriquet{Nya} & & \ameriqueNt{Ala} & & \afriquet{Sén} &
+& \caraibest{Cub} & & \ameriqueNt{TNe} & & \ameriqueSt{Guy} & &
+\indet{Deh} & & \ameriqueNt{Vir} & & \ameriqueNt{Car} &\\
+\longline  \spline \suline \saline \siline
+
+\indet{Deh} & & \afriquet{Ken} & & \ameriqueNt{Ala} & & \afriquet{Sén} &
+& \caraibest{Haï} & & \ameriqueNt{TNe} & & \afriquet{Mau} & &
+\indet{Afg} & & \ameriqueNt{Vir} & & \ameriqueNt{Car} &\\
+\longline  \spline \fuline \saline
+
+\indet{Deh} & & \persiquet{Ade} & & \ameriqueNt{Hud} & & \afriquet{Sén}
+& & \caraibest{Haï} & & \ameriqueNt{TNe} & & FRA & & \indet{Afg} & &
+\ameriqueNt{Vir} & & \ameriqueNt{Car} &\\
+\longline \poline  \spline \slline \siline
+
+\indet{Ayo} & & \persiquet{Sey} & & \ameriqueNt{Hud} & & \afriquet{CIv}
+& & \caraibest{Haï} & & \ameriqueNt{TNe} & & FRA & & \indet{Ayo} & &
+\ameriqueNt{Vir} & & \ameriqueNt{Car} &\\
+\longline \poline  \spline \saline \siline
+
+\indet{Bng} & & \persiquet{Oma} & & \ameriqueNt{Hud} & & \afriquet{CIv}
+& & \caraibest{Haï} & & \ameriqueNt{TNe} & & HIS & & \extrort{Ayu} & &
+\ameriqueNt{Vir} & & \ameriqueNt{Car} &\\
+\longline  \spline \filine \siline \paline \coline
+
+\indet{Bng} & & \persiquet{Orm} & & \ameriqueNt{Hud} & & \afriquet{CIv}
+& & \caraibest{Haï} & & \ameriqueNt{Aca} & & HIS & & \extrort{Dai} & &
+\ameriqueNt{Car} & & \ameriqueNt{Mis} &\\
+\longline  \spline \saline \siline \paline
+
+\indet{Bng} & & \indet{Bng} & & \ameriqueNt{Hud} & & \afriquet{CIv} & &
+\caraibest{Haï} & & \ameriqueNt{Aca} & & HAB & & \extrort{Can} & &
+\caraibest{Cub} & & \ameriqueNt{Mis} &\\
+\longline \poline \siline
+
+\indet{Guj} & & \indet{Bng} & & \ameriqueNt{Hud} & & \afriquet{CIv} & &
+\caraibest{Haï} & & \ameriqueNt{Aca} & & HAB & & \extrort{Nan} & &
+\caraibest{Cub} & & \ameriqueNt{Mis} &\\
+\longline \fuline \suline \filine
+
+\indet{Guj} & & \indet{Bng} & & \ameriqueNt{Qué} & & \afriquet{CIv} & &
+\caraibest{Ant} & & \ameriqueNt{Ame} & & HAB & & \extrort{Nan} & &
+\caraibest{Cub} & & \ameriqueNt{Mis} &\\
+\longline \poline \spline \slline \saline \paline
+
+\indet{Pjb} & & \indet{Guj} & & \ameriqueNt{Qué} & & \afriquet{COr} & &
+\caraibest{Ant} & & \ameriqueNt{Ame} & & POL & & \extrort{Nan} & &
+\caraibest{Flo} & & \ameriqueNt{Mis} &\\
+\longline \poline \spline \siline \paline
+
+\indet{Ind} & & \indet{Gon} & & \ameriqueNt{Qué} & & \afriquet{COr} & &
+\caraibest{Ant} & & \ameriqueNt{Ame} & & POL & & \extrort{Pék} & &
+\ameriqueCt{Azt} & & \ameriqueNt{Mis} &\\
+\longline \poline \spline \fuline \saline \coline
+
+\indet{Mum} & & \indet{Mum} & & \ameriqueNt{GLa} & & \afriquet{COr} & &
+\caraibest{Ant} & & \ameriqueNt{Ame} & & POR & & \extrort{Pék} & &
+\ameriqueCt{Azt} & & \indet{Bng} &\\
+\longline  \spline \saline \paline
+
+\indet{Mum} & & \indet{Hyd} & & \ameriqueNt{GLa} & & \afriquet{COr} & &
+\caraibest{Ant} & & \ameriqueNt{Ame} & & TUR & & \extrort{Pék} & &
+\ameriqueCt{Yuk} & & \indet{Bng} &\\
+\longline \poline \spline \saline \paline
+
+\indet{Mlb} & & \indet{Mlb} & & \ameriqueNt{GLa} & & \afriquet{COr} & &
+\caraibest{Ant} & & \ameriqueNt{Ame} & & VEN & & \extrort{Pék} & &
+\ameriqueSt{Ven} & & \indet{Bng} &\\
+\longline \poline \fuline \filine \paline \coline
+
+\indet{Kar} & & \indet{Mlb} & & \ameriqueNt{Ame} & & \afriquet{COr} & &
+\caraibest{Ant} & & \caraibest{Cap} & & VEN & & \extrort{Pék} & &
+\ameriqueSt{Guy} & & \indet{Ori} &\\
+\longline \fuline \slline \filine \paline \coline
+
+\indet{Kar} & & \indet{Mlb} & & \ameriqueNt{Iro} & & \afriquet{Cam} & &
+\caraibest{Ant} & & \caraibest{Mal} & & VEN & & \extrort{Pék} & &
+\ameriqueSt{Ecu} & & \indet{Mum} &\\
+\longline \poline \spline \suline \saline \siline \paline
+
+\extrort{Bir} & & \indet{Kar} & & \ameriqueSt{Ama} & & \afriquet{Cam} &
+& \ameriqueSt{Guy} & & \caraibest{Mal} & & Eur & & \extrort{Mnd} & &
+\ameriqueSt{Rec} & & \indet{Mum} &\\
+\longline  \fuline \filine \siline \paline \coline
+
+\extrort{Bir} & & \indet{Kar} & & \ameriqueSt{Ama} & & \afriquet{Cam} &
+& \ameriqueSt{Guy} & & POR & & Eur & & \extrort{Cor} & &
+\ameriqueSt{Rio} & & \indonesiet{Sum} &\\
+\longline \poline \spline \fuline \slline \suline \coline \siline
+
+\extrort{Mlc} & & \indet{Sin} & & \ameriqueSt{MGe} & & \afriquet{Gab} & &
+\ameriqueSt{Ven} & & POR & & Eur & & \extrort{Jap} & & \ameriqueSt{Rio}
+& & \indonesiet{Jav} &\\
+\longline \suline \filine \saline \siline \paline \coline
+
+\extrort{Mlc} & & \indet{Sin} & & \siberiet{Sib} & & \afriquet{Gab} & &
+\ameriqueCt{Azt} & & HIS &  & \multicolumn{2}{c|}{} & \extrort{For}  & \\
+\medline \spline \suline \cline{15-16}
+
+\extrort{Mlc} & & \extrort{Mlc} & & \siberiet{Sib} & & \afriquet{Gab} &
+& \ameriqueSt{Bel} & & HIS & \\
+\medline \poline \spline \fuline \slline \filine
+
+\extrort{Ayu} & & \extrort{Dai} & & \siberiet{Sib}  & & \afriquet{Con} &
+& \ameriqueSt{Bel} & & FRA & \\
+\medline \spline \suline
+
+\extrort{Ayu} & & \extrort{Can} & & \siberiet{Ob}  & & \afriquet{Con} &
+& \ameriqueSt{Rec} & & FRA & \\
+\medline \poline \filine
+
+\extrort{Dai} & & \extrort{Can} & & \siberiet{Ob}  & & \afriquet{Con} &
+& \ameriqueSt{Rec} & & ANG & \\
+\medline \poline \fuline \slline
+
+\extrort{Can} & & \extrort{Can} & & \siberiet{Ob} & & \afriquet{Ang} &
+& \ameriqueSt{Rec} & & ANG & \\
+\medline \filine
+
+\extrort{Can} & & \extrort{Can} & & \siberiet{Ini} & & \afriquet{Ang} &
+& \ameriqueSt{Rec} & & HOL & \\
+\medline \fuline
+
+\extrort{Can} & & \extrort{Can} & & \siberiet{Ini} & & \afriquet{Ang} &
+& \ameriqueSt{Rec} & & HOL & \\
+\medline \spline \slline \suline \filine
+
+\extrort{Can} & & \extrort{Phi} & & \siberiet{Len} & & \afriquet{Nat} &
+& \ameriqueSt{Rio} & & SUE & \\
+\medline \spline \fuline
+
+\extrort{Can} & & \indonesiet{Sum} & & \siberiet{Len} & & \afriquet{Nat}
+& & \ameriqueSt{Rio} & & SUE & \\
+\medline \poline \spline \filine
+
+\extrort{Nan} & & \indonesiet{Jav} & & \siberiet{Baï} & & \afriquet{Nat}
+& & \ameriqueSt{Rio} & \\
+\shortline \spline \slline \suline
+
+\extrort{Nan} & & \indonesiet{Cél} & & \siberiet{Baï} & & \afriquet{Nya}
+& & \persiquet{Mas} & \\
+\shortline \fuline
+
+\extrort{Nan} & & \indonesiet{Cél} & & \siberiet{Baï} & & \afriquet{Nya}
+& & \persiquet{Mas} & \\
+\shortline \poline \spline
+
+\extrort{Cor} & & \indonesiet{Son} & & \siberiet{Yak} & & \afriquet{Nya}
+& & \persiquet{Mas} & \\
+\shortline \poline \fuline \slline \suline
+
+\extrort{Jap} & & \indonesiet{Son} & & \siberiet{Yak} & & \afriquet{Ken}
+& & \indet{Sin} & \\
+\shortline \spline
+
+\extrort{Jap} & & \indonesiet{IEp} & & \siberiet{Amo} & & \afriquet{Ken}
+& & \indet{Sin} & \\
+\shortline \suline
+
+\extrort{Jap} & & \indonesiet{IEp} & & \siberiet{Amo} & & \afriquet{Ken}
+& & \indonesiet{Jav} & \\
+\shortline \poline \fuline \slline
+
+\extrort{For} & & \indonesiet{IEp} & & \siberiet{Amo} & & \afriquet{Eth}
+& & \indonesiet{Jav} & \\
+\shortline \poline \slline
+
+\extrort{Phi} & & \indonesiet{IEp} & & \siberiet{Kam} & & \afriquet{Sou}
+& & \indonesiet{Jav} & \\
+\shortline \poline \slline
+
+\indonesiet{Sum} & & \indonesiet{IEp} & & \siberiet{Kam} & &
+\afriquet{Mad} & & \indonesiet{Jav} & \\
+\hline
+\multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{} &
+\multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} & 
+\multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} &
+\multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} &
+\multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} \\ \hline
+\multicolumn{2}{|c|}{PO} & \multicolumn{2}{c|}{Spices} &
+\multicolumn{2}{c|}{Furs} & \multicolumn{2}{c|}{Slaves} & 
+\multicolumn{2}{c|}{Sugar} & \multicolumn{2}{c|}{Fish} &
+\multicolumn{2}{c|}{Salt} & \multicolumn{2}{c|}{Silk} &
+\multicolumn{2}{c|}{PA} & \multicolumn{2}{c|}{Cotton} \\ \hline
+%\longline
+\end{tabular}
+
+\vspace{.2cm}
+
+\begin{minipage}{20cm}
+{\small
+\ameriqueN{North America},
+\ameriqueS{Central/South America},
+\caraibes{Atlantic Ocean},
+\afrique{Africa},
+\siberie{Siberia},
+\inde{India},
+\indonesie{Indonesia},
+\persique{Persic gulf/Indian Ocean},
+\extror{Far East}.}
+\end{minipage}
+
+\vspace{.5cm}
+
+\begin{minipage}[c]{20cm}
+{\small
+\ameriqueN{Aca}die,
+\persique{Ade}n,
+\inde{Afg}hanistan,
+\ameriqueN{Ala}ska,
+\ameriqueS{Ama}zonia,
+\ameriqueN{Ame}rica,
+\siberie{Amo}ur,
+\afrique{Ang}ola,
+\caraibes{Ant}illes,
+\inde{Ayo}dhya,
+\extror{Ayu}tthaya,
+\ameriqueC{Azt}eca,
+\siberie{Baï}kal,
+\ameriqueS{Bel}em,
+\extror{Bir}manie,
+\inde{B}a\inde{ng}la,
+\extror{Can}ton,
+\afrique{Cam}eroun,
+\caraibes{Cap}e-Verde,
+\ameriqueN{Car}olina,
+\indonesie{Cél}èbes,
+\afrique{C}ôte d'\afrique{Iv}oire,
+\afrique{Con}go,
+\afrique{C}ôte d'\afrique{Or},
+\extror{Cor}ée,
+\caraibes{Cub}a,
+\extror{Dai} Viet,
+\inde{Deh}li,
+\ameriqueS{Ecu}ador,
+\afrique{Eth}iopie,
+\ameriqueN{Flo}rida,
+\extror{For}mose,
+\afrique{Gab}on,
+\ameriqueN{G}rands \ameriqueN{La}cs,
+\inde{Gon}dana,
+\inde{Guj}arat,
+\ameriqueS{Guy}ana,
+\caraibes{Haï}ti,
+\ameriqueN{Hud}son,
+\inde{Hyd}erabad,
+\indonesie{I}les aux \indonesie{Ép}ices,
+\ameriqueS{Inc}a,
+\inde{Ind}us,
+\siberie{Ini}ssei,
+\ameriqueN{Iro}quois,
+\extror{Jap}on,
+\indonesie{Jav}a,
+\siberie{Kam}tchaka,
+\inde{Kar}nataka,
+\afrique{Ken}ya,
+\siberie{Len}a,
+\afrique{Mad}agascar,
+\caraibes{Mal}ouines,
+\extror{M}a\extror{nd}chourie,
+\afrique{Mau}ritanie,
+\persique{Mas}careignes,
+\ameriqueS{M}inas \ameriqueS{Ge}rais,
+\ameriqueN{Mis}sissipi,
+\inde{M}a\inde{l}a\inde{b}ar,
+\extror{M}a\extror{l}a\extror{c}ca,
+\inde{Mum}bai,
+\extror{Nan}kin,
+\afrique{Nat}al,
+\afrique{Nya}sa,
+\siberie{Ob},
+\persique{Oma}n,
+\inde{Ori}ssa,
+\persique{Orm}us,
+\extror{Pék}in,
+\extror{Phi}lippines,
+\inde{P}a\inde{j}a\inde{b},
+\ameriqueN{Qué}bec,
+\ameriqueS{Rec}ife,
+\ameriqueS{Rio},
+\persique{Sey}chelles,
+\afrique{Sén}égal,
+\siberie{Sib}érie,
+\inde{Sin}gala,
+Îles de la \indonesie{Son}de,
+\afrique{Sou}dan,
+\indonesie{Sum}atra,
+\ameriqueN{T}erre-\ameriqueN{Ne}uve,
+\ameriqueS{Ven}ezuela,
+\ameriqueN{Vir}ginia,
+\siberie{Yak}outie,
+\ameriqueC{Yuk}atan.}
+\end{minipage}
+\end{document}
+

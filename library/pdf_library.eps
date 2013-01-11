@@ -1,0 +1,748 @@
+/! { 2 copy length exch length exch 1 index add string dup 0 6 -1
+    roll putinterval dup 4 2 roll exch putinterval} bind def
+%default values for pdfgen
+/defaultvalue{1 index where {pop pop pop}{def}ifelse}def
+/translation true defaultvalue
+/compress true defaultvalue
+/comments false defaultvalue
+/outputoutlines true defaultvalue
+/loglevel 1 defaultvalue
+/globalscale 1 defaultvalue
+/Output (blah.pdf) defaultvalue
+
+/push { dup where {}{(Weirderror in push) print weirderror}ifelse exch [ 1 index load aload pop counttomark 4 add -1 roll ] put } def
+/dictdef { begin def end } def
+/textmode false def
+/bytes 0 def
+/xref [] def
+/objects 0 def
+/fontobjects []def
+/labelref [] def
+/labeldict 999 dict def
+/objdict 999 dict def
+/futureobjdict 999 dict def
+/usedobjdict 999 dict def
+/fontyratiodict 10 dict def
+/fontyfactordict 10 dict def
+/pagesdict 10 dict def
+/totalpages 0 def
+/page 0 def
+/deletedfiles [] def
+/targetname { CURRENTDIR(/targets/)! exch !} def
+/target { CURRENTDIR(/targets/)! exch ! dup /deletedfiles push (w) file} def
+/R {(#R#) exch !} bind def
+/followref {(#R#) search pop pop pop} bind def
+/log { loglevel le {print}{pop} ifelse} bind def
+/space {( ) out} def
+/defobj {
+    /objects objects 1 add def
+    labeldict begin dup objects def end
+    dup /labelref push
+    objdict begin exch def end
+} def
+/futureobj {
+    futureobjdict begin exch def end
+} def
+/useobj { usedobjdict exch true put } def
+/getobj {
+    objdict exch get
+} def
+/redefobj { exch objdict 3 1 roll put } def
+/anonymouscounter 0 def
+/anonymous {
+    (Anonymous) anonymouscounter 20 string cvs !
+    /anonymouscounter anonymouscounter 1 add def
+}def
+/begindocument {
+    << /Pages (Pages) R
+	outputoutlines{/Outlines (Outlines) R}if
+	/Type /Catalog >> (Root) defobj
+    outputoutlines{<< /Type /Outlines >> (Outlines) defobj}if
+    << /Count 0 /Kids [ ] /Type /Pages >> (Pages) defobj
+    [ /PDF /Text /ImageB /ImageC ] (Procset) defobj
+    /documentoutlines [] def
+} def
+/defstream {( /Filename \() 1 index targetname ! (\)#DICT#) ! 1 index streamname defobj target} def
+/streamname {(Stream) exch !}def
+/beginpage {
+    page 0 gt {savepage}if
+    /page /totalpages totalpages 1 add def totalpages def
+    /currentpage (Page) page 4 string cvs ! def
+    objdict begin Pages begin /Count Count 1 add def
+    currentpage R /Kids push end end
+    << /Resources (Resources) currentpage ! R
+       /Contents currentpage streamname R
+       /MediaBox [0 0 pagewidth globalscale mul ceiling cvi
+       pageheight globalscale mul ceiling cvi]
+       /Parent (Pages) R
+       /Type /Page
+    >> currentpage defobj
+    /cpstream currentpage defstream def
+    /pagefonts [] def
+    /pagexobjects [] def
+    /pagepatterns [] def
+    /pageshadings [] def
+    /pagegss [] def
+    outputoutlines{currentpage(outline)! currentpage (Outlines)[currentpage R /Fit] newoutline}if
+    globalscale 1 eq not {globalscale 0 0 begints}if
+    /beginpagehook where {/beginpagehook get cvx exec}if
+} def
+/endpage {
+    << /ProcSet (Procset) R
+	pagefonts length 0 gt {/Font << pagefonts {dup cvn exch R} forall >>}if
+	pagexobjects length 0 gt
+	{/XObject << pagexobjects {dup cvn exch R} forall >>}if
+	pagepatterns length 0 gt
+	{/Pattern << pagepatterns {dup cvn exch R} forall >>}if
+	pageshadings length 0 gt
+	{/Shading << pageshadings {dup cvn exch R} forall >>}if
+	pagegss length 0 gt
+	{/ExtGState << pagegss {dup cvn exch R} forall >>}if
+    >> (Resources) currentpage ! defobj
+    globalscale 1 eq not {endts}if
+cpstream closefile
+} def
+/savepage {
+    % save previously used page
+    pagesdict currentpage
+    <<
+	[/pageshadings/pagepatterns/pagefonts/pagexobjects/pagegss/cpstream/page/currentpage]
+	{dup load}forall
+	pagelocalvariables{dup load}forall
+    >> put
+}def
+/loadpage {
+    dup page eq not{
+    savepage
+    /currentpage exch (Page) exch 4 string cvs ! def
+    pagesdict currentpage get{def}forall}{pop}ifelse
+}def
+/newoutline {	/destination exch def /parent exch def
+		/title exch def /name exch def
+    outputoutlines {
+<<  /Title (\(\376\377) title _ toutf16 (\)) ! !
+    /Parent parent R
+    /Dest destination
+>> name defobj
+    /parendict parent getobj def
+<<
+    parendict /First known {
+	/Count parendict 1 index get 1 add
+	/First parendict 1 index get
+	/Last name R
+	<<  
+	/Prev parendict /Last get
+	name getobj {} forall
+	>> name redefobj
+	/prevoutline parendict /Last get followref def
+	<< prevoutline getobj {} forall /Next name R >> prevoutline redefobj
+    }{/First name R /Last name R /Count 1}ifelse
+    parendict {} forall
+>> parent redefobj}if
+} def
+
+
+%%%%%%%%%%%Creation d'images
+/imagedict 999 dict def
+/defimage {imagedict exch 3 -1 roll put}def
+/includegray{/maskimagename exch def imagedict maskimagename get /maskimagedict exch def /imagefile maskimagedict /Filename get openfile def
+    /outfile maskimagename (-gray)! target def
+    imagefile (  ) readline pop pop % Read "P5\n"
+    imagefile 80 string readline pop pop % Read comment
+    imagefile token pop /width exch def imagefile token pop /height exch def
+    /sth height 5 string cvs def /stw width 5 string cvs def
+    imagefile token pop 1 add 256 eq not {(Weirderror in includegray) print weirderror}if
+    outfile imagefile width height mul copybytes
+    outfile closefile imagefile closefile
+    (/Filter/ASCIIHexDecode/Filename \()maskimagename(-gray)! targetname ! (\) /Type /XObject /Subtype /Image /BitsPerComponent 8 /Width )! stw ! ( /Height )! sth ! ( /ColorSpace /DeviceGray#DICT#)! maskimagename defobj
+}def
+/includemask{/maskimagename exch def imagedict maskimagename get /maskimagedict exch def /imagefile maskimagedict /Filename get openfile def
+    /outfile maskimagename(-mask)! target def
+    imagefile (  ) readline pop pop % Read "P6\n"
+    imagefile 80 string readline pop pop % Read comment
+    imagefile token pop /width exch def imagefile token pop /height exch def
+    /sth height 5 string cvs def /stw width 5 string cvs def
+    imagefile token pop 1 add 256 eq not {(Weirderror in includemask) print weirderror}if
+    height {
+	0 0 width {
+	imagefile read pop 0 eq
+	imagefile read pop 255 eq
+	imagefile read pop 0 eq
+	and and exch 2 mul exch {1 add}if
+	exch 1 add dup 8 eq {pop outfile exch write 0 0}{exch}ifelse
+	} repeat exch 0 eq {pop}
+	{width 8 mod {2 mul} repeat outfile exch write}ifelse
+    } repeat
+    outfile closefile imagefile closefile
+    (/Filter/ASCIIHexDecode/Filename \()maskimagename(-mask)! targetname ! (\) /Type /XObject /Subtype /Image /BitsPerComponent 1 /Width )! stw ! ( /Height )! sth ! ( /ImageMask true#DICT#)! maskimagename defobj
+}def
+/minibuffer 3 string def
+
+/copybytes { %pstack % outfile infile numberofbytes
+    /bbytes exch def /ifile exch def /ofile exch def /bstep buffer length def
+    0 bstep bbytes 1 sub {pop ofile ifile buffer readstring pop writestring}for
+    bbytes bstep mod 0 ne {
+	ofile ifile bbytes bstep mod string readstring pop writestring
+    }if
+}def
+/includeimage{
+    /imagename exch def imagedict imagename get /myimagedict exch def
+    /buildshadow myimagedict /Shadow known def 
+    /buildmask myimagedict /Mask known {false
+    objdict myimagedict /Mask get known not
+    {myimagedict /Mask get includemask}if
+    }{buildshadow}ifelse def
+    myimagedict /Alpha known {
+	objdict myimagedict /Alpha get known not
+	{myimagedict /Alpha get includegray}if
+    }if
+    /imagefile myimagedict /Filename get openfile def
+    /outfile imagename(-rgb)! target def
+    buildmask {/outfile2 imagename(-mask)! target def}if
+    buildshadow {/outfile3 imagename(-shadow)! target def}if
+    imagefile (  ) readline pop pop % Read "P6\n"
+    imagefile 80 string readline pop pop % Read comment
+    imagefile token pop /width exch def imagefile token pop /height exch def
+    myimagedict /height height put myimagedict /width width put
+    /sth height 5 string cvs def /stw width 5 string cvs def
+    imagefile token pop 1 add 256 eq not {(Weirderror in defimage) print weirderror}if
+    buildmask buildshadow or{
+	height {
+	    0 0 width {
+	    outfile imagefile minibuffer readstring pop writestring
+	    2 mul minibuffer (\000\377\000) eq{1 add}if
+	    minibuffer (\377\000\000) eq{257 add}if
+	    exch 1 add dup 8 eq {pop
+		buildmask {dup 255 and outfile2 exch write}if
+		buildshadow {dup 65280 and 256 idiv 255 xor 256 mod outfile3 exch write}if
+		pop 0 0
+	    }{exch}ifelse
+	    } repeat exch 0 eq {pop}
+	    {8 width 8 mod sub{2 mul} repeat
+		buildmask {dup 255 and outfile2 exch write}if
+		buildshadow {dup 65280 and 256 idiv 255 xor 256 mod outfile3 exch write}if
+		pop
+	    }ifelse
+	} repeat
+	buildmask {outfile2 closefile
+	(/Filter/ASCIIHexDecode/Filename \()imagename(-mask)! targetname ! (\) /Type /XObject /Subtype /Image /BitsPerComponent 1 /Width )! stw ! ( /Height )! sth ! ( /ImageMask true#DICT#)! imagename (Mask)! defobj
+	myimagedict /Mask imagename (Mask)! put}if
+	buildshadow {outfile3 closefile
+	(/Filter/ASCIIHexDecode/Filename \()imagename(-shadow)! targetname ! (\) /Type /XObject /Subtype /Image /BitsPerComponent 1 /Width )! stw ! ( /Height )! sth ! ( /ImageMask true#DICT#)! imagename (Shadow)! defobj
+	myimagedict /Shadow imagename (Shadow)! put}if
+	imagefile closefile
+    }{
+	outfile imagefile width height mul 3 mul copybytes
+    }ifelse
+    outfile closefile imagefile closefile
+    mark
+    (/Filter/ASCIIHexDecode/Filename \() imagename(-rgb)! targetname
+    (\) /Type /XObject /Subtype /Image /BitsPerComponent 8 /Width )
+    stw ( /Height ) sth ( /ColorSpace /DeviceRGB#DICT#)
+    counttomark 1 sub {!} repeat
+    myimagedict /Alpha known
+    {(/SMask \()myimagedict /Alpha get (\) R) ! ! exch !}
+    {
+	myimagedict /Mask known
+	{(/Mask \()myimagedict /Mask get (\) R) ! ! exch !}if
+    }ifelse
+    imagename (RGB)! defobj
+    (/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 )
+    stw ( ) sth  (] /Matrix [) stw ( 0 0 ) sth ( 0 0] /Resources << )
+    (/XObject <<\()
+    imagename(RGB)!
+    myimagedict /Shadow known {(\) dup R \() myimagedict /Shadow get}if 
+    (\) dup R >> >>#DICT#q )(/) imagename(RGB)!
+    ( Do Q\n)
+    myimagedict /Shadow known {(/) myimagedict /Shadow get ( Do )}if
+    counttomark 1 sub {!} repeat imagename defobj pop
+} def
+
+/useimage {/imagename exch def
+    objdict imagename known not {imagename includeimage}if
+    imagename /pagexobjects push
+    (/) out imagename out ( Do ) out
+} def
+/multimage {aload pop
+    /imagepositions exch def /imagescale exch def /imagename exch def
+    objdict imagename known not {imagename includeimage}if
+    (multimg:) imagename ! imagepositions {(:) exch 5 string cvs ! !}forall
+    /multimagename exch def objdict multimagename known not
+    {
+	imagedict imagename get /myimagedict exch def
+	/height myimagedict /height get def /width myimagedict /width get def
+	/sth height 5 string cvs def /stw width 5 string cvs def
+	/maxx 0 0 2 imagepositions length 1 sub {
+	    imagepositions exch get 2 copy lt {exch}if pop
+	} for def
+	/maxy 0 1 2 imagepositions length {
+	    imagepositions exch get 2 copy lt {exch}if pop
+	} for def
+	/minx 10000 0 2 imagepositions length 1 sub {
+	    imagepositions exch get 2 copy gt {exch}if pop
+	} for def
+	/miny 10000 1 2 imagepositions length {
+	    imagepositions exch get 2 copy gt {exch}if pop
+	} for def
+	mark
+	(/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 )
+	stw ( ) sth  (] /Matrix [) stw ( 0 0 ) sth
+	( 0 0] /Resources << )
+	(/XObject <<\()
+	imagename(RGB)!
+	(\) dup R >> >>#DICT#q /)imagename(RGB Do Q\n)!
+	counttomark 1 sub {!} repeat imagename(Sans)! defobj
+	(/Type /XObject /Subtype /Form /FormType 1 /BBox [)
+	minx 5 string cvs ( )
+	miny 5 string cvs ( )
+	maxx width add 5 string cvs ( )
+	maxy height add 5 string cvs
+	(] /Matrix [1 0 0 1 0 0] /Resources << /XObject <<\()
+	imagename(Sans)!
+	myimagedict /Shadow known {(\) dup R \() myimagedict /Shadow get}if 
+	(\) dup R >> >>#DICT#)
+	myimagedict /Shadow known {
+	    0 2 imagepositions length 1 sub {
+		(q )stw( 0 0 )sth( ) imagepositions 6 index get 5 string cvs
+		( ) imagepositions 9 -1 roll 1 add get 5 string cvs
+		( cm /)
+		myimagedict /Shadow get ( Do Q\n)
+	    } for
+	}if 
+	    0 2 imagepositions length 1 sub {
+		(q 1 0 0 1 ) imagepositions 2 index get 5 string cvs
+		( ) imagepositions 5 -1 roll 1 add get 5 string cvs
+		( cm /)
+		imagename(Sans Do Q\n)
+	    } for
+	counttomark 1 sub {!} repeat multimagename defobj pop
+    }if
+    multimagename /pagexobjects push
+    imagescale 1 eq not { (q )out imagescale display ( 0 0 ) out
+    imagescale display ( 0 0 cm ) out}if
+    (/) out multimagename out ( Do) out
+    imagescale 1 eq not { ( Q\n) }{(\n)}ifelse out
+}def
+/logWRITE { } bind def
+/initlogWRITE { } bind def
+/enddocument {
+    /realoutputfile Output (w) file def
+    /out {/bytes bytes 2 index length add def realoutputfile exch writestring} def
+    usedobjdict {objdict 1 index known {pop pop}{
+	pop futureobjdict 1 index get exch 60 string cvs defobj
+    }ifelse} forall
+    (%PDF-1.4\n) out
+    objects initlogWRITE
+    labelref {logWRITE /cl exch def objdict cl get
+	dup type dup /dicttype eq {pop dictobjd}
+	{/stringtype eq {streamobjd}{simpleobjd}ifelse  }ifelse
+    } forall
+    bytes
+    (xref\n0 ) out objects 1 add 6 string cvs out (\n) out
+    (0000000000 65535 f \n) out
+    xref {
+	(0000000000) dup 3 -1 roll 10 string cvs 10 1 index length sub
+	exch putinterval out ( 00000 n \n) out
+    } forall 
+    (trailer\n<</Size ) out objects 1 add 6 string cvs out
+    (\n/Root ) out (#R#Root) display
+    labeldict (Info) known {(\n/Info ) out (#R#Info) display} if
+    (\n>>\nstartxref\n) out
+    10 string cvs out (\n%%EOF\n) out
+    realoutputfile closefile
+} def
+/copyfile {/filename exch def(%Here is the content of )out filename out(\n)out
+    /inputfile filename openfile def
+    {realoutputfile inputfile buffer readstring 3 1 roll writestring not {exit}if}loop
+    inputfile closefile
+}def
+%/copyfile {/filename exch def(%Here is the content of )filename(\n)! ! out}def
+/loadfiletostring {
+    /inputfile exch openfile def
+    inputfile dup bytesavailable /length exch def
+    (-data )out length display ( pdfReadString\n) out
+    /filteredoutput realoutputfile /FlateEncode filter def
+    length {filteredoutput inputfile read pop write}repeat
+    inputfile closefile filteredoutput closefile (\n) out
+}def
+/beginobj {
+    bytes /xref push
+    labeldict cl get 6 string cvs out ( 0 obj\n) out
+    comments {(%object:) out cl out (\n) out}if
+}def
+/endobj {
+    (endobj\n) out
+}def
+/display { /k exch def
+    k type /stringtype eq {
+	k (#R#) search {pop pop labeldict exch get 6 string cvs out ( 0 R) out}
+	{dup 0 get 40 eq {(\050) out dup length 2 sub 1 exch getinterval stringout (\051)out }{out}ifelse}ifelse
+    }if
+    k type /integertype eq {
+	k 10 string cvs out
+    }if
+    k type /nametype eq {
+	(/) out k 60 string cvs out
+    }if
+    k type /booleantype eq {
+	k {(true)}{(false)}ifelse out
+    }if
+    k type /realtype eq {
+	k dup abs 0.0001 lt {pop 0.0}if 15 string cvs out
+    }if
+    k type /arraytype eq {/i bytes def
+	([ ) out k {display bytes i sub 70 gt {(\n)/i bytes def}{( )}ifelse out} forall
+	(]) out
+    }if
+    k type /dicttype eq {
+	(<< ) out k {exch display space display space} forall
+	( >>) out
+    }if
+} def
+/dictauxd {
+    (<<  ) exch
+    {/val exch def /key exch def
+    out (\n    )
+    key display space val display
+    }
+    forall pop (\n>>\n) out
+} def
+/dictobjd {
+    beginobj dictauxd endobj
+} def
+/buffer 255 string def
+/type1objd {
+    /localfontname cl (Font) search pop pop pop (Program) search
+    pop exch pop exch pop def localfontname /fontobjects push
+    /outfile localfontname(.ps)! target def
+    /inputfile filename openfile def
+    filedict begin
+    inputfile read {pop} if
+    inputfile read {pop} if
+    inputfile read pop
+    inputfile read {256 mul add} if
+    inputfile read {65536 mul add} if
+    inputfile read {16777216 mul add} if /Length1 exch def
+    Length1 {outfile inputfile read {write} if} repeat
+    inputfile read {pop} if
+    inputfile read {pop} if
+    inputfile read pop
+    inputfile read {256 mul add} if
+    inputfile read {65536 mul add} if
+    inputfile read {16777216 mul add} if /Length2 exch def
+    Length2 {outfile inputfile read {write} if} repeat
+    inputfile read {pop} if
+    inputfile read {pop} if
+    inputfile read pop
+    inputfile read {256 mul add} if
+    inputfile read {65536 mul add} if
+    inputfile read {16777216 mul add} if /Length3 exch def
+    Length3 {outfile inputfile read {write} if} repeat
+    end
+    inputfile closefile outfile closefile
+    /filename localfontname(.ps)! targetname def
+} def
+/fileobjd {
+    beginobj
+    filedict /Filename 2 copy get /filename exch def undef
+    filename (.pfb) search {pop pop pop type1objd}{pop} ifelse 
+     /inputfile filename openfile def
+    compress {filedict /Filter /FlateDecode put}if
+    /outfile (intermediate) target
+    << /CloseTarget true >>
+    << /NullDecode /NullEncode
+       /FlateDecode /FlateEncode
+       /ASCII85Decode /ASCII85Encode
+       /ASCIIHexDecode /ASCIIHexEncode
+    >> filedict /Filter known {filedict /Filter get}{/NullDecode}ifelse get
+    filter def
+    {outfile inputfile buffer readstring 3 1 roll writestring not {exit}if}loop
+    outfile flushfile outfile closefile
+    /inputfile (intermediate) targetname openfile def
+    filedict begin /Length inputfile bytesavailable def end
+    filedict dictauxd
+    (stream\n) out
+    {inputfile buffer readstring exch out not {exit}if}loop
+    (endstream\n) out
+    endobj
+    inputfile closefile
+} def
+/streamobjd {
+    (#DICT#) search {<< exch cvx exec >>exch pop}{<< >>}ifelse
+    /filedict exch def
+    filedict /Filename known {pop fileobjd}{
+    beginobj
+    filedict begin /Length 1 index length def end
+    filedict dictauxd
+    (stream\n) out
+    out
+    (endstream\n) out
+    endobj
+    }ifelse
+} def
+/simpleobjd {
+    beginobj
+    display (\n) out
+    endobj
+} def
+
+/infochunk {
+    objdict (Info) known not {
+<<
+  /Producer ((Set of Postscript macros))
+  /Creator ((Jean-Christophe Dubacq))
+  (%Calendar%) /IODevice resourcestatus {
+    pop pop /TIME (%Calendar%) currentdevparams def
+    TIME /Running get {
+      TIME /Year get 4 string cvs
+      TIME /Month get 100 add 3 string cvs 1 2 getinterval !
+      TIME /Day get 100 add 3 string cvs 1 2 getinterval !
+      TIME /Hour get 100 add 3 string cvs 1 2 getinterval !
+      TIME /Minute get 100 add 3 string cvs 1 2 getinterval !
+      TIME /Second get 100 add 3 string cvs 1 2 getinterval !
+      (\(D:) exch !(\)) !
+    }{
+        ((D:19700101000000))
+    } ifelse
+  }{	
+   ((D:19700101000000))
+ }ifelse
+    /CreationDate exch
+>> (Info) defobj
+    } if
+	objdict (Info) get begin {def} forall end
+}def
+/out {
+    cpstream exch writestring
+}def
+/setbasefont {% Font height
+    /fontshortname exch def /fonttotalheight exch def 
+    /fontyratio fontyratiodict fontshortname get def
+    /fontscale fontyfactordict fontshortname get fonttotalheight mul def
+}def
+/stringwidth { 
+    0 exch {
+	aload pop exch encodingstable exch get /fontencoding exch def
+	/fontname fontshortname fontencoding ! def
+	/fontwidth futureobjdict dup fontname get /Widths get
+	(#R#) search pop pop pop get def
+	{fontwidth exch get add}forall
+    } forall fontscale 1000 div mul 
+}def
+/letterwidth {
+    exch encodingstable exch get /fontencoding exch def
+    /fontname fontshortname fontencoding ! def
+    /fontwidth futureobjdict dup fontname get /Widths get
+    (#R#) search pop pop pop get def
+    fontwidth exch get fontscale 1000 div mul 
+}def
+/stringout {
+    {
+    dup  96 and 0 eq 1 index 41 eq or 1 index 92 eq or 1 index 40 eq or {(\\000)exch 2 copy 
+    	4 copy 64 idiv 48 add 1 exch put
+	64 mod 8 idiv 48 add 2 exch put
+	8 mod 48 add 3 exch put pop out
+    }{1 string dup 0 4 -1 roll put out}ifelse
+    } forall
+}def
+/textshow {
+    {
+	aload pop exch encodingstable exch get /fontencoding exch def
+	/fontname fontshortname fontencoding ! def fontname /pagefonts push
+	(/) out fontname out space fontscale display ( Tf\n) out
+	(\() out stringout (\) Tj\n)out
+	fontencoding (Encoding) ! useobj
+	fontshortname (Desc) ! useobj
+	fontshortname (Program) ! useobj
+	fontshortname (Widths) fontencoding ! ! useobj
+	fontshortname fontencoding ! useobj
+    } forall
+}def
+/centertext {% (Texte) x y width height Font
+    setbasefont /Textwidthmax exch def
+    /Texty exch def /Textx exch def  /Text exch _ def
+    /Textwidth Text stringwidth def
+    /Textcompress false def
+    Textwidth Textwidthmax gt {
+	/Textcompress true def
+	(q )out Textwidthmax Textwidth div display ( 0 0 1 )out
+	Textx Textwidthmax -2 div add display space
+	Texty fontscale fontyratio mul add display
+	( cm BT\n)out
+    }{
+	(BT )out /Textorig Textx Textwidth -2 div add def
+	Textorig display space
+	Texty fontscale fontyratio mul add display ( Td\n)out
+    }ifelse
+    TextRenderingMode 0 ne OldTextRenderingMode 0 ne or {TextRenderingMode display ( Tr\n)out /OldTextRenderingMode TextRenderingMode def}if
+    Text textshow
+    Textcompress {(ET Q\n)}{(ET\n)}ifelse out
+}def
+/righttext {% (Texte) x y width height Font
+    setbasefont /Textwidthmax exch def
+    /Texty exch def /Textx exch def  /Text exch _ def
+    /Textwidth Text stringwidth def
+    /Textcompress false def
+    Textwidth Textwidthmax gt {
+	/Textcompress true def
+	(q )out Textwidthmax Textwidth div display ( 0 0 1 )out
+	Textx Textwidthmax -1 div add display space
+	Texty fontscale fontyratio mul add display
+	( cm BT\n)out
+    }{
+	(BT )out /Textorig Textx Textwidth sub def Textorig display space
+	Texty fontscale fontyratio mul add display ( Td\n)out
+    }ifelse
+    TextRenderingMode 0 ne OldTextRenderingMode 0 ne or {TextRenderingMode display ( Tr\n)out /OldTextRenderingMode TextRenderingMode def}if
+    Text textshow
+    Textcompress {(ET Q\n)}{(ET\n)}ifelse out
+}def
+/lefttext {% (Texte) x y width height Font
+    setbasefont /Textwidthmax exch def
+    /Texty exch def /Textx exch def  /Text exch _ def
+    /Textwidth Text stringwidth def
+    /Textcompress false def
+    Textwidth Textwidthmax gt {
+	/Textcompress true def
+	(q )out Textwidthmax Textwidth div display ( 0 0 1 )out
+	Textx display space
+	Texty fontscale fontyratio mul add display
+	( cm BT\n)out
+	/Textwidth Textwidthmax def
+    }{
+	(BT )out /Textorig Textx def Textorig display space
+	Texty fontscale fontyratio mul add display ( Td\n)out
+    }ifelse
+    TextRenderingMode 0 ne OldTextRenderingMode 0 ne or {TextRenderingMode display ( Tr\n)out /OldTextRenderingMode TextRenderingMode def}if
+    Text textshow
+    Textcompress {(ET Q\n)}{(ET\n)}ifelse out
+}def
+/multitext {% [[(Texte) Font] ...] x y height
+    /Textheight exch def /Texty exch def /Textx exch def /Textarray exch def
+    (BT )out
+    TextRenderingMode 0 ne OldTextRenderingMode 0 ne or {TextRenderingMode display ( Tr\n)out /OldTextRenderingMode TextRenderingMode def}if
+    Textx display space Texty display space ( Td\n)out
+    Textarray {
+	aload pop Textheight exch setbasefont _ textshow
+    }forall
+    (ET\n)out
+}def
+/circletext {% (Texte) xc yc r alphas alphaw height font
+    setbasefont  /alphaw exch def /alphas exch def
+    /sens alphaw 0 lt def /alphaw alphaw abs def
+    /radius exch def /yc exch def /xc exch def /Text exch _ def
+    /firstletter Text 0 get aload pop 0 get letterwidth def
+    /lastletter Text dup length 1 sub get aload pop dup length 1 sub get
+    letterwidth def
+    /deuxpir 6.28318548 radius mul 360 div def
+    /Textwidth Text stringwidth def
+    /nletters 0 Text {1 get length add}forall 1 sub def
+    /stepangle alphaw deuxpir mul Textwidth firstletter lastletter add 2 div sub sub nletters div def
+    /currentwidth 0 def
+    /lastwidth 0 def
+    /countletter 0 def
+    1 xc yc begints
+    (BT )out %[
+    TextRenderingMode 0 ne OldTextRenderingMode 0 ne or {TextRenderingMode display ( Tr\n)out /OldTextRenderingMode TextRenderingMode def}if
+    Text {
+	aload pop exch encodingstable exch get /fontencoding exch def
+	/fontname fontshortname fontencoding ! def fontname /pagefonts push
+	(/) out fontname out space fontscale display ( Tf\n) out
+	/fontwidth futureobjdict dup fontname get /Widths get
+	(#R#) search pop pop pop get def
+	{
+	    /letter exch def
+%	    (Letter  :) dup 7 letter put print
+%	    countletter 5 string cvs print ( ) print
+	    /currentwidth
+	    currentwidth fontwidth letter get fontscale 1000 div mul
+	    /lastwidth 1 index def add def
+%	    currentwidth 10 string cvs print (,) print
+%	    lastwidth 10 string cvs print (;) print
+	    /angle alphas currentwidth lastwidth firstletter add 2 div sub
+	    stepangle countletter mul add deuxpir div sens{sub}{add}ifelse def
+%	    angle 10 string cvs print (\n) print
+	    angle cos sens {neg}if display space
+	    angle sin sens {neg}if neg display space
+	    angle sin sens {neg}if display space
+	    angle cos sens {neg}if display space
+	    radius angle sin mul %dup
+	    lastwidth 2 div angle cos mul sens {neg}if sub
+	    display space
+	    radius angle cos mul %dup
+	    lastwidth 2 div angle sin mul sens {neg}if add
+	    display ( Tm \()out ( ) dup 0 letter put
+	    stringout (\) Tj\n)out
+	    /countletter countletter 1 add def
+	}forall
+	fontencoding (Encoding) ! useobj
+	fontshortname (Desc) ! useobj
+	fontshortname (Program) ! useobj
+	fontshortname (Widths) fontencoding ! ! useobj
+	fontshortname fontencoding ! useobj
+    } forall %]
+    (ET\n)out
+    %0 2 2 index length 1 sub {1 index exch 2 getinterval aload pop exch
+    %display space display ( m 0 0 l 1 w S\n)out}for pop
+    endts
+}def
+/underline {
+    Textorig display space Texty fontscale fontyratio mul 0.5 mul add display
+    ( m )out Textorig Textwidth Textwidthmax 2 copy gt {exch}if pop add display
+    space Texty fontscale fontyratio mul 0.5 mul add display ( l S\n) out
+}def
+/unmark {counttomark 1 sub dup 0 ge {array astore dup length dup string 3 1 roll 0 1 3 -1 roll 1 sub {3 copy get 3 -1 roll exch put}for pop 2 array astore exch pop}{pop pop /stringtype }ifelse}bind def
+/_ {
+    [ mark -1 0  5 -1 roll { 
+	[%state 0: e c <-> G e 0 or G e v [1,2]
+	    {
+		dup 128 lt { 
+		    % e C
+		    exch 0 eq {0 0}{0 counttomark 1 add 2 roll unmark mark 4 -2 roll exch 1 index 0}ifelse
+		}{ dup 31 and exch 224 lt {1}{2}ifelse
+		}ifelse
+
+	    }
+	 %state 1: e v c <-> G e 0
+	    {63 and exch 64 mul add % e C
+	    dup 255 and exch 65280 and 256 idiv %e c e'
+	    dup 4 -1 roll eq %c e' e=e'
+	    {0 }{counttomark 1 add 2 roll unmark mark 4 -2 roll exch 1 index 0}ifelse
+	    }
+	 %state 2: e v c <-> e v 1
+	    {63 and exch 64 mul add 1}
+	]
+	3 -1 roll  get cvx exec
+    } forall 
+    pop pop unmark counttomark -1 roll pop ]
+}def
+/toutf16{
+    [ exch {aload pop {2 copy pop}forall pop}forall ]
+    dup length dup string 3 1 roll 0 1 3 -1 roll 1 sub
+    {3 copy get 3 -1 roll exch put}for pop   
+}def
+/usexobj {
+    usedobjdict 1 index known{usedobjdict exch true put}{
+	usedobjdict 1 index true put futureobjdict exch get
+	(#DICT#) search
+	{exch pop exch pop
+	    1 dict begin /R  {} def
+	    << exch cvx exec >> /Resources get dup /XObject known {/XObject get {usexobj pop}forall }{pop}ifelse
+	    end
+	}{pop}ifelse}ifelse
+} def
+/xobject {
+    (/) out dup usexobj dup out ( Do\n) out /pagexobjects push
+} def
+
+/begints {% scale x y
+    (q ) out 3 -1 roll dup display ( 0 0 )out display space exch display
+    space display ( cm )out
+}def
+/beginflipts {% scale x y
+    (q ) out 3 -1 roll dup -1 mul display ( 0 0 )out display space exch display
+    space display ( cm )out
+}def
+/endts {(Q\n) out}def
+/TextRenderingMode 0 def
+/OldTextRenderingMode 0 def

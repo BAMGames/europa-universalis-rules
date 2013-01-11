@@ -1,0 +1,395 @@
+% Structure generale :
+% \chapter{Titre}		I	saut page
+% \section{Titre}		I.1	parfois saut page
+% \subsection{Titre}		I.1.1	titre separe	
+% \subsubsection[Titre]		I.1.1.1	titre sur la ligne
+% \aparag[Titre]		A.	nouveau parag si titre,meme par sinon
+% \bparag			A.1	
+
+% Sauf pour les evenements :
+% \chapter{Evenements}
+% \section*{Foreword}
+% \section{Periode I}			nouvelle page
+% \subsection{Generalites}
+%	dont le resume des events
+% \phasesection{Titre}
+% \ephase[Titre]			A.	nouveau paragraphe
+% \fphase				A.1	nouveau par si titre avant.
+
+% Commands for events:
+% \tour{Text} produces the yellowish-gradient thingie
+% \phasesection{Something} (also \dphase) produces the correct numbering of
+%        phases, plus the text. Some commands are predefined with bold text
+%        behind the phase number. They are, e.g.
+% \condition \activation \consequences (those three commands admit an optional
+%        argument that will be written on the same line than the text)
+%        Note that this is really not necessary, since after any command
+%        paragraph is not finished. However, font could be special.
+% \phevnt \phdipl \phadm \phmil \phmvt \phpaix \phinter \effetlong
+%        are others (no opt. argument)
+% \history[details]{date} & \dure{Duration} simply inserts some italic
+%        not-numbered text.
+% \defsubevent{Something} resets the phase counter (and all subhierarchical
+%        ones, puts a \bfintercale{Something}. 1st style subevent.
+%        Changes \thephase to {\thesubevent\thephase}
+% \begin{setsevent} \  Defines a set of subevents, second style. If used as 
+% \end{setsevent}   /  as \begin{setother}[Something], puts a \bfintercale.
+% \defsubeventbis{Something} Defines a subevent. PHASE is kept, where as
+%        EVPARA and SUBEVPARA are saved, reset, and restored at end.
+%        Changes \thephase to {\thesubevent\thephase}
+% \ephase is the paragraph level numbering. Uses EVPARA counter.
+% \fphase is the subparagraph level numbering. Uses EVSUBPARA counter.
+
+% \subeventlabel \eventlabel pour marquer les noms des evenements
+% \rulelabel pour marquer les noms des regles
+% II-1 (Ghibli) => eventref
+% Ghibli => eventrefname
+% II-1 => eventrefshort
+% a (Totoro) of event Ghibli => subeventrefbyname
+% a (Totoro) of event II-1 (Ghibli) => subeventref
+% a (Totoro) of event II-1 => subeventrefshort
+% a (Totoro) => subeventreflocal
+% rule I.1.1 (Titre) => ruleref
+% A.1 of rule I.1.1 => ruleref
+% A.1 => localruleref
+
+%\oldref, \tableref, \figref
+
+% Serie de commandes avec mise en forme et traduction eventuelle automatique
+% Villes, provinces, Noms de pays majeurs (ne devrait pas etre trop utilise)
+% Zone de mer, Grande region (ROTW), Sous-Continent (ROTW), Leader, Monarque
+% nomme, Minister nomme, Region (Europe, ensemble de provinces)
+% \ville \province \pays \paysmajeur \seazone \granderegion \continent
+% \leader \monarque \ministre \region
+
+% One can always use for these commands (example with ville):
+% \shortville (short form of name)
+% \longville (long name)
+% \longlongville (definition of the term, bold in index)
+% \sectionville (Used in section titles: the name appears in bookmarks)
+% Only ville and sectionville support aliases (others have to use
+% the main name)
+% Please remark that aliases should disappear
+
+%\leaderdef(Cle)[Tours](pays)(Type)(Caracs){Commentaires}
+%\leaderdefdouble(Cle)[Tours](pays)(Type)(Caracs)(Type2)(Caracs2){Commentaires}
+%\leaderdefother(Cle)[Tours](pays)(Type)(Caracs)(nom2)(pays2){Commentaires}
+%\leaderdefothermajeur(Cle)[Tours](pays)(Type)(Caracs)(nom2)(liste)(Pays2){Commentaires}
+% Pour un majeur, liste est une variation sur le nom du pays
+%\leaderdef(Cle)[Tours](liste)(Type)(Caracs){Commentaires}
+
+%Tableau grise: 
+%{\graytabular \begin{tabular}...\endtabular}
+
+%Graphiques
+%\faceplus \facemoins \undemi \ducats \textetoile \anonyme
+
+%Environnements:
+%note, designnote, histoire, exemple, tablehere, figurehere
+%listnbre, enumeration, figure, table, colonnes
+
+%% Abreviations en vrac
+\TUabbrevdefs{ADM}
+\TUabbrevdefs{MIL}
+\TUabbrevdefs{DIP}
+\TUabbrevdefs{CB}
+\TUabbrevdefs[OCB]{Overseas CB}
+\TUabbrevdefs[RD]{R/D}
+\TUabbrevdefs{VP}
+\TUabbrevdefs{VPs} % Victory points (plural)
+\TUabbrevdefs{ROTW}
+\TUabbrevdefs{CC}
+\newcommand{\CCs}[1][\null]{\CC~\textit{#1}\xspace}
+\TUabbrevdefs{MNU}
+\TUabbrevdefs{Neutral}
+\TUabbrevdefs{RM}
+\TUabbrevdefs{SUB}
+\TUabbrevdefs{MA}
+\TUabbrevdefs{EC}
+\TUabbrevdefs{DC}
+\TUabbrevdefs{EW}
+\let\MR\RM
+\let\CE\EC
+\let\AM\MA
+\let\EG\EW
+\TUabbrevdefs[VASSAL]{VA}
+\TUabbrevdefs[ANNEXION]{AN}
+\TUabbrevdefs{MP}
+\TUabbrevdefs{LoS}
+\TUabbrevdef[ARMY]{A}{\bbold{A}}
+\TUabbrevdef[FLEET]{F}{\bbold{F}}
+\TUabbrevdef[corsaire]{P}{\bbold{P}}
+\TUabbrevdef[GD]{D}{\bbold{D}}     % Generic Detachment
+\TUabbrevdef{LDE}{L\bbold{D}E}   % Land Detachment of Exploration
+\TUabbrevdef{LD}{L\bbold{D}}     % Land Detachment
+\TUabbrevdef{ND}{N\bbold{D}}     % Naval Detachment (any kind)
+\TUabbrevdef{NDE}{N\bbold{D}E}   % Naval Detachment of Exploration(warships)
+\TUabbrevdef{NWD}{NW\bbold{D}}   % Naval Warships Detachment
+\TUabbrevdef{NGD}{NG\bbold{D}}   % Naval Galley Detachment
+\TUabbrevdef{NTD}{NT\bbold{D}}   % Naval Transport Detachment
+\TUabbrevdef[VGD]{Venetian GD}{Venetian G\bbold{D}} % Venetian Galeasses Detachments
+\TUabbrevdef[LDND]{LD/ND}{L\bbold{D}/N\bbold{D}}
+\TUabbrevdef[LDENDE]{LDE/NDE}{L\bbold{D}E/N\bbold{D}E}
+
+\TUabbrevdef[PO]{PO}{\RES{PO}}
+\TUabbrevdef[PA]{PA}{\RES{PA}}
+
+\TUabbrevdefs[TradeFLEET]{TF}
+\TUabbrevdefs{TFI}
+\TUabbrevdefs{TP}
+\TUabbrevdefs{COL}
+\TUabbrevdefs{REB}
+\TUabbrevdefs{HUG}
+\TUabbrevdefs{LIG}
+\TUabbrevdefs{STZ}
+\TUabbrevdefs{CTZ}
+\TUabbrevdefs{DTI}
+\TUabbrevdefs{FTI}
+\TUabbrevdefs[dipNR]{NR}
+\TUabbrevdefs[dipFR]{FR}
+\TUabbrevdefs[dipAT]{AT}
+\TUabbrevdefs{MAJ}
+\TUabbrevdefs{MIN}
+\TUabbrevdefs{RT}
+\TUabbrevdef{EcoRS}{\emph{ERS}}
+%Nouveaux acronymes a ajouter ici
+\TUabbrevdef[fortress]{f}{\bbold{f}}
+
+\TUabbrevdef[LeaderA]{A}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{A}}}
+\TUabbrevdef[LeaderC]{C}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{C}}}
+\TUabbrevdef[LeaderG]{G}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G}}}
+\TUabbrevdef[LeaderE]{E}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E}}}
+\TUabbrevdef[LeaderMis]{Mis}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{M\kern -0.1em i\kern -0.1em s}}}
+\TUabbrevdef[LeaderGov]{Gov}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G\kern -0.1em o\kern -0.1em v}}}
+\TUabbrevdef[Leaderd]{D}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{D}}}
+\TUabbrevdef[LeaderI]{Eng}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E\fontfamily{eur}\selectfont\kern -0.1em n\kern -0.1em g}}}
+\TUabbrevdef[LeaderK]{K}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{K}}}
+\TUabbrevdef[LeaderP]{P}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{P}}}
+\let\Leaderg\LeaderGov
+
+%Abreviations simples
+\def\Man{Manoeuvre\xspace}
+\newcommand{\Timar}{\terme{T{\i}marlar}\xspace}
+\newcommand{\Janissaire}{\terme{Yeni\c{c}eriler}\xspace}
+\newcommand{\Pasha}{\terme{Pasha}\xspace}
+\newcommand{\Pashas}{\terme{Pashas}\xspace}
+\newcommand{\Presidios}{\terme{Pr\ae sidios}\xspace}
+\newcommand{\Presidio}{\terme{Pr\ae sidio}\xspace}
+\newcommand{\StraitFort}{\terme{Strait fortifications}\xspace}
+\newcommand{\Area}{\terme{Area}\xspace}
+\newcommand{\STAB}{Stability\xspace}
+\newcommand{\CONC}{Concurrency\xspace}
+\newcommand{\TPaction}{\TP placement\xspace}
+\newcommand{\COLaction}{\COL placement\xspace}
+\newcommand{\hug}{\pays{Huguenots}\xspace}
+\newcommand{\lig}{\pays{Ligue}\xspace}
+\newcommand{\parl}{\pays{parliament}\xspace}	% for English Civil War
+\newcommand{\royal}{\pays{Royalists}\xspace}		% for English Civil War
+\newcommand{\alliance}{\textsc{Alliance}\xspace}
+\newcommand{\ligue}{\textsc{League}\xspace}
+\newcommand{\stz}{\STZ~\seazone}
+\newcommand{\ctz}{\CTZ~\paysmajeur}
+\newcommand{\POSPICE}{\RES{PO} or \RES{Spices}\xspace}
+
+% \lignebudget#1 \intercale#1 \bfintercale#1
+% \CAI, \CAII, \CAIII, \CAIV, \CAIM, \CAIIM, \CAIIIM, \CAIVM, \CAA
+
+
+
+% Commandes semantiques restant a traiter
+\newcommand{\terme}[1]{\emph{#1}} % terme de regle
+%Provisoires :
+\newcommand{\oldref}[1]{\textit{#1}}
+\newcommand{\newpb}{\textit{new ! }}
+\newcommand{\prop}[1]{\texttt{#1}}
+\newcommand{\future}[1]{\textit{#1}}
+
+%Anciennes commandes a supprimer
+
+\let\DT\LD
+\let\DN\ND
+\let\de\NDE
+\let\PV\VP
+\def\LeaderR{\blop}
+\def\Leaderc{\vlop}
+
+\let\rulelabel\label
+
+\newcommand{\period}[1]{#1\xspace}
+
+\newcommand{\technologie}[1]{\terme{#1}}
+
+% Macros plus specifiques a Europa
+\def\ducatsx{%
+  D\llap{\raise 0.1em\hbox{|\kern -.05em|\hskip .1em}}%
+}
+\def\faceplusx{%
+  \tikz[baseline=-.85ex,line width=.2ex,black]{%
+    \draw[fill=black!10] (0,0) circle (1ex);%
+    \draw (-.55ex,0)--(.55ex,0) (0,-.55ex)--(0,.55ex);}}
+\def\facemoinsx{%
+  \tikz[baseline=-.85ex,line width=.2ex,black]{%
+    \draw[fill=black!10] (0,0) circle (1ex);%
+    \draw (-.55ex,0)--(.55ex,0);}}
+\def\anonymex{%
+  \tikz[baseline=(X.base),line width=.2ex,black]{%
+    \draw[fill=black!10] (0,0) circle (1.2ex);%
+    \node(X)[anchor=center] {?};}}
+
+\TUabbrevdef[Ducats]{D\textdollar}{\hspace*{.2em}\ducatsx}
+\TUabbrevdef[Faceplus]{(+)}{\faceplusx}
+\TUabbrevdef[Facemoins]{(-)}{\facemoinsx}
+\TUabbrevdef[anonyme]{(?)}{\anonymex}
+\TUabbrevdef[REVOLT]{\{Revolt\}}{\countermark{Revolt}}
+\TUabbrevdef[PIRATE]{\{Pirate\}}{\countermark{Pirate}}
+\TUabbrevdef[PILLAGE]{\{Pillage\}}{\countermark{Pillage}}
+
+\def\xducats{\Ducatsnsp}
+\def\ducats{\Ducatsusp}
+\def\faceplus{\Faceplususp}
+\def\facemoins{\Facemoinsusp}
+
+\def\textetoilex{\includegraphics[height=1ex]{etoile}}
+\def\textetoile{\textetoilex\xspace}
+\def\textnumber{\#}
+\def\f{\textonehalf}
+\def\tu{\textonethird}
+\def\td{\texttwothird}
+
+\def\TTER{\technologie{Tercios}\xspace}
+\def\TMED{\technologie{Medieval}\xspace}
+\def\TREN{\technologie{Renaissance}\xspace}
+\def\TARQ{\technologie{Arquebus}\xspace}
+\def\TMUS{\technologie{Muskets}\xspace}
+\def\TBAR{\technologie{Baroque}\xspace}
+\def\TMAN{\technologie{Manoeuvre}\xspace}
+\def\TL{\technologie{Lace}\xspace}
+
+\def\TVGA{\technologie{Galleasses}\xspace}
+\def\TGA{\technologie{Galley}\xspace}
+\def\TCAR{\technologie{Carrack}\xspace}
+\def\TGLN{\technologie{Nao-Galeon}\xspace}
+\def\TGF{\technologie{Galleon-Fluyt}\xspace}
+\def\TLS{\TGF} % Latin Sail. TODO: track and replace.
+\def\TBAT{\technologie{Battery}\xspace}
+\def\TVE{\technologie{Vessel}\xspace}
+\def\TTD{\technologie{Three-decker}\xspace}
+\def\TSF{\technologie{74's guns}\xspace}
+
+% Jym, aout 2010
+% Symbole de religion pour inclure dans les regles et pas seulement dans les
+% annexes ou il y a des workaround specifiques.
+% Marche pas ???
+\def\techlatin{\includegraphics[height=0.8\baselineskip]{catholique.pdf}}
+\def\techortho{\includegraphics[height=0.8\baselineskip]{orthodoxe.pdf}}
+\def\techrotw{\includegraphics[height=0.8\baselineskip]{autrereligion.pdf}}
+% \baselineskip dans un tabular compile mais cause une erreur enregardant le
+% pdf (???)
+% Dans un tabular, le graphique est trop haut par rapport a la ligne (???) le
+% \smash ne corrige pas mais evite au moins de decaler le reste de la ligne...
+\def\techrotwtab{\smash{\includegraphics[height=4mm]{autrereligion.pdf}}}
+\def\techislam{\includegraphics[height=0.8\baselineskip]{sunnite.pdf}}
+
+% Major countries and surronding commands
+% Now made as shortcuts of paysmajeur
+\TUdefshortcut{paysmajeur}{Portugal}{POR}{POR}
+\TUdefshortcut{paysmajeur}{Espagne}{HIS}{HIS}
+\TUdefshortcut{paysmajeur}{Hollande}{HOL}{HOL}
+\TUdefshortcut{paysmajeur}{France}{FRA}{FRA}
+\TUdefshortcut{paysmajeur}{Angleterre}{ANG}{ANG}
+\TUdefshortcut{paysmajeur}{Turquie}{TUR}{TUR}
+\TUdefshortcut{paysmajeur}{Russie}{RUS}{RUS}
+\TUdefshortcut{paysmajeur}{Pologne}{POL}{POL}
+\TUdefshortcut{paysmajeur}{Prusse}{PRU}{PRU}
+\TUdefshortcut{paysmajeur}{Venise}{VEN}{VEN}
+\TUdefshortcut{paysmajeur}{Suede}{SUE}{SUE}
+\TUdefshortcut{paysmajeur}{Autriche}{AUS}{AUS}
+\TUdefshortcut{paysmajeur}{Danemark}{DAN}{DAN}
+
+% Plan: PORpor VENven HOLhol POLpol PRUbra (=PRUpru) AUShab (=AUSaus = HAB)
+% => displayed as POR* VEN* HOL* POL* PRU* AUS* and are either MAJ or MIN
+% PORMin VENLin ...
+% => displayed as Minor Portugallia Minor Venetia ... and are MIN
+% PORmin VENmin ...
+% => displayed as minor Portugallia minor Venetia ... and are MIN
+% POR VEN ...
+% => displayed as POR VEN ... and are MAJ
+% MAJHAB
+% => displayed as [AUS/SPA] and designates the controller of \pays{autriche} 
+% hab = AUSmin, HABmin=AUSmin, HABMin=AUSMin
+
+\newcommand{\PORmin}{minor \pays{portugal}\xspace}
+\newcommand{\PORMin}{Minor \pays{portugal}\xspace}
+\TUdefshortcut{pays}{portugal}{*}{minporsc}
+\newcommand{\PORpor}{{\POR}\minporsc}
+
+\newcommand{\VENmin}{minor \pays{venise}\xspace}
+\newcommand{\VENMin}{Minor \pays{venise}\xspace}
+\TUdefshortcut{pays}{venise}{*}{minvensc}
+\newcommand{\VENven}{{\VEN}\minvensc}
+
+\newcommand{\HOLmin}{minor \pays{hollande}\xspace}
+\newcommand{\HOLMin}{Minor \pays{hollande}\xspace}
+\TUdefshortcut{pays}{hollande}{*}{minholsc}
+\newcommand{\HOLhol}{{\HOL}\minholsc}
+
+\newcommand{\POLmin}{minor \pays{pologne}\xspace}
+\newcommand{\POLMin}{Minor \pays{pologne}\xspace}
+\TUdefshortcut{pays}{pologne}{*}{minpolsc}
+\newcommand{\POLpol}{{\POL}\minpolsc}
+
+\newcommand{\SUEmin}{minor \pays{suede}\xspace}
+\newcommand{\SUEMin}{Minor \pays{suede}\xspace}
+\TUdefshortcut{pays}{suede}{*}{minsuesc}
+\newcommand{\SUEsue}{{\SUE}\minsuesc}
+
+\newcommand{\PRUmin}{minor \pays{brandebourg}\xspace}
+\newcommand{\PRUMin}{Minor \pays{brandebourg}\xspace}
+\TUdefshortcut{pays}{brandebourg}{*}{minprusc}
+\newcommand{\PRUpru}{{\PRU}\minprusc}
+
+\newcommand{\AUSmin}{minor \pays{habsbourg}\xspace}
+\newcommand{\AUSMin}{Minor \pays{habsbourg}\xspace}
+\TUdefshortcut{pays}{habsbourg}{*}{minaussc}
+\newcommand{\AUSaus}{{\AUS}\minaussc}
+
+\newcommand{\DANmin}{minor \pays{danemark}\xspace}
+\newcommand{\DANMin}{Minor \pays{danemark}\xspace}
+\TUdefshortcut{pays}{danemark}{*}{mindansc}
+\newcommand{\DANdan}{{\DAN}\mindansc}
+
+\def\PRUbra{\PRUpru}
+
+\def\MAJHAB{[{\AUS}/{\HIS}]\xspace}
+\def\MAJHOL{[{\HOL}/{\VEN}/{\DAN}]\xspace}
+\def\MAJHOLx{[{\VEN}/{\DAN}]\xspace}
+\def\hab{\AUSmin}
+\def\HABmin{\AUSmin}
+\def\HABMin{\AUSMin}
+\def\HAB{\AUSaus}
+\def\AUShab{\AUSaus}
+
+\TUdefshortcut{pays}{german-empire}{GE}{GE}
+\TUdefshortcut{pays}{saint-empire}{HRE}{HRE}
+
+
+\def\AUT{\AUS}
+\def\ENG{\ANG}
+\def\SPA{\HIS}
+
+
+\def\bonus#1{\expandafter\bonushelper#1\nil}
+\def\bonushelper#1#2\nil{\bgroup\bf\if#1-\relax--\else#1\fi#2\egroup}
+
+\def\CATHCR{Catholic/Counter-Reformation\xspace}
+\def\CATHCO{Catholic/Conciliatory\xspace}
+\def\PROTANG{Protestant/Anglican\xspace}
+\def\PROTRIG{Protestant/Rigorous\xspace}
+\def\PROTTOL{Protestant/Tolerant\xspace}
+
+\def\Veteran{\emph{Veterans}\xspace}
+\def\Conscripts{\emph{Conscsripts}\xspace}
+
+% Jym, août 2012
+% short commande for blason inclusion in section titles
+\newcommand{\blasonJ}[1]{\includegraphics[width=12bp]{shield_#1}}

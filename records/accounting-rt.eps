@@ -1,0 +1,72 @@
+%!PS
+BOOTFILE (r) file run
+HOMEDIR(/library/librecord.eps)! include
+<< /Title ((Economic record Sheet A/C)) >> infochunk
+begindocument
+beginpage
+(Economic record sheet A - Royal Treasure) recordsheettitle
+[48 72 237 31 547{}for ] recordmodel
+
+(Turn number) ntitle
+(RT at start of turn) ntitle %A1
+(RT after Events) (1±?) bbtitle %A2
+(Gifts and loans between players) (±) nntitle %A3
+(Wood & Slaves) (±) nntitle %A4
+(Diplomatic actions) ntitle %A5
+(Diplomatic reactions) ntitle %A6
+(Subsidies and dowries) (±) nntitle %A7
+(RT after Diplomacy) (2+3+4-5-6+7) bbtitle %A8
+recordgrid
+
+23 recordskip
+(Incomes, Expenses & Military: see Economic Record Sheet B) recordsheettitle
+3 ystep sub recordskip
+
+(Pillages, privateers) ntitle %A9
+(Gold from ROTW & Convoys) ntitle %A10
+(Exceptional taxes modifier) (B40?) nntitle %A11
+(Exceptional taxes) (±) nntitle %A12
+(RT before Exchequer) (8+9+10+11) GGtitle %A13
+(Gross income) (B26) bbtitle %A14
+(Regular income) (% of 14) nntitle %A15
+(Prestige income) (% of 14) nntitle %A16
+(Max. national loan) (% of 14) nntitle %A17
+(Max. international loan) ntitle %A18
+(Expenses) (B49) bbtitle %A19
+(Remaining expenses) (19-15) nntitle %A20
+(  from Prestige) (≤ min(16,20)) nntitle %A21
+(  from N. loan) (≤ 17) nntitle %A22
+(  from I. loan) (≤ 18) nntitle %A23
+(RT balance) (21+22+23-20) GGtitle %A24
+(RT after Exchequer test) (13+24) bbtitle %A25
+(Prestige VPs) (16-21) nntitle %A26
+(Wealth) (14+26) nntitle %A27
+(Period wealth) gtitle %A28
+(Stability improvement) ntitle %A29
+(Ransom, peace) (±) nntitle %A30
+(RT after peace) (25-29+30) ggtitle %A31
+(Inflation) (% of |31|) nntitle %A32
+(RT at end) (31-32) bbtitle %A33
+recordgrid
+
+ystep 2 mul 20 add recordskip
+
+(Economic record sheet C - Loans) recordsheettitle
+/line 1 def
+
+(New International loan) (A23) nntitle %C1
+(I. loans interests) (10% of 1) GGtitle %C2
+(I. loans refunds) (3 turns !) bbtitle %C3
+(International bankruptcy) ntitle %C4
+recordgrid
+3 recordskip
+(National loans at start) ntitle %C5
+(National loans interests) (10% of 5) GGtitle %C6
+(National loans bankruptcy) ntitle %C7
+(National loans refunds) ntitle %C8
+(New National loans) (A22) nntitle %C9
+(National loans at end) (5-7-8+9) bbtitle %C10
+recordgrid
+endpage
+enddocument
+quit

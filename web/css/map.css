@@ -1,0 +1,119 @@
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px; overflow:hidden;
+     font-family: sans;font-size: 11px;}
+* {margin: 0px; padding: 0px;}
+#map_canvas { height: 100%; width: 100%; }
+
+.overlay, .moverlay{
+    border: 2px solid black;
+    background-color: rgba(0,0,0,.5);
+    padding: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,.8);
+    -moz-box-shadow: 0px 0px 3px rgba(0,0,0,.8);
+    box-shadow: 0px 0px 6px rgba(0,0,0,.8);   
+}
+.overlay-selected, .moverlay-selected{
+    background-color: rgba(255,255,255,.5);
+}
+.overlay .title, .moverlay .title {
+    position: absolute;
+    right:0px;
+    top: 0%;
+}
+.overlay .title .inner, .moverlay .title .inner {
+    display: block;
+    position: relative;
+    right: -18px;
+    box-shadow: 0px 0px 6px rgba(0,0,0,.8);   
+    writing-mode: tb-rl;
+    white-space: nowrap;
+    font-size: 10px;
+    height: 10px;
+    padding: 3px;
+    line-height: 120%;
+    background-color: black;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px; 
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -moz-transform-origin: 100% 100%;
+    -webkit-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    font-family: sans;
+    color:white;
+}
+.location {
+    background-color: #77F;
+    cursor: pointer;
+}
+.location-selected {
+    background-color: #F7F;
+    cursor: pointer;
+}
+.location-current {
+    background-color: #F77;
+    cursor: pointer;
+}
+
+#modal {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,.8);
+    -moz-box-shadow: 0px 0px 3px rgba(0,0,0,.8);
+    box-shadow: 0px 0px 6px rgba(0,0,0,.8);   
+}
+
+.playerSelected {
+    background-color:black;
+}
+
+.msgsend .button {
+    margin-top: 2px;
+    bottom: 0px;
+    position: absolute;
+}
+.button {
+    background: black;
+    padding: 4px;
+    color: white;
+    border: 1px solid black;
+    height: 15px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ie-border-radius: 3px;
+    border-radius: 3px;
+}
+.counterMultiSides {
+    /* Increment of width is hardcoded */
+    padding-left:2px;
+    padding-right:2px;
+    border-left:3px solid black;
+    border-right:3px solid black;
+}
+#modaltable th {
+    height: 17px;
+    lineHeight: 1;
+    font-size: 16px;
+}
+
+/* Style for inside messages */
+.msgloc {
+    color: blue;
+}
+.msgnam {
+    color: #77F;
+}

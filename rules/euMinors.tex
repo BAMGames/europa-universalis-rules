@@ -1,0 +1,43 @@
+\documentclass[noindex]{simplerules}
+\geometry{a4paper,landscape,top=15bp,bottom=15bp,left=20bp,right=20bp}
+%%% Modify typesetting for the tables %%%
+\setlength\overfullrule{5pt}
+%%% Some hooks must be deactivated %%%
+\xdef\ignoreone#1{}
+\xdef\ignoreoneoftwo#1#2{#2}
+\let\leaderhyperlink\ignoreone
+\def\forcenewpage{~\newpage}
+\let\xeventref\ignoreoneoftwo
+\let\longxeventref\ignoreoneoftwo
+
+% Common sources
+\input{engCommandes}
+\input{translations}
+\input{engLeaders}
+\input{engEntetesMineurs}
+\input{engCorpsMineurs}
+
+\let\EUminorremark\ignoreoneoftwo
+\usepackage{longtable}
+
+\begin{document}
+\def\EUlineoftabular#1{\expandafter\EUhelper\expandafter{#1}}
+\def\EUhelper#1{\theminorreligionshort{#1}\,\pays{#1}&\theminorbasicforces{#1}&\theminorforces{#1}&\theminorbasicrenforts{#1}\EUwithvalue{minor@#1@bonusrenforts}{}{, }{}&%
+\EUcasevalue{minor@#1@diplo}{---}{\expandafter\expandafter\expandafter\EUhelpertwo\csname minor@#1@diplo\endcsname:::::::\EUhelperend}&%
+\EUcasevalue{minor@#1@pref}{---}{\expandafter\expandafter\expandafter\EUhelperthree\csname minor@#1@pref\endcsname,,,,,,,\EUhelperend}&%
+\EUvalue{minor@#1@HRE}
+}%
+\def\EUhelpertwo#1:#2:#3:#4:#5:#6:#7:#8\EUhelperend{\ifx#6*\ifx#7*---\else\textetoile/#7\fi\else\ifx#7*#6/\textetoile\else#6/#7\fi\fi}
+\def\EUhelperthree#1,#2,#3,#4,#5\EUhelperend{#1\ifx#2\relax\relax\else,#2\fi\ifx#3\relax\relax\else,#3...\fi}
+\graytabular\begin{longtable}{lllllll}
+\textbf{Country}&\textbf{Basic forces}&\textbf{Country forces}&\textbf{Reinforcements}&\textbf{Ann.}&\textbf{Control}&\textbf{HRE}\\\ghline
+\endhead
+\FEforeachlistgroup{listofminors}{\EUlineoftabular{\loopitem}\relax}{\\\ghline\relax}%
+\\\ghline\hline\hline%
+\FEforeachlistgroup{listofminorsminmaj}{\EUlineoftabular{\loopitem}\relax}{\\\ghline\relax}%
+\\\ghline\hline\hline%
+\FEforeachlistgroup{listofminorsrotw}{\EUlineoftabular{\loopitem}\relax}{\\\ghline\relax}%
+\end{longtable}
+\newpage
+
+\end{document}

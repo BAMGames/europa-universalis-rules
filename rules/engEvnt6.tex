@@ -1,0 +1,1204 @@
+% -*- mode: LaTeX; -*-
+
+\section{Period VI}\label{events:pVI}
+
+
+
+\subsection*{Event Table of Period VI}
+
+\begin{eventstable}[Period VI events table]
+  \tabcolsep=5pt\centering%
+  \begin{tabular}{|l|*{5}{c}|l|}
+    \hline
+    1\up{st}\textarrow& 1-4 & 5-6 & 7 & 8 & 9 & 10 \\ \hline
+    1 & 1  & 4  & 4  & R16 & 3   & \textbullet~1--2 \\
+    2 & 2  & 5  & 18 & 17  & 4   &  +1 then \\
+    3 & 3  & 9  & R1 & 18  & 5   & \nameref{events:pV}\\
+    4 & 6  & 10 & 2  & 19  & 6   & \textbullet~3--10: \\
+    5 & 7  & 15 & 11 & 8   & R7  & \nameref{events:pV}\\
+    6 & 8  & 16 & R12& R11 & 15  & \\
+    7 & 11 & 17 & 13 & 12  & 9   & \\
+    8 & 12 & 1  & 14 & R13 & R10 & \\
+    9 & 13 & R2 & 7  & 1   & R18 & \\ \hline
+    10 & \multicolumn{6}{l|}{1--6 \nameref{events:pVII}, 7--10 \nameref{events:pV}} \\ \hline
+  \end{tabular}
+\end{eventstable}
+
+\eventssummary{%
+  pVI:Great Northern War|,%
+  pVI:WoSS|O{pV:WoSS},%
+  pVI:Kingdom Prussia|O{pV:Kingdom Prussia},%
+  pVI:Jacobite Rebellion|S{pVI:Jacobite:First Revolt}/%
+  S{pVI:Jacobite:Bonny Prince Charlie},%
+  pVI:Act Establishment|,%
+  pVI:Vassalisation Hanover|,%
+  pVI:Treaty Methuen|,%
+  pVI:Act Union|,%
+  pVI:Bill Test|,%
+  pVI:Heinsius|,%
+  pVI:WoPS|,%
+} \eventssummary{%
+  pVI:War Turkey|E/E,%
+  pVI:WoAS|,%
+  pVI:Kurland|,%
+  pVI:Slave Revolts WI|E/E,%
+  pVI:Bantu Raids|E/E,%
+  pVI:Last Great Mughals|,%
+  pVI:Wars India|T{A}/T{B}/T{C},%
+  pVI:Mazepa|,%
+  pVI:Camisards|,%
+  pVI:Barbaresques|,%
+}
+
+\newpage\startevents
+
+
+
+\event{pVI:Great Northern War}{VI-1}{The Great Northern War}{1}{PBNew}
+
+\history{1700-1721}
+\dure{until the end of the war caused by the event.}
+% (Jym) All \CB switched from \phevnt -> \phdipl. It looks cleaner to manage
+% reactions at diplomacy time due to all \CB... the only difference is
+% preventing the signing of alliances, but this does not really matter here
+% since there are two turns to use the \CB... (JCD) I am not sure to follow
+% this line of reasoning, but in fact, I don't think this matters much.
+
+\phdipl
+\aparag[Russian aggression of \SUE] \RUS has a free \CB against \SUE if they
+have a common frontier.
+\bparag This \CB can be used at this turn or the next one.
+\bparag If \RUS does not use this \CB, it loses 2 \STAB at the end of the
+diplomacy phase of the next turn. This becomes a loss of 3 \STAB during and
+after the reign of \monarque{Peter the Great}.
+\aparag[Polish aggression of \SUE] \POLpol has a normal \CB against \SUE if
+they have a common frontier.
+\bparag This \CB can be used at this turn or the next one.
+\bparag \POLpol is affected by \xnameref{pVI:GNW:Polish Civil War}).
+\bparag If \POL does not use this \CB, it loses 2 \STAB at the end of the
+diplomacy phase of the next turn. This becomes a loss of 3 \STAB if either
+\ref{pIV:Liberum Veto} never happened, or Absolutism has been established
+(\ref{chSpecific:Poland:Absolutism}) or the dynasty of \payssaxe currently
+rules \POL per \ref{pV:Saxon King Poland}.
+\bparag This \CB can be used as a reaction to the \CB of \RUS above, or as a
+regular \CB.
+\bparag If there is a \POLmin (special or normal), apply \ref{pVI:GNW:Minor
+  Poland}.
+\aparag[Forfeit] If neither \RUS nor \POL use their \CB by the end of next
+turn, consider the event played and \SUE is considered to have won the war for
+all purposes (especially for the lasting effects).
+\bparag If either \RUS or \POL are already at war against \SUE, either can
+declare that they transform the war into this event. This is considered as
+using the \CB provided by the event (with no \STAB cost in the case of \POL)
+and triggers everything triggered by the use of the \CB.
+\aparag[Swedish generalisation of the war] If one of \RUS or \POL uses its \CB
+to declare war on \SUE, then \SUE has a free \CB against the other one.
+\bparag This \CB is used as a reaction to the \CB of \RUS or \POL.
+\bparag[Surprise aggression] As an exception, this \CB can be used at the
+beginning of any military round of any turn of the war. In this case, the
+country enters war without a call for allies.
+\aparag[Prussian involvement] If \PRU is a major country, it has a \CB against
+either \POL or \SUE (its choice).
+\bparag This \CB can be used at the turn of the event or at the next
+one. There is no penalty for not using it.
+\aparag[Danish aggression] \paysDanemark may enter the war against \SUE (see
+\xnameref{pVI:GNW:War Denmark}).
+\aparag[Alliances] \RUS, \POL, \PRU or \SUE are not necessarily allied in the
+war. They have to sign a formal alliance if they want to be allied.
+
+\tour{After the war begins}
+
+\phadm
+\aparag At the first turn of the war (only), \SUE receive reinforcements as a
+minor country. It makes one roll in offensive attitude \textbf{and} one in
+defensive attitude.
+\bparag These reinforcements are \Veteran. They do not count toward this turn
+purchase limit.
+
+\phmil
+\aparag If the dynasty of \payssaxe rules in \POL, troops of \POL and \SUE can
+cross the \HRE in order to wage war in \payssaxe.
+\bparag No side may besiege or pillage provinces of the \HRE belonging to
+countries not at war.
+\aparag Troops of \SUE may enter provinces of \regionUkraine even if they
+belong to a country not at war (they may thus trigger \ref{pVI:Mazepa}).
+\bparag This gives a free \CB against \SUE to both the owner of the province
+and the protector of \paysukraine to be used during the next turn.
+% (Jym) In \PPI, the \CB was against enemies of \SUE if \TUR used it. Here,
+% \TUR already has a \CB because of the revolt of \leaderMazepa and it gives a
+% double \CB to \TUR (against either \RUS or \SUE). Easier to write like that
+
+\phpaix
+\aparag[Starting the Revolt of Mazepa] If there is any \ARMY counter of \SUE
+in any province of \regionUkraine at the beginning of the peace phase then
+\ref{pVI:Mazepa} will occur next turn. Consider it as the first event rolled
+for during the next event phase.
+\bparag This revolt will occur even if the peace is signed at this turn. In
+this case, the revolt is considered to have occurred at the very end of the
+turn, before signing the peace.
+\aparag If \SUE signs no unfavourable peace for this war (including if the war
+does not occur), it immediately wins 50 \VP.
+
+\effetlong
+% (Jym) Err, how about the overseas choice ?  (JCD) Does not matter, the event
+% is more specific. Let the third army become a totally normal army.
+\aparag If \SUE signs no unfavourable peace for this war (including if the war
+does not occur), then \SUE may use up to 3 \ARMY counters in Europe with no
+condition on the number of provinces and even if the politics of \ROTW
+expansion was chosen earlier.
+
+\begin{digressions}[\payspologne and \paysDanemark in the Great Northern War]
+
+
+  \digression[pVI:GNW:War Denmark]{War in \paysdanemark}
+  % (Jym) : was: \DAN in \EC of \RUS + entry in war.  Reformulation to avoid
+  % \minmaxing...  We might need diagrams to know which cases should be
+  % needed...
+  \aparag If \paysdanemark is inactive:
+  \bparag If \RUS declares war on \SUE, then \paysdanemark is put in \CE of
+  \RUS and fully enters war against \SUE.
+  \bparag If \RUS does not declares war on \SUE, but \POL does, then
+  \paysdanemark is put in \CE of \POL and fully enters war against \SUE.
+  \aparag If \paysdanemark is already at war against \SUE:
+  \bparag If its controller is \RUS or \POL and uses its \CB, then it is
+  raised in \EG of its controller.
+  \bparag If it is not allied to any \MAJ, it is put in \EC of the first \MAJ
+  to use its \CB against \SUE (\RUS first, then \POL).
+  \bparag If its controller is \RUS or \POL and does not use its \CB, the war
+  goes on but \SUE can now obtain the truce (see \ref{pVI:GNW:Danish Truce}).
+  \bparag If \paysdanemark is at war against a \MAJ declaring war to \SUE, it
+  immediately proposes a white peace. If another \MAJ declares war to \SUE,
+  \paysdanemark is then put in \CE of this \MAJ and enters war against \SUE.
+  \aparag Otherwise (\paysdanemark at war against someone not part of the
+  Great Northern War), \paysdanemark does not partake to the Great Northern
+  War.
+  % (Jym) Now included in event \leaderMazepa.
+  % \aparag If \paysukraine is at war against \RUS or if
+  % \ref{pVI:Mazepa} is occurring, \TUR has a free \CB against \RUS at
+  % the next diplomacy phase.
+  % \bparag This \CB exists at each turn were one of the conditions is true.
+
+  \phpaix
+  \aparag\label{pVI:GNW:Danish Truce} If the capital of \paysdanemark is
+  controlled by \SUE at the beginning of a peace phase, or if \paysdanemark
+  loses a major defeat (on land or on sea) against \SUE (not its allies), it
+  proposes a truce to \SUE.
+  \bparag If \SUE accepts the truce, \SUE evacuates the capital of
+  \paysdanemark but keeps other controlled provinces.
+  \bparag If the peace is signed during this truce, provinces of \paysdanemark
+  controlled by \SUE must be taken into account when computing peace
+  differential.
+  \bparag The truce lasts for 3 turns after which \paysdanemark automatically
+  enters back in the war.
+  % (Jym) added:
+  \bparag During the truce, \paysdanemark stays on the diplomatic track of its
+  patron and is still considered at war for all purposes.
+  % (Jym) hum, not too sure about that. Especially because of the
+  % \seazoneOresund levies
+
+
+  \digression[pVI:GNW:Polish Civil War]{Polish Civil War}
+  \begin{histoire}[Tumult in Poland]
+    Multiples candidates losing the Polish crown when Augustus II of Saxony
+    was elected in 1697 were still trying to influence the Polish
+    politics. They all played a complex political game for the crown during
+    this war. Even if he was military forced to abdicate at the treaty of
+    Altranst\"{a}dt, Augustus was soon back in the war and got his throne
+    back. Sweden did not manage to impose a lasting king, even if Stanislas
+    Leszinski was elected for a short and contested reign in 1706. Stanislas
+    tried to come back at the death of Augustus, this time with the help of
+    France, yielding to the War of Polish Succession.
+  \end{histoire}
+  % (Jym) More references to IV-A for Absolutism that may also come with the
+  % the National Revival in pVII (associated to event of Kosciusko).
+
+  \condition{}
+  \aparag If Absolutism has been established in \POL, ignore this sub-event.
+  % (Jym) WoPS:Polish Victory establishes Absolutism... What?
+  \aparag If \payspologne is a special \EW of either \FRA or \SUE per
+  \ref{pVI:WoPS:Polish Victory} or a regular \MIN (without Absolutism), see
+  the modifications of the Civil War in \ref{pVI:GNW:Minor Poland}.
+
+  \phmil
+  \aparag If a Swedish \ARMY first enters a province owned by \POL and no
+  battle (except overrun) occurs, the fortress may surrender to \SUE.
+  \bparag Roll 1d10, add the current \STAB of \POL (0 if it is a \MIN), add
+  the level of the fortress. If the result is 5 or less, the fortress
+  immediately surrenders to \SUE.
+  % (Jym) added:
+  \bparag \SUE has to stop movement in the province in order to try this
+  surrender, but it occurs during its movement segment and not during the
+  siege segment.
+  % (Jym) added:
+  \bparag Troops inside the fortress are redeployed as if \emph{Honor of war}
+  had been granted. The fortress does not lose one level for being taken.
+  % (Jym) I do hesitate about next point. Possibly too tough to manage with a
+  % war that lasts 4 turns. But without that, I am afraid that it would be
+  % too powerful to reattempt everywhere until this succeeds. In doubt, I
+  % comment, since this was not there before.
+  %
+  % \bparag This can only occurs once per province during the war.
+  %
+  % (Jym) Saxony is reliable:
+  \bparag Provinces of \payssaxe are not subject to automatic surrender to
+  \SUE.
+
+  \phpaix
+  \aparag If, at the beginning of a peace phase, \SUE controls \villeVarsovie
+  or the \STAB of \POL is 0 or lower, \SUE manages to impose its pretender as
+  a king for (part of) \POL.
+  \bparag If \payspologne is a \MIN, this can only occurs if \SUE controls
+  \villeVarsovie.
+  \bparag \SUE receives \leaderwithdata{Poniatowski2}. Remove Polish
+  \leaderPoniatowski if in play. If he was not in play (even if already dead),
+  he will stay with \SUE for 2 turns.
+  \bparag Starting with next turn, \SUE can raise up to one \ARMY\faceplus in
+  any controlled or owned national province of \POL. This \ARMY has the class,
+  technology and cost of Polish troops. It does not decrease the number of
+  Polish (or regular Swedish) counters available. It does not count toward
+  purchase limits for \SUE nor for \POL.
+  % (Jym) to settle the matter of change if the \ARMY is broken
+  \bparag \SUE may not have more than 4\LD worth of ``Polish'' troops and may
+  not split them. It may, however, use one \LD counter if needed.
+  \bparag This is a Swedish \ARMY and can thus trigger \ref{pVI:Mazepa}.
+  \aparag If at the beginning of a peace phase, \SUE controls both
+  \villeVarsovie and either \villeDresden (if the \payssaxe dynasty rules
+  \POL) or \villeCracovie (otherwise), \POL propose a mandatory truce to \SUE.
+  \bparag If \SUE accepts the truce, it may immediately annex one province of
+  \POL (\SUE chooses which).
+  \bparag This truce can only be imposed once during the war.
+  \bparag During the truce, \SUE keeps control of the fortresses it controls
+  at the beginning of the truce.
+  % (Jym) :
+  \bparag However, \POL gives back to \SUE the provinces of \SUE it controls
+  at the beginning of the truce.
+  \bparag As long as the truce lasts, \SUE can freely cross provinces
+  controlled by \POL. They count as enemy provinces for movement purpose and
+  \SUE cannot stop in them or pillage them. Supply may cross these provinces.
+  \bparag During the truce, \POL do not lose \STAB because of the war (as if
+  in armistice).
+  \bparag The truce can be broken by \POL either after 3 turns of truce or
+  during a turn following a major defeat of \SUE
+  \aparag\label{pVI:GNW:Stanislas Victory} If \POL signs an unfavourable
+  peace after a truce was imposed (even if broken), then \SUE manage to impose
+  its pretender on the throne.
+  \bparag The new king of \POL is \monarqueStanislas with values 6/5/6. He
+  will last as long as a random length for Minister, see \ref{eco:Excellent
+    Minister}. This is a new dynasty.
+  \bparag \label{pVI:GNW:Stanislas} As long as \monarqueStanislas rules, \POL
+  and \SUE are in defensive alliance and \POL must answer any call for ally
+  made by \SUE.
+
+
+  \digression[pVI:GNW:Minor Poland]{Minor Poland}
+  % (Jym) Only WoPS may impose durably the \EG of \POLmin. GNW can do that
+  % only for the duration of Stanislas reign (by breaking the \EG of WoPS if
+  % needed)
+
+  \activation{These effects modify and overrules the effects of
+    \ref{pVI:GNW:Polish Civil War} if \payspologne is already a minor
+    country.}
+
+  \phdipl
+  \aparag If \payspologne is a regular minor country, it makes a mandatory
+  white peace with all its enemies (except \SUE and allies) and uses its \CB
+  to declare war on \SUE. It will call for allies as per regular rules.
+  \aparag If \payspologne is a regular minor country, apply all the effects of
+  \ref{pVI:GNW:Polish Civil War} except \ref{pVI:GNW:Stanislas}. Use the
+  following instead: For the reign of \monarqueStanislas, \payspologne is put
+  in \EG of \SUE and no diplomacy is allowed on it, after which \payspologne
+  becomes a normal minor country.
+  \bparag For all purposes except incomes (declarations of war, victory
+  conditions, \ldots) consider that special \EG as if \payspologne were a
+  \VASSAL of \SUE.
+  % (Jym) taken from \PPI. Not sure this is useful...
+  \bparag As an exception to the normal rules, the order of preference for
+  controlling \payspologne during this war is: \PRU, \FRA, \AUS, \HOL, \ENG,
+  \RUS.
+  \bparag If \payspologne signs no unfavourable peace during this war, it is
+  put in \EG of the country that controlled it. Otherwise, it becomes neutral.
+  \aparag[\payspologne special minor of \SUE] Due to \ref{pVI:WoPS:Polish
+    Victory}, any declaration of war against \SUE also includes
+  \payspologne. Apply \ref{pVI:GNW:Polish Civil War} substituting \RUS for
+  \SUE (including the benefits of \leaderPoniatowski and his \ARMY). \RUS can
+  impose its pretenders on the throne.
+  \bparag If \RUS imposes its pretender on the Polish throne, \payspologne it
+  put in \EG of \RUS, with no diplomacy possible, for the reign of
+  \monarqueStanislas after which \payspologne becomes a normal minor country.
+  \aparag[\payspologne special minor of \FRA] Due to \ref{pVI:WoPS:Polish
+    Victory}, \FRA decides whether \payspologne uses its \CB against \SUE or
+  not.
+  \bparag If \payspologne is at war, it is played by \FRA
+  % (Jym) added:
+  but \FRA does not have to enter war against \SUE (it \emph{may} choose to do
+  so, using the normal \CB of \POL).
+  \bparag If \SUE manages to impose its pretender, this breaks the special
+  status of \payspologne. It becomes a special \EG of \SUE (as above) for the
+  reign of \monarqueStanislas and after that a regular minor country.
+  \bparag If \SUE does not manage to impose its pretender, \payspologne stays
+  a special \EG of \FRA.
+
+\end{digressions}
+
+
+
+\event{pVI:WoSS}{VI-2}{The War of Spanish Succession}{1}{PBMod}
+
+\condition{This event is the same as \ref{pV:WoSS} which happens now if it did
+  not occur yet. Else, treat as \RD and mark off.}
+
+
+
+\event{pVI:Kingdom Prussia}{VI-3}{Creation of the Kingdom of
+  Prussia}{1}{RistoMod}
+
+\condition{This event is the same as \ref{pV:Kingdom Prussia} which happens
+  now if it did not occur yet. Else, treat as \RD and mark off.}
+
+
+
+\event{pVI:Jacobite Rebellion}{VI-4}{Jacobite Rebellion}{2}{RistoMod}
+
+\history{1715/1745-46}
+
+\condition{}
+% (JCD) Added the mark off part. Obviously, no Jacobite rebellion for Catholic
+% \ANG.
+\aparag If \ANG is \CATHCR or \CATHCO, roll for two \REVOLT in \ANG, then mark
+off and consider as played.
+\aparag This event can only happen if \paysecosse is on the diplomatic track
+of \ANG or if \ANG owns at least four provinces of \paysecosse. Otherwise, do
+not mark off and re-roll.
+\aparag There are two rebellions with slightly different initial
+conditions. Apply the rules hereafter, but read initial placement in
+\xnameref{pVI:Jacobite:First Revolt} or \xnameref{pVI:Jacobite:Bonny Prince
+  Charlie}.
+
+\phdipl
+\aparag If \FRA is \CATHCR, it has a \CB to make a full intervention at the
+side of \paysecosse.
+\bparag If \FRA is Catholic, it can make a limited intervention at the side of
+\paysecosse.
+\bparag If \FRA is Protestant, it can make a limited intervention at the side
+of \ANG.
+\aparag \HIS can make a limited intervention at the side of \paysecosse.
+\aparag Other countries can make foreign intervention as per normal religious
+wars rules (see \ref{chDiplo:Religious Civil War}). \paysecosse is considered
+to be Catholic during this war.
+
+\phadm
+\aparag Rebels roll for reinforcements in offensive attitude for the duration
+of the war.
+\bparag Rebels can use the counters of both \paysecosse and \paysroyalistes.
+\bparag reinforcements must be put in provinces where there are already rebels
+or allied troops (not just \REVOLT ). If none exist, the rebels receive no
+reinforcements.
+
+\phmil
+\aparag The \REVOLT are supply sources for the rebels and limited supply
+sources for their allies.
+
+\phpaix
+\aparag \ANG wins if there are no more \REVOLT and either there is no more
+rebel \ARMY or the rebels and their allies have suffered one more major defeat
+that \ANG this turn.
+\bparag In this case, remove all rebel counters from the map.
+\bparag \paysecosse get back to the diplomatic position it had before the war
+on the English track.
+\bparag If \FRA was fully at war, a normal peace has still to be signed.
+\aparag The rebels win if the king is overthrown by the \REVOLT or if they
+control \villeLondon and there is at least one \REVOLT still in play or if a
+fully allied \FRA manages to impose an unconditional surrender to \ANG.
+\bparag If the rebels win and were not allied to any \CATHCR country, \ANG
+becomes \CATHCO.
+\bparag If the rebels win and were allied to a \CATHCR country, \ANG becomes
+\CATHCR.
+\bparag At the beginning of the next turn, the king of \ANG dies and an
+automatic \terme{Dynastic Crisis} occurs in \ANG. This overrules \ref{pVI:Act
+  Establishment}.
+\aparag Apply the following additional effects if \FRA was fully at war and
+manages to impose an unconditional surrender to \ANG:
+\bparag \ANG loses 50\VP.
+\bparag Events \shortref{pIV:Act Navigation} and \shortref{pVI:Act Union} are
+cancelled.
+\bparag \ANG makes an enforced dynastic alliance with \FRA and must give a
+\COL or \TP of its choice as a dowry.
+\bparag \ANG makes an enforced offensive alliance with \FRA for two turns and
+must respect it when \FRA calls it as ally.
+\bparag \ANG cannot declare war to \FRA for the duration of the new king and
+his successor.
+
+
+\subevent[pVI:Jacobite:First Revolt]{First Jacobite Rebellion}
+\history{1715}
+
+\phevnt
+\aparag If \paysecosse was allied to \ANG, remove all its troops from the map.
+\bparag \paysecosse is not considered to be \VASSAL or \ANNEXION by \ANG as
+long as the war lasts (for incomes or victory condition purpose).
+\aparag Place a \REVOLT \facemoins in each of the following provinces:
+\provinceHighlands, \provinceMoray and \provinceAlba.
+\bparag Place a \ARMY\facemoins of \paysecosse in one of the revolted
+provinces.
+
+
+\subevent[pVI:Jacobite:Bonny Prince Charlie]{Bonny Prince Charlie}
+\history{1745-1746}
+
+\phevnt
+\aparag If \paysecosse was allied to \ANG, remove all its troops from the map.
+\bparag \paysecosse is not considered to be \VASSAL or \ANNEXION by \ANG as
+long as the war lasts (for incomes or victory condition purpose).
+\aparag Place a \REVOLT \faceplus in each of the following provinces:
+\provinceHighlands, \provinceMoray and \provinceAlba.
+\bparag Place a \ARMY\facemoins of \paysecosse and general \leader{Prince
+  Charles} in one of the revolted provinces.
+
+
+
+\event{pVI:Act Establishment}{VI-5}{Act of Establishment}{1}{Risto}
+
+\history{1701}
+
+\effetlong
+\aparag From now on \ENG can no longer suffer dynastic crisis due to a roll on
+the Monarch Reign table.
+\aparag However, it can still suffer dynastic crisis due to events.
+
+
+
+\event{pVI:Vassalisation Hanover}{VI-6}{Vassalisation of
+  \payshanovre}{1}{Risto}
+
+\history{1714}
+
+\condition{}
+\aparag Cannot occur if \ENG is not Protestant. In that case mark as played.
+\aparag Cannot occur if \ref{pVI:Act Union} and \ref{pVI:Act Establishment}
+have not already occurred both. In that case re-roll and do not mark off.
+
+\phevnt
+\aparag If \payshanovre is currently in a war against \ENG, it offers
+immediately a white peace.
+\aparag \payshanovre becomes a permanent \VASSAL of \ENG for the rest of the
+game. No diplomacy is allowed on \payshanovre.
+
+\effetlong
+\ephase Revolts in \pays{hanovre} are no more automatically suppressed if
+inactive.  \fphase \ANG may now use the troops of \pays{hanovre} to fight
+revolts inside its territory and use its troops to fight revolts inside
+\pays{hanovre}.
+
+
+
+\event{pVI:Treaty Methuen}{VI-7}{Treaty of Methuen}{1}{RistoMod}
+
+\history{1703}
+
+\condition{}
+% (Jym) let's be explicit about the rare cases that would lead to a double
+% application of this event
+\aparag This event can normally only happen once, either triggered by
+\ref{pV:WoSS} (at the beginning of the war or at peace time) or by rolling for
+it in the table.
+\bparag If the event has already been rolled for when \ref{pV:WoSS} occurs,
+then \emph{Dynastic link and alliance with Portugal} is not at stake in the
+war, except if \HIS managed to re-annex \paysportugal after the event.
+\bparag If \emph{Dynastic link and alliance with Portugal} was chosen by a
+\MAJ during \ref{pV:WoSS}, then consider the event as already played, mark off
+and play \RD instead as per normal rules.
+\aparag If this event was triggered by \ref{pV:WoSS}, apply
+\xnameref{pVI:Methuen:WoSS}, else apply \xnameref{pVI:Methuen:Normal}
+
+
+\subevent[pVI:Methuen:Normal]{Treaty of Methuen}
+\history{1703}
+
+\condition{}
+\aparag If \paysportugal is annexed by \HIS as per \ref{pIII:POR Ann.:Portugal
+  Annexed}, play \ref{pIV:Portuguese Revolt} in addition to this event (even
+if \numberref{pIV:Portuguese Revolt} already occurred and was won by \HIS).
+% (Jym) Choice of \PORmin if at war breaking its alliance vs event waiting the
+% peace, I chose the former because it's funnier.
+\aparag If \ENG is at war with \paysportugal allied to a \MAJ, \paysportugal
+breaks its alliance, sign a white peace with \ENG, becomes neutral and the
+event occurs.
+\bparag Allies of \ENG have the choice to either sign a white peace with
+\paysportugal or break their alliance with \ENG and stay at war with
+\paysportugal.
+% (Jym) event several times in the table, so giving a penalty.
+\bparag If \ENG is at war with \paysportugal (not allied to a \MAJ), then the
+event cannot occur. Mark-off and play \RD instead.
+
+\phdipl
+\aparag \ENG receives a bonus of \bonus{+5} for its diplomacy on \paysportugal
+for this turn only.
+
+\effetlong
+\aparag From now on \paysportugal always gives rights to trade to \ENG as per
+\ref{chExpenses:Limited Access:Giving Rights}, even if it is not on the
+English diplomatic track.
+
+
+\subevent[pVI:Methuen:WoSS]{Dynastic link and alliance with Portugal}
+\history{not historic}
+
+\condition{}
+\aparag If this event is triggered by \HIS, \paysportugal is annexed by
+\HIS. Apply all the effects of \ref{pIII:POR Ann.:Portugal Annexed}.
+\bparag Otherwise, apply this event.
+
+\phevnt
+\aparag If \paysportugal was annexed by \HIS as per \ref{pIII:POR
+  Ann.:Portugal Annexed}, it breaks its annexation and becomes a regular minor
+country.
+\aparag \paysportugal signs a white peace with the \MAJ triggering the event.
+\bparag Allies of the \MAJ triggering the event have the choice to either sign
+a white peace with \paysportugal or break their alliance with the \MAJ and
+stay at war with \paysportugal.
+\aparag If it was not on the diplomatic track of the \MAJ triggering the
+event, \paysportugal becomes neutral.
+
+\phdipl
+\aparag The \MAJ triggering the event receives a bonus of \bonus{+5} for its
+diplomacy on \paysportugal for this turn only.
+
+\effetlong
+\aparag From now on \paysportugal always gives rights to trade to the \MAJ
+triggering the event as per \ref{chExpenses:Limited Access:Giving Rights},
+even if it is not on its diplomatic track.
+
+
+
+\event{pVI:Act Union}{VI-8}{Act of Union}{1}{RistoMod}
+
+\history{1704}
+
+\condition{}
+\aparag Cannot occur if \ENG has been defeated in a Jacobite rebellion
+(\ref{pV:Glorious Revolution} or \ref{pVI:Jacobite Rebellion}). In that case
+mark off as played.
+% (Jym) and play \RD with the R in \ENG instead ?
+\aparag Cannot occur if a Jacobite rebellion is still active.
+\bparag In that case, mark off but re-roll another event.
+\bparag During the first event phase after the end of the rebellion,
+\ref{pVI:Act Union} will automatically be the first event rolled this turn.
+\aparag Cannot occur if \paysecosse is not \VASSAL of \ENG.
+\bparag In that case, mark off but re-roll another event.
+\bparag During the first event phase where \paysecosse is \VASSAL of \ENG,
+\ref{pVI:Act Union} will automatically be the first event rolled this turn.
+% (Jym) Above, my interpretation of conditions of Risto + remark of Pierre
+% below: (Risto) 1. Can occur only if Scotland is currently in \VASSAL of \ENG
+% (whether by event 6:IV or not). Otherwise mark off as played.  3. Cannot
+% occur if Jacobite rebellion (12:V or 10:VI) is still active.  In that case
+% re-roll, but do not mark off as played.  (Pierre) Changes: if conditions 1
+% or 3 : triggered as soon as Scotland is \VASSAL
+
+\phevnt
+\aparag \paysecosse is annexed by \ENG.
+\bparag All \TradeFLEET levels of \paysecosse are immediately added to the
+\TradeFLEET levels of \ENG in the same zone. This may cause automatic
+concurrence to be solved immediately. If after that \ENG has more than 6
+levels of \TradeFLEET in any zone, reduce to 6 levels.
+% \bparag Units of \paysecosse currently in play are disbanded.  (Jym) Or not?
+% Giving forces for free during a war that might have a big reinforcement roll
+% may look very juicy but opposite to that, removing troops helping \ANG to
+% sustain a siege looks absurd. Deleting.
+
+\effetlong
+\aparag All provinces belonging to \paysecosse in 1492 are now considered as
+national provinces of \ENG.
+\aparag From now on, \ENG can raise, upkeep and use military counters of
+\paysecosse (not \TradeFLEET) as if it were its own counters.
+
+
+
+\event{pVI:Bill Test}{VI-9}{Bill of Test}{1}{Risto}
+
+\history{1673}
+
+\effetlong
+\aparag From now on \ENG can no longer be forced to change religion by foreign
+conquest.
+\bparag However, it can still be forced to change religion as a result of
+\ref{pV:Glorious Revolution} or \ref{pVI:Jacobite Rebellion}.
+
+
+
+\event{pVI:Heinsius}{VI-10}{Heinsius}{1}{Risto}
+
+\history{1689-1720}
+\dure{as long as \strongministre{Heinsius} remains the excellent minister}
+
+\condition{\HOL can refuse this event if it so wishes. In that case mark off
+  as played.}
+\aparag \HOL can freely dismiss \ministreHeinsius at the end of any following
+monarch survival phase and the event terminates.
+
+\phevnt
+\aparag \HOL receives an excellent minister \ministreHeinsius, with values
+9/8/7.  He will last for a random length for Minister, see \ref{eco:Excellent
+  Minister}.
+
+\phdipl
+\aparag \HOL can once ignore a call for help by an ally without the loss of
+stability for such a treachery.
+
+
+
+\event{pVI:WoPS}{VI-11}{War of Polish Succession}{1}{PB}
+
+\history{1733-1735}
+\dure{Until the end of the war caused by the event.}
+
+\condition{}
+\aparag The event is pending. It will be activated as soon as the year is 1700
+or more and the king of \POL dies.
+\bparag If the event is pending while \POL becomes a minor, continue to roll
+for survival of the king every turn until his death (either scheduled or
+premature) activate the event.
+
+\phevnt
+\aparag If this was not already the case, \POL becomes the \POLmin. \PRUMin
+becomes the major \PRU. See \ref{chSpecific:Campaign:Becoming Prussia} for
+details.
+\aparag The crown of \payspologne is proposed to the step-father of a foreign
+king and \payspologne looks for the protection of this foreign king.
+\bparag If \ref{pVI:Great Northern War} happened and \SUE managed to impose
+its candidate on the throne of \payspologne, then the potential protectors
+are, in order, \SUE then \FRA.
+\bparag In all other cases (\numberref{pVI:Great Northern War} did not happen
+or wasn't won by \SUE), the potential protectors are, in order, \FRA then
+\SUE.
+\bparag The first potential protector must immediately accept or refuse the
+crown. If it refuses, then the second one must either accept or refuse.
+\aparag \payspologne immediately signs a white peace with its protector and is
+put in \EG of its protector.
+\bparag If both protectors refuse, \payspologne will fight alone in the
+upcoming war. Apply only the first point of the diplomatic phase (\CB for
+\RUS) as well as the effects of the peace phase on the future of \payspologne
+% (Jym) Added the peace conditions in the case where there are no
+% protectors. Most likely peace -3 for \POLmin and in this case beginning of
+% the open bar.
+
+\phdipl
+\aparag \RUS has a free \CB against \payspologne this turn.
+\aparag \AUS has a free \CB against \payspologne this turn.
+\aparag \SUE (if not protector) and \PRU both have a (normal) \CB against
+\payspologne this turn.
+\aparag If \payssaxe was ruling \payspologne due to \ref{pV:Saxon King Poland}
+and a war against \payspologne is declared due to this event, \payssaxe also
+declares war on \payspologne and is put in \EG of the first country at war
+against \payspologne in the following list: \RUS, \AUS, \SUE, \PRU.
+% (Jym) Added \PRU at the end of the list since it is technically possible
+% that it may be the sole country at war...
+\aparag All countries entering war against \payspologne due to this event are
+considered allied for the duration of the war without need to sign a formal
+alliance.
+\aparag If nobody declares war on \payspologne, it becomes a permanent \EG of
+its protector as if there has been a Polish victory. Apply all the effects of
+\xnameref{pVI:WoPS:Polish Victory}.
+
+\phpaix
+\aparag An extra malus of \bonus{-4} is applied for all separate peace against
+\payspologne or \payssaxe (if it entered war due to being allied with
+\payspologne by \ref{pV:Saxon King Poland}) for this war.
+% (Jym) Formulation a bit complex for Saxony because the malus has no reason
+% to be if the Polish Dynasty is no more in place or never was but Saxony was
+% just a normal ally of say \AUS.
+\begin{digressions}[Conditions of Victory]
+
+
+  \digression[pVI:WoPS:Polish Victory]{Polish Victory}
+  \aparag If \payspologne (and its side) signs a favourable peace of level 3
+  or more, \payspologne becomes a permanent \EG of its protector.
+  \bparag For all purposes except incomes (declarations of war, victory
+  conditions, \ldots) consider that \payspologne is a \VASSAL of its
+  protector.
+  \bparag No diplomacy is allowed on \payspologne anymore.
+  \bparag The protector immediately wins 50 \VP.
+  % (Jym) Added: (mostly if \POL wins without protector)
+  \aparag Absolutism is established in \payspologne.
+  % (Jym) See below the trip about Lorraine annexation
+  \aparag At the peace, the protector can annex any province, even the
+  capital, of one minor country.
+  \bparag This province must be adjacent to the territory of the protector.
+  \bparag This can destroy the country.
+  \bparag The minor must be either on the diplomatic track of the protector or
+  on the diplomatic track of one of its enemies (even if not at war).
+  \bparag This count as one peace condition if the province is occupied by the
+  protector (or its allies) or as all peace conditions (for the protector and
+  its allies) otherwise (minor not at war, or even allied with the protector).
+  \bparag If \SUE is the protector, it can annexe this way the whole
+  \regionNorvege whatever the current diplomatic status of \paysdanemark (or
+  \paysVnorvege). This always count as all the peace conditions for the
+  alliance of \SUE.
+
+
+  \digression[pVI:WoPS:Polish Defeat]{Polish Defeat}
+  \aparag If \payspologne (and its side) signs an unfavourable peace of level
+  3 or more, the protector loses 15\VP (even if it was not at war).
+  \bparag \payspologne becomes neutral. From now on, it will never be able to
+  go above \SUB on the diplomatic track.
+  \bparag Absolutism is abolished in \payspologne.
+  \aparag From now on, \RUS, \AUS, \PRU and all countries of the \HRE can
+  freely cross provinces of \payspologne. The provinces are considered enemy
+  and don't give supply, it is not allowed to stop in \payspologne or pillage
+  its provinces because of attrition.
+  \aparag If they were still at war against \payspologne when the peace is
+  signed, both \RUS and \AUS win 50\VP.
+
+
+  \digression[pVI:WoPS:Status Quo]{Status Quo}\label{pVI:WoPS:Status quo}
+  \aparag If neither side gets a full victory as per the previous cases, apply
+  these effects.
+  \aparag \payspologne is put in \EG of its protector. It is a normal minor.
+  % (Jym) Technically, the protector may have let \POL down, so \POL may no
+  % more be in \EG. But the loss may be not that high.
+  \aparag The protector loses 15\VP (even if not at war).
+  \aparag If they were still at war against \payspologne when the peace is
+  signed, both \RUS and \AUS win 30\VP.
+  \aparag Absolutism is abolished in \payspologne.
+  \aparag From now on, \RUS, \AUS, \PRU and all countries or the \HRE can
+  freely cross provinces of \payspologne. The provinces are considered enemy
+  and don't give supply, it is not allowed to stop in \payspologne or pillage
+  its provinces because of attrition.
+  % (Jym) What ? Give a \CB to a \MIN ?
+  \bparag Crossing polish provinces gives a \CB to \payspologne for the next
+  diplomacy phase.
+  % (Jym) See below the trip about Lorraine annexation
+  \aparag At the peace, the protector can annex the last province of one minor
+  country who only has one province left, even if this is a capital.
+  \bparag This province must be adjacent to the territory of the protector.
+  \bparag This destroys the country.
+  \bparag The minor must be either on the diplomatic track of the protector or
+  on the diplomatic track of one of its enemies (even if not at war).
+  \bparag This does not count as a peace condition and is done in addition to
+  the normal peace.
+  \bparag If the protector chooses to annexe a province of a minor country not
+  on its track (but on the track of one of its enemies), it must gives to its
+  diplomatic patron the diplomatic control of a minor from its own track which
+  is at least at the same level of diplomatic control. The enemy of the
+  protector chose which diplomatic compensation he takes.
+  \bparag If \SUE is the protector, it can annex this way the whole
+  \regionNorvege as if it was only one province. \paysdanemark (or
+  \paysVnorvege) must be on its track, or on the track of one enemy (in which
+  case diplomatic compensation apply as above).
+  % (Jym) Trip Lorraine (hist.) \FRA supports Stanislas and obtains a losing
+  % Status Quo. Some escape for Stanislas must be found for the international
+  % standing of Louis XV. Francois I of Lorraine is the Emperor (and husband
+  % to Maria-Theresa). He exchanges Lorraine against \paysParme and Lorraine
+  % goes to Stanislas. (\PPI) Lorraine could be annexed during the war, but
+  % it usually did not work, either France won or \SUE looked stupid. (game
+  % problem) 1. Give \SUE the occasion of a good deal. 2. Allow a bit more
+  % choice to the protector especially if Lorraine was already annexed.
+  % 3. Avoid the search for Status Quo for the protector. Answers: 1. Norway!
+  % 3. Thing a bit strange with an annexation in case of win. More interesting
+  % because no compensation to give. Choice about the minor. Case study: SUE
+  % may annex Norway, Kurland. Or some other things in the \HRE, such as bits
+  % of \paysHanse, Munster, Oldenburg, Bremen. The bad thing would be to annex
+  % bits of Hanover, but let's see \SUE try to anger \ENG.
+  % For \FRA, Lorraine, Alsace, Liege, Savoy, Switzerland, Palatinate,
+  % Cologne, Trier, Baden, \paysMonferrato and \paysgenes.
+  % It looks fine, seen like that.
+
+\end{digressions}
+
+
+
+\event{pVI:War Turkey}{VI-12}{War against Turkey}{2}{RistoMod}
+
+% (Jym) I wonder about the 2 dates and occurrences. But in EU9, it is a
+% problem because \AUS is major all the time.
+\history{1716-18/1737-39}
+
+\condition{The first eligible in the following list occurs, each case can only
+  happen once per game}
+\aparag \AUS receives a free \CB against \TUR for this turn. It can choose to
+decline this offer, in which case proceed with the list.
+% (Jym) Not possible in EU9. Removing: b. Inactive \HAB declares war against
+% \TUR.  (JCD) We should keep it. In EU9, c. will be used; in EU8, possibly
+% too.
+\aparag If inactive, \AUSmin declares war against \TUR. It calls for allies as
+usual.
+\aparag If inactive, \paysVenise declares war against \TUR. It calls for
+allies as usual and will have \bonus{+2} to all the reinforcements check made
+during this war.
+\aparag If none of the conditions apply, nothing happens.
+
+
+
+\event{pVI:WoAS}{VI-13}{War of Austrian Succession}{1}{PB}
+
+\history{1740-1748}
+\dure{Until the end of the war}
+
+\condition{}
+\aparag Cannot happen if there is a \GE. In this case, mark off and play \RD
+instead.
+\aparag Cannot happen before period VI (thus, \AUSmin has become \AUS
+anyway). In this case, do not mark off and re-roll.
+\aparag Cannot happen before the start of the war caused by \ref{pV:WoSS}. In
+this case, do not mark off and re-roll.
+
+\phevnt
+\aparag[The Pragmatic Sanction]
+\bparag The king of \AUS dies. The new queen is \monarque{Maria Theresia}
+(values 8/8/7, lasts 8 turns, does not roll for survival during 5 turns, adds
+\ARMY\faceplus as basic forces).
+% (Jym) I am not sure about how the dissociation is managed when \AUS becomes
+% a \MAJ in pIV. By default:
+\bparag Mandatory dynastic dies between \HIS and \AUS are voided (if still
+existent).
+\bparag If \paysbaviere won the electorate during \ref{pIV:TYW}, it opposes
+the Sanction and pretends to the throne of \AUS. Otherwise, \payspalatinat
+does.
+\aparag \AUS loses control of the pretending country.
+\aparag The pretending country proposes a white peace to its current enemies
+and then declares war to \AUS.
+\aparag If this is not already the case, \POL becomes the \POLmin. \PRUMin
+becomes the major country \PRU.
+\bparag See \ruleref{chSpecific:Campaign:Becoming Prussia} for details on how
+to handle this.
+% (Jym) What? this was attached to the point above (PPI)
+
+% \PRU offers an immediate white peace to its enemies. \PRU then has a free
+% \CB against \POL.
+
+% (Jym) I imagine the white peace would rather be proposed by \POL rather than
+% \PRU. And why this \CB?
+
+\phdipl
+\aparag \PRU has a free \CB against \AUS at this turn (only).
+\bparag If it uses it, \PRU and the pretending country are allied for the
+duration of the war.
+\aparag \FRA has a \CB against \AUS during every turn of the war caused by the
+event.
+\bparag If it uses it, place the pretending country in \EG of \FRA.
+\bparag If \PRU and \FRA use it, they are allied for the war without need for
+signing a formal alliance.
+\bparag If \FRA does not use this \CB at the first turn of war, the pretending
+country will call for allies as per normal rules.
+\aparag \ANG has a free \CB against \FRA as a reaction of the previous \CB
+(only).
+\bparag This \CB can only be used in reaction to \FRA declaring war to \AUS.
+\bparag If it uses it, \ANG and \AUS are allied for the war, without need for
+signing a formal alliance.
+
+\phadm
+\aparag At the first turn of the war (only), \PRU rolls for reinforcements as
+a minor country (in offensive attitude).
+% (Jym)
+\bparag These reinforcements are \Veteran. They do not count toward this turn
+purchase limit.
+\aparag At the first turn of the war (only), \AUS rolls for reinforcements as
+a minor country (in defensive attitude).
+% (Jym)
+\bparag These reinforcements are \Conscripts. They do not count toward this
+turn purchase limit.
+
+\phpaix
+\aparag If \AUS signs an unconditional surrender, it loses the imperial
+throne. The pretending country becomes Emperor for the rest of the game.
+\bparag In that case, \PRU automatically gets the royal dignity as per
+\ref{pV:Kingdom Prussia}. If that event didn't happen yet, consider it to be
+the first event rolled next turn with any mention to \paysbrandebourg
+referring to \PRU instead (in that case, \AUS \textbf{must} give the royal
+crown to \PRU in the following diplomacy phase). (JCD) TODO there is probably
+a problem with that, since \AUS will no more be Emperor...
+\aparag Extra \VP are granted for the control of certain provinces at the end
+of the war.
+\bparag \PRU gains 25\VP per province annexed from \AUS. It loses 20\VP if it
+annexes none.
+\bparag \AUS gains 20\VP per province annexed from \PRU. It loses 25\VP if it
+annexes none.
+\bparag The player controlling the pretending country gains 30\VP per province
+annexed from \AUS and loses 15\VP if the pretending country annexes no
+province. These \VP are also lost (or won) by \AUS.
+
+
+
+\event{pVI:Kurland}{VI-14}{War of Succession in Kurland}{1}{PBnew}
+
+\history{1730-1731}
+\dure{As long as \payscourlande exists.}
+
+\phevnt
+\aparag The provinces \provinceCourlande and \provinceLivonija declare
+independence from their current owner and form the minor country
+\payscourlande.
+\aparag \leader{von Sachsen}, or, if he's not alive, a random mercenary
+general lasting 4 turns, takes command in the new duchy and look for a
+protector.
+\bparag The following countries must immediately accept or refuse to become
+protector of the duchy (in order): \FRA, \AUS, \PRU, \HOL.
+% (Jym) Suppression of references to the country that Sachsen serves
+\bparag If all of them refuse, then the general wisely chooses to stand
+back. \payscourlande doesn't get a general and won't get reinforcements in any
+war.
+\bparag If there is a protector, then \payscourlande becomes a permanent
+\VASSAL of its protector and no diplomacy is allowed on it.
+
+\phdipl
+\aparag Any country owning one province or more of the minor when the event
+happens gets a free \CB against \payscourlande.
+% (Jym):
+\bparag A minor country uses this \CB only if there is already a major country
+using this \CB (for the other province).
+
+\phadm
+\aparag The general of \payscourlande can lead troops of its protector.
+
+\phpaix
+\aparag \payscourlande has no capital and can thus be annexed by anybody.
+
+\effetlong
+\aparag The protector loses 30 \VP at the end of the game if \payscourlande
+does not exist.
+
+
+
+\event{pVI:Slave Revolts WI}{VI-15}{Slave Revolts in the West
+  Indies}{*}{Risto}
+
+\history{No precise date}
+
+\phevnt
+\aparag Roll 1d10 for each power having \COL in areas \granderegionCuba,
+\granderegionHaiti and/or \granderegionAntilles. On a result of 7 or more, a
+\REVOLT\facemoins is placed in one randomly chosen \COL of the power.
+
+
+
+\event{pVI:Bantu Raids}{VI-16}{Bantu Raids}{*}{Risto}
+
+\history{No precise date}
+
+\phevnt
+\aparag Natives of area \granderegionNatal and the two provinces bordering it
+are activated for this turn and shall attack all \COL/\TP in these provinces.
+
+\phadm
+\aparag The strength of the natives activated by this event is always 6\LD
+(whatever the printed value) and they automatically receive a native leader.
+
+
+
+\event{pVI:Last Great Mughals}{VI-17}{The Last of the Great Mughals}{1}{PBnew}
+
+\history{1707 (Death of Aurangzeb)}
+
+\phevnt
+\aparag The general \leader{Great Mughal} is removed from the game.
+\aparag \xnameref{pII:Mughal Expansions} cannot happen anymore.
+\aparag The basic forces of \paysmogol becomes \ARMY\faceplus.
+\aparag Reaction of country \paysmogol becomes 3.
+\aparag \paysmogol loses 1d10/3 (round to closest) areas (the ones with the
+largest numbers).
+
+\effetlong
+\aparag \paysmysore and \payshyderabad are created as soon as their respective
+province does not belongs to \paysmogol anymore.
+\bparag This can happen either at the start of this event, due to the
+provinces lost by this event or at some other point in the game if \paysmogol
+loses provinces.
+\bparag Both countries are not necessarily created at the same time.
+\aparag Colonial powers may now raise Indian troops (``Sepoy'') as per their
+respective specific rules.
+
+
+
+\event{pVI:Wars India}{VI-18}{Wars in India}{3}{PBnew}
+
+\condition{}
+% (Jym) added
+\aparag If \ref{pVI:Last Great Mughals} has not happened yet, apply it
+instead.
+\aparag Roll 1d10 and apply the correct subevents.
+\bparag 1-4 = A) War between \paysmogol and \paysperse. Apply
+\xnameref{pVI:India:Mughal Persian War}.
+\bparag 5-8 = B) War between \paysafghans and \paysperse. Apply both
+\xnameref{pVI:India:Afghan Empire} and \xnameref{pVI:India:Fall Persian
+  Safavids}.
+\bparag 9-10 = C) War between \paysafghans and \paysmogol. Apply both
+\xnameref{pVI:India:Afghan Empire} and \xnameref{pVI:India:Rise Marathi}. This
+case may not happen before either case A above, re-roll another case if
+needed.
+\aparag Each of the three previous cases can only happen once. If it already
+happen, re-roll another case.
+\aparag Each of the following sub-event can only happen
+once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
+(B and C). The second time, ignore it and only plays the other sub-event.
+
+
+\subevent[pVI:India:Mughal Persian War]{\paysmogol-\paysperse War}
+\history{1739}
+
+\phevnt
+\aparag \paysmogol loses all provinces except the areas \granderegionDelhi,
+\granderegionAoudh, \granderegionBengale, \granderegionGondwana and
+\granderegionOrissa.
+\aparag Lower the difficulty and tolerance (for \COL and \TP implantation) by
+2 in every province controlled by \paysmogol.
+\aparag \paysperse gets the general \leaderwithdata{Nadir Shah} for 5 turns.
+
+
+\subevent[pVI:India:Afghan Empire]{Afghan Empire}
+\history{1747}
+
+\phevnt
+\aparag The minor country \paysafghans is created and owns area
+\granderegionAfghanistan.
+
+
+\subevent[pVI:India:Fall Persian Safavids]{Fall of the Persian Safavids}
+\history{1749}
+
+\phevnt
+\aparag The lasting effect of \ref{pIII:Persian Safavids} are cancelled.
+
+
+\subevent[pVI:India:Rise Marathi]{Rise of the Marathi}
+\history{1746-1761}
+
+\phevnt
+\aparag \paysmogol only loses all provinces except the areas
+\granderegionDelhi, \granderegionAoudh, \granderegionBengale and
+\granderegionGondwana.
+\aparag Lower the difficulty and tolerance (for \COL and \TP implantation) by
+2 in every province in \continentIndia.
+\bparag This is not cumulative with the decrease caused inside \paysmogol by
+\xnameref{pVI:India:Mughal Persian War}.
+
+
+
+\event{pVI:Mazepa}{VI-19}{Revolt of Mazepa}{1}{PBnew}
+
+\history{1708-1709}
+
+\condition{}
+\aparag \paysukraine is looking for a new protector.
+\bparag If this event is triggered during \ref{pVI:Great Northern War}, either
+by troops of \SUE entering \regionUkraine or by rolling for it on the table,
+then the new protector is \SUE.
+% (Jym) added:
+\bparag If the current protector of \paysukraine is at war against another
+\MAJ, then the new protector is chosen among the countries at war against the
+current protector in the following list: \RUS, \POL, \TUR, \AUS, \SUE, \PRU.
+\bparag If the current protector of \paysukraine is not at war against any
+other \MAJ, then the new protector is chosen in the following list: \POL (if
+Orthodox), \RUS, \TUR, \POL, \AUS, \SUE, \PRU.
+% (Jym) First neighbours as protector then further away
+
+\phevnt
+\aparag The potentials protectors are asked in order if they accept or not to
+protect \paysukraine.
+\bparag If all refuse, \paysukraine will not have a protector for the duration
+of the war.
+\aparag \paysukraine declares war on its former protector and the new
+protector must immediately join this war with no cost in \STAB.
+\aparag Counters of \paysukraine are immediately removed from play.
+\aparag Place a \REVOLT \faceplus in a province of \regionUkraine.
+\bparag If the event is triggered by Swedish presence, then the \REVOLT is put
+in the province where the Swedish \ARMY is. Otherwise, a random province is
+chosen in \paysukraine.
+% (Jym) general Mazepa with extravagant values !
+\aparag Place general \leaderwithdata{Mazepa} with the \REVOLT, scheduled to
+last 4 turns.
+\aparag Place a \LD of \paysukraine in the revolted province.
+\bparag If the new protector either has a common border with \paysukraine or a
+``king ranked'' general in a province adjacent to \paysukraine, place an
+\ARMY\facemoins instead.
+\bparag ``King ranked'' generals are those bearing the king symbol, namely
+monarchs, \leader{Carl XII} as an heir to the throne
+(\ref{chSpecific:Sweden:Charles XII}) or \leader{Sadri Azam} and other Viziers
+(\ref{chSpecific:Turkey:Vizier}).
+\aparag The revolt is considered active as long as \leaderMazepa is alive and
+at least one \REVOLT exists in one of the provinces of \regionUkraine.
+
+\phdipl
+\aparag Any country possessing a province of \regionUkraine with a \REVOLT in
+it has a free \CB against either the former or the current protector (its
+choice).
+\bparag Minor countries use this \CB against the new protector.
+\aparag As long as the revolt is active, \TUR as a free \CB against either the
+former or the new protector (its choice).
+
+\phadm
+\aparag If the revolt is active \paysukraine roll for reinforcements in
+offensive attitude, base on the income of the provinces with a \REVOLT in
+them.
+\bparag The reinforcement roll has a malus of \bonus{-2} unless a ``king
+ranked'' leader of the new protector is in or adjacent to \paysukraine.
+
+\phmil
+% (Jym) Add a limited supply for \paysukraine else it may botch if it falls
+% out of war and Mazepa has zero supply
+\aparag \REVOLT are limited supply sources for the troops of \paysukraine but
+are not supply source for the protector.
+% (Jym) added, so that \REVOLT may spawn as long as the \ARMY is there
+\aparag If a stack containing troops of \paysukraine takes a fortress, place a
+\REVOLT \facemoins in the province.
+
+\phpaix
+\aparag The \REVOLT can extend in any province of \regionUkraine.
+\bparag \REVOLT in \paysUkraine cause loss of \STAB to the \textbf{former}
+protector. Other \REVOLT in \regionUkraine cause loss of \STAB to the owner of
+the province as per normal rules.
+\aparag If the new protector signs a white or favourable peace while the
+revolt is still active, all the provinces of \regionUkraine belonging to
+countries that were at war against the new protector during this war are
+annexed by the \MIN \paysukraine. The new protector gain all the benefits of
+\ref{pIV:Revolt Cossacks}.
+\aparag Otherwise, the former protector stays protector of \paysukraine (with
+the provinces still belonging to the minor after the peace is signed).
+
+% (Jym), Placeholders
+
+
+
+\event{pVI:Camisards}{VI-y}{Revolt of the Camisards}{1}{JymNew}
+
+\history{1702-1711}
+
+\condition{If \ref{pV:Expulsion French Protestants} %
+  % Edit de Fontainebleau, revocation de l'Edit de Nantes
+  did not occur yet, apply it now in addition to this event.}
+% Gros des combats de 1702 a 1704.  Je me souviens plus de ce que j'avais
+% dit...  De mémoire, R- en Languedoc, R+ (+general (Roland/Cavalier)) + A-
+% huguenot (+general (l'autre)) en Cevennes.  l'A a des renforts mais a un
+% moment FRA peut payer pour virer les généraux.  J'avais du envoyer un mail
+% avec tout ca mais je trouve plus.
+
+
+
+\event{pVI:Barbaresques}{VI-z}{End of the Ottoman rule in North
+  Africa}{1}{PBNotEvenWritten}
+
+\history{17??}
+\dure{Until the end of the game}
+
+\effetlong
+\aparag If \ref{pIV:Morocco} did not happen yet, apply it immediately in
+addition to this event.
+\aparag \TUR has a malus of \bonus{-3} to diplomacy with all
+\terme{Barbaresques} countries (\paysCyrenaique, \paysTripoli, \paysTunisie,
+\paysAlgerie and \paysMaroc).
+\bparag This malus supersedes the malus on \paysmaroc given by
+\numberref{pIV:Morocco} and is not cumulative with it.
+
+\stopevents
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: pV pVII pVI WoSS Vassalisation Methuen Heinsius WoPS WoAS dt
+% LocalWords: Kurland Mughals Mazepa Camisards Barbaresques PBNew Altranst
+% LocalWords: Leszinski Poniatowski PBMod RistoMod offensive Jym malus Quo
+% LocalWords: pIV Risto Theresia PBnew JCD TODO von Sachsen Mughal pII Sadri
+% LocalWords: subevents Safavids Azam JymNew PBNotEvenWritten GNW PPI

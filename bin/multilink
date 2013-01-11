@@ -1,0 +1,20 @@
+#!/bin/sh
+t=$3
+i=$1
+j=$2
+j=$(($j+1))
+if [ -z "$t" ]; then
+	cp chemins.eps chemins.eps.bak
+fi
+
+while [ $i -lt $j ]; do
+	k=`printf %04d $i`
+	bin/linkit.pl $k $t| head -7 | tail -2|sed -e "s/^/$k:/g";
+	i=$(($i+1));
+done
+
+if [ -z "$t" ]; then
+	cp chemins.eps.bak chemins.eps.old
+	rm chemins.eps.bak
+fi
+

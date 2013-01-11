@@ -1,0 +1,21 @@
+#!/bin/sh
+cwd=$(pwd)
+cd $HOMEDIR/print
+DISPBIN=${cwd}/${BINDIR}/statedisplay
+$DISPBIN ${XID} "Building printing sheets" "src:global"
+FILENAME="global";
+# For minimal printing: remove \|Random economical events\|diplomatic event religion\|Revolt\ \|alt-revolt
+PAGES=$(tar xzOf ../rules/engAlpha.tgz engAlpha.aux|grep '\(newlabel.table:\)\(Period [IV]* events\|Random economical events\|diplomatic event religion\|alt-revolt\)'|cut -f2 -d]|cut -f1 -d}|xargs echo|sed -e 's/ /,/g')
+
+sed 's/BACKSLASH/\\/g' > $FILENAME.tex <<EOF
+BACKSLASHdocumentclass{article}
+BACKSLASHusepackage[a4paper]{geometry}
+BACKSLASHusepackage{pdfpages}
+BACKSLASHbegin{document}
+BACKSLASHincludepdf{../records/exoticresources}
+BACKSLASHincludepdf{../records/tradefleets}
+BACKSLASHincludepdf[pages=-,turn,angle=90]{../rules/euMinors.pdf}
+BACKSLASHincludepdf[pages=-,turn,angle=90]{../rules/euObjectives.pdf}
+BACKSLASHincludepdf[pages={$PAGES}]{../rules/engAlpha.pdf}
+BACKSLASHend{document}
+EOF

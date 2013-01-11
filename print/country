@@ -1,0 +1,58 @@
+#!/bin/sh
+cwd=$(pwd)
+cd $HOMEDIR/print
+DISPBIN=${cwd}/${BINDIR}/statedisplay
+COUNTRY=$(basename $1)
+if [ "${COUNTRY##ALT-}" != "$COUNTRY" ]; then
+    ALTERNATE=1
+    ATLTERNATENAME="*"
+fi
+COUNTRY="${COUNTRY##*-}"
+$DISPBIN ${XID} "Building printing sheets" "src:$COUNTRY$ALTERNATENAME"
+PAGE=10
+case $COUNTRY in
+    POR) PAGE=$((PAGE+1));;
+    SUE) PAGE=$((PAGE+2));;
+    RUS) PAGE=$((PAGE+3));;
+    ANG) PAGE=$((PAGE+4));;
+    FRA) PAGE=$((PAGE+5));;
+    HIS) PAGE=$((PAGE+6));;
+    TUR) PAGE=$((PAGE+7));;
+    VEN) PAGE=$((PAGE+8));;
+    HOL) PAGE=$((PAGE+9));;
+    HAB) PAGE=$((PAGE+10));;
+    POL) PAGE=$((PAGE+11));;
+    PRU) PAGE=$((PAGE+12));;
+esac
+if [ "$PAGE" = 10 ]; then
+    echo "Bad country $COUNTRY"
+    exit 1
+fi
+FILENAME="sheets-$COUNTRY";
+PAGES="1-8"
+if [ -n "$ALTERNATE" ]; then
+    FILENAME="ALT-sheets-$COUNTRY"
+    PAGES="1-6,9,10"
+fi
+PAGES="$PAGE,$PAGES"
+COL="colonies"
+# (Jym) I don't know why the if doesn't work. I guess strange things happen 
+# with interpretation and protection of variables...
+# The case works correctly ;-)
+#if [ "$COUNTRY" = "SPA" ]; then
+#    COL="spanishcolonies"
+#fi
+case $COUNTRY in
+    HIS) COL="spanishcolonies";;
+esac
+
+sed 's/BACKSLASH/\\/g' > $FILENAME.tex <<EOF
+BACKSLASHdocumentclass{article}
+BACKSLASHusepackage[a4paper]{geometry}
+BACKSLASHusepackage{pdfpages}
+BACKSLASHbegin{document}
+BACKSLASHincludepdf[pages={$PAGES}]{../rules/euTables.pdf}
+BACKSLASHincludepdf{../records/$COL.pdf}
+%BACKSLASHincludepdf{../rotw/rotwsmall.pdf}
+BACKSLASHend{document}
+EOF

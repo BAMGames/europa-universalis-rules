@@ -1,0 +1,66 @@
+Notations:
+(C) Leftclick (normal), tap 
+(R) Rightclick, long click, long tap
+(D) Doubleclick, double tap
+(H) Right doubleclick, click and a half, tap and a half
+
+Main menu:
+(C⌂) Show/Hide rest of menu
+(R⌂) Puts the menu in the corner (if not already)
+(C?) This help text
+
+Closing windows:
+On close button X:
+(CX): close window
+(RX): pin  window (prevents auto-closing)
+Reopening a window will put a preceding one in the corner
+A window closes after some time without activity.
+Some types of windows have a longer life.
+
+Location storage:
+On buttons + (select list empty), -, ↑ (select list not empty):
+(C+): Add current map center to stored locations 
+(C-): Delete selected locations
+(C↑): Promote selected locations to top of list
+On stored locations l:
+(Cl): pan to location
+(Rl): select location
+(Dl): promotes location to top of list
+(Hl): deletes location
+
+Orders box:
+(C←) previous orders (remove automatic followup of new orders)
+(C→) next orders (switch to automatic followup of new orders if at bottom)
+(R←)/(R→) Page through Orders/Pending/Cancelled list of orders
+Orders are in official orders of the server
+Pending orders have not been approved yet, but were done anyway
+Cancelled orders were disapproved
+
+Picker box:
+Clicking on category: zoom to that category
+Counters are draggable (see after)
+If only one counter is available in a category, display it instead
+If one category includes only one sub-category, merge it with the sub-category
+Buttons:
+(C←),(C→) page through choices if more than 16 choices
+(C↑) up one level in the category tree
+
+Stack zoom:
+On title t:
+(Ct): rename stack (if cancelled, no effect; if empty, default)
+(Rt): pan to stack
+
+Counters:
+They can be dragged (see after). In stack zooms or in picker box, they can
+be clicked to switch their side.
+
+Dragging counters around:
+ * From box to box: nothing
+ * From box to stack: insert counter in stack
+ * From box to map: create new stack, put counter in it
+ * From stack to box: put counter back in box
+ * From stack to other stack: change counter's stack
+ * From stack to same stack: reorder stack (or nothing if same position)
+ * From stack to map: create new stack, put counter in it
+ * From map to map: the stack moves
+ * From map to stack/box: impossible

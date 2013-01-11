@@ -1,0 +1,1038 @@
+\definechapterbackground{Military}{military}
+\chapter{Military}\label{chapter:military}
+
+\section{Preparations}
+
+\subsection{Leadership}\label{chMilitary:Leadership}
+% Put here by JC, to be moved where deemed necessary, mainly for the
+% label
+\subsubsection{Double-sided Leaders}\label{chMilitary:Double Sided Leaders}
+\aparag Some leaders have two different sides for the same country and the
+same turns but with two different roles, and can be used as either one or the
+other of their roles.
+\bparag The counter has a {\textetoile} written on one of the sides,
+indicating in which limit the counter counts (independently of the role
+for which it is used).
+\bparag Kings that can also be something else do not count in the limits
+as soon as they are kings.
+\bparag For most countries, the role has to be determined at the
+beginning of the round, effective for the whole round. \POR is an
+exception (see \ruleref{chSpecific:Portugal:Explorers}).
+
+\aparag Some leaders have two sides but no {\textetoile}.
+\bparag The side they're used (and the category they're considered) has
+to be determined at the beginning of each turn and is effective for the
+whole turn.
+\bparag In most cases, the choice is restricted because each side
+denotes a change of state of the leader (e.g. change of nationality,
+crowning, \ldots) and thus only one of them is available at a given
+time.
+\bparag Especially, generic monarchs of minor countries
+(e.g. \leaderShah) are chosen at random when the country goes at war and
+cannot be changed before total peace.
+
+\aparag Beware! Some double-sided leaders do not have the same turns of
+activity on each side. Thus during certain turns only one side will be
+usable.
+
+\subsubsection{Leaders of Multi-national stacks}\label{chMilitary:multi national} 
+\aparag[On land]
+\bparag If there is a Leader with a monarch symbol (Monarch, Turkish Vizier or
+heir allowed to lead troops) in the stack, he must takes command.
+\bparag Otherwise, the leader with the most troop of its country (or troops he
+is allowed to command) takes command (this may be a replacement leader if the
+country with the most troops has no leader in the stack).
+\bparag In case of tie, highest ranking tied leader takes command.
+\bparag If tied again, players choice (at random in case of disagreement).
+\bparag The country of the commanding leader pays for campaigns and win/loss
+\STAB in case of Major Battle.
+
+\aparag[At sea]
+\bparag If there is a Monarch, he take command.
+\bparag Otherwise, the highest ranking leader among those which can command at
+least one \FLEET counter takes command.
+\bparag Otherwise, highest ranking leader takes command.
+\bparag In case of tie, players choice (at random in case of disagreement).
+\bparag The country of the commanding leader pays for campaigns and win/loss
+\STAB in case of Major Battle.
+
+\subsubsection{Deployment of leaders}% [to be moved in ch. VI]}
+% Jym :
+% Ca devrait pas plutot etre dans l'interphase ? (placement des nouveaux chefs)
+
+% Jym : Heu, c'est fait la, non ?
+%TODO + Hiérarchie.
+
+\aparag[Placement in the \ROTW]
+\bparag \LeaderGov and \LeaderG (restricted to the \ROTW) must be deployed on
+existing \COL/\TP.
+\bparag \LeaderMis must be deployed in Europe
+\bparag \LeaderE and \LeaderC may be deployed either in Europe, on an existing
+\COL/\TP or in a discovered province where a leader of the same type
+(including \anonyme) was present at the end of the previous turn.
+
+\aparag[Placement of unnammed leaders]
+\bparag At the beginning of each turn, all \MAJ \anonyme\ leaders are removed,
+except those besieged.
+\bparag Then, if a \MAJ has less leaders in a category that the minimum limit
+indicated in his country table, he draws at random as many \anonyme\ leaders as
+necessary to reach the limit.
+\bparag All new leaders (both named and unammed) arriving at a given turn are
+then deployed at once, respecting the hierarchy.
+\begin{exemple}
+  At the beginning of turn 1, \POR has one \LeaderE (\leader{Dias}). Since the
+  minimum limit for \POR in period I lists 1 \LeaderE, \POR does not get any
+  \anonyme\LeaderE. On the other hand, \POR has no \LeaderC but a minimum
+  limit of 1 \LeaderC. So he gets a random \anonyme\LeaderC. 
+
+  At turn 1, \FRA has one \LeaderG (\leader{Foix}) and an mimimum limit of 2
+  \LeaderG. So he gets an extra \anonyme\LeaderG in order to reach the limit.
+\end{exemple}
+
+\aparag[Replacement of unammed leaders]
+\bparag If, during military rounds, one player falls below the minimum limit
+of leaders for one category (due to death or injury) he gets as many random
+\anonyme\ as necessary to reach the limit again.
+\bparag The new leader arrive at the beginning of next round, in the same
+place (\LeaderE and \LeaderC may also be placed in Europe or in any
+\COL/\TP).
+\bparag This may break the hierarchy in which case the player must try to
+restore it.
+\bparag When a wounded leader comes back, the lowest ranking \anonyme\ leader
+of the same category is removed and the wounded may take command of any stack
+without breaking the hierarchy.
+
+\begin{exemple}
+  At the beginning of turn 1, \FRA has two \LeaderG : \leader{Foix} (rank A)
+  and \anonyme 2 (rank F). During the military campaign in Italy \leader{Foix}
+  get ambushed by perfidious Spaniards near Napoli. He barely escaped with
+  several sword wounds and must rest for many months.
+
+  Since \FRA has now only one \LeaderG, he pick at random a \anonyme\LeaderG
+  and gets \anonyme 1 (rank E).
+
+  A few rounds later, \leader{Foix} comes back and can take command of any
+  stack. Since \anonyme 2 has the lowest rank (F), he is relieved from command
+  and removed from the game.
+
+  \smallskip
+
+  During turn 2, \POR has two \LeaderE (\leader{Dias}, if not dead during turn
+  1, and \leader{Cabral}). \leader{Dias} boldly tries to circumnavigate
+  America but dies, his ship crushed in the ice at Cape Horn. Since \POR still
+  has 1 \LeaderE, which is larger or equal to his limit for period I, he does
+  not get any \anonyme\LeaderE in replacement.
+\end{exemple}
+
+% Jym :
+% Pas a sa place ? Je vire.
+%\aparag[\bf E3 chefs gouverneurs]
+%(note: Certains généraux ou C sont devenus des gouverneurs.)
+
+%Ils agissent comme des C mais entrent dans une limite
+%de chefs spécifiques. Ils obéissent  aux règles
+%suivantes : \\
+% Jym :
+% Contredit le point precedent sur le placement des Gov (COL/TP only). Je
+% laisse le precedent.
+%- ils doivent être placés sur un TP/COL du joueur ou
+%qu'il occupe militairement en début de tour, ou en
+%métropole. Si en métropole, ils doivent débarquer dans
+%rotw sur TP/COL du joueur (ou contrôlé militairement). \\
+% Jym :
+% A mettre avec les actions administratives, pas ici.
+%- ils donnent un bonus de +man aux implantations dans
+%leur province, et de +1 dans les autres provinces de
+%la grande région. \\
+%- ils sont limités aux mouvements dans la grande région
+%où ils sont placés en début de tour (ou celle où ils
+%débarquent) et les grandes régions adjacentes.
+
+\aparag[Admirals in the \ROTW]
+An admiral temporary gets the possibility to go in the \ROTW if both the
+following conditions are fulfilled:
+\bparag The country has no naval leader allowed in the \ROTW (either \LeaderE
+or a \LeaderA with the \ROTW capacity).
+\bparag It is period V or later, or the country as at least 3 \COL/\TP in
+\continent{America}.
+\bparag The \LeaderA allowed to go in the \ROTW (for this turn) is the lowest
+ranking \LeaderA. He may not go in seazones with a malus. If he arrives this
+turn, he must be placed in Europe.
+
+
+\aparag[Conquistador table]
+The Conquistador table may be used only:
+\bparag in \continent{America} and \continent{Africa}, by any \LeaderC and
+\LeaderE (half values) ;
+\bparag in \continent{Indonesia} by \leader{Coen}, \leader{van Diemen} and
+\leader{Maetsuycker} only ;
+\bparag in \continent{India} by all \LeaderC restricted to \continent{Asia}
+(@). Namely, \leader{Clive}, \leader{Dupleix}, \leader{Bussy} and the minimum
+\LeaderC@ of \FRA and \ANG in period VII.
+
+\subsection{Stacking}\label{chMilitary:Stacking}
+
+
+\section{Deployment [to be moved from ch. V]}
+
+
+\section{On campaigns [12]}
+
+\section{On movements [13,14,15,reactions]}
+\subsection{Special Movements}
+% Put here by JC, to be moved where deemed necessary, mainly for the
+% label
+\aparag[Provinces with several coasts]\label{chMilitary:Movement:Port Multiple
+  Coasts} Movements that imply entering a port and going out of a port
+may allow a naval stack to go out through a different sea zone than the
+one used to enter.
+\bparag It is not possible if this means to go through land (if the
+province has multiple coasts as defined in \ruleref{chBasics:Multiple
+  Coasts}).
+\bparag This is possible only if the naval stack owns the port. A \COL
+or \TP is required for a \FLEET, a fort is sufficient otherwise
+(including convoys).
+\bparag[Portugal] It is possible for \SPA to go through \province{Cabo
+  Verde} (or any other portuguese settlement) if it has \pays{Portugal}
+as a special vassal.
+\bparag[Cape Horn] As a special exception, it is not possible to go out
+through a different sea zone if it avoids \seazone{Horn}, unless the
+naval stack ends its movement there (and goes out at the next round).
+\begin{exemple}It is possible, with a \TP placed in \ville{Kyoto}, to
+  enter in the same move with 1\NWD coming from \seazone{Japon} and
+  going out from \seazone{Pacifique W}, without going through
+  \seazone{Coree} nor \seazone{Pacifique NW}. However, it is not
+  possible with a \FLEET, nor if the \TP is not owned by the naval
+  stack.
+\end{exemple}
+% Put here by JC, to be moved where deemed necessary, mainly for the
+% label
+\aparag[Wasteland]\label{chMilitary:Movement:Wasteland} Movement in the
+Wasteland area (see~\ruleref{chBasics:Wasteland}) (for all purposes,
+including \LoS length computation) is doubled until the end of the
+Wasteland (see~\ruleref{chSpecific:End Wasteland}).
+% Put here by JC, to be moved where deemed necessary, mainly for the
+% label
+\aparag[Blockading with several coasts]\label{chMilitary:Movement:Blockading
+  Multiple Coasts} A naval stack may blockade a port from any sea zone
+adjacent to the port, unless there are multiple coasts as defined in
+\ruleref{chBasics:Multiple Coasts}.
+\bparag In this special case, there is a \terme{main coast} which is the
+one that must be blockaded (usually where the anchor is drawn).
+%\bparag Galleys cannot blockade ports that are adjacent to sea zones
+%that they cannot reach (\province{Gibraltar}, \province{Tanger},
+%\province{Jylland}, \province{Ostlandet}).
+
+\section{On discoveries [58]}\label{chMilitary:Discoveries}
+\aparag One can try to discover several sea or provinces at the same time, using the most difficult
+sea and adding +1 for each sea eone/province beyond the first. On Land, themovement capacity
+limits how many provinces can be discovered.
+
+\aparag As long as the forces doingthe discoveries have not came back to an establishment
+existing at the beginning of the military phase, the discovery are not yet usable by other forces.
+Neither is 'rendez-vous' authorized between stacks having made independent discoveries (no
+stacking).
+
+\aparag[Diffusion of discoveries]
+MODIFICATION 07/2007.
+\bparag[On sea] At the beginning of period IV, all discovered sea zones of Atlantique
+Ocean are known to everyone else at the beginning of the military phase of the turn following the discovery. Other discovered sea zones have a bonus of {\bf -2} for discoveries by other players.
+\bparag [On land] At the beginning of period IV, all provinces containing a \COL or \TP are known to 
+everyone else at the beginning of the military phase of the turn following the discovery.
+
+
+
+\section{On battles [17]}
+% Put here by JC, to be moved where deemed necessary, mainly for the label
+
+\subsection{Convoys}\label{chMilitary:Convoys}
+Do not use if using the experimental system for Revolts, \corsaire and Natives.
+
+\aparag[Convoy movements and Pirates/Privateers] 
+A convoy (or a naval stack carrying Gold)
+entering a sea zone of \STZ or \CTZ is attacked on
+\tableref{table:Pirates Natives Raids} by the pirates, and each
+privateer allowed to attack the owner of the convoy present in the \STZ
+(even if not in the right sea zone) if it has the right to attack the
+power (see \ruleref{chPeace:CorsairAttack}).
+\bparag Only \corsaire\faceplus may attack (be they pirates or
+privateers).
+\bparag The pirates attack first (one only, with leading
+named Pirate if any), then the privateers in order of initiative. The
+attack is resolved before regular naval interceptions.
+\bparag Only one attack for all the pirates in a given \STZ or \CTZ; and
+one attack per \corsaire is allowed per move.
+%\bparag  This kind of attack may be performed by Privateer Admirals with a naval stack
+%with 1\ND/2\ND as if \Facemoins/\Faceplus Privateers.
+
+\aparag[Attack Procedure]
+% For Rerefence: in \attackconvoy
+\bparag Roll for naval interception. Pirates with no leader use 2
+as Manoeuvre.  If successful, reduce the \corsaire to \Facemoins and proceed with the attack, 
+else test for the next interception.
+\bparag Before the attack, an accompanying fleet may try to disperse and
+reduce the pirates or privateers by making a roll on the corresponding
+table.  If successful, the \corsaire is not reduced but the attack is aborted.
+\bparag If not aborted, resolve the attack on the  Pirate/Privater raid table.
+\bparag Each level in the column \TradeFLEET\faceplus corresponds to one \NTD
+captured (with 15\ducats).
+\bparag Afterwards, \corsaire goes at port and are finished for the
+turn. However Pirates stay in the \CTZ or \STZ and will attack normally Trade
+Fleets .
+\bparag The \terme{Barbaresque} corsairs cannot attack a Convoy if it is
+not in \region{Mediterranee}. \\
+%\attackconvoy
+\aparag[Convoy in battles] If a battle occurs between two naval forces,
+one of them containing a convoy or Transports, the convoy does not take
+part in the battle, nor incurs losses during it.
+\bparag However, at the end of the battle, the pursuit \textetoilex\ 
+result may apply to the convoy or the Transports if the winner decides
+so.
+\bparag Each \textetoilex\ captures 2 \NTD with corresponding transports
+points sunk if loaded with troops, or 10 \ducats captured and 5 \ducats
+sunk for \NTD loaded of Gold.
+\bparag The rest of the convoy is kept by the loser. 
+
+\aparag[Flota de Oro] \label{chMilitary:FlotaDeOroMovement} As soon as the
+\terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
+reappears in a Spanish port on the Atlantic coast. %TODO: To be MOVED.
+
+% Jym :
+% Deplacement du label dans le morceau correct de "unsorted rules" ci-dessous.
+%
+% 1 Subsection de moins a ecrire ! Yes !
+%
+%\subsection{Bazaar}
+% Put here by JC, to be moved where deemed necessary, mainly for the label
+%\aparag[Effect of Forests]\label{chMilitary:Battle:Forests}
+
+\section{Siegecraft [18]}
+
+\section{End-of-phase [19]}
+
+\section{Redeployment [20]}
+
+\section{Unsorted rules}
+\begin{designnote}
+  This Section consists in a bunch of unrelated rules relevant to the Military
+  Phase. These rules should be properly grouped and dispatched in the correct
+  place of this Chapter. This will be done when the military rules will be
+  written (aka in a long time\ldots)
+
+  Rules presented here are sometimes barely more than a summary rather than a
+  proper rule written in a proper way.
+\end{designnote}
+
+\subsection{About logistic}
+% Jym :
+% Deja present a sa place en V.6.2.3 A.1
+% Contradiction avec V.6.2.3 A.1 qui met 1DN/P et non 1DN par face.
+% 1DN par face me semble plus logique. Je corrige V.6.2.3 A.1
+%\aparag [Lever/Entretenir des corsaires] en plus du coût, il
+%faut y dédier 1DN/2DN de la limite de construction du pays.
+
+\aparag[Campaigns for \MIN]
+\bparag limited intervention: 1 simple campaign each turn. 1 passive campaign
+each round. More can be paid by the \MAJ (pay only the difference in cost of
+campaign, not the full campaign).
+\bparag full intervention: 1 simple campaign each round. Multiple campaigns
+may be obtaind by reinforcement. More can be paid by the \MAJ (as above).
+
+
+\subsection{Military campaigns}
+\aparag Interception is allowed according to the last campaign paid.
+\bparag For player without initiative, this is the campaign of the previous
+round.
+\bparag During first round, players without initiative may intercept (before
+their first move) as if they had done a passive campaign.
+
+\aparag When moving both at sea and on land, the cost of both campaigns is
+computed separately and only the maximum cost is paid.
+\begin{exemple}
+  A Major campaign allows to both:
+  \begin{itemize}
+  \item attack with one naval stack of 3\FLEET ;
+  \item move without attacking (exploration possible) with as many naval
+    stacks as wanted (non-aggressive movement is not restricted) ;
+  \item maintain as many blocus and fight against \corsaire as wanted (only
+    movement is restricted) ;
+  \item attack with as many small ($\leq$ 5\LD) land stacks as wanted (the
+    reason for which the campaign is Major needs not to be the same at sea and
+    on land) ;
+  \item move without attacking as many large land stacks as wanted
+    (non-aggressive movement is not restricted) ;
+  \item maintain as many sieges and fights against revolts with large stacks as
+    wanted (only movement is restricted).
+  \end{itemize}
+\end{exemple}
+
+\aparag[None] 0\ducats: No action, no movement, no exploration, no siege,
+\ldots allowed (troops may retreat before battle and will fight back if
+attacked). No interception allowed.
+
+\aparag[Passive] 10\ducats: 
+\bparag Interception allowed only in friendly provinces.
+\bparag On land: Moving in friendly provinces ; maintaining sieges and fights
+against revolts ; moving \LeaderG (and \LeaderC) to retablish hierarchy.
+% Jym :
+% "reorganiser stacking", j'imagine que c'est que les chefs, sinon je sens la
+% faille format San Andreas...
+%       \bparag terre: mvt dans ami seulement; continuer sièges; réorganiser
+%      stacking
+\bparag At sea: Moving stacks of 1\FLEET maximum. No attack.
+\bparag Naval actions: friendly-to-friendly transport, maintain fight against
+\corsaire, exploration, maintain blocus.
+      
+\aparag[Active (aka Simple)] 20\ducats: All allowed by Passive plus
+\bparag Any interception.
+\bparag On land: one stack of $\leq$ 5 \LD + 1 \Pasha without restriction
+[TBD: or +2 pashas ?]
+% Jym :
+% 2 Pashas garantient presque 3LD, donc +1 au choc. Ca me semble trop
+% bourrin. Avec 1 pasha, il n'a en a qu'un a 3LD.
+\bparag At sea: one stack with at most 1\FLEET counter without restriction.
+
+% Jym :
+% Meme si c'ast plus en cout croissant, ca me semble plus logique de le mettre
+% apres pour pouvoir dire "/me too".
+\aparag[Active/No Logistic] 10\ducats: Same as Active but
+% Jym :
+% Diffenrece suivante subtile et prompte a l'erreur (je l'ignorais avant de
+% traduire)
+% Est-elle vraiment necessaire ? Je ne vois pas trop le genre d'abus faisable
+% sans elle...
+\bparag At sea: one stack \textbf{without} \FLEET without restriction.
+\bparag On land: all stacks $\geq$ 3\LD roll for attrition (even if not moving).
+
+\aparag[Major] 50\ducats: All allowed by passive plus
+\bparag On land: either one stack without restriction (neither size nor acton)
+or all stacks $\leq$ 5 \LD + 1 \Pasha without restriction  [TBD: or +2 pashas]
+% Jym :
+% cf simple.
+\bparag At sea: either one stack without restriction (neither size nor acton)
+or all stacks with at most 1\FLEET counter without restriction.
+% Jym :
+% Si pas en faveur, je commente...
+%            [TBD: ne pas autoriser 2\FLEET sauf \NGD ??? Pas en faveur de ça actuellement]
+
+\aparag[Multiple] 100\ducats: all stacks may act without restriction.
+
+
+\subsection{Supply, Attrition, Sieges}
+\subsubsection{Sources of Supply, Lines of Supply}
+
+\aparag[Source of Supply - Land]
+\bparag Source of Supply on Land: any controled city; \TP or \COL.  Exception:
+neither owned nor allied: gives weak supply.  Fortresses in desert: gives full
+supply in the province, only weak supply further.
+\bparag Forts: are Sources of Supply on Land for \LD or \LDE only.
+\bparag \Presidios are Sources of Supply only for forces inside the fortress.
+
+\aparag[Supply by naval forces]
+Naval forces may provide SoS to Land forces in coastal provinces.
+\bparag \de only: can supply up to 1\LD (and 2\LDE) and blocade only fort.
+% Jym :
+% Pourquoi est-ce redige "blocus *ou ravitaillement*" pour les f ? On n'a pas
+% besoin de ravitailler les fortifications, non ?
+%ravitaille jusqu'à 1\DT (+ \LDE) et blocus ou ravitaillement de fort (f0) seulement
+\bparag \ND counters: supply up to 3\LD (without \ARMY) and blocade up to
+\fortress level 1.
+%ravitaille jusqu'à 3\DT (sans \ARMY) et blocus ou ravitaillement de f0 ou f1
+\bparag One \FLEET counter and at least 2 \ND in the stack: may supply up to
+5\LD (including \ARMY) and blocade up to \fortress 3.
+%\bparag un pion \FLEET et au moins 2 \ND ravitaille jusqu'à 5\DT (avec \ARMY
+%possible) et blocus ou ravitaillement jusqu'à f3
+% Jym :
+% la f4 ne peut apparaitre qu'en pIV (Baroque) et les seuls F- 1/1 en pIV sont
+% POL.
+% Donc a part POL le blocus d'une f4 par une F+ comporte toujours 3DN (sauf si
+% 2DN+de fait passer + ? de mémoire on ne met pas les de dans les F). Je pense
+% qu'on peut sans trop de risque virer la restriction "au moins 3DN"...
+%
+% Hum, ou alors c'est si plusieurs NTD ? Je suis d'avis qu'une flotte anglaise
+% de pVII avec 1ND et 2NTD devrait etre F-, NTD (et encore...) et pas F+ mais
+% c'est p'tet trop penible de rediger les regles pour forcer ca. ("F =
+% conteneur, on prend celui qui contient les ND et on a le droit de rajouter
+% des NTD" ?)
+\bparag \FLEET\faceplus with at least 3\ND in the stack: may supply any stack
+and blocade any \fortress.
+%\bparag un pion \FLEET\faceplus et au moins 3 \ND (Convoy ne comptent pas): ravitaille pile
+%de taille quelconque et blocus ou ravitaillement jusqu'à f5
+\bparag Convoys and are never taken into account for supply and blocade.
+
+\aparag[Source of Supply - Sea]
+Arsenals are SoS for all naval forces; other ports of city, \COL or \TP are SoS for 
+stacks with at most one \FLEET; 
+\bparag Forts (not of \TP) are SoS only for stack with at most one \ND 
+(and possibly \NDE).
+\bparag \Presidios are SoS for naval forces without \FLEET;
+however, a naval force containing up to one \FLEET may enter a 
+\Presidio to supply it (if besieged) or bring forces.
+\bparag[Stacking:] Arsenals contain any size of force;
+Normal ports can have at most one \FLEET inside;
+forts may contain only \ND, \NDE (no \FLEET).
+
+\aparag[Line of Supply - Land] LoS goes from SoS to troops.
+\bparag In Wasteland, any non Wasteland native country double the cost in \MP
+for LoS until construction of \ville{Saint-Petersbourg} or \eventref{pVI:Great
+  Northern War} (whichever occurs first).
+\bparag In non-nationnal desert, double the cost in \MP for LoS.
+\bparag {\bf When supplied by naval forces} Length of LoS is 3\MP (6\MP in
+Wasteland or Desert) plus 1 per sea crossed from a SoS able to supply the
+naval stack.
+% Jym, precisions :
+\bparag Note that the seazone with the fleet is \textbf{not} crossed by the
+LoS (only entered to turn the fleet into a SoS for the troops), hence troops
+supplied by ships adjacent to a port have a LoS of length 3\MP only.
+\bparag Note also that only the 3\MP of ``supply by sea'' is doubled if
+required, not the extra \MP for extra seas.
+%La LoS a une longueur de 3 MP (ou
+%6 MP en Waste) plus 1 MP par mer traversée pour rejoindre une SoS amie qui
+%peut ravitailler la flotte.
+
+\subsubsection{When does Attrition occur?}
+\aparag[Supply Segment] (Before movement). Land stacks (only) roll for
+attrition if at least one of the following case occurs. If several cases
+occur, each above the first gives a \textbf{+2} malus to the roll (``Double
+cause'').
+% Jym :
+% Je sépare No LoS de besieged car no LoS peat causer la désintégration de la
+% troupe en fin de round, pas besieged.
+% En fait, beseged s'aparente a du weak supply plutot qu'a une absence de LoS
+% imho.
+\bparag No LoS ;
+\bparag weak Supply, namely:
+\begin{modlist}
+\item LoS of 6 or more \MP (except \LD/\LDE in \ROTW)
+\item LoS through non-national desert (including last province)
+\item SoS not owned by alliance (only controlled)
+\item Supplied by a fleet not adjacent to its own SoS
+% Jym, ajout pour explo
+(except for \LD/\LDE in the \ROTW).
+\item Besieged (siege attition)
+\end{modlist}
+\bparag Force in \terme{Cold area} in an uncontrolled province after Winter
+round (including in case of Summer/Summer transition and end of turn) (in the
+\ROTW, add the malus of the area) ;
+\bparag \Timar after Winter round (as above) (Special,
+see~\ruleref{chSpecific:Turkey:Yearly Campaigning})
+
+\aparag[Movement Segment, land] Land stacks roll for attrition at the end of
+movement (before battle) if at least one of the following case occurs. If
+several cases occur, each above the first gives a \textbf{+2} malus to the
+roll (``Double cause'').
+% Jym :
+% 5LD+pacha attrite ?
+\bparag Large stack ($\geq$ 6 \LD, or $\geq$ 3\LD if no logistic) ;
+% Jym :
+% Je sépare les 2 de mvt. C'est 2 causes separees qui provoquent double cause
+% si besoin.
+\bparag moving 6\MP or more ;
+\bparag moving 3\MP or more during \terme{bad weather} ;
+% Jym : 
+% etait seulement ici. Il me semble qu'on fait tjr attr avant btaille
+% (fourager, ...) J'ai mis plus haut.
+%[fait en fin du mvt, avant cmbt] \\
+\bparag if embarking \textbf{or} disembarking not in friendly port.
+
+\aparag[Attrition at sea] Naval stacks always roll for attrition except when
+staying at port the whole round.
+
+\aparag[Siege Attrition] (during Supply or Siege Segment)
+\bparag Besieged during Supply Segment.
+\bparag Besieger if the siege is impossible (not enough troops or no LoS) or
+if requested by the siege roll.
+% Jym :
+% Pas a sa place ici. Je vire
+%test.  Si le 1d10 de siège est < distance en mvt à la Supply Source,
+%faire attrition. Mod.:
+%- nbre de DT ennemis dans la forteresse ; \\
+%+4 si 1er round de siège (i.e. pas de test de siège par cette alliance
+%au round précédent de ce tour ; tjs le cas au 1er round)
+%; \\
+%-2 si siège continué du tour d'avant. \\
+%-S valeur de siège des assiégés
+
+\aparag[After battle]
+\bparag On land, any non-winning troop (use specific table).
+\bparag At sea, any moving stack (retreat or following to port).
+
+\aparag[End of round (or turn)/Redeployement] In the following cases, a stack
+must move and roll for attrition at the end of round or turn. Usual causes of
+attrition for movement occur and cause maluses.
+\bparag If no LoS during Supply Segment and still no LoS at end of round:
+forced redeployement (and attrition). If no way out (naval not allowed), the
+stack is destroyed.
+\bparag Siege not maintained at end of turn (no Siegework\faceplus).
+\bparag Fleet staying at sea at end of turn.
+\bparag Fleet going to port at end of turn.
+\bparag Peace evacuation
+
+% Jym :
+% beacoup de la fin de cette section semble etre de la redite des points
+% precedents. Je vire violemment.
+
+%\aparag[Zones de Grand Froid] 
+%Elle recouvre Norvège, Suède (sauf Skane), Finlande. + grand froid \ROTW
+%dans les régions qui produisent de la neige.
+%On fait un test de ravitaillement si dans une province non controllée
+%après un round d'hiver. En \ROTW, rajouter un malus égal au nombre de
+%neige de la région.
+
+%\aparag[Zones Sous-Cultivée] (indiquée sur la carte). Les coûts doublés
+%pour mvts et LOS des pays n'étant pas initialement dans la zone (plus
+%Crimée et Cosaques d'Ukraine) ; valable quel que soit le propriétaire
+%réel.  Cesse par construction de StPetersbourg ou lors de VI-1 (ce qui
+%arrive en premier).
+
+%\aparag[Zones de désert] Ces zones ne procurent qu'un ravaitaillement
+%tenu (sauf à son possesseur légitime dans la province uniquement; même
+%pas à ses alliés) ; coût doublé pour établir LOS.  NB: c'est un terrain
+%accidenté.
+
+%\aparag[Retraite par manque de LOS] si aucune LOS ne peut être établie
+%(une LOS ayant au plus 12 MPs, ou nécessitant une flotte de soutien pour
+%passer par mer): faire test d'attrition [à +2] en début de round, et si
+%pas rétabli à la fin du round : redéploiement forcé (avec test
+%d'attrition à +2 à nouveau, qq soit la longueur du mouvement ; mouvement
+%par mer ou à travers provinces avec forces ennemies autres que
+%forteresse interdit -- si déploimement impossible, force détruite).
+
+%\aparag[Impossibilité de tenir un siège] 
+%Ceci est regardé au début de la phase de siège (nbre de DT >= niveau) ;
+%si impossible, mvt de rédéploiement forcé vers chez soi \\
+%- en fin de tour: si pas Usure\faceplus, redéploiement forcé.
+
+%\aparag[Fin de tour] 
+%- Rester en mer en fin de tour: permis avec test d'attrition. \\
+%- Mouvement de redéploiement forcé vers chez soi
+%(port ou province le + proche) si siège pas établi, 
+%ou pour les flottes en mer ne voulant pas y rester. \\
+%- Mvt de redéploiement des forces sur terre après paix
+%pour évacuer les provinces [attrition à -2, pas de
+%limite de MP, vers province la + proche si au-delà de 12MP]
+
+%\aparag[Mvt de redéploiement]  toujours gratuit.
+%Une force faisant un tel mvt ne peut faire de mvt régulier
+%à ce round.
+
+\subsubsection{Attrition results}
+\aparag The effect of the result \textbf{P} in the attrition table depends on
+the technology of the stack. In case of mixed stacks, take the worst technology.
+% Jym :
+% On joue en placant le pillage dans n'importe quelle province traversée. Je
+% redige conformement a l'usage.
+\bparag Until \TARQ: 1\LD lost during movement \textbf{and} one side of
+\PILLAGE in any non-neutral province entered or left.
+%Jusqu'à Arquebuse : 1 perte pendant le mouvement et pillage (-)  dans
+%a province où est la force après le combat.
+%\bparag Mousquet, Baroque, Mouvement : prendre une perte pendant le mouvement ou fourrager,
+%(i.e. -1 aux dés du 1er jour de combat si bataille) et poser un pillage (-)
+%dans la province où est la force après le combat.
+%\bparag  Dentelles : prendre une perte pendant le mouvement ou poser un pillage (-)
+%dans la province où est la force après le combat.
+\bparag \TMUS, \TBAR, \TMAN: either 1\LD lost during movement or both
+\terme{foraging} (-1drm during 1st day of battle) and one side of \PILLAGE in
+any non-neutral province entered or left.
+\bparag \TL: either 1\LD lost during movement or one side of \PILLAGE in any
+non-neutral province entered or left.
+\bparag Besieged troops cannot pillage and thus must lose 1\LD.
+
+\subsection{Autour du mouvement}
+
+\aparag[Empilement]
+\bparag sur terre, [3 pions et 8 DT] + 2 pachas
+\bparag  sur mer [3 pions] + 2 Tr
+\bparag de et dc ne sont pas comptés, mais au plus 2 dans une pile.
+\bparag[Arsenaux et ports] Ports réguliers ne peuvent contenir plus d'un pion \FLEET.
+Seuls les arsenaux (en Europe: indiqués sur la carte; \ROTW (et cas particuliers) : indiqué
+sur le pion forteresse) peuvent accueillir 2 ou 3 \FLEET.
+Les forts ne peuvent accueillir que des \DN ou \NDE.
+
+\aparag[Pour l'interception]
+\bparag Noter que c'est l'intercepteur qui attaque toujours.
+et que la bataille est résolue tout de suite entre la pile qui intercepte et la force interceptée.
+Il peut choisir de regrouper dans sa pile les forces immobiles amies dans la province.
+\bparag un intercepteur peut être intercepté à son tour [les forces qui
+interceptent viennent en renfort de la pile qui a été la 1e interceptée] ;
+c'est tout de même le joueur qui n'est pas en phase qui est l'attaquant.
+\bparag Si une force intercepte dans une zone où il y a déjà une force ennemie,
+cette for peut intercepter comme par la paragraphe précédent pour se joindre à
+la défense [remarque : il peut alors y avoir plus de 8 DT, les forces supplémentaire
+n'ont simplement aucun effet sur le combat].
+\bparag  Si un combat d'interception a lieu dans une province avec des forces non impliquée
+dans le combat, ces forces suivent la retraite éventuelle de la pile allée engagée en
+bataille (mais sans perte). [TBD]
+\bparag une pile qui a combattu pendant une phase de mouvement et n'a
+pas gagné (perdu ou ex-aequo) ne peut plus bouger ni intercepter.
+\bparag malus aux interceptions : \\
+	intercepter à travers passe de montagne -2 \\
+	intercepter depuis ou vers un marais -1 \\
+	intercepter à travers détroit : impossible \\
+
+
+\aparag[Transport maritime]
+\bparag Considéré comme l'action de la flotte.
+\bparag Les forces terrestres doivent partir soit d'une côté quelconque,
+soit d'un port/arsenal pouvant contenir la pile navale. A destination
+nécessairement d'un port/arsenal ami (contrôlé, allié,...) pouvant
+contenir la pile navale. La force navale doit stopper son mouvement là.
+\bparag Les forces terrestres ont dépensé 2 MP si de port ami à port ami
+(3 en \ROTW), 3 MP sinon (6 MP en \ROTW), et peuvent rester dans la
+forteresse  ou continuer le mouvement comme province si la forteresse n'est pas assiégée.
+Elles peuvent être intercepté dans la province si ils sortent et ont alors le
+malus débarquement pour la bataille [TBD ?].
+\bparag Jet d'attrition de mouvement pour force terrestre si a embarqué
+ailleurs qua dans un port/arsenal.
+\bparag Exception avec C ou Gouv ou Expl dans la pile (combinée),
+l'embarquement et débarquement en \ROTW est tjs considéré dans un port
+ami si il n'est pas opposé (pas de ville, \COL, \TP ou forces d'un
+ennemi en guerre contre soi).
+
+\aparag[Invasion navale] Force terrestre : part d'un port ou arsenal
+contrôlé.  La flotte doit pouvoir entrer dans le port.
+\bparag Il coûte 3 MP à la force terrestre pour être laissé sur une côte
+sans port contrôlé (6 MP en \ROTW).
+\bparag Jet d'attrition de mouvement pour force terrestre si a débarqué 
+ailleurs que dans un port/arsenal.
+
+\aparag[combiner mvt terre/mer]
+Une force terrestre doit commencer dans la province côtière. 
+
+\aparag[Mouvement le long d'un rivière en \ROTW] 
+se qualifie si un même fleuve ou lac est adjacent
+aux deux provinces. Ajouter le coût de traversée du
+fleuve le cas échéant.
+\bparag Ne sert pas au mvt de pions A; sert pour mvt de LD, LDE
+et au ravitaillement. 
+
+\aparag[Combat d'ecrasement (Overrun)]
+En cas de disproportion des forces en présence, un combat d'écrasement est possible
+pendant le mouvement qui ne l'arrête pas (et l'attrition n'est testée que plus tard);
+inversement, si une force attaque un adversaire en surnombre, le défenseur
+peut déclarer un combat d'écrasement immédiat.
+\bparag Si 4 \LD vs. 1 \LD ou moins :  résoudre le combat et si la force la
+plus nombreuse gagne, elle peut continuer son mouvement (ou continuer des
+interceptions si ce n'était pas sa phase).
+\bparag Si 8 \LD vs. 1 \LD ou moins : la force la plus faible est éliminée automatiquement
+sans combat (et son chef ne fait pas de test de perte).
+\bparag Dans les 2 cas, le défenseur peut dire qu'il se retire dans la forteresse
+de la province avant le combat d'écrasement.
+
+
+\subsection{règles navales}
+
+\aparag[Ravitaillement des flottes et ports d'attache]
+Arsenals are SoS for all naval forces; other ports of city, \COL or \TP: for 
+stacks with at most one \FLEET; forts: only for stack with at most one \ND 
+(and possibliy \NDE).
+
+\aparag[Taille des forces navales] pour le ravitaillement terrestre, des
+forteresses et le blocus.
+\bparag \de seuls : ravitaille jusqu'à 1\DT (+ \LDE) et blocus ou ravitaillement de fort (f0) seulement
+\bparag pions \DN : ravitaille jusqu'à 3\DT (sans \ARMY) et blocus ou ravitaillement de f0 ou f1
+\bparag un pion \FLEET et au moins 2 \ND ravitaille jusqu'à 5\DT (avec \ARMY possible) et blocus ou ravitaillement jusqu'à f3
+\bparag un pion \FLEET\faceplus et au moins 3 \ND (Convoy ne comptent pas): ravitaille pile
+de taille quelconque et blocus ou ravitaillement jusqu'à f5
+\bparag Les pions Convoys ne comptent pas.
+
+\aparag[Rappel de tout ce qui vaut pour une action de la flotte]
+
+\bparag[Exploration] -- résolu pendant le mouvement de la pile
+\bparag[Transport naval ou invasion navale]
+(c'est-à-dire embarquement, débarquement, y compris ravitaillement et 
+éventuel blocus de la province d'arrivée) : achève le mouvement naval. \\
+Le joueur doit anoncer en entrant dans la mer son intention de débarquer
+des forces et dans quelle province. \\
+Exception: une pile qui débarque avec un C - ou un E - ne compte pas comme une action. \\
+Noter : après bataille navale, interdiction de débuter une transport naval (oui invasion) au
+même round (on peut seulement finir celui-ci, si victorieux)
+\bparag[Blocus d'un port et/ou ravitaillement maritime] d'un force sur une côte
+\bparag[Ravitaillement martitime]
+\bparag [Ravitaillement d'un port sous blocus]  il faut entrer dans le port en étant passé
+dans un autre port (peut s'accompagner d'un débarquement de
+troupes dans le port) et avoir au moisn autant de forces navales que ce qui serait
+nécessaire pour le blocus.
+\bparag attaque -- à la fin du mouvement de la pile
+\bparag lutte contre pirates et corsaires -- résolu à la fin du round
+
+\aparag Actions passives
+\bparag Mouvements
+\bparag Interception : une flotte d'un joueur inactif (pas en phase)
+peut tenter d'intercepter chaque pile qui bouge dans sa mer ou une mer
+adjacente (autant de tentatives que d'opportunités, mais un pays/une
+alliance ne peut faire qu'une seule tentative par mer).
+Si au port : dans une des mer adjacente.
+
+\aparag[Blocus]
+Il faut avoir au moins la force navale voulue selon le niveau de forteresse (voir table ou supra).
+\bparag Coupe le bonus de -3 au test de ravitaillement des assiégés ;
+\bparag Flotte qui veut sortir ou entrer : doit faire un test pour échapper au blocus
+(ou attaquer la flotte en blocus)
+
+\aparag[Rappel des mod. d'interception] VOIR TABLE
+\interceptiona
+\bparag Pour les flottes faisant Invasion/Naval Transport : le bonus +2 remplace
+le malus de -3 au port ou le bonus de +1(même mer) si intention de
+débarquée a été indiquée. Pour une flotte en mer: +2 si c'est dans la
+même zone; flotte dans arsenal : +2 dans les mers qui bordent l'arsenal;
+flotte dans port: +2 si c'est dans la province du port.
+
+%
+%\aparag[Flottes indiennes, Mamelouks, Chinoises et Japonaises]
+%elles ont un malus de -1 à l'avantage du vent par rapport aux navires
+%européens ; leur technologie sera cependant en augmentation
+%de la même manière que leur tech terrestre (mais comme ils
+%n'ont que peu de F, ça change pas grand chose).
+% PB: enlevé depuis qq temps des tables
+
+
+\subsection{Effet d'un presidio (COMPLETER avec 53.8)}\label{chMilitary:Presidios}
+
+\aparag[Presidios and Blockade]
+\bparag The port is considered as blockaded by this fortress, even if the 
+country that thus exerts the blockade is not at war with the owner of 
+the blockaded port.
+
+\bparag Any exit from or entry into this port by units (privateers, Dn
+or F) may trigger an reaction by the fortress. This reaction is decided
+by the owner of the Presidio. This a declaration of war (with the usual
+CB cost) if the interception is against any unit except privateers.
+
+\bparag The reaction is resolved as a fire by the Presidio on the following table:
+\interceptionb
+
+\aparag[As Source of Supply]
+\bparag \Presidios are Sources of Supply only for forces inside the fortress.
+\bparag \Presidios are SoS Sources of Supply for naval forces without \FLEET;
+however, a naval force containing up to one \FLEET may enter temporarily a 
+\Presidio to supply it (if besieged) or bring forces.
+
+%%% détroits fortifiés par Jym. Modifiez à volonté.
+\aparag[Strait fortifications]\label{chMilitary:Strait Fortifications}Certain
+straits are marked with a red naval frontier and a tower symbol near the
+province controlling them. These are the strait between Italy and
+Sicily (controlled by \ville{Messine}), the entrance to
+\seazone{Adriatique} (controlled by \province{Corfou}), the Dardanelles
+(\province{Dardanelles}) and the Bosporus (\province{Trace}) in Europe;
+and the entrance to Saint-Laurent river (Louisbourg, on Cape Breton
+Island), entrance to \seazone{Mer Rouge} (\ville{Socotra}), entrance to
+\seazone{Persian Sea} (\ville{Ormus}), the Malacca strait (\ville{Malacca})
+and the Sunda strait (\ville{Jakarta}) in the \ROTW.
+\bparag In Europe, they act as a \Presidio of level 2 against any fleet
+trying to cross the red lines. Using them against any unit but \corsaire
+gives a free \CB to the owner of the intercepted stack for the next
+turn.
+\bparag If a power has a \Presidio on the \province{Dardanelles}, it
+negates the effect of the Strait Fortifications for this power.
+\bparag In the \ROTW, they act as a \Presidio of level half the level of
+the fortress in the province (rounded down). Using them against any unit
+but \corsaire give a free \CB (normal or oversea, offended player's
+choice)) to the owner of the intercepted stack.
+\bparag For the Sunda strait, the city of \ville{Jakarta} must also by
+owned, usually by placing a \COL there.
+\bparag Minor countries (usually \pays{venise} in Europe and
+\pays{Gujerat} for Malacca (sometimes \pays{Chine})) will always use
+them against power at war with them. If they are at peace, their
+controller chose whether to use it or not. If they are neutral, they
+will always use them against \corsaire and never against other naval
+units.
+
+\subsection{Les sièges}
+\aparag Pour la sape, effet du terrain (non cumulatif)
+\bparag           -2      Port sans blocus, terrain clair
+\bparag           -3      Port sans blocus, terrain autre que clair
+\bparag -2 Terrain accidenté (montagne, marais, forêt, désert) sans port
+ou blocus
+
+
+\aparag Les tables sont à jour !
+
+\aparag[Expérimental]
+Un assaut qui a obtenu au moins 1 pertes (sans compter les bonus
+de Janissaires, \RUS, \POL) sans prendre la forteresse donnera un 
+bonus de {\bf +1} aux jets de sappe et aux assauts suivants du tour.
+
+\aparag[Port Siegeworks] 
+Ports that are besieged with at least one level of Siegework are
+submitted to a fire from the siegework that works the same way as the
+Presidios, with a {\bf +1} per counter Siegework\faceplus.  {\bf But the
+ port is not blockaded.}
+
+\aparag[Impossibilité de tenir un siège] 
+Ceci est regardé au début de la phase de siège (nbre de DT >= niveau) ;
+si impossible, mvt de rédéploiement forcé vers chez soi \\
+- en fin de tour: si pas Usure\faceplus, redéploiement forcé.
+
+
+\subsection{Terrains}
+
+\aparag[Effet du terrain sur mouvement et combats]
+\bparag Plaine: 1 PM si ami, 2 PM sinon (2 et 4 si hors-Europe) ;
+\bparag Accidenté en Europe : 2 PM, sauf 3 PM en Montagne ennemi ;
+\bparag Accident en ROTW: 4 PM si ou mvt de forces d'un pays mineur de
+ROTW ; 6 pm si ennemi ;
+\bparag Rivière, passe, détroit, arrivée ou départ en marais: +1 PM (et
++2 PM HE)
+\bparag Déplacement naval: 3 PM (indépendamment du terrain de départ ou
+d'arrivée, y compris marais), sauf si de port ami à port ami 2 PM. 6/3
+PM en rotw.
+
+\aparag[Les différentes zones de forêts]
+\bparag  forêts nordiques : suède+Finlande+côte baltique actuellement orientale
+\bparag forêts orientales : celles actuelles (sauf dessus) et Prussia et
+adjacent, Lovonie, Podolie.
+
+
+\aparag[Effet sur le combat]\label{chMilitary:Battle:Forests} REVOIR : tables à jour
+\bparag  Modificateurs feu et choc \\
+	en marais, forêt ou désert -1 \\
+	en montagne pour l'attaquant (sauf s'il a intercepté) -1 \\
+	force traversant un fleuve ou une passe de montagne -1 \\
+		(1er round, et sauf si il a intercepté) 
+\bparag Modificateurs feu \\
+	force débarque ou traverse un détroit -2 [1er round]
+\bparag Modificateurs choc \\
+	force débarque ou traverse un détroit -3 [1er round]
+\bparag Modificateurs poursuite\\
+	en marais, forêt, désert ou montagne -1 \\
+	vainqueur a traversé fleuve, passe, ou détroit ou débarque -1 \\
+	retraite du perdant à travers passe, fleuve, détroit ou réembarquement +1
+
+\aparag Si plusieurs piles se rejoignent dans une même province pour
+une bataille (2 forces qui convergent ou interception), on prend le plus
+défavorable effet de terrain de frontière.
+
+\aparag[Finlande-Suède] Un mouvement de retraite (après bataille ou
+redéploiment forcé) est autorisé entre les provinces au
+nord de ces deux zones. Le mouvement prend toute la capacité de mouvement
+restante (donc il faut faire un test d'attrition car les 12 MP sont dépensés).
+C'est la seule forme de mouvement autorisée par ce chemin.
+
+\subsection{Les batailles}
+\aparag[Victoire majeure]
+Elle est obtenue aux conditions suivantes
+\bparag Sur terre en Europe : déroute du perdant et différence des
+pertes égale à 3\LD ou plus 
+\bparag Sur terre en \ROTW : déroute du perdant, perdant avait au moins
+un pion \ARMY européen et différence des pertes égale à 3\LD ou plus
+\bparag Sur mer : déroute du perdant et différence des pertes
+d'au moins 5\ND ou 8 DGa.
+
+\subsubsection{Les batailles terrestres}
+\aparag[Organisation des armées et cavaleries] Valable si au moins un pion armée
+de la classe en question.
+\bparag[\terme{Sipahi}]  TUR (avant réforme M-2) a +1 en choc et poursuite plaine/désert
+\bparag[iim]  bonus +1 au choc en I-IV en plaine/forêt orientale
+\bparag[tercios] toutes les autres armées ont un malus -1 en choc contre eux sauf
+       i, im, ii et iim en I-V
+\bparag[iiim] bonus +1 au choc en IV-V en plaine et forêts occidentales,
+\bparag[SUE] bonus de +1 au choc en II-VI en forêts nordiques
+\bparag[iv] bonus +1 en III-V en plaines et forêts occidentales
+
+\aparag[Test de survie des généraux]
+En Europe, sur terre, on ne teste pas le général d'un camp si son adversaire
+n'a pas au moins 3 \LD.
+
+\subsubsection{Les batailles navales}
+\aparag Deux jours au maximum en cumulant les pertes jusqu'à la fuite (volontaire
+ou obligatoire) d'un camp.
+\bparag Fuite obligatoire 
+       si le moral arrive à 0, ou
+       si le nombre de pertes reçues est > nbre de D de la flotte
+               (tenir compte ici des modificateurs finaux aux pertes).
+     Dans les deux cas c'est une déroute (avec poursuite, etc.).
+\bparag Fin 2e jour si egalité en moral ;
+peuvent choisir de retourner à un port (au choix) ou rester en mer (attaquant
+d'abord). 
+\bparag Les flottes continue leur action si elles ont gagné la bataille, sinon
+elles ont fini pour le tour (devant soit retourner auport, soit choisir de rester en mer
+en cas d'égalité mais sans rien faire de plus).
+Exception : on ne peut débuter un transport maritime après une bataille, même gagnée.
+
+\aparag[Effet de la différence de taille des forces] Modificateurs au dé de bataille
+\bparag Si la flotte est de taille >= à (taille+1) adverse, +1 au choc
+\bparag Si la flotte est de taille >= à (taille+3) adverse, +1 aux feu, choc
+\bparag Si la flotte est de taille >= à (taille+5) adverse, +1 aux feu, choc et poursuite
+\bparag Si la flotte est de taille >= à (taille+7) adverse, +1 aux feu,  +2 choc et +1 poursuite
+\bparag Si le moral perdu est > moral adverse perdu, -1 aux feu et choc
+
+\aparag[Effet de la taille des forces]
+Appliquer variation des pertes:
+\bparag Si moins de 6 \ND : réduction des pertes \\ 
+Si plus de 6 \ND (ne pas compter les \NDE):
+line +1 if 7 to 12\DN; +2 if 13 to 18\DN; +3 if 19+\DN 
+de la table 'Size Comparison'.
+
+\bparag Si l'adversaire a dérouté, les pertes sont minimales sont 1.
+\bparag Le max de pertes que peut faire une flotte est le double de sa taille
+       (1 si 'de' seul).
+
+
+\aparag[Répartition des pertes]
+\bparag  Integer {\bf losses split} evenly in \terme{Damaged}, \terme{Destroyed} and \terme{At port}, in units of \ND.
+\bparag {Winner:} 1st \ND\ lost  \terme{Damaged}, 2nd \terme{Destroyed} and 3rd refitted (then loop over).
+\bparag {Loser (or equality.):} 1st \ND\ lost  \terme{Damaged}, 2nd \terme{Destroyed} and 3rd \terme{Damaged}.
+\bparag Fractions (\tu or \td) vs. \NGD or \NTD are  rounded up. Fractions vs. \ND are applied as \NDE or 2\NDE  in the next category of loss.
+\bparag Examples 2: 3\td losses against losing \ND: 2\ND+2\NDE {Damaged}, 1 \terme{Destroyed}\bparag Examples 2: 4\tu losses against winning \NGD = 5 losses: 2  \terme{Damaged}, 2 \terme{Destroyed} (one immediately refitted fo no effect).
+
+
+\aparag[Pertes en poursuite] En plus des pertes normales, elles permettent
+de capturer ou attaquer les transports. Le niveau de capture est égal
+au nombre d'étoiles. 
+\bparag Capture de navires de guerre = le gagnant peut capturer un DN ou
+2 DGa par * en poursuite        (pris d'abord sur les Imm, puis les End, puis les autres)
+\bparag Couler Transports = 2 DTr coulé par * de poursuite dédiée à ceci
+       une force terrestre transportée au minimum égale à ce que
+       ces DTr perdus transportent doivent être détruits.
+\bparag Capturer Or = 2 DTr par * de poursuite dédiée à ceci avec 5 ors perdus, 10 \ducats capturés.
+Les transports sont gardés avec la flotte (et peuvent être repris, attaqué par pirates etc)
+jusqu'à un port de la métropole où ils disparaissent (et or dans le RT).
+
+\aparag[Damaged ships] \terme{Damaged} \ND are written down globally by naval zones:
+Mediterranean Sea, Atlantic in Europe, Atlantic in \ROTW, Indian, Asian and East Pacific.
+They are refitted for usage:
+\bparag cost = 0.5*coût achat DN à un round suivant pour les remettre en état.
+               Effet = remet tout de suite en jeu les DN voulus.
+\bparag gratuit au début du tour suivant si on entretient la flotte;
+\bparag on peut la garder \terme{Damaged} pour un coût d'entretien divisé par 2 ;
+\bparag On les remet en priorité dans un Arsenal de la zone, sinon dans un
+port capable de les contenir.
+
+\subsection{En ROTW}
+
+\aparag[Indigènes et combat]
+Ils attaquent des forces à chaque round normalement ; en cas
+de défaite avec déroute, ils n'attaquent pas ce joueur au
+round suivant, seulement celui d'après. En cas de victoire
+ou de défaite normale, ils attaquent dès le round suivant.
+Ils font le siège des forts/forteresses, mais jamais d'assaut
+[l'assaut est représenté en fin de round par l'attaque des indigènes]
+
+\aparag Une ville dans une région qui n'est à aucun pays mineur peut
+être attaquée sans déclaration préalable de guerre. La déclaration
+doit se faire à la phase des combats, les indigènes de la zone 
+forment l'armée qui défend la ville et le pays européen peut
+ensuite, si il les défait, mettre le siège ou faire l'assaut.
+On ne peut installer une COL dans une telle zone qu'en ayant
+pris la ville au tour d'avant.
+
+\aparag Un TP établi ou une Mission a un fort. En revanche, une présence militaire
+autre qu'une forteresse peut causer l'activation des indigènes.
+
+\aparag Une COL n'a pas cet avantage (mais on peut en construire) ;
+cependant dans une COL établie, la présence de forces armées 
+n'entraine plus de réaction des indigènes, mais
+seulement d'un pays mineur ayant la région, ou lors des 
+résultats E* à une colonisation.
+
+\aparag[Pillages]
+\bparag Sans A, les pillages en \ROTW sont au plus \Facemoins.
+\bparag L'or à terre est capturé à moitié si pillage \Facemoins et en
+entier si pillage \Faceplus.
+
+\input{engMilitaryFrench}
+
+
+
+% LocalWords:  condotta pikemen condottiere condotierri Landsknechts tercios

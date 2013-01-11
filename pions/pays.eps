@@ -1,0 +1,658 @@
+
+/color_dict <<
+    color_dict {}forall
+% (pays) [ coul_fond coul_bandeau coul_symbole coul_caracs]
+    (aceh)		[[1   1   1  ] [.5  .5  .9 ] cblack cyello]
+    (aden)		[[1   .5  .5 ] [0   1   1  ] cblack cblack]
+    (afghans)		[[0   0   .3 ] [1   1   0  ] cwhite cblack]
+    (algerie)		[[0   .95 .75] [.5  .5  1  ] cblack cblack]
+    (alsace)		[[.95 .75 .25] [.95 0   0  ] cblack cblack]
+    (arabie)		[[1   0   0  ] [.6  0   0  ] cblack cwhite]
+    (astrakhan)		[[0   1   1  ] [0   .75 1  ] cblack cblack]
+    (azteque)		[[.9  .9  1  ] [.5  .5  .5 ] cblack cwhite]
+    (bade)		[[.5  1   .5 ] [0   .95 .5 ] cblack cblack]
+    (baviere)		[[0   0   .7 ] [1   1   1  ] cwhite cblack]
+    (belgique)		[[.95 .95 .4 ] [.95 .5  .4 ] cblack cwhite]
+    (berg)		[[.25 .5  0  ] [.4  .75 0  ] cwhite cwhite]
+    (boheme)		[[.4  0   .4 ] [.4  1   .4 ] cwhite cblack]
+    (bourgogne)		[[1   1   0  ] [0   0   0  ] cblack cwhite]
+    (brandebourg)	[[.75 1   .75] [.25 .25 1  ] cblack cyello]
+    (bretagne)		[[.25 .25 0  ] [.25 .75 1  ] cwhite cblack]
+    (blanc)		[[1   1   1  ] [1   1   1  ] cblack cblack]
+    (brunswick)		[[0   .95 .5 ] [0   .5  0  ] cblack cyello]
+    (chevaliers)	[[1   .5  0  ] [1   1   .75] cblack cblack]
+    (chine)		[[1   1   .5 ] [1   1   0  ] cblack cblack]
+    (catalogne)		[[.25 .25 .5 ] [.25 .25 .75] cwhite cwhite]
+    (cologne)		[[.5  0   0  ] [1   1   1  ] cwhite cblack]
+    (corse)		[[1   1   1  ] [0   .5  1  ] cblack cyello]
+    (cosaquesdon)	[[0   .75 0  ] [.75 .75 0  ] cblack cwhite]
+    (courlande)         [[.5  0   0  ] [.5  .5  .5 ] cwhite cyello]
+    (crimee)		[[0   0   .75] [1   1   0  ] cyello cblack]
+    (croises)		[[1   1   1  ] [1   1   0  ] cblack cblack]
+    (cyrenaique)	[[.5  .95 .25] [0   .5  .5 ] cblack cwhite]
+    (danemark)		[[1   0   0  ] [1   0   1  ] cwhite cyello]
+    (damas)		[[.25 .25 .25] [0   1   .25] cwhite cblack]
+    (ecosse)		[[.25 .25 .75] [.25 .25 1  ] cyello cyello]
+    (finlande)		[[.5  .5  .5 ] [1   0   0  ] cwhite cwhite]
+    (genes)		[[.1  .6  .4 ] [0   .9  .5 ] cblack cblack]
+    (georgie)		[[.4  .4  0  ] [.9  .9  0  ] cwhite cblack]
+    (grenade)		[[1   0   1  ] [1   .4  1  ] cyello cblack]
+    (gujarat)		[[.5  .5  0  ] [1   0   0  ] cwhite cwhite]
+    (hanovre)		[[.25 .1  1  ] [1   0   0  ] cwhite cwhite]
+    (hanse)		[[1   0   0  ] [1   1   1  ] cblack cblack]
+    (hesse)		[[.25 .75 .75] [.25 .9  .9 ] cblack cblack]
+    (hongrie)		[[.9  .9  .9 ] [1   .25 .25] cblack cblack]
+    (huguenots)		[[0   0   1  ] [.7  .85 .9 ] cyello cblack]
+    (hyderabad)		[[.6  .3  0  ] [1   .2  0  ] cyello cblack]
+    (inca)		[[1   1   1  ] [.5  .5  .5 ] cblack cyello]
+    (irak)		[[.5  .6  .5 ] [1   .75 .75] cblack cblack]
+    (irlande)		[[.5  1   .5 ] [1   1   0  ] cblack cblack]
+    (japon)		[[1   1   1  ] [1   0   0  ] cblack cwhite]
+    (kazan)		[[.4  .4  0  ] [.75 1   .75] cwhite cblack]
+    (liege)		[[.5  0   0  ] [.75 .75 0  ] cwhite cblack]
+    (liflandie)		[[.5  0   0  ] [.75 1   .75] cwhite cblack]
+    (lithuanie)		[[1   .75 .75] [.6  .1  .1 ] cblack cwhite]
+    (lorraine)		[[.95 0   0  ] [.95 .75 .25] cblack cblack]
+    (lucca)		[[1   1   0  ] [1   0   0  ] cblack cblack]
+    (mamelouks)		[[.5  1   .5 ] [.75 1   .5 ] cblack cblack]
+    (maroc)		[[0   .75 .75] [1   .5  .6 ] cblack cblack]
+    (mayence)		[[0   0   .5 ] [.4  .4  1  ] cwhite cyello]
+    (mazovie)		[[1   .75 .75] [1   .5  .5 ] cblack cblack]
+    (mercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
+    (milan)		[[.75 1   .75] [.75 .75 1  ] cblack cblack]
+    (modene)		[[.25 .25 .25] [1   .6  0  ] cyello cblack]
+    (mogol)		[[.6  1   0  ] [1   .6  0  ] cblack cblack]
+    (moldavie)		[[.5  1   .25] [.25 .5  0  ] cblack cwhite]
+    (montferrat)	[[.7  .7  .7 ] [1   0   0  ] cblack cwhite]
+    (mysore)		[[.6  1   0  ] [1   1   1  ] cblack cblack]
+    (naples)		[[1   1   1  ] [0   0   .75] cblack cwhite]
+    (natives)		[[1   .8  .8 ] [.5  .5  .5 ] cblack cyello]
+    (neutre)		[[.5  .5  .5 ] [.5  .5  .5 ] cwhite cyello]
+    (norvege)           [[.1  .6  .6 ] [.1  0   .6 ] cblack cyello]
+    (iroquois)		[[1   1   .6 ] [.75 .75 1  ] cblack cblack]
+    (oldenburg)		[[.5  .75 1  ] [0   .5  0  ] cblack cwhite]
+    (oman)		[[1   .5  .5 ] [1   1   0  ] cblack cblack]
+    (palatinat)		[[0   .3  0  ] [1   1   1  ] cwhite cblack]
+    (papaute)		[[.4  0   0  ] [1   0   0  ] cyello cwhite]
+    (parme)		[[1   .75 1  ] [0   0   .5 ] cblack cyello]
+    (perse)		[[1   .5  .5 ] [1   .75 .75] cblack cblack]
+    (pirates)		[[0   0   0  ] [0   0   0  ] cwhite cwhite]
+%    (parlement)		[[1   1   0  ] [0   0   .5 ] cblack cwhite]
+    (pommeranie)	[[0   0   .4 ] [1   1   1  ] cwhite cblack]
+    (provincesne)	[[.5  .5  .9 ] [.5  .5  .75] cyello cyello]
+    (pskov)		[[.9  .9  1  ] [.6  .1  .25] cblack cwhite]
+    (rebelles)		[[0   0   0  ] [1   0   0  ] cwhite cwhite]
+    (revolutionnaires)	[[.1  .1  .6 ] [.1  .6  .6 ] cyello cwhite]
+    (royalistes)	[[1   .1  .6 ] [0   1   0  ] cblack cblack]
+    (ryazan)		[[1   1   .9 ] [.6  .1  .25] cblack cwhite]
+    (sainte-ligue)	[[1   1   0  ] [0   0   .5 ] cblack cyello]
+    (saint-empire)	[[1   1   0  ] [.5  .5  .5 ] cblack cwhite]
+    (savoie)		[[.4  0   0  ] [1   .8  .8 ] cyello cblack]
+    (saxe)		[[.25 .5  0  ] [.5  0   .5 ] cblack cyello]
+    (siberie)		[[.9  .9  .9 ] [0   1   0  ] cblack cwhite]
+    (soudan)		[[1   .8  .8 ] [.3  0   .3 ] cblack cwhite]
+    (steppes)		[[.9  .9  .5 ] [1   1   1  ] cblack cblack]
+    (suisse)		[[.4  0   0  ] [.4  .4  0  ] cwhite cwhite]
+    (teutoniques1)	[[0   0   .4 ] [0   .4  0  ] cwhite cwhite]
+    (teutoniques2)	[[0   0   .5 ] [0   .5  0  ] cwhite cwhite]
+    (thuringe)		[[.25 .25 .25] [.5  .5  1  ] cyello cblack]
+    (timar)             [[.5  .6  .5 ] [.5  .6  .5 ] cwhite cwhite]
+    (toscane)		[[0   .4  .4 ] [1   1   0  ] cwhite cblack]
+    (transylvanie)	[[.4  0   .4 ] [1   0   1  ] cwhite cwhite]
+    (treves)		[[.75 .75 .4 ] [.5  .5  1  ] cblack cyello]
+    (tripoli)		[[0   .95 0  ] [.5 .5 0  ] cblack cyello]
+    (tunisie)		[[0   .95 .95] [.5  1   .5 ] cblack cblack]
+    (ukraine)		[[0   1   1  ] [.75 .75 0  ] cblack cblack]
+    (Vukraine)		[[0   1   1  ] [.75 .75 0  ] cblack cblack]
+    (usa)		[[0   0   .4 ] [1   0   0  ] cwhite cwhite]
+    (valachie)		[[.75 0   .75] [0   .5  0  ] cwhite cwhite]
+    (vijayanagar)	[[.4  0   .4 ] [0   .5  0  ] cwhite cwhite]
+    (wurtemberg)	[[.25 .75 .5 ] [0   .25 0  ] cblack cwhite]
+    (ligue)		[cblack cyello cyello cblack]
+    (alliance)		[cblack cwhite cwhite cblack]
+    (Vhollande)		[[.5  .5  .9 ] [.8  .8  .2 ] cyello cblack]
+% Special cases for some majors leaders.
+    (angnomalus)	[[1   .1  .6 ] [1   0   0  ] cblack cwhite]
+    (angseahound)	[[1   .1  .6 ] [1   0   0  ] cyello cblack]
+    (fralicence)	[[.1  .1  .6 ] [.1  .6  .6 ] cred cwhite]
+    (porviceroy)	[[.9  1   .75] [.75 .95 .5 ] cred cblack]
+    (prunomalus)	[[.75 .75 .75] [.25 .25 .25] cblack cwhite]
+    (holvoc)		[[.5  .5  .9 ] [.8  .8  .2 ] cred cblack]
+>> def
+%pays {/i exch def pays {/j exch def i j eq not {color_dict i get 0 get color_dict j get 0 get comparethree color_dict i get 1 get color_dict j get 1 get comparethree add 20 string cvs ( )! i 50 string cvs(-)! j 50 string cvs !(\n)! ! display}if}forall}forall
+%/comparethree {/a exch def /b exch def 0 0 1 2 {/c exch def a c get b c get sub dup mul add}for}def
+%/display {outputfile exch writestring}def
+/bga_dict <<
+    color_dict {0 get} forall
+>> def
+/bg_dict <<
+    color_dict {1 get} forall
+>> def
+/fga_dict <<
+    color_dict {2 get dup cblack eq {pop pop}if} forall
+    (defaut) cblack
+>> def
+/fg_dict <<
+    color_dict {3 get dup cblack eq {pop pop}if} forall
+    (defaut) cblack
+>> def
+
+% Beyond this, exceptions are dealt with
+
+[bga_dict {pop 30 string cvs
+ %   dup (pirates) eq {pop}if
+}forall] /countrylist exch def
+/countryname_dict <<
+    (angleterre)	(Anglia)
+    (france)		(Francia)
+    (espagne)		(Hispania)
+    (habsbourg)		(Habsburgum)
+    (hollande)		(Hollandia)
+    (pologne)		(Polonia)
+    (portugal)		(Portugallia)
+    (prusse)		(Prussia)
+    (russie)		(Russia)
+    (suede)		(Suecia)
+    (turquie)		(Turcia)
+    (venise)		(Venetia)
+% Special cases far some majors leaders.
+    (angnomalus)	(Anglia)
+    (angseahound)	(Anglia)
+    (fralicence)	(Francia)
+    (porviceroy)	(Portugallia)
+    (prunomalus)	(Prussia)
+    (holvoc)		(Hollande)
+% Ici, on met les mineurs 
+    (alliance)		(Protestant Alliance)
+    (blanc)		( )
+    (ligue)		(Catholic League)
+    (aceh)		(Aceh)		% Achem
+    (algerie)		(Algeria)	% Numidia
+    (alsace)		(Alsatia)
+    (arabie)		(Arabia)
+    (astrakhan)		(Astracan)
+    (bade) 		(Friburgensi)	% Baden!!
+    (baviere)		(Bavaria)
+    (belgique)		(Belgica)
+    (berg)		(Clivia)
+    (boheme)		(Bohemia)
+    (bourgogne)		(Burgundia)
+    (brandebourg)	(Brandenburgum)
+    (brunswick)		(Brunsvicum)
+    (bretagne)		(Britannia)
+% Ordo Sancti Joannis Hospitalis Hierosolymitani
+    (chevaliers)	(Ordo Hospitalis)
+    (cologne)		(Colonia)
+    (corse)		(Corsica)
+    (cosaquesdon)	(Don Cassackia)	%(Tanais Cassackia) ?!!
+    (courlande)		(Curlandia)
+    (crimee)		(Crimea)
+    (cyrenaique)	(Cyrenaica)	%(Barcha)!!
+    (damas)		(Syria)		%Sultanat de Damas ?!! Soria?
+    (danemark)		(Dania)
+    (ecosse)		(Scotia)
+    (finlande)		(Finlandia)
+    (genes)		(Genua)
+    (georgie)		(Georgiani)	%Vérifier déclinaison
+    (grenade)		(Granada)
+    (hanovre)		(Hanovere)
+    (hanse)		(Hansa)
+    (hesse)		(Hassia)
+    (hongrie)		(Hungaria)
+    (irak)		(Mesopotamia)	%!! (Babylonia)
+    (irlande)		(Hibernia)	%Ou Irlandia
+    (kazan)		(Cazan)
+    (liege)		(Leodium)
+    (liflandie)		(Livonia)
+    (lithuanie)		(Lituania)
+    (lorraine)		(Lotharingia)
+    (lucca)		(Luca)
+    (mamelouks)		(Ægyptus)	%Sultanat du Caire ?!!
+    (maroc)		(Mauretanium)	% Ou Fassia, mais bof!!
+    (mayence)		(Moguntium)	% Mainz !!
+    (mazovie)		(Mazovia)
+    (mercenaires)	(Condotierri)	%ou (Mercenarii)!!
+    (milan)		(Lombardia)	%ou (Mediolanum)!!
+    (modene)		(Mutina)
+    (moldavie)		(Moldavia)
+    (montferrat)	(Monte Ferrato)
+    (naples)		(Siciliæ)
+    (norvege)		(Norvegia)
+    (oldenburg)		(Westfalia)
+    (palatinat)		(Palatinatus)
+    (papaute)		(Sancta Sedes)
+    (parme)		(Parma)
+    (perse)		(Persia)
+    (pommeranie)	(Pommerania)
+    (provincesne)	(Terræ Depressæ)
+    (pskov)		(Pskove)
+    (ryazan)		(Rezane)
+    (savoie)		(Sabaudia)
+    (saxe)		(Saxonia)
+    (steppes)		(Tartaria)
+    (suisse)		(Helvetia)
+    (teutoniques2)	(D.S.M. Theutonicorum)
+    (teutoniques1)	(Fratres Militiæ Christi)
+    (thuringe)		(Turingia)
+    (toscane)		(Toscana)
+    (transylvanie)	(Transilvania)
+    (treves)		(Treverorum)
+    (tripoli)		(Tripolis)
+    (tunisie)		(Tunesia)
+    (ukraine)		(Ukraina)
+%(Civi. Americæ Unitis)%(Civitatibus Americæ Unitis)!!
+    (usa)		(U.S.A.)
+    (valachie)		(Walachia)
+    (wurtemberg)	(Wirtenberga)
+
+% Mineurs hors-Europe
+    (afghans)		(Durranis Imp.)	%!!Afghans
+    (inca)		(Inca)		%!!Peruviæ
+    (azteque)		(Azteca)	%!!Guastecan
+    (iroquois)		(Iroquois)	%!!
+    (aden)		(Aden)
+    (oman)		(Ayman)
+    (soudan)		(Sudania)
+    (mogol)		(Mogolis Imp.)	%Magni Mogolis Imperium
+    (siberie)		(Siberia)
+    (vijayanagar)	(Bisinagar)
+    (gujarat)		(Guzarate)
+    (hyderabad)		(Hyderabada)	%Hyderabadensis =>Hyderabada
+    (mysore)		(Mysuria)	%Mysuriensis => Mysuria
+    (chine)		(China)
+    (japon)		(Iaponia)
+
+% Pseudo-pays
+    (catalogne)		(Catalonia)
+    (alliance)		(Protestant Alliance)
+    (ligue)		(Catholic League)
+    (sainte-ligue)	(Sancta Lega)
+    (huguenots)		(Huguenotis)
+    (revolutionnaires)	(Révolutionnaires)
+    (pirates)		(Piratæ)
+    (neutre)		(Quidam)	%!!
+    (natives)		(Barbaria)
+    (rebelles)		(Rebellis)
+    (royalistes)	(Fidelis Regi)
+    (croises)		(Peregrini)
+    (timar) 		(Tımarlar)
+    (saint-empire)	(Sac. Rom. Imp.)
+    (Vukraine)		(Ukraina Prima)
+    (Vhollande)		(Hollanda Prima)
+>> def
+/exceptionblasondict <<
+    (Vukraine) (ukraine)
+    (Vhollande) (hollande)
+    (provincesne) (hollande)
+    (timar) (turquie)
+    (angnomalus)	(angleterre)
+    (angseahound)	(angleterre)
+    (fralicence)	(france)
+    (porviceroy)	(portugal)
+    (prunomalus)	(prusse)
+    (holvoc)		(hollande)
+>> def
+/majeurslist [
+    (angleterre)
+    (espagne)
+    (france)
+    (habsbourg)
+    (hollande)
+    (pologne)
+    (portugal)
+    (prusse)
+    (russie)
+    (suede)
+    (turquie)
+    (venise)
+]def
+
+/hindous[(afghans)(mysore)(hyderabad)(mogol)(vijayanagar)]def
+/khanats [(astrakhan)(steppes)(crimee)(kazan)] def%Classe I
+/cosaques [(cosaquesdon)(siberie)]def% Classe I
+/classei [khanats aload pop cosaques aload pop (turquie) (timar)]def
+/classeim[(russie)]def% Classe Im
+/ordresnordiques[(teutoniques1)(teutoniques2)]def% Classe IIm
+/islam [(maroc)(algerie)(tunisie)(tripoli)(cyrenaique)(mamelouks)(arabie)(oman)(aden)(irak)(perse)(grenade)(soudan)(gujarat)(aceh)]def% Classe II
+/classeiim[(suede:pologne)(ukraine)(transylvanie)(pskov)(ryazan)(moldavie)(valachie)(georgie)(pologne)(lithuanie)(hongrie)ordresnordiques aload pop]def% Classe IIm
+/classeiiim[(suede)(saxe)(savoie)(liflandie)]def% Classe IIIm
+/revolutions[(usa)(revolutionnaires)]def
+/classeiv[
+    (france)(prusse)(habsbourg)(huguenots)(sainte-ligue)
+]def% Classe IV
+/classeivm[(angleterre)(royalistes)]def
+/classedarmeedict <<
+	(gujarat) (A)
+	(aceh) (A)
+    classei{(I)}forall
+    classeim{(Im)}forall
+    islam{(II)}forall
+    classeiim{(IIm)}forall
+    (defaut) (III)
+    classeiiim{(IIIm)}forall
+    (habsbourg) (III·IV)
+    (prusse) (III·IV)
+    revolutions{(IV)}forall
+    classeiv{(IV)}forall
+    classeivm{(IVm)}forall
+    [hindous aload pop(indigenes)(iroquois)(chine)(japon)(inca)(azteque)(natives)]
+    {(A)}forall
+    (rebelles) ()
+    (blanc)()
+>>def
+
+/armeetechdict <<
+    % Ici, marquer pour chaque mineur sa technologie
+    % Pour ne rien marquer, mettre ()
+    majeurslist {()} forall
+    (lithuanie)()
+    (royalistes)()
+    (rebelles)()
+    (blanc)()
+    (revolutionnaires)()
+    (timar)()
+    [(vijayanagar) (chine) (afghans) (gujarat) (hyderabad) (japon) (mysore) (iroquois) (siberie)]{(autrereligion)}forall
+    [(georgie) (moldavie) (pskov) (ryazan) (transylvanie) (ukraine) (valachie) (pologne) (Vukraine)]{(orthodoxe)}forall
+    [(aceh)(mamelouks) (algerie) (algerie) (arabie) (astrakhan) (kazan) (crimee) (cyrenaique) (cosaquesdon) (grenade) (maroc) (irak) (perse) (damas) (steppes) (tripoli) (tunisie) (aden) (oman) (mogol) (ormus) (soudan)]{(sunnite)}forall
+    [(azteque) (inca) (natives)]{(etoile5)}forall
+    (defaut)(catholique)
+    % Ici, porter les cas où le pays et le sous-type sont de technologies
+    % différentes (armée de Poniatowsky par exemple)
+    (suede:pologne) (orthodoxe)
+>>def
+
+/flottetechdict <<
+    % Ne porter que les cas où il y a une différence entre
+    % la flotte et l'armée
+    (habsbourg) (catholique)
+    (prusse) (catholique)
+    armeetechdict {} forall
+>>def
+
+/armeesdict <<
+    [(turquie)(timar)] {[
+	[(img:soldatislam) 33 40 0.2]
+	[(img:soldatislam) 57 40 0.2]
+	[(img:soldatislam) 21 21 0.2]
+	[(img:soldatislam) 45 21 0.2]
+	[(img:soldatislam) 69 21 0.2]
+     ]}forall
+    (russie) [
+	[(img:soldatrusse) 33 40 0.2]
+	[(img:soldatrusse) 57 40 0.2]
+	[(img:soldatrusse) 21 21 0.2]
+	[(img:soldatrusse) 45 21 0.2]
+	[(img:soldatrusse) 69 21 0.2]
+     ]
+    cosaques {[
+	[(img:soldatrusse) 39 40 0.2]
+	[(img:soldatrusse) 75 40 0.2]
+	[(img:soldatcosaque) 31 21 0.2]
+	[(img:soldatcosaque) 1 21 0.2]
+     ]}forall
+    classei {[
+	[(img:soldatislam) 39 40 0.2]
+	[(img:soldatislam) 75 40 0.2]
+	[(img:soldattatar) 11 21 0.2]
+	[(img:soldattatar) 47 21 0.2]
+     ]}forall
+    islam {[
+	[(img:soldatislam) 39 40 0.2]
+	[(img:soldatislam) 75 40 0.2]
+	[(img:soldatislam) 21 21 0.2]
+	[(img:soldatislam) 57 21 0.2]
+     ]}forall
+    ordresnordiques {[
+	[(img:soldatteuton) 32 35 0.2]
+	[(img:soldatteuton) 64 35 0.2]
+	[(img:soldatteuton) 16 21 0.2]
+	[(img:soldatteuton) 48 21 0.2]
+    ]}forall
+    classeiim {[
+	[(img:soldatpolonais) 39 40 0.2]
+	[(img:soldatpolonais) 75 40 0.2]
+	[(img:soldatpolonais) 21 21 0.2]
+	[(img:soldatpolonais) 57 21 0.2]
+     ]}forall
+    (defaut) [
+	[(img:soldatlatin) 39 40 0.2]
+	[(img:soldatlatin) 75 40 0.2]
+	[(img:soldatlatin) 21 21 0.2]
+	[(img:soldatlatin) 57 21 0.2]
+    ]
+    classeiiim {[
+	[(img:soldatlatin2) 39 40 0.2]
+	[(img:soldatlatin2) 75 40 0.2]
+	[(img:soldatlatin2) 21 21 0.2]
+	[(img:soldatlatin2) 57 21 0.2]
+     ]}forall
+    revolutions {[
+	[(img:soldatrevolution) 75 42 0.2]
+	[(img:soldatrevolution) 57 35 0.2]
+	[(img:soldatrevolution) 39 28 0.2]
+	[(img:soldatrevolution) 21 21 0.2]
+    ]}forall
+    classeiv {[
+	[(img:soldatlatin) 75 42 0.2]
+	[(img:soldatlatin) 57 35 0.2]
+	[(img:soldatlatin) 39 28 0.2]
+	[(img:soldatlatin) 21 21 0.2]
+    ]}forall
+    classeivm {[
+	[(img:soldatlatin2) 75 42 0.2]
+	[(img:soldatlatin2) 57 35 0.2]
+	[(img:soldatlatin2) 39 28 0.2]
+	[(img:soldatlatin2) 21 21 0.2]
+    ]}forall
+
+% (inca)hindous(chine)(azteque)(iroquois)(rebelles)(revolutionnaires)(afghans)
+    hindous {[
+	[(img:soldathindou) 39 40 0.2]
+	[(img:soldathindou) 75 40 0.2]
+	[(img:soldathindou) 21 21 0.2]
+	[(img:soldathindou) 57 21 0.2]
+    ]}forall
+    (iroquois) [
+	[(img:soldatindien) 39 40 0.2]
+	[(img:soldatindien) 75 40 0.2]
+	[(img:soldatindien) 21 21 0.2]
+	[(img:soldatindien) 57 21 0.2]
+    ]
+    (inca) [
+	[(img:soldatinca) 39 40 0.2]
+	[(img:soldatinca) 75 40 0.2]
+	[(img:soldatinca) 21 21 0.2]
+	[(img:soldatinca) 57 21 0.2]
+    ]
+    (azteque) [
+	[(img:soldatazteque) 39 40 0.2]
+	[(img:soldatazteque) 75 40 0.2]
+	[(img:soldatazteque) 21 21 0.2]
+	[(img:soldatazteque) 57 21 0.2]
+    ]
+    (chine) [
+	[(img:soldatchinois) 39 40 0.2]
+	[(img:soldatchinois) 75 40 0.2]
+	[(img:soldatchinois) 21 21 0.2]
+	[(img:soldatchinois) 57 21 0.2]
+    ]
+    (japon) [
+	[(img:soldatjaponais) 39 40 0.2]
+	[(img:soldatjaponais) 75 40 0.2]
+	[(img:soldatjaponais) 21 21 0.2]
+	[(img:soldatjaponais) 57 21 0.2]
+    ]
+    (natives) [
+	[(img:soldatzulu) 33 40 0.25]
+	[(img:soldatzulu) 57 40 0.25]
+	[(img:soldatzulu) 21 21 0.25]
+	[(img:soldatzulu) 45 21 0.25]
+	[(img:soldatzulu) 69 21 0.25]
+    ]
+    (rebelles) [
+	[(img:soldatrebelle) 39 40 0.2]
+	[(img:soldatrebelle) 75 40 0.2]
+	[(img:soldatrebelle) 21 21 0.2]
+	[(img:soldatrebelle) 57 21 0.2]
+    ]
+>> def
+/armeesreduceddict <<
+    [(turquie)(timar)] {[
+	[(img:soldatislam) 33 40 0.2]
+	[(img:soldatislam) 57 40 0.2]
+	[(img:soldatislam) 45 21 0.2]
+     ]}forall
+    (natives) [
+	[(img:soldatzulu) 33 40 0.25]
+	[(img:soldatzulu) 57 40 0.25]
+	[(img:soldatzulu) 45 21 0.25]
+     ]
+    (russie) [
+	[(img:soldatrusse) 45 40 0.2]
+	[(img:soldatrusse) 33 21 0.2]
+	[(img:soldatrusse) 57 21 0.2]
+     ]
+    cosaques {[
+	[(img:soldatrusse) 61 21 0.2]
+	[(img:soldatcosaque) 1 21 0.2]
+     ]}forall
+    classei {[
+	[(img:soldatislam) 21 21 0.2]
+	[(img:soldattatar) 47 21 0.2]
+     ]}forall
+    islam {[
+	[(img:soldatislam) 39 40 0.2]
+	[(img:soldatislam) 57 21 0.2]
+     ]}forall
+    ordresnordiques {[
+	[(img:soldatteuton) 32 35 0.2]
+	[(img:soldatteuton) 48 21 0.2]
+    ]}forall
+    classeiim {[
+	[(img:soldatpolonais) 39 40 0.2]
+	[(img:soldatpolonais) 57 21 0.2]
+     ]}forall
+    (defaut) [
+	[(img:soldatlatin) 39 40 0.2]
+	[(img:soldatlatin) 57 21 0.2]
+    ]
+    classeiiim {[
+	[(img:soldatlatin2) 39 40 0.2]
+	[(img:soldatlatin2) 57 21 0.2]
+     ]}forall
+    revolutions {[
+	[(img:soldatrevolution) 57 35 0.2]
+	[(img:soldatrevolution) 39 28 0.2]
+    ]}forall
+    classeiv {[
+	[(img:soldatlatin) 57 35 0.2]
+	[(img:soldatlatin) 39 28 0.2]
+    ]}forall
+    classeivm {[
+	[(img:soldatlatin2) 57 35 0.2]
+	[(img:soldatlatin2) 39 28 0.2]
+    ]}forall
+    hindous {[
+	[(img:soldathindou) 39 40 0.2]
+	[(img:soldathindou) 57 21 0.2]
+    ]}forall
+    (iroquois) [
+	[(img:soldatindien) 39 40 0.2]
+	[(img:soldatindien) 57 21 0.2]
+    ]
+    (inca) [
+	[(img:soldatinca) 39 40 0.2]
+	[(img:soldatinca) 57 21 0.2]
+    ]
+    (azteque) [
+	[(img:soldatazteque) 39 40 0.2]
+	[(img:soldatazteque) 57 21 0.2]
+    ]
+    (chine) [
+	[(img:soldatchinois) 39 40 0.2]
+	[(img:soldatchinois) 57 21 0.2]
+    ]
+    (japon) [
+	[(img:soldatjaponais) 39 40 0.2]
+	[(img:soldatjaponais) 57 21 0.2]
+    ]
+    (rebelles) [
+	[(img:soldatrebelle) 39 40 0.2]
+	[(img:soldatrebelle) 57 21 0.2]
+    ]
+>> def
+/flottereduceddict <<
+    (defaut) [
+	[(img:detnaval) 40 30 0.2]
+	[(img:detnaval) 21 20 0.2]
+    ]
+>> def
+/flottedict <<
+    (defaut) [
+	[(img:detnaval) 60 40 0.2]
+	[(img:detnaval) 40 30 0.2]
+	[(img:detnaval) 20 20 0.2]
+    ]
+>> def
+/detachement_dict <<
+    (turquie)	 [(img:soldatislam)	38 10 0.3]
+    (timar)	 [(img:soldatislam)	38 10 0.3]
+    cosaques	{[(img:soldatcosaque)	 0  5 0.3]}forall
+    classei	{[(img:soldattatar)	23  5 0.3]}forall
+    (russie)	 [(img:soldatrusse)	38 10 0.3]
+    islam	{[(img:soldatislam)	38 10 0.3]}forall
+    ordresnordiques{[(img:soldatteuton)	23 10 0.3]}forall
+    classeiim	{[(img:soldatpolonais)	38 10 0.3]}forall
+    (defaut)	 [(img:soldatlatin)	38 10 0.3]
+    classeiiim	{[(img:soldatlatin2)	38 10 0.3]}forall
+    revolutions	{[(img:soldatrevolution)38 10 0.3]}forall
+    classeivm	{[(img:soldatlatin2)	38 10 0.3]}forall
+    hindous	{[(img:soldathindou)	38 10 0.3]}forall
+    (iroquois)	 [(img:soldatindien)	38 10 0.3]
+    (inca)	 [(img:soldatinca)	38 10 0.3]
+    (natives)	 [(img:soldatzulu)	38 10 0.38]
+    (azteque)	 [(img:soldatazteque)	38 10 0.3]
+    (chine)	 [(img:soldatchinois)	38 10 0.3]
+    (japon)	 [(img:soldatjaponais)	38 10 0.3]
+    (rebelles)	 [(img:soldatrebelle)	38 10 0.3]
+    (alliesindiens) [(img:soldatindien)	38 10 0.3]
+    (cipayes)	 [(img:soldathindou)	38 10 0.3]
+>> def
+/detachementexplo_dict <<
+    (defaut)	[(img:dt-explorateur)	33 17 0.25]
+    (iroquois)	[(img:soldatindien)	42 17 0.25]
+    (alliesindiens)[(img:soldatindien)	42 17 0.25]
+    (cipayes)	[(img:soldathindou)	42 17 0.25]
+    (japon)	[(img:soldatjaponais)	42 17 0.25]
+    (chine)	[(img:soldatchinois)	42 17 0.25]
+    (inca)	[(img:soldatinca)	42 17 0.25]
+    (natives)	[(img:soldatzulu)	42 17 0.3]
+    (rebelles)	[(img:soldatrebelle)	42 17 0.25]
+    cosaques	{[(img:soldatcosaque)	27 17 0.2]}forall
+    hindous	{[(img:soldathindou)	42 17 0.25]}forall
+    islam	{[(img:soldatislam)	42 17 0.25]}forall
+    (azteque)	[(img:soldatazteque)	42 17 0.25]
+>> def
+/detachementexplonaval_dict <<
+    (defaut)	[(img:dn-explorateur) 30 14 0.3]
+    >> def
+/detachementnaval_dict <<
+    (transport)	[(img:dettransport) 0.3 [40 18 24 6]]
+    (defaut)	[(img:detnaval) 25 10 0.3]
+    (galere)	[(img:detgalere) 25 12 0.3]
+    (galeasse)	[(img:detgalere) 25 12 0.3]
+>> def
+
+/detachementnavalcomment_dict <<
+    (transport)	(DTr)
+    (defaut)	()
+    (galeasse)	(Ga)
+>> def
+
+
+<< /Filename BLASONDIR(/templates/blason.pgm)! >> (sdw:blason) defimage
+
+countrylist {/pays exch def
+    <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
+	/Alpha (sdw:blason)>> (img:) pays ! defimage
+} forall

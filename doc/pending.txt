@@ -1,0 +1,268 @@
+Rules pending approbation (due to better model, or only to clarification
+of previously existing rules):
+
+//// Deletion of the ≤6 column for Conquistadors
+Date: 2007-01-22 (more or less)
+Question: Is the ≤6 modifier for Conquistadors useful?
+Currently selected: Alternative 1
+Alternative 1: Yes, because they are too weak for a full effect!
+Rationale for 1: It is what was done before (more or less).
+Alternative 2: Are you kidding me? Only Rising (SUE) matches!
+Rationale for 2: Less modifiers!
+Patch for 2: not written (easy)
+
+
+//// Progression of trade levels lost to piracy
+Date: 2012-02-20
+Question: when levels of trade are lost, they come back at 1/turn rate.
+Currently selected: Alternative 2
+Alternative 1: Come back at rate 1/turn whatever the levels.
+Rationale for 1: It is what was done before.
+Alternative 2: Come back at rate 2/turn for levels 5/6.
+Rationale for 2: Bigger trade fleets should not suffer that much time
+ from a single period of piracy, especially compared to smaller fleets.
+Patch for 1:
+Index: rules/engExpenses.tex
+===================================================================
+--- rules/engExpenses.tex	(révision 1008)
++++ rules/engExpenses.tex	(copie de travail)
+@@ -36,8 +36,6 @@
+ \aparag As piracy losses of commercial fleets is only temporary, each player
+ gains 1 level of commercial fleet in each \STZ/\CTZ where its \terme{current
+   level} is not the same as the \terme{maximum level}.
+-\bparag This gain is of 2 levels for a \TradeFLEET that has a \terme{maximum
+-  level} of 5 or 6.
+ \bparag The \terme{current level} is the one that counts for the income rules,
+ the monopoly rules, and all rules that do not mention \terme{maximum level}
+ explicitly.
+
+
+//// Independent Navarra
+Date: 2007-01-13
+Question: Independent Navarra in period I
+Currently selected: Alternative 1
+Alternative 1: No.
+Rationale for 1: It is what was done before.
+Alternative 2: Navarra is now a minor with 2 provinces: Bearn and
+ Navarra, still national provinces of FRA/ESP (thus CB). At the end of
+ each turn during which one of its province is occupied, Navarra is
+ effectively dissolved (it signs a mandatory peace ceding all its
+ occupied provinces to their respective occupiers; remaining province
+ going to the other country). After Dynastic action C-5 (to be created)
+ is played, SPA annexes the whole country if on its track. If it is
+ period II, Navarra is a vassal of FRA and at peace, FRA annexes the
+ whole country at the diplomatic phase (permanently).
+Rationale for 2: More infights between SPA and FRA. Possibility of
+ fights in Navarra without broadening the wars in Italy (separate wars).
+Problems for 2: May be linked to a new League of Cambrai Event.
+Patch for 2: not written yet (broad)
+
+
+
+//// Pioneering
+Date: 2012-02-20
+Question: When can colonies exceed level 2 or 1
+Currently selected: Alternative 1 except for the map (already for Alt. 2)
+Alternative 1: Description in terms of exploitable resources, with
+ exceptions lurking.
+Rationale for 1: This is what was done.
+Problems for 1: Impossible to put Fur resources in MISSISSIPI, KANSAS,
+ ILLINOIS; not really necessary PA in CAROLINA instead of expected
+ Furs. Difficult to adjust the rule for Cotton exploitation.
+Alternative 2: Restriction to wait for period V everywhere but gold
+ mines. Restriction to further advance on non-coastal provinces:
+ Mission/COL(+) required in same or adjacent area for going above level
+ 2. Thus, slower progression inside America. Should not affect many
+ other plans, since COL rarely should exceed level 2 in the beginning.
+Rationale for 2: Better modelization of inland progression, esp. for
+ French and English. More streamlined rules. Protects against too early
+ instalment in United States. Spaniards still can do thanks to missions,
+ French and English must slowly accumulate critical mass before
+ expanding. The old "exploitable resources" rule in fact only mattered
+ for Mississipi and Brasil. This allows for a better modelisation of Fur
+ resources in America. All rush of colonists or colonial dynamism lift
+ these restrictions. The former various exceptions can be dealt with by
+ using the Colonial Dynamisms events (all upgraded to lifting these
+ restrictions).
+Problems for 2: Transforming a TP in a COL also lifts (temporarily) the
+ restriction. To be mentionned somewhere.
+Patch for 2:
+Index: engEvntEco.tex
+===================================================================
+--- engEvntEco.tex	(révision 1007)
++++ engEvntEco.tex	(copie de travail)
+@@ -314,7 +314,8 @@
+ This event gives a bonus of \bonus{+3} to the die-roll of \COLaction, as well
+ as a supplementary and free \COLaction with small investment (30\ducats),
+ usable this turn or any other turn of the current period (lost if not used
+-before the end of the current period).
++before the end of the current period). Furthermore, all restrictions of
++\ruleref{chThePowers:Pioneering} are lifted for the current turn.
+ 
+ This also does apply to countries that have usually no \COLaction or
+ \TPaction, but they may elect to re-roll instead (to be decided immediately).
+@@ -494,7 +495,8 @@
+ \lignebudget{RT at start of turn} in \lignebudget{RT after Events}). All the
+ following administrative operations: \TFI, \TPaction, \COLaction, \MNU
+ placement attempts, \DTI/\FTI improvement also receive an exceptional bonus of
+-\bonus{+2} to the die-roll for this turn.
++\bonus{+2} to the die-roll for this turn. Furthermore, all restrictions of
++\ruleref{chThePowers:Pioneering} are lifted for the current turn.
+ 
+ On the other hand, a malus of \bonus{-10} to the die-roll is applied on the
+ \terme{Exceptional taxes raising} operation.
+@@ -555,7 +557,9 @@
+ 
+ The player receives a governor among the \anonyme \LeaderG markers still
+ available, to be placed in a \TP or a \COL of the player.  It remains in play
+-for this turn only.
++for this turn only. Furthermore, all restrictions of
++\ruleref{chThePowers:Pioneering} are lifted for the current turn and the area
++where the \LeaderG is to be placed.
+ 
+ Countries that have no governors available may elect to re-roll instead (to be
+ decided immediately).
+Index: engThePowers.tex
+===================================================================
+--- engThePowers.tex	(révision 1007)
++++ engThePowers.tex	(copie de travail)
+@@ -1538,22 +1538,15 @@
+ rate of exactly one resource per turn per \Area. If there are several
+ possibilities for a given \Area, the resource is determined at random.
+ 
+-\aparag[Unproductive colonies]\label{chThePowers:UnproductiveCol}
+-Except for \COL producing gold and one extra \COL per country, a \COL in an
+-\Area of \continent{America} that has only resources that don't exist yet
+-cannot exceed level 2.
+-%, except if it produces gold.
+-\bparag For \HIS, the \COL of free level must be in
+-\continent{Caraibes}.
+-\bparag In addition, in each area producing \RES{Wood}, one \COL per country
+-may be raised at any level, but it must exploit \RES{Wood} as soon as
+-possible.
+-\bparag Change of ownership of a \COL does not decrease its level, even if
+-this causes a country to have more than one ``unproductive'' \COL of high
+-level.
+-%\bparag A \COL in \continent{Caraibes} cannot exceed level 1 before
+-%1615, except for one \COL by \HIS (historically, La Habana). However, if
+-%this \COL is taken, it does not lose levels.
++\aparag[Pioneering]\label{chThePowers:Pioneering} Before period V, no
++\COLaction can be played for \COL not exploiting gold of level 2 or more.
++\bparag Several actions can be tempted on a \COL of level 1, but only one can
++succeed.
++\bparag[Inland expansion] During the whole game, no \COLaction can be played
++for an existing \COL not exploiting gold provinces and not bordering the sea,
++unless there is a \COL\faceplus or a Mission in the same Area or an adjacent
++Area.
++\bparag Some events lift all these restrictions.
+ 
+ \begin{exemple}
+   \granderegionGuyana provides 3 resources that appear in 1615: 2 \RES{Sugar}
+Index: engEvnt2.tex
+===================================================================
+--- engEvnt2.tex	(révision 1007)
++++ engEvnt2.tex	(copie de travail)
+@@ -491,14 +491,18 @@
+   Dynamism}{3}{Risto}
+ 
+ \phdipl
+-\aparag \POR gains a bonus of {\bf +3} for any diplomatic action on
++\aparag \PORpor gains a bonus of {\bf +3} for any diplomatic action on
+ non-European minor countries at this turn.
+ 
+ \phadm
+-\aparag \POR receives one additional and free strong investment \TP placement
+-action.
+-\aparag \POR receives a shift of one column to its favour in the actions
++\aparag \PORpor receives one additional and free strong investment \TP
++placement action.
++\aparag \PORpor receives a shift of one column to its favour in the actions
+ results table for all its \COL/\TP placement attempts this turn.
++\aparag All restrictions of \ruleref{chThePowers:Pioneering} are lifted for
++\PORpor for the current turn.
++\aparag All these advantages apply to \SPA for placing Portuguese
++establishments if \PORmin is annexed by \SPA.
+ 
+ 
+ 
+@@ -514,6 +518,8 @@
+ action.
+ \aparag \SPA receives a shift of one column in its favour in the actions
+ results table for all its \COL/\TP placement attempts this turn.
++\aparag All restrictions of \ruleref{chThePowers:Pioneering} are lifted for
++\SPA for the current turn.
+ 
+ 
+ 
+Index: engEvnt4.tex
+===================================================================
+--- engEvnt4.tex	(révision 1007)
++++ engEvnt4.tex	(copie de travail)
+@@ -927,6 +927,8 @@
+ \aparag \HOL receives an additional and free strong \TP placement attempt.
+ \aparag For this turn \HOL receives a bonus of \bonus{+1} to all
+ administrative actions made in \ROTW map.
++\aparag All restrictions of \ruleref{chThePowers:Pioneering} are lifted for
++\HOL for the current turn.
+
+
+//// Fur trade
+Date: 2012-02-20
+Question: Fur trade -- better modelisation
+Alternative 1: current situation: TP exploits 2 Fur/level, COL exploits
+ ∞ Fur/level. Each COL(+) reduces available Furs by one.
+Rationale for 1: This is what was done.
+Alternative 2: Same as alt. 1, but unexploited Furs are exploited by
+ forts on a first-built first-served basis (1 per fort max) if there is
+ \COL\faceplus or a Mission in the same Area or an adjacent Area.
+Rationale for 2: The string of forts in America by French settlers
+ can be explained by the desire to exploit the (new) Fur resources in
+ Illinois, Kansas and Mississipi (sources of many furs). This constrains
+ French or English player to send military troops for exploration there,
+ rivalry can actually happen without requiring a non-historic TP there
+ (if we want TP to simulate this, that makes too many TPs that could be
+ used in India or Africa instead). Allows exploitation of Amazonia.
+Patch for 2: not written yet.
+
+//// Russia in Kexholm
+Date: 2011-06-01 (approx)
+Question: Russia initially owned Kexholm, and conquered Neva and Kexholm
+ during Ingrian War (Times of Trouble in Russia)
+Alternative 1: Russia does not own it (simplification).
+Rationale for 1: Simple enough.
+Alternative 2: Russia owns it. ToT lets Sweden get one non-national
+ province, plus one national province if there is one owned by Russia.
+Rationale for 2: historical, but it makes the description of the ToT
+ event a bit too powerful if it is annexation of 2 provinces. By
+ favoring the Swedish-Russia agreement, it avoids the POL+SWE against
+ RUS in early period III to get Neva, then again during ToT to make POL
+ stronger against Russia (no help from Sweden).
+Alternative 3: Kexholm initially Russian.
+Rationale for 3: See Alternative 2.
+Problems for 3: Too powerful for Russia, Neva will never be back to
+ Sweden.
+Alternative 4: Put a Russian Presidio in Kexholm.
+Rationale for 4: More balanced, easier to defeat for Sweden.
+Problems for 4: A LAND Praesidio? I do not like that.
+Currently selected: Alternative 1.
+Patch for Alternative 2: not written.
+Patch for Alternative 3: not written.
+Patch for Alternative 4: not written.
+
+//// La Mecca
+Date: 2012-02-20
+Question: Influence of the Mecca
+Alternative 1: nothing
+Rationale for 1: It is what was done before.
+Alternative 2: It counts as a Mission for TUR as soon as it is a TUR colony.
+Rationale for 2: It allows the development of Riad > lvl 1 if the
+ Pioneering rule is adopted. Else, strictly no.
+Currently selected: Alternative 1
+Patch for Alternative 2: not written (easy)
+
+///-----------------------------------------------------------------
+Rules not pending, because not thought out enough (or not ready):
+
+doc/election-HRE.txt
+doc/anglais.txt
+doc/dan.txt

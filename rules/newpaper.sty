@@ -1,0 +1,169 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file allows changing in-document the papersize with pdfTeX
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{newpaper}[2010/11/11 v0.2]%
+\DeclareOption{noinclude}{\global\let\NPnoinclude\null}
+\DeclareOption*{%
+   \PackageWarning{newpaper}{Unknown option `\CurrentOption'}%
+}
+\ProcessOptions\relax
+\ifx\NPnoinclude\null\else
+\RequirePackage{tikz}
+\RequirePackage{afterpage}
+\RequirePackage{graphicx}
+\fi
+%%%% Include geometry package with forced driver
+\let\@@onlypreamble\@onlypreamble
+\let\@onlypreamble\@gobble
+\let\@AtBeginDocument\AtBeginDocument
+\let\AtBeginDocument\@gobble
+\RequirePackage[pdftex=true]{geometry}
+\let\AtBeginDocument\@AtBeginDocument
+\let\@onlypreamble\@@onlypreamble
+
+%%%% AtBeginDocument sequence without cleaning
+\def\Gm@DoGeometry{%
+  \Gm@savelength{paperwidth}%
+  \Gm@savelength{paperheight}%
+  \edef\Gm@restore@org{\Gm@restore}%
+  \ifGm@resetpaper
+    \edef\Gm@pw{\Gm@orgpw}%
+    \edef\Gm@ph{\Gm@orgph}%
+  \else
+    \edef\Gm@pw{\the\paperwidth}%
+    \edef\Gm@ph{\the\paperheight}%
+  \fi
+  \ifGm@pass\else
+    \ifnum\mag=\@m\else
+      \Gm@magtooffset
+      \divide\paperwidth\@m
+      \multiply\paperwidth\the\mag
+      \divide\paperheight\@m
+      \multiply\paperheight\the\mag
+    \fi
+  \fi
+  \Gm@detectdriver
+  \ifx\Gm@driver\Gm@xetex
+    \@ifundefined{pdfpagewidth}{}{%
+      \setlength\pdfpagewidth{\Gm@pw}%
+      \setlength\pdfpageheight{\Gm@ph}}%
+    \ifnum\mag=\@m\else
+      \ifx\Gm@truedimen\Gm@true
+        \setlength\paperwidth{\Gm@pw}%
+        \setlength\paperheight{\Gm@ph}%
+      \fi
+    \fi
+  \fi
+  \ifx\Gm@driver\Gm@pdftex
+    \@ifundefined{pdfpagewidth}{}{%
+      \setlength\pdfpagewidth{\Gm@pw}%
+      \setlength\pdfpageheight{\Gm@ph}}%
+    \ifnum\mag=\@m\else
+      \@tempdima=\mag sp%
+      \@ifundefined{pdfhorigin}{}{%
+        \divide\pdfhorigin\@tempdima
+        \multiply\pdfhorigin\@m
+        \divide\pdfvorigin\@tempdima
+        \multiply\pdfvorigin\@m}%
+      \ifx\Gm@truedimen\Gm@true
+        \setlength\paperwidth{\Gm@pw}%
+        \setlength\paperheight{\Gm@ph}%
+      \fi
+    \fi
+  \fi
+  \ifx\Gm@driver\Gm@vtex
+    \@ifundefined{mediawidth}{}{%
+      \mediawidth=\paperwidth
+      \mediaheight=\paperheight}%
+    \ifvtexdvi
+      \AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}%
+    \fi
+  \fi
+  \ifx\Gm@driver\Gm@dvips
+    \AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}%
+    \ifx\Gm@driver\Gm@dvips\ifGm@landscape
+      \AtBeginDvi{\special{! /landplus90 true store}}%
+    \fi\fi
+  \else\ifx\Gm@driver\Gm@dvipdfm
+    \ifcase\ifx\AtBeginShipoutFirst\relax\@ne\else
+        \ifx\AtBeginShipoutFirst\@undefined\@ne\else\z@\fi\fi
+      \AtBeginShipoutFirst{\special{papersize=\the\paperwidth,\the\paperheight}}%
+    \or
+      \AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}%
+    \fi
+  \fi\fi
+  \@tempswafalse
+  \ifGm@showframe
+    \@tempswatrue
+  \else\ifGm@showcrop
+    \@tempswatrue
+  \fi\fi
+  \if@tempswa
+    \RequirePackage{atbegshi}%
+      \AtBeginShipout{\setbox\AtBeginShipoutBox=\vbox{%
+        \baselineskip\z@skip\lineskip\z@skip\lineskiplimit\z@
+        \Gm@pageframes\box\AtBeginShipoutBox}}%
+  \fi
+  \Gm@save
+  \edef\Gm@restore@pkg{\Gm@restore}%
+  \ifGm@verbose\ifGm@pass\else\Gm@checkmp\fi\fi
+  \Gm@showparams{preamble}%
+  \let\Gm@pw\relax
+  \let\Gm@ph\relax
+}%
+
+\AtBeginDocument{\Gm@DoGeometry}
+
+
+%%%% Define papersize switching
+
+\let\NPgeometry\geometry
+
+\def\newpapersize#1{%
+  \clearpage%
+  \NPgeometry{#1}%
+  \Gm@DoGeometry%
+  \@colht\textheight%
+  \@colroom\textheight \global\vsize\textheight%
+  \columnwidth\textwidth%
+  \if@twocolumn%
+  \advance\columnwidth -\columnsep%
+  \divide\columnwidth\tw@ \hsize\columnwidth \@firstcolumntrue%
+  \fi%
+  \hsize\columnwidth \linewidth\hsize%
+  \NPpagestyle{empty}%
+}
+\def\restorepapersize{%
+  \expandafter\newpapersize\expandafter{\NPgeometrystore}%
+  \NPpagestyle{\NPpagestylestore}%
+}
+
+%%%% Store pagestyle and geometry
+\let\NPpagestyle=\pagestyle
+\def\NPpagestylestore{plain}
+\def\NPgeometrystore{}
+\def\pagestyle#1{\xdef\NPpagestylestore{#1}\NPpagestyle{#1}}
+\def\geometry#1{\edef\NPgeometrystore{\NPgeometrystore,#1}\NPgeometry{#1}}
+
+%%%% \NPincludewithformat
+\def\NPincludewithformat#1#2#3#4#5#6{% paper, incgropt, file, type, capt, label
+  \ifx\tikzpicture\relax\else%
+  \ifx\includegraphics\relax\else%
+  \newpage
+  \newpapersize{#1}%
+  \ifx\relax#4\relax\else%
+  \def\@captype{#4}\caption{#5}\label{#6}%
+  \fi%
+  \begin{tikzpicture}[remember picture,overlay]
+    \path [fill=white] (current page.south west) rectangle (current page.north east);
+    \node at(current page.center){\includegraphics[#2]{#3}};
+  \end{tikzpicture}%
+  \restorepapersize%
+%
+  \fi\fi%
+}
+
+\def\NPincludeA4#1#2#3{% file, capt, label
+  \NPincludewithformat{paper=a4paper}{}{#1}{figure}{#2}{#3}
+}

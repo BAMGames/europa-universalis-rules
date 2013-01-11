@@ -1,0 +1,61 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{pageprefix}[2010/10/10 v1.0]%
+
+\newcounter{reftemp}
+
+\AtBeginShipout{\typeout{Page:\arabic{page}}}
+\def\ch@ngelist{}
+\newcommand{\pageprefix}[1]{%
+  \setcounter{reftemp}{\arabic{page}}\addtocounter{reftemp}{-1}%
+  \xdef\ch@ngelist{\ch@ngelist#1:\arabic{reftemp},}%
+  \xdef\xxpage{[#1]}}
+
+\AtEndDocument{\storeprefixes}
+\def\s@vedprefixes{}
+\def\storeprefixes{\immediate\write\@auxout{\noexpand\gdef\string\s@vedprefixes{\ch@ngelist}}}
+
+\def\displaypage#1{\xdef\pppage{#1}\gdef\ppxxpage{#1}\gdef\pppxxxpage{}\expandafter\m@keprefixes\s@vedprefixes:0,\@nil}
+\def\m@keprefixes#1:#2,#3\@nil{%
+  % Ignore last loop
+  \ifx#3\relax\relax\else%
+  \ifnum\pppage>#2\xdef\ppxxpage{[#1]\pppage}\xdef\pppxxxpage{[#1]}\fi\m@keprefixes#3\@nil\fi%
+}
+
+% Define parts
+\newcommand{\rulepart}[2]{\cleardoublepage\pageprefix{#1}\@tempswafalse\null\vfil\secdef\@part\@spart{#2}}
+
+% This adds the [LOCALPAGETITLE] in front of the page number.
+\def\xxpage{}
+\renewcommand{\thepage}{\xxpage\arabic{page}}
+
+% Override page numbers in index: makeindex is so stupid
+\def\@wrindex#1{%
+  \protected@write\@indexfile{}%
+  {\string\indexentry{#1}{\arabic{page}}}%
+  \endgroup
+  \@esphack}
+% 
+\let\oldtheindex\theindex
+\def\indexreinitprefix{\let\olddotfill\dotfill\def\dotfill{\global\let\prefixp@ge\null\olddotfill}}
+\def\theindex{\indexreinitprefix\oldtheindex}
+% Override index display pages (TODO)
+\def\HyInd@removespaces#1 #2\@nil{%
+  \toks@=\expandafter{\the\toks@#1}%
+  \ifx\\#2\\%
+  \edef\x{\the\toks@}%
+  \ifx\x\@empty
+  \else
+  \displaypage{\the\toks@}%
+  \ifx\pppxxxpage\prefixp@ge%
+  \hyperlink{page.\ppxxpage}{\the\toks@}%
+  \else%
+  \global\let\prefixp@ge\pppxxxpage%
+  \hyperlink{page.\ppxxpage}{\ppxxpage}%
+  \fi
+  \fi
+  \else
+  \Hy@ReturnAfterFi{%
+    \HyInd@removespaces#2\@nil
+  }%
+  \fi
+}

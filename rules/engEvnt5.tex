@@ -1,0 +1,946 @@
+% -*- mode: LaTeX; -*-
+
+\section{Period V}\label{events:pV}
+
+
+
+\subsection*{Event Table of Period V}
+
+\begin{eventstable}[Period V events table]
+  \tabcolsep=5pt\centering%
+  \begin{tabular}{|l|*{5}{c}|l|}
+    \hline
+    1\up{st}\textarrow& 1-4 & 5-6 & 7 & 8 & 9 & 10 \\ \hline
+    1 & 1  & 7  & 1  & 21  & R3   & \textbullet~1--2:\\
+    2 & 2  & 8  & R2 & R22 & R4   & +1 then\\
+    3 & 3  & 9  & R3 & 2   & 5    & \nameref{events:pIV}\\
+    4 & 4  & 10 & 4  & 3   & 6    & \textbullet~3--10:\\
+    5 & 5  & 11 & 6  & 9   & R16  & \nameref{events:pIV}\\
+    6 & 6  & 12 & 7  & R10 & 17   & \\
+    7 & 14 & 13 & 15 & 12  & 18   & \\
+    8 & 17 & 15 & 23 & 13  & R19  & \\
+    9 & 18 & 16 & R4 & 14  & R20  & \\ \hline
+    10 & \multicolumn{6}{l|}{1--6 \nameref{events:pVI}, 7--10 \nameref{events:pIV}} \\ \hline
+  \end{tabular}
+\end{eventstable}
+
+\eventssummary{%
+  pV:Devolution War|,%
+  pV:Chamber of Reunion|,%
+  pV:League Augsburg|,%
+  pV:Glorious Revolution|,%
+  pV:WoSS|,%
+  pV:Colbertian Mercantilism|,%
+  pV:Expulsion French Protestants|,%
+  pV:Grand Siecle|,%
+  pV:English Dynamism|,%
+  pV:Montecuccoli to Eugen|,%
+  pV:de Witt|,%
+  pV:Peter the Great|,%
+  pV:Saxon King Poland|,%
+} \eventssummary{%
+  pV:Kingdom Prussia|,%
+  pV:War Sweden Denmark|,%
+  pV:Koprulu|,%
+  pV:Fights Iroquois|,%
+  pV:Slave Revolts WI|E/E,%
+  pV:Wars India|E/E,%
+  pV:Treaty Nerchinsk|,%
+  pV:Invasion Formosa|,%
+  pV:Japan Trade|,%
+  pV:Revolt Cossacks|O{pIV:Revolt Cossacks},%
+  pV:Revolt Catalunya|,%
+  pV:Kuruc|,%
+}
+
+\newpage\startevents
+
+
+
+\event{pV:Devolution War}{V-1}{War of Devolution}{1}{Risto}
+
+\history{1667-1668}
+
+\condition{Can occur only if \FRA is not currently in a war (including Civil
+  Wars).  Otherwise, re-roll.}
+
+\phdipl
+\aparag \FRA receives a free \CB for this turn against one owner of either
+\provincePicardie, \provinceArtois, \provinceFlandre or \provinceHainaut.
+This event is triggered off by \FRA using this \CB to declare a war, and if it
+declines to do this the rest of the event does not occur.
+\aparag \HOL and \ENG may each sign a Defensive Alliance with the victim of
+\FRA declaration of war per above, provided both sides agree, immediately at
+this turn or on the following turn.  The alliance provides an immediate \CB as
+reaction against the declaration of war of \FRA.
+
+\phadm
+\aparag \FRA can collect incomes in the above mentioned provinces whenever
+they are militarily conquered by \FRA.
+
+\phpaix
+\aparag If victorious, \FRA receives 30 \PV at the end of this war.
+\aparag If not, \HOL receives, if it was at war, 30 \PV at the end of a war
+against \FRA triggered by this event.
+
+
+
+\event{pV:Chamber of Reunion}{V-2 (1)}{Chamber of Reunion}{1}{Risto}
+
+\history{1681-1684}
+
+\condition{}
+\aparag Cannot occur if there is a German Empire. In that case mark off, but
+do not consider as played for the first time.
+\aparag Cannot occur if \provinceAlsace is not part of \paysAlsace.  In that
+case mark off and considered as played for the first time.
+
+\phevnt
+\aparag \FRA annexes \provinceAlsace. This provides \SPA, \HOL, \ENG and \AUS
+a temporary \CB against \FRA for this turn.
+\aparag If \FRA currently militarily occupies \provincePicardie,
+\provinceRosselo, \province{Franche-Comte} and/or \provinceArtois, it can
+immediately annex any such province without any peace treaty.
+
+\phdipl
+\aparag The current Emperor (or \SPA if \AUSmin is Emperor) receives a bonus
+of \bonus{+3} for its diplomacy on all \HRE minors this turn.
+
+
+
+\event{pV:League Augsburg}{V-2 (2)}{War of the League of Augsburg}{1}{Risto}
+
+\history{1688-1697}
+
+\condition{}
+\aparag Can occur only if \FRA is not involved in a war (including civil
+war). Otherwise re-roll.
+\aparag Cannot occur if \ref{pV:Devolution War} has not already been
+finished. Otherwise re-roll.
+
+\phevnt
+\aparag \FRA may immediately annex one of the following provinces:
+\provincePicardie, \provinceRosselo, \province{Franche-Comte},
+\provinceLuxemburg, \provinceAlsace or \provinceLorraine.  Such annexation is
+regarded as a free declaration of war against the owner of the province chosen
+(unless eliminated in the process).
+\aparag If \FRA uses this opportunity to annex a province, \HOL and \ENG
+receive a temporary free \CB against \FRA for this turn. They do not
+necessarily have to be in alliance with the victim of French aggression or
+with each other (but they may decide so if both sides agree).
+
+
+
+\event{pV:Glorious Revolution}{V-3}{The Glorious Revolution in
+  England}{1}{PBMod}
+
+\history{1688-1690}
+
+\condition{}
+\aparag If \ENG is Protestant (not \PROTANG), put a \REVOLT \facemoins in all
+Irish provinces except \provinceUladh, one \LD and one general in one of the
+revolted provinces. \ENG is not in Civil war, the \REVOLT are controlled by
+\HOL and the rest if the event is ignored.
+\aparag Else (\CATHCR, \CATHCO or \PROTANG), use the rest of the event.
+% (Jym) What if \ANG is \CATHCR? (JCD) Rest of the event seems to support that
+% the event is used anyway.
+
+\phevnt
+\aparag \ENG is considered to have overthrown its current monarch.  \ENG is
+now in Civil war between two sides: the Rebels are Royalists (followers of the
+old king) and catholics, and the Orange Partisans are Anglicans (see
+\ref{chDiplo:Religious Civil War}).
+\bparag The Royalists are controlled by a Catholic \FRA, or \SPA otherwise.
+\bparag Roll for the statistics of the new English monarch from the House of
+Orange. If the same House is ruling in \HOL, both countries share an offensive
+alliance and a mandatory defensive alliance. They make an immediate white
+peace.
+\aparag In support of the overthrown monarch, two \REVOLT are rolled for in
+England. Furthermore a \REVOLT \faceplus is placed both in \provinceConnacht
+and \provinceMumhan and the rebels control both fortresses. A \LD and a
+general are placed in one Irish province.
+\bparag If this event is caused by \ref{pIV:English Restoration}, a royalist
+\ARMY \facemoins is raised in \provinceCymru or in any province of Scotland if
+\xnameref{pIV:Union Scotland} is effective. The Royalists control the fortress
+in this province and one other (or two other provinces if in Scotland).
+
+\phdipl
+\aparag The controller of the rebels has a \CB against \ENG to make a limited
+intervention against \ENG this turn, that can become a full intervention on
+the second turn. If \ENG was \CATHCR or the event was caused by
+\ref{pIV:English Restoration}, the controller may make a full intervention
+from the first turn on.
+
+\phadm
+\aparag The Royalists roll for reinforcements in offensive or naval status
+(but with \bonus{-2} for naval).
+\aparag All reinforcements must be placed in a province with existing rebel or
+allied units, not just \REVOLT or cities. If none, no reinforcements are
+received.
+
+\phpaix
+\aparag Peace is determined with usual rules except that:
+\bparag The Royalists surrender unconditionally if they have no forces nor
+\REVOLT left (fortresses do not count).
+\aparag If the the new English king is overthrown by \REVOLT , it also
+surrenders unconditionally to the Royalists and their controller.
+\aparag[Victory of Royalists] If the Royalists win (alone or with their
+controller), the king is restored (with his values as a monarch) and the House
+of Orange is expelled.
+\bparag \ENG becomes \CATHCR (except if it was \CATHCO, in which case it
+remains so). It loses 50 \PV.
+\bparag \xnameref{pVI:Act Union} is broken or, if it did not happen yet, will
+not occur later.
+\aparag[Total Victory of Royalists] If the Royalists and their controller
+(making a full intervention) impose an unconditional surrender to \ENG,
+additional consequences are:
+\bparag \ENG makes a mandatory Dynastic Alliance with the controller of the
+Rebels and must give a \COL or \TP as dowry.
+\bparag \xnameref{pVI:Act Union} is broken. If it did not happen yet, it may
+occur later (with some modifications). TODO This paragraph is subject to
+debate
+% (Jym) Total defeat allows the Act of Union but not partial defeat?  (JCD)
+% Yes, WTF ? The Act of Union is more straightforward about that
+\bparag \ENG makes a mandatory offensive alliance with the controller of the
+rebels for 2 turns. It cannot declare war against it (except with \CB from
+events; in this case the alliance has to be broken with the usual cost in
+\STAB).
+
+
+
+\event{pV:WoSS}{V-4}{The War of Spanish Succession}{1}{PBMod}
+
+\history{1700-1713}
+
+\activation{}
+\aparag This event cannot occur before period V. Re-roll and do not mark off
+if this is not the case.
+% ELSE: before the end of the Religious struggles.
+\aparag When the event occurs, its effects are not actually applied. They will
+be triggered at the death of the current Spanish Monarch.
+\aparag If there is a \GE, see the specific modifications in
+\ref{pIV:TYW:German Empire}.
+
+\tour{Death of the Monarch}
+
+\phevnt
+\aparag \SPA may concede immediately white or losing peace to all its current
+enemies. Unaligned \MIN always accept a white peace.
+
+\phdipl
+\aparag \SPA designates an heir to the Spanish throne. The choice must be made
+among the following countries:
+\bparag One of the following \MAJ that is Catholic: \FRA, \AUS, \ENG;
+\bparag \AUSMin;
+\bparag Another Catholic minor country.
+\aparag A \MAJ may decline the offer, but cannot then take part in any war
+ensuing from this event, nor can it be positively affected by the event (for
+objectives or any possible gain in the event).
+\bparag In that case, \SPA proposes a different Heir, and so on, until one
+accepts (minor powers always accept).
+\bparag The power that accepts will be designated as the \emph{Heir} in the
+rest of the event.
+\bparag If the Heir is a minor power, all its decisions are made on its behalf
+by \SPA.
+\aparag If \AUSaus is not the chosen Heir, the dynastic alliance between the
+Habsburg powers is now cancelled.
+\bparag \AUSMin becomes also the major \AUS.
+\aparag The Heir has to propose a settlement for the Spanish
+possessions. Three attitudes are possible:
+\begin{itemize}
+\item \xnameref{pV:WoSS:Integrity Inheritance}
+\item \xnameref{pV:WoSS:Seizing Inheritance}
+\item \xnameref{pV:WoSS:Dividing Inheritance}
+\end{itemize}
+\aparag Several parts of the Inheritance are desired by some Major Powers.
+Here is the list of the different parts at stake, especially the regional
+groups for all province owned by \SPA that are not in its National territory
+and the \MAJ that can be nominated for receiving these parts:
+\bparag[Spanish Low Countries] In national territory of \paysmajeurHollande or
+in former country \paysBourgogne except for \province{Franche-Comte}.
+Interested: \FRA, \ENG, \AUS, \HOL, \SPA.
+\bparag[South Italy] Provinces of Kingdom of Naples and Sicily (\paysNaples).
+Interested: \FRA (if Catholic), \ENG (if Catholic), \AUS, \SPA.
+\bparag[North Italy] All the remaining provinces in \regionItalie and
+\payssuisse (except \provinceNice) plus \provinceMalta.  Interested: \FRA (if
+Catholic), \AUS, \SPA.
+\bparag[French Borders] All the provinces adjacent to or in French National
+Territory that are not in one of the previous groups (that includes
+\provinceNice, \province{Franche-Comte} and \provinceRoussillon).  Interested:
+\FRA, \AUS, \SPA.
+\bparag[North Africa] All provinces and \Presidios in North Africa.
+Interested: \FRA (if Catholic), \ENG, \SPA.
+\bparag[The Remaining] All other European provinces owned by \SPA that are not
+its National Territory.
+\bparag[Mediterranean Concessions] \provinceGibraltar and \provinceBaleares.
+Interested: \ENG, \HOL, \SPA.
+\bparag[Dynastic link and alliance with Portugal] This can only be chosen if
+\paysportugal is either annexed by \HIS as per \ref{pIII:POR Ann.:Portugal
+  Annexed} or if \ref{pVI:Methuen:Normal} did not happen yet and \paysportugal
+is on the diplomatic track of \HIS. Apply immediately \ref{pVI:Methuen:WoSS}
+with the \MAJ taking this spoils has the beneficiary of the Treaty and
+consider that event played. Interested: \FRA, \ENG, \HOL, \SPA.
+% (Jym) réécriture pour tenter la compatibilité avec le traité de Methuen...
+% (Jym) Formulation alambiquée...  Si Methuen a eu lieu, a provoqué une 2ème
+% révolte de POR que SPA a re-gagné, cette formulation laisse la possibilité
+% de le voler maintenant...  (Pierre) : Applicable only if \ref{pVI:Treaty
+% Methuen} is not active yet, and \SPA has still dynastic ties with \POR. For
+% \SPA, this is the reaffirmation of Dynastic Ties and Pretense over \POR. For
+% other \MAJ, this condition voids the effect of the Spanish Dynastic Ties
+% with \POR and it activates an Alliance analog to the Treaty of Methuen for
+% the \MAJ that takes it. Interested: \FRA, \ENG, \HOL, \SPA.
+\bparag[Asiento] See \ref{chSpecific:Spain:Asiento}. Interested: \FRA, \ENG,
+\HOL, \SPA.
+\aparag The attitude chosen gives the Heir some constraints on the Inheritance
+project (which groups are attributed to which power).
+\bparag Note that for \AUS, some groups count only as half: \emph{North
+  Italy}, \emph{South Italy}, \emph{French Borders}.
+
+\begin{digressions}[The Inheritance Project]
+  \bgroup\def\EUEVtypeofdigression{choice}
+
+
+  \digression[pV:WoSS:Integrity Inheritance]{Integrity of the Inheritance.}
+  \phase[(Diplomatic before the war, Peace after the war)]{Diplomatic or Peace
+    phase}{}
+  \aparag The Heir decides to keep all provinces Spanish.
+  \aparag The Heir obtains a compulsory offensive alliance lasting 5 turns
+  with \SPA. \SPA must always honour this alliance, if called to do so. It
+  cannot make a separate peace from the Heir, unless compelled to do so by
+  enforced surrender. It is also considered as a Dynastic Alliance.
+  \aparag The Heir may take one of the following advantage: \terme{Dynastic
+    link and alliance with Portugal}, \terme{Asiento}, \terme{Mediterranean
+    Concessions} or \terme{North Italy} (\AUS only for this last one) if
+  interested.
+  \aparag Then \SPA cedes two provinces of its choice to the Heir.
+
+
+  \digression[pV:WoSS:Seizing Inheritance]{Seizing the Inheritance.}
+  \aparag The Heir takes any or all the groups at stake defined above as
+  interesting him.
+  \aparag The Heir obtains a compulsory offensive alliance lasting 3 turns
+  with \SPA. \SPA must always honour this alliance, if called to do so. It
+  cannot make a separate peace from the Heir, unless compelled to do so by
+  enforced surrender. It is also considered as a Dynastic Alliance.
+
+
+  \digression[pV:WoSS:Dividing Inheritance]{Dividing the Inheritance}
+  \aparag The Heir decides to share the spoils of the Spanish possessions with
+  other Powers. It may propose any/all of the groups above to Powers that have
+  interest in the share, and can take some of them for its own sake.
+  \bparag Choosing this option costs 1 \STAB to the Heir (due to its
+  bargaining of the Heirdom) (or to \SPA of the Heir is a \MIN).
+  \bparag Each power may obtain at most two groups.
+  \aparag The Heir obtains a compulsory defensive alliance lasting 3 turns
+  with \SPA.  \SPA must always honour this alliance, if called to do so, yet
+  it can make separate peace if it wants. It is also considered as a Dynastic
+  Alliance.
+  %
+  \egroup
+\end{digressions}
+
+\begin{digressions}[Conditions of the War of Spanish Succession]
+
+
+  \digression[pV:WoSS:War Spanish Succession]{War of Spanish Succession}
+
+  \phdipl
+  \aparag Some powers (if not chosen as Heir) may want to contest the
+  Inheritance and declares a War to both \SPA and its Heir, jointly: \HOL,
+  \FRA, \AUS, \ENG.
+  \bparag They have a free \CB to do so.
+  \bparag All the powers contesting the Inheritance are automatically in the
+  same Alliance, called the Opposing Alliance.
+  \bparag As par usual rules, other \MAJ may be called to participate in one
+  or the other Alliance.
+  \bparag If the Heir is a minor power, \SPA leads the Heir alliance and a
+  Separate Peace against this minor does not affect the war.
+  \bparag If the Heir is a major power, it decides for the Alliance (excepted
+  if out of the war before \SPA).
+  \aparag If none contest the Inheritance, this ends the event and the Heir
+  and \SPA are deemed to have won the War, and all the other powers to have
+  lost it.
+  \aparag If \ref{pV:WoSS:Dividing Inheritance} has been taken, a power to
+  whom at least one group has been proposed has the choice, in case there is a
+  war, to contest the Inheritance (as per above), or to support the Division
+  and join the Heir Alliance. In that case, it has to declare war and has a
+  \CB to do so.
+  \aparag If there is a war, any country that is not in one of the Alliances
+  forfeits all possible benefits due to the war.
+  \aparag The Heir, \SPA and the \MAJ in their Alliance take all the groups
+  they are entitled by the chosen Inheritance attitude immediately. Those
+  gains are temporary in the sense that they may revert to other powers
+  depending on the result of the war. The Opposing Alliance powers will
+  receive nothing before the end of the war.
+
+  \phadm
+  \aparag For the duration of the event, \ENG receives the use of the leader
+  \leader{Royal Marines}. This is in addition to the normal limits.
+
+
+  \digression[pV:WoSS:Peace Spanish Succession]{Peace following Spanish
+    Succession}
+
+  \phpaix
+  \aparag The result of the war depends of the level of the peace signed
+  between the Alliances. The War ends when \SPA or its Heir is making Peace
+  and the other is doing the same or is already out of the war.
+  \aparag In this Peace, the victory condition is first the application (or
+  not) of the proposed Inheritance project, second the giving of some of the
+  groups presented before as compensations. To them, one adds the following
+  groups (that are spoils for war only):
+  % (Jym) Adding:
+  \bparag[Dynastic link and alliance with Portugal] At the peace, this can
+  also be chosen if \paysportugal was given to a country in the opposing
+  alliance at the beginning of the war. It is not possible to choose this
+  compensation at peace if \ref{pVI:Methuen:Normal} was triggered as a regular
+  event and gave the Portuguese alliance to a country other than \HIS.
+  % (Jym) Remet complètement l'alliance portuguaise en jeu à la fin de la
+  % guerre, comme les autres compensations. Précautions à prendre pour que ça
+  % ne soit remis en cause que si ça avait été donné pour "acheter" un MAJ au
+  % début de la guerre. Si l'alliance est antérieure à la guerre, elle ne peut
+  % plus bouger.
+  \bparag[Territorial Concessions] Give any two provinces to any power (only
+  province not in a group given to anyone, except \SPA). In priority:
+  provinces adjacent to provinces already owned by the \MAJ.  Interested:
+  \FRA, \ENG, \AUS.
+  \bparag[Independence of Catalunya] Only if a \REVOLT or the Opposing
+  Alliance controls \provinceCatalogne: it becomes an independent minor
+  country.  Counts as half an objective only.  Interested: \FRA, \ENG.
+  \bparag[Olivares politics cancelled] This nullifies the effects of
+  \ref{pIV:Olivares}.  Counts as half a group objective only.  Interested:
+  \FRA, \ENG, \HOL.
+  \aparag If the Heir Alliance is victorious, with a PD of 3 or more: the
+  proposed Inheritance project is applied completely.
+  \aparag If the Heir Alliance is victorious, with a PD of 1 or 2: the
+  proposed Inheritance project is applied but the Heir has to give a group as
+  a compensation to one of the \MAJ in the enemy alliance (chosen by the
+  Heir).
+  \aparag If a white Peace is signed: the proposed Inheritance project is
+  applied but the Heir has to give two groups as a compensation to \MAJ in the
+  enemy alliance (proposed by the Heir).
+  \aparag If the Opposing Alliance is victorious, with a PD of 1: the proposed
+  Inheritance project is applied but the Heir has to give two groups as a
+  compensation to \MAJ in the enemy alliance (chosen by the Opposing
+  Alliance).
+  \aparag If the Opposing Alliance is victorious, with a PD of 2: the proposed
+  Inheritance project is not applied. The Opposing Alliance decides of a new
+  Inheritance project based on the rules of \xnameref{pV:WoSS:Dividing
+    Inheritance} that is applied and cannot be contested.
+  \aparag If the Opposing Alliance is victorious, with a PD of 3 or more: the
+  proposed Inheritance project is not applied. The Opposing Alliance decides
+  of a new Inheritance project based on the rules of
+  \xnameref{pV:WoSS:Dividing Inheritance} that is applied and cannot be
+  contested. The restriction that at most 2 groups may be given to a power is
+  lifted.
+  \aparag If \HAB was the Heir and the Inheritance project is overruled, the
+  Dynastic Alliance between the Habsburg ends and \AUSmin becomes \AUS.
+  \aparag If \SPA is victim of an Unconditional Peace, the new dynasty is
+  overthrown.
+  \bparag The Heir loses 30 \PV and the Dynastic Alliance is cancelled.
+  \bparag \SPA lose all the groups at stake in the Inheritance.
+  \bparag If the war still goes on, they are temporarily given to the Heir
+  until the end of the war.  If the Heir wins the war anyway, any group that
+  should have been attributed to \SPA is considered to be his before applying
+  the Peace conditions.  If there are groups he is not interested into that
+  are still his afterwards, he has to freely give them to any power (including
+  \SPA, as an exception to this rule and the following).
+  \aparag If a power makes a Separate Peace, it forfeits all the possible
+  benefits to be gained in the war (all the groups mentioned before).
+  \bparag If it already had any (thanks to a Division of Inheritance), the
+  objective are given back to \SPA (or the Heir if \SPA is out of the war).
+
+  \effetlong
+  \aparag \provinceGibraltar becomes an \terme{arsenal} if attributed and
+  owned by this event to a player that is not \SPA.
+\end{digressions}
+
+
+
+\event{pV:Colbertian Mercantilism}{V-5}{Colbertian Mercantilism in
+  France}{1}{RistoMod}
+
+\history{1661-1683}
+
+\condition{}
+\aparag \FRA may decline the event if he wants so. Mark off the event as
+played and ignore the rest.
+
+\phevnt
+\aparag \FRA receives an Excellent Minister \strongministre{Colbert} with
+values 8/9/8. He will last a random length for Minister, see
+\ref{eco:Excellent Minister}.
+\aparag All major powers with commercial fleets in \ctz{France} must pay 10
+\ducats per level they want to keep. The money goes to French treasury. All
+minor commercial fleets in \ctz{France} are permanently removed (their
+reference level is 0).
+\aparag Moreover, if either \CATHCR or \CATHCO, \FRA receives 5 levels of
+\TradeFLEET in \ctz{France}.  Mandatory competition is solved immediately if
+need be.
+\aparag All major powers who lost at least two levels of \TradeFLEET in the
+process have an \OCB against \FRA until the end of the next period.
+\aparag \FRA receives an additional \RES{Art} \MNU level, if available.
+
+\phdipl
+\aparag For the rest of the game, \FRA has an \OCB against everyone with
+\TradeFLEET in \ctz{France}, and a \CB against a power having a
+\TradeFLEET\faceplus in this \CTZ.
+
+\phadm
+\aparag\label{pV:Colbert:limits} Some French turn and period limits and basic
+forces are raised during some periods.
+\aparag As long as \ministreColbert is Minister, \FRA increases by half its
+basic naval construction limit.
+\aparag From now on, all new non-French \TradeFLEET levels placed in
+\ctz{France} cost 10\ducats tax to be payed directly to French Treasury at the
+moment such fleet levels are placed on the map.
+\aparag\label{pV:Colbert:CB} \FRA receives a permanent additional bonus of
+\bonus{+5} for all competition attempts it makes in \CTZ France. However there
+is no malus for making competition attempts against \FRA.
+% \begin{oldcompta}
+%   \aparag From now on, \FRA may begin the construction of Versailles.
+% \end{oldcompta}
+\aparag \FRA may ignore restriction of~\ref{chExpenses:Pioneering} for this
+turn (only).
+
+\phpaix
+\aparag The permanent tax implied in the event and the \CB can be later
+annulled and \ministreColbert dismissed by scoring an unconditional victory
+against \FRA and claiming their annulment in place of the taking of one
+province. \FRA retains the other benefits (\numberref{pV:Colbert:limits},
+\numberref{pV:Colbert:CB}).
+
+
+
+\event{pV:Expulsion French Protestants}{V-6}{Expulsion of the French
+  Protestants}{1}{PBNew}
+
+\history{1685}
+
+\condition{}
+\aparag If \FRA is Protestant, roll for one (Catholic) \REVOLT in France and
+consider the event as played (mark off, do not reroll).
+\aparag If \FRA is \CATHCO, it can refuse the event and loses 3 \STAB and 10
+\PV.
+\aparag If \FRA is \CATHCR, it can refuse the event and loses 4 \STAB and 30
+\PV.
+\aparag If \FRA refuses the event, it can no more use \CB given by events
+\shortref{pV:Glorious Revolution} and \shortref{pVI:Jacobite Rebellion}.
+
+\phevnt
+\aparag \FRA loses 1 level from both its current \FTI and \DTI.
+\aparag The first protestant in the following list of precedence:
+\HOL/\ENG/\SUE, gains one \TradeFLEET level of its choice taken from a
+\TradeFLEET fleet in a \STZ where both countries are present (does not apply
+if none available) and two free \COL attempt with strong investments.
+\bparag The country receiving these actions may ignore restriction
+of~\ref{chExpenses:Pioneering} for this turn.
+\bparag If there is no Protestant power, \FRA loses one \TradeFLEET of his
+choice.
+
+
+
+\event{pV:Grand Siecle}{V-7}{``Le Grand Si\`ecle''}{1}{PBNew}
+
+\history{1661-1702}
+
+\phevnt
+\aparag \FRA chooses, when all events of this turn have been drawn, to apply
+one of the following events (that did not happen yet): \ref{pV:Devolution
+  War}, \ref{pV:Chamber of Reunion} (or \ref{pV:League Augsburg} if it already
+happened), \ref{pV:Colbertian Mercantilism} or \ref{pV:Expulsion French
+  Protestants}.
+
+\phadm
+\aparag \FRA may ignore restriction of~\ref{chExpenses:Pioneering} for this
+turn (only).
+
+
+
+\event{pV:English Dynamism}{V-8}{English Dynamism}{1}{PBNew}
+
+\history{}
+
+\phevnt
+\aparag \ENG chooses, when all events of this turn have been drawn, to apply
+any one of the following events (if it did not happen yet): \ref{pIII:East
+  Indian Company}, \ref{pIV:London Stock Exchange}, \ref{pIV:Act Navigation},
+\ref{pVI:Treaty Methuen}.
+\aparag In addition, \ENG has one free \OCB against \HOL, to be used before
+the end of the period.
+
+\phadm
+\aparag \ENG may ignore restriction of~\ref{chExpenses:Pioneering} for this
+turn.
+
+
+
+\event{pV:Montecuccoli to Eugen}{V-9}{From \sectionleader{Montecuccoli}
+  to \sectionleader{Prinz Eugen}}{1}{PBNew}
+
+\history{1645-1700}
+
+\phevnt
+\aparag Depending on the current turn, check if the following general is still
+in play ; if he is not, recall him immediately (even if he is dead: he was
+only severely wounded and retired but the military situation require his
+presence):
+\bparag \leaderPappenheim between turns 28 and 32 (inclusive) ;
+\bparag \leaderMontecuccoli between 33 and 38 (inclusive) ;
+\bparag \leader{ER Starhemberg} between 39 and 41 (inclusive) ;
+\bparag \leader{Prinz Eugen} between 42 and 49 (inclusive).
+\aparag Armies of \AUSaus are now of class \CAIV.
+\aparag \AUSMin now has a Land Technological marker that increases of two
+levels each turn, beginning on the Latin level.
+\bparag On turn 41, \HAB automatically take the \TMAN technology.
+
+
+
+\event{pV:de Witt}{V-10}{\ministre{de Witt}}{1}{Risto}
+
+\history{1653-1672}
+
+\condition{\HOL can refuse this event if it wishes so. In that case mark off
+  as played.}
+\aparag \HOL can freely dismiss \strongministre{de Witt} (if Minister) at the
+end of any following monarch survival phase and the event terminates.
+
+\phevnt
+\aparag \HOL receives a personality \ministre{de Witt} who may be used as
+Monarch of a \terme{Parliament} government, or an excellent minister of a
+\terme{Stadhouder} government, with values 9/7/9.  He will last for a random
+length for Minister, see \ref{eco:Excellent Minister}.
+\aparag During the last two turns of \ministre{de Witt}'s term in office (be
+it Monarch or Minister), add \bonus{+1} to the monarch survival test.  If the
+monarch dies during these two turns, \ministre{de Witt} is also removed and
+this terminates the event before the new monarch is chosen.
+
+\phadm
+\aparag \HOL basic forces are increased by \FLEET\facemoins and \ARMY\faceplus
+during every turn if is engaged in a war (Overseas, limited or full-fledged)
+as long as this events last.
+
+
+
+\event{pV:Peter the Great}{V-11}{Peter the Great}{1}{Risto}
+
+\history{1689-1725}
+
+\condition{If \monarque{Peter the Great} was already received, nothing happens
+  with this event.}
+
+\phevnt
+\aparag The heir of the current monarch of \RUS is automatically
+\monarque{Peter the Great} with values 9/9/9. See \ref{chSpecific:Russia:Peter
+  the Great}.
+
+\phadm
+\aparag \RUS may ignore restriction of~\ref{chExpenses:Pioneering} for this
+turn.
+
+
+
+\event{pV:Saxon King Poland}{V-12}{Augustus II, a Saxon king in
+  Poland}{1}{Risto}
+
+\history{1697-1733}
+\dure{Until there is a change of dynasty in \POL.}
+
+\condition{}
+\aparag If \POL is Orthodox or \CATHCR, the event is ignored. Mark off and
+play \RD with the \REVOLT in \POL instead.
+\aparag If \POL is at war against \paysSaxe, the event is ignored. Do not mark
+off and re-roll.
+
+\phevnt
+\aparag The king of \POL dies. The new king is \monarque{August II}, elector
+of Saxony.
+\bparag He is scheduled to last for 7 turns.
+\bparag His value are randomly chosen like after a \terme{Dynastic Crisis}.
+\bparag \monarque{August II} may not be used as a general.
+\bparag This is a change of dynasty in \POL.
+\aparag \paysSaxe becomes a permanent \VASSAL of \POL as long as the event
+lasts.
+\bparag No diplomacy is allowed on \paysSaxe while the dynasty rules in \POL.
+\bparag \paysSaxe is considered to be part of \POL for declaring wars of
+signing peace (no separate peace is allowed, \ldots)
+\aparag Any war against either \paysSaxe or \POL when the event occurs
+immediately becomes a war against both (without formal declaration of war).
+
+\phadm
+\aparag \paysSaxe still get reinforcements as a minor country when at war. Its
+troops can freely cross the \HRE and \POL. \POL can raise extra troops from
+\paysSaxe (German mercenaries).
+\aparag Troops of \POL do not get extra rights to enter countries of the \HRE
+(however, \paysSaxe is always allied).
+% (Jym) Not enter Saxony ? or \HRE ? After TYW ?  (Pierre) Polish forces are
+% not allowed to enter Saxony or a country of the HRE that is not allied or at
+% war with Poland. They are managed normally according to the status of Poland
+% (minor or major). (JCD) I rewrote from the French version I leave former
+% English version in comments
+%
+% \aparag Troops of \POL may not enter \paysSaxe or any other country of the
+% \HRE which is not allied or at war against \POL.
+
+\phpaix
+\aparag Only an unconditional surrender can force either \POL or \paysSaxe to
+a separate peace.
+\bparag In this case, the losing country cannot enter the same war again but
+the alliance between \POL and \paysSaxe is still in effect.
+
+\effetlong
+\aparag As long as the dynasty of \paysSaxe rules in \POL, the king can try to
+impose Absolutism at the conditions of \ref{pIV:Polish Civil War}.
+\bparag This can be done at the beginning of the second turn of reign of
+\monarque{August II} and then whenever a new king (of the dynasty of
+\paysSaxe) rules \POL.
+\bparag This must be announced at the beginning of the event phase,
+\numberref{pIV:Polish Civil War} is considered to be the first event rolled
+for this turn.
+
+
+
+\event{pV:Kingdom Prussia}{V-13}{Creation of the Kingdom of
+  Prussia}{1}{RistoMod}
+
+\history{1701}
+
+\condition{If \ref{pIV:Great Elector} as not been played yet, mark off and
+  play \numberref{pIV:Great Elector} instead.}
+
+\phevnt
+\aparag If \POLpol still owns provinces of \region{Duche de Prusse}, they are
+immediately annexed by \paysBrandebourg. \POL gets an immediate free \CB
+against \paysBrandebourg.
+\aparag \paysBerg is annexed by \paysBrandebourg.
+\bparag Another country owning \paysBerg, either renounces it (and gives it to
+\paysBrandebourg), or is declared war upon by \paysBrandebourg.
+
+\effetlong
+\aparag Basic forces of \paysBrandebourg are now 2 \ARMY\faceplus, one general
+and 3 levels of fortification.
+\bparag Its counters limit becomes 3 \ARMY and 5 \LD.
+\aparag Troops of \paysBrandebourg can freely cross the \HRE even if not at
+war, in the same way the Emperor can.
+\aparag The Elector of \paysBrandebourg wants to become king. This happens as
+soon as one of the following condition is true:
+\bparag The emperor grants the royal crown. \paysBrandebourg is put in \EC of
+the Emperor (usually \HAB).
+\bparag The country of the Emperor gives a unfavourable peace to
+\paysBrandebourg. Instead of all peace conditions, \paysBrandebourg gets the
+royal crown.
+% (Jym) Does it mean that if the royal dignity is not given, let's say, before
+% WoAS, PRU may not hope to gain anything but the crown (especially not
+% \provinceSilesie/\provinceLausitz? This looks a bit rough especially since
+% WoAS is may be the first time that \PRU is played, so before the player may
+% really have an influence on the crown (typically, if \AUS does not need the
+% alliance of \PRUmin in WoSS)...
+\bparag The Emperor signs an unfavourable peace of level 2 or more against
+anyone. \paysBrandebourg takes the royal crown and the emperor has a free \CB
+against it at the following turn.
+% (Jym) free CB unique (for next \phdiplo) or permanent but usable only once?
+\aparag Whatever the condition, the emperor loses {\bf 1} \STAB when
+\paysBrandebourg becomes the kingdom or Prussia (the minor country is still
+called \paysBrandebourg).
+% (Jym) Maybe possibility for Emperor to take back the crown, as with an
+% unconditional or 3+ peace?
+
+
+
+\event{pV:War Sweden Denmark}{V-14}{War between \paysmajeurSuede and
+  \paysDanemark}{1}{PB}
+
+\history{1675-1679}
+
+\phevnt
+\aparag \DANMin and \PRUmin, if inactive, declare war to \SUE.
+\aparag \PRU as a major country has a \CB against \SUE. If it doesn't use this
+\CB, it loses 1 \STAB and the control of \paysDanemark. If it uses this \CB,
+it gains \paysDanemark in \EG.
+\aparag \DAN as a major country has a \CB against \SUE. If it doesn't use this
+\CB, it loses 1 \STAB and the control of \PRUmin. If it uses this \CB, it
+gains \PRUmin in \EG.
+\aparag Normal call for allies occur. Especially, a major country with
+diplomatic control (\AM or better) of either \DANmin or \PRUmin is called by
+the minor.
+\aparag \SUE does lose diplomatic control of both \paysDanemark and
+\paysBrandebourg.
+
+
+
+\event{pV:Koprulu}{V-15}{\ministreKoprulu}{1}{RistoMod}
+
+\history{1656-1683}
+
+\condition{\TUR can refuse this event if it wishes so. In that case mark off
+  as played.}
+\aparag If \TUR has performed any reform of level 2, mark off and play \RD
+instead, with the \REVOLT in \TUR.
+\aparag \TUR can freely dismiss \strongministre{Koprulu} at the end of any
+following monarch survival phase and the event terminates.
+
+\phevnt
+\aparag \TUR receives an Excellent Minister \ministreKoprulu with values
+8/9/7. He will last for 8 turns.
+% 2 turns plus a random length for Minister, see \ref{eco:Excellent Minister}.
+The Minister is not dismissed if the \TUR monarch dies ; \TUR rolls for the
+values of the new monarch using the values of the Monarch only with no malus
+nor bonus.
+\aparag \TUR receives an additional level of \MNU of \RES{Metal}.
+\aparag Four corrupted pashas may be removed immediately with no penalty.
+\aparag \leader{Sadri Azam} is replaced by \leaderKoprulu while the event is
+in effect. If this general is killed, captured or defeated in a Major Victory,
+\TUR loses two additional \STAB or may choose to end immediately the event. If
+the event is not ended, the general comes back in play (another one in the
+same dynasty) on the following turn.
+
+\phadm
+\aparag Turkish Reforms cannot be attempted while the event is in effect.
+
+
+
+\event{pV:Fights Iroquois}{V-16}{Fights against the Iroquois}{1}{Risto}
+
+\phevnt
+\aparag Roll 1d10:
+\bparag If the result is even, \paysIroquois declares an Overseas war to one
+power that has a \COL/\TP adjacent to them (this \COL/\TP is chosen randomly
+to decide which power is the target). It will first try to invade this
+settlement, and will go against the other ones of the same country only if
+this one is captured/destroyed.
+\bparag If the result is odd, the natives of a randomly chosen \COL of a major
+power (including annexed Portugal) in an unsubdued area in \continent{North
+  America} are activated and will attack this \COL at the end of the turn.
+
+
+
+\event{pV:Slave Revolts WI}{V-17}{Slave Revolts in the West Indies}{2}{Risto}
+
+\phevnt
+\aparag Roll 1d10 for each power having \COL in areas \granderegionCuba,
+\granderegionHaiti and/or \granderegionAntilles. On a result of 7 or more, a
+\REVOLT \facemoins is placed in one randomly chosen \COL of the power.
+
+
+
+\event{pV:Wars India}{V-18}{Wars in India}{2}{PBNew}
+
+\history{Aurangzeb (1658-1707) / Revolts of the Marathi}
+
+\phevnt
+\aparag If the non-European minor country \paysMogol does not exist, it is
+created now. Its ruler is now \leader{Grand Moghol} (replacing \leaderAkbar if
+he was in play).
+\aparag If it was still existing, minor country \paysVijayanagar is destroyed
+(by internal fights).
+\aparag \granderegionBengale and \granderegionKarnatika becomes rich region,
+with 2 resources of each kind shown on the map (instead of 1).
+\aparag If the \paysMogol exist, they invade one province with a modifier of
+\bonus{-2}, the next in the list according to the event \ref{pII:Mughal
+  Expansions}.
+\aparag From now on, \paysMysore and \paysHyderabad are created as soon as no
+other country owns their region.
+\aparag Every \TP/\COL in \continentIndia that is in a region owned by a minor
+country will face an attack by the natives of the area (disregarding the
+existence or not of a Treaty). Attacks caused by this event will be resolved
+at the end of turn with a modifier of \bonus{+4}.
+
+
+
+\event{pV:Treaty Nerchinsk}{V-19}{The Treaty of Nerchinsk}{1}{RistoMod}
+
+\history{1689}
+
+\phevnt
+\aparag \paysChina annexes all provinces in \granderegionAmour, and all
+provinces adjacent to Mongolia (the white zone) in \granderegionBaikal. Its
+Activation level is 6 in these provinces.
+\aparag \RUS and any power having \COL/\TP in any of these provinces may now
+make diplomacy on \paysChina in order to obtain \dipAT with it. This Treaty
+allows the power to have at most 2 \COL/\TP that will draw no reaction from
+\paysChina.
+\aparag It is not possible for one power to have a \dipAT status for this
+effect, and another one for a \TP in \paysChina. It is one or the other.
+
+\phadm
+\aparag \RUS may ignore restriction of~\ref{chExpenses:Pioneering} for this
+turn.
+
+
+
+\event{pV:Invasion Formosa}{V-20}{Invasion of Formosa by China}{1}{RistoMod}
+
+\history{1683}
+
+\phevnt
+\aparag \paysChina invades \granderegionFormose.  This province is now owned
+by \paysChina and subjected to all the relevant rules. Activation level for
+this province is 6.
+\aparag Any foreign \TP/\COL in the region will be attacked by the Natives of
+the province this turn.
+\aparag If \ref{pIII:CCA:Closure China} is in effect, a power still having a
+\TP in the province may sign a \dipAT with \paysChina. If it succeeds (before
+its \TP is destroyed), it may keep the \TP as if it were there at the moment
+of the closure.
+
+
+
+\event{pV:Japan Trade}{V-21}{Trade Regulations in Japan}{1}{PB}
+
+\history{1638 and afterwards}
+
+\phevnt{}
+\aparag If \ref{pIV:JCA:Closure Japan} happened, reduce any \TP in Japan by 2
+levels.
+\aparag If \ref{pIV:JCA:Japan Commercial Dynamism} happened or none of
+\ref{pIV:Japan Colonial Attitude}, apply now \ref{pIV:JCA:Closure Japan}.
+
+
+
+\event{pV:Revolt Cossacks}{V-22}{Revolt of the Cossacks}{1}{PB}
+
+\history{1654-1667}
+
+\condition{This event is the same as \ref{pIV:Revolt Cossacks} which happens
+  now if it did not occur yet. Else, treat as \RD, with \REVOLT in \POL.}
+
+
+
+\event{pV:Revolt Catalunya}{V-23}{Revolt in \provinceCatalunya}{1}{PBNew}
+
+\history{1640-1652 / 1705-1707}
+
+\phevnt
+\aparag Place a \REVOLT \facemoins in \provinceCatalunya ; the \REVOLT
+controls also the fortress. Any military force in the province must retreat.
+\bparag If this event happens during \ref{pV:WoSS}, the \REVOLT is \faceplus
+instead.
+\aparag If \SPA is at war against \FRA, \ENG or \AUT, the \REVOLT is friendly
+to the first of those countries that is an enemy of \SPA.
+
+% Placeholder
+
+
+
+\event{pV:Kuruc}{V-z}{The Great Kuruc Uprising}{1}{PBNotEvenWritten}
+
+\history{1678-1684}[Part of the Great Turkish War (series of wars fought from
+1662 to 1699) that lead to the famous (second) siege and battle of Vienna of
+1684]
+\dure{Until the end of the war caused by the event.}
+
+\stopevents
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: Heirdom Minister malus reroll PBNew pIV pVI pV WoSS Colbertian
+% LocalWords: Siecle Montecuccoli de Koprulu Nerchinsk Catalunya Kuruc Risto
+% LocalWords: Franche PBMod TODO Habsburg Asiento Olivares RistoMod ecle Azam
+% LocalWords: Starhemberg Stadhouder Duche Prusse Sadri Moghol LocalWords:
+% PBNotEvenWritten

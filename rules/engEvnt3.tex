@@ -1,0 +1,1554 @@
+% -*- mode: LaTeX; -*-
+
+\section{Period III}\label{events:pIII}
+
+
+
+\subsection*{Event Table of Period III}
+
+\begin{eventstable}[Period III events table]
+  \centering\tabcolsep=4.5pt%
+  \begin{tabular}{|l|*{6}{c}|l|}
+    \hline
+    1\up{st}\textarrow& 1-3 & 4-5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+    1 & 1  & 1  & 22  & 5   & 22  & R15 & \textbullet~1--2:\\
+    2 & 6  & 12 & 11  & 1   & R11 & R11 & +1 then\\
+    3 & 8  & 11 & 18  & 11  & R6  & 12  & \nameref{events:pII}\\
+    4 & 1  & 2  & 19  & R6  & R7  & R13 & \textbullet~3--10:\\
+    5 & 11 & 3  & R20 & 4   & 8   & 14  & \nameref{events:pII}\\
+    6 & 14 & 4  & R21 & 10  & 9   & 20  & \\
+    7 & 15 & 5  & 11  & R13 & 10  & 21  & \\
+    8 & 17 & 9  & 7   & R15 & 17  & R23 & \\
+    9 & 20 & 13 & 3   & 16  & 18  & R2  & \\ \hline
+    10& \multicolumn{7}{l|}{\nameref{events:pIV}} \\ \hline
+  \end{tabular}
+\end{eventstable}
+\begin{eventstablespec}[General modifiers for the period]
+  For each 4 (complete) turns during which \SPA has taxed \paysHollande since
+  the beginning of the game (as per \ref{chSpecific:Spain:Dutch Tax}), the
+  second die-roll is modified by \textbf{-1} until \ref{pIII:Dutch Revolt}
+  occurs.
+\end{eventstablespec}
+
+\eventssummary{%
+  pIII:Dutch Revolt|,%
+  pIII:VOC|,%
+  pIII:League Nassau|,%
+  pIII:Amsterdam Stock Exchange|,%
+  pIII:East Indian Company|,%
+  pIII:End Auld Alliance|,%
+  pIII:War Sweden Denmark|,%
+  pIII:Oxenstierna|,%
+  pIII:War England Scotland|,%
+  pIII:Portuguese Disaster|,%
+  pIII:Portuguese Annexation|,%
+  pIII:Northern Secularisation|,%
+  pIII:War Persia Turkey|S{pIII:WPT:Persian Attack}/S{pIII:WPT:Annexation
+    Iraq},%
+  pIII:Revolt Grenade|,%
+  pIII:FWR|L{pIII:FWR Beginning}/L{pIII:FWR Barthelemy}/L{pIII:FWR League}/%
+  L{pIII:FWR Succession}/L{pIII:FWR Last Stand},%
+  pIII:Revolt Corsica|,%
+  pIII:Union Poland Sweden|,%
+  pIII:Union Lublin|,%
+  pIII:Oprichnina|,%
+  pIII:Times of Troubles|O{pIV:Times of Troubles},%
+  pIII:War Siberia|,%
+} \eventssummary{%
+  pIII:Creation Arkhangelsk|,%
+  pIII:Persian Safavids|E/O{pIII:Sultanate of Aceh},%
+  pIII:Revolt Ceylon|,%
+  pIII:Mughal Akbar|E/E/O{pIII:Sultanate of Aceh},%
+  pIII:Fall Vijayanagar|E/E,%
+  pIII:China Colonial Attitude|,%
+  pIII:Sultanate of Aceh|,%
+  pIII:Japanese Expedition|,%
+  O|,%
+  pIII:Union Russia Poland|T{alt. hist.},%
+  pIII:Religious War Sweden|T{alt. hist.},%
+  pIII:Religious War Poland|T{alt. hist.},%
+  pIII:FWR Detailed|,%
+  pIII:FWR Beginning|,%
+  pIII:FWR Barthelemy|,%
+  pIII:FWR League|,%
+  pIII:FWR Succession|,%
+  pIII:FWR Last Stand|,%
+  pIII:FWR Final|,%
+}
+
+\newpage\startevents
+
+
+
+\event{pIII:Dutch Revolt}{III-1 (1)}{Revolt of the United
+  Provinces}{1}{RistoMod}
+
+\history{1568-1609}
+
+\condition{For each occurrence of \ref{pIII:Dutch Revolt}, check the effect
+  here.}
+\aparag Can only occur after the beginning of period III, unless
+\paysVhollande exists. Otherwise re-roll and do not mark off.
+\bparag This event triggers the \xnameref{pI:Reformation2} if it has not yet
+occurred or the \xnameref{pI:Reformation3} if the second Reformation event had
+occurred and not the third.
+\bparag If \paysVhollande exists, the Revolt is triggered immediately (either
+\xnameref{pIII:DR:First Holland Revolt} or \xnameref{pIII:DR:Subsequent
+  Revolts}).
+\bparag If \HOL is a major country, apply \ref{pIII:VOC} the second time, and
+\ref{pIII:League Nassau} the third time.
+% (JCD) If \Holmin exists not owned by \SPA, no further revolt?
+\bparag If \HOLmin exists and is not on Spanish diplomatic track, apply
+\ref{pIII:League Nassau} instead, then \ref{pIII:VOC} the third time.
+\bparag In all other cases, the Revolt of \HOL occurs (possibly again). Keep
+reading.
+\aparag[Revolt and Spanish religious choice]
+\bparag If \SPA is \CATHCR, the Revolt is triggered immediately (either
+\xnameref{pIII:DR:First Holland Revolt} or \xnameref{pIII:DR:Subsequent
+  Revolts}).
+\bparag If \SPA is \CATHCO, \SPA must refuse or grant \emph{Commercial
+  Liberties} to \paysHollande. A refusal triggers the Revolt as above.
+\bparag If \SPA gives \emph{Commercial Liberties} to \paysHollande, \SPA gains
+{\bf 1} \STAB then 1d10 is rolled, added to the following modifiers:
+\begin{modlist}
+\item[\bonus{+1}] for each turn of taxes on \paysHollande
+\item[\bonus{-2}] if the Truce of Augsburg is in effect
+\item[\bonus{-1}] if \ENG is Catholic
+\item[\bonus{-1}] if \xnameref{pIII:FWR} has occurred at least once and the
+  \paysHuguenots never had a favourable truce.
+\end{modlist}
+The result is:
+\begin{modlist}[2em]
+\item[\textlessequal0] \paysHollande becomes a Special \VASSAL of
+  \SPA\NGTnb{a}
+\item[1--2] \paysHollande becomes a normal minor, initially vassal of
+  \SPA\NGTnb{b}
+\item[3--5] \paysHollande becomes a neutral minor\NGTnb{c}%
+  \begin{tikzpicture}[remember picture,overlay]
+    \NGTnotabene{}{See~\xref{pIII:DR:Independence without Revolt}}
+  \end{tikzpicture}
+\item[\textgreatequal6] Revolt (either \xnameref{pIII:DR:First Holland Revolt}
+  or \xnameref{pIII:DR:Subsequent Revolts}). The \xnameref{pIII:DR:War Holland
+    Portugal} may also be activated.
+\end{modlist}
+
+
+\subevent[pIII:DR:First Holland Revolt]{First Revolt against the Spanish
+  Crown}
+
+\phevnt
+\aparag The Major country \paysmajeurHollande (or \HOL) is created and
+\MAJHOLx changes to this new power according to the rules for the Grand
+Campaign.
+\aparag \HOL owns its national territory: \theminorprovincesshort{hollande},
+regardless of their last owner. \SPA loses 5 \VP for each of the provinces now
+of \HOL that were not his just before the event. \paysprovincesne is dissolved
+and does not exist anymore.
+\bparag Former (non-Spanish) owners of those provinces can declare a war
+against \HOL but have no \CB.
+\aparag\label{onlyfirstrevolt1} \provinceBrabant and \provinceLimburg are
+militarily controlled by \HOL, regardless of their owner at the time of event.
+\bparag If this owner is not \SPA, he has the choice to give them to \HOL or
+has to declare a limited intervention immediately, as an ally of \SPA in the
+Religious War; \HOL may then freely involve fully this power in the war. Both
+provinces are valid ground for the war even if the intervention is limited.
+\bparag If the owner was \SPA and \SPA conceded \emph{Commercial Liberties} at
+the beginning of the event, both provinces are now owned by \HOL; else they
+remain Spanish.
+\aparag \SPA owns a \Presidio of level 3 in \provinceZeeland.
+\aparag \HOL has a \STAB of {\bf +2}, a \DTI and a \FTI of 3; the
+technological markers of \HOL are placed 1d6 boxes in front of the Latin
+technology, and 1d6+2 for Naval technology (separate rolls). Its initial Royal
+Treasury is 400\ducats.
+\aparag \HOL deploys the following counters: \MNU of \RES{Instruments} in
+\provinceZeeland, of \RES{Cloth} in \provinceUtrecht, of \RES{Metal} in
+\provinceGelderland (all of level 1, level 2 if \emph{Commercial Liberties}
+were granted); 1 \ARMY\facemoins, 1 \FLEET\faceplus, 2 \DT, and 4 levels of
+fortification anywhere in owned provinces.
+\aparag\label{onlyfirstrevolt2} The current \HOL monarch is
+\monarque{Willem I} with values 7/9/9. He lasts seven turns and does not check
+for survival during the first three. He is also a general
+\leaderwithdata{Willem I}. The government is \terme{Stadhouder}.
+\aparag\label{onlyfirstrevolt3} \HOL knows 1d10+4 sea zones,
+chosen between those of \SPA and \POR, forming a continuous path from Europa
+(add 4 if \emph{Commercial Liberties} were granted).
+\aparag All non-Dutch units inside territories held by \HOL are removed as per
+normal peace procedure.
+\aparag \HOL is at war with \SPA and \SPA is considered to be victim of a
+declaration of war at this turn. No calls for allies are made.  This is a
+Religious Civil War between \HOL and \SPA (see \ref{chDiplo:Religious Civil
+  War}).
+\aparag\label{onlyfirstrevolt4} Place a Dutch controlled \REVOLT \faceplus in
+\provinceVlaanderen and \REVOLT \facemoins in \provinceFlandre and
+\provinceHainaut.
+
+\phdipl
+\aparag An Armistice will be possible, after the first turn of revolt (this is
+an exception to the rules on Religious Wars).
+\aparag Usual foreign interventions are permitted.  if \FRA is involved in
+\ref{pIII:FWR}, its intervention is restricted as follows.
+\bparag If \FRA is \CATHCR or Protestant, \FRA may only use its own forces
+(and not those of the heretic minor) to help the side sharing its
+religion. The French heretic minor country may make a foreign intervention by
+its own to help the side sharing its religions; this is decided by the \MAJ
+that controls this country when it rebels.
+\bparag If \FRA is \CATHCO, it can make a foreign intervention with any side
+(not both at the same time).
+
+\phadm
+\aparag During the first turn of war, \HOL can exceed the purchase limits for
+naval units and buy land forces without any double or triple price multipliers
+for exceeding the basic allowance.
+\aparag\label{onlyfirstrevolt5} All units bought during the first turn of the
+war and placed under \monarque{Willem I} become automatically \Veteran.
+
+\phpaix
+\aparag This event can terminate in two ways:
+\bparag \SPA conquers all \HOL national provinces. In this case \SPA has won
+the war and \HOL is no more. \MAJHOL player has to wait for another
+opportunity to play a Major country (according to the rules of the Grand
+Campaign).  All the rules for \paysHollande possessed by \SPA are applied
+again. The \COL or \TP of \paysHollande remain and are part of \SPA for
+military aspects, but they can not be improved. The commercial fleets are
+managed as before the war. The Taxation of Holland is possible anew.
+\bparag A peace of any kind is made between \SPA and \HOL. Exceptionally, a
+peace of level 5 allows the transfer of any number of provinces (3 if the
+powers do not agree). As an additional condition to normal peace conditions
+\SPA must recognise the independence of \HOL after which all normal rules
+apply and \HOL has become an ordinary player country.
+\aparag A peace treaty between \SPA and \HOL cannot be made during the same
+turn the revolt event occurred.  White peace is not allowed to end this war.
+\aparag Any peace treaty between \SPA and \HOL entails an enforced peace of 3
+consecutive turns between those two countries, that can only be broken by
+using a \CB given by an event.  During this period, neither of them can
+declare war to the other, nor to their respective vassals.
+\aparag After peace has been made between \HOL and \SPA, \HOL can continue
+harassing Spanish annexed Portugal (see \ref{pIII:DR:War Holland Portugal})
+until the end of period IV.
+\aparag During the war between \HOL and \SPA neither side loses \STAB due to
+the number of turns engaged in war as per normal rules. Instead, for being at
+war with each other, or with the allies of each other, they lose the following
+fixed amounts:
+\begin{modlist}
+\item[Period III] \SPA {\bf 1} \STAB, \HOL {\bf 1} \STAB.
+\item[Period IV] \SPA {\bf 2} \STAB, \HOL {\bf 1} \STAB.
+\item[Period V+] \SPA {\bf 3} \STAB, \HOL {\bf 2} \STAB.
+\end{modlist}
+\aparag This applies only to the war between \HOL and \SPA due to this event
+and only to \SPA and \HOL.  Other allies involved in this war lose \STAB in
+the usual manner as well as \HOL and \SPA for non-connected wars.
+
+\phinter
+\aparag \SPA receives 5\VP each turn that the Independence of \HOL is not
+recognised (the war of Revolt goes on or the Revolt has failed) in period III.
+This bonus is reduced to 2\VP during period IV and terminates in period V. The
+bonus is given even if the turn was spent in Armistice.
+
+
+\subevent[pIII:DR:War Holland Portugal]{War between Holland and Portugal}
+
+\condition{If \HOL is in Revolt against \SPA and \paysPortugal has been
+  annexed by \SPA according to \ref{pIII:Portuguese Annexation}, add the
+  following event to a Revolt (first and subsequent ones).}
+
+\phevnt
+\aparag \paysPortugal and \HOL are involved in an Overseas War, as long as the
+War of Revolt continues between \SPA and \HOL.
+\aparag \paysPortugal uses its forces as defined in \ref{pIII:POR
+  Ann.:Portugal Annexed} and \SPA can help it as they are allied.
+
+\phdipl
+\aparag An Armistice in the war between \SPA and \HOL does not imply an
+Armistice between \PORmin and \HOL.
+
+\phadm
+\aparag All \COL and \TP of \POR occupied by \HOL give all their revenue to
+\HOL (and none to \SPA) as if owned.
+
+\phinter
+\aparag All \TP\facemoins of \POR occupied by \HOL can be replaced by \HOL \TP
+with 1 level less.
+\aparag Portuguese \TP may not be annexed in this way or burnt by \HOL at the
+turn where \SPA recognises the Independence of \HOL (but see afterwards).
+
+\phpaix
+\aparag This war terminates at the end of period IV, or if \HOL is conquered
+or recognised by \SPA or if \PORmin breaks free from \SPA. In the latter case,
+\HOL has a free \OCB against \paysPortugal to be used immediately. Else, \HOL
+has to leave Portuguese territory at the end of the turn.
+\aparag When the Independence of \HOL is recognised, \HOL can immediately
+annexe two \COL or \TP of \paysPortugal, or only one \COL or \TP if the peace
+is unfavourable.  In both cases, the level of the \COL/\TP remains the
+same. \HOL must have military control of these settlements, but the agreement
+of \SPA about which \TP/\COL are gained is not needed.
+\bparag Instead of one \TP/\COL, \HOL may obtain the right of implantation of
+fleets in \STZ bordering Portuguese \COL/\TP.
+\aparag Until the end of Period IV, \HOL having won the Revolt gains an \OCB
+against \paysPortugal as long as this country is annexed by \SPA.
+
+
+\subevent[pIII:DR:Subsequent Revolts]{Subsequent Revolts}
+
+\phevnt
+\aparag If the Revolt occurs again after a failed Revolt, the rules are the
+same as in \xnameref{pIII:DR:First Holland Revolt} except for the following
+points.
+\aparag Points \XNRofsectionfalse\ref{onlyfirstrevolt1},
+\ref{onlyfirstrevolt2}, \ref{onlyfirstrevolt3},
+\ref{onlyfirstrevolt4}\XNRofsectiontrue \ and \ref{onlyfirstrevolt5} above are
+ignored.
+\aparag Technological markers are where they were left at the end of the
+previous Revolt, or at the box of Latin technology (the better). The Treasury
+of \HOL is 200\ducats.  The monarch is determined at random; \monarque{Willem
+  I} is not available, neither as a Monarch nor as a General.
+
+
+\subevent[pIII:DR:Independence without Revolt]{Independence without Revolt}
+
+\phevnt
+\aparag \future{This option is experimental...}%
+\paysHollande becomes a minor country composed of all its national territory:
+\theminorprovincesshort{hollande}, regardless of their last owner.  \SPA loses
+5 \VP for each of the provinces now in \HOL that were not his own just before
+the event. \paysprovincesne is dissolved and does not exist anymore.
+\bparag Former (non-Spanish) owners of those provinces can declare a war
+against \HOL but have no \CB.
+\aparag The characteristics of \paysHollande are as defined in the Annexes.
+It has one action of \TP, one action of \COL, one action of \CONC all with
+medium investment. It places its \TradeFLEET as in period I or II until the
+end of period V; afterwards it has one action for commercial fleet.
+\aparag If \paysHollande is not a special \VASSAL of \SPA:
+\bparag Any war engaged in period III between \SPA and this country becomes a
+Revolt, as per \xnameref{pIII:DR:First Holland Revolt} (keeping existing \COL
+or \TP and all discoveries of sea zones made by \SPA (and \POR if annexed by
+\SPA) and all its own land discoveries);
+\bparag The player formerly in charge of the \TradeFLEET of \paysHollande has
+the mandatory task of resolving administrative actions of \HOL and will
+resolve its discoveries;
+\bparag This player earns \VP for any monopolies of \paysHollande.
+\bparag \paysHollande is subject to normal diplomacy;
+\aparag If \paysHollande is a special \VASSAL of \SPA, this country has the
+task of resolving the administrative actions (which are mandatory).
+\paysHollande is not subject to diplomacy.
+\aparag \paysHollande may be involved in Overseas Wars, and may declare one
+(controller's choice).
+
+\phadm
+\aparag If \paysHollande is a special \VASSAL of \SPA, \SPA gains 50\ducats
+per turn plus 2\ducats for each face of \COL/\TP of \paysHollande (funds
+raised from \paysHollande), instead of the usual income of the provinces for a
+vassal.
+\aparag Until the end of period V, if at peace or doing limited intervention
+only, \paysHollande raises one \FLEET\faceplus and one \ARMY\faceplus to be
+used overseas each turn, in discoveries and battles against Natives; it also
+has one simple campaign at each round. The named \LeaderE and \LeaderC of \HOL
+are used, with a minimum of one \LeaderE and one \LeaderC to be taken in
+unnamed counters. The discoveries or wars are resolved by the player in charge
+of the administrative actions.
+\aparag If at war, it uses its full forces and reinforcements.
+
+\effetlong
+\aparag \paysHollande may Revolt against \SPA because of some war between
+these two countries in period III.
+\aparag Or \paysHollande may break free or/and become a Major Power because of
+\ref{pIV:TYW}.
+\aparag Finally, a peace of level 5 against \SPA breaks the special status of
+\VASSAL and \paysHollande becomes a neutral minor country; the player waiting
+to play \HOL according to the rules of the Grand Campaign has the choice to
+immediately become \HOL.
+\aparag In all those cases, the event and the rules described here terminate.
+
+
+
+\event{pIII:VOC}{III-1 (2)}{Creation of the VOC}{1}{RistoMod}
+
+\history{Vereenigde Oostindische Compagnie was created in 1602}
+
+\condition{}
+\aparag If this event already happened because of \ref{pIV:Dutch Colonial
+  Dynamism}, reapply \numberref{pIV:Dutch Colonial Dynamism} instead.
+\aparag If \HOL does not satisfy 2 conditions over 3 re-roll and do not mark
+off: having at least 3 \TP in \continent{Asia}; this is turn 20 or after;
+Dutch government is \terme{Parliament}.
+
+\phevnt
+\aparag \HOL may create the VOC at any event phase, as soon as it wants. It
+costs 100\ducats and causes the rest of the event.
+\aparag \HOL receives 3 levels of commercial fleets to be placed in any
+eligible \STZ bordering \continent{Asia}.
+
+\phadm
+\aparag The turn the VOC is created, \HOL may ignore restriction
+of~\ref{chExpenses:Pioneering}.
+
+\effetlong
+\aparag \FTI for \HOL is immediately raised by one level. \FTI in the \ROTW is
+now 5 in periods III and IV.
+\aparag \HOL gains one action of \TP and a minimum of one \LeaderC in period
+III.
+\aparag \HOL gains an \OCB against any Catholic country having \TP or \COL in
+\continent{Asia}, valid during periods III and IV.
+
+
+
+\event{pIII:League Nassau}{III-1 (3)}{League of Nassau}{1}{PBNew}
+
+\history{Alternative history}
+
+\condition{}
+\aparag If \HOL is a Major country and \SPA did not recognise it, apply \RD
+with a \REVOLT in \SPA instead of this event and mark off.
+\aparag If the Independence of \HOL was recognised or if \paysHollande is
+minor country, apply the rest of the event.
+
+\phevnt
+\aparag \paysHollande breaks any diplomatic status with \SPA, whether special
+\VASSAL or regular diplomatic status and becomes neutral.
+\aparag The countries \paysOldenburg, \paysHanovre, \paysHanse and \paysBerg
+form an offensive alliance, called the League of Nassau. They leave an
+existing \GE.  They are considered as one country for declarations of war and
+for peace terms (excepted for separate peaces).
+\aparag The League of Nassau declares a war to \paysTreves, \paysCologne and
+\paysMayence. The Emperor of the \HRE has a free \CB to declare war to the
+League of Nassau and be allied to the three Archdioceses; in this case it
+controls these countries. If the Emperor does not involve himself in the war,
+the Sole Defender of the Catholic Faith will have control of those
+Archdioceses during the war, or \SPA is nobody has this responsibility.
+\aparag Any country having diplomatic status with one of these minor countries
+can do a limited intervention to support this side (and then has to break
+diplomatic relations with minor countries of the enemy side), except the
+Emperor who can only enter war with the Archdioceses (and can do this in a
+limited way or full war).
+\bparag Note that if the Emperor is \AUSmin, \SPA can make a limited
+intervention on the side of \AUSmin as well.
+\aparag If \HOL exists, it can do a limited intervention as an ally of the
+League of Nassau.
+\aparag The League of Nassau is controlled by the following Major existing
+power: \HOL, the player responsible for the administrative actions of
+\payshollande (if not \SPA), \ENG if Protestant, \FRA if Protestant, \SUE
+(regardless of religion).
+
+\phadm
+\aparag The three Archdioceses can use the counter of the \HRE for their
+troops even if the Emperor is not at war along them. They take their
+reinforcements in defensive mode during the first turn of the war.
+\aparag The countries in the League of Nassau take their first turn
+reinforcements in offensive mode, except \paysHanse which has Offensive or
+Naval reinforcements (controller's choice).
+
+\phmil
+\aparag The minor countries of the \HRE that are at war can pass through and
+stop in every province of the \HRE. They can not siege or pillage provinces
+belonging to minor countries not involved in this war.
+\aparag The troops of the Emperor have the same right of passing through and
+stopping in the \HRE, as well as the forces in limited intervention of other
+Major countries.
+
+\phpaix
+\aparag A test to begin a Religious War in \HRE is made at the end of the
+first turn of this war started by the League of Nassau.  This test is modified
+by \bonus{+2} if \SPA if \CATHCR and \bonus{0} if it is \CATHCO. See
+\ref{pIV:TYW} for the result of the test and the possibility of this Religious
+War, and the renewal or not of the test on following turns.  If no such war
+occurs, peace can be made on the following conditions.
+\aparag Each minor country obeys to the usual rules for peace. Those in the
+League are allied so a peace against only one country is a separate peace.
+\aparag A minor country forced to sign an unconditional surrender breaks from
+the League for ever. The League ceases to exist when only one country remains
+in it, or at the time of \shortref{pIV:TYW}.
+\aparag If the three Archdioceses are not supported by the Emperor, the League
+tries to obtain peace using the system for minor countries as if it was one
+major country (the controller of the League of Nassau decides of the terms of
+peace).
+\aparag The controlling player of both sides gain 5 \PV for each level of
+favourable peace signed at the end of the war, and 10 \PV for each enemy minor
+country that had to sign an unconditional surrender; they lose 10 \PV for each
+minor country of their side that had to sign an unconditional surrender.
+Those \PV are not awarded if the war triggers \shortref{pIV:TYW}.
+
+\effetlong
+\aparag If the League of Nassau exists when \shortref{pIV:TYW} occurs, it will
+join the Protestant side. The League ceases existence when there is only one
+minor country left in the League at the end of a war.
+
+
+
+\event{pIII:Amsterdam Stock Exchange}{III-2}{Amsterdam Stock
+  Exchange}{1}{Risto}
+
+\history{1608}
+
+\effetlong
+\aparag \HOL can from now on lend 150\ducats in the Diplomacy phase, plus
+100\ducats during the turn (instead of 100\ducats plus 50\ducats).
+\aparag \HOL has more money available for international loans.
+\begin{oldcompta}
+  \aparag From now on \HOL receives a bonus equal to its \DTI to all die-rolls
+  on international loan amount and interest (not length) in the loans table
+  % (Jym) Table just said "international" and usually more up to date
+  \aparag \HOL is also more resistant to Bankrupt and more tolerant to
+  trespassing of commercial limits.
+  % (Jym) What? According to chapter 3 it should be less resilient
+\end{oldcompta}
+
+
+
+\event{pIII:East Indian Company}{III-3 (1)}{Creation of the East Indian
+  Company}{1}{Risto}
+
+\history{1600}
+
+\condition{}
+\aparag If both following conditions are not satisfied: this is turn 20+ and
+\ENG has at least 2 \TP in \continent{Asia}, apply first \ref{pIII:End Auld
+  Alliance}, or re-roll if already played.
+
+\phevnt
+\aparag \ENG may create the EIC at any event phase, as soon as it wants. It
+costs 100\ducats and causes the rest of the event.
+\aparag \ENG receives 2 levels of commercial fleets to be placed in any
+eligible \STZ bordering \continent{Asia}.
+
+\effetlong
+\aparag \FTI for \ENG is immediately raised by one level and its maximum level
+is permanently raised as written in the tables.
+
+
+
+\event{pIII:End Auld Alliance}{III-3 (2)}{End of the Auld Alliance}{1}{PBNew}
+
+\history{1560 - Treaty of Edinburgh}
+% \dure{until the end of the Anglo-Scottish war}
+
+\condition{}
+\aparag Occurs only if \paysecosse is at present inactive. Otherwise re-roll.
+\aparag If \ANG has chosen the ``Mary Stuart'' option in \ref{pII:Act
+  Supremacy}, this event is void of any effect.
+\aparag \ENG can refuse this event (mark as played) by losing {\bf 2} \STAB
+and 20 \VP. It also loses the control of \paysecosse and can then make no
+diplomacy on it until the end of period.
+
+\phevnt
+\aparag Apply \ref{pI:Reformation3} (John Knox in Scotland!).
+\aparag \paysecosse wants to declare itself liege of \FRA.  \ENG has the
+choice to contest this declaration, by using a free \CB against \paysecosse.
+In this case, \paysecosse stays Neutral and Allies can be called for this war
+as per normal rules. Else, \paysecosse becomes \VASSAL of \FRA.
+
+\phadm
+\aparag For the duration of the event, \paysecosse receives reinforcements in
+defensive attitude.
+
+
+
+\event{pIII:War Sweden Denmark}{III-4 (1)}{War between Sweden and
+  Denmark}{1}{PB}
+
+\history{1563-1570}
+
+\condition{This event can not occur if \SUE is not a Major Power; do not mark
+  off and re-roll if it is not the case.}
+
+\phevnt
+\aparag \paysDanemark declares a war to \SUE. If \SUE was at peace,
+\paysDanemark is controlled according to the normal rules. If it was not, the
+controller is chosen in priority among the countries at war against \SUE.
+
+\phadm
+\aparag During the first turn \paysDanemark will take its reinforcements in
+offensive status with an added bonus of \bonus{+2}. For the following turns,
+the attitude is free but \paysDanemark keeps the \bonus{+2} to reinforcements
+during all this war.
+
+
+
+\event{pIII:Oxenstierna}{III-4 (2)}{Oxenstierna}{1}{PBNew}
+
+\history{1612-1654}
+\dure{as long as \strongministre{Oxenstierna} remains the excellent minister}
+
+\phevnt
+\aparag \SUE receives an excellent Minister, \ministre{Oxenstierna}, which has
+values 6/8/8. He will last for 3 turns plus a random length for Minister, see
+\ref{eco:Excellent Minister}.
+\aparag \SUE gains immediately {\bf 1} in \STAB.
+
+\phadm
+\aparag \SUE may ignore restriction of~\ref{chExpenses:Pioneering} for this
+turn.
+
+
+
+\event{pIII:War England Scotland}{III-5}{War between England and
+  Scotland}{1}{Risto}
+
+\history{1542-1548}
+
+\condition{}
+\aparag Occurs only if \paysecosse is at present inactive. Otherwise re-roll.
+\aparag Cannot take place if \ref{pIV:Union Scotland} has already occurred.
+In that case mark-off and re-roll. May cancel \shortref{pIV:Union Scotland} if
+the latter occurs while the present event is still active.
+\aparag \ENG can refuse this event (mark as played) by losing {\bf 3} \STAB
+and 20 \VP.  It also loses the control of \paysecosse and can then make no
+diplomacy on it until the end of period.
+
+\phevnt
+\aparag \paysecosse declares war against \ENG, which loses the control of
+Scotland.
+\aparag \ENG can immediately call allies as per normal rules.
+\aparag If this leads to declarations of war against \paysecosse, the
+controller of \paysecosse may come to its help as per normal rules, and so on.
+\aparag If \paysecosse is neutral, its control is decided randomly between
+\SPA and \FRA unless one of them is already at war with \ENG (and the other
+not), in which case that country takes precedence and receives \paysecosse in
+\EG. Control cannot be refused.
+
+\phadm
+\aparag For the duration of the event \paysecosse receives reinforcements in
+offensive attitude.
+
+
+
+\event{pIII:Portuguese Disaster}{III-6}{Portuguese Disaster in
+  Africa}{1}{Risto}
+
+\history{1578}
+
+\condition{}
+\aparag Can occur only if \paysportugal exists as a minor country, otherwise
+re-roll.
+\aparag If \ref{pIII:Portuguese Annexation} is in effect, apply \RD with a
+\REVOLT in \SPA.
+\aparag Else if \dynasticaction{C}{3} was played, activate
+\shortref{pIII:Portuguese Annexation} just after the effects of this event.
+
+\phevnt
+\aparag If \paysPortugal is currently activated in a war, it immediately
+offers a mandatory white peace to all its enemies.
+\aparag \paysPortugal loses all its non-national provinces (excepted
+\provinceTanger and \provinceAcores); they are given back to their owner of
+1492.
+\aparag Whatever the current status of \paysPortugal, the reference level of
+each Portuguese \TradeFLEET in the \ROTW map is reduced by one (even if being
+thus eliminated).
+\aparag All Portuguese fortifications in the \ROTW map outside
+\continent{Asia} and \continent{Brazil} lose {\bf 1} level.  Remaining
+fortifications are added to the basic forces maintained by \paysPortugal (but
+will not be rebuilt once destroyed).
+\aparag From now on, \paysPortugal has only one action of \TP/\COL each turn,
+and no fleet action.
+
+
+
+\event{pIII:Portuguese Annexation}{III-7}{Annexation of Portugal by
+  Spain}{1}{RistoMod}
+
+\history{1580-1640}
+
+\condition{Can occur only if \paysPortugal is a minor power.}
+
+\phevnt
+\aparag \SPA receives a free \CB against \paysPortugal until the end of
+current period.  If \SPA is \CATHCR, then during the first turn of a war
+caused by this event, \paysPortugal receives no reinforcements.
+\aparag In addition to the usual involvement of a \MAJ to help an attacked
+minor country, \ENG and \FRA can make a limited intervention to help
+\paysPortugal.
+\aparag[Annexation]
+\bparag If \xnameref{pIII:Portuguese Disaster} has not happened yet and \SPA
+achieves an unconditional victory over \paysPortugal, this minor is considered
+to have been annexed to \SPA in a special way and \xnameref{pIII:POR
+  Ann.:Portugal Annexed} is applied. The political marker of \pays {Portugal}
+is placed in \ANNEXION of \SPA.
+\bparag If \nameref{pIII:Portuguese Disaster} has happened, \paysPortugal is
+at war by its own (neither full nor limited intervention), \SPA can annex
+\paysPortugal by winning a peace of level 2 against it.
+\bparag If \nameref{pIII:Portuguese Disaster} has happened and \paysPortugal
+has help from a \MAJ, \SPA will annex \paysPortugal by winning a peace of
+level 4 against it.
+
+
+\digression[pIII:POR Ann.:Portugal Annexed]{Portugal in Annexation}
+
+\phdipl
+\aparag \paysPortugal is permanently annexed to \SPA, and its political marker
+is placed accordingly. The counters of \paysPortugal are not removed from
+play.
+% \aparag \provinceTanger is given by \paysPortugal to \SPA.
+\aparag In game terms \paysPortugal is treated as a part of \SPA mainly for
+\VP purposes.  In most other respects it becomes a special, permanent \VASSAL
+of \SPA. This applies to separate wars and peace treaties, placement of units
+and markers, etc. and covers all aspects not specially modified in this event
+description.  If \paysPortugal was currently engaged in a separate war against
+someone else than \SPA, its enemies must immediately sign a white peace with
+it, or declare war to \SPA with a free \CB (unless they are already at war
+with \SPA).
+\aparag \SPA annexes all non national provinces of \paysPortugal except
+\provinceAcores.
+\aparag \SPA cannot voluntarily cede any part of \paysPortugal, including
+\COL/\TP to other players. Neither can it sell Portuguese sea charts or grant
+authorisation of trade in a sea bordering a Portuguese \COL/\TP.
+\aparag A War declared against annexed \paysPortugal gives a free \CB (\OCB if
+this is an Overseas war) to \SPA to intervene in the war.  A war against \SPA
+does not imply necessarily \paysPortugal in the war.
+
+\phadm
+\aparag \SPA receives a part of the incomes of \paysPortugal: it receives all
+income from \TP/\COL, Exotic Resources, \TradeFLEET (but no income from
+European provinces, foreign or domestic commerce, manufactures -- these are
+removed). This income can not be higher than 400\ducats, plus the East Indies
+convoy.
+\bparag \SPA gains the \PV for the monopolies detained by \paysPortugal. It
+does not combine resources or fleets of \paysPortugal with it to determine
+monopolies or the ownership of a Commercial Centre.
+\aparag \SPA must pay for the maintenance and recruitment of Portuguese units
+and fortresses as if they were Spanish units (except that their content
+remains that of Portuguese units and they can only be placed within Portuguese
+territory, including \COL/\TP).  \SPA has 3\GD of basic forces and an
+additional limit of recruitment of 1\LD and 1\ND to maintain or raise
+Portuguese units. One unnamed Portuguese \LeaderE leads the naval forces.
+\aparag \SPA can make administrative actions for Portuguese \TradeFLEET and
+\COL/\TP, but using Portuguese \FTI/\DTI (without the former Portuguese bonus
+for \ROTW actions).  \SPA has 2 (in periods III and IV) or 1 (period V)
+actions for Portuguese \COL and can use also its own actions for Portuguese
+establishments. One of these actions can be used on a Portuguese \TP each
+turn. \SPA has one action of \TradeFLEET in periods III and IV for Portuguese
+fleets.
+
+\phmil
+\aparag \SPA must pay for all campaign activations of Portuguese units jointly
+with Spanish units.
+
+\phpaix
+\aparag \SPA can renounce annexation at the end of any peace phase (except on
+the same turn when \ref{pIV:Portuguese Revolt} occurs) losing control of
+\paysPortugal and {\bf 3} \STAB.
+\bparag If \SPA renounces the inheritance before \shortref{pIV:Portuguese
+  Revolt} occurs, \paysPortugal is placed in forced \EG of \SPA until the
+death of current Spanish monarch. After that, it is treated as normal minor
+and subject to diplomacy.
+\bparag If \SPA renounces the inheritance after \shortref{pIV:Portuguese
+  Revolt} has occurred, \paysPortugal becomes neutral and it makes a white
+peace with \SPA.  The rebels are considered to have won.
+
+
+
+\event{pIII:Northern Secularisation}{III-8}{Secularisation of
+  \pays{Teutoniques1}}{1}{PB}
+
+\history{1561}
+
+\condition{}
+\aparag If \ref{pI:Fall Teutonic} was not played, it is played this turn as a
+supplementary event.
+
+\phevnt
+\aparag Minor country \pays{Teutoniques1} is destroyed.  Its provinces are
+shared as follows:
+\bparag \provinceEstland is given to \SUEsue.
+\bparag \provinceMemel joins the \region{Duche de Prusse} and is given to
+whoever controls this Duchy (\POLpol or \paysBrandebourg).
+\bparag \provinceLivonija and \provinceKurland are associated as the
+\region{Duche de Kurland}. This Duchy is claimed by \SUEsue and \POLpol.
+\bparag If one of these provinces was conquered by another country than the
+one that should take it, this wronged country has a \CB against the country
+possessing the province. A minor country will always use this \CB.
+\bparag All other provinces are given to their legitimate owner in 1492 (as
+indicated on the map).
+\aparag[War for Kurland]
+\bparag \POLpol has a \CB against \SUEsue; refusal to use it costs {\bf 1
+  \STAB} and gives all the \region{Duche de Kurland} to \SUEsue. \POLmin
+always uses the \CB.
+\bparag \SUEsue has a \CB against \POL; refusal to use it costs {\bf 1 \STAB}
+and gives all the \region{Duche de Kurland} to \POL. \SUEMin always uses the
+\CB.
+\bparag If both countries use their \CB against the other one, \POLpol owns
+both provinces, but \SUE has initially the military control of
+\provinceLivonija.  They can make no Armistice on the first turn of this war.
+\bparag If neither \SUE nor \POL use this \CB, \payscourlande is created as a
+normal minor country with the two provinces.
+
+\phdipl
+\aparag Any country which was at war against \pays{Teutoniques1} has an
+immediate free \CB to be used jointly against \POLpol and \SUEsue (and
+\payscourlande if it exists).  This might provoke a three-sided war (excepted
+if one of \POL or \SUE at least has abandoned the \region{Duche de Kurland})
+in which the invading country keeps its eventual initial military control of
+any province in \pays{Teutoniques1}.
+\aparag If such a country does not declare war, its forces are withdrawn from
+\pays{Teutoniques1} and it gives up any conquered province that was owned by
+\pays{Teutoniques1} in 1492 to their new owner (as defined above).
+\aparag Any other country adjacent to \pays{Teutoniques1} when they disappear
+has a \CB to be used jointly against \POLpol and \SUEsue (and \payscourlande
+if it exists).
+
+
+
+\event{pIII:War Persia Turkey}{III-9}{War between Persia and Turkey}{1}{Risto}
+
+\history{1606-1639}
+
+\condition{}
+\aparag If main provinces of \paysperse are conquered, activate a
+\xnameref{chSpecific:Persia:uprising}.
+\aparag First time : if \paysperse is inactive, use \xnameref{pIII:WPT:Persian
+  Attack}.
+\aparag Second time, or first time and \paysperse is currently at war against
+\TUR, use \xnameref{pIII:WPT:Annexation Iraq}.
+\aparag Otherwise, re-roll and do not mark off.
+
+
+\subevent[pIII:WPT:Persian Attack]{Persian Attack of Turkey}
+
+\activation{}
+\aparag If \TUR does not own provinces that were Persian at the beginning of
+the game, it may refuse the event in two ways:
+\bparag By losing {\bf 3} \STAB and 150\ducats.
+\bparag Or, by surrendering immediately to \paysPerse conceding a peace of
+level 2 and ceding a province bordering Persian territory (in priority a
+province adjacent to \paysPerse).
+\aparag In this case the box is marked off, but the event can happen later if
+rolled for anew.
+
+\phevnt
+\aparag \paysPerse declares war against \TUR.
+\aparag \TUR can immediately call for allies as per normal rules.
+\aparag If this leads to declarations of war against \paysperse, the
+controller of \paysperse may come to its help as per normal rules, and so on.
+\aparag If \paysperse is neutral, it is played by \SPA (which cannot then come
+to its aid).
+
+\phadm
+\aparag \paysperse receives reinforcements in offensive status for the
+duration of the event.
+
+
+\subevent[pIII:WPT:Annexation Iraq]{Annexation of Iraq}
+
+\phevnt
+\aparag \paysIrak is annexed to \paysperse and removed from game.
+\aparag If \TUR owns any province initially in \paysIrak, place there a
+\REVOLT \faceplus and one or 2 \REVOLT \facemoins controlled by \paysperse;
+one \REVOLT in each province, the \REVOLT \faceplus is placed at random.
+
+\phadm
+\aparag If either of the conditions above are met with, Iraqi basic force is
+added to the forces of \paysperse until the end of the war.
+
+
+
+\event{pIII:Revolt Grenade}{III-10}{Revolt in Sierra Nevada}{1}{Risto}
+
+\history{1568-1570}
+
+\phevnt
+\aparag Place a \REVOLT \facemoins in non-Muslim \provinceGranada,
+\provinceCordoba and \province{La Mancha}. The \REVOLT are controlled by \TUR.
+
+\phdipl
+\aparag If \TUR declares war to the controller of \provinceGranada, it
+receives 5 \VP at the moment its (or its minor allies) troops arrive to any of
+the revolted provinces. This does not have to be done during the current turn,
+but the bonus \VP are gained only once.
+
+\phmil
+\aparag During the rebellion there exists an additional malus of \bonus{-3} to
+all attempts to suppress \REVOLT in \provinceGranada if \SPA is \CATHCR. An
+additional malus of \bonus{-1} is received for each Turkish or minor allied
+\LD inside any province in \REVOLT (even if besieged).
+
+\phinter
+\aparag \REVOLT caused by this event can never extend beyond \provinceGranada,
+\provinceCordoba, \provinceMurcia and \province{La Mancha} (with a maximum of
+two \REVOLT counters per province).
+\aparag If the \REVOLT survives the first turn, place a minor general on it.
+\aparag For each interphase this event continues \TUR receives 2 \VP.  This
+bonus is increased to 10 \VP per interphase whenever \TUR or its minor ally
+units are within \provinceGranada (a war must have been declared to the
+controller to do this).
+\aparag If a \REVOLT \faceplus exists for a whole turn in \provinceGranada
+without being suppressed at any point during this turn, a new minor
+\paysGrenade is created and becomes a permanent \VASSAL of \TUR (but the war
+is not necessarily ended). It owns any of the 4 mentioned provinces having a
+\REVOLT in them, but has no capital (so can be destroyed by any country).
+\aparag If \provinceGranada is later annexed by any other player than \TUR,
+place a \REVOLT \facemoins in the province during the peace phase and consider
+this event as having been activated again, but without the malus of \bonus{-3}
+for suppress of \REVOLT . If \paysGrenade still exists (owning other provinces
+than \provinceGranada), consider this \REVOLT as being controlled by it.
+
+
+
+\event{pIII:FWR}{III-11}{Wars of Religion in France}{5}{PBNew}
+
+\history{1560-1598}
+
+\condition{See at the end of this section the \ref{pIII:FWR Detailed} which is
+  the detailed description of those wars.}
+
+
+
+\event{pIII:Revolt Corsica}{III-12}{Revolt in Corsica}{1}{Risto}
+
+\history{1564-1567}
+
+\phevnt
+\aparag A \REVOLT \faceplus is placed in \provinceCorsica. The preference list
+for the control of this \REVOLT is the one for the (would-be) \paysCorse.
+However, the \REVOLT cannot be controlled by the controller of \paysGenes, who
+is omitted from this list.
+\aparag \paysGenes immediately offers white peace to any enemy currently
+engaged in war with it.  From now on, it cannot declare war on anyone as long
+as the event lasts.
+\aparag If no-one controls \paysGenes at present, the controller is chosen as
+per normal rules when minor neutral is activated.
+\aparag This event is treated as a civil war in \paysGenes (see
+\ref{chDiplo:Religious Civil War}). Only the controllers of \paysGenes and of
+the \REVOLT are allowed to do a \terme{Foreign Intervention} with their own
+forces.
+
+\phadm
+\aparag This event must be played even if no player country is involved in
+it. \paysGenes receives reinforcements and can use its troops as if activated
+in a war.
+
+\phinter
+\aparag If the \REVOLT survives the first turn, place \leaderSampiero who is
+now available for 5 turns.
+\aparag If the \REVOLT survives four turns, a new minor country \paysCorse is
+created and the rebellion is over. The controller of the \REVOLT gains 20 \PV.
+
+
+
+\event{pIII:Union Poland Sweden}{III-13}{Union between \paysmajeurPologne and
+  \paysmajeurSuede}{1}{PB}
+
+\history{1595-1599}
+
+\condition{}
+\aparag If there is no Major power \POL, re-roll and do not mark off.
+\aparag If there is no Major power \SUE and \POL is not Supporter of
+Orthodoxy, re-roll and do not mark off.
+\aparag If the Polish Monarch is \monarque{Zygmunt I} during its first 5 turns
+of reign, re-roll and do not mark off.
+\aparag Apply one of the following events, according to the religious
+attitudes:
+\bparag If \SUE is Catholic, apply \ref{pIII:Religious War Sweden};
+\bparag If \POL is Supporter of Orthodoxy, apply \ref{pIII:Union Russia
+  Poland};
+\bparag If \POL and \SUE are Protestant, apply \ref{pIII:Religious War
+  Poland}.
+\bparag If \SUE is Protestant and \POL is Catholic, use this present event.
+\bparag If none of the preceding situations happened, mark off the box and
+apply \RD.
+
+\phevnt
+\aparag The Polish Monarch dies and the Heir of the Swedish Crown is elected
+in Poland. \POL has now the Monarch \monarque{Zygmunt III}, with values 5/5/6
+and is also general \leaderwithdata{Zygmunt III}. Its reign will last 9 turns.
+\aparag The Vasa Dynasty remains on the Polish throne until a Dynastic crisis
+occurs in Poland or an event (or some elected specific general) changes the
+Dynasty; \POL has to lose 2 \STAB to keep its Dynastic Claims or this
+terminates the event.  From now on, \POL has Dynastic Claims over \SUE.
+
+\effetlong
+\aparag \POL can renounce its Claims at any diplomatic phase (that is a
+declaration) and that terminates the event. \POL loses 1 \STAB.
+\aparag Each time there is a new monarch in \SUE, \POL has a \CB against \SUE
+at this turn to claim for its Inheritance. In case of Dynastic Crisis in \SUE,
+\POL is a valid pretender as long as it has Dynastic Claims over Sweden.
+\bparag The first time after the beginning of the event that this situation
+happens, \POL must either use the \CB or lose 2 \STAB or renounce its Claims
+(costs 1 \STAB).
+\aparag The first new Swedish Monarch after this event will be
+\monarque{Charles IX}, with values 8/6/6 (but not a general).  Exception: if
+\monarque{Gustave Adolphe} was to be the new monarch due to another event, use
+\monarque{Gustave Adolphe}.
+
+\phdipl
+\aparag If a war is declared because of its \CB, \SUE is now in Civil War (see
+\ref{chDiplo:Religious Civil War}). Apart from \POL, only foreign intervention
+in the war is allowed.
+\aparag The first time a war is declared due to Dynastic Claims, \POL gains
+the military control of one province owned by \SUE, chosen by \POL (the
+capital is forbidden). This effect is not applied for subsequent wars.
+
+\phadm
+\aparag \POL can recruit troops in Swedish provinces that are under its
+military control, at double price (because those are not normal recruitment
+provinces).
+\aparag \POL can use outside its own territory only land forces paid with
+ducats and not paid with free maintenance (mercenaries only). There is no such
+restriction for naval forces, nor if the kings of \SUE are \PROTRIG in which
+case the war is not limited for \POL. Note that it is not mandatory to use the
+free maintenance.
+
+\phpaix
+\aparag If \SUE wins the war, a valid peace term is to ask for renouncement to
+Dynastic Claims (equivalent of one province).
+\aparag If \POL wins the war with a peace of level 3 or more, or forces an
+unconditional peace, the Monarch of \POL becomes ruler of \SUE as one of the
+Victory conditions (instead of one province).
+\bparag The Monarch of \SUE is executed; now \SUE uses the values of the
+Monarch of \POL. \SUE is considered Catholic during the Union (in every
+aspects).
+\bparag \SUE has a mandatory offensive alliance with \POL in which she is
+complied to answer any call.
+\bparag \SUE can not declare war without a \CB or the agreement of \POL.  It
+can not declare war against \POL.
+\bparag The alliance is in question when the Monarch of \POL dies or if \POL
+refuses to answer a call for defensive war (not offensive war), or if \POL
+declares a war against \SUE.  A new monarch is rolled for \SUE. \POL having
+still Dynastic Claims over Sweden, it can renew the war to impose its ruler
+but it renews the Union if \POL wins a peace of any level against \SUE. As
+long as the war continues, the union exists for Victory Conditions, if not in
+its consequences.
+\bparag Note that if \ref{pIII:Union Poland Sweden} is rolled for a new time
+when the Union exists, \SUE is Catholic and \ref{pIII:Religious War Sweden} is
+thus applied.
+
+
+
+\event{pIII:Union Lublin}{III-14}{Union of Lublin}{1}{PB}
+
+\history{1569}
+
+\condition{}
+\aparag This event is described in \ref{pII:Union Lublin}.
+\aparag If it has already occurred, mark off and apply either
+\ref{pIII:Oprichnina} or \ref{pIII:Times of Troubles}.
+
+
+
+\event{pIII:Oprichnina}{III-15 (1)}{Oprichnina}{1}{PB}
+
+\history{1565-1572}
+\dure{as long as there is a \REVOLT in Russia.}
+
+\condition{}
+\aparag If \monarque{Ivan IV} has not been yet Monarch of \RUS, do not mark
+off and re-roll.
+\aparag If \monarque{Ivan IV} is already dead, mark off and apply \RD the
+first time (with a \REVOLT in \RUS), the second event the next time.
+
+\phevnt
+\aparag \REVOLT are placed in \provinceMoscou and \provinceNovgorod; their
+force is randomly decided.
+\aparag Another \REVOLT is rolled for in Russia.
+\aparag The Russian leader \leaderKurbskii is withdrawn from game as long as
+\monarque{Ivan IV} rules in \RUS and can not be used.
+
+\phadm
+\aparag \RUS is not restricted by limits of land building this turn only, and
+has no penalty for doing so. %
+% Jym, 05/2011 No more restricted area for RUS.  As \provinceMoscou is
+% occupied by a \REVOLT through, it has to pay double cost to build troops
+% somewhere else.
+However, the cost for building new troops is doubled for the duration of this
+event.
+
+\phmil
+\aparag \monarque{Ivan IV} must take the field and lead a land stack as long
+as this event last, respecting the usual hierarchy rules.
+\aparag The land force of \monarque{Ivan IV} pillages every province it is in
+at the end of each round.
+% Bertrand is tied, brought before the cine-club and must watch in extenso
+% Ivan the Terrible of Eisenstein, and this once per turn as long as the event
+% is active. Sylvain has the moral duty of commenting the movie.
+
+\phpaix
+\aparag If at the peace phase there is no \REVOLT left in \RUS, one Russian
+\ARMY (one counter and the equivalent of 4 \DT) is destroyed by \RUS and \RUS
+gains {\bf 1} in \STAB.
+
+
+
+\event{pIII:Times of Troubles}{III-15 (2)}{The Time of Troubles in
+  Russia}{1}{PB}
+
+\history{1605-1613}
+
+\condition{}
+\aparag If \ref{pIII:Oprichnina} is still in effect, mark off and apply \RD.
+\aparag If not, apply \ref{pIV:Times of Troubles}.
+
+
+
+\event{pIII:War Siberia}{III-16}{War in Siberia}{1}{Risto}
+
+\history{non-historical}
+
+\condition{Can occur only after the elimination of \payssiberie.  Otherwise
+  re-roll.}
+
+\phevnt
+\aparag Place a Turkish controlled \REVOLT \facemoins in each Russian \COL/\TP
+in \continent{Siberia}.
+
+\phadm
+\aparag All remaining native forces within the revolted provinces are
+activated.
+\aparag Furthermore, during the first turn only, an unmodified die-roll is
+made for rebel reinforcements in offensive attitude. Troops thus received fill
+the former \payssiberie counters and can be placed in any of the revolted
+provinces.
+
+\phmil
+\aparag Rebels using \payssiberie counters cannot draw supplies from native
+territories the same way as natives do, but must do so either from captured
+forts/fortresses or from the \REVOLT counters, which they can use as supply
+bases.
+\aparag Rebels using \payssiberie counters can move also outside their
+original provinces.
+\aparag Rebel natives and \payssiberie units automatically try to destroy
+Russian \COL/\TP in provinces they occupy at the end of a full round, if these
+are not protected by Russian units or fortresses. Roll one die: on 7 or more,
+the \COL/\TP is destroyed.
+
+\phinter
+\aparag \REVOLT caused by this event never extend during the redeployment
+phase.
+\aparag During the native attacks phase count each \REVOLT \facemoins counter
+as 2 native \DT when counting the modifications to the attack die-roll, and
+rebel forces using \payssiberie counters are also used.
+
+
+
+\event{pIII:Creation Arkhangelsk}{III-17}{Arkhangelsk and the Muscovy Trade
+  Company}{1}{Risto}
+
+\history{1584}
+
+\condition{Requires permission from \RUS and \ENG to take effect. Otherwise
+  re-roll.}
+
+\phevnt
+
+\aparag The port of Arkhangelsk (to the north of the European map) is created.
+It cannot be accessed by any units, but still meets the requirement of having
+a port along the Atlantic Ocean for purposes of placing commercial fleets.
+
+\aparag \CTZ Russia is created, but its monopoly bonus remains 5 until the
+\xnameref{chSpecific:Russia:St-Petersburg}.
+
+\aparag English commercial fleet of 4 levels is placed in \CTZ Russia.
+
+\aparag Muscovy Trade Company provides \ENG automatically with 10 \VP and
+50\ducats.
+
+\phadm
+
+\aparag Until the \nameref{chSpecific:Russia:St-Petersburg}, \ENG can use both
+its \DTI and \FTI as modifiers to all commercial actions in \CTZ Russia.
+\aparag \RUS may ignore restriction of~\ref{chExpenses:Pioneering} for this
+turn.
+
+
+
+\event{pIII:Persian Safavids}{III-18}{Persian Safavids}{1}{PB}
+
+\history{1590-1722}
+
+\phevnt
+
+\condition{}
+\aparag If main provinces of \paysperse are conquered, activate a
+\xnameref{chSpecific:Persia:uprising}.
+\aparag Else, apply only the following effects.
+
+\phevnt
+\aparag \paysperse obtains the general \leader{Abbas Shah} that will stay for
+6 turns.
+
+\effetlong
+\aparag \paysperse has now the same technological level as \TUR.  Its armies
+are of class \CAI and it has 3 \ARMY available.
+\aparag \paysperse can now send armies through regions in \ROTW belonging to
+no one during wars, without activation of Natives. They are constrained by the
+supply rules. They can assail and burn \TP or \COL (as if \TP) military
+occupied at the end of a turn.
+
+
+
+\event{pIII:Revolt Ceylon}{III-19}{Revolts in \granderegionCeylan}{1}{Risto}
+
+\phevnt
+\aparag \ROTW area \granderegionCeylan declares war against the owner of a
+\TP/\COL in it.
+\aparag If this is a minor country, the \TP/\COL will be attacked by the
+Natives at the end of the military turn, without any defence from Europe.
+\aparag If this is a player, the war proceeds as a normal war against natives.
+
+
+
+\event{pIII:Mughal Akbar}{III-20}{The Great Moghol Akbar}{2}{PB}
+
+\history{1556-1605}
+
+\phevnt
+\aparag If the non-European minor country \paysMogol does not exist, it is
+created now.  It can use 2 \ARMY\faceplus and leader \leaderwithdata{Akbar}.
+\aparag If \paysMogol already existed, its ruler only is changed from the
+\leader{Grand Moghol} to \leaderAkbar (until replaced by a further event).
+\aparag The \paysMogol will try to invade \bonus{4} regions during the turn,
+according to \ref{pII:Mughal Expansions}.
+\aparag Even if the country has no region after the invasions, it still exists
+(and can gain provinces with new events).
+\aparag \granderegionBengale has from now on 2 \RES{Spices}, 2 \RES{Products
+  of Orient} and 2 \RES{Cotton} available instead on 1 (representing the
+change of commercial fluxes because of the Mughals).
+
+
+
+\event{pIII:Fall Vijayanagar}{III-21}{Wars in India}{2}{PB}
+
+\history{1565 / 1585-1594}
+
+\phevnt
+\aparag If it was still existing, minor country \paysVijayanagar is destroyed
+(by internal fights).  Every \TP (not \COL) that are in the minor country
+\paysVijayanagar at the time of its disappearance will face an attack by
+Natives that are activated against every country this turn.
+\aparag If \paysVijayanagar had already been destroyed, every \TP/\COL in
+\continent{India} loses 1 level due to internal strife in India.
+\aparag \granderegionKarnatika has from now on 2 \RES{Spices} and 2
+\RES{Products of Orient} available instead on 1 (representing the change of
+commercial fluxes from the north to the south because of the Mughals and the
+destruction of the Indian Empire).
+\aparag If the \paysMogol exist, they invade one province, the next in the
+list according to \ref{pII:Mughal Expansions}.
+
+
+
+\event{pIII:China Colonial Attitude}{III-22 (1)}{\paysChine colonial
+  attitude}{1}{PB}
+
+\history[Closure of China was the historical choice.]{1557}
+
+\condition{}
+\aparag If \paysChine has no \TP, apply \xnameref{pIII:CCA:Closure China}.
+\aparag If \paysChine has any \TP left, roll 1d10 added to the number of \TP
+it has. If the result if 6 or higher, commercial exclusivity policy in
+\paysChine triggers the event \xnameref{pIII:CCA:Closure China}. If the result
+is 5 or less, apply \xnameref{pIII:CCA:Commercial Dynamism China}.
+
+
+\subevent[pIII:CCA:Closure China]{Closure of \paysChine}
+
+\phevnt
+\aparag Any country having a \TP in \paysChine may sign immediately a Treaty
+with \paysChine, and so gains \dipAT. If accepted, only one \TP of the country
+is kept in \paysChine; \TP in excesses are destroyed. If refused, \paysChine
+declares an Overseas War against the power.
+\aparag From now on, \dipAT allows each country to keep only one \TP in
+\paysChine (and not one per region). The remaining \TP can be upgraded, and it
+causes no reaction by \paysChine.
+\aparag The basic forces and reinforcements of \paysChine are now its mainland
+army only (no overseas garrisons of fleets).
+
+\effetlong
+\aparag From now on, no new \TP counter can be placed in any area belonging to
+\paysChine by means of administrative actions.
+\aparag No regular diplomacy is permitted on \paysChine.  The Activation level
+of \paysChine becomes 11 (except for areas conquered that are not mainland
+\paysChine, where the Activation is 6).
+
+\aparag The only way to have a new \TP is to take control of the \TP of
+another country (then the Treaty status is given to the new controller of the
+\TP and lost by the previous one) or to force a Treaty on \paysChine by means
+of a war against it.
+
+\aparag From now on, the \terme{Manila Galleon} is
+available. See~\ref{chSpecific:Manila Galleon}.
+
+
+\subevent[pIII:CCA:Commercial Dynamism China]{Commercial dynamism of
+  \paysChine}
+
+\phevnt
+\aparag \paysChine gains a \TP with level 6 in every coastal city of its
+territories.  An automatic concurrence with any existing establishment is made
+until only one \TP survives in each province. Its fleet in \stz{Formose} rises
+to level 5 (and automatic concurrence might also be necessary).
+\aparag Japanese \TP in \granderegionCorea and \granderegionFormose are
+destroyed (by Chinese invasions).
+
+\effetlong
+\aparag \paysChine has a \FTI of 2 (raised to 3 from period V on) and a \DTI
+of 3 and uses both \FTI and \DTI for concurrence in its own provinces. Form
+now on, consider \stz{Formose} as its \CTZ.
+\aparag \TP of \paysChine exploit the resources in their region and those are
+counted as normal exploitation for monopolies and evolution of prices.
+\aparag European countries having monopoly in \stz{Formose} may declare a
+commercial embargo against \paysChine.  No \TP (not \COL) may exploit anything
+in \paysChine as long as the embargo continues (both Chinese and European
+\TP); so they are not counted in for monopolies and evolution of
+prices. Moreover, no commercial fleet in \stz{Formose} gives any income. This
+embargo gives an oversea \CB to every European country having a \TP in
+\paysChine.
+\aparag Each turn, all Chinese \TP in continental \paysChine gain one level
+(with a maximum of 6), overseas \TP one level (with a maximum of 3) and
+\paysChine gains one \TradeFLEET level in \stz{Formose} (with a maximum level
+of 6). Destroyed \TP do not come back but the commercial fleet keeps coming
+back even if destroyed.
+\aparag Basic reinforcements are increased to one \ARMY\faceplus in mainland,
+and 2 \LD, 2 \ND for the garrisons.
+
+
+
+\event{pIII:Sultanate of Aceh}{III-22 (2)}{Sultanate of Aceh}{1}{PB}
+
+\history{1565}
+
+\phevnt
+\aparag Create the Sultanate of \paysaceh. Place its \TP\facemoins in
+\granderegionSumatra (in the first empty province: North, Centre then South;
+if none, place it in the Northern one and make automatic concurrence).
+\bparag It proposes a \dipAT to \TUR that has the choice to accept it or not
+immediately.
+\bparag Forces are deployed as per the Annex.
+
+\effetlong
+% (JCD) This is not a reminder
+\aparag \paysaceh has a \TP action every turn (strong investment) to increase
+its \TP up to the original level 3, if ever its level is less (or was
+destroyed).
+
+
+
+\event{pIII:Japanese Expedition}{III-23}{Japanese Expedition in
+  \granderegionCorea}{1}{PB}
+
+\history[Both invasions failed, historically.]{1592/1597}
+
+\phevnt
+\aparag Place a Japanese \TP in a province of \granderegionCorea,
+\provinceSeoul if possible, \provincePyongyang if \provinceSeoul is occupied;
+if both are occupied, this event is marked off but ignored.
+\aparag The \TP has 3 levels and exploits all resources of \granderegionCorea
+(other countries will have to take them by regular concurrence).
+\aparag A Japanese colonial force of 1 \ARMY\faceplus defends the \TP; it may
+gain \ARMY\facemoins in reinforcement each turn if needed.  This army does not
+activate the Natives and an attack in this region may be aimed at the Japanese
+only and so does not activate the Natives of \granderegionCorea. As soon as
+the \TP is no more Japanese or destroyed, normal activation rules for Natives
+apply and the colonial force is removed.
+
+
+
+\subsection{Some Alternative History Events}
+
+
+
+\event{pIII:Union Russia Poland}{III-A}{Union between \paysmajeurPologne and
+  \paysmajeurRussie}{1}{PB}
+
+\history{Alternative history}
+
+\phevnt
+\aparag The Polish Monarch dies and the Heir of Russia is elected in
+Poland. \POL has now the Monarch \monarque{Dimitri}.  Its values and its reign
+length are random, as if an heir from \RUS.
+\aparag The Russian dynasty remains on the Polish throne until a Dynastic
+crisis occurs in Poland or an event (or some elected specific general) changes
+the Dynasty; this terminates the event. From now on, \RUS has Dynastic Claims
+on \POL.
+
+\activation{}
+\aparag When the current Tsar of \RUS dies, \monarque{Dimitri} becomes the
+Monarch of \RUS for its remaining reign length.
+\aparag He can choose to abandon the Polish crown; that costs {\bf 1} \STAB to
+\RUS, a new dynasty is elected in \POL (as if after a Dynastic Crisis, or a
+general-monarch may be elected if one is available), and the event is ended.
+\aparag It can choose to keep both crowns and \xnameref{pIII:URP:Effect of the
+  Union} is now applied.
+
+\effetlong
+\aparag At each time there is a new Tsar in \RUS, beginning with
+\monarque{Dimitri}, \POL can accept the Union or try to break it.
+\bparag If the Union is accepted, the new Tsar becomes (or remains) the ruler
+in \POL and \RUS gains 20 \PV each time.
+\bparag If it is refused, a new Monarch is rolled for \POL, as if after a
+Dynastic Crisis, or a general-monarch may be elected if one is available.  A
+War for Dynastic Union might happen, see underneath.
+\bparag Any other event calling for a change of Polish Monarch is impossible
+when the Union holds; do not mark off this event and roll anew.
+
+
+\subevent[pIII:URP:Effect of the Union]{Effect of the Union}
+
+\effetlong
+\aparag \RUS and \POL shares the same Monarch; \RUS has the control on the
+Monarch (what he is doing, its values, and so on).
+\aparag \POL has a mandatory offensive alliance with \RUS in which it is
+complied to answer any call.
+\aparag \POL may not declare war without a \CB or the agreement of \RUS. If it
+has a \CB against \RUS, it can declare war to it and lose \STAB due to
+breaking of alliance (but this one is renewed afterwards).
+\aparag \RUS has no specific obligation regarding the alliance, and does not
+lose \STAB if it doesn't answer the call. It can declare war to \POL but that
+breaks the union and this war is now as described in \xnameref{pIII:URP:War
+  Dynastic Union}.  Determine a new Polish Monarch.
+\aparag \POL does not change of religious attitude because of the Union.
+
+
+\subevent[pIII:URP:War Dynastic Union]{War for Dynastic Union}
+
+\phdipl
+\aparag If \POL has refused a continuation of the Union, \RUS has a free \CB
+against \POL to be used immediately, and will lose {\bf 1} \STAB if it refuses
+the \CB. In that case, \RUS renounces also to its Dynastic Claims on \POL.
+\aparag If a war is declared, \POL is in Civil War against \RUS (see
+\ref{chDiplo:Religious Civil War}). \RUS is permitted full intervention in
+this war.
+\aparag Roll for 2 \REVOLT in \POL when such a war erupts.
+
+\phpaix
+\aparag If \POL wins the war or signs a white peace, the Union and the
+Dynastic Claims of \RUS are forfeited.
+\aparag If \RUS wins the war with a peace of level 2 or more, the Monarch of
+\RUS becomes ruler of \POL also as an victory condition (instead of 1
+province).
+\bparag The previous Monarch of \POL is executed; now \POL uses the values of
+the Monarch of \RUS and the Union (see above) is renewed.
+
+
+
+\event{pIII:Religious War Sweden}{III-B}{Religious War in Sweden}{1}{PB}
+
+\history{Alternative history}
+
+\condition{}
+\aparag \SUE proposes an immediate white peace to every countries is at war
+against.  Minor countries sign it, and Major Countries have the choice to sign
+such a white peace or to sign an Armistice. If an Armistice is decided,
+military occupation remains in provinces where the city is controlled (other
+are evacuated), no combat is possible between the enemy sides, and Swedish
+provinces that are occupied by enemies are out for the Religious War (see
+\ref{chDiplo:Religious Civil War}). The Armistice will last until the end of
+the Religious War and causes no loss of \STAB at the end of each turn.
+
+\tour{Turn 1}
+
+\phevnt
+\aparag Roll for 4 \REVOLT in \SUE. Those \REVOLT has to be all in Swedish
+provinces and in different provinces. The force of the \REVOLT is random but
+they all control the city.  This forms the side of Rebels. They are opposed to
+Loyalists.
+% (JCD) We do not want loyalists keeping to Finland only and resisting forever
+% only from there. Possibly do something about that.
+\aparag The player of \SUE chooses its side:
+\bparag If his initial choice was Catholic, he must play the Loyalists;
+\bparag If \SUE is Catholic because of Union with \POL or because of Forced
+Conversion, the player can choose Loyalists or Rebels.
+\bparag If the player chooses to play Rebels, a new Monarch is rolled for on
+the last column for values, with a random reign length (ignore Dynastic
+Crisis). The characteristics of the previous Monarch has to be written down
+(in case of victory of Loyalists) and this Monarch can be used as a general by
+Loyalists.
+\aparag A test is made for each military unit (per counter deployed), each
+leader and each \COL or \TP with 1d10:
+\begin{modlist}
+\item[1--5] controlled by Loyalists;
+\item[6--10] controlled by Rebels.
+\end{modlist}
+\aparag The side not played by \SUE is controlled by:
+\bparag \POL if this is the Loyalists and \POL is Catholic;
+\bparag \HAB if this is the Loyalists and \POL is not Catholic (Protestant or
+Orthodox);
+\bparag \ENG if this is the Rebels and \ENG is Protestant;
+\bparag \MAJHOL if this is the Rebels and \ENG is Catholic.
+\aparag During the Religious War, \SUE may not declare any war, nor make
+diplomacy on minors (except in reaction). Events calling for an intervention
+of \SUE are played as if \SUE makes an immediate Armistice or White Peace.
+\aparag Foreign countries can be involved in this war only by foreign
+intervention, excepted for what is listed below.
+
+\phdipl
+\aparag If \POLpol is Catholic, it has a \CB against the Rebels to join war
+alongside Loyalists. \POLmin always uses this \CB.
+\aparag If \DANdan is Protestant, it has a \CB against the Loyalists to join
+war alongside Rebels. \DANMin uses this \CB only if \POL uses one.
+
+\tour{as long as the war continues}
+
+\phadm
+\aparag The side played by \SUE uses the normal rules for Major Powers. It
+controls the province where its owns the city and, if playing the Rebels,
+disregards any \REVOLT (they don't affect its income because they are allied
+to it).
+% (JCD) Adapted to new accounting
+\bparag Its initial treasury is at most two thirds of the treasury at the end
+of the event phase. The loss is of at least 50\ducats.
+\begin{oldcompta}
+  \bparag The initial treasury is 2/3 of the treasury at the end of the event
+  phase.
+\end{oldcompta}
+\aparag The other side has a basic maintenance equal to that of \SUE in the
+current period and receives reinforcements as a minor country.  It uses the
+fully controlled provinces (minus \REVOLT for the side of Loyalists) as their
+basic income (for the modifier).
+\aparag Each side has only a minimum of one general (and has any general
+coming from the initial test).
+
+\phmil
+\aparag If \POL is at war, it can not have more than one stack in National
+provinces of \paysmajeurSuede and provinces of \regionNorvege.
+
+\phinter
+\aparag The \REVOLT extend as usual.
+
+\phpaix
+\aparag Only unconditional surrender is permitted to Loyalists and Rebels. If
+there are no \REVOLT left and no cities owned by Rebels, the Rebels surrender
+(whether played by \SUE or as a minor).  If there are no national provinces of
+Sweden not in \REVOLT or controlled by the Rebels, a minor Loyalists surrender
+automatically.
+\bparag If the Loyalists win, \SUE remains Catholic and has its Monarch ruling
+before the event.
+\bparag If the Rebels win, \SUE becomes \PROTTOL (with a new ruler if they
+were not played by \SUE).
+\aparag[Consequences for Poland]
+\bparag If \POL was at war and the Loyalists win, \POL gains 40 \PV.
+\bparag If \POL was at war and the Rebels win, the war continues as a normal
+war between \POL and \SUE (a peace can be signed now at the same turn).
+\aparag[Consequences for \paysDanemark]
+\bparag If \DANdan was at war and the Rebels win, a province of \SUE is given
+to \DANdan (choice of \SUE, if possible a province that was once owned by
+\DANdan).
+\bparag If \DANdan was at war and the Loyalists win, the war continues as a
+normal war between \DANdan and \POL/\SUE.  A peace can be proposed at the same
+turn.
+\aparag The player of \SUE on the losing side loses 20 \PV.
+
+
+
+\event{pIII:Religious War Poland}{III-C}{Religious War in Poland}{1}{PBNew}
+
+\history{Alternative history}
+
+\activation{Replaces \ref{pIII:Union Poland Sweden} if \POL is protestant.
+  The Swedish heir is elected as king of Poland, but remains protestant. He
+  must fight a religious war in its new kingdom. Will be a variation on
+  \ref{pIV:Polish Civil War}.}
+
+\clearpage
+
+\input{engEvntFWR.tex}
+
+\stopevents
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: pII pIV pIII VOC Oxenstierna FWR Barthelemy Lublin Oprichnina
+% LocalWords: Safavids Mughal RistoMod pI hollande Auld Stadhouder Compagnie
+% LocalWords: Vereenigde Oostindische PBNew TYW Risto EIC POR Teutoniques de
+% LocalWords: Kurland Duche Mancha malus interphase WPT Jym Prusse Zygmunt
+% LocalWords: Vasa Moghol Mughals Petersbourg Petersburg CCA Formose URP JCD

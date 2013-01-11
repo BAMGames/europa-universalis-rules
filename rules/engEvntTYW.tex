@@ -1,0 +1,830 @@
+%% *-* latex-mode *-*
+
+
+
+\event{pIV:TYW}{IV-A}{Thirty Years' War}{1}{PB}
+
+\history{1618-1648}
+
+\activation{This war is a consequence of some religious fighting in the
+  \HRE. If \ref{pV:WoSS} has already begun, this event is not possible
+  anymore. Ignore it.}
+\aparag It might be triggered by \xnameref{pII:Schmalkaldic League},
+\xnameref{pIII:League Nassau}, \xnameref{pIV:Bohemian Revolt},
+\xnameref{pIV:Augsburg Revocation} or \xnameref{pIV:Unity HRE}.  This event
+may happen only once; before that, at the end of the first turn of a war
+caused by one of the previous event, make the following test.
+\aparag Roll 1d10 and add the modifiers:\par
+\begin{modlist}
+\item[\bonus{+2}] in period II and III
+\item[\bonus{-2}]for each turn of the current war before this turn
+\item[\bonus{-1}] if the peace modifier of the \HAB is >0
+\item[\bonus{+2}] if \monarque{Charles V} rules \SPA
+\item[\bonus{+2}] if \SPA has chosen \CATHCO
+\item[\bonus{+2}] if \villeVienne is not owned and controlled by \HAB
+\item[\bonus{+4}] is test during \xnameref{pII:Schmalkaldic League}
+\item[\bonus{+2}] if test during \xnameref{pIII:League Nassau} and \SPA is
+  \CATHCR
+\item[\bonus{-2}] if test during \xnameref{pIV:Bohemian Revolt}
+\item[\bonus{-2}] if test during \xnameref{pIV:Unity HRE}
+\item[\bonus{-4}] if during \xnameref{pIV:Augsburg Revocation}
+\item[\bonus{\textplusminus1}] if \ministre{Richelieu} or \ministre{Mazarin}
+  are still present (choice of \FRA)
+\item[\bonus{+1}] If \nameref{pIII:FWR} have yet to happen
+\item[\bonus{+3}] If \nameref{pIII:FWR} are happening now
+\item[\bonus{-1}] If Protestant won in \nameref{pIII:FWR}
+\item[\bonus{+1}] If Counter-Reformation won in \nameref{pIII:FWR}
+\end{modlist}
+
+\aparag Result:\par
+\begin{modlist}
+\item[\geq 11] Appeasement of the religious fight
+\item[7--10] Agitations in the \HRE
+\item[\leq 6] Eruption of the Religious War
+\end{modlist}
+\aparag[Appeasement of the religious fight] The current war does not
+degenerate in a general Religious War. No further test will be made for this
+war.
+\aparag[Agitations in the \HRE]
+\bparag One \MIN enemy of \HAB will have a bonus of \bonus{+2} to its
+reinforcement roll next turn (Alliance's choice).
+\bparag \paysSaxe joins the enemy side of the \HAB in full intervention (or
+\paysBrandebourg if \paysSaxe is already at war).
+\bparag At the end of the next turn, roll this test anew to see if a Religious
+War breaks.
+\aparag[Eruption of the Religious War] The rest of the event will be applied
+as one of the 4 regular events of the next turn.  No peace is made for the war
+of this turn in the \HRE (except for specific rules of this war about
+conquered minor countries).  The Thirty Years' War is now about to begin.
+
+\phevnt
+\begin{digressions}[War setup]
+
+
+  \digression[pIV:TYW:Creation of the Germanic Alliances]{Creation of the
+    Germanic Alliances}
+  \aparag Two German sides are made up for this war: the (German) Catholic
+  \ligue and the Protestant \alliance (more properly called: \emph{Protestant
+    Union} or \emph{League of Evangelical Union}).  All minor countries of the
+  \HRE at war will be part of one or another. When a minor country joins one
+  alliance, it is placed in Neutral diplomatic position and will change of
+  status before the end of the war only if specified by this event or another
+  political event. The \HRE is now in Civil and Religious War
+  (see~\ref{chDiplo:Religious Civil War}), with all the usual restrictions.
+  \bparag The \alliance is formed by all the German minor countries that were
+  enemies of the \HAB during the previous turn.
+  \bparag \HAB and its German allies (minor countries at war with it) form the
+  \ligue. \AUSMin is part of the \ligue as any other minor. \paysBaviere
+  automatically joins this alliance.
+  \bparag The stability of both sides is placed on \bonus{+2}, modified by any
+  Major Victory of the preceding turn of their side (battles with troops of
+  German minor countries or \HAB).  This stability will evolve during the turn
+  because of the major victory/defeat of any forces in their alliance that is
+  in any province of the \HRE (even if there are only forces of non Germanic
+  major powers).
+  \aparag[Attitude of the Netherlands] If \HOL is not a Major Power, the
+  following conditions apply:
+  \bparag If \payshollande is either owned by \SPA or is \paysprovincesne or
+  \paysVhollande, apply \ref{pIII:Dutch Revolt}. This gives a new status to
+  \payshollande (it may trigger the following points if still a \MIN).
+  \bparag If \payshollande is a \VASSAL of \SPA (special or regular),
+  \payshollande breaks its special status with \SPA. \SPA has an immediate
+  free \CB against \payshollande ; if used, \payshollande revolts against the
+  Spanish Crown, (re)apply \numberref{pIII:Dutch Revolt} and \HOL is now a
+  Major Power. If it does not use it, apply \ref{pIV:TYW:VEN transfer}. For
+  the rest of the event \HOLhol is neutral, and may not be involved in any
+  manner in the incoming war. Ignore any reference to \HOLhol hereafter for
+  this event.
+  \bparag If \payshollande is a normal minor country, apply \ref{pIV:TYW:VEN
+    transfer}. \HOLhol is involved in the war.
+  \aparag[Transfer to \HOL]\label{pIV:TYW:VEN transfer} If
+  \payshollande is liberated by the preceding paragraph, \VEN may be allowed
+  to choose between incarnating \AUS or \HOL according to the rules of the
+  Grand Campaign.
+  \bparag If \VEN chooses \AUSMin (which becomes \AUS), \payshollande is now a
+  normal minor country.
+  \bparag If \VEN chooses \HOLmin (which becomes \HOL), \HOL is created with
+  no Revolt (using the current position of \HOLmin).
+  \bparag TODO: establish full starting position of non-revolted \HOL.
+  \aparag The \alliance is controlled according to the order of preference (a
+  player may not refuse control): \HOL, \ENG (Protestant), \FRA (Protestant),
+  \SUE (Protestant), \RUS.
+  \aparag The \ligue is controlled according to the order of preference (a
+  player may not refuse control): \SPA (Counter-Reformation), \AUS (if it
+  exists), \SPA (Conciliatory).
+  \aparag If the \nameref{pII:Schmalkaldic League} or the \nameref{pIII:League
+    Nassau} still do exist, the countries part of the League immediately join
+  the Protestant \alliance and the Leagues are dissolved.
+  \aparag If the period IV has not begun yet, the Major Powers: \SPA, \HOL,
+  \SUE, \FRA and \AUT have to choose immediately if they take or not the
+  Objectives relevant to this war. The Objective are conditions to be true at
+  the end of period IV (and not especially this war).
+
+
+  \digression[pIV:TYW:Extension Alliances]{Extension of the alliances}
+  \aparag Every minor country of the \HRE that is not part of the war is
+  checked for war entry at the beginning of each turn. One rolls 1d10, added
+  to the \STAB of the side it could join, the current turn of the war
+  (\bonus{+1} this first turn), and specific modifier for some countries.  On
+  a result of {\bf 6 or higher}, this country enters the war.
+  \aparag The list of the countries of the \HRE is given in
+  \ref{table:TYW:Extension table}, with the side they will join and their
+  starting force.  All those forces are conscripts, except where indicated.
+  It is possible that, given the peculiar conditions of the war triggering the
+  Religious War, a country ends up in a different side of the one which should
+  be expected.
+  \begin{table}\centering
+    \begin{tabular}{l|l|c|p{.5\textwidth}}
+      Country & Side & Mod. & Forces \\\hline
+      \paysBaviere & \ligue & Auto. & \ARMY\faceplus, \LD, \fortress and at
+      least 1 General (if none available, use \leader{Mercy} that will stay
+      until his death or when this war ends); may use 2 \ARMY counters for all
+      the duration of the war; starting forces are Veterans.\\
+      \paysCologne & \ligue & & \LD, 1 \fortress\\
+      \paysLiege & \ligue & & \fortress\\
+      \paysMayence & \ligue & & \fortress\\
+      \paysTreves & \ligue & & \fortress\\
+      \paysAlsace & \ligue & --2 & \LD, \fortress\\
+      \paysLorraine & \ligue & --4 & \LD\\
+      \paysWurtemberg & \ligue & --2 & 2 \LD\\
+      \paysThuringe  & \ligue & --2& none\\
+      \paysBade &\alliance& & 2 \LD and \LeaderG (Georg Friedrich of
+      Baden)\\
+      \paysPalatinat &\alliance&& \ARMY\facemoins and \fortress\\
+      \paysBerg &\alliance& --2& \LD\\
+      \paysBrandebourg &\alliance& --2&\ARMY\facemoins and \LeaderG\\
+      \paysBrunswick &\alliance& &\ARMY\facemoins and \LeaderG (Christian
+      of Brunswick)\\
+      \paysHanovre & \alliance & & \LD and \fortress\\
+      \paysOldenburg & \alliance & --2 & \fortress\\
+      \paysHanse&\alliance && \LD, \DN\\
+      \paysHesse& \alliance& --2& \ARMY\facemoins and \fortress\\
+      \paysSaxe&\alliance &--4& \ARMY\facemoins, \LD  and \fortress\\
+      \paysBoheme &\alliance && \ARMY\facemoins and \LD\\
+    \end{tabular}
+    \caption{Extension of the Alliances during the Thirty Years' War}%
+    \label{table:TYW:Extension table}
+  \end{table}
+
+  \aparag The forces written may be inferior to the basic forces of the
+  country (representing the confused situation).  They are only used when the
+  country join the alliance. If already at war a previous turn, a country
+  keeps all that is deployed and gains nothing new.
+  \aparag If \AUSmin joins war at this time, they receive their basic force
+  plus 1 \ARMY \faceplus (but no supplementary random reinforcement ; that
+  will be part of those of the \ligue) as Veterans.
+  \aparag No intervention (full or limited) of foreign countries are allowed
+  if it is not explicitly written in this event.
+  \aparag \paysSaxe may be used as mercenaries during this event once it
+  surrendered all its home territory to the enemy. Its army is available to
+  the side that controls its home territories; if this side loses subsequently
+  part of the provinces, it still uses the army but can no more recruit
+  Saxons; if it loses all the provinces, the Saxon forces are removed (and
+  available now to the enemy).
+\end{digressions}
+
+\tour{Turn 1 (1624--1629)}
+
+\phevnt
+\aparag From now, and until the war is ended by the \xnameref{pIV:TYW:Peace
+  Westphalie}, no Diplomacy is possible on minor countries of the \HRE, no
+attempt to have them enter in a war also, and no declaration of war against
+them is possible outside the rules of this event.
+\aparag After the creation and the extension of both German sides in the war,
+some foreign countries can be involved in it also.
+\aparag The controller of each alliance can declare war to German minor
+countries that refused to be in war this turn, precipitating them in the enemy
+alliance (regardless of their religion).
+\aparag \SPA enters the war as an ally of \ligue. This is not a formal
+declaration of war and costs no \STAB.
+\aparag \HOLhol enters war as an ally of \alliance.  This is not a formal
+declaration of war and costs no \STAB. \HOLMin receives its full basic forces,
+has a separate die-roll for reinforcements, is allied to the \alliance but not
+part of it (for the conditions specifying that the \alliance sues for peace).
+\aparag \ENG can do a limited intervention. Its side is the \alliance if \ENG
+is Protestant, the \ligue if it is \CATHCR, or the one of its choice if it has
+chosen \CATHCO.
+\aparag \SUE, if \PROTRIG, can do a limited intervention as an ally of the
+\alliance.
+\aparag The Emperor of the \HRE, if he is not \HAB, can begin a limited
+intervention in the War as an ally of the \ligue.
+\aparag Any Major Power that was doing a limited intervention during the
+previous turn (as defined in the original war) can continue this limited
+intervention to help the same side.
+% (JCD): TODO adapt to DAN
+\aparag[The Danish Crusade]\label{pIV:TYW:Danish Crusade}
+\DANMin makes a mandatory white peace with all its adversaries.  It then
+enters the war as an ally of \alliance (but not part of it). It has 2 \ARMY
+\faceplus (Veteran), 1 \FLEET \facemoins, 1 \fortress, 2 Multiple Campaigns
+and is led by its general-king \leader{Christian IV} present for 4 turns.  It
+does not receive reinforcements on this turn. \DANMin is played by \ENG.
+\aparag All those alliances and interventions during the whole war are made
+with the German alliances; the foreign countries are not allied with each
+other except if they decide to sign a specific alliance. Else, they are not
+obliged to continue the fight together (no penalty to sign peace) and only
+separate peace from the German alliance is required.
+
+\begin{digressions}[Specific rules for the war]
+
+
+  \digression[pIV:TYW:Turkish Frontier]{The Turkish frontier}
+  \aparag As long as there are 2 \ARMY\faceplus of \HAB in \villeVienne or any
+  province once owned by \paysHongrie and a \LeaderG, \TUR may not declare a
+  war to \HAB (but may continue one). For the first turn, this restriction is
+  enforced if \HAB has this force available anywhere in the \HRE instead.
+  \aparag If \villeVienne is conquered by the \alliance, or the previous
+  condition is not respected at the Diplomatic Phase, \TUR has no such
+  restriction.
+  \aparag If \TUR takes \villeVienne, the \ligue will concede a winning peace
+  to the \alliance at the end of the turn. A Crusade might then happen.
+  \aparag \TUR is entitled to make a Foreign Intervention against the \ligue
+  in this war if otherwise at peace and \paysTransylvanie is \VASSAL or
+  annexed.
+
+
+  \digression[pIV:TYW:German Reinforcements]{German reinforcements}
+
+  \phadm
+  \aparag Reinforcements for both \alliance and \ligue are determined globally
+  for all German minor countries involved in an alliance.
+  \aparag The \alliance is due to receive 4 \LD and the result of random
+  reinforcements in defensive attitude with a global modifier of \bonus{+2}.
+  \aparag The controller of the \alliance can pay 50\ducats to give a further
+  \bonus{+1} to the reinforcement roll, or 100\ducats for a \bonus{+2}. If it
+  does not pay, \SUE has the opportunity to do so and in this case will
+  control \alliance for this turn only.
+  \aparag The reinforcements of the \alliance are lowered by 1 \LD for each
+  one of the following cities that have been conquered by the enemies (even if
+  liberated later on): \villeMagdeburg and:
+  \begin{itemize}
+  \item \villeStuttgart, \villeErfurt if the war follows
+    \xnameref{pII:Schmalkaldic League},
+  \item \villeMunster, \villeRostock if the war follows \xnameref{pIII:League
+      Nassau},
+  \item \villeSpeyer, \villePrague if the war follows \xnameref{pIV:Bohemian
+      Revolt}
+  \item \villeFrankfurt, \villeErfurt if the war follows
+    \xnameref{pIV:Augsburg Revocation} or \xnameref{pIV:Unity HRE}.
+  \end{itemize}
+  \aparag The reinforcements of the \alliance are also lowered by 1 \LD for
+  each two cities in the following list that have been conquered by the
+  enemies (even if liberated later on): \villeHannover, \villeCassel,
+  \villeDresden, \villeBerlin, \villeLubeck, \villeHamburg.
+  \aparag If \AUSmin is part of the \ligue, the \ligue is due to receive 3 \LD
+  and the result of random reinforcements in defensive attitude with a global
+  modifier of \bonus{+2}. Else (\AUS is a \MAJ), the \ligue receives only a
+  random reinforcements with a global modifier of \bonus{+2}.  The \ligue uses
+  the \ARMY counter of the \HRE regardless of who the Emperor is.
+  \aparag The controller of the \ligue can pay 50\ducats to give a further
+  \bonus{+1} to the reinforcement roll, or 100\ducats for a \bonus{+2}.
+  \aparag The reinforcements of the \ligue are lowered by 1 \LD for each one
+  of the following cities that have been conquered by the enemies (even if
+  liberated later on): \villeVienne, \villeSalzburg and \villeMunich.
+  \aparag{Placement: \alliance then \ligue}
+  \bparag The reinforcements obtained are freely distributed among the
+  countries part of the alliance. \AUS as a Major power buys its own
+  reinforcements but may take up to 2 \LD from the \ligue as its own
+  reinforcements.
+  \bparag They can only be placed in provinces not pillaged, not controlled by
+  the enemy and free of enemy forces.
+  \bparag They have to be placed in a province of their nationality, or with
+  at least one \LD of the same nationality if their country is nor completely
+  occupied by the enemy.
+  \aparag[Wallenstein] \HAB may hire mercenary general
+  \leaderwithdata{Wallenstein}. He costs 40\ducats (payed by the controller of
+  \ligue) to recruit him for one turn.
+  \bparag If \leader{Wallenstein} is not hired at turn 1 or 2 of this war, he
+  will not be available later. He can not be hired anew after the
+  \xnameref{pIV:TYW:Peace Prague}.  The first time \leader{Wallenstein} is
+  hired, he appears anywhere in a friendly province of \payshabsbourg or
+  \paysBoheme with one Veteran \ARMY\faceplus (use an \AUS or \HRE counter).
+  \bparag \leader{Wallenstein} can command any stack of the \ligue (including
+  \HAB) but no Bavarian counter.
+  \bparag If at the end of a turn the \STAB of the \ligue is positive or its
+  situation favourable, \leader{Wallenstein} is dismissed.  He can be hired
+  again on the round and/or turn after \ligue suffered a Major Defeat.
+  \bparag \MAJHAB can assassinate \leader{Wallenstein} at any time.  He is
+  eliminated and \ligue (and \AUT) gain immediately {\bf 1} in \STAB.
+  \bparag After the \nameref{pIV:TYW:Peace Prague}, \leader{Wallenstein} is no
+  more available.
+  \aparag Three mercenary generals are available each turn of this war.  They
+  can be recruited by the \ligue or the \alliance. A general is recruited for
+  one turn only. He can lead any stack of the alliance (including allied
+  \MAJ); by paying 10\ducats more, he can lead a stack even if there is a
+  general with higher rank.
+
+
+  \digression[pIV:TYW:Condition War]{General conditions of the war}
+
+  \phmil
+  \aparag Each alliance has a Simple Campaign available each round.  Major or
+  Multiple Campaign could be paid for by the controller of the alliance (cost
+  lowered by 20\ducats).
+  \aparag Each alliance and their allies draw supply in the \HRE from any
+  province controlled by their side that is not pillaged or that has an
+  unblockaded port.
+  \aparag Supply can be traced through any neutral province, or controlled
+  province (pillaged or not).
+  % (JCD): Neither \HOL nor \FRA nor \POL?
+  \aparag Both alliances can freely cross any neutral \HRE minor countries ;
+  this is also permitted to \DANdan, \SUE, \ENG in limited intervention, \HAB
+  of course and \SPA but not to other allies.
+  \aparag Alternatively, a side may, before its movement, declare war against
+  any neutral country of the \HRE. Its forces are immediately deployed.
+  \aparag All pillages of the \ligue and of the \alliance are decided by their
+  controller and goes in their Treasury.
+  \aparag A Major Victory involving forces of one or both alliances adjust the
+  \STAB of this side accordingly of the usual rules.
+
+
+  \digression[pIV:TYW:Winning War]{Who is winning the war ?}
+
+  \phpaix
+  \aparag No minor country of an alliance ever makes a regular peace (even
+  unconditional) outside of the peace of its alliance.
+  \aparag One side may be in favoured position depending on the military
+  control of the following cities.
+  \bparag The \alliance is awarded 2 points for the control of \villeVienne.
+  \bparag One point is awarded for each of those: \villeSpeyer, \villePrague,
+  \villeMunich, \villeFreiburg, \villeStrasbourg, \villeHannover, \villeKleve,
+  \villeCassel, \villeMagdeburg, \villeBerlin, \villeDresden, \villeFrankfurt
+  and \villeBrunswick
+  \bparag \textonehalf point is awarded for each of these: \villeKoln,
+  \villeStuttgart, \villeUlm, \villeMainz, \villeTrier, \villeHamburg,
+  \villeMunster and \villeErfurt
+  % (Pierre): may be add \villeWiesbaden
+  \bparag A side has a favoured position of it has at least 3 points more than
+  the other alliance.
+  \aparag Both the \alliance and the \ligue lose each {\bf 2} \STAB.
+  \aparag Then if a side is favoured, it gains {\bf 1} \STAB.
+  \aparag \SPA, \HOL and \AUS lose {\bf 1} \STAB if they were not in the
+  original war (in full intervention, not just a limited one) on the previous
+  turn.
+  % (even if it was a war that lasted since more than one turn
+  % ; this war counts as one turn of the current one): their second turn
+  % of war just ended.
+  \aparag \SPA, \HOL, \AUS lose {\bf 2} \STAB if they were at war (full
+  intervention) on the previous turn (even if it was a war that lasted since
+  more than one turn ; this war counts as one turn of the current one): their
+  second turn of war just ended.
+\end{digressions}
+\aparag[Result of the Danish Crusade]
+\bparag If \DANdan wins a battle against at least 1 \ARMY\faceplus of the
+\ligue (or its allies) in the \HRE, is never routed in battle and has forces
+left in \HRE at the end of the turn, then its Crusade is successful.
+\bparag Thus the \alliance gains {\bf 1} \STAB ; \DANmin is placed in \EG of
+\ENG, annexes immediately \provinceLubeck and \provinceHolstein (or
+\provinceMecklenburg if it owns already both) and will continue its
+intervention until the end of the war, or when it signs any separate peace (in
+this war or another). It will not receive reinforcements \emph{per se}, but
+some can be given from those of the \alliance.
+\bparag If the Danish Crusade failed, \DANmin makes a white peace and
+withdraws from the war. \leader{Christian IV} remains as a Danish general for
+the full 4 turns.
+
+\tour{Turn 2 -- The Lion of the North (1629--1632)}
+
+\phevnt
+\aparag Check for a possible extension of each alliance, see
+\ref{pIV:TYW:Extension Alliances}.
+\aparag \SUE has to enter the war as an ally of the Protestant \alliance.  If
+it is Catholic, roll for 2 \REVOLT in \SUE and it loses {\bf 1} \STAB ;
+nothing happens if it is Protestant -- no \CB is necessary and this is not a
+declaration of war.
+\aparag[Military revolution] \SUE receives \monarque{Gustave Adolphe}. He is
+due to last 7 turns.
+\bparag If the current Monarch has 1 or 2 turns of life left,
+\monarque{Gustave Adolphe} would be his heir. If \monarque{Gustave Adolphe}
+dies (in battle) before the current Monarch, \SUE will use the columns 7 to
+roll its next Monarch.
+\bparag If the current Monarch has more than 2 turns left, \monarque{Gustave
+  Adolphe} replaces him entirely and will last for the remaining of the 7
+turns as a Monarch (but a death in battle).
+\bparag \monarque{Gustave Adolphe} is a military genius, a general
+\leaderwithdata{Gustav-Adolf}. As long as the war goes on for \SUE, it
+benefits from a Military Revolution (see \ref{chExpenses:Military
+  Revolutions})
+\bparag[\leader{Sachsen-Weimar}]\label{pIV:TYW:Saxe-Weimar}
+\leaderwithdata{Sachsen-Weimar} joins \SUE for 7 turns also.
+\bparag If \monarque{Gustave Adolphe} dies, \FRA (if allied to \SUE) may hire
+\leader{Saxe-Weimar} as a mercenary general to fight in the present war.  It
+costs 30\ducats the first turn, then 20\ducats to keep \leader{Saxe-Weimar};
+when \leader{Saxe-Weimar} is not paid one turn, he is eliminated (he does not
+go back to \SUE). \leader{Saxe-Weimar} takes command of one German stack of
+the \alliance when he goes to \FRA; at each following turns, \FRA can take
+half (round down) of the reinforcements of the \alliance (up to 4\LD) to be
+placed with \leader{Saxe-Weimar}.  If he dies the forces go back to normal
+status in the \alliance.
+\aparag \FRA, if Protestant, can begin a limited intervention in the war on
+the side of the \alliance.
+\aparag Any \MAJ that was doing a limited intervention during the previous
+turn (as defined in the original war) can continue this limited intervention
+to help the same side.
+\aparag \xnameref{pIV:TYW:Turkish Frontier} is in effect this turn.
+
+\phadm
+\aparag Roll for reinforcements as in the first turn, see
+\xnameref{pIV:TYW:German Reinforcements}.
+
+\phmil
+\aparag The war is conducted according to \xnameref{pIV:TYW:Condition War}.
+\aparag \SUE takes the control of the forces of one minor country of the
+\alliance (its choice). This country can change from one turn to the other and
+is chosen at the beginning of any military round of the turn.
+\aparag \SUE may force a minor country to enter the war in the \alliance if it
+is one of the countries that could join the \alliance and \SUE has at least 1
+\ARMY\faceplus and \monarque{Gustave Adolphe} in a province of the country.
+\aparag If \SUE makes a siege of allied or neutral \provinceMecklenburg,
+\province{Ost Pommern} or \province{West Pommern} with at least one \ARMY
+\faceplus, then the city surrenders without fighting at the end of the round.
+\aparag All cities taken (by siege, assault or automatic surrender) with at
+least one Swedish \ARMY, or only Swedish troops, have now Swedish garrisons
+(and the town counts as Swedish presence in the \HRE).  Other Major powers put
+their garrison if the city is taken with only their own forces (else, German
+garrisons are in charge).
+
+\phpaix
+\aparag The balance of the war is checked as in \xnameref{pIV:TYW:Winning
+  War}.  The losses of \STAB are applied except that now there is one turn
+more:
+\bparag Both the \alliance and the \ligue lose each {\bf 3} \STAB.
+\bparag Then if a side is favoured, it gains {\bf 2} \STAB.
+\bparag Any Major Power in its second turn of war lose {\bf 2} \STAB.
+\bparag \SPA, \HOL, \AUS lose {\bf 3} \STAB if they are in their third turn of
+war.
+\bparag \SUE and \ENG if continuing their intervention lose {\bf 1} \STAB.
+\aparag[Suing for peace]\label{pIV:TYW:Suing turn 2}
+\bparag A German alliance sues for the \xnameref{pIV:TYW:Peace Prague} when it
+is at \bonus{-3} in \STAB at the end of two consecutive turns, and the
+position in the \HRE is not in its favour. The enemy side grants necessarily
+this peace.
+\bparag If both alliances are at \bonus{-3} in \STAB at the end of any turn,
+their controllers can agree to a Status Quo and sign the
+\nameref{pIV:TYW:Peace Prague}.
+
+\bparag When the \nameref{pIV:TYW:Peace Prague} is signed, the German
+alliances are partly dissolved; their stability will not be recorded further
+and most of the minor countries in these alliances make a peace.  The
+alliances want to stop the war and sign a peace so, from now on, all foreign
+countries have no constraint to sign peaces also. It would not be a separate
+peace from the German alliance point of view (but could be from another
+country...)
+
+\bparag However, if some Major Powers want to keep fighting in the \HRE and
+refuse to sign the \nameref{pIV:TYW:Peace Prague}, see \ref{pIV:TYW:War after
+  Prague}. Keeping fighting means that the Major power does not sign treaty of
+peace with every enemy (that are \MAJ, the enemy German alliance, and possibly
+\HOLmin and \DANmin); moreover this country is not allowed to sign a Truce
+next turn. \AUSMin signs or not the \nameref{pIV:TYW:Peace Prague} alongside
+\SPA.
+\bparag If no Major Power contests the \nameref{pIV:TYW:Peace Prague} by
+continuing the fight, apply now the \xnameref{pIV:TYW:Peace Westphalie}.
+
+\tour{Turn 3 (1632--1636) and after: a Foreign War}
+\history{Turn 4: 1637--1641 (first turn after the Peace of Prague); Turn 5:
+  1642--1648 (from Rocroi and Jankov to Lens); Turn 6: 1648-1654 (La Fronde);
+  Turn 7: 1654--1660.}
+
+\phevnt
+\aparag Check for a possible extension of each alliance, see
+\xnameref{pIV:TYW:Extension Alliances}.
+\aparag No limited intervention of the previous turn can be carried on.
+\aparag At any turn, \FRA and \ENG can enter the war as an ally of the side
+they chose. They have a \CB against a side which has not their Religious
+Stand, and none against an alliance having the same Religious Attitude; the
+\alliance is Protestant and the \ligue is \CATHCR.
+\aparag At any turn, \POL (unless it is Orthodox) can make a full or limited
+intervention in the war as an ally of any side. \POL can do such an
+intervention only once during the war. It has a \CB only against an alliance
+that has not the exact same Religious Attitude (relative to Catholicism) as
+itself.
+
+\phadm
+\aparag Roll for reinforcements as in the first turn, see
+\xnameref{pIV:TYW:German Reinforcements}.
+\aparag Two turns after a Military Revolution caused by \SUE, the Land
+Technology of the Latin minor countries reaches this new Technology.
+
+\phmil
+\aparag The war is conducted according to \xnameref{pIV:TYW:Condition War}.
+\aparag \SUE takes the control of the forces of one minor country of the
+\alliance (its choice). This country can change from one turn to the other and
+is chosen at the beginning of any military round of the turn.
+\aparag On the third turn only (not after), if \SUE makes a siege of allied or
+neutral \provinceMecklenburg, \province{Ost Pommern} or \province{West
+  Pommern} with at least one \ARMY \faceplus, then the city surrenders without
+fighting at the end of the round.
+\aparag All cities taken (by siege, assault or automatic surrender) with at
+least one Swedish \ARMY, or only Swedish troops, have now Swedish garrisons
+(and the town counts as Swedish presence in the \HRE).  Other Major powers put
+their garrison if the city is taken with only their own forces (else, German
+garrisons are in charge).
+
+\phpaix
+\aparag The balance of the war is checked as in \xnameref{pIV:TYW:Winning
+  War}.  The losses of \STAB are applied with one turn more. This war can not
+cause a loss more than {\bf 4} \STAB at the end of turn.  On turn 3 of the
+Religious War, the losses should be:
+\bparag the \alliance and the \ligue lose {\bf 4} \STAB;
+\bparag any Major Power in its third turn of war lose {\bf 3} \STAB.
+\bparag \SPA, \HOL, \AUS lose {\bf 4} \STAB if they were at war before the
+Religious War in the \HRE.
+\bparag \SUE loses {\bf 2} \STAB.
+\bparag Any other Major Power intervening in the war at this turn lose {\bf 1}
+\STAB.
+\aparag[Suing for peace] As described in \ref{pIV:TYW:Suing turn 2}.
+\aparag If \SUE, \ENG or \POL (in full intervention) do not hold any city nor
+have any land forces left in the \HRE, they make a mandatory white peace
+against all its enemies in this war. This will count as a losing position in
+\xnameref{pIV:TYW:Peace Westphalie}.
+\aparag If \POL is doing a limited intervention and wins a battle against at
+least one \ARMY\faceplus of the enemy side (any nationality) in the \HRE, then
+loses no battle in the \HRE, the alliance it helps gains {\bf 1} in \STAB
+(\AUS also). \POL may then annex \province{Ost Pommern} or any province in the
+\HRE that once was Polish. Its limited intervention lasts only one turn.
+
+\begin{digressions}[Between Prague and Westphalie]
+
+
+  \digression[pIV:TYW:Peace Prague]{Peace of Prague}
+  \aparag If the \ligue is favoured by the Peace:
+  \bparag \paysBaviere gains permanently its second \ARMY and \paysPalatinat
+  loses its own; \paysBaviere is now an Electorate.  It also gains a permanent
+  \bonus{+1} to its reinforcement rolls.
+  \bparag \paysBaviere annexes \provinceOberPfalz, except if this war follows
+  \xnameref{pII:Schmalkaldic League}, in which case it annexes
+  \provinceSchwaben.
+  \bparag \paysBaviere is now in \AM with \HAB (move its diplomatic marker
+  accordingly).
+  \bparag A Total Victory of the \ligue in the \xnameref{pIV:TYW:Peace
+    Westphalie} is possible.
+  \bparag Any specific consequence given by the victory of the side of the
+  \ligue in the war having caused \ref{pIV:TYW} is applied.
+  \bparag The Truce of Augsburg is revoked.
+  \bparag \SPA and \AUS gain 30 \PV, \SUE loses 10 \PV.
+  \aparag If the Peace is a Status Quo:
+  \bparag \paysBaviere keeps its second army for the continuation of this war
+  (but not permanently).
+  \bparag The Truce of Augsburg is in effect.
+  \bparag No side can achieve Total Victory in the \xnameref{pIV:TYW:Peace
+    Westphalie}.
+  \aparag If the \alliance is favoured by the Peace:
+  \bparag The Truce of Augsburg is in effect.
+  \bparag A \xnameref{pIV:TYW:Northern HRE Alliance} is created and allied to
+  \HOL.
+  \bparag \paysOldenburg, \paysHanovre, \paysHesse, \paysHanse and \paysBerg
+  are placed in \EG of \HOL.
+  \bparag A Total Victory of the \alliance is now possible.
+  \bparag \HOL and \SUE gain 30 \PV.
+
+
+  \digression[pIV:TYW:War after Prague]{The War after Prague}
+  \aparag Only some minor countries continue the war. All other minor
+  countries of the \HRE surrender: their forces are withdrawn and their cities
+  are considered as taken for the reinforcements.
+  \bparag On the side of the \ligue: \HAB and, if the Peace is not in favour
+  of the \alliance, \paysBaviere.
+  \bparag On the side of the \alliance: the controller is now \SUE and it
+  chooses 2 countries, or only 1 in case of unfavourable Peace, that will
+  continue the fight from the following list: \paysHesse, \paysHanovre,
+  \paysPalatinat, \paysSaxe.
+  \bparag If the Peace is favourable to the \ligue, \paysSaxe reverses its
+  alliance and enters war with the Catholics.  All its forces are withdrawn
+  from the map, and the cities of \paysSaxe surrender immediately to the
+  Catholics; Protestant forces in the provinces are withdrawn.
+  \bparag \paysBrandebourg will continue (or enter) the war as an ally of the
+  Protestant if \SUE gives up its claims on \province{West Pommern} to
+  \paysBrandebourg in \xnameref{pIV:TYW:Peace Westphalie}.
+  \bparag If \FRA hires \leader{Saxe-Weimar} at this turn (continuing from a
+  previous turn or not), he keeps one stack of any one protestant
+  country. This country remains at war (until it surrendered unconditionally
+  or \leader{Saxe-Weimar} is no more at the service of \FRA). It will receive
+  reinforcements for this stack (using the mechanism for the stack of
+  \leader{Saxe-Weimar}).
+  \aparag The minor countries that continue the war are allied in their
+  alliance, and with the Major countries in the war. But they want peace so
+  they will stop fighting as soon as all foreign minor/major countries do
+  likewise.
+  \bparag A minor country of the \HRE can now be ejected from its alliance and
+  from the war, but only by imposing an unconditional surrender on it; other
+  regular peaces are not possible.
+  % (Jym): theta-N.1.b systematically gives control to SUE. Commenting out.
+  % \bparag If the \nameref{pIV:TYW:Peace Prague} was not favourable to the
+  % \alliance, the controller of the \alliance is now \SUE in priority
+  % (whatever its Religion is).%, then \HOL (and so on).
+  \aparag All other minor countries that were in both alliances are now at
+  peace; they all have now a Neutral diplomatic status.  All the cities in
+  those countries are considered conquered in order to check for
+  reinforcements.
+  \aparag Foreign minor country \DANmin stops the war whereas \HOLmin
+  continues. A regular peace has to be obtained against it.
+  \aparag Do not forget that this war causes at most a loss of {\bf 4} \STAB
+  for each country at the end of turn.  If the War caused by the Revolt of the
+  United Provinces continue, it resumes its normal loss in \STAB only if an
+  Armistice is made (at least 1 turn) between \SPA and \HOL at the end of the
+  present war; else the present war has to continue and so does the loss of
+  {\bf 4} \STAB each turn.
+
+
+  \digression[pIV:TYW:Peace Westphalie]{Peace of Westphalie}
+  \aparag This Peace is signed at the end of a turn, beginning with the turn
+  of the \nameref{pIV:TYW:Peace Prague}, if all Major countries in the war
+  agree to end the war, that is to sign Peaces or Armistices between them. The
+  following effects are implemented as further consequences of the regular
+  Peace Treaties.
+  \aparag The Emperor of the \HRE is now \HAB if this was not, for the rest of
+  the game.
+  \aparag The Major Countries that can be involved in the war are \SPA (and
+  \AUSmin), \AUS, \FRA, \HOL, \SUE, \ENG and \POL.
+  \bparag A Major Power that stops the war (it has signed Peaces or Armistices
+  with all other Major Powers at the end of some turn) before the end has a
+  losing position for this Peace; it has also this position if it signs a
+  mandatory white peace (for any reason).
+  \bparag A Major Power has a dominant position if it signs only winning
+  Treaties of Peace with countries of the other side (no Armistices or White
+  Peaces either) on the last turn of this war.
+  \bparag A Major Power has a losing position if it signs only losing Treaties
+  of Peace with countries of the other side (no Armistices or White Peaces
+  either) on the last turn of this war.
+  \bparag In other cases, the position is neutral.
+  \aparag[Spain or Austria]
+  \bparag These specific conditions are for \MAJHAB.
+  \bparag A \AUSmin will continue to fight with \SPA until the end of the war
+  (except by unconditional surrender, following the rules for all minor
+  countries from the \HRE still at war after the \nameref{pIV:TYW:Peace
+    Prague}).
+  \bparag If \HAB is in dominant position and a Catholic Total Victory was
+  possible, the \pays{German Empire} is created (see \shortref{pIV:TYW:German
+    Empire}).
+  \bparag If \HAB is in dominant position but no Catholic Total Victory was
+  possible, a \xnameref{pIV:TYW:Southern HRE Alliance} is associated to \HAB.
+  The countries in this alliance are put in \EG of \HAB: \paysBaviere,
+  \paysTreves, \paysAlsace, \paysBade and \paysWurtemberg.
+  \bparag \HAB in neutral or losing position: nothing more.
+  \aparag[Spain] If \SPA is in dominant position and there is a Major \AUS,
+  the \xnameref{pV:WoSS} will only concern provinces in the Low Countries and
+  northern Italy (those in southern Italy are not part of the Inheritance and
+  remain Spanish).
+  \aparag[Austria] If \AUS is in neutral position, it gains a permanent {\bf
+    +1} bonus in Diplomacy on Catholic countries of the \HRE.
+  \aparag[The Netherlands]
+  \bparag If \HOLhol has a dominant position and a Protestant Total Victory is
+  possible, \paysHanse annexes \provinceOldenburg and \HOL gains \paysHanse as
+  a permanent \VASSAL.  Eliminating the \xnameref{pIV:TYW:Northern HRE
+    Alliance} will now need a Peace of level 5 against \HOL.
+  \bparag If \HOLhol has a dominant position (but without possible Protestant
+  Total Victory), it gains \paysHanse as a normal \VASSAL and \paysHanse
+  annexes \provinceOldenburg. The \xnameref{pIV:TYW:Northern HRE Alliance} is
+  created and allied to \HOLhol with the corresponding effects.
+  \bparag If \HOL has a neutral position, it has the choice to allow or not to
+  the destruction of \paysHanse (its controller in the case of a \HOLmin).
+  \bparag Else, if \HOL (or minor \payshollande) is in losing position, the
+  \paysHanse is destroyed and the \xnameref{pIV:TYW:Northern HRE Alliance} is
+  dissolved.
+  \aparag[Sweden]
+  \bparag If \SUE has a dominant position, it annexes \provinceMecklenburg,
+  then \province{West Pommern} if it has not renounced its claims on this
+  province (else it gains \paysBrandebourg in \EG) and \provinceBremen or
+  \provinceLubeck (its choice). It then chooses one Protestant minor country
+  (or 3 minor countries if a Protestant Total Victory was possible) of the
+  \HRE that is (are) placed in \EG on its Diplomatic chart.
+  \bparag If \SUE is in neutral position, it annexes \provinceMecklenburg,
+  then \province{West Pommern} if it has not renounced its claims on this
+  province; else it gains \paysBrandebourg in \EG. It then chooses one
+  Protestant minor country of the \HRE that is placed in \EG on its Diplomatic
+  chart.
+  \bparag If \SUE is in losing position, it gains nothing.
+  \aparag[France]
+  \bparag If \FRA is in dominant position, it gains a \bonus{+1} bonus for
+  Diplomacy on countries of the \HRE until the end of the period.
+  \bparag If \FRA is in dominant or neutral position, it gains \paysAlsace as
+  a \VASSAL and \paysCologne in \EC.
+  \aparag[England] If \ENG is in dominant position, it gains a \bonus{+1}
+  bonus for Diplomacy on countries of the \HRE until the end of period V.  It
+  also gains a minor country of its choice, having the same religion as \ENG,
+  that is placed in \EG on its chart.
+  \aparag[Poland] If \POL is in dominant position after a full intervention,
+  it gains a \bonus{+1} bonus for Diplomacy on countries of the \HRE until the
+  end of period V.  It also gains a minor country of its choice, having the
+  same religion as \POL, that is placed in \EG on its chart.
+  \aparag When a major country can take a the diplomatic control of a minor
+  country, the order of choice is the order written here, and a power can only
+  choose neutral minor country of the \HRE (not those already allied to
+  someone else).
+  \aparag \paysBrandebourg annexes \province{Ost Pommern} if it is in
+  \paysHanse.
+  \aparag Then, if \paysHanse has to be destroyed, its remaining provinces are
+  now given as follows: \SUE takes \provinceBremen, \paysBrandebourg takes
+  \province{West Pommern} and \provinceMecklenburg, then \DANmin all the
+  remaining ones.
+  \aparag From now on, any major power that owns a province in \HRE or
+  adjacent to a province of the \HRE may, when at war, enter and remain in any
+  neutral province of the \HRE. The cost in \MP is the same as enemy
+  territory. The neutral provinces can not be pillaged, besieged nor give
+  supply (but supply lines can cross those if there are no enemy force
+  within).
+  \bparag
+  \aparag[Victory Points]
+  \bparag A Major Power in dominant position at the end of the war wins 30 \PV
+  (added to those of the treaties of Peace).
+  \bparag A Major Power in losing position at the end of the war loses 30 \PV.
+\end{digressions}
+
+\begin{digressions}[German alliances emerging from the war]
+
+
+  \digression[pIV:TYW:Northern HRE Alliance]{Northern \HRE Alliance}
+
+  \effetlong
+  \aparag When this alliance exists, it is allied to \HOLhol.  It represents
+  treaties between \paysOldenburg, \paysHanovre, \paysHesse, \paysHanse and
+  \paysBerg.
+  \aparag \HOL has a permanent bonus of \bonus{+2} in Diplomacy on these
+  countries.
+  \aparag \HOL gains also a income of 10\ducats for each coastal city in
+  \paysHanse if it is on his diplomatic track.
+  \bparag This Northern alliance is dissolved when \HOL signs a losing Peace
+  of level 3 or higher, or when it controls no country of the alliance. The
+  bonuses are permanently lost.
+
+
+  \digression[pIV:TYW:Southern HRE Alliance]{Southern \HRE Alliance}
+
+  \effetlong
+  \aparag A Southern \HRE alliance is associated to \HAB, composed by the
+  following countries: \paysBaviere, \paysMayence, \paysAlsace, \paysBade and
+  \paysWurtemberg.
+  \aparag Each of these countries on the \HAB or \MAJHAB diplomatic chart will
+  give an income of 10\ducats to \MAJHAB.
+  \aparag \MAJHAB gains a \bonus{+1} bonus in Diplomacy on every Catholic
+  countries in the \HRE.
+  \aparag This Southern alliance is dissolved when \MAJHAB signs a losing
+  Peace of level 3 or more, or when neither \MAJHAB nor \HAB controls any
+  country of the Alliance.  The bonuses are permanently lost.
+  \aparag When a \GE is created, the Southern alliance is also dissolved (and
+  becomes part of the \GE).
+
+
+  \digression[pIV:TYW:German Empire]{German Empire}
+
+  \effetlong
+  \aparag All minor countries of the \HRE (except \HAB which remains
+  independent) are associated in one minor country, called the \pays{German
+    Empire}. This country is a permanent \VASSAL of \MAJHAB. It can use 4
+  \ARMY counters, and 12 \LD (for practical ease, use the counter of the \HRE
+  and any counter of some part of the empire, with no notion of nationality --
+  there are all from the \GE).  Its basic forces are one \ARMY\faceplus and
+  one \ARMY\facemoins. It has a modifier of \bonus{+2} for reinforcements and
+  always makes peace with \MAJHAB.
+  \aparag \MAJHAB receives an income of 100\ducats from the \HRE (and not the
+  exact value of the country) and can use its port on the Baltic Sea.
+  \aparag When the \pays{German Empire} exists, the Dynastic Alliance between
+  \AUSmin and \SPA is both defensive and offensive.
+  \aparag Some events may dissolve part of the \pays{German Empire} by
+  creating a League (\xnameref{pII:Schmalkaldic League}, \xnameref{pIII:League
+    Nassau}, \xnameref{pIV:Bohemian Revolt}, \xnameref{pIV:Augsburg
+    Revocation}, \xnameref{pIV:Unity HRE}) which ceases to be in the Empire,
+  and is (depending on the event) at war with the Emperor. An unconditional
+  peace of the Emperor on any of those countries bring it back in \pays{German
+    Empire}.
+  \aparag Event \xref{pV:Kingdom Prussia} liberates \paysBrandebourg from
+  \pays{German Empire} (and it can't be forced back in).
+  \aparag When any province with a capital of \pays{German Empire} is lost as
+  the result of a Peace, the minor country having this capital is renewed as a
+  free country, having status \EG or \VASSAL (if possible) with the \MAJ that
+  liberated it (player's choice). \HAB can force the \MIN back in the
+  \pays{German Empire} by means of an unconditional peace on it.
+  % (Jym) For the Hansa, is it enough to free one capital?
+  \aparag Some events (\xnameref{pIV:Augsburg Revocation}, \xnameref{pIV:Unity
+    HRE} and \xnameref{pV:Devolution War}) can cause Civil War in \pays{German
+    Empire} that foreign countries can help in order to dissolve \pays{German
+    Empire}.
+  \aparag The \xnameref{pV:WoSS} may separate the Spanish dynasty from the
+  Austrian dynasty because of a Crisis of Succession.
+  \bparag If \SPA chooses a \AUSmin Heir, the \pays{German Empire} fights
+  along their side with no Dynastic Separation.
+  \bparag If \SPA chooses another Heir than a \AUSmin, the \pays{German
+    Empire} is dissolved but \paysBaviere, \paysMayence, \paysLorraine,
+  \paysBade and \paysWurtemberg are placed in \AM of \HAB and enters war at
+  its side; and \HAB gains the benefits of \xnameref{pIV:TYW:Southern HRE
+    Alliance}. All other countries that are recreated at this time are
+  Neutral.
+  \bparag \AUS (if major) keeps the \pays{German Empire}.
+  \bparag See the other conditions in this event.
+  \aparag The \pays{German Empire} ceases to exist as soon as its controller
+  is forced to sign any peace of level 3 or more.  In addition to the normal
+  peace conditions, \pays{German Empire} is dissolved: all minor countries of
+  the HRE are back to previous frontiers, and are neutral.
+\end{digressions}
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: defensive se Hansa offensive pIII FWR Schmalkaldic pIV TYW pII
+% LocalWords: Ost Pommern HRE Westphalie unblockaded JCD Sachsen Weimar Quo
+% LocalWords: pV WoSS Jym Rocroi Jankov

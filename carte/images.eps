@@ -1,0 +1,44 @@
+/regimage { /tmp exch def
+    << /Filename IMAGEDIR(/)! tmp ! (.pnm) ! >> (img:) tmp ! defimage
+}def
+
+/regimagedir{/DIR exch def [DIR(/*.pnm)! {(.pnm) search{3 1 roll pop pop}{bug}ifelse DIR(/)! search{pop pop}{bug}ifelse ()!} 50 string filenameforall]{regimage}forall}def
+
+IMAGEDIR regimagedir
+
+/countrylist [
+(algerie)(alsace)(angleterre)(arabie)(astrakhan)(bade)(balkans)
+(baviere)(berg)(boheme)(bourgogne)(brandebourg)(brunswick)
+(catalogne)(chevaliers)(cologne)(corse)(cosaquesdon)(courlande)
+(crimee)(cyrenaique)(damas)(danemark)(ecosse)(espagne)(finlande)
+(flandrebrabant)(france)(genes)(georgie)(grenade)(habsbourg)
+(hanovre)(hanse)(hesse)(hollande)(hongrie)(huguenots)(irak)
+(irlande)(kazan)(liege)(ligue)(lithuanie)(lorraine)(lucca)
+(mamelouks)(maroc)(mayence)(mazovie)(milan)(modene)(moldavie)
+(montferrat)(naples)(norvege)(oldenburg)(oresund)(palatinat)
+(papaute)(parme)(perse)(pologne)(portugal)(prusse)(pskov)
+(russie)(ryazan)(savoie)(saxe)(sienne)(steppes)(suede)(suisse)
+(teutoniques1)(teutoniques2)(thuringe)(toscane)(treves)(tripoli)
+(tunisie)(turquie)(ukraine)(valachie)(venise)(wurtemberg)
+]def
+
+/regimage { /tmp exch def
+    << /Filename SHADOWDIR(/)! tmp ! (.pgm) ! >> (sdw:) tmp ! defimage
+    << /Filename SHADOWDIR(/)! tmp ! (.pnm) ! /Alpha (sdw:) tmp ! >> (img:) tmp ! defimage
+}def
+
+SHADOWDIR regimagedir
+
+<< /Filename BLASONDIR(/templates/blason.pgm)! >> (sdw:blason) defimage
+<< /Filename BLASONDIR(/templates/protoblason.pgm)! >> (sdw:protoblason) defimage
+
+[(catalogne)(corse)(courlande)(crimee)(espagne)(finlande)(grenade)(habsbourg)(hanse)(huguenots)(irlande)(ligue)(maroc)(naples)(norvege)(pologne)(prusse)(russie)(savoie)(ukraine)(venise)]
+{/pays exch def
+    <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
+	/Alpha (sdw:protoblason)>> (img:) (proto)pays ! ! defimage
+} forall
+countrylist
+{/pays exch def
+    <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
+	/Alpha (sdw:blason)>> (img:) pays ! defimage
+} forall

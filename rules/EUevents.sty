@@ -1,0 +1,308 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file contains stuff for events
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{EUevents}[2010/11/11 v0.1]%
+
+%%%% Start/Stop events
+% Start tinkering with counters
+
+\def\startevents{
+  \def\EUEVsssprefix{}
+  \def\EUEVphprefix{}
+  \def\XNRtypeofsubsection{event}
+  \def\XNRsecfmtsubsubsection{\greek{subsubsection}\quad}
+  \def\thesubsubsection{\thesubsection.\greek{subsubsection}}
+  \def\theparagraph{\thesubsubsection|\EUEVsssprefix\EUEVphprefix\@xarabic\c@paragraph-\c@paragraphbase\@nilxarabic}
+  \def\thesubparagraph{\theparagraph.\alph{subparagraph}}
+}
+% This works only with e-TeX. But so does hyperref, anyway.
+\def\@xarabic#1-#2\@nilxarabic{\expandafter\@arabic\numexpr #1-#2}
+
+\newcounter{paragraphbase}[subsubsection]
+% this one seems unlikely to be used, since a phase is always followed
+% by an aparag, thus resetting the subparagraph counter. Commenting out.
+% \newcounter{subparagraphbase}[paragraph]
+
+% Stop tinkering with counters
+
+\def\stopevents{
+  \def\XNRsecfmtsubsubsection{\thesubsubsection\quad}
+  \def\thesubsection{\thesection.\arabic{subsection}}
+  \def\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+  \def\theparagraph{\thesubsubsection|\Alph{paragraph}}
+  \def\thesubparagraph{\theparagraph.\arabic{subparagraph}}
+}
+
+%%%% Events
+\newcommand{\event}[5]{%
+  \let\EUEVoldsd\subsectiondecoration%
+  \let\subsectiondecoration\eventdecoration%
+  \def\EUEVsssprefix{\relax}\def\EUEVphprefix{\relax}%
+  \def\thesubsection{#2}%
+  \subsection[#3]{%
+    #3\if#41\else\ ($\times$#4)\fi\qquad\normalfont\normalsize #5
+  }%
+  \label{#1}%
+  \let\subsectiondecoration\EUEVoldsd%
+}
+
+%%%% Subevents and digressions
+
+\newcommand{\subevent}[2][]{%
+  \def\XNRtypeofsubsubsection{subevent}%
+  \subsubsection{#2}%
+  \gdef\EUEVsssprefix{\greek{subsubsection}-}%
+  \ifx\relax#1\relax\else\label{#1}\fi%
+}
+\def\EUEVtypeofdigression{event part}
+\newcommand{\digression}[2][]{%
+  \edef\XNRtypeofsubsubsection{\EUEVtypeofdigression}%
+  \let\EUEVoldssd\subsubsectiondecoration%
+  \let\subsubsectiondecoration\digressiondecoration%
+  \subsubsection{#2}%
+  \gdef\EUEVsssprefix{\greek{subsubsection}-}%
+  \ifx\relax#1\relax\else\label{#1}\fi%
+  \let\subsubsectiondecoration\EUEVoldssd%
+}
+\newcommand{\stopdigression}[1][]{\ifvmode\else\par\fi\gdef\EUEVsssprefix{}\digressionsenddecoration{#1}}
+\newenvironment{digressions}[1][Digressions]{\ifvmode\else\par\fi\gdef\EUEVdigressions{#1}\digressionsdecoration{#1}}{\stopdigression[end of \lowercase\expandafter{\EUEVdigressions}]}
+
+% Special case the event part reference for local call.
+% Displayed as \S alpha (Name) instead of 
+\def\XNRsubeventsectrefhandler#1#2#3{\EUEVspecialsubevent#1..\@nil{#2}{#3}}
+\def\EUEVspecialsubevent#1.#2.#3\@nil#4#5{%
+  \edef\EUEVtemp{#1}\ifx\EUEVtemp\thesubsection\relax%
+  % We are local
+  \ifXNRnameref\TUpp #5\unskip\else\ifXNRnotyperef\else #4~\fi\S#2\fi%
+  \ifXNRshortref\else\ (\ifXNRnameref\S#2\else\TUpp #5\fi\unskip)\fi%
+  \else%
+  % We are not local
+  \ifXNRnameref\TUpp #5\unskip\else%
+  \ifXNRnotyperef\else#4~\fi\XNRnumberdisplay{#1.#2}%
+  \fi%
+  \ifXNRshortref\else\ (%
+  \ifXNRnameref\XNRnumberdisplay{#1.#2}\else\TUpp #5\fi%
+  \unskip)\fi%
+  \fi}
+\expandafter\def\csname XNRevent partsectrefhandler\endcsname{\XNRsubeventsectrefhandler}
+\expandafter\def\csname XNRchoicesectrefhandler\endcsname{\XNRsubeventsectrefhandler}
+
+%%%% Phases
+% This is an intermediate marker, in between subsubsections and paragraph
+
+\newcounter{phase}[subsection]
+
+\newcommand{\phase}[3][]{%
+  \ifvmode\else\par\fi%
+  \stepcounter{phase}%
+  \def\EUEVphprefix{\thephase.}%
+  \setcounter{paragraphbase}{\arabic{paragraph}}%
+  \phasedecoration{\EUEVsssprefix\thephase\hspace*{0.3em}#2\ifx\relax#1\relax\else\normalfont\ #1\fi}\par\@afterheading%
+  \ifx\relax#3\relax\else\normalfont\ #3\fi}
+\def\thephase{\@Alph\c@phase}
+\def\definephasex#1#2{\expandafter\def\csname#1\endcsname{\phase{#2}{}}}
+\newcommand{\condition}[2][]{\phase[#1]{Condition:}{#2}}
+\newcommand{\activation}[2][]{\phase[#1]{Activation:}{#2}}
+
+\definephasex{phevnt}{Event Phase}
+\definephasex{phdipl}{Diplomatic Phase}
+\definephasex{phadm}{Administrative Phase}
+\definephasex{phmil}{Military Phase}
+\definephasex{phmvt}{Movement Phases}
+\definephasex{phpaix}{Peace Phase}
+\definephasex{phinter}{Interphase}
+\definephasex{effetlong}{Lasting Effects}
+
+
+
+%%%% Various markers: turn, history, duration
+\newcommand{\history}[2][\null]{\textit{Date: #2.} #1\par}
+\newcommand{\dure}[1]{\textit{Duration:} #1\par}
+\def\tour#1{\ifvmode\else\par\fi\smallskip\turndecoration{#1}\par\nobreak\smallskip\@afterheading}
+
+%%%% References and labels
+\newcommand{\eventref}[1]{\ref{#1}}
+\newcommand{\subeventref}[1]{\ref{#1}}
+\newcommand{\eventrefshort}[1]{\shortref{#1}}
+\newcommand{\subeventrefshort}[1]{\shortref{#1}}
+\newcommand{\subeventreflocal}[1]{\ref{#1}}
+\newcommand{\subeventnamelocal}[1]{\ref{#1}}
+\newcommand{\eventnameref}[1]{\xnameref{#1}}
+\newcommand{\subeventnameref}[1]{\xnameref{#1}}
+\def\subeventrefname{\subeventnameref}
+\def\eventrefname{\eventnameref}
+
+\gdef\longxeventref#1#2{\numberlongref{#1}}
+\gdef\xeventref#1#2{\numberref{#1}}
+
+%%%% Events tables
+\newenvironment{eventstable}[1][]%
+{\begin{minipage}{.5\linewidth}\begin{tablehere}\xdef\EUEVevcap{#1}}%
+    {%
+      \expandafter\caption\expandafter{\EUEVevcap}%
+      \xdef\EUEVevcap{table:\EUEVevcap}%
+      \expandafter\label\expandafter{\EUEVevcap}%
+    \end{tablehere}\end{minipage}}
+\newenvironment{eventstablespec}[1][]%
+{\unskip\hskip .01\linewidth\begin{minipage}{.49\linewidth}\eventstablespecdecoration{#1}\par}%
+    {\end{minipage}}
+\def\eventssummary#1{\unskip\begin{minipage}{.5\linewidth}
+    \begin{modlist}[1em]\def\XNRnumberdisplay{\EUEVstripdash}
+      \FEforeach{#1}{\EUEVbodydisplayevents{\loopitem}}{}
+    \end{modlist}
+  \end{minipage}}
+\long\def\EUEVbodydisplayevents#1{\expandafter\EUEVdisplayevent#1||\nil}
+\long\def\EUEVdisplayevent#1|#2|#3\nil{\ifx#1O\relax\item[]\item[\bfseries Out of table events]\else\item[\bfseries\numberref{#1}] \nameref{#1}\ifx\relax#2\relax\else\leaders\hbox{\hskip 1pt.}\hfill\expandafter\EUEVdisplayeventspec#2/\nil\fi\fi}
+% Syntax inside events extension:
+% E (just E)
+% S{ref} display the subevent part
+% L{ref} other event
+% O{ref} display numberref{ref}
+% T{text} display text
+\def\EUEVdisplayeventspec#1#2/#3\nil{%
+  \ifx#1EE\else%
+  \ifx#1S\numberref{#2}\else%
+  \ifx#1O{\def\XNRnumberdisplay{\relax}\textrightarrow\numberref{#2}}\else%
+  \ifx#1T\relax#2\relax\unskip\else%
+  \ifx#1L{\def\EUEVphantom##1{}\numberref{#2}}\else%
+  ?#1\fi\fi\fi\fi\fi%
+  \ifx\relax#3\relax\unskip\else\hskip 3pt\expandafter\EUEVdisplayeventspec#3\nil\fi%
+}
+\def\EUEVstripdash#1{\expandafter\EUEV@strippoint#1..\nil}
+\def\EUEV@strippoint#1.#2.#3\nil{\ifx\relax#2\relax\expandafter\EUEV@stripdash#1--\nil\else#2\fi}
+\def\EUEV@stripdash#1-#2-#3\nil{\expandafter\EUEV@stripdashpar#2 ()\nil}
+\def\EUEV@stripdashpar#1 (#2)#3\nil{\ifx\relax#2\relax#1\else\ifx#21#1 \mdseries\small(#2)\else\EUEVphantom{#1}\ \mdseries\small(#2)\fi\fi}
+\def\EUEVphantom#1{\phantom{#1}}
+
+
+% All the things with events. Since this is quite complicated, here is
+% the complete layout explained:
+
+% Normal style:
+% 1st turn
+% A. This is a phase
+% 2nd turn
+% A. This is a phase
+% 3rd turn
+% A. This is a phase
+% ___________________________
+% Typo: [_________ 1st Turn ________] with some yellowish gradient
+% TURN is just a marker. It cannot be referenced by itself.
+% 
+% Subevent, first style (one event is really several distinct events)
+% 
+% A. This is some condition
+% B. There might be several common phases
+% =========== Subevent ==============
+% I.A. This is the first phase
+% I.B. This is the second phase
+% ======== Other subevent ===========
+% II.A. Again
+% II.B. Again
+% 
+% Subevent, 2nd style (digression-style, elementary rule subset)
+% uses same counter as precedently
+% 
+% A. This is some phase
+% A.1 this is some par
+% A.2 this is some other par
+% ======= Set of digressions ======== <-- not mandatory, introduces following
+% --------- Some digression ---------
+% I.A Phase
+% I.A.1 some paragraph
+% I.A.2 some other paragraph
+% I.B Other phase
+% I.B.1 paragraph
+% ------ Some other digression ------
+% II.A Phase
+% II.B Other phase
+% ----------------------------------- <-- not mandatory, only at last digr.
+% A.3 this is the continuation of A.
+% B. Now something else
+% B.1 some par
+% ------ Some other digression ------
+% III.A Phase
+% III.B Other phase
+% ----------------------------------- 
+% B.2 some other par
+% C. end phase of main event
+% ======== Style 1 subevent =========
+% IV.A First phase
+% etc.
+
+
+
+% Commands for events:
+% \tour{Text} produces the yellowish-gradient thingie
+% \phasesection{Something} (also \dphase) produces the correct numbering of
+% phases, plus the text. Some commands are predefined with bold text
+% behind the phase number. They are, e.g.
+% \condition \activation \consequences (those three commands admit an optional
+% argument that will be written on the same line than the text)
+% Note that this is really not necessary, since after any command
+% paragraph is not finished. However, font could be special.
+% \phevnt \phdipl ... \phinter \effetlong are others (no opt. argument)
+% \history \dure simply inserts some italic not-numbered text.
+% \defsubevent{Something} resets the phase counter (and all subhierarchical
+% ones, puts a \bfintercale{Something}. 1st style subevent.
+% Changes \thephase to {\thesubevent\thephase}
+% \begin{digressions} \  Defines a set of subevents, second style. If used as 
+% \end{digressions}   /  as \begin{digressions}[Something], puts a title.
+%   \defsubeventbis{Something} Defines a subevent. PHASE is kept, where as
+%   EVPARA and SUBEVPARA are saved, reset, and restored at end.
+%   Changes \thephase to {\thesubevent\thephase}
+%   \ephase is the paragraph level numbering. Uses EVPARA counter.
+%   \fphase is the subparagraph level numbering. Uses EVSUBPARA counter.
+%   All counters:
+%   turn subevent phase evpara evsubpara
+%   Set of always-resets:
+%   Stepping evpara resets evsubpara
+%   Stepping phase resets evpara
+%   Stepping subsubsection resets turn, subevent, phase (and aux.)
+%   Unique naming:
+%   If turn resets:
+%   thesubsubsection.arabic{turn}. instead of thesubsubsection.
+%   If inside sevent:
+%   theHsubevent: thesubsubsection.Roman{subevent}
+%   theHphase: thesubsubsection-Roman{subsevent}-Alph{phase}
+%   thesubevent: \Roman{subsevent}
+%   thephase: \Roman{subsevent}\Alph{phase}
+%   Else
+%   theHsubevent: thesubsubsection.Roman{subevent}
+%   theHphase: thesubsubsection.Roman{subsevent}.Alph{phase}
+%   (will usually be thesubsubsection..Alpha{phase} at beginning, but
+%   as soon as subevent will have been invocated, will have some trace of
+%   it. Not important, since not displayed)
+%   thesubsevent: \Roman{subevent}
+%   thephase: \Alph{phase}
+%   After a \defsubevent (reset to original value by new event:)
+%   thephase: \Roman{subevent}\Alph{phase}
+%   Always:
+%   theHevpara: theHphase.arabic{evpara}
+%   theHevsubpara: theHevpara.arabic{evsubpara}
+%   theevpara: thephase.arabic{evpara}
+%   theevsubpara: theevpara.alph{evsubpara}
+
+
+% §a (Totoro) of event Ghibli => subeventrefbyname
+% §a (Totoro) of event II-1 (Ghibli) => subeventref
+% §a (Totoro) of event II-1 => subeventrefshort
+% §a (Totoro) => subeventreflocal
+% Totoro (§a) => subeventnamelocal
+
+
+%%%% Cruft (can be removed)
+
+\let\defsubevent\subevent
+\let\defsubeventbis\digression
+\def\ephase{\aparag}
+\def\fphase{\bparag}
+\def\eventlink#1#2{%
+  \expandafter\ifx\csname r@evnt:#1\endcsname\relax?#2?\else%
+  \hyperlink{\expandafter\expandafter\expandafter\@fourthoffive\csname r@evnt:#1\endcsname}{#2}%
+  \fi}
+\let\setsevent\digressions
+\let\endsetsevent\enddigressions
+\newcommand{\eventlabel}[1]{\label{#1}}
+\newcommand{\subeventlabel}[1]{\label{#1}}

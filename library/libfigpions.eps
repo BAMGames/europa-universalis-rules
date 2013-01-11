@@ -1,0 +1,85 @@
+%/comments true def % Insert comment for debugging
+/translation true def
+/loglevel 1 def
+m4_include(MMMM_HOMEDIR/library/library.ps)
+/beginpion { /localformat exch def
+    [
+	{/taillepions 45 def /doubleface true def}{}
+	{/taillepions 36 def /doubleface true def}{}
+	{/taillepions 45 def /doubleface false def}
+	{/taillepions 36 def /doubleface false def}
+    ]localformat get cvx exec
+    
+% determination du nom du pion
+    /pions pions 1 add def
+    nompion length 0 eq {/nompion (Pion ) pions 20 string cvs ! def}if
+% calcul de xpion et ypion
+    /xpion Xpos 0.5 add def
+    doubleface {/autrefacefaite false def}if
+    taillepions 100 div xpion Ypos 0.5 add begints (0 0 100 100 re W n\n)out
+    pionstyles style get cvx exec
+}def
+/endpion {
+    finishpion
+    endts
+    /nompion ()def
+    /style 0 def
+}def
+/autreface {
+    finishpion
+    endts
+    /autrefacefaite true def
+    (% pion ") out nompion out ("\n) out
+    taillepions 100 div xpion Xots add Yots Ypos 0.5 add add begints(0 0 100 100 re W n\n)out
+    pionstyles style get cvx exec
+}def
+/beginpagehook {}def
+/dscolor (0 0 0) def
+/begincolordesign{dscolor (0 0 0)eq not{dscolor out space sc}if}def
+/endcolordesign{dscolor (0 0 0)eq not{black sc}if}def
+/designate {begincolordesign /localy exch def /localx exch def
+    localx taillepions 100 div mul Xpos add display space
+    localy taillepions 100 div mul Ypos add display ( m ) out
+    /localy exch def /localx exch def
+    localx display space localy display ( l S\n) out endcolordesign
+} def
+/legende {
+    1000 12 (FontArialNarrow) lefttext
+}def
+/titrage {
+    1000 14 (FontArialNarrow-Bold) centertext
+}def
+/stitrage {
+    1000 12 (FontArialNarrow-Bold) centertext
+}def
+/legended {
+    localx localy 12 sub 1000 12 (FontArialNarrow) centertext
+}def
+/legendeu {
+    localx localy 1000 12 (FontArialNarrow) centertext
+}def
+/legender {
+    localx 3 add localy 6 sub 1000 12 (FontArialNarrow) lefttext
+}def
+/legendel {
+    localx 3 sub localy 6 sub 1000 12 (FontArialNarrow) righttext
+}def
+
+/designateots {begincolordesign /localy exch def /localx exch def
+    localx taillepions 100 div mul Xpos Xots add add display space
+    localy taillepions 100 div mul Ypos Yots add add display ( m ) out
+    /localy exch def /localx exch def
+    localx display space localy display ( l S\n) out endcolordesign
+} def
+
+
+/initfigpions {
+(0 G 0 g 1 w\n)out
+/nompion () def
+/pions 0 def
+/style 0 def
+/cparray [0 0 0 0 0 0] def
+}def
+/cadrefigpions {
+    (q 2 w 0 0 )out pagewidth display space pageheight display ( re S Q\n)out
+}def

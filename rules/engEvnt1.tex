@@ -1,0 +1,1227 @@
+% -*- mode: LaTeX; -*-
+
+\section{Period I}\label{events:pI}
+
+
+
+\subsection*{Event Table of Period I}
+
+\begin{eventstable}[Period I events table]
+  \tabcolsep=5pt\centering
+  \begin{tabular}{|l|*{5}{c}|l|}
+    \hline
+    1\up{st}\textarrow & 1-4 & 5-6 & 7 & 8 & 9 & 10 \\\hline
+    1 & 1  & R2 & 3   & R15 & R16 & \textbullet~1--2 \\
+    2 & 1  & 3  & R11 & R14 & 3   &  +1 then \\
+    3 & 1  & 10 & R12 & 4   & R11 & \nameref{events:pII}\\
+    4 & 3  & 12 & R4  & 7   & R15 & \textbullet~3--10: \\
+    5 & 5  & 13 & R8  & 11  & R4  & \nameref{events:pII} \\
+    6 & R6 & 4  & R4  & R6  & R8  & \\
+    7 & R2 & R6 & R5  & R8  & R3  & \\
+    8 & 7  & 9  & 8   & 9   & R16 & \\
+    9 & 11 & 13 & 3   & 10  & R7  & \\\hline
+    10 & \multicolumn{5}{l}{\nameref{events:pII}} & \\\hline
+  \end{tabular}
+\end{eventstable}
+\begin{eventstablespec}[General modifiers for the period]
+  % \oldref{Rule 53.23.A, modified} \\
+  After \continentAmerica has been discovered and until \ref{pI:Tordesillas}
+  is rolled-for the first time, use the following modifiers for both dice each
+  turn when rolling for events (a result less than 1 is 1):
+  \begin{modlist}
+  \item[\bonus{-1}] If \SPA is \CATHCR or \ref{pI:Reformation2} has not
+    occurred;
+  \item[\bonus{-1}] If new \COL/\TP counters were placed in \continentAmerica
+    last turn;
+  \item[\bonus{-1}] If \SPA or \POR control \payspapaute.
+  \end{modlist}
+\end{eventstablespec}
+% grep '^.evnt' engEvnt1.tex|cut -f2 -d\[|cut -f1 -d\]|sed -e 's/$/|,%/g'#$
+
+\eventssummary{%
+  pI:Tordesillas|,%
+  pI:Emperor Election|,%
+  pI:War Italy Napoli|,%
+  pI:War Italy Milano|,%
+  pI:Hungarian Freedom|,%
+  pI:Bohemian Alliance|,%
+  pI:Hungarian Alliance|,%
+  pI:Milanese Alliance|,%
+  pI:Habsburg Dynasty|E/E,%
+  pI:Revolt Comuneros|,%
+  pI:Reformation|,%
+  pI:Reformation2|,%
+  pI:Reformation3|,%
+  pI:Turkish Diplomatic Pressure|E/E,%
+  pI:War Scotland|,%
+  pI:End Golden Horde|,%
+  pI:Pskov Ryazan|,%
+} \eventssummary{%
+  pI:War Russia Poland|,%
+  pI:War Roads Spices|S{pI:WRS:War Indian Sea}/S{pI:WRS:Veneto-Turkish
+    Commercial Dispute},%
+  pI:Resistance Muslim Traders|,%
+  pI:Chinese Expeditions|,%
+  pI:Barbaros Brothers|,%
+  O|,%
+  pI:Habsburg Alliance|,%
+  pI:Burgundy Inheritance|,%
+  pI:Habsburg Bohemia|,%
+  pI:Habsburg Hungary|,%
+  pI:Fall Hungary|,%
+  pI:Habsburg Milano|,%
+  pI:Spanish Milano|,%
+  pI:Fall Teutonic|,%
+  pI:Spanish Naples|,%
+}
+
+\newpage\startevents
+
+
+
+\event{pI:Tordesillas}{I-1}{Treaty of Tordesillas}{1}{RistoMod}
+
+\history{1494}
+\dure{end of Period III, or until \ref{pIII:Portuguese Annexation}, whichever
+  comes first}
+
+\condition{}
+\aparag Re-roll and do not mark off if \continentAmerica has not been
+discovered.
+\aparag Both \SPA and \POR have to accept this event for it to take
+effect. Otherwise it is marked off, but can occur again.
+
+\phevnt
+\aparag \FRA and \ENG receive a temporary \CB for this turn to declare war
+against both \SPA and \POR.
+\aparag \SPA and \POR receive each 50\ducats.
+
+\effetlong
+\aparag From now on \SPA and \POR have specific areas for overseas expansions:
+\bparag The exclusive area of \POR contains \continent{Middle East},
+\continentSiberia, \continentAsia (except \granderegionPhilippines,
+\continent{Extreme Orient}), \continentAfrica, \continentBrazil.
+\bparag The exclusive area of \SPA contains \continentAmerica except
+\continentBrazil, \granderegionAmazonia, and \granderegion{Minas Gerais}.
+\bparag The regions \granderegionAmazonia, \granderegion{Minas Gerais},
+\granderegionPhilippines, and \continent{Extreme Orient} are shared.
+\aparag[Effects on \SPA and \POR]
+\bparag All markers of \SPA or \POR currently on map in the exclusive area of
+the other \MAJ are immediately destroyed, or may be replaced by the other \MAJ
+by equivalent markers of its own if there are some available, and the \MAJ
+fulfils the conditions to place such a marker here (especially discoveries).
+\bparag Their movements are limited to their areas, the sea zones bordering
+them, and sea zones that borders only islands. \POR may also go in sea zones
+\seazone{Horn} and \seazone{Chili}. \SPA may also go in
+\seazone{Bonne-Esperance} and \seazone{Tempetes}.
+\bparag For each stack of the country violating this restriction, this country
+loses {\bf 1} \STAB per restricted province or sea zone trespassed in. All
+units of \SPA or \POR in prohibited zones when the Treaty is signed must
+immediately return home as per normal peace procedure.
+\bparag Until the end of period II, \SPA and \POR have free overseas
+\terme{CB} against any Minor country in his area, and against any European
+country (Catholic or not) trespassing their area. The free overseas \terme{CB}
+might be used in reaction at the end of a round where a trespassing occurs, or
+at the beginning of the next turn.
+\bparag Until the end of period \period{III}, \SPA and \POR may attack
+\terme{Minor establishments} in their area at no cost in \STAB.
+\bparag Until the end of period III, \SPA and \POR have the capability to burn
+down \COL installed in their area (same condition as for burning \TP).
+\bparag Spanish Missionaries and Missions can only go in the exclusive area of
+\SPA until the end of the Treaty (not in the shared area).
+\aparag[Shared Area]
+\bparag The regions that can be disputed between \POR and \SPA can be explored
+by both countries and they can settle \COL and \TP without penalty.
+\bparag If \POR has a \TP or \COL in \granderegionPhilippines,
+\granderegionAmazonia or \granderegion{Minas Gerais}, \SPA gains an Overseas
+\CB against \POR.
+\bparag If \SPA has a \TP or \COL in \granderegionPhilippines or
+\continent{Extreme Orient}, \POR has an Overseas \CB against \SPA.
+\aparag[Effects on other countries] Until the end of period II all \COL/\TP
+placement attempts (successful or not), and any movement of units from the
+European Map into \ROTW (not in the other way) by Catholic players other than
+\SPA or \POR entail to this \MAJ a malus of \bonus{-2} to \STAB improvement
+action and the loss of control of \payspapaute. This malus is applied at most
+once per turn.
+\aparag The \terme{Treaty of Tordesillas} can be declared void by \POR or \SPA
+as a Diplomatic Announcement. The Treaty is at an end, the other power gains
+an immediate free \terme{CB} against the announcer; the announcer loses
+diplomatic control of \payspapaute.
+
+
+
+\event{pI:Emperor Election}{I-2}{Election of the \HRE Emperor}{1}{RistoMod}
+
+\history{1519}
+\dure{until the Emperor is Habsburg.}
+
+\phevnt
+\aparag Election of the new Emperor has to be conducted. The pretenders are
+the monarchs of \SPA, \FRA, \ENG, and \POL if they are Catholic.  Each
+Pretender makes a secret bid of Ducats (a multiple of 10\ducats) for the
+title, and the country with the highest bid will win. In case of draw, those
+Pretenders bid again secretly an additional bid. All bids are lost.
+\aparag A candidate from one (unspecified) minor country makes a bid of 2d10
+times 10\ducats (rolled for after the initial bids of the players ; in case of
+ties, this candidate bids in addition of 1d10 times 10\ducats). If the winner
+of the bid, and so the Emperor is a from a Minor Power, he will live 1d10
+turns before a new election takes place. The event is still marked.
+\aparag Each Minor Country that has the Electoral Dignity: \paysCologne,
+\paysPalatinat, \paysSaxe, \paysTreves, \paysMayence, \paysBrandebourg,
+\paysBoheme gives a free bid of 10\ducats to the Pretender secretly decided at
+the bidding time by the Major Country having Diplomatic alliance with the
+Electorate. If they are Neutral, they give their bid to the pretender of the
+minor country
+\aparag At the first election, the House of Fugger provides an immediate and
+mandatory national loan of 50\ducats for this election
+% (interest rate of 5\% for a duration of 5 turns)
+to \SPA, or 100\ducats if the monarch of \SPA is \monarque{Charles V}, that
+are directly put in the RT.
+\aparag The winner of the Crown gains 75\ducats and 10 VP.
+\aparag The new Emperor has now the benefice pertaining to the \HRE,
+see~\ruleref{chSpecific:HRE}.
+\aparag If the Emperor is Spanish and \ref{pI:Habsburg Alliance} is in effect,
+\SPA gains the possibility to involve \HAB in all wars in which \SPA is
+currently involved (both as attacker and defender), but not conversely. This
+is made with a free \CB.
+\aparag If the Emperor is \FRA, \ENG or \POL, \SPA may declare a war (with no
+\CB) against the new Emperor and \AUSaus will help in a offensive alliance. A
+valid victory condition for \SPA is to cause immediately a new election where
+the losing power can not be a candidate.
+
+\effetlong
+\aparag When the elected emperor dies or converts to another religion, a new
+election occurs with the same system during the very next Event Phase.
+\aparag However, if the dying Emperor is Spanish, the event terminates
+permanently and no elections are held. The title of emperor reverts back to
+\AUSaus and all effects of the event are cancelled. Furthermore, the
+\dynasticaction{C}{2} is activated now if possible.
+% C2=Spanish Milanese
+
+
+
+\event{pI:War Italy Napoli}{I-3 (1)}{Wars in Italy (Napoli)}{1}{RistoMod}
+
+\history{1494-1504, 1508}
+
+\condition{Mandatory War.}
+\aparag If \FRA is Protestant, mark off the event but apply \RD with the
+\REVOLT in \FRA.
+\aparag If \paysNaples exists no more, mark off the event, then apply and mark
+off the second event.
+\aparag The second event can not take place if the first one is not
+finished. In that case re-roll and do not mark off. \phevnt
+\aparag \FRA has a Mandatory \CB against \paysNaples. This \CB has to be used
+this turn or the next, at the phase of Declaration of War. If the \CB is used,
+the controller of \paysNaples may abandon the minor country with no cost, even
+if it is own \VASSAL (because of valid Dynastic Claims of the French King).
+\aparag If \FRA is already at war against this country, the war is linked to
+this event at this turn and that fulfils the Mandatory \CB.
+
+\phdipl
+\aparag[Refusing the event]
+\bparag At the very beginning of the Declarations Phase, \FRA may refuse the
+event.
+\bparag If \FRA refuses the event, it loses {\bf 2} \STAB and the rest of the
+event is ignored.
+\aparag[Entry in War of the Italian countries]
+\bparag The following countries may be involved by themselves in the war:
+\paysGenes, \paysMilan, \payspapaute, \paysSavoie, The following tests are
+made each turn of the war (excepted if the \MIN was already forced out of the
+war by a separate peace).
+\bparag Those countries in the list that are allied to a \MAJ involved in the
+war, make a mandatory test of Entry in the War as per the usual rules
+\ruleref{chDiplo:Entry War Minor}, excepted that the \MAJ has no choice here
+and this test is made even if the \MIN is not in \EG; if the \MIN is not in
+\EG at least, use \bonus{-2} to the die roll in the test and a failure does
+not change the diplomatic status of the \MIN.
+\bparag Those countries in the list that are \Neutral, may join the following
+\MAJ according to the roll of 1d10: 1 \FRA, 2-3 \HAB, 4 \VEN, 5-6 enters war
+by itself, 7-10 stays \Neutral. A country joins a \MAJ only if it is involved
+in the war ; it is then put in \EG of this \MAJ, and declares war of the
+enemies of this \MAJ. If the \MAJ is not involved in the war, the \MIN stays
+\Neutral.
+\bparag If a \MIN enters war by itself, it declares war to all involved
+countries then it asks help of the preferred country in its list that is not
+one of its enemies.
+\aparag[Diplomatic effects of the wars] \FRA has a bonus of \bonus{+2} for its
+diplomacy on \paysToscane and \bonus{-1} for \payspapaute and \paysParme
+during the event.
+\aparag[The Serenissima in the Wars in Italy]
+\bparag \VEN has a \CB against \FRA and/or \paysNaples, as long as the war is
+not finished.
+\bparag During this war also, \VEN may make limited intervention at the side
+of any involved alliance each turn. Such limited intervention can begin at any
+turn (not only the first) and \VEN can change side between turns. \VEN may
+force any Italian \MIN in limited intervention for the enemy alliance, to be
+fully involved in the war.
+\bparag Conversely, \FRA and \HAB both have a free \CB against \VEN, to be
+used at any turn of the war or on the turn following its conclusion.
+
+\phmil
+\aparag[First turn of the war] \FRA has the right of free access and supply in
+all Italian minor countries not engaged in this war. Supply is not given by a
+province if its city is besieged by country hostile to this city.
+\aparag[Restricted War Field]
+\bparag The war is restricted to \regionItalie if no side broadens the zone of
+war.
+\bparag The war is no more restricted if the side of \FRA invades a province
+outside \regionItalie of the other side. \FRA loses immediately {\bf 1} \STAB
+and 20 \VP, and if the invasion was not due to \FRA, the Major Power
+responsible for it loses also {\bf 1} \STAB and 20 \VP. However, if dynastic
+actions \shortdynasticaction{A}{1} and \shortdynasticaction{A}{2} have both
+been played, the penalty in \VP is void.
+\bparag The war is also no more restricted if the side enemy of \FRA invades a
+province of the side of \FRA outside \regionItalie and that stack does not
+draw its supply from \regionItalie.
+\aparag At the time a stack of \FRA invades \provinceCampania, \FRA, \SPA and
+\HAB gain free access in, but only supply across, Italian minor countries not
+engaged in this war. Supply across a province is impossible if its city is
+under siege by an enemy of this city.
+
+\phinter
+\aparag If \FRA does not manage the military conquest of \ville{Napoli} at any
+time of this war, it loses 10 \VP at the end of the event.
+\aparag If, on the contrary, \FRA annexes \provinceCampania, it gains 10\VP.
+\aparag[Spanish reaction] \SPA has to choose to do \dynasticaction{A}{3} as
+one of its diplomatic action on the turn following the beginning of the war
+(this will use a Diplomatic action, with no cost and automatic success, but
+\SPA is allowed another Dynastic Action this turn), thus activating event
+\ref{pI:Spanish Naples} or renounces to its Inheritance: it then loses {\bf 3}
+\STAB, and \dynasticaction{A}{3} is considered played for no effect.
+
+\effetlong
+\aparag If at any time of this war \FRA manages the military conquest of
+\ville{Napoli}, it gains a \CB against \TUR for the rest of the period.
+Moreover, \FRA may now annex \provinceTrakya until the end of the period.
+\aparag Until the end of the current period, \FRA has a permanent \CB against
+the owner of \provinceCampania.
+
+
+
+\event{pI:War Italy Milano}{I-3 (2)}{Wars in Italy (Milano)}{1}{RistoMod}
+
+\history{1510-1511 / 1513-1515}
+\dure{Until the end of the war caused by this event.}
+
+\condition{Mandatory War.}
+\aparag If \FRA is Protestant, marked off the event but apply \RD with the
+\REVOLT in \FRA.
+\aparag The second event can not take place if the first one is not
+finished. In that case re-roll and do not mark off.
+
+\phevnt
+\aparag \FRA has a Mandatory \CB against the owner of \provinceLombardia. This
+\CB has to be used this turn or the next, at the phase of Declaration of
+War. If \FRA is \CATHCR after \ref{pI:Reformation}, the \CB is free.
+\aparag If \FRA is already at war against this country, the war has to become
+the war linked to this event at this turn or the following (the choice is made
+by \FRA during the Declarations of War) and that fulfils the Mandatory \CB.
+\aparag If \FRA owns \provinceLombardia, any former owner of this province has
+a free \CB against \FRA.
+
+\phdipl
+\aparag[Refusing the event]
+\bparag At the very beginning of the Declarations Phase, \FRA or the owner of
+\provinceLombardia may refuse the event.
+\bparag If \FRA refuses the event, it loses {\bf 2} \STAB and the rest of the
+event is ignored.
+\bparag If the owner of \provinceLombardia refuses the event, it loses {\bf 3}
+\STAB and gives \provinceLombardia to \FRA (or its former controller if it was
+\FRA that refused the event). Then the rest of the event is ignored. If this
+province is owned by the \HAB, \SPA may refuse the event (and lose the \STAB).
+\aparag[Milan as a Minor country] If \provinceLombardia is owned by the Minor
+country \paysMilan, \HAB have a free \CB in reaction to a Declaration of War
+of \FRA against this country. \paysMilan is moved up to \EG on the diplomacy
+track of \HAB if it was not already on a higher position.
+\aparag[The Papacy and the war] If \payspapaute is allied to a \MAJ involved
+in the war, each turn make a mandatory test of Entry in the War is made as per
+the usual rules \ruleref{chDiplo:EW Effects}, excepted that the \MAJ has no
+choice here and this test is made even if the \MIN is not in \EG; if the
+\paysPapaute is not in \EG at least, use \bonus{-2} to the die roll in the
+test and a failure does not change its diplomatic status. Exception: if
+\payspapaute was forced out of this war, it does not enter back in it.
+\aparag[Diplomatic effects of the wars] \FRA has a bonus of \bonus{+2} for its
+diplomacy on \paysToscane and \bonus{-1} for \payspapaute and \paysParme
+during the event.
+\aparag[The Serenissima in the Wars in Italy]
+\bparag \VEN has a \CB against \FRA and/or the owner of \provinceLombardia, as
+long as the war is not finished.
+\bparag During this war, \VEN may make limited intervention at the side of any
+involved alliance each turn. Such limited intervention can begin at any turn
+(not only the first) and \VEN can change side between turns.  \VEN may force
+any Italian \MIN in limited intervention for the enemy alliance, to be fully
+involved in the war.
+\bparag Conversely, \FRA and \HAB both have a (normal) \CB against \VEN, to be
+used at any turn of the war.
+\aparag[Swiss Mercenaries] If \paysMilan is (or was) a vassal of \HAB
+(according to \ref{pI:Habsburg Milano}), \HAB may gain \paysSuisse in \CE
+automatically at the cost of one Diplomatic action.
+
+\phmil
+\aparag[Restricted War Field]
+\bparag The war is restricted to \regionItalie if no side broadens the zone of
+war.
+\bparag The war is no more restricted if the side of \FRA invades a province
+outside \regionItalie of the other side. \FRA loses immediately {\bf 1} \STAB
+and 20 \VP and if the invasion was not due to \FRA, the Major Power
+responsible for it loses also {\bf 1} \STAB and 20 \VP. However, if dynastic
+actions \shortdynasticaction{A}{1} and \shortdynasticaction{A}{2} have both
+been played, the penalty in \VP is void.
+\bparag The war is also no more restricted if the side enemy of \FRA invades a
+province of the side of \FRA outside \regionItalie and that stack does not
+draw its supply from \regionItalie.
+\aparag \paysSavoie gives free access and supply in its province to \FRA
+during the first turn of the war, if it stays neutral in this war. Supply from
+or across a province is impossible if its city is under siege by an enemy of
+this city.
+\aparag If \ref{pI:Habsburg Milano} was not played and \FRA besieges the city
+of \provinceLombardia with at least one \ARMY\faceplus, it takes the city
+without resolving the siege and annexes immediately the province; \FRA may
+destroy the Minor country \paysMilan by this way.
+
+\effetlong
+\aparag[Passing through \paysSavoie]
+\bparag At the instant \FRA annexes \provinceLombardia during the war, it
+gains from \paysSavoie free access and supply through its provinces (but no
+stopping in, or supply from) when at peace with \FRA. Supply across a province
+is impossible if its city is under siege by an enemy of this city.
+\bparag This right is void if/when \FRA is at war against \paysSavoie, and is
+permanently lost if \FRA loses \provinceLombardia.
+\bparag Enemies of \FRA gain the same right when at war with \FRA.
+\aparag At the end of this event, if the Minor country \paysMilan still
+exists, \dynasticaction{B}{2} is played then \HAB annexe all its provinces and
+the minor country disappears.
+\aparag Until the end of the current period, \FRA has a \CB against the owner
+of \provinceLombardia.
+
+
+
+\event{pI:Hungarian Freedom}{I-4 (1)}{Declaration of Hungarian
+  Freedom}{1}{RistoMod}
+
+\history{1505}
+
+\condition{If \ref{pI:Habsburg Hungary} or \ref{pI:Fall Hungary} has already
+  been activated, mark off but play \RD.}
+
+\phevnt
+\aparag The Hungarian Inheritance (\ref{pI:Habsburg Hungary}) that might be
+pending is now impossible.
+\aparag \POL has the immediate choice of supporting a Jagiellon dynasty in
+\paysHongrie. If it does, it gains \paysHongrie in \MR at once, makes a white
+peace with it if necessary, and gains a temporary \CB against any countries at
+war against \paysHongrie.
+\bparag Else, \paysHongrie becomes \Neutral.
+\aparag \HAB has a temporary \CB against \paysHongrie. See also \ref{pI:Fall
+  Hungary} that might happen.
+
+\effetlong The \dynasticaction{C}{1}, the events \xref{pI:Hungarian Alliance}
+and \xref{pI:Habsburg Hungary} are no more possible and will be ignored.
+
+
+
+\event{pI:Bohemian Alliance}{I-4 (2)}{Dynastic Alliance with
+  \paysBoheme}{1}{RistoMod}
+
+\history{1526}
+
+\condition{If \ref{pI:Habsburg Bohemia} has already been played, mark off and
+  play \RD.}
+
+\phevnt
+\aparag The \dynasticaction{B}{1} is played, and it activates \ref{pI:Habsburg
+  Bohemia}.
+
+
+
+\event{pI:Hungarian Alliance}{I-5}{Dynastic Alliance with
+  \payshongrie}{1}{RistoMod}
+
+\history{1491, not activated}
+\dure{until the activation of \ref{pI:Habsburg Hungary} or \ref{pI:Habsburg
+    Bohemia}, or the \ref{pI:Hungarian Freedom}}
+
+\condition{If \shortdynasticaction{C}{1} or \ref{pI:Hungarian Freedom} has
+  already been played, mark off and play \RD.}
+
+\phevnt
+\aparag The \dynasticaction{C}{1} is played, and consequently \ref{pI:Habsburg
+  Hungary} is pending.
+\aparag \POL gains a temporary \CB against \paysHongrie.
+
+\phdipl
+\aparag At the beginning of each diplomatic phase, the diplomatic status of
+\paysHongrie moves one level toward the track of \HAB, up to \EG. This ends if
+\ref{pI:Fall Hungary}, \ref{pI:Hungarian Freedom} or \ref{pI:Habsburg Hungary}
+happens.
+
+
+
+\event{pI:Milanese Alliance}{I-6}{Dynastic Alliance with Milano}{1}{Risto}
+
+\condition{If \shortdynasticaction{C}{1} or \ref{pI:Hungarian Freedom} has
+  already been played, mark off and re-roll.}
+
+\aparag The \dynasticaction{B}{2} is played, and it activates \ref{pI:Habsburg
+  Milano}.
+
+
+
+\event{pI:Habsburg Dynasty}{I-7 (1)}{Habsburg Dynastic Action}{2}{PBNew}
+
+\phevnt
+\aparag \SPA may immediately play one dynastic action of its choice, without
+test nor cost.
+\bparag This action may be an annexation of one of the Provinces of the
+North-East, if applicable.
+
+
+
+\event{pI:Revolt Comuneros}{I-7 (2)}{Revolt of the Comuneros}{1}{PBNew}
+
+\history{1520-1522}
+
+\phevnt
+\aparag Place one \REVOLT\facemoins in \provinceToledo, one Rebel
+\ARMY\facemoins, \LD with a minor \LeaderG. The rebels control the fortress
+(reduced to level 2 max if need be).
+\aparag Draw at random 2 other provinces where a \REVOLT\facemoins is placed,
+by rolling 1d10: 1-2 \province{La Mancha}, 3-4 \province{Castilla La Nueva},
+5-6 \provinceSalamanca, 7-8 \provinceLeon, 9-10 \province{Castilla La Vieja}
+\aparag The Rebels are controlled by \RUS (the most remote player designers
+could think of).  They will receive no reinforcement (excepted through \REVOLT
+extension).
+
+
+
+\event{pI:Reformation}{I-8 (1)}{Reformation}{1}{RistoMod}
+
+\history{1517-1560}
+
+\tour{Turn 1}
+
+\phevnt
+\aparag[Luther's 95 Thesis] \paysDanemark, \paysSuede, \paysBerg, \paysSuisse,
+\paysHanse, \paysprovincesne, \paysHesse, \paysSaxe, \paysHanovre,
+\paysOldenburg, \paysBrunswick, and \paysBoheme become Protestant.
+\aparag \terme{Religious enmities} begin between Protestant and Catholic
+countries. They will end when \ref{pIV:TYW} is terminated, or at the beginning
+of period IV if this event ended before, or at the end of period IV if the
+event is not yet finished.
+\aparag[Orthodoxes in Poland] \POL has to decide of its attitude regarding
+Orthodoxy: Conversion, Tolerance or Support.
+\bparag The lasting effects are mainly described in
+\ruleref{chSpecific:Poland:Orthodoxy}.
+\bparag If \POL chooses Support of Orthodoxes, it loses {\bf 2} \STAB and
+rolls for 2 \REVOLT on its table.
+\bparag If \POL chooses Tolerance of Orthodoxes, it loses {\bf 1} \STAB and
+rolls for 1 \REVOLT on its table.
+\aparag[Russian Religious Attitude] \RUS has to decide its behaviour regarding
+Religions: Championship of Orthodoxy or Religious Tolerance.
+\bparag The lasting effects are mainly described in
+\ruleref{chSpecific:Russia:Orthodoxy}.
+\bparag If \RUS chooses Religious Tolerance, it loses {\bf 2} \STAB and rolls
+for 1 \REVOLT on its table.
+
+\tour{Turn 2}
+
+\phevnt
+\aparag \paysBrandebourg becomes Protestant. Play \ref{pI:Fall Teutonic} as a
+supplementary event this turn.
+
+
+
+\event{pI:Reformation2}{I-8 (2)}{Growth of the Reformation}{1}{RistoMod}
+
+\history{1517-1560}
+
+\phevnt
+\aparag \FRA, \SPA, \ENG and \POL must choose between \CATHCR, \CATHCO or
+Protestantism (forbidden to \SPA). The choice is made simultaneously and
+secretly at the beginning of the Phase of Declarations. It cannot be
+voluntarily changed later except by events. If \POL has chosen Support of
+Orthodoxes, he is complied to choose \CATHCO now.
+
+\phase{Consequence:}{Each country is affected by the following general
+  consequences, added to specific effects for each country, described
+  afterwards.}
+\aparag[\CATHCR]
+\bparag If only one of the eligible players chooses \CATHCR, he is permanent
+Sole Defender of Catholic Faith and receives 20 \VP.
+\bparag If more players choose \CATHCR, the Sole Defender of Catholic Faith is
+determined according normal procedure but between them only.
+\bparag If none of the eligible players chooses \CATHCR, all of them lose {\bf
+  1} additional \STAB.
+\bparag A bonus of \bonus{+1} is received for diplomacy on all Catholic
+countries until the end of \terme{Religious Enmities}.
+\aparag[\CATHCO]
+\bparag {\bf 1} \STAB is lost.
+\bparag One \REVOLT is rolled in the player country.
+\bparag An additional Diplomatic Action is gained and a \bonus{+2} bonus is
+received for diplomacy on all Protestant countries until the end of
+\terme{Religious Enmities}.
+\aparag[Protestantism]
+\bparag No Diplomacy (support included) with \payspapaute until the end of the
+current period. Control of \payspapaute is lost.
+\bparag {\bf 2} \STAB are lost.
+\bparag Two \REVOLT are rolled in the player country.
+
+\begin{digressions}[Specific effects]
+
+
+  \digression[pI:Reformation:France]{\sc France}
+  \aparag[Independent \paysVhollande] If \paysVhollande is or comes into play
+  before the \xnameref{pV:WoSS}, immediately apply \ref{pIII:Dutch Revolt}.
+  \aparag[\CATHCR]
+  \bparag Some events (especially \xnameref{pIII:FWR}, \xnameref{pV:Expulsion
+    French Protestants}) are modified.
+  \aparag[\CATHCO]
+  \bparag \bonus{+1} bonus to \STAB improvement attempts this turn and the two
+  following ones.
+  \aparag[Protestantism]
+  \bparag No Diplomacy (support included) with \payspapaute until the end of
+  period III.
+  \bparag Some events (\xnameref{pI:War Italy Napoli}, \xnameref{pI:War Italy
+    Milano}, \xnameref{pII:War Italy}, \xnameref{pIV:La Rochelle},
+  \xnameref{pIII:FWR} \xnameref{pV:Expulsion French Protestants},
+  \xnameref{pV:Colbertian Mercantilism}) are modified.
+  \bparag The turn and period limits of \FRA are changed. \FRA receives an
+  explorer for one turn as per~\ref{eco:Explorer}.
+
+
+  \digression[pI:Reformation:Spain]{\sc Spain}
+
+  \aparag[\CATHCR]
+  \bparag Permanent bonus \bonus{+2} for diplomacy on \payspapaute.
+  \bparag \SPA gains the possibility of forcing Restoration of Catholicism in
+  Protestant countries, with the relevant bonuses.
+  \aparag[\CATHCO]
+  \bparag A further {\bf -1} in \STAB is applied.
+  \bparag A malus of \bonus{-2} to \STAB improvement attempts for the rest of
+  the period and the following one
+  \bparag Restoration of Catholicism in Protestant countries gives no bonuses.
+  \bparag Dynastic actions are no more allowed, except when permitted or
+  required by an event.
+  \begin{designnote} Future option: modifications of some events: [temporary
+    list II-9, III-1, III-7, III-8, III-11, IV-1 and V-8]. As this choice
+    might largely change the course of the game, especially for the player of
+    \VEN, it is good policy to have part of an agreement with this player
+    before choosing this attitude.
+  \end{designnote}
+
+
+  \digression[pI:Reformation:England]{\sc England}
+
+  \aparag[\CATHCR]
+  \bparag The turn and period limits of \ENG are changed.
+  \aparag[\CATHCO]
+  \bparag \bonus{+1} bonus to \STAB improvement attempts this period and the
+  following one.
+  \aparag[Protestantism]
+  \bparag The turn and period limits of \ENG are changed. \ENG receives an
+  explorer for one turn as per~\ref{eco:Explorer}.
+  \bparag Each time \ENG is rolled-for in the Revolt Country chart, the number
+  of \REVOLT is doubled. This continues until the end of period III.
+  \aparag The Religious and Civil Wars of \ENG (\xnameref{pII:Act Supremacy},
+  \xnameref{pIV:English Civil War}, \xnameref{pV:Glorious Revolution} and
+  \xnameref{pVI:Jacobite Rebellion}) depend on its Religious choice.
+
+
+  \digression[pI:Reformation:Poland]{\sc Poland}
+
+  \aparag[\CATHCR]
+  \bparag Some events (\xnameref{pI:Fall Teutonic}, \xnameref{pIII:Union
+    Poland Sweden}, \xnameref{pIV:TYW}, \xnameref{pV:Saxon King Poland}) are
+  modified.
+  \bparag \POL gain a \CB against all Protestant countries until the end of
+  period III, and the right to convert them to Catholicism.
+  \aparag[\CATHCO]
+  \bparag \bonus{+1} bonus to \STAB improvement attempts this turn and the two
+  following ones.
+  \aparag[Protestantism]
+  \bparag The Union of Lublin (see \xnameref{pII:Union Lublin} or
+  \xnameref{pIII:Union Lublin}) is broken and will not be possible. Some other
+  events (\xnameref{pIV:Bohemian Revolt}) are modified.
+  \bparag The turn and period limits of \POL are changed.
+\end{digressions}
+
+
+
+\event{pI:Reformation3}{I-8 (3)}{Intensification of the
+  Reformation}{1}{RistoMod}
+
+\history{1517-1560}
+
+\phevnt
+\aparag[Calvin] \paysPalatinat, \paysThuringe and \paysecosse become
+Protestant.
+
+
+
+\event{pI:Turkish Diplomatic Pressure}{I-9}{Turkish Diplomatic
+  Pressure}{2}{Risto}
+
+\history{no specific date}
+
+\condition{If \leaderBarbaros is in play, \TUR may choose to apply
+  \ref{pII:Algeria Vassalisation} instead.  If \leaderDragut is in play, \TUR
+  may choose to apply \ref{pII:Alignment of Barbaresques} instead.}
+
+\phdipl
+\aparag \TUR receives a bonus of \bonus{+3} for a Muslim minor of its
+choice. Choice has to be made secretly during the negotiations step.
+
+
+
+\event{pI:War Scotland}{I-10}{War with Scotland}{1}{Risto}
+
+\history{1513-1514}
+
+\condition{}
+\aparag Occurs only if \paysecosse is at present inactive. Otherwise re-roll.
+\aparag \ENG can refuse this event (mark as played) by losing {\bf 2} \STAB
+and 20 \VP. It also loses the control of \paysecosse and can then make no
+diplomacy on it until the end of period.
+
+\phevnt
+\aparag \paysecosse declares war against \ENG, which loses the control of
+\paysecosse.
+\aparag Allies can be called for this war as per normal rules.
+\aparag Control of \paysecosse is offered to the first country in the list:
+\bparag Any current enemy of \ENG (follow the normal preferences to decide
+which).
+\bparag The current controller of \paysecosse or, failing that, another power,
+according to the usual rules.
+
+\phadm
+\aparag For the duration of the event, \paysecosse receives reinforcements in
+offensive attitude.
+
+
+
+\event{pI:End Golden Horde}{I-11 (1)}{The End of the Golden Horde}{1}{PB}
+
+\history{1502}
+
+\condition{}
+\aparag If \paysCrimee exist no more, mark off and play \RD instead.
+
+\phevnt
+\aparag \paysCrimee declares war to \paysSteppes. The war is not played.
+\aparag Both countries make mandatory White Peaces in existing wars.
+
+\phdipl
+\aparag Diplomacy, Call to Allies or Limited intervention is forbidden for
+these two countries for the duration of the turn, and neither exterior
+involvement in this war is allowed.
+
+\phpaix
+\aparag The Khanate of the Golden Horde is defeated by \paysCrimee at the end
+of turn. From now on, the minor country \paysSteppes has reduced military
+forces and stop helping other Khanates when attacked.
+
+
+
+\event{pI:Pskov Ryazan}{I-11 (2)}{Russian Annexation of Pskov and
+  Ryazan}{1}{PB}
+
+\history{1510 and 1517}
+
+\phevnt
+\aparag The provinces \provincePskov and \provinceRyazan become Russian
+National provinces.
+\aparag \RUS can annex immediately one the two countries \paysPskov or
+\paysRyazan of its choice.
+\aparag A \MAJ having the annexed country on its track has a \CB against \RUS
+at this turn.
+\aparag \POL has a \CB against \RUS at this turn.
+
+
+
+\event{pI:War Russia Poland}{I-12}{War between Russia and Poland}{1}{PB}
+
+\history{1507-1522 / 1534-1537}
+
+\condition{If \RUS and \POL are already at war against each other, mark off
+  the case and play \RD instead.}
+
+\phevnt
+\aparag \RUS has a temporary free \CB against \POL and \POL has a temporary
+free \CB against \RUS. Those \CB may be used this turn or the following
+turn. If no power uses it, both lose 1 \STAB on the second turn.
+
+
+
+\event{pI:War Roads Spices}{I-13}{Wars on the Roads of Spices}{2}{PBMod}
+
+\history{1508-09/non historic}
+
+\condition{}
+\aparag If there is a \TP/\COL producing a \POSPICE belonging to any European
+country, apply the \ref{pI:WRS:War Indian Sea}. It can happen only once.
+\aparag Otherwise, apply \ref{pI:WRS:Veneto-Turkish Commercial Dispute}.  This
+event can also happen only once.
+\aparag If the second event happened and the first is not possible, do not
+mark off and re-roll.
+
+
+\subevent[pI:WRS:War Indian Sea]{War in Indian Sea}
+
+\phevnt
+\aparag \paysEgypte and \paysGujerat allies themselves.  They declare an
+overseas war to any European country having a \TP/\COL in \continentAfrica
+north-east of \granderegionNatal (included) or \continentAsia west of
+\granderegionMalaisie and \granderegionSumatra (both included). They naturally
+break diplomatic relations with countries they declare war to.
+\bparag If \paysEgypte exists no more, \TUR gains an \dipAT with \paysGujerat.
+\aparag A Major country having \terme{Treaty} with the \paysGujerat or any
+diplomatic status with \paysEgypte has an oversea \CB at this turn against all
+the countries aimed by the event (all at once).
+
+\phdipl
+\aparag From now on, \VEN can make diplomacy to \paysAden, \paysOman and
+\paysGujerat, even through it does not know adjacent sea zones or have
+\TP/\COL adjacent. However if \VEN is at war against the owner of the
+\CCs{Grand Orient} it can make no diplomacy on these countries, and any
+\terme{Treaty} it might have is inactive during the war; still it can resist
+diplomatic attempts from other Major powers.
+
+\phadm
+\aparag \paysEgypte gains the discoveries of all seas from
+\seazone{Seychelles} to \seazone{Malaisie}, bordering coastal zones (and
+\seazone{Indien} excepted). From now on, \paysEgypte has only one \ARMY
+counter, but has also one \FLEET counter (but no navy in basic forces) and can
+use all its detachments as \LD or \ND, and gains 2 counters \LDENDE.
+\bparag If \paysEgypte exists no more, \TUR gains the discoveries of
+\seazone{Mascate} and \seazone{Indus} (only).
+\aparag In the first turn of war induced by the event \paysEgypte chooses
+Naval reinforcement.
+\aparag On the first turn of war caused by the event, \paysGujerat raises an
+additional \FLEET\facemoins (even if it is beyond its basic forces; it keeps
+these warships until the end of the war).
+
+\phpaix
+\aparag At the end of the first turn of the war (only the first), the two
+minor countries do not automatically accept a White Peace as usual in Overseas
+Wars.  A formal peace has to be obtained.
+
+
+\subevent[pI:WRS:Veneto-Turkish Commercial Dispute]{Veneto-Turkish Commercial
+  Dispute}
+
+\phevnt
+\aparag As long as the \CCs{Grand Orient} is in \paysEgypte, \TUR can not, by
+any means, receive part of its income.
+
+\phdipl
+\aparag \TUR gains a temporary free \OCB against \VEN.
+\aparag At any following turn, \VEN can nullify the event by announcing it at
+the beginning of the Declaration phases.  \VEN loses {\bf 1 } \STAB and \TUR
+regains rights to part of the income of \CCs{Grand Orient} if it controls
+\paysdamas. \TUR loses the \CB given by the event whereas \VEN gains a \CB
+against \TUR, valid once before the end of the current period.
+\aparag If \TUR makes a winning peace of level 2 or more against \VEN in a war
+(oversea or regular), it can ask for its right on the \CCs{Grand Orient}
+instead of one peace condition.
+
+
+
+\event{pI:Resistance Muslim Traders}{I-14}{Resistance of Muslim
+  Traders}{1}{PBNew}
+
+\history{Non historic}
+
+\condition{}
+\aparag If the country \paysGujerat is destroyed, all European \TP in
+\granderegionGujarat, \granderegionMalacca, \granderegionSumatra,
+\granderegionJava, and \granderegion{Iles aux epices} will be attacked by
+Natives during the turn.
+\aparag If the country \paysGujerat still exists, use the following events.
+
+\phevnt
+\aparag All undestroyed \TP of \paysGujerat regain their initial level.  All
+European \TP in the same Region will suffer a \CONC attempt at this turn from
+\paysGujerat (Medium Investment).
+\aparag In all provinces were \TP of \paysGujerat have been destroyed before,
+European \TP will be attacked by Natives during the turn.
+
+
+
+\event{pI:Chinese Expeditions}{I-15}{Chinese Expeditions}{1}{PBNew}
+
+\history{Abandoned before 1492}
+
+\phevnt
+\aparag \paysChine gains three \TP of level {\bf 3} in the following
+provinces: \provinceCalicut, \province{Malacca S}, \provinceMadras, replacing
+existing \TP from \paysGujerat, and 2 \DT on each \TP.
+\aparag However, if an European country has already discovered a sea zone
+adjacent to the postulated position of those \TP, the Chinese \TP is not
+placed here but in one province (determined randomly among those free of
+\TP/\COL) in the following Regions (in this order, 1 by region):
+\granderegionJava, \granderegionCelebes, \granderegionSumatra,
+\granderegion{Iles aux epices} (if there is not enough unoccupied provinces in
+those, the remaining \TP are lost).  Those \TP only have one \DT and level 1.
+\aparag The Chinese \TP take the exploitation of resources (\RES{Products of
+  Orient} first then \RES{Spices}) without concurrence; a Major Power will
+have to make proper \CONC to take them back.
+\aparag From now on, \paysChine has increased basic forces.  Added to the 2
+\ARMY\faceplus in mainland \paysChine, it has garrisons of 1 \LD per \TP (or 2
+\LD if they remain from the event), one \FLEET\faceplus and one Admiral (use
+one from the minor pool, with the added capacity to go in the \ROTW) that can
+move freely in the \ROTW when at war. Its reinforcements are one
+\ARMY\faceplus in mainland, and a \LD, a \ND for the garrisons.
+\aparag \paysChine has a \FTI of 2. The Chinese \TradeFLEET in \stz{Formose}
+is increased to level 4.
+\aparag \paysChine is considered to have discovered all land regions of
+\continentAsia (including islands but \granderegionOceania and
+\granderegionPacifique excepted) and those of \continentAfrica north and east
+of \granderegionNatal included. It also has discovered all sea zones bordering
+those territories.
+
+
+
+\event{pI:Barbaros Brothers}{I-16}{Barbaros Brothers}{1}{PBNew}
+
+\history{1516}
+
+\condition{Takes place only if leader \leaderBarbaros is not yet in play or no
+  more alive.  If \leaderBarbaros is in play, apply \xnameref{pII:Algeria
+    Vassalisation}}
+
+\phevnt
+\aparag If not controlled by Turkish, \paysAlgerie becomes immediately in
+Neutral.
+\aparag On this turn, the Algerian \corsaire is raised \faceplus and is
+supposed to have an admiral of Manoeuvre 3 leading it (another Brother).
+
+
+
+\event{pI:Habsburg Alliance}{I-A}{Dynastic Alliance of the Habsburg}{1}{PB}
+
+\history[Philip the Handsome, Habsburg heir, marries Juana the Mad, heiress of
+Spain.]{1496}
+
+\activation{Activated by \dynasticaction{A}{1}}
+
+\phevnt
+\aparag \SPA and \HAB are now allied in a specific way as described
+in~\ruleref{chSpecific:Habsburg Dynastic Alliance}.  The diplomatic counter of
+\HAB is placed in \EG of \SPA.
+\aparag \SPA has now the right to annex the \paysprovincesne through war (it
+has a \CB for such a war) or diplomatic actions.
+\aparag \SPA has a temporary \CB at this turn or the following against any
+country possessing any province that was part of \paysBourgogne in 1492.
+
+\effetlong
+\aparag[The Habsburg] The special alliance is now enforced between \SPA and
+\HAB as per \ruleref{chSpecific:Habsburg Dynastic Alliance}, until broken by
+\ref{pV:WoSS}.
+
+
+
+\event{pI:Burgundy Inheritance}{I-B}{Burgundy Inheritance}{1}{PB}
+
+\history[Spain takes full political control of Burgundian heirdom.]{1506}
+
+\activation{Activated by \dynasticaction{A}{2}}
+
+\phevnt
+\aparag \SPA annexes all provinces of \paysBourgogne and this country exists
+no more.  \SPA has a \CB (this turn and the following one) against any country
+possessing any province owned by \paysBourgogne in 1492.
+\aparag A Spanish \MNU of \RES{Cloth} with 2 levels is set in
+\provinceVlaandern.
+\aparag At the instant where \paysHollande exists (by \ref{pI:Habsburg
+  Alliance}), \provinceZeeland is transferred from \SPA to \paysHollande.
+When \ref{pI:Habsburg Alliance} has been played as well as the current event,
+\paysLiege can now be \VASSAL or in \ANNEXION of the owner of Spanish
+Flanders, \SPA now (and possibly \FRA, \ENG or \AUS later).
+
+\effetlong
+\aparag[Holland before its revolt]
+\bparag The minor country \paysHollande is created by this event.  It will
+consist of all provinces of \paysprovincesne that \SPA has gained, and
+\ref{pI:Burgundy Inheritance} gives additional provinces from \paysBourgogne,
+that is all national provinces of \paysHollande. This minor country is
+permanent \VASSAL of \SPA, not subject to diplomacy, until it revolts by
+\ref{pIII:Dutch Revolt}. It has no military forces, and any war against it has
+to be declared as a war against \SPA. \SPA can not raise forces in
+\paysHollande.
+\bparag The commercial system of \paysHollande contributes to \SPA: its
+\TradeFLEET are added to those of \SPA in order to find who has the different
+\CC.
+\bparag \SPA does not receive income for the provinces of \paysHollande.
+Instead, it can impose a \terme{Tax} on \paysHollande that amounts to
+40\ducats plus 10 \ducats for each province in \paysHollande.
+\bparag Event \xref{pIII:Dutch Revolt} will free \paysHollande and change the
+previous rules. Each turn of \terme{Taxes} will liken the Revolt.
+
+
+
+\event{pI:Habsburg Bohemia}{I-C}{Habsburg Bohemia}{1}{PB}
+
+\history{1526}
+
+\activation{Activated by \dynasticaction{B}{1}, or by events~\xref{pI:Bohemian
+    Alliance} or \xref{pI:Habsburg Hungary}}
+
+\phevnt
+\aparag \HAB annexes all provinces of \paysBoheme and this country exists no
+more.  The power that has \paysBoheme on its diplomatic track has a temporary
+\CB against \HAB.
+\aparag \HAB has a free \CB (this turn and the following one) against any
+country possessing any province owned by \paysBoheme in 1492; \SPA decides if
+\HAB uses it or not.
+\aparag If \paysBoheme was at war, \HAB is substituted to this country for the
+on-going war. \HAB offers its enemies the immediate possibility to sign a
+White Peace.
+
+\effetlong
+\aparag \paysBoheme may reappear as a ``liege'' country of \HAB or \SPA (see
+\ruleref{chSpecific:Spain:Autonomous States}) or by means of \ref{pIV:Bohemian
+  Revolt}.
+
+
+
+\event{pI:Habsburg Hungary}{I-D}{Habsburg Inheritance of Hungary}{1}{PB}
+
+\history{Never activated}
+
+\activation{The first \RD event beginning with turn 8 activates this Event
+  instead of its normal effect if either \ref{pI:Hungarian Alliance} or
+  \dynasticaction{C}{1} has been played, and \ref{pI:Hungarian Freedom} has
+  not.}
+
+\condition{}
+\aparag Play the \ref{pI:Habsburg Bohemia} if was not already played.
+\aparag If \paysHongrie exists no more, ignore the rest of the event.
+
+\phevnt
+\aparag All provinces of \paysHongrie are annexed by \HAB and the country is
+destroyed.
+\aparag If \paysHongrie was at war, \HAB is substituted to this country for
+the on-going war. \HAB offers its enemies the immediate possibility to sign a
+White Peace.
+\aparag Event \xref{pI:Habsburg Bohemia} is activated at this turn.
+
+\effetlong
+\aparag The basic forces of \HAB are increased by an \ARMY\faceplus.
+\aparag \paysHongrie may reappear as a ``liege'' country of \HAB or \SPA (see
+\ruleref{chSpecific:Spain:Autonomous States}).
+\aparag If \HAB controls at least 5 provinces of \paysHongrie, it may use the
+counters of \paysHongrie.
+\aparag All future Hungarian leaders are now given to \HAB.
+\aparag If \TUR annexes \villeBuda before the end of period II, lasting
+effects of \ref{pI:Fall Hungary} are applied instead, and this event is
+supposed to have happened for the rest of the rules (Victory conditions and so
+on).
+
+
+
+\event{pI:Fall Hungary}{I-E}{Downfall of Hungary}{1}{PB}
+
+\history{1526}
+
+\activation{}
+\aparag If during Period I or II, \TUR wins a Major Battle against a stack
+with at least one \ARMY of \paysHongrie, or takes military control of
+\provinceHongrie, the collapse event is activated at the beginning of the next
+round.  Collapse is mandatory if \villeBuda is taken, optional after a Major
+Battle (Turkish choice at the end of the battle).
+\bparag After the collapse and for the remaining of the turn, \HAB and/or \POL
+can make a limited intervention as an ally of collapsing \paysHongrie, with no
+declaration of war and no cost in \STAB. This intervention can be made with
+all the available forces of the power at that time (no reinforcements),
+without the usual limit for limited intervention.
+\bparag If the collapse begins on the last round of a turn, or would begin on
+the next turn, the resolution of the event is postponed to the end of the next
+turn.
+\aparag If \ref{pI:Hungarian Freedom} has been played, military control of
+\villeBuda by \HAB in a war against \paysHongrie activates the same event,
+during any Period.
+\bparag \TUR may then make a limited intervention per the same rules as above.
+
+\phevnt
+\aparag On the end of the turn following the collapse (or one turn after if
+postponed) activating the event, \paysHongrie disappears.
+\aparag Its remaining provinces are given as follows:
+\bparag \provincePecs, \provinceCroatie, \provinceHongrie, \provinceKarpatok,
+\provinceBukovina are annexed by whoever controls militarily the province at
+the end of the turn among \TUR, \hab and \POL (the presence of stack with
+\ARMY\faceplus in a province with fortresses of an allied collapsing
+\paysHongrie gives control to the leader of this stack).  Those controlled by
+\paysHongrie at the end are annexed by \HAB if \TUR has caused the activation
+of the event, and by \paysTransylvanie (see hereafter) if it was caused by
+\HAB.
+\bparag \provinceSzlovakia, \provinceBalaton, \provinceKranj and
+\provinceKapela are annexed by \HAB (and nobody gains the \VP).
+\bparag \provinceBanat, \provinceSerbia and \provinceBosnia (if controlled by
+\paysHongrie or Neutral) are given to \TUR.
+\bparag A minor country \paysTransylvanie is created, composed from the
+remaining provinces of \paysHongrie: likely, \provinceErdely and
+\provinceMures. This country is placed \VASSAL of whoever caused the
+activation of the event. It has no capital.
+\bparag Excepted for some provinces annexed by \HAB, the usual \VP are given.
+\aparag If a power controls provinces given to another power, it may declare
+now a war with a \CB, or its troops withdraw (mandatory redeployment).
+
+% \aparag The basic forces of \HAB are increased by an \ARMY\facemoins. All
+% future Hungarian leaders are now given to \HAB.
+
+% \aparag Whenever the \HAB annexes \provinceHongrie, the counters of
+% \paysHongrie (2 \ARMY and 4 \DT) are permanently added to those available to
+% \HAB.
+
+% \aparag \paysHongrie may reappear as a ``liege'' country of \HAB (but not
+% \SPA, see \ruleref{chSpecific:Spain:Autonomous States}). %or by means of
+% event \ref{pIII:War HRE}.
+
+\effetlong
+\aparag The basic forces of \HAB are increased by an \ARMY\facemoins.
+\aparag \paysHongrie may reappear as a ``liege'' country of \HAB or \SPA (see
+\ruleref{chSpecific:Spain:Autonomous States}). %or by means of event
+% \ref{pIII:War HRE}.
+\aparag If \HAB controls at least 7 provinces of \paysHongrie, it may use the
+counters of \paysHongrie.
+\aparag All future Hungarian leaders are now given to \HAB.
+
+
+
+\event{pI:Habsburg Milano}{I-F}{Habsburg Control of Milano}{1}{RistoMod}
+
+\history{around 1520}
+
+\activation{Activated by \ref{pI:Habsburg Dynasty} or \dynasticaction{B}{2}}
+\aparag If \paysMilan is now at war, \HAB have a free \CB to join the war on
+the side of \paysMilan. The rest of the event is activated when the \CB is
+used.
+\aparag If \HAB is not allied yet to \SPA, it uses the \CB of the event as
+soon as it is not active elsewhere.
+
+\phevnt
+\aparag \paysMilan becomes a permanent \VASSAL of \HAB. \paysMilan and \HAB
+are from now on one entity for wars and peaces.
+\aparag If the province \provinceLombardia is french, a \REVOLT \facemoins is
+placed herein and \HAB have a free \CB this or the following turn against
+\FRA.
+
+\effetlong
+\aparag \dynasticaction{C}{2} is now possible.
+
+
+
+\event{pI:Spanish Milano}{I-G}{Spanish Milano}{1}{RistoMod}
+
+\history{around 1560}
+
+\activation{Activated by \dynasticaction{C}{2}}
+
+\phevnt
+\aparag \SPA annexes \provinceLombardia if this province is in \paysMilan
+(whether a permanent \VASSAL of \HAB or not) or owned by \HAB. The minor
+country \paysMilan exists no more.
+\aparag If \provinceLombardia is owned by another country, a \REVOLT
+\facemoins is placed herein and \SPA and \HAB have free \CB this or the
+following turn against this country.
+
+\effetlong
+\aparag \SPA can now raise troops in \provinceLombardia if it controls it,
+with normal cost.
+\aparag \SPA can recreate \paysMilan as a ``liege'' country (see
+\ruleref{chSpecific:Spain:Autonomous States}).
+
+
+
+\event{pI:Fall Teutonic}{I-H}{Secularisation of \pays{Teutoniques2}}{1}{PB}
+
+\history{1525}
+
+\activation{Activated by \ref{pI:Reformation2} or \ref{pIII:Northern
+    Secularisation}, whichever occurs first}
+
+\phevnt
+\aparag \pays{Teutoniques2}, part of minor country \pays{Teutoniques1} become
+Protestant.  All units from any country in \provincePreussen, \province{Ost
+  Pommern} and \province{West Pommern} have to retreat when those provinces
+are annexed by another country.
+\aparag The province \provincePreussen become part of \region{Duche de
+  Prusse}.
+\bparag If \POL is \CATHCO, it annexes the province if owned by
+\pays{Teutoniques1}, or has a \CB against its owner until the end of the
+Period.
+\bparag Else, \region{Duche de Prusse} is annexed by \paysBrandebourg, and
+\provincePreussen become part of \paysBrandebourg. If this province is owned
+by any other country than \pays{Teutoniques1}, this country has a \CB against
+\paysBrandebourg.
+\aparag The provinces \province{Ost Pommern} and \province{West Pommern} are
+annexed by \paysHanse if owned by \pays{Teutoniques1}.
+\bparag If one or the two provinces are owned by any country except \POL,
+\paysHanse declares war to this country. \POL may (his choice) have \paysHanse
+placed in \AM before usual calls for help is made, in which case \paysHanse
+calls it to his help. Else, usual rules are used.
+\bparag Else, if one or the two provinces are owned by \POL, \paysHanse
+declares war to \POL and \paysBrandebourg too, allied with \paysHanse.
+\bparag If a war results of this event, only \paysHanse can annex the 2
+provinces.
+\aparag The minor country \pays{Teutoniques1} (now Livonian Brothers of the
+sword) loses one \ARMY counter, and its basic forces are diminished by one
+\ARMY\faceplus.
+
+\phpaix
+\aparag If a war is prosecuted between minor countries only, it lasts one turn
+and the side of \paysBrandebourg wins (gaining the provinces).
+
+
+
+\event{pI:Spanish Naples}{I-I}{Spanish Naples}{1}{PB}
+
+\history{1497 -- The Spanish rulers decide to take direct control of the
+  kingdom of Naples}
+
+\activation{Activated by \dynasticaction{A}{3}, or at the turn following
+  \ref{pI:War Italy Napoli}, whichever occurs first.}
+
+\phevnt
+\aparag \SPA gains a permanent \CB against \paysNaples (even if on his own
+diplomatic track), and also against any owner of a national province of
+\paysNaples.
+
+\phdipl
+\aparag When \SPA declares a war against \paysNaples, \FRA has a \CB at this
+turn only in a reaction to declare a war jointly to \SPA and \paysNaples.
+\aparag \SPA may also annex the country by diplomatic means.
+
+\phpaix
+\aparag Any province of \paysNaples controlled by \SPA at the end of a turn is
+immediately annexed without need for peace. If it was the last province of
+\paysNaples, the country is destroyed. When \villeNaples is annexed by \SPA,
+remaining provinces of \paysNaples surrender now, are annexed by \SPA and the
+country is destroyed.
+\aparag In period II, if \SPA has \paysNaples in diplomatic \ANNEXION, the
+minor country is destroyed and permanently annexed by \SPA.
+\aparag \SPA loses the \CB given by this event as soon as it owns every
+national province of \paysNaples.
+
+\effetlong
+\aparag As long as \SPA owns \provinceCampania, it gains a free maintenance of
+one \FLEET\facemoins, in period II, III and IV.
+\aparag \SPA can recreate \paysNaples as a ``liege'' country (see
+\ruleref{chSpecific:Spain:Autonomous States}).
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: pII pI Tordesillas Napoli Milano Habsburg Comuneros Pskov HRE
+% LocalWords: Ryazan Barbaros RistoMod Minas Gerais Bonne Esperance Tempetes
+% LocalWords: malus Serenissima EW Risto PBNew Mancha Castilla Nueva Vieja
+% LocalWords: pV WoSS pIII FWR pIV Colbertian pVI TYW Lublin Khanate PBMod
+% LocalWords: Khanates Malaisie Indien Mascate Veneto Iles epices Formose de
+% LocalWords: undestroyed Vassalisation heirdom Teutoniques Ost Pommern WRS
+% LocalWords: Duche Prusse Livonian

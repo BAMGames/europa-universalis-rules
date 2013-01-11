@@ -1,0 +1,32 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file builds alternating (2 white lines, 1 gray) tabulars
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{graytab}[2010/11/11 v1.0]%
+\RequirePackage{colortbl}
+
+%%%% Define gray tabulars
+% put \graytabular in front of the tabular environment
+\def\ghline{\noalign{\global\countcol=0\global\advance\countrow by 1\relax\ifnum\countrow>2\relax\global\countrow=0\fi\relax}}%
+\def\gghline{\noalign{\global\countcol=0\global\advance\countrow by 1\relax\ifnum\countrow>5\relax\global\countrow=0\fi\relax}}%
+\def\graycell#1{\global\advance\countcol by 1\relax\ifnum\countcol>#1\relax\global\countcol=0\global\tmpgray=8\else\global\tmpgray=10\fi\ifnum\countrow=0\advance\tmpgray by -1\fi\relax}%
+\newcount\saverow\newcount\savecol
+\def\moverow{\global\saverow\countrow\global\countrow=}
+\def\restorerow{\noalign{\global\countrow\saverow}}
+\newcount\tmpgray\tmpgray=10
+\def\thetmpgray{\ifnum\tmpgray>9 1\else0.\the\tmpgray\fi}
+\newcount\countcol
+\newcount\countrow
+\def\graytabular{\global\countcol=0\global\countrow=0%
+  \def\CT@setup{%
+    \@tempdimb\col@sep%
+    \@tempdimc\col@sep%
+    \def\CT@color{%
+      \global\let\CT@do@color\CT@@do@color%
+      \color}%
+    \everycell}%
+  \def\everycell{\graycell2\CT@color[gray]{\thetmpgray}}%
+}
+\let\old@arraycr\@arraycr
+\def\everyhline{}
+\gdef\@arraycr{\old@arraycr\everyhline}

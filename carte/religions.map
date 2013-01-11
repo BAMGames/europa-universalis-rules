@@ -1,0 +1,66 @@
+#  Begin template file for mini-map coloring.
+#This file defines severals areas on the Europe map.
+#Each line not starting with # is an area.
+#The number of symbols in front of the name is the depth of the area.
+#    DO NOT CHANGE IT !!!
+#Areas of depth k+1 are actually sub-areas of the current area of depth k.
+#Simply indicate the color you want for the area of depth k, and all its
+#sub-areas will get the same color.
+
+
+#Simply indicate the color after the name of the area.
+#Eg:   ++England: Red
+
+#Colors definitions.
+#You can add your own here. Colors are given in RGB (percentages).
+
+definecolor clearwater [0.95 0.95 1]
+definecolor white [1.0 1.0 1.0]
+definecolor black [0.0 0.0 0.0]
+
+definecolor ANG [1 0 0]
+definecolor ANGlight [1 0.5 0.5]
+definecolor AUS [1 1 0]
+definecolor AUSlight [1 1 0.5]
+definecolor FRA [0 0 1]
+definecolor FRAlight [0.2 0.8 1]
+definecolor HIS [1 0.75 0]
+definecolor HISlight [1 0.87 0.5]
+definecolor HOL [0.5 0.5 0.9]
+definecolor HOLlight [0.75 0.75 0.95]
+definecolor POL [1 0.75 0.75]
+definecolor POLlight [1 0.87 0.87]
+definecolor POR [0.75 0.95 0.5]
+definecolor PORlight [0.87 0.97 0.75]
+definecolor PRU [0.75 0.75 0.75]
+definecolor PRUlight [0.87 0.87 0.87]
+definecolor RUS [0.55 0.27 0.07]
+definecolor RUSlight [0.77 0.40 0.1]
+definecolor SUE [0.7 0.85 0.90]
+definecolor SUElight [0.85 0.92 0.95]
+definecolor TUR [0 0.6 0]
+definecolor TURlight [0.5 0.9 0.5]
+definecolor VEN [0.75 0 0]
+definecolor VENlight [0.87 0.5 0.5]
+
+definecolor CATHO [1 1 0]
+definecolor PROT [0.5 0.5 1]
+definecolor MIXED [0.8 0.3 0.3]
+definecolor ORTH [0.5 0.3 0.1]
+definecolor SUNNI [0 0.6 0]
+definecolor SHIA [0.5 1 0.5]
+definecolor OTHER [1 1 1]
+
+####   Religious areas 
+R Reg-Catholics: CATHO
+R Reg-Protestants: PROT
+# Mixed is for province being either catholic or protestant (eg FRA)
+R Reg-Mixed: MIXED
+R Reg-Orthodoxes: ORTH
+R Reg-Sunni muslim: SUNNI
+R Reg-Shi'a muslim: SHIA
+# Other is ROTW-only
+R Reg-Other religion: OTHER
+
++ Map: 
+++ Seas: clearwater

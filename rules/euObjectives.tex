@@ -1,0 +1,76 @@
+% -*- mode: LaTeX; -*-
+
+\documentclass[noindex,twoside]{simplerules}
+\geometry{paper=a4paper,landscape,left=1mm,right=1mm,top=1mm,bottom=1mm,includeheadfoot,headsep=0mm,headheight=0mm,footskip=0mm}
+
+% Mettre ici tous les elements Unicode qui sont dans un titre de chapitre et
+% pas utilises avant. Donc pas beaucoup.
+\input{engCommandes}
+
+\input{translations}
+
+\input{engObjectives}
+
+\input{engEntetesMineurs}
+
+\def\EUAbbr#1{.}  \def\EUtableevent#1#2{ \EUcurrentperiod{#2}%
+  \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @#1@letters}{%
+    \rule{3pt}{0ex}%
+  }{%
+    \rule{2pt}{2ex}\rule{1pt}{0ex}%
+  }%
+  \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@short}{}&
+  \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @#1@per}{%
+    \makebox[0cm]{\llap{%
+        \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@score}{}%
+      }} }{%
+    \makebox[0cm]{\llap{%
+        \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@score}{}%
+        \textmultiply\itshape%
+        \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@per}{}%
+      }} }&%
+  \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@max}{}%
+} \def\EUtablealternate#1{#1} \def\EUtableeventline#1{ \EUtableevent{#1}{I}&
+  \EUtableevent{#1}{II}& \EUtableevent{#1}{III}& \EUtableevent{#1}{IV}&
+  \EUtableevent{#1}{V}& \EUtableevent{#1}{VI}&
+  \EUtableevent{#1}{VII}\\
+} \def\EUeventlines#1{ \hline \noalign{\EUcurrentcountry{#1}}
+  \multicolumn{21}{|c|}{\paysmajeur{#1}}\\
+  \hline \EUtableeventline{1} \EUtableeventline{2} \EUtableeventline{3}
+  \EUtableeventline{4} \EUtableeventline{5} }
+
+\begin{document}
+\null \vfill {\centering\noindent\small\tabcolsep=1pt%
+  \begin{tabular}{|*7{p{104.5pt}p{0pt}p{8.5pt}|}}
+    \EUeventlines{Angleterre}
+    \EUeventlines{France}
+    \EUeventlines{Espagne}
+    \EUeventlines{Hollande}
+    \EUeventlines{Autriche}
+    \EUeventlines{Prusse}
+    % \EUeventlines{Danemark}
+    \hline
+  \end{tabular}\par
+} \vfill \null
+
+\newpage
+
+\null \vfill {\centering\noindent\small\tabcolsep=1pt%
+  \begin{tabular}{|*7{p{104.5pt}p{0pt}p{8.5pt}|}}
+    \EUeventlines{Suede}
+    \EUeventlines{Russie}
+    \EUeventlines{Pologne}
+    \EUeventlines{Turquie}
+    \EUeventlines{Venise}
+    \EUeventlines{Portugal}
+    \hline
+  \end{tabular}\par
+} \vfill \null
+\end{document}
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:

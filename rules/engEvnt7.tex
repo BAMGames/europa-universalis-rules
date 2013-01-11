@@ -1,0 +1,1531 @@
+% -*- mode: LaTeX; -*-
+
+\section{Period VII}\label{events:pVII}
+
+
+
+\subsection*{Event Table of Period VII}
+
+\begin{eventstable}[Period VII events table]
+  \tabcolsep=5pt\centering%
+  \begin{tabular}{|l|*{5}{c}|l|}
+    \hline
+    1\up{st}\textarrow& 1-4 & 5-6 & 7 & 8 & 9 & 10 \\ \hline
+    1 & 1  & 8  & 12 & 1  & R3  & \textbullet~1--2: \\
+    2 & 2  & 9  & 19 & R18& 4	& +1 then \\
+    3 & 3  & 10 & 2  & 10 & 5   & \nameref{events:pVI}\\
+    4 & 4  & 11 & 18 & 11 & R12 & \textbullet~3--10: \\
+    5 & 6  & 14 & 20 & 5  & R13 & \nameref{events:pVI}\\
+    6 & 7  & 15& R5  & R6 & 4 	& \\
+    7 & 13 & 16& 1   &  7 & 15  & \\
+    8 & 19 & 21& 17  &  8 & 16  & \\
+    9 & 1  & 4  & R8 &  9 & 7  	& \\ \hline
+    10 & \multicolumn{6}{l|}{\nameref{events:pVI}} \\ \hline
+  \end{tabular}
+\end{eventstable}
+
+\eventssummary{%
+  pVII:Seven Years War|,%
+  pVII:Bavarian Succession|,%
+  pVII:Batavian Revolution|,%
+  pVII:Independence War|E/E/E/E,%
+  pVII:French Revolution|S{pVII:Revolution:Bastille}/%
+  S{pVII:Revolution:Terror},%
+  pVII:Bar Confederation|,%
+  pVII:First Partition Poland|,%
+  pVII:Second Partition Poland|E/E/E,%
+  pVII:National Revival of Poland|S{pVII:NRP:Kosciusko}/%
+  S{pVII:NRP:Commonwealth Revival},%
+  pVII:Mameluks Revolt|,%
+  pVII:Revolt Indonesia|,%
+} \eventssummary{%
+  pVII:Sale Corsica|,%
+  pVII:Pugatchev Revolt|,%
+  pVII:Potemkin|,%
+  pVII:War Crimea|,%
+  pVII:War Finland|,%
+  pVII:Forward Balkans|,%
+  pVII:Wars India|O{pVI:Wars India},%
+  pVII:Vassalisation Hanover|O{pVI:Vassalisation Hanover},%
+  pVII:William Pitt|,%
+  pVII:Kaunitz|,%
+  pVII:USA-Morocco|,%
+} \newpage\startevents
+
+
+
+\event{pVII:Seven Years War}{VII-1}{The Seven Years War}{1}{PBnew}
+
+\history{1756-1763}
+\dure{until the end of the war caused by the event.}
+
+\condition{}
+\aparag Cannot happen before period VII if \PRU is not a major country and at
+peace.
+\bparag In this case, do not mark of an re-roll.
+
+\phevnt
+\aparag \PRU has a free \CB against \paysSaxe to be used at this turn or the
+next one.
+% (Jym) added:
+\bparag Refusal to use this \CB cost \PRU 3 \STAB and \PRU is considered to
+have lost the war for all the effects described below.
+\bparag When \PRU uses this \CB, \paysSaxe propose an immediate white peace to
+all its other enemies.
+\bparag If \PRU does not use this \CB this turn, apply (in addition)
+\xnameref{pVII:SYW:French Indian War}.
+\aparag As a reaction to \PRU declaring war to \paysSaxe, \AUS has an
+immediate free \CB against \PRU.
+\aparag As a reaction to \PRU declaring war to \paysSaxe, \FRA has an
+immediate normal \CB against \PRU.
+\bparag If both \FRA and \AUS use these \CB, they are considered allied in the
+war without need to sign a formal alliance.
+% (Jym) Is this \CB in the right direction. I got the impression that the
+% alliance reversal took place before the war really burst out. Then Frederic
+% II took the initiative by attacking Saxony, but it's really \FRA attacking
+% \ANG in Europe (taking Minorque with the naval victory of La Galissonniere
+% over Byng then attack on Hanover by d'Estree (the "Forward" of Clash of
+% Monarchs).
+\aparag As a reaction to \FRA declaring war to \PRU, \ENG has a free \CB
+against \FRA.
+\bparag If \ENG uses this \CB, \ENG and \PRU are considered allied in the war
+without needing to sign a formal alliance.
+\aparag \RUS has a \CB against \PRU and a \CB against \AUS (if at war) for the
+duration of the war.
+\bparag If \RUS uses one of these \CB, it is considered allied with the other
+side in the war without need to sign a formal alliance.
+\aparag Normal calls for allies may occur as a reaction to any of these
+declarations of war.
+
+\phdipl
+\aparag If \paysSaxe is at war against \PRU but its controller is not,
+\paysSaxe is put in \EG of the first country at war against \PRU in the
+following list: \AUS, \ENG, \SUE, \FRA, \RUS.
+\bparag During the war, the controller of \paysSaxe has a bonus of \bonus{+5}
+for diplomacy on any minor of the \HRE except \paysbaviere.
+
+\phadm
+\aparag Purchase limits for \PRU are doubled for the duration of the war.
+% (JCD) Controlling the minor or the province ?
+\bparag During the war, \PRU may raise troops in any province belonging to a
+minor it controls.
+\aparag At the first turn of the war, all minors at war must choose their
+reinforcements in offensive attitude.
+\bparag At the following turns, it must be either offensive of naval attitude.
+
+\phpaix
+\aparag As long as \monarque{Friedrich II} is alive, \PRU cannot be forced to
+peace if at {\bf -3} in \STAB for two consecutive turns.
+\bparag It can, however, be forced to peace if all its provinces are occupied.
+\aparag If \PRU signs an unfavourable peace, \FRA and \AUS win 50 \VP (each)
+if they were at war against \PRU.
+\bparag In this case, if \ENG was at war it loses 25 \VP or 50 \VP is this was
+an unconditional surrender.
+\aparag If its side imposes an unconditional surrender (to either \PRU or
+\AUS), \RUS can annex all provinces of \payspologne adjacent to \RUS
+territory.
+\bparag This counts as one peace condition for the alliance of \RUS.
+\bparag The allies of \RUS will have a \CB against \RUS at the following turn
+to contest this annexation.
+\bparag If \payspologne is a special \EG of \FRA or \SUE per either
+\ref{pVI:WoPS:Polish Victory} or \ref{pVI:GNW:Stanislas}, this annexation can
+only be done if \RUS is not allied with the protector of \payspologne.
+\bparag This annexation is impossible if Absolutism is established in
+\payspologne.
+\aparag If \PRU forces \paysSaxe to an unconditional surrender, it wins 25
+\VP.
+\aparag If \AUS is forced to unconditional surrender it loses 50 \VP and {\bf
+  1} \STAB.
+
+
+\subevent[pVII:SYW:French Indian War]{The French and Indian War}
+\history{Colonial tensions erupted into a state of war in 1754 in America}
+
+\phevnt
+\aparag \FRA and \ENG are now in a state of overseas war.
+\bparag This is not a declaration of war, hence there is no cost of \STAB for
+any of them.
+\aparag Reactions are allowed as if the war was continuing from a previous
+turn except:
+\bparag They may not generalise the war at this turn, unless using another
+\CB.
+\bparag They may not sign an armistice this turn.
+
+% (Jym) Treaty of Paris I get the impression that getting the whole Canada
+% area is a bit more than what is doable in a normal peace treaty in Europa. I
+% propose a clause of grouped annexation similar to \HIS/\AUS in Italy: all
+% \TP/\COL of a great area in the American enlarged view is equal to 1
+% province. This should not be tied to SYW but let more hazy and for many more
+% people (typically \ENG,\FRA,\HOL,\SUE)...  Overall, I am more keen about
+% letting some fuzzy tricks than can lead to historical facts rather than
+% linking to unique people and events to do these things.
+
+
+
+\event{pVII:Bavarian Succession}{VII-2}{The War of Bavarian
+  Succession}{1}{RistoMod}
+
+\history{1778-1779}
+
+\condition{}
+\aparag Cannot occur if \paysbaviere is currently at war against \AUS. In that
+case mark off and play \RD instead.
+
+\phevnt
+\aparag \paysbaviere offers to become a permanent \AM of \AUS.
+\bparag If this offer is accepted, \paysbaviere cannot anymore fall below \AM
+of \AUS, but diplomacy is still possible on it.
+\bparag If the offer is refused, ignore the rest of the event.
+\aparag If the offer is accepted, \PRU as free \CB against \AUS to be used
+immediately.
+\aparag If \PRU does not use the \CB, \AUS is considered to have won the war
+for all relevant effects and \VP.
+\bparag Normal calls for allies follow if a war is declared.
+\bparag It is possible that \paysbaviere stays out of the war\ldots
+
+\phpaix
+\aparag If \AUS signs a white or unfavourable peace, \paysbaviere becomes a
+normal minor again and \PRU win 20 \VP.
+\aparag If \AUS signs a favourable peace, \AUS win 25 \VP and the previous
+controller of \paysbaviere (if any) has a temporary \CB against \AUS at the
+next turn.
+
+
+
+\event{pVII:Batavian Revolution}{VII-3}{Batavian Revolution}{1}{RistoMod}
+
+\history{1785-1787}
+\dure{Until the \REVOLT are crushed or the government is overthrown.}
+
+\condition{}
+\aparag If \payshollande is a minor country, apply \ref{pVII:BR:Minor
+  Holland}. The second time, apply \RD and mark off.
+\aparag Else apply \ref{pVII:BR:Major Holland} (twice if needed).
+
+
+\subevent[pVII:BR:Minor Holland]{Minor Holland in Revolution}
+
+\phevnt
+\aparag Place a \REVOLT \facemoins in each province owned by \HOLmin.
+\aparag \HOLMin immediately proposes a peace based on the current peace
+differential (or a white peace if the situation favours \HOLmin) to all its
+enemies.
+% (JCD) this event has to be rewritten for \HOL major. So this is meaningless,
+% so removing.
+% \bparag If this means separate peace, there is no extra penalty for \HOLmin
+% in doing so.
+\bparag Minor countries accept this peace.
+% (JCD) same thing
+% \aparag Then \HOL loses 3 \STAB and 50\ducats.
+
+\phdipl
+\aparag If \HOLmin and \PRU are allied, \PRU may intervene to help.
+% (Jym) added
+\bparag No other major may intervene.
+
+\phadm
+% (JCD) Changing this for a minor. Anyway, where would troops be risen?
+% \aparag \HOL may not raise any new troop during the first turn of this
+% event.
+\aparag \HOLMin does not get any reinforcement roll for the first turn of this
+event.
+
+\phmil
+\aparag \PRU may not send more than two stacks in provinces owned by \HOLmin.
+
+\phpaix
+\aparag \HOLMin keeps proposing peace to its enemies as long as \REVOLT still
+exist during the peace phase.
+\aparag If at the end of a turn, there are \REVOLT in more than half of
+provinces belonging to \HOLmin, the minor has gone through a
+revolution. Return the diplomatic marker of \HOLmin to neutral status (unless
+activated in a war; in this case place it in \MA of the controller).
+% (Jym) Deleting because \HOL major -> government overthrown normally.  2. If,
+% at the end of a turn there are \REVOLT in more than half the provinces
+% belonging to Holland, this minor is regarded to have gone through a
+% revolution. Return the Dutch marker to neutral status (unless activated in
+% which case place it in MA of the controller) and remove all \REVOLT markers.
+% (JCD) Reinstating. This event HAS TO be rewritten for a \MAJ \HOL.
+
+% (Jym) Deleting (JCD) Not reinstating this time, because diplomacy on minors
+% during wars is really problematic.
+% \aparag \PRU may do diplomacy on \HOLmin even if \HOLmin is at war somewhere
+% else.
+
+
+\subevent[pVII:BR:Major Holland]{War between Orangists and Patriots}
+
+\phevnt
+\aparag If at war, \HOL makes a mandatory white peace with all its enemies.
+\bparag \MAJ allied to or at war with \HOL will be able to make a foreign
+intervention in the Civil War (on any side).
+\bparag Other countries will be able to intervene as mentioned below. No other
+countries may intervene in the Civil War.
+\aparag \HOL is in Civil War (see \ref{chDiplo:Religious Civil War}) between
+the Patriots, the Republicans and the Orangists.
+\bparag The Orangists use up to one \ARMY, 5\LDND and one \FLEET counter (for
+example, from \paysroyalistes).
+\bparag The Patriots use up to two \ARMY and 6\LD from \paysrebelles.
+\bparag Republicans use up to one \ARMY, 5 \LDND and all possible naval forces
+of \paysHollande.
+\bparag \HOL can choose to take either the side of Patriots or Orangists. The
+choice is made after the revolts have been rolled for.
+\aparag[Rise of the Patriots] For each province of \HOL in Europe, roll
+2d10. Add \bonus{-3} if \ref{pVII:French Revolution} already started. If the
+roll is lower or equal to the income of the province, the province is in
+\REVOLT. Roll for the strength of the revolt in \ref{table:alt-revolt-global}.
+\bparag The Patriots control \provinceHolland.
+\aparag For all \COL, roll 1d10. On 1, put a \REVOLT\faceplus and a Patriot
+\LD; on 10, put an Orangists \LD and a control for the Orangists in the
+province. All other \ROTW counters of \HOL are owned by the Republicans.
+\bparag \HOL has to announce its support of one side at this point. It will
+play this side.
+\aparag[Orangists resistance] The Orangists call for help in that order: \PRU,
+\SUE, non-revolutionary \FRA, the owner of the \emph{Spanish Low Countries}
+after \ref{pV:WoSS}.
+\bparag The first to answer the call will play the Orangists (if \HOL supports
+the Patriots) and will be allowed an intervention of at most two stacks (not
+one as per usual rules) of at most one \ARMY\faceplus.
+\bparag Other countries will not be able to intervene.
+\bparag If no country wishes to intervene in this list and \HOL chose the
+Patriots, \PRU will play the Orangists.
+\bparag The Orangists decide of one safe place (historically
+\provinceGelderland) that they own (even if in \REVOLT). This must not be
+\provinceHolland nor \provinceUtrecht. The \REVOLT is removed if there was
+one, but a \LD or a \LeaderG is moved in another \REVOLT.
+\aparag[Republicans and the VOC] Naval forces and most \ROTW Dutch settlements
+will mostly stay out of the war. The moves of these forces will be played by
+\ENG.
+\bparag \ENG will be able to intervene with a normal foreign intervention.
+\bparag Administrative actions will be very limited and played by \HOL, using
+3/3/3 as Monarch values during all the war.
+\aparag[Call for the Revolution] Revolutionary \FRA (after
+\nameref{pVII:French Revolution} started) may be able to send one stack of
+conventional troops and two stacks of Revolutionary troops to help
+Patriots. It can declare its intervention during the military rounds if
+sending Revolutionary troops; but it may not gain as much by doing so.
+\bparag If \HOL supports the Orangists, and nobody supports the Patriots, then
+\TUR will play the Patriots.
+\aparag[The Dutch Fleet] Orangists pick one \FLEET counter, moved to one port
+they control (if none, one port of their supporter or simply at sea). All
+other naval forces go to Republicans.
+
+\phdipl
+\aparag \HOL can react to attacks on its minor countries. It can not do any
+other diplomatic actions.
+
+\phadm
+\aparag[Incomes] Orangists and Republicans get land income from the provinces
+they (or their allies) control in European provinces of \HOL.
+\bparag Patriots get the land income from the provinces they control or that
+are in \REVOLT.
+\bparag Half (rounded down) of Vassal income goes to Orangists. The rest goes
+to Republicans.
+\bparag There is no commercial income. \ROTW income goes to whoever controls
+the place (usually Republicans).
+\bparag \MNU give their basic income (the fixed part) to the side getting
+revenues from the province.
+\aparag[Administrative actions] The only actions that can be done are paid on
+\HOL \RT directly. They are: reactions to concurrence, improving already
+existing \COL or \TP, improving already existing \TradeFLEET.
+\aparag[Raising armies] Republicans have to pay for the maintenance of naval
+and land forces in their keep first of all (what can not be paid for is
+dismantled). With the rest, they may purchase troops only to be bought in
+territories they control or in \ANG. \ANG may give money to
+Republicans. Republican land forces are always \Conscripts.
+\bparag On the first turn, land forces in Europe of \HOL are disbanded.
+\bparag Patriots and Orangists have their own budget and a purchase limit of
+2\LD. The first \ARMY\facemoins they buy on the first turn is \Veteran, the
+rest is \Conscripts. Their supporter may give money.
+
+\phmil
+\aparag Province flooding (\ref{chSpecific:Holland:Flooding}) can not be used
+during this event.
+\aparag For movement, supply and attrition, provinces with \REVOLT are
+friendly to Patriots unless an enemy force is within.
+\bparag Patriots consider all cities with \REVOLT in the province as
+blockaded.
+\bparag \REVOLT are weak supply points for Patriots.
+
+\phpaix
+\aparag \HOL loses {\bf 1} \STAB. No \STAB increase is possible during the
+event.
+\aparag No armistice may be signed by the various sides.
+\aparag[Victory of Orangists] It there are no more revolts and no more troops
+of Patriots in national territory, Orangists get an automatic victory.
+\bparag The Monarch is reinstated. \STAB of \HOL becomes {\bf +3} minus one
+per turn of revolution.
+\bparag If this event happens again, \HOL will have a \bonus{-2} to the
+strength of \REVOLT.
+\bparag The supporters of Orangists get 20 \VP (possibly including \HOL).
+Supporters of Patriots lose 20 \VP.
+\aparag[Victory of Patriots] If there are \REVOLT in all national provinces or
+no more Orangists (or allies) troops in national territory or it is the third
+turn of the revolution and there is still at least one \REVOLT or this is the
+last turn of the game or \STAB is at {\bf -3} for two consecutive turns,
+Patriots get an automatic victory.
+\bparag All revolts are removed. The government is overthrown. Read below for
+the lasting consequences.
+\bparag A Monarch will be rolled anew at next turn, as if there were a
+\terme{Dynastic Crisis}.
+\bparag \STAB of \HOL becomes {\bf 0}.
+\bparag The supporters of Patriots get 20 \VP (possibly including
+\HOL). Supporters of Orangists lose 20 \VP.
+\aparag[Victory of Republicans] Republicans are considered victors if any
+other side wins in one turn or two turns. They lose if the revolution ends
+after three turns.
+\bparag \ENG is entitled to 1 or 2 compensations (given by the Orangists or
+the Patriots or taken to the VOC during the troubles) of \HOL's choice: 1
+level in a \CTZ, 2 levels in a \STZ, one \COL, one \TP. Automatic concurrence
+may follow from this. There are two compensations if the victory was in one
+turn. \ENG gets two compensations for a victory of either side in 1 turn.
+\bparag If \ENG lost military forces (either naval or land) during the
+Revolution, it is entitled to 20 \VP in addition. If the Republicans lost,
+\ENG loses 20 \VP.
+\aparag There are no other peace outcomes.
+\aparag In case of victory, supporters (including \HOL) of the winning side
+gain 20\VP and the forces of the winning side are converted to \HOL
+counters. Supporters of the losing side lose 20\VP and the forces of the
+losing side are disbanded.
+
+\effetlong
+\aparag In case the Patriots win, apply the following points:
+\bparag The \terme{Stadhouder} government is no more possible.
+\bparag All monarchs have a \bonus{+2} to their survival roll. \terme{Dynastic
+  Crisis} will cost 1 \STAB with no other consequences.
+\bparag The maximum ADM value of the Monarch (or Minister) is now 7. However,
+the real rolled-for value is used for rolling the next Monarch.
+\bparag The maximum DIP value of the Monarch is now 5. However, the real
+rolled-for value is used for rolling the next Monarch.
+\bparag The minimum MIL value of the Monarch is now 7.
+\bparag If the event happens again, the \REVOLT strength will have a
+\bonus{+2} modifier.
+\bparag The VOC is dissolved. The basic \LeaderGov is available each turn only
+if 1d10 (rolled during the Monarch Survival phase) is even. This also removes
+some constraints on \TFI and turns the \TPaction available each turn into a
+\TPaction or \COLaction, at the choice of \HOL.
+\bparag National provinces of \HOL will count in favour of \FRA for
+the``natural frontier'' objectives (not for the rest).
+\bparag \HOL loses 1 diplomatic action.
+\bparag \HOL has a mandatory defensive alliance with Revolutionary \FRA for at
+least three turns (as soon as possible)
+
+
+
+\event{pVII:Independence War}{VII-4}{War of Independence in the
+  Colonies}{*}{RistoMod}
+
+\date{1775-1783}
+\dure{Until the end of the rebellion.}
+
+\condition{}
+\aparag If none of the following already occurred, do not mark off and
+re-roll:
+\bparag \ref{pVII:SYW:French Indian War}.
+\bparag \ref{pVII:William Pitt}.
+\bparag \ref{pVII:French Revolution}
+% (Jym) I split in three separate events, it is easier this way. Just getting
+% the initial group is sufficiently difficult to deserve its own
+% subevent. This makes the rest easier to read and write.
+\aparag The first time, apply \xnameref{pVII:IW:First Revolt}, the second and
+subsequent times, apply \xnameref{pVII:IW:Further Revolts}. Each time,
+\xnameref{pVII:IW:Where} is used to determine which colonies try to get their
+independence.
+
+
+\digression[pVII:IW:Where]{Where does the revolt occurs ?}
+A revolutionary war erupts in a group of colonies. The target group is chosen
+by first selecting a subcontinent and then a major country. The major country
+must have a certain number of colonies in the target subcontinent in order to
+start the revolt. The first major country meeting the criteria is subject to
+the revolution.
+% (Jym) Not possible in the Caribbeans? Brazil?  (JCD) Indonesia ?
+\aparag The possible target subcontinents are, in order:
+\bparag \continent{North America}
+\bparag \continent{South America}
+\bparag \continentBrazil
+\bparag \continentIndia
+\bparag \continentAsia (except \continentIndia)
+% (Jym) Not possible for \POR, even minor (Brazil).
+\aparag \label{pVII:IW:Protestant} The possible target players are the
+protestant ones in the following list:
+\bparag \ENG, \FRA, \HIS, \HOL
+\aparag The target group of colonies is elected by first looking for players
+meeting the criteria in the first subcontinent, then the second and so on.
+% (Jym) If I remember correctly, what follows was changed (condition of
+% revolts). I copy Risto anyway.
+\aparag The target group of colonies must contain at least 10 levels of \COL
+in four adjacent provinces (with land access between them).
+% (Jym) This makes a revolt in the Caribbeans or in the DEI impossible.
+\bparag It is possible that some of these provinces have no \COL in them as
+long as there are 10 levels of \COL or more in four provinces.
+% (Jym) No malus for \ANG if it is not eligible ?  (JCD/Jym) If the target
+% exists, the controller of the revolt should choose three large areas that
+% uprise in the continent (maybe not connex, this is a tactical consideration
+% best handled by humans)
+\aparag If no target exists, nothing happens but the event is nonetheless
+considered played (mark off, do not re-roll, do not play \RD).
+\aparag Once the target group of colonies is found, roll 1d10 with the
+following modifiers:
+% (Jym) Revolt if result is large.
+
+% (Jym) Enemy present -> foreign agitation?  Wiki "French and Indian wars"
+% (plural) :
+
+% The overwhelming victory of the British played a role in eventual loss of
+% their thirteen American colonies. Without the threat of French invasion, the
+% American colonies saw little need for British military protection. In
+% addition, the people resented British efforts to limit their colonization of
+% the new French territories to the west of the Appalachian Mountains, as
+% stated in the Proclamation of 1763, in an effort to relieve encroachment on
+% Native American territory. These pressures contributed to the American
+% Revolutionary War.
+
+\begin{modlist}
+\item[\bonus{-5}] If no other player has a \COL inside the four target
+  provinces.
+\item[\bonus{+1}] For each other player that has \COL or \TP within two
+  provinces of the group or
+\item[\bonus{+2}] For each other player that has \COL or \TP adjacent to the
+  group.
+  % (Jym) Metropolitan troops -> quick squashing of the revolt (?).
+\item[\bonus{-1}] If the player has any \LD in the group or
+\item[\bonus{-2}] If the player has any \ARMY in the group.
+  % (Jym) Indian allies -> squashed revolt?
+  % Or more probably peace with Indian => no need to be protected by the
+  % metropolis.
+\item[\bonus{-2}] If the player has \dipFR or \dipAT with a minor adjacent to
+  the group.
+\item[\bonus{+3}] If another player has \dipFR or \dipAT with a minor adjacent
+  to the group and the player has neither \dipFR nor \dipAT with this minor
+  country.
+\end{modlist}
+\aparag \label{pVII:IW:Test} If the result is 5 or more, the rebellion
+occurs. A non-modified 10 is an automatic rebellion while an non-modified 1
+always means that no rebellion occurs.
+\bparag If no rebellion occurs, nothing happens but the event is nonetheless
+considered played (mark off, do not re-roll, do not play \RD).
+
+% (Jym) \wikipedia separates "American Revolution" -> political and social.
+% "American Revolutionary War" -> military.
+
+
+\subevent[pVII:IW:First Revolt]{American Revolutionary War}
+
+\condition{Choose a target \MAJ and group of colonies as indicated in
+  \ref{pVII:IW:Where}.}
+
+\phevnt
+\aparag The \MAJ choose one \COL within the revolted group. Place a \REVOLT
+\facemoins in each other \COL of the group.
+\bparag Place 3\LD (of \paysusa) on one of the \REVOLT .
+\bparag Rebels control all the fortresses in the revolted colonies.
+
+\phdipl
+% (Jym) Removing, from memory this is replaced by the special power of \ANG
+% The target may use a bonus of +5 to certain minors that can exceptionally be
+% used in \ROTW map against the rebels (only). The bonus can only be used to
+% raise these minors to CE and not higher. These minors can only be used when
+% inactive and only by following the restrictions of CE (even if they are
+% actually higher up in the diplomatic track). The minors in question are the
+% following: \ANG: \payshanovre and \payshesse b. \FRA: \payssavoie and
+% \payslorraine c. \SPA: Portugal d. \HOL: \payspalatinat (Jym) adding this;
+% Rationale: the minor is just created it is on nobody track, so only a
+% limited intervention of the \MAJ ally is possible, this matches the French
+% intervention (JCD) I think \paysusa should rather call neighbouring
+% countries not only \FRA/\ENG.
+\aparag The rebels calls for allies as indicated in the preferences of
+\paysusa.
+
+\phadm
+\aparag The \MAJ does not get income from the \COL that initially revolted,
+even if the \REVOLT are suppressed.
+\bparag It cannot either raise troops there or use the colonial militia.
+\bparag It can, however, build fortresses in these \COL.
+\aparag The \MAJ receives no income from \TradeFLEET in \STZ adjacent to a
+\COL that initially revolt, even if the \REVOLT are suppressed.
+\bparag All other player get double income (but not double bonus) from
+\TradeFLEET in these \STZ.
+% (Jym) Maybe allow naval if it takes place in Caribbeans or Indonesia?
+\aparag Rebels can choose reinforcements in either offensive or defensive
+attitude. They use the counters of \paysusa.
+\aparag If the \MAJ has a general that can be used by \paysusa (either
+\leaderWashington or \leader{La Fayette}), this general goes to the side of
+the rebels.
+\bparag If \leaderArnold is alive, he joins the rebels.
+\bparag The rebels must have at least two generals for the duration of the
+event. Use the unnamed generals of \paysusa if needed.
+\aparag The \MAJ receives at no cost a mercenary that can be used in the \ROTW
+and is considered to have rank Z.
+\aparag \leaderWashington and \leader{La Fayette}, if not already rebels, can
+be sent by their owner (\ENG or \FRA) to help them.
+\bparag The owner chooses each turn whether it keeps the general or send him
+to help the rebels.
+\bparag This general is in addition to the minimum two generals of the rebels.
+\bparag Once the event is finished, this leader goes back to his major
+country.
+
+\phmil
+\aparag \REVOLT are supply sources for the rebel troops.
+\aparag Remember that \paysusa (hence, the rebels) roll for reinforcements
+after each winter round and not only once per turn.
+
+\phpaix
+\aparag The event stops at the end of the second turn of revolt.
+\bparag If all \REVOLT have been suppressed by the end of the second turn,
+\MAJ wins the war.
+\bparag Otherwise, the rebels win.
+\aparag If the rebels are crushed, remove all the units of the rebels, remove
+the named leaders of \paysusa from the game (not the one sent by a major).
+\aparag If the rebels win, the minor country \paysusa is created.
+\bparag All the \COL in the initial group of revolt are part of \paysusa, even
+those where the \REVOLT were suppressed.
+\bparag All the provinces of \paysusa are considered as European provinces for
+all game purposes.
+
+
+\subevent[pVII:IW:Further Revolts]{Bolivarian Revolutions}
+\history{Spanish American Wars of Independence (Bolivar):
+  1808-1829/Independence of Brazil: 1823-1825.}
+
+\condition{}
+\aparag If another \xnameref{pVII:Independence War} is currently occurring, do
+not mark off and re-roll.
+\aparag If another \xnameref{pVII:Independence War} is already finished and
+was won by the rebels, if \xnameref{pVII:Revolution:Bastille} did not occur
+yet, apply it instead.
+\aparag Otherwise (revolt crushed or \nameref{pVII:Revolution:Bastille}
+already occurred or a previous occurrence resulted in ``no revolt'' after the
+test of \ref{pVII:IW:Test}), choose a target country as indicated in
+\ref{pVII:IW:Where}, ignoring the religion condition of
+\ref{pVII:IW:Protestant}.
+\aparag Once a target is found, if the die roll of \ref{pVII:IW:Test}
+indicated a revolt, roll another die and apply the corresponding result:
+\begin{modlist}[1.5em]
+\item[10] Another revolt occurs
+\item[9] Extension to a near continent
+\item[6--8] Small revolt
+\item[1--5] Nothing happens. The event is nonetheless considered played (mark
+  off, do not re-roll, do not play \RD).
+\end{modlist}
+\aparag[Another revolt occurs] Another revolt occurs as described in
+\ref{pVII:IW:First Revolt}. Both revolts are separate one from another and, if
+created, both countries are different. Use whatever name and counters you wish
+to refer to the second and subsequent ones (Canada, Bolivia, Brazil,
+Indonesia, \ldots)
+\aparag[Extensions to a near continent] If the target subcontinent is adjacent
+to the original one (either \continent{North America} and \continent{South
+  America} %
+% (Jym) \continentCaraibes, \continentBresil
+or \continentIndia and \continentAsia), a new revolt occurs as above,
+otherwise treat as a \emph{Small revolt} below.
+\aparag[Small revolt] Place three \REVOLT \facemoins in the target group of
+colonies. Don't use any minor forces. No independence may result from these
+\REVOLT . Another \ref{pVII:Independence War} may occur before all the \REVOLT
+are crushed.
+
+
+
+\event{pVII:French Revolution}{VII-5}{The French Revolution}{2}{PBMod}
+
+\history{1789-1799}
+\begin{histoire}
+  The first event corresponds to the bankruptcy of the French monarchy as well
+  as the peasant crisis leading to the Storming of the Bastille and a change
+  of government. Several possible new forms of government can exists depending
+  on the choices of the player and the other majors. The second event
+  corresponds to the internal dynamics of the Revolution yielding to
+  uncontrolled effects.
+\end{histoire}
+\dure{until the end of the game.}
+
+\condition{}
+\aparag If none of the following happened, do not mark off and re-roll:
+\bparag End of \xnameref{pVII:Seven Years War}.
+\bparag Beginning of \xnameref{pVII:Independence War} (the revolt must have
+started).
+\bparag Beginning of \xnameref{pVII:Batavian Revolution}.
+\aparag The first time, apply \xnameref{pVII:Revolution:Bastille}. The second
+time, apply \xnameref{pVII:Revolution:Terror}.
+\begin{designnote}
+  \textit{``\`{A} partir de la R\'{e}volution, les r\`{e}gles de bon sens
+    cessent de s'appliquer.''}\\
+  ~\hfill (Pierre, August 2007).
+\end{designnote}
+
+
+\subevent[pVII:Revolution:Bastille]{Storming the Bastille}
+
+\phevnt
+\aparag \textbf{Political and social crisis}
+\bparag If \FRA is at war against another \MAJ, it loses 1 \STAB. Otherwise,
+it loses 3 \STAB.
+% (Jym) What about minors on French track? I suppose they should be kept for
+% period/game \VP, but that they do, in fact, go away (or at least that \FRA
+% cannot call for allies). \FRA should not be able to do any diplomatic
+% actions at all, too. In doubt, I will leave that for the \MAJ (JCD) \HOLmin
+% after Batavian revolution should be able to stay
+\bparag \FRA is considered to have broken its alliances with all countries
+(major or minor). This does not cause any extra loss of \STAB.
+% (Jym) It is not too difficult to count immediately the \VP of diplomacy then
+% switch the minors to Neutral. It is more complicated to count the \VP of
+% vassal provinces for the end game.  (JCD) This is not reasonable to count on
+% a vassal for French territory, that's what it means.
+\bparag Roll for two \REVOLT in \paysmajeurFrance.
+\bparag Future survival rolls for the French monarch get a malus of
+\bonus{+2}. The malus will be \bonus{+5} if \FRA goes to the
+\monarqueConvention government.
+\bparag The following countries have a free \CB against \FRA until the end of
+the game: \ENG, \AUS, \PRU, \HIS, \HOL (unless if \ref{pVII:Batavian
+  Revolution} was won by the rebels).
+\bparag \FRA has a normal \CB until the end of the game against each major
+country and each minor country adjacent to its territory.
+\aparag \textbf{Economical crisis}
+\bparag \FRA loses 100\ducats. Then its Royal Treasure is halved %
+% (Jym) RT<0 possible
+with a minimum loss of 50\ducats.
+\bparag From now on, \FRA loses 10\% of its gross income
+(\lignebudget{Events}).
+\bparag From now on, \FRA pays inflation as if it were bringing gold from
+\continentAmerica.
+
+\phdipl
+\aparag The \CB provided above can be used as diplomatic reaction to any other
+diplomatic announcement.
+\bparag If \payspologne is a special \EG of \FRA (per \ref{pVI:WoPS:Polish
+  Victory}), as soon as another \MAJ declares war on \FRA, so does
+\payspologne. Troops of \payspologne are allowed to cross the \HRE.
+\aparag At the end of each diplomatic phase, test for a change of government
+in \paysmajeurFrance. Roll 1d10 modified as follows:
+\begin{modlist}
+\item[\bonus{-4}] if \xnameref{pVII:Independence War} never occurred;
+  % (Jym) The second event IW triggers Bastille. So there is at maximum one IW
+  % before Bastille, no doubt on the winner of IW.
+\item[\bonus{-2}] if \nameref{pVII:Independence War} is finished and the
+  rebellion was crushed;
+\item[\bonus{+2}] if \nameref{pVII:Independence War} is finished and \paysusa
+  has been created;
+\item[\bonus{+2}] if \FRA used this turn a \CB provided by this event;
+\item[\bonus{+4}] if \FRA is at war without declaring any war;
+  % (Jym) Next bonus just for the destitution turn? Not very good. Once a King
+  % died, the end is not far.
+\item[\bonus{+6}] if the king of \FRA died during this event.
+\end{modlist}
+\aparag The result of the die roll tells which is the new government of \FRA:
+\begin{modlist}[2em]
+\item[1--6] The government is unchanged.
+\item[7--13] The government switches to (or remains)
+  \monarqueConvention. Apply \xnameref{pVII:Revolution:Convention}.
+\item[14+] The government switches to \monarqueTerror. It won't be able to
+  change back to anything else: stop doing this test each turn. Apply
+  \xnameref{pVII:Revolution:TerrorGov}.
+\end{modlist}
+
+\phmil
+\aparag During all wars caused by this event, enemies of \FRA are considered
+allied inside the territory of \FRA or when fighting French troops. They may
+be at war elsewhere and nonetheless be allied (and stack together or intercept
+French troops attacking the other country,\ldots) fighting \FRA.
+% (Jym) from memory
+\aparag Countries at war against \FRA are limited to 1 stack inside the
+territory of \FRA.
+\bparag They are not limited if fighting out of \FRA.
+\bparag The \ARMY provided by \xnameref{pVII:Revolution:Nobles} does not count
+toward this limit. It is always allowed inside \FRA.
+
+\phpaix
+\aparag If \villeParis is controlled by the enemies of \FRA and there are no
+more \ARMY of \FRA in play, the Revolution is crushed and a new king is put on
+the throne of \FRA.
+\bparag The game ends at the end of this turn.
+\bparag Each country at war against \FRA wins 30 \VPs.
+\bparag \FRA wins 15 \VPs at the end of the game if the revolution has not
+been crushed.
+
+\begin{digressions}[Effects of the Revolution]
+
+
+  \subevent[pVII:Revolution:Convention]{Convention (and constitutional
+    monarchy)}
+  \history{1789-1792}
+  % (Jym) Immediate effects in \phdipl because the change test is done
+  % in \phdipl...
+
+  \phdipl
+  \aparag When the government changes to \monarqueConvention:
+  \bparag Apply \xnameref{pVII:Revolution:Nobles},
+  \xnameref{pVII:Revolution:Chouans}, \xnameref{pVII:Revolution:Armies} and
+  \xnameref{pVII:Revolution:Natural Frontiers}.
+  \bparag Roll for one \REVOLT in \FRA.
+
+  \effetlong
+  \aparag If still alive, the king of \FRA has a \bonus{+5} malus to all his
+  survival rolls (instead of the \bonus{+2} for the Revolution).
+  \aparag If the king dies, he is replaced by \monarqueConvention with values
+  3/6/7. This government never rolls for survival.
+  \aparag During each event phase of \monarqueConvention, roll for one \REVOLT
+  in \FRA.
+
+
+  \subevent[pVII:Revolution:TerrorGov]{Reign of Terror and Directoire}
+  \history{1792-1799}
+
+  \phdipl
+  \aparag When the government switch to \monarqueTerror:
+  \bparag The French king (or \monarqueConvention) is immediately killed, he
+  is replaced by \monarqueTerror with values 5/6/9. This government never
+  rolls for survival.
+  \bparag Roll for 3 \REVOLT in \FRA. % Revolts of the Federated
+  \bparag If they were not already activated, apply
+  \xnameref{pVII:Revolution:Nobles}, \xnameref{pVII:Revolution:Chouans} and
+  \xnameref{pVII:Revolution:Natural Frontiers}.
+  \bparag Apply \xnameref{pVII:Revolution:Levee Masse}
+  \bparag Increase the \DTI and \FTI of \FRA by 1 each (max. 5).
+  \bparag Each \MAJ has a free \CB against \FRA to be used immediately.
+
+  \phadm
+  \aparag At the turn the government switch to \monarqueTerror, the gross
+  income of \FRA is halved (round down, \lignebudget{Events}). This is not
+  cumulative with the permanent \bonus{-10\%} caused by the event.
+  % \bparag This replaces the loss caused by \STAB.
+
+  \effetlong
+  \aparag During each event phase of \monarqueTerror, roll for two \REVOLT in
+  \FRA.
+
+  \phpaix
+  \aparag[End of Modern History] The game ends at the end of the second turn
+  of \monarqueTerror.
+
+  % (Jym) \wikipedia English uses "\'Emigr\'e" (in VF).
+
+
+  \digression[pVII:Revolution:Nobles]{\'Emigr\'es}
+
+  \phadm
+  \aparag The first country at war against \FRA in the following list gets the
+  benefits of the \'Emigr\'es: \AUS, \PRU, \HIS, \ENG, \payspologne (and its
+  controller).
+  \aparag The \MAJ gets a French Royal \ARMY\facemoins with an unnamed
+  general.
+  % (Jym) adding
+  \bparag This \ARMY can appear in any province owned by \FRA or by the \MAJ
+  receiving it.
+  \bparag It is considered class \CAIII\ with 4 artilleries per
+  \ARMY\faceplus.
+  % (Jym) In pVII, \FRA has 6 art/A, class III has 5. 4 art/A is either \RUS
+  % or \TUR.
+  \aparag This \ARMY can be reinforced (or recreated if destroyed) at the cost
+  of the French royal troops.
+  % (Jym) adding
+  \bparag If destroyed, this \ARMY can be raised again in any province owned
+  by the \MAJ receiving it or any French province either in \REVOLT or
+  controlled by another country.
+  % (Jym) adding
+  \aparag This \ARMY is freely maintained in veteran (new troops are
+  conscripts as per normal rules).
+  % (Jym) adding
+  \aparag This \ARMY must fight against \FRA. If in \FRA it cannot leave the
+  provinces in or adjacent to \FRA and if created out of \FRA it must goes to
+  \FRA by the shortest path. It is considered allied with all countries except
+  \FRA. It can co-exist with troops all countries but \FRA and will never take
+  part in any battle except against \FRA.
+
+
+  \digression[pVII:Revolution:Chouans]{Chouans and Royalist Uprisings}
+
+  \phdipl
+  \aparag \terme{Chouans} are played by \ENG (even if not at war against
+  \FRA).
+  \aparag Place a \REVOLT \facemoins in each \provincePoitou and
+  \provinceVendee.
+  \bparag French troops in these provinces must retreat.
+  \aparag Place a rebel \ARMY\faceplus and a general in one of these
+  provinces.
+
+  \phadm
+  \aparag As long as a \REVOLT exists in either \provincePoitou,
+  \provinceVendee, \provinceMorbihan, \provinceArmor or \provinceFinistere,
+  the \terme{Chouans} get 1\LD in reinforcement (except the first turn).
+
+  \phmil
+  \aparag Instead of moving, 1\LD may ``hide'' in \provinceVendee (only). It
+  does not count as military presence any more but gives a malus of \bonus{-2}
+  to suppress the \REVOLT .
+  \bparag If the \REVOLT is suppressed, this \LD is destroyed.
+
+
+  \digression[pVII:Revolution:Natural Frontiers]{Natural Frontiers}
+
+  \condition{}
+  % (Jym) I redefined the natural frontiers along the Rhine
+  \aparag The ``Natural Frontiers'' of \FRA consist in:
+  \bparag All national provinces of \FRA.
+  \bparag All provinces adjacent to national provinces of \FRA except those in
+  \HIS or \paysSuisse.
+  \bparag All provinces on the left-hand side of river Rhine, that is all the
+  provinces between \FRA and (included) \provinceAlsace, \provincePfalz,
+  \provinceTrier, \provinceKoln, \provinceLimburg, \provinceUtrecht and
+  \provinceZeeland.
+
+  \phpaix
+  \aparag \FRA automatically annexes any province within its Natural Frontier
+  that it militarily controls during peace phase, unless they belong to
+  Patriotic \HOL (see~\ref{pVII:Batavian Revolution}).
+
+
+  \digression[pVII:Revolution:Armies]{Revolutionary Armies}
+
+  \phadm
+  \aparag \FRA can now use the Revolutionary \ARMY counters.
+  \bparag Each new \ARMY raised from now on is Revolutionary.
+  \bparag Already existent (royal) \ARMY are not affected and stay until
+  destroyed or disbanded.
+  \bparag \FRA may not have more than 6 \ARMY counters in play at the same
+  time.
+  \aparag Recruitment and upkeep cost of Revolutionary \ARMY is halved (upkeep
+  of royal \ARMY is unchanged).
+  \aparag Land recruitment limit is doubled.
+  \aparag Naval recruitment cost is doubled.
+  \aparag \FRA may not used Licensed privateers as described in
+  \ruleref{chSpecific:France:Privateers}.
+
+
+  \digression[pVII:Revolution:Levee Masse]{``La Patrie en danger''}
+  All the effects of \xnameref{pVII:Revolution:Armies} are applied. In
+  addition:
+
+  \phdipl
+  \aparag All French \ARMY are immediately replaced by Revolutionary \ARMY.
+  \aparag \FRA may have up to 8 \ARMY counters in play.
+  \aparag Remove all named leaders of \FRA. \FRA gets 5 unnamed generals and 1
+  unnamed admiral (who can go in the \ROTW) (these are the new limits for
+  \FRA).
+  \aparag General \leaderwithdata{Bonaparte} is available for \FRA during the
+  first turn of \monarqueTerror, starting with the first round after
+  W2. % (Jym) : S3 or later
+\end{digressions}
+
+
+\subevent[pVII:Revolution:Terror]{Reign of Terror (Robespierre)}
+\history{1792}
+\dure{until the end of the game.}
+
+\condition{}
+% (Jym) A second IW may be running after the first one was crushed and allows
+% Robespierre to come. If there were several IW, one victory is enough.
+\aparag Can happen only if \xnameref{pVII:Independence War} is ongoing or if
+\paysusa has already been created.
+
+\phevnt
+\aparag \FRA loses 1 \STAB.
+\aparag \FRA goes to \monarqueTerror. Apply
+\xnameref{pVII:Revolution:TerrorGov}.
+
+\phmil
+\aparag The military phase starts in W0.
+
+\phpaix
+\aparag The game ends at the end of this turn.
+
+
+
+\event{pVII:Bar Confederation}{VII-6}{The Confederation of the Bar}{1}{PBnew}
+
+\history{1768}
+
+\condition{}
+\aparag Cannot occur if there is no more \payspologne. in that case, mark off
+and play \RD.
+\aparag Cannot happen before the start of the war caused by \ref{pVI:WoPS}. In
+that case do not mark off and re-roll.
+\aparag Cannot happen if \ref{pVII:Second Partition Poland} already occurred
+and the partition was accepted (with or without war) at least once. In that
+case, mark off and play \RD.
+\bparag Can, however, occur if \ref{pVII:First Partition Poland} occurred and
+the partition was accepted.
+
+\phevnt
+\aparag Absolutism is established in \payspologne.
+
+
+
+\event{pVII:First Partition Poland}{VII-7}{First Partition of
+  Poland}{1}{PBnew}
+
+\history{1772}
+
+\condition{}
+\aparag If \POL is still a major country, do not mark off and re-roll.
+\aparag If there is a war between at least two of the following countries:
+\RUS, \AUS, \PRU, do not mark off and re-roll.
+\aparag If \payspologne doesn't exist any more, mark off and play \RD instead.
+\aparag Depending on the current status of \payspologne, apply the correct
+subevent (apply the first matching case). Only one such subevent may occur in
+the game. In each case, the partition may be accepted and is described in
+\xnameref{pVII:1PP:Partition}.
+\bparag If Absolutism is established in \payspologne, apply
+\xnameref{pVII:1PP:Absolutism or Protector}.
+\aparag If \payspologne is a special \EG of either \FRA or \SUE as per
+\ref{pVI:WoPS:Polish Victory} or \ref{pVI:GNW:Stanislas}, apply
+\xnameref{pVII:1PP:Absolutism or Protector}.
+\bparag If \payspologne is neutral or on the diplomatic track of either \RUS,
+\AUS or \PRU, apply \xnameref{pVII:1PP:Poland Neutral}.
+\bparag If \payspologne is on the diplomatic track of another major who
+accepts the partition, apply \xnameref{pVII:1PP:Poland Neutral}
+\bparag Otherwise, apply \xnameref{pVII:1PP:Poland Minor}.
+
+
+\digression[pVII:1PP:Partition]{First Partition Plan of \payspologne}
+\aparag The proposed partition of \payspologne gives the following provinces
+to each major country:
+\bparag \RUS gets all the Polish provinces in \regionUkraine,
+\provinceSeveria, \provinceSmolenska, \provinceBaltarusija and
+\provincePolacak.
+\bparag \PRU gets all the provinces of \region{Duche de Prusse} and
+\province{West Preussen}.
+\bparag \AUS gets all the Polish provinces formerly part of \payshongrie,
+\provinceMorava and \provinceMalopolska
+\bparag \SUE gets a province of its choice, not part of the share of any other
+country, adjacent to its territory.
+\aparag If some of the provinces explicitly mentioned (not those part of a
+group) no more belongs to \payspologne, the major instead gets a free \CB
+against the owner of the province for the next diplomacy phase.
+\aparag The acceptance of the partition plan depends on the status of
+\payspologne and the result of the ensuing war.
+
+
+\subevent[pVII:1PP:Absolutism or Protector]{\payspologne is absolutist or has
+  a protector}
+
+\phevnt
+\aparag \RUS, \AUS, \PRU and \SUE all have a normal \CB against \payspologne
+and its protector.
+\bparag If \payspologne has no protector (but is absolutist), it call for
+allies as per normal rules, the major accepting to help it has a free \CB
+against all countries that declared war to \payspologne and is called
+protector in the rest of the event.
+\aparag If several countries declare war on \payspologne using this \CB, they
+can choose to be allied for the duration of the war without need to sign a
+formal alliance.
+\bparag However, they can also choose to wage separate wars in which case they
+can fight among them inside the territory of \payspologne and the national
+territory of \POL. In this case, each alliance is considered separately for
+the peace conditions.
+\bparag There may be several different alliances fighting against \payspologne
+(and among themselves).
+
+\phpaix
+\aparag \payspologne won't sign a separate peace in this war.
+\aparag If the protector signs an unfavourable peace of level 3 or more, or if
+\payspologne without protector signs an unconditional surrender, the following
+effects are added to the peace:
+\bparag \payspologne becomes a normal minor (and no more a special \EG).
+\bparag \payspologne becomes neutral.
+\bparag Absolutism is abolished in \payspologne
+\bparag From now on, any country can annex the capital of \payspologne.
+\bparag Instead of all peace conditions, the enemies of \payspologne can
+choose to apply the partition proposed in \xnameref{pVII:1PP:Partition}, in
+which case only the countries that were at war against \payspologne get their
+share.
+
+
+\subevent[pVII:1PP:Poland Minor]{\payspologne is a regular ally}
+
+\phevnt
+\aparag \RUS, \AUS, \PRU and \SUE all have a free \CB to be used conjointly
+against \payspologne and its diplomatic patron.
+\aparag If several countries declare war on \payspologne using this \CB, they
+can choose to be allied for the duration of the war without need to sign a
+formal alliance.
+\bparag However, they can also choose to wage separate wars in which case they
+can fight among them inside the territory of \payspologne and the national
+territory of \POL. In this case, each alliance is considered separately for
+the peace conditions.
+\bparag There may be several different alliances fighting against \payspologne
+(and among themselves).
+
+\phadm
+\aparag \payspologne must take reinforcements in defensive attitude for the
+duration of the war.
+
+\phpaix
+\aparag \payspologne may sign a separate peace as per normal rules.
+\aparag If \payspologne or the major helping it signs an unfavourable peace of
+level 3 or more, the following effects are added to the peace:
+\bparag \payspologne becomes neutral.
+\bparag From now on, any country can annex the capital of \payspologne.
+\bparag Instead of all peace conditions, the enemies of \payspologne can
+choose to apply the partition proposed in \xnameref{pVII:1PP:Partition}, in
+which case only the countries that were at war against \payspologne get their
+share.
+
+
+\subevent[pVII:1PP:Poland Neutral]{\payspologne is not defended}
+
+\phevnt
+\aparag \payspologne becomes neutral.
+\aparag The partition described in \xnameref{pVII:1PP:Partition} is accepted
+and every country take is share.
+
+
+
+\event{pVII:Second Partition Poland}{VII-8}{Second Partition of
+  Poland}{*}{PBnew}
+
+\history{1791, 1793}
+
+\condition{}
+\aparag If \ref{pVII:First Partition Poland} did not occur yet, do not mark
+off and re-roll.
+\aparag If there is a war between at least two of the following countries:
+\RUS, \AUS, \PRU, do not mark off and re-roll.
+\aparag If \payspologne doesn't exist any more, mark off, play and \RD with
+the \REVOLT in \POL.
+\bparag In addition, if \ref{pVII:Independence War} already occurred at least
+once, play that event again.
+\aparag The event is resolved in the same way as \ref{pVII:First Partition
+  Poland} (depending on the status of \payspologne) but with the partition
+plan described here.
+\aparag This event may occur several times.
+
+
+\digression[pVII:2PP:Partition]{Second and following Partition Plans}
+\aparag The proposed partition of \payspologne gives the following provinces
+to each major country:
+% (Jym) Smolensk disappeared of the \RUS package between 1PP and 2PP.
+\bparag \RUS gets all the Polish provinces in \regionUkraine,
+\provinceSeveria, \provinceBaltarusija and \provincePolacak. If none of the
+belong to \payspologne, \RUS gets instead \provinceLietuva, \provinceZemaitija
+and \provincePrypec.
+\bparag \PRU gets all the provinces of \region{Duche de Prusse} and
+\province{West Preussen}. If none of the belong to \payspologne, \PRU gets
+instead \provinceDanzig, \provinceWielkopolska and \provinceMazowia.
+\bparag \AUS gets all the Polish provinces formerly part of \payshongrie,
+\provinceMorava and \provinceMalopolska. If none of them belong to
+\payspologne, \AUS gets instead \provinceWolyn and \provinceLublin.
+\bparag \SUE gets a province of its choice, adjacent to its territory, even
+one part of the share of another country.
+\aparag If some of the provinces explicitly mentioned (not those part of a
+group) no more belongs to \payspologne, the major instead gets a free \CB
+against the owner of the province for the next diplomacy phase.
+\aparag If some provinces are claimed by several countries, the one occupying
+it at the time of the partition annexes the province. \SUE does if nobody
+occupy it.
+
+
+
+\event{pVII:National Revival of Poland}{VII-9}{National Revival of
+  Poland}{2}{PBnew}
+
+\history{1795}
+
+\condition{Cannot occur before \ref{pVII:First Partition Poland}. In that
+  case, do not mark off and re-roll.}
+\aparag Each of these events can happen only once.
+\bparag If there no more \payspologne, apply \xnameref{pVII:NRP:Kosciusko}.
+\bparag If \payspologne still exists, apply \xnameref{pVII:NRP:Commonwealth
+  Revival}.
+
+
+\subevent[pVII:NRP:Kosciusko]{Kosciusko's revolt}
+\history{1795}
+
+\phevnt
+\aparag Place \REVOLT in the following provinces: \provinceLietuva,
+\provinceMazowia, \provinceLublin and \provinceWielkopolska.
+\bparag The \REVOLT are \faceplus if \ref{pVII:French Revolution} already
+occurred at least once and \facemoins otherwise.
+\bparag Military troops in these provinces must retreat.
+\bparag Only the fortress of \villeVarsovie is taken by the rebels.
+\bparag Put an \ARMY\facemoins of \payspologne with general
+\leaderwithdata{Kosciuszko} (lasting until the end of the game) in a revolted
+province.
+\aparag The minor country \payspologne is created anew with these troops and
+provinces.
+% (Jym) Putting this in \phevnt so that the choice has to be without any
+% private discussions.
+\aparag \payspologne is looking for a foreign help. The following countries
+must immediately accept or refuse, in order:
+\bparag \FRA, if \ref{pVII:French Revolution} already occurred at least once.
+\bparag \FRA or \SUE, whichever last got \payspologne as a special \EG due
+either to \ref{pVI:WoPS:Polish Victory} or \ref{pVI:GNW:Stanislas Victory}
+\bparag \FRA, \SUE, \AUS, \PRU.
+\aparag The country who accepts to help \payspologne immediately declares war
+(with a \CB) against all the countries owning a national province of \POL.
+% (Jym) adding
+\bparag This is just one declaration of war, not one per enemy country. Hence
+the \STAB loss is only 1.
+\aparag \payspologne is put in \EG of its helper.
+
+\phdipl
+% (Jym) switched to \phdipl to avoid any question about who gets the income of
+% these provinces.
+\aparag The \MAJ who accepted to help \payspologne must immediately give to
+\payspologne all the national provinces of \POL it currently owns.
+\bparag There is no loss of \VP for these provinces.
+
+\phadm
+\aparag \payspologne get reinforcements as a regular minor based on the income
+of provinces it owns and control (as per normal rules).
+
+\phmil
+\aparag Troops of \payspologne stacked with \leaderKosciuszko are always
+veterans.
+
+\phpaix
+\aparag \REVOLT may spread only in national provinces of \POL but may do so
+even through frontiers of major countries.
+\aparag \payspologne will not sign a white or unfavourable peace in this war.
+\aparag If there are no more \REVOLT and no more troops of \payspologne, the
+minor is destroyed again.
+% (Jym) adding: the protector has no real risk since he will get back the
+% ceded provinces
+\bparag Ownership of provinces goes back to whoever owned them at the
+beginning of the war.
+% (Jym) adding: so that the protector has a risk
+\bparag Other countries involved in the war may either sign a white peace or
+continue fighting.
+\aparag If \payspologne and its allies sign a favourable peace, all provinces
+annexed at the peace must be national provinces of \POL and are given to
+\payspologne.
+% (Jym) Is it possible to take something else than provinces in this peace?
+\bparag \payspologne becomes a permanent \EG of its protector as described in
+\ref{pVI:WoPS:Polish Victory}.
+\bparag \payspologne should now own: the four initially revolted provinces,
+the provinces given by the protector and the provinces annexed at the peace.
+\bparag This may happen also if the \REVOLT and troops were crushed but the
+protector kept on fighting and won the war.
+
+
+\subevent[pVII:NRP:Commonwealth Revival]{Commonwealth's Revival}
+\history{not historic}
+
+\phadm
+\aparag \payspologne receives the general \leaderwithdata{Kosciuszko} for the
+rest of the game.
+\aparag Until the end of the game, each turn where there is a declaration of
+war against \payspologne, roll for two \REVOLT in \POL.
+\bparag The \REVOLT may happen in any country (not only \payspologne) and
+their force is rolled at random.
+\bparag The \REVOLT must occur in national territory of \POL. If they fall out
+of it, re-roll another \REVOLT . However, both \REVOLT may occur in the same
+province.
+\bparag If \ref{pVII:French Revolution} occurred at least once in a previous
+turn, roll four \REVOLT instead of two.
+
+\phmil
+\aparag Troops of \payspologne stacked with \leaderKosciuszko are always
+veterans.
+\aparag \REVOLT created by this event (and their fortresses or troops) are
+allied with \payspologne.
+% (Jym) adding
+\bparag \REVOLT counters are limited supply sources for the troops of
+\payspologne (only, not its allies).
+
+\phpaix
+\aparag The \REVOLT may only spread in national provinces of \POL but can do
+so through national borders of major countries.
+\aparag Revolted provinces count as if controlled by \payspologne for the
+peace procedure.
+
+
+
+\event{pVII:Mameluks Revolt}{VII-10}{Independence of the Mameluks in
+  Egypt}{1}{RistoMod}
+
+\history{1795 (Bonaparte in Egypt)}
+
+\condition{}
+\aparag If the current monarch of \TUR has an \ADM of at least 8, he can
+choose to cancel the event.
+\bparag In this case, place a \REVOLT (with random strength) in all the former
+provinces of \paysmamelouks.
+
+\phevnt
+\aparag \paysmamelouks is recreated. It owns all the provinces it had at the
+start of the game that now belong to \TUR.
+\bparag Its basic forces are \ARMY\facemoins, \LD and it can use all its
+counters.
+\bparag \TUR loses \VP for the provinces lost.
+
+\phdipl
+\aparag \TUR has a temporary free \CB against \paysmamelouks for this turn
+only.
+
+\phpaix
+\aparag If \TUR achieves an enforced unconditional victory over \paysmamelouks
+during a war caused by this event, it can annex it again, gaining \VP for the
+provinces annexed.
+
+\effetlong
+\aparag \FRA, \ENG, \HOL and \HIS have a permanent \CB against \paysmamelouks.
+% (Jym) adding
+\bparag If several of them use this \CB without being formally allied, they
+can fight inside the territory of \paysmamelouks and \seazone{Mediterranee E}
+even if not at war elsewhere.
+
+\aparag If, at the beginning of a peace phase, one of them controls the
+capital and half the other provinces of \paysmamelouks, \paysmamelouks becomes
+a permanent \VASSAL of the major occupying it and no diplomacy is possible on
+it.
+\bparag If the major later signs an unfavourable peace, one peace condition
+can be to turn back \paysmamelouks into a regular normal country who then
+becomes neutral.
+\bparag It is also always possible to wage war against \paysmamelouks and
+``steal'' the special \VASSAL status by occupying it.
+% (Jym) adding
+\aparag From now on, \FRA, \ENG and \HOL can declare war on \payschevaliers at
+normal cost (instead of the one mentioned in \ruleref{chSpecific:Knights}) and
+they can annex the capital province of \payschevaliers thus destroying the
+country.
+
+
+
+\event{pVII:Revolt Indonesia}{VII-11}{Revolt in Indonesia}{*}{Risto}
+
+\history{No precise date}
+
+\phevnt
+\aparag Place one \REVOLT \facemoins and one \REVOLT \faceplus in two randomly
+chosen \COL/\TP in areas \granderegionJava, \granderegionSumatra,
+\granderegionBorneo and \granderegionCelebes. Both \REVOLT can occur in the
+same place. Roll on \ref{table:alt-revolt-global} for the control of these
+\REVOLT .
+
+
+
+\event{pVII:Sale Corsica}{VII-12}{Sale of Corsica}{1}{Risto}
+
+\history{1759}
+
+\condition{If \provinceCorsica does not belong to either \payscorse or
+  \paysgenes, treat this as a \REVOLT in \provinceCorsica (roll for strength
+  as usual) and mark off.}
+
+\phevnt
+\aparag \provinceCorsica is for sale. Each player must immediately make a
+secret bid for it and the highest bid annexes \provinceCorsica. Only the
+winning bid is actually paid. If it bids at least 1\ducats, \FRA receives a
+bonus of 50\ducats for its bid.
+
+\phdipl
+\aparag If \provinceCorsica is currently occupied by foreign troops, the owner
+of those troops must either declare a war to the new controller of this
+province profiting from a \CB, or withdraw its forces as per peace process.
+
+
+
+\event{pVII:Pugatchev Revolt}{VII-13}{Revolt of Pugatchev}{1}{RistoMod}
+
+\history{1773-1774}
+\dure{Until the end of the civil war.}
+
+\tour{The initial revolt}
+
+\phevnt
+\aparag A civil war erupts in \RUS. The rebels are controlled by \SPA, or by
+\SUE if \SPA is allied to \RUS.
+\aparag Place a \REVOLT \facemoins in the former provinces of the following
+minor countries currently belonging to \RUS: \payskazan, \paysastrakhan,
+\payssteppes, \payscrimee%
+% (Jym) Before, \paysKazan and \paysAstrakhan were only one province. The
+% event is a bit harder now, but remains largely manageable from experience.
+and all \ROTW provinces adjacent to \RUS European territory that have \RUS
+\COL/\TP in them. Roll for two additional \REVOLT in \RUS. If the result is
+outside \RUS territory, ignore and do not re-roll.
+\aparag Place a revolt \ARMY\facemoins and general \leaderPugatchev in any
+revolted province (he can either lead the \ARMY or a \REVOLT ).
+\bparag The class of rebels armies is the same as \RUS.
+
+\phdipl
+\aparag Countries adjacent to \RUS can make a foreign intervention in any side
+of the war.
+
+\phadm
+\aparag The rebels roll for reinforcements in offensive status during each
+turn of the civil war.
+\bparag The modifier for reinforcement is computed based on the income of the
+provinces in \REVOLT , even if the rebel does not control the fortress.
+
+\phmil
+\aparag All rebel units can use \REVOLT counters as supply bases in the same
+way as fortresses as long as there are no non-defeated enemy units present at
+the moment supply is needed.
+
+\phpaix
+\aparag The war end either by suppressing all the \REVOLT or if the \REVOLT
+cause the government to be overthrown.
+\aparag There is no extension of \REVOLT if the rebels suffer a major defeat
+or if there is no more \ARMY counter of the rebels.
+
+\tour{Siberian revival}
+
+\phadm
+\aparag Starting from the third turn of the revolt, if a rebel army is located
+during this phase in any former province of \payskazan, \paysastrakhan, or
+\payssteppes, the rebels receive the \paysSiberie \ARMY\faceplus as extra
+reinforcement this turn.
+\bparag This extra reinforcement can only happen once in the war.
+\bparag This army can freely stack with the rebels or exchange \LD in order to
+replenish one or another.
+
+
+
+\event{pVII:Potemkin}{VII-14}{Potemkin}{1}{Risto}
+
+\history{1783-1791}
+\dure{as long as \strongministre{Potemkine} remains the excellent minister}
+
+\condition{\RUS can refuse this event if it so wishes. In that case mark off
+  as played.}
+\aparag \RUS can freely dismiss \ministrePotemkine at the end of any following
+monarch survival phase and the event terminates.
+
+\phevnt
+\aparag \RUS receives an excellent minister \ministrePotemkine, with values
+9/8/8.  He will last for a random length for Minister, see \ref{eco:Excellent
+  Minister}.
+
+\phadm
+\aparag \RUS basic force is increased by \FLEET\facemoins during every turn
+\RUS is engaged in a war and \ministrePotemkine is in charge.
+
+\phmil
+\aparag As long as this event is in effect \RUS receives an additional bonus
+of \bonus{+1} to all attempts to suppress \REVOLT .
+
+
+
+\event{pVII:War Crimea}{VII-15}{War in Crimea}{2}{PBnew}
+
+\history{1768-1774, 1787-1792}
+% (Jym) one occurrence only? Present twice in the table.
+
+\phevnt
+\aparag \RUS has a Free \CB against \TUR at this turn or the next one.
+
+
+
+\event{pVII:War Finland}{VII-16}{War in Finland}{1}{PBnew}
+
+\history{1788-1790}
+
+\phevnt
+\aparag \SUE has a free \CB against \RUS if \RUS owns at least one province in
+\regionFinlande.
+\aparag \RUS has a free \CB against \SUE if \SUE owns at least one province in
+\regionFinlande or on the \regionBaltique (between \provinceNeva and
+\provinceCourlande included).
+
+
+
+\event{pVII:Forward Balkans}{VII-17}{Forward to the Balkans}{1}{PBnew}
+
+% (Jym) Present only once in the table.
+\history{No precise date}
+
+\phevnt
+\aparag \AUT has a Free \CB against \TUR at this turn or the next one.
+
+
+
+\event{pVII:Wars India}{VII-18}{Wars in India}{3}{PBnew}
+
+\condition{}
+\aparag If \ref{pVI:Last Great Mughals} did not happen yet, apply it instead.
+\aparag Otherwise, apply \xnameref{pVI:Wars India} but with the following die
+roll:
+\bparag 1-4 = A) War between \paysmogol and \paysperse. Apply
+\xnameref{pVI:India:Mughal Persian War}.
+\bparag 5-6 = B) War between \paysafghans and \paysperse. Apply both
+\xnameref{pVI:India:Afghan Empire} and \xnameref{pVI:India:Fall Persian
+  Safavids}.
+\bparag 7-10 = C) War between \paysafghans and \paysmogol. Apply both
+\xnameref{pVI:India:Afghan Empire} and \xnameref{pVI:India:Rise Marathi}. This
+case may not happen before either case A above, re-roll another case if
+needed.
+
+
+
+\event{pVII:Vassalisation Hanover}{VII-19 (1)}{Vassalisation of
+  \payshanovre}{1}{Risto}
+
+\phevnt
+\aparag Same event as \ref{pVI:Vassalisation Hanover}.
+\aparag If already occurred, apply \ref{pVII:William Pitt}.
+
+
+
+\event{pVII:William Pitt}{VII-20}{William Pitt}{1}{Risto}
+
+\history{1757-1761}
+\dure{as long as \strongministre{Pitt} remains the excellent minister}
+
+\condition{\ANG can refuse this event if it so wishes. In that case mark off
+  as played.}
+\aparag \ANG can freely dismiss \ministrePitt at the end of any following
+monarch survival phase and the event terminates.
+
+\phevnt
+\aparag \ANG receives an excellent Minister \ministrePitt, with values 9/8/8.
+He will last for a random length for Minister, see \ref{eco:Excellent
+  Minister}.
+
+\phadm
+\aparag \ANG basic forces are increased by \FLEET\facemoins and \ARMY\faceplus
+during every turn where \ANG is engaged in a war (including oversea war) and
+\ministrePitt is in charge.
+
+
+
+\event{pVII:Kaunitz}{VII-21}{Kaunitz}{1}{Risto}
+
+\history{1753-1793}
+\dure{as long as \strongministre{Kaunitz} remains the excellent minister}
+
+\condition{\AUS can refuse this event if it so wishes. In that case mark off
+  as played.}
+\aparag \AUS can freely dismiss \ministreKaunitz at the end of any following
+monarch survival phase and the event terminates.
+
+\phevnt
+\aparag \AUS receives an excellent Minister \ministreKaunitz, with values
+9/8/7.  He will last for a random length for Minister, see \ref{eco:Excellent
+  Minister}.
+
+% (Jym), Placeholder, potential veto
+
+
+
+\event{pVII:USA-Morocco}{VII-z}{Moroccan-American Treaty of
+  Friendship}{1}{JymVetoPending}
+
+\history{1777}
+
+\condition{If \paysusa does not exists, do not mark off and reroll.}
+\dure{Until the end of the game}
+
+\effetlong
+\aparag Place one level of \TradeFLEET of \paysusa in \stz{lion}.
+\bparag The reference level for \paysusa in \stz{lion} is now 1.
+% (Jym) http://en.wikipedia.org/wiki/Moroccan-American_Treaty_of_Friendship +
+% Barbaresques piracy degenerated in war with the \paysusa in 1801 and 1815:
+% http://en.wikipedia.org/wiki/Barbary_Wars
+
+\stopevents
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: pVI pVII Batavian Mameluks Pugatchev Vassalisation Kaunitz de
+% LocalWords: PBnew RistoMod Bolivarian PBMod malus Directoire Masse migr JCD
+% LocalWords: artilleries Chouans Patrie subevent Duche Prusse Preussen NRP
+% LocalWords: Kosciuszko Mediterranee Risto Safavids JymVetoPending reroll IW
+% LocalWords: Jym SYW Orangists VOC Stadhouder Emigr Mughal Barbaresques http
+% LocalWords: Potemkine

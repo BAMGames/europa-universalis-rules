@@ -1,0 +1,50 @@
+\documentclass[noindex]{simplerules}
+\geometry{a4paper}
+%%% Modify typesetting for the tables %%%
+\setlength\overfullrule{5pt}
+%%% Some hooks must be deactivated %%%
+\xdef\ignoreone#1{}
+\xdef\ignoreoneoftwo#1#2{#2}
+\let\leaderhyperlink\ignoreone
+\def\forcenewpage{~\newpage}
+\let\xeventref\ignoreoneoftwo
+\let\longxeventref\ignoreoneoftwo
+
+%%% itemize and enumerate
+% \squeezedlist is in barlist.sty
+
+\makeatletter
+\def\@listi{\settowidth{\labelwidth}{\labelitemi}\labelsep.3em\squeezedlist}
+\def\@listii{\settowidth{\labelwidth}{\labelitemii}\labelsep.3em\squeezedlist}
+\def\@listiii{\settowidth{\labelwidth}{\labelitemiii}\labelsep.3em\squeezedlist}
+\def\@listiv{\settowidth{\labelwidth}{\labelitemiv}\labelsep.3em\squeezedlist}
+\def\labelitemi{\textbullet}
+\def\labelitemii{\textbullet}
+\def\labelitemiii{\textbullet}
+\def\labelitemiv{\textbullet}
+
+% \def\@listi{\leftmargin\leftmargini
+%   \parsep 3\p@ \@plus3\p@ \@minus3\p@
+%   \topsep 3\p@ \@plus3\p@ \@minus3\p@
+%   \itemsep2\p@ \@plus1\p@ \@minus2\p@}
+\let\@listI\@listi
+\g@addto@macro\small{\let\@listi\@listI}
+\g@addto@macro\footnotesize{\let\@listi\@listI}
+\makeatother
+
+%%% Switch to narrow mode %%%
+\GTnarrowmode
+
+% Common sources
+\input{engCommandes}
+\input{translations}
+\input{engLeaders}
+\input{engEntetesMineurs}
+\input{engCorpsMineurs}
+
+\input{engCountryTables} 
+\input{engGeneralTables}
+
+\begin{document}
+\input{engTables}
+\end{document}

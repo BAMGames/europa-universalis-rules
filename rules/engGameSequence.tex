@@ -1,0 +1,129 @@
+\newcommand{\EventsDetails}{%
+  \bparag \xnameref{chEvents:Survival}
+  \bparag \xnameref{chEvents:eco-events}
+  \bparag \xnameref{chEvents:Economic situation}
+  \bparag \xnameref{chEvents:Piracy}
+  \bparag \xnameref{chEvents:political-events}
+  \bparag \xnameref{chEvents:diplomacy}
+  \bparag \xnameref{chEvents:Revolts}
+  \bparag \xnameref{chEvents:Technology} % adjustment
+}
+\newcommand{\EventsPhase}{%
+  \aparag \xnameref{chapter:Events}
+  \EventsDetails
+}
+
+\newcommand{\DiploDetails}{%
+  \bparag Negotiations between Players
+  \bparag Announcements of Alliances
+  \bparag Declarations of Wars caused by events, and induced Reactions
+  \bparag Other Announcements: Agreements, Trade Refusal,...
+  \bparag Declarations of War, and Reactions
+  \bparag Diplomacy on Minor Countries
+  \bparag Resolutions of Diplomatic Actions
+  \bparag Diplomatic Counter adjustment
+  \bparag Activation of \ROTW minors, and reactions
+}
+\newcommand{\DiploPhase}{%
+  \aparag Diplomatic phase
+  \DiploDetails
+}
+
+%\newcommand{\IncomeDetails}{%
+%  \bparag Income computation for each player
+%  \bparag Bankruptcy declaration, Refund loans
+%}
+%\newcommand{\IncomePhase}{%
+%  \aparag Income phase
+%  \IncomeDetails
+%}
+
+\newcommand{\AdminDetails}{%
+  \bparag Income computation
+  \bparag \TradeFLEET adjustment, mandatory loan refund, interests,
+  bankruptcy
+  \bparag Choice of actions (incl. Exceptional taxes and logistic)
+  \bparag Maintenance of fortresses and troops, optional refunds
+  \bparag Purchase of forces
+  \bparag Resolution of administrative operations
+  \bparag Administrative action of minors (incl. recruitment)
+  \bparag Automatic competition, attribution of resources
+  \bparag Exotic resources price variations
+  \bparag Technology adjustment
+}
+\newcommand{\AdminPhase}{%
+  \aparag Administrative phase
+  \AdminDetails
+}
+
+
+\newcommand{\MilitaryDetails}{%
+  \bparag Phase end test
+  \bparag Movement and battle, for each alliance:
+  \begin{enumerate}
+  \item Hierarchy adjustment
+  \item Choice of campaign
+  \item Movement \& Discovery
+  \item Attrition
+  \item Battles
+  \end{enumerate}
+  \bparag Sieges
+  \bparag Fights against Piracy and Natives
+  \bparag End of round
+}
+\newcommand{\MilitaryPhase}{%
+  \aparag Military phase (for each military round)
+  \MilitaryDetails
+}
+
+
+\newcommand{\RedepDetails}{%
+  \bparag Attacks by Natives
+  \bparag Attacks of Pirates \& Privateers
+  \bparag Military Looting
+  \bparag Extension of Revolts
+  \bparag Mandatory Retreat in Sieges, \Presidios
+  \bparag Return to port or Attrition of Fleets at sea
+  \bparag Collection of all Gold Repatriated
+}
+\newcommand{\RedepPhase}{%
+  \aparag Redeployment phase
+  \RedepDetails
+}
+
+\newcommand{\PeaceDetails}{%
+  \bparag Exceptional Taxes
+  \bparag Exchequer test (including National Loans)
+  \bparag International Loans
+  \bparag Stability action investment
+  \bparag Action of Stability resolution
+  \bparag Peace offers and discussions
+  \bparag Test for Crusade
+}
+\newcommand{\PeacePhase}{%
+  \aparag Peace phase
+  \PeaceDetails
+}
+
+\newcommand{\InterDetails}{%
+%  \bparag Prosperity and Stability adjustment
+  \bparag Placement \& Death of Military Leaders
+  \bparag Inflation
+  \bparag Moving the Trade Centres and Convoys
+  \bparag Calculation of end of turn \VP.
+}
+\newcommand{\InterPhase}{%
+  \aparag Interphase
+  \InterDetails
+}
+
+\newcommand{\GameSequence}{%
+  \EventsPhase
+  \DiploPhase
+%  \IncomePhase
+  \AdminPhase
+  \MilitaryPhase
+  \RedepPhase
+  \PeacePhase
+  \InterPhase
+}

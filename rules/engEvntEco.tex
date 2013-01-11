@@ -1,0 +1,743 @@
+% -*- mode: LaTeX; -*-
+
+\section{Event Table of economical random events}
+
+\begin{eventstable}[Random economical events]
+  \centering{\graytabular\tabcolsep=4pt
+    \begin{tabular}{|c|cccccccccc|}%
+      \hline\ghline%
+      {1\up{st}\rlap{>}}%
+      &  1& 2& 3& 4& 5& 6& 7& 8& 9& 0\\\hline\ghline%
+      1&29& 9&17&38&22& 7& 6&18& 4&45\\\ghline%
+      2& 2&43&28&12&36&16&49&24& 3&15\\\ghline%
+      3&42&33&18&45& 4&14&38& 7&46&10\\\ghline%
+      4&22& 6&44&19&32&37&21& 7&40& 9\\\ghline%
+      5&16&34& 8&24&13& 2&38&28&36&45\\\ghline%
+      6&44&10&27&15&20&47&18& 6&14&30\\\ghline%
+      7&23&38&17& 9& 5&43&11&41&26& 4\\\ghline%
+      8& 8&35& 2&31&39&16&20&45&13&16\\\ghline%
+      9&24& 7&19&14&12& 4& 5&25&35&48\\\ghline%
+      0&38&17&37& 8&11& 9& 7&16&23& 1\\\hline%
+    \end{tabular}}
+\end{eventstable}
+\eventssummary{%
+  eco:Crisis of madness|,%
+  eco:Excellent Minister|,%
+  eco:Serious sickness|,%
+  eco:Agricultural Crisis|,%
+  eco:Naval losses|,%
+  eco:Looting and insecurity|,%
+  eco:Fiscal evasion|,%
+  eco:Corruption|,%
+  eco:Technological advance|,%
+  eco:Mine Discovery|,%
+  eco:Wave of obscurantism|,%
+  eco:Piracy|,%
+  eco:Development of warships|,%
+}
+
+\eventssummary{%
+  eco:Military leader|,%
+  eco:Drought|,%
+  eco:Exceptional year|,%
+  eco:Sales of honorary titles|,%
+  eco:Epidemics|,%
+  eco:Rush Colonists|,%
+  eco:Refugees|,%
+  eco:Gift to the State|,%
+  eco:Scandal at the court|,%
+  eco:Plots at the court|,%
+  eco:Poor weather|,%
+  eco:Death Heir|,%
+  eco:Mine Depletion|,%
+  eco:New ally|,%
+  eco:Defection of an ally|,%
+  eco:Desertions|,%
+  eco:Death of a military leader|,%
+  eco:Dynastic inheritance|,%
+}\eventssummary{%
+  eco:Inflation|,%
+  eco:Offer of alliance|,%
+  eco:Independence of a vassal|,%
+  eco:Enthusiasm for the Army|,%
+  eco:Renewal of popularity|,%
+  eco:Enthusiasm for the Navy|,%
+  eco:Agricultural technique development|,%
+  eco:Reorganisation of the army or the fleet|,%
+  eco:Conquistador|,%
+  eco:Explorer|,%
+  eco:Governor|,%
+  eco:Diplomatic Preeminence|,%
+  eco:Cultural expansion|,%
+  eco:Deflation|,%
+  eco:Economic Crisis|,%
+  eco:Economic Boom|,%
+  eco:Rectification|,%
+  eco:Treachery|,%
+} \newpage\startevents
+
+
+
+
+\section{Description of Economical Events}
+
+
+
+\event{eco:Crisis of madness}{E-1}{Crisis of madness}{1}{Orig}
+
+Reduce all values of the monarch's characteristics by half for this turn
+(rounded down). Modify next-turn survival die-roll by \bonus{+1}.
+
+
+
+\event{eco:Excellent Minister}{E-2}{Excellent ministers}{3}{PBmod}
+
+\phevnt
+\aparag A Minister is appointed per \ref{chEvents:Excellent Ministers}. His
+characteristics as ruler are rolled for the three values by 1d10 modified: a
+die-roll of 1 becomes 7, of 2 becomes 8, 10 becomes 9.  Another die roll sets
+the length of the Ministry:
+
+\GTtable{excellentministres}
+
+\aparag The office of the Minister include the current turn, and ends just
+before the ``economical events'' segment of the events phase following the
+last full turn of office.
+
+\aparag A value of the Minister is used only if it is strictly superior to the
+monarch's own characteristic.
+
+\aparag If the Monarch dies when the Minister is still in office, a malus of
+\bonus{-2} is applied to the characteristics determination die-rolls for the
+monarch's successor, but only for a characteristic that was increased due to
+the Minister by at least 2 above the Monarch value.
+
+
+
+\event{eco:Serious sickness}{E-3}{Serious sickness}{1}{Orig}
+
+% (JCD) What about monarchs that do no survival roll. Immune sudden death?
+Reduce all characteristics of the monarch by 3 for this turn only, 1 being the
+minimum value. In addition, roll a die. If the result is 10, the monarch
+deceases immediately. Else, modify next-turn survival die-roll by \bonus{+1}.
+
+If the current monarch did benefit from \ref{chEvents:Excellent Ministers},
+the characteristics are only reduced by 1.
+
+The monarch cannot lead armies or fleets during the turn
+% (Jym) adding:
+except if he must do so due to a political event.
+
+
+
+\event{eco:Agricultural Crisis}{E-4}{Agricultural crisis}{4}{Orig}
+
+The country has seen real trouble in crops and farming. The loss is of 50\%
+(lowered by 10\% per unit of \RES{Cereals} \MNU already owned by the country)
+of its income of provinces this turn (\lignebudget{Provinces income}). The
+loss is registered in \lignebudget{Event}.
+
+% (JCD) Should be added to the industrial income instead of RT?
+Other countries that possess \RES{Cereals} \MNU gain immediately 10\ducats per
+unit in their \RT, to be added from \lignebudget{RT at start of turn} to
+\lignebudget{RT after Events}.
+
+
+
+\event{eco:Naval losses}{E-5}{Naval losses}{2}{Orig}
+
+Fires, storms and disasters spread at sea. Roll 2d10, and add \bonus{+2} if
+the \MAJ has at least 3 \FLEET counters deployed at that time, or subtract
+\bonus{-2} if it has only one (or none).  The number of \ND lost is given by
+the result:
+
+\centerline{\begin{tabular}{*{5}{c}} \textlessequal 4& 5--10& 11--15 & 16--19
+    & \textgreatequal20\\\hline 0 & 1 & 2 & 3 & 4
+  \end{tabular}}
+
+The \ND can come from anywhere. \NGD count for half a loss only; \NTD can be
+lost only if there are no warships or galleys left.
+
+
+
+\event{eco:Looting and insecurity}{E-6}{Looting and insecurity}{3}{JCMod}
+
+The country loses 10\% (rounded up) of its income of provinces this turn
+(\lignebudget{Provinces income}). The loss is registered in
+\lignebudget{Event}.
+
+Place a \PIRATE\facemoins in the player's \CTZ (if any); in \stz{Baltique} if
+the player has a port on this \STZ (and no \CTZ); in \stz{Adriatique} if the
+player has a port on this \STZ (and no \CTZ). There may be no \PIRATE if there
+are no such ports.
+
+
+
+\event{eco:Fiscal evasion}{E-7}{Fiscal evasion}{5}{Orig}
+
+\phevnt
+Reduce the Royal treasury by 20\% of its absolute value (min. is 20\ducats)
+this turn (from \lignebudget{RT at start of turn} to \lignebudget{RT after
+  Events}). Furthermore, if \TUR receives this event, he has to check for
+Pashas' corruption.
+
+
+\digression[eco:Fiscal:Pashas Corruption]{Corruption of Pashas}
+
+\phevnt
+\aparag Two \xnameref{chSpecific:Turkey:Pashas} become corrupted (turn the
+counters on their corrupted side). These Pashas are chosen by The Sole
+defender of the Catholic Faith (or \MAJHAB is there is none).  Those pashas
+must be in owned Turkish provinces; if none are available, displace the newly
+corrupted pashas in any province (except the capital).
+
+
+
+\event{eco:Corruption}{E-8}{Corruption}{3}{Orig}
+
+\phadm
+All costs of purchase double this turn (reinforcements and campaigns). Costs
+of maintenance increase by 10\% (rounded up). In addition, \TUR suffers the
+effects described in \ref{eco:Fiscal:Pashas Corruption}.
+
+
+
+\event{eco:Technological advance}{E-9}{Technological advance}{4}{Orig}
+
+The player can move one of his two technology marker (naval or land) a number
+of boxes forward on the technology track determined by the roll of a die
+(choice of the technology must be made before rolling the die):
+
+\centerline{\begin{tabular}{*{3}{c}} \textlessequal 1--5 & 6--8 &
+    9--10\\\hline 1 box & 2 boxes & 3 boxes
+  \end{tabular}}
+
+
+
+\event{eco:Mine Discovery}{E-10}{Discovery of mines}{2}{JCMod}
+
+\phevnt
+\aparag Place a \countermark{Gold Mine} counter in one national province of
+the player (still controlled) in mountain terrain (or non-clear terrain if
+none available, or clear terrain as a last resort), where there is not already
+such a counter, and provided the country (not the player) did not benefit from
+this event two times.
+\bparag If the country had already benefited from this event two times, test
+for \ref{eco:Depletion:Depletion America} instead.
+
+If no controlled terrain is available, re-roll.
+
+
+
+\event{eco:Wave of obscurantism}{E-11}{Wave of obscurantism}{2}{Orig}
+
+Reduce the \STAB by {\bf 1} level if player is Protestant, and {\bf 2} levels
+in all other cases.
+
+
+
+\event{eco:Piracy}{E-12}{Pirates}{2}{JymMod}
+
+\phevnt
+\aparag This event is only resolved at during the economic situation segment
+of the event phase.
+\aparag Count the number of piracy events that must occur this turn, including
+the one that may arise via the economic situation roll.
+\bparag If there are two or more, then the target is ``Everywhere''.
+\bparag If there is only one, and the target is not precised, roll one die:
+1--5: America, 6--10: Asia.
+
+\aparag For each \STZ in the target, in the order listed below, roll one die
+and place a \PIRATE\facemoins if it is higher than the piracy level of the
+\STZ. See~\ruleref{chEvents:Piracy Level} and following for the details of
+piracy placements.
+
+\aparag List of targeted \STZ and order of test:
+\bparag Everywhere: \seazoneCaraibes, \seazone{Atlantique W}, \seazoneIndien,
+\seazoneOman, \seazoneGuinee, \seazoneRecife, \seazonePerou, \seazoneFormose,
+\seazonePatagonie, \seazoneTempetes, \stz{Canarias}.
+\bparag America: \seazoneCaraibes, \seazone{Atlantique W}, \seazoneGuinee,
+\seazoneRecife, \seazonePatagonie, \seazoneTempetes, \stz{Canarias}.
+\bparag Asia: \seazoneIndien, \seazoneOman, \seazonePerou, \seazoneFormose,
+\stz{Canarias}.
+
+
+
+\event{eco:Development of warships}{E-13}{Development of warships}{2}{Orig}
+
+The player advances his naval technology by 1 box.
+% (JCD) Relation with \RES{Wood}? NO!
+
+
+
+\event{eco:Military leader}{E-14}{Military leader}{3}{Orig}
+
+Roll one die. If the result is even, draw a general, else draw an admiral. The
+leader will be drawn from the anonymous pool of the player, and will not be
+included in the minimum leaders limit for the period that the leader is
+entitled to.
+
+The leader is available for 1 turn if the result is between 1 and 5, 2 turns
+(current and following) if it is between 6 and 10.
+
+
+
+\event{eco:Drought}{E-15}{Drought}{2}{Orig}
+
+The country loses 30\% (rounded up) of its income of provinces this turn
+(\lignebudget{Provinces income}). The loss is registered in
+\lignebudget{Event}.
+
+
+
+\event{eco:Exceptional year}{E-16}{Exceptional year}{5}{Orig}
+
+The country gains 10\% (rounded up) of its income this turn
+(\lignebudget{Income}). The gain is registered in \lignebudget{Events}.
+
+
+
+\event{eco:Sales of honorary titles}{E-17}{Sales of honorary titles}{3}{Orig}
+
+The Major Power may opt to sell honorary titles. If it chooses so, roll 1d100.
+The result gives the product of these sales in \xducats, added immediately to
+\lignebudget{RT at start of turn} in \lignebudget{RT after Events}.  Then the
+minimum number of generals of the power is lowered by one this turn (only).
+If may opt to have none of these effects (before rolling the dies).
+
+
+
+\event{eco:Epidemics}{E-18}{Epidemics}{3}{Orig}
+
+The country loses 20\% (rounded up) of its income this turn
+(\lignebudget{Incomes}). The loss is registered in \lignebudget{Events}.
+
+
+
+\event{eco:Rush Colonists}{E-19}{Rush of colonists}{3}{JymMod}
+
+If the country has no \COLaction or \TPaction, it may elect to ignore this
+event and re-roll another one (to be decided immediately).
+
+This event gives a bonus of \bonus{+3} to the die-roll of \COLaction, as well
+as a supplementary and free \COLaction with small investment (30\ducats),
+usable this turn or any other turn of the current period (lost if not used
+before the end of the current period). Moreover, the country may ignore
+restrictions of~\ref{chExpenses:Pioneering} for this turn.
+
+If this is not period \period{I} also apply~\ref{eco:Rush:Minor colony}.
+
+
+\digression[eco:Rush:Minor colony]{Minor country colonisation}
+
+If this is not period \period{I}, roll on the following table; subtract {\bf
+  3} in periods \period{II} and \period{III} and add {\bf 3} in periods
+\period{VI} and \period{VII}.
+
+\begin{modlist}[3em]
+\item[-2] Destruction of a Minor establishment.
+\item[-1] Creation of a Minor establishment in \continentBresil.
+\item[0] Creation of a Minor establishment in
+  \granderegionEcuador/\granderegionYucatan/\granderegionPanama.
+\item[1--2] Creation of a Minor establishment in \continentCaraibes.
+\item[3--4] Loss one side of a Minor establishment.
+\item[5] Creation of a Pirate Haven in \continentCaraibes.
+\item[6--7] Creation of a Minor establishment in a coastal province in the
+  American zoom.
+\item[8] Increase one Minor establishment.
+\item[9] Creation of a Minor establishment in a coastal province in
+  \continentIndia.
+\item[10] Creation of a Pirate Haven in \granderegionMadagascar
+\item[11] Creation of a Minor establishment in a coastal province in
+  \continentIndia.
+\item[12--13] Creation of a Minor establishment in \continentCaraibes.
+\end{modlist}
+
+\aparag[Creation of a Minor establishment.] Select one empty province at
+random within the specified ones and put a Minor establishment \Facemoins in
+it.
+\bparag If there are no empty provinces in the specified ones or there are no
+unused Minor establishment, turn this into a \terme{Increase of one Minor
+  establishment} instead.
+
+\aparag[Creation of a Pirate haven.] If one already exists in the specified
+provinces, it is turned on level 2 (nothing happens if it is already level 2).
+\bparag If there is not Pirate haven in the specified provinces, select an
+empty one at random and put a Pirate haven of level 1 in it.
+\bparag For \granderegionMadagascar, do not select the province at random. Use
+\province{Madagascar N} if empty and \province{Madagascar S} otherwise.
+
+\aparag[Destruction of a Minor establishment.] Select a Minor establishment at
+random and remove it from the map.
+
+\aparag[Loss of one side.] Select a Minor establishment at random.
+\bparag If it is \Facemoins, remove it from the map.
+\bparag If it is \Faceplus, turn it \Facemoins and select one of its exploited
+resources at random which is no longer exploited.
+
+\aparag[Increase of one Minor establishment.] Select one Minor establishment
+\Facemoins at random and turn it \Faceplus.
+
+\aparag[Creation/Increase of establishments.] Whenever a new side of Minor
+establishment is created:
+\bparag If there is at least one unexploited resource in the \Area, it
+exploits one at random.
+\bparag Otherwise, it exploits one of the existing resource at random,
+stealing it from whoever exploits it.
+
+
+
+\event{eco:Refugees}{E-20}{Refugees}{2}{JCMod}
+
+If the country has no \COLaction or \TPaction, it may elect to ignore this
+event and re-roll another one (to be decided immediately).
+
+The player receives a free of charge strong investment that can be used for a
+\TFI (but cannot be cumulative with another investment on the same \STZ/\CTZ).
+
+This also gives in addition the same effect as \ref{eco:Rush Colonists}, but
+with a bonus of \bonus{+2} only.
+
+
+
+\event{eco:Gift to the State}{E-21}{Gift to the State}{1}{Orig}
+
+The people make a gift of 1d100\ducats added immediately to \lignebudget{RT at
+  start of turn} in \lignebudget{RT after Events}.
+
+
+
+\event{eco:Scandal at the court}{E-22}{Scandal at the court}{2}{JCMod}
+
+The player's monarch's Diplomatic value is reduced by 3 for this turn (to a
+minimum of 1). The player also immediately loses 50\ducats, taken from
+\lignebudget{RT at start of turn} into \lignebudget{RT after Events}.
+
+
+
+\event{eco:Plots at the court}{E-23}{Plots at the court}{2}{Orig}
+
+The player's monarch's Diplomatic value is reduced to 1 for this turn.  In
+addition, he will add a modifier of \bonus{+2} to next turn's survival
+die-roll for his monarch.
+
+
+
+\event{eco:Poor weather}{E-24}{Poor weather}{3}{JymMod}
+
+\phmil
+\aparag This turn, add \bonus{+2} to each season continuation die roll. All
+Winter round will be in bad weather.
+\aparag[Frozen Sea] Moreover, if a Winter round happen after a die roll of 1
+(before modifications), \seazoneOresund is frozen. No fleet can go through, in
+or out of it (fleets in it at the beginning of the round stay there but suffer
+no damage). Armies can cross it (it's an unfriendly rough terrain with no
+effect on combat) but not stop in it. No battle or interception of any kind
+may happen here. If retreat into \seazoneOresund is forced after a land
+battle, the stack retreats one province further into solid ground but has a
+malus of \bonus{+2} to it retreat die roll.
+
+
+
+\event{eco:Death Heir}{E-25}{Death of the heir to the throne}{1}{Orig}
+
+The player will receive a -1 malus to his die-roll for each one of the future
+characteristics of his next monarch. This event may be drawn several times but
+the malus will apply only once on the next monarch. This event has no effect
+if the next monarch is a named monarch, including one whose characteristics
+are not fixed but must be rolled.
+
+
+
+\event{eco:Mine Depletion}{E-26}{Depletion of a mine}{1}{Orig}
+
+Place a marker \countermark{Exhausted Mine} on a mine currently exploited by
+the player (either in Europe or in the \ROTW), drawn at random, and check for
+\ref{eco:Depletion:Depletion America}. If no mine qualifies, just do the
+check.
+
+
+\digression[eco:Depletion:Depletion America]{Depletion of mines in America}
+
+\phevnt
+\aparag Each time this is called for, all exploited mines in \continentAmerica
+will be tested for depletion. This test is made at most once each turn.
+\bparag The mines are tested in the following order: the Potosi mine (value
+50), the Tenochtitlan mine (value 40), then the mines of the player exploiting
+the largest number of mines in \continentAmerica (in an order chosen by the
+player itself), then the next player, and so on.
+\bparag A mine is depleted if a die-roll gives 1, or 1 or 2 in period V or
+later.
+% (JCD) Used to be turn 36, now 35
+\aparag Only one mine per turn may be depleted this way. As soon as one as
+been depleted this way, there is no further need to check the others.
+
+
+
+\event{eco:New ally}{E-27}{New ally}{1}{Orig}
+
+The player receives a modifier of \bonus{+3} in diplomacy on a minor of his
+choice, valid for this turn. The choice of the minor has to be made
+immediately and secretly. It will be revealed during the next Diplomacy phase.
+
+
+
+\event{eco:Defection of an ally}{E-28}{Defection of an ally}{2}{PBMod}
+
+One country in \VASSAL position that is not a special vassal (i.e. on which
+diplomacy is possible) of the power, if any (chosen at random), is lowered by
+3 boxes on the Diplomatic track.  If none qualifies, another country
+determined at random among all the countries on Diplomatic track of the power
+is lowered by 2 boxes.
+
+
+
+\event{eco:Desertions}{E-29}{Desertions}{1}{Orig}
+
+Desertions occur in the army. Roll 2d10, and add \bonus{+2} if the \MAJ has at
+least 4 \ARMY counters deployed at that time, or subtract \bonus{-2} if it has
+only one.  The number of \LD lost is given by the result:
+
+\centerline{\begin{tabular}{*{5}{c}} \textlessequal 4& 5--10& 11--15 & 16--19
+    & \textgreatequal20\\\hline 0 & 1 & 2 & 3 & 4
+  \end{tabular}}
+
+
+
+\event{eco:Death of a military leader}{E-30}{Death of a military
+  leader}{1}{Orig}
+
+Draw one leader at random in all military leaders of the player on the map.
+The leader is removed from the game if it is a named one, returned to the pool
+if it is an \anonyme one. The period limit is diminished by one for the turn.
+
+
+
+\event{eco:Dynastic inheritance}{E-31}{Dynastic inheritance}{1}{Orig}
+
+The player receives a \bonus{+5} bonus in his next diplomacy phase for a minor
+country that may become a vassal. This minor must currently be located in the
+\RM box or above on the player's diplomatic track. This minor has to be
+nearest to the national territory of the player in term of number of provinces
+(in case of tie, leave it to the player's choice).
+
+
+
+\event{eco:Inflation}{E-32}{Inflation}{1}{JymMod}
+
+Increase the level of inflation by 1 (without exceeding the maximum level). At
+most one event among \xnameref{eco:Inflation} and \xnameref{eco:Deflation} can
+take place in a single turn (treat as no event if a second one is rolled).
+
+
+
+\event{eco:Offer of alliance}{E-33}{Offer of alliance}{1}{Orig}
+
+The player receives a \bonus{+3} bonus in diplomacy to his die-roll for a
+minor of his choice (to be decided immediately).
+
+
+
+\event{eco:Independence of a vassal}{E-34}{Independence of a vassal}{1}{Orig}
+
+A minor vassal that is not a special vassal (i.e. on which diplomacy is
+possible) breaks its vassalisation and remains only an ally. The player has a
+temporary \CB against this minor. Move the marker of the minor from the
+\VASSAL box to the \MA box.
+
+
+
+\event{eco:Enthusiasm for the Army}{E-35}{Enthusiasm for the Army}{2}{Orig}
+
+The player may either receive 2 \LD free of charge, or increase his land
+technology by 1 box.
+
+
+
+\event{eco:Renewal of popularity}{E-36}{Renewal of popularity}{2}{Orig}
+
+The player receives 20\ducats in his royal treasury (added immediately to
+\lignebudget{RT at start of turn} in \lignebudget{RT after Events}). All the
+following administrative operations: \TFI, \TPaction, \COLaction, \MNU
+placement attempts, \DTI/\FTI improvement also receive an exceptional bonus of
+\bonus{+2} to the die-roll for this turn.
+
+On the other hand, a malus of \bonus{-10} to the die-roll is applied on the
+\terme{Exceptional taxes raising} operation.
+
+
+
+\event{eco:Enthusiasm for the Navy}{E-37}{Enthusiasm for the Navy}{2}{Orig}
+
+The player may either receive 2 \NWD (or 4 \NGD) free of charge, or increase
+his naval technology by 1 box.
+
+
+
+\event{eco:Agricultural technique development}{E-38}{Agricultural technique
+  development}{5}{Orig}
+
+Increase the country's income by 2\ducats per controlled and owned province
+(i.e. not including occupied, looted, controlled but still belonging to the
+enemy, belonging to a vassal provinces) for this turn only. The gain is
+registered in \lignebudget{Event}. In addition, for this turn only, the
+country receives a bonus of \bonus{+3} to the die-roll for the
+\terme{improvement of \DTI}, as well as all attempts to create a \RES{Cereals}
+or \RES{Wine} manufacture.
+
+
+
+\event{eco:Reorganisation of the army or the fleet}{E-39}{Reorganisation of
+  the army or the fleet}{1}{Orig}
+
+Gives a bonus of \bonus{+2} to the die-roll of either land or naval technology
+improvement (the choice must be written down immediately). Also gives a 50\%
+bonus discount to the unit reorganisation due to a new technology being
+discovered.
+
+
+
+\event{eco:Conquistador}{E-40}{Conquistador}{1}{Orig}
+
+If the country has no \anonyme\LeaderC, it may elect to ignore this event and
+re-roll another one (to be decided immediately).
+
+The player receives a conquistador among the \anonyme \LeaderC markers still
+available. It remains in play for this turn only.
+
+
+
+\event{eco:Explorer}{E-41}{Explorer}{1}{Orig}
+
+If the country has no \anonyme\LeaderE, it may elect to ignore this event and
+re-roll another one (to be decided immediately).
+
+The player receives an explorer among the \anonyme \LeaderE markers still
+available. It remains in play for this turn only.
+
+
+
+\event{eco:Governor}{E-42}{Governor}{1}{JCMod}
+
+If the country has no \anonyme\LeaderGov, it may elect to ignore this event
+and re-roll another one (to be decided immediately).
+
+The player receives a governor among the \anonyme \LeaderG markers still
+available, to be placed in a \TP or a \COL of the player.  It remains in play
+for this turn only.
+
+
+
+\event{eco:Diplomatic Preeminence}{E-43}{Diplomatic preeminence}{2}{Orig}
+
+Gives the player a bonus of \bonus{+1} to the die-roll to all his diplomatics
+actions on minors (either European or \ROTW), and a bonus of \bonus{+1} column
+in his favour for all of his attempts of \TP and \COLaction for this turn
+only.
+
+
+
+\event{eco:Cultural expansion}{E-44}{Cultural expansion}{2}{Orig}
+
+This gives a bonus of 20\ducats to any subsidies obtained by a minor vassal
+reaching the \SUB diplomatic level. Any subsidies will yield at least
+20\ducats, whatever the modifiers.  In addition, it has the same effect as
+\ref{eco:Diplomatic Preeminence} above.
+
+
+
+\event{eco:Deflation}{E-45}{Deflation}{4}{Orig}
+
+Reduce the level of inflation by 1 (without exceeding the minimum level). At
+most one event among \xnameref{eco:Inflation} and \xnameref{eco:Deflation} can
+take place in a single turn (treat as no event if a second one is rolled).
+
+
+
+\event{eco:Economic Crisis}{E-46}{Economic crisis}{1}{JCMod}
+
+Demand for exotic resources decreases in Europe and prices fall. Adjust prices
+as follows (without exceeding any normal limits, and only for already
+available resources):
+\begin{itemize}
+\item \RES{Fish}, \RES{Salt}: no modification
+\item \RES{Sugar}, \RES{Cotton}, \RES{Furs}: \bonus{-1} box
+\item \RES{Slaves}, \RES{Spices}, \RES{Products of America}: \bonus{-2} boxes
+\item \RES{Products of Orient}, \RES{Silk}: \bonus{-3} boxes
+\end{itemize}
+At most one event among \xnameref{eco:Economic Crisis} and
+\xnameref{eco:Economic Boom} will take effect this turn. Re-roll if one was
+already used.
+
+
+
+\event{eco:Economic Boom}{E-47}{Economic boom}{1}{JCMod}
+
+Demand for exotic resources increases in Europe and prices rise. Adjust prices
+as follows (without exceeding any normal limits, and only for already
+available resources):
+\begin{itemize}
+\item \RES{Fish}, \RES{Salt}: no modification
+\item \RES{Sugar}, \RES{Cotton}, \RES{Furs}: \bonus{+1} box
+\item \RES{Slaves}, \RES{Spices}, \RES{Products of America}: \bonus{+2} boxes
+\item \RES{Products of Orient}, \RES{Silk}: \bonus{+3} boxes
+\end{itemize}
+
+At most one event among \xnameref{eco:Economic Crisis} and
+\xnameref{eco:Economic Boom} will take effect this turn. Re-roll if one was
+already used.
+
+
+
+\event{eco:Rectification}{E-48}{Rectification}{1}{PBMod}
+
+The monarch yields to pressures yielding to straighten the domestic and
+foreign situation. The player can choose one option exactly among the three
+following bonuses:
+\begin{itemize}
+\item Pay without overcosts all his land forces up to the triple of the normal
+  limit.
+\item Increase his construction limit for ships by 50\% (rounded up).
+\item Obtain a bonus of \bonus{+5} to his die-roll concerning the action of
+  \terme{improvement of Stability}.
+\item Refund for free National Loans up to 200\ducats.
+\end{itemize}
+Choice must be written down immediately to be valid.
+
+
+
+\event{eco:Treachery}{E-49}{Treachery}{1}{PBMod}
+
+The player benefits from a treachery against one of his opponents with whom he
+is \emph{already} at war (either a player or a minor country). The player can
+choose one option immediately among the three following bonuses:
+\begin{itemize}
+\item Capture immediately an enemy fortress that he currently besieges, or
+  obtain a one time bonus of \bonus{+4} to a \terme{siegeworks} action
+  die-roll in the current turn (if he establishes a siege this turn).
+\item Move himself one land stack of his opponent one time during his
+  opponent's movement phase this turn, instead of his opponent. The player
+  will pick the exact round. However, he cannot make this stack attack any
+  units except a stack commanded by him, nor can he exceed 5 MP on land, or
+  make a naval move with a modifier higher than +8 for attrition on sea.
+\item Obtain a bonus of \bonus{+5} to one his diplomatic operations against a
+  minor country whose marker is on his opponents diplomatic track, this turn
+  only (the choice is announced along the diplomatic actions).
+\end{itemize}
+
+% (Pierre) Some choices have problems especially diplomacy during the war;
+% convert the condition on naval move.
+
+\stopevents
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: cccccccccc eco PBmod excellentministres malus JCMod Baltique
+% LocalWords: Adriatique Atlantique Canarias JymMod turn's Potosi PBMod JCD
+% LocalWords: vassalisation siegeworks overcosts Jym

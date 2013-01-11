@@ -1,0 +1,61 @@
+/outputoutlines false def
+/translation true def
+/loglevel 1 def
+/defaultvalue{1 index where {pop pop pop}{def}ifelse}def
+/pagewidth 595 defaultvalue
+/pageheight 842 defaultvalue
+HOMEDIR(/library/library.eps)! include
+/beginpagehook{} def
+/line 0 def
+/yyinit 790 def /ystep 15.8 def
+/yystart yyinit def /smallstep 8 def
+/yy yyinit def
+/lineinc {line 0 eq {(#)}{line 2 string cvs}ifelse 60 yy 24 ystep (FontArialNarrow) centertext
+    /line line 1 add def /yy yy ystep sub def
+}def
+/bf {/mycurrentfont (FontArialNarrow-Bold) def} def
+/rm {/mycurrentfont (FontArialNarrow) def} def rm
+/grayset {/firstgray row 2 mod 0 eq {0.95}{1}ifelse def /secondgray firstgray 0.1 sub def}def
+/darkgrayset {/firstgray /secondgray 0.75 def 0.85 def}def
+/verydarkgrayset {/firstgray /secondgray 0.7 def 0.8 def}def
+/row 0 def
+/xxtitle {234 yy 159 ystep mycurrentfont righttext 75 yy 155 ystep
+mycurrentfont lefttext lineinc}def
+/xtitle {75 yy 159 ystep mycurrentfont lefttext lineinc}def
+/bband{/gray false def(0.7 g 48 )out yy display( 499 )out ystep display ( re f 0 g 48 )out yy display ( 189 ) out ystep display ( re f 1 g )out bf}def
+/nband{
+    firstgray 1 eq not {firstgray display( g 48 )out yy display( 499 )out ystep display( re f)out}if
+%Here, add something using secondgray if darker columns need be
+    ( 0 g )out rm
+}def
+/gtitle {/row 0 def darkgrayset nband xtitle}def
+/ggtitle {/row 0 def darkgrayset nband xxtitle}def
+/Gtitle {/row 0 def verydarkgrayset nband xtitle}def
+/GGtitle {/row 0 def verydarkgrayset nband xxtitle}def
+/ntitle {/row row 1 add def grayset nband xtitle}def
+/nntitle {/row row 1 add def grayset nband xxtitle}def
+/btitle {/row 0 def bband xtitle}def
+/bbtitle {/row 0 def bband xxtitle}def
+/recordsheettitle {
+    (0 G 0 g 1 w\n)out
+(0 g 48 )out yy ystep add display ( 499 20 re B 1 g )out
+298 yy ystep add 499 20 (FontArialNarrow-Bold) centertext
+/yyinit yy def
+} def
+/recordmodel {/record exch def} def
+/recordgrid {
+    (1 w 0 G 0 g ) out /yy yy ystep add def
+yy ystep yyinit ystep add {
+    record 0 get display space dup display( m )out
+    record dup length 1 sub get display space display( l\n)out
+}for
+    record {
+	dup display space yy display ( m )out display space yyinit 16 add
+	display( l\n)out
+    }forall
+    (S\n) out
+}def
+/recordskip {
+/yy exch yy exch ystep add sub def
+/yyinit yy def
+}def

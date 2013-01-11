@@ -1,0 +1,326 @@
+#!/bin/sh
+# called with one argument: the local changelog
+msum() {
+    if [ "$MDSUM" = "md5" ]; then
+        $MDSUM "$@" | cut -f2 -d=
+    else
+        $MDSUM "$@" | cut -c1-32
+    fi
+}
+if [ "$(uname -s)" = "Darwin" ]; then
+    MDSUM=md5
+else
+    MDSUM=md5sum
+fi
+
+setup() {
+    
+    ED=/usr/bin/vi
+    if [ $(which sensible-editor 2>&1|grep ^/|wc -l) -gt 0 ]; then
+        ED=$(which sensible-editor)
+    fi
+    if [ -n "$EDITOR" ]; then 
+        ED="$EDITOR"
+    fi
+    if [ -n "$VISUAL" ]; then 
+        ED="$VISUAL"
+    fi
+
+    if [ $($ED --version|head -n 1|grep -i vi|wc -l) -gt 0 ]; then
+        EDVI=1
+    fi
+
+    NAME=$(whoami)
+    case "$NAME" in
+        jcdubacq) FULLNAME="Jean-Christophe Dubacq";;
+        jym|*moyen) FULLNAME="Jean-Yves Moyen"; NAME=moyen;;
+        pborgnat) FULLNAME="Pierre Borgnat";;
+    esac
+}
+
+setup
+FINISHED=0
+MODE=ask
+DEFAULTCAT=misc
+DEFAULTREL=current
+AUTOMATICcat=
+AUTOMATICid=
+AUTOMATIC=
+while [ "$FINISHED" = "0" ]; do
+    case $1 in
+        --current-only)
+            CURRENTONLY=1
+            shift
+            ;;
+        --automatic)
+            MODE=add
+            AUTOMATIC=1
+            AUTOMATICcat="$DEFAULTCAT"
+            shift
+            ;;
+        --name)
+            NAME="$2"
+            shift;shift
+            ;;
+        --fullname)
+            FULLNAME="$2"
+            shift;shift
+            ;;
+        --delete)
+            MODE=delete
+            shift;shift
+            ;;
+        --category)
+            AUTOMATICcat="$2"
+            shift;shift;
+            ;;
+        --id)
+            AUTOMATICid="$2"
+            shift;shift;
+            ;;
+        --merge)
+            MODE="merge"
+            CLBIS="$2"
+            shift;shift
+            ;;
+        --list)
+            MODE="list"
+            shift
+            ;;
+        --text)
+            MODE="text"
+            shift
+            ;;
+        --release)
+            MODE="release"
+            RELA=$2
+            RELB=$3
+            shift;shift;shift
+            ;;
+        *)
+            FINISHED=1
+            ;;
+    esac
+done
+
+CL="$1"
+shift
+if [ -z "$CL" ]; then
+    echo "No changes file. Stop."
+    exit 0
+fi
+if [ ! -f "$CL" ]; then
+    touch $CL
+fi
+
+if [ "$MODE" = "ask" ]; then
+    echo "(a) Add a log line" 
+    echo "(c) Change a log line"
+    echo "(d) Delete a log line"
+    read ans
+    case "$ans" in
+        a)
+            MODE=add
+            ;;
+        c)
+            MODE=change
+            ;;
+        d)
+            MODE=delete
+            ;;
+        *)
+            echo "Not recognized. No change".
+            exit 0
+            ;;
+    esac
+fi
+
+TMPFILE=$(mktemp tmp.XXXXXXXXXX)
+TMPFILEBIS=$(mktemp tmp.XXXXXXXXXX)
+trap exitscript EXIT HUP INT KILL TERM
+exitscript() {
+    a=$?
+    set +e
+    trap '' EXIT
+    rm -f "$TMPFILE" "$TMPFILEBIS"
+    exit $a
+}
+
+# Format of an entry is
+# #entry:id=_id:release=_release:author=_author:cat=_category:
+# Multi-line text (without entry: at start of line)
+
+
+
+CAT=" counters maps rules text meta web events misc "
+IDS=$(grep ^#entry: $CL|cut -f2 -d:|cut -f2 -d=|xargs echo)
+
+insert() {
+    a=$(cat $TMPFILE|head -n 1|grep ^#entry:|wc -l)
+    if [ "$a" -lt 1 ]; then
+        echo "Metadata missing. Stop."
+        return
+    fi
+    cat $TMPFILE|head -n 1 >> $CL
+    cat $TMPFILE|grep -v ^# |grep -v ^$ >> $CL
+}
+isolate() {
+    cat $CL|sed -ne "/^#entry:id=$1:/ p" > $TMPFILE
+    cat $CL|sed -ne "/^#entry:id=$1:/,/^#entry/ p" | grep -v "^#entry" >> $TMPFILE
+}
+
+delete() {
+    cat $CL|sed -ne "1,/^#entry:id=$1:/ p" | grep -v "^#entry:id=$1:" > $TMPFILEBIS
+    cat $CL|sed -ne "/^#entry:id=$1:/,$ p"|grep -v "^#entry:id=$1:"|sed -ne "/^#entry:/,$ p" >> $TMPFILEBIS
+    mv $TMPFILEBIS $CL
+}
+
+renum() {
+    perl -e '$ID=0;while (<>) { chomp; next if (/^$/);if (/^#entry:id=/) {$ID++;s/:id=([0-9]+):/:id=${ID}:/}; print "$_\n"; }' < $CL > $TMPFILEBIS
+    mv $TMPFILEBIS $CL
+}
+
+merge() {
+    cat $CL $CLBIS > $TMPFILEBIS
+    mv $TMPFILEBIS $CL
+    renum
+}
+
+if [ "$MODE" = "add" ]; then
+    NEWID=$(echo $IDS|perl -pi -e 's/ /\n/g'|sort -nr|head -n 1)
+    NEWID=$((NEWID+1))
+    count=1
+    if [ -z "$AUTOMATICcat" ]; then
+        for i in $CAT; do echo "$count/ $i"; count=$((count+1));done|xargs -n 4 printf "%4s %-15s %4s %-15s\n"
+        echo "Category ($DEFAULTCAT) ?"
+        read cat
+    else
+        cat="$AUTOMATICcat"
+    fi
+    case $cat in
+        [0-9]*)
+            count=1
+            MYCAT=
+            for i in $CAT; do [ "$count" -eq "$cat" ] && MYCAT="$i" && echo $i;count=$((count+1));done
+            MYCAT=${MYCAT:-${DEFAULTCAT}}
+            ;;
+        *)
+            if [ -z "$cat" ]; then
+                MYCAT="$DEFAULTCAT"
+            else
+                MYCAT="${cat%% *}"
+                if [ "${CAT##* ${MYCAT} }" = "${CAT}" ]; then
+                    echo "Warning: new category $MYCAT"
+                fi
+            fi
+    esac
+    RELEASE=${DEFAULTREL}
+    echo "#entry:id=${NEWID}:release=${RELEASE}:author=${NAME}:category=${MYCAT}:" > ${TMPFILE}
+    if [ -n "$AUTOMATIC" ]; then
+        echo "$@" >> $TMPFILE
+    fi
+    echo >> $TMPFILE
+    echo >> $TMPFILE
+    echo >> $TMPFILE
+    if [ "$EDVI" = 1 ]; then COMP=+2; else COMP=; fi
+    echo "# Following this line, the other changelog entries"  >> $TMPFILE
+    cat $CL|sed -e 's/^/#/g' >> $TMPFILE
+    a=$(msum $TMPFILE)
+    if [ -z "$AUTOMATIC" ]; then
+        $ED $COMP $TMPFILE
+        b=$(msum $TMPFILE)
+    else
+        b=0
+    fi
+    if [ "$a" != "$b" ]; then
+        insert
+    else
+        echo "No change. Stop."
+        exit 0
+    fi
+fi
+
+requestid() {
+    if [ -z "$AUTOMATICid" ]; then
+        echo "$IDS"|fmt
+        echo "Which ID do you want to $1 ?"
+        read del
+    else
+        del="$AUTOMATICid"
+    fi
+    found=
+    for i in $IDS; do if [ "$del" -eq "$i" ]; then found="$i"; fi; done
+    if [ -z "$found" ]; then echo "No such ID. Stop."; exit 0; fi
+}
+
+if [ "$MODE" = "delete" ]; then
+    requestid "delete"
+    delete $found
+fi
+
+if [ "$MODE" = "change" ]; then
+    requestid "change"
+    grep "^#entry:$found:" $CL > $TMPFILE
+    if [ -z "$AUTOMATIC" ]; then
+        cat $CL|sed -ne "/^#entry:$found:/,$ p"|grep -v "^#entry:$found:"|sed -e "/^#entry:/,$ d" >> $TMPFILE
+    else
+        echo "$@" >> $TMPFILE
+    fi
+    delete $found
+    echo >> $TMPFILE
+    if [ "$EDVI" = 1 ]; then COMP=+2; else COMP=; fi
+    echo "# Following this line, the other changelog entries"  >> $TMPFILE
+    cat $CL|sed -e 's/^/#/g' >> $TMPFILE
+    if [ -z "$AUTOMATIC" ]; then
+        $ED $COMP $TMPFILE
+    fi
+    insert
+fi
+
+if [ "$MODE" = "merge" ]; then
+    merge
+fi
+if [ "$MODE" = "release" ]; then
+    cat $CL|sed -e "/^#entry/ s/:release=$RELA:/:release=$RELB:/g" >> $TMPFILE
+    mv $TMPFILE $CL
+fi
+
+if [ "$MODE" = "list" ]; then
+    requestid "browse"
+    isolate $found
+    cat $TMPFILE
+fi
+
+if [ "$MODE" = "text" ]; then
+    CURREL=$(grep ^#entry: $CL|cut -f3 -d:|cut -f2 -d=|sort -nr|uniq|grep current)
+    if [ -z "$CURRENTONLY" ]; then
+        RELS=$(grep ^#entry: $CL|cut -f3 -d:|cut -f2 -d=|sort -nr|uniq|grep -v current)
+    else
+        RELS=
+    fi
+    for r in $CURREL $RELS; do
+        if [ -z "$CURRENTONLY" ]; then
+            echo "Release $r"|sed -e 's/Release current/Unreleased changes/g'
+        fi
+        LINES=0
+        XCAT="$CAT"
+        if [ -n "${AUTOMATICcat}" ]; then
+            XCAT=$(echo "$AUTOMATICcat"|sed -e 's/_/ /g')
+        fi
+        for i in $XCAT; do
+            IDS=$(grep ^#entry: $CL|grep :release=$r:|grep :category=$i:|cut -f2 -d:|cut -f2 -d=)
+            if [ -n "$IDS" ]; then 
+                echo " * $i"
+                LINES=1
+            fi
+            for j in $IDS; do
+                rm -f $TMPFILE
+                isolate $j
+                cat $TMPFILE|perl -e '$b=<>;$b=~/^#entry:.*:author=([^:]+):/;$auth=$1;$a="";while (<>) {chomp;if (/^ *[*] */) { print "   * [$auth] $a\n" if $a;s/^ *[*] *//g;$a=$_;next};$a=$a.($a?" ":"").$_;};print "   * [$auth] $a\n" if $a;'
+            done
+        done
+        if [ "$LINES" = 0 ]; then
+            echo " * Nothing"
+        fi
+    done
+fi

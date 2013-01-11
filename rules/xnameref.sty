@@ -1,0 +1,296 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file make available dirty tricks playing with Unicode chars.
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\RequirePackage{hyperref,nameref,pageprefix}
+\ProvidesPackage{xnameref}[2010/11/11 v0.2]%
+
+%%%% Names definitions
+
+\def\XNRsamepagename{ on this page}
+\def\XNRprevpagename{ on previous page}
+\def\XNRnextpagename{ on next page}
+
+\def\XNRtypeofsection{section}
+\def\XNRtypeofsubsection{section}
+\def\XNRtypeofsubsubsection{section}
+\def\XNRtypeofparagraph{paragraph}
+\def\XNRtypeofparagraph{paragraph}
+
+\newcounter{sectionid}
+\newif\ifXNRpage\XNRpagetrue
+\newif\ifXNRpageswitch
+\newif\ifXNRshortref
+\newif\ifXNRnotyperef
+\newif\ifXNRnameref\XNRnamereffalse
+\newif\ifXNRofsection\XNRofsectiontrue
+
+%%%% Full text ref basics
+
+% test whether the ref exists or not. If it does, evaluate args (two stages).
+
+\def\XNRfulltextref#1{%
+  \expandafter\ifx\csname r@#1\endcsname\relax\@missingref{#1}\else%
+  \expandafter\fulltextref@helper\csname r@#1\endcsname\fi}
+\def\fulltextref@helper#1{\expandafter\fulltextref@@helper#1\@nil}
+% Create hyperlink
+\def\fulltextref@@helper#1#2#3#4#5\@nil{%
+  {\global\XNRpageswitchfalse%
+    \hyperlink{#4}{%
+      \fulltextref@@namehelper#4.\@nil#1\@nill#3\@nilll%
+    }%
+    \ifXNRpageswitch\XNRpagefalse\fi\ifXNRpage\fulltext@pagehelper#2\@nil\fi%
+  }%
+}
+
+%%% Ref handling
+
+\def\@missingref#1{%
+  \protect\G@refundefinedtrue
+  \nfss@text{\reset@font\bfseries ?#1?}%
+  \@latex@warning{Reference `#1' on page \thepage \space
+    undefined}}
+\def\fulltextref@@namehelper#1.#2\@nil#3\@nill#4\@nilll{%
+  % Extract ref handler from link
+  \expandafter\ifx\csname XNR#1refhandler\endcsname\relax%
+  \XNRdefaultrefhandler{#1}{#3}{#4}%
+  \else%
+  \csname XNR#1refhandler\endcsname{#1}{#3}{#4}%
+  \fi%
+}
+
+%% Default ref handler
+
+\def\XNRdefaultrefhandler#1#2#3{\ifXNRnotyperef\else#1~\fi#2\ifXNRshortref\else\ (\TUpp #3\unskip)\fi}
+
+%%% Page helper
+
+\def\fulltext@pagehelper{\@ifnextchar[%]
+  {\fulltext@@pagehelper}{\fulltext@@pagehelper[\null]}}
+\def\fulltext@@pagehelper[#1]#2\@nil{%
+  \ifx#1\null\edef\fulltext@temp{#2}\else\edef\fulltext@temp{[#1]#2}\fi%
+  \setcounter{reftemp}{\arabic{page}}%
+  \ifnum#2=\arabic{reftemp}{\XNRsamepagename}\else%
+  \addtocounter{reftemp}{1}%
+  \ifnum#2=\arabic{reftemp}\hyperlink{page.\fulltext@temp}{\XNRnextpagename}\else%
+  \addtocounter{reftemp}{-2}%
+  \ifnum#2=\arabic{reftemp}\hyperlink{page.\fulltext@temp}{\XNRprevpagename}\else%
+  \hyperlink{page.\fulltext@temp}{ on page \fulltext@temp}\fi\fi\fi}
+
+%%%% The section handling
+
+%%% Formatting of section numbers
+
+\def\@seccntformat#1{\csname XNRsecfmt#1\endcsname}
+\def\XNRsecfmtsection{\thesection\quad}
+\def\XNRsecfmtsubsection{\thesubsection\quad}
+\def\XNRsecfmtsubsubsection{\thesubsubsection\quad}
+
+%%% Section ref handler
+\def\XNRsectionrefhandler#1#2#3{\XNR@sectionrefhandler#2\@nill#3\@nil}
+\let\XNRsubsectionrefhandler\XNRsectionrefhandler
+\let\XNRsubsubsectionrefhandler\XNRsectionrefhandler
+% Allow special section handling if XNR\XNRtypeofsection sectrefhandler
+% (or subsection, etc.) does exist. Else, cut in parts the section.
+\def\XNR@sectionrefhandler#1\@nill#2|#3|#4\@nil{%
+  \expandafter\ifx\csname XNR#3sectrefhandler\endcsname\relax%
+  \ifnum\c@sectionid=#2% local
+  this #3%
+  \global\XNRpageswitchtrue%
+  \else% local
+  \ifXNRnameref\TUpp #4\unskip\else%
+  \ifXNRnotyperef\else#3~\fi\XNRnumberdisplay{#1}%
+  \fi% XNRnameref
+  \ifXNRshortref\else\ (%
+  \ifXNRnameref\XNRnumberdisplay{#1}\else\TUpp #4\fi%
+  \unskip)%
+  \fi% XNRshortref
+  \fi% local
+  \else\csname XNR#3sectrefhandler\endcsname{#1}{#3}{#4}\fi%
+}
+\def\XNRnumberdisplay#1{#1}
+
+%%% Sections and paragraphs labelname construction
+
+% Hack starting from nameref.sty for paragraphs and below
+% Compared to nameref.sty, around line 120, I changed the
+% \def\@currentlabelname{#xxx} so that label name remains
+% at most the subsubsection one.
+
+\def\XNRsectionname{}
+\def\XNRsetlabelname#1#2#3{%
+  \ifnum #1 > 3%
+  \def\XNRlabelname{#2}%
+  \edef\@currentlabelname{%
+    \expandafter\strip@prefix\meaning\XNRlabelname|%
+    \expandafter\strip@prefix\meaning\XNRsectionlevel|%
+    \expandafter\strip@prefix\meaning\XNRsectionid|%
+    \expandafter\strip@prefix\meaning\XNRsectiontype|%
+    \expandafter\strip@prefix\meaning\XNRsectionname}%
+  \else%
+  \stepcounter{sectionid}%
+  \edef\XNRsectionid{\arabic{sectionid}}%
+  \def\XNRsectionname{#2}%
+  \def\XNRsectionlevel{#1}%
+  \edef\XNRsectiontype{\csname XNRtypeof#3\endcsname}%
+  \edef\XNRsectionidtype{\XNRsectionid|\csname XNRtypeof#3\endcsname}%
+  \expandafter\def\expandafter\@currentlabelname\expandafter{\XNRsectionidtype|#2}%
+  \fi%
+}
+
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \setcounter{section@level}{#2}%
+  \XNRsetlabelname{#2}{#7}{#1}%
+  \NR@sect{#1}{#2}{#3}{#4}{#5}{#6}[{#7}]{\Sectionformat{#8}{#2}}%
+}
+\def\@ssect#1#2#3#4#5{%
+  % the section level is not transmitted. Consider we are not below 3rd level
+  \XNRsetlabelname{1}{#5}{#1}%
+  \NR@ssect{#1}{#2}{#3}{#4}{\Sectionformat{#5}{#1}}%
+}
+
+
+%%%% The paragraph and subparagraphs case
+
+%%% Formatting of paragraphs numbers
+% Do not display numbers above paragraph in paragraphs names
+\@addtoreset{paragraph}{subsection}
+\@addtoreset{paragraph}{section}
+
+\def\XNRsecfmtparagraph{\expandafter\XNRstrip\theparagraph\hskip .3em\protect}
+\def\XNRsecfmtsubparagraph{\expandafter\XNRstrip\expandafter{\thesubparagraph}\hskip .3em}
+\def\theparagraph{\thesubsubsection|\Alph{paragraph}}
+\def\theHparagraph{\theHsubsubsection.\arabic{paragraph}}
+\def\XNRstrip#1{\expandafter\XNR@strip#1}
+\def\XNR@strip#1|#2{#2}
+
+%%% Paragraph ref handler
+\def\XNRparagraphrefhandler#1#2#3{\XNR@paragraphrefhandler#2\@nill#3\@nil}
+\let\XNRsubparagraphrefhandler\XNRparagraphrefhandler
+\def\XNR@paragraphrefhandler#1|#2\@nill#3|#4|#5|#6|#7\@nil{%
+  % #1 section part
+  % #2 paragraph part
+  % #3 paragraph title
+  % #4 level of section
+  % #5 id of section
+  % #6 type of section
+  % #7 title of section
+  \ifXNRnameref% case of (x)nameref
+  \ifx\relax#3\relax{Something unknown}\else{\TUpp #3}\unskip\fi%
+  \global\XNRpageswitchtrue%
+  \ifXNRshortref\else% case of xnameref
+  \ (%
+  \fi\fi% end of (x)nameref
+  % normal or xnameref, inside the ()
+  \ifXNRshortref\ifXNRnameref\else% Do nothing if nameref case
+  \mbox{\S#2}%
+  \fi\else%
+  \mbox{\S#2}%
+  \fi%
+  \ifXNRshortref\else\ifXNRnameref\else%
+  \ifx\relax#3\relax\else\ ({\TUpp #3}\unskip)\fi%
+  \fi\fi%
+  \ifXNRofsection% "of something" (usually true, unless in nameref)
+  \ifnum\c@sectionid=#5% in the same section
+  % possibly add here \ifXNRnameref\else and close 2 lines further
+  % if one wants My small paragraph (par. 3) instead of My small
+  % paragraph (par. 3 of this section) for xnameref
+  \ifXNRshortref\else\ifXNRnotyperef\else%
+  \ of this #6%
+  \fi\fi%
+  \global\XNRpageswitchtrue%
+  \else% not in the same section
+  \ifXNRnameref\ of~\else\ifXNRnotyperef\ of~\else\ of #6~\fi\fi%
+  \XNRparagraphdisplaycutsection#1.0\@nil%
+  \ifXNRnameref\else\ifXNRshortref\else% display (name of section)
+  \ ({\TUpp #7}\unskip)%
+  \fi\fi%
+  \fi% End of same section
+  \ifXNRnameref\unskip)\fi%
+  \fi% End of "of something"
+}
+\def\XNRparagraphdisplaycutsection#1.0#2\@nil{%
+  \XNRparagraphdisplaycutsectionb#1-0\@nil}
+\def\XNRparagraphdisplaycutsectionb#1-0#2\@nil{%
+  #1}
+
+%%%% Calling methods
+
+%%% Compatibility commands
+\AtBeginDocument{\let\ref\XNRfulltextref}
+\let\fulltextref\XNRfulltextref
+\let\ruleref\fulltextref
+\let\figref\fulltextref
+\let\tableref\fulltextref
+\let\localsubruleref\fulltextref
+\let\localruleref\fulltextref
+\let\realruleref\fulltextref
+\let\ruleref\fulltextref
+\let\subruleref\ruleref
+
+%%% No page: nopage
+\def\nopageref#1{%
+  \let\@ifXNRpage\ifXNRpage\XNRpagefalse%
+  \XNRfulltextref{#1}%
+  \let\ifXNRpage\@ifXNRpage%
+}
+
+%%% short: short+nopage
+\def\shortref#1{%
+  \let\@ifXNRshortref\ifXNRshortref\XNRshortreftrue
+  \let\@ifXNRpage\ifXNRpage\XNRpagefalse%
+  \XNRfulltextref{#1}%
+  \let\ifXNRshortref\@ifXNRshortref%
+  \let\ifXNRpage\@ifXNRpage%
+}
+
+%%% number: notype+short+nopage
+\def\numberref#1{%
+  \let\@ifXNRpage\ifXNRpage\XNRpagefalse%
+  \let\@ifXNRnotyperef\ifXNRnotyperef\XNRnotypereftrue
+  \let\@ifXNRshortref\ifXNRshortref\XNRshortreftrue
+  \XNRfulltextref{#1}%
+  \let\ifXNRpage\@ifXNRpage%
+  \let\ifXNRnotyperef\@ifXNRnotyperef%
+  \let\ifXNRshortref\@ifXNRshortref%
+}
+
+%%% numberlong/xref: notype+nopage
+\def\xref{\numberlongref}
+\def\numberlongref#1{%
+  \let\@ifXNRpage\ifXNRpage\XNRpagefalse%
+  \let\@ifXNRnotyperef\ifXNRnotyperef\XNRnotypereftrue
+  \XNRfulltextref{#1}%
+  \let\ifXNRpage\@ifXNRpage%
+  \let\ifXNRnotyperef\@ifXNRnotyperef%
+}
+
+%%% xname: nopage+switch name
+\def\xnameref#1{%
+  \let\@ifXNRpage\ifXNRpage\XNRpagefalse%
+  \let\@ifXNRnameref\ifXNRnameref\XNRnamereftrue
+  \XNRfulltextref{#1}%
+  \let\ifXNRpage\@ifXNRpage%
+  \let\ifXNRnameref\@ifXNRnameref%
+}
+
+%%% name: nopage+name only
+\AtBeginDocument{\let\ORIGnameref\nameref
+\def\nameref#1{%
+  \let\@ifXNRpage\ifXNRpage\XNRpagefalse%
+  \let\@ifXNRnameref\ifXNRnameref\XNRnamereftrue%
+  \let\@ifXNRshortref\ifXNRshortref\XNRshortreftrue%
+  \let\@ifXNRofsection\ifXNRofsection\XNRofsectionfalse%
+  \XNRfulltextref{#1}%
+  \let\ifXNRpage\@ifXNRpage%
+  \let\ifXNRnameref\@ifXNRnameref%
+  \let\ifXNRshortref\@ifXNRshortref%
+  \let\ifXNRofsection\@ifXNRofsection%
+}}
+
+%%%% TODO
+%%% Open questions
+% what to display in normal case (\ref) for a reference to
+% a paragraph in the same section:
+% a/ on the same page    (currently: nothing)
+% b/ on a different page (currently: nothing, could be page)

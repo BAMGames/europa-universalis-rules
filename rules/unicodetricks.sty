@@ -1,0 +1,386 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file make available dirty tricks playing with Unicode chars.
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\RequirePackage{hyperref,nameref,xspace,foreach}
+\ProvidesPackage{unicodetricks}[2010/11/11 v0.2]%
+
+%%%% LUC encoding stuff
+\RequirePackage[LUC,T1]{fontenc}
+% Preload anything that appears in an protected command in LUC encoding
+% in preamble.
+% This page is put so that if some shortcut appears before the first letter
+% is used in another context, it still renders correctly.
+\PreloadUnicodePage{0}
+% \PreloadUnicodePage{1}
+% \PrerenderUnicode{\unichar{537}}
+% \PrerenderUnicode{\unichar{7693}}
+
+
+\let\fontenc@token@LUC\null
+\def\unicodechar#1{\expandafter\ifx\csname fontenc@token@\f@encoding\endcsname\null\lucchar{#1}\else\uni@char{#1}\fi}
+\DeclareRobustCommand\ENDLUC{\xdef\LUC@plane@LUC{00}}
+\let\REQUIRELUC\relax
+
+%%%% Counters and flags
+
+\newcount\TUtempcounta
+\newcount\TUtempcountb
+\newif\ifTUallowlink\TUallowlinktrue
+\newif\ifTUallowindex\TUallowindextrue
+\newif\ifTUallowfont\TUallowfonttrue
+\newif\ifTUallowlong\TUallowlongtrue
+\newif\ifTUmakelong\TUmakelongfalse
+\newif\ifTUmakeanchor\TUmakeanchorfalse
+\newif\ifTUmakestrong\TUmakestrongfalse
+\newif\ifTUbookmark\TUbookmarkfalse
+\newif\ifTUunskip\TUunskipfalse
+\newif\ifTUshortcut\TUshortcutfalse
+\def\TUprotect{\protect}
+
+%%%% Abbreviation stuff
+
+%%% Definition of an abbreviation
+% An abbreviation has two forms: lowdef and highdef
+% The name #1 of the abbreviation can be different from the content
+% TUabbrev-#1-str is the lowdef string (for bookmarks)
+% TUabbrev-#1-full is the full string (with fonts change etc.)
+% We also define #1simple which is by default same as #1 lowdef but can be redefined by
+% TUabbrevdefsimple to something more complex
+% For example, \ARMY could be A (lowdef)/ A in color and special font (highdef)
+% \ARMYsimple is then A all the time, unless it is redefined to be A special font in simple form (no color)
+% \TUabbrevdef[ARMY]{A}{\textcolor{red}{\isabellafamily\mdseries\selectfont A}}
+% \TUabbrevdefsimple[ARMY]{{\isabellafamily\mdseries\selectfont A}}
+% Definitions should be in preamble
+\newcommand{\TUabbrevdef}[3][]{%
+  \ifx\relax#1\relax\TU@abbrevdef{#2}{#2}{#3}\else\TU@abbrevdef{#1}{#2}{#3}\fi%
+}
+\newcommand{\TUabbrevdefs}[2][]{%
+  \ifx\relax#1\relax\TU@abbrevdef{#2}{#2}{#2}\else\TU@abbrevdef{#1}{#2}{#2}\fi%
+}
+\newcommand{\TUabbrevdefsmp}[2][]{%
+  \ifx\relax#1\relax\TU@abbrevdefsmp{#2}{#2}\else\TU@abbrevdefsmp{#1}{#2}\fi%
+}
+\def\TU@abbrevdefsmp#1#2{%
+  \expandafter\def\csname TUabbrev-#1-short\endcsname{#2}%
+}
+
+\def\TUabbrevfamily#1{\def\TUabbrevfamilyname{#1}}
+\TUabbrevfamily{TUabbrev}
+
+\def\TU@abbrevdef#1#2#3{%
+  \FEappend{\TUabbrevfamilyname}{#1}%
+  \expandafter\xdef\csname TUabbrev-#1-str\endcsname{#2}%
+  \expandafter\def\csname TUabbrev-#1-long\endcsname{#3}%
+  \expandafter\def\csname TUabbrev-#1-short\endcsname{#2}%
+  \expandafter\def\csname #1\endcsname{\relax{\TUprotect\TUmakelongtrue\TU@abbrevdisplay{#1}}\TUprotect\xspace}%
+  \expandafter\def\csname #1usp\endcsname{\relax{\TUprotect\TUunskiptrue\TUprotect\TUmakelongtrue\TU@abbrevdisplay{#1}}\TUprotect\xspace}%
+  \expandafter\def\csname #1nsp\endcsname{\relax{\TUprotect\TUmakelongtrue\TU@abbrevdisplay{#1}}}%
+  \expandafter\def\csname #1smp\endcsname{\relax{\TUprotect\TUmakelongfalse\TU@abbrevdisplay{#1}}\TUprotect\xspace}%
+  \expandafter\def\csname #1smpnsp\endcsname{\relax{\TUprotect\TUmakelongfalse\TU@abbrevdisplay{#1}}}%
+}
+
+%%% Display 
+\def\TU@abbrevdisplay#1{%
+  \ifx\protect\@unexpandable@protect%
+  \string\TUpp\string\protect\string\TU@abbrevdisplay{#1}%
+  \else%
+  \ifTUbookmark%
+  \csname TUabbrev-#1-str\endcsname%
+  \else%
+  \ifTUunskip%
+  \unskip\penalty\@M%
+  \fi%
+  \ifTUallowlink%
+  \ifTUmakeanchor%
+  \let\TUlink\TUhypertarget%
+  \else%
+  \let\TUlink\TUhyperlink%
+  \fi%
+  \else%
+  \let\TUlink\@gobble%
+  \fi%
+  \TUlink{abbrev-link-#1}{%
+    \csname TUabbrev-#1-\ifTUmakelong long\else short\fi\endcsname%
+  }%
+  \global\expandafter\let\csname TUabbrev-#1-mark\endcsname\null%
+  \fi\fi}
+
+%%% Commodities macro
+\def\abbrev#1{\expandafter\ifx\csname#1\endcsname\relax\PackageError{unicodetricks}{Abbreviation #1 is not defined}\@ehc\fi\csname#1\endcsname}
+\def\anchorabbrev#1{{\TUmakeanchortrue\TUmakelongtrue\TU@abbrevdisplay{#1}}}
+\def\listingabbrev#1#2{\item[\anchorabbrev{#1}] #2.}
+\def\listunusedabbrev#1{{%
+    \FEforeachlist{#1}{\expandafter\ifx\csname TUabbrev-\loopitem-mark\endcsname\null\else\PackageWarning{unicodetricks}{Abbreviation {\loopitem}  unused.}\fi%
+  }{}}}
+
+%%%% Translatable Unicode stuff
+
+\AtBeginDocument{\g@addto@macro\pdfstringdefPreHook{\TUbookmarktrue\let\textascii\relax\def\TUprotect#1{}}}
+
+%%% Styles
+\def\indexdef#1{\textbf{\hyperpage{#1}}}
+\def\indexnor#1{\hyperpage{#1}}
+
+%%% Aliases
+\newcommand{\TUdefalias}[3]{%
+  \expandafter\gdef\csname alias#1:#2\endcsname{#3}%
+  \expandafter\gdef\csname #1#2\expandafter\endcsname\expandafter{%
+    \csname#1\endcsname{#3}\TUprotect\xspace}%
+}
+\newcommand{\TUalias}[2]{%
+  \expandafter\ifx\csname alias#1:#2\endcsname\relax\TU@display{#2}{#1}\else%
+  \expandafter\TU@display\expandafter{\csname alias#1:#2\endcsname}{#1}\fi}
+\newcommand{\TUhypertarget}[1]{%
+  \ifvmode\hypertarget{#1}{}\else\raisebox{\the\fontdimen6\font}[0pt]{%
+    \hypertarget{#1}{}}\fi%
+  \immediate\write\@auxout{\string\global\string\expandafter\string\let\noexpand\csname register#1\noexpand\endcsname\string\null}%
+}
+\let\TUhyperlink\hyperlink
+\newcommand{\TUhyperlinkondemand}[1]{%
+  \expandafter\ifx\csname register#1\endcsname\null\relax%
+  \hyperlink{#1}\fi}
+\let\defalias\TUdefalias
+%%% shortcuts
+\def\TUdefshortcut#1#2#3#4{%
+  \expandafter\gdef\csname shortcut#1:#2\endcsname{#3}%
+  \expandafter\gdef\csname#4\endcsname{\csname shortcut#1\endcsname{#2}\TUprotect\xspace}%
+}
+%%% TU@display
+\def\TU@display#1#2{%
+  \ifx\protect\@unexpandable@protect%
+  \string\TUpp\string\protect\string\TU@display{#1}{#2}%
+  \else%
+  \ifTUbookmark%
+  \TU@shortname{#1}{#2}%
+  \else%
+  \ifTUallowfont%
+  \expandafter\let\expandafter\style\csname style#2\endcsname%
+  \else%
+  \let\style\relax%
+  \fi%
+  \ifTUallowlink%
+  \ifTUmakeanchor%
+  \let\TUlink\TUhypertarget%
+  \else%
+  \def\TUlink{\csname hyperlink#2\endcsname}%
+  \fi%
+  \else%
+  \let\TUlink\@gobble%
+  \fi%
+  \style{\TUlink{#2-link-#1}{%
+      \ifTUshortcut\csname shortcut#2:#1\endcsname\else\TU@shortname{#1}{#2}\fi%
+      \ifTUallowlong\ifTUmakelong%
+      \expandafter\ifx\csname long#2:#1\endcsname\relax\else%
+      \ifTUallowfont%
+      \expandafter\let\expandafter\stylelong\csname stylelong#2\endcsname%
+      \else%
+      \expandafter\let\expandafter\stylelong\csname stylelongbackup#2\endcsname%
+      \fi%
+      % We add the parenthesis in unicodechar to cope with LUC encoded strings
+      \space\stylelong{\unicodechar{40}%
+        \csname long#2:#1\endcsname%
+        \unicodechar{41}}%
+      \fi%
+      \fi\fi%
+    }}%
+  \ifTUallowindex%
+  \expandafter\ifx\csname short#2:#1\endcsname\relax%
+  \ifTUmakestrong%
+  \csname index#2\endcsname-{#1}{indexdef}% BADINDEX
+  \else%
+  \csname index#2\endcsname-{#1}{indexnor}% badindex
+  \fi%
+  \else%
+  \ifTUmakestrong%
+  \csname index#2\endcsname{}{\TU@shortname{#1}{#2}}{indexdef}% INDEX
+  \else%
+  \csname index#2\endcsname{}{\TU@shortname{#1}{#2}}{indexnor}% index
+  \fi%
+  \fi%
+  \else%
+  % noindex
+  \fi%
+  \fi\fi}
+
+\def\TU@shortname#1#2{%
+  \expandafter\ifx\csname short#2:#1\endcsname\relax%
+  Unknown #2 #1%
+  \else%
+  \csname short#2:#1\endcsname%
+  \fi%
+}
+
+\def\TUpp{%
+  \TUallowlinkfalse\TUallowindexfalse%
+  \TUallowfontfalse%
+  % \TUallowlongfalse%
+}
+\let\TUprotectionplan\TUpp
+% Redefine this so that @currentlabelname is not reinterpreted fully in \ref
+% \def\strip@period#1.\relax#2\@@@{\string\TUpp\space #1}
+
+
+%%% Translatable commands
+\newcommand{\translatable}[4][\null]{%
+  \ifx\null#1\relax%
+  \translatabledefault{#2}{#3}{#4}{#4}{}\else%
+  \translatabledefault{#2}{#3}{#4}{#1}{\fontencoding{LUC}}\fi%
+}
+\newcommand{\translatabledefault}[5]{
+  \expandafter\def\csname index#1\endcsname##1##2##3{\index{#2!##1##2|##3}}
+  \expandafter\let\csname hyperlink#1\endcsname\TUhyperlinkondemand
+
+  %% Definitions
+  % defshortthing#1#2: #2 is the (mandatory) short appearance of #1
+  % deflongthing#1#2: #2 is the (optional) long appearance of #1 (added in parentheses after the short appearance)
+  \expandafter\def\csname deflong#1\endcsname##1##2{\expandafter\gdef\csname long#1:##1\endcsname{##2}}
+  \expandafter\def\csname defshort#1\endcsname##1##2{%
+    \expandafter\gdef\csname short#1:##1\endcsname{##2}%
+    \expandafter\gdef\csname #1##1\expandafter\endcsname\expandafter{%
+      \csname #1\endcsname{##1}\xspace%
+    }%
+  }
+
+  %% Styles
+  \expandafter\def\csname style#1\endcsname##1{#3{##1}}
+  \expandafter\def\csname stylelong#1\endcsname##1{#4{##1}}
+  \expandafter\def\csname stylelongbackup#1\endcsname##1{#5{##1}}
+
+  %% Displays
+  % thing (automatic long/short)  ? or == shortthing
+  % shortthing (short)
+  % longthing (long)
+  % strongthing (long, bold)
+  % anchorthing (long, anchor, bold)
+
+  % TUthing
+  \expandafter\def\csname #1\endcsname##1{{%
+      \TUalias{#1}{##1}%
+    }}
+
+  % TUlongthing (long display, index normal)
+  \expandafter\def\csname long#1\endcsname##1{{%
+      \TUprotect\TUmakelongtrue
+      \TUalias{#1}{##1}%
+    }}
+
+  % TUshortcutthing (special shortcut display, index normal)
+  \expandafter\def\csname shortcut#1\endcsname##1{{%
+      \TUprotect\TUshortcuttrue
+      \TUprotect\TUallowfontfalse
+      \TUalias{#1}{##1}%
+    }}
+
+  % TUshortthing (force short display, index normal)
+  \expandafter\def\csname short#1\endcsname##1{{%
+      \TUprotect\TUallowlongfalse%
+      \TUalias{#1}{##1}%
+    }}
+
+  % TUstrongthing (long display, index bold)
+  \expandafter\def\csname strong#1\endcsname##1{{%
+      \TUprotect\TUmakelongtrue
+      \TUprotect\TUmakestrongtrue
+      \TUalias{#1}{##1}%
+    }}
+
+  % TUanchorthing (long display, index bold)
+  \expandafter\def\csname anchor#1\endcsname##1{{%
+      \TUprotect\TUmakeanchortrue
+      \TUprotect\TUmakelongtrue
+      \TUprotect\TUmakestrongtrue
+      \TUalias{#1}{##1}%
+    }}
+
+  %%% Compatibility
+  \expandafter\let\csname declareanchor#1\endcsname\@gobble
+  \expandafter\def\csname section#1\endcsname##1{{\TUalias{#1}{##1}}}
+} % END TRANSLATABLE
+
+
+%%% Variants of \translatable
+\def\@gobblethree#1#2#3{}
+\newcommand{\translatablenoindex}[4][\null]{%
+  \translatable[#1]{#2}{#3}{#4}%
+  \expandafter\let\csname index#2\endcsname\@gobblethree
+}
+\newcommand{\translatableanchor}[4][\null]{%
+  \translatable[#1]{#2}{#3}{#4}\relax\relax%
+  \expandafter\gdef\csname hyperlink#2\endcsname{\TUhyperlink}
+}
+
+
+%%%% Symbols stuff
+
+%%% Greek
+\def\greek#1{\bgroup\fontencoding{LUC}\selectfont\textunicodechar{\expandafter\@greek\csname c@#1\endcsname}\egroup}
+\def\greek#1{\expandafter\@greek\csname c@#1\endcsname}
+\DeclareRobustCommand{\LUC}{\@LUC}
+\def\@LUC#1{\begingroup\fontencoding{LUC}\selectfont\null\lucchar{#1}\endgroup}
+\def\@greek#1{%
+  \ifcase#1\or%
+\LUC{945}\or%
+\LUC{946}\or%
+\LUC{947}\or%
+\LUC{948}\or%
+\LUC{949}\or%
+\LUC{950}\or%
+\LUC{951}\or%
+\LUC{952}\or%
+\LUC{953}\or%
+\LUC{954}\or%
+\LUC{955}\or%
+\LUC{956}\or%
+\LUC{957}\or%
+\LUC{958}\or%
+\LUC{959}\or%
+\LUC{960}\or%
+\LUC{961}\or%
+\LUC{962}\or%
+\LUC{964}\or%
+\LUC{965}\or%
+\LUC{966}\or%
+\LUC{967}\or%
+\LUC{968}\or%
+\LUC{969}\else\@ctrerr\fi}
+\def\autreface{\bgroup\hskip 0.25em\fontencoding{LUC}\selectfont\textunicodechar{"2194}\hskip 0.25em\egroup}
+
+%%% Various chars
+\def\textthreesuperior{\unichar{179}}
+\def\textonesuperior{\unichar{185}}
+\def\texttwosuperior{\unichar{178}}
+\AtBeginDocument{\def\textplusminus{\bgroup\fontencoding{LUC}\selectfont\unichar{177}\egroup}}
+\AtBeginDocument{\def\textmultiply{\bgroup\fontencoding{LUC}\selectfont\unichar{215}\egroup}}
+\def\textrightarrow{\bgroup\fontencoding{LUC}\selectfont\unichar{8594}\egroup}
+\def\textdownarrow{\bgroup\fontencoding{LUC}\selectfont\unichar{8595}\egroup}
+\let\textdag\dag
+\let\textddag\ddag
+\let\textlessequal\leq
+\def\textlessequal{\bgroup\fontencoding{LUC}\selectfont\unichar{8804}\egroup}
+\def\textgreatequal{\bgroup\fontencoding{LUC}\selectfont\unichar{8805}\egroup}
+\uc@dclc{0}{default}{\null}%
+\uc@dclc{8219}{default}{\textquoteleft}%
+\uc@dclc{9829}{default}{\bgroup\fontencoding{LUC}\selectfont\lucchar{9829}\egroup}%
+\let\oldleq\leq
+\let\oldgeq\geq
+\def\leq{\ifmmode\oldleq\else\textlessequal\fi}
+\def\geq{\ifmmode\oldgeq\else\textgreatequal\fi}
+\let\undemi\textonehalf
+\let\textarrow\textrightarrow
+\def\texttwothird{\hskip 0.3em\llap{\texttwosuperior}/\rlap{\raisebox{-0.5ex}{\textthreesuperior}}\hskip 0.3em}
+\def\textonethird{\hskip 0.3em\llap{\textonesuperior}/\rlap{\raisebox{-0.5ex}{\textthreesuperior}}\hskip 0.3em}
+
+%%% Raised text
+\def\up#1{\protect\raisebox{1ex}{\fontsize{6pt}{6pt}\selectfont #1}}
+\def\th{\up{th}\xspace}
+\DeclareRobustCommand*\textsubscript[1]{%
+  \@textsubscript{\selectfont#1}}
+\def\@textsubscript#1{%
+  {\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+
+\AtBeginDocument{\g@addto@macro\pdfstringdefPreHook{\let\up\relax}}
+
+%%% Underlined text (using tikz)
+\def\TUunderline#1#2{\let\tikz@text@width=\pgfutil@empty\tikz[minimum width=1pt,baseline=(X.base)]{%
+    \node(X){#1};\draw[#2]($ (X.base-|X.west)+(0pt,-1pt) $)--($ (X.base-|X.east)+(0pt,-1pt) $);\useasboundingbox(X);}}

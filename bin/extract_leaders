@@ -1,0 +1,315 @@
+#!/usr/bin/perl
+%info=();
+@roman=("0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX");
+$texleaders=shift @ARGV;
+$textranslation=shift @ARGV;
+die "No file given"  unless ($texleaders and $textranslation);
+open TEXL,">$texleaders" or die "Could not write $texleaders";
+open TEXT,">$textranslation" or die "Could not write $textranslation";
+foreach $file (@ARGV) {
+    open FILE,$file;
+    while ($line=<FILE>) {
+	chomp $line;
+	next if ($line=~/^$/);
+	next if ($line=~/^##/);
+	if ($line=~/^#/) {
+	    @fieldname=split(/;/,$line);
+	    $fieldname[0]=~s/^#//g;
+	    next;
+	}
+	@linevalue=split(/;/,$line);
+	$elt={};
+	foreach $i (0..scalar(@linevalue)-1) {
+	    die "Trying to affect value #$i ($linevalue[$i]) to null-field in $line\n" unless $fieldname[$i];
+	    $elt->{$fieldname[$i]}=$linevalue[$i];
+	}
+	# Type is mandatory
+	$type=$elt->{"Type"};
+	$infotype="info".$type;
+	push @{$infotype},$elt;
+	$info{$type}++;
+    }
+    close FILE;
+}
+$beg=1;$per=1;
+foreach $end (7,15,26,35,43,53,63) {
+    foreach ($beg..($end-1)) {
+	$period[$_]=$per;
+    }
+    $per++;$beg=$end;
+}
+$period[0]=8;
+$periodh{"I"}=1;
+$periodh{"II"}=2;
+$periodh{"III"}=3;
+$periodh{"IV"}=4;
+$periodh{"V"}=5;
+$periodh{"VI"}=6;
+$periodh{"VII"}=7;
+$translations="";
+$definitions="";
+foreach ("france","angleterre","turquie","hollande","espagne","russie") {
+    $NTcountries{$_}++;
+}
+foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","fralicence","revolutionnaires","angnomalus","angseahound","porviceroy","prunomalus","holvoc") {
+    $Scountries{$_}++;
+}
+%conversion=(
+    "france" => "France",
+    "fralicence" => "France",
+    "revolutionnaires" => "France",
+    "angleterre" => "Angleterre",
+    "angnomalus" => "Angleterre",
+    "turquie" => "Turquie",
+    "hollande" => "Hollande",
+    "prusse" => "Prusse",
+    "prunomalus" => "Prusse",
+    "pologne" => "Pologne",
+    "suede" => "Suede",
+    "porviceroy" => "Portugal",
+    "holvoc" => "Hollande"
+);
+sub terrestrenaval {
+    return "N" if ($_[0] =~ /^[AEPd]/);
+    return "T";
+}
+sub computeperiode {
+    return ($period[$_[0]]) unless $_[0] =~ /[IV]/;
+    return ($periodh{$_[0]});
+}
+sub realcountry {
+    $pays=$_[0];
+    return $pays.terrestrenaval($_[1]) if ($NTcountries{$pays});
+    return $pays unless ($Scountries{$pays});
+    $periode=computeperiode($_[2]);
+    if ($pays eq "ukraine") {
+	return "pollit";
+    }
+    if ($pays eq "pologne" and $periode < 6) {
+	return $pays."M";
+    }
+    if ($pays eq "venise" and $periode < 4) {
+	return $pays."M";
+    }
+    if ($pays eq "portugal" and $periode < 3) {
+	return $pays."M";
+    }
+    if ($pays eq "suede" and $periode > 2) {
+	return $pays."M";
+    }
+    if ($pays eq "prusse" and $periode > 5) {
+	return $pays."M";
+    }
+    if ($pays eq "habsbourg" and $periode > 3) {
+	return $pays."M";
+    }
+    if ($pays eq "fralicence") {
+	return "franceN";
+    }
+    if ($pays eq "revolutionnaires") {
+	return "france".terrestrenaval($_[1]);
+    }
+    if ($pays eq "angnomalus") { # Marlborough
+	return "angleterreT";
+    }
+    if ($pays eq "angseahound") {
+	return "angleterreN";
+    }
+    if ($pays eq "porviceroy") {
+	return "portugalM";
+    }
+    if ($pays eq "prunomalus") { # Frederic II
+	return "prusseM"; 
+    }
+    if ($pays eq "holvoc") {
+	return "hollandeM"; 
+    }
+    return $pays;
+}
+
+sub str {
+    return "(".$_[0].")";
+}
+sub boolnum {
+    return "$_[0]";
+}
+sub extractname {
+    while (@_) {
+	if ($_[0]) {
+	    return "$_[0]";
+	}
+	shift;
+    }
+}
+
+sub sortkeytime {
+    $number=computeperiode($_[0])*100;
+    $number+=$_[0] unless $_[0] =~ /[IV]/;
+    return sprintf("%03d", $number);
+}
+
+sub sendit {
+    $_[1]=~s/\$/\\textdollar/g;
+    $sortkey=$_[3];
+    if ($sortkey =~ /^([A-Za-z][A-Za-z]?) (.*)$/) {
+	$sortkey="$2 $sortkey";
+    }
+    $sortkey=$_[4].$sortkey;
+    $translations{$_[2]}{$sortkey}=$_[0]."\n" if ($_[0]);
+    $definitions{$_[2]}{$sortkey}=$_[1]."\n" if ($_[1]);
+}
+sub dropit {
+    foreach $k (sort keys %definitions) {
+#	print "->$k\n";
+	foreach $kk (sort keys %{$definitions{$k}}) {
+#	    print "--->$kk\n";
+	    print TEXL $definitions{$k}{$kk};
+	}
+    }
+    foreach $k (sort keys %translations) {
+	foreach $kk (sort keys %{$translations{$k}}) {
+	    print TEXT $translations{$k}{$kk};
+	}
+    }
+}
+foreach $k (@infoLEADER) {
+    $prekey=sortkeytime($k->{"First turn"});
+    $translation="leader:".$k->{"NameA"};
+    $translation.=":".($k->{"NameB"}) if ($k->{"NameB"});
+    $translation.=":".($k->{"NameC"}) if ($k->{"NameC"});
+    $rc=realcountry($k->{"Country"},$k->{"Leader Type"},$k->{"First turn"});
+    $definition='\leaderdef('.$k->{"NameA"}.")[";
+    $definition.=$k->{"First turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=";";
+    $definition.=$k->{"First turn"}.'-'.$k->{"Last turn"} if ($k->{"First turn"} =~ /[IV]/);
+    $definition.=$k->{"Last turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=']('.$rc;
+    $definition.=")(".$k->{"Leader Type"};
+    $definition.=")(".$k->{"Stats"};
+    $definition.="){".$k->{"Comment"}."}";
+    sendit($translation,$definition,$rc,$k->{"NameA"},$prekey);
+}
+delete $info{"LEADER"};
+foreach $k (@infoLEADERDOUBLE) {
+    $prekey=sortkeytime($k->{"First turn"});
+    $translation="";$definition="";
+    $translation="leader:".$k->{"NameA"};
+    $translation.=":".($k->{"NameB"}) if ($k->{"NameB"});
+    $translation.=":".($k->{"NameC"}) if ($k->{"NameC"});
+    $rc=realcountry($k->{"Country"},$k->{"Leader Type"},$k->{"First turn"});
+    $definition='\leaderdefdouble('.$k->{"NameA"}.")[";
+    $definition.=$k->{"First turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=";";
+    $definition.=$k->{"First turn"}.'-'.$k->{"Last turn"} if ($k->{"First turn"} =~ /[IV]/);
+    $definition.=$k->{"Last turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=']('.$rc;
+    $definition.=")(".$k->{"Leader Type"};
+    $definition.=")(".$k->{"Stats"};
+    $definition.=")(".$k->{"Leader Type 2"};
+    $definition.=")(".$k->{"Stats 2"};
+    $definition.="){".$k->{"Comment"}."}";
+    sendit($translation,$definition,$rc,$k->{"NameA"},$prekey);
+}
+delete $info{"LEADERDOUBLE"};
+foreach $k (@infoLEADERPAIRE) {
+    $prekey=sortkeytime($k->{"First turn"});
+    $translation="";$definition="";
+    $translation="leader:".$k->{"NameA"};
+    $translation.=":".($k->{"NameB"}) if ($k->{"NameB"});
+    $translation.=":".($k->{"NameC"}) if ($k->{"NameC"});
+    $rc=realcountry($k->{"Country"},$k->{"Leader Type"},$k->{"First turn"});
+    $rcc=realcountry($k->{"Country 2"},$k->{"Leader Type 2"},$k->{"First turn 2"});
+    $definition='\leaderdefother';
+    if ($conversion{$k->{"Country 2"}}) {
+	$definition.="majeur";
+    }
+    $definition.='('.$k->{"NameA"}.")[";
+    $definition.=$k->{"First turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=";";
+    $definition.=$k->{"First turn"}.'-'.$k->{"Last turn"} if ($k->{"First turn"} =~ /[IV]/);
+    $definition.=$k->{"Last turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=']('.$rc;
+    $definition.=")(".$k->{"Leader Type"};
+    $definition.=")(".$k->{"Stats"};
+    $definition.=")(".$k->{"NameA 2"}.")(".$rcc;
+    if ($conversion{$k->{"Country 2"}}) {
+	$definition.=")(".$conversion{$k->{"Country 2"}};
+    }
+    $definition.="){".$k->{"Comment"}."}";
+    sendit($translation,$definition,$rc,$k->{"NameA"},$prekey);
+    $prekeyb=sortkeytime($k->{"First turn 2"});
+    $translation="leader:".$k->{"NameA 2"};
+    $translation.=":".($k->{"NameB 2"}) if ($k->{"NameB 2"});
+    $translation.=":".($k->{"NameC 2"}) if ($k->{"NameC 2"});
+    $definition='\leaderdefother';
+    if ($conversion{$k->{"Country"}}) {
+	$definition.="majeur";
+    }
+    $definition.='('.$k->{"NameA 2"}.")[";
+    $definition.=$k->{"First turn 2"} if ($k->{"First turn 2"} =~ /[0-9]/);
+    $definition.=";";
+    $definition.=$k->{"First turn 2"}.'-'.$k->{"Last turn 2"} if ($k->{"First turn 2"} =~ /[IV]/);
+    $definition.=$k->{"Last turn 2"} if ($k->{"First turn 2"} =~ /[0-9]/);
+    $definition.=']('.$rcc;
+    $definition.=")(".$k->{"Leader Type 2"};
+    $definition.=")(".$k->{"Stats 2"};
+    $definition.=")(".$k->{"NameA"}.")(".$rc;
+    if ($conversion{$k->{"Country"}}) {
+	$definition.=")(".$conversion{$k->{"Country"}};
+    }
+    $definition.="){".$k->{"Comment 2"}."}";
+    sendit($translation,$definition,$rcc,$k->{"NameA 2"},$prekeyb);
+}
+delete $info{"LEADERPAIRE"};
+dropit();
+
+
+foreach $k (@infoLEADERANONYMOUS) {
+    $rc=$k->{"Country"};
+    if ($rc eq 'habsbourg' or $rc eq 'suede' or $rc eq 'prusse') {
+	$rc.="M";
+    }
+    $definition='('.${k}->{"Number"}.')[]('.$rc.')(';
+    $definition.=$k->{"Leader Type"}.')('.$k->{"Stats"}.')';
+    $newdef{$rc}{$k->{"Class"}}{${k}->{"Number"}}=$definition;
+    $newcount{$rc}{$k->{"Class"}}++;
+}
+foreach $k (@infoLEADERANONYMOUSDOUBLE) {
+    if ($k->{"Country"} eq 'pologne' and $k->{"Country 2"} eq 'lithuanie') {
+	$rc="pollit";
+    } else {
+	$rc="unknown";
+    }
+    $definition='('.${k}->{"Number"}.')[]('.$rc.')(';
+    $definition.=$k->{"Leader Type"}.')('.$k->{"Stats"}.')';
+    $newdef{$rc}{$k->{"Class"}}{${k}->{"Number"}}=$definition;
+    $newcount{$rc}{$k->{"Class"}}++;
+}
+foreach $k (sort keys %newdef) {
+    $i=0;
+    foreach $kk (sort keys %{$newdef{$k}}) {
+	$j=0;
+	$i++;
+	foreach $kkk (sort keys %{$newdef{$k}{$kk}}) {
+	    $j++;
+	    if ($i != 1 and $j == 1) {
+		$a='\leaderanonymepar';
+	    }else{
+		$a='\leaderanonyme';
+	    }
+	    $a.=$newdef{$k}{$kk}{$kkk}."\n";
+	    $a=~s/\$/\\textdollar/g;
+	    print TEXL $a;
+	}
+    }
+}
+delete $info{"LEADERANONYMOUS"};
+delete $info{"LEADERANONYMOUSDOUBLE"};
+delete $info{"PACHA"};
+
+foreach $k (sort keys %info) {
+    print STDERR "%$k was not treated\n";
+}
+
+close(TEXL);
+close(TEXT);

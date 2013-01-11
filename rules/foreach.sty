@@ -1,0 +1,61 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file allows looping on comma-separated lists
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{foreach}[2010/11/11 v1.0]%
+%%%% Foreach loop
+% loops on a comma-separated list of robust words
+% \foreach{list}{body}{separator}
+% separator is executed only if arg is not empty, and not before first
+% body can use \loopitem to know arg. No grouping is done.
+
+\def\fore@chmaina#1,#2\endfore@ch{%
+  \ifx\relax#1\relax%
+  \ifx\relax#2\relax\else%
+  \fore@chmaina#2\endfore@ch%
+  \fi%
+  \else%
+  \edef\loopitem{#1}\body\relax%
+  \ifx\relax#2\relax\else%
+  \fore@chmainb#2\endfore@ch%
+  \fi%
+  \fi}
+\long\def\fore@chmainb#1,#2\endfore@ch{%
+  \ifx\relax#1\relax\else%
+  \bodyinterim\relax%
+  \edef\loopitem{#1}\body\relax%
+  \fi%
+  \ifx\relax#2\relax\else%
+  \fore@chmainb#2\endfore@ch%
+  \fi}
+\long\def\FEforeach#1#2#3{%
+  \def\body{#2}\def\bodyinterim{#3}%
+  \expandafter\fore@chmaina#1,\endfore@ch%
+}
+
+%%%% Foreach loop for lists
+
+\long\def\FEforeachlist#1#2#3{%
+  \expandafter\ifx\csname FElist@#1\endcsname\relax\else%
+  \def\body{#2}\def\bodyinterim{#3}%
+  \expandafter\expandafter\expandafter\fore@chmaina\csname FElist@#1\endcsname,\endfore@ch\fi%
+}
+
+%%%% Appending to list
+\def\FEappend#1{\expandafter\ifx\csname FElist@#1\endcsname\relax\expandafter\gdef\csname FElist@#1\endcsname{}\else\expandafter\g@addto@macro\csname FElist@#1\endcsname{,}\fi\expandafter\g@addto@macro\csname FElist@#1\endcsname}
+
+%%%% Test if list is empty
+\long\def\FEemptylist#1#2#3{\expandafter\ifx\csname FElist@#1\endcsname\relax#2\else#3\fi}
+
+%%%% Globalise body/bodyinterim
+% Sometimes, the body will close/open some groups.
+% Thus, we globalise the body definitions
+\long\def\FEforeachgroup#1#2#3{%
+  \gdef\body{#2}\gdef\bodyinterim{#3}%
+  \expandafter\fore@chmaina#1,\endfore@ch%
+}
+\long\def\FEforeachlistgroup#1#2#3{%
+  \expandafter\ifx\csname FElist@#1\endcsname\relax\else%
+  \gdef\body{#2}\gdef\bodyinterim{#3}%
+  \expandafter\expandafter\expandafter\fore@chmaina\csname FElist@#1\endcsname,\endfore@ch\fi%
+}

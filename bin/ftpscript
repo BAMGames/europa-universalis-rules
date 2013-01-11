@@ -1,0 +1,21 @@
+#!/bin/sh
+echo 'set net:max-retries 5'
+echo 'set net:connection-limit 1'
+echo "open -u bamgames${FTPPASSWORD} ftpperso.free.fr"
+${BINDIR}/displaybranch "mkdir Europa/EU8" "mkdir Europa/EU8/%s"
+printf "\n"
+${BINDIR}/displaybranch "cd Europa/EU8" "cd Europa/EU8/%s"
+printf "\n"
+path=$(pwd)
+xpath=@@@
+for i in $(echo "$@"|LC_ALL=C sort -u); do
+    xx=$xpath
+    xpath=$(dirname $i)
+    if [ "$xx" != "$xpath" ]; then
+        cd $xpath
+        rpath=$(pwd)
+        cd $path
+        echo lcd $rpath
+    fi
+    echo "put $(basename $i)"
+done

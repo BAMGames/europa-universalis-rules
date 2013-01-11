@@ -1,0 +1,391 @@
+#!/usr/bin/perl
+use Digest::MD5;
+use Cwd qw(chdir);
+use File::Basename;
+
+# Just for memory
+$zerosum='00000000000000000000000000000000';
+
+# Find binpath
+
+$inipath=$ENV{'PWD'};
+chdir $ENV{'HOMEDIR'};
+$homepath=$ENV{'PWD'};
+chdir $inipath;
+chdir $ENV{'BINDIR'};
+$binpath=$ENV{'PWD'};
+chdir $inipath;
+%vars=('LOGFILE'=> 'logfile','MANIFEST' => 'manifest', 'CATEGORY' => 'category', 'INDEX' => 'index');
+$DONE=0;
+$ALL=0;
+
+LOOP: while (@ARGV) {
+    foreach $v (keys %vars) {
+        if ($ARGV[0] eq "--$vars{$v}") {
+            shift @ARGV;
+            ${$v}=shift @ARGV;
+            next LOOP;
+        }
+    }
+    if ($ARGV[0]  eq '--all') {
+        shift @ARGV;
+        $ALL=1;
+    }
+    if ($ARGV[0] eq '--') {
+        $DONE=1;
+        shift @ARGV;last LOOP;
+    }
+    die "Unknown option $ARGV[0]";
+}
+
+foreach $v (keys %vars) {
+    if (!defined(${$v})) {
+        print "$vars{$v} is not defined\n";
+        exit 1;
+    }
+}
+$LOGFILE=$inipath.'/'.$LOGFILE;
+$MANIFEST=$inipath.'/'.$MANIFEST;
+$INDEX=$inipath.'/'.$INDEX;
+if ($ALL) {
+    $CLASS="Creating bitmap index";
+} else {
+    $CLASS="Downloading bitmaps";
+}
+if (!$DONE) {
+    print "No file marker found\n";
+    exit 1;
+}
+my ($filename,$directories,$suffix)=fileparse($INDEX);
+if (!(-d $directories)) {
+    mkdir $directories or die "Cannot create directory $directories";
+}
+chdir($directories);
+$count=0;
+sub state() {
+    system("${binpath}/statedisplay",$ENV{'XID'},$CLASS,@_);
+}
+$a="";
+sub xstate() {
+    open(DISP,"${binpath}/statedisplay $ENV{'XID'} multiple \"$CLASS\" \"".join(' ',@_)."\"|");
+    $a=<DISP>;
+    chomp $a;
+    close DISP;
+}
+sub ystate() {
+    print $a."[".join(' ',@_)."\n";
+#    &state(@_);
+}
+
+sub xlog() {
+    open LOGFILE,">>$LOGFILE";
+    print LOGFILE "<DOWNLOAD $CATEGORY>".join(' ',@_)."\n";
+    close LOGFILE;
+}
+&xlog("\n-----");
+sub xcheckpoint() {
+    &xstate(@_) if ($ALL);
+    &state(@_) if ($ALL);
+}
+sub ycheckpoint() {
+    &ystate(@_) if ($ALL);
+}
+sub zcheckpoint() {
+    &xlog(@_);
+    &state(@_);
+}
+sub wcheckpoint() {
+    &xlog(@_);
+    &state(@_) unless ($ALL);
+}
+sub checkpoint() {
+    &xlog(@_);
+    &state(@_) if ($ALL);
+}
+
+&checkpoint("manifest");
+open MANIFEST,"$MANIFEST" or die "Could not open $MANIFEST from $ENV{'PWD'}";
+%expsize=();
+%expbytes=();
+%expsum=();
+while ($line=<MANIFEST>) {
+    chomp $line;
+    if (!($line=~/([a-f0-9]{32}) (.) ([^ ]+) (.*)$/)) {
+        die "Incorrect manifest in line $line.";
+    } else {
+        $expsum{$4}=$1;
+        $expsize{$4}=$2;
+        $expbytes{$4}=$3;
+    }
+}
+close MANIFEST;
+
+&checkpoint("index");
+%indsize=();
+%indbytes=();
+%indsum=();
+$indlines=0;
+if (open INDEX,"$INDEX") {
+    while ($line=<INDEX>) {
+        chomp $line;
+        if (!($line=~/([a-f0-9]{32}) (.) ([0-9]+) (.*)$/)) {
+            $indlines++;
+            next;
+        } else {
+            $indsum{$4}=$1;
+            $indsize{$4}=$2;
+            $indbytes{$4}=$3;
+        }
+    }
+    close INDEX;
+}
+
+%status=();
+
+foreach (@ARGV) {
+    $status{$_}=1;
+}
+
+@subdirs=('');
+if ($ALL) {
+    foreach (keys %expsum) {
+        $status{$_}=1;
+    }
+    opendir ($dh,".") or die "Cannot open current directory ?!";
+    @moresubdirs = grep { /^\./ && -d "./$_" } readdir($dh);
+    foreach (@moresubdirs) {
+        push @subdirs,"./$_";
+    }
+    closedir $dh;
+    foreach (@subdirs) {
+        opendir ($dh,"./".$_) or die "Cannot open directory $_ ?!";
+        @files = (@files,grep { /.png$/} readdir($dh));
+        closedir $dh;
+    }
+    foreach (@files) {$status{$_}=1;}
+}
+%subdirstocreate=();
+foreach $f (keys %status) {
+    my ($filename,$directories,$suffix)=fileparse($f);
+    $subdirstocreate{$directories}++;
+}
+
+foreach (keys %subdirstocreate) {
+    if (!(-d $_)) {
+    mkdir $_ or die "Cannot create directory $_";
+    }
+}
+
+sub check() {
+    my ($f,$retcodeok,$retcodebad)=@_;
+    if ((-l $f)&&($expsum{$f} eq $zerosum)) {
+        if (readlink($f) eq $expsize{$f}) {
+            $status{$f}=$retcodeok;
+        } else {
+            $status{$f}=$retcodebad;
+        }
+        return
+    }
+    if (!open(FILE, $f)) {
+        $status{$f}=$retcodebad;
+        return;
+    }
+    binmode(FILE);
+    $md5=Digest::MD5->new;
+    $md5->addfile(*FILE);
+    $digest = $md5->hexdigest;
+    if ($digest ne $expsum{$f}) {
+        # Wrong file. Download.
+        $status{$f}=$retcodebad;
+    } else {
+        # File is ok. Fill in index.
+        $status{$f}=$retcodeok;
+        $indbytes{$f}=$size; # We may as well fix that.
+        $indsum{$f}=$expsum{$f}; # We may as well fix that.
+        $indsize{$f}=$expsize{$f}; # We may as well fix that.
+    }
+    close FILE;
+}
+
+sub removefile() {
+    my ($f)=@_;
+    if (-e $f) {
+        unlink $f;
+        if (-e $f) {
+            die "Could not remove $f"
+        }
+    }
+    delete $indsum{$f};
+    delete $indbytes{$f};
+    delete $indsize{$f};
+}
+
+sub download() {
+    my ($f)=@_;
+    system("curl","-s","-o","$f","http://old-lipn.univ-paris13.fr/~dubacq/europa/$CATEGORY/$f");
+    system("touch","$f");
+}
+
+sub nocheck() {
+    my ($f,$retcodeok,$retcodebad)=@_;
+    if ((-l $f)) {
+        $indsum{$f}=$zerosum;
+        $indsize{$f}=readlink($f);
+        $status{$f}=$retcodeok;
+        return;
+    }
+    if (!open(FILE, $f)) {
+        $status{$f}=$retcodebad;
+        &removefile($f);
+        return;
+    }
+    binmode(FILE);
+    $md5=Digest::MD5->new;
+    $md5->addfile(*FILE);
+    $digest = $md5->hexdigest;
+    close FILE;
+    ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime,$ctime,$blksize,$blocks)  = stat($f);
+    $indsum{$f}=$digest;
+    $indbytes{$f}=$size;
+    $indsize{$f}=$expsize{$f};
+    $status{$f}=$retcodeok;
+}
+
+$mc=(scalar keys %status);
+$count=0;
+&xcheckpoint(sprintf("check:%05d/%05d",$count,$mc));
+$t=time();
+
+#######################
+
+foreach $f (keys %status) {
+    $count++;
+    $ot=$t;
+    $t=time();
+    if ($t!=$ot) {
+        &ycheckpoint(sprintf("check:%05d/%05d",$count,$mc));
+    }
+    if (!defined($expsum{$f})) {
+        $status{$f}=2; # deletelist
+        next;
+    }
+    if ($expsum{$f} eq $zerosum) {
+        if ((! -l $f)||(readlink($f) != $expsize{$f})) {
+            # Bad link
+            $status{$f}=8;
+        } else {
+            $status{$f}=4;
+        }
+        next;
+    }
+    if (! -f $f) {
+        # No file. Download anyway.
+        $status{$f}=3; # to download
+        next;
+    } else {
+        ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime,$ctime,$blksize,$blocks)  = stat(_);
+        if ($size != $expbytes{$f}) {
+            # Wrong size. Download.
+            $status{$f}=3;
+            next;
+        }
+        if (defined($indbytes{$f}) && ($size==$indbytes{$f})) {
+            # File exists, right size, in the index. We trust that.
+            if ($expsum{$f}==$indsum{$f}) {
+                $status{$f}=4; # ok
+                $indsize{$f}=$expsize{$f}; # We may as well fix that.
+            }
+        } else {
+            # Index does not match or does not exist. Check.
+            &check($f,4,3);
+        }
+    }
+}
+&ycheckpoint(sprintf("check:%05d/%05d",$count,$mc));
+$dcount=0;
+$rcount=0;
+foreach $f (keys %status) {
+    next if ($status{$f} == 4);
+    do {$rcount++ if -e $f;next;} if ($status{$f} == 2);
+    $dcount++;
+}
+$count=0;
+&ycheckpoint(sprintf("erase:%05d/%05d",$count,($rcount+$dcount)));
+
+foreach $f (keys %status) {
+    next if ($status{$f} == 4);
+    next unless -e "$f";
+    $count++;
+    &ycheckpoint(sprintf("erase:%05d/%05d",$count,($rcount+$dcount)));
+    &removefile($f);
+}
+
+#####################
+
+@failed=();
+@hardfailed=();
+$count=0;
+$failed=0;
+$hardfailed=0;
+&ycheckpoint(sprintf("fetch:%05d/%05d",$count,$dcount));
+foreach $f (keys %status) {
+    next if ($status{$f} == 4);
+    if (@ARGV && $status{$f}==2) {
+        push @hardfailed,$f;
+        &wcheckpoint("$f");
+    }
+    next if ($status{$f}==2);
+    $count++;
+    if ($status{$f}==8) {
+        symlink $expbytes{$f},$f;
+        $indsum{$f}=$zerosum;
+        $indbytes{$f}=$expbytes{$f};
+        $indsize{$f}=$expsize{$f};
+        $status{$f}=4;
+    }
+    &ycheckpoint(sprintf("fetch:%05d/%05d",$count,$dcount));
+    if ($status{$f} == 3) {
+        &wcheckpoint("$f");
+        &download($f);
+        &check($f,4,5);
+        # Status 5 for mismatch/missing after download
+        if ($status{$f} == 5) {
+            &removefile($f);
+            # TODO should use inipath, HOMEDIR, etc.
+            system "cp",$homepath."/images/blank".$expsize{$f}.".png","./$f";
+            &nocheck($f,6,7);
+            # Code 6 is generic image
+            push @failed,$f if ($status{$f}==6);
+            # Code 7 is missing requested image (hard).
+            push @hardfailed,$f if ($status{$f}==7);
+        }
+    }
+}
+&checkpoint("store");
+open INDEX,">$INDEX" or die "could not open $INDEX from $ENV{PWD}";
+foreach $f (sort keys %indsum) {
+    if (!defined($status{$f})) {
+        $status{$f}=4;
+    }
+    print INDEX $indsum{$f}.
+        ' '.$indsize{$f}.
+        ' '.$indbytes{$f}.
+        ' '.$f."\n" unless ($status{$f}==2);
+}
+close INDEX;
+
+foreach (@failed) {
+    &zcheckpoint("replaced:$_");
+}
+foreach (@hardfailed) {
+    &zcheckpoint("error:$_");
+}
+
+if (!$ALL) {
+    my $time=time();
+    foreach (@ARGV) {
+        if (-e $_) {
+            utime $time,$time,$_;
+        }
+    }
+}

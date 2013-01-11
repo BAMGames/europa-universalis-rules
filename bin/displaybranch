@@ -1,0 +1,12 @@
+#!/bin/sh
+disp=${1:-"%s"}    
+a=$(cd $HOMEDIR;LC_ALL=C svn info|grep ^URL|cut -f2 -d' ')
+b=$(echo "$a"|cut -f6- -d/)
+if [ "${b#branches/}" != "$b" ]; then
+  c=${b#branches/}
+  disp="${2:-%s}"
+else
+  c=''
+fi
+printf "$disp" "$c"
+exit 0

@@ -1,0 +1,19 @@
+%!PS
+BOOTFILE (r) file run
+
+/translation true def
+/globalscale 1 def
+/pagewidth 595 def
+/pageheight 842 def
+HOMEDIR(/library/library.eps)! include
+HOMEDIR(/library/libcarte.eps)! include
+
+<< /Title ((Carte Europe))@ >> infochunk
+begindocument
+beginpage
+(q 0.0 0.096 -0.096 -0.0 575.0 15.0 cm\n) out
+(minifonddecarte.clp) copymap
+(1 w\n)out
+(Q\n) out
+endpage
+enddocument

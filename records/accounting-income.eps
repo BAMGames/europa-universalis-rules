@@ -1,0 +1,62 @@
+%!PS
+BOOTFILE (r) file run
+HOMEDIR(/library/librecord.eps)! include
+<< /Title ((Economic record Sheet B - Incomes)) >> infochunk
+begindocument
+beginpage
+(Economic record sheet B - Income) recordsheettitle
+[48 72 237 31 547{}for ] recordmodel
+
+(Turn number) ntitle
+(Provinces income) ntitle    %B1
+(Vassal provinces income) ntitle %B2
+(Pillages, Revolts, Pashas) ntitle %B3
+(Event) (±) nntitle %B4
+(Land income) (1+2-3+4) ggtitle %B5
+(Manufactures) (Val.) nntitle %B6
+(European mines) ntitle %B7
+(Industrial income) (6+7+8) ggtitle %B8
+(Domestic trade income) (~(1+2)) nntitle %B9
+(Foreign trade income) ntitle %B10
+(STZ+CTZ level income) ntitle %B11
+(STZ+CTZ monopoly income) ntitle %B12
+(Partial/Total monopolies) (#/#) nntitle %B13
+(Trade centres income) ntitle %B14
+(Trade centre losses) ntitle %B15
+(Trade income) (10+11+12+13+15-16) ggtitle %B16
+(Colonies) ntitle %B17
+(Trading posts) ntitle %B18
+(Exotic resources) ntitle %B19
+(Partial/Total monopolies) (#/#) nntitle %B20
+(ROTW income) (18+19+20) ggtitle %B21
+(Special income) ntitle %B22
+(Income) (5+9+17+22+23) GGtitle %B23
+(Events) (±) nntitle %B24
+(Gross income) (24+25) bbtitle %B25
+(Loan interests) (C2+C6) nntitle %B26
+(Mandatory loan refund) (cf C3) nntitle %B27
+(RT Collapse ?) (A8+25-26-27 <0) bbtitle %B28
+(Optional loan refunds) (C3+C8) nntitle %B29
+(Unit maintenance) ntitle %B30
+(Fort. & presidios maintenance) ntitle %B31
+(Missions maintenance) ntitle %B32
+(Units purchase) ntitle %B33
+(Fort. purchase) ntitle %B34
+(Administrative actions) ntitle %B35
+(Administrative reactions) ntitle %B36
+(Other expenses) ntitle %B37
+(Adm. total) (∑(31,38)) ggtitle %B38
+(Exceptional taxes modifier) btitle %B39
+(Passive campaigns) (x10D$) nntitle %B40
+(Active campaigns) (x20D$) nntitle %B41
+(Major campaigns) (x50D$) nntitle %B42
+(Multiple campaigns) (x100D$) nntitle %B43
+(Exceptional recruitments) ntitle %B44
+(Naval refit) ntitle %B45
+(Presidios build) ntitle %B46
+(Military expenses) (∑(41,47)) ggtitle %B47
+(Total expenses) (27+28+30+39+48) bbtitle %B48
+recordgrid
+endpage
+enddocument
+quit

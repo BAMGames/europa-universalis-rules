@@ -1,0 +1,89 @@
+#!/bin/sh
+# statedisplay uniqueid [multiple] [reuse] "CLASS" "block"
+# Displays "* Class"
+#          "    [block]"
+# with formatting for blocks, and not redisplaying Class if same from one
+# call to another. State file is $LOG.
+#
+# reuse: uniqueid is ignored, always reuse
+# multiple: nothing is registered, but the prefix necessary to display
+# the argument in the correct position is echoed. Use this to make "moving"
+# arguments (call first with multiple, then call it for real, then echo
+# "$PREFIX[yourblock]\n"
+#
+ECHO=${ECHO:-echo}
+TPUT=${TPUT:-tput}
+LOG=/tmp/${USER}eu8.txt
+if [ -f ${LOG} ]; then
+    read a < ${LOG}
+    oid=${a%%:*}
+    b=${a#*:}
+    oclass=${b%%:*}
+    ocol=${b#*:}
+else
+    a="<>"
+    oid=1
+    oclass=""
+    ocol=0
+fi
+id="$1"
+shift
+class="$1"
+newline() {
+    if [ "$ocol" != 0 ]; then
+        ocol=0
+    fi
+}
+if [ "$class" = "multiple" ]; then
+    MULTIPLE=1
+    ECHO=/bin/true
+    shift
+    class="$1"
+fi
+if [ "$class" = "reuse" ]; then
+    oid=$id
+    shift
+    class="$1"
+fi
+if [ "$id" != "$oid" ]; then
+    oclass=""
+    ocol=0
+fi
+if [ "$class" = "end" ]; then 
+    newline
+    echo "$id:$class:$ocol" > ${LOG}
+    exit 0
+fi
+if [ "$class" = "nl" ]; then
+    newline
+    echo "$id:$oclass:$ocol" > ${LOG}
+    exit 0
+fi
+
+state="$2"
+lstate=${#2}
+if [ "$class" != "$oclass" ]; then
+    newline
+    $ECHO "* $class"
+fi
+if [ -n "$state" ]; then
+    ncol=$((lstate+ocol+2))
+    if [ "$ncol" -gt 68 ]; then
+        newline
+        ncol=$((lstate+2))
+    fi
+    if [ "$ocol" = 0 ]&&[ -z "$MULTIPLE" ]; then
+        $TPUT cuf 4
+    fi
+    if [ "$ocol" != 0 ]||[ -n "$MULTIPLE" ]; then
+        $TPUT cuu1
+        nocol=$((ocol+4))
+        $TPUT cuf $nocol
+    fi
+    if [ -z "$MULTIPLE" ]; then
+        $ECHO "[$state]"
+    fi
+fi
+if [ -z "$MULTIPLE" ]; then
+    echo "$id:$class:$ncol" > ${LOG}
+fi

@@ -1,0 +1,192 @@
+#!/bin/sh
+cwd=$(pwd)
+cd $HOMEDIR/rules
+DEBUGSUFFIXES=".aux .bbl .blg .idx .ilg .ind .lof .log .lot .md5 .out .toc .xmp"
+if [ "$(uname -s)" = "Darwin" ]; then
+    MDSUM=md5
+else
+    MDSUM=md5sum
+fi
+msum() {
+    if [ "$MDSUM" = "md5" ]; then
+        $MDSUM "$@" 2>/dev/null| cut -f2 -d= | $MDSUM
+    else
+        $MDSUM "$@" 2>/dev/null| cut -c1-32 | $MDSUM | cut -c1-32
+    fi
+}
+# ARGS
+
+if [ "$1" = "--strace" ]; then
+    STRACEFILE="$2"
+    STRACE="strace -e trace=open -o $STRACEFILE"
+    shift; shift
+fi
+if [ "$1" = "--log" ]; then
+    LOGFILE="${cwd}/$2"
+    shift; shift
+fi
+MAINSOURCE="$1"
+shift
+if [ "$1" = "--index" ]; then
+    INDEXFILE="$2"
+    shift 2
+fi
+if [ "$1" = "--bib" ]; then
+    BIBLIOFILE="$2"
+    shift 2
+fi
+FILE="$MAINSOURCE"
+STEM="${FILE%.*}"
+DISPBIN=${cwd}/${BINDIR}/statedisplay
+CLASS="Compiling $STEM"
+if [ -n "$STRACEFILE" ]; then
+    CLASS="Building depends"
+    "$DISPBIN" ${XID} "$CLASS" "$STEM"    
+fi
+if [ -f "${STEM}.tgz" ]; then
+    tar xzf "${STEM}.tgz"
+fi
+
+clean_exit() { 
+    trap '' HUP INT QUIT KILL TERM
+    echo "0" > "${TMPFILEB}"
+    rm -f "${TMPFILE}" "${TMPFILEB}" "${TMPFILEC}" 2>/dev/null
+    rm -f "${STEM}.tgz"
+    if [ "$EMSTOP" = 0 ]; then
+        "$DISPBIN" ${XID} "$CLASS" cleaning
+        TFILES=""
+        for i in $DEBUGSUFFIXES; do
+            if [ -f "${STEM}${i}" ]; then
+                TFILES="${TFILES} ${STEM}${i}"
+            fi
+        done
+        if [ -n "$TFILES" ]; then
+            tar czf "${STEM}.tgz" $TFILES
+            rm -f $TFILES
+        fi
+        "$DISPBIN" ${XID} "$CLASS" done
+    else
+        "$DISPBIN" ${XID} "$CLASS" "files kept"
+        "$DISPBIN" ${XID} "$CLASS" "log below"
+        tail $LOGFILE
+    fi
+}
+
+EMSTOP=0
+TMPFILEC=$(mktemp /tmp/tmp.XXXXXXXXXX)
+TMPFILEB=$(mktemp /tmp/tmp.XXXXXXXXXX)
+TMPFILE=$(mktemp /tmp/tmp.XXXXXXXXXX)
+trap clean_exit HUP INT QUIT KILL TERM
+
+LOOPCONTROL=""
+LOOPING=0
+MDCONTROL="${STEM}.md5"
+IDXFILE="${STEM}.idx"
+IDCFILE="${STEM}.ind"
+XLOGFILE="${STEM}.log"
+rm -f "$TMPFILE" 2>/dev/null
+for i in "$@"; do
+    echo "${cwd}/$i" >> "$TMPFILE"
+done
+for s in $DEBUGSUFFIXES; do
+    if [ "$s" != ".log" ]&&[ "$s" != ".md5" ]; then
+        echo "./${STEM}${s}" >> $TMPFILE
+    fi
+done
+
+makesums() {
+    B=$(msum $(cat $TMPFILE))
+    BIDX="Index:$(msum "${STEM}.idx")"
+#    BBIB="Biblio:$(grep '^.bib[cds][iat][ty]'|msum "${STEM}.aux")"
+# Does not work
+    BBIB="Biblio:ok"
+    if [ "${LOOPCONTROL#*${B}}" != "$LOOPCONTROL" ]; then LOOPING=$((LOOPING+1)); fi
+    LOOPCONTROL="$LOOPCONTROL:$B"
+}
+
+registersums() {
+    echo "$B" > "$MDCONTROL"
+    echo "$BIDX" >> "$MDCONTROL"
+    echo "$BBIB" >> "$MDCONTROL"
+    if [ -n "$DEBUGLOOP" ]; then
+        echo "Pass $C" >> /tmp/a
+        cat "$MDCONTROL" >> /tmp/a
+        if [ "$C" -gt 6 ]; then
+            cp ${STEM}.aux /tmp/${STEM}-${C}
+            if [ -f ${STEM}.idx ]; then
+                cp ${STEM}.idx /tmp/idx${STEM}-${C}
+            fi
+        fi
+    fi
+}
+
+makesums
+if [ -f "$MDCONTROL" ] && [ -f "${STEM}.pdf" ] && [ -z "$STRACEFILE" ]; then
+    A=$(head -n 1 "$MDCONTROL")
+    AIDX=$(grep Index: "$MDCONTROL")
+    ABIB=$(grep Biblio: "$MDCONTROL")
+else
+    # Compile at least once
+    A=""
+    AIDX=$BIDX
+    ABIB=$BBIB
+fi
+C=0
+registersums
+
+pdfstopped() {
+    rm -f "$TMPFILEB" 2> /dev/null
+    cat $TMPFILEC >> $LOGFILE
+    stty echo
+}
+while [ "$A" != "$B" ]; do
+    EMSTOP=0
+    C=$((C+1))
+    if [ "$ABIB" != "$BBIB" ]; then
+        "$DISPBIN" ${XID} "$CLASS" "bibliography($C)"
+        bibtex "$STEM"
+        ABIB="$BBIB"
+    else
+        if [ "$AIDX" != "$BIDX" ]; then
+            "$DISPBIN" ${XID} "$CLASS" "index($C)"
+            makeindex "$STEM" -s "$INDEXFILE" >> $LOGFILE 2>&1
+            AIDX="$BIDX"
+        else
+            "$DISPBIN" ${XID} "$CLASS" "compiling($C)"
+            prefix=$("$DISPBIN" ${XID} "multiple" "$CLASS" "pages:000")
+            "$DISPBIN" ${XID} "$CLASS" "pages:000"
+            touch $TMPFILEB
+            (while [ -f "$TMPFILEB" ]; do sleep 1;tail -100 $TMPFILEC |grep ^Page: |tail -n 1| sed -e 's/^Page:\([0-9]\)$/Page:00\1/g;s/^Page:\([0-9][0-9]\)$/Page:0\1/g;s/^Page:\([0-9][0-9][0-9]\)/'"$prefix"'[pages:\1]/g';done)&
+            trap pdfstopped INT
+            stty -echo
+            $STRACE pdflatex -halt-on-error "$MAINSOURCE"  > $TMPFILEC 2>&1
+            EMSTOP=$?
+            grep ^Page: $TMPFILEC |tail -n 1| sed -e 's/^Page:\([0-9]\)$/Page:00\1/g;s/^Page:\([0-9][0-9]\)$/Page:0\1/g;s/^Page:\([0-9][0-9][0-9]\)/'"$prefix"'[pages:\1]/g'
+            pdfstopped
+            wait
+            trap clean_exit INT
+            PDFLATEXPID=0
+            WATCHPID=0
+            A="$B"
+        fi
+    fi
+    makesums
+    registersums
+    if [ "$C" -gt 20 ]; then
+        A="$B"
+        "$DISPBIN" ${XID} "$CLASS" "looping($C>20)"
+    fi
+    if [ "$LOOPING" = "2" ]; then
+        A="$B"
+        "$DISPBIN" ${XID} "$CLASS" "looping($B)"
+    fi
+    if [ "$EMSTOP" != "0" ]; then
+        A="$B"
+        "$DISPBIN" ${XID} "$CLASS" "error($EMSTOP)"
+    fi
+done
+if [ "$C" = "0" ]; then
+    "$DISPBIN" ${XID} "$CLASS" "no changes"
+    touch "${STEM}.pdf"
+fi
+clean_exit

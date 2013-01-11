@@ -1,0 +1,48 @@
+Revolt table: changed the order of the countries in global table to
+match 9 players game.
+
+IV-1 (Bohemian Revolt): Give control of Baviere to \MAJHAB, not \SPA.
+
+engEvnt*: changed the Minister events, so that:
+  * Default is to give values of Minister for next King.
+  * Not default in economical event (as before)
+  * Changed the situation for Colbert (probably oversight) and possibly de Witt
+  * Koprulu not default
+
+III-6 (Portuguese Disaster): permanently lose one level => reference level
+-\aparag Whatever the current status of \pays{Portugal}, each Portuguese
+-commercial fleet in the \ROTW map looses permanently {\bf 1} lvl (even if
+-being thus eliminated).
++\aparag Whatever the current status of \paysPortugal, the reference level of
++each Portuguese \TradeFLEET in the \ROTW map is reduced by one (even
++if being thus eliminated).
+Et aussi: automatic white peace => mandatory white peace
+
+III-B: 
+(adaptation RT négatif):
++\bparag Its initial treasury is at most two thirds of the treasury at
++the end of the event phase. The loss is of at least 50\ducats.
+
+
+Eco: Looting and insecurity
+-Place a pirate \facemoins in the player's \CTZ.
+-% Muf ? En Baltique pour SUE ? (POL ? PRU ?)
++Place a \PIRATE\facemoins in the player's \CTZ (if any); in \stz{Baltique} if
++the player has a port on this \STZ (and no \CTZ); in \stz{Adriatique} if the
++player has a port on this \STZ (and no \CTZ). There may be no \PIRATE if there
++are no such ports.
+
+VI-4: Jacobite Rebellion
+-\aparag If \ANG is catholic, roll for two \REVOLT in \ANG.
++% (JCD) Added the mark off part. Obviously, no jacobite rebellion for Catholic
++% Ang.
++\aparag If \ANG is \CATHCR or \CATHCO, roll for two \REVOLT in \ANG, then mark
++off and consider as played.
+
+VI-12: War against Turkey
+ % (Jym) Not possible in EU9. Removing: b. Inactive \HAB declares war against
+-% \TUR.
++% \TUR.  (JCD) We should keep it. In EU9, c. will be used; in EU8, possibly
++% too.
++\aparag If inactive, \AUSmin declares war against \TUR. It calls for allies as
++usual.

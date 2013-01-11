@@ -1,0 +1,124 @@
+#!/usr/bin/perl
+
+%linesbefore=(
+    'event' => 3,
+    'subsection' => 3,
+    'section' => 4,
+    'subevent' => 2,
+    'digression' => 2,
+    'subsubsection' => 2,
+    'newpage' => 1,
+    'clearpage' => 1,
+    'stopevents' => 1,
+    'activation' => 1,
+    'condition' => 1,
+    'phevnt' => 1,
+    'phdipl' => 1,
+    'phadm' => 1,
+    'phmil' => 1,
+    'phmvt' => 1,
+    'phpaix' => 1,
+    'phinter' => 1,
+    'effetlong' => 1,
+    'tour' => 1,
+    );
+# \dure and \history do not deserve a blank line before
+
+%linesafter=(
+    'startevents' => 1,
+    'stopevents' => 1,
+    'section' => 1,
+    'subsection' => 1,
+    'event' => 1,
+    'newpage' => 1,
+    'clearpage' => 1,
+    'input' => 1,
+    );
+
+foreach $file (@ARGV) {
+    open FILE,"$file" or die "Could not open $file";
+    @lines=();
+    @lines=<FILE>;
+    close (FILE);
+    @filtered=();
+    $lastlinewasblank=0;
+    $insidelevel=0;
+    $unbalanced=0;
+    $lastinserted=20;
+    $foundsplitpoint=0;
+    foreach $line (@lines) {
+        chomp $line;
+        if ($line=~/^% -/) {
+            print "modeline\n";
+            push @filtered,$line;
+            push @filtered,'';
+            $lastlinewasblank=1;
+            next;
+        }
+        if ($line=~/^[[:blank:]]*$/) {
+            next if ($lastlinewasblank);
+            $lastlinewasblank=1;
+        } else {
+            $lastlinewasblank=0;
+        }
+        if ($line=~/^([[:blank:]]*)\\([a-zA-Z@]*)/) {
+            $firstcommand=$2;
+        } else {
+            $firstcommand='';
+        }
+        if ($linesbefore{$firstcommand}>0) {
+            print "Inserting ".($linesbefore{$firstcommand}-$lastinserted)." line(s) before $firstcommand ($lastinserted already found)\n";
+            for ($i=0;$i<$linesbefore{$firstcommand}-$lastinserted;$i++) {
+                push @filtered,'';
+            }
+        }
+        push @filtered,$line;
+        $lastinserted=$lastlinewasblank;
+
+        if ($linesafter{$firstcommand}>0) {
+            $foundsplitpoint=-1;
+            $goal=$linesafter{$firstcommand};
+            $unbalanced=0;
+            print "Future insertion of $goal line(s) after $firstcommand\n";
+        }
+        if ($foundsplitpoint==-1) {
+            # We want to insert after some command.
+            # We shall assume that the line or the following lines ends
+            # correctly (on a splitpoint). We shall count the balance
+            # If the {} and [] are balanced, we insert the whitespace.
+            $foundsplitpoint=-1;
+            for ($j=0;$j<length($line);$j++) {
+                $c=(substr $line,$j,1);
+                if ($c eq '{' or $c eq '[') {
+                    $unbalanced++;
+                } elsif ($c eq ']' or $c eq '}') {
+                    $unbalanced--;
+                }
+            }
+            if ($unbalanced==0) {
+                print "Inserting ".($goal-$lastinserted)." line(s) after some command\n";
+                while ($lastinserted<$goal) {
+                    push @filtered,'';
+                    $lastinserted++;
+                    $lastlinewasblank=1;
+                    $foundsplitpoint=0;
+                }
+            } else {
+                print "Delaying insertion of $goal lines\n";
+            }
+        }
+    }
+    open FILE,">$file" or die "Could not open $file";
+    foreach (@filtered) {
+        s/[[:blank:]]*$//;
+        print FILE "$_\n";
+    }
+    close (FILE);
+    system('emacs','-batch','-Q','-eval','(load "auctex.el" nil t t)','-eval','(load "'.$ENV{'HOME'}.'/.emacs" nil t t)',$file,'-eval','(progn (LaTeX-fill-buffer nil) (save-buffer))');
+}
+
+# for i in "$@"; do
+#     perl -pi -e 'chomp;s/$/NLN/g;s/^(.*%.*)NLN$/${1}NKN/g;s/\\/BSN/g' $i
+#     perl -pi -e 's/NLNNLNBSNeventssummary/NKNNKNBSNeventssummary/g;s/(NLN)*N[LK]N/NKN/g;foreach $a ("event","subsection") {s/NKNBSN${a}([^a-z])/NKNNKNNKNNKNBSN${a}$1/g;};foreach $a ("subevent","subsubsection","digression") {s/NKNBSN${a}([^a-z])/NKNNKNNKNBSN${a}$1/g;};foreach $a ("newpage","clearpage","stopevents","activation","condition","phevnt","phdipl","phadm","phmil","phmvt","phpaix","phinter","effetlong","tour"){s/NKNBSN${a}([^a-z])/NKNNKNBSN${a}$1/g;};s/NKN/\n/g;s/BSN/\\/g' $i
+#     emacs -batch -Q -eval '(load "auctex.el" nil t t)' -eval "(load \"$HOME/.emacs\" nil t t)" $i -eval '(progn (LaTeX-fill-buffer nil) (save-buffer))'
+# done

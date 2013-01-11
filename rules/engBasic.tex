@@ -1,0 +1,1276 @@
+
+% -*- mode: LaTeX; -*-
+
+% (Jym), 06/2011: Simplification along two lines of thought: 1/ We address
+% experienced wargamers. They know what a province is.  2/ This is a
+% descriptive only chapter. Precise effects of the stuff should go in the
+% corresponding rule Chapter rather than here. OK, the corresponding rule
+% Chapter is usually the Military one and we can wait before getting the rule
+% back...
+
+% And also, getting all macros to new style when possible.
+
+\definechapterbackground{Game components}{basics}
+\chapter{Game components}\label{chapter:Basics}
+\begin{designnote}
+  This Chapter describes in details the components of the game, mostly the
+  maps and counters.
+\end{designnote}
+
+\aparag \emph{Europa Universalis} is composed of:
+\bparag Two maps. One depicting Europa and the other depicting the whole
+World.
+\bparag 3000 (?) counters.
+\bparag This 550 (?) pages long book of rules.
+
+\aparag In order to play, you will also need:
+\bparag Separate printed version of the Players aids and the various record
+sheet.
+\bparag Pens and dices (ten-sided dices).
+\bparag Some extra blank paper can be handy.
+
+\aparag Players aids and record sheet work best if used the way they were
+designed. See \ref{chapter:Playing} for details on this.
+
+
+
+
+\section{Description of the world: the maps}
+
+% RaW: [1]
+
+
+
+\subsection{Europa and Rest of the World}
+
+\aparag[Two maps] The world is divided in two distinct maps: the European map,
+and the Rest of the World map (\ROTW). Although there is a lot in common to
+the way these maps can be read, they do not work in the same way.
+% \bparag Both maps feature \terme{provinces}, \terme{cities}, \terme{sea
+% zones}, \terme{trade zones}.
+% \aparag[Europe-specific features] The Europa map has the following specific
+% features: \terme{wasteland area}, \terme{cold area}, \terme{shields},
+% \terme{national provinces}.
+% \aparag[\ROTW-specific features] The \ROTW map has the following specific
+% features: \terme{areas}, \terme{regions}.
+
+\aparag[Europa] The European map is where most of the military game is
+played. Each player plays an European country.
+
+\aparag[\ROTW] The \ROTW map is used for the great discoveries and
+colonisation of the European powers.
+\bparag It also holds the game turn, technology, diplomacy and exotic
+resources tracks.
+
+
+
+\subsection{Provinces and Sea Zones}\label{chBasics:Provinces}
+
+\aparag[Provinces and Sea Zones] Each map is divided into provinces (on land)
+and sea zones (at sea).
+% (Jym) EU players are experienced wargammers. Removing: A \terme{province} is
+% the smallest land piece on the maps. They are delimited with either black,
+% blue or pale lines (representing either frontiers, rivers or mountain
+% passes).
+% \aparag[Sea zones] A \terme{sea zone} is a piece of sea, delimited by coasts
+% (of provinces), white lines (frontiers with other sea zones) or red lines
+% (fortified straits). They all have a name (usually a French name) and a
+% difficulty (a large number ranging from 4 to 8, accompanied sometimes by a
+% +1 or +2 indication).
+
+\aparag[Names] Every European province has two names: the province name, and a
+city name (beside a fortress icon).
+\bparag Although provinces and cities do not play the same role, since these
+names are unique, they can both be used to designate the province.
+\begin{designnote}
+  The local name is used, as far as it makes sense. Alternatives are sometimes
+  written in parentheses. When the local name is too far from something
+  readable or recognisable, a French equivalent is written in italic
+  typeface. A transliteration is also provided (between square brackets) for
+  non-Latin alphabets.
+\end{designnote}
+
+\bparag[Disconnected provinces]\label{chBasics:Disconnected Provinces} Some
+provinces are in fact several pieces of land, e.g., the provinces
+\provinceCyclades or \provinceBaleares (several islands), or
+\provinceCanakkale (in Turkey). They are always treated as one province only.
+\aparag[Multiple coasts]\label{chBasics:Multiple Coasts} Some provinces
+have two coasts that are not connected together (by sea). This is the case of
+\provinceSlesvig (in Denmark) and \provinceHellas (in Greece) in Europe, and
+some others in the \ROTW. These provinces are subject to limitations when
+entering and exiting provinces through different sea zones (see
+\ruleref{chMilitary:Movement:Port Multiple Coasts}), and for blockading (see
+\ruleref{chMilitary:Movement:Blockading Multiple Coasts}).
+% (Jym) Only keeping descriptions here. Rules to be moved in the corresponding
+% rule chapter. Removing:
+% \bparag One of the coasts is the main coast. This is the coast used for
+% blockading. In Europe, this is the one where the anchor lies; in \ROTW, this
+% is the one near which is the city if there is one, and decided when placing
+% a colonial establishment if there is no city.
+% \bparag The other coast is considered to also have a port for disembarking
+% only.
+\bparag All other provinces have only one coast (that may span over different
+sea zones).
+% If a port (anchor) is present, sea units do not need movement points either
+% to go from one part of the coast to another (while at port). However, there
+% are some limitations also when entering and exiting the province for sea
+% units (see \ruleref{chMilitary:Movement:Port Multiple Coasts}).
+
+\aparag[Terrain] The colour of a provinces corresponds to its terrain
+type. See the terrain chart on the map. Non-plain terrains affect movement and
+battle.
+
+\aparag Two regions are magnified on the \ROTW map and one on the European map
+for practical purposes: North-Eastern America, India and Belgium-Holland.
+% There is no over-cost involved there; the magnification is there for
+% practical purposes.
+\bparag Provinces and Sea zones are thus present twice: both in and out of the
+magnified area. It is advised to use the magnified area for all military
+counters and to keep economic counters out of the way on the un-magnified map.
+\bparag Sea zones going around the magnified areas have all their contacts
+shown. Especially, there is no contact between \seazoneMaldives and
+\seazone{Indien S}, or \seazoneQuarantiemes and \seazoneIndien, but there is
+between \seazoneQuarantiemes and \seazone{Indien S}.
+
+\aparag[Frontiers] Adjacent provinces can be connected by river (blue),
+mountain pass (pale), regular frontier (black) or straits (double-arrows).
+% Two provinces are adjacent by frontier if they share a common black frontier
+% in any place. They are adjacent by river or mountain pass if they share a
+% common frontier (either blue or pale), and no black frontier.
+\bparag[Straits, mountains pass and rivers] affect movement and battle. All
+terrain effects (both from the province and the frontier) are cumulative.
+% give a penalty to attack a province just behind the river or strait, and
+% cost more \terme{points of movement} (PM).
+\aparag[Lakes] Lakes are impassable and do not provide contact between
+provinces.
+\bparag Sea units cannot go through rivers or lakes.
+% , except the Russian Fluvial Fleet per \ruleref{chSpecific:Russia:Fluvial
+% Port}.
+% \bparag Two provinces separated by a strait are adjacent, even if they do
+% not touch. The straits are marked on the map by large arrows pointing at
+% both provinces.
+% \bparag Passing from land to land through a strait or a river has some
+% effect on movement and combat. Passing from sea to sea through a strait has
+% no special effect.
+\aparag[Reaching the Bering Strait.]\label{chBasics:Secret Passage:Bering}
+\granderegionKamchatka is considered adjacent by land with any of the four
+provinces neighbouring the impassable area north of \seazoneOkhotsk.
+% Supply is not provided through this passage.
+It takes one full campaign round to make this move (12\MP).
+% \bparag[Following rivers] On the \ROTW map, there is special interest to
+% know if one path can be made along a river. The path must be done from
+% provinces to provinces so that two consecutive provinces of the path always
+% share a common blue frontier (either a river or a lake), and the water must
+% be continuous all along. Crossing the water (if a river) is allowed (even
+% several times).
+\aparag[Small provinces] Some islands and similar places are too small and are
+thus represented by a large square instead.
+\bparag When the corners of the square are cut off, it means the island is on
+rough terrain (usually forest). Similarly, the flag in the island is white for
+plains and has a black cross for non-plain terrain.
+\bparag The island of \province{Cap Breton} in \granderegionAcadie is
+connected with its neighbouring province with a river.
+\bparag\label{chBasics:Provinces:Ormus} \null\provinceOrmus is an
+island in \seazonePersique. It is connected with a strait to \provinceBam and
+\province{Oman E}. It can be seen on the European map, but all counters have
+to be put on the \ROTW map. A fortress in \provinceOrmus is also a \Presidio
+for \provinceBam.
+\begin{exemple}[Frontiers and islands]
+  \provinceNormandie and \provinceCaux are adjacent provinces by river,
+  whereas \provinceNormandie and \provinceMaine are adjacent by frontier.
+
+  % A path going from the southernmost province of \granderegion{Kansas} to
+  % the south-east province of \granderegion{Texas} is not along a continuous
+  % path of water if going through the northernmost province of
+  % \granderegion{Texas} directly then in \granderegion{Kansas}.
+%
+  % A path going from the same province of \granderegion{Kansas} to the
+  % south-west province of \granderegion{Mississippi} by way of the
+  % northernmost province of \granderegion{Texas} is made by following a
+  % continuous river (and the cost of entering the two provinces will be
+  % reduced).
+  The southernmost province of \granderegion{Grands Lacs} is not adjacent to
+  the north-eastern province of \granderegionIllinois, even though they share
+  a lake border.
+
+  The island of \granderegion{Sainte-Helene} is a plain (regular square and
+  white flag) while the island of \provinceGuadeloupe is a forest (cut off
+  square and crossed flag).
+\end{exemple}
+
+% \aparag[Terrain type] The terrain type is shown by the colour of the
+% background of the province. It is the same in all the province, and affects
+% combat and movement.
+% \bparag[Plains] Plains are in light yellow-grayish colour. Easy movement and
+% cavalry bonuses are available. They are the only clear terrain. Some
+% islands, too small to show terrain colour, have a triangular grey flag atop
+% to indicate plains.
+% \bparag[Mountains] Mountains are dark red in colour. They allow for easier
+% defence.
+% \bparag[Deserts] Deserts are yellow. They give penalties to both attack and
+% defence, and provide only with a weak line of supply.
+% \bparag[Swamps] Dark green-grayish provinces are swamps or marshes, very
+% similar to mountains.
+% \bparag[Forests] Green (either yellowish or pure) provinces are
+% forests. They give penalties to both attack and defence. Yellowish green
+% forests are normal forests. The others are sparse forests. The forests
+% included in the \terme{Cold area} are called northern forests. The latter
+% have some specific effect (see~\ruleref{chMilitary:Battle:Forests}). Some
+% islands, too small to show terrain colour, have a rectangular green crossed
+% flag atop to indicate forests.  Some swamp provinces can be flooded (see
+% \ruleref{chSpecific:Holland:Flooding}).
+% \aparag[Labels] On every European province can be found three labels: the
+% province name, a city name (beside a fortress icon), an income value. There
+% can also be several icons pertaining to the province: a coloured anchor, one
+% or more shields, a gold mine, a salt resource. The province name is written
+% in a large bold typeface.
+
+\aparag[European provinces in \ROTW]\label{chBasics:Europe Provinces ROTW}
+The \ROTW map bears some European provinces: \provinceHerat (as long as in
+belongs to \paysPerse), \provinceCanarias and \provinceAcores. Those provinces
+behave in every way as European provinces including the cost of movement,
+income, etc.
+
+
+
+\subsection{Symbols in provinces}
+
+\begin{designnote}
+  Of course, not everything could be shown through symbols on the map. For
+  instance, annexation of Scotland to England has not been shown. In a word,
+  symbols on the map are not the rules.
+\end{designnote}
+\aparag[Income value] This is the large number written in or beside the
+province name (in Europe).
+% , or a common value for a whole area (in \ROTW). It is used to evaluate the
+% economic strength of the owner of the province.
+% \bparag Only one province may change its value during the course of the game
+% (the one where \ville{Saint-Petersbourg} will be built, see
+% \ruleref{chSpecific:Russia:St-Petersburg}).
+\aparag[Anchors] Anchors indicate that the province has ports (in Europe).
+% This allows for easier movement between land and sea, easier defence of the
+% cities, (not blockading the ports severely reduces chances of conquest),
+% building of \emph{fisheries} in the province, fleet construction, etc.
+% \bparag In \ROTW, all provinces containing a \COL, a \TP or a Fort is
+% considered to have a port on all its coasts.
+\bparag All coasts in a province with port are considered to have ports, even
+if the anchor symbol does not touch all coasts. %This is especially
+% the case for disconnected provinces, such as those quoted in
+% \ruleref{chBasics:Disconnected Provinces}.
+% \bparag See above (\ruleref{chBasics:Multiple Coasts}) for the provinces
+% whose coasts span over several sea zones.
+\bparag Anchors with a white circle are ports that can be blockaded with a
+\Presidio% (a fortress specially designed to block the port, even if the
+% province is not owned).
+% \bparag A port cannot be built during the course of the game, except for
+% \ville{Saint-Petersbourg}, neither can it be destroyed.
+\bparag[Golden anchors]\label{chBasics:Arsenal} A golden anchor indicates
+an \terme{arsenal}, a larger port that can hold and supply larger
+fleet. %Two specific arsenals can be built in the course of the
+% game in Europe (one by Russia, one by England), and some can be built on the
+% \ROTW map. Arsenals can be dismantled as any fortress.
+\bparag[Red anchor] \province{Cabo Verde} has a red anchor. This red anchor
+means that sea units of the player that owns the province may pass from one of
+the four connected sea zones to any other without paying the movement inside
+the province.
+\begin{figure}
+  \def\imx#1{\includegraphics[height=0.5in]{#1}}
+  \centerline{\begin{tabular}{|ccc|b{1.8in}|}\hline
+      \rule{0mm}{0.6in}\imx{ville1}&\imx{villechine1}&\imx{villeinde1}&Cities, level 1\\
+      \imx{ville2}&\imx{villechine2}&\imx{villeinde2}&Cities, level 2\\
+      \imx{anchor}&\imx{anchor2}&\imx{anchor3}&Port, Arsenal, Waypoint\\
+      \imx{anchor4}&\imx{anchor5}&\imx{blocus}&Port, Arsenal +possible \Presidio, Strait fortification\\
+      \imx{shield_oresund}&\imx{shield_flandrebrabant}&\imx{ancrefluviale}&Some special shields, Fluvial Port\\
+      \imx{bateau}&\imx{sel}&\imx{mine}&Sea/Country Trade Zone, Salt resource, Gold mine\\
+      \hline
+    \end{tabular}}
+  \caption{A sample of possible symbols on the map}%
+  \label{figure:map-symbols}
+\end{figure}
+\bparag[The Strait fortifications] Red see frontier represent permanent
+\StraitFort guarding entrance to the sea. They are controlled from the
+province with the guard tower symbol (see \ruleref{chMilitary:Strait
+  Fortifications}).
+% In some places near red sea frontiers some guard towers are pictured. They
+% represent the permanent \StraitFort that guard the access to these seas
+% \ruleref{chSpecific:Turkey:Dardanelles} and
+% \ruleref{chSpecific:Venice:Corfu}).
+
+\aparag[Shields] The shields bearing (somewhat simplified) arms of countries
+are here as a reminder of several things, related to the relation between
+provinces and countries.
+\bparag[Major countries] Shields bearing the symbol of major countries define
+the \terme{national provinces} of the major country. They may differ from the
+initial setup.
+\bparag[Minor countries existing in 1492] Shields bearing the arms of a minor
+country recall the initial possessions of the minor country.
+\bparag[Influence] Blurred shields represent influence of a country (either
+major or minor) on a province. These are not national provinces.
+% Some blurred shields simply indicate a group of provinces. This is the case
+% for Duchy of Prussia, Pommerania, Ireland, Finland, Granada, Naples,
+% Kurland, and some others. Some of these groups may revolt against their
+% owner and be granted Independence (see \ruleref{chPeace:Peace:Independence
+% Revolt}), others have special effects according to events.
+\bparag[Commercial reminders] Half-parted shields in some provinces and sea
+zones are reminders of
+% \provinceBrabant, \province{Vlaanderen}, \province{Sjaelland},
+% \province{Skane} and \province{Vastergotland}, as well as several see zones
+% are used as reminder of
+the commercial specificities of the Scheldt and the Sund
+(see~\ruleref{chSpecific:Scheldt} and~\ruleref{chSpecific:Sund Levies}).
+\bparag[Tordesillas reminders] On the \ROTW map, some shields on areas
+indicate the Tordesillas belonging of the area
+(see~\eventref{pI:Tordesillas}).
+% Spanish belongings west of Europe and Portuguese belongings east of
+% \province{Acores} are not recalled. Question marks reminders are for areas
+% that could be colonised by either \POR or \SPA.
+% \bparag[Major countries] For major countries (played throughout the game),
+% the shields indicate the \terme{national provinces}, the core of the major
+% country (see \ruleref{chThePowers:National Provinces}).
+% \bparag[Blurred major countries] Some shields of major countries are
+% blurred. The provinces showing those are not part of the national provinces,
+% but may become part of them through events.
+
+\begin{exemple}[Shields]
+  The island of \provinceGotland (in Baltic sea) has a Swedish shield. It is
+  thus a Swedish national province even if is does belong to Denmark at the
+  beginning of the game. \provinceSkane has both a Swedish and a half-parted
+  shield. It is a Swedish national province (Swedish shield) \textbf{and} it
+  plays a role in the Baltic trade (half-parted shield also present in
+  \seazoneBaltique).
+
+  \provinceKreta has a blurred Venetian shield. It is \textbf{not} a Venetian
+  national province (the shield is blurred) but Venice does have some
+  influence here (in this case, namely, it owns the province in 1492).
+
+  \provinceKuban (East of the Black Sea) has both a Georgian shield and a
+  blurred Crimean shield. It does belong to \paysGeorgie in 1492 (shield of a
+  minor country) and it may be annexed by \paysCrimee (blurred shield
+  indicating influence).
+
+  \provinceHinterpommern (Northern Germany) initially belongs to
+  \pays{teutoniques2} (regular shield). It can be annexed by \paysHanse
+  (blurred shield) and it can becomes part of \region{Duche de Prusse} (the
+  other blurred shield). It can also be part of \paysPommeranie but this was
+  not shown on the map.
+\end{exemple}
+
+\aparag[Gold mines] Some provinces hold gold mine. If there is a number in it
+(in the \ROTW), this is the income of the mine.
+% Some gold mines are placed on the map. They add gold to the national
+% treasury of the country possessing the province. The may become depleted
+% during the course of the game.
+\aparag[Salt resources] Salt heap in Europe allow the construction salterns
+(salt manufactures) in the province.% No other effect apart from that.
+
+
+\subsubsection{Wasteland area}\label{chBasics:Wasteland}
+\begin{histoire}
+  This area represents the great size and the low density of population in
+  those regions. This applies to movement and supply. This particularity will
+  not extend to newly conquered areas, nor will the provinces lose their
+  specificity if conquered by some country other than Khanates, Cossacks and
+  Russia. The armies of the local countries had sufficient cavalry to
+  compensate for those very large sullen areas.
+\end{histoire}
+\aparag[Geographical limits] The north-eastern provinces of the map are
+bordered with a yellowish line. They represent the initial territories of
+Khanates, Cossacks and Russian principalities, as well as some Lithuanian and
+Ukrainian territories.
+% \aparag The movement cost is doubled in this area
+% (see~\ruleref{chMilitary:Movement:Wasteland}), the building of fortresses is
+% restricted (see~\ruleref{chExpenses:Fortresses Wasteland}).
+% \bparag Units of the waste-native countries: \RUS, \pays{pskov},
+% \pays{ryazan}, \pays{cosaquesdon}, \pays{Kazan}, \pays{Astrakhan},
+% \pays{Steppes}, \pays{crimee}, \pays{ukraine}, \pays{Lithuanie} (only if
+% \POL chose an orthodox attitude, see \ruleref{chSpecific:Poland:Orthodoxy})
+% are not subject to the movement penalty.
+% \bparag\label{chBasics:End Wasteland} Both restrictions end with the
+% finishing of the funation of \ville{Saint-Petersbourg}, or at the end
+% of \eventref{pVI:Great Northern War}, whichever is first.
+
+
+\subsubsection{Cold Area}\label{chBasics:Cold Area}
+\aparag[in Europe]% All of the Swedish peninsula except \province{Skane} and
+% the territories north of \province{Livonija}, \province{Neva},
+% \province{Novgorod}, \province{Moskva}, \province{Vyatka} and
+% \province{Ural}
+All provinces within a whitish line on the North of the map form the European
+cold area.
+% This is the cold area of Europe, and the movement is doubled there for the
+% purpose of supply only.
+% \bparag The cost is not doubled in the national territory, plus the
+% provinces of \region{Norvege} for \pays{danemark} and the provinces of
+% \region{Finlande} for \pays{suede} (or \SUE).
+\aparag[in the \ROTW] Areas with a snowflake ``exotic resource'' are all part
+of the \ROTW cold area. This corresponds to northern America and Siberia.
+
+
+\subsubsection{Germany, Italy, Persia}
+\aparag The provinces of the Holy Roman Empire are bordered with a red
+line.% Specifics rules apply for the countries within this limit.
+\aparag The provinces of Italy are bordered by a blue line.% Specific rules
+% apply for the countries and provinces within this limit.
+\aparag The provinces of the \terme{Persian core}, the heart of Persia, are
+bordered by a black line.
+
+
+
+\subsection{Cities}
+
+\aparag Cities represent the urban infrastructure of the provinces. There is
+one city in each European province as well as in some \ROTW provinces.
+\bparag Each city has a name.% It is written on the map using the same script
+% conventions as province names, but with a normal typeface.
+\bparag Each province actually contains many cities, however, only one of them
+is used in the game (and represents all).
+\aparag[Level] Cities are fortified with a fortress of level 1 (single tower)
+or of level 2 (bunch of towers). Counters are used to mark higher levels.
+% \bparag Fortresses can only lowered to a level less than what is on the map
+% after a siege (with a minimum level of 1).  Unmaintained fortresses will
+% lower down to the initial level of the city.
+\begin{designnote}
+  Sometimes, the cities simply did not exist in 1492, at the beginning of the
+  game. Since it is in those cases rarely important, a more recent city was
+  chosen. Cities built after the 17\up{th} century have been avoided. Also,
+  keep in mind that a city represents the whole urban infrastructure of a
+  province. Sometimes taking a city will really mean ``take a bunch of cities
+  all hidden deep in the mountains''.
+
+  In the \ROTW, cities are actually places where European control can be
+  exercised, and conquest done; we do not mean to say that India or China were
+  empty of cities (this would be most untrue), only that most places would not
+  lend themselves to conquest.
+\end{designnote}
+
+
+\subsubsection{Control of a province}
+\aparag Each province is owned by one country.
+\bparag Change of ownership can only occurs by formal annexation (usually at
+the end of a war, sometimes by wedding or other events).
+\aparag During wars, provinces can also be \emph{controlled} by a country
+different from their owner.
+\bparag Control of a province occurs by taking and holding the city of the
+province.
+\aparag It is possible and common for a given province to be owned by a
+country, but controlled another country.
+% \aparag A province is controlled for the sake of movement if the main land
+% (not the city, mission, colony, trading post) is occupied only by one's own
+% units.
+% \bparag However, for all other rules (victory points, income, events),
+% except if specified, control of a province needs also control of the city
+% and other establishments.
+% \bparag Possession (or ownership) of a province is distinct from
+% control. Possession can be lost only by formal annexation of the province
+% (either by treaty or by event).
+
+
+
+\subsection{Symbols in Sea Zones}
+
+\aparag Each sea zone has a \emph{difficulty}. It is the number written in the
+picture of a storm (or calm sea).
+
+\aparag Some sea zones in the \ROTW have an additional \emph{malus}, either
+\bonus{+1} or \bonus{+2} making travel through them even harder.
+
+\aparag Some sea zones are also trade zones. The trade zones are depicted with
+the silhouette of a ship in a coloured square (\emph{Sea Trade Zone}) or
+circle (\emph{Country Trade Zone}).
+\bparag The numbers in the silhouette are the incomes of the trade zone.
+
+
+
+\subsection{\ROTW provinces}\label{chBasics:ROTW Areas}
+
+\aparag On the \ROTW map, provinces are grouped in \terme{areas}. All the
+provinces of an area share some characteristics: income value, colonisation
+difficulty, trading-post implantation difficulty, initial number of natives
+and exotic resources.
+\bparag All provinces of the same area are grouped by a coloured line. The
+characteristics of this area are written in a box of the same colour near the
+area.
+% \bparag They also share a common set or resources, shared throughout the
+% area. They are available for the whole area, not for each province.
+% \bparag Cities, gold mines and counters are not shared in the area, and
+% belong to one province only.
+\aparag The three numbers are (in order) the income, difficulty, and tolerance
+of the area.
+\bparag Each province of the area has these numbers.
+\bparag If an area has no tolerance, use its difficulty whenever tolerance is
+required.
+
+\aparag The strength of natives in the area is written below the soldier
+picture.
+\bparag The choice of soldier (Indian, Zulu, Samurai, \ldots and a couple of
+Easter eggs) is purely decorative and has no influence on the game.
+\bparag Natives are present in each province of the area with the same
+strength.
+\aparag Exotic resources are depicted with symbol (for the type of resource)
+and numbers (for the quantity of such resource).
+\bparag Exotic resources are shared by all the provinces of the area. They are
+not present in the same amount in each province. They can be exploited from
+any province of the area and countries will need to agree (or fight\ldots) if
+several of them want to exploit the same resource.
+\bparag The snowflakes are not an exploitable resource but design the cold
+areas in the \ROTW. The higher the number, the colder the area.
+% \aparag[Movement] Movement cost (which also applies to supply) is increased
+% in \ROTW (see \tableref{table:Movement Costs}).
+% \aparag[Cities] Not all provinces have cities in the \ROTW. Level 6 colonies
+% act like cities, esp. for movement, supply, construction.
+% \bparag Movement is reestablished to its European values in provinces where
+% there is a city.
+\aparag[Round the world] The sea zones \seazone{Pacifique SE} and
+\seazone{Pacifique NE} are adjacent to \seazonePacifique.
+
+
+
+\subsection{Tracks}
+
+\aparag The \ROTW map also holds several game tracks.
+\bparag There are two diplomatic tracks, one for the European diplomacy with
+one line per major country, and one for the \ROTW diplomacy with one box per
+\ROTW minor country. Diplomacy works differently in Europe and in the \ROTW.
+\bparag The exotic resources tracks are use to store both the total amount of
+exotic resources exploited (by type) and the price of them. This information
+is updated once per turn.
+\bparag The technology track keeps both the technological level of countries
+(both major and minor) and the technology goals to be reached (they will
+move).
+\bparag The turn track is coloured by periods. It can also be used to hold
+those counters that only come into play at precise time (mostly historical
+leaders).
+
+
+
+
+\section{Counters}
+
+\begin{todo}
+  Add images of more or less all type of counters (not only leaders).
+\end{todo}
+
+% RaW: [2]
+
+\aparag[Types of counters] There are several types of counters: Military (land
+and sea units, fortresses) ; Leaders ; Economical (colonies and trading posts,
+trade fleet, manufactures, gold mines, trade centers) ; Military markers
+(control and ownership, siege-works, revolts, pillages) and Game markers
+(diplomacy, technology and exotic resources).
+\bparag The military markers are in unlimited quantity. If you need more of
+them than provided, use whatever you think convenient to represent them.
+\bparag All other counters are in quantity limited by the game. If you need
+more than you have, too bad but you can't create them.
+
+\aparag[Levels and side] Many two-sided counters act as ``containers'' for
+smaller counters (military) or abstract economical stuff.
+\bparag These counters can hold a certain number of ``levels'' (usually 2, 4
+or 6).
+\bparag They are used on the side marked \Facemoins if they hold half or less
+than their maximum level and on the side \Faceplus if they hold more than
+half.
+
+
+
+\subsection{Military counters}
+
+\aparag All these counters are intensionally in a limited amount. If you don't
+have enough, you can't do what you intended.
+\bparag \textbf{Exception:} \REVOLT detachments and armies, as well as
+\pays{pirates} privateers are in unlimited amount.
+
+
+\subsubsection{Land units}
+\aparag[Detachments] The basic land unit is the land detachment (\LD). It
+contains both infantry and cavalry.
+
+\aparag[Armies] Army counters (\ARMY) contain both infantry, cavalry and some
+artillery.
+\bparag An \ARMY\facemoins is always exactly 2\LD (plus some artillery). An
+\ARMY\faceplus is always exactly 4\LD (plus artillery).
+\bparag \ARMY can be broken up at almost any time. The result is a number of
+counters representing the same number of \LD without creating new \ARMY
+counter.
+\bparag Thus, an \ARMY\faceplus can be broken into an \ARMY\facemoins and
+2\LD, or into 4\LD but never into 2\ARMY\facemoins.
+\bparag An \ARMY\facemoins can be reinforced by 2\LD and turned into an
+\ARMY\faceplus.
+\bparag It is never possible to merge several \LD into a new \ARMY counter.
+
+\aparag[Exploration detachments] In the \ROTW only, it is possible to break a
+\LD into 3 land detachments of exploration (\LDE) as a result of battle or
+attrition.
+\bparag Conversely, 3\LDE can be merged into a \LD.
+\bparag \LDE cease to exist the moment they enter a province or sea zone on
+the European map.
+% So, they can exists in Canaries...
+
+\aparag[Army class] The roman number on each land unit it its \terme{Army
+  Class}.
+\bparag Army class is an abstract representation of the military doctrine of a
+country. It plays a huge role during battle (it mostly represents relative
+size of troops, as well as quantity and quality of artillery and cavalry).
+\bparag The Arab number (or letter) is an identification number of the counter
+and plays no in-game role.
+\bparag The image has purely decorative function and plays no role whatsoever,
+although armies of the same class tend to have similar images.
+
+\aparag[Militia and natives]
+\bparag The white counters represent colonial militi\ae{} and are used when
+not at full strength (to keep track of the current strength).
+\bparag Similarly, the \pays{natives} counters are used to keep track of
+reduced native strength.
+
+
+\subsubsection{Sea units}
+\aparag[Detachments] The basic sea unit is the naval detachment (\ND). A naval
+detachment is roughly 3 or 4 ships of the line plus accompanying smaller ships
+(depending on the period).
+\bparag Notice that \ND are on the back of \LD. Thus, creating a \ND \emph{de
+  facto} reduce the number of available \LD. This is intended.
+
+\aparag[Galleys] In the Mediterranean and Baltic seas, it is also possible to
+use galleys detachments (\NGD).
+
+\aparag[Transports] Naval transport detachments (\NTD) contain only transport
+ships. They may not participate to battles but can be used to carry gold or
+troops.
+
+\aparag[Fleet] A fleet (\FLEET) counter is only a container of a certain
+number of \ND (or \NGD) and \NTD.
+\bparag The exact countenance of a \FLEET counter varies depending on the
+period and the country.
+\bparag It is always possible to break a \FLEET into its components (\ND and
+\NTD).
+\bparag It is always possible to group some \ND (and \NTD) into a \FLEET
+counter, even if the counter is not full. It is even allowed (but usually
+unwise) to create a \FLEET with a single \ND.
+
+\aparag[Exploration detachments] As a result of battle or attrition, a \ND can
+sometimes be broken into three naval detachments of exploration (\NDE).
+\bparag Thus, a \NDE is 1 or 2 ships.
+\bparag \NGD can never be broken into \NDE.
+\bparag 3\NDE can always be merged into a \ND.
+\bparag \NDE can exist both on the \ROTW and European maps.
+
+\aparag[Privateers] (\corsaire) are smaller ships armed to harm enemy trade.
+\bparag They are not military units per se but whenever needed, each side of a
+\corsaire is considered to be equivalent to 1\ND (e.g. for hierarchy purpose).
+
+\aparag The image and number on \FLEET and \ND counters are here for
+identification purpose only.
+\bparag The identification number can be used to keep track of the content of
+each \FLEET on the corresponding record sheet.
+
+
+\subsubsection{Fortresses}
+\aparag[Levels] Fortresses can be of level 1 to 5.
+\bparag Contrary to many counters, there is one different counter for each
+level.
+\bparag Fortresses of high level cannot be built at the beginning of the game
+and have different conditions before becoming available.
+\bparag Since the counters are double-sided, building a fortress of a given
+level usually prevents another one from being built. Typically, building a
+level 5 fortress prevents the country from building the level 4 fortress on
+the back of the counter.
+
+\aparag[Permanent fortress] Each city (in Europe or not) also holds a fortress
+of level 1 or 2. These are permanent fortresses and no counter is needed to
+represent them.
+
+\aparag[Forts] Fort are considered as fortresses of level 0. They can only be
+built in the \ROTW.
+
+\aparag[Level 1] fortresses also exists as generic (white) counters. These are
+in unlimited amount (make more if needed) and are used \textbf{only} to depict
+temporally diminished fortresses during wars.
+\bparag Each country has its own set of level 1 fortresses in case it needs a
+permanent level 1 fortress (usually, in the \ROTW).
+
+
+
+\subsection{Leader counters}
+
+
+\subsubsection{Values of leaders}
+\aparag[Categories and name] Leaders all have a symbol depicting their
+\terme{category} (e.g. general, admiral, \dots) The category indicates which
+actions a leader can do (e.g. an admiral leads fleet, not armies).
+\bparag At the top of the counter, the name of the leader is written. It can
+be either a real name (for historical leaders), a generic name (such as
+``King''), or a \anonyme\ (for anonymous commanders).
+\bparag The colour of the counter, as well as the shield on the right,
+indicates which country the leader serves.
+
+\aparag[Life and death] On the left of the counter of historical leaders are
+two numbers. They indicate the turns at which the leader is available.
+\bparag The leader is active during all these turns. Thus a leader with the
+numbers ``3-7'' is available from the beginning of turn 3 to the end of turn
+7.
+\bparag Historical leaders may die during battle and thus become unavailable
+earlier than what is indicated on the counter.
+\bparag Some leaders have instead a first number in Roman number
+(e.g. ``III-20''). These are leaders arriving into play by an event and the
+number identifies this event (in this case, \ref{pIII:Mughal Akbar}).
+
+\aparag[Values] The bottom of the counters holds the proper values of the
+leader.
+\bparag The letter is the \terme{rank}. The earlier in the alphabet, the
+higher the rank (i.e. rank ``A'' is better than ``B'' and so on).
+\bparag The three numbers following the rank are the values of (respectively)
+\terme{manoeuvre}, \terme{fire} and \terme{shock}. They are use during
+movement and battle and are often the most important piece of information
+concerning a leader. They range between 1 (sometimes 0) and 6.
+\bparag Some leader have a fourth value (between 1 and 4), the \terme{siege}
+value.
+
+\aparag[Modifiers] Some leaders have optional modifiers on the right of the
+counter. See below for their meaning.
+\bparag Special powers that only exists for leaders of one country are shown
+using a different colour for the symbol depicting category.
+
+\aparag[Pachas] are special Turkish leaders. See
+\ref{chSpecific:Turkey:Pashas} for details.
+
+
+\subsubsection{Symbols on leaders}
+\aparag Information on the leader counters can be read as shown in
+\figref{figure:leaders-counters}.
+\aparag \hypertarget{link-meaning-leaders}{The meaning} of the various symbols
+that define the leaders in this rulebook is as follows:
+\bparag For the main category: \LeaderA (admiral), \LeaderC (conquistador),
+\LeaderE (explorer), \LeaderG (general), \LeaderI (engineer), \LeaderK (king),
+\Leaderd (admiral-king), \LeaderP (privateer), \LeaderGov (governor)
+\bparag For the optional marks: R (allowed in the \ROTW), \textdollar{}
+(allowed only in \continentAmerica), * (main side of the counter), @ (allowed
+only in \continentAsia), P (is also a privateer), m (allowed only in the
+\regionMediterranee), $\heartsuit$ (does not die at the first failed survival
+test in battle).
+\bparag The country-specific powers are: Portuguese Viceroy (red category),
+English Sea hound (yellow category), French Licensed privateers (red category)
+and Dutch Indonesian Conquistadors (red category).
+\bparag Two leaders (\leader{Marlborough} and \leader{Friedrich II}) have
+their name and values written in a different colour (white instead of black or
+yellow). They have a bonus (actually, an absence of malus) to their survival
+tests in battle.
+% \bparag The numbers in brackets are for the turn of entrance and exit, or
+% the event that triggers the entrance of the counter.
+% \bparag The letter is the rank, then the statistics for Manoeuvre,Fire,Shock
+% (and Siege, if applicable).
+
+% \aparag[Double-sided leaders] The double-sided leader counters can be of two
+% kinds: the two sides can either be two functions of the same leader
+% (sometimes differing in statistics or category), or they can represent two
+% different states of the leader (such as a change of nationality).
+% \bparag In the first case, there is often a * that marks the main side of
+% the counter; this is the category used for all limits considerations. The
+% player using this leader may however choose to switch sides according to
+% \ruleref{chMilitary:Double Sided Leaders}.
+% \bparag Sometimes, the first case does not need a * because the category is
+% the same on both sides. The side used is then chosen at random when the
+% counter is first used until the leader either dies or becomes unnecessary
+% (this is the case for minor kings that can have two different warfare
+% statistics).
+% \bparag In the second case, the side of the counter often depends on events,
+% given in the description of the counter. The names on the two sides may be
+% different, and the rules may refer to one side independently of the other.
+
+\aparag[Double-sided leaders] Some leader counters have two sides (both
+representing the same individual).
+\bparag In most cases, one of the sides bears a *. This denotes the main side
+of the leader.
+\bparag Under no circumstances the two sides of a counter may be used at the
+same time.
+\bparag When the leader dies while on one side, and unless special rules
+specifically counter this rule, the leader is definitely dead (for all sides).
+\bparag See~\ref{chMilitary:Double Sided Leaders} for details.
+\def\image(#1,#2)#3{\node (#3) at ($ (#1,#2) $)
+  {\includegraphics[width=.5in]{counter_7/#3.png}};}
+\def\legendedouble#1#2#3{\node[outer sep=0pt,inner sep=0pt,text=black,text
+  centered,text width=1.1in] (lastleg) at ($
+  .5*(#1_recto)+.5*(#1_verso)+(0,#2) $){#3};}
+\def\legendesimple#1#2#3{\node[outer sep=0pt,inner sep=0pt,text=black,text
+  centered,text width=.8in] (lastleg) at ($ (#1)+(0,#2) $){#3};}
+\def\legendelongue#1#2#3{\node[outer sep=0pt,inner sep=0pt,text=black,text
+  centered,text width=1.15in] (lastleg) at ($ (#1)+(0,#2) $){#3};}
+\def\pointe(#1,#2)#3{\draw[draw opacity=.5,very thick] (lastleg)--($ (#3) +
+  (#1,#2) $);}
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \image(0,0){LeaderDouble_porviceroy_Albuquerque_recto}
+      \image(2,0){LeaderDouble_porviceroy_Albuquerque_verso}
+      \legendesimple{LeaderDouble_porviceroy_Albuquerque_recto}{1.3}{\textbf{Conquistador}}
+      \legendesimple{LeaderDouble_porviceroy_Albuquerque_recto}{.9}{Viceroy}
+      \pointe(.55,-.05){LeaderDouble_porviceroy_Albuquerque_recto}
+      \legendesimple{LeaderDouble_porviceroy_Albuquerque_verso}{1.3}{\textbf{Explorer}}
+      \legendesimple{LeaderDouble_porviceroy_Albuquerque_verso}{.9}{Privateer}
+      \pointe(.55,-.05){LeaderDouble_porviceroy_Albuquerque_verso}
+      \legendedouble{LeaderDouble_porviceroy_Albuquerque}{-1.1}{Double-sided
+        counter\\Main side has a *} \image(4,0){Leader_angseahound_Drake}
+      \legendesimple{Leader_angseahound_Drake}{1.3}{\textbf{Admiral}}
+      \legendelongue{Leader_angseahound_Drake}{-1.3}{Manoeuvre/Fire/Shock}
+      \pointe(0,-.5){Leader_angseahound_Drake}
+      \legendelongue{Leader_angseahound_Drake}{.9}{Sea hound}
+      \pointe(.55,-.05){Leader_angseahound_Drake}
+      \image(6,0){Leader_turquie_Sirocco}
+      \legendesimple{Leader_turquie_Sirocco}{1.3}{\textbf{Privateer}}
+      \legendelongue{Leader_turquie_Sirocco}{-.9}{Mediterranean only}
+      \pointe(.55,-.15){Leader_turquie_Sirocco}
+      \legendesimple{Leader_turquie_Sirocco}{.9}{Name}
+      \pointe(0,.5){Leader_turquie_Sirocco} \image(8,0){Leader_usa_Arnold}
+      \legendesimple{Leader_usa_Arnold}{1.3}{\textbf{General}}
+      \legendelongue{Leader_usa_Arnold}{.9}{In/Out turns}
+      \pointe(-.5,.25){Leader_usa_Arnold} \pointe(-.5,-.15){Leader_usa_Arnold}
+      \legendelongue{Leader_usa_Arnold}{-1.3}{America only}
+      \pointe(.5,-.25){Leader_usa_Arnold}
+      \legendesimple{Leader_usa_Arnold}{-.9}{Rank}
+      \pointe(-.5,-.5){Leader_usa_Arnold} \image(10,0){Leader_france_Vauban}
+      \legendesimple{Leader_france_Vauban}{1.1}{\textbf{Engineer\\(general)}}
+      \legendelongue{Leader_france_Vauban}{-.9}{Siege value}
+      \pointe(.55,-.5){Leader_france_Vauban} \image(0,-3.2){King_russie}
+      \legendesimple{King_russie}{1.1}{\textbf{King\\(General)}}
+      \legendesimple{King_russie}{-.9}{Title} \pointe(0,-.5){King_russie}
+      \image(2,-3.2){King_venise_doge}
+      \legendesimple{King_venise_doge}{1.1}{\textbf{King\\(Admiral)}}
+      \legendesimple{King_venise_doge}{-.9}{Country}
+      \pointe(0,.5){King_venise_doge} \pointe(.5,.35){King_venise_doge}
+      \image(4,-3.2){Leader_mogol_Akbar}
+      \legendesimple{Leader_mogol_Akbar}{1.3}{\textbf{Minor King}}
+      \legendelongue{Leader_mogol_Akbar}{-.9}{Asia only}
+      \pointe(.55,-.15){Leader_mogol_Akbar}
+      \legendelongue{Leader_mogol_Akbar}{.9}{Entry event}
+      \pointe(-.5,.25){Leader_mogol_Akbar}
+      \pointe(-.5,-.15){Leader_mogol_Akbar}
+      \image(6,-3.2){Leader_espagne_Toledo}
+      \legendesimple{Leader_espagne_Toledo}{1.3}{\textbf{Governor}}
+      \legendesimple{Leader_espagne_Toledo}{-.9}{ROTW}
+      \pointe(.5,-.25){Leader_espagne_Toledo}
+      \image(8,-3.2){Pacha_timar_Amar_recto}
+      \legendesimple{Pacha_timar_Amar_recto}{.9}{Normal}
+      \image(10,-3.2){Pacha_timar_Amar_verso}
+      \legendesimple{Pacha_timar_Amar_verso}{.9}{Corrupted}
+      \legendedouble{Pacha_timar_Amar}{1.3}{\Pasha counter}
+      \legendesimple{Pacha_timar_Amar_verso}{-.9}{Pasha id}
+      \pointe(-.45,.25){Pacha_timar_Amar_recto}
+      \pointe(-.45,.25){Pacha_timar_Amar_verso}
+      \legendesimple{Pacha_timar_Amar_recto}{-.9}{Force (\LD)}
+      \pointe(.55,-.5){Pacha_timar_Amar_recto}
+    \end{tikzpicture}
+  \end{center}
+  \caption{A sample of all leader counters possible}%
+  \label{figure:leaders-counters}
+\end{figure}
+
+
+
+\subsection{Economical counters}
+
+\aparag All these counters are intensionally in a limited amount. If you don't
+have enough, you can't do what you intended.
+\bparag \textbf{Exception:} Gold mines counters are in unlimited amount.
+\bparag A country may freely destroy any of its \COL, \TP, \MNU or \TradeFLEET
+at the beginning of the Administrative phase in order to reuse it elsewhere.
+
+
+\subsubsection{Colonies and trading posts}
+\aparag Colonies (\COL) and trading posts (\TP) represent the European
+colonial effort to either populate the New World or trade with the natives.
+\bparag Each counter can hold up to 6 levels.
+
+
+\subsubsection{Manufactures}
+\aparag Manufactures (\MNU) are pre-industrial centres of production of goods.
+\bparag Each counter has only two levels: one per side.
+
+
+\subsubsection{Gold mines}
+\aparag These counters represent discovery (or depletion\ldots) of new mines
+in Europe.
+\bparag Although they are called ``gold'' mines, they can actually be silver,
+gems, or other precious mineral.
+
+
+\subsubsection{Trading fleet}
+\aparag Trading fleet (\TradeFLEET) represent the relative commercial power of
+each country in each of the sea trade zones.
+\bparag Each \TradeFLEET can hold up to 6 levels.
+
+
+\subsubsection{Trade centres}
+\aparag Sea trade zones are grouped into commercial areas. The country with
+the most levels of \TradeFLEET within a given area get the corresponding Trade
+centre.
+\bparag Trade centres provide a large amount of money to their owners.
+
+
+
+\subsection{Military markers}
+
+\aparag All these counters are in an unlimited amount. If you don't have
+enough, print more or use whatever you think convenient to represent the
+missing counter.
+
+\aparag[Ownership] markers are used when the owner of a province changes:
+simply put the marker of the new owner (with its shield) on top of the shield
+printed on the map.
+% \bparag The large ``area'' ownership markers are used in the \ROTW.
+
+\aparag[Control] markers are used during wars as reminder of which fortresses
+have fallen into the hands of another country.
+
+\aparag[Siege-work, Revolt, Pillage, Flood] Use these markers whenever
+required by the game.
+
+
+
+\subsection{Game markers}
+
+\aparag All these counters are intensionally in a limited amount. If you don't
+have enough, you can't do what you intended.
+
+\aparag[Technology] There is one technology marker for each of the
+technological goals (both land and naval) that can be reach during the game.
+\bparag Conversely, there are two such markers (land and naval) for each major
+country as well as for some more or less culturally consistent groups of
+minors.
+\bparag Whenever the marker of a country is beyond the marker of a goal, that
+means that the country has reached this technological goal. This usually
+provides huge advantages in battles.
+
+\aparag[Exotic resources] There are two markers for each kind of exotic
+resource: one to keep track of the total amount exploited and the other to
+keep track of the current price of the resource.
+\bparag There is also one marker for the current percentage of inflation.
+
+\aparag[European diplomacy] Each minor country in Europe has a diplomacy
+marker with its diplomacy values written on it.
+\bparag When a major country gains influence over a minor country, put the
+corresponding diplomatic marker on the major track.
+\bparag Thus, at most one major country can have influence over each European
+minor country at a given time.
+
+\aparag[\ROTW diplomacy] Most major country have Relation/Treaty
+(\dipFR/\dipAT) markers. These are in limited amount.
+\bparag When a major gains influence over a \ROTW minor, put one of his
+\dipFR/\dipAT marker in the corresponding box.
+\bparag Thus, several majors can have influence over the same \ROTW minor
+country at the same time.
+
+\aparag[Various markers] There are some other various markers (for turn and
+round, for convoys, or for keeping track of various in-game information such
+as variable incomes) to be used when needed.
+
+
+
+
+\section{Tables and dice}
+
+% RaW: [3]
+
+
+
+\subsection{Tables}
+
+\aparag Each player has its own \terme{Player's aids} that groups all tables
+and information most relevant to play. It is recommended to keep at least one
+clear copy of each.
+% \aparag Tables are usually accompanied with a list of the modifiers that can
+% come into play.
+
+\aparag Most of the table are common for each country (8 pages). Each country
+also has one page with its own specific tables and reminder of special rules.
+
+
+
+\subsection{Dice}
+
+\aparag The dice used in this game are ten-sided. A zero on the die always
+represents ten.
+\bparag Sometimes, the player will be asked to roll 1d100. This is done by
+rolling two dice, using one as units and the other as tens. 00 always
+represents 100.
+\bparag When required to roll 2d10, roll two dice and add the results (thus
+giving a result between 2 and 20).
+\aparag Having between 10 to 20 dice appears to be a good number to play
+comfortably without spending to much time looking for them\ldots
+
+
+
+\subsection{Players aids and Record sheets}
+
+\aparag[Players aids] There are two kinds of players aids:
+\bparag The generic players aids (8 pages) contain all the tables common to
+all players. They are organised roughly in turn order.
+\bparag The specific players aids (1 page per country) contain the tables
+specific to each country, as well as a quick reminder of the specific rules of
+that country.
+
+\aparag[Players record sheet] Each player has a set of record sheet to record
+his actions, his military forces and strengths, his treasury, his income
+calculations\ldots These are:
+\bparag Two \terme{Economic Record Sheet} (\EcoRS), one for computation of
+incomes and expenses and the other for keeping track of the Treasury and
+Loans.
+\bparag One \terme{Monarch sheet} on which characteristics of the country and
+its ruler can be written. This is also used to write all diplomatic and
+administrative actions before performing them.
+\bparag One \terme{Colonial sheet} to keep track both of the colonial,
+commercial and naval estates of the country.
+
+\aparag[Global record sheets] are provided to keep track of global information
+or as summary of some look-up rules, namely:
+\bparag The \terme{Exotic resources sheet} keeps track of which country
+exploit which exotic resource.
+\bparag The \terme{Trade fleet sheet} keeps track of the levels of the various
+\TradeFLEET in the various \STZ/\CTZ.
+\bparag The summaries of minors countries and of objectives, as well as the
+revolt tables are used as quick look-up.
+\bparag The events tables are used to note which historical events already
+happened.
+
+\aparag See~\ref{chapter:Playing} for a detailed discussion on how these sheet
+are meant to be used.
+
+
+
+
+\section{Lexicon}
+
+% RaW: [4]
+
+
+
+\subsection{Major countries}
+
+\label{chapter:Basics:Majors}
+\def\xlistingabbrev#1{\item[\csname #1\endcsname]}
+\aparag Full-time major countries
+\begin{deflist}
+  \xlistingabbrev{HIS}{Spain, named \paysmajeur{Espagne}}
+  \xlistingabbrev{FRA}{France, named \paysmajeur{France}}
+  \xlistingabbrev{ANG}{England, named \paysmajeur{Angleterre}}
+  \xlistingabbrev{TUR}{Turkey, named \paysmajeur{Turquie}}
+  \xlistingabbrev{RUS}{\paysmajeur{Russie}}
+\end{deflist}
+\aparag Part-time major countries
+\begin{deflist}
+  \xlistingabbrev{VEN}{Venice, named \paysmajeur{Venise}}
+  \xlistingabbrev{POR}{Portugal, named \paysmajeur{Portugal}}
+  \xlistingabbrev{POL}{Poland, named \paysmajeur{Pologne}}
+  \xlistingabbrev{HOL}{Holland, named \paysmajeur{Hollande}}
+  \xlistingabbrev{SUE}{Sweden, named \paysmajeur{Suede}}
+  \xlistingabbrev{PRU}{\paysmajeur{Prusse} (see also \pays{brandebourg}). This
+    name is only used for the major power}
+  \xlistingabbrev{AUS}{\paysmajeur{Autriche} (see also \pays{habsbourg}). This
+    name is used for the major power}
+\end{deflist}
+\aparag Part-time major countries: some notations
+\begin{deflist}
+  \xlistingabbrev{PORpor}{Either \paysmajeur{Portugal} or \PORmin}
+  \xlistingabbrev{PRUpru}{Either \paysmajeur{Prusse} or \PRUmin}
+  \xlistingabbrev{HOLhol}{Either \paysmajeur{Hollande} or \HOLmin or
+    \pays{provincesne} or \pays{Vhollande}} \xlistingabbrev{POLpol}{Either
+    \paysmajeur{Pologne} or \POLmin (and \paysmajeur{Lithuanie} before
+    \xnameref{pII:Union Lublin})} \xlistingabbrev{AUSaus}{Either
+    \paysmajeur{Autriche} or \AUSmin} \xlistingabbrev{MAJHAB}{When pointing to
+    a player, either \paysmajeur{Autriche} if it is a major country; if not,
+    \paysmajeur{Espagne} after \xnameref{pI:Habsburg Alliance}}
+  \xlistingabbrev{GE}{German Empire (never existed, also
+    \pays{german-empire})} \xlistingabbrev{HRE}{Holy Roman Empire, a political
+    entity of central Germany (also \pays{saint-empire})}
+\end{deflist}
+
+
+
+\subsection{Various terms used throughout these rules}
+
+\begin{deflist}
+  \listingabbrev{ARMY}{Army, a large-size land force}
+  \listingabbrev{ADM}{Administrative value of a Monarch}
+  \listingabbrev{CB}{Casus Belli, a reason that makes declaring the war
+    towards another country easier} \listingabbrev{CC}{Commercial centre (a
+    regional platform of trade)} \listingabbrev{COL}{Colonies (overseas
+    European settlement)} \listingabbrev{CTZ}{Country Trade Zone, something
+    that represents the foreign trade of a country} \listingabbrev{GD}{A
+    military detachment, either a \LD or \ND} \listingabbrev{Ducats}{Ducat,
+    the monetary unit of the game} \listingabbrev{DC}{Dynastic Crisis, that
+    may occur when some monarch dies (see~\ruleref{chEvents:Dynastic Crisis})}
+  \listingabbrev{DIP}{Diplomatic value of a Monarch}
+  \listingabbrev{DTI}{Domestic Trade Index, a value that measures the domestic
+    commercial power of a major power} \listingabbrev{EcoRS}{Economic Record
+    Sheet, displayed on page~\pageref{economic-record-sheet}}
+  \listingabbrev{FLEET}{Fleet, a large-size naval force}
+  \listingabbrev{FTI}{Foreign Trade Index, a value that measures the
+    international commercial power of a major power}
+  \listingabbrev{fortress}{One level of fortress, obtained through
+    reinforcements}
+  % \listingabbrev{HUG}{The major power controlling the \hug in the French
+  % Wars of Religion}
+  \listingabbrev{LD}{Land Detachment, a small land force}
+  \listingabbrev{LDE}{Land Detachment of Exploration, a smaller land force
+    meant for the \ROTW} \listingabbrev{LDND}{Land Detachment or Naval
+    Detachment} \listingabbrev{LDENDE}{Detachment of Exploration (any kind)}
+  % \listingabbrev{LIG}{The major power controlling the \lig in the French
+  % Wars of Religion}
+  \listingabbrev{LoS}{Line of Supply, a path along which supplies can be
+    brought without crossing enemy territory.}  \listingabbrev{MAJ}{A major
+    power, the main country of a player} \listingabbrev{MIL}{Military value of
+    a Monarch} \listingabbrev{MIN}{A minor power}%, not played}
+  \listingabbrev{MNU}{Manufacture, a centre of goods production in a country
+    that is of special importance} \listingabbrev{MP}{Movement Points, to
+    define distance on the maps} \listingabbrev{ND}{Naval Detachment (any
+    kind)} \listingabbrev{NDE}{Naval Detachment of Exploration, 1 warship}
+  \listingabbrev{NGD}{Naval Galley Detachment, about 10 galleys}
+  \listingabbrev{NTD}{Naval Transport Detachment, about 10 transport ships}
+  \listingabbrev{NWD}{Naval Warships Detachment, a small naval force (about 3
+    warships)} \listingabbrev{PA}{Products of America, the goods that came
+    from the New World: tobacco, dye and other various goods}
+  \listingabbrev{PO}{Products of Orient: all kinds of goods coming from the
+    Far East: tea, precious wood, porcelain, jade, etc.}
+  \listingabbrev{corsaire}{Privateer or Pirate unit, a small naval force of
+    privateers that aim for trade ships and pillage}
+  \listingabbrev{RD}{Revolt/Disorder, a state of general disarray in Europe
+    that makes certain alliances and internal conflicts go wrong}
+  \listingabbrev{REB}{The major power controlling rebels in various events
+    descriptions (not the rebel side itself)}
+  \listingabbrev{ROTW}{Rest-of-the-World, everything on Earth outside Europe}
+  \listingabbrev{RT}{Royal Treasury} \listingabbrev{STZ}{Sea Trade Zone,
+    something that represents the sea trade throughout some area}
+  \listingabbrev{TP}{Trading Post, a small commercial establishment used as a
+    European foothold overseas} \listingabbrev{TradeFLEET}{Trade Fleet, a
+    fleet of merchants represented by a level (from 1 to 6) on the Trade
+    Fleets Sheet and a counter in their \STZ/\CTZ of activity}
+  \listingabbrev{TFI}{Trade Fleet Implantation, an administrative operation
+    that may increase the level of a \TradeFLEET}
+  \listingabbrev{VGD}{Galeasses Detachment, large galleys used by Venice}
+  \listingabbrev{VP}{Victory Points (accumulated through the game by each
+    player). Also \anchorabbrev{VPs} (plural)}
+\end{deflist}
+
+
+
+\subsection{Continents in the \ROTW}
+
+\begin{deflist}
+\item[\anchorcontinent{Africa}] The whole continent of Africa, including the
+  islands of \granderegion{Sainte-Helene}, \granderegion{Cabo Verde},
+  \granderegion{Madagascar}, \granderegion{Mascareignes} and
+  \granderegion{Seychelles}, but excluding the places of \continent{Middle
+    East}.
+\item[\anchorcontinent{America}] All the new continent, including
+  \granderegion{Malouines}, \continent{Caraibes} and \continent{Brazil}.
+\item[\anchorcontinent{Brazil}] It comprises the following areas:
+  \granderegion{Belem}, \granderegion{Recife}, \granderegion{Rio}.
+\item[\anchorcontinent{South America}] It contains all the inland areas of
+  \continent{America} that lie to the south of \granderegion{Chichimeca}
+  (included), excluding \continent{Brazil}.
+\item[\anchorcontinent{North America}] It contains all the inland areas of
+  \continent{America} that lie to the north of \granderegion{Chichimeca}
+  (excluded).
+\item[\anchorcontinent{Caraibes}] It is composed of \granderegion{Haiti},
+  \granderegion{Cuba}, \granderegion{Antilles} and \granderegion{Florida}.
+\item[\anchorcontinent{Extreme Orient}] It is the union of the following
+  areas: \granderegion{Japan}, \granderegion{Formose},
+  \granderegion{Mandchourie}, \granderegion{Pekin}, \granderegion{Nankin},
+  \granderegion{Canton}.
+\item[\anchorcontinent{India}] It is the Indian sub-continent, magnified on
+  the map, and includes \granderegion{Ceylan}.
+\item[\anchorcontinent{Indonesia}] Is the archipelago South-East of
+  \continent{Asia}, namely \granderegion{Sumatra}, \granderegion{Java},
+  \granderegion{Borneo}, \granderegion{Celebes}, \granderegion{Sonde} and
+  \granderegion{Epices}.
+\item[\anchorcontinent{Middle East}] It is the arabic peninsula, plus
+  \granderegion{Afghanistan}, \granderegion{Balouchistan} and
+  \granderegion{Aral}.
+\item[\anchorcontinent{Siberia}] It is the union of all northern territories
+  from \granderegion{Siberie} to \granderegion{Amour} and
+  \granderegion{Kamchatka}.
+\item[\anchorcontinent{Asia}] It is composed of Indochina, Oceania,
+  \continent{India}, \continent{Middle East} and \continent{Extreme Orient}
+  (thus excluding \continentSiberia).
+\end{deflist}
+
+
+
+\subsection{Land and Sea regions in Europe}
+
+\begin{deflist}
+\item[\anchorregion{Autriche}] It contains all the national provinces of
+  \paysmajeur{Autriche}, namely \province{Tirol}, \province{Salzburg},
+  \province{Osterreich}, \province{Steiermark}, \province{Karnten},
+  \province{Slovenija}.
+\item[\anchorregion{Balkans}] It contains the following provinces:
+  \province{Alabania}, \province{Hellas}, \province{Moreas},
+  \province{Dalmacija}, \province{Montenegro}, \province{Corfu},
+  \province{Bosna} and \province{Serbia}. These provinces are in a special
+  state in 1492 and are subject to special rules (see
+  \ruleref{chSpecific:Balkans}).
+\item[\anchorregion{Baltique}] It contains the sea zones \seazone{Baltique},
+  \seazone{Botnie}. Galleys may navigate it.
+\item[\anchorregion{Noire}] It contains the two sea zones of the Black sea
+  (\seazone{Noire W} and \seazone{Noire E}).
+\item[\anchorregion{Belgique}] It contains the provinces of the Burgundian
+  legacy that are not national provinces of \paysmajeur{Hollande}, namely
+  \province{Vlaandern}, \province{Flandre}, \province{Hainaut},
+  \province{Brabant}, \province{Limburg}, \province{Luxemburg},
+  \province{Artois}. %
+  % , \province{Zeeland}.  => National province of HOL.
+  Note that \province{Franche-Comte} is part of the legacy but not part of
+  \regionBelgique.
+\item[\anchorregion{Denmark}] It contains all the initial provinces of
+  \pays{Danemark} that are neither in \region{Norvege} nor in \region{Suede},
+  namely \province{Slesvig}, \province{Sjaelland}, \province{Jylland}.
+\item[\anchorregion{Duche de Kurland}] It is initially empty and may contain
+  \province{Kurland} and \province{Livonija}.
+\item[\anchorregion{Duche de Prusse}] It contains \province{Memel},
+  \province{Preussen}, \province{Ost Pommern}.
+\item[\anchorregion{Finlande}] It contains all the provinces of the would-be
+  \pays{Vfinlande}, namely \province{Finland}, \province{Tavastland},
+  \province{Nyland}, \province{Karelen} and \province{Savo}.
+\item[\anchorregion{Irlande}] It contains all the provinces of the would-be
+  \pays{VIrlande}, namely \province{Mumhan}, \province{Laighean},
+  \province{Connacht}, \province{Brega}, \province{Uladh}.
+\item[\anchorregion{Italie}] It contains all the provinces of the italian
+  peninsula within the blue thick line, plus the Italian islands, namely
+  \province{Savoia}, \province{Nice}, \province{Monferrato},
+  \province{Liguria}, \province{Lombardia}, \province{Trentino},
+  \province{Mantova}, \province{Veneto}, \province{Friuli}, \province{Parma},
+  \province{Lucca}, \province{Modena}, \province{Romagna}, \province{Toscana},
+  \province{Siena}, \province{Lazio}, \province{Umbria}, \province{Marche},
+  \province{Abruzzo}, \province{Campania}, \province{Puglia},
+  \province{Basilicata}, \province{Calabria}, \province{Sicilia},
+  \province{Palermo}, \province{Saldigna}.
+  % \region{Khanats}
+\item[\anchorregion{Mediterranee}] It contains all the sea zones of the
+  Mediterranean and Black seas (\seazone{Noire W}, \seazone{Noire E},
+  \seazone{Marmara}, \seazone{Egee}, \seazone{Mediterranee E},
+  \seazone{Adriatique}, \seazone{Ionienne}, \seazone{Thyrrenienne},
+  \seazone{Syrte}, \seazone{Lion}, \seazone{Mediterranee W}). Galleys may
+  navigate it.
+\item[\anchorregion{Norvege}] It contains all the provinces of the would-be
+  \pays{Vnorvege}, namely \province{Trondelag}, \province{Vestfold},
+  \province{Ostlandet}.
+\item[\anchorregion{Perse}] It contains the four easternmost European
+  provinces of \pays{perse}, outlined in black. Namely, \province{Pars},
+  \province{Isfahan}, \province{Bam}, \province{Meshhed}.
+\item[\anchorregion{Suede}] It contains all the national provinces of
+  \paysmajeur{Suede} that are not part of \region{Finlande}, namely
+  \province{Smaland}, \province{Jamtland}, \province{Gastrikland},
+  \province{Bergslagen}, \province{Svealand}, \province{Vastergotland},
+  \province{Gotland}, \province{Skane}.
+\item[\anchorregion{Ukraine}] It contains all the provinces that can possibly
+  belongs to \pays{ukraine}, namely \province{Podolie}, \province{Ukraine},
+  \province{Poltava}, \province{Zaporozhye}, \province{Donets} and
+  \province{Don}.
+\end{deflist}
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: pVI Tordesillas pI saltern salterns Khanates Gastrikland

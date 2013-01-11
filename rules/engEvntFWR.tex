@@ -1,0 +1,1266 @@
+%% *-* latex-mode *-*
+
+
+
+\event{pIII:FWR Detailed}{III-D}{Religious Wars in France}{5}{PBNew}
+
+\history{1562-1598}{The wars are fragmented in 5 parts. \\
+  (1) First, Second and Third wars (1562-1570) with many truces broken by one
+  side or the other. \\
+  (2) Fourth and Fifth wars (1570-1575), where the Massacre
+  of the Saint-Barth\'el\'emy heightens the intensity of the war.\\
+  (3) Sixth and Seventh wars (1575-1580) where the Catholic League and the
+  Duke of Guise seem almighty, and a background announced Dynastic Crisis. \\
+  (4) Eighth war (1585-1598) that is the war of Succession for the French
+  Crown. \\
+  (5) Alternative history: more troubles if France is not Conciliant (mainly
+  with foreign support).  }
+
+\dure{until the end of \ref{pIII:FWR Last Stand} or \ref{pIII:FWR Succession}
+  (as specified in these events) or at the end of period III.}
+
+\activation{This event is composed by many sections describing first the
+  general conditions under which the wars are fought, then specifics of the
+  evolution of the Wars: from a set of strictly Religious Wars that go harder
+  and harder to a War of Succession. The passage from one event to another is
+  described hereafter.}
+\aparag This event can not happen before turn 11 (1540). If the turn if 10 or
+before, re-roll and do not mark off.
+\aparag Only one \ref{pIII:FWR} can be rolled and marked off each turn. If a
+second one is obtained, do not mark off and re-roll.
+\aparag After the end of this event, \ref{pIII:FWR} triggers an event \RD, and
+the box is marked.
+\bparag If \FRA is \CATHCO, its Monarch will have a malus of \bonus{+2} to his
+Survival Test next turn.
+\bparag If \FRA is \CATHCR or Protestant, the \REVOLT is rolled on the table
+of \FRA.
+\aparag From the first to the end of the last event, \FRA is in religious
+Civil War and is limited in many aspects.
+
+\phevnt
+\aparag[The states within the State] Two minor countries, \paysHuguenots and
+\paysLigue are created for this event. No diplomacy is authorised on them;
+they have the same technology and military features as \FRA.
+% \bparag When at peace with \FRA, all their provinces and counters (armies,
+% leaders,...) belong to \FRA and are used as such.
+% \bparag When at war against \FRA, \FRA still earns the income of their
+% provinces (except where there are \REVOLT !)  and those minor countries
+% never pillage the provinces in \FRA.
+\aparag[Les Huguenots]
+\bparag \hug has the following provinces (if in \FRA): \provinceCaux,
+\provinceTouraine, \provincePoitou, \provinceQuercy, \provinceGuyenne,
+\provinceLanguedoc, \provinceBearn, \provinceDauphine, \provinceCevennes
+(those provinces have a white shield border).
+\bparag \hug is protestant.
+\bparag Its main controller is \ENG (if Protestant) or \HOL (if it exists) or
+\SUE (if Protestant), else \MAJHOL. This major power will be noted \HUG (and
+the minor \hug); it may change at each turn (depending on the changes of
+religion).
+\aparag[La Ligue]
+\bparag \lig has the following provinces (if in \FRA):
+% \provinceArmor, \provinceFinistere, \provinceMorbihan,
+\provinceNormandie, \provinceMaine, \province{Ile-de-France},
+\provinceOrleanais, \provincePicardie, \provinceChampagne, \provinceBerry,
+\provinceBourgogne, \provinceLyonnais, \provinceProvence (those provinces have
+a yellow shield border).
+\bparag \lig is \CATHCR.
+\bparag Its main controller is the Sole Defender of the Catholic Faith (if it
+is not \FRA), \SPA (if \CATHCR), \ENG (if Catholic), or \SPA (\CATHCO) in the
+last possibility.  This major power will be noted \LIG (and the minor \lig);
+it may change at each turn (depending on the changes of religion).
+\aparag The Loyalists are \FRA and its allies. The Rebels are the revolted
+minor country (\lig or \hug) and its allies. \REB is the Major Power that
+controls the Rebels (\LIG or \HUG).
+\aparag The Catholic side is the one of \lig else of Catholic \FRA.
+\aparag The Protestant side is the one of \hug else of Protestant \FRA.
+
+\aparag[Military units]
+\bparag Basic forces of \FRA drops to \ARMY \facemoins (or \ARMY \facemoins,
+\LD if in period \period{II}). Counters limit for \FRA drops to 3 \ARMY (and 2
+\ARMY for each minor).
+\bparag Basic forces of the new minors is \ARMY \facemoins, \LD (or \ARMY
+\faceplus if in period \period{II}) if it has not the same religion than \FRA
+and \ARMY \facemoins (\ARMY \facemoins, \LD if in period \period{II}) if it
+has the same religion than \FRA.
+\bparag If the minor is at war against \FRA, then it is controlled by its main
+controller (either \HUG or \LIG). Else, if \FRA is at war (even civil war
+against the other minor) then \FRA may use its troops as if they were french
+troops.
+\bparag If \FRA is at peace, the main controller of each minor may declare a
+limited intervention (following usual rules) of this minor in any existing war
+during the diplomatic phase. If the minor has the same religion than \FRA,
+this can only be done if \FRA agrees to.  The main controller plays the troops
+of the minor and pay for its campaign or reinforcements.
+\bparag If \FRA is at peace, and the main controller doesn't want to use the
+troops of the minor (or can't), then \FRA may use them as if they were its own
+troops.
+\bparag If \FRA is at peace, it may build troops of any of the two minors at
+regular cost. This counts toward purchase limit of the turn.
+\bparag If the minor is not used by somebody else, \FRA has to pay the
+maintenance of any troops in addition to the basic maintenance of the minor.
+\bparag If \FRA is at peace and the minor has less than its basic forces and
+is not used in another war by its main controller, then \FRA has to build
+troops of the minor. It is not complied to buy more than the turn limit or to
+go bankruptcy, but it must build troops for the minor prior to any other
+administrative action. If both minors lack troops, \FRA must start building
+troops of the minor having a different religion than its own.
+\bparag If \FRA is at peace with the minor, it cannot voluntary dismiss
+(i.e. by not paying upkeep) troops of the minor below what was left at the end
+of the last civil war. Yet, if the loss is due to any other reason (such as
+being used in another war or by its main controller in a foreign
+intervention), \FRA is not complied to buy new troops up to this value (just
+up to the basic maintenance of the minor).
+
+\aparag[Incomes]
+\bparag If \FRA is at war against the minor, then it get no land income from
+the provinces of the minor (this also may change the industrial and commercial
+incomes of \FRA). Manufactures in these provinces do not provide income
+either.
+\bparag If \FRA is at peace, the provinces of the minor having the same
+religion as \FRA are treated exactly like french provinces: they provide full
+land income, manufactures and gold mines provide also full income.
+\bparag If \FRA is at peace, the provinces of the minor having different
+religion than \FRA only provide half their regular income: land income is
+halved (this also change industrial and commercial income), manufactures
+provide only half their facial value and half their percentage, gold mines
+provide only 10\ducats, \ldots
+\bparag If \FRA is in civil war (but not against the minor), provinces of the
+minor only provide half their regular income (as above).
+\bparag The (land) income not perceived by \FRA does not increase its foreign
+trade.
+\bparag If \FRA is at peace, it only gets 75\% of its colonial income if its
+catholic.
+
+\aparag[Military control]
+\bparag If \FRA is not at war against the minor, then both may use provinces
+belonging to both of them as supply sources.
+\bparag If \FRA is at war against the minor, then supply may go through any
+province not containing an unbesieged hostile troop or \REVOLT .
+
+\effetlong
+\aparag[Fragile Health of the Valois]
+\bparag From the beginning of the event, and as long as the French Monarch is
+a Valois, it adds \bonus{+3} to its Survival Test.
+\aparag[Lack of Heirs]
+\bparag An additional test of Dynastic Crisis is made at the beginning of each
+turn (at the Monarch Survival Phase). A malus of \bonus{-1} is applied for
+each \ref{pIII:FWR} rolled since the beginning of the game.
+\bparag If a Dynastic Crisis occurs (because of the previous test or of a
+normal test after the death of the Monarch), apply directly \ref{pIII:FWR
+  Succession}.  If a Dynastic Crisis occurs without the death of the Monarch,
+the rules of the event use the historical name \anchormonarque{Henri III} to
+designate the current Monarch of \FRA.
+
+\aparag[Mandatory Change of Religious Attitude] \FRA can be complied to change
+its Religious choice during the war because of a Coup (\ref{pIII:FWR
+  Succession}), or an unconditional surrender caused by foreign powers. The
+following points occur (but not if the change is voluntary when designating an
+Heir of the Valois).
+\bparag \FRA goes down to {\bf -3} in \STAB, loses \bonus{-1} in \FTI, and
+loses 30 \PV.
+\bparag The controller of the side imposing its Heir by a Coup, or the
+countries that force a unconditional surrender gain 30 \PV each time a
+mandatory change is made.
+
+\begin{digressions}[General troubles in France each time an event happens]
+
+
+  \digression[pIII:FWR:Politic Crisis]{Politic crisis}
+
+  \phevnt
+  \aparag \FRA loses {\bf 2} \STAB.
+  \aparag The diplomacy of \FRA is lowered by \bonus{-2} (minimum of 3).
+  \aparag \FRA and its adversaries make a mandatory white peace (exception:
+  see \ref{pIII:FWR Last Stand}).
+  \aparag \FRA is involved in religious civil war when at war against
+  Rebels. No-one can declare a war to \FRA at those times, but \MAJ may do
+  \terme{Foreign Intervention} in the war each time the war resumes (new event
+  or broken Truce) excepted if explicitly forbidden.
+
+
+  \digression[pIII:FWR:Economic Crisis]{Economic crisis}
+
+  \phevnt
+  \aparag On the first event, the Royal Treasury of \FRA is diminished by half
+  and loses at least 50\ducats.  On subsequent events, the Royal Treasury of
+  \FRA is diminished by 50\ducats if greater than 50\ducats, goes to 0\ducats
+  if greater than 20\ducats, and be diminished by 20\ducats if less than
+  20\ducats.
+
+  \bparag If \FRA makes a bankruptcy while at war against the rebels, they
+  will receive \ARMY\facemoins extra reinforcement (\LD each if there are two
+  rebels).
+  % On the first event, the Royal Treasury of \FRA is halved and loses at
+  % least 50\ducats if \FRA has not enough in its royal treasury, then it lose
+  % everything, lose and 1 \STAB and rebels will receive \ARMY \facemoins
+  % extra reinforcement (or \DT each if there are two rebels). On the
+  % following ones, the Royal treasury of \FRA is halved with a maximal lose
+  % of 50\ducats.
+  % \aparag It receives no commercial income, no industrial income, and
+  % no colonial income during the wars; however if a war resumes at the
+  % end of a Truce, \FRA receives half of those industrial, commercial
+  % and colonial income during the first turn after the Truce, as the
+  % Truce is broken after some months (or years) of relative peace.
+  \aparag \FRA (and also \hug and \lig) makes a mandatory trade refusal
+  against all other countries. This does not provide CB or entail loss of
+  stability and only last while \FRA is in civil war.
+  % \aparag Industrial income is halved (after a reduction due to \hug
+  % or \lig being at war with \FRA).
+  \bparag \FRA only gets 75\% of its colonial income if protestant, 50\% if
+  \CATHCO and 25\% if \CATHCR.
+  \aparag \FRA can make no economic action (\COL, \TP, \TFI, \CONC) during the
+  wars (even if the Truce was broken this turn), except as a reaction to
+  concurrence.
+  \aparag A \PIRATE\faceplus is placed in \CTZ of \FRA; at most one \PIRATE
+  can be here due to this event.
+  \aparag \FRA has to pay separate campaigns for any troop going in the \ROTW
+  or whose movement end on the \ROTW map (so, it can bring back troops from
+  the \ROTW without penalty).
+
+
+  \digression[pIII:FWR:Uprisings]{Uprisings in France}
+
+  \phevnt
+  \aparag If \FRA is \CATHCR or \CATHCO, the Rebels are \hug.  If \FRA is
+  Protestant, the Rebels are \lig. \FRA is at war against the Rebels (it is
+  not a declaration of war by the Rebels).
+  \aparag If \FRA is \CATHCR or \CATHCO, roll 1d10 and place \REVOLT
+  \facemoins in the following provinces, excepted in the first province where
+  the \REVOLT is \faceplus:
+  \bparag result odd: \provincePoitou, \provinceQuercy, \provinceGuyenne,
+  \provinceLanguedoc, \provinceAuvergne;
+  \bparag result even: \provinceCaux, \provincePoitou, \provinceGuyenne,
+  \provinceTouraine, \provinceVendee.
+  \aparag If \FRA is \CATHCR, add a \REVOLT \faceplus in \provinceDauphine and
+  a \REVOLT \facemoins in \provinceArmor.
+  \aparag If the die-roll was 9 or 10 (between 7 and 10 if \FRA is \CATHCR),
+  place a \REVOLT \facemoins on a randomly chosen colony (or \TP if no colony
+  is available).
+  \aparag If \FRA is Protestant, place a \REVOLT \faceplus in
+  \province{Ile-de-France}, a \REVOLT \facemoins in \provinceLyonnais and roll
+  1d10 for the other ones (the \REVOLT is \faceplus in the first province of
+  the list and \facemoins in the others):
+  % \bparag result even: \provinceQuercy, \provincePoitou,
+  % \provinceDauphine, \provinceTouraine, \provinceCaux;
+  \bparag result even: \provinceProvence, \provinceNormandie, \provinceMaine,
+  \provinceTroyes, \provinceVendee;
+  \bparag result odd: \provinceOrleanais, \provinceChampagne,
+  \provinceTouraine, \provinceCaux, \provincePicardie.
+  \aparag If the die-roll was 10, place a \REVOLT \facemoins on a randomly
+  chosen colony (or \TP if no colony is available).
+  \aparag The Rebels receive 2 minor unnamed generals to be placed on \REVOLT
+  (they can only lead \REVOLT , not forces of the Rebels, and are eliminated
+  when the \REVOLT is finally suppressed).
+  \aparag The Rebels own its provinces %and any province of \FRA where
+  % there is a \REVOLT .
+
+
+  \digression[pIII:FWR:Military Troubles]{Military Troubles}
+
+  \phevnt
+  \aparag On the first event, only the basic forces of \FRA are kept (\ARMY
+  \faceplus, \ARMY \facemoins, \DT), in veteran status.  If \FRA has less than
+  this, it will receive less troops than stated. The rebels takes their forces
+  first, then the non-rebelled minors and lastly \FRA.
+  \aparag Roll 1d10:
+  \bparag result even: \FRA keeps \ARMY \facemoins and \DT; the Rebels have
+  \ARMY \facemoins; the minor of the same religion as \FRA has \ARMY
+  \facemoins;
+  \bparag result odd; \FRA keeps \DT, the Rebels have \ARMY \faceplus; the
+  minor of the same religion as \FRA has \ARMY \facemoins.
+  % \aparag The Rebels may already have some forces (remaining after a
+  % favourable Truce) that are added to this forces. All those forces are
+  % veterans.
+  \aparag If the current turn is in period II, \FRA adds \ARMY \facemoins to
+  its forces and the minor sharing its religion add \DT.
+  \aparag If \FRA is Emperor of the \HRE, it can use the \ARMY of \HRE as a
+  help in this war.
+  \aparag Minor country \paysLorraine is activated and allied of the Catholic
+  side. It gives 1 \DT, both sides can pass or stop in its provinces but the
+  \REVOLT never extend in those.
+  \aparag The forces of the Rebels are deployed in their provinces that are in
+  \REVOLT .  The forces of \FRA are placed in any province of \FRA that does
+  not belong to the Rebels.
+  \aparag The naval forces of \FRA may defect as follows. Roll 1d10.
+  \bparag result 1-8: \FRA keeps all the naval forces.
+  \bparag result of 9: 1 \DN is given to the Major Power controlling the
+  Rebels and the rest are Rebel forces.
+  \bparag result of 0: 1 \DN is given to the first Protestant country of the
+  list: \HOL, \ENG, \SUE, \POL, or to the Major Power controlling the rebels
+  if there is none, and the rest are Rebel forces.
+  \bparag Naval forces of the Rebels have to go in a port of Rebels.  When, at
+  the end of a round, there is no port left to Rebels, the navy comes back in
+  the ownership of \FRA.
+
+  \phadm
+  \aparag \FRA can build reinforcements as usual and deploys them in provinces
+  not owned by the Rebels.
+  \aparag The Rebels gain reinforcements in offensive mode on the minor table,
+  with a bonus of \bonus{+2} and some other modifiers (see the various steps
+  of the events). It gains only the \LD written in the table, not the F, CM or
+  leaders.
+  \bparag If \FRA is not \CATHCO, add \bonus{+1} to the roll.
+  \bparag The Rebels receive 1\fortress if the result is even, or 2\fortress
+  if the result is equal to 11 or higher.
+  \bparag The reinforcements of the Rebels are deployed in provinces in
+  \REVOLT , and the fortresses can only be deployed in provinces with \REVOLT
+  \faceplus.
+  \aparag[Leaders] After the building of forces, the loyalty of the leaders is
+  tested.
+  \bparag \leaderMontmorency is always loyal to \FRA.
+  \bparag \lig receives \leader{Henri de Guise}.
+  \bparag \hug receives \leaderColigny, \leaderConde and, beginning with
+  \ref{pIII:FWR Barthelemy}, \leaderNavarre.
+  \bparag Every other named leader is checked by rolling 1d10: used by the
+  Catholic side if result 1-7; used by the Protestant side if the result is
+  8-10.
+  \bparag Each side should have at least two leaders. If one has less, it
+  receives an unnamed general from those of \FRA.
+  \bparag Neither the Loyalists nor the Rebels can use mercenary generals.
+  \bparag This repartition is made once for all the following wars; but \FRA
+  can use all its leaders (whether from \lig or \hug) during Truces.
+
+
+  \digression[pIII:FWR:Military Operations]{Military operations during the
+    wars}
+
+  \phmil
+  \aparag The Rebels control all cities of provinces with \REVOLT at start.
+  It draws supply from all provinces of the rebel minor country and from
+  cities it controls.
+  \aparag \FRA controls all cities of provinces not in \REVOLT .  It draws
+  supply from any such provinces.
+  \aparag French Leaders of both side are only killed in battles if the
+  die-roll was a natural 1. Else, if they would be killed (due to modifiers),
+  they are Captured instead and are freed when a Truce happens.
+  \aparag The Rebels and the minor countries that are involved in the war have
+  a simple campaign each turn. Their controller may pay for a more important
+  campaign (by spending the cost of the campaign minus 20\ducats).
+  \aparag A city owned by the rebel minor country makes an immediate voluntary
+  surrender if besieged by a land stack that is commanded by a named rebel
+  general and that sets a siege with at least one \ARMY \faceplus.
+  % \aparag If \FRA proposes a Truce favourable to the Rebels at the end
+  % of any military round, it is signed immediately and the military
+  % operations for this war ceases for the rest of the turn.  This is
+  % not possible during events \ref{pIII:FWR Succession} and
+  % \ref{pIII:FWR Last Stand}.
+  % (Jym) (4) and (5) (no Truce). TODO deal with (1)
+
+
+  \digression[pIII:FWR:Truces]{Truces during the Wars of Religion}
+
+  \phpaix
+  % \aparag Each war from \ref{pIII:FWR Beginning} to
+  % \ref{pIII:FWR League} last only one turn, then ends with a
+  % Truce favouring one side of the other. The war can resume the next
+  % turn or a following one. \ref{pIII:FWR Succession} and
+  % \ref{pIII:FWR Last Stand} are full Civil War were no Truces are
+  % admitted.
+  % \aparag[Favoured side in the Truce]
+  % \bparag Excepted if a Truce favourable to the Rebels was proposed by
+  % \FRA, determine the side favoured by the Truce according to the
+  % following calculus of their respective positions.
+  % \bparag A side obtains 1 point per victory in land battle, 2 per
+  % major victory, 1 per siege made (but none for automatic surrenders),
+  % and the Rebels gain 1 per \REVOLT remaining in France at the end of
+  % turn (before any extension).
+  % \bparag Whomever has the highest total obtains a favourable Truce;
+  % The Rebels are favoured if it is a draw.
+  \aparag At the end of any turn, \FRA may propose peace to the rebelled
+  minor. This is treated as a regular peace with minor. This can not be done
+  during \ref{pIII:FWR Succession} and \ref{pIII:FWR Last Stand} who have
+  specific ending conditions.
+  % \bparag The initial situation is the one at the beginning of the
+  % military phase. Any \REVOLT crushed adds a +1 bonus to the french
+  % die roll. Automatic surrenders of cities do not provide any peace
+  % differential. (Jym) rather do the opposite => no differential for
+  % \REVOLT , but differential for sieges, even automatic ? would be more
+  % in line with the rest of the game...
+  \bparag The initial situation is the one at the beginning of the military
+  phase. \REVOLT do not count toward the peace differential, but provinces
+  taken (including automatic surrender) count.
+  \bparag Money may not be asked/given as a peace condition.
+  \bparag A valid peace condition is the establishment or demolition of a
+  safety place. If a safety place is granted, the minor may put a level 3
+  fortress in an owned province. If possible it must be put in a province
+  initially in \REVOLT \faceplus.
+  \bparag The first peace condition must be a safety place (if possible).
+  \bparag Any colonial establishment still having a \REVOLT when peace is
+  signed immediately lose one level (and may thus be destroyed).
+  \aparag If no truce is granted, \REVOLT do not extend as normal but \FRA
+  loses stability for both the \REVOLT and the duration of war.
+  \aparag Two white peaces count as a losing truce toward french objectives
+  (but a single white peace has no effect).
+  \aparag If \FRA removes all the \REVOLT counters and retakes all rebel
+  fortresses, it may ask for an (automatic) unconditional surrender. It
+  immediately gains 20 \VP and 2 stability. The next \ref{pIII:FWR} rolled
+  will be played as \ref{pIII:FWR Succession} (even if \FRA is \CATHCO) after
+  which the civil wars will permanently stop.
+  \aparag If \FRA is for two consecutive turns of the same war at -3 in
+  stability and does not manage to sign a peace, it must surrender
+  unconditionally and suffer a mandatory change of religion.
+  \aparag If \FRA sign a favourable peace, it gain 1 stability.
+
+  \aparag[Effect of a Truce] All \REVOLT are suppressed in \FRA; the naval
+  forces are back in the ownership of \FRA (except the \DN that might have
+  been seized by foreigners).
+  % \bparag If the Truce favours \FRA, \FRA annexes one province of the
+  % rebel minor country; all fortresses of the Rebels are withdrawn; all
+  % remaining Rebel land forces are given to \FRA; \FRA gains {\bf 1}
+  % \STAB.
+  % \bparag If the Truce favours the Rebels, they annexe one province
+  % (from \FRA or the opposed minor country; if possible a province they
+  % once owned); one of its provinces becomes a Place of Safety and
+  % gains a level 3 fortress (if possible, a province having a \REVOLT
+  % \faceplus before the Truce); the Rebels keep half of its land forces
+  % (round up), the rest is dismantled and \FRA will have to build
+  % forces anew to its basic forces before the next war; all fortresses
+  % in the provinces of the rebel minor country remain.
+  % \aparag During Truces, \FRA earn half of its colonial, industrial
+  % and commercial income. This includes turns were a Truce is broken by
+  % the following mechanism.
+
+  \phdipl
+  \aparag During Truces, \FRA is not limited in its diplomatic and
+  administrative actions, and can also be involved in external wars (using its
+  forces as well as those of \lig and \hug). This does not include turns where
+  a Truce breaks down. Remember that both \lig and \hug may be used by their
+  controllers.
+  \aparag The Truce can be questioned at the beginning of any phase of
+  Diplomacy:
+  \bparag Roll 1d10 + %the difference between the position value for
+  % Rebels at the end of last war and the value for \FRA + \STAB of \FRA
+  the level of the peace (in favour of the rebel) \bonus{-1} per turn since
+  the beginning of the Truce. If the result is 4 or below, the Rebels will
+  break the Truce.
+  \bparag Else, if \FRA did not have a favourable Truce and wants to break it,
+  it is automatic.
+  \bparag If the Truce is broken, apply \ref{pIII:FWR:Politic Crisis},
+  \ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings},
+  \ref{pIII:FWR:Military Troubles} at the end of the Diplomatic phase.
+\end{digressions}
+
+
+
+\event{pIII:FWR Beginning}{III-D (1)}{The first 3 Wars of Religion}{1}{PB}
+
+\tour{Turn 1}
+
+\phevnt
+\aparag The Wars of Religion begin; apply the general conditions and the
+lasting effects on the Valois as found in \numberref{pIII:FWR Detailed}.
+\aparag Apply the full effects of \ref{pIII:FWR:Politic Crisis},
+\ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings} and
+\ref{pIII:FWR:Military Troubles}.
+\aparag[Michel de l'Hospital]\label{pIII:FWR:Hospital} If \FRA is \CATHCR, it
+can now decide to play the rest of the event as \CATHCO.  Its religion changes
+immediately, using only the lasting effects of the \ref{pI:Reformation}; the
+initial \REVOLT are played as \CATHCR though.
+\aparag For each \REVOLT that should be placed, roll a die: the \REVOLT
+actually happens only if the result if 6 or higher. Add 1 to the die roll if
+\FRA is not \CATHCO (do not add if \FRA just changed its attitude due to
+Michel de l'Hospital, but still use the \CATHCR line for placing \REVOLT ).
+
+\phdipl
+\aparag No Foreign intervention allowed on the first turn.
+\aparag \REB can make a very limited intervention in the war, only with naval
+forces (in order to install or break a blockade; no naval movement of Rebel
+land forces), that costs no \STAB.
+\aparag If \FRA is \CATHCR, \LIG can make a limited intervention as an ally of
+\FRA.
+
+\begin{digressions}[Specific conditions of the first event]
+
+
+  \digression[pIII:FWR:War1 Military]{Military operations during the first
+    event}
+
+  \phmil
+  \aparag Use the general rules of \ref{pIII:FWR:Military Operations}.
+  \aparag If all the leaders of on side are captured, wounded or killed, this
+  side signs a level 1 peace in favour of its enemy at the end of the round.
+
+  \aparag At the beginning of each military round (except the first), a new
+  \REVOLT is rolled for in France.
+  \bparag This revolt is always rolled on the table for \FRA in period III,
+  even if this is not the current period. Moreover, if \FRA is catholic,
+  \textbf{subtract} its \STAB from the localisation die roll rather than
+  adding it.
+  \bparag If this \REVOLT is in the rebel minor country and has no \REVOLT nor
+  Loyalist land force in it, place a new \REVOLT \facemoins which takes the
+  city.
+  \aparag A city in \FRA that had not a \REVOLT \faceplus at the beginning of
+  the current war nor is a safety place, makes an immediate voluntary
+  surrender if besieged by a land stack of \FRA (or its allies) that sets a
+  siege with at least one \ARMY \faceplus and there is no more \REVOLT in the
+  province (including if the \REVOLT was just crushed this round).
+
+
+  \digression[pIII:FWR:Peace1]{Peace during the first event}
+
+  \phpaix
+  % \aparag A Truce is necessarily signed, and the favoured side is determined
+  % as explained in \ref{pIII:FWR:Truces}. All the effects
+  % explained here are applied (so the \REVOLT are withdrawn before extension
+  % or Stability loss).
+  \aparag No peace of level higher than 2 can be signed during this first war,
+  especially no unconditional surrender can happen.
+  \aparag If \LIG was in limited intervention, allied to a \CATHCR\ \FRA, it
+  wins 15 \PV if the Truce is in favour of \FRA and \LIG had forces in at
+  least one battle or one siege (including voluntary surrender) against the
+  Rebels.
+  \aparag \FRA may choose to commit \xnameref{pIII:FWR Barthelemy} on any
+  later turn. Consider that \numberref{pIII:FWR Barthelemy} is one of the four
+  events rolled this turn and apply all the relevant effects.
+
+  \tour{Turn 2 and following: Extension of the War}
+
+
+  \digression[pIII:FWR:Continuation1 War]{Extension of the war}
+
+  \phevnt
+  \aparag[\REVOLT extension]
+  \bparag For each two \REVOLT still existing in France (including colonial
+  empire), roll die on the \REVOLT table for \FRA. If the province is neither
+  occupied by loyalist troops or part of the non-rebelling minor, place a
+  \REVOLT \facemoins which takes the city there.
+  \bparag Roll a die. Add 2 if \FRA is \CATHCR, subtract 2 if \FRA is
+  protestant. On a roll of 6 or more, place a \REVOLT \facemoins in a randomly
+  chosen french colony (if there is no french colony or all have 2 \REVOLT
+  \faceplus, in a randomly chosen \TP).
+
+  \phadm
+  \aparag Rebel will receive reinforcement as on turn 1.
+
+  \phdipl
+  \aparag Foreign interventions are now permitted.
+  \aparag \REB can make a limited intervention as an ally on the Rebels (and
+  it is not limited to naval forces only from now on).
+  \aparag \HOL can make a limited intervention as an ally of a rebel \hug.
+  \aparag \SPA can make a limited intervention as an ally of a rebel \lig.
+
+  \phmil
+  \aparag[Intervention of \paysPalatinat]\label{pIII:FWR:Palatinate} If
+  inactive, \paysPalatinat makes an intervention as an ally of the Rebels (it
+  is a mercenary army). It is played by \REB. The intervention force is
+  \leader{Jean-Casimir}, one \ARMY \faceplus and 1 \DT.  If the
+  \nameref{pII:Schmalkaldic League} or the \nameref{pIII:League Nassau}
+  exists, and the Rebels are \hug, this intervention is made with 2 \ARMY
+  \faceplus.  \leader{Jean-Casimir} is a general of \paysPalatinat (and serves
+  this country if it is at war elsewhere) that will stay as long as
+  \ref{pIII:FWR Barthelemy} is not finished.  After that, \paysPalatinat is
+  without leader (for intervention) or has normal generals (for other wars).
+
+  \tour{Turn 2 and following: Breaking of Truces}
+
+
+  \digression[pIII:FWR:Continuation1 Truce]{Breaking of Truces}
+
+  \phevnt
+  \aparag If a Dynastic Crisis occurs, \ref{pIII:FWR Succession} will happen
+  at this turn. If \numberref{pIII:FWR} is rolled for at this turn, mark off
+  the box and consider that it triggers \numberref{pIII:FWR Succession}.
+  \aparag As long as a new \numberref{pIII:FWR} is not rolled for, the Truce
+  can be broken as explained in \ref{pIII:FWR:Truces}. A war begins anew, as
+  explained there.
+  \aparag If a new \shortref{pIII:FWR} is rolled for in the Political Event
+  Phase, the next phase of \shortref{pIII:FWR} begins (\numberref{pIII:FWR
+    Barthelemy}, \numberref{pIII:FWR League} or \numberref{pIII:FWR
+    Succession}). Go to this event.
+  \aparag If none of this happens, \FRA is in civil peace, and has its
+  activity limited by \ref{pIII:FWR:Truces} only.
+
+  \phadm
+  \aparag If the Truce has been broken, apply the full effects of
+  \ref{pIII:FWR:Politic Crisis}, \ref{pIII:FWR:Economic Crisis},
+  \ref{pIII:FWR:Uprisings} and \ref{pIII:FWR:Military Troubles}, and the
+  following points.
+
+  \phdipl
+  \aparag Foreign interventions are now permitted.
+  \aparag \REB can make a limited intervention as an ally on the Rebels (and
+  it is not limited to naval forces only from now on).
+  \aparag \HOL can make a limited intervention as an ally of a rebel \hug.
+  \aparag \SPA can make a limited intervention as an ally of a rebel \lig.
+
+  \phmil
+  \aparag The war is prosecuted according to \ref{pIII:FWR:Military
+    Operations}, and \ref{pIII:FWR:War1 Military}.
+  \aparag[Intervention of \paysPalatinat] If inactive, \paysPalatinat makes an
+  intervention as an ally of the Rebels (it is a mercenary army). It is played
+  by \REB. The intervention force is \leader{Jean-Casimir}, one \ARMY
+  \faceplus and 1 \DT.  If the \nameref{pII:Schmalkaldic League} or the
+  \nameref{pIII:League Nassau} exists, and the Rebels are \hug, this
+  intervention is made with 2 \ARMY \faceplus.  \leader{Jean-Casimir} is a
+  general of \paysPalatinat (and serves this country if it is at war
+  elsewhere) that will stay as long as the \ref{pIII:FWR Barthelemy} is not
+  finished. Beginning with next event, \paysPalatinat is back to normal (no
+  leader for intervention or normal generals for other wars).
+
+  \phpaix
+  % \aparag A Truce is necessarily signed, and the favoured side is determined
+  % as explained in \ref{pIII:FWR:Truces}. All the effects
+  % explained here are applied (so the \REVOLT are withdrawn before extension
+  % or Stability loss).
+  \aparag If a Major Power makes a limited intervention and the side it helps
+  obtains a Truce in its favour, the Major Power gains 10 \PV if it had land
+  forces in at least one battle or one siege (including voluntary surrender)
+  against the enemy side.
+
+\end{digressions}
+
+
+
+\event{pIII:FWR Barthelemy}{III-D (2)}{The Saint-Barthelemy}{1}{PB}
+
+\tour{Turn 1}
+
+\phevnt
+\aparag A new war breaks out. Apply the full effects of \ref{pIII:FWR:Politic
+  Crisis}, \ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings} and
+\ref{pIII:FWR:Military Troubles}.
+\aparag \leaderNavarre is available as a \paysHuguenots general.
+
+\phdipl
+\aparag No Foreign intervention is allowed.
+\aparag \REB can make a somewhat limited intervention in the war, only with
+naval forces (in order to make or break blockade; no naval movement of Rebel
+land forces) or with land forces in coastal besieged provinces of the Rebels,
+in order to stop the siege; afterwards it can withdraw or remain in this
+province only.
+\aparag The Rebels control all cities in the rebel minor country (and not only
+those with a \REVOLT in there).
+\aparag \FRA can then announce an attempt of
+\xnameref{pIII:FWR:Saint-Barthelemy}, and resolves this odious deed. This is
+of course mandatory if this event happen due to \FRA's choice during
+\ref{pIII:FWR Beginning}.
+\aparag If \FRA is \CATHCR, \LIG can make a limited intervention as an ally of
+\FRA.
+
+\begin{digressions}[Specific conditions of the second event]
+
+
+  \digression[pIII:FWR:Saint-Barthelemy]{Massacre of the Saint-Barth\'el\'emy}
+
+  \phdipl
+  \aparag 1d10 is rolled for every rebel leader, excepted \leader{Henri de
+    Guise} and \leaderNavarre. An even result means that the leader was killed
+  in the Massacre.
+  \aparag Each city in the rebel minor country is taken by \FRA by rolling
+  1d10 higher than the level of the fortress; one die is rolled for each
+  city. The cities taken this way are military controlled by \FRA but still
+  owned by the rebel minor country.
+  \aparag The Rebels will have a malus of \bonus{-1} to receive its
+  reinforcements at this turn.
+  \aparag The Rebels can no longer make a limited intervention in
+  \ref{pIII:Dutch Revolt}.
+  \aparag \FRA loses {\bf 1} \STAB.
+  \aparag The Survival roll of the French Monarch is modified by an additional
+  \bonus{+1} until the end of the Wars of Religion.
+
+
+  \digression[pIII:FWR:War2 Military]{Military operations after the
+    Saint-Barth\'el\'emy}
+
+  \phmil
+  \aparag Use the general rules of \ref{pIII:FWR:Military Operations}.
+  \aparag If all the leaders of on side are captured, wounded or killed, this
+  side signs a level 1 peace in favour of its enemy at the end of the round.
+  \aparag At the beginning of each military round (except the first), a new
+  \REVOLT is rolled for in France. If this \REVOLT is in the rebel minor
+  country and has no \REVOLT nor Loyalist land force in it, place a new
+  \REVOLT \facemoins which takes the city.
+  \aparag \FRA (and its allies) have a bonus of \bonus{+1} to suppress \REVOLT
+  in France and perform automatic surrenders of rebel fortresses as in the
+  previous war.
+\end{digressions}
+
+\phpaix
+% \aparag A Truce is necessarily signed at the end of the turn, and the
+% favoured side is determined as explained in \ref{pIII:FWR:Truces}. All the
+% effects explained here are applied (so the \REVOLT are withdrawn before
+% extension or Stability loss).
+\aparag If \LIG was in intervention, allied to a \CATHCR\ \FRA, it wins 15 \PV
+if the Truce is in favour of \FRA and \LIG had forces in at least one battle
+or one siege (including voluntary surrender) against the Rebels.
+
+\tour{Turn 2 and following}
+
+\phevnt
+\aparag The event goes on as described in \ref{pIII:FWR:Continuation1 Truce},
+except that the military operations follow the rules of \ref{pIII:FWR:War2
+  Military}, or as in \ref{pIII:FWR:Continuation1 War} if no peace was signed.
+
+
+
+\event{pIII:FWR League}{III-D (3)}{The Rise and Fall of the League}{1}{PB}
+
+\tour{Turn 1}
+
+\phevnt
+\aparag A new war breaks out. Apply the full effects of \ref{pIII:FWR:Politic
+  Crisis}, \ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings} and
+\ref{pIII:FWR:Military Troubles}.
+\aparag If \REB spends 50\ducats, the Rebels will have a bonus of \bonus{+1}
+to their reinforcement roll.
+\aparag If \FRA is \CATHCR or \CATHCO, \LIG may give finances to \lig.  It
+spends 100\ducats and takes the control of the stack commanded by
+\leader{Henri de Guise} (he can take new forces during the military rounds as
+long as the hierarchy is respected). One purpose of this is to attempt a Coup
+by the League (as explained in \ref{pIII:FWR:League Coup}).
+
+\phdipl
+\aparag Usual Foreign interventions are permitted (even during the first
+turn).
+
+\begin{digressions}[Specific conditions of the third event]
+
+
+  \digression[pIII:FWR:War3 Military]{Military operations during the League}
+
+  \phmil
+  \aparag Use the general rules of \ref{pIII:FWR:Military Operations}.
+  \aparag At the beginning of each military round (except the first), a new
+  \REVOLT is rolled for in France. If this \REVOLT is in the rebel minor
+  country and has no \REVOLT nor Loyalist land force in it, place a new
+  \REVOLT \facemoins which takes the city.
+  \aparag \FRA (and its allies) have a bonus of \bonus{+2} to suppress \REVOLT
+  in France and perform automatic surrenders of rebel fortresses as in the
+  previous wars.
+
+
+  \digression[pIII:FWR:League Coup]{Guise Coup and assassination}
+
+  \phpaix
+  % \aparag A Truce is necessarily signed at the end of the turn, and the
+  % favoured side is determined as explained in
+  % \ref{pIII:FWR:Truces}. All the effects explained here are
+  % applied (so the \REVOLT are withdrawn before extension or Stability loss).
+  \aparag If \LIG has taken control of \leader{Henri de Guise} and this
+  general is not Captured, it may attempt a Coup that will make \leader{Henri
+    de Guise} the Heir of the kingdom, by spending 100\ducats more.
+  \aparag If \FRA is \CATHCO, or if \LIG has taken control of \leader{Henri de
+    Guise}, \FRA may attempt to murder this pretender, even if \LIG does not
+  attempt a Coup.
+  \aparag Both those operations are described in the following event,
+  \ref{pIII:FWR Succession} and are resolved as described in
+  \xnameref{pIII:FWR:Coup Murder Pretender}.
+  \bparag If the Coup is successful, \ref{pIII:FWR Succession} begins the very
+  next turn, with \monarque{Henri de Guise} as the mandatory Heir (see
+  afterwards).
+  \bparag If \leader{Henri de Guise} was murdered and no event
+  \shortref{pIII:FWR} happens (by Dynastic Crisis or rolled event), the Truce
+  is broken by the \lig who is the Rebel for one particular war. Apply the
+  procedure for a Truce broken, with \lig as the Rebels.
+\end{digressions}
+
+\tour{Turn 2 and following}
+
+\phevnt
+\aparag The event goes on as described in \ref{pIII:FWR:Continuation1 Truce},
+except that the military operations follow the rules of \ref{pIII:FWR:War3
+  Military}, or as in \ref{pIII:FWR:Continuation1 War} if no peace was signed.
+\bparag If \leader{Henri de Guise} was murdered the previous turn and no
+\shortref{pIII:FWR} happens (either by Dynastic Crisis or rolled event), the
+Truce is now broken by the \lig who is the Rebel for this particular war.
+Apply the procedure for the breaking of a Truce, with \lig as the Rebels.
+\lig receives the general \leaderwithdata{Mayenne}.
+\bparag Else, the Rebels are those of the previous war if the Truce is broken.
+\aparag[Foreign limited interventions] (added to those already allowed).
+\bparag Some limited interventions are allowed here; a country can help only
+the first at-war country listed, or none at all.
+\bparag \HOL can help \hug else a non \CATHCR\ \FRA.
+\bparag \ENG Protestant or \CATHCR can help \hug else a non \CATHCR\ \FRA.
+\bparag \ENG \CATHCR can help \lig, else a non Protestant \FRA.
+\bparag \SPA can help \lig, else a non Protestant \FRA.
+
+
+
+\event{pIII:FWR Succession}{III-D (4)}{War of Succession}{1}{PB}
+
+\activation{This events is activated by a Dynastic Crisis during the Wars of
+  Religion, or as the fourth event of \numberref{pIII:FWR}, or after a
+  successful Coup by \leader{Henri de Guise}.}
+
+\tour{Turn 1}
+
+\phevnt
+\aparag \hug and \lig revolt and will fight to impose their pretender on the
+French Crown. Every one is sure now that there is no direct Heir of the last
+Valois Monarch, \monarque{Henri III}.
+\aparag If the French Monarch \monarque{Henri III} died at the beginning of
+this turn, \FRA has to choose its Heir. Apply now the effects of
+\xnameref{pIII:FWR:Designation Heir}, followed by the effect of the new
+Religious attitude.
+\aparag If a Coup was successful at the previous turn, the designated Heir is
+now the one of the side having made this Coup. Apply his choice of Religious
+Attitude.
+\aparag Otherwise, apply only the event corresponding to the current Religious
+attitude of \FRA; \FRA will have the opportunity to modify the would-be Heir
+at the time of the death of the last Valois Monarch.
+\aparag Only a Coup or a mandatory change of religion can change the Heir once
+he is appointed.
+\aparag Apply the full effects of \ref{pIII:FWR:Politic Crisis},
+\ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings} and
+\ref{pIII:FWR:Military Troubles}. Also apply \ref{pIII:FWR:War4 Military} and
+\ref{pIII:FWR:War4 Peace}.
+\begin{digressions}[The choice of the Heir]
+
+
+  \digression[pIII:FWR:Designation Heir]{Designation of the Heir}
+
+  \phevnt
+  \aparag There are three possible Heirs.  Each one is linked to the choice of
+  a Religious attitude, and \FRA can not change completely its attitude on its
+  own: \CATHCR can not choose Protestant and a Protestant \FRA can not choose
+  \CATHCR.  Any other choice is permitted.  \FRA can be forced to change its
+  attitude because of a Coup.
+  \aparag[\CATHCR] The Heir is \monarque{Henri de Guise}.  If \leader{Henri de
+    Guise} is alive, the general is also the Heir; if not it's a cousin with
+  random military capacities. The Heir has values 6/9/7.  When the Monarch is
+  \monarque{Henri de Guise}, \FRA gains a free maintenance for one \ARMY
+  \faceplus, event if it is still in Civil War. \FRA immediately annexes
+  \provinceLorraine.
+  \aparag[\CATHCO] The Heir would be \monarque{Henri IV}, that is a converted
+  \monarque{Henri de Navarre}. If \leaderNavarre is alive, the general is also
+  the Heir; if not it's a cousin with random military capacities. The Heir has
+  values 9/9/9. When the Monarch is \monarque{Henri IV}, \FRA gains a free
+  maintenance for one \ARMY \faceplus, event if it is still in Civil War.
+  \aparag[Protestant] The Heir is \monarque{Henri de Navarre} who remains
+  Protestant. If \leaderNavarre is alive, the general is also the Heir; if not
+  it's a cousin with random military capacities. The Heir has values 9/9/9.
+  \aparag[A new religious attitude] The designation of an Heir changes
+  immediately the Religious Stand of \FRA. The Heir is Crowned now if the king
+  is dead, or assists the king and will be crowned at the time of its
+  death. If the Heir dies, another of the same family (and same
+  characteristics) will stand forward. An Heir does not make Survival Test
+  before its crowning; it will last 5 turns beginning with the turn of its
+  crowning.
+  \aparag
+  Apply one of \xnameref{pIII:FWR:France is Protestant},
+  \xnameref{pIII:FWR:France is Counter-Reformation} or
+  \xnameref{pIII:FWR:France is Conciliant}.
+
+
+  \digression[pIII:FWR:France is Protestant]{France is Protestant}
+
+  \phevnt
+  \aparag \lig rebels, following the general rules.
+  \aparag If \monarque{Henri III} is dead and the Heir is crowned, \LIG can
+  make a limited intervention from the first turn of the war.  Moreover, \lig
+  will have a bonus of \bonus{+2} to its reinforcement roll.
+  \aparag If \leader{Henri de Guise} is dead, \lig receive the general
+  \leaderMayenne (B.2.2.2).
+  \aparag \LIG can always make a limited intervention from the second turn of
+  the war onward.
+  \aparag \hug is immediately annexed by \FRA: its provinces become french
+  provinces (and provide income as such) and its units (armies, leaders)
+  become french units. Both the counter limits and free maintenance of \FRA
+  resumes their regular values.
+
+
+  \digression[pIII:FWR:France is Counter-Reformation]{France is \CATHCR}
+
+  \phevnt
+  \aparag \hug rebels, following the general rules.
+  \aparag If \monarque{Henri III} is dead and the Heir is crowned, \HUG and
+  \HOL can make a limited intervention from the first turn of the war.
+  \aparag \HUG and \HOL can always make a limited intervention from the second
+  turn of the war onward.
+  \aparag \lig is immediately annexed by \FRA: its provinces become french
+  provinces and its units become french units. Both the counter limit and
+  maintenance of \FRA resume their regular values.
+
+
+  \digression[pIII:FWR:France is Conciliant]{France is \CATHCO}
+
+  \phevnt
+  \aparag[If the king is \monarque{Henri III}, a Valois]
+  \bparag Both \lig and \hug rebel, and a three-sided war begins between \FRA
+  and the two Rebels.
+  % \bparag The initial repartition of French forces is: \FRA has \ARMY
+  % \faceplus, \lig has \ARMY \facemoins and \hug has \DT.
+  % \bparag If the naval forces desert, decide at random if it is to
+  % join the \hug or the \lig.
+  \bparag \leaderNavarre is a possible Heir but is hesitant.  He is used as a
+  general by \FRA, excepted if \hug controls or besieges \ville{Paris}.  He
+  will go the side of \FRA as soon as he is chosen as Heir at the death of
+  \monarque{Henri III}, or could go back to the Protestant side if
+  \monarque{Henri de Navarre} is the chosen Heir, or if a Protestant Coup is
+  made.
+  \aparag Notice that as soon as \monarque{Henri III} die, one of the minor
+  (the one having the chosen heir) will sign peace with \FRA and be
+  immediately annexed.
+  % Leader \leaderNavarre is a possible Heir but is hesitant.  Neither
+  % the \hug nor \FRA can use it. He will go the side of \FRA as soon as
+  % he is chosen as Heir at the death of \monarque{Henri III}, or could
+  % go back to the Protestant side if \monarque{Henri de Navarre} is the
+  % chosen Heir, or if a Protestant Coup is made.
+  \aparag[If the king is the Heir,] (brand-new catholic \monarque{Henri IV}).
+  \bparag \lig rebels, following the general rules.
+  \aparag If \leader{Henri de Guise} is dead, \lig receive the general
+  \leaderMayenne (B.2.2.2).
+  \aparag If \leader{Henri de Guise} is alive, \lig will have a bonus of {\bf
+    +2} to its reinforcement roll.
+  \aparag \hug is immediately annexed by \FRA.
+\end{digressions}
+
+\phdipl
+\aparag Foreign intervention are allowed.
+
+\phadm
+\aparag \FRA gets full income of all non-revolted, controlled provinces,
+including those belonging to a revolted rebel or in the \ROTW.
+\aparag As soon as the last Valois dies, \FRA is no more restricted in
+administrative actions.
+\aparag[Reinforcements of Rebels]
+\bparag If \LIG spends 50\ducats, the \lig will have a bonus of \bonus{+1} to
+their reinforcement roll.
+\bparag If \HUG spends 50\ducats, the \hug will have a bonus of \bonus{+1} to
+their reinforcement roll.
+
+\tour{Turn 2 and afterwards}
+
+\phevnt
+\aparag Except for what follows, use the same rules as turn 1.
+\aparag If the French Monarch \monarque{Henri III} died at the beginning of
+some turn, \FRA has to choose its Heir (if no Coup has imposed an Heir). Apply
+the effect of \ref{pIII:FWR:Designation Heir}, and then the effect of the
+(possibly new) Religious attitude that follows. The revolted side receives new
+\REVOLT according to \ref{pIII:FWR:Uprisings}.
+\aparag Else, if a Coup was successful, apply \ref{pIII:FWR:Uprisings} to roll
+for new \REVOLT of the now rebel side. The war resumes with rebels depending
+on the new religious attitude.
+\aparag If a pretender was murdered on the previous turn, new \REVOLT are
+rolled for according to \ref{pIII:FWR:Uprisings} for this side only.
+\aparag \paysSavoie will make a limited intervention as an ally of \lig (or
+\FRA if \CATHCR), with an \ARMY \faceplus and one unnamed minor general.
+
+\phadm
+\aparag[Reinforcements of Rebels]
+\bparag Reinforcements will be received for the rebel side(s) according to
+\ref{pIII:FWR:Military Troubles} but the initial repartition of forces is not
+made anew (it has already been done).
+\bparag If \LIG spends 50\ducats, the \lig will have a bonus of \bonus{+1} to
+their reinforcement roll.
+\bparag If \HUG spends 50\ducats, the \hug will have a bonus of \bonus{+1} to
+their reinforcement roll.
+
+\begin{digressions}[Specific conditions of the War of Succession]
+
+
+  \digression[pIII:FWR:War4 Military]{Military operations during the War of
+    Succession}
+
+  \phmil
+  \aparag Use the general rules of \ref{pIII:FWR:Military Operations}.
+  \aparag \FRA and its allies have a bonus of \bonus{+3} to suppress \REVOLT
+  in France.
+  \aparag \paysPalatinat makes an intervention as an ally of the side of
+  \leaderNavarre or \monarque{Henri de Navarre} with \ARMY\faceplus, \LD and a
+  random general.  If the Monarch is \monarque{Henri III} with \monarque{Henri
+    IV} as the chosen Heir, \paysPalatinat makes no intervention.
+  \aparag \FRA draws supply from any province in France (including those of
+  \lig and \hug), except those in \REVOLT
+  \aparag \lig and \hug draw supply only from the provinces they control.
+  \aparag[Voluntary surrender]
+  \bparag A city besieged by \FRA with at least one \ARMY \faceplus,
+  voluntarily surrenders if there was no \REVOLT \faceplus in it at the
+  beginning of the turn, nor is it a Place of Safety and there is no more
+  \REVOLT in the province (including if the \REVOLT was just crushed this
+  round).
+  \bparag A city besieged by \lig with at least one \ARMY \faceplus,
+  voluntarily surrenders if it is in the territory owned by \lig.
+  \bparag A city besieged by \hug with at least one \ARMY \faceplus,
+  voluntarily surrenders if it is in the territory owned by \hug.
+
+
+  \digression[pIII:FWR:War4 Peace]{How to end the War of Succession?}
+
+  \phpaix
+  \aparag If there are only 2 sides in this war, the War of Succession ends if
+  \FRA control Paris and wins a Major Victory over Rebel forces (at least 3
+  \DT of Rebels) or if all Rebel forces and \REVOLT have been eliminated.
+  \bparag \FRA has to spend 100\ducats to stop the war; no Coup or
+  Assassination can happen. Apply \ref{pIII:FWR:End of the War of Succession}.
+  \aparag If there are only 2 sides in this war, the War of Succession ends if
+  \FRA has no land forces left and the Rebel controls the city of Paris. A
+  Coup in favour of the Rebels is automatically made with no possible murder
+  attempt by \FRA. A mandatory change of Religious attitude is imposed on \FRA
+  and the new Monarch is the Heir of the winning side. Apply \ref{pIII:FWR:End
+    of the War of Succession}.
+  \aparag \FRA ends as barely victorious if this is the end of the first turn
+  of period IV (then no Coup is permitted). Apply now \ref{pIII:FWR:End of the
+    War of Succession} and \ref{pIII:FWR Final}.
+  \aparag If \lig is in rebellion, controls the city of Paris, and
+  \leader{Henri de Guise} is alive, then \LIG can spend 100\ducats for an
+  attempt of Counter-Reformation Coup.
+  \aparag If \hug is in rebellion, controls the city of Paris, and
+  \leaderNavarre is alive, then \HUG can spend 100\ducats for an attempt of
+  Protestant Coup.
+  \aparag If a Coup is attempted, \FRA can try to murder the pretender
+  (\leader{Henri de Guise} or \leaderNavarre).
+  \aparag If no Coup is attempted, \FRA can try to murder one pretender of
+  revolted \lig or \hug (\leader{Henri de Guise} or \leaderNavarre).
+  \aparag \FRA loses no \STAB because of the \REVOLT but loses \STAB as in an
+  usual war (1 the first turn, 2 the second, \dots)
+  \aparag The war keeps on until one side is victorious; there is no Truce.
+
+
+  \digression[pIII:FWR:Coup Murder Pretender]{Coup and Murder of the
+    Pretender}
+
+  \phpaix
+  \aparag The side attempting the Coup (\LIG or \HUG) has to spend 100\ducats
+  then rolls 1d10 and adds \bonus{+2} if \FRA is \CATHCO; \bonus{+2} if the
+  \ref{pIII:FWR:Saint-Barthelemy} was not perpetrated; \bonus{+3} if the
+  \ref{pIII:FWR:Saint-Barthelemy} was made against the religious faction of
+  the coup's side; \bonus{+2} if \FRA makes no Murder attempt; \bonus{+1} per
+  victory of the pretender's minor country with at least one \ARMY \faceplus.
+  \aparag[Failure of the Coup] If the result of the Rebels is 9 or lower, the
+  Coup is failed. It may succeed if the result is 10 or higher.
+  \aparag If \FRA attempts to murder the pretender, it rolls 1d10, and add
+  \bonus{+2} for each point of \STAB that it spends (it has to have those
+  points); and \bonus{+3} is no Coup attempt was made.
+  \aparag[Result of Assassination] If the result of \FRA is 9 or lower, the
+  murder is failed. It may succeed if the roll is 10 or higher.  \FRA loses
+  {\bf 1} \STAB, and the Valois \monarque{Henri III} will have
+  an additional permanent malus of \bonus{+3} to its Survival Test until his death. \\
+  \centerline{\textit{"Il est encore plus grand mort que vivant."}}
+  \aparag[If both a Coup and a Murder succeed]
+  \bparag If the result of \FRA is higher of equals to the result of the Coup,
+  the Coup actually fails; the Pretender is murdered.
+  \bparag Else (if the result of Rebels is higher than the result of \FRA),
+  the Coup succeeds. \FRA makes a mandatory change of Religious attitude and
+  of designated Heir. The pretender is not killed (miraculously saved!) and
+  becomes the new Heir.
+  \aparag[Successful Coup]
+  \bparag The new mandatory Heir is the one (\monarque{Henri de Guise} or
+  \monarque{Henri de Navarre}) of the side doing the Coup and the Religious
+  attitude of \FRA is changed according to this new Heir.
+  \bparag When \monarque{Henri III} dies, the Heir is crowned as the French
+  King.
+  \bparag If this case, on the next turn, a Civil War with the new sides
+  depending of the new Religious attitude continues, or begins if the Coup was
+  during event (3).
+  \aparag In addition, \FRA has a mandatory defensive alliance with the
+  controller of the side having done the Coup, and this power can now make
+  full intervention in the war until the end of \nameref{pIII:FWR}.
+
+
+  \digression[pIII:FWR:End of the War of Succession]{End of the War of
+    Succession}
+
+  \phinter
+  \aparag \STAB of \FRA is raised by {\bf 2}.
+  \aparag The new Monarch is the last designated Heir (\monarque{Henri III} is
+  pushed aside if he is still alive...)
+  \aparag All \REVOLT and forces of minor countries \hug and \lig are
+  removed. But they continue to exist (they can rebel one more time if \FRA is
+  not \CATHCO).
+  \aparag[Intervention of Foreign countries]
+  \bparag Minor countries having forces left in \FRA propose an immediate
+  white peace to \FRA. If it is accepted, they withdraw and are at peace with
+  \FRA. Else, they are now in a regular war with \FRA (but no one is victim of
+  a declaration of war).
+  \bparag Any Major power having forces left in \FRA has to sign a white
+  peace, or are from now on in regular war with \FRA.  Their military activity
+  is no more limited; nobody is victim of a declaration of war (but \FRA and
+  its enemies are at war), and regular call to allies will be possible on the
+  next turn.  This war causes normal loss of \STAB, beginning with a loss of
+  {\bf 1} \STAB this turn.
+  \bparag The only specificity of this war is that, if a unconditional peace
+  is forced on \FRA, the winning power must change the Monarch of \FRA to the
+  Heir of its Religious Attitude.  In this case this is the only condition of
+  the peace, and \FRA has a mandatory defensive alliance with the winners
+  during the reign of the new Monarch.
+  \aparag As soon as \FRA is at peace at an end-of-turn and \CATHCO,
+  \ref{pIII:FWR Final} is applied.
+\end{digressions}
+
+
+
+\event{pIII:FWR Last Stand}{III-D (5)}{Last Stand of the Heretics}{1}{PB}
+
+\history{Alternate history}
+
+\condition{}
+\aparag If \ref{pIII:FWR Succession} is not finished, do not mark off and
+reroll.
+\aparag If \FRA is \CATHCO and no unconditional surrender was obtained by \FRA
+against \hug in a previous war, mark off the event, play \RD instead and the
+French king will have a malus of \bonus{+2} to his Survival test for the next
+turn.
+\aparag If \FRA is \CATHCO but did force an unconditional surrender of \hug in
+a previous war, \hug rebels itself.
+\aparag If \FRA is Protestant or \CATHCR at the end of \ref{pIII:FWR
+  Succession} and \ref{pIII:FWR Final} was not applied, the rest of the event
+happens.
+\aparag If \FRA is Protestant or \CATHCR but \ref{pIII:FWR Final} already
+occurred, play \RD instead with the \REVOLT on the table of \FRA.
+
+\phevnt
+\aparag One of \lig or \hug rebels itself depending on the religion of
+\FRA. Apply the full effects of \ref{pIII:FWR:Politic Crisis},
+\ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings} and
+\ref{pIII:FWR:Military Troubles}.  Also apply \ref{pIII:FWR:War5 Military} and
+\ref{pIII:FWR:War5 Peace}.
+\aparag If the revolting minor was already annexed by \FRA (this may happen if
+a mandatory religious change is then forced on \FRA), recreate it
+immediately. It will get no troops at beginning.
+\aparag If the non-rebelling minor still exists, it is immediately annexed by
+\FRA: its provinces become regular French provinces and its units become
+french units.
+\aparag \REB is not obliged to do a white peace with \FRA.
+\bparag If it chooses to continue a war, it can make a full military
+intervention in the Civil War. But it will continue to suffer a normal loss of
+\STAB at the end of turns, whereas \FRA will lose at most {\bf 2} \STAB each
+turn during the Civil War.
+\bparag If it chooses to sign a white peace, or if it was at peace, \REB can
+make a limited intervention in the war.
+\aparag \LIG can make a limited intervention as an ally of a \CATHCR\ \FRA.
+\aparag \HOL can make a limited intervention as an ally of Protestant
+\FRA. Else it can make a limited intervention as an ally of \hug.
+
+\phdipl
+\aparag Usual foreign interventions are allowed.
+
+\begin{digressions}[Specific conditions of the last event]
+
+
+  \digression[pIII:FWR:War5 Military]{Military operations during the fifth
+    event}
+
+  \phmil
+  \aparag Use the rules of \ref{pIII:FWR:Military Operations}.
+  \aparag \FRA and its allies have a bonus of \bonus{+4} to suppress \REVOLT
+  in France.
+  \aparag A city in \FRA that had not a \REVOLT \faceplus at the beginning of
+  the turn, makes an immediate voluntary surrender if besieged by a land stack
+  of \FRA (or its allies) that sets a siege with at least one \ARMY \faceplus
+  and there is no more \REVOLT in the province (including if the \REVOLT was
+  just crushed this round).
+
+
+  \digression[pIII:FWR:War5 Peace]{How to end the Last Stand?}
+
+  \phpaix
+  \aparag \FRA loses no \STAB because of the \REVOLT . It loses at most {\bf
+    2} \STAB per turn because of the war.
+  \aparag No Truce happens ever in this civil war. It keeps going until one
+  side wins.
+  \aparag The War ends if \FRA controls Paris and wins a Major Victory over
+  Rebel forces (at least 3 \DT of Rebels) or if all Rebel forces and \REVOLT
+  have been eliminated.
+  \aparag The War ends if \FRA has no land forces left and the Rebel controls
+  the city of Paris. An change of Heir in favour of the Rebels is
+  automatically made (with no possible murder attempt by \FRA) that causes a
+  mandatory change of Religious attitude. The new Monarch of \FRA is the Heir
+  of the winning side.
+  \aparag \FRA ends as barely victorious if the last turn of period III has
+  ended (now or previously).
+
+
+  \digression[pIII:FWR:End of the Last Stand]{End of the Last Stand}
+
+  \phpaix
+  \aparag \STAB of \FRA is raised by {\bf 2}.
+  \bparag The new Monarch is the last designated Heir (if it did change; the
+  former one is pushed aside)
+  \bparag All \REVOLT %and forces of minor countries \hug and \lig
+  are removed.
+  \bparag Minor countries having forces left in \FRA propose an immediate
+  white peace to \FRA. If it is accepted, they withdraw and are at peace with
+  \FRA. Else, they are now in a regular war with \FRA (but no one is victim of
+  a declaration of war).
+  % \bparag Minor countries having forces left in \FRA withdraw and are at
+  % peace with \FRA.
+  \bparag Any Major power having forces left in \FRA has to sign a white
+  peace, or are from now on in regular war with \FRA.  Their military activity
+  is no more limited; nobody is victim of a declaration of war (but \FRA and
+  its enemies are at war), and regular call to allies will be possible on the
+  next turn.  This war causes normal loss of \STAB, beginning with a loss of
+  {\bf 2} \STAB this turn for everyone.  The Sole Defender of the Catholic
+  Faith could impose a change of Religion, but by normal rules and not by
+  specific rules of this event.
+  \bparag When this War ends, apply \ref{pIII:FWR Final}.
+\end{digressions}
+
+
+
+\event{pIII:FWR Final}{III-D (Final)}{End of the Wars of Religion}{1}{PB}
+
+\activation{}
+\aparag This event is applied when the fifth event \xref{pIII:FWR} is at last
+resolved.
+\aparag This event is applied also as soon as \FRA is at peace and \CATHCO
+after the end of the fourth event.
+\aparag At the end of the last turn of the period III (or the first turn of
+period IV if \ref{pIII:FWR Succession} is happening), this event is applied
+regardless of other conditions.
+
+\phinter
+\aparag The Wars of Religion are ended. Further events \numberref{pIII:FWR}
+cause \RD.
+\aparag The Monarch should be the designated Heir, or the Heir is crowned
+right now.
+\aparag Minor countries \hug and \lig are immediately annexed by \FRA. All
+their provinces are now regular provinces of \FRA. All their land forces
+become french land forces. \FRA gets back its regular counter limit and
+maintenance.  The navy is given back to \FRA. If alive, \leaderConde,
+\leaderColigny, \leaderMayenne, \leaderNavarre and \leader{Henri de Guise}
+retire (excepted the now Monarch); all other french leaders are now regular
+french leaders.
+\aparag If the king is \monarque{Henri de Guise} or \monarque{Henri IV}, \FRA
+gains a free maintenance of one \ARMY \faceplus until the end of his
+reign. This is not the case if the Monarch is \monarque{Henri de Navarre}.
+\aparag[Victory Points]
+\ENG, \HOL and \SPA win each 25 \PV if they have been allied at least once to
+the side of the Heir that won finally the wars. They lose 25 \PV if they have
+fought against this winning side.
+\aparag[Economic consequences] Roll 1d10 and add \bonus{+1} for each
+favourable truce conceded to the rebels, \bonus{+1} if \FRA has been complied
+to change its Religious attitude, and \bonus{+1} is \FRA is \CATHCR.
+\bparag Result 1-3: 1 level of French \TradeFLEET is lost to \HOL;
+\bparag Result 4-5: 1 level of French \TradeFLEET is lost to \HOL, and 1 to
+\ENG;
+\bparag Result 6-10: 2 levels of French \TradeFLEET are lost to \HOL, and 1 to
+\ENG; the \FTI of \FRA is diminished by \bonus{-1};
+\bparag Result 11+: 2 levels level of French \TradeFLEET are lost to \HOL, and
+2 to \ENG; both \FTI and \DTI of \FRA are diminished by \bonus{-1};
+\bparag \HOL chooses first the \TradeFLEET it takes, then \ENG chooses.
+\bparag If \FRA is \CATHCR, the level chosen by \HOL are lost but not received
+by \HOL; \ENG gains the levels if it is Catholic, if not those levels are lost
+for everyone.
+\bparag if \ENG is \CATHCR and \FRA is not, \SUE chooses and gains the levels
+instead of \ENG.
+% \aparag Roll 1d10. Add \bonus{+2} if \CATHCR, \bonus{-2} if Protestant. On a
+% result of 6+, one french \COL or \TP (decide at random between all those
+% that exist) is lost.
+\aparag[Undesired policy]
+\bparag If the chosen Heir was Protestant but \FRA is no more Protestant at
+the end of the Wars of Religion, \FRA has a malus of \bonus{-2} to all its
+colonial actions during the period IV and its \FTI and \DTI are diminished by
+a further 1.
+\bparag If the chosen Heir was \CATHCO but \FRA is \CATHCR at the end of the
+Wars of Religion, \FRA has a malus of \bonus{-1} to all its colonial actions
+during the period IV.  Each event \RD obtained in period IV has a chance to
+make appear a second \REVOLT \faceplus in \FRA. Roll 1d10: 1-3
+\provincePoitou, 4-6: \provinceGuyenne, 7-10: none.
+\bparag If the chosen Heir was \CATHCR but \FRA is no more \CATHCR, \FRA has a
+malus of \bonus{-2} to all its Technological actions during the period IV.
+Each event \RD obtained in period IV has a chance to make appear a second
+\REVOLT \faceplus in \FRA. Roll 1d10: 1-3 \provinceArmor, 4-6:
+\provinceOrleanais, 7-10: none.
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: pIII FWR PBNew malus Ligue Ile de unbesieged l'Hospital pII
+% LocalWords: Barthelemy Casimir Schmalkaldic Mayenne Conciliant reroll Jym
+% LocalWords: TODO

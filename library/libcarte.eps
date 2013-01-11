@@ -1,0 +1,580 @@
+HOMEDIR(/library/common.eps)! include
+%X (file) copymap
+/copymap {
+    CURRENTDIR(/)! exch !
+/realoutputfile cpstream def
+copyfile
+/zoneopacity 0.15 defaultvalue
+% high precision: uncomment below
+% /zoneopacity 0.075 defaultvalue
+
+<< /Type /ExtGState /CA zoneopacity /ca zoneopacity >> (GSalphaZone) defobj
+(GSalphaZone) /pagegss push
+(%Jean-Christophe Dubacq est l'auteur de ce fichier.\n)out
+}def
+%X (img:foo) x y putsymbol
+/putsymbol {
+    0.8 3 1 roll begints useimage endts
+}def
+%X (img:foo) x y scale putxsymbol
+/putxsymbol {
+    3 1 roll begints useimage endts
+}def
+%X (img:orageN) x y (Name) textbelow orage
+%X N risque
+/orage {
+    /below exch def
+    /seaname exch def
+    /seay exch def /seax exch def
+    /seaimage exch def
+    0.675 seax seay begints
+	seaimage useimage
+	seaname (\n) search {
+	    80 below{202}{-42}ifelse 300 42 ab centertext pop
+	    80 below{160}{-84}ifelse 300 42 ab  centertext
+	} { (%) out dup out (\n) out
+	    80 below{160}{-42}ifelse 300 42 ab  centertext
+	} ifelse
+    endts
+} def
+
+/risque {
+    dup 1 sub 1 string cvs /seaname exch def
+    dup 2 exch sub 1 string cvs /below exch def
+    (+) exch 1 string cvs ! /seaimage exch def
+    /seax seax 125 add def
+    /seay seay 3 add def
+    (q 1 )seaname !( 0 rg\n)! out
+    newpath seax seay 20 add moveto seax 20 sub seay 20 add 20 0 360
+    arc closepath (h f\n) exporttopdf
+    below ( )! below !( )! below !( rg\n)! out
+    seaimage seax 20 sub seay 4 add 32 32  ab  centertext
+    (Q\n) out
+}def
+%X [(Name) X Y textbelow] carre
+/carre {
+    aload pop carresize exch{-1 mul 24 sub}if add
+    3 -1 roll (C#) exch ! @ (C#) anchorsearch {pop}if 3 1 roll
+    carresize 2 mul 24 ab centertext
+}def
+/counter 0 def
+/zpp {%[colora] [colorb] name2 name x y pen
+    /pen exch def /y exch def /x exch def
+    /name exch def
+    /name2 exch def
+    /col1 exch def
+    /col0 exch def
+    deffunlin
+    deffunlin
+    objdict (ShadingSquare)toto ! known not {
+	<</Coords [30 30 50 170] /Extend [true true] /Function
+	(FunctionLin)toto ! R/ShadingType 2/ColorSpace/DeviceRGB>>
+	(ShadingSquare)toto ! defobj
+    }if
+    (ShadingSquare)toto ! /pageshadings push
+    1 x y begints
+    (30 30 140 140 re W n /ShadingSquare)out toto out( sh n\n)out
+    1.5 55 55 begints (corsaire) xobject endts
+    /counter counter 1 add def
+    pen display ( g )out
+    name 100 30 140 30  ab  centertext
+    name2 100 140 140 30  ab  centertext
+    endts
+}def
+/zpc {%[colora] [colorb] value value2 name x y pen image
+    /ximage exch def /pen exch def /y exch def /x exch def
+    /name exch def
+    /value2 exch 8 string cvs def
+    /value exch 5 string cvs def
+    /col1 exch def
+    /col0 exch def
+    deffunlin
+    objdict (ShadingCircle)toto ! known not {
+	<</Coords [60 140 0 100 100 100] /Function (FunctionLin)
+	toto ! R /ShadingType 3 /ColorSpace /DeviceRGB >>
+	(ShadingCircle)toto ! defobj
+    }if
+    (ShadingCircle)toto ! /pageshadings push
+   1 x y begints
+   (200 100 m 200 155.228333 155.228333 200 100 200 c 44.7732086 200\n)out
+   (0 155.228333 0 100 c 0 44.7732086 44.7732086 0 100 0 c 155.228333 0\n)out
+   (200 44.7732086 200 100 c /ShadingCircle)out toto out( sh n\n)out
+   ximage 1 65 38 begints useimage endts
+   pen display ( g )out
+   name 100 10 110 30 (FontArialNarrow) centertext
+   (0 g )out value 105 67 110 48  ab  centertext
+   value2 dup(0)eq{pop}{105 122 110 24  ab  centertext}ifelse
+   endts
+   /counter counter 1 add def
+}def
+
+/zmc {%X value x y pirates image zm
+    /ximage exch def /pirates exch def /y exch def /x exch def
+    /value2 exch 5 string cvs def
+    /value exch 5 string cvs def
+    /col0 zneu def /col1 zneu2 def
+    deffunlin
+    objdict (ShadingSquare)toto ! known not {
+	<</Coords [30 30 50 170] /Extend [true true] /Function
+	(FunctionLin)toto ! R/ShadingType 2/ColorSpace/DeviceRGB>>
+	(ShadingSquare)toto ! defobj
+    }if
+    (ShadingSquare)toto ! /pageshadings push
+    0.8 x y begints
+    (q 30 30 140 140 re W n /ShadingSquare)toto !( sh\n)! out
+    ximage 1 65 38 begints useimage endts
+    (0 g )out value 105 67 110 48  ab  centertext
+    value2 dup(0)eq{pop}{105 122 110 24  ab  centertext}ifelse
+    /seax 200 def
+    /seay 30 def
+    (Q\n) out
+    /first true def
+    pirates {
+      (0 0 0 rg\n) out
+      newpath seax seay 20 add first{5 add}if moveto seax 20 sub seay 20 add 20 first{5 add}if 0 360
+      arc closepath (h f\n) exporttopdf
+      (1 1 1 rg\n) out
+      1 string cvs
+      first{(≥)exch !}if
+      seax 20 sub seay 40 40  ab  centertext
+      /seay 50 seay add def
+      /first false def
+    } forall
+    endts
+}def
+
+/zm {(img:bateau) zmc}def
+/zp {(img:bateau) zpc}def
+/zmg {(img:flandrebrabant) 3 index 3 index 8 3 roll (img:bateau) zmc putsymbol}def
+/zph {(img:oresund) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+/zpg {(img:flandrebrabant) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+
+%X begindetroit
+%X [x1 y1 a1 x2 y2 a2 tension] detroit
+%X enddetroit
+/begindetroit {
+0.5 0.75 beginbialpha
+(2 w 0.5 0 0 rg 1 1 1 RG )out
+} def
+/enddetroit {endalpha}def
+/detroit { aload pop
+     /ra 10 def /cxx 3 def /impulsion exch cxx mul def
+     /a2 exch def /y2 exch def /x2 exch def
+     /a1 exch def /y1 exch def /x1 exch def 
+    /t1 ra a1 cos mul def /u1 ra a1 sin mul def
+    /t2 ra a2 cos mul def /u2 ra a2 sin mul def
+    (S\n)
+    (f\n)
+    2 {
+    x1 display space y1 display ( m\n)out
+    x1 t1 cxx mul add u1 sub display space y1 u1 cxx mul add t1 add display ( l\n)out
+    x1 t1 cxx mul add u1 0.5 mul sub display space y1 u1 cxx mul add t1 0.5 mul add display ( l\n)out
+    x1 t1 impulsion mul add u1 0.5 mul sub display space y1 u1 impulsion mul add t1 0.5 mul add display space
+    x2 t2 impulsion mul add u2 0.5 mul add display space y2 u2 impulsion mul add t2 0.5 mul sub display space
+    x2 t2 cxx mul add u2 0.5 mul add display space y2 u2 cxx mul add t2 0.5 mul sub display ( c\n)out
+    x2 t2 cxx mul add u2 add display space y2 u2 cxx mul add t2 sub display ( l\n)out
+    x2 display space y2 display ( l\n)out
+    x2 t2 cxx mul add u2 sub display space y2 u2 cxx mul add t2 add display ( l\n)out
+    x2 t2 cxx mul add u2 0.5 mul sub display space y2 u2 cxx mul add t2 0.5 mul add display ( l\n)out
+    x2 t2 impulsion mul add u2 0.5 mul sub display space y2 u2 impulsion mul add t2 0.5 mul add display space
+    x1 t1 impulsion mul add u1 0.5 mul add display space y1 u1 impulsion mul add t1 0.5 mul sub display space
+    x1 t1 cxx mul add u1 0.5 mul add display space y1 u1 cxx mul add t1 0.5 mul sub display ( c\n)out
+    x1 t1 cxx mul add u1 add display space y1 u1 cxx mul add t1 sub display ( l h\n)out out} repeat
+}def
+
+/f1 (FontChampionCourrierNormal) def
+/f2 (FontChampionExpertNormal) def
+/f3 (FontChampionTraditionNormal) def
+/ab (FontArialNarrow-Bold) def
+/an (FontArialNarrow) def
+/ai (FontArialNarrow-Italic) def
+
+
+%%% Grandes regions
+/otherlanguage false def
+/provind [
+    [(img:indigene00) 0  0 0.5]% Indien apache
+    [(img:indigene01) 8  0 0.5]% Indien iroquois
+    [(img:indigene02) 0  0 0.5]% Mongol
+    [(img:indigene03) 0  3 0.5]% Japonais
+    [(img:indigene04) 0  0 0.5]% Chinois
+    [(img:indigene05) 0  3 0.5]% Hindou
+    [(img:indigene06) 3  0 0.5]% Zoulou
+    [(img:indigene07) 3  0 0.5]% Mamelouk
+    [(img:indigene08) 0  5 0.5]% Brésilien
+    [(img:indigene09) 4  0 0.5]% Perse
+    [(img:indigene10) 0  4 0.5]% Oceanie
+    [(img:indigene11) 3  0 0.5]% Azteque
+    [(img:indigene12) 1  0 0.5]% Inca
+    [(img:indigene13) 0  4 0.5]% Mapuche
+    [(img:indigene14) 0 10 0.5]% Poissons
+    [(img:indigene15) 0  0 0.5]% Indochine
+    [(img:indigene16) 0  5 0.5]% Baleines
+    [(img:indigene17) 0 15 0.5]% Kangourous
+    [(img:indigene18)10  0 0.5]% Indien pacifique
+    [(img:indigene19) 0  6 0.5]% Ours polaires
+    [(img:indigene20)10  0 0.5]% Indiens du nord
+    [(img:indigene21) 9  0 0.5]% Caribes
+    [(img:indigene22) 9  0 0.5]% Napoleons
+    [(img:indigene23) 8  0 0.5]% Masai
+] def
+/provincepens <<
+    (1 0 0) (1 1 1)
+    (0 0 1) (1 1 0)
+    (1 1 0) (0 0 0)
+    (0 0 0) (1 1 0)
+    (1 1 1) (0 0 0)
+    (0 0.6 0) (1 1 1)
+    (1 0 1) (0 0 0)
+    (0 1 1) (0 0 0)
+    (0.3 0.3 0.3) (1 1 1)
+    (0.4 0.4 0.8) (1 1 1)
+    (0.2 0.5 0.5) (1 1 0)
+>> def
+/provincesetup {
+    /provcode exch def
+    /provres ressdict provcode get 3 get def
+    /provstyle ressdict provcode get 2 get def
+    /provcarac2 ressdict provcode get 1 get def
+    /provcarac1 ressdict provcode get 0 get def
+    /provcolor provincecolors provcode get def
+    /provpen (1 0 0) def
+    provincepens provcolor known {/provpen provincepens provcolor get def}if
+    /provx resspos provcode get 0 get def
+    /provy resspos provcode get 1 get def
+    /provname [
+	resspos provcode get 3 get{(\n)search{exch pop exch}{exit}ifelse}loop
+    ] def
+    40 (FontArialNarrow-Bold) setbasefont
+    /provw0 0 provname {_ stringwidth 2 copy lt{exch}if pop}forall 
+	provmax 2 copy gt {exch} if pop def
+    40 (FontArialNarrow) setbasefont
+    /provw1 provcarac1 _ stringwidth def
+    /provw2 provcarac2 _ stringwidth def
+    /provw3 60 def
+} def
+/provinceframe {/supwidth exch def
+    0.5 beginalpha
+	provpen out( RG )out provcolor out( rg\n) out
+	provx display space
+	provy provht sub display space provwidth supwidth add display
+	space provht display ( re f\n) out
+    endalpha
+    provpen out( RG )out provpen out( rg\n) out
+    /provpoints [provx provy provht sub provwidth supwidth add provht] def
+} def
+/provincecolindh {/bn exch def /by exch def /bx exch def
+    provind bn get 3 get
+    bx provind bn get 1 get add by provind bn get 2 get add
+    begints provind bn get 0 get useimage endts
+  provcarac1
+  bx provw3 add provwspace add
+  by
+  200
+  40 (FontArialNarrow) lefttext
+  
+  provcarac2
+  bx provw3 add 2 provwspace mul add provw1 add
+  by
+  200
+  40 (FontArialNarrow) lefttext
+} def
+/provincecolindv {/bn exch def /by exch def /bx exch def
+    provind bn get 3 get
+    bx provind bn get 1 get add by provind bn get 2 get add
+    begints provind bn get 0 get useimage endts
+  provcarac1
+  bx provw3 add 5 add
+  by 40 add
+  provwidth provw3 sub 15 sub
+  40 (FontArialNarrow) lefttext
+  
+  provcarac2
+  bx provw3 add 5 add
+  by
+  provwidth provw3 sub 15 sub
+  40 (FontArialNarrow) lefttext
+} def
+/provinceres1 {
+    j 0 get 2 get add putsymbol
+    j 1 get dup 2 get exch dup 1 get exch 0 get 3 {display space}repeat
+    (rg 0 0 0 RG 2 w\n) out
+    j 0 get 4 get 0 eq
+    {	bx 2 add display space by 2 add display ( 36 36 re f\n) out
+	bx 2 add display space by 2 add display ( 36 36 re S\n) out
+    }
+    {j 0 get 4 get 1 eq
+    {	newpath bx 38 add by 20 add moveto bx 20 add by 20 add 18 0 360
+	arc closepath (h f\n) exporttopdf
+	newpath bx 38 add by 20 add moveto bx 20 add by 20 add 18 0 360
+	arc closepath (h S\n) exporttopdf
+    }
+    {	newpath bx 20 add by 2 add moveto bx 38 add by 20 add lineto
+	bx 20 add by 38 add lineto bx 2 add by 20 add lineto closepath
+	(h f\n) exporttopdf
+	newpath bx 20 add by 2 add moveto bx 38 add by 20 add lineto
+	bx 20 add by 38 add lineto bx 2 add by 20 add lineto closepath
+	(h S\n) exporttopdf
+    }
+    ifelse}ifelse
+    j 2 get dup 2 get exch dup 1 get exch 0 get 3 {display space}repeat
+    (rg\n) out
+    provres i get 1 get bx 20 add by 40 40(FontArialNarrow)centertext
+}def
+/provinceres {
+    j 0 get 0 get bx j 0 get 1 get add by 40 sub provinceres1
+}def
+/provinceresv {
+    j 0 get 0 get bx 40 add j 0 get 1 get add by provinceres1
+}def
+/provinceh {
+    /provmax 230 def
+    provincesetup 
+    /provwidth
+      provw0
+      provw1 5 provw2 add add
+      2 copy lt {exch} if pop
+    provw3 15 add add def
+    /provwspace provwidth provw3 5 add provw1 add provw2 add sub 3 div def
+    /provht 80 def
+    provres length 45 mul provinceframe 
+    provname 0 get provx provwidth provw3 sub 5 sub 2 div add provw3 add 5 add
+    provy 40 sub provmax 40
+    (FontArialNarrow-Bold) centertext
+    provx 5 add provy 80 sub provstyle provincecolindh
+    0 1 provres length 1 sub {
+	/i exch def /j couleurproduitsdict provres i get 0 get get def
+	/bx provx provwidth add i 45 mul add def
+	/by provy 40 sub def
+	provinceres
+    } for
+} bind def
+/provincev {
+    /provmax 120 def
+    provincesetup
+    /provwidth provw0
+    provw3 provw1 5 add add 2 copy lt {exch} if pop
+    provw3 provw2 5 add add 2 copy lt {exch} if pop
+    provres length 0 gt {85 2 copy lt {exch} if pop} if
+    10 add def
+    /provwspace provwidth provw3 5 provw1 provw2 2 copy lt {exch} if pop
+    add add sub 2 div def
+    /provht 80 provres length provname length add 40 mul add def
+    0 provinceframe
+    /decy 40 def
+    provname {provx provwidth 2 div add provy decy sub provmax 40
+    (FontArialNarrow-Bold) centertext /decy decy 40 add def}forall
+    provx provwspace add provy 40 decy add sub
+    provstyle provincecolindv
+    /provwspace
+      provwidth provres length 40 mul sub provres length 1 add div def
+    0 1 provres length 1 sub {
+	/i exch def /j couleurproduitsdict provres i get 0 get get def
+	/bx provx provwidth 85 sub 2 div add def
+	/by provy 80 decy add i 40 mul add sub def
+	provinceresv
+    } for
+} bind def
+/link {
+    /yy exch def /xx exch def dup cvi /ll exch def dup cvi sub /lp exch def
+    0.5 beginalpha
+	provcolor out( RG )out provcolor out( rg 1 J 4 w\n) out
+	/xxp provpoints 0 get
+	    ll 0 eq {provpoints 2 get lp mul add}if
+	    ll 1 eq {provpoints 2 get add}if
+	    ll 2 eq {provpoints 2 get 1 lp sub mul add}if
+	def
+	/yyp provpoints 1 get
+	    ll 1 eq {provpoints 3 get lp mul add}if
+	    ll 2 eq {provpoints 3 get add}if
+	    ll 3 eq {provpoints 3 get 1 lp sub mul add}if
+	def
+	xxp display space yyp display ( m\n)out
+	xx display space yy display ( l\n)out
+	/aa yy yyp sub xx xxp sub atan def
+	xx 10 aa 135 sub cos mul add display space
+	yy 10 aa 135 sub sin mul add display ( l\n)out
+	xx 10 aa 135 add cos mul add display space
+	yy 10 aa 135 add sin mul add display ( l\n)out
+	xx display space yy display ( l b\n)out
+    endalpha
+}bind def
+
+/province {{provinceh}{provincev}ifelse}def
+
+%X (img:truc) (region) tordesillas
+/tordesillas {/pays exch def resspos pays get dup 0 get 25 sub exch 1 get 60 sub resspos pays get 2 get not {80 sub}if putsymbol} def
+
+/shadepen (0 0 0) def
+/shaderatio 1 def
+/shadeskip 0 def
+
+
+%X col0 col1 x y N size {i do_something} hshade
+/hshade { /boucle 1 index /nop eq not def
+    /prog exch def /size exch def /N exch def /ystart exch def /xstart exch def
+    /col1 exch def /col0 exch def
+    /xsize size shaderatio mul def
+    1 xstart ystart begints
+    /xtrace xstart def /ytrace ystart def
+    (5 w )out shadepen out( RG )out shadepen out( rg\n)out
+    (q )out xsize N mul display ( 0 0 )out size display space
+    ( 0 0 cm 0 0 1 1 re W n\n)out
+    useshade( Q\n)out
+    1 1 N 1 sub shadeskip sub {/i exch def
+    xsize i mul display ( 0 m\n) out
+    xsize i mul display space size display ( l\n) out
+    } for
+    (0 0 )out xsize N mul display space size display ( re S\n)out
+    boucle{1 1 N {
+	/i exch def
+	1 xsize i 1 sub mul 0 begints
+        /xtrace xstart xsize i 1 sub mul add def
+	/prog cvx exec
+	endts
+    } for}if
+    endts
+    /xstart xstart xsize N mul add def
+}def
+/vshade { /boucle 1 index /nop eq not def
+    /prog exch def /size exch def /N exch def /ystart exch def /xstart exch def
+    /col1 exch def /col0 exch def
+    1 xstart ystart begints
+    /xtrace xstart def /ytrace ystart def
+    (5 w )out shadepen out( RG )out shadepen out( rg\n)out
+    (q 0 )out size N mul display space size display space
+    ( 0 0 0 cm 0 0 1 1 re W n\n)out
+    useshade( Q\n)out
+    1 1 N 1 sub {/i exch def
+    (0 )out size i mul display ( m\n) out
+    size display space size i mul display( l\n) out
+    } for
+    (0 0 )out size display space size N mul display ( re S\n)out
+    boucle {1 1 N {
+	/i exch def
+	1 0 size i 1 sub mul begints
+        /ytrace ystart size i 1 sub mul add def
+	/prog cvx exec
+	endts
+    } for}if
+    endts
+    /ystart ystart size N mul add def
+}def
+/yshade { /boucle 1 index /nop eq not def
+    /prog exch def /size exch def /N exch def /ystart exch def /xstart exch def
+    /col1 exch def /col0 exch def
+    1 xstart ystart begints
+    /xtrace xstart def /ytrace ystart def
+    (5 w )out shadepen out( RG )out shadepen out( rg\n)out
+    (q 0 )out size N mul -1 mul display space size display space
+    ( 0 0 )out size display( cm 0 0 1 1 re W n\n)out
+    useshade( Q\n)out
+    1 1 N 1 sub {/i exch def
+    (0 )out size i mul -1 mul size add display ( m\n) out
+    size display space size i mul -1 mul size add display( l\n) out
+    } for
+    (0 )out size display space size display space size N mul -1 mul display ( re S\n)out
+    boucle {1 1 N {
+	/i exch def
+	1 0 size i 1 sub mul -1 mul begints
+        /ytrace ystart size i 1 sub mul -1 mul add def
+	/prog cvx exec
+	endts
+    } for}if
+    endts
+    /ystart ystart size N mul sub def
+}def
+
+
+%% Pays
+/zpor	color_dict (portugal) get 0 get def
+/zpor2	color_dict (portugal) get 1 get def
+/ztur	color_dict (turquie) get 0 get def
+/ztur2	color_dict (turquie) get 1 get def
+/zspa 	color_dict (espagne) get 0 get def
+/zspa2  color_dict (espagne) get 1 get def
+/zhol	color_dict (hollande) get 0 get def
+/zhol2  color_dict (hollande) get 1 get def
+/zfra	color_dict (france) get 0 get def
+/zfra2	color_dict (france) get 1 get def
+/zrus	color_dict (russie) get 0 get def
+/zrus2	color_dict (russie) get 1 get def
+/zeng	color_dict (angleterre) get 0 get def
+/zeng2	color_dict (angleterre) get 1 get def
+/zpru	color_dict (prusse) get 0 get def
+/zpru2	color_dict (prusse) get 1 get def
+/zpol	color_dict (pologne) get 0 get def
+/zpol2	color_dict (pologne) get 1 get def
+/zsue   color_dict (suede) get 0 get def
+/zsue2	color_dict (suede) get 1 get def
+/zven	color_dict (venise) get 0 get def
+/zven2	color_dict (venise) get 1 get def
+/zhab	color_dict (habsbourg) get 0 get def
+/zhab2	color_dict (habsbourg) get 1 get def
+/zneu   [1 0.9375 1]def
+/zneu2  [0 0.3125 0.625]def
+/countrynames <<
+    /eng		(Anglia)
+    /fra		(Francia)
+    /spa		(Hispania)
+    /hab		(Habsburgum)
+    /hol		(Hollandia)
+    /pol		(Polonia)
+    /por		(Portugallia)
+    /pru		(Prussia)
+    /rus		(Russia)
+    /sue		(Suecia)
+    /tur		(Turcia)
+    /ven		(Venetia)
+>> def
+/presenteproduit {/by exch def/bx exch def/i exch def
+    /j couleurproduitsdict i get def
+    2 bx by begints
+    j 1 get {display space}forall (rg 0 0 0 RG 1 w )out
+    j 0 get 4 get 0 eq
+    {(2 2 36 36 re f 2 2 36 36 re S\n) out}
+    {j 0 get 4 get 1 eq
+    {newpath 38 20 moveto 20 20 18 0 360
+    arc closepath (h f\n) exporttopdf
+    newpath 38 20 moveto 20 20 18 0 360
+    arc closepath (h S\n) exporttopdf}
+    {newpath 20 2 moveto 38 20 lineto
+    20 38 lineto 2 20 lineto closepath (h f\n) exporttopdf
+    newpath 20 2 moveto 38 20 lineto
+    20 38 lineto 2 20 lineto closepath (h S\n) exporttopdf}
+    ifelse}ifelse
+    endts
+    j 0 get 0 get 1 bx 15 add j 0 get 1 get add by 15 add j 0 get 2 get add begints useimage endts
+}def
+
+/inittrace {
+    /tracesfile CURRENTDIR(/moretraces.js)!(w)file def
+    tracesfile (var contours;\nif \(contours == undefined\) {contours=[];}\ncontoursbase=contours.length;\n\n) writestring
+    tracesfile (var contourshooks;\nif \(contourshooks == undefined\) {contourshooks=[];}\n\n) writestring
+    tracesfile (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[')writestring
+    /mapname exch def tracesfile mapname writestring
+    tracesfile (']={s:contours.length};\n\n)writestring
+}def
+/tracefmt {cvi 6 string cvs writestring}bind def
+/writetrace {
+    % (name) west south width height  => ---
+    tracesfile (contours.push\({n:') writestring
+    tracesfile 5 index writestring
+    tracesfile (',t:2,o:') writestring
+    tracesfile 6 -1 roll writestring
+    tracesfile (',b:[) writestring
+    tracesfile 4 index xfact mul xbase add tracefmt
+    tracesfile (,) writestring
+    tracesfile 3 index yfact mul ybase add tracefmt
+    tracesfile (,) writestring
+    tracesfile 5 -1 roll 4 -1 roll add xfact mul xbase add tracefmt
+    tracesfile (,) writestring
+    tracesfile 3 1 roll add yfact mul ybase add tracefmt
+    tracesfile (]}\);\n) writestring
+}def
+/finishtrace {
+    tracesfile (\n\ncontourssections[') writestring
+    tracesfile mapname writestring
+    tracesfile (']['e']=contours.length;\n) writestring
+    tracesfile closefile
+}def

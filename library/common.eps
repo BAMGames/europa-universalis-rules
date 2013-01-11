@@ -1,0 +1,79 @@
+HOMEDIR(/library/xobjects.eps)! include
+
+/couleurproduitsdict <<
+    (epices)   [[(img:epices)  0 8 1 1][1   0   0][1 1 1][8 16](Spices)]
+    (sucre)    [[(img:sucre)   0 1 1 0][0   1   0][0 0 0][10 15](Sugar)]
+    (sucrebr)  [[(img:sucre)   0 1 1 0][0   .5  0][0 1 0][10 15](Sugar \(Brazil\))]
+    (peche)    [[(img:peche)   0 9 1 2][0   0   1][1 1 0][7 12](Fish)]
+    (america)  [[(img:america) 0 1 1 0][0   1   1][0 0 0][7 15](Products of America)]
+    (soie)     [[(img:soie)    0 9 1 1][1   1   1][0 0 0][10 17](Silk)]
+    (sel)      [[(img:sel)     0 9 1 1][1   0   1][0 0 0][7 15](Salt)]
+    (bois)     [[(img:bois)   0 11 1 2][.75 .25 .25][0 0 0][](Wood)]
+    (coton)    [[(img:coton)   0 4 1 0][1   1   0][0 0 0][7 13](Cotton)]
+    (cotonas)  [[(img:coton)   0 4 1 0][1   1   .75][0 0 0][7 13](Cotton \(India\))]
+    (peaux)    [[(img:peaux)   0 12 1 2][.75 0 .75][1 1 0][8 12](Furs)]
+    (orient)   [[(img:orient)  4 0 1 1][1   .75 0][0 0 0][9 16](Products of Orient)]
+    (esclaves) [[(img:esclaves)1 0 0 1][0.25  0.25  0.25][1 1 0][10 13](Slaves)]
+    (inflation)[[(img:inflation)-1 2 0 0][0 0 0] [1 1 1][](Inflation)]
+    (areacold) [[(img:areacold)5 5 1 2][0.9 0.9 1][0 0 0][0 20](Cold Area)]
+>> def
+
+/translationdict <<
+    (Épices) (Spices)
+    (Pêche) (Fishing)
+    (Sucre) (Sugar)
+    (Sucre \(Brésil\)) (Sugar \(Brazil\))
+    (Coton) (Cotton)
+    (Produits d’Amérique) (Prod. of America)
+    (Fourrures) (Furs)
+    (Sel) (Salt)
+    (Bois) (Wood)
+    (Soie) (Silk)
+    (Esclaves) (Slaves)
+    (Produits d’Orient) (Prod. of Orient)
+    (Caraque)	(Carrack)
+    (Médiéval)	(Medieval)
+    (Renaissance)	dup
+    (Galion)	(Galleon)
+    (Tercios)	dup
+    (Arquebuse)	(Arquebus)
+    (Caraque)	(Carrack)
+    (Galéasse)	(Galleass)
+    (Não-Galeón)	(Não-Galeón)
+    (Voile latine)	(Lateen sail)
+    (Mousquet)	(Musket)
+    (Baroque)	dup
+    (Batterie)	(Battery)
+    (Vaisseau)	(Vessel)
+    (Manœuvre)	(Manoeuvre)
+    (Ship-of-line)	(Ship-of-line)
+    (Dentelle)	(Lace War)
+    (Seventy-Four)	(74 guns)
+    (Neutres)	(Neutrals)
+    (Tour)	(Turn)
+    (Round)	dup
+    (Année ) (Year )
+>>def
+/addtotranslation {
+    /translationdict <<3 -1 roll {}forall translationdict{}forall>>def
+}def
+
+/cblack [0 0 0] def
+/cwhite [1 1 1] def
+/cyello [1 1 0] def
+/cred [1 0 0] def
+
+/color_dict <<
+    (angleterre)	[[1   .1  .6 ] [1   0   0  ] cblack cblack]
+    (espagne)		[[1   1   0  ] [1   .75 0  ] cblack cblack]
+    (france)		[[.1  .1  .6 ] [.1  .6  .6 ] cyello cwhite]
+    (habsbourg)		[[1   1   0  ] [0   0   0  ] cblack cwhite]
+    (hollande)		[[.5  .5  .9 ] [.8  .8  .2 ] cyello cblack]
+    (portugal)		[[.9  1   .75] [.75 .95 .5 ] cblack cblack]
+    (prusse)		[[.75 .75 .75] [.25 .25 .25] cblack cyello]
+    (russie)		[[.55 .25 .1 ] [.95 .95 .9 ] cwhite cblack]
+    (suede)		[[.7  .85 .9 ] [0   0   1  ] cblack cyello]
+    (turquie)		[[.5  .6  .5 ] [0   .6  0  ] cblack cwhite]
+    (venise)		[[.75 0   0  ] [1   .8  0  ] cwhite cblack]
+    (pologne)		[[1   .75 .75] [.75 .25 .25] cblack cwhite]
+>>def

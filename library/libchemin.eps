@@ -1,0 +1,711 @@
+/provinceshook {} def
+/schematic systemdict /SCHEMATIC  known def
+/traces systemdict /TRACES  known def
+/dotgraph systemdict /GRAPH  known def
+/pdfoutput systemdict /PDFOUTPUT known def
+/plain systemdict /PLAIN known def
+/partplain 0 def
+usertime srand
+/defaultvalue{1 index where {pop pop pop}{def}ifelse}def
+% Lorsqu'on fait le fichier PS, précision des dégradés
+% precision0 est la taille caractéristique du dégradé
+% Les dessins internes sont transformés en lignes (precision1)
+% precision2 est la vitesse de décroissance du dégradé
+%/highprecision true def
+/highprecision where {pop}{/highprecision false def}ifelse
+/precision0 110 def
+/precision1 10 def
+/precision2 -20 def
+
+% Idem pour le fichier PDF (precision0 est réutilisé)
+
+/precision3 200 def
+/precision4 -10 def
+/precision7 -10 def
+/zoneopacity 0.15 exch def
+
+% Pour supprimer la transformation en ligne 
+/allege {precision3 setflat flattenpath}bd
+%/allege{}def
+highprecision {
+    /precision4 -5 def
+    /zoneopacity 0.075 exch def
+    /precision7 -20 def
+    /allege{}def
+}if
+
+
+/! { 2 copy length exch length exch 1 index add string dup 0 6 -1
+    roll putinterval dup 4 2 roll exch putinterval} bind def	
+/currentpointxy { currentpoint 0.5 add cvi exch 0.5 add cvi 
+}def
+pdfoutput {/carrefile CURRENTDIR(/carres.eps)!(w)file def}if
+/carrenum -1 def
+/carre { /rough exch def /myname exch def /myutf exch def /mypos exch def /carrenum carrenum 1 add def /myy exch def /myx exch def (carre)
+carrenum 2 string cvs ! cvn beginpath
+rough {
+myx carresize sub myy carresize sub m
+myx carresize add myy carresize sub l
+myx carresize add myy carresize add l
+myx carresize sub myy carresize add l
+myx carresize sub myy carresize sub l
+endpath
+}{/css carresize 0.8 mul def
+myx css sub myy carresize sub m
+myx css add myy carresize sub l
+myx carresize add myy css sub l
+myx carresize add myy css add l
+myx css add myy carresize add l
+myx css sub myy carresize add l
+myx carresize sub myy css add l
+myx carresize sub myy css sub l
+myx css sub myy carresize sub l
+endpath
+}ifelse
+(carre) myname ! (carre) carrenum 2 string cvs ! cvx exec def
+pdfoutput {
+    carrefile (carredict /) writestring
+    carrefile myname writestring
+    carrefile ( [ \() writestring
+    carrefile myutf writestring
+    carrefile (\)) writestring
+    carrefile myx 4 string cvs writestring
+    carrefile ( ) writestring
+    carrefile myy 4 string cvs writestring
+    carrefile ( ) writestring
+    carrefile mypos 1 eq {(false)}{(true)}ifelse writestring
+    carrefile ( ] put\n) writestring}if
+} def
+pdfoutput {carrefile (/carresize )carresize 3 string cvs( def\n)! ! writestring
+carrefile (/carredict 100 dict def\n/provincecolors 100 dict def\n) writestring
+}if
+/currentpointdisp { jumpingdict pr known {pop}{print
+    currentpointxy 4 string cvs print ( ) print 4 string cvs print ( ) print
+    pr 100 string cvs print jumpingdict pr known {(:) print jumpingdict pr get print}if (\n) print}ifelse
+}def
+/debugclosed {
+    lastmx -1 eq lastmy -1 eq and {
+            (%Path not opened:) currentpointdisp
+    }if
+    currentpointxy lastmx eq exch lastmy eq and not {
+	    (%Path badly closed:) currentpointdisp (%) out
+            currentpointxy display space lastmx display space
+            lastmy display space
+             display
+            (\n) out
+    }if
+}def
+/debugjump {
+    (%Jumping:) currentpointdisp
+}def
+/debugdiscpath {
+    (%Discontinuous path:) currentpointdisp
+}def
+/out {print} bd
+/sdisplay { 20 string cvs out } bd
+/display { round cvi 10 string cvs out } bd
+/space {( )out} bd
+pdfoutput plain or{
+    /crgb [-1 -1 -1]def
+    /cfrgb [-1 -1 -1]def
+    /ccw 1 def
+    /ccj 1 def
+    /savestateS {/ccw currentlinewidth def /ccj currentlinecap def /crgb [currentrgbcolor] def}def
+    /savestateF {/ccw currentlinewidth def /ccj currentlinecap def /cfrgb [currentrgbcolor] def}def
+    /comparestateS {
+	currentlinewidth ccw eq not {currentlinewidth nd ( w\n) print}if
+	currentlinecap ccj eq not {currentlinecap nd ( J\n) print}if
+	currentrgbcolor crgb 2 get eq 3 -1 roll crgb 0 get eq and exch crgb
+	1 get eq and not{currentrgbcolor 3 -1 1 {-1 roll nds}for(RG\n) print}if
+    }def
+    /comparestateF {
+	currentlinewidth ccw eq not {currentlinewidth nd ( w\n) print}if
+	currentlinecap ccj eq not {currentlinecap nd ( J\n) print}if
+	currentrgbcolor cfrgb 2 get eq 3 -1 roll crgb 0 get eq and exch crgb
+	1 get eq and not {currentrgbcolor 3 -1 1{-1 roll nds}for(rg\n) print}if
+    }def
+    /nd {10 string cvs print}def
+    /nds {nd ( ) print}def
+    /old {systemdict exch get cvx exec}def
+    /newpath {(%newpath\n) pop /newpath old} def
+    /moveto {2 copy exch nds nd ( m\n) print /moveto old}def
+    /curveto {6 copy 6 -1 1 {-1 roll nds}for (c\n) print /curveto old}def
+    /lineto {2 copy exch nds nd ( l\n) print /lineto old}def
+    /closepath {(h\n) print /closepath old}def
+    /stroke {comparestateS savestateS (S\n) print /stroke old} def
+    /fill {comparestateF savestateF (f\n) print /fill old} def
+    (1 j 1 w 1 J\n) print 1 setlinewidth 1 setlinecap 1 setlinejoin
+}if
+realtime srand
+/R {
+    /tmp exch def
+    /i tmp length def
+    [
+    {
+	/j i def
+	{/j j 1 sub def tmp j get length 3 eq {exit}if
+	}loop
+	tmp i 1 sub get lastpoint tmp j get 0 get m=
+	i 2 sub -1 j {/k exch def
+	    tmp k 1 add get dup length 6 eq
+	    {dup 2 2 getinterval aload pop 3 -1 roll 0 2 getinterval aload pop
+		tmp k get lastpoint c}
+	    {pop tmp k get lastpoint l}ifelse
+	}for
+	/i j def i 0 eq {exit}if
+    }loop
+    ]
+}def
+/bumpcolorinterpolate{
+    /a exch def tb_co {a mul} forall ta_co {1 a sub mul 4 -1 roll add}
+    forall setrgbcolor
+}def
+/bumpcolor { 45 sub cos d mul /k exch def ta_co k 0 gt
+{{1 1 index sub k mul add}}
+{{dup k mul add}} ifelse forall setrgbcolor
+} def
+/addpt {2 copy /yy exch yy add def /xx exch xx add def}def
+
+% a province is an array with the first array special and all are moves
+% [ a x y ] is a m move
+% [ x y ] is a l move (line)
+% [ a b c d x y ] is a c move (curve)
+
+% first array is composed of 3 elements color_b color_a type
+
+% color_b is the inner color (main color)
+% color_a is the outer color (secondary color)
+% type is a flag set indicating the properties of the area:
+%   1: is water
+%   2: is special
+%   4: is noman
+%   8: is marcopolo
+%  16: is europe
+
+% For special areas, color_a is not a color but:
+% [ maxwidth steps stopx stopy ]
+% The contour will be drawn up to x=stopx and y=stopy
+
+% a color is an array with three numbers
+
+/prov_fill {
+  /prov_fill_hook exch def /prov_test_hook exch def /pr exch def
+  pr cvx exec prov_test_hook
+    { dup 0 get aload pop pop /ta_co exch def
+    /tb_co exch def /lastmy -1 def /lastpy -1 def /lastpx -1 def /lastmx -1 def
+    newpath dup length 1 sub 1 exch getinterval {    
+      dup length 6 eq
+      {aload pop 2 copy /lastpy exch def /lastpx exch def curveto}
+      {dup length 3 eq
+        {aload pop 2 copy lastpy eq exch lastpx eq and
+          {pop pop pop}
+          {3 -1 roll pop lastmx -1 eq lastmy -1 eq and
+            {}
+            {debugclosed closepath debugjump}
+            ifelse 0.5 add cvi exch 0.5 add cvi exch
+          2 copy /lastmy exch def /lastmx exch def
+          2 copy /lastpy exch def /lastpx exch def
+          moveto}
+          ifelse
+        }
+        {aload pop 2 copy /lastpy exch def /lastpx exch def lineto}
+        ifelse
+      }
+      ifelse
+    }forall
+    debugclosed closepath prov_fill_hook}{pop}ifelse
+}def
+
+/path_trace {/path_trace_finish exch def /path_trace_init exch def /pr exch def
+    /a pr cvx exec def a 0 get lastpoint /yy1 exch def /xx1 exch def
+    a dup length 1 sub get lastpoint /yy2 exch def /xx2 exch def
+    /xx xx1 def /yy yy1 def path_trace_init
+    {false a
+	{ dup length 6 eq
+	    {aload pop addpt curveto}
+	    {dup length 3 eq
+		{exch {debugdiscpath}if aload pop moveto true}
+		{aload pop addpt lineto}ifelse
+	    }ifelse
+	}forall xx1 xx2 eq yy1 yy2 eq and {closepath}if path_trace_finish pop pop
+    }if
+}def
+/only_blocked {
+    dup 0 get 2 get 4 and 0 ne 
+}def
+/only_known {
+    dup 0 get 2 get 8 and 0 ne 
+}def
+/only_water {
+    dup 0 get 2 get 1 and 0 ne 
+}def
+/only_normal {
+    dup 0 get 2 get 2 and 0 eq 
+}def
+/only_land {
+    dup 0 get 2 get 3 and 0 eq
+}def
+/only_spec {
+    dup 0 get 2 get 2 and 0 ne
+}def
+
+/just_draw {
+    stroke
+}def
+/draw_mark {
+    stroke (%MARK\n)print
+}def
+
+/schematic_draw {
+    pr 3 {rand 257 mod 256 div}repeat setrgbcolor 0.1 setlinewidth {newpath 2 copy /tmpy exch def /tmpx exch def 3 0 360 arc fill}{newpath 2 copy /tmpy exch def /tmpx exch def 2 0 360 arc fill}{
+	newpath 2 copy 2 0 360 arc fill tmpx tmpy moveto
+	/tmpy exch def /tmpx exch def
+	4 2 roll lineto tmpx tmpy moveto lineto stroke}{} pathforall 10 string cvs dup length 3 exch 3 sub getinterval newpath xx1 yy1 moveto
+    xx2 yy2 lineto 1 setlinewidth 1 0 0 setrgbcolor stroke xx a length div yy a length div moveto gsave xx2 xx1
+    sub yy2 yy1 sub 0.001 add -1 mul atan rotate dup stringwidth pop -2 div -15
+    rmoveto 0 0 0.7 setrgbcolor show grestore
+}def
+
+/sealines_only {
+    a 0 get 0 get 9 eq
+    4 setlinewidth 1 setlinecap 1 setgray 
+}def
+/frontiers_only {
+    a 0 get 0 get 5 eq
+    4 setlinewidth 1 setlinecap 0 setgray 
+}def
+/traits_only {
+    a 0 get 0 get 4 eq
+    2 setlinewidth 1 setlinecap 0 setgray 
+}def
+/rivers_only {
+    a 0 get 0 get 6 eq
+    6 setlinewidth 1 setlinecap 0 1 1 pop pop pop 0.355 0.575 0.875 setrgbcolor
+}def
+/passes_only {
+    a 0 get 0 get 6.5 eq
+    6 setlinewidth 1 setlinecap 0 1 1 pop pop pop 1 0.8 0.8 setrgbcolor
+}def
+%Ajout par Jym.
+/straitforts_only {
+    a 0 get 0 get 7 eq
+    6 setlinewidth 1 setlinecap 0 1 1 pop pop pop 0.6 0.1 0.1 setrgbcolor
+}def
+%Fin ajout par Jym.
+/frontiersspec_only {
+    specdict pr known
+    a 0 get 0 get 5 eq and
+    4 setlinewidth 1 setlinecap 0 setgray 
+}def
+/riversspec_only {
+    specdict pr known
+    a 0 get 0 get 6 eq and
+    4 setlinewidth 1 setlinecap  0.355 0.575 0.875 setrgbcolor
+}def
+/passesspec_only {
+    specdict pr known
+    a 0 get 0 get 6.5 eq and
+    4 setlinewidth 1 setlinecap 1 0 0 setrgbcolor
+}def
+/all_paths {
+    3 setlinewidth 0 setgray 1 setlinecap true
+}def
+/prov_plainfill {
+    ta_co aload pop setrgbcolor fill
+}def
+
+/prov_medfill {
+    gsave clip
+    gsave 0.5 setgray
+    precision0 6 div setlinewidth stroke grestore
+    grestore
+}def
+/prov_grayfill {
+    0.95 setgray fill
+}def
+
+/prov_richfill {
+    gsave clip
+    gsave tb_co aload pop setrgbcolor fill grestore
+    gsave precision1 setflat flattenpath precision0 precision2 10 {dup precision0 div bumpcolorinterpolate setlinewidth gsave stroke grestore}for grestore
+    grestore}def
+
+/pdfgsave {
+    (q\n) print gsave /ccw ccw /ccj ccj /crgb crgb /cfrgb cfrgb
+}def
+/pdfgrestore {
+    def def def def grestore (Q\n) print
+}def
+
+% fills a province with a pdfgraylevel gray
+/prov_pdfgrayfill {
+    (%) print pr sdisplay (\n) print
+    pdfgsave pdfgraylevel setgray
+    gsave comparestateF savestateF (W f\n) print grestore
+    pdfgrestore
+}def
+
+% strokes a province inner contour with a wide black line.
+/prov_pdfnofill {
+    (%) print pr sdisplay (\n) print
+    pdfgsave 10 setlinewidth
+    gsave comparestateF savestateF (W S\n) print grestore
+    pdfgrestore
+}def
+
+% 
+/prov_pdffill {
+    (%) print pr sdisplay (\n) print
+    pdfgsave tb_co aload pop setrgbcolor
+    gsave comparestateF savestateF (W f\n) print grestore
+    allege
+    precision0 precision4 10 {
+	dup precision0 div bumpcolorinterpolate setlinewidth
+	{exch display ( )out display ( m\n)out}
+	{exch display ( )out display ( l\n)out}
+	{
+            6 -1 roll display space
+            5 -1 roll display space
+            4 -1 roll display space
+            3 -1 roll display space
+            2 -1 roll display space
+            display ( c\n) out
+	}{(h\n) print}pathforall comparestateS savestateS (S\n) print
+    }for
+    pdfgrestore
+}def
+
+/ba /mark load def
+/doclosepath {
+    counttomark 2 sub dup 0 gt {index ea dup dup length 2 sub get 2 get 1 index 1 get dup 2 get 3 -1 roll 2 copy gt {360 add} if add 180 add 2 div 3 exch put}{pop pop} ifelse
+} def
+/ea {]} bind def
+/testlastmove {
+  2 copy .5 add cvi ta_co 3 get eq exch .5 add cvi ta_co 2 get eq and {/pathcounter false def}if
+}def
+/prov_pdffill3 {
+    (%) print pr sdisplay (\n) print
+    pdfgsave (/GSalphaZone gs\n)print tb_co aload pop setrgbcolor
+    gsave comparestateF savestateF (W n\n) print grestore
+    allege
+    ta_co 1 get dup ta_co 0 get sub precision7 div ta_co 0 get {
+	setlinewidth /pathcounter true def
+	{pathcounter
+          {testlastmove exch display ( )out display ( m\n)out}
+	  {pop pop}ifelse}
+	{pathcounter
+          {testlastmove exch display ( )out display ( l\n)out}
+          {pop pop}ifelse}
+	{pathcounter
+	  { testlastmove
+            6 -1 roll display space
+            5 -1 roll display space
+            4 -1 roll display space
+            3 -1 roll display space
+            2 -1 roll display space
+            display ( c\n) out
+	  }{6{pop}repeat}ifelse
+	}
+	{pathcounter {(h\n) print}if}
+	pathforall comparestateS savestateS (S\n) print
+    }for
+    pdfgrestore
+}def
+
+/dopage_std {
+    (Please select schematic, pdf or plain!) ==
+    bogus
+}def
+
+/tracestr {tracefile exch writestring} def
+/trace {tracefile (,) writestring 30 string cvs tracefile exch writestring}def
+/nocommatrace { /trace { 30 string cvs tracefile exch writestring /trace {tracefile (,) writestring 30 string cvs tracefile exch writestring}def } def} def
+/traceln {30 string cvs tracefile exch writestring tracefile (\n) writestring}def
+/.sort 
+    { 1 index length 1 sub -1 1 
+        { 2 index exch 2 copy get 3 copy 0 1 3 index 1 sub 
+           { 3 index 1 index get
+             2 index 1 index 10 index exec {4 2 roll} if pop pop
+           } for
+         4 -1 roll exch 4 1 roll put put  
+       }
+     for
+     pop
+   } bind def
+/traceaffine { yfact mul ybase add cvi exch xfact mul xbase add cvi exch }def
+traces {
+    /provinceshook {
+        /A {30 string cvs (SAFE)!} def
+        /AR {30 string cvs (SAFER)!} def
+        /BH {mark}def
+        /EH {cleartomark} def
+        /pdef {exch pop 1 index /provs push def}def
+        /providdict 1000 dict def
+        /provpathdict 2000 dict def
+    }def
+}if
+
+
+/dopage_traces {
+    10 setflat
+    /tracefile dotgraph{(/dev/null)}{Output}ifelse (w)file def
+    % All paths are simple; no jumps
+    %
+    /pathSAFE [] def
+    paths {
+        /n exch def
+        /m n 30 string cvs (SAFE) ! def m cvn [ 0 0 n load {
+            /a exch def /l a length def
+            l 3 eq {
+                pop pop a 1 get a 2 get 2 copy traceaffine 4 2 roll
+            }if
+            l 2 eq {
+                pop pop a 0 get a 1 get 2 copy traceaffine 4 2 roll
+            }if
+            l 6 eq {
+                newpath moveto
+                a aload pop curveto
+                flattenpath
+                {pop pop}{traceaffine}{errrorcurvetoafterflatten}{errorclose}pathforall
+                a 4 get a 5 get
+            }if
+            } forall pop pop
+        ] def
+        n 30 string cvs (SAFER) ! cvn [
+            m cvn load /a exch def
+            a length 1 sub -2 1 {a 1 index 1 sub get a 3 -1 roll get} for
+        ] def
+       m /pathSAFE push
+    } forall
+    (var contours;\nif \(contours == undefined\) {contours=[];}\ncontoursbase=contours.length;\n\n) tracestr
+    (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[') tracestr
+    mapname tracestr
+    (']={s:contours.length};\n\n) tracestr    
+    /id 0 def
+    /magicdict 40 dict def
+    magic {
+        aload pop /dep exch def /car exch def
+        /n car 0 get def /rn n def
+        n 30 string cvs /a exch def
+        (contours.push\({n:')tracestr
+        rn tracestr(',t:2,)tracestr
+        (o:')tracestr a tracestr(',)tracestr
+        (b:[)tracestr nocommatrace [ car 1 4 getinterval aload pop traceaffine
+        4 2 roll traceaffine 4 2 roll ]
+        {trace}forall
+        (]}\);)traceln
+        dep {/p exch def magicdict p known
+            magicdict begin
+            {p [magicdict p get aload pop id] def}{p [ id ] def}ifelse
+            end
+        } forall
+        /id id 1 add def
+    }forall
+    provs {
+        /n exch def
+        n 30 string cvs /a exch def
+        /rn pnames n known{pnames n get}{a}ifelse def
+        rn 0 get 42 ne {
+            (contours.push\({n:')tracestr
+            rn tracestr(',t:1,)tracestr
+            (o:')tracestr a tracestr(',)tracestr
+            magicdict n known {
+                (m:[)tracestr nocommatrace 
+                magicdict n get {4 string cvs(+contoursbase)! trace}forall
+                (],)tracestr
+            }if
+            (c:[)tracestr nocommatrace
+            /notmoved true def
+            /movedx -1 def /movedy -1 def
+            /xmin 1000000 def
+            /xmax -1000 def
+            /ymin 1000000 def
+            /ymax -1000 def
+            /xlst 1000000 def
+            /ylst -1000 def
+            /xini 1000000 def
+            /yini -1000 def
+            n load {
+                /p exch def
+                /pp p cvn load def
+                pp 0 get xlst sub abs 1 gt pp 1 get ylst sub abs 1 gt or {
+                    % Emergency closepath if we jump
+                    % Jump
+%                    xini 1000000 ne {a ( ) p ! ! ==}if
+                    xini 1000000 ne xini xlst ne yini ylst ne or and {
+                        xini trace yini trace
+                    }if
+                    /xini pp 0 get def /yini pp 1 get def
+                }if
+                0 2 pp length 1 sub {
+                    /pos exch def
+                    pp pos get dup xmin lt {/xmin 1 index def}if
+                    dup xmax gt {/xmax 1 index def}if
+                    pp pos 1 add get dup ymin lt {/ymin 1 index def}if
+                    dup ymax gt {/ymax 1 index def}if
+                    2 copy ylst eq exch xlst eq and
+                    {pop pop}
+                    {/ylst exch def /xlst exch def xlst trace ylst trace}
+                    ifelse
+                }for
+            }forall
+            (],)tracestr
+            (b:[)tracestr nocommatrace [xmin ymin xmax ymax]
+            {trace}forall
+            (]}\);)traceln
+        }if
+        /id id 1 add def
+    } forall
+    (\n\ncontourssections[') tracestr
+    mapname tracestr
+    (']['e']=contours.length;\n) tracestr
+    tracefile closefile
+    dotgraph{
+    /tracefile Output (w)file def
+    (graph G {)traceln
+    /id 0 def
+    provs{
+        /n exch def
+        n 30 string cvs /a exch def
+        /rn pnames n known{pnames n get}{a}ifelse def
+        rn 0 get 42 ne {
+            providdict rn known not{
+                /id id 1 add def
+                providdict rn id 3 string cvs put
+                (prov) id 3 string cvs ! ( [label=")! rn !("];\n)! tracestr
+            }if
+            /lid providdict rn get def
+            provpathdict lid (-) ! lid ! 1 put
+            n load {
+                /p exch def
+                p 0 get 112 eq {
+                    p 0 8 getinterval
+                }if
+                p 0 get 109 eq {
+                    p 0 5 getinterval
+                }if
+                p 0 get dup 109 eq exch 112 eq or {
+                    /k exch def
+                    provpathdict k known {
+                        provpathdict dup k get (-) lid ! ! known not
+                        provpathdict dup k get (-) exch ! lid exch ! known not
+                        and {
+                            (prov) provpathdict k get
+                            ! ( -- prov) lid ! ! %  (/)! k ! 
+                            (;\n)! tracestr
+                            provpathdict dup k get (-) ! lid ! 1 put                            
+                        }if
+                    }{
+                        provpathdict k lid put
+                    }ifelse
+                }if
+            }forall
+        }if
+    }forall
+    (})traceln
+    tracefile closefile
+    }if
+}def
+/dopage_schematic {
+    /Courier findfont 15 scalefont setfont
+    provs {{only_normal}{prov_plainfill} prov_fill} forall
+    paths {{sealines_only}{just_draw} path_trace} forall
+    paths {{frontiers_only}{just_draw} path_trace} forall
+    paths {{passes_only}{just_draw} path_trace} forall
+    paths {{rivers_only}{just_draw} path_trace} forall
+    paths {{straitforts_only}{just_draw} path_trace} forall
+    paths {{traits_only}{just_draw} path_trace} forall
+    paths {{all_paths}{schematic_draw} path_trace}forall
+}def
+/dopage_pdf {
+    provs {{only_water}{prov_pdffill} prov_fill} forall
+    paths {{sealines_only}{just_draw} path_trace} forall
+    provs {{only_land}{prov_pdffill} prov_fill} forall
+    paths {{frontiers_only}{just_draw} path_trace} forall
+    paths {{passes_only}{just_draw} path_trace} forall
+    paths {{rivers_only}{just_draw} path_trace} forall
+    provs {{only_spec}{prov_pdffill3} prov_fill} forall
+    specdict {pop {frontiers_only}{just_draw} path_trace} forall
+    paths {{passes_only}{just_draw} path_trace} forall
+    paths {{rivers_only}{just_draw} path_trace} forall
+    paths {{straitforts_only}{just_draw} path_trace} forall
+    paths {{traits_only}{just_draw} path_trace} forall
+}def
+/dopage_pdfplain {
+    /pdfgraylevel .5 def
+    provs {{only_blocked}{prov_pdfgrayfill} prov_fill} forall
+    /pdfgraylevel .95 def
+    provs {{only_water}{prov_pdfgrayfill} prov_fill} forall
+    /pdfgraylevel .8 def
+    provs {{only_known}{prov_pdfgrayfill} prov_fill} forall
+    paths {{all_paths}{just_draw} path_trace} forall
+    paths {{straitforts_only 0 setgray}{just_draw} path_trace} forall
+    provs {{only_spec}{prov_pdfnofill} prov_fill} forall
+}def
+
+/dopage /dopage_std load def
+traces {/dopage /dopage_traces load def}if
+schematic {/dopage /dopage_schematic load def}if
+pdfoutput {/dopage /dopage_pdf load def}if
+plain {/dopage /dopage_pdfplain load def}if
+
+/push { dup where {}{(Weirderror in push) print weirderror}ifelse exch [ 1 index load aload pop counttomark 4 add -1 roll] put } def
+/paths []def
+/provs []def
+/m={3 1 roll 3 array astore}bd
+/m {defaultw m=}bd
+/m*{7 m=}bd
+/l {2 array astore}bd
+/c {6 array astore}bd
+/h {[]}bd
+/beginpath {dup /paths push mark}bd
+/endpath{dup /tmp exch def] def}bd
+/lastpoint {dup length 2 sub 2 getinterval aload pop}bd
+/contpath {tmp lastpoint m}bd
+/specdict 300 dict def
+/A {specdict begin dup 0 def end cvx exec} bind def
+/AR {specdict begin dup 0 def end cvx exec R} bind def
+/BH {} def
+/EH {} def
+/pdef {[3 1 roll {aload pop} forall] 1 index /provs push def}def
+/pnames 1000 dict def
+/ppdef {pnames begin 3 index exch def end pdef}def
+% RGB Color definition for terrain type.
+% 2 args to make it smooth...
+/foret  [[0.6  1.0  0.3][0.4  0.9  0.4] 0] def
+/foreto [[0.6  0.8  0.6][0.5  0.7  0.5] 0] def
+/monts  [[0.9  0.6  0.2][0.7  0.5  0.3] 0] def
+/marais [[0.5  0.6  0.5][0.3  0.4  0.3] 0] def
+/plaine [[0.9  0.9  0.7][0.8  0.8  0.5] 0] def
+/desert [[1.0  1.0  0.4][0.9  0.9  0.3] 0] def
+/terrain [[1.000000 1.000000 1.000000][0.803922 0.803922 0.898039] 0] def
+/noman [[1.000000 1.000000 1.000000][0.803922 0.803922 0.898039] 4] def
+/europe [[0.9 0.9 0.9][0.5 0.5 0.8] 16] def
+
+/mer [[0.325 0.6 0.875][0.255 0.475 0.775] 1] def
+/lac [[0.425 0.7 1.0][0.355 0.575 0.875] 1] def
+/europemer [[0.425 0.9 0.875][0.355 0.775 0.775] 17] def
+
+% Creating the kxxx for provinces known by Marco Polo
+[(foret) (monts) (marais) (plaine) (desert)] {
+    dup (k) exch ! cvn exch cvx exec [ exch aload pop 8 add ] def
+} forall
+    
+% Creating the lxxx for provinces magnified in a loop.
+[(foret) (monts) (marais) (plaine) (desert) (mer) (kforet) (kmonts) (kmarais) (kplaine) (kdesert)] {
+    dup (l) exch ! cvn exch cvx exec [exch aload pop 3 1 roll
+    2 {exch [exch aload 4 1 roll add add /tmp exch def {tmp add 4 div} forall ] } repeat 3 -1 roll
+   ] def
+} forall
+
+/spec [[1.5 250 100]dup] def
+/zone { pdfoutput {
+    carrefile (provincecolors /) writestring
+    carrefile exch writestring
+    carrefile ( \() writestring
+    0 1 2 {
+	2 copy get carrefile exch 10 string cvs writestring
+	2 ne {carrefile ( ) writestring}if
+    } for
+    carrefile (\) put\n) writestring}{pop}ifelse
+[exch [30 10 -1 -1] 2] } def

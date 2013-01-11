@@ -1,0 +1,289 @@
+% -*- mode: LaTeX; -*-
+
+\definechapterbackground{Minor countries}{appendix}
+\chapter{Minor countries}
+
+
+
+
+\section{Generic Leaders}
+
+\aparag[Neutral leaders]
+Here is the list of all \anchorleader{random}\unskip\textit{s}:
+\listanonymeneutre
+\aparag[Mercenaries]
+\listanonymemercenaires
+
+
+
+
+\section{Short list of all minor countries}
+
+\label{chapter:Minors:List}
+\aparag[Countries of Europe]
+These are the regular countries of Europe:
+\begin{multicols}{4}
+  \FEforeachlist{listofminors}%
+  {\theminorreligionshort{\loopitem}~\pays{\loopitem}\\}{}
+\end{multicols}
+
+\aparag[Minor/Major countries]
+These countries are minor countries, but can also be major countries:
+\FEforeachlist{listofminorsminmaj}%
+{\theminorreligionshort{\loopitem}~\pays{\loopitem}}{, }
+
+\aparag[\ROTW] The countries of the \ROTW are:
+\begin{multicols}{4}
+  \FEforeachlist{listofminorsrotw}%
+  {\theminorreligionshort{\loopitem}~\pays{\loopitem}\\}{}
+\end{multicols}
+
+\aparag[Splitting from a major country] These countries can gain their
+independence:
+\begin{multicols}{5}
+  \FEforeachlist{listofminorsvirtual}%
+  {\theminorreligionshort{\loopitem}~\pays{\loopitem}\\}{}
+\end{multicols}
+
+\aparag[Habsburg autonomous countries] The following minor vassals can be
+created by \HAB: \FEforeachlist{listofminorshab}%
+{\theminorreligionshort{\loopitem}~\pays{\loopitem}}{, }
+
+\aparag[Other entities] These may exist to some extent:
+\FEforeachlist{listofminorsreallyvirtual}%
+{\theminorreligionshort{\loopitem}~\pays{\loopitem}}{, }
+
+\aparag Some not-so-evident countries names:
+
+\begin{multicols}{3}
+  \begin{description}
+  \item[\paysegypte] Egypt
+  \item[\paysberg] Kleve/Berg
+  \item[\payscosaquesdon] Cossacks of the Don
+  \item[\pays{teutoniques1}] Teutonic Knights
+  \item[\pays{teutoniques2}] Livonian Knights
+  \item[\paysbade] Baden
+  \item[\payssuisse] Switzerland
+  \item[\paysliege] Liège
+  \item[\payslorraine] Lorraine
+  \item[\paysmaroc] Morocco
+  \item[\paysirak] Iraq
+  \item[\paysmayence] Mainz
+  \item[\paysmodene] Modena
+  \item[\payschevaliers] Knights (of Malta)
+  \item[\paysryazan] Ryazan
+  \item[\payssavoie] Savoy
+  \item[\payspapaute] Papacy
+  \item[\paysecosse] Scotland
+  \item[\paysprovincesne] Low countries
+  \item[\paysnaples] Naples
+  \item[\paysoman] Oman
+  \item[\paysgujarat] Gujarat
+  \item[\paysvijayanagar] Vijayanagar
+  \item[\paysjapon] Japan
+  \item[\paysafghans] Afghanistan
+  \end{description}
+\end{multicols}
+\vfill
+
+
+
+
+\section{Minor countries of Europe}
+
+\listminorlong{minors}
+
+
+
+
+\section{Minor/Major countries}
+
+\listminorlong{minorsminmaj}
+
+
+
+
+\section{Minor countries of \ROTW}
+
+\listminorlong{minorsrotw}
+
+
+
+
+\section{Potential independent kingdoms}
+
+\listminorlong{minorsvirtual}
+
+
+
+
+\section{Habsburg vassal kingdoms}\label{ch10:Habsburg vassal kingdoms}
+
+\listminorlong{minorshab}
+
+
+
+
+\section{Virtual entities}
+
+\listminorlong{minorsreallyvirtual}
+
+\definechapterbackground{Major countries}{appendixmajor}
+\chapter{Major countries}
+
+
+
+
+\section{\paysmajeurAngleterre}
+
+\aparag List of all land leaders \listleader{leadersangleterreT}
+\aparag List of all naval leaders \listleader{leadersangleterreN}
+\aparag List of all anonymous leaders \listanonymeangleterre
+
+
+
+
+\section{\paysmajeurAutriche}
+
+\aparag List of all minor named leaders \listleadernolink{leadershabsbourg}
+\aparag List of all named leaders \listleader{leadershabsbourgM}
+\aparag List of all anonymous leaders \listanonymehabsbourgM
+
+
+
+
+\section{\paysmajeurFrance}
+
+\aparag List of all land leaders \listleader{leadersfranceT}
+\aparag List of all naval leaders \listleader{leadersfranceN}
+\aparag List of all anonymous leaders \listanonymefrance
+
+
+
+
+\section{\paysmajeurEspagne}
+
+\aparag List of all land leaders \listleader{leadersespagneT}
+\aparag List of all naval leaders \listleader{leadersespagneN}
+\aparag List of all anonymous leaders \listanonymeespagne
+
+
+
+
+\section{\paysmajeurHollande}
+
+\aparag List of all land leaders \listleader{leadershollandeT}
+
+\aparag List of all naval leaders \listleader{leadershollandeN}
+
+\aparag List of all anonymous leaders
+\bparag These leaders can still be used when \paysHollande is a \MIN.
+\listanonymehollande
+
+
+
+
+\section{\paysmajeurPologne}
+
+\aparag List of all polish leaders \listleader{leaderspologneM}
+
+\aparag List of all minor polish leaders \listleadernolink{leaderspologne}
+
+\bparag Remark that if they come and \paysPologne is still \MAJ, they can be
+used by \POL.
+
+\aparag List of all Lithuanian leaders \listleader{leaderslithuanie}
+
+\aparag List of all other named leaders \listleader{leaderspollit}
+
+\aparag List of all Polish anonymous leaders \listanonymepologne
+
+\aparag List of all Lithuanian anonymous leaders \listanonymelithuanie
+
+\aparag List of all Polish-Lithuanian anonymous leaders \listanonymepollit
+
+
+
+
+\section{\paysmajeurPrusse}
+
+\aparag List of all minor named leaders \listleader{leadersprusse}
+
+\aparag List of all named leaders \listleader{leadersprusseM}
+
+\aparag List of all anonymous leaders \listanonymeprusseM
+
+
+
+
+\section{\paysmajeurPortugal}
+
+\aparag List of all named leaders \listleader{leadersportugalM}
+
+\aparag List of all anonymous leaders
+\bparag These leaders can still be used when \paysPortugal is a \MIN.
+\listanonymeportugal
+
+
+
+
+\section{\paysmajeurRussie}
+
+\aparag List of all land leaders \listleader{leadersrussieT}
+\aparag List of all naval leaders \listleader{leadersrussieN}
+
+\aparag List of all anonymous leaders \listanonymerussie
+
+
+
+
+\section{\paysmajeurSuede}
+
+\aparag List of all named leaders \listleader{leaderssuedeM}
+
+\aparag List of all anonymous leaders \listanonymesuedeM
+
+
+
+
+\section{\paysmajeurTurquie}
+
+\aparag List of all land leaders \listleader{leadersturquieT}
+
+\aparag List of all naval leaders \listleader{leadersturquieN}
+
+\aparag List of all anonymous leaders \listanonymeturquie
+
+
+
+
+\section{\paysmajeurVenise}
+
+\aparag List of all Venetian leaders \listleader{leadersveniseM}
+
+\aparag List of all minor Venetian leaders \listleadernolink{leadersvenise}
+
+\bparag Remark that if they come and \paysVenise is still \MAJ, they can be
+used by \VEN.
+\aparag List of all Venetian anonymous leaders
+\bparag These leaders can still be used when \paysVenise is a \MIN.
+\listanonymevenise
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: Habsburg listofminors listofminorsminmaj listofminorsrotw
+% LocalWords: listofminorsvirtual listofminorshab listofminorsreallyvirtual
+% LocalWords: minorsminmaj minorsrotw minorsvirtual minorshab appendixmajor
+% LocalWords: minorsreallyvirtual leadersangleterreT leadersangleterreN
+% LocalWords: leadershabsbourg leadershabsbourgM leadersfranceT leadersfranceN
+% LocalWords: leadersespagneT leadersespagneN leadershollandeT leaderspologneM
+% LocalWords: leadershollandeN leaderspologne leaderslithuanie leaderspollit
+% LocalWords: leadersprusse leadersprusseM leadersportugalM leadersrussieT
+% LocalWords: leadersrussieN leaderssuedeM leadersturquieT leadersturquieN
+% LocalWords: leadersveniseM leadersvenise

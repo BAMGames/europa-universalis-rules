@@ -1,0 +1,109 @@
+#!/bin/bash
+DEBUGGING=${DEBUG:-""}
+VERSION=$(LANG=C gimp --version | sed -e 's/[^0-9]//g' -e 's/^\(..\).*/\1/g')
+TMPS=/tmp/${USER}script.scm
+SCRIPT=
+THIRD=
+FUNCTION=
+INPUT=
+OUTPUT=
+RMEXT=
+PREFIX=
+LIMIT=10
+if [ "$VERSION" -gt 20 ]; then
+    SUB='s/nothing/nothing/g'
+else
+    SUB='s/gimp-context-set-foreground/gimp-palette-set-foreground/g;s/gimp-context-set-background/gimp-palette-set-background/g'
+fi
+STOP=0
+while [ "$STOP" != "1" ]; do
+    case "$1" in
+        --marker)
+            shift;shift
+            ;;
+        --class)
+            CLASS="$2"
+            shift;shift
+            ;;
+        --logfile)
+            LOGFILE="$2"
+            shift;shift
+            ;;
+        --script)
+            SCRIPT="$2"
+            shift;shift
+            ;;
+        --function)
+            FUNCTION="$2"
+            shift;shift
+            ;;
+        --limit)
+            LIMIT="$2"
+            shift;shift
+            ;;
+        --prefix)
+            PREFIX="$2"
+            shift;shift
+            ;;
+        --input)
+            INPUT="$2"
+            shift;shift
+            ;;
+        --output)
+            OUTPUT="$2"
+            shift;shift
+            ;;
+        --rmext)
+            RMEXT="$2"
+            shift;shift
+            ;;
+        --third)
+            THIRD="$2"
+            shift;shift
+            ;;
+        --)
+            shift
+            STOP=1
+            ;;
+        *)
+            STOP=1
+    esac
+done
+[ -n "$SCRIPT" ] || exit 1
+[ -n "$FUNCTION" ] || FUNCTION=$(basename "$SCRIPT" .scm)
+[ -n "$CLASS" ] || CLASS="Calling $FUNCTION with GIMP"
+
+FINISHED=
+while [ -n "$1" ]&&[ -z "$FINISHED" ]; do
+    cat $SCRIPT|sed -e $SUB > $TMPS
+    COUNT=0
+    ARGS=""
+    while [ "$COUNT" -lt "$LIMIT" ]&&[ -n "$1" ]; do
+        ARGS="$ARGS $(basename "$1" $RMEXT)"
+        COUNT=$((COUNT+1))
+        shift
+    done
+    for file in $ARGS; do
+        echo -n "($FUNCTION \"${INPUT}/${file}\" \"${OUTPUT}/${file}\"" >> $TMPS
+        $BINDIR/statedisplay $XID "$CLASS" "${file#${PREFIX}}"
+        if [ -n "$THIRD" ]; then
+            echo -n " \"${THIRD}\"" >> $TMPS
+        fi
+        echo -n ")" >> $TMPS
+    done
+    X="(load \"$TMPS\")"
+    echo "Calling gimp/${FUNCTION} for$ARGS" >> $LOGFILE
+    if [ "$VERSION" -gt 22 ]; then
+        $DEBUGGING gimp --batch-interpreter plug-in-script-fu-eval --no-data --no-interface --batch "$X" --batch '(gimp-quit 0)' >>$LOGFILE 2>&1
+    elif [ "$VERSION" -gt 20 ]; then
+	$DEBUGGING gimp --batch-interpreter plug_in_script_fu_eval --no-data --no-interface --batch "$X" "(gimp-quit 1)" >>$LOGFILE 2>&1
+    else
+	$DEBUGGING gimp --no-data --no-interface --batch "$X" "(gimp-quit 1)" >>$LOGFILE 2>&1
+    fi
+    RETURNSTATUS=$?
+    if [ "$RETURNSTATUS" != "0" ]; then
+        FINISHED=1
+    fi
+done
+$DEBUGGING rm -f $TMPS
+exit $RETURNSTATUS

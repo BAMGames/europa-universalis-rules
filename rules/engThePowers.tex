@@ -1,0 +1,2076 @@
+% -*- mode: LaTeX; -*-
+
+\definechapterbackground{The powers: at home and abroad}{powers}
+\chapter{The powers: at home and abroad}\label{chapter:ThePowers}
+
+\begin{designnote}
+  This Chapter describes the main concepts used in the game: structural limits
+  of a country, stability, colonial settlements. It also includes the detailed
+  turn sequence.
+
+  Several concepts are common with other diplomacy and wargames while some of
+  them are specific to \emph{Europa Universalis}. This Chapter only gives an
+  overview of them so that the rest of the rules is readable. The rest of the
+  rules is ordered in game turn order and each concept will be fully described
+  (with all the rules governing it) in due time.
+\end{designnote}
+
+
+
+
+\section{Generalities}
+
+
+
+\subsection{Precedence}
+
+\aparag In case of apparent contradiction within the rules, resolve the
+conflict with the following precedence:
+\begin{itemize}
+\item Event descriptions supersede any other rule (and often create abnormal
+  situations).
+\item Specific rules take precedence over regular rules. They are ``ways to
+  cheat'' allowed (or mandatory) for each country.
+\item Common rules only apply if not contradicted elsewhere.
+\end{itemize}
+
+\aparag If there is a contradiction between two events, then the one that
+occurred the latest takes precedence. But this is usually not intended and
+probably is a bug in the rules.
+
+\aparag If there is a contradiction between two specific rules, or between two
+regular rules, this is a bug. Please contact us so we can answer it.
+
+
+
+\subsection{Rounding}
+
+\aparag When rounding is required, it is always done in the disfavour of the
+player performing the action.
+\bparag Especially, any gain (in money, victory points, \ldots) is rounded
+down while any loss is rounded up.
+\bparag In case of doubt, use the rule of thumb ``who can the more can the
+least''. If a country should gain 1.9\ducats, it has not gain 2\ducats, thus
+the sum must be rounded down; conversely, if a country has to pay 1.1\ducats,
+it has to pay more than 1\ducats and the debt must be rounded up.
+
+
+
+
+\section{Countries}
+
+\aparag[Majors and minors] Countries are separated into \terme{Majors
+  countries} and \terme{Minors countries}.
+
+\aparag Majors countries are the ones who, during the historical framework of
+the game, played a role of great influence in Europe or even in the whole
+World, thus shaping History as we know it.
+\bparag Some majors countries had a more local (geographically or timely)
+influence.
+\bparag Each player plays one Major country at a time. Some players play the
+same Major during all the game while some switch mid-game.
+
+\aparag Minors countries are countries who played only a small role in
+History.
+\bparag This can be either because they were too small (e.g. \paysCologne) or
+because they were quickly destroyed by their powerful neighbour
+(e.g. \paysDamas) , or because their influence was very local and only
+influenced a couple of other nations (e.g. \paysPerse or \paysEcosse).
+\bparag This does not mean that minors countries did not shape History, but
+merely that they lack the World-wide or Europe-wide influence that England or
+Austria had and that playing them would be less interesting.
+
+\aparag See~\ref{chapter:Basics:Majors} for a list of majors countries
+and~\ref{chapter:Minors:List} for a list of minors countries.
+
+\aparag[Europeano-centrism] The game is, voluntarily, centred on Europe and
+European powers. This is because we want to focus on the Age of Discoveries
+and the way the colonial powers managed to take control of almost all the
+World.
+\bparag Thus, non-European powers are always minors countries, even those who
+did had a large influence and territorial base such as \paysChine or
+\paysMogol.
+\bparag This choice allows the game to focus on intra-European relationships.
+
+
+
+
+\section{Religions and cultural groups}
+
+\label{chThePowers:Religions}
+
+
+
+\subsection{Religions and standings}
+
+\aparag Each country, major or minor, has a \terme{religion}.
+\bparag Several actions or events in the game depend on the religion of a
+given country.
+\bparag Several countries (both major and minor) may (or must) change religion
+during the course of the game.
+\bparag The religion of minor countries is indicated in the description of the
+country, see~\ref{chapter:Minors:List}. The religion of major countries is
+indicated in scenario description.
+\bparag Religions are also indicated on the map. The colour of the border of
+the main (non-blurred) shield in each province depends on the religion of the
+province (which is usually the religion of the country).
+
+\aparag Several religions are further subdivided into \terme{standings}. Some
+actions depend not only on the religion but also on the precise standing of
+the country.
+\bparag Minors countries usually have no standings, unless explicitly stated.
+\bparag The precise standing inside a religion is noted as
+``Religion/Standing'' such as ``\CATHCR''. Sometimes, only the standing is
+specified (eg ``Counter-Reform'' means ``\CATHCR'').
+\bparag If no standing is precised, then the effect apply to all countries of
+the given religion, whether they have a standing or not.
+\bparag Majors countries have no standing at the beginning of the game and
+have to choose one when~\ref{pI:Reformation} happens or when they change
+religion as well in a few other circumstances.
+
+
+
+\subsection{Cultural groups}
+
+\aparag Each country (major or minor) belongs to one cultural groups (except
+\POL and \RUS who belong to two groups).
+\bparag These groups are used to determine the technological level of minor
+countries and the way they progress. Check~\ref{chExpenses:Technology} for
+details on technology.
+
+\aparag Cultural groups usually contains all countries of one or more
+religion. Thus, we use the same names (and symbols) to depict them. But these
+should not be confused.
+
+\aparag The cultural groups in which a minor country belongs is indicated as
+its ``Military doctrine'' in the Appendix.
+
+
+
+\subsection{List of religions and cultural groups}
+
+\label{chThePowers:List of religions}
+\aparag We give here a list of all religions, standings and cultural groups.
+
+% \begin{todo}
+%   Add religious symbols. The \verb+\Xcatholique+ and similar commands do not
+%   appear to work within section titles.
+% \end{todo}
+
+\subsubsectionJ{Catholic}{\Xcatholique}
+\aparag Before~\ref{pI:Reformation}, this religion has no standings
+\bparag After, there are two Catholic standings: \terme{Conciliatory} and
+\terme{Counter-Reform} (also called \terme{Counter-Reformation}).
+
+\bparag If needed and not specified, consider Catholic minors as begin
+\CATHCR.
+
+\aparag Catholic provinces have a golden shield border.
+
+\subsubsectionJ{Protestant}{\Xprotestant}
+\aparag This religion is created by \ref{pI:Reformation}.
+\bparag Before this event, treat all Protestant countries as Catholic.
+
+% Jym: Puritan to uniformise appelation for ANG and other majors and to
+% clarify stuff elsewhere.
+%
+% old -> new "Anglican" -> "Protestant/Anglican" (or "Anglican") "Protestant
+% (or Anglican)" (sometimes "Protestant") -> Protestant "Protestant (not
+% Anglican)" -> "Protestant/Puritan" (or "Puritan").
+\aparag There are four Protestant standings: \terme{Anglican} and
+\terme{Puritan} (available only for \ANG) ; \terme{Strictly protestant} and
+\terme{Tolerant} (available only for \SUE).
+\bparag Protestant minors, as well as other Protestant majors, have no
+standing.
+
+\aparag Protestant provinces have a white shield border.
+
+\subsubsectionJ{Latin}{\techlatin}
+\aparag The \terme{Latin} cultural groups contains all Catholic and Protestant
+countries, plus \POL, plus \RUS after its army reform.
+
+\subsubsectionJ{Orthodox}{\Xorthodoxe}
+\aparag There are two Orthodox standings, available only for \RUS:
+\terme{Religious tolerance} and \terme{Champion of Orthodoxy}.
+\bparag Orthodox minors, as well as \POL if it choose to become Orthodox, have
+no standing
+
+\aparag Orthodox provinces have a orange/brown shield border.
+
+\aparag The Orthodox cultural group contains all Orthodox countries, plus
+\POL.
+\bparag Notice that \POL belongs to both the Latin and Orthodox groups,
+whatever its religion but that \paysPologne (once it becomes minor) belongs
+only to the Latin group.
+% Jym : \RUS also stay Orthodox after reform. That means it will still raise
+% the technology of Orthodox minors. There shouldn't be too many of them at
+% this point, so it is OK. Moreover, I am too lazy to find a correct
+% expression to get \RUS out of the Orthodox group...
+
+
+\subsubsection{Christian}
+\aparag Christian countries are either Catholic, Protestant or Orthodox.
+\bparag If an event of effect affects Christian countries, then it affects all
+countries of these three religions.
+
+\subsubsectionJ{Sunni}{\Xsunnite}
+\aparag This religion has no standings.
+
+\aparag Sunni provinces have a green shield border.
+
+\subsubsectionJ{Shi'ite}{\Xchiite}
+\aparag This religion has no standings.
+
+\aparag Shi'ite provinces have a blue shield border.
+
+
+\subsubsection{Muslim}
+\aparag Muslim countries are either Sunni or Shi'ite as well as some \ROTW
+countries.
+\bparag If an event of effect affects Muslim countries, then it affects all
+countries of these two religions and \ROTW minor Muslim countries.
+\bparag European Muslim countries are either Sunni or Shi'ite. \ROTW Muslim
+countries do not have this distinction.
+\bparag \ROTW Muslim countries are the one with a \Xsunnite symbol on the
+\ROTW diplomacy track: \paysAden, \paysOman, \paysSoudan, \paysGujerat and
+\pays{aceh}. Other \ROTW countries are considered as having no religion for
+game purposes.
+
+\subsubsectionJ{Islam}{\techislam}
+\aparag The Islam cultural group contains all European Muslim countries and
+some \ROTW countries.
+\bparag beware that in the \ROTW the Islam group and the Muslim minors are not
+the same things. eg: \paysGujerat is Muslim but not in the Islam group while
+\paysMogol is within the Islam group but not Muslim (for game purposes).
+
+\subsubsectionJ{Other religion}{\Xautrereligion}
+\aparag The \terme{Other} ``religion'' groups all religions that are not
+already specified.
+\bparag It mostly includes Hinduism, Buddhism, Shinto and various Paganism.
+\bparag We do not mean that these religions are all the same. But they played
+no role in European conflicts and were treated more or less the same way by
+Christian missionaries in India, Africa, America or Asia. Thus, they have the
+same effect in game.
+\bparag Similarly, we do not mean that religions or standings not listed here
+(eg Judaism) did not exist. But they had no large scale effect and do not
+require special rules within the game.
+
+
+\subsubsection{Medieval}
+\aparag The Medieval cultural group contains \paysInca and \paysAzteque.
+\bparag Natives in % \continentAmerica,
+% Not sure about America... During 18th century, the indians were armed by
+% FRA/ANG and thus clearly not Medieval... But maybe Ohio is enough to
+% represent this ???
+\continentAfrica, \continentSiberia, \granderegionOceania and
+\granderegionPacifique are considered to be part of this group.
+
+\subsubsectionJ{\ROTW}{\techrotw}
+\aparag The \ROTW cultural group contains all \ROTW countries that are neither
+in the Islam group nor in the Medieval one.
+\bparag Natives in continents and areas not listed as Medieval are considered
+to be part of this group.
+\bparag Beware that some \ROTW countries are of Muslim religion but belong to
+this cultural group.
+
+
+\subsubsection{Special cases}
+\aparag \paysSuisse is both Catholic and Protestant.
+\bparag Whenever a major attempts an action on it, considered its religion to
+be the worst possible case between them.
+\bparag Typically, \paysSuisse is always considered to have another religion
+for Diplomatic actions ; Catholic/Counter-Reform countries have no religious
+\CB against \paysSuisse and may not convert it (as it is also Catholic) ; and
+so on.
+
+\aparag \paysUSA is either Protestant or Catholic, but not both.
+\bparag Its religion depends on the religion of the major against who it
+declared its Independence. See~\ref{pVII:Independence War} for details.
+\bparag \paysUSA may be created several times (representing Bolivarian
+revolutions as well as hypothetical revolutions in Canada, India or
+Indonesia). In this case, each of the different \paysUSA may have a different
+religion.
+
+
+
+\subsection{Religious enmities}
+
+\aparag When the game start (in 1492), religious enmities are actives. They
+last until the end of \ref{pIV:TYW}.
+\bparag Religious enmities mostly make relations between Catholics and
+Protestants harder, but they also hamper a bit relations between Christians
+and Muslims.
+
+% \section{Modification sur les revenus, juillet 2008}
+
+% \subsection{Attendus}
+
+% \begin{itemize}
+% \item empêcher constitution d'un confortable matelas d'argent pour les pays
+%   riches
+% \item faire une partie des PVs par prélèvement sur richesse du pays
+% \item rendre plus historque le recours incessant à l'emprunt
+% \end{itemize}
+
+% \subsection{Survol du principe}
+
+% \begin{itemize}
+% \item Le 'Gross Income' est la richesse du pays sur laquelle on prévoit les
+%   dépenses usuelles.  Selon le résultat d'un test dit « États au vrai », une
+%   part de cette richesse devient un revenu qui couvre les dépenses, une part
+%   en dépenses de prestige (sauf si cet argent est utilisé pour les dépenses
+%   du tour) et donne des PVs, et une part est empruntable en emprunt
+%   national. On peut aussi emprunter internationalement.
+% \item le Trésor Royal est différent : ce qui vient dans le trésor est ce qui
+%   reste dans l'opération précédente. Il reçoit aussi l'or, les revenus des
+%   pillages, des corsaires,...
+
+%   Cet argent sert à la diplomatie (majeurs, mineurs, paix,...), à la mise
+%   pour augmenter la stabilité, et à équilibrer si les dépenses sont plus
+%   grandes que les recettes.
+% \end{itemize}
+
+% \subsection{Détails}
+
+% Chaque pays mène une double comptabilité :
+% \begin{itemize}
+% \item Trésor Royal qui se continue d'un tour à l'autre,
+% \item Richesse du pays sur laquelle les dépenses des phase administratives,
+%   logistiques et militaires sont prises, qui est équilibré (par le test dit
+%   d'«États au vrai «) en fin de tour (phase VII ) et qui peut alimenter le T
+%   résor Royal si il reste alors des ducats.
+% \item A cela s'ajoute les emprunts (nationaux ou internationaux) qui se
+%   poursuivent d'un tour à l'autre tant qu'ils ne sont pas remboursés ou
+%   annulés (par des Banqueroutes).
+% \end{itemize}
+
+% \subsubsection{Le Trésor Royal (TR)}
+% \aparag Ce qui entre et sort du TR :
+% \begin{itemize}
+% \item Phase I (Event) et II (Diplo) : événements, diplomatie (dont
+%   subventions), dons,...
+% \item Phase VI : pillages, or, corsaires
+% \item Phase VII : on résout dans l'ordre
+%   \begin{enumerate}
+%   \item Impôts exceptionnels (ajouter le résultat directement dans le TR)
+%   \item « États au vrai » : test d10 pour Revenu/Prestige/Emprunt National
+%   \item Emprunt international éventuel
+%   \item Mise sur la stabilité
+%   \item Paix (et indemnités)
+%   \end{enumerate}
+% \item Phase VIII : Inflation : le \% perdu est pris sur la valeur absolue du
+%   TR, avec minimum = le \% en ducats ou la moitié du \% en ducats pour les
+%   pays majeurs suivants : POL, SUE en pIII et IV, RUS en pI à pIV, AUS en
+%   pIII à pIV.
+% \end{itemize}
+% \aparag le TR peut passer en négatif (mais attention à la Faillite en Phase
+% III)
+
+% \subsubsection{Richesse et dépenses du pays pendant un tour}
+% \aparag En Phase III, tout le revenu = Richesse du pays.
+% \bparag IMPORTANT : on ne compte pas de malus/bonus de stabilité ici.
+% \aparag Faillite = 2 possibilités
+% \begin{enumerate}
+% \item après le calcul du revenu (Phase II), faillite obligatoire si le TR +
+%   Richesse - (Intérêts+Remboursements obligés à ce tour) est négatif
+%   \textrightarrow oblige à opérer une Banqueroute immédiate pour corriger
+%   cela
+% \item à tout instant, si la TR+Richesse est négatif \textrightarrow oblige à
+%   opérer une Banqueroute immédiate de remise à zéro
+% \end{enumerate}
+% \aparag En Phases IV, V et VI, on ajoute toutes les dépenses ensemble
+% (Actions administratives, Logistique, Intérêts et Remboursement des
+% emprunts, Campagnes, Recrutements exceptionnels,...) = Dépenses du tour
+% \aparag Phase VII, Impôts exceptionnels (ajouter le résultat directement
+% dans le TR)
+% \bparag NOTE : pour les impôts exceptionnels, ils sont décidés en phase IV
+% (action Adm), le point de stabilité est perdu tout de suite et le
+% modificateur est noté. Cependant, le d10 n'est lancé qu'en Phase VII et les
+% ducats résultats vont directement dans le TR
+% \aparag Phase VII, « États au vrai »
+% \bparag En fin de tour, avant la mise pour augmenter la stabilité, on teste
+% l'État au vrai des dépenses et du Trésor Royal
+% (see~\tableref{table:Exchequer test}).  \GTtable{etatsauvrai}
+% \bparag Résultat à lecture directe : \% en revenu normal, \% en revenu
+% Prestige, \% capacité d'emprunt national (la colonne "emprunt international"
+% n'est pas utilisée pour ce test)
+% \begin{designnote}
+%   À noter : colonne +1 à +4 : 3 1/2* ; colonne 0 et -1 : 2 1/2* ; colonne -2
+%   à -4 : un seul 1/2*
+
+%   Je vous donne les statistiques moyennes d'auto-finacement sans emprunt
+%   (sachant que l'emprunt national vient redresser les faibles valeurs : on
+%   peut tjs compter sur 70\% au minimum de disponible, voire 80\% si on peut
+%   pas faire de F*, par exemple STAB à +2 ou +3, ou 0 et +1 et en paix sans
+%   emprunts en cours) :
+%   \begin{quote}\ttfamily\selectfont\obeylines \obeyspaces
+%     STAB -3 -2 -1 0 +1 +2 +3 à +2: 64 72 78 81 86 87 91 à +1: 58 65 71 75 80
+%     82 86 à 0: 52 58 64 68 73 76 80 à -1: 46 51 57 61 67 70 74 à -2: 40 45
+%     51 56 61 64 68 [ comparaison effet STAB avant : 50 66 75 90 100 100 110
+%     ]
+%   \end{quote}
+% \end{designnote}
+
+% \bparag[SOLUTION ALTERNATIVE] paix complète donne +1, on augmente emprunt
+% national de base de 10\% mais on met le bonus en emprunt national à 10\% de
+% + si pas en paix
+
+% \bparag[Equilibre des dépenses]
+% Les dépenses du tount d'abord prises sur Revenu régulier
+% \begin{itemize}
+% \item revenu régulier ; ce qui reste => TR
+% \item revenu de Prestige ; ce qui reste => PVs
+% \item l'Emprunt National : revenu optionnel ce qui reste => TR
+% \item si manque pour couvrir les dépenses : prendre dans TR
+% \end{itemize}
+
+% \bparag[Emprunts Nationaux]
+% \begin{itemize}
+% \item Une portion de la Richesse d'un pays n'est récupérable pour les
+%   dépenses que via des emprunts nationaux, décidés à cette phase.
+% \item On tient le compte des emprunts nationaux en ajoutant les sommes
+%   empurntées, cumulées d'un tour sur l'autre jusqu'à leur rembousement.
+% \item Chaque tranche complète de 100d compte comme un emprunt pour le test
+%   d'États au vrai.
+% \item Lors de la phase administrative (dépenses, Phase IV), le pays doit
+%   payer 10\% des emprunts nationaux en cours (intérêts des emprunts). Les
+%   remboursements d'emprunts ne se font qu'après avoir payé les intérêts, à
+%   cette même Phase des dépenses.
+% \end{itemize}
+
+% \aparag Phase VII, Emprunts Internationaux
+% \begin{itemize}
+% \item Si l'argent disponible ne lui apparaît pas suffisant, un pays peut
+%   tenter de recourir aux emprunts internationaux après avoir résolu les «
+%   États au vrai ».
+% \item Pour cela, un test est fait sur la table des « États au vrai », en
+%   lisant la colonne "Emprunt International", avec les mêmes modificateurs,
+%   et +1 au dé si contrôle d'un Stock Exchange
+% \item Résultat: \% de la capacité financière internationale que l'on peut
+%   emprunter (c'est un max., on peut prendre moins) ; ce qui est emprunté ira
+%   dans le TR (ou dans les dépenses du tour)
+% \item Capacité financière internationale = 50d + 50d par place financière
+%   existante : HRE, Gènes, Amsterdam Stock Exchange, London Stock
+%   Exchange. Doubler si la place financière est contrôlée par le pays (HRE:
+%   Empereur, Gènes: patron diplo.) (see~\tableref{table:Exchequer test}).
+% \item Chaque emprunt international est un emprunt individuel (qq soit la
+%   somme).
+% \item Intérêts : 10\% de l'emprunt à chaque tour (dans les dépenses)
+% \item Remboursement : 3 tours pour le faire ; à mettre dans les dépenses (en
+%   plus des intérêts du tour).
+% \item On ne peut pas faire défaut au remboursement d'un emprunt
+%   international, sauf à déclarer une Grande Banqueroute.
+% \end{itemize}
+% \aparag[Phase IV, Déclaration de Banqueroute] Les Banqueroutes se déclarent
+% au moment des dépenses, avant d'avoir payé les intérêts des emprunts en
+% cours. Elles sont optionnelles, sauf à voire le TR menacé de Faillite (en
+% quel cas une Banqueroute d'un type permettant d'échapper à la Faillite est
+% obligatoire) (see~\tableref{table:Bankruptcy Roll}).  \GTtable{bankruptcy}
+% \bparag Note: destruction de TF/MNU : il faut détruire qq chose, sauf si
+% plus aucun niveau de l'un et de l'autre
+% \bparag[Petite Banqueroute]
+% \begin{itemize}
+% \item permet d'annuler jusqu'à 200d d'emprunt national
+% \item effets négatifs : [perte de 5 PVs - TBD ?] et test de Banqueroute
+% \end{itemize}
+% \bparag[Grande Banqueroute]
+% \begin{itemize}
+% \item permet d'annuler jusqu'à 200d d'emprunt international, ou tous les
+%   emprunts nationaux
+% \item effets négatifs : perte de 15 PVs ; appliquer le résultat 1- de
+%   Banqueroute
+% \end{itemize}
+% \bparag[Banqueroute complète (RAZ)]
+% \begin{itemize}
+% \item annule tous les emprunts en cours, remet le TR à 0 ducats
+% \item effets négatifs : perte de 30 PVs ; appliquer le résultat 1- de
+%   Banqueroute et réduire le DTI de 1
+% \item compte comme double banqueroute (donc -2 au test d'États au vrai)
+% \end{itemize}
+% \bparag Effet sur les paix : si un pays fait Banqueroute et se retrouve à -3
+% en stabilité, il doit immédiatement proposer une armistice pour le tour, et
+% devra accepter toute paix faite sur la base du Différentiel de Paix à la fin
+% du tour.
+% \bparag TUR : Petite Banqueroute corrompt un pasha, Grande Banqueroute ou
+% Remise à zéro corrompt 2 pashas.
+
+
+
+
+\section{The passing of time}
+
+% RaW: [24]
+
+
+
+\subsection{Periods}
+
+A period represents a number of game turns, historically homogeneous, with a
+duration of approximately 30 to 50 years (more or less). The 62 game turns are
+distributed in seven periods to simulate the different epochs of the era
+covered by the game.
+
+These periods give the rhythm of the campaign game, especially the 1492-1792
+Grand Campaign. Each player possesses for his country, a series of strucutral
+limits to his purchases and actions that is determined for each one of the
+periods covered in the game. These limits are a maximum that cannot be
+exceeded, except for a very few specific cases.
+
+
+
+\subsection{List of periods}
+
+The seven periods (with corresponding length in game turns and main historical
+features) covered by the game are the following:
+% Jym: the colour of the period on the turn track corresponds to the main
+% power of the period and the first listed here.
+\begin{itemize}
+\item Period \period{I}, 1492-1519: 6 turns (discovery of the New World, Wars
+  in Italy and consolidation of the powers)% light green -> POR
+\item Period \period{II}, 1520-1559: 8 turns (Turkish expansion, exploration
+  and colonisation by \SPA and \POR, Reformation and first religious
+  struggles) % dark green -> TUR
+\item Period \period{III}, 1560-1614: 11 turns (Spanish domination, Dutch war
+  of independence, French wars of religion, Swedish rise to
+  power) % yellow -> HIS
+\item Period \period{IV}, 1615-1660: 9 turns (Dutch commercial domination,
+  Thirty Years War)% blueish -> HOL
+\item Period \period{V}, 1660-1699: 8 turns (French ``Grand Si\`{e}cle'', wars
+  of \monarque{Louis XIV})% blue -> FRA
+\item Period \period{VI}, 1700-1749: 10 turns (Russian and Prussian rise to
+  power)% brown -> RUS
+\item Period \period{VII}, 1750-1800: 10 turns (English domination, from the
+  Seven Years War to the American revolution)% red -> ANG
+\end{itemize}
+
+
+
+\subsection{Limits by period}
+
+\label{chThePowers:Limits}
+\aparag Within each of the above periods, countries represented by the
+different players have a certain number of structural limits for their
+different actions and purchases as well as for the number of available
+counters (whether military or commercial) and the content of these counters.
+% There are limits as well as for the number of units, strength points
+% contents and number of counters (especially Manufactures, Colonies and
+% Trading Posts).
+
+\aparag[Limits] These limits are valid each turn during the period for which
+they apply.
+\bparag The period limits cannot be exceeded, except for some particular cases
+specified in the rules.
+
+\aparag[Limits Tables] The limits, for each player, are regrouped in two
+different tables on the specific player's aid. The first presents the limits
+per period applicable globally for the whole duration of a period, such as the
+maximum number of counters of a given type usable in the period. The second
+table presents the limits per turn within each period, such as the maximum
+purchase available each turn.
+\bparag Taking into account the variable length, in number of turns, of the
+different periods, it is usually necessary to read the numerous information
+printed on these tables at the beginning of a given period, their usage
+proving then very repetitive within a same period, thereby making them self
+learning.
+\bparag The monarch sheet holds space to write down the limits of the current
+period to allow an easy access in game.
+
+\begin{exemple}
+  If you are unfamiliar with the game, take a player's aid with you before
+  reading the following. We advice to use the Portuguese one as it contains
+  few exceptions and is thus easier to understand.
+\end{exemple}
+
+
+\subsubsection{Period limits table}
+\label{chThePowers:Period Limits}
+\aparag The limits fixed in this table cannot be exceeded in principle. This
+is valid in any and all turns of the period.
+\bparag Some events or other particular circumstances may change the
+limits. These special cases are all recalled in the table.
+
+\aparag[Trade] The DTI (Domestic Trade Index) represents the global dynamic of
+the internal trade of the country. The \FTI (Foreign Trade Index) represents
+the global dynamic of the foreign trade of the country.
+\bparag Some countries also have a special \FTI usable only for a precise set
+of actions. See the Specific rules of the country for details.
+\bparag \DTI, \FTI and special \FTI may vary between 1 and 5.
+\bparag The actual value may never exceed the limit for the current period
+printed in the table.
+\bparag The actual value of the \DTI, \FTI and special \FTI is written by the
+player on his monarch sheet.
+\bparag If, for any reason, the actual \DTI, \FTI or special \FTI of a country
+is above its period limit, %
+% eg SPA after expulsion of Jews
+immediately decrease it to its maximum value.
+\bparag If the actual value is 1 and an event require it to be decreased, %
+% eg, bankruptcy
+don't change the value. The actual value may never be smaller than 1.
+\bparag The actual value of the special \FTI may never be smaller than the
+actual value of the \FTI. If the case arise, increase the value of the special
+\FTI so that it is equal to the \FTI.
+
+\aparag[Manufactures] The country has a limit of \MNU (Manufacture) counters
+(triangle shaped) that it may have in play, on the map of Europe, during a
+given period.
+\bparag This is a limit in terms of counters. Every counter has two sides
+representing an increasing capability of the \MNU.
+\bparag This limit may be exceeded by 2 counters, at the risk of economical
+losses. See~\ruleref{chThePowers:Exceeding Limits}.
+
+\aparag[Colonial establishments] The country has a limit of \COL (Colonies)
+and \TP (Trading Post) counters that may be placed on the map, outside of
+Europe, for the whole length of a period.
+\bparag This is a limit in terms of counters. Every counter has two sides with
+up to 6 levels representing an increasing development of the establishment.
+\bparag This limit may never be exceeded. If at any moment a country has more
+\COL or \TP on map than counters available for the period, %
+% eg, annexation.
+immediately remove (at player's choice) exceeding counters.
+
+\aparag[Fleet] Each country has a maximum number of \ND that may be in play at
+the same time.
+\bparag This counts both the \ND counters and the \ND inside the \FLEET
+counters.
+\bparag \NGD only count as half.
+\bparag This limit may not be exceeded. If a country ever owns more \ND than
+this limit, %
+% eg captured after a battle, eco event
+immediately destroy exceeding \ND (at player's choice).
+
+\aparag[Troop size] Land and sea unit have some specific size. This is a
+structural description of the military doctrine of the country rather than a
+real limit.
+\bparag A \FLEET counters may contain up to a certain number of \ND (first
+value) and \NTD (second value), depending on their side. \NGD count as half a
+\ND. \FLEET counters are only containers and may be created for free at any
+time if the need occurs.
+\bparag An \ARMY\faceplus counters automatically contains the indicated number
+of Artillery. An \ARMY\facemoins only contains half as much (round
+down). \ARMY counters do contain artillery even with \terme{Medieval}
+technology (this is siege artillery only).
+\bparag Land troops belong to a certain class of army. This is the military
+doctrine of the country and may not be changed voluntarily. Armies of the same
+class hold roughly the same number of infantry and cavalry.
+
+\begin{exemple}
+  During period \period{I}, Portugal has a maximum \DTI of 3, as per scenario
+  description, it is also its actual value in 1492. Thus, \POR will not be
+  able to increase its \DTI during period \period{I}. However, the maximum
+  \DTI switch to 5 in period \period{II}. This does not automatically increase
+  the actual \DTI, but simply allows \POR to attempt administrative actions to
+  do so.
+
+  During period \period{I}, \POR may never have in play more than 3 \MNU
+  counters. Since two of them are placed in 1492, \POR may only create one
+  more before 1520, when a fourth counter will be available. \POR may also
+  increase the level of its \MNU (and flip them to their \Faceplus side) since
+  this does not create new counters. A total of 6 Portuguese \MNU are provided
+  in order to give the player choice on which industry to develop.
+
+  During the first three periods of the game, \FLEET\facemoins of \POR may
+  contain at most 2\ND and 1\NTD. Its \FLEET\faceplus may contain only 4\ND
+  and 1\NTD. It is possible to have a non-full counter (such as a
+  \FLEET\facemoins with only 1\ND and no \NTD or a \FLEET\faceplus with 3\ND
+  and 1\NTD). The exact content of the counter being written on the colonial
+  sheet. Note that due to maintenance cost, it is usually most unwise to have
+  \FLEET counters with very few \ND in them. \POR may not, in period
+  \period{I}, have more than 12 total \ND on the maps (including those in
+  \FLEET).
+
+  In period \period{I}, \ARMY\faceplus of \POR automatically contain 2
+  artilleries (an abstract measure of the guns, howitzers and such). In 1520,
+  this switch to 3 and all existing \ARMY are automatically upgraded to this
+  value (as the typical content of field forces evolves with
+  time). \ARMY\facemoins contains half that many artilleries, round down,
+  hence only 1 in this case. Troops of \POR are of class \CAIII, an abstract
+  measure of the military doctrine of the country (notably with respect to
+  typical size of field forces as well as cavalry number and doctrine). This
+  never changes (only a handful of countries change their army class). Class
+  \CAIII\ regroups most occidental powers.
+\end{exemple}
+
+
+\subsubsection{Exceeding Limits in \MNU}
+\label{chThePowers:Exceeding Limits}
+\aparag A player can decide to exceed the limits of a period by up to 2 \MNU
+counters, with the restriction that the absolute limit is the number of such
+counters provided in the game.  However, this puts the economical stability at
+risk.
+
+\aparag If a revolt occurs in such a power, and if the result of the modified
+die-roll serving to determine the strength of the revolt is even, then the
+power immediately suffers economical losses.
+\bparag \textit{Exception}: If it has created its Stock Exchange \HOL
+(event \eventref{pIII:Amsterdam Stock Exchange}) and \ENG
+(\eventref{pIV:London Stock Exchange}), suffer from losses only if the die
+is %
+%%% with revolt strength on 1d10, use:
+% 6, 8 or 10.
+%%% with revolt strength on 2d10, use:
+10, 12, 14, 16, 18 or 20.
+\bparag If there was no die-roll (eg some revolts caused by events), roll to
+check for economical losses.
+
+\aparag If the power is at \STAB {\bf -1}, {\bf -2} or {\bf -3} at the
+beginning of a turn, it has 1 chance over 2 to suffer economical losses in
+addition.
+\bparag \textit{Exception}: If it has created its Stock Exchange \HOL and \ENG
+may suffer losses only if \STAB is {\bf -2} or {\bf -3} at the beginning of a
+turn.
+
+\aparag[Economical Losses]
+The power loses 1 in \STAB and 2 \MNU counters (not levels) are eliminated
+(chosen at random).
+
+
+\subsubsection{Actions and investments}
+\aparag At each turn, each country is allowed to do a certain number of
+actions (administrative or diplomatic) to increase its economical capacity or
+diplomatic influence.
+
+\aparag Most actions are performed by spending a certain amount of
+money. There are usually three possible costs, called investments, for each
+kind of action.
+\bparag Paying an higher investment increase the chances of success of the
+action.
+\bparag Specific value of the monarch also have a lot of influence on the
+chances of success.
+
+\begin{playtip}
+  It is usually better (in term of probability of success relative to the
+  amount spent) to do several time the same action at the basic investment
+  than to do it once at high investment. However, it will also take more time
+  as some attempts will fail.
+
+  Thus, for the long term development of the country (almost all
+  administrative actions and often for Diplomacy), it is usually a good idea
+  to use only basic investments. In some cases, however, the result has to be
+  achieved as fast as possible (typically for raising \STAB or technology, and
+  in some case for administrative actions to meet certain objectives). Then, a
+  higher investment is the way to go but the result might cost a lot of
+  \ducats\ldots
+\end{playtip}
+
+\aparag Each turn, all actions are first written down, and payed for, before
+being resolved simultaneously. Thus, it is impossible to wait for the result
+of a given action before deciding to do another one.
+
+\aparag Most administrative actions are resolved on \ref{table:Administrative
+  Actions} by cross-referencing a column (depending on the estate of the power
+and the investment for the action) and a die-roll.
+
+
+\subsubsection{Turn limits Table}
+\label{chThePowers:Turn Limits}
+\aparag The turn limits per period concerns essentially diplomatic and
+administrative actions, and also the logistical elements (recruitment, etc.)
+for each country and each period of the game.
+
+\aparag[Diplomacy] Each country has a maximum number of diplomatic actions
+relative to its diplomacy on minor countries allowed during each turn of the
+period.
+
+\aparag[Administration] Each country has a maximum number for every
+administrative operation that it can attempt each turn within the period, in
+particular:
+\begin{itemize}
+\item Commercial Development
+\item Colonisation
+\item Establishment of Trading Posts
+\item Competition Action
+\end{itemize}
+
+\aparag A country may always use fewer actions (or even none) than allowed by
+his maximum period/turn limit.
+
+\aparag[Technology] In addition to these specific limits, each country may
+attempt each turn to increase both its land and its naval technology.
+\bparag However, only one of the two technology increases may be attempted
+with more than a minimal investment.
+
+\aparag[Domestic action] Each country may also each turn attempt one (and only
+one) of the following actions:
+\begin{itemize}
+\item Increase its actual \DTI.
+\item Increase its actual \FTI. This does not increase the special \FTI unless
+  the \FTI becomes larger than the special \FTI (in which case the special
+  \FTI is raised at the same value as the \FTI).
+\item Increase its actual special \FTI.
+\item Create a new \MNU. This can either switch an existing counter from its\
+  \facemoins side to its \Faceplus or create a new \Facemoins counter.
+\item Raise exceptional taxes.
+\end{itemize}
+
+\aparag[Free maintenance] Basic forces indicate the number of units considered
+to have a free maintenance (i.e. those in play without having to pay their
+maintenance each turn). Land units of this basic force are veterans.
+
+\aparag[Military force purchase] The military force purchase indicates the
+maximum number of forces, (either \LD or \ND), that the country may buy in
+each Purchase phase.
+\bparag \NGD count only for half a \ND in the purchase limit.
+\bparag Exploitation of wood and fisheries increase the limit of \ND,
+see~\ruleref{chExpenses:Naval Purchase}.
+\bparag The \ND limit may not be exceeded.
+\bparag the \LD limit may be exceeded. Every \LD recruited below the limit is
+payed at normal cost, then every \LD below twice the limit is payed at double
+cost and finally every \LD below three times the limit is payed at triple
+cost.
+\bparag It is not possible to recruit in a given turn more \LD than three time
+the turn limit.
+
+\aparag[Minimum Leaders] The player must also have in permanence a certain
+number of leaders, specified by type (\LeaderA, \LeaderG, \LeaderC, \LeaderE,
+\LeaderGov). If the historical (named) leaders that the player receives do not
+suffice to reach this minimum leader quantity per type, he can take some
+additional leaders at random, among his available unnamed \anonyme\ leaders of
+the required type.
+\bparag The \anonyme\ leaders of majors countries are removed each turn and
+new ones are drawn if needed.
+\bparag The monarch leader as well as the Turkish Vizier and Swedish heirs are
+never counted in this limit (they all bore a ``monarch'' symbol (crown)).
+\bparag If a country as more named leader than its limit, then no unnamed one
+is drawn.
+\bparag Should a country fall below its limit during the turn (due to death in
+battle), a new \anonyme\ leader is drawn at the beginning of the next round in
+order to reach the limit again.
+
+\begin{exemple}
+  In period \period{I}, \POR may attempt each turn up to 2 diplomatic action,
+  1 Trade Fleet Implementation, 1 \COL, 2 \TP and 2 concurrence actions. None
+  of them is mandatory. Any action performed must be paid for and is not
+  guaranteed to succeed.
+
+  In period \period{I}, \POR may not buy more than 4\ND each turn. It may buy
+  up to 2\LD at normal cost, plus 2 more at double cost and again 2 more at
+  triple cost. It cannot buy more than 6\LD in a given turn.
+
+  In period \period{I}, \POR must have each turn at least 1\LeaderG,
+  1\LeaderA, 1\LeaderC and 1\LeaderE. At turn 1, its only historical leader is
+  \leaderDias, an \LeaderE. Thus \POR must draw at random amongst its leader
+  one \anonyme\LeaderG, one \anonyme\LeaderA and one \anonyme\LeaderC. Should
+  \leaderDias dies during the turn (eg, speared by natives in the Cape
+  peninsula), he is replaced by a \anonyme\LeaderE at the beginning of the
+  next round. Similarly, if the \anonyme\LeaderG attempts a war in \paysMaroc
+  and dies in the desert, he is replaced by another \anonyme\LeaderG (possibly
+  the same) at the beginning of next round.
+
+  At turn 2, the leader limits have not changed but \POR received new
+  historical leaders and now has: \leaderDias (provided he did not die on turn
+  1), an \LeaderE ; \leaderCabral, another \LeaderE ; and \leader{Da Gama},
+  who counts as a \LeaderC. Thus, it must draw a \anonyme\LeaderG and a
+  \anonyme\LeaderA. Having 2 \LeaderE (more than the limit) is not a problem
+  since both of them are named (historical leaders). However, if one of them
+  happen to die during the turn (eg, lost at sea near \continentBresil), the
+  other one is enough to fulfil the limit of 1 an no \anonyme\LeaderE is
+  drawn. If, by a stroke of bad luck, both \leaderDias and \leaderCabral die
+  during the turn, then a \anonyme\LeaderE (and only one) is drawn as
+  replacement in order to reach the limit (of 1).
+
+  Note that \leader{Da Gama} may be used as a \LeaderE but always counts
+  towards the limit of \LeaderC (as per \ref{chMilitary:Double Sided
+    Leaders}). Thus, it is possible for \POR to have 3 \LeaderE active at the
+  same time (\leaderDias, \leaderCabral and \leader{Da Gama}), but \leader{Da
+    Gama} still counts as a \LeaderC and no \anonyme\LeaderC is
+  drawn. Similarly, if both \leaderDias and \leaderCabral die, a
+  \anonyme\LeaderE is drawn whichever side \leader{Da Gama} is used.
+\end{exemple}
+
+
+
+
+\section{Estates of a Power}
+
+% RaW: [25, 26, 27, 28, 30, 31]
+
+% \subsection{Provinces}
+% \aparag[National Provinces]\label{chThePowers:National Provinces}
+% Jym: Is in chapter 1.
+
+% \subsection{Monarch survival phase}
+% RaW: 28 This phase is played simultaneously, each player testing the
+% survival of his monarch, and determining if needed the characteristics of
+% its successor.
+
+% The player represents the monarch of his country. The monarch possesses 3
+% values: Administrative (\ADM), Diplomatic (\DIP) and Military (\MIL). These
+% values are used for administrative and diplomatic operations of the country
+% and in a lesser measures in the military domain.
+
+% The different characteristics of a monarch are used for administrative
+% operations, diplomatic operations on minor countries and also to improve the
+% technological level of the player's country. In a lesser measure, the \MIL
+% characteristic may directly affect combat (if the monarch leaves in person
+% to conduct the war).
+
+% Every monarch has also a maximum life duration determined upon his arrival
+% on the throne (i.e. in play). When he dies, characteristics of the successor
+% are determined randomly.
+
+% \aparag The Monarch survival sub-phase consists in the following operations
+% (conducted simultaneously by each player):
+% \bparag Monarchs Survival test
+% \bparag Successor values determination (when required)
+% \bparag Initiative calculation
+
+
+
+\subsection{The monarch}
+
+\aparag The player represents the monarch of the country he is in charge
+of. He may execute different actions thanks to values of his monarch, whose
+reign has a limited duration.
+
+\aparag[Reign Length] A monarch has a reign length evaluated in number of
+turns. A monarch must undergo a survival test each turn, and if he succeeds
+them all successively, he dies at the beginning of the turn following its last
+turn of reign. The reign length of a monarch is determined at the moment of
+his advent.%, on the reign table (note that
+% reign length of the first monarch in play is given for each campaign
+% scenario).
+\bparag Monarchs may die earlier than scheduled due to failure of the survival
+test.
+
+\aparag[Characteristics of a monarch] Each monarch possesses 3 values:
+\bparag \ADM: Administration
+\bparag \DIP: Diplomacy
+\bparag \MIL: Military
+
+\aparag These value usually varies between 3 and 9. Very few exceptions can
+drop these values below 3 in which cases the new limit will be explicitly
+stated.
+
+\aparag Each one of these characteristics is determined only once, at the time
+a new monarch ascends the throne (after the death of the precedent).
+% , thanks to the Monarch Values Table~\tableref{table:Reign}
+
+\aparag[Administrative Value] \ADM is the main modifier for most
+administrative operations, either for the choice of the column, or for
+die-roll modifications (see~\ruleref{chExpenses:Administrative Actions}).
+
+\aparag[Diplomatic Value] \DIP is the main die-roll modifier for diplomatic
+actions, such as the attempt to get control of a minor country
+(see~\ruleref{chDiplo:Diplomatic Actions}).
+
+\aparag[Military Value] \MIL is the main modifier of the technology
+improvement operation (see~\ruleref{chExpenses:Technology Improvement}). It
+also serves to determine combat values (maneuver, fire, shock) of the monarch
+when serving as a General.
+
+
+\subsubsection{The survival test}
+\aparag Each monarch has to make a survival test at the beginning of each
+turn.
+\bparag if a monarch dies due to failure at this test or arriving at his
+scheduled reign length, the player has to roll for a new monarch.
+
+\aparag The procedure is explained in details in~\ruleref{chEvents:Survival}.
+
+
+\subsubsection{Initiative}
+\aparag The initiative of each player is the sum of their respective monarchs
+values.
+\bparag Ties must be solved by unmodified competitive die-rolls.
+
+\aparag The initiative is used during the military phase, to determine the
+order of play for the turn between the different players.
+\bparag Players (or alliances) play in turn, according to the descending order
+of initiative
+
+
+\subsubsection{Ministers}
+\aparag Countries may get an excellent minister to administrate them, either
+by~\ref{eco:Excellent Minister} or by some political events.
+\bparag For each of the three characteristic (\ADM/\DIP/\MIL), always use the
+best between the one of the monarch and the one of a minister.
+\bparag Exception: For determining the values of monarchs as general, use the
+\MIL of the monarch, not the \MIL of a minister.
+
+\aparag List of named excellent ministers (arriving through political events
+or special rules):\\
+\ministrePitt, \ministreRichelieu, \ministreMazarin, \ministreColbert,
+\monarquePatkul, \ministrePotemkine, \ministreOxenstierna, \ministreKoprulu,
+\ministreOlivares, %\ministreAlberoni,
+\ministre{de Witt}, \ministreHeinsius, \ministreKaunitz.
+
+% \subsection{The Royal Treasury}
+
+% % RaW: 25+26
+% \begin{todo}
+%   Rewrite for compta v2.
+% \end{todo}
+
+% \subsubsection{Bankruptcy and Treasury
+% Collapse}\label{chThePowers:Bankruptcy}
+
+% --- SUITE A ENLEVER si COMPTABILITY v2 ---
+
+% \aparag A power suffers from Bankruptcy at the instant when his royal
+% treasury reaches 0 \ducats (or less), with consequences on its \STAB and
+% economy.  Moreover, if its Royal Treasury goes underneath -200\ducats at any
+% time or the Royal Treasury is negative after adding incomes (\terme{Net
+% Income}, \lignebudget{29}, see~\ruleref{chapter:Incomes}), the power suffers
+% Treasury Collapse.  The consequences are more serious for the Stability,
+% income and investments of the concerned player.
+
+% \aparag[Bankruptcy] A power suffers from bankruptcy at the instant when his
+% royal treasury reaches 0 \ducats (or less).  The following effects are
+% immediately applied:
+% \bparag 1 \MNU (counter, not level) is eliminated (chosen at random)
+% \bparag 1 level of \TradeFLEET are lost, chosen by the bankrupted player;
+% \bparag the \STAB decreases by 1 level;
+% \bparag[Exception] \FRA, \SPA loses 2 \STAB.  If it has created its Stock
+% Exchange \HOL (event \eventref{pIII:Amsterdam Stock Exchange}) and \ENG
+% (\eventref{pIV:London Stock Exchange}), loses also 2 levels.
+% \bparag For \TUR, one \Pasha becomes corrupted.
+% \bparag A Bankruptcy has also an unfavorable and permanent effect for the
+% player when he rolls on the Loans table during each remaining turns of the
+% current period.
+
+% \aparag[Treasury Collapse]
+% If the Royal Treasury of a power goes underneath -200\ducats at any time or
+% the Royal Treasury is negative after adding incomes (\terme{Net Income},
+% \lignebudget{29}, see ~\ruleref{chapter:Incomes}), the power suffers
+% Treasury Collapse.  The following effects are immediately applied:
+% \bparag 2 \MNU are eliminated (chosen at random)
+% \bparag 4 levels of \TradeFLEET are lost, chosen by the bankrupted player;
+% \bparag the \STAB decreases by 4 levels;
+% \bparag the \DTI is decreased by 1;
+% \bparag 15 \PV are lost.
+% \bparag A Treasury Collapse has the same effect as a Bankruptcy when rolling
+% on the Loans table during each remaining turns of the current period.
+
+% \aparag[Bankruptcy and Peace]
+% \bparag Bankruptcy or Treasury Collapse forces the bankrupted player to sign
+% a peace with all of his enemies if bankruptcy brings his Stability to the -3
+% level.  This peace will be determined and resolved during the immediately
+% following Peace step.
+% \\
+
+% --- FIN: ENLEVER dans COMPTABILITY v2 --
+
+
+
+\subsection{Stability}
+
+% RaW: 27
+
+\STAB is the most important indicator for a country in a campaign game. It is
+Stability that allows players to best manage their country because it has an
+impact on most administrative operations, as well as monarch survival, income,
+war duration and on peace levels achieved.
+
+\aparag The \STAB of each country fluctuates between -3 and +3. A positive
+\STAB is a good thing while a negative one hampers the country.
+\bparag The \STAB of each country is recorded on the \STAB track on the \ROTW
+map.
+\bparag Each major country (as well as some other entities) has a \STAB
+counter used to record its \STAB.
+
+\aparag[Variation of the Stability] The \STAB varies according to the actions
+of the players or situations affecting the player (e.g., state of war), or
+else by events.
+\bparag These variations are indicated here and there in the concerned rules
+or events. It is not necessary to learn each and every one variation, as they
+will be reminded to the players when the need arises.
+\bparag The main reason to loses \STAB is by wars (either declaring one or
+going on in a existing war). \STAB may also be lost because of revolts,
+bankruptcy and some other events.
+\bparag The main way to gain \STAB is by paying the \STAB improvement
+operation at the end of turn (see~\ruleref{chPeace:Stability
+  Improvement}). \STAB may also be gained by ending war and a handful of
+events.
+
+% Removed compta v2.  27.2 STABILITY AND INCOME
+%
+% The Stability affects the income as follows:
+%
+% +10% to Income with a +3 Stability.
+%
+% From -10% up to -50% for a negative or null Stability.
+%
+% These values are indicated at the bottom of each box on the Stability track
+
+% 27.3 STABILITY IMPROVEMENT The player may improve his Stability, by
+% attempting a Stability Improvement Operation (see 50.2).
+
+% Stability may also improve during the Redeployment phase when prosperity
+% increases (see rule 49.1).
+
+% \subsection{Economy}
+
+
+
+\subsection{Technology}\label{chThepowers:Technology}
+
+\aparag Technology is an abstract representation of the weapons, army
+discipline, military doctrine and such.
+
+
+\subsubsection{Generalities about technology}
+\aparag[Levels and goals.] Each major power and cultural group, as well as
+some other entities, has a technology level between 1 and 70.
+\bparag Technological goals represent major breakthrough in the art of
+war. They also have a level between 1 and 70.
+\bparag Whenever the level of a country is higher than the level of a goal,
+the country possess the corresponding technology.
+\bparag These level are recorded with counters on the technology track (on the
+\ROTW map).
+\bparag The initial level of each technological goal is written on its counter
+(or specified in the scenario). The initial level of majors and groups is
+given in the scenario.
+
+\aparag[Land and Sea.] Technology levels and goals are split in \terme{Land
+  technology} (affecting armies and sieges) and \terme{Naval technology}
+(affecting navies and exploration).
+\bparag Always ignore anything dealing with Land technology when handling
+Naval technology and always ignore anything dealing with Naval technology when
+handling Land technology. Typically, Land technological goals do not affect
+Naval technological levels and so on.
+\bparag Neither \AUT nor \PRU have a Naval technology counter. Their naval
+forces have the same technology than the Latin group.
+
+\aparag[Cultural groups.] The technology of a minor country is the technology
+of its cultural group.
+\bparag Major countries also belong to cultural groups. Whenever the
+technology of a major increase, the technology of its groups may also
+increase.
+% \bparag See~\ref{chThePowers:List of religions} for a list of cultural
+% groups.
+
+
+\subsubsection{Technological goals}
+\aparag[Mobile markers] There are several counters on the technology track
+that may move and represent the spread of the various technologies
+(technological goal) that a country can achieve. There is no counter for the
+technologies known to everybody in 1492 (\TMED for Land technology, \TCAR and
+\TGA for Naval technology).
+\bparag There is also a marker for the \TTER technology (that can be taken
+only by \SPA) and for the \TVGA technology (that can be taken only by \VEN).
+\bparag Each of the mobile markers has a turn (and the corresponding year)
+written on it. This indicates the first possibility of access to the
+corresponding technology.
+\bparag If a country has a too rapid progression, its technology marker will
+be blocked at the level just below the goal until the turn written on it is
+reached.
+% \bparag Mobile markers are placed at the beginning of the game on the
+% corresponding boxes as written in the scenarios.
+
+\begin{exemple}
+  Technology \TARQ may not be discovered before turn 11, its initial level is
+  21 (as indicated on the counter).
+
+  At turn 9, \FRA has a Land technology of 19 and succeed in gaining 2
+  levels. That should bring it to level 21 and give it \TARQ. However, \TARQ
+  is not accessible yet. So the Land technology of \FRA is instead blocked at
+  level 20 and the extra progression level is lost.
+
+  At turn 10, \FRA may still not get \TARQ. Thus, trying to improve its Land
+  technology is useless as no level may be gained.
+\end{exemple}
+
+\aparag[Stacking of counters.] Two technological goals counters (of the same
+kind: Land or Sea) may never be stacked on the same box and must always have
+at least one free box between them. If a goal should move to the same box as
+another, or to the box immediately above, it stops two boxes ahead.
+\bparag The technology marker of a country (or group) may never be exactly in
+the same box as a technological goal (of the same kind). If it stop on it, it
+gains a one box bonus. Conversely, if a goal drops, it stops one level before
+any marker of the same kind.
+\bparag Exception: Ignore the \TTER and \TVGA for everybody (including \SPA
+and \VEN).
+
+\begin{exemple}
+  At turn 11, the Land technology of \FRA is at level 20, just before \TARQ at
+  level 21. \TARQ becomes available and \FRA tries to raise its Land
+  technology and manage to gain 1 level. This should put its marker in box 21
+  on top of the \TARQ marker. Since stacking of a marker and a goal is
+  forbidden, \FRA gets a bonus level of Land technology and goes directly to
+  22.
+
+  At turn 21, after technological improvement, no one managed to get \TMUS and
+  the higher level of Land technology is 29. As per goals adjustment
+  (see~\ref{chExpenses:Technology}), \TMUS should loss 1 level from 30 to
+  29. However, that would put it on top of a marker, which is forbidden, thus
+  it stays at 30 instead.
+\end{exemple}
+
+
+\subsubsection{List of technologies}
+\aparag We give here a list of all Land and Naval technologies, in
+chronological order, together with the year and turn of availability. For
+historical reference, we also give the first country (or countries) that
+acquired this technology, as well as a short commentary on what it
+represents. Only the first three columns are of interest in game.
+\bparag Note that some countries are sometime allowed to gain technologies
+earlier than allowed, thus the dates here may be later than the historical
+occurrence of the technology (typically, \SUE gets \TBAR in the 1630's and
+\ENG gets it in the 1640's).
+
+\bparag List of Land technologies:\par
+\begin{tabular}{|l|cc||c|l|}
+  \hline
+  Name & Year & Turn & First & Remark\\
+  \hline
+  \TMED & & 1 && At start.\\
+  \TREN & 1492 & 1 & \FRA, \TUR & Generalisation of field artillery.\\
+  \TTER & 1520 & 7 & \SPA & \SPA only.\\
+  \TARQ & 1540 & 11 & \FRA & ``\emph{Trace italienne}''.\\
+  \TMUS & 1590 & 21 & \HOL &\\
+  \TBAR & 1650 & 33 & \SUE, \ENG & \emph{L\"{a}derkanonen}, New Model Army.\\
+  \TMAN & 1685 & 40 & \FRA, \AUS & Vauban fortification system.\\
+  \TL & 1770 & 57 & \PRU & Oblique order.\\
+  \hline
+\end{tabular}
+
+% \aparag[Land Technology] Current state
+% \begin{verbatim}
+%             Year  P-T    \#box Moral First(s)       Fortress
+%             %             Medieval 0 1
+%             %             Renaissance 1492 I-1 10 1/2 FRA, TUR f3*2
+%             %             Tercio ~1520 II-7 16 3 SPA
+%             %             Arquebus 1540 II-11 21 2 FRA (Trace italienne) -1
+%             %             Ass.,f3*1
+%             %             Musket 1590 III-21 30 3 HOL/21
+%             %             Baroque 1650 IV-33 40 3 SWE/29,ENG/31 f4*2,t40:
+%             %             f4*1
+%             %             Manoeuvre 1685 V-40 51 3 FRA,AUT t40 Vauban: f5
+%             %             Lace War 1770 VII-57 67 3 PRU/54
+% \end{verbatim}
+
+\bparag List of Naval technologies:\par
+\begin{tabular}{|l|cc||c|l|}
+  \hline
+  Name & Year & Turn & First & Remark\\
+  \hline
+  \TGA & & 1 & & At start.\\
+  \TCAR & & 1 & & At start.\\
+  \TGLN & 1492 & 1 & \POR, \SPA & Caravels, Nefs, Great ships, \ldots\\
+  \TGF & 1560 & 15 & \HOL, \ANG & Dutch Fluyt, British race-built
+  galleons. Smaller and faster.\\
+  \TVGA & 1560 & 15 & \VEN & \VEN only.\\
+  \TBAT & 1590 & 21 & \HOL, \ANG &\\
+  \TVE & 1645 & 33 & \ANG, \HOL & Ship-of-the-line, primitive battle line.\\
+  \TTD & 1690 & 41 & \ANG & British standardisation, early professionalisation
+  of the navies.\\
+  \TSF & 1735 & 50 & \FRA, \ANG & Better blockade, faster 2nd line ships.\\
+  \hline
+\end{tabular}
+
+% \aparag[Naval Technology] Current state
+% \begin{verbatim}
+%               Year  P-T   \#box Moral   First(s)
+%               %               Carrack 0 1 1
+%               %               Nao-Galeon 1492 I-1 11 2 POR SPA
+%               %               Galleon-Fluyt 1560 II-15 24 2 HOL ENG
+%               %               Galleass 1560 III-15 26 VEN only
+%               %               Battery 1590 III-21 34 3 HOL, ENG
+%               %               Vessels 1645 IV-33 44 3 ENG, HOL
+%               %               Three-Decker 1690 V-41 58 3/4 ENG, FRA
+%               %               74s 1735 VI-50 68 3/4 FRA/50,ENG
+% \end{verbatim}
+
+% \begin{designnote}
+%   Carrack: also includes Caravels, Nefs, Great Ships,...\\
+%   Nao-Galeon: Nau portugais, Galleon espagnol\\
+%   Galleon-Fluyt: British Galleon, Dutch Fluyt,... [ex Lateen Sail] {Gallion
+%   anglais affiné et petits
+%   bateaux hollandais}\\
+%   Battery: Galleass available for all\\
+%   Vessels: Galleys worthless against this, Ship-of-the-line et ligne de bataille primitive\\
+%   Three-Deckers: HOL: can not built anymore from TF action, (standardisation anglaise effective, route vers un peu de professionnalisation)\\
+%   74s: Ships 74's guns (navires de 2nde ligne plus agiles, blocus renforcé)
+% \end{designnote}
+
+
+
+
+\section{Troubles at land and sea}
+
+
+
+\subsection{Revolts}
+
+% RaW: 30
+A revolt is determined randomly, concerning where and when it occurs. A revolt
+usually brings a drop in the \STAB level of the victim country. This country
+has to crush the revolt as quickly as possible otherwise taking the risk to
+witness an extension of that revolt (that can go as far as overthrowing the
+country's monarch).
+
+Revolts are generated by events. The revolt tables indicate the strength and
+location of the revolt, according to the period in play. The revolt tables are
+located at the start of the Events handbook.
+
+One table is used to determine the victim country. Another group of tables
+(one per country) helps determine the revolting province. Finally a table
+gives the virulence (i.e. the strength) of the revolt.
+
+\aparag[Resolving Revolts] Revolts are rolled for when required per the
+political events. See~\ruleref{chEvents:Revolts} for full details on the
+procedure.
+
+\aparag[Revolt and Income] Provinces in revolt bring no income during the
+country's income phase. Rather than recomputing the income of unrevolted
+provinces each turn, this is recorded as a loss on the Economic Record Sheet
+(line \ERS{Pillages, Revolts, Pashas}).
+
+\aparag[City control] Unless specified by the event causing the revolt or by
+the strength of the revolt, the city in a revolted province is still
+controlled by whoever controlled it last for all aspects of the game (eg for
+supply).
+
+\aparag[Technology] Revolted troops (if any) have the same characteristics
+(class, number of artillery, \ldots) as troops of the country in which the
+revolt occurs.
+\bparag The technology of the revolted troops is the technology of the country
+in which it occurs at the beginning of the turn. Hence, it may be lower than
+its actual technology if the country managed to increase it during the turn.
+
+\aparag[Crushing revolts] During the military phase, a country may attempt to
+crush a revolt by sending troops in the revolted province.
+\bparag Revolts occurring inside minor countries that are not active are
+automatically removed at the end of turn.
+
+\aparag Only national units from the country in which it occurs may be used
+against revolts. No units belonging to minors (even vassals) or major allies
+may be used.
+\bparag Exception: the Emperor may use Holy Roman Empire units to repress
+revolts in the \HRE.
+\bparag Exception: \ANG may use troops of \pays{ecosse}
+(after~\eventref{pVI:Act Union}) to fight all its revolts and troops of
+\pays{hanovre} (after~\eventref{pVI:Vassalisation Hanover}) to fight revolts
+inside his or \pays{hanovre}'s territory.
+\bparag Exception: during religious or civil war, any country at war or in
+intervention may fight revolts allied to the other side.
+
+\aparag[Revolts and \STAB] At the end of turn, existing revolts cause loss of
+\STAB as indicated in~\ruleref{chPeace:Revolts Stability}.
+
+\aparag[Extension of revolts] If one or more revolt still exists at the end of
+turn, it extends in the same or adjacent provinces,
+see~\ruleref{chPeace:Extension Revolts}.
+
+\aparag[Revolt stacking] Each province may contain up to two revolt counters
+(any side) in addition to other military units (with usual stacking).
+\bparag If a third counter had to be created in a given province, simply
+ignore it but apply all the other effects of this revolt (eg taking the
+fortress, adding troops, \ldots)
+
+\aparag[Successful revolts] If they spread too much, revolts may have two
+separate but very negative effect on a country.
+\bparag If half the national provinces of a country are revolted at end of
+turn, then its tyrant is overthrown (executed or exiled) and replaced by a new
+benevolent monarch, see~\ruleref{chPeace:ExecutionMonarchByRevolts}.
+\bparag If some specific provinces of a given group (eg Ireland) are revolted,
+the owner may choose to give independence to the revolted principality rather
+than trying to crush it now. See~\ruleref{chSpecific:Peace:Independence
+  Revolt} for the list of concerned provinces.
+
+
+
+\subsection{Pirates}
+
+% RaW: 31
+Pirates appear in \STZ/\CTZ each turn and also due to some events. Each turn
+they remain in play, pirates will try to weaken all the commercial fleets,
+during the redeployment phase of the turn.
+
+Pirates are represented by the abstract minor ``country'' \pays{pirates},
+mostly with \corsaire counters as well as some \LeaderA representing famous
+pirates (such as \leaderBlackbeard).
+
+\aparag[Appearance of Pirates] Pirates appear each turn in the \ROTW \STZ
+according to the Economic Situation die roll, see~\ruleref{chEvents:Piracy}.
+\bparag The presence of named \pays{pirates} \LeaderA increase the risk of
+pirate appearing.
+\bparag The economical event~\eventref{eco:Piracy} causes several appearances
+of pirates.
+
+\aparag[Stacking of pirates] Two \pays{pirates} \corsaire\facemoins in the
+same \STZ/\CTZ are immediately exchanged for one \pays{pirates}
+\corsaire\faceplus. \pays{pirates} \corsaire\faceplus and \Facemoins can
+coexist in a \STZ/\CTZ, without limit.
+
+% Jym: Yeah ! une regle inconnue mais tellement specifique qu'elle en devient
+% useless... Paf la baleine !
+% \aparag[Revolt and pirates] When all provinces bordering all the sea zones
+% attached to a particular \STZ or \CTZ are in revolt (unusual but possible),
+% place one \pays{pirates} \corsaire \facemoins in this \STZ/\CTZ at the
+% beginning of the Peace phase (during the extension of revolts).
+
+\aparag[Effect of pirates] \pays{pirates} \corsaire (as well as countries
+\corsaire) attack the commercial fleet of other countries.
+\bparag They may be fought during the military phase by navies.
+\bparag At the end of turn, they can cause loss of levels on \TradeFLEET.
+\bparag See~\ruleref{chPeace:CorsairAttack}.
+
+
+
+
+\section{The economical system}
+
+\aparag The economical system in \emph{Europa Universalis} tries to reproduce
+the constant need to (short term) loans that countries of the epoch endured,
+as well as the heavy strain caused by wars, bringing even large and rich
+superpowers to bankruptcy and the brink of ruin. Inflation is usually very
+high (due to the massive amount of gold and silver coming from America) thus
+preventing any country from stockpiling large amount of money (these quickly
+lose their value because of inflation).
+
+\aparag The count unit is the \terme{ducat}, written \Ducats.
+
+
+
+\subsection{Economic Record Sheets}
+
+\aparag Each player has two sheet, separated in three actual \EcoRS.
+\bparag \EcoRS A keeps track of the \terme{Royal Treasure} (\RT) of a
+country. This represents the amount of gold stockpiled in the King's
+chests\ldots or the amount of debts he has. The final value of the \RT is
+carried over from one turn to the other.
+\bparag \EcoRS B is used to compute the income and expenses during each
+turn. The values are useless after the end of the turn.
+\bparag \EcoRS C (below \EcoRS A) is used to record loans. This information
+carries over from one turn to the following one.
+
+\aparag Each column of the \EcoRS is used for one turn only. Information for
+the following turn should be written in the next column.
+
+\aparag The lines of the \EcoRS are organised in turn order. They should be
+fill from top to bottom.
+\bparag The turn starts on top of \EcoRS A, there is a ``break'' after line
+\ERSshort{RT after Diplomacy} for computation of incomes and expenses on
+\EcoRS B.
+
+\aparag The \RT can well be negative (representing debts). This does not cause
+extra trouble (as long as the amount of the debt is not ``too big'').
+
+
+
+\subsection{A Three stage process}
+
+\aparag The bulk of the economical system works in a three stage process
+during each turn.
+\bparag First, the \emph{gross income} is computed.
+\bparag Then, the \emph{expenses} are computed.
+\bparag Lastly, the \emph{Exchequer test} tells how well the taxes were
+collected and the monarchs try to find money to fill the gaps.
+
+\NPincludeA4{accounting-rt}{Economic Record sheet A and
+  C}{economic-record-sheet-rt} \NPincludeA4{accounting-income}{Economic Record
+  sheet B}{economic-record-sheet-income}
+
+
+\subsubsection{Incomes}
+\aparag Income is computed during the Administrative phase. Income comes from
+various sources such as:
+\bparag Provinces income (basically, taxing the peasants and the artisans).
+\bparag Industrial income (European gold mines and manufactures).
+\bparag Trade income (\TradeFLEET and trade centres).
+\bparag \ROTW income (Colonial establishments and the resources they exploit).
+
+\aparag Lines in \EcoRS B are grouped by kind of income in order to make
+partial sums and ease computation of the total.
+\bparag Income does not vary much from one turn to another (except for exotic
+resources). Hence, most of the time computing income is done by copying the
+previous column.
+
+\aparag Gold from the \ROTW is not received as regular income. It must be
+physically brought back to Europa and then arrives directly into the \RT (this
+is better).
+
+\aparag The total income is called the \terme{Gross income} it is computed on
+line \ERS{Gross income B} and copied back on line \ERS{Gross income A}.
+
+
+\subsubsection{Expenses}
+\aparag Expenses come in two kind:
+\bparag The administrative expenses are used to maintain troops and buy new
+ones and to develop commercially or industrially a country.
+\bparag The military expenses are used to move troops during wars. This
+quickly becomes \textbf{very} expensive.
+
+\aparag Administrative expenses are written and computed during the
+administrative phase.
+\bparag They include loan interest and loan refund.
+
+\aparag Military expenses are computed during the military phase.
+
+
+\subsubsection{The Exchequer test}
+\aparag The gross income computed during the administrative phase is only a
+rough approximation of what will be available if taxes go well.
+\bparag At the end of the turn, each country perform the Exchequer test to
+discover how well the taxes went and how much money really made it to the
+palace.
+\bparag Low stability and wars tend to make taxes go wrong.
+
+\aparag The Exchequer test splits the incomes into three parts: the
+\terme{regular} income, the \terme{prestige} income and the \terme{national
+  loan} income.
+\bparag These incomes are expressed in percentages (of the gross income).
+\bparag It is possible (and intended) that these three percentages sum up to
+more (or less) than 100\%.
+
+\aparag[The regular income] is used first to cover for the expenses.
+\bparag In the rare cases where the regular income is larger than the
+expenses, the surplus can be stockpiled into the \RT.
+
+\aparag[The prestige income] may be used to cover for the expenses.
+\bparag Any part of it that is not spent to cover for expenses (either surplus
+or voluntarily kept) is immediately spent for ``prestige'' expenses such as
+building palaces or churches, organising receptions, \ldots
+\bparag Prestige expenses provide \VPs at the end of each period.
+
+\aparag[The national loan] income is the maximum amount of money that can be
+borrowed from national nobles and burgers.
+\bparag National loans are never mandatory and each country always choose how
+much to borrow (within the limit of this income).
+\bparag Money from national loans can be used to pay for expenses or can be
+stockpiled into the \RT.
+\bparag Loans have a fixed interest rate of 10\% that must be payed each turn
+until the loan is refunded.
+\bparag Refunding of national loans is never mandatory. A country may choose
+to continue paying interests each turns rather than refunding its
+citizens\ldots
+\bparag However, having too many loans tends to hamper further Exchequer
+tests.
+
+\aparag[International loans] Sometimes, especially when the Exchequer test
+went poorly, a country will be in dire need for money and can ask for an
+international loan.
+\bparag International loans give money that can be used to pay for expenses or
+to be stockpiled in the \RT.
+\bparag International loans also have a fixed interest rate of 10\%.
+\bparag International loans, however, must be refunded within 15 years (3
+turns).
+
+
+\subsubsection{Bankruptcy and inflation}
+\aparag[Bankruptcy] During the administrative phase, countries can choose to
+go bankrupt.
+\bparag Sometimes, the poor economical situation of a country (too many loans
+and debts) forces it to go bankrupt.
+\bparag Bankruptcies allow a country to erase some or all of its loans and
+debts.
+\bparag However, it usually cause some agitation (loss of \STAB) and
+economical disarray (loss of \TradeFLEET and \MNU) as well as a slight
+dishonour (loss of \VPs).
+
+\aparag[Inflation] At the end of each turn, inflation will decrease the amount
+of the \RT.
+\bparag It is worth noticing than even a negative \RT will suffer from
+inflation. Going into debts is not a good way to get ride of inflation.
+\bparag Because of inflation, each country needs to get at least some money
+into its \RT each turn.
+
+\begin{exemple}[Exchequer test]
+  Country A has a gross income of 300\Ducats. It has a total expenses of
+  200\Ducats (includes administration, loans interest and refund and military)
+  and 40\Ducats in \RT. During the Exchequer test, the results give 50\% in
+  regular income, 40\% in prestige income and 20\% in loans (a good
+  result). Thus, its regular income is 150\Ducats (50\% of 300), its prestige
+  income is 120\Ducats and its maximal national loan amount is 60\Ducats.
+
+  Money must be spent first from the regular income. So the 150\Ducats of the
+  regular income are used and 50\Ducats of expenses remains. There are several
+  solution to cover this:
+  \begin{itemize}
+  \item It is possible to use 50\Ducats of the prestige income to pay for
+    expenses. The 70\Ducats remaining must be spent for prestige \VPs and
+    cannot go into the \RT. No loan is required and so none is contracted and
+    inflation has to be payed from the 40\Ducats of \RT.
+  \item It is also possible to choose to get more \VPs by spending all the
+    120\Ducats of prestige income into \VPs. A new loan of 60\Ducats can be
+    contracted to pay for the remaining expenses (50\Ducats) and get 10 extra
+    \Ducats into the \RT (to pay for inflation).
+  \item Another possibility is to spent all the prestige income in \VPs but
+    forgo the loan. The remaining 50\Ducats of expenses is then payed from the
+    \RT (thus going to -10\Ducats) and inflation will lower it some more
+    (probably not the wisest choice).
+  \end{itemize}
+  Several other possibilities exists and are up to the player choice. Notice
+  that the easiest way to get money back into the \RT (to pay for inflation
+  and Diplomacy) is to contract a new loan.
+\end{exemple}
+
+\begin{exemple}[The loan trick]
+  Loan refund being expenses, they can be payed by the prestige income thus
+  giving a process to circumvent the prohibition of putting prestige money in
+  the \RT:\par
+  A country has 100\Ducats in loans and 200\Ducats in incomes. Its expenses
+  are 80\Ducats and it choose to spend an extra 50\Ducats to refund loans
+  (this must be chosen before the military phase, so do it carefully while at
+  war!) Thus, its total expenses is 130\Ducats.
+
+  The Exchequer test gives 80\Ducats of regular income, 60\Ducats of prestige
+  income and 60\Ducats of loans. The 80\Ducats of regular income is spent and
+  50\Ducats of expenses remains. These can be covered from the prestige income
+  (and 10\Ducats of prestige is spent for \VPs). A new loan of 50\Ducats is
+  contracted and all its amount can go into the \RT. The net effect on the
+  loans is null and all happened as if prestige income went into the \RT\ldots
+  But to do this trick you need to have some loans to refund (and re-contract
+  immediately) and you need to carefully estimate the Exchequer test as a bad
+  result can cause a huge hole in your \RT. Trying to be too greedy when doing
+  this is a good way to force you to take an international loan.
+\end{exemple}
+
+\begin{exemple}[When things go wrong: international loans]
+  A country has 500\Ducats of gross income. Being at war, and forced to pay
+  the interest of previous loans give a total expenses of 700\Ducats (those
+  armies and fleet don't move for free). Fortunately, the \RT is still quite
+  OK at 10\Ducats.
+
+  The Exchequer test goes badly (as often in wars) and gives a result of
+  30\%/20\%/40\%. So the regular income is 150\Ducats, the prestige income is
+  100\Ducats and a maximum loan of 200\Ducats.
+
+  The regular income covers a small part of the expenses and the prestige
+  income is also quickly swallowed to pay for some troops rather than
+  receptions\ldots 450\Ducats still need to be found. The burgers reluctantly
+  loan 200\Ducats still leaving a 250\Ducats large ``hole''in the budget.
+
+  Rather than going badly into debt (usually a bad idea), the country choose
+  to appeal to Genoese and Dutch bankers and manage to get a 140\Ducats
+  loan. Not bad but still not sufficient to cover the expenses. Moreover, the
+  international loan must be refunded within 15 years (hopefully this won't
+  happen in the middle of another war).
+
+  The 140\Ducats of the international loan cover for part of the expenses but
+  the extra 110\Ducats must be taken from the \RT, bringing it to -100\Ducats
+  with 340\Ducats more in loans than at the start of the turn. Another similar
+  turn and bankruptcy will knock on the door. Maybe now is a good time to try
+  and make peace after all\ldots
+\end{exemple}
+
+
+
+
+\section{The Great Discoveries}
+
+% RaW: 59, 60
+Countries can launch great expeditions in order to discover and explore the
+New World as well as find new routes to India and its riches. After the
+exploration, they may invest in order to build trading post and increase their
+hold on the spice and sugar trade or they may try to colonise the New World to
+either exploit gold or populate it.
+
+\aparag[Exploration] During the military phase, countries may send stack in
+the \ROTW to try and discover new seas and new lands.
+\bparag The presence of an explorer (on sea) or a conquistador (on land)
+greatly increases the chance of success of the voyage.
+\bparag New discoveries have to be brought back to known areas in order to be
+effective.
+\bparag See~\ruleref{chMilitary:Discoveries}.
+
+
+
+\subsection{Forts}
+
+Forts are small fortifications that bring little protection but are
+inexpensive to build and maintain.
+
+\aparag[Building forts] Forts may be built by \LD during the military phase in
+the \ROTW only.
+\bparag Forts are considered to be fortresses of level 0.
+
+\aparag[Number of forts] The number of forts a country may have in play is
+limited by the number of counters only.
+\bparag Forts are free to build.
+\bparag Each fort costs 1\ducats per turn to maintain.
+
+\aparag[Forts and supply] Forts are supply sources for \LD and \ND only. They
+do not provide supply for \ARMY or \FLEET counters.
+\bparag Coastal forts are considered as ports for \ND, but not for \FLEET.
+
+
+
+\subsection{Colonies and Trading posts}
+
+% RaW: 59, 60
+\label{chTime:COL TP}
+Colonies (\COL) and Trading Post (\TP) are placed on the map after payment
+(and success) of an administrative Colonisation or Trading post implantation
+operation.
+
+% If the result on the table for a Colonisation attempt imposes a combat with
+% natives and that the latter are not destroyed or do not retreat, the Colony
+% cannot be placed.
+
+A newly implanted \COL or \TP begins at level 1, then it progresses according
+to actions of Colonisation or Trading post implantation of the owning country
+until it reaches the level 6 (maximum).
+
+A \COL generates an income according to its level (1 \ducats per level), and
+the wealth of the Area (simple or double income according to the \COL side),
+as well as from exotic resources that it can exploit. It may also be
+fortified.
+
+% This operation depends especially on the value of the Foreign Trade Index
+% (\FTI) of the player and the value of native tolerance of the Area where the
+% Trading Post is going to be placed.
+
+A \TP generates an income (1 or 2 \ducats according to its side) and exploits
+most exotic resources (except square-shaped resources of \continent{America}
+and \continent{Africa}).
+
+\TP are vulnerable to actions of Competition from the other players. They can
+also be burnt down during wars. \COL are more resilient and can only be
+exchanged as peace condition or in dowry.
+
+
+\subsubsection{Description}
+\aparag[Number of establishments] For each period, the maximum number of \COL
+and \TP counters is limited and can never be exceeded
+(See~\ruleref{chThePowers:Period Limits}).
+
+\aparag[Placement] New \COL or \TP may only be placed on map via the
+colonisation or trading-post administrative action.
+\bparag Using a conquistador, missionary or explorer greatly improves the
+chances of success.
+\bparag \TP may be turned into \COL in some cases as a colonisation action.
+
+\aparag[Level of an establishment] A newly placed \COL or \TP is automatically
+level 1, and placed side \Facemoins on the map.
+\bparag Each following successful colonisation or trading-post operation
+increase its level by 1.
+\bparag Up to level 3, the \COL/\TP is placed side \Facemoins on the map.
+\bparag From level 4 up, the \COL/\TP is placed side \Faceplus on the map.
+\bparag A \COL/\TP may never have more than 6 levels.
+
+\aparag[Establishments and port] Each \COL/\TP located in a coastal province
+is considered to be also a port.
+\bparag In case of provinces with multiple coasts (eg \granderegion{Panama}),
+the principal coast, where the port is located, must be chosen upon creation
+of the \COL/\TP.
+
+\aparag[Fortifications] \COL/\TP may be fortified. A \fortress marker can be
+built in a \COL/\TP provided the owning country has the required technology.
+\bparag Unfortified \COL of level 5 of less and \TP are considered to have
+only a fort as a fortification. A level 1 \fortress has to be built before
+further fortifications.
+\bparag The cost of construction and maintenance of a \fortress is double in
+the \ROTW than in Europe.
+% Jym, dans EU6: The cost of maintenance is the same (i.e. equal the fortress
+% marker value, from 1 to 5).
+\bparag In \TP and \COL of level 5 or less, only \fortress of level 1 or 2, or
+the special arsenal-\fortress may be built.
+\bparag Arsenal may be built in \COL/\TP instead of a \fortress of the same
+level. They provide an arsenal (rather than a port) in addition to the
+benefits of the \fortress. The limit of arsenals building is the counter
+limit.
+
+\aparag[Colony of Level 6] A \COL of level 6 is considered to be a European
+province for all military purpose.
+\bparag It has an intrinsic \fortress level of 1 even if no \fortress was
+built.
+\bparag \fortress of any level may be built in \COL of level 6. They cost the
+normal (European) price both to build and to maintain.
+\bparag It becomes known to every country without need to discover the
+province.
+\bparag The cost in \MP for entering the province is now computed as if it was
+an European province and not a \ROTW one.
+\bparag However, its income is still computed as a \COL (including
+exploitation of gold or exotic resources).
+
+
+\subsubsection{Colonial militia}
+\aparag Each \COL has an intrinsic colonial militia of 1\LDE of conscripts per
+2 levels plus 1\LDE is there is a mission.
+% \bparag Exception: \POR has 1\LDE per level of veterans.
+% \bparag Exception: \FRA has veteran militia.
+\bparag Militias have the same military feature (technology, class, \ldots) as
+the player owning the \COL.
+
+\aparag[Utilisation of Militias] These colonial militias can never leave their
+Colony of origin. They are never counted in stacking limit.
+\bparag Militias can either stay within the fortress or fight in the field (eg
+to try and repulse a landing party) at controller's choice.
+\bparag In case of combat, just add the force of militias to military units
+already present in the Colony (up to 8\LD participating in the battle on each
+side).
+\bparag If militia are lost, use the generic militia counters (white) to
+remember how many \LDE are still present.
+\bparag If the \COL is still controlled by its legitimate owner, militias are
+automatically reconstituted for free at the end of turn.
+
+
+\subsubsection{Destruction of TP}
+\aparag \TP that are military occupied during wars may be destroyed by the
+occupant during the redeployment phase.
+
+\aparag It is possible to do concurrence action on \TP. Each successful
+concurrence action reduce the level of the \TP by 1.
+\bparag When the \TP reach level 0, remove it from the game.
+
+% Jym: removed, now fort (f0) for all levels.  A Trading Post of level 6
+% possesses an intrinsic level fortification 1. No fortress marker is then
+% necessary.
+
+% Jym: ?  A fortress marker may only be placed on a Trading Post if the
+% fortress level is at most equal to half the level of the Trading Post
+% (rounded up).
+
+% Only a Trading Post of level 6 may be fortified up to fortress levels 4
+% and/or 5 (if allowed by the technology).
+
+
+
+\subsection{Exploitation of Exotic resources}
+
+\label{chThePowers:ResourcesExploitation}
+\aparag[Resources] Exotic resources are exploited by Colonies (\COL),
+Trading-Posts (\TP) or Manufactures (\MNU). There are ten such resources:
+\RES{Cotton}, \RES{Fish}, \RES{Furs}, \RES{Products of America}, \RES{Products
+  of Orient}, \RES{Salt}, \RES{Silk}, \RES{Slaves}, \RES{Sugar}, \RES{Spices}.
+\bparag \RES{Salt} and \RES{Fish} are the only resources that are also
+exploited through \MNU, in Europe. All other resources are only exploited in
+the \ROTW.
+\bparag The \terme{Exotic Resources Record Sheet} keeps track of the
+exploitation of Exotic Resources (globally) while each player has a
+\terme{Colonial sheet} to record the exotic resources exploited by his
+colonial establishments (and \MNU).
+\aparag Each exotic resource has a price, recorded on the prices track (on the
+\ROTW map).
+\bparag Prices change each turn, partly because of the global economic
+situation (one die roll) and partly because of a specific market situation
+(one die roll per resource, depending on the exploited
+quantity). See~\ref{chExpenses:Variation} for details.
+\bparag Exotic resources bring to each country an income equal to the product
+of the price of the resource and the quantity exploited by that country.
+
+\aparag Exotic resources are depicted on the \ROTW map by a symbol as well as
+a number in a coloured shape. The number indicates how many resources of this
+type are available while the shape indicates how the resource can be
+exploited.
+\bparag The shape of the symbol of the resource indicates how it can be
+exploited. See~\ref{chIncomes:Exotic ressources} for details about
+exploitation of exotic resources.
+
+\aparag[Monopoly on Exotic Resources]
+\label{chThePowers:MonopolyExoticResources}
+A country exploiting at least 6 resources of the same kind can claim a
+monopoly.
+\bparag A partial monopoly is if the country exploits at least as many units
+as all other countries together.
+\bparag A total monopoly is if the country exploits all exploited units but
+two.
+\bparag Resources exploited by minor countries are counted in the total, but
+see~\ref{chDiplo:AdenOmanExoticResources}.
+
+\aparag[Progressive appearance]\label{chThePowers:LateResources} Some
+resources appear only late in the game: \RES{Sugar} (in \continent{Bresil}) in
+1560 (turn 15, period III), \RES{Products of America} and \RES{Sugar}
+(elsewhere) in 1615 (turn 26, period IV), \RES{Cotton} (in \continent{America}
+and \continent{Indonesia}) in 1750 (turn 53, period VII).
+\bparag In 1615 and 1750, when the resources appear, they appear at the rate
+of exactly one resource per turn per \Area. If there are several possibilities
+for a given \Area, the resource is determined at random.
+
+\begin{exemple}
+  \granderegionGuyana provides 3 resources that appear in 1615: 2 \RES{Sugar}
+  and 1 \RES{Product of America}. Thus, in turn 26 only one of them (chosen at
+  random) will be available; on turn 27, a second one (still chosen at random)
+  appears and only in 1625 (turn 28) will the three resources be exploitable.
+
+  \granderegionAntilles has 8 \RES{Sugar}. Thus, it will only reach its full
+  production capacity by turn 33 (1650).
+
+  In 1615, there are in \granderegionAntilles both colonies of \FRA and \ANG
+  with enough levels to exploit 1 \RES{Sugar} each and a colony of \HOL with
+  enough levels to exploit 2 \RES{Sugar}. The first \RES{Sugar} appears and 3
+  countries can exploit it. Thus an automatic competition is done. The
+  resource is finally exploited by \FRA.
+
+  In 1620, a second \RES{Sugar} appear. \FRA still has the right to exploit
+  the first one and keeps it, hence \FRA has no more free levels in
+  \granderegionAntilles to exploit the new resource. An automatic competition
+  in done between \ANG and \HOL only and the resource goes to \HOL.
+
+  In 1625, a third resource appears. Both \ANG and \HOL still have the
+  capacity to exploit it (because \HOL has enough levels to exploit 2
+  \RES{Sugar}). Hence a new automatic competition is resolved and the resource
+  goes again to \HOL.
+
+  In 1630, \FRA managed to raise its \COL and can now exploit 2
+  \RES{Sugar}. Thus, both \FRA and \ANG are able to exploit the fourth
+  \RES{Sugar}. However, the players agree and \FRA forfeits its claim. The
+  resource is exploited by \ANG.
+
+  In 1635, the fifth resource appear and only \FRA can exploit it, thus taking
+  it without need for competition.
+
+  In 1700, several other \COL have been settled in \granderegionAntilles thus
+  exploiting the 8 \RES{Sugar} there. \HIS wants a part of the trade and
+  successfully create a new \COL. Since all the resources are already
+  attributed, there is no automatic competition and \HIS will need to do some
+  voluntary competition (spending money and action and angering other players)
+  in order to exploit some \RES{Sugar}.
+\end{exemple}
+
+\aparag[Development of trade in India]\label{chIncomes:TradeIndia}
+The trade of exotic resources changes during the game in India. Some events
+may change the flux of goods towards south India and Bengal.
+\bparag Before the fall of the Kingdom of \pays{vijayanagar} (due to
+\eventref{pII:Mughal Expansions}, \eventref{pIII:Fall Vijayanagar},\ldots) one
+can exploit only 1 \RES{Products of Orient} and 1 \RES{Spice} in
+\granderegion{Karnatika}. A marker is used to show that the resources are
+limited.
+\bparag After the fall, one can exploit fully the 2 \RES{Products of Orient},
+2 \RES{Spices} and 2 \RES{Cotton} (the later only after 1700).
+\bparag Before \eventref{pIII:Mughal Akbar}, \granderegion{Bengale} is limited
+to 1 resource of each type. Use a marker as reminder.
+\bparag After \eventref{pIII:Mughal Akbar}, \granderegion{Bengale} can now
+exploit 2 resources of each type. Flip the marker to its ``2'' side.
+\bparag When a \COL is built in \ville{Calcutta} and either
+\eventref{pIII:Mughal Akbar} has happened or this is period VI or VII, the
+full potential of the \Area is reached (3 \RES{Products of Orient}, 3
+\RES{Spices} and 3 \RES{Cotton}).
+
+\aparag[Fishing and naval construction] The owner of many fisheries get some
+reward from the great numbers of fishers in his country related to the
+construction of military naval units (see \ruleref{chExpenses:Effect of Fish
+  Monopoly Purchase} and \ruleref{chExpenses:Effect of Fish Purchase}):
+
+
+
+\subsection{Trade of Wood}\label{chIncomes:Wood}
+
+\aparag Wood is not an exotic resource. As such, it does not bring any income
+coming from a fluctuating price. However, it is exploited in a similar way
+(through colonial establishments or manufactures).
+
+\aparag[Wood production] Wood is produced each turn, and cannot be kept. Each
+unit of wood can be produced by either a \MNU or a \ROTW establishment.
+
+\aparag[ROTW Wood] A \COL\faceplus or \TP\faceplus in an \Area with a
+\RES{Wood} resource can be turned in a Wood factory: it brings the normal
+income, and produces 1 unit of wood that can only be used by the owner of the
+colony.
+\bparag A wood factory \TP or \COL cannot exploit any exotic resources, nor a
+gold mine. Several different players can produce wood in the same \Area, but
+only one unit of \RES{Wood} can be produced per player per area.
+\bparag The exploitation of wood begins with a simple declaration (as a
+diplomatic announcement) and can only be stopped by the loss of the
+establishment.
+\bparag A minor country wood factory does provide the wood to its Patron (in
+the case of \pays{portugal}).
+
+\aparag[European Wood] A \RES{Wood} \MNU of level 1 produces 1 unit of Wood
+that can only be used by the producer. A \RES{Wood} \MNU of level 2 produces
+the same thing, plus 1 unit of Wood that can only be sold to a foreign
+country.
+\bparag The price is fixed to 10\ducats per unit, that goes in
+\lignebudget{Wood and Slaves}.
+\bparag The buyer must not be at war with the seller, and either the buyer has
+a commercial fleet in the seller's \CTZ, or the seller has a commercial fleet
+in the buyer's \CTZ.
+\bparag For this purpose, \PRU, \POL and \SUE count the \stz{Baltique} as
+their \CTZ, and \POR uses \ctz{Espagne}.
+
+\aparag[Use of wood] Wood raises the naval construction limits and the free
+maintenance (see~\ruleref{chExpenses:Effect of Wood Maintenance}
+and~\ruleref{chExpenses:Effect of Wood Purchase}).
+
+
+
+\subsection{Minors colonial politics}
+
+\aparag Some minor countries did also attempt to colonise the new world with
+more or less success.
+\bparag These attempts are resolved using~\ref{eco:Rush:Minor colony}.
+
+
+\subsubsection{Minor establishments}
+\aparag[Effects] Minor establishment exploit 1 resource per side (whatever the
+usual rules for this resource).
+
+\aparag[Military] A Minor establishment \Facemoins is a fort with 1\LDE of
+veteran militia (Latin, class \CAIII).
+\bparag A Minor establishment \Faceplus is a fort with 2\LDE of veteran
+militia (Latin, class \CAIII).
+\bparag The militia fights out of the fort if and only if enemies are landing
+in the province (it stays inside if the enemy comes by Land). It and can only
+retreat in the fort.
+\bparag Minor establishments never trigger native reaction or declaration of
+war by \ROTW minors.
+
+\aparag[Destruction] Any country may attack a Minor establishment during any
+round.
+\bparag Each establishment attacked during the turn costs 1\STAB (declaration
+of oversea war against an unspecified country).
+\bparag A Minor establishment is immediately destroyed if a country controls
+it.
+\bparag Minor establishment are never subject to competition, including
+automatic competition.
+
+
+\subsubsection{Pirate haven}
+\aparag[Effects] Pirate haven (arsenals) give a malus to fight \pays{pirates}
+\corsaire in the \CTZ they are located.
+
+\aparag[Military] A Pirate haven \Facemoins is a fortress of level 1 with 1\LD
+of conscript militia (Latin, class \CAIII).
+\bparag A Pirate haven \Faceplus is a fortress of level 2 with 2\LD of
+conscript militia (Latin, class \CAIII).
+\bparag The militia fights out of the fortress if and only if enemies are
+landing in the province (it stays inside if the enemy comes by Land). It can
+only retreat in the fortress.
+\bparag Pirate haven never trigger native reaction or declaration of war by
+\ROTW minors.
+
+\aparag[Destruction] Any country may attack a Pirate haven at no cost during
+any round.
+\bparag A Pirate haven is immediately destroyed if a country other than
+\pays{pirates} controls it.
+
+\clearpage
+
+
+
+
+\section{The detailed game sequence}
+
+\aparag Each game turn is composed of several phases, each of the phase is
+subdivided into several segments.
+\bparag The Military phase is instead composed of several rounds repeating the
+same segments. The second segment of the phase is composed of one impulse per
+alliance, each alliance performing the same actions (movement and battle) in
+order during its impulse.
+
+\aparag Theoretically, each segment must be completed before moving to the
+next.
+\bparag However, most of the diplomatic discussion and administrative stuff
+(incomes and expenses) can be played simultaneously by all the players and do
+not require strong synchronisation (it is common to have some players still
+discussing while some other are already planning their administrative
+actions).
+\bparag Even the military phase can be de-synchronised when several distinct
+wars are ongoing, but this require a bit more adaptation to deal with the
+end-of-phase test.
+
+\begin{designnote}
+  The following chapters of the rulebook describe each of the phases and
+  segments roughly in turn order.
+\end{designnote}
+
+\begin{todo}
+  Turn the names into links to the corresponding chapter/section.
+\end{todo}
+
+\begin{multicols}{2}
+  % RaW: [5,23]
+  \GameSequence
+\end{multicols}
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: Galleass

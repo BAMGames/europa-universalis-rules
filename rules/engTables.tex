@@ -1,0 +1,420 @@
+% FIRST PAGE: MONARCH SURVIVAL, DIPLOMACY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{GTpage}
+  \GTpagetitle{T1}{Monarch Survival, Diplomacy}
+  \GTid{monarchduration}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \monarchduration
+
+  \GTid{monarchvalue}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \monarchvalue
+
+  \GTid{monarchmilitary}
+  \GTpos{lastbox.south}{0pt,-2pt}{north}
+  \monarchmilitary
+
+  \GTid{periodstable}
+  \GTpos{west border|-lastbox.south west}{0pt,-2pt}{north west}
+  \periodstable
+
+  \node (leftcolumn) [fit=(monarchdurationbox) (monarchvaluebox) (monarchmilitarybox)] {\filler};
+
+  \GTid{overseascb}
+  \GTpos{leftcolumn.east|-pagepage.south}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \overseascb
+
+  \GTid{diploreac}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \diploreac
+
+  \GTid{diplomod}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \diplomod\label{table:DiplomacyModifiers}
+
+  \GTid{diplowar}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \diplowar
+
+  \GTid{diplorotw}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \diplorotw
+\end{GTpage}
+% SECOND PAGE: INCOME, REINFORCEMENTS, GENERAL EXPENSES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{GTpage}
+  \GTpagetitle{T2}{Income, Reinforcements, General Expenses}
+  \GTid{foreigntrade}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \foreigntrade
+
+  \GTid{domestictrade}
+  \GTpos{foreigntradenorthbox.north east}{2pt,0pt}{north west}
+  \domestictrade
+
+  \GTid{bankruptcy}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \bankruptcy
+
+  \GTid{minorforcesaw}
+  \GTpos{west border|-foreigntradebox.south}{0pt,-2pt}{north west}
+  \minorforcesaw
+
+  \GTid{minormaintenance}
+  \GTpos{lastbox.east|-bankruptcybox.south}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \minormaintenance
+
+  \GTid{minorrecruitment}
+  \GTpos{minorforcesawbox.east|-lastbox.south}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \minorrecruitment
+
+  % \GTid{minorforcesli}
+  % \GTpos{lastbox.east|-bankruptcybox.south}{2pt,-2pt}{north west}
+  % \GTcoord{\gtid east}{east border|-\gtid point}
+  % \minorforcesli
+
+  % \GTid{minormaintenance}
+  % \GTpos{minorforcesawbox.east|-lastbox.south}{2pt,-2pt}{north west}
+  % \GTcoord{\gtid east}{east border|-\gtid point}
+  % \minormaintenance
+
+  \GTid{minoradmin}
+  \GTpos{minorforcesawbox.east|-lastbox.south}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \minoradmin
+
+  \GTid{recruitment}
+  \GTpos{west border|-minorforcesawbox.south}{0pt,-2pt}{north west}
+  \recruitment
+
+  \GTid{fortresses}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \fortresses
+
+  \GTid{privateers}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{lastbox.east|-\gtid point}
+  \privateers
+
+  \GTid{mercenaries}
+  \GTpos{lastbox.west|-lastbox.south}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \mercenaries
+\end{GTpage}
+
+% THIRD PAGE: ADMINISTRATIVE ACTIONS, EXCHEQUER TEST, PIRACY AND ECONOMY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{GTpage}
+  \GTpagetitle{T3}{Administrative Actions, Exchequer test, Piracy and Economy}
+
+  \GTid{admintbl}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \admintbl
+
+  \GTid{etatsauvrai}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \etatsauvrai
+
+  \GTid{adminsummary}
+  \GTpos{admintblbox.west|-etatsauvraibox.south}{0pt,-2pt}{north west}
+  \adminsummary
+
+  \GTid{ecopiracy}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \ecopiracy
+
+\end{GTpage}
+
+% FOURTH PAGE: MOVEMENT, ATTRITION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{GTpage}
+  \GTpagetitle{T4}{Movement, Attrition}
+  
+  % First column is 55mm wide (including padding)
+  \coordinate (splitpoint) at ($ (west border|-pagepage.south)+(55mm,-2pt) $);
+
+  \GTid{causesattrition}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \causesattrition
+
+  \GTid{discoveriesattrition}
+  \GTpos{lastbox.north east}{2pt,0}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \GTcoord{\gtid west}{ $(west border|-lastbox.south)+(0,-2pt)$ }
+  \discoveriesattrition
+
+  \GTid{movecost}
+  \GTpos{west border|-lastbox.south}{0pt,-2pt}{north west}
+  \movecost
+
+  \GTid{attritionlosses}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \attritionlosses
+
+  \GTid{fleetsize}
+  \GTpos{lastbox.south-|east border}{0pt,-2pt}{north east}
+  \fleetsize
+
+  % Needs 4ex up (alignment by south => compensate for title size)
+  \GTid{fleettransport}
+  \GTpos{lastbox.south west}{-2pt,4ex}{south east}
+  \fleettransport
+
+  \GTid{campaigncost}
+  \GTpos{west border|-movecostbox.south}{0pt,-2pt}{north west}
+  \campaigncost
+
+  \GTid{supplysize}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \supplysize
+
+\end{GTpage}
+
+% FIFTH PAGE: INTERCEPTION, EVASION, BATTLE PREPARATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{GTpage}
+  \GTpagetitle{T5}{Interception, Evasion, Battle Preparation}
+
+  \GTid{interception}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \interception
+  
+  \GTid{conquistadors}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \conquistadors
+  
+  \GTid{windadvantage}
+  \GTpos{west border|-interceptionbox.south}{0pt,-2pt}{north west}
+  \windadvantage
+
+  \GTid{replacement}
+  \GTpos{east border|-lastbox.north}{0pt,0pt}{north east}
+  \replacement
+
+  \node (northbox)[inner sep=2pt,fit=(windadvantagebox)(replacementbox)]{\filler};
+
+  \GTid{navaltech}
+  \GTpos{west border|-northbox.south}{0pt,0pt}{north west}
+  \navaltech
+
+  \GTid{landtech}
+  \GTpos{west border|-lastbox.south}{0pt,-2pt}{north west}
+  \landtech
+
+  \node (westbox) [inner sep=2pt,fit=(navaltechbox)(landtechbox)] {\filler};
+
+  \GTid{battlesequence}
+  \GTpos{westbox.east|-navaltechbox.north}{0pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \battlesequence
+\end{GTpage}
+
+% SIXTH PAGE: BATTLE
+%%%%%%%%%%%%%%%%%%%% 
+\begin{GTpage}
+  \GTpagetitle{T6}{Battle}
+  \GTid{armyclasses}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \armyclasses
+
+  \GTid{armysizes}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \armysizes
+  
+  \GTid{combatresults}
+  \GTpos{lastbox.south-|west border}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \combatresults
+
+  \GTid{lossestables}
+  \GTpos{combatresultsnorthbox.south-|combatresultssouthbox.east}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \lossestables
+
+  \GTid{landbattlesummary}
+  \GTpos{combatresultsbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{\gtid point-|combatresultssouthbox.east}
+  \landbattlesummary
+
+  \GTid{seabattlesummary}
+  \GTpos{lossestablesbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \seabattlesummary
+\end{GTpage}
+
+
+% SEVENTH PAGE: SIEGE, REVOLTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{GTpage}
+  \GTpagetitle{T7}{Siege, Revolts -- End of round}
+  \GTid{assault}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \assault
+
+  \GTid{artilleryvalue}
+  \GTpos{west border|-lastbox.south}{0pt,-2pt}{north west}
+  \artilleryvalue
+
+  \GTid{artillerybonus}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \artillerybonus
+
+  \GTid{navyblockade}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \navyblockade
+
+  \GTid{siege}
+  \GTpos{artilleryvaluebox.east|-artillerybonusbox.south}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \siege
+
+  \GTid{revoltpiracy}
+  \GTpos{lastbox.south-|west border}{0pt,-2pt}{north west}
+  \revoltpiracy
+
+  \GTid{attackconvoy}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \attackconvoy
+\end{GTpage}
+% EIGHTH PAGE: PEACE, REDEPLOYMENT, INTERPHASE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{GTpage}
+  \GTpagetitle{T8}{Peace, redeployment, interphase -- End of turn}
+  \GTid{atendofturnattacks}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \atendofturnattacks
+
+  \GTid{stabilityimprovement}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \stabilityimprovement
+
+  \GTid{gamesequence}
+  \GTpos{atendofturnattacksbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \gamesequence
+
+  \GTid{peaceindex}
+  \GTpos{stabilityimprovementbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{ $(gamesequencebox.west|-\gtid point)+(-2pt,0pt)$ }
+  \peaceindex
+
+  \GTid{crusade}
+  \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{lastbox.east|-\gtid point}
+  \crusade
+
+  \node (northbox) [inner ysep=2pt,fit=(stabilityimprovementbox)(crusadebox)(gamesequencebox)] {\filler};
+
+  \GTid{minorpeace}
+  \GTpos{northbox.south west}{0pt,0pt}{north west}
+  \minorpeace
+\end{GTpage}
+
+% ALTERNATE PAGES
+%%%%%%%%%%%%%%%%% 
+\alternatetablealternate
+\begin{GTpage}
+  \GTpagetitle{T7'}{Sieges, Revolts, Pirates, Privateers and Natives -- End of round}
+  \GTid{assault}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \assault
+
+  \GTid{artilleryvalue}
+  \GTpos{west border|-lastbox.south}{0pt,-2pt}{north west}
+  \artilleryvalue
+
+  \GTid{artillerybonus}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \artillerybonus
+
+  \GTid{navyblockade}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \navyblockade
+
+  \GTid{siege}
+  \GTpos{artilleryvaluebox.east|-artillerybonusbox.south}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \siege
+
+  \GTid{rppn}
+  \GTpos{lastbox.south-|west border}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \rppn
+
+\end{GTpage}
+\begin{GTpage}
+  \GTpagetitle{T8'}{Peace, redeployment, interphase -- End of turn}
+  \GTid{stabilityimprovement}
+  \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+  \stabilityimprovement
+
+  \GTid{peaceconditionsminor}
+  \GTpos{stabilityimprovementbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{$(\gtid point)+(81mm,0)$}
+  \peaceconditionsminor
+
+  \GTid{gamesequence}
+  \GTpos{lastbox.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{east border|-\gtid point}
+  \gamesequence
+
+  \GTid{peaceconditionsbis}
+  \GTpos{stabilityimprovementbox.south west}{0pt,-2pt}{north west}
+  \peaceconditionsbis
+
+  \GTid{peaceindex}
+  \GTpos{peaceconditionsbisbox.east|-peaceconditionsminorbox.south}{2pt,-2pt}{north west}
+  \GTcoord{\gtid east}{peaceconditionsminorbox.east|-\gtid point}
+  \peaceindex
+
+  \GTid{peacelevels}
+  \GTpos{peaceconditionsbisbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{peaceconditionsbisbox.east|-\gtid point}
+  \peacelevels
+
+  \GTid{crusade}
+  \GTpos{peaceindexbox.south west}{0pt,-2pt}{north west}
+  \GTcoord{\gtid east}{peaceindexbox.east|-\gtid point}
+  \crusade
+
+  \node (northbox) [inner ysep=2pt,fit=(stabilityimprovementbox)(crusadebox)(gamesequencebox)] {\filler};
+
+  \GTid{minorpeace}
+  \GTpos{northbox.south-|west border}{0pt,0pt}{north west}
+  \minorpeace
+
+
+\end{GTpage}
+
+% LOCAL PAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\pageLocale{Portugal}{POR}{Portugal}
+\pageLocale{Suede}{SUE}{Sweden}
+\pageLocale{Russie}{RUS}{Russia}
+\pageLocale{Angleterre}{ANG}{England}
+\pageLocale{France}{FRA}{France}
+\pageLocale{Espagne}{HIS}{Spain}
+\pageLocale{Turquie}{TUR}{Turkey}
+\pageLocale{Venise}{VEN}{Venice}
+\pageLocale{Hollande}{HOL}{Holland}
+\pageLocale{Habsbourg}{HAB}{Habsburg Empire/Austria}
+\pageLocale{Pologne}{POL}{Poland}
+\pageLocale{Prusse}{PRU}{Prussia}
+
+% LocalWords:  GTpos

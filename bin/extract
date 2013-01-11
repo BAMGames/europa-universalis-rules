@@ -1,0 +1,615 @@
+#!/usr/bin/perl
+@files=@ARGV;
+%info=();
+@roman=("0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX");
+foreach $file (@files) {
+    open FILE,$file;
+    while ($line=<FILE>) {
+	chomp $line;
+	next if ($line=~/^$/);
+	next if ($line=~/^##/);
+	if ($line=~/^#/) {
+	    @fieldname=split(/;/,$line);
+	    $fieldname[0]=~s/^#//g;
+	    next;
+	}
+	@linevalue=split(/;/,$line);
+	$elt={};
+	foreach $i (0..scalar(@linevalue)-1) {
+	    die "Trying to affect value #$i ($linevalue[$i]) to null-field in $line\n" unless $fieldname[$i];
+	    $elt->{$fieldname[$i]}=$linevalue[$i];
+	}
+	# Type is mandatory
+	$type=$elt->{"Type"};
+	$infotype="info".$type;
+	push @{$infotype},$elt;
+	$info{$type}++;
+    }
+    close FILE;
+}
+$commands="";
+
+sub str {
+    return "(".$_[0].")";
+}
+sub boolnum {
+    return "$_[0]";
+}
+sub extractname {
+    while (@_) {
+	if ($_[0]) {
+	    return "$_[0]";
+	}
+	shift;
+    }
+}
+
+sub sendit {
+    $command=$_[1];
+    @comm=split(/\n/,$command);
+    foreach $u (@comm) {
+	chomp $u;
+	$u =~ /^.*dessine([A-Z]*)$/;
+	$type=$1;
+	$commands{$type}.="$u\n";
+    }
+}
+sub dropit {
+    foreach $k (sort keys %commands) {
+	print $commands{$k};
+    }
+}
+foreach $k (@infoARMY) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="(Army ".$roman[$i].")";
+	}
+	$command.=str($k->{"Class"});
+	$command.=" dessineARMY\n";
+ 	sendit($k,$command);
+   }
+}
+delete $info{"ARMY"};
+foreach $k (@infoFLEET) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="(Fleet ".$roman[$i].")";
+	}
+	$command.=str($k->{"Class 2"});
+	$command.=" dessineFLEET\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"FLEET"};
+foreach $k (@infoLD) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="true";
+	}
+	$command.=str($i);
+	$command.=str($k->{"Class"});
+	$command.=" dessineLD\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"LD"};
+foreach $k (@infoLDND) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="true";
+	}
+	$command.=str($i);
+	$command.=str($k->{"Class"});
+	$command.=str($k->{"Class 2"});
+	$command.=" dessineLDND\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"LDND"};
+foreach $k (@infoND) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="true";
+	}
+	if ($k->{"Class 2"} eq 'transport') {
+	    $command.=str($roman[$i]);
+	} else {
+	    $command.=str($i);
+	}
+	$command.=str($k->{"Class 2"});
+	$command.=" dessineND\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"ND"};
+foreach $k (@infoLDENDE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="true";
+	}
+	$command.=str(chr(64+$i));
+	$command.=str($k->{"Class"});
+	$command.=str($k->{"Class 2"});
+	$command.=" dessineLDENDE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"LDENDE"};
+foreach $k (@infoLDE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="true";
+	}
+	$command.=str(chr(64+$i));
+	$command.=str($k->{"Class"});
+	$command.=" dessineLDE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"LDE"};
+foreach $k (@infoNDE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;$index=$k->{"First index"};
+    foreach $i ($index..$index+$count-1) {
+	$command=str($k->{"Country"});
+	if ($k->{"Name"}) {
+	    $command.=str($k->{"Name"});
+	} else {
+	    $command.="true";
+	}
+	$command.=str(chr(64+$i));
+	$command.=str($k->{"Class"});
+	$command.=" dessineNDE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"NDE"};
+foreach $k (@infoPIRATE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=" dessinePIRATE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"PIRATE"};
+foreach $k (@infoARSENAL) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=$k->{"Level"};
+	$command.=" dessineARSENAL\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"ARSENAL"};
+foreach $k (@infoFORTERESSE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=$k->{"Level"};
+	$command.=" dessineFORTERESSE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"FORTERESSE"};
+foreach $k (@infoFORTERESSEX) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=$k->{"Level"};
+	$command.=" dessineFORTERESSEX\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"FORTERESSEX"};
+foreach $k (@infoROI) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=boolnum($k->{"Naval"});
+	$command.=" dessineROI\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"ROI"};
+foreach $k (@infoSTABILITE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=" dessineSTABILITE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"STABILITE"};
+foreach $k (@infoTECHNOLOGIE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=boolnum($k->{"Naval"});
+	$command.=" dessineTECHNOLOGIE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"TECHNOLOGIE"};
+foreach $k (@infoPOSSESSION) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=boolnum($k->{"Length"})."0";
+	$command.=" dessinePOSSESSION\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"POSSESSION"};
+foreach $k (@infoCONTROLEREGION) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=boolnum($k->{"Length"})."0";
+	$command.=" dessineCONTROLEREGION\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"CONTROLEREGION"};
+foreach $k (@infoOWNERCONTROL) {
+    $count=$k->{"Ownership"};
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.="()0 dessinePOSSESSION\n";
+	sendit($k,$command);
+    }
+    $count=$k->{"Control"};
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=" dessineCONTROLE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"OWNERCONTROL"};
+foreach $k (@infoMANUFACTURE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Subtype"});
+	$command.=boolnum($k->{"Percentage"});
+	$command.=" dessineMANUFACTURE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"MANUFACTURE"};
+foreach $k (@infoDIPLOMATIE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"religion"});
+        $command.=str($k->{"RM"});
+        $command.=str($k->{"Sub"});
+        $command.=str($k->{"MA"});
+        $command.=str($k->{"EC"});
+        $command.=str($k->{"EW"});
+        $command.=str($k->{"Va"});
+        $command.=str($k->{"An"});
+        $command.=str($k->{"Fidelity"});
+        $command.=str($k->{"Geopolitics"});
+	$command.=" dessineDIPLOMATIE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"DIPLOMATIE"};
+foreach $k (@infoVASSALITY) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Superior country"});
+	$command.=" dessineVASSALITY\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"VASSALITY"};
+foreach $k (@infoROTWTREATY) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=" dessineROTWTREATY\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"ROTWTREATY"};
+foreach $k (@infoTRADEFLEET) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	if ($count == 1) {
+	    $command.=str(" ");
+	} else {
+	    $command.=str(chr(64+$i));
+	}
+	$command.=" dessineTRADEFLEET\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"TRADEFLEET"};
+foreach $k (@infoVIRTUAL) {
+    $command="";
+    if (($k->{"Active"} & 1)==1) {
+	$command.=str($k->{"Country"});
+	$command.="(Army I)";
+	$command.=str($k->{"Country"});
+	$command.=" dessineARMY\n";
+	foreach $i (1..2) {
+	    $command.=str($k->{"Country"});
+	    $command.="true";
+	    $command.=str($i);
+	    $command.=str($k->{"Country"});
+	    $command.=" dessineLD\n";
+	}
+    }
+    if (($k->{"Active"} & 2)==2) {
+        $command.=str($k->{"Country"});
+        $command.=str($k->{"Religion"});
+        $command.="(4)(50)(2)(4)(5)(8)(*)(10)(Indep) dessineDIPLOMATIE\n";
+    }
+    $count=$k->{"Ownership"};
+    foreach $i (1..$count) {
+	$command.=str($k->{"Country"});
+	$command.="()0 dessinePOSSESSION\n";
+    }
+    $count=$k->{"Control"};
+    foreach $i (1..$count) {
+	$command.=str($k->{"Country"});
+	$command.=" dessineCONTROLE\n";
+    }
+    sendit($k,$command);
+}
+delete $info{"VIRTUAL"};
+foreach $k (@infoCOLONY) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=" dessineCOLONY\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"COLONY"};
+foreach $k (@infoTRADINGPOST) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=" dessineTRADINGPOST\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"TRADINGPOST"};
+foreach $k (@infoESTABLISHMENT) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=" dessineESTABLISHMENT\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"ESTABLISHMENT"};
+foreach $k (@infoPACHA) {
+    $command=str($k->{"Country"});
+    $command.=str($k->{"Name"});
+    $command.=str($k->{"LD"});
+    $command.=str($k->{"Number"});
+    $command.=str($k->{"Stats"});
+    $command.=" dessinePACHA\n";
+    sendit($k,$command);
+}
+delete $info{"PACHA"};
+foreach $k (@infoLEADER) {
+    $code=$k->{"NameA"};$code=~s/ /-/g;
+    $command=str($code);
+    $command.=str($k->{"Country"});
+    $command.=str(extractname($k->{"NameD"},$k->{"NameC"},$k->{"NameB"},$k->{"NameA"}));
+    $command.=str($k->{"First turn"});
+    $command.=str($k->{"Last turn"});
+    $command.=str(substr($k->{"Leader Type"},0,1));
+    $command.=str(substr($k->{"Leader Type"},1));
+    $command.=str($k->{"Stats"});
+    $command.=" dessineLEADER\n";
+    sendit($k,$command);
+}
+delete $info{"LEADER"};
+foreach $k (@infoLEADERDOUBLE) {
+    $code=$k->{"NameA"};$code=~s/ /-/g;
+    $command=str($code);
+    $command.=str($k->{"Country"});
+    $command.=str(extractname($k->{"NameD"},$k->{"NameC"},$k->{"NameB"},$k->{"NameA"}));
+    $command.=str($k->{"First turn"});
+    $command.=str($k->{"Last turn"});
+    $command.=str(substr($k->{"Leader Type"},0,1));
+    $command.=str(substr($k->{"Leader Type"},1));
+    $command.=str($k->{"Stats"});
+    $command.=str(substr($k->{"Leader Type 2"},0,1));
+    $command.=str(substr($k->{"Leader Type 2"},1));
+    $command.=str($k->{"Stats 2"});
+    $command.=" dessineLEADERDOUBLE\n";
+    sendit($k,$command);
+}
+delete $info{"LEADERDOUBLE"};
+foreach $k (@infoLEADERPAIRE) {
+    $code=$k->{"NameA"}.'|'.$k->{"NameA 2"};$code=~s/ /-/g;
+    $command=str($code);
+    $command.=str($k->{"Country 2"});
+    $command.=str(extractname($k->{"NameD 2"},$k->{"NameC 2"},$k->{"NameB 2"},$k->{"NameA 2"}));
+    $command.=str($k->{"First turn 2"});
+    $command.=str($k->{"Last turn 2"});
+    $command.=str(substr($k->{"Leader Type 2"},0,1));
+    $command.=str(substr($k->{"Leader Type 2"},1));
+    $command.=str($k->{"Stats 2"});
+    $command.=str($k->{"Country"});
+    $command.=str(extractname($k->{"NameD"},$k->{"NameC"},$k->{"NameB"},$k->{"NameA"}));
+    $command.=str($k->{"First turn"});
+    $command.=str($k->{"Last turn"});
+    $command.=str(substr($k->{"Leader Type"},0,1));
+    $command.=str(substr($k->{"Leader Type"},1));
+    $command.=str($k->{"Stats"});
+    $command.=" dessineLEADERPAIRE\n";
+    sendit($k,$command);
+}
+delete $info{"LEADERPAIRE"};
+foreach $k (@infoLEADERANONYMOUS) {
+    if (substr($k->{"Leader Type"},0,1) eq "P") {
+	$subcode="A";
+    } else {
+	$subcode=substr($k->{"Leader Type"},0,1);
+    }
+    $subcode.=substr $k->{"Number"},1;
+    $command=str("Anonymous-".$subcode);
+    $command.=str($k->{"Country"});
+    $command.=str($k->{"Number"});
+    $command.=str("");
+    $command.=str("");
+    $command.=str(substr($k->{"Leader Type"},0,1));
+    $command.=str(substr($k->{"Leader Type"},1));
+    $command.=str($k->{"Stats"});
+    $command.=" dessineLEADER\n";
+    sendit($k,$command);
+}
+delete $info{"LEADERANONYMOUS"};
+foreach $k (@infoLEADERANONYMOUSDOUBLE) {
+    if (substr($k->{"Leader Type"},0,1) eq "P") {
+	$subcode="A";
+    } else {
+	$subcode=substr($k->{"Leader Type"},0,1);
+    }
+    $subcode.=substr $k->{"Number"},1;
+    $command=str("Anonymous-".$subcode);
+    $command.=str($k->{"Country 2"});
+    $command.=str($k->{"Number"});
+    $command.=str("");
+    $command.=str("");
+    $command.=str(substr($k->{"Leader Type"},0,1));
+    $command.=str(substr($k->{"Leader Type"},1));
+    $command.=str($k->{"Stats"});
+    $command.=str($k->{"Country"});
+    $command.=str($k->{"Number"});
+    $command.=str("");
+    $command.=str("");
+    $command.=str(substr($k->{"Leader Type"},0,1));
+    $command.=str(substr($k->{"Leader Type"},1));
+    $command.=str($k->{"Stats"});
+    $command.=" dessineLEADERPAIRE\n";
+    sendit($k,$command);
+}
+delete $info{"LEADERANONYMOUSDOUBLE"};
+foreach $k (@infoMISSIONNAIRE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=str($k->{"First turn"});
+	$command.=str($k->{"Last turn"});
+	$command.=str("@ 3.0.0 +".$k->{"bonus"});
+	$command.=" dessineMISSIONNAIRE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"MISSIONNAIRE"};
+foreach $k (@infoMISSIONspecial) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
+	$command.=" dessineMISSIONspecial\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"MISSIONspecial"};
+foreach $k (@infoRaw) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command="";
+	foreach $j (1..8) {
+	    $command.=" ".$k->{"Argument ".$j};
+	}
+	$command.="%RAW\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"Raw"};
+
+$header="%!PS
+BOOTFILE (r) file run
+/compress true def
+/translation true def
+HOMEDIR(/library/libpions.eps)! include
+<< /Title ((Europa 8 counters)) >> infochunk
+listelog
+begindocument initpages\n";
+$footer="%(-----\\n)log count {50 string cvs (\\n)! log} repeat (-----\\n)log\n closepages enddocument quit\n";
+print $header;
+dropit();
+print $footer;
+
+foreach $k (sort keys %info) {
+    print STDERR "%$k was not treated\n";
+}
+

@@ -1,0 +1,97 @@
+% -*- mode: LaTeX; -*-
+
+%%%% Administrative stuff
+\documentclass[twoside]{simplerules}
+\geometry{paper=a5paper,left=1mm,right=1mm,top=1mm,bottom=1mm,includeheadfoot,headsep=8mm,footskip=0mm}
+
+%%%% Common definitions and databases
+
+% engERS uses package abbrevs who defines command \AM (for hour format).
+% engCommandes redefines \AM (for diplomatic status).  Thus, engERS must be
+% before engCommandes.
+\input{engERS}
+
+\input{engCommandes}
+
+\input{translations}
+
+\input{engLeaders}
+
+\input{engEntetesMineurs}
+
+\input{engCorpsMineurs}
+
+\input{engCountryTables}
+
+\input{engGeneralTables}
+
+\input{engGameSequence}
+
+\AtEndDocument{\listunusedabbrev{TUabbrev}}
+
+%%%% DOCUMENT
+\begin{document}
+
+% \rulepart*{I}{Introduction}
+\input{engIntroduction}
+
+\input{engCopyleft}
+
+\rulepart{R}{Rules}
+\input{engBasic}
+
+\input{engThePowers}
+
+\input{engEvntRules}
+
+\input{engDiplomacy}
+
+\input{engIncomes}
+
+\input{engExpenses}
+
+\input{engMilitary}
+
+\input{engPeace}
+
+\input{engVictories}
+
+\input{engSpecificRules}
+
+\rulepart{E}{Events}
+\input{engEvntGen}
+
+\rulepart{A}{Appendix}
+\input{engAnnexe}
+
+\rulepart{T}{Tables} \gdef\forcenewpage{ \newpage\thispagestyle{empty}}
+\GTnarrowmode \newpapersize{paper=a4paper}
+\input{engTables}
+
+\restorepapersize
+
+\rulepart{S}{Scenarios}
+\input{engScenarios} % The Great Campaign + other
+
+\input{engPlaying} % Playing the game
+
+\input{engStrategy} % Strategical advices
+
+\rulepart{I}{Indexes}
+\listoftables\listoffigures\listofexamples\printindex\tableofcontents%
+
+\end{document}
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: includeheadfoot headsep footskip Universalis Thibaud Risto Moyen
+% LocalWords: Marjomaa Borgnat Asseray Christophe Dubacq Lorrain Meulen Breda
+% LocalWords: de Carravagio Jym Sylvain Domergue Schoumaker Wack Schaeffler
+% LocalWords: Kloeckner Fabrice Randeau Erwan Grasland Mongrain Corsange MKL
+% LocalWords: Chagnon Boka Kauffmann Satori Milot

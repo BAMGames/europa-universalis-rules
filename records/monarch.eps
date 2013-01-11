@@ -1,0 +1,50 @@
+%!PS
+BOOTFILE (r) file run
+HOMEDIR(/library/libcolonial.eps)! include
+<< /Title ((Monarch Record Sheet)) >> infochunk
+begindocument
+beginpage
+(Monarch Record Sheet)initcrs
+/lineheight lineheight 2 copy 1.5 mul def
+1 [ 16 (Monarch name) 150 (ADM) 40 (DIP) 40 (MIL) 40 (Reign)50 (†)48 () 2 (M.av.) 30 (Man.) 40 (Fire) 40 (Shock) 40 (Siege) 40 ]
+{1 eq {( )}{(Temporary value)}ifelse} 3 -1 roll bottom false box
+
+def
+
+/bottom bottom
+3 [ 16 (Minister name/Temp. value) 150 (ADM) 40 (DIP) 40 (MIL) 40 (Begin)50 (End)50]
+{pop( )} 3 -1 roll bottom false box
+
+
+def
+/startx headers 0 get width add def
+(Fragile Health) 170 1 simplebox
+(Dynastic Crisis) 170 1 simplebox
+(Long life 1) 150 2 simplebox
+/bottom bottom lineheight sub def
+(Death/end is at beginning of turn!) startx 190 2 div add bottom 190 lineheight (FontArialNarrow-Italic) centertext
+0 [16 (Basic)100(Max. Turn)80(Naval)40(Counter Limits)90(Actions)130(Force size)120
+]{pop( )}3 -1 roll bottom false box
+1 [16 (Force) 98()2 (Purchases) 78()2 (Forces) 38()2 (MNU)29(COL)30(TP)29()2(Dipl.)26(TFI)26(Col.)26(TP)26(Conc.)26()2(F-)39(F+)39(Art.)20(CA)20
+]{pop( )}3 -1 roll bottom false box
+
+/bottom bottom
+/startx 16 def
+(Current DTI/Max DTI) 150 2 simplebox
+(Current FTI/Max FTI) 150 2 simplebox
+(Current Special FTI/Max SFTI) 150 2 simplebox
+(Reformation/Dyn. Actions lv. 1) 150 4 simplebox
+(Reformation/Dyn. Actions lv. 2) 150 2 simplebox
+(Reformation/Dyn. Actions lv. 3) 150 4 simplebox
+36 [ 16 (Turn) 40 (Target country) 90 (Cost) 40 (Bonus) 40 (Res.) 40 ]
+{pop ( )} 3 -1 roll bottom true box
+def
+42 [ 16 width add () 2 (Turn) 38 (Action) 110 (Cost) 40 (Column) 40 (Bonus) 40 (Res.) 40]
+{pop ( )} 3 -1 roll bottom true box
+
+%1 [ 16 (#) 20 (Colony Name) 110 (Area) 80 (Dif.) 20 (Tol.) 20 (Base) 20 (Level) 30 (Inc) 20 (Gold) 20 (†) 10 (Wo) 20 (Sa) 20 (PO) 20 (Sp) 20 (Fu) 20 (Sl) 20 (Si) 20 (PA) 20 (Su) 20 (Co) 20 (Fi) 20 ]
+%{pop ( )} 3 -1 roll bottom true box
+
+endpage
+enddocument
+quit

@@ -1,0 +1,170 @@
+#!/usr/bin/perl
+
+open(TOTO,">drawing.eps");
+print TOTO '%!PS
+/outputoutlines false def
+/compress false def
+/translation true def
+/loglevel 1 def
+/defaultvalue{1 index where {pop pop pop}{def}ifelse}def
+/pagewidth 842 defaultvalue
+/pageheight 595 defaultvalue
+m4_include(MMMM_HOMEDIR/library/library.eps)
+/beginpagehook{} def
+';
+$rightmargin=10;
+$hei=2;
+my $scale=10;
+%perioddep=(
+    'I',1,
+    'II',7,
+    'III',15,
+    'IV',26,
+    'V',36,
+    'VI',43,
+    'VII',53
+    );
+%periodfin=(
+    'I',6,
+    'II',14,
+    'III',25,
+    'IV',35,
+    'V',42,
+    'VI',52,
+    'VII',62
+    );
+
+%color=(
+    "C" => "0.5 0 0 RG ",
+    "G" => "1 0 0 RG ",
+    "g" => "1 0.4 0.4 RG",
+    "R" => "1 1 0 RG",
+    "d" => "1 1 0 RG",
+   "E" => "0 0 1 RG",
+    "A" => "0.4 0.4 1 RG",
+    "c" => "1 0 1 RG"
+    );
+%colorfaded=(
+    "C" => "0.75 0.5 0.5 RG ",
+    "G" => "1 0.5 0.5 RG ",
+    "g" => "1 0.7 0.7 RG",
+    "R" => "1 1 0.5 RG",
+    "d" => "1 1 0.5 RG",
+    "E" => "0.5 0.5 1 RG",
+    "A" => "0.7 0.7 1 RG",
+    "c" => "1 0.5 1 RG"
+    );
+ %colorveryfaded=(
+    "C" => "0.9 0.75 0.75 RG ",
+    "G" => "1 0.75 0.75 RG ",
+    "g" => "1 0.9 0.9 RG",
+    "R" => "1 1 0.75 RG",
+    "d" => "1 1 0.75 RG",
+    "E" => "0.75 0.75 1 RG",
+    "A" => "0.8 0.8 1 RG",
+    "c" => "1 0.75 1 RG"
+    );
+  
+
+while ($ARGV[0] =~ /^--/) {
+    if ($ARGV[0] eq "--scale") {
+	$scale=$ARGV[1];
+	shift @ARGV; shift @ARGV;
+    }
+    if ($ARGV[0] eq "--bw") {
+	shift @ARGV;
+	foreach (keys %color) {
+	    $color{$_}="0 G ";
+	}
+	foreach (keys %colorfaded) {
+	    $colorfaded{$_}="0.5 G ";
+	}
+	foreach (keys %colorveryfaded) {
+	    $colorveryfaded{$_}="0.75 G ";
+	}
+    }
+}
+    
+$string=join("/",@ARGV);
+print TOTO "<< /Title ((Leaders matching $string)) >> infochunk\n";
+print TOTO "begindocument\n";
+print TOTO "beginpage\n(0 g 0.8 G ".($scale/10)." w )out\n";
+
+foreach $k (sort values %perioddep,63) {
+	print TOTO "(".($k+$rightmargin)*$scale." ".($hei-0.6)*$scale." m ".($k+$rightmargin)*$scale." ".(595-($hei-0.6)*$scale)." l\n)out\n";
+}
+print TOTO "(S\n)out\n";
+while (@ARGV) {
+    $filtrepays=$ARGV[0];
+    $filtretype=$ARGV[1];
+    $filtretype="TN" unless $filtretype;
+    $filtretype=~ s/T/GCRg/;
+    $filtretype=~ s/N/AEcd/;
+    %tourdep=();
+    open(TITI,"<list-markers.txt");
+    $nleader=0;
+    while (<TITI>) {
+	chomp;
+	next unless m/^%engLeaders.tex:..leaderdef([a-z]*)\(([-a-zA-Z 0-9]*)\)\[([-0-9A-Z ]*)\]\(([^\)]*)\)\(([^\)]*)\)\(([^\)]*)\)(.*)$/;
+	($type,$name,$tours,$pays,$leader,$carac,$autre)=($1,$2,$3,$4,$5,$6,$7);
+	$leader=":${leader} ($carac)";
+	$thin=5;
+	if ($type eq "double") {
+		$autre =~ m/^\(([^\)]*)\)\(([^\)]*)\)(.*)$/;
+		($autreleader,$autrecarac,$autreautre)=($1,$2,$3);
+		$leader=$leader.":$autreleader ($autrecarac)";
+		$thin=3;
+	}
+	next unless $pays=~ m/$filtrepays/;
+	next unless $leader=~ m/:[$filtretype]/;
+	$leader =~ s/^:(.)/\1/;
+	$typeleader = $1;
+	$tourdep=1;
+	$tourfin=62;
+	$color="1 G ";
+	if ($tours=~/^([IV]+).*$/) {
+	    $a=$1;
+	    $tourdep=$perioddep{$a};
+	    $tourfin=$periodfin{$a};
+	    $color=$colorfaded{$typeleader};
+	}
+	if ($tours=~/^([0-9]+) ([0-9]+).*$/) {
+	    $tourdep=$1;
+	    $tourfin=$2;
+	    $color=$color{$typeleader};
+	}
+	if ($color eq "1 G ") {
+	    $tourdep=1;
+	    $tourfin=62;
+	    $color=$colorveryfaded{$typeleader};
+	}
+	$nleader++;
+	$pays{$nleader}=$pays;
+	$tourdep{$nleader}=$tourdep;
+	$tourfin{$nleader}=$tourfin;
+	$leader{$nleader}=$leader;
+	$color{$nleader}=$color;
+	$thin{$nleader}=$thin;
+	$name{$nleader}=$name;
+	print "$type:$name:$tourdep,$tourfin,$color:$pays\n";
+    }
+
+    @tours=sort { $tourdep{$a} <=> $tourdep{$b} } keys %tourdep;
+    foreach $nl (@tours) {
+	$hei++;
+	print "+$name{$nl}\n";
+	print TOTO "%$name{$nl} $hei\n";
+	print TOTO "($color{$nl} ".($thin{$nl}*$scale/10)." w ) out ".($tourdep{$nl}+$rightmargin)*$scale." display ( ) out ".$hei*$scale." display ( m ) out ".($tourfin{$nl}+1+$rightmargin)*$scale." display ( ) out ".$hei*$scale." display ( l S ) out\n";
+	print TOTO "($name{$nl}) ".(($tourfin{$nl}+1+$rightmargin)*$scale+1)." ".($hei-0.5)*$scale." ".12*$scale." ".$scale." (FontArialNarrow) lefttext\n";
+	print TOTO "($leader{$nl}) ".(($tourdep{$nl}+$rightmargin)*$scale-1)." ".($hei-0.5)*$scale." ".12*$scale." ".$scale." (FontArialNarrow) righttext\n";
+    }
+    shift @ARGV;
+    shift @ARGV;
+    $hei++;
+}
+print TOTO 'endpage
+enddocument
+quit
+';
+close TOTO;
+system ("make drawing.pdf");

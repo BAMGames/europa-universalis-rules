@@ -1,0 +1,40 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file allows changing in-document the papersize with pdfTeX
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\RequirePackage{atbegshi,tikz}
+\ProvidesPackage{barlist}[2010/11/11 v0.1]%
+
+%% Modlist
+
+\newif\ifmodlistfirstitem
+\newif\ifmodlistifirstitem
+
+\def\squeezedlist{%
+  \raggedright\itemsep\z@\topsep\z@\partopsep\z@\listparindent\z@\parsep\z@%
+  \itemindent\z@\leftmargin\labelwidth\advance\leftmargin\labelsep%
+}
+
+\newenvironment{modlist}[1][1em]{\ifhmode\par\else\fi%
+  \begin{minipage}[t]{\linewidth}%
+    \begin{list}{}{%
+        \labelsep.3em\labelwidth#1\squeezedlist
+        \advance\leftmargin2pt%
+        \modlistfirstitemtrue%
+        \def\makelabel{\ifmodlistfirstitem\xmhigh{modliststartpoint}\global\modlistfirstitemfalse\fi\hskip 2pt\@mklab}
+      }}{%
+      \tikz[remember picture,overlay]{%
+        \coordinate(modlistendpoint) at (0,0);
+        \draw[line width=1.5pt,gray,solid] (modliststartpoint|-modlistendpoint)--(modliststartpoint);}\end{list}\end{minipage}}
+% Two modlists can be nested, use modlisti for the second one. 
+\newenvironment{modlisti}[1][1em]{\ifhmode\par\else\fi%
+  \begin{minipage}[t]{\linewidth}%
+    \begin{list}{}{%
+        \labelsep.3em\labelwidth#1\squeezedlist
+        \advance\leftmargin2pt%
+        \modlistifirstitemtrue%
+        \def\makelabel{\ifmodlistifirstitem\xmhigh{modlististartpoint}\global\modlistifirstitemfalse\fi\hskip 2pt\@mklab}
+      }}{%
+      \tikz[remember picture,overlay]{%
+        \coordinate(modlistiendpoint) at (0,0);
+        \draw[line width=1.5pt,gray,solid] (modlististartpoint|-modlistiendpoint)--(modlististartpoint);}\end{list}\end{minipage}}

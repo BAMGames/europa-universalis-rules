@@ -1,0 +1,40 @@
+% Copyright 2010 by Jean-Christophe Dubacq 
+%           2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/generic/pgf/licenses/LICENSE for more details.
+
+\usetikzlibrary{fit}
+\pgfkeys{/tikz/xsize/.code=\tikz@lib@xsize{#1}}
+\tikzoption{xsize offset}{\pgfmathsetlength\tikz@lib@xsize@length{#1}}
+\tikzoption{xsize scale}{\def\tikz@lib@xsize@scale{#1}}
+\newdimen\tikz@lib@xsize@length
+\tikz@lib@xsize@length=0pt
+\def\tikz@lib@xsize@scale{1}
+
+\def\tikz@lib@xsize#1{%
+  \pgf@xb=-16000pt\relax%
+  \pgf@xa=16000pt\relax%
+  \pgf@yb=-16000pt\relax%
+  \pgf@ya=16000pt\relax%
+  % Now iterate over the coordinates
+  \tikz@lib@fit@scan#1\pgf@stop%
+  % Now, let's see what has happend
+  \ifdim\pgf@xa>\pgf@xa%
+    % Nothing... Ok, let's just ignore this.
+  \else%
+    % Ok, compute center and width and height
+    \pgf@x=\pgf@xb%
+    \advance\pgf@x by-\pgf@xa%
+    \advance\pgf@x by \tikz@lib@xsize@length%
+    \pgf@x=\tikz@lib@xsize@scale\pgf@x
+    \pgfkeysalso{/tikz/text width/.expanded=\the\pgf@x}%
+    \pgfkeysalso{every fit/.try}%
+  \fi%
+}
+
+\endinput

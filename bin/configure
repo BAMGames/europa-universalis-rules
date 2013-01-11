@@ -1,0 +1,47 @@
+#!/bin/sh
+DEFAULT=
+CONF="GIMPLIMIT FTPPASSWORD"
+if [ "$1" = "--default" ]; then
+    shift
+    DEFAULT=1
+fi
+FILE=$1
+if [ -f "${FILE}" ]; then
+    cat ${FILE} | sed -ne '1,/^# Automatic section/ p' > ${FILE}.new
+    GIMPLIMIT=$(grep ^GIMPLIMIT= ${FILE}|cut -f2 -d=|head -n 1)
+else 
+    echo "# Do not remove this line and the section below" > ${FILE}.new
+    echo "# Automatic section" >> ${FILE}.new
+fi
+
+GIMPLIMIT=${GIMPLIMIT:-45}
+FTPPASSWORD=${FTPPASSWORD:-''}
+ask() {
+    if [ -z "$DEFAULT" ]; then
+        echo "$1: $(eval echo \$${i}HELP)"|fmt
+        echo "Value for $1 [$(eval echo \$${i})] ?"
+        read a
+        if [ -n "$a" ]; then
+            eval $1=$a
+        fi
+    fi
+}
+
+GIMPLIMITHELP="The launch time of Gimp is high, so image generation should be concentrated. This value is the number of concurrent jobs while generating images from Gimp. 10 works mostly everywhere, 135 is more than the number of images generated from the same script. 45 is a good value."
+FTPPASSWORDHELP="If you have lftp installed and know the old FTP site password, enter this password preceded by a comma to connect automatically when using make ftp. If you do not know this password or simply do not update the old FTP site, leave it blank."
+
+for i in $CONF; do
+    ask $i
+done
+
+
+for i in $CONF; do
+    echo $i=$(eval echo \$${i}) >> ${FILE}.new
+done
+
+if [ -f "${FILE}" ]; then
+    cat ${FILE} | sed -ne '/^# end automatic/,$ p' >> ${FILE}.new
+else
+    echo "# end automatic" >> ${FILE}.new
+fi
+mv ${FILE}.new ${FILE}

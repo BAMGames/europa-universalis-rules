@@ -1,0 +1,38 @@
+%!PS
+BOOTFILE (r) file run
+/compress false def
+/outputoutlines false def 132 132 /pageheight exch def /pagewidth exch def
+HOMEDIR(/library/pdf_library.eps)! include
+HOMEDIR(/library/xobjects.eps)! include
+<< /Title ((etoile)) >> infochunk
+/beginpagehook{} def begindocument beginpage
+    /col0[.3 .6 .88]def/col1[.88 .88 .88]def
+    (FunctionLinGrad)
+	<</FunctionType 2 /Domain [0 1] /C0 col0 /C1 col1 /N 1>>
+	(FunctionLinGrad) defobj
+    (ShadingGrad)
+        <</Coords [0 0 132 132] /Extend [true true] /Function
+        (FunctionLinGrad) R/ShadingType 2/ColorSpace/DeviceRGB>>
+        (ShadingGrad) defobj
+    (ShadingGrad) /pageshadings push
+    (q 0 0 132 132 re W n /ShadingGrad sh Q ) out
+1.25 16 16 begints
+1 10 20 begints
+(-10 -20 80 80 re S\n) out
+-5 -5 -15 {/yyyy exch def
+1 0 yyyy begints
+(0 5 m )out
+0 20 40 {/xxxx exch def
+xxxx 5 add display ( 5 )out
+xxxx 5 add display ( 0 )out
+xxxx 10 add display ( 0 c )out
+xxxx 15 add display ( 0 )out
+xxxx 15 add display ( 5 )out
+xxxx 20 add display ( 5 c )out
+} for
+(S\n)out
+endts
+} for
+(ancremarine) xobject
+endts endts
+endpage enddocument quit

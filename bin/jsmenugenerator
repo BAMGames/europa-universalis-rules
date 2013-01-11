@@ -1,0 +1,30 @@
+#!/bin/sh
+if [ -z "$HOMEDIR" ]; then echo "Please set HOMEDIR"; exit 1; fi
+ITEMS="Army Detachments Diplomacy Exploration Fleet Leaders Markers Named_Leaders Stability Indicators Colony Trading_Post Ownership Manufacture Fortress Fort Arsenal Buildings"
+ITEMS="$ITEMS Central Germanica India Islam Italia Khanates Majors Mundi Nordica Occidentalia Specials"
+ITEMS="$ITEMS Convoy Trade_Fleet Technology_Goal TradeCentre Resources Country_Indicators Generals Admirals Explorers King Pacha Missionnaire"
+ITEMS="$ITEMS Period_1 Period_2 Period_3 Period_4 Period_5 Period_6 Period_7 Turn_1 Turn_2 Turn_3 Turn_4 Turn_5 Turn_6 Turn_7 Turn_8 Turn_9 Turn_10 Turn_11 Turn_12 Turn_13 Turn_14 Turn_15 Turn_16 Turn_17 Turn_18 Turn_19 Turn_20 Turn_21 Turn_22 Turn_23 Turn_24 Turn_25 Turn_26 Turn_27 Turn_28 Turn_29 Turn_30 Turn_31 Turn_32 Turn_33 Turn_34 Turn_35 Turn_36 Turn_37 Turn_38 Turn_39 Turn_40 Turn_41 Turn_42 Turn_43 Turn_44 Turn_45 Turn_46 Turn_47 Turn_48 Turn_49 Turn_50 Turn_51 Turn_52 Turn_53 Turn_54 Turn_55 Turn_56 Turn_57 Turn_58 Turn_59 Turn_60 Turn_61 Turn_62 Turns_1-9 Turns_10-19 Turns_20-29 Turns_30-39 Turns_40-49 Turns_50-59 Turns_60-62"
+
+cd $HOMEDIR/web/img/menu
+convert -size 80x80 xc:black -fill white -draw 'rectangle 5,5 75,75' -blur 0x5 mask.png
+
+for i in $ITEMS; do
+    ii=$(echo $i|sed -e 's/_/\n/g');
+    iii=$(echo $i|sed -e 's/_//g');
+    convert -font ../../../fonts/ArialNarrow.pfb -size 80x80 -pointsize 14 -background white -fill black -gravity center "label:$ii" mask.png -alpha Off -compose CopyOpacity -composite menu_$iii.png
+done
+COUNTRIES="habsbourg:Habsburgum espagne:Hispania portugal:Portugallia angleterre:Anglia france:Francia hollande:Hollandia prusse:Prussia brandebourg:Prussia suede:Suecia pologne:Polonia lithuanie:Polonia mazovie:Polonia russie:Russia turquie:Turcia venise:Venetia aden:Aden oman:Ayman azteque:Azteca chine:China afghans:Durranis japon:Iaponia inca:Inca iroquois:Iroquois siberie:Siberia soudan:Sudania usa:USA vijayanagar:Bisinagar gujarat:Guzarate hyderabad:Hyderabada mogol:Mogolis mysore:Mysuria aceh:Aceh mamelouks:Ægyptus algerie:Algeria arabie:Arabia cyrenaique:Cyrenaica grenade:Granada maroc:Mauretanium irak:Mesopotamia perse:Persia damas:Syria tripoli:Tripolis tunisie:Tunesia alsace:Alsatia baviere:Bavaria cologne:Colonia bade:Friburgensi lorraine:Lotharingia mayence:Moguntium thuringe:Turingia treves:Treverorum wurtemberg:Wirtenberga saint-empire:SRI brunswick:Brunsvicum berg:Clivia hanovre:Hanovere hanse:Hansa hesse:Hassia palatinat:Palatinatus pommeranie:Pommerania saxe:Saxonia oldenburg:Westfalia finlande:Finlandia norvege:Norvegia danemark:Dania astrakhan:Astracan kazan:Cazan crimee:Crimea cosaquesdon:Don_Cassackia georgie:Georgiani steppes:Tartaria ukraine:Ukraina pskov:Pskove ryazan:Rezane bourgogne:Burgundia corse:Corsica huguenots:Huguenotis liege:Leodium chevaliers:Ordo_Hospitalis sainte-ligue:Sancta_Lega ecosse:Scotia irlande:Hibernia bretagne:Britannia catalogne:Catalonia belgique:Belgica croises:Peregrini genes:Genua milan:Lombardia lucca:Luca montferrat:Monte_Ferrato modene:Mutina parme:Parma savoie:Sabaudia papaute:Sancta_Sedes naples:Siciliæ toscane:Toscana suisse:Helvetia boheme:Bohemia teutoniques1:Fratres hongrie:Hungaria moldavie:Moldavia valachie:Walachia courlande:Curlandia liflandie:Livonia transylvanie:Transilvania neutre:Neutral natives:Barbaria rebelles:Rebellis royalistes:Fidelis_Regi mercenaires:Condotierre pirates:Pirates revolutionnaires:Révolutionnaires"
+
+for i in $COUNTRIES; do
+    echo $i
+    k=${i%:*}
+    l=${i#*:}
+    ll=$(echo "$l"|sed -e 's/_/ /g')
+    lll=$(echo "$l"|sed -e 's/_//g')
+    convert -font ../../../fonts/ArialNarrow.pfb -size 80x80 -pointsize 12 -background white -fill black -gravity north "label:${ll}" menu_$lll.png
+    composite -geometry +16+21 ../../../blasons/shield_${k}.png menu_$lll.png xmenu_$lll.png
+    convert xmenu_$lll.png mask.png -alpha Off -compose CopyOpacity -composite menu_$lll.png
+    rm xmenu_$lll.png
+#    convert -size 70x50 -background white ../../../blasons/shield_${k} 
+done
+rm mask.png

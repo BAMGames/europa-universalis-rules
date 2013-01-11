@@ -1,0 +1,1318 @@
+% -*- mode: LaTeX; -*-
+
+\definechapterbackground{Winning the game}{winning}
+\chapter{Winning the game}\label{chapter:Victories}
+
+% \section{Victory conditions}
+
+% RaW: [22,52]
+
+
+
+
+\section{How to win the game ?}
+
+\aparag Even if the spirit of the game is mainly to simulate the whole modern
+history, a complete victory points (\VPs) system is explain here. It allow to
+designate a winner of the campaign, and also to know who is doing well and who
+isn't. This \VP system is composed of 4 parts.
+\bparag {\VPs per turn: }
+Those \VPs are earned by player performing special actions and discoveries. It
+corresponds approximately to the quarter of the final \VPs.
+\bparag{End of period \VPs: }
+At the end of each period, players earn \VPs corresponding to their situations
+and to the objectives they chose at the beginning of the period. It
+corresponds approximately to the half of the final \VPs.  They receive also
+\VPs according to their Wealth and Prestige Expenses during the past turns.
+\bparag{End of game \VPs: }
+At the end of the game, after counting \VPs of the end of seventh period, a
+check-up of the the situation of each player is made, and \VPs are earned
+according to.
+
+
+
+
+\section{VPs per turn}
+
+Players earn or lose \VPs each turn for regular or particular situations, and
+also for particular discoveries.
+\aparag[During the interphase]~\\
+\begin{modlist}
+  % \item[\textpm S] the \STAB
+\item[+1] per partial \terme{monopoly} of Exotic Resource
+\item[+3] per total \terme{monopoly} of Exotic Resource
+\end{modlist}
+\aparag[During the peace phase]~\\
+\begin{modlist}
+\item[+?] the income value of the annexed provinces
+\item[-?] the income value of the lost provinces (double if ceded by Dowries)
+  % \item[$\pm$?] half the income of occupied provinces (divided by 2
+  %   for \TP/\COL, including Resources)
+\item[+5] per major battle won
+\item[+2] per peace level of a war won against a major power
+\item[+1] per peace level of a war won against a minor power
+\item[-2] per peace level of a lost war
+\item[-10] for a declaration of war without CB this turn
+\item[-20] for a forced religious conversion (unless stated otherwise)
+\end{modlist}
+
+\aparag[Discoveries]~\\
+% TBD??? Keep all of them or not ???? JC, Jym ???  PB: seems to have been done
+\begin{modlist}
+\item[+50] the 1st round-the-world trip (if it is completed in a single turn)
+\item[+20] the 1st round-the-world trip (if it is completed in 2 turns)
+\item[+20] the 2nd round-the-world trip
+\item[+3] the \granderegion{Quebec} area
+\item[+2] the \granderegion{Grands Lacs} area
+\item[+3] the \granderegion{Rocheuses} area
+\item[+10] the \seazone{Horn}
+\item[+10] the \seazone{Tempetes}
+\item[+3] the \seazone{Hudson}
+\item[+3] the \granderegion{Alaska} area
+\item[+5] the \granderegion{Alaska} area via \continent{Asia}
+\item[+5] the \granderegion{Panama} area by the west
+\item[+5] the \granderegion{Kamchatka} area by land from Europa
+\item[+1] per province of the \granderegion{Amazonia} area
+\item[+1] per province bording Mississippi river
+\end{modlist}
+
+\aparag[\VPs of minor powers]
+The players also earn (or lose) half of the \VPs earned (or lost) by a minor
+country which entered war at their side.
+
+\aparag[Definitions of \terme{monopolies}]
+\terme{Monopolies} are defined for each \STZ/\CTZ and for exploitation of each
+exotics resources
+\bparag \STZ/\CTZ : a player has a partial \terme{monopoly} in a \CTZ or a
+\STZ when he is the only possesser of a face \Faceplus fleet counter in this
+zone. He has a total \terme{monopoly} when he has a 6 levels fleet, and there
+is no other fleet in the zone.
+\bparag \label{chVictories:MonopolyExoticResources} Exploitation of exotic
+resources : for each resource, a player has a partial \terme{monopoly} when he
+produce at least 6 units and half of the world production of this resource. He
+has a total \terme{monopoly} when he produce all units but 2 of this resource.
+
+
+
+
+\section{End of period \VPs}
+
+\aparag The end of period \VPs are decomposed in 3 parts: Wealth and Prestige
+Expenses \VPs, a check up of the situation of each country and the
+verification of the objectives chosen at the beginning of the period.
+
+\aparag[Wealth and Prestige Expenses]
+\VPs are accorder by taking the mean of Wealth (Gross Income + Prestige
+Expenses) on the turns of the past period. This sum is multiplied by the
+modifier given afterwards (depending on country and period), here expressed in
+\%.
+\bparag At the end of the game, or in case of transferal, add to the sum of
+Wealth the Royal Treasury, else, if negative, remoce twice this RT.  Remove
+also twice the amount of Loans not refunded.
+\bparag All in all, one can expect to gain 100\VPs in average each period
+(with modulations depending on the fastest periods of each power).
+
+\bparag Period percentage: \par
+
+\hspace*{-2mm} {\scriptsize
+  \begin{tabular}{|*{10}{c|}}\hline
+    \multicolumn{10}{|c|}{Multipliers for Wealth and Prestige VPs} \\
+    \hline
+    & \ANG & \FRA	& \POL & \POR & \RUS & \HIS & \TUR & \VEN & \HOL \\
+    & & & +\PRU & +\SUE & & & & +\AUS & \\
+    \hline
+    p\period{I} & 25 & 25 & 100 & 40 & 100 & 25 & 30 & 25 & na \\
+    p\period{II} & 20 & 25 & 75 & 20 & 75 & 20 & 25 & 25 & na \\
+    p\period{III} & 20 & 20 & 60 & 60 & 60 & 20 & 20 & 20 & 20 \\
+    p\period{IV} & 15 & 20 & 50 & 50 & 40 & 15 & 10 & 50 & 15 \\
+    p\period{V} & 10 & 15 & 50 & 30 & 40 & 10 & 10 & 40 & 10 \\
+    p\period{VI} & 10 & 10 & 50 & 20 & 30 & 10 & 10 & 30 & 10 \\
+    p\period{VII} & 10 & 10 & 50 & 20 & 30 & 10 & 10 & 30 & 15 \\
+    \hline
+  \end{tabular}
+}
+% Note pour JC ou Jym : ce code latex est surement moche... Mais je n'avais
+% pas le temps de faire rentrer dans la page.
+
+\aparag[End of period check up]
+Each player earn \VPs at the end of each period according to their situation
+and to the this chart :
+
+\bparag {\bf 5 \VPs for each \COL or \TP} in the specified area (and/or
+periods)
+\bparag \ENG : \continent{India} in periods \period{IV} to \period{VII};
+\granderegion{Oceania} in period \period{VII}
+\bparag \FRA : \continent{America}; \continent{India} in periods \period{VI},
+\period{VII}; \granderegion{Oceania} in period \period{VII}
+\bparag \POR : \continent{America} if there is 3 or more \POR \COL in
+\continent{America}; \COL\faceplus count as 2
+\bparag \RUS : \pays{chine}, \continent{America}; \COL\faceplus count as 2
+\bparag \SUE : \continent{America}
+% \bparag \HOL : Neither in \continent{Asia} nor in \continent{Brazil} : /3.
+
+\bparag{\bf Income value of each province annexed during the period}
+with following modifiers
+\bparag \FRA : former provinces of \pays{bourgogne} *0 during periods
+\period{I} and \period{II}, *2 during periods \period{V} to \period{VII} ;
+\region{Italie}*2 in periods \period{I} to \period{III}
+\bparag \SPA : \region{Italie} *2 in periods \period{I} to \period{III}
+\bparag \ENG : \shortprovince{Gibraltar} *10 ; \shortprovince{Baleares}*5 ;
+Continental provinces *2
+\bparag \TUR : \pays{perse} *2 ; provinces lost against \pays{perse} count
+negative ; Mediterranean coastal provinces (including islands) *2
+\bparag \SUE : provinces bordering \seazone{Baltique} *3
+\bparag \RUS : \pays{pologne} *2 ; provinces lost against \pays{pologne} count
+negative
+\bparag \POL : \paysmajeur{Russie} *2 ; \pays{suede}*2
+\bparag \AUT : \pays{hongrie} *3 ; \pays{moldavie}*3 ;
+\shortprovince{Serbia}*3
+\bparag \PRU : \HRE *2 ; \pays{pologne}*2
+\bparag \VEN : lost Mediterranean island count negatives
+
+% \bparag{\bf 2 PVs for each commercial fleet}, face \faceplus counters count
+% as 2.
+% \bparag \POL, \RUS, \SUE, \PRU, \AUS : *2.
+
+\bparag{\bf 6 \VPs} for each minor countrie in {\bf \VASSAL or \ANNEXION} (or
+\dipAT for Minors in the \ROTW), and {\bf 3 \VPs} for other controled
+countries, with following modifiers:
+\bparag \SPA \region{Italie} *2; \pays{chevaliers}*2 (not before they move to
+\shortprovince{Malta}); special associated kingdoms don't count.
+\bparag \TUR : Muslims: only 4 \VPs for \VASSAL or \ANNEXION, 2\VPs else;
+Non-Muslims don't count
+\bparag \FRA : \region{Italie}*2 during periods \period{I} to \period{III} ;
+\HRE*2 in periods \period{IV} to \period{VII}
+
+\aparag[Period's objectives]
+\bparag At the beginning of each period, each player has a choice of 5
+objectives in the lists detailed below, and he must secretly pick up 3 of
+them. One of those 3 must be marked as the prioritary one, the 2 other would
+be the non-prioritary ones.
+\bparag At the end of the period, objectives are checked, and players earn
+\VPs according to this. A \VP value is indicated in the tables for each
+objectives. If a player choose an objective and complete it, he earn its \VP
+value, if it is the prioritary one, he earn twice this value.
+\bparag Some objectives are marked on the tables with {\bf M}, they are
+objectives with malus, if a players don't pick up this one, and don't complete
+it, he loses the \VP value of this one.
+\bparag Some objectives are marked on the tables with {\bf E}. They are
+objectives which depend on the occurence of an event. If the corresponding
+event has not occurred when the period ends, the check for the success of the
+objective is postponed until the event occurs and terminates.  If the event
+can not happen anymore (due to being 2 periods before), then the objective is
+considered as being half realised, entitling the player the gain of half the
+VP value.
+\bparag[MNU] Some objectives are explained as MNU: those objectives consist in
+having at the end of the period a number of Manufacture units strictly
+superior to the period limit.
+\bparag[Domination commercial in \STZ{Baltique}]
+Having Commercial Monopoly in \STZ{Baltique} (with no one levying Taxes), or
+Levying Taxes on the Sund, or having diplomatic control of a minor country
+having the Rights of Levies on the Sund (raising them or not), see
+\ruleref{chSpecific:Sund Levies}.
+\bparag[Dominium Marii Baltici] (Swedish objective) Owning all provinces
+bordering the \region{Baltique}, excepted for provinces currently owned by
+\pays{Brandebourg} (or \PRU) or \pays{Danemark}.
+
+% \section{Objectives of period \period{I}}
+
+% % TODO : déplacer les objectifs
+
+% {\graytabular
+% \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Angleterre}}&\VP\\\ghline\hline
+%     per turn of \pays{ecosse} as \VASSAL (max 30) &10\\
+%     \ghline \hline
+%     \shortprovince{Picardie} english presidio&45\\
+%     \ghline \hline
+%     \shortprovince{Guyenne} english provinces {\bf M}&50\\
+%     \ghline \hline
+%     MNU and Monopoly in  \CTZ{} England &25\\
+%     \ghline \hline
+%     Each turn without any revolts in \pays{Virlande} (max 40) &10\\
+%     \ghline \hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{France}}&\VP\\\ghline\hline
+%     No presidio in \shortprovince{Picardie} &40\\\ghline\hline
+%     \shortprovince{Artois} french province&30\\\ghline\hline
+%     Sole defensor of the catholic faith&40\\\ghline\hline
+%     MNU and Monopoly in  \CTZ France &25\\\ghline\hline
+%     Victory in at least one War in Italy (Peace lvl. $\ge 2$) {\bf E}{\bf M}&50\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Espagne}}&\VP\\\ghline\hline
+%     No french \VASSAL in \region{Italie}&50\\\ghline\hline
+%     Sole defensor of catholic faith&25\\\ghline\hline
+%     No french annexion in \region{Italie}&40\\\ghline\hline
+%     Each \Presidio on the barbary coast (max 50) {\bf M}&15\\\ghline\hline
+%     All \pays{provincesne} provinces annexed&25\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Pologne}}&\VP\\\ghline\hline
+%     No provinces lost (except \shortprovince{Smolenska}) {\bf M}&40\\\ghline\hline
+%     \shortprovince{Smolenska} polish province&40\\\ghline\hline
+%     \pays{hongrie} still exist&50\\\ghline\hline
+%     \pays{moldavie} neither \VASSAL of, nor conquered by
+%     \paysmajeur{Turquie}&35\\\ghline\hline
+%     \pays{Valachie} neither \VASSAL of, nor conquered by
+%     \paysmajeur{Turquie}&35\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Portugal}}&\VP\\\ghline\hline
+%     \COL on a city of the coast of \continent{India}
+%     (\granderegion{Ceylan} count 1/2 PV value only) &40\\
+%     \ghline\hline
+%     %     \shortprovince{Tanger} portuguese province&25\\\ghline\hline
+%     Each turn \pays{maroc} is \VASSAL (max 40) &10\\\ghline\hline
+%     One provinces annexed on \pays{maroc} &30\\\ghline\hline
+%     Two Commercial \terme{monopoly} in any \STZ or \CTZ &30\\\ghline\hline
+%     No more than 2 \COL/\TP in \continent{Asia} (producing \POSPICE) of
+%     country without treaty and at least one \COL in \continent{Brazil} {\bf
+%       M}&50\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Russie}}&\VP\\\ghline\hline
+%     Each province: \pays{pskov}, \pays{ryazan} (max 40) &20\\\ghline\hline
+%     \shortprovince{Smolenska} conquered {\bf M}&50\\\ghline\hline
+%     Conquest of \pays{Steppes} &35\\\ghline\hline
+%     No province lost&25\\\ghline\hline
+%     Conquest of one \terme{Khanate} &50\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Turquie}}&\VP\\\ghline\hline
+%     \pays{damas} and \pays{egypte} conquered&35\\\ghline\hline
+%     Commercial \terme{monopoly} in \CTZ{Turquie}&30\\\ghline\hline
+%     Each turn of Defensive alliance with \paysmajeur{France} (max 30) &10\\\ghline\hline
+%     \shortprovince{Rhodos} conquered&30\\\ghline\hline
+%     \pays{Valachie} and \pays{moldavie} \VASSAL or conquered&25\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Venise}}&\VP\\\ghline\hline
+%     Italia e San Marco: Each minor in \EG or better
+%     (2 \pays{naples}'s provinces=1 minor) (max 50) &15\\\ghline\hline
+%     Each province: \shortprovince{Hellas} or \shortprovince{Moreas} Venitian (max 40)&20\\\ghline\hline
+%     Per (other) Venitian provinces in the Balkans (max 30) &10\\\ghline\hline
+%     \pays{egypte} not conquered by Turquie {\bf M}&50\\\ghline\hline
+%     Orient income total at least 200 \ducats on the period&40\\%\ghline\hline
+%     (from \terme{Commercial Center} Gd Orient, Smyrna convoy, Alliance with \pays{aden}, \pays{oman} or
+%     \pays{gujarat})&\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   \section{Objectives of period \period{II}}
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Angleterre}}&\VP\\\ghline\hline
+%     Each turn of \pays{ecosse} in \VASSAL (max 40)&10\\\ghline\hline
+%     \shortprovince{Picardie} English presidio {\bf M}&50\\\ghline\hline
+%     Win a war against \FRA (level $\ge 2$) (or \SPA ??)&40\\\ghline\hline
+%     Each turn with no revolt in \pays{Virlande} (max 35)&7\\\ghline\hline
+%     A \COL in \continent{America}&30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{France}}&\VP\\\ghline\hline
+%     No presidio in \shortprovince{Picardie} {\bf M}& 50\\\ghline\hline
+%     French king on the Imperial throne {\bf E}&50\\\ghline\hline
+%     \shortprovince{Artois} french province&30\\\ghline\hline
+%     \shortprovince{Lombardia} or \shortprovince{Naples} french province&40\\\ghline\hline
+%     \MNU and \terme{Monopoly} in \CTZ France&30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Espagne}}&\VP\\\ghline\hline
+%     \pays{habsbourg} on the imperial Throne{\bf E}&35\\\ghline\hline
+%     No french \VASSAL in \region{Italie}&40\\\ghline\hline
+%     No french annexion in \region{Italie}&30\\\ghline\hline
+%     Each \Presidio on the Barbary coast (max 50) {\bf M} &15\\\ghline\hline
+%     No Religious problems in \HRE (Either no 2nd Reform event, or
+%     Schmalkaldic league destroyed without religious liberty
+%     (\eventref{pII:Schmalkaldic League}), or \eventref{pIV:TYW} won {\bf
+%       E}&50\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Pologne}}&\VP\\\ghline\hline
+%     \shortprovince{Smolenska} polish province {\bf M}&50 \\\ghline\hline
+%     No province lost&40\\\ghline\hline
+%     \paysmajeur{Russie} non-adjacent to \region{Baltique}&40\\\ghline\hline
+%     \pays{hongrie} still exist&50\\\ghline\hline
+%     if Orthodox: at least one \COL in \continent{Siberia}&50\\\ghline\hline
+%     Else: each province above 2 in Polish Ukraynia (max 50)&20\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Portugal}}&\VP\\\ghline\hline
+%     %     \shortprovince{Tanger} portuguese province&30\\\ghline\hline
+%     Each turn \pays{maroc} is \VASSAL (max 40) &10\\\ghline\hline
+%     One provinces annexed on \pays{maroc} &30\\\ghline\hline
+%     Three commercial \terme{Monopoly} in any \STZ or \CTZ&30\\\ghline\hline
+%     No non-portuguese \TP (or with \dipAT) in Asia (producing \POSPICE),
+%     excepted in \granderegion{Philippines}, and excepted Chinese and Japanese \TP&50\\\ghline\hline
+%     \TP in \pays{chine} and in \pays{japon} {\bf M} &40\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Russie}}&\VP\\\ghline\hline
+%     \pays{kazan} conquered&35\\\ghline\hline
+%     \pays{astrakhan} conquered&50\\\ghline\hline
+%     Possession of all national provinces and \shortprovince{Smolenska}&40\\\ghline\hline
+%     \paysmajeur{Russie} has a port bordering \region{Baltique} {\bf
+%       M}&50 \\\ghline\hline
+%     Each diplomatic control (or annexion) of orthodox minor&10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Turquie}}&\VP\\\ghline\hline
+%     \pays{hongrie} conquered&40\\\ghline\hline
+%     \ville{Vienne} captured during the period&50\\\ghline\hline
+%     \pays{astrakhan} still exist&35\\\ghline\hline
+%     \shortprovince{Rhodos} Turkish province&35\\\ghline\hline
+%     Each \COL or \TP producing \POSPICE\  (max 40) {\bf M}
+%     &10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Venise}}&\VP\\\ghline\hline
+%     Italia e San Marco: Each minor in \EG or better
+%     (2 \pays{naples}'s provinces=1 minor) (max 50) &10\\\ghline\hline
+%     Commercial \terme{Monopoly} in \CTZ Turkey&30\\\ghline\hline
+%     Orient Income total at least 250 \ducats in the period&30\\%\ghline\hline
+%     (from \terme{Commercial Center} Gd Orient, Smyrna convoy, Alliance with \pays{aden},
+%     \pays{oman} or \pays{gujarat})&\\\ghline\hline
+%     \shortprovince{Moreas} Venitian provinces&40\\\ghline\hline
+%     No Turkish Island in East mediteranean sea
+%     (\shortprovince{Chypre}, \shortprovince{Kreta}, \shortprovince{Cyclades},
+%     \shortprovince{Corfu}, \shortprovince{Malta})  {\bf M}&50\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   \section{Objectives of period \period{III}}
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Angleterre}}&\VP\\\ghline\hline
+%     Each turn of \pays{ecosse} in \VASSAL (max 30)&5\\\ghline\hline
+%     \paysmajeur{Angleterre} not forced to religion's change {\bf
+%       M}&45\\\ghline\hline
+%     MNU objective, and Monopoly in  \CTZ England&30\\\ghline\hline
+%     \paysmajeur{Hollande} not convert by \paysmajeur{Espagne}&35\\\ghline\hline
+%     Each Commercial \terme{Monopoly} in \CTZ/\STZ (max 30) &5/10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{France}}&\VP\\\ghline\hline
+%     No provinces lost&30\\\ghline\hline
+%     Each province of \shortprovince{Artois}, \shortprovince{Bresse}, \shortprovince{Franche-Comte}, \shortprovince{Roussillon} (max 40) &10\\\ghline\hline
+%     \paysmajeur{France} didn't change his religion (except due to L'Hospital) &50\\\ghline\hline
+%     \paysmajeur{France} does not sign more than 2 unfavorable truce during the
+%     Wars of Religion {\bf M} {\bf E}&40\\\ghline\hline
+%     At least 3 \COL or \TP &30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Espagne}}&\VP\\\ghline\hline
+%     Possession of at least half of the \pays{hongrie} by
+%     \pays{habsbourg} (6+ provinces) &50
+%     \\\ghline\hline
+%     Each Protestant Major Countries converted (not possible if conciliant)
+%     {\bf M} &50\\\ghline\hline
+%     No Turkish possesions nor \VASSAL west to Ionian Sea (\shortprovince{Malta}
+%     included)&40\\\ghline\hline
+%     No more than one turn of war between \pays{habsbourg} and
+%     \paysmajeur{Turquie}&30\\\ghline\hline
+%     Commercial \terme{monopoly} in \CTZ Hispania and in at least 2 other
+%     \CTZ/\STZ&30 \\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Pologne}}&\VP\\\ghline\hline
+%     King of \paysmajeur{Pologne} have pretention on swedish throne
+%     {\bf E}&40\\\ghline\hline
+%     Each of those provinces \shortprovince{Kurland}, \shortprovince{Memel}, \shortprovince{Preussen} (max 50) &20\\\ghline\hline
+%     No province lost&40\\\ghline\hline
+%     \paysmajeur{Russie} non adjacent to \region{Baltique}&40\\\ghline\hline
+%     Union of Lublin in effect {\bf E}&30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Suede}}&\VP\\\ghline\hline
+%     Each turn of Commercial Domination on the \region{Baltique}(max 30) &5\\\ghline\hline
+%     King of \paysmajeur{Pologne} don't pretend to Swedish throne {\bf
+%       E}&50 \\\ghline\hline
+%     Each province \shortprovince{Skane}, \shortprovince{Vastergotland}, \shortprovince{Gotland}
+%     or of \region{Norvege} (10 only) (max 45)
+%     &15\\\ghline\hline
+%     Each province \shortprovince{Neva}, \shortprovince{Estland} and \shortprovince{Livonija} (max 50) &20\\\ghline\hline
+%     Each \COL or \TP in \continent{America} (max 30) &10\\\ghline\hline
+%     %     Conquest of \region{Norvege}&30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Russie}}&\VP\\\ghline\hline
+%     Each turn of Furs \terme{monopoly} (max 50)&10\\\ghline\hline
+%     Each province taken in \pays{Pologne}, \pays{Lithuanie}, \pays{Ukraine} (max 40)&10\\\ghline\hline
+%     Each province \shortprovince{Neva}, \shortprovince{Estland} and \shortprovince{Livonija} &15\\\ghline\hline
+%     Each province taken on \pays{crimee} (max 40) {\bf M}&20\\\ghline\hline
+%     \pays{siberie} conquered&35\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Turquie}}&\VP\\\ghline\hline
+%     Each of the ollowing provinces that is turkish: \shortprovince{Malta} (20), \shortprovince{Cyclades} (10), and \shortprovince{Chypre}
+%     or \shortprovince{Kreta} (20) (max 50)&10/20\\\ghline\hline
+%     \ville{Vienne} captured during the period&40\\\ghline\hline
+%     No more than one turn of war between \paysmajeur{Turquie} and
+%     \pays{habsbourg}, or at least 9 provinces of \pays{Hongrie} {\bf M}&35\\\ghline\hline
+%     \pays{astrakhan} still exist&30\\\ghline\hline
+%     \pays{Valachie} and \pays{moldavie} conquered or \VASSAL&25\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Venise}}&\VP\\\ghline\hline
+%     %     Italia e San Marco (at least 5 minors in \EG or
+%     %     better)&50\\%\ghline\hline
+%     %     2 \pays{naples}'s provinces=1 minor for the purpose of this
+%     %     objective&\\\ghline\hline
+%     (??) Orient Income total at least 300 \ducats in the period&30\\%\ghline\hline
+%     (from \terme{Commercial Center} Gd Orient, Smyrna convoy, Alliance with \pays{aden},
+%     \pays{oman} or \pays{gujarat})&\\\ghline\hline
+%     Mediterranean \terme{Commercial Center} &40\\\ghline\hline
+%     Each island not Turkish Island East mediteranean sea above 2, from
+%     (\shortprovince{Chypre}, \shortprovince{Kreta}, \shortprovince{Cyclades},
+%     \shortprovince{Corfu}, \shortprovince{Malta})  (max 50) {\bf M}&20\\\ghline\hline
+%     Each Venitian province in the Balkans (max  45)&15\\\ghline\hline
+%     Each \Presidio (in \terme{Barbaresques}, or \region{Balkans} (not in owned province)) (max 30) &10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Hollande}}&\VP\\\ghline\hline
+%     Mediterranean \terme{Commercial Center} &25\\\ghline\hline
+%     Each turn of Oriental Indies convoy (max 40) {\bf M}&10\\\ghline\hline
+%     \paysmajeur{Espagne} has recognized
+%     \paysmajeur{Hollande}&50\\\ghline\hline
+%     \paysmajeur{Angleterre} Protestant or Anglican and not
+%     converted&40\\\ghline\hline
+%     Protestant won the French wars of religions&35\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   \section{Objectives of period \period{IV}}
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Angleterre}}&\VP\\\ghline\hline
+%     \pays{ecosse} in \VASSAL: each turn (max 30) &5\\\ghline\hline
+%     \paysmajeur{Angleterre} not forced to change religion {\bf M}&40\\\ghline\hline
+%     Having one \terme{Commercial Center}& 50\\\ghline\hline
+%     Each Monopoly in \CTZ/\STZ (max 30)&5/10\\\ghline\hline
+%     English Civil War: 4 turns of less = 40; 5 turns = 20; 6+=failed {\bf E}&40\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{France}}&\VP\\\ghline\hline
+%     No \pays{German Empire} nor Southern \HRE\ {\bf E} {\bf M}&50
+%     \\\ghline\hline
+%     No Northern \HRE alliance {\bf E}&40\\\ghline\hline
+%     Each \COL (max 30)&5\\\ghline\hline
+%     Commercial \terme{monopoly} in \CTZ France&30\\\ghline\hline
+%     Each Commercial \terme{monopoly} (Total/Partial) (excepted \CTZ France)  (max 40) & 20/15 \\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Autriche}}&\VP\\\ghline\hline
+%     Half of \pays{hongrie} controled by \pays{habsbourg} (6+ provinces)&40\\\ghline\hline
+%     Creation of \pays{German Empire} {\bf M}&50\\\ghline\hline
+%     Each province above 11 in \pays{habsbourg} (max 30)&10\\\ghline\hline
+%     Southern HRE alliance exists {\bf E}&30\\\ghline\hline
+%     Each turn of control of a port on the \region{Baltique} or in \pays{Hanse} (max 45)&15\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Espagne}}&\VP\\\ghline\hline
+%     Half of \pays{hongrie} controled by \pays{habsbourg} (6+ provinces)&40\\\ghline\hline
+%     Creation of \pays{German Empire} {\bf M}&50\\\ghline\hline
+%     Each province above 11 in \pays{habsbourg} (max 30)&10\\\ghline\hline
+%     \pays{portugal} in \ANNEXION &50\\\ghline\hline
+%     Each Commercial \terme{monopoly} (\CTZ Hispania counts as 2) (max 40)&8\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Pologne}}&\VP\\\ghline\hline
+%     \paysmajeur{Suede}-\paysmajeur{Pologne} union has been effective during the period
+%     (not available as Prioritary objective if already effective at beginning of pIV) &50\\\ghline\hline
+%     \ville{Vienne} never captured by \paysmajeur{Turquie}&40\\\ghline\hline
+%     No non-Ukrainian provinces lost {\bf M}&40\\\ghline\hline
+%     Number of swedish provinces adjacent to Baltic Sea (\region{Suede} and
+%     \region{Finlande} excepted): 3 or less= 40; 4 = 20; 5+=failed &40\\\ghline\hline
+%     \paysmajeur{Russie} non adjacent to \region{Baltique}&40\\\ghline\hline
+%     \FTI, \DTI, and \MNU at maximum level&35\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Suede}}&\VP\\\ghline\hline
+%     No \pays{German Empire} {\bf E} {\bf M}&40\\\ghline\hline
+%     \terme{Dominium Marii Baltici}&50\\\ghline\hline
+%     Each turn of Commercial Domination on the \region{Baltique} (max 30) &5\\\ghline\hline
+%     \pays{Hanse} does not exist any more&30\\\ghline\hline
+%     King of \paysmajeur{Pologne} never on the swedish throne {\bf E} &40\\\ghline\hline
+%     %     \paysmajeur{Russie} non adjacent to
+%     %     \region{Baltique}&40\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Russie}}&\VP\\\ghline\hline
+%     Each turn of Furs \terme{monopoly} (max 45) &5\\\ghline\hline
+%     Victory during the Time of Troubles {\bf E} &30\\\ghline\hline
+%     Number of swedish provinces adjacent to Baltic Sea (\region{Suede} and
+%     \region{Finlande} excepted): 3 or less= 40; 4 = 20; 5+=failed &40\\\ghline\hline
+%     Number of national province that are not russian: 0 or 1=30, 2 = 15; 3+=failed &(30) \\\ghline\hline
+%     Each Russian port on \region{Noire} (max 50) {\bf M} &20\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Turquie}}&\VP\\\ghline\hline
+%     No more than 2 turn of war with \pays{habsbourg} or \AUS&35\\\ghline\hline
+%     Each province of \shortprovince{Kreta}, \shortprovince{Chypre}, \shortprovince{Corfou}, \shortprovince{Malta}  (max 40)&10\\\ghline\hline
+%     Each \Presidio on the \terme{Barbaresques}: -10 (none=40) &40\\\ghline\hline
+%     Each Commercial Monopoly in \STZ or \CTZ (max 45) &15 \\\ghline\hline
+%     Number of provinces in \pays{crimee}: 6=40; 5=30; 4=20; 3-=failed&(40)\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Hollande}}&\VP\\\ghline\hline
+%     Each \COL in \continent{Bresil} (max 40)&10\\\ghline\hline
+%     Alliance with Northern \HRE if \eventref{pIV:TYW} occured, or
+%     \pays{hanse} still exists and in \VASSAL&40\\\ghline\hline
+%     Mediterranean \terme{Commercial Center}&30\\\ghline\hline
+%     Abolition of Navigation Act {\bf E} {\bf M}&40\\\ghline\hline
+%     Each turn of Commercial Domination on the \region{Baltique} (max 30) &5\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   \section{Objectives of period \period{V}}
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Angleterre}}&\VP\\\ghline\hline
+%     Each island with a \TP or \COL controled/owned in
+%     \continent{Caraibes} (max 45) &7/15\\\ghline\hline
+%     Each turn of Fish \terme{monopoly} (max 30) &5\\\ghline\hline
+%     \paysmajeur{Angleterre} not forced to change religion&40\\\ghline\hline
+%     \pays{Portugal} is independent&30\\\ghline\hline
+%     Atlantic \terme{Commercial Center} {\bf M}&40\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{France}}&\VP\\\ghline\hline
+%     Each turn of Fish \terme{monopoly} (max 30) &5\\\ghline\hline
+%     Mediterranean \terme{Commercial Center}&40\\\ghline\hline
+%     \paysmajeur{France} adjacent to \paysmajeur{Hollande} national
+%     territory {\bf M}&50\\\ghline\hline
+%     Victory in the Glorious Revolution {\bf E}&40\\\ghline\hline
+%     Each victory in the following wars: Devolution, Chamber of Reunion, League of Augsbourg {\bf E} (max 40)&20\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Autriche}}&\VP\\\ghline\hline
+%     Each turkish province in \pays{hongrie}: -10 (none=50) &(50)\\\ghline\hline
+%     Each province in Spanish Netherland (max 40) {\bf M}&10\\\ghline\hline
+%     Possessions of \pays{Venise}: Each Mediterranean island, or province in \region{Balkans} above 2 (max 50)  &20\\\ghline\hline
+%     Absolutism established in \POL &25\\\ghline\hline
+%     Each victory in the following wars: Devolution, Chamber of Reunion, League of Augsbourg {\bf E} (max 40)&20\\\ghline\hline\end{tabular}
+%     % }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Espagne}}&\VP\\\ghline\hline
+%     Each turkish province in \pays{hongrie}: -10 (none=40) {\bf M}&(40)\\\ghline\hline
+%     Each province in Spanish Netherland (max 50)&10\\\ghline\hline
+%     \pays{Portugal} is in \ANNEXION &40\\\ghline\hline
+%     No non-spanish \COL south of \granderegion{Florida} (\continent{Caraibes} included;
+%     \continent{Brazil} excepted)= 40, or same objective with \continent{Caraibes} and  \continent{Brazil} excepted = 20 &40\\\ghline\hline
+%     Each Commercial \terme{monopoly} (max 40)&8 \\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Pologne}}&\VP\\\ghline\hline
+%     \ville{Vienne} never captured by \paysmajeur{Turquie} {\bf M}&50\\\ghline\hline
+%     Number of swedish provinces adjacent to Baltic Sea (\region{Suede} and
+%     \region{Finlande} excepted): 3 or less= 40; 4 = 20; 5+=failed &(40)\\\ghline\hline
+%     \paysmajeur{Russie} non adjacent to \region{Baltique}&40\\\ghline\hline
+%     National province of \pays{Pologne} or \pays{Lithuanie} lost: 0=40, 1=20, 2+=failed&(40)\\\ghline\hline
+%     Each turkish province in \pays{hongrie}: -10  (none=50) {\bf M}&(50)\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Suede}}&\VP\\\ghline\hline
+%     \terme{Dominium Marii Baltici} {\bf M}&50\\\ghline\hline
+%     %     \pays{hanse} does not exist any more&40\\\ghline\hline
+%     \paysmajeur{Russie} non adjacent to \region{Baltique}&40\\\ghline\hline
+%     Each turn of Commercial Domination on the \region{Baltique} (max 30) &5\\\ghline\hline
+%     Absolutism is not established in \POL\  &30\\\ghline\hline
+%     Each \COL or \TP (max 40)&5\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Russie}}&\VP\\\ghline\hline
+%     Contruction of \ville{Saint-Petersbourg} completed&50\\\ghline\hline
+%     Each turn of Furs \terme{monopoly} (max 35)&5\\\ghline\hline
+%     Each \COL or \TP in \granderegion{Amour} or \granderegion{Baikal} (max
+%     30)&10\\\ghline\hline
+%     \pays{Astrakhan} destroyed&40\\\ghline\hline
+%     Each Russian port on \region{Noire} (max 50) &20\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Turquie}}&\VP\\\ghline\hline
+%     Each \TP producing \POSPICE (max 30)&6\\\ghline\hline
+%     \ville{Vienne} captured during the period {\bf M}&50\\\ghline\hline
+%     Each turkish province in \pays{hongrie} (max 50)&8\\\ghline\hline
+%     Number of provinces in \pays{crimee}: 5 or 6=40; 4=30; 3=20; 2-=failed&(40)\\\ghline\hline
+%     \pays{Astrakhan} still exists &30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Hollande}}&\VP\\\ghline\hline
+%     \paysmajeur{France} not adjacent to national
+%     territory&50\\\ghline\hline
+%     Abolition of Navigation Act {\bf E}&50\\\ghline\hline
+%     Atlantic \terme{Commercial Center} {\bf M}&40\\\ghline\hline
+%     No Christian non-dutch \TP east of \granderegion{Malacca} (included,
+%     \continent{Siberia} excepted) &40\\\ghline\hline
+%     Each turn of Spices \terme{monopoly} (max 40) &5 \\\ghline\hline
+%   \end{tabular}
+% }
+
+%   \section{Objectives of period \period{VI}}
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Angleterre}}&\VP\\\ghline\hline
+%     Each island with a \TP or \COL controled/owned in \continent{Caraibes} (max 50) &5/10\\\ghline\hline
+%     Victory in the Jacobite rebellion {\bf E}&30\\\ghline\hline
+%     Victory in the war of Spanish Succession {\bf E}&50\\\ghline\hline
+%     Each turn of control of Oriental India convoy (max 40)&4\\\ghline\hline
+%     Atlantic \terme{Commercial Center} {\bf M}&40\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{France}}&\VP\\\ghline\hline
+%     Victory in the war of Spanish Succession {\bf E}&50\\\ghline\hline
+%     Victory in the war of Austrian Succession without any territorial gain {\bf E}&40\\\ghline\hline
+%     Polish King supported by \FRA\ {\bf E} & 50 \\\ghline\hline
+%     Mediterranean \terme{Commercial Center}&40\\\ghline\hline
+%     Atlantic \terme{Commercial Center} {\bf M}&50\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Autriche}}&\VP\\\ghline\hline
+%     Control of \pays{hongrie}: 50 -20 per Turkish province &50\\\ghline\hline
+%     \shortprovince{Silesie} and \shortprovince{Lausitz} Austrian provinces {\bf M}
+%     &50\\\ghline\hline
+%     Victory in the war of Spanish Succession {\bf E}&50\\\ghline\hline
+%     Victory in the war of Austrian Succession  {\bf E}&40\\\ghline\hline
+%     \PRU has not the Royal Dignity&30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Espagne}}&\VP\\\ghline\hline
+%     Victory in the war of spanish succession {\bf E} {\bf
+%       M}&50\\\ghline\hline
+%     Each Commercial \terme{monopoly} (max 40)&10 \\\ghline\hline
+%     No non-spanish \COL south of \granderegion{Florida}  (\continent{Caraibes} included;
+%     \continent{Brazil} excepted)= 45, or same objective with \continent{Caraibes}
+%     and  \continent{Brazil} excepted = 20 &45\\\ghline\hline
+%     Each \Presidio on the \terme{Barbaresques} (max 50)& 10\\\ghline\hline
+%     Each non national provinces (max 40)&10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Prusse}}&\VP\\\ghline\hline
+%     \shortprovince{Silesie} and \shortprovince{Lausitz} Prussian provinces {\bf
+%       M}&50\\\ghline\hline
+%     \paysmajeur{Autriche} is not on the imperial throne any more {\bf
+%       E}&40\\\ghline\hline
+%     Each turn of Military alliance with a major (max 40)&5\\\ghline\hline
+%     Having the Royal Dignity&30\\\ghline\hline
+%     Each province above 9 (max 40)&10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Suede}}&\VP\\\ghline\hline
+%     \terme{Dominium Marii Baltici}&40\\\ghline\hline
+%     Polish King supported by \SUE (50), or no France-supported king in \POL (25) {\bf E}& 25/50 \\\ghline\hline
+%     No provinces lost (except \shortprovince{Neva}) {\bf M}&40\\ \ghline\hline
+%     Each turn of Commercial Domination on the \region{Baltique} (max 40) &5\\\ghline\hline
+%     Each \COL or \TP (max 40)&7\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Russie}}&\VP\\\ghline\hline
+%     Each \COL in \granderegion{Alaska} (max 30)&10\\\ghline\hline
+%     \POL does not have a King suported by \FRA or \SUE (need a Peace of level 3+ against \POL) {\bf E}&30\\\ghline\hline
+%     Each port of the \region{Baltique} (max 40) &15\\\ghline\hline
+%     Each conquered province of \pays{Crimee} and \pays{Moldavie} above 4 (max 50)  {\bf M}&15\\\ghline\hline
+%     Each \COL/\TP in china (\granderegion{Amour}, \granderegion{Baikal}),
+%     or on indian
+%     road (\granderegion{Afghanistan}, \granderegion{Perse},
+%     \continent{India}) (max 40) &10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Turquie}}&\VP\\\ghline\hline
+%     Each province in \region{Balkans} (max 45)&10 \\\ghline\hline
+%     Each \TP with \POSPICE (max 30)&10\\\ghline\hline
+%     Number of provinces in \pays{crimee}: 4+=40; 3=30; 2=20; 1-=failed {\bf M}&(40) \\\ghline\hline
+%     Number of \Presidio on the \terme{Barbaresques}: 50-10/\Presidio&(50)\\\ghline\hline
+%     \pays{transylvanie} still exists, or control of at least one province of \pays{hongrie} &40\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Hollande}}&\VP\\\ghline\hline
+%     Victory in the war of Spanish Succession {\bf E}&50\\\ghline\hline
+%     Each \terme{Commercial Center} (max 50) {\bf M} &25\\\ghline\hline
+%     Each \COL in \continent{America} (excepted \continent{Bresil}) (max 45)&15\\\ghline\hline
+%     Each Christian non-dutch \TP east of \granderegion{Malacca} (included): -10  &40\\\ghline\hline
+%     Each turn of control of Oriental India convoy (max 40)&4\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   \section{Objectives of period \period{VII}}
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Angleterre}}&\VP\\\ghline\hline
+%     Victory in the Seven Years War {\bf E}&30\\\ghline\hline
+%     Victory in the Independance War (victory of insurgent if the war
+%     occured in another country) {\bf E} {\bf M}&50\\\ghline\hline
+%     Each \terme{Commercial Center} (max 45) &15\\\ghline\hline
+%     Each turn of control of Oriental India convoy (max 40)&4\\\ghline\hline
+%     \paysmajeur{France} does not reach its ``natural frontier'' during the Révolution
+%     (cannot be the prioritary objective) {\bf E} &30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{France}}&\VP\\\ghline\hline
+%     \pays{pologne} still exists {\bf M}&50\\\ghline\hline
+%     Each \terme{Commercial center} (max 40)&20\\\ghline\hline
+%     Victory in the Independance War (victory of insurgent if the war
+%     occured in another country) {\bf E}&45\\\ghline\hline
+%     \paysmajeur{France} has more \TP plus \COL than any other country in any one region of
+%     \continent{India}, \continent{North America}, or \continent{Caraibes}&40 \\\ghline\hline
+%     \paysmajeur{France} reaches its ``natural frontier'' during the Révolution
+%     (cannot be the prioritary objective) {\bf E} &30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Autriche}}&\VP\\\ghline\hline
+%     \shortprovince{Silesie} and \shortprovince{Lausitz} Austrian provinces &50\\\ghline\hline
+%     Each turn of Military alliance with a major  (max 30)&5\\\ghline\hline
+%     Ownership of \pays{hongrie} (no turkish province), \shortprovince{Bosna} and \shortprovince{Serbia} (max 50) &20\\\ghline\hline
+%     Each provinces of \pays{naples} above 3 (max 50) {\bf M}&10\\\ghline\hline
+%     \paysmajeur{France} does not reach its ``natural frontier'' during the Révolution
+%     (cannot be the prioritary objective) {\bf E} &30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Espagne}}&\VP\\\ghline\hline
+%     Spanish Asiento &35 \\\ghline\hline
+%     Each non national provinces above 3 (max 40) &10\\\ghline\hline
+%     No non-spanish \COL south of \granderegion{Florida}  (\continent{Caraibes} included;
+%     \continent{Brazil} excepted)= 50, or same objective with \continent{Caraibes}
+%     and  \continent{Brazil} excepted = 20 {\bf M} &50\\\ghline\hline
+%     Objective MNU plus \FTI, \DTI at maximum level&25\\\ghline\hline
+%     Victory in the Independance War (victory of insurgent if the war
+%     occured in another country) {\bf E}&30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Prusse}}&\VP\\\ghline\hline
+%     \shortprovince{Silesie} and \shortprovince{Lausitz} Prussian provinces {\bf
+%       M}&50\\\ghline\hline
+%     Each turn of Military alliance with a major (max 40)&5\\\ghline\hline
+%     Victory in the Seven Years War {\bf E}&40\\\ghline\hline
+%     Each province annexed during the period (max 50)&15\\\ghline\hline
+%     \paysmajeur{France} doesn't reach its ``natural frontier'' (cannot be
+%     the prioritary objective) &30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Suede}}&\VP\\\ghline\hline
+%     \pays{pologne} still exist&40\\\ghline\hline
+%     No province lost &40\\\ghline\hline
+%     Each province outside \region{Suede}, \region{Finlande},
+%     \region{Denmark} and\region{Norvege} (max 50) &15\\\ghline\hline
+%     Each turn of Commercial Domination on the \region{Baltique} (max 40) &5\\\ghline\hline
+%     Each \COL or \TP (max 40)&10\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Russie}}&\VP\\\ghline\hline
+%     \pays{pologne} does not exist any more &50\\\ghline\hline
+%     \pays{crimee} does not exist any more {\bf M} &40\\\ghline\hline
+%     Each port of the \region{Baltique} (max 40) &10\\\ghline\hline
+%     Each province of national territory of \pays{Georgie} or \pays{Perse} (max 40) &10 \\\ghline\hline
+%     Each province taken from \paysmajeur{Turquie} (excepted national territory of \pays{Georgie} or \pays{Perse} )(max 45) &15 \\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Turquie}}&\VP\\\ghline\hline
+%     Each province in \region{Balkans} above 4 (max 45)&15 \\\ghline\hline
+%     \pays{crimee} still exists {\bf M}&50\\\ghline\hline
+%     Each Success in Reforms since the beginning &5\\\ghline\hline
+%     Each province of national territory of \pays{Georgie} or \pays{Perse} above 3 (max 50) &15\\\ghline\hline
+%     \pays{Mamelouks} in \VASSAL or annexed&30\\\ghline\hline
+%   \end{tabular}
+% }
+
+%   {\graytabular
+%   \begin{tabular}{|p{.8\columnwidth}|c|}
+%     \hline
+%     {\paysmajeur{Hollande}}&\VP\\\ghline\hline
+%     Victory in \eventrefname{pVII:Batavian Revolution} {\bf E} {\bf M} &40\\\ghline\hline
+%     Each Commercial \terme{Monopoly} in \CTZ or \STZ (max 30) & 5 \\\ghline\hline
+%     Each \COL or \TP in \continent{India} (max 50) &15\\\ghline\hline
+%     Each \COL in \continent{America} (excepted \continent{Bresil}) (max 45)&15\\\ghline\hline
+%     \paysmajeur{France} does not reach its ``natural frontier'' during the Révolution
+%     ({\bf may} be the prioritary objective) {\bf E} &35\\\ghline\hline
+%   \end{tabular}
+% }
+
+
+
+
+\section{End of game \VPs}\label{chVictories:End Game}
+
+\aparag Those \VPs consist of a check up of the situation of each players at
+the end of the game. A check up of the same kind, which is also explained here
+is done each time a player change of played country.
+\aparag The objectives are exclusive, it means that if a provinces is listed
+in a special objective for a country, it does not count for the ``all
+non-national province'' objective.
+\aparag The provinces of \VASSAL minor count for special objectives but not
+for ``all non-national province'' objectives.
+\aparag Exotic resources count for \COL and \TP income, but not the gold.
+\aparag The verification for the rank of army or fleet are made at the
+beginning of the last turn and not at the end and are counted respectivly in
+\LD ans in \NWD.
+% \\
+% TODO : réduite ou supprimer ces \PV ??
+\aparag Alliances are also checked a the beginning of the last turn
+
+\aparag[All powers]
+\bparag -2 time the income value of lost national provinces.
+
+\aparag[\sectionpaysmajeur{Portugal}]
+\bparag 1 times the income value of \shortprovince{Tanger},
+\shortprovince{JebelTubqal}, \shortprovince{SidiIfni}, \shortprovince{Rif},
+and \shortprovince{Magrib}.
+\bparag 1 \VP per level of commercial fleet.
+\bparag 20 \VPs : \COL in a coastal city in \continent{India}.%\ville{Goa}.
+\bparag 20 \VPs : total monoply in \STZ{Inde}.
+\bparag 10 \VPs : partial monoply in \STZ{Inde}.
+
+\aparag[\sectionpaysmajeur{Venise}]
+\bparag 1 times the income value of all non national provinces.
+\bparag 1 \VP per level of commercial fleet.
+\bparag 30 \VPs : Mediterranean \terme{Commercial Center}.
+\bparag 10 \VPs : military alliance with \paysmajeur{Espagne}.
+
+\aparag[\sectionpaysmajeur{Pologne}]
+\bparag {\it Provinces of \region{Duche de Prusse} that \paysmajeur{Pologne}
+  volontary gave to \pays{brandebourg} are counted as if \paysmajeur{Pologne}
+  still control them}
+\bparag 4 times the income value of all non-national provinces (Ukrainyan
+provinces are considered as non-national).
+\bparag -2 times the income value of all lost national provinces, not
+including Ukrainyan provinces.
+\bparag 20 \VPs : at least 10 levels of manufactures.
+\bparag 30 \VPs : military alliance with \paysmajeur{France}, or
+\bparag 20 \VPs : military alliance with \paysmajeur{Autriche}, or
+\bparag 10 \VPs : military alliance with \paysmajeur{Suede}.
+
+\aparag[\sectionpaysmajeur{Hollande}]
+\bparag{\it divide total by 2 if it is a Transfer check}
+\bparag 2 times the income value of \shortprovince{Hainaut},
+\shortprovince{Flandre}, \shortprovince{Vlaandern}, \shortprovince{Luxemburg},
+\shortprovince{Brabant}, \shortprovince{Limburg}
+\bparag 3 times the income value of \shortprovince{Oldenburg},
+\shortprovince{Artois}, \shortprovince{Picardie}, \shortprovince{Bremen}.
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP.
+\bparag 1 \VP per level of \terme{commercial fleet}.
+\bparag 50 \VPs : Atlantic \terme{Commercial Center}.
+\bparag 30 \VPs : First or second biggest fleet.
+\bparag 10 \VPs : At lest 15 \NWD (not compatible with the precedent).
+
+\aparag[\sectionpaysmajeur{Angleterre}]
+\bparag 2 times the income value of \pays{ecosse} provinces.
+\bparag 3 times the income value of \shortprovince{Picardie},
+\shortprovince{Baleares}, \shortprovince{Corfu}, \shortprovince{Malta},
+\shortprovince{Bremen}, \shortprovince{Hannover}, \shortprovince{Osnabruck},
+and \shortprovince{Oldenburg}.
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 50 \VPs : \shortprovince{Gibraltar}
+\bparag 1 \VP per level of commercial fleet.
+\bparag 30 \VPs : the biggest fleet.
+\bparag 10 \VPs : the biggest army.
+\bparag 50 \VPs : having 4 adjacent level 6 \COL in \continent{America}
+unrevolted.
+\bparag 30 \VPs : Atlantic \terme{Commercial center}.
+
+\aparag[\sectionpaysmajeur{France}]
+\bparag 3 times the income value of \shortprovince{Hainaut},
+\shortprovince{Vlaandern}, \shortprovince{Brabant}, \shortprovince{Luxemburg},
+\shortprovince{Catalunya}, \shortprovince{Lombardia}, \shortprovince{Nice}.
+\bparag 2 times the income value of \shortprovince{Lorraine},
+\shortprovince{Alsace}, \shortprovince{Artois}, \shortprovince{Flandre},
+\shortprovince{Picardie}, \shortprovince{Bresse},
+\shortprovince{Franche-Comte}, \shortprovince{Rosselo},
+\shortprovince{Corsica}.
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 1 \VP per level of commercial fleet.
+\bparag 30 \VPs : the biggest fleet.
+\bparag 10 \VPs : the biggest army.
+\bparag 50 \VPs : Atlantic \terme{Commercial Center}.
+\bparag 30 \VPs : Mediterranean \terme{Commercial Center}.
+
+\aparag[\sectionpaysmajeur{Espagne}]
+\bparag 3 times the income value of
+\shortprovince{Friesland},\shortprovince{Overijssel},
+\shortprovince{Gelderland}, \shortprovince{Utrecht}, \shortprovince{Zeeland},
+\shortprovince{Brabant}, \shortprovince{Hainaut}, \shortprovince{Luxemburg},
+\shortprovince{Franche-Comte},
+\shortprovince{Vlaandern},\shortprovince{Lombardia}, \shortprovince{Campania},
+\shortprovince{Sicilia}, \shortprovince{Palermo}
+\bparag 2 times the income value of \shortprovince{Flandre},
+\shortprovince{Rosselo}, \shortprovince{Calabria}, \shortprovince{Basilicata},
+\shortprovince{Puglia}, \shortprovince{Abruzzo}, \shortprovince{Oran},
+\shortprovince{Algerie},\shortprovince{Annabah}, \shortprovince{Tunisie}
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 1 \VP per level of commercial fleet.
+\bparag 30 \VPs : the biggest fleet.
+\bparag 15 \VPs : the second biggest fleet.
+\bparag 20 \VPs : the bigest army.
+\bparag 20 \VPs : having \pays{venise} in \AM or more.
+\bparag 50 \VPs : no non-Spanish non-portuguese \COL in \continent{America},
+reduce to 20 \VP if the condition is valid only in Central and South
+\continent{America} (except \continent{Caraibes})
+\bparag {\bf -30} \VPs : loss of \shortprovince{Gibraltar}
+
+\aparag[\sectionpaysmajeur{Autriche}]
+\bparag 2 times the income value of \shortprovince{Magyarorszag},
+\shortprovince{Pecs}, \shortprovince{Erdely}, \shortprovince{Karpatok},
+\shortprovince{Mures}, \shortprovince{Banat}, \shortprovince{Croatie},
+\shortprovince{Kapela}, plus 50 \VPs if all these provinces are controlled.
+\bparag 2 times the income value of \shortprovince{Campania},
+\shortprovince{Sicilia}, \shortprovince{Palermo}, \shortprovince{Calabria},
+\shortprovince{Basilicata}, \shortprovince{Puglia}, \shortprovince{Abruzzo}.
+\bparag 3 times the income value of \shortprovince{Serbia},
+\shortprovince{Bosna}, \shortprovince{Dalmacija}, \shortprovince{Ragusa},
+\shortprovince{Lombardia}, \shortprovince{Valahia},
+\shortprovince{Malopolska}, \shortprovince{Lublin}, \shortprovince{Wolyn},
+\shortprovince{Podolie}.
+\bparag 4 times the income value of \shortprovince{Lorraine},
+\shortprovince{Alsace}, \shortprovince{Silesie}, \shortprovince{Lausitz}.
+\bparag Inheritance of Spanish Low-Lands: 3 times the income value of
+\shortprovince{Hainaut}, \shortprovince{Vlaandern}, \shortprovince{Luxemburg},
+\shortprovince{Brabant}, \shortprovince{Limburg} and 2 times the income value
+of \shortprovince{Artois}, \shortprovince{Flandre}
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 20 \VPs : having \pays{venise} in \AM or more.
+
+\aparag[\sectionpaysmajeur{Russie}]
+\bparag 3 times the income value of \shortprovince{Finland},
+\shortprovince{Nyland}, \shortprovince{Georgie}, \shortprovince{Armenie},
+\shortprovince{Mazowia}, \shortprovince{Wielkopolska}
+\bparag 2 times the income value of \shortprovince{Karelen},
+\shortprovince{Estland}, \shortprovince{Livonija}, \shortprovince{Kurland},
+\shortprovince{Memel}, \shortprovince{Prypec}, \shortprovince{Lietuva},
+\shortprovince{Baltarusija}, \shortprovince{Zemaitija},
+\shortprovince{Severia}, \shortprovince{Moldova}, \shortprovince{Basarabia},
+\shortprovince{Valahia}, \shortprovince{Savo}, \shortprovince{Crimee},
+\shortprovince{Kuban}, \shortprovince{Caffa}, \shortprovince{Poltava},
+\shortprovince{Azov}, \shortprovince{Podolie}, \shortprovince{Ukraine},
+\shortprovince{Zaporozhye}, \shortprovince{Dagestan}, \shortprovince{Shirvan},
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 20 \VPs : the biggest army.
+\bparag 15 \VPs : the first or 2nd biggest fleet.
+\bparag 30 \VPs : at least 12 levels of manufactures.
+\bparag 30 \VPs : fondation of \ville{Saint-Petersbourg}.
+
+\aparag[\sectionpaysmajeur{Turquie}]
+\bparag 5 times the income value of \shortprovince{Malta},
+\shortprovince{Sicilia}, \shortprovince{Corfu}, \shortprovince{Rhodos},
+\shortprovince{Kreta}, \shortprovince{Chypre},
+\bparag 2 times the income value of \shortprovince{Baleares},
+\shortprovince{Saldigna}, \shortprovince{Oran}, \shortprovince{Algerie},
+\shortprovince{Annabah}, \shortprovince{Tunisie}, \shortprovince{Pecs},
+\shortprovince{Magyarorszag}, ,\shortprovince{Erdely},
+\shortprovince{Karpatok}, \shortprovince{Wolyn}, \shortprovince{Malopolska},
+\shortprovince{Armenie}, \shortprovince{Azarbayadjan},
+\shortprovince{Kordistan}, \shortprovince{Van} \shortprovince{Irak},
+\shortprovince{Serbia}, \shortprovince{Croatie}, \shortprovince{Bosnia},
+\shortprovince{Carniola}, \shortprovince{Balaton}, \shortprovince{Szlovakia},
+\shortprovince{Zaporozhye}, \shortprovince{Crimee}, \shortprovince{Azov},
+\shortprovince{Kuban}, \shortprovince{Arabie}, \shortprovince{Egypte}
+\shortprovince{Nil}, \shortprovince{Tanger}.
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 15 \VPs : the first or 2nd biggest fleet.
+\bparag 30 \VPs : at least 12 levels of manufactures.
+\bparag 30 \VPs : Mediterranean \terme{Commercial Center}.
+
+\aparag[\sectionpaysmajeur{Prusse}]
+\bparag 5 times the income value of \shortprovince{Silesie},
+\shortprovince{Lausitz}, \shortprovince{Wielkopolska},
+\shortprovince{Mazowia}, \shortprovince{Danzig}
+\bparag 3 times the income value of \shortprovince{Berg},
+\shortprovince{Anhalt}, \shortprovince{Holstein}, \shortprovince{Lubeck},
+\shortprovince{West Preussen}
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 30 \VPs : the biggest army.
+
+\aparag[\sectionpaysmajeur{Suede}]
+\bparag {\it divide total by 2 if it is a Transfer check}
+\bparag 5 times the income value of all baltic coastal provinces, except
+\shortprovince{Sjaelland}, plus 50 \VPs if the \terme{Dominium Mari Balticii}
+is complete
+\bparag 3 times the income value of \shortprovince{Savo},
+\shortprovince{Tavastland}
+\bparag 1 time the income value of non-national provinces, and of all \COL and
+\TP (without the resources).
+\bparag 1 \VP per level of commercial fleet.
+
+\input{engObjectives}
+
+\def\EUobjectives#1{%
+  \EUcurrentcountry{#1} \csname subsection\endcsname {Objectives of
+    \paysmajeur{#1}} \EUobjectivesa{I} \EUobjectivesa{II} \EUobjectivesa{III}
+  \EUobjectivesa{IV} \EUobjectivesa{V} \EUobjectivesa{VI} \EUobjectivesa{VII}
+} \def\EUobjectivesa#1{ \EUcurrentperiod{#1}
+  \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @1@short}{}{ \csname
+    subsubsection\endcsname {Period \period{#1}} \EUobjectivesb{1}
+    \EUobjectivesb{2} \EUobjectivesb{3} \EUobjectivesb{4} \EUobjectivesb{5} }}
+\def\EUobjectivesb#1{ \EUcasevalue{objective@\EUcurrcoun @\EUcurrper
+    @#1@short}{}{ \def\RES##1{##1}%
+    \def\EUAbbr##1{##1}
+    \aparag
+    \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@short}{}%
+    \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @#1@letters}{%
+    }{%
+      (\EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@letters}{})%
+    }: %
+    \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @#1@per}{%
+      \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@max}{}~\VPs%
+      \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @#1@score}{%
+      }{%
+        ~(\undemi: \EUvalue{objective@\EUcurrcoun @\EUcurrper
+          @#1@score}{}~\VPs)%
+      }%
+    }{%
+      \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@score}{} per
+      \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@per}{} ~(max
+      \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@max}{})%
+    }%
+    \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @#1@desc}{%
+    }{%
+      ~--- \EUvalue{objective@\EUcurrcoun @\EUcurrper @#1@desc}{}.%
+    }%
+  } }
+
+
+
+
+\section{Period objectives per country}
+
+\EUobjectives{Angleterre} \EUobjectives{France} \EUobjectives{Espagne}
+\EUobjectives{Hollande} \EUobjectives{Autriche} \EUobjectives{Prusse}
+\EUobjectives{Suede} \EUobjectives{Russie} \EUobjectives{Pologne}
+\EUobjectives{Turquie} \EUobjectives{Venise} \EUobjectives{Portugal}
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:

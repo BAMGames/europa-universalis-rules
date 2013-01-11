@@ -1,0 +1,152 @@
+#!/bin/sh
+set -e
+FAILFILE=
+TESTFILE=
+LOGFILE=/tmp/build.log
+CLASS="Testing TeX fonts and files"
+
+trap exitscript EXIT
+exitscript() {
+    a=$?
+    set +e
+    trap '' EXIT
+    if [ "$a" != "0" ]&&[ -n "$FAILFILE" ]; then
+        rm -f "$FAILFILE"
+    fi
+    exit $a
+}
+
+xwd="$(pwd)"
+cd "$BINDIR"
+binpath=$(pwd)
+cd "$xwd"
+
+if [ -z "$1" ]; then echo "No arguments !"; exit 1; fi
+if [ "$1" = "--logfile" ]; then
+    LOGFILE=${xwd}/"$2"
+    shift;shift
+fi
+xlog() {
+    echo "$@" >> $LOGFILE
+}
+say() {
+    ${binpath}/statedisplay $XID "$CLASS" "$1"
+}
+
+if [ "$1" = "--test" ]; then
+    TESTFILE="$2"
+    shift;shift
+fi
+if [ "$1" = "--fail" ]; then
+    FAILFILE="$2"
+    shift;shift
+fi
+if [ -n "$TESTFILE" ]; then
+    testfile=${TESTFILE%|*}
+    teststring=${TESTFILE#*|}
+    a=$(kpsewhich -progname=latex "$testfile"|head -n 1)
+    if [ -n "$a" ]; then
+        if [ "$teststring" != "$TESTFILE" ]; then
+            if grep -q $teststring $a; then
+                say "$1:system"
+                exit 0
+            else
+                say "$1:version differs"
+            fi
+        else
+            # No check
+            say "$1:system"
+            exit 0
+        fi
+    fi
+fi
+
+fouille() {
+    TEXMF=
+    kpsewhich -progname=pdflatex -show-path tex|sed -e 's/:/ /g'|xargs -n 1 echo|sed -ne 's/^!!//g' -e 's/^\(.*\)\/texmf\/.*$/\1\/texmf/g' -e '/\/texmf$/ p'|while read a; do
+        if [ -z "$TEXMF" ] && [ -d "$a" ] && [ -w "$a" ]; then
+            echo "$a"; break;
+        fi
+    done
+}
+
+TEXMF=""
+if [ -n "$BASICTEXMF" ]; then mkdir -p "$BASICTEXMF"; fi
+TEXMF=$(fouille)
+if [ -z "$TEXMF" ]; then
+    xlog "I could not find an existing writable TEXMF starting point"
+    xlog "I will try to create one in ${HOME}/texmf, and see if it works"
+    mkdir "${HOME}/texmf"
+    TEXMF=$(fouille)
+    if [ -z "$TEXMF" ]; then
+        rmdir "${HOME}/texmf"
+        xlog "The creation in ${HOME}/texmf did not work"
+        xlog "I will try to create one in ${HOME}/Library/texmf, and see if it works"
+        xlog "${HOME}/Library/texmf"
+        TEXMF=$(fouille)
+        if [ -z "$TEXMF" ]; then
+            rmdir "${HOME}/Library/texmf"
+            xlog "It did not work again. I give up. Try to set BASICTEXMF to a valid value"
+            xlog "The answer should be in $(kpsewhich -progname=pdflatex -show-path tex)"
+            say "no TEXMF found"
+            exit 2
+        else
+            xlog "TEXMF created in $TEXMF"
+        fi
+    else
+        xlog "TEXMF created in $TEXMF"
+    fi
+fi
+
+PACKAGE="$1"
+VERSION="$2"
+cd "$TEXMF"
+VERSION=${VERSION:-1}
+
+say "${PACKAGE}:${VERSION}"
+
+if [ -n "$VERSION" ]; then
+    if [ -f "doc/$PACKAGE-version.txt" ]; then
+        current_version="$(cat doc/$PACKAGE-version.txt)"
+    else
+        current_version=0
+    fi
+    if [ "$current_version" -ge "$VERSION" ]; then
+        xlog "Package $PACKAGE is already installed with version $current_version, $VERSION asked. Ok."
+        exit 0
+    fi
+fi
+say "downloading"
+xlog "I found your personal TEXMF tree at $TEXMF"
+rm -f "/tmp/$PACKAGE.tgz"
+curl -s -o "/tmp/$PACKAGE.tgz" "http://old-lipn.univ-paris13.fr/%7Edubacq/packages/${PACKAGE}.tgz" 
+a=$(file "/tmp/$PACKAGE.tgz" | grep "gzip compressed data" | wc -l)
+if [ "$a" -lt "1" ]; then
+    xlog "I could not fetch $PACKAGE.tgz. Maybe server is down <http://old-lipn.univ-paris13.fr/%7Ejcdubacq/packages/${PACKAGE}.tgz>"
+    say "no file"
+    exit 3
+fi
+if [ -f "lib/$PACKAGE-remove.sh" ]; then
+    xlog "Removing previous version of $PACKAGE"
+    say "upgrading"
+    sh "lib/$PACKAGE-remove.sh"
+else
+    say "installing"
+fi
+xlog "Installing $PACKAGE"
+tar xzf "/tmp/$PACKAGE.tgz"
+texhash > /dev/null 2>&1
+if [ ! -f doc/$PACKAGE-version.txt ]; then
+    xlog "No version available."
+    say "corrupted"
+    exit 4
+else
+    current_version="$(cat doc/$PACKAGE-version.txt)"
+    xlog "$PACKAGE installed, with version $current_version. Ok."
+    say "installed:$current_version"
+    if [ "$current_version" -ge "$VERSION" ]; then
+        exit 0
+    fi
+    say "not enough"
+    exit 5
+fi

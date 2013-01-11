@@ -1,0 +1,703 @@
+% -*- mode: LaTeX; -*-
+%%%%% This file contains custom macros for EU8
+%%%% Administrative stuff
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{europa}[2010/10/10 v1.0]%
+
+\xdef\ignoreone#1{}
+
+
+
+%%%% Campaign graphics
+\def\EUcampaigncolor#1#2#3{%
+  \definecolor{#1B}{rgb}{#2}%
+  \definecolor{#1A}{rgb}{#3}%
+}
+\def\EUcampaignlinel#1#2{%
+  \EUcampaignlinelr{#1}{#2}{0}{10cm}{}%
+  \node (#1) [anchor=base east,yshift=-3pt] at (-5pt,#2) {\paysmajeur{#1}};%
+}
+\def\EUcampaignlinelr#1#2#3#4#5{%
+  \draw [bigbigline,color=#1A,#5] (#3,#2)--(#4,#2);
+  \fill [color=#1A] (#3,#2) circle (4.5pt);
+  \fill [color=#1A] (#4,#2) circle (4.5pt);
+  \draw [bigline,color=#1B,#5] (#3,#2)--(#4,#2);
+  \fill [color=#1B] (#3,#2) circle (3pt);
+  \fill [color=#1B] (#4,#2) circle (3pt);
+}
+\def\EUcampaignlinell#1#2#3#4{%
+  \EUcampaignlinelr{#1}{#2}{0}{10cm}{#3}%
+  \node (#1) [anchor=base east,yshift=-3pt] at (-5pt,#2) {#4};%
+}
+\def\EUcampaignobliquelines#1#2#3#4#5#6#7#8{%
+  \coordinate (tlA) at ($ (0,#3) +(0,-#7) $);
+  \coordinate (tlB) at ($ (0,#3) +(10cm,-#7) $);
+  \coordinate (TlA) at ($ (0,#3) +(0,#7) $);
+  \coordinate (TlB) at ($ (0,#3) +(10cm,#7) $);
+  \coordinate (blA) at ($ (0,#4) +(0,#7) $);
+  \coordinate (blB) at ($ (0,#4) +(10cm,#7) $);
+  \coordinate (BlA) at ($ (0,#4) +(0,-#7) $);
+  \coordinate (BlB) at ($ (0,#4) +(10cm,-#7) $);
+  \coordinate (a) at (#5,.5*#3+.5*#4);
+  \coordinate (b) at (#5-1pt,#3);
+  \coordinate (c) at (#5+1pt,#4);
+  \coordinate (d) at (intersection of b--c and tlA--tlB);
+  \coordinate (e) at (intersection of b--c and blA--blB);
+  \coordinate (da) at ($ (d)+(#7,0) $);
+  \coordinate (db) at ($ (d)-(#7,0) $);
+  \coordinate (ea) at ($ (e)+(#7,0) $);
+  \coordinate (eb) at ($ (e)-(#7,0) $);
+  \begin{scope}
+    \path[clip] (da)--(db)--(eb)--(ea)--cycle;
+    \fill [line width=0pt,top color=#1#6,bottom color=#2#6] (tlA) rectangle (blB);
+  \end{scope} 
+  \begin{scope}
+    \path[clip] (tlA)--(tlB)--(TlB)--(TlA)--cycle;
+    \draw [#8,color=#1#6] (0,#3)--(b)--(a);
+  \end{scope}
+  \begin{scope}
+    \path[clip] (blA)--(blB)--(BlB)--(BlA)--cycle;
+    \draw [#8,color=#2#6] (a)--(c)--(10cm,#4);
+  \end{scope}
+  \fill [color=#1#6] (0,#3) circle (#7+1.5pt);
+  \fill [color=#2#6] (10cm,#4) circle (#7+1.5pt);
+}
+\def\EUcampaignlines#1#2#3#4#5{%
+  \EUcampaignobliquelines{#1}{#2}{#3}{#4}{#5}{A}{3pt}{bigbigline}
+  \EUcampaignobliquelines{#1}{#2}{#3}{#4}{#5}{B}{1.5pt}{bigline}
+  \node (#1) [anchor=base east,yshift=-3pt] at (-5pt,#3) {\paysmajeur{#1}};%
+  \node (#2) [anchor=base west,xshift=5pt,yshift=-3pt] at (10cm,#4) {\paysmajeur{#2}};%
+}
+\def\EUcampaignlinet#1#2#3#4#5#6#7#8#9{%
+  \begin{scope}
+    \path[clip] (-1,0) rectangle (#9,-6);
+    \EUcampaignobliquelines{#1}{#2}{#4}{#5}{#7}{A}{3pt}{bigbigline}
+    \EUcampaignobliquelines{#1}{#2}{#4}{#5}{#7}{B}{1.5pt}{bigline}
+  \end{scope}
+  \begin{scope}
+    \path[clip] (#9,-6) rectangle (11,0);
+    \EUcampaignobliquelines{#2}{#3}{#5}{#6}{#8}{A}{3pt}{bigbigline}
+    \EUcampaignobliquelines{#2}{#3}{#5}{#6}{#8}{B}{1.5pt}{bigline}
+  \end{scope}
+  \node (#1) [anchor=base east,yshift=-3pt] at (-5pt,#4) {\paysmajeur{#1}};%
+  \node (#2) [anchor=base west,xshift=5pt,yshift=-3pt] at (10cm,#5) {\paysmajeur{#2}};%
+  \node (#3) [anchor=base west,xshift=5pt,yshift=-3pt] at (10cm,#6) {\paysmajeur{#3}};%
+}
+\def\EUcampaignrepere#1#2#3{
+  \draw[line width=.5,color=black!50,dash pattern=on 1mm off 1mm] (#1,#2)--(#1,.2)--++(165:.5) node[black,fill=yellow!20,rotate=-15,transform shape,anchor=base east]{#3};
+}
+
+
+
+%%%% Definition of turn/period limits
+%%% Country page
+
+\def\pageLocale#1#2#3{%
+  \gdef\stdCountryName{#1}
+  \gdef\englishCountryName{#3}
+  \begin{GTpage}
+    \GTpagetitle{#2}{#3}
+    \GTid{period}
+    \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
+    \GT[Table Period #1]{\gtid}{#3}
+    \csname#1Period\endcsname
+    \GTsimpledecorate
+
+    \GTid{turn}
+    \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+    \GT[Table Turn #1]{\gtid}{#3}
+    \csname#1Turn\endcsname
+    \GTsimpledecorate
+
+    \GTid{purchase}
+    \GTpos{lastbox.south west}{0pt,-2pt}{north west}
+    \GT[Table Purchase #1]{\gtid}{#3}
+    \csname#1Purchase\endcsname
+    \GTlegend[text centered,font=\small]{\stdPurchaseCaptionBelow\expandafter\ifx\csname#1PurchaseCaption\endcsname\relax\else\hfill\csname#1PurchaseCaption\endcsname\hfill\null\\\fi}
+    \GTsimpledecorate
+
+    \node (northbox)[fit=(turnbox)(periodbox)] {\filler};
+    \node (southbox)[fit=(turnbox)(purchasebox)] {\filler};
+    \node (eastbox)[fit=(turnbox)(periodbox)(purchasebox)] {\filler};
+
+    \GTcoord{midleft}{$.5*(west border|-purchasebox.south)+.5*(east border|-purchasebox.south)+(-1pt,-2pt)$}
+    \GTcoord{midright}{$(midleftpoint)+(2pt,0)$}
+    \csname#1Special\endcsname
+  \end{GTpage}
+}
+
+%%% Purchase limits turn/period
+
+\newcommand{\stdPeriod}[1]{\GTtextcontent{\let\everyhline\ghline\graytabular%
+    \begin{tabular}{|l|cc|ccc|c|cccc|}\hline
+      {\sc Period} & \DTI & \FTI &\multicolumn{3}{c|}{Counter limits} & Max. & \multicolumn{4}{c|}{Force sizes} \\\noalign{\global\countrow=0}%
+      & & & \MNU & \COL & \TP & \ND & \FLEET- & \FLEET+ & Art. & class \\\hline%
+      #1\hline\end{tabular}}}
+\newcommand{\expPeriod}[2][?]{\GTtextcontent{\let\everyhline\ghline\graytabular%
+    \begin{tabular}{|l|cc|cccc|c|cccc|}\hline
+      {\sc Period} & \DTI & \FTI &\multicolumn{4}{c|}{Counter limits} & Max. & \multicolumn{4}{c|}{Force sizes} \\\noalign{\global\countrow=0}%
+      & & & \MNU & \COL & \TP & #1 & \ND & \FLEET- & \FLEET+ & Art. & class \\\hline%
+      #2\hline\end{tabular}}}
+
+\newcommand{\stdTurn}[1]{\GTtextcontent{\let\everyhline\ghline\graytabular%
+    \begin{tabular}{|l|ccccc|l|l|l|}\hline%
+      {\sc Period} & \multicolumn{5}{c|}{\sc Actions\global\countcol=6} & {\sc Basic} & {\sc Troops} & {\sc Minimal} \\\noalign{\global\countrow=0}%
+      & {\sc Dipl.} & \TFI & \specchain & Conc. & {\sc force} & {\sc Purchase} & {\sc leaders} \\\hline%
+      #1\hline\end{tabular}}}
+\def\specchain{\COL & \TP}
+
+\newcommand{\specTurn}{\def\specchain{\multicolumn{2}{c|}{\up{(1)}\ \COL/\TP\ \up{(2)}\global\countcol=7}}}
+
+\newcommand{\expTurn}[4]{\GTtextcontent{\let\everyhline\ghline\graytabular%
+    \begin{tabular}{|l|ccccc|lll|l|l|}\hline%
+      {\sc Period} & \multicolumn{5}{c|}{\sc Actions\global\countcol=6} & \multicolumn{3}{l|}{\sc Basic Force\global\countcol=9} & {\sc Troops} & {\sc Minimal} \\\noalign{\global\countrow=0}%
+      & {\sc Dipl.} & \TFI & \specchain & Conc. & #1 & #2 & #3 & {\sc Purchase} & {\sc leaders} \\\hline%
+      #4\hline\end{tabular}}}
+
+\def\peacechain{{\bf Peace Maintenance (Vt)}}
+\newcommand{\stdPurchase}[2]{\GTtextcontent{\let\everyhline\ghline\graytabular%
+    \setbox\strutbox\hbox to 0 pt{\vrule height 0pt depth 0pt width 0pt}
+    \begin{tabular}{|>{\rule[-0.7ex]{0pt}{2.6ex}}l|*{8}{c|}}\hline%
+      {\sc Land} & \multicolumn{2}{c|}{{\bf Land Purchase}} & \multicolumn{3}{c|}{{\bf War Maintenance (Vt/Cs)}} & \multicolumn{3}{c|}{\peacechain} \\\noalign{\global\countrow=0}%
+      {\sc Technology} & \LD & \ARMY\facemoins & \LD & \ARMY\facemoins & \ARMY\faceplus & \LD & \ARMY\facemoins & \ARMY\faceplus\\\hline%
+      #1
+      \achatflottes
+      #2
+      \hline%
+    \end{tabular}}}
+\newcommand{\stdPurchaseCaptionBelow}{1 \LDE or 1 \NDE costs \textonehalf\ (rounded up) of the price of 1 \LD or \ND; \ARMY\faceplus\ are created with 2 \ARMY\facemoins or \ARMY\facemoins+2\LD.\\}
+\newcommand{\achatflottes}{\hline\hline%
+  \multicolumn{1}{c}{\smash{\hspace*{11mm}}}&%
+  \smash{\hspace*{11mm}}&\smash{\hspace*{11mm}}&\smash{\hspace*{11mm}}&%
+  \smash{\hspace*{11mm}}&\smash{\hspace*{11mm}}&\smash{\hspace*{11mm}}&%
+  \smash{\hspace*{11mm}}&\smash{\hspace*{11mm}}\\%
+  \noalign{\global\countrow=0}%
+  {\sc Naval} & \multicolumn{2}{c|}{{\bf Navy Purchase}} & \multicolumn{3}{c|}{{\bf Purchase (other)}} & \multicolumn{3}{c|}{{\bf Maintenance}} \\\noalign{\global\countrow=0}%
+  {\sc Technology}    & \NWD & \FLEET\facemoins & \NGD & \FLEET\facemoins(Ga) & \NTD & \ND & \FLEET\facemoins & \FLEET\faceplus \\\hline%
+}
+
+%%% Auxiliary boxes in local pages
+
+\def\helpSpace{2pt}
+
+\newif\ifskipdecorate
+\newcommand{\helpBox}[4][\null]{
+  \GTid{#2}
+  \ifx#1\null%
+  \GTpos{lastbox.south west}{0pt,-\helpSpace}{north west}
+  \GTcoord{\gtid east}{\gtid point-|lastbox.east}
+  \else
+  \GTpos{#1box.north east}{2pt,0pt}{north west}
+  \GTcoord{\gtid east}{\gtid point-|east border}
+  \fi
+  \GT[Table #2 \stdCountryName]{\gtid}{#3}
+  #4
+  \ifskipdecorate\else\GTtextdecorate\fi
+}
+\newcommand{\simpleHelpBox}[4][\null]{
+  \helpBox[#1]{#2}{#3}{
+    \GTtextcontent[eastpoint]{#4}
+  }
+}
+\newcommand{\simpleMarkerBox}[5][\null]{
+  \skipdecoratetrue
+  \helpBox[#1]{#2}{#3}{
+    \GTportablename{#3 of \englishCountryName}
+    \GTcontent{
+      \begin{tabular}{p{#4}}
+        ~\\~\\
+      \end{tabular}
+    }
+    \ifx#5\null\else\GTlegend{#5}\fi
+    \GTdecorate
+  }
+}
+
+%%%% Abbreviations
+
+%%% Generic Religion symbols
+
+\def\Xcatholique{\includegraphics[height=0.8em]{catholique.pdf}}%
+\def\Xorthodoxe{\includegraphics[height=0.8em]{orthodoxe.pdf}}%
+\def\Xprotestant{\includegraphics[height=0.8em]{protestant.pdf}}%
+\def\Xcathoprote{\includegraphics[height=0.8em]{catholique.pdf}-\includegraphics[height=0.8em]{protestant.pdf}}%
+\def\Xprotecatho{\includegraphics[height=0.8em]{protestant.pdf}/\includegraphics[height=0.8em]{catholique.pdf}}%
+\def\Xautrereligion{\includegraphics[height=0.8em]{autrereligion.pdf}}%
+\def\Xsunnite{\includegraphics[height=0.8em]{sunnite.pdf}}%
+\def\Xchiite{\includegraphics[height=0.8em]{chiite.pdf}}%
+\def\XNORELIGION{NO RELIGION}
+
+%%% Army classes
+
+\newcommand{\classearmee}[1]{\textsc{#1}}
+\newcommand {\CAI}{\classearmee{I}}
+\newcommand{\CAII}{\classearmee{II}}
+\newcommand{\CAIII}{\classearmee{III}}
+\newcommand{\CAIV}{\classearmee{IV}}
+\newcommand{\CAIVM}{\classearmee{IVm}}
+\newcommand{\CAIIM}{\classearmee{IIm}}
+\newcommand{\CAIM}{\classearmee{Im}}
+\newcommand{\CAIIIM}{\classearmee{IIIm}}
+\newcommand{\CAA}{\classearmee{A}}
+\newcommand{\bbold}[1]{{\mdseries\upshape\bbfamily\selectfont #1}}
+
+%%% Budget management (to be removed/replaced) (TODO)
+
+% (Jym) Created whole new macros in engERS. Moving this there.
+
+%\newcommand\lignebudget[1]{line~#1 of \ERS}
+
+%%%% Generic styles
+%%% Definitions
+
+\def\LUCmu#1{{\normalfont\fontencoding{LUC}\mdseries\upshape\selectfont #1}}
+\def\LUCmi#1{{\normalfont\fontencoding{LUC}\mdseries\itshape\selectfont #1}}
+\def\LUCbu#1{{\normalfont\fontencoding{LUC}\bfseries\upshape\selectfont #1}}
+\def\LUCbi#1{{\normalfont\fontencoding{LUC}\bfseries\itshape\selectfont #1}}
+\def\Tonemu#1{{\fontencoding{T1}\mdseries\upshape\selectfont #1}}
+\def\Tonebu#1{{\fontencoding{T1}\bfseries\upshape\selectfont #1}}
+\def\Tonems#1{{\fontencoding{T1}\mdseries\scshape\selectfont #1}}
+\def\Tonebs#1{{\fontencoding{T1}\bfseries\scshape\selectfont #1}}
+\def\Tonemi#1{{\fontencoding{T1}\mdseries\itshape\selectfont #1}}
+\def\Tonebi#1{{\fontencoding{T1}\bfseries\itshape\selectfont #1}}
+\def\Toneml#1{{\fontencoding{T1}\mdseries\icshape\selectfont #1}}
+\def\Tonebl#1{{\fontencoding{T1}\bfseries\icshape\selectfont #1}}
+
+\definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.5,0}
+\def\RTonems#1{\textcolor{darkred}{\fontencoding{T1}\mdseries\scshape\selectfont #1}}
+\def\BTonebu#1{\textcolor{darkblue}{\fontencoding{T1}\bfseries\upshape\selectfont #1}}
+\def\RTonebu#1{{\textcolor{darkred}{\fontencoding{T1}\bfseries\upshape\selectfont #1}}}
+\def\RLUCbu#1{{\textcolor{darkred}{\normalfont\fontencoding{LUC}\bfseries\upshape\selectfont #1}}}
+\def\RTonebi#1{\textcolor{darkred}{\fontencoding{T1}\bfseries\itshape\selectfont #1}}
+\def\STonemu#1{\TUunderline {\fontencoding{T1}\mdseries\upshape\selectfont #1}{line width=1pt,black,dotted}}
+\def\RTonemu#1{\textcolor{darkred}{\fontencoding{T1}\mdseries\upshape\selectfont #1}}
+\def\SRTonemi#1{\TUunderline {\textcolor{darkred}{\fontencoding{T1}\mdseries\itshape\selectfont #1}}{line width=.5pt,red}}
+\def\SGTonemi#1{\TUunderline {\textcolor{darkgreen}{\fontencoding{T1}\mdseries\itshape\selectfont #1}}{line width=.5pt,green!50!black,dashed}}
+
+%%% Usage
+
+\translatable[\LUCbu]{province}{Provinces}{\Tonebu}
+\translatable{seazone}{Sea zones}{\BTonebu}
+\translatable[\LUCmu]{ville}{Cities}{\STonemu}
+\translatableanchor[\LUCmu]{construction}{Buildings and Colonies}{\RTonemu}
+
+\translatableanchor{region}{Regions}{\Toneml}
+\translatable[\LUCmu]{granderegion}{Areas}{\Tonebs}
+\translatableanchor{continent}{Subcontinents}{\Tonebl}
+
+\translatableanchor{pays}{Minor countries}{\Tonems}
+\translatableanchor{paysmajeur}{Major countries}{\RTonems}
+
+\translatableanchor[\LUCmi]{leader}{Leaders}{\Tonemi}
+\translatableanchor[\LUCbi]{monarque}{Monarchs}{\Tonebi}
+\translatableanchor[\LUCbi]{ministre}{Ministers}{\RTonebi}
+
+\translatablenoindex[\LUCmu]{bazar}{Miscellaneous}{\Tonemu}
+
+%%% Counters, Ressources, Dynastic actions
+
+\newcommand{\countermark}[1]{\SRTonemi{#1}} 
+\newcommand{\RES}[1]{\SGTonemi{#1}} 
+\newcommand{\dynasticaction}[2]{dynastic action \underline{#1-#2}\xspace}
+\newcommand{\shortdynasticaction}[2]{\underline{#1-#2}\xspace}
+
+%%%% Addtolist (should be replaced by foreach.sty)
+\long\def\EUaddtolist#1#2{%
+  \expandafter\ifx\csname#1\endcsname\relax\expandafter\xdef\csname#1\endcsname{}\else\expandafter\g@addto@macro\csname#1\endcsname{#2}\fi\expandafter\g@addto@macro\csname#1\endcsname}
+
+%%%% Store and Get (TODO: remove affecte)
+\def\affecte#1{\expandafter\xdef\csname#1\endcsname}
+
+\def\EUstore#1{\expandafter\gdef\csname#1\endcsname}
+\long\def\EUvalue#1#2{\relax\EUcasevalue{#1}{#2}{\csname #1\endcsname}}
+\long\def\EUwithvalue#1#2#3#4{\relax\EUcasevalue{#1}{#2}{#3\csname #1\endcsname#4}}
+\long\def\EUcasevalue#1#2#3{\relax\expandafter\ifx\csname#1\endcsname\relax\relax#2\else#3\fi}
+
+
+%%%% Minor countries management
+
+\newlength{\EUwidth}
+\def\EUminorremark#1#2{#1}
+
+%%% Displaying a minor in the annex (full)
+%% The long list
+\def\listminorlong#1{\FEforeachlist{listof#1}{\expandafter\longminor\expandafter{\loopitem}}{\par}}
+
+%% The display
+\def\longminor#1{%
+  \setlength{\EUwidth}{\textwidth}%
+  \addtolength{\EUwidth}{-5.5bp}%
+  \begin{tikzpicture}[
+    box/.style={fill=white!90!##1,draw=white!80!##1,line width=1bp},
+    bigbox/.style={box=##1,inner sep=2bp,text width=\EUwidth,anchor=north west}
+    ]
+    \node at (13bp,15bp) {\theminorblason{#1}};
+    \node (countryname) [inner sep=1bp,anchor=west] at (26bp,22bp) {\anchorpays{#1}\theminorreligionshort{#1}};
+    \node (countrylongname) [inner sep=1bp,anchor=east] at ($ (\textwidth,22bp)+(-1.5bp,0) $) {\csname minor@#1@longname\endcsname};
+    \begin{pgfonlayer}{background}
+      \fill [box=black] (countryname.north west)--(countryname.north east)--(countrylongname.south west)--(countrylongname.south east)--(countrylongname.north east)--(countrylongname.north west)--(countryname.south east)--(countryname.south west)--(26bp,0)--(0,0)--(0,30bp)--(26bp,30bp)--cycle;
+    \end{pgfonlayer}
+    \node[inner sep=1bp,anchor=south west] at (26bp,0) {\textbf{Control:} \theminorpref{#1}. \theminorHRE{#1}};
+    \node (diplo) [bigbox=blue,] at (.5bp,-2bp) {%
+      \theminordiplo{#1}\EUwithvalue{minor@#1@fid}{\relax}{\unskip\hfill Fidelity:~}{}\EUwithvalue{minor@#1@activation}{}{, Activation level:~}{}\EUwithvalue{minor@#1@geo}\relax{, Geopolitics:~}{}
+    };
+    \node (military) [bigbox=red] at ($ (diplo.south west)+(0bp,-2bp) $) {%
+      \textbf{Basic forces:} \theminorbasicforces{#1}\unskip .\hfill%
+      \textbf{Counter limits:} \theminorforces{#1}\unskip.\par%
+      \textbf{Basic reinforcements:} \expandafter\theminorbasicrenforts\expandafter{\expandafter#1\expandafter}. \theminorbonusrenforts{#1}\hfill%
+      \textbf{Military doctrine:} \theminorarmystyle{#1}, class \theminorarmyclass{#1}.\par
+    };
+    \node (income) [bigbox=yellow] at ($ (military.south west)+(0bp,-2bp) $) {
+      \theminorprovinces{#1}
+      \theminorfixedincome{#1}
+      \theminortotalincome{#1}
+    };
+    \let\EUcond\null
+    \expandafter\ifx\csname minor@#1@special\endcsname\relax\else\let\EUcond\relax\fi
+    \expandafter\ifx\csname minor@#1@ref\endcsname\relax\else\let\EUcond\relax\fi
+    \FEemptylist{leaders#1}{}{\let\EUcond\relax}
+    \ifx\EUcond\relax%
+    \node (special) [bigbox=gray] at ($ (income.south west)+(0bp,-2bp) $) {%
+      \EUwithvalue{minor@#1@special}\relax{}{\par}%
+      \FEemptylist{minor@#1@ref}{}{See especially: }%
+      \FEforeachlist{minor@#1@ref}{\ref{\loopitem}}{, }%
+      \FEemptylist{minor@#1@ref}{}{.\par}%
+      \listleader{leaders#1}%
+    };
+    \fi
+  \end{tikzpicture}\vfill}
+
+
+%%% Creating countries
+%% Normal minor country
+\def\minorcountry#1#2#3{%
+  \FEappend{listofminors}{#1}%
+  \defshortpays{#1}{#3}%
+  \EUstore{minor@#1@blason}{shield_#1}%
+  \EUstore{minor@#1@longname}{#2}}
+
+%% Minor/Major country
+\def\minorcountryminmaj#1#2#3#4{%
+  \FEappend{listofminorsminmaj}{#1}%
+  \expandafter\gdef\csname pays@#1@minmaj\endcsname{\null}%
+  \defshortpays{#1}{#3}%
+  \EUstore{minor@#1@blason}{shield_#1}%
+  \EUstore{minor@#1@longname}{#2}%
+  \minorspecial{#1}{This is the same country as the \paysmajeur{#4} \MAJ.}}
+
+%% ROTW minor country
+\def\minorcountryrotw#1#2#3{%
+  \FEappend{listofminorsrotw}{#1}%
+  \defshortpays{#1}{#3}%
+  \EUstore{minor@#1@blason}{shield_#1}%
+  \minordiplospecial{#1}{See \ruleref{chDiplo:Diplo-#1}}\EUstore{minor@#1@longname}{#2}}
+
+%% Minor country that may gain independency
+\def\minorcountryvirtual#1#2#3{%
+  \FEappend{listofminorsvirtual}{V#1}%
+  \defshortpays{V#1}{#3}%
+  \EUstore{minor@V#1@blason}{shield_#1}%
+  \EUstore{minor@V#1@longname}{#2}%
+  \minordiplo{V#1}4{50}2458*\minorfid{V#1}{10}\minorbasicforces{V#1}{\ARMY\facemoins}\minorforces{V#1}{\ARMY, 2\LD}\minorbasicrenforts{V#1}{\LD}}%
+
+%% Entity (not really a minor country)
+\def\minorcountryreallyvirtual#1#2#3#4{%
+  \FEappend{listofminorsreallyvirtual}{#1}%
+  \defshortpays{#1}{#3}%
+  \EUstore{minor@#1@blason}{shield_#4}%
+  \EUstore{minor@#1@longname}{#2}
+  \minordiplospecial{#1}{Can only be created by event, with no diplomacy.}
+}
+
+%% Habsburg vassal
+\def\minorcountryhab#1#2#3{%
+  \FEappend{listofminorshab}{H#1}%
+  \defshortpays{H#1}{#3}%
+  \EUstore{minor@H#1@longname}{#2}%
+  \EUstore{minor@H#1@blason}{shield_#1}%
+  \minordiplospecial{H#1}{Can be created by Habsburg power (\AUS or \SPA), can only be a Habsburg vassal}%
+  \minorreligion{H#1}{catholique}}
+ 
+%%% Shields (setting and getting)
+\def\theminorblason#1{\expandafter\includeblason\expandafter{\csname minor@#1@blason\endcsname}}
+\def\includeblason{\includegraphics[width=24bp]}
+\def\minorblason#1#2{\EUstore{minor@#1@blason}{shield_#2}}
+
+%%% Religion
+% minorkey religion
+\def\minorreligion#1#2{\expandafter\def\csname minor@#1@religion\expandafter\endcsname\expandafter{\csname X#2\endcsname}}
+\def\theminorreligion#1{\bgroup%
+  \def\Xcatholique{Catholic}%
+  \def\Xorthodoxe{Orthodox}%
+  \def\Xprotestant{Protestant}%
+  \def\Xcathoprote{Catholic and Protestant}%Switzerland
+  \def\Xprotecatho{Protestant or Catholic}%USA
+  \def\Xautrereligion{Pagan or other}%
+  \def\Xsunnite{Sunni muslim}%
+  \def\Xchiite{Shi'ite muslim}%
+  \EUvalue{minor@#1@religion}{\XNORELIGION}\egroup}
+\def\theminorreligionshort#1{\bgroup%
+  \EUvalue{minor@#1@religion}{\XNORELIGION}\egroup}
+
+%%% Diplomacy
+%% HRE marker
+% minorkey [Elector]
+\def\minorHRE{\@ifnextchar[%]
+  {\minorHRE@helper}{\minorHRE@helper[\HRE]}%
+}
+\def\minorHRE@helper[#1]#2{\FEappend{listofminorsHRE}{#2}%
+  \EUstore{minor@#2@HRE}{#1}}
+\def\theminorHRE#1{\EUcasevalue{minor@#1@HRE}\relax{\,\fbox{\csname minor@#1@HRE\endcsname}}}
+
+%% Diplomacy values and extensions (geopolitics, fidelity)
+% minorkey /7 diplomatic values/
+\def\minordiplo#1#2#3#4#5#6#7#8{\EUstore{minor@#1@diplo}{#2:#3:#4:#5:#6:#7:#8}}
+\def\minordiplospecial#1#2{\EUaddtolist{minor@#1@diplospecial}{}{{#2}}}
+\def\theminordiplo#1{%
+  \EUcasevalue{minor@#1@diplospecial}{\EUcasevalue{minor@#1@diplo}{NO DIPLOMATIC VALUES}{\xdef\target{\csname minor@#1@diplo\endcsname}\expandafter\displaydiplo\target\EUdiplostop}}{\csname minor@#1@diplospecial\endcsname}}
+\def\displaydiplo#1:#2:#3:#4:#5:#6:#7\EUdiplostop{\MR:~\ifx#1*\textetoile\else#1\fi, \SUB:~\ifx#2*\textetoile\else#2\fi, \AM:~\ifx#3*\textetoile\else#3\fi, \CE:~\ifx#4*\textetoile\else#4\fi, \EG:~\ifx#5*\textetoile\else#5\fi, \VASSAL:~\ifx#6*\textetoile\else#6\fi, \ANNEXION:~\ifx#7*\textetoile\else#7\fi}
+
+% Annexes
+\def\minorgeo#1{\EUstore{minor@#1@geo}}
+\def\minorfid#1{\EUstore{minor@#1@fid}}
+\def\minoractivation#1{\EUstore{minor@#1@activation}}
+\def\theminorfid#1{\EUvalue{minor@#1@fid}{??}}
+
+%%% Fixed income
+%% Definitions
+% minorkey reason incomevalue
+\def\minorfixedincome#1#2#3#4{%
+  \FEappend{minor@#1@fixinctext}{#1-#2}%
+  \expandafter\gdef\csname minor@#1-#2@fixinctext\endcsname{#3}%
+  \EUstore{fixinctext@#1-#2@income}{#4}%
+  \ifx#40\relax\else\FEappend{minor@#1@income}{#4}\fi%
+}
+%% List incomes
+\def\theminorfixedincome#1{%
+  \FEemptylist{minor@#1@fixinctext}{}{Other income: \textbullet~}%
+  \def\minor@income@addendum{}%
+  \FEforeachlist{minor@#1@fixinctext}{\csname minor@\loopitem @fixinctext\endcsname\ [\expandafter\ifnum\csname fixinctext@\loopitem @income\endcsname=0\relax variable\xdef\minor@income@addendum{+?}\else\csname fixinctext@\loopitem @income\endcsname\fi]}{ \textbullet~}%
+  \FEemptylist{minor@#1@fixinctext}{}{\par}%
+}
+%% List total income
+\def\theminortotalincome#1{%
+  \FEemptylist{minor@#1@income}{}{Income: }%
+  \xdef\minor@income{0}%
+  \FEforeachlist{minor@#1@income}{\addtoincome{\loopitem}}{}%
+  \FEemptylist{minor@#1@income}{}{\minor@income\minor@income@addendum\relax\par}%
+}
+\def\addtoincome#1{\xdef\minor@income{\number\numexpr\minor@income+#1\relax}}
+
+%%% Provinces
+%% Definitions
+% minorkey provincekey incomevalue
+\def\minorprovince#1#2#3{%
+  \FEappend{minor@#1@provinces}{#2}%
+  \EUstore{province@#2@income}{#3}
+  \FEappend{minor@#1@income}{#3}%
+}
+\def\minorcapital#1#2#3{%
+  \FEappend{minor@#1@provinces}{*#2}%
+  \EUstore{province@*#2@income}{#3}
+  \FEappend{minor@#1@income}{#3}%
+}
+
+%% List provinces with income
+\def\theminorprovinces#1{%
+  \FEemptylist{minor@#1@provinces}{}{Provinces: }%
+  \FEforeachlist{minor@#1@provinces}{\expandafter\putprovince\loopitem\EUstopputprovince}{, }%
+  \FEemptylist{minor@#1@provinces}{}{\par}%
+}
+\def\putprovince#1#2\EUstopputprovince{\bgroup\if#1*\relax\let\LUCbu\RLUCbu\let\Tonebu\RTonebu\shortprovince{#2}\else\shortprovince{#1#2}\fi\egroup\ [\csname province@#1#2@income\endcsname]}
+
+%% List provinces without income
+\def\theminorprovincesshort#1{ \FEforeachlist{minor@#1@provinces}{\expandafter\putprovinceshort\loopitem\EUstopputprovince}{, }}
+\def\putprovinceshort#1#2\EUstopputprovince{\bgroup\if#1*\relax\let\LUCbu\RLUCbu\let\Tonebu\RTonebu\shortprovince{#2}\else\shortprovince{#1#2}\fi\egroup}
+
+%%% Special notes
+% minorspecial: minorkey texte
+\def\minorspecial#1#2{\EUaddtolist{minor@#1@special}{\par}{{#2}}}
+
+%%% Military
+%% Army class
+% minorkey armystyle armyclass
+% We store \CAarmystyle or \CAarmyclass as the value
+\def\minorarmyclass#1#2#3{\EUstore{minor@#1@armystyle}{\csname CA#2\endcsname}\EUstore{minor@#1@armyclass}{\csname CA#3\endcsname}}
+\def\theminorarmyclass#1{\EUvalue{minor@#1@armyclass}{NO ARMY CLASS}}
+\def\theminorarmystyle#1{\EUvalue{minor@#1@armystyle}{NO ARMY STYLE}}
+\def\CAIslam{Islam}
+\def\CAROTW{ROTW}
+\def\CALatin{Latin}
+\def\CAOrthodoxe{Orthodox}
+\def\CAAmerique{Medieval}
+
+%% Forces
+% minorkey forces
+\def\minorbasicforces#1{\EUstore{minor@#1@basicforces}}
+\def\minorbasicrenforts#1{\EUstore{minor@#1@basicrenforts}}
+\def\minorforces#1{\EUstore{minor@#1@forces}}
+\def\minorbonusrenforts#1{\EUstore{minor@#1@bonusrenforts}}
+\def\theminorbasicforces#1{\EUvalue{minor@#1@basicforces}{NO BASIC FORCES}}
+\def\theminorforces#1{\EUvalue{minor@#1@forces}{NO FORCES}}
+\def\theminorbasicrenforts#1{\EUvalue{minor@#1@basicrenforts}{None}}
+\def\theminorbonusrenforts#1{\EUcasevalue{minor@#1@bonusrenforts}{\relax}{ \textbf{Reinforcement bonus:} \csname minor@#1@bonusrenforts\endcsname}}
+
+%%% Control preferences
+% minorkey texte
+\def\minorpref#1{\EUstore{minor@#1@pref}}
+\def\theminorpref#1{\EUvalue{minor@#1@pref}{No preferences for this country}}
+
+%%% References
+
+\def\minorrule#1#2{\FEappend{minor@#1@ref}{#2}}
+\def\minorevent#1#2{\FEappend{minor@#1@ref}{#2}}
+\def\minorsubevent#1#2{\FEappend{minor@#1@ref}{#2}}
+
+%%% Abbreviations
+\def\minorindep#1#2{\minorspecial{#1}{May be created by {\csname#2\endcsname} after a succesful rebellion (\ruleref{chPeace:Peace:Independence Revolt}).}}
+\def\minorindeptwo#1#2#3{\minorspecial{#1}{May be created by {\csname#2\endcsname} or  {\csname#3\endcsname} after a succesful rebellion (\ruleref{chPeace:Peace:Independence Revolt}).}%
+  \minorspecial{#1}{If a minor country of the same name does already exist, the two countries are merged as one.}}
+
+%%%% Leaders
+
+%%% Definition of leaders
+\def\leaderdef(#1)[#2;#3](#4)(#5)(#6){
+  \FEappend{leaders#4}{#1}
+  \EUstore{leaders@#1@name}{#1}
+  \EUaffecteturns{#1}{#2}{#3}
+  \EUstore{leaders@#1@type}{#5}
+  \EUstore{leaders@#1@carac}{#6}
+  \expandafter\def\csname leaders@#1@remarks\endcsname}
+\def\leaderdefdouble(#1)[#2;#3](#4)(#5)(#6)(#7)(#8){
+  \FEappend{leaders#4}{#1}
+  \EUstore{leaders@#1@name}{#1}
+  \EUaffecteturns{#1}{#2}{#3}
+  \EUstore{leaders@#1@type}{#5}
+  \EUstore{leaders@#1@carac}{#6}
+  \EUstore{leaders@#1@doubletype}{#7}
+  \EUstore{leaders@#1@doublecarac}{#8}
+  \expandafter\def\csname leaders@#1@remarks\endcsname}
+\def\leaderdefother(#1)[#2;#3](#4)(#5)(#6)(#7)(#8){
+  \FEappend{leaders#4}{#1}
+  \EUstore{leaders@#1@name}{#1}
+  \EUaffecteturns{#1}{#2}{#3}
+  \EUstore{leaders@#1@type}{#5}
+  \EUstore{leaders@#1@carac}{#6}
+  \EUstore{leaders@#1@doublename}{#7}
+  \EUstore{leaders@#1@doublecountry}{#8}
+  \expandafter\def\csname leaders@#1@remarks\endcsname}
+\def\leaderdefothermajeur(#1)[#2;#3](#4)(#5)(#6)(#7)(#8)(#9){
+  \FEappend{leaders#4}{#1}
+  \EUstore{leaders@#1@name}{#1}
+  \EUaffecteturns{#1}{#2}{#3}
+  \EUstore{leaders@#1@type}{#5}
+  \EUstore{leaders@#1@carac}{#6}
+  \EUstore{leaders@#1@doublename}{#7}
+  \EUstore{leaders@#1@doublecountry}{#8}
+  \EUstore{leaders@#1@doublecountrydisp}{#9}
+  \expandafter\def\csname leaders@#1@remarks\endcsname}
+\def\EUnullcommand{}
+
+%%% List leaders
+\def\listleader#1{\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}}
+\def\listleadernolink#1{\bgroup\let\anchorleader\strongleader\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}\egroup}
+
+%%% Display leader
+%% Leader data
+\def\leaderdata#1{\expandafter\ifx\csname leaders@#1@carac\endcsname\relax\emph{[stats of #1]}\else\displayleadercaracs{#1}\fi}
+%% Leader caracs
+\let\leaderhyperlink\hyperlink
+\def\displayleadercaracs#1{\leaderhyperlink{leader-link-#1}{%
+    \expandafter\displaytype\csname leaders@#1@type\endcsname\space
+    \csname leaders@#1@carac\endcsname%
+    \EUcasevalue{leaders@#1@doubletype}{\relax}{%
+      \autreface\expandafter\displaytype\csname leaders@#1@doubletype\endcsname%
+      \space\csname leaders@#1@doublecarac\endcsname%
+    }%
+  }}
+
+\def\leaderwithdata#1{\leader{#1}\space(\leaderdata{#1}\space\csname leaders@#1@turns\endcsname)}
+
+%% Display single leader
+\def\displayleader#1{\vskip 0pt\par%
+  \xdef\target{\csname leaders@#1@name\endcsname}%
+  \anchorleader{\target}:\space%
+  \expandafter\displaytype\csname leaders@#1@type\endcsname\space%
+  \csname leaders@#1@turns\endcsname\space%
+  \csname leaders@#1@carac\endcsname%
+  \EUcasevalue{leaders@#1@doubletype}{\relax}{%
+    \autreface\expandafter\displaytype\csname leaders@#1@doubletype\endcsname%
+    \space\csname leaders@#1@doublecarac\endcsname%
+  }%
+  \EUcasevalue{leaders@#1@doublename}{\relax}{%
+    \autreface%
+    \xdef\ttarget{\csname leaders@#1@doublename\endcsname}%
+    \leaderhyperlink{leader-link-\ttarget}{\shortleader{\ttarget}}%
+    \expandafter\ifx\csname leaders@#1@doublecountrydisp\endcsname\relax
+    \xdef\target{\csname leaders@#1@doublecountry\endcsname}%
+    \gdef\pollittest{pollit}%
+    \space(\ifx\pollittest\target{special}\else\pays{\target}\fi)%
+    \else%
+    \xdef\target{\csname leaders@#1@doublecountrydisp\endcsname}%
+    \space(\paysmajeur{\target})%
+    \fi
+  }%
+  \expandafter\ifx\csname leaders@#1@remarks\endcsname\EUnullcommand\else%
+  \space---\space\csname leaders@#1@remarks\endcsname.%
+  \fi}
+
+%%% Turns management
+
+\def\EUaffecteturns#1#2#3{\expandafter\gdef\csname leaders@#1@turns\expandafter\endcsname\expandafter{\EUaffecteturnshelper{#2};{#3}\endbogoturns}}
+\def\EUaffecteturnshelper#1;#2\endbogoturns{\ifx\relax#2\relax[]\else\ifx\relax#1\relax[Event #2]\else[T#1--T#2]\fi\fi}
+% \def\displaysecondturn#1 #2 {[T#1--T#2]}
+% \def\displayeventturn(#1)#2\endbogo{[Event #1-#2]}
+
+%%% Leader type management
+
+\def\displaytype#1{\expandafter\displaytype@#1\relax\endbogo}
+\def\displaytype@#1#2\endbogo{\leaderhyperlink{link-meaning-leaders}{\csname Leader#1\endcsname\ifx#2\relax\else\hskip 0.05em <#2>\fi}}
+\def\remarque{\space---\space}
+
+%%% Anonymous leaders management
+
+\def\displayanonyme#1#2#3{\anonyme#1\space\displaytype{#2}\space#3}
+\def\leaderanonyme(?#1)[](#2)(#3)(#4){%
+  \expandafter\ifx\csname listanonyme#2\endcsname\relax%
+  \expandafter\gdef\csname listanonyme#2\endcsname{\par}\else%
+  \expandafter\g@addto@macro\csname listanonyme#2\endcsname{, }%
+  \fi%
+  \expandafter\g@addto@macro\csname listanonyme#2\endcsname{\displayanonyme{#1}{#3}{#4}}}
+\def\leaderanonymepar(?#1)[](#2)(#3)(#4){%
+  \expandafter\ifx\csname listanonyme#2\endcsname\relax%
+  \expandafter\gdef\csname listanonyme#2\endcsname{\par}\else%
+  \expandafter\g@addto@macro\csname listanonyme#2\endcsname{\smallskip\par}%
+  \fi%
+  \expandafter\g@addto@macro\csname listanonyme#2\endcsname{\displayanonyme{#1}{#3}{#4}}}
+
+%%%% Objectives
+%%% Setters
+\def\EUcurrentcountry#1{\gdef\EUcurrcoun{#1}}
+\def\EUcurrentperiod#1{\gdef\EUcurrper{#1}}
+\def\EUobjective#1#2#3#4#5#6#7{% Num letters short score letters desc
+  \ifx\relax#2\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@letters}{#2}%
+  \fi%
+  \ifx\relax#3\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@short}{#3}%
+  \fi%
+  \ifx\relax#4\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@per}{#4}%
+  \fi%
+  \ifx\relax#5\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@score}{#5}%
+  \fi%
+  \ifx\relax#6\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@max}{#6}%
+  \fi%
+  \ifx\relax#7\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@desc}{#7}%
+  \fi%
+}

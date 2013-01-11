@@ -1,0 +1,49 @@
+/regimage { /tmp exch def
+    << /Filename IMAGEDIR(/)! tmp ! (.pnm) ! >> (img:) tmp ! defimage
+}def
+
+/regimagedir{/DIR exch def [DIR(/*.pnm)! {(.pnm) search{3 1 roll pop pop}{bug}ifelse DIR(/)! search{pop pop}{bug}ifelse ()!} 50 string filenameforall]{regimage}forall}def
+
+IMAGEDIR regimagedir
+
+/ecunames <<
+    /por (portugal)
+    /spa (espagne)
+    /hab (habsbourg)
+    /tur (turquie)
+    /eng (angleterre)
+    /rus (russie)
+    /sue (suede)
+    /ven (venise)
+    /pol (pologne)
+    /pru (prusse)
+    /fra (france)
+    /hol (hollande)
+>> def
+
+/countrylist [
+(aden) (oman) (perse) (japon) (chine) (soudan) (afghans) (inca)
+(azteque) (iroquois) (gujarat) (hyderabad) (mysore) (mogol) (vijayanagar) (siberie)
+(tordesillas) ecunames {exch pop}forall
+]def
+
+/regimage { /tmp exch def
+    << /Filename SHADOWDIR(/)! tmp ! (.pgm) ! >> (sdw:) tmp ! defimage
+    << /Filename SHADOWDIR(/)! tmp ! (.pnm) ! /Alpha (sdw:) tmp ! >> (img:) tmp ! defimage
+}def
+
+SHADOWDIR regimagedir
+
+<< /Filename BLASONDIR(/templates/blason.pgm)! >> (sdw:blason) defimage
+<< /Filename BLASONDIR(/templates/protoblason.pgm)! >> (sdw:protoblason) defimage
+
+[(espagne)(portugal)(perse)(tordesillas)]
+{/pays exch def
+    <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
+	/Alpha (sdw:protoblason)>> (img:) (proto)pays ! ! defimage
+} forall
+countrylist
+{/pays exch def
+    <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
+	/Alpha (sdw:blason)>> (img:) pays ! defimage
+} forall

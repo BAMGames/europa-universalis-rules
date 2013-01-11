@@ -1,0 +1,19 @@
+%!PS
+BOOTFILE (r) file run
+/compress true def
+/translation true def
+HOMEDIR(/library/libpions.eps)! include
+<< /Title ((Europa 8 thumbnail info)) >> infochunk
+begindocument
+initpages
+%Placer ici toute génération de pions individuels
+%Puis décommenter la ligne suivante
+/alphabubblesort2 { /curmat1 exch store curmat1 length
+1 sub -1 1 {curmat1 0 get exch 1 exch 1 exch {/posn exch
+store curmat1 posn get 2 copy lt {exch} if curmat1 exch
+posn 1 sub exch put} for curmat1 exch posn exch put } for
+curmat1 } bind store
+/SUFFIX (/) color_dict length 10000 add 5 string cvs 1 4 getinterval ! def
+[color_dict {pop 25 string cvs}forall]alphabubblesort2 /firstchar 32 def
+{/pays exch def pays 0 get dup 96 ge {firstchar ne {/firstchar pays 0 get def pays 0 1 getinterval pionSEPARATION}if pays dessineDEMO}if} forall
+closepages enddocument quit

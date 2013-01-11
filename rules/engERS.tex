@@ -1,0 +1,167 @@
+% -*- mode: LaTeX; -*-
+
+%%%              TODO %%%%%%%
+%
+% This file should be auto-generated from the records/accounting*.eps files in
+% order to ease changes (only one place to change).
+
+% This would require a bit of disambiguation for names of line appearing
+% several times :
+% * Monopolies => (CS)TZ/resources
+% * Gross income => B/copied in A.
+% * Exc. Tax. Mod. => idem.
+
+% Yeah ! I'm using \makeatletter and \makeatother !
+% Yeah ! I'm using \expandafter and \(end)csname !
+% TeX level ++
+
+\usepackage{abbrevs}
+
+% This only evaluates \@#1.
+\newcommand{\ERS}[1]{%
+\expandafter\csname @#1\endcsname%
+}
+
+\newcommand{\ERSlong}[1]{%
+\expandafter\csname @#1long\endcsname%
+}
+
+\newcommand{\ERSshort}[1]{%
+\expandafter\csname @#1short\endcsname%
+}
+
+
+\makeatletter
+% Formatting.
+\newcommand{\@ersprint}[2]{\textbf{#1}}
+\newcommand{\@ersprintlong}[2]{\textbf{#1} (#2)}
+
+% \newabbrev\toto{Toto long}[Toto short] is more or less a \def.
+% Stuff around to allow command name with spaces.
+\newcommand{\@ersline}[2]{%
+\expandafter\newabbrev\csname @#1\endcsname{\@ersprintlong{#2}{#1}}[\@ersprint{#2}{#1}]%
+}
+
+%%%%%%%%%% Usage %%%%%%%%%%%%
+%
+% \@ersline{Gross income B}{B26} => creates an abbrev.
+%
+% \ERS{Gross income B}   =>  prints "B26".
+
+
+\@ersline{RT at start of turn}{A1}
+\@ersline{RT after Events}{A2}
+\@ersline{Gifts and loans between players}{A3}
+\@ersline{Wood and Slaves}{A4}
+\@ersline{Diplomatic actions}{A5}
+\@ersline{Diplomatic reactions}{A6}
+\@ersline{Subsidies and dowries}{A7}
+\@ersline{RT after Diplomacy}{A8}
+
+\@ersline{Pillages, privateers}{A9}
+\@ersline{Gold from ROTW and Convoys}{A10}
+\@ersline{Exceptional taxes modifier A}{A11}
+\@ersline{Exceptional taxes}{A12}
+\@ersline{RT before Exchequer}{A13}
+\@ersline{Gross income A}{A14}
+\@ersline{Regular income}{A15}
+\@ersline{Prestige income}{A16}
+\@ersline{Max. national loan}{A17}
+\@ersline{Max. international loan}{A18}
+\@ersline{Expenses}{A19}
+\@ersline{Remaining expenses}{A20}
+\@ersline{from Prestige}{A21}
+\@ersline{from N. loan}{A22}
+\@ersline{from I. loan}{A23}
+\@ersline{RT balance}{A24}
+\@ersline{RT after Exchequer test}{A25}
+\@ersline{Prestige VPs}{A26}
+\@ersline{Wealth}{A27}
+\@ersline{Period wealth}{A28}
+\@ersline{Stability improvement}{A29}
+\@ersline{Ransom, peace}{A30}
+\@ersline{RT after peace}{A31}
+\@ersline{Inflation}{A32}
+\@ersline{RT at end}{A33}
+
+
+\@ersline{Provinces income}{B1}
+\@ersline{Vassal provinces income}{B2}
+\@ersline{Pillages, Revolts, Pashas}{B3}
+\@ersline{Event}{B4}
+\@ersline{Land income}{B5}
+\@ersline{Manufactures val.}{B6}
+\@ersline{European mines}{B7}
+\@ersline{Industrial income}{B8}
+\@ersline{Domestic trade income}{B9}
+\@ersline{Foreign trade income}{B10}
+\@ersline{STZ+CTZ level income}{B11}
+\@ersline{STZ+CTZ monopoly income}{B12}
+\@ersline{Partial/Total monopolies (trade)}{B13}
+\@ersline{Trade centres income}{B14}
+\@ersline{Trade centre losses}{B15}
+\@ersline{Trade income}{B16}
+\@ersline{Colonies}{B17}
+\@ersline{Trading posts}{B18}
+\@ersline{Exotic resources}{B19}
+\@ersline{Partial/Total monopolies (resources)}{B20}
+\@ersline{ROTW income}{B21}
+\@ersline{Special income}{B22}
+\@ersline{Income}{B23}
+\@ersline{Events}{B24}
+\@ersline{Gross income B}{B25}
+\@ersline{Loan interests}{B26}
+\@ersline{Mandatory loan refund}{B27}
+\@ersline{RT Collapse ?}{B28}
+\@ersline{Optional loan refunds}{B29}
+\@ersline{Unit maintenance}{B30}
+\@ersline{Fort. and presidios maintenance}{B31}
+\@ersline{Missions maintenance}{B32}
+\@ersline{Units purchase}{B33}
+\@ersline{Fort. purchase}{B34}
+\@ersline{Administrative actions}{B35}
+\@ersline{Administrative reactions}{B36}
+\@ersline{Other expenses}{B37}
+\@ersline{Adm. total}{B38}
+\@ersline{Exceptional taxes modifier B}{B39}
+\@ersline{Passive campaigns}{B40}
+\@ersline{Active campaigns}{B41}
+\@ersline{Major campaigns}{B42}
+\@ersline{Multiple campaigns}{B43}
+\@ersline{Exceptional recruitments}{B44}
+\@ersline{Naval refit}{B45}
+\@ersline{Presidios build}{B46}
+\@ersline{Military expenses}{B47}
+\@ersline{Total expenses}{B48}
+
+
+\@ersline{New International loan}{C1}
+\@ersline{International loans interests}{C2}
+\@ersline{International loans refunds}{C3}
+\@ersline{International bankruptcy}{C4}
+
+\@ersline{National loans at start}{C5}
+\@ersline{National loans interests}{C6}
+\@ersline{National loans bankruptcy}{C7}
+\@ersline{National loans refunds}{C8}
+\@ersline{New National loans}{C9}
+\@ersline{National loans at end}{C10}
+
+
+\makeatother
+
+% For compatibility and memory.
+%\newcommand\lignebudget[1]{line~#1 of \EcoRS}
+
+% The \ERS command somehow adds a space after it, which is doubled if there is
+% another one here (???) So, no space before "of".
+\newcommand\lignebudget[1]{line~\ERS{#1}of \EcoRS}
+
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:

@@ -1,0 +1,476 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+my $faceplus='(+)';
+my $facemoins='(-)';
+my %uncatered=();
+my %list=();
+my %country=(
+    'habsbourg' => 'B01~Majors/A06~Habsburgum',
+    'espagne' => 'B01~Majors/A11~Hispania',
+    'portugal' => 'B01~Majors/A10~Portugallia',
+    'angleterre' => 'B01~Majors/A00~Anglia',
+    'france' => 'B01~Majors/A05~Francia',
+    'hollande' => 'B01~Majors/A01~Hollandia',
+    'Vhollande' => 'B01~Majors/A01~Hollandia',
+    'prusse' => 'B01~Majors/A03~Prussia',
+    'brandebourg' => 'B01~Majors/A03~Prussia',
+    'suede' => 'B01~Majors/A02~Suecia',
+    'pologne' => 'B01~Majors/A08~Polonia',
+    'lithuanie' => 'B01~Majors/A08~Polonia',
+    'mazovie' => 'B01~Majors/A08~Polonia',
+    'russie' => 'B01~Majors/A04~Russia',
+    'turquie' => 'B01~Majors/A09~Turcia',
+    'timar' => 'B01~Majors/A09~Turcia',
+    'venise' => 'B01~Majors/A07~Venetia',
+    'aden' => 'B04~Mundi/A00~Aden',
+    'oman' => 'B04~Mundi/A00~Ayman',
+    'azteque' => 'B04~Mundi/A00~Azteca',
+    'chine' => 'B04~Mundi/A00~China',
+    'afghans' => 'B04~Mundi/A00~Durranis',
+    'japon' => 'B04~Mundi/A00~Iaponia',
+    'inca' => 'B04~Mundi/A00~Inca',
+    'iroquois' => 'B04~Mundi/A00~Iroquois',
+    'siberie' => 'B04~Mundi/A00~Siberia',
+    'soudan' => 'B04~Mundi/A00~Sudania',
+    'usa' => 'B04~Mundi/A00~USA',
+    'vijayanagar' => 'B09~India/A00~Bisinagar',
+    'gujarat' => 'B09~India/A00~Guzarate',
+    'hyderabad' => 'B09~India/A02~Hyderabada',
+    'mogol' => 'B09~India/A01~Mogolis',
+    'mysore' => 'B09~India/A02~Mysuria',
+    'aceh' => 'B09~India/A02~Aceh',
+    'mamelouks' => 'B08~Islam/A00~Ægyptus',
+    'algerie' => 'B08~Islam/A01~Algeria',
+    'arabie' => 'B08~Islam/A01~Arabia',
+    'cyrenaique' => 'B08~Islam/A01~Cyrenaica',
+    'grenade' => 'B08~Islam/A02~Granada',
+    'maroc' => 'B08~Islam/A01~Mauretanium',
+    'irak' => 'B08~Islam/A01~Mesopotamia',
+    'perse' => 'B08~Islam/A01~Persia',
+    'damas' => 'B08~Islam/A00~Syria',
+    'tripoli' => 'B08~Islam/A01~Tripolis',
+    'tunisie' => 'B08~Islam/A01~Tunesia',
+    'alsace' => 'B06~Germanica/A00~Alsatia',
+    'baviere' => 'B06~Germanica/A00~Bavaria',
+    'cologne' => 'B06~Germanica/A00~Colonia',
+    'bade' => 'B06~Germanica/A00~Friburgensi',
+    'lorraine' => 'B06~Germanica/A00~Lotharingia',
+    'mayence' => 'B06~Germanica/A00~Moguntium',
+    'thuringe' => 'B06~Germanica/A00~Turingia',
+    'treves' => 'B06~Germanica/A00~Treverorum',
+    'wurtemberg' => 'B06~Germanica/A00~Wirtenberga',
+    'saint-empire' => 'B06~Germanica/A01~SRI',
+    'brunswick' => 'B02~Nordica/A00~Brunsvicum',
+    'berg' => 'B02~Nordica/A00~Clivia',
+    'hanovre' => 'B02~Nordica/A00~Hanovere',
+    'hanse' => 'B02~Nordica/A00~Hansa',
+    'hesse' => 'B02~Nordica/A00~Hassia',
+    'palatinat' => 'B02~Nordica/A00~Palatinatus',
+    'pommeranie' => 'B02~Nordica/A03~Pommerania',
+    'saxe' => 'B02~Nordica/A00~Saxonia',
+    'oldenburg' => 'B02~Nordica/A00~Westfalia',
+    'finlande' => 'B02~Nordica/A01~Finlandia',
+    'norvege' => 'B02~Nordica/A02~Norvegia',
+    'danemark' => 'B02~Nordica/A00~Dania',
+    'astrakhan' => 'B03~Khanates/A00~Astracan',
+    'kazan' => 'B03~Khanates/A00~Cazan',
+    'crimee' => 'B03~Khanates/A00~Crimea',
+    'cosaquesdon' => 'B03~Khanates/A00~DonCassackia',
+    'georgie' => 'B03~Khanates/A00~Georgiani',
+    'steppes' => 'B03~Khanates/A00~Tartaria',
+    'ukraine' => 'B03~Khanates/A00~Ukraina',
+    'Vukraine' => 'B03~Khanates/A00~Ukraina',
+    'pskov' => 'B03~Khanates/A01~Pskove',
+    'ryazan' => 'B03~Khanates/A01~Rezane',
+    'bourgogne' => 'B05~Occidentalia/A02~Burgundia',
+    'corse' => 'B05~Occidentalia/A02~Corsica',
+    'huguenots' => 'B05~Occidentalia/A03~Huguenotis',
+    'liege' => 'B05~Occidentalia/A02~Leodium',
+    'chevaliers' => 'B05~Occidentalia/A01~OrdoHospitalis',
+    'sainte-ligue' => 'B05~Occidentalia/A03~SanctaLega',
+    'ecosse' => 'B05~Occidentalia/A00~Scotia',
+    'irlande' => 'B05~Occidentalia/A04~Hibernia',
+    'bretagne' => 'B05~Occidentalia/A04~Britannia',
+    'catalogne' => 'B05~Occidentalia/A04~Catalonia',
+    'belgique' => 'B05~Occidentalia/A04~Belgica',
+    'croises' => 'B10~Italia/A02~Peregrini',
+    'genes' => 'B10~Italia/A00~Genua',
+    'milan' => 'B10~Italia/A00~Lombardia',
+    'lucca' => 'B10~Italia/A00~Luca',
+    'montferrat' => 'B10~Italia/A00~MonteFerrato',
+    'modene' => 'B10~Italia/A00~Mutina',
+    'parme' => 'B10~Italia/A00~Parma',
+    'savoie' => 'B10~Italia/A00~Sabaudia',
+    'papaute' => 'B10~Italia/A00~SanctaSedes',
+    'naples' => 'B10~Italia/A01~Siciliæ',
+    'toscane' => 'B10~Italia/A00~Toscana',
+    'suisse' => 'B10~Italia/A00~Helvetia',
+    'boheme' => 'B07~Central/A00~Bohemia',
+    'teutoniques1' => 'B07~Central/A01~Fratres',
+    'teutoniques2' => 'B07~Central/A01~Fratres',
+    'hongrie' => 'B07~Central/A01~Hungaria',
+    'moldavie' => 'B07~Central/A01~Moldavia',
+    'valachie' => 'B07~Central/A01~Walachia',
+    'courlande' => 'B07~Central/A02~Curlandia',
+    'liflandie' => 'B07~Central/A03~Livonia',
+    'transylvanie' => 'B07~Central/A02~Transilvania',
+    'neutre' => 'B42~Specials/A00~Neutral',
+    'blanc' => 'B42~Specials/A00~Neutral',
+    'natives' => 'B42~Specials/A01~Barbaria',
+    'pirates' => 'B42~Specials/A02~Pirates',
+    'mercenaires' => 'B42~Specials/A03~Condotierre',
+    'rebelles' => 'B42~Specials/A04~Rebellis',
+    'royalistes' => 'B42~Specials/A05~FidelisRegi',
+    'revolutionnaires' => 'B42~Specials/A06~Révolutionnaires',
+    'alliance' => 'B42~Specials/A07~Protestant Alliance',
+    'ligue' => 'B42~Specials/A08~Catholic League',
+    'fralicence' => 'B01~Majors/A05~Francia',
+    );
+
+my %mnutype=(
+    'metal' => 'Metal',
+    'metalsilesie' => 'Silesian Metal',
+    'vin' => 'Wine',
+    'instruments' => 'Instruments',
+    'art' => 'Art',
+    'sel' => 'Salt',
+    'selvenise' => 'Med. Salt',
+    'tissus' => 'Clothes',
+    'bois' => 'Wood',
+    'cereales' => 'Cereals',
+    'peche' => 'Fish',
+    );
+my  $id=0;
+
+my %leadertype=(
+    'K' => 'F4~King',
+    'C' => 'F3~Explorers',
+    'E' => 'F3~Explorers',
+    'g' => 'F3~Explorers',
+    'G' => 'F1~Generals',
+    'A' => 'F2~Admirals',
+    'P' => 'F2~Admirals',
+    'King' => 'F4~King',
+    'Missionnaire' => 'F5~Missionnaire',
+    'Pacha' => 'F6~Pacha',
+    'Mission' => 'F7~Mission',
+    );
+my %buildtype=(
+    'Colony' => 'Colony',
+    'TradingPost' => 'Trading-Post',
+    'MinorEstablishment' => 'Establishment',
+    );
+my %nicktype=(
+    'default' => ['(+)','(-)'],
+    'Fort' => ['','(building)'],
+    'Fortress' => ['',''],
+    'Arsenal' => ['',''],
+    'Manufacture' => ['(×2)','']
+    );
+sub nicktype {
+    my ($a,$b)=@_;
+    return ($nicktype{$a}[$b]) if (defined($nicktype{$a})); 
+    $uncatered{'nicktype '.$a}++;
+    return $nicktype{'default'}[$b];
+}
+sub leadertype {
+    my ($n,$t,@r)=split /:/,$_[0];
+    return ($leadertype{$t}) if (defined($leadertype{$t})); 
+    $uncatered{'leadertype '.$t}++;
+    return $t;
+}
+sub shortcountry {
+    my $x=&indexcountry(@_);
+    $x =~ s/^.*~([^~]*)$/$1/g;
+    return $x;
+}
+
+sub indexcountry {
+    if ($_[1] && defined(($_[1])->{$_[0]})) {
+        return ($_[1])->{$_[0]};
+    }
+    elsif (!defined($country{$_[0]})) {
+        $uncatered{'country '.$_[0]}++;
+        return $_[0];
+    }
+    return $country{$_[0]};
+}
+open (my $js,'>',shift @ARGV) or die 'no javascript file'.$!;
+open (my $php,'>',shift @ARGV) or die 'no php file'.$!;
+print $js "countersOriginal=[];\n";
+print $php "<?php\n\$f=array();\$b=array();\$s=array();\n";
+my $n=0;
+while (<>) {
+    chomp;
+    my ($size,$filename,$name)=split /#/;
+    my $doubleside = ($size =~ /^.D/?1:0);
+    my $bigsize = ($size =~ /^L/?2:0);
+    my ($f,$g,@h)=split /_/,$filename;
+    my @nick=();
+    my $path='';
+    # Axis is codified in perl by
+    # $nick['name']=[{min,max,default},{min,max,default},...]
+    # (one associative array for each "side")
+    # in JS, we use
+    # a: {name1:{b:min,t:max,c:val},name2:{...}}
+    my %axis=();
+    my $infinity=0;
+    my @xxx;
+
+# (groups)
+# Markers
+# Indicators
+
+    if ($f eq 'AreaControl' || $f eq 'Control' || $f eq 'Ownership' || 
+        $f eq 'Diplomacy' || $f eq 'Submission' || $f eq 'ROTWTreaty') {
+        $path=&indexcountry($g);
+        if ($f eq 'ROTWTreaty' || $f eq 'Submission'|| $f eq 'Diplomacy') {
+            $path.='/K05~Diplomacy';
+        } else {
+            $path.="/K06~$f";
+            $infinity=1;
+        }
+        my $x="$f ".&shortcountry($g);
+        if ($doubleside) {
+            @nick=($x.$faceplus,$x.$facemoins);
+        } else {
+            @nick=($x);
+        }
+    }
+    elsif ($f eq 'Manufacture' || $f eq 'Fort' || $f eq 'Fortress' ||
+           $f eq 'Arsenal') {
+        $path=&indexcountry($g).'/K07~Buildings/G00~'.$f;
+        my $x="$f ".&shortcountry($g);
+        if ($f eq 'Manufacture') {
+            $x="MNU $mnutype{$h[0]} ".&shortcountry($g);
+	    $bigsize=1;
+        } elsif ($f eq 'Arsenal') {
+	    $name=~/<(.*)>/;
+            $x.=" [$1]" if (!($1 eq 'Arsenal'));
+        };
+        @nick=($x.&nicktype($f,0),$x.&nicktype($f,1));
+        if ($f eq 'Fortress' || $f eq 'Arsenal') {
+            my @force=split /-/,$h[0];
+            if ($g eq 'blanc') {
+                $infinity=1;
+                @nick=('Minimal Fortress');
+            } else {
+                $nick[0].='('.$force[0].'+)';
+                $nick[1].='('.$force[1].'-)';
+            }
+        };
+    }
+    elsif ($f eq 'TradeFleet') {
+        $path=&indexcountry($g).'/K08~TradeFleet';
+        my $x="$f ".&shortcountry($g);
+        $axis{'tfl'}={'m'=>6};
+        @nick=($x.$faceplus,$x.$facemoins);
+    }
+    elsif ($f eq 'Stability') {
+        if ($g eq 'alliance' || $g eq 'ligue') {
+            $path='B99~Indicators/A10~Stability';
+        } else {
+            $path=&indexcountry($g).'/K09~Indicators';
+        }
+        @nick=('Stability '.&shortcountry($g));
+    } elsif ($f eq 'Tech') {
+        $path=&indexcountry($h[0]).'/K09~Indicators';
+        @nick="$g $f ".&shortcountry($h[0]);
+    }
+    elsif ($f eq 'Army') {
+        $path=&indexcountry($g).'/K00~Army';
+        $infinity=1 if ($g eq 'rebelles');
+        $infinity=1 if ($g eq 'natives');
+        my $x='Army '.&shortcountry($g);
+        if (!($h[0] =~ /IV/)) {
+            $x.=" [$h[0]]";
+        }
+        $axis{'vet'}={'m'=>4};
+        @nick=($x.$faceplus,$x.$facemoins);
+    }
+    elsif ($f eq 'Fleet' or ($f eq 'Privateer' && $g ne 'pirates')) {
+        $path=&indexcountry($g).'/K01~Fleet';
+        my $x="$f ".&shortcountry($g);
+        if ($f eq 'Fleet') {
+            if (!($h[0] =~ /^[IV]*$/)) {
+                $x.=" [$h[0]]";
+                $axis{'ntdc'}={'m'=>4};
+            } else {
+                $axis{'nvet'}={'m'=>21};
+                $axis{'ntd'}={'m'=>2};
+                $axis{'nwd'}={'m'=>21};
+                $axis{'ngd'}={'m'=>14};
+                $axis{'nvgd'}={'m'=>2} if ($g eq 'venise');
+            }
+        }
+        if ($f eq 'Privateer' && $name =~/<(.*)>/) {
+            $x.=" [$1]";
+        }
+        @nick=($x.$faceplus,$x.$facemoins);
+    }
+    elsif ($f eq 'Generic' and $g eq 'Inflation') {
+        $path='B99~Indicators/A01~Resources';
+        @nick=('Inflation (low)','Inflation (high)');
+    }
+    elsif ($f eq 'Generic' or ($f eq 'Privateer' && $g eq 'pirates')) {
+        if ($g eq 'Turn') {
+            $path='B99~Indicators';
+            @nick=($g);         
+        } elsif ($g eq 'Round') {
+            $path='B99~Indicators';
+            @nick=($g.':Good Weather',$g.':Bad Weather');
+        } else {
+            $path='B00~Markers';
+            $infinity=1;
+            @nick=($g.$faceplus,$g.$facemoins);
+        }
+    }
+    elsif ($f eq 'Convoy') {
+        $path='B99~Indicators/A10~Convoy';
+        $axis{'ntdc'}={'m'=>5};
+        @nick=($f.' '.$g);
+    }
+    elsif ($f =~ /^[LNDE]*$/) {
+        $path=&indexcountry($g);
+        my $x='D';
+        if ($f =~ /E/ ) {
+            $path.='/K03~Exploration';
+            $x.='E';
+        } else {
+            $path.='/K02~Detachments';
+        }
+        $axis{'vetd'}={'m'=>1};
+        $x.=' '.&shortcountry($g);
+        if ($doubleside) {
+            @nick=('L'.$x,'N'.$x);
+        } else {
+            if ($f =~ /N/ ) {
+                if ($name =~ /:/) {
+                    $name =~ /^[^:]*:([^:]*):(.*)>$/;
+                    if ($2 eq 'transport') {
+                        $x='DT '.&shortcountry($g);
+                    } else {
+                        $x.=" [$2]";
+                    }
+                }
+                @nick=('N'.$x);
+            } else {
+                if ($name =~ /:/) {
+                    $name =~ /^[^:]*:([^:]*):.*$/;
+                    $x.=" [$1]";
+                }
+                @nick=('L'.$x);
+            }
+        }
+        $infinity=1 if ($g eq 'blanc');
+        $infinity=1 if ($g eq 'rebelles');
+        $infinity=1 if ($g eq 'natives');
+    }
+    elsif ($f eq 'TechnologyGoal' || $f eq 'TradeCentre' || $f eq 'Resources' ||
+           $f eq 'Production' || $f eq 'Price') {
+        $path='B99~Indicators/A02~'.$f;
+        $path='B99~Indicators/A01~Resources' if ($f eq 'Price' || $f eq 'Production' || $f eq 'Resources');
+        if ($doubleside) {
+            @nick=($f.' '.$g.' (R)',$f.' '.$g.' (V)');
+        } else {
+            @nick=($f.' '.$g);
+        }
+    }
+    elsif ($f eq 'Colony' || $f eq 'TradingPost'|| $f eq 'MinorEstablishment') {
+        $path=&indexcountry($g).'/K06~'.$buildtype{$f};
+        my $x="$f ".&shortcountry($g);
+        $axis{'cfl'}={'m'=>6};
+        @nick=($x.$faceplus,$x.$facemoins);
+    }
+    elsif ($f eq 'King' || $f eq 'Missionnaire' || $f eq 'Mission' || $f eq 'Pacha') {
+        $path=&indexcountry($g).'/K04~Leaders/'.$leadertype{$f};
+        if ($f eq 'Missionnaire') {
+            $name=~/^.*< ?([^:]*):(.*)>.*$/;
+            @nick=("$1 (Missionary $2)",'Mission '.&shortcountry($g));
+        } elsif ($f eq 'Pacha') {
+            $name=~/^.*<([^:]*):([^:]*):([^:]*):.*>.*$/;
+            my ($x,$y,$xx)=($1,$2,$3);
+            @nick=("Pacha $x [$y]+$3 LD","Pacha $x (corrupted)");
+        } else {
+            $name=~/^.*<([^:]*)(:[^>]*)?>.*$/;
+            @nick=("$1 ".&shortcountry($g));
+        }
+    }
+    elsif ($f eq 'Leader' || $f eq 'LeaderDouble' || $f eq 'LeaderPair') {
+        if ($f eq 'Leader') {
+            $name=~/^.*<([^:]*):(.*)>.*$/;
+            my ($x,$y)=($1,$2);
+            $y =~ s/:+/,/g;
+            @nick=("$x [$y]");
+        } elsif ($f eq 'LeaderDouble') {
+            $name=~m|^.*<([^:]*):([^/]*)/(.*)>.*$| or die 'argh';
+            my ($x,$y,$yy)=($1,$2,$3);
+            $y =~ s/:+/,/g;
+            $yy =~ s/:+/,/g;
+            @nick=("$x [$y]","$x [$yy]");
+        } else {
+            $name=~/^.*<([^:]*):([^>]*)>.*<([^:]*):([^>]*)>.*$/ or die 'argh';
+            my ($x,$y,$xx,$yy)=($1,$2,$3,$4);
+            $y =~ s/:+/,/g;
+            $yy =~ s/:+/,/g;
+            @nick=("$x [$y]","$xx [$yy]");
+        }
+        if ($g =~/^(.*)[|](.*)$/) {
+            $g=$1;
+        }
+        if ($name =~ /X$/) {
+            $path=&indexcountry($g).'/K04~Leaders/'.&leadertype($name);
+        } else {
+            $name =~ />([^>]*)$/;
+            my $t=$1;
+            if ($t =~ /^T(.)$/) {
+                $t="E00~Turns1-9/F0$1~Turn$1";
+            } elsif ($t =~ /^T(.)(.)$/) {
+                if ($1 == 6) {
+                    $t="E60~Turns60-62/F6$1~Turn6$2";
+                } else {
+                    $t="E${1}0~Turns${1}0-${1}9/F$1$2~Turn$1$2";
+                }
+            } elsif ($t =~ /^P(.)$/) {
+                $t="E7$1~Period$1";
+            }
+            $path='B50~NamedLeaders/'.$t;
+        }
+    }
+    else
+    {
+        $uncatered{'type '.$f}++;
+    }
+    next if ($infinity && $list{$filename});
+    $id++;
+    next unless ($path);
+    $list{$filename}++;
+    die "No nick for $filename" unless @nick;
+    die "Mismatch of sides for $filename" unless ($#nick == $doubleside);
+    $axis{'side'}={};
+    if ($doubleside) {
+        $axis{'side'}{'m'}=1;
+    } else {
+        $axis{'side'}{'m'}=0;
+    }
+    @xxx=();
+    my ($ax,$vv);
+    foreach $ax (keys %axis) {
+        my @y=();
+        foreach $vv (keys %{$axis{$ax}}) {
+            push @y,"$vv:$axis{$ax}{$vv}"
+        }
+        push @xxx,"$ax:{".join(',',@y)."}";
+    }
+    my $x=join(',',@xxx);
+    my $cnick=join("','",@nick);$cnick=~s/([a-z])([A-Z])/$1 $2/g;
+    print $php "\$f[$n]='$filename';\$b[$n]=$bigsize;\$s[$n]=$doubleside;\n";
+    print $js "countersOriginal.push({p:['".join("','",split /\//,$path)."'],\nk:['".$cnick."'],\nf:'$filename',\ni:$infinity,b:$bigsize,a:{$x}});\n";
+    $n++;
+}
+print $js "if (exports) exports.counters=countersOriginal\n";
+foreach (keys %uncatered) {
+    print STDERR "$_ is not accounted for.\n";
+}
+exit 0
