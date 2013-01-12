@@ -155,9 +155,9 @@ $$($(1)DIR)/help:
 $$($(1)DIR)/listfiles:
 	@echo "You can try to make the following files from $$($(1)SUBNAME)";echo $$(subst $$(CURRENTDIR)/,,$$($(1)GENERATEDFILES))|fmt|sed -e 's/^/  /g'
 $$($(1)DIR)/ignore:
-	@$$(DISP) "Setting local files list" "$$($(1)SUBNAME)";	cd $$($(1)DIR);echo $$(patsubst $$($(1)DIR)/%,%,$$($(1)GENERATEDFILES))|perl -pi -e 's/ /\n/g'|svn propset svn:ignore -F - . > /dev/null
+	@$$(DISP) "Setting local files list" "$$($(1)SUBNAME)";	cd $$($(1)DIR);echo $$(patsubst $$($(1)DIR)/%,%,$$($(1)GENERATEDFILES))|perl -pi -e 's|^|/|g;s| |\n/|g;'>.gitignore
 $$($(1)DIR)/ignorelist:
-	@svn propget svn:ignore $$($(1)DIR)|sed -e '/^$$$$/ d'
+	@cat $$($(1)DIR)/.gitignore|sed -e '/^$$$$/ d'
 $$($(1)DIR)/depends:
 $$($(1)DIR)/ftp: $(WEBDIR)/ftpaction
 endef
