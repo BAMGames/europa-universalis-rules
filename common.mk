@@ -80,9 +80,9 @@ $(HOMEDIR)/.stamp-lftp:
 	@if [ $$(which lftp 2>&1|grep ^/|wc -l) -lt 1 ]; then $(DISP) "Checking installation" failed; rm -f $@; false;fi
 	@touch $@
 
-$(HOMEDIR)/.stamp-svn:
-	@$(DISP) "Checking installation" "subversion"
-	@if [ $$(which svn 2>&1|grep ^/|wc -l) -lt 1 ]; then $(DISP) "Checking installation" failed; rm -f $@; false;fi
+$(HOMEDIR)/.stamp-git:
+	@$(DISP) "Checking installation" "git"
+	@if [ $$(which git 2>&1|grep ^/|wc -l) -lt 1 ]; then $(DISP) "Checking installation" failed; rm -f $@; false;fi
 	@touch $@
 
 $(HOMEDIR)/.stamp-gimp:
@@ -97,13 +97,13 @@ $(HOMEDIR)/.stamp-tex:
 	@version=$$(LANG=C pdflatex --version | grep 3.1415 | cut -f2 -d-| cut -c3-4); if [ "$$version" -lt "21" ]; then version=$$(LANG=C pdflatex --version | grep 3.1415 | cut -f3 -d-| cut -c3-4); if [ "$$version" -lt "21" ]; then $(DISP) "Checking installation" "too old"; rm -f $@; false;fi;fi
 	@touch $@
 
-HOMEFINALTARGETS=conf.mk .stamp-gs .stamp-gimp .stamp-tex .stamp-svn .stamp-lftp
+HOMEFINALTARGETS=conf.mk .stamp-gs .stamp-gimp .stamp-tex .stamp-git .stamp-lftp
 HOMEVIRTUALS=conf
 HOMEDEBUGTARGETS=build.log cl.db doc/serve/counters.php
 HOMENOTALLTARGETS=
 HOMETARGETS=$(HOMENOTALLTARGETS)
 HOMECRUFT=players-changelog.txt script.ftp changelog.txt index.html
-HOMEPERSISTENTFILES=$(HOMEDIR)/conf.mk $(HOMEDIR)/.stamp-gs $(HOMEDIR)/.stamp-gimp $(HOMEDIR)/.stamp-tex $(HOMEDIR)/.stamp-svn $(HOMEDIR)/cl.db $(HOMEDIR)/.stamp-lftp
+HOMEPERSISTENTFILES=$(HOMEDIR)/conf.mk $(HOMEDIR)/.stamp-gs $(HOMEDIR)/.stamp-gimp $(HOMEDIR)/.stamp-tex $(HOMEDIR)/.stamp-git $(HOMEDIR)/cl.db $(HOMEDIR)/.stamp-lftp
 
 NAMES=HOME SHADOW FONTS BLASONS ROTW CARTE RECORDS PIONS FIG RULES PRINT WEB
 include $(SHADOWDIR)/shadow.mk
@@ -173,18 +173,18 @@ endef
 
 $(foreach sym,clean distclean fastclean all ignore depends reboot,$(eval $(call recurse_template,$(sym))))
 
-justupdate: $(HOMEDIR)/.stamp-svn
+justupdate: $(HOMEDIR)/.stamp-git
 	@$(DISP) "Checking updates" "update"
-	@-if [ -d $(HOMEDIR)/.svn ]; then cd $(HOMEDIR);REV=$$(LC_ALL=C svn info|grep ^Revision:|cut -f2 -d' '); svn update --quiet --accept postpone; XREV=$$(LC_ALL=C svn info|grep ^Revision:|cut -f2 -d' '); if [ "$$XREV" != "$$REV" ]; then $(DISP) "Checking updates" "success:$$XREV"; rm -f $(RULESDIR)/release.sty;fi;fi
+	@-cd $(HOMEDIR);REV=$$(git rev-parse --verify HEAD); git pull --ff-only origin; XREV=$$(git rev-parse --verify HEAD); if [ "$$XREV" != "$$REV" ]; then $(DISP) "Checking updates" "success:$$XREV"; rm -f $(RULESDIR)/release.sty;fi
 justuptodate: $(HOMEDIR)/.stamp-svn
 	@$(DISP) "Checking updates" "testing home"
-	@set -e;if [ -d $(HOMEDIR)/.svn ]; then dir=$$(LANG=C svn info $(HOMEDIR)|grep ^URL|cut -f2 -d' ');lastrev=$$(LANG=C svn info $$dir|grep '^Last Changed Rev:'|cut -f4 -d' '); currev=$$(LANG=C svn info $(HOMEDIR)|grep ^Revision:|cut -f2 -d' ');if [ "$$currev" -lt "$$lastrev" ]; then $(DISP) "Checking updates" "failed: use make update"; false; fi; fi
+	@git fetch origin
 
 update: justupdate conflicts
 uptodate: justuptodate conflicts
 
 conflicts:
-	@set -e;if [ -d $(HOMEDIR)/.svn ]; then $(DISP) "Checking updates" "checking conflicts";a=$$(svn status $(HOMEDIR)|grep '^ *C'||true);if [ -n "$$a" ]; then for i in $$(svn status $(HOMEDIR)|grep '^ *C'|cut -c9-); do $(DISP) "Checking updates" "conflict:$$i"; done; false; fi; fi
+	@git status
 
 $(HOMEDIR)/doc/changelog.db editchangelog:
 	@$(BINDIR)/changelog $(HOMEDIR)/doc/changelog.db

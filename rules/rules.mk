@@ -401,7 +401,7 @@ $(RULESDIR)/leaders.utf $(RULESDIR)/engLeaders.tex: $(PIONSDIR)/anonymes.txt $(P
 	@$(DISP) "Building rules auxiliary files" "leader info"
 	@$(BINDIR)/extract_leaders $(RULESDIR)/engLeaders.tex $(RULESDIR)/leaders.utf $(PIONSDIR)/anonymes.txt $(PIONSDIR)/leaders.txt
 
-$(RULESDIR)/release.sty: $(HOMEDIR)/conf.mk $(HOMEDIR)/.stamp-svn $(HOMEDIR)/doc/release.txt $(BINDIR)/displayrelease
+$(RULESDIR)/release.sty: $(HOMEDIR)/conf.mk $(HOMEDIR)/.stamp-git $(HOMEDIR)/doc/release.txt $(BINDIR)/displayrelease
 	@$(BINDIR)/displayrelease --tex > $@.new
 	@if [ -f $@ ] && diff -q $@ $@.new > /dev/null; then rm -f $@.new; else $(DISP) "Building rules auxiliary files" "release"; mv $@.new $@; fi
 
