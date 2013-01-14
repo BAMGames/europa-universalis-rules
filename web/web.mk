@@ -66,7 +66,7 @@ WEBSLOWTARGETS=$(WEBNOTALLTARGETS)
 # Final files
 $(WEBDIR)/ftpaction: $(addprefix $(WEBDIR)/,$(FTPFILES) $(FTPSTATICFILES))
 	@$(DISP) "FTP transfer" "rsync"
-	@branch=$$($(BINDIR)/displaybranch);touch $(WEBDIR)/nosync.ftp; echo $(filter-out $(addprefix $(WEBDIR)/,$(FTPFILES)), $(wildcard $(WEBDIR)/*))|fmt -w 1 > $(WEBDIR)/nosync.ftp; rsync --delete-after -az --exclude-from=$(WEBDIR)/nosync.ftp $(WEBDIR)/. bamgames@ftp.bamgames.org:www/old/Europa/EU8/$${branch}/.; cp $(WEBDIR)/nosync.ftp /tmp;rm -f $(WEBDIR)/nosync.ftp
+	@branch=$$($(BINDIR)/displaybranch);touch $(WEBDIR)/nosync.ftp; echo $(filter-out $(addprefix $(WEBDIR)/,$(FTPFILES)), $(wildcard $(WEBDIR)/*))|fmt -w 1 > $(WEBDIR)/nosync.ftp; rsync --delete-after -az --exclude-from=$(WEBDIR)/nosync.ftp $(WEBDIR)/. bamgames@ftp.bamgames.org:www/old/Europa/EU8/dev/$${branch}/.; cp $(WEBDIR)/nosync.ftp /tmp;rm -f $(WEBDIR)/nosync.ftp
 	@$(DISP) "FTP transfer" "done"
 
 $(WEBDIR)/nosync.ftp: $(addprefix $(WEBDIR)/,$(FTPFILES))
