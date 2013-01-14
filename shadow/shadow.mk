@@ -1,5 +1,5 @@
 # Local defs
-SHADOWSTEMS=ville1
+SHADOWSTEMS=ville1 anchor anchor5 anchor6 anchor7
 PNMSHADOWTARGETS=$(addsuffix .pnm,$(SHADOWSTEMS))
 PGMSHADOWTARGETS=$(addsuffix .pgm,$(SHADOWSTEMS))
 XCFSDWFILES=$(addprefix $(SHADOWDIR)/,$(PNMSHADOWTARGETS) $(PGMSHADOWTARGETS))
