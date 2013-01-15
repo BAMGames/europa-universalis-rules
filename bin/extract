@@ -238,6 +238,7 @@ foreach $k (@infoFORTERESSEX) {
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
+	$command.=str($k->{"Name"});
 	$command.=$k->{"Level"};
 	$command.=" dessineFORTERESSEX\n";
 	sendit($k,$command);
