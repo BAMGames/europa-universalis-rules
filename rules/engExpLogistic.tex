@@ -524,19 +524,20 @@ maintained. They can, however, be recruited anew.
 \aparag All fortresses that are not at their basic level have to be maintained
 in activity (including \Presidios). The cost of maintaining a fortress is
 indicated in the last column of~\ref{table:Cost of Fortresses}.
+\bparag The maintenance cost of a fortress is payed by its controller.
 \bparag The maintenance cost of a fortress in Europe is its level.
 \bparag Maintenance is doubled in the \ROTW. A fort requires a maintenance of
 1\ducats.
 \bparag Maintenance is doubled for fortresses of level 3 before obtaining the
-technology \TARQ (representation of the popularisation of the \emph{Trace
-  Italienne}).
+technology \TARQ (representing the spreading of the ``\emph{trace italienne}''
+during the Wars in Italy).
 \bparag Maintenance is doubled for fortresses of level 4 before Turn 40
-(representation of the new ideas of Vauban).
+(representing the spreading of the ideas of \leader{Vauban}).
 \bparag The free forts given by \TP or \COL do not need any maintenance. The
 ones given by missions do, even if the local fort/fortress is of a higher
 level. The free level 1 fortress of a level 6 \COL remains free also.
-\bparag The level of a fortress can be lowered by its owner at will (unless
-some specific rules prevent it). A lowered fort is destroyed.
+\bparag The level of a fortress can be lowered by its owner if he controls
+it. A lowered fort is destroyed.
 
 \aparag[Arsenals] An arsenal is maintained at the same cost as a fortress of
 the same level.
@@ -631,6 +632,7 @@ counters instead of one.
 \aparag[Recruitment area.] Each country has a \terme{Recruitment area}. Unless
 specified in its specific rules, it is all the provinces in its national
 territory.
+\bparag Exceptions: \HIS, \TUR, \RUS and \SUE.
 
 \aparag[Recruitment.] Each country decides how many troops it wants to
 purchase, where it wants them recruited and under which form (counters). Then
@@ -837,7 +839,7 @@ price is half the price of 1\LD, rounded up ; and it is considered as half a
 
   Note that it is not allowed, during a single turn, to recruit several \LDE
   at the same place ; or to recruit 3\LD or more (including 1\ARMY\Faceplus)
-  in a \COL level 6.
+  in a \COL of level 6.
 \end{exemple}
 
 
@@ -849,8 +851,8 @@ the map, up to level 5.
 \bparag Each turn, the level of each fortress may only increase by 1.
 \bparag Fortresses of high level may only be built in the late game when the
 corresponding land technology is reached.
-\bparag A fortress may only be built in an owned, controlled, not besieged and
-not revolted province.
+\bparag A fortress may only be built in a controlled, not besieged and not
+revolted province. Note that ownership of the province is not required.
 \bparag \Presidios are not built as other fortresses.
 \bparag The ``fortress'' counters can be exchanged at will (they are two-sided
 counters, and not always equivalent). A combination of counters with the
@@ -943,7 +945,7 @@ line, first number).
 \bparag Each turn, it is possible to recruit up to this limit. Contrary to
 land recruitment, it is not possible to recruit more than the naval
 limit.
-\bparag \NGD and \NDE count as half a \ND for this limit. \VGD and \NTD count
+\bparag \NGD and \NDE count as half a \ND for this limit. \NTD and \VGD count
 as a full \ND.
 
 \aparag[Increasing the limit]
@@ -962,7 +964,7 @@ counters.
 ``Max. \ND''.
 \bparag It is also summarised in~\ref{table:Recruitment per Country} (second
 line, second number).
-\bparag \NGD and \NDE count as half a \ND toward this limit. \VGD and \NTD
+\bparag \NGD and \NDE count as half a \ND toward this limit. \NTD and \VGD
 count as a full \ND.
 
 \aparag[Costs]
@@ -1194,6 +1196,9 @@ Levies.
 \subsubsection{Minors fully at peace}
 \aparag A minor which is fully at peace (no war, overseas war or Limited
 intervention) recruits up to its basic forces.
+\bparag In addition, during periods \period{V}-\period{VII}, each minor
+country with an \terme{Income} of 16 or more gets one extra level of fortress
+in its basic forces.
 \bparag Remember that troops in excess of the basic forces are disbanded
 (except some fortresses), see~\ref{chLogistic:Maintenance of minors}.
 \bparag Thus, it is not necessarily to put these counters on map. Once a minor
@@ -1235,106 +1240,184 @@ major.
 \bparag All land reinforcements of \MIN are \terme{Conscripts}, except:
 \bparag \paysSuede recruits all its new forces as \terme{Veteran};
 \bparag \paysSuisse recruits its new forces as \terme{Veteran} if its Land
-Technology is less than \TBAR;
+Technology is \TMUS or less;
 \bparag \paysPerse recruits half of its new forces as \terme{Veteran} (round
 down).
 
-%##
+\aparag[Campaigns]
+\bparag \Neutral minors in overseas wars or interventions have 1 active campaign
+each round.
+\bparag Countries that are neither \Neutral nor \VASSAL receive 1 passive
+campaign each round, plus one active campaign for the turn. The controller may
+pay for larger campaigns (paying the difference between the chosen campaign
+and the passive one).
+\bparag \VASSAL in overseas wars or interventions have no campaign. All their
+campaign cost must be payed by their diplomatic patron. The patron may either
+chose to move the minor's troops with its own campaign or pay a whole new
+campaign only for the minor (in addition to the one used for its troops).
 
 \subsubsection{Full Wars}
+\aparag[Generalities]
+\bparag Minor fully at war, whatever their diplomatic status, receive
+reinforcements according to a \terme{Reinforcement roll}.
+\bparag These roll are made during the \textbf{Administrative action of minors
+  (incl. recruitment)} segment.
+\bparag In case the order is relevant, each \MAJ, in decreasing order of
+initiative, roll for reinforcements of its minors.
+\bparag The reinforcement roll provides troops, campaigns, fortress levels and
+leaders.
 
-\aparag After all Administrative and Logistic actions by \MAJ have been
-resolved, Reinforcements can be obtained for each \MIN that is fully at war,
-according to one of the following 3 attitudes: Offensive, Defensive or Naval.
-\aparag An attitude is chosen at the end of the Logistics phase and is valid
-for the current turn only. The choice may be changed every applicable turn.
-In some cases, events impose the choice of the attitude.
-\aparag
-Once an attitude is chosen, one die is rolled and the Reinforcements Table
-indicates the result.
+\aparag[Attitude]
+\bparag Before rolling for reinforcements, the controlling player chooses an
+\terme{Attitude} for each minor.
+\bparag The choice is usually free (but may be constrained by
+events). Typically, a minors that was declared war upon can choose an
+\terme{Offensive} attitude.
+\bparag The attitude chosen may change at each turn of the war.
+\bparag Some attitudes entail constraints on the moves the country will be
+allowed to do during the turn.
 
-
-
-{Choice of Attitudes}
-
-\aparag This attitude has an impact on forces that the minor is going to
-obtain and on the way to conduct the war, namely:
-\aparag[Offensive:] the minor country has to move at least a stack into enemy
-territory (i.e. the enemy player territory or the territory of one of the
-controlled minors of the assailant), if the concerned enemy territory is
-adjacent to the minor country territory, or within possible reach of same
-(i.e. maximum 12 MP away). The minor's move must be effective during the 1st
-or the 2nd round of the Military phase.
-\aparag[Defensive:] the minor country cannot move any stack outside of its
-territory, adjacent provinces and ex-territory.
-\aparag[Naval:] the minor must move at least one naval stack to undertake an
-attack against an enemy naval stack; or to establish a blockade or also to
-undertake transportation and/or landing of its land units into enemy
-territory.  The naval attitude may only be chosen for a minor country that has
-naval counters at its disposal.
-\aparag The choice of the attitude is left to the player that controls the
-minor country, excepted when an events dictates otherwise. For instance, if
-the minor is the attacker (as described in the event), the player must usually
-choose an Offensive attitude (or Naval if the minor country has fleet or naval
-detachments counters), as per event description. This choice may be changed
-each turn.
-
-
-
-{Reinforcement Table}
-
-\aparag According to which attitude is chosen, one die is rolled and the
-Reinforcements Table indicates the result. Modifiers are applied to the die.
-Each column tells the number of \LD, fortresses, \ND or \FLEET and Muliple
-Campaigns (CM) obtained. These are deployed in the minor territory.
-
-\aparag[Modifier to Reinforcements]
-Some modifiers may be applied to the die-roll for reinforcements. All
-modifiers are cumulative.
-
-\bparag There is a Political modifier specific to some minor countries.  Such
-a modifier is indicated on the Reinforcements Table, and also in the country's
-description in the Annexes.
-
-\bparag The reinforcement die-roll is also modified cumulatively by a modifier
-linked to the minor country income. That income is calculated on the basis of
-provinces owned and controlled by the minor at the time the reinforcement
-die-roll is made.
-
-\aparag[Military Leaders of Minors]
-Some minors have military leaders in their \terme{basic forces}.  This is
-indicated in the Annexes. In addition the Reinforcements Table gives the
-possibility of additional military leader(s).
-\bparag A military leader is obtained by the roll of a D10 equal to or
-inferior to the value indicated on the Reinforcements Table under the rubric
-Leaders.
-\bparag A General is then picked at random among gray-colored minor (?)
-leaders still available.
-\bparag In case a naval attitude has been chosen for the minor and a leader is
-obtained, an (?) Admiral can be picked up in place of a General.
-
-\aparag[Specific Cases of \terme{Veteran} Reinforcements]
-\bparag All land reinforcements are conscripts, except for the following \MIN:
-\bparag Swedish new forces obtained are \terme{Veteran};
-\bparag Swiss new forces obtained are \terme{Veteran} if their Land Technology
-is less than \technologie{Baroque};
-\bparag Persia receives half of its new forces as \terme{Veteran} (round
-down).
-
-\aparag[Fortresses]
-Some levels of fortresses are obtained by the Reinforcement Tables.
-\bparag To that, from period V on, add one level of fortress to the basic
-forces of every minor country having at least 16 of Income.
-\bparag A given fortress can not be improved by Reinforcements by more than
-one level at a given turn. This rule does not contrain the fortresses that are
-in the Basic Forces.
-\bparag Before turn 40, the level 4 can only be placed by minor countries at
-the cost of 2 levels of fortress on top of an existing level 3.
+\aparag[List of attitudes]
+\bparag[Offensive:] this attitude gives more troops and campaigns
+% (Jym) too complicated to force players to do this without creating loopholes
+% everywhere.
+%
+%  the minor country has to move at least a stack into enemy
+% territory (i.e. the enemy player territory or the territory of one of the
+% controlled minors of the assailant), if the concerned enemy territory is
+% adjacent to the minor country territory, or within possible reach of same
+% (i.e. maximum 12 MP away). The minor's move must be effective during the 1st
+% or the 2nd round of the Military phase.
+\bparag[Defensive:] the troops of the minor country may only move in
+provinces that it owns or owned at some point in the game, as well as
+provinces adjacent to the ones it owns. This is the best attitude for getting
+fortresses.
+\bparag[Naval:] this attitude may only be chosen for a minor country that has
+naval counters at its disposal. It is the only attitude that gives naval
+forces.
+% (Jym) too complicated to force players to do this without creating loopholes
+% everywhere.
+%
+% the minor must move at least one naval stack to undertake an
+% attack against an enemy naval stack; or to establish a blockade or also to
+% undertake transportation and/or landing of its land units into enemy
+% territory.
 
 \GTtable{minorforcesaw}
 
+%\ref{table:Minor Reinforcements}
 
+\aparag[Reinforcement roll]
+\bparag Roll 1d10, add some modifiers as indicated on the right of the table
+and cross reference the result in \ref{table:Minor Reinforcements} with the
+attitude chosen.
+\bparag This die roll gives troops, fortress levels, campaigns and a leader
+value (in the last column).
+\bparag[Political] There is a Political modifier specific to some minor
+countries and periods (or events). These modifiers are indicated on the right
+of \ref{table:Minor Reinforcements}, and also in the country's description in
+the Appendix.
+\bparag[Incomes] There is also an Economical modifier depending on the income
+of the country. This modifier is used for all minors and is cumulative with
+the Political modifier. It is based on the income of the provinces that are
+owned and controlled by the minor, and neither besieged, revolted or pillaged
+at the time the roll is made (\emph{i.e.} the provinces that would count in
+the \terme{Land income} if this was a major country).
 
+\aparag[Troops]
+\bparag The reinforcement roll can give some \LD and \ND to the minor. The new
+troops must be placed in owned and controlled provinces that are neither
+besieged nor revolted.
+\bparag \LD may be freely converted into \ARMY as the usual rate of
+2\LD=1\ARMY\facemoins, 4\LD=1\ARMY\faceplus.
+\bparag \ND may be used for either 1 \NWD, 1 \NTD, 1 \VGD or 2 \NGD.
+\bparag Naval forces can be included into \FLEET, according to the fleet size
+of the minor.
+\bparag There is no limit to the amount of recruited troops other than the
+counter limit for the country.
+
+\aparag[Moral]
+\bparag All land reinforcements of \MIN are \terme{Conscripts}, except:
+\bparag \paysSuede recruits all its new forces as \terme{Veteran};
+\bparag \paysSuisse recruits its new forces as \terme{Veteran} if its Land
+Technology is \TMUS or less;
+\bparag \paysPerse recruits half of its new forces as \terme{Veteran} (round
+down).
+
+\aparag[Fortresses.] Some levels of fortresses are obtained by the
+Reinforcement Roll. The new levels must be placed in controlled provinces that
+are neither besieged nor revolted.
+\bparag In addition, during periods \period{V}-\period{VII}, each minor
+country with an \terme{Income} of 16 or more gets one extra level of fortress
+in its \terme{Basic Forces}.
+\bparag A given fortress can not be improved by Reinforcements by more than
+one level at a given turn. This rule does not constrain the fortresses that
+are in the \terme{Basic Forces}.
+\bparag Before \TARQ, a fortress of level 3 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 2.
+\bparag Before turn 40, a fortress of level 4 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 3.
+
+\aparag[Campaigns]
+\bparag Each minor fully at war gets 1 active campaign each round.
+\bparag In addition, it may receive multiple campaigns (MC) per reinforcement
+roll.
+\bparag The diplomatic patron may pay for more campaigns.
+
+\aparag[Military Leaders of Minors: basic forces]
+\bparag If there is a living named leader of the country, he automatically
+comes into play.
+\bparag Some minors have military leaders in their \terme{basic forces}. If
+there are not enough named leaders to reach this limit, the minor receive
+\anonyme\ leaders. If possible, take these among the minor country pool,
+otherwise among the generic grey leaders.
+\bparag Contrary to major countries, \anonyme\ leaders of minors are not
+changed each turn. They are only removed when the country is at peace. If, due
+to death, the country falls below its basic forces (in number of leaders), it
+immediately receive a new one.
+
+\aparag[Military Leaders of Minors: reinforcements]
+\bparag By cross-referencing the (modified) reinforcement roll with the last
+column in~\ref{table:Minor Reinforcements}, one gets a \terme{Leader value}.
+\bparag 1d10 is rolled. If less or equal than this value, the minor receive a
+leader for the duration of the war. This does not change its basic forces
+(that is, no replacement if the leader is killed).
+\bparag If the attitude of the minor is \terme{Naval}, then it receives either
+a \anonyme\LeaderA or a \anonyme\LeaderG. Otherwise, it receives a
+\anonyme\LeaderG.
+\bparag This leader is taken among those of the minor, if some exist and among
+the generic grey ones otherwise.
+\bparag Like other \anonyme\ leaders of minor, the leader will be available
+for this minor until it is fully at peace.
+
+\aparag[Military Leaders of Minors: double-sided monarchs]
+\bparag Several Minors have generic double-sided monarchs. These leaders are
+usually in the basic forces of the minor.
+\bparag These are treated like \anonyme\ leaders. That is, one of the side is
+chosen (at random) when the minor is activated and it is kept until the minor
+is fully at peace (or until the death of the leader).
+\bparag List of concerned leaders (and countries): \leader{Caliph}
+(\paysMamelouks), \leader{Giray} (\paysCrimee) and \leader{Shah}
+(\paysPerse).
+\bparag Note that \leader{Grand Maitre} (\paysChevaliers) is not concerned as
+it is the same leader that may serve either as \LeaderG or \LeaderA.
+
+\aparag[Military Leaders of Minors: named and generic monarchs]
+\bparag Some minors have two (or more) different counters for their monarch,
+usually an unnamed one (as above) and a named one.
+\bparag The named one replace the unnamed one when he is alive. He enters game
+either at a given turn or following certain rules or event.
+\bparag As long as a named monarch is available for a minor, the unnamed one
+is not available and may not enter game (even through reinforcements).
+\bparag List of concerned leaders (and countries): \leader{La Valette}
+replaces \leader{Grand Maitre} (\paysChevaliers), \leader{Abbas Shah} and
+\leader{Nadir Shah} replace \leader{Shah} (\paysPerse) and \leader{Akbar}
+replaces \leader{Great Mughal} (\paysMogol).
+\bparag Note that the \anonyme\LeaderG of \paysDanemark and \paysUSA are not
+concerned. They are always available for these countries as reinforcement
+leaders even if there are some named leaders alive.
+
+%##
 
 \section{Exotic resources price variation}
 
@@ -1559,7 +1642,7 @@ to the other convoys.
 
 
 
-\section{Deployment [to be moved in ch. VI]}
+\section{Deployment [to be moved in chMilitary]}
 
 \aparag All purchased units must be deployed at the end of the recruitment
 phase, before reinforcements of \MIN. All non-maintained units must be removed
