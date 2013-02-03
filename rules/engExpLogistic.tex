@@ -1391,7 +1391,7 @@ comes into play.
 \bparag Some minors have military leaders in their \terme{basic forces}. If
 there are not enough named leaders to reach this limit, the minor receive
 \anonyme\ leaders. If possible, take these among the minor country pool,
-otherwise among the generic grey leaders (of ``country'' \pays{neutre}).
+otherwise among the generic grey leaders (of ``country'' \textsc{Quidam}).
 \bparag Contrary to major countries, \anonyme\ leaders of minors are not
 changed each turn. They are only removed when the country is at peace. If, due
 to death, the country falls below its basic forces (in number of leaders), it
@@ -1440,23 +1440,23 @@ leaders even if there are some named leaders alive.
 
 \begin{exemple}[Minor reinforcements]
   At turn 10, \paysAlgerie is at peace. Thus, whatever it had left on previous
-  turn, it rebuild and keep only its basic forces of \ARMY\facemoins and
+  turn, it rebuilds and keeps only its basic forces of \ARMY\facemoins and
   \FLEET\facemoins (the \corsaire is left out of this example). There is no
-  need to keep these counters on map. Since it is, a \VASSAL of \TUR, \TUR
-  also chooses to pay for maintaining a fortress of level 2 in
+  need to keep these counters on map. Since it is a \VASSAL of \TUR, \TUR also
+  chooses to pay for maintaining a fortress of level 2 in
   \provinceAlgerie. This counter has to be put on map as a reminder of the
   existence of this fortress. The technology of \paysAlgerie is \TREN.
 
   At turn 11, \ref{pIII:Revolt Grenade} occurs (earlier than historically) and
   \TUR decides to go to war, together with its ally \paysAlgerie.
 
-  \paragraph{Basic forces.} First, the basic forces of \paysAlgerie are put on
+  \textbf{Basic forces.} First, the basic forces of \paysAlgerie are put on
   map. \TUR puts the \ARMY\facemoins and the \FLEET\facemoins both in
   \provinceAlgerie. Then, since \leader{Barbaros2} is still alive, it is also
   put in play (or, probably, kept).
 
-  \paragraph{Reinforcements.} Next, \TUR rolls for reinforcements of its minor
-  (after all major have finished their administrative actions, especially
+  \textbf{Reinforcements.} Next, \TUR rolls for reinforcements of its minor
+  (after all majors have finished their administrative actions, especially
   after \TUR and \HIS both have brought their own troops). Since \paysAlgerie
   is a \terme{Barbaresque} country, it gets a \bonus{+1} political DRM (in
   periods \period{I}-\period{III}). Since its total income is 17\ducats (it
@@ -1482,7 +1482,7 @@ leaders even if there are some named leaders alive.
 
 %##
 
-\section{Exotic resources price variation}
+\section{Exotic resources price variation, Trade centres and convoys}
 
 \label{chExpenses:Variation}
 
@@ -1504,14 +1504,17 @@ events that may have changed the number and level of trading-posts or
 colonies, and any other event that may change the exploitation of exotic
 resources.
 \bparag Minor \ROTW countries do exploit resources where they have a \TP or a
-\COL, else they do not.
+\COL. They do not exploit in other provinces (typically in provinces they own
+but without an establishment).
 % (Jym) ???
 % \bparag The production of Silk, Products of Orient and Spices is always
 % considered to be at least 1/10\th of the income of the \emph{Great Orient}
 % trade centre; this is for the exotic resources prices variations roll only,
 % not for any other consideration.
 \bparag Even if they do not appear at the same time, the \RES{Sugar} in
-\continent{Bresil} and elsewhere is still considered to be the same resource.
+\continent{Bresil} and elsewhere is still considered to be the same
+resource. Same thing goes for the \RES{Cotton} in \continent{America} and
+\continent{Asia}.
 
 \aparag[Bookkeeping quantities.] Each resource has an \terme{exploited
   quantity} marker to denote on the Exotic resource tracks the amount which is
@@ -1521,6 +1524,11 @@ exploitable quantity is 20 (\RES{Product of America}, \RES{Cotton}, \RES{Salt}
 or \RES{Silk}), 30 (\RES{Fish}) or 40 (\RES{Products of Orient}, \RES{Spice},
 \RES{Fur}, \RES{Sugar} or \RES{Slaves}). There are reminders near them to
 recall which track to use for which resource.
+\bparag There is also an \terme{Exotic resources sheet} with one box per
+exploitable resource. This is a global sheet and whenever a player exploits
+(or stops to exploit) a resource, he should note it on this sheet. This allows
+for easier counting of the exploited quantities and avoid some errors where
+players accidentally exploit the same resource twice.
 
 \aparag Depending on the amount of resource exploited and the maximum amount
 exploitable for this resource (20, 30 or 40), each resource has an
@@ -1580,10 +1588,10 @@ price of this product. He must announce it before the price adjustment, and he
 will gain only half of his normal income for this resource.
 \bparag Speculation on price must be announced during the Diplomatic phase, as
 a diplomatic announcement.
-\bparag If he has either a total or partial monopoly (see
-\ruleref{chIncomes:MonopolyExoticResources}), he puts the production counter
-upside-down. The resource is considered to have a \terme{rare} production
-level (green) for the computation of its basic variation.
+\bparag If he has either a total or partial monopoly
+(see~\ref{chThePowers:MonopolyExoticResources}), he puts the production
+counter upside-down. The resource is considered to have a \terme{rare}
+production level (green) for the computation of its basic variation.
 \bparag If he has no monopoly but at least 4,6 or 8 units exploited (according
 to the maximal production of the product that could be 20,30 or 40), the
 counter is put left-to-right to show that a \bonus{-1} will be added to the
@@ -1608,11 +1616,11 @@ adjustments depending on threshold prices.
   +1-1=0, the price does not change at all.
 
   The basic variation of the \RES{Salt} price is +2, because there is only a
-  rare production. Adding a die-roll of 3 yields a result of 5, smaller than
-  the low threshold, thus giving a market variation of +1.  The total
-  variation is thus +3, which is capped at +2. The price marker should be
-  moved 2 boxes to the right. However, the maximum price for \RES{Salt} is the
-  leftmost 7 box, so the marker stops there.
+  rare production. Adding a die-roll of 1 to the price (6) yields a result of
+  7, smaller than the low threshold, thus giving a market variation of +1.
+  The total variation is thus +3, which is capped at +2. The price marker
+  should be moved 2 boxes to the right. However, the maximum price for
+  \RES{Salt} is the leftmost 7 box, so the marker stops there.
 \end{exemple}
 
 
@@ -1635,11 +1643,10 @@ the \terme{Flota del Per\'u}.
 \aparag The convoys are represented as a special \ND, and may be moved during
 the military phase (see \ruleref{chMilitary:Convoys})
 \bparag They represent a certain number of \NTD, each carrying 15\ducats that
-is credited only upon arrival in a port during the military phase and the
-redeployment, to the owner of the port (or its Patron, if it is a minor
-vassal).
-\bparag The sum is reported in \lignebudget{Gold from ROTW &
-  Convoys}.%, but does not count for
+is credited only upon arrival in a port during the military or redeployment
+phases, to the owner of the port (or its Patron, if it is a minor vassal).
+\bparag The sum is reported in \lignebudget{Gold from ROTW and Convoys}.
+%, but does not count for
 % \ruleref{chPeace:InflationGoldROTW} and \ruleref{chPeace:InflationGold} in
 % the case of the \terme{Levant} convoy and the \terme{East Indies} convoy.
 \bparag They can be attacked by either enemy fleets, pirates or privateers
@@ -1656,12 +1663,15 @@ owned by \TUR.
 \region{Mediterranee} will do instead.
 \bparag The convoy is attributed by \TUR to any other player of his choice,
 provided that this player either has a port in \region{Mediterranee} (owned or
-vassal) or controls the \CCs{Mediterranee}, and it accepts the convoy.
+vassal) or controls the \CCs{Mediterranee}, and it accepts the convoy. This
+attribution is done as a diplomatic announcement (and thus can be part of a
+larger agreement such as ``buying'' the convoy).
 \bparag If \TUR attributes the convoy to another player, it receives 20\ducats
-as soon as the convoy reaches the other player.
+as soon as the convoy reaches the other player (in \lignebudget{Gold from ROTW
+  and Convoys}).
 \bparag The Turkish player may refuse to grant the convoy or possibly no one
-accepts it, and, in such a case, immediately loses 20\ducats from the revenue
-of the \CCs{Grand Orient} and 1\STAB.
+accepts it. In such a case, \TUR immediately loses 20\ducats from its \RT and
+1 \STAB.
 \bparag If the convoy is not attributed to the player that controls the
 \CCs{Mediterranee}, this player receives an immediate and temporary \CB
 against \TUR (overseas or normal) at this turn only.
@@ -1682,19 +1692,22 @@ not attributing the convoy is applied immediately to \TUR.
 \aparag[East Indies convoy] It is attributed to the player that does exploit
 the most of the following resources: Silk, Products of Orient, Spices, and at
 least 10 of them.
-\bparag In case of ties, the convoy is attributed to the player controlling
-the \emph{Atlantic} Trade Centre if he is among the ties, to the Netherlands
-before 1700 (turn 43) and to England from 1700 onward. If there are still
-ties, it is not attributed.
+\bparag In case of ties, the convoy is attributed, among the tied countries,
+in the first one in the following order: the country controlling
+the \emph{Atlantic} Trade Centre ; \HOL (before 1700, turn 42); \ANG (after
+1700, turn 43). If the tie cannot be broken that way, the convoy is not
+attributed.
 \bparag The East Indies convoy must start from a \COL\faceplus or a
 \TP\faceplus in \continent{Asia}, and must reach a European port of its
 owner. It is worth 4 \NTD carrying 15\ducats each.
-\bparag The gold obtained when reaching a continental port with a convoy is
-accounted for in \lignebudget{Gold from ROTW & Convoys}, even if the convoy
-was seized from another player.
+\bparag The gold obtained when reaching an European port with a convoy is
+accounted for in \lignebudget{Gold from ROTW and Convoys} of the receiving
+player (either the original owner or someone else seizing it during the
+trip).
+
 \aparag[Spanish convoys]\label{chIncomes:SpanishConvoys} The Spanish gold
 fleet can only transport gold stored in Spanish ports. The \terme{Flota de
-  Oro} is equivalent to 5 \NTD, as well as the \terme{Flota del Per\'u}.
+  Oro} and the \terme{Flota del Per\'u} are each equivalent to 5 \NTD.
 \bparag The \terme{Flota de Oro} appears in a port on the Atlantic coast, the
 \terme{Flota del Per\'u} appears in a port on the Pacific coast.
 \bparag Spanish convoys can load an unload gold in ports, thus transporting
@@ -1704,28 +1717,31 @@ to the other convoys.
 
 
 
+% (Jym) all this is said at the correct place earlier in this chapter.
 
-\section{Deployment [to be moved in chMilitary]}
+% \section{Deployment [to be moved in chMilitary]}
 
-\aparag All purchased units must be deployed at the end of the recruitment
-phase, before reinforcements of \MIN. All non-maintained units must be removed
-from the map.
-\bparag The purchases are deemed to be simultaneous. In case of ambiguity, it
-is better to write down all purchases locations.
-\bparag Units that are maintained as \terme{Veteran} must be marked as such,
-including units that are only partially \terme{Veteran} (and mark how many \LD
-in it are \terme{Veteran}).
-\bparag This deployment segment is accompanied by a reorganisation segment in
-which leaders can move any distance (unless encircled or under siege) to
-maintain hierarchy (see \ruleref{chMilitary:Leadership}), units can be
-combined.
-\bparag Nations with a limited recruitment area (\SPA, \TUR and \RUS) have no
-stacking limits in this phase (but stacking must be respected by the end of
-the first military round). Stacking limits must otherwise be respected (see
-\ruleref{chMilitary:Stacking}).
-\bparag There is no limited recruitment area for sea units, unless specified
-otherwise. However, the new naval units must be built in a port in owned
-territory in Europe (see above for construction in the \ROTW).
+% \aparag All purchased units must be deployed at the end of the recruitment
+% phase, before reinforcements of \MIN. All non-maintained units must be removed
+% from the map.
+% \bparag The purchases are deemed to be simultaneous. In case of ambiguity, it
+% is better to write down all purchases locations.
+% \bparag Units that are maintained as \terme{Veteran} must be marked as such,
+% including units that are only partially \terme{Veteran} (and mark how many \LD
+% in it are \terme{Veteran}).
+% \bparag This deployment segment is accompanied by a reorganisation segment in
+% which leaders can move any distance (unless encircled or under siege) to
+% maintain hierarchy (see \ruleref{chMilitary:Leadership}), units can be
+% combined.
+% \bparag Nations with a limited recruitment area (\SPA, \TUR and \RUS) have no
+% stacking limits in this phase (but stacking must be respected by the end of
+% the first military round). Stacking limits must otherwise be respected (see
+% \ruleref{chMilitary:Stacking}).
+% \bparag There is no limited recruitment area for sea units, unless specified
+% otherwise. However, the new naval units must be built in a port in owned
+% territory in Europe (see above for construction in the \ROTW).
+
+
 
 % \subsection{Deployment of leaders [to be moved in ch. VI]}
 %
