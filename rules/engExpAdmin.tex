@@ -2,8 +2,6 @@
 
 \section{Overview of Administrative actions}
 
-
-
 \subsection{General mechanism and list of actions}
 
 \aparag[Mechanism] All administrative actions are solved according to the
@@ -150,7 +148,7 @@ counters and use them elsewhere. It must be done before actions are planned
 
 
 
-\section{Mandatory actions and bankruptcies}
+\section{Mandatory actions and bankruptcies}\label{chExpenses:Mandatory}
 
 
 
@@ -430,8 +428,20 @@ affect the choice of actions and not only their resolution.
 
 
 
+\section{Choices of actions}\label{chExpenses:Choice of actions}
+\aparag All players simultaneously chose which administrative actions they
+which to perform. The description of actions is done in the following Sections
+(from \ref{chExpenses:Domestic} to \ref{chExpenses:Techno and Competition}).
+\bparag Each planned action is written down. Even if the explanation of the
+resolution of the action is done together with the explanation of the action
+itself, resolution occurs only when all actions have been planned.
 
-\section{Domestic operations}
+\aparag Maintenance and recruitment of troops and fortresses is also part of
+the administrative actions. Even if they have their own description later and
+their own Segments in the turn sequence, they must be planned as other
+actions.
+
+\section{Domestic operations}\label{chExpenses:Domestic}
 
 \aparag Each country may attempt at most one \terme{Domestic operation} each
 turn.
@@ -851,7 +861,7 @@ treat as ``F''.
 2 (even if the action is a success) requires a second roll of 1d10: if it is
 \emph{strictly less} than the Tolerance value for the \Area, the natives are
 immediately activated and will attack during the redeployment phase (as per
-\ruleref{chPeace:Native Attack}).
+\ruleref{chRedep:Native Attack}).
 \bparag Note that \Area with no Tolerance (eg in \continent{America}) are not
 subject to this critical failure.
 
@@ -951,7 +961,7 @@ turned into a \COL following this procedure:
 country owning the \Area (if any). If already at war against it, there is no
 need to declare a new war.
 \bparag The natives of the province are automatically and immediately
-activated and will attack at the end of the turn as per~\ref{chPeace:Native
+activated and will attack at the end of the turn as per~\ref{chRedep:Native
   Attack}).
 \bparag The country must spend one \COL action with strong investment
 (100\ducats) during administrative phase. There is no die roll to resolve this
@@ -1027,7 +1037,7 @@ treat as ``F''.
 \aparag[Critical failure]\label{chExpenses:TP:Critical failure} A result of
 ``F\textetoile'' means that in addition to the failure, the natives are
 immediately activated and will attack during the redeployment phase
-(\ruleref{chPeace:Native Attack}). A result of ``F'' means a simple failure.
+(\ruleref{chRedep:Native Attack}). A result of ``F'' means a simple failure.
 
 \aparag[Special cases]
 \bparag If per chance several players choose the same province for a first
@@ -1225,7 +1235,7 @@ turn\ldots
 
 
 
-\section{Other administrative operations}
+\section{Other administrative operations}\label{chExpenses:Techno and Competition}
 
 
 
@@ -1692,7 +1702,6 @@ actions have been resolved, to solve conflicting situations. Automatic
 competition for the exploitation of exotic resources may also happen after the
 Peace phase (since peace may change owners of \TP or \COL or destroy \TP).
 
-
 \subsubsection{Normal competitions}
 \aparag[Target] The administrative action of normal competition targets an
 item of another country (major or minor).
@@ -2007,8 +2016,20 @@ of exploitation for the turn. A \TP reaching level 0 is destroyed.
   turn) and by anybody successfully managing to create new levels.
 \end{exemple}
 
+\section{Resolution of actions}\label{chExpenses:Resolution of actions}
+\aparag Once all players have chosen their actions, and written them down with
+all relevant column, DRM, and such, they can be resolved.
+\bparag In practise, conflicts are few and players may start resolving their
+actions as soon as they have finish planning them.
 
+\begin{playtip}
+  Players should ``pair'' to solve their actions. One of them state his
+  actions, one by one, with relevant column and DRM, and roll the die while
+  the other check the table to see whether it's a success or a failure.
+\end{playtip}
 
+\aparag The procedure to resolve the action is described together with the
+action itself, check the relevant Sections.
 
 \section{Administration for minor countries}
 
@@ -2144,6 +2165,11 @@ least 1 \CTZ/\STZ where their \terme{maximum level} is strictly less than
 their \terme{reference level}.
 \bparag If performed, this action must target one \CTZ/\STZ where the
 \terme{maximum level} is strictly less than the \terme{reference level}.
+
+\subsection{Logistic of minors}
+\aparag Like major countries, minors have to maintain and recruit
+troops. See~\ref{chLogistic:Maintenance of minors}
+and~\ref{chLogistic:Recruitment of minors} for details.
 
 % Local Variables:
 % fill-column: 78

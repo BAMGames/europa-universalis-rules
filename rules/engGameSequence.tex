@@ -29,30 +29,20 @@
   \DiploDetails
 }
 
-%\newcommand{\IncomeDetails}{%
-%  \bparag Income computation for each player
-%  \bparag Bankruptcy declaration, Refund loans
-%}
-%\newcommand{\IncomePhase}{%
-%  \aparag Income phase
-%  \IncomeDetails
-%}
-
 \newcommand{\AdminDetails}{%
-  \bparag Income computation
-  \bparag \TradeFLEET adjustment, mandatory loan refund, interests,
-  bankruptcy
-  \bparag Choice of actions (incl. Exceptional taxes and logistic)
-  \bparag Maintenance of fortresses and troops, optional refunds
-  \bparag Purchase of forces
-  \bparag Resolution of administrative operations
-  \bparag Administrative action of minors (incl. recruitment)
-  \bparag Automatic competition, attribution of resources
-  \bparag Exotic resources price variations
-  \bparag Technology adjustment
+  \bparag \xnameref{chIncomes:Summary}
+  \bparag \xnameref{chExpenses:Mandatory}
+  \bparag \xnameref{chExpenses:Choice of actions}
+  \bparag \xnameref{chExpenses:Maintenance}
+  \bparag \xnameref{chExpenses:Recruitment}
+  \bparag \xnameref{chExpenses:Resolution of actions}
+  \bparag \xnameref{chExpenses:Administration Minor}
+  \bparag \xnameref{chExpenses:Automatic Competition}
+  \bparag \xnameref{chExpenses:Variation}
+  \bparag Technology adjustment (\xref{chExpenses:Technology})
 }
 \newcommand{\AdminPhase}{%
-  \aparag Administrative phase
+  \aparag \xnameref{chapter:Incomes} and \xref{chapter:Expenses}
   \AdminDetails
 }
 
@@ -95,8 +85,7 @@
   \bparag Exceptional Taxes
   \bparag Exchequer test (including National Loans)
   \bparag International Loans
-  \bparag Stability action investment
-  \bparag Action of Stability resolution
+  \bparag Stability improvement
   \bparag Peace offers and discussions
   \bparag Test for Crusade
 }
@@ -106,7 +95,6 @@
 }
 
 \newcommand{\InterDetails}{%
-%  \bparag Prosperity and Stability adjustment
   \bparag Placement \& Death of Military Leaders
   \bparag Inflation
   \bparag Moving the Trade Centres and Convoys
@@ -120,7 +108,6 @@
 \newcommand{\GameSequence}{%
   \EventsPhase
   \DiploPhase
-%  \IncomePhase
   \AdminPhase
   \MilitaryPhase
   \RedepPhase

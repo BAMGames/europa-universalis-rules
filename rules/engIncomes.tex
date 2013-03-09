@@ -412,7 +412,7 @@ country.
 \emph{Indian}.
 \bparag Position of the Trade Centres change during the Interphase (at
 the end of turn). However, we remind here how they are attributed.
-See~\ruleref{chPeace:TradeCentres} for details.
+See~\ruleref{chInter:TradeCentres} for details.
 
 \aparag The initial positions are \provinceNil for the \emph{Great
   Orient} centre, \provinceVeneto for the \emph{Mediterranean} centre,
@@ -510,7 +510,7 @@ diplomatic track.
 %%\bparag \TUR gains 50\% of this value if \pays{Damas} is on its
 %diplomatic track and not at war or if \paysDamas was conquered by \TUR.
 %\bparag \pays{damas} gains 50\% of this value when at war.
-%%\aparag See~\ruleref{chPeace:TradeCentres} for the displacement of the
+%%\aparag See~\ruleref{chInter:TradeCentres} for the displacement of the
 %%centre.
 \aparag The Great Orient centre moves to \TUR when \paysEgypte is
 conquered. 
@@ -523,7 +523,7 @@ of 50\ducats.
 %TBD: or 30\ducats if the \emph{Great Orient} centre has income 100\ducats or higher.
 \bparag They are given to the country having the most levels of
 \TradeFLEET in the corresponding \STZ and \CTZ.
-See~\ruleref{chPeace:TradeCentres} for details.
+See~\ruleref{chInter:TradeCentres} for details.
 \bparag This income is registered in \lignebudget{Trade centres
   income}.
 
@@ -537,7 +537,7 @@ a Trade centre (including the owner himself) causes permanent losses on
 an enemy \TradeFLEET in a \STZ or \CTZ belonging to this centre, then
 the income of the centre is decreased by 10\ducats per permanent loss
 caused for the next turn.
-\bparag See~\ref{chPeace:CorsairAttack} for details.
+\bparag See~\ref{chRedep:CorsairAttack} for details.
 
 \aparag This loss is recorded (in negative) in \lignebudget{Trade centre
   losses}.
@@ -827,11 +827,11 @@ other income, nor does it exploit Exotic Resources. The gold produced is
 reported on the \terme{Colonial Record Sheet}.
 \bparag No slaves are needed to exploit a gold mine.
 \bparag Gold has a major influence on the variation of inflation,
-see~\ruleref{chPeace:InflationGoldROTW}.
+see~\ruleref{chInter:InflationGoldROTW}.
 
 \aparag \label{chIncomes:GoldProduction} Gold can be transported by earth
 during the income phase or during the redeployment phase (see
-\ruleref{chPeace:GoldRepatriation}) (or both).
+\ruleref{chRedep:GoldRepatriation}) (or both).
 \bparag During the income phase, Gold can be stored in any port \COL in
 the \Area where it was produced or an adjacent one.
 \bparag From the ports, the gold has to be repatriated to Europe using
@@ -934,7 +934,7 @@ multiply the result by 10.
 \bparag This is the amount of \ducats gained (or lost in case of a
 negative number) by the taxes.
 
-\section{Summary of the computation}
+\section{Income computation}\label{chIncomes:Summary}
 \subsection{Gross income}
 \aparag The \terme{Gross income} is the sum of the \terme{Land Income},
 \terme{Industrial Income}, \terme{Trade Income} and \terme{Colonial
