@@ -1,0 +1,457 @@
+\definechapterbackground{Redeployment}{victories}
+\chapter{Redeployment}\label{chapter:Redep}
+
+After the military phase, some ``cleaning'' is require before the next
+turn. During the redeployment phase, lasting military affairs are
+resolved. First, attacks by natives and privateers, then looting of occupied
+provinces, extension of revolts and construction of \Presidios, and lastly
+mandatory retreat of some troops as well as gold.
+
+\RedepPhase
+
+\section{Attacks by Natives}\label{chRedep:Native Attack}
+
+\aparag At the end of the military round, either activated Natives (activated
+because of Military presence or an ongoing war) or forces of a \ROTW minor
+country may attack offending settlements \COL or \TP in each province. Natives
+and minor countries in their own area always attack; minor countries in areas
+that they do not own will attack on choice of their controller.
+\bparag Natives and minor countries add their force to do one attack only.
+\bparag If the Natives have been defeated this turn and a minor country
+attacks, the controller may choose to let only the forces of the minor country
+do the attack alone.
+\aparag The attack is resolved immediately by one die-roll on
+\tableref{table:Pirates Natives Raids}. This die-roll is modified by:
+\begin{modlist}
+\item[+1] for each \LD in defence (even besieged).
+\item[+2/+4] for each \ARMY\facemoins/\Faceplus in defence (even besieged).
+\item[+N] level of the fortress.
+\item[+M] Manoeuvre value of a \terme{land leader} in defence.
+\item[-1] For each full \LD of the Natives (or attacking forces).
+\item[-1] For each foreign \COL or \TP in the same \Area.
+\item[-M] Manoeuvre value of a Native (or attacking) leader.
+\item[+3]If the Natives were defeated at least once in the province this turn
+  without being routed.
+\item[+6]If the Natives were defeated at least once in the province this turn
+  and were routed, not cumulative with above.
+\end{modlist}
+\aparag Losses on settlements is given in the table. Each lost level step is
+applied to the Colony/Trading Post present. If a Colony, or a Trading Post is
+reduced to the level 0, the establishment is destroyed.
+\aparag Losses on land forces in defense are also given. The losses are
+applied to fortifications and land forces (one level of fortifiction equals
+one \LD here), divided as the player prefers.
+\aparag Natives that were activated due to Administrative actions or Military
+presence, cease now to be active. Those that are active because of a war, stay
+as they are (they will behave in the same way as the minor country).
+
+
+
+\section{Attacks by Pirates \& Privateers}\label{chRedep:CorsairAttack}
+
+\aparag Pirates and privateers attack commercial fleets to attempt to decrease
+their levels, and possibly to capture gold repatriated to Europe by these
+fleets.
+\bparag[Pirates] Pirates appear as explained in \ruleref{chEvents:Piracy} and
+they remain until completely eliminated. They are active every turn.
+\bparag[Privateers]
+\label{chRedep:CorsairAttack Privateer}
+Privateers are raised by Major Powers (see \ruleref{chExpenses:Recruiting
+  Privateers}), or are in the basic forces of some minor powers (the
+\pays{chevaliers} and the "Barbaresques" countries). They must go out at sea
+on the first or second round or they will have no effect.
+\bparag Beginning with the third round, they stay in the sea they were placed
+in, and will be able to attack one \STZ or \CTZ in this sea or an adjacent
+sea. The specific \STZ or \CTZ has to be annouced at that time.
+
+\aparag[Raiding Fleets with Privateer Admirals]\label{chSpecific:Raiding
+  Privateer admirals}
+Privateer, or an Admiral with Privateer capacity, may lead one \corsaire he
+starts the turn with.  He may lead it in the same stack as naval forces not
+containing a \FLEET.  The \corsaire does not count for attrition, nor in
+battle.  The stack acts both as regular naval force (and can attack, blockade,
+and so on), and a Privateer stack (other players may attempt to suppress the
+\corsaire counter).  The \corsaire does not count for attrition, nor in battle
+(nor is affected by battles).  The stack may split at any time (for instance
+if the naval force has to retreat in a port), and the leader chose which stack
+he stays with.
+\bparag As an exception to \ruleref{chRedep:CorsairAttack Privateer}, a
+\corsaire led by Privateer or Privateer-Admiral may move after the second
+round, and has to remain in place only on the last round (the player telling
+at the beginning of this round which \CTZ\\STZ will be attacked if there are
+several of them). However, it still has to be at sea at the end of every round
+after the first, else (if at port), it cannot leave again for the rest of the
+turn and will not attack commercial fleets (or loot) this turn.
+\bparag Note that the leader may move as he prefers but can only lead the one
+\corsaire he starts the turn with (even leaving it then coming back), or naval
+forces.
+%% PB 07/2008 : TBD ??  J'ai essaye de simplifier cette partie avec la version
+%% ci-dessus, pour mieux
+% représenter aussi ce qu'on veut.
+%
+% \corsaire be moved every round to another \corsaire or naval stack, excepted
+% on the last round where it can not join a new \corsaire counter.
+% \aparag[Raiding Fleets with Privateer Admirals]\label{chSpecific:Raiding
+% Privateer admirals}
+% \textbf{[To be deplaced in military]} Naval forces not containing a \FLEET
+% that are led by a Privateer, or and Admiral with Privateer capacity may move
+% with one \corsaire counter in their stack if it begins even after the 2nd
+% round.  Naval forces not containing a \FLEET that are led by a Privateer, or
+% and Admiral with Privateer capacity, may be announced to be conducting
+% privateer attack of trading fleets (and potentially looting) at the latest
+% at the end of the second round if at sea.
+% \bparag In that case, replace one \ND for a \corsaire\facemoins, or two \ND
+% for a \corsaire\faceplus.  AUTRE VERSION: sans transformation de pions
+% \bparag In this case, they may not leave anymore the sea zones adjacent to
+% the \CTZ or \CTZ they are attacking, for the remaining of the Military
+% Phase.
+% \bparag The force is hereafter for the rest of the Military Phase dealed
+% with as being \corsaire\facemoins if they have between 2\de and 1\ND2\de,
+% and \corsaire\faceplus if they have 2\ND (or \NGD) or more, with no
+% capacity as a naval force. It tests for attrition only if decides to move to
+% another sea zone; it can not attack, intercept of be attacked or intercepted
+% (except to attack Convoys as per Privateer rules)).
+% \bparag If a roll to reduce Privateer succeed, the stack suffers 50\%
+% attrition.  If it losed forces so as to have less than 2\de, the stack
+% becomes a regular naval force at the beginning of its next movement segment.
+
+\aparag[Looting by Pirates or Privateers] Pirates and Privateers may try to
+loot Trading Posts or Colonies, and also enemy provinces for privateers, that
+are a province bordered by the sea they are in.
+\bparag Looted provinces, Colonies or Trading Posts may belong to minor
+countries or to players. For privateers to be allowed to loot, it is necessary
+that a state of war exists between the owner of the privateer unit and the
+owner of the looted province. Overseas Wars are enough to loot \TP or \COL,
+but not European provinces.
+\bparag \textit{Exceptions:} Looting of European provinces by the
+"Barbaresques" is permitted, as well as looting in their provinces. Sea Hounds
+may loot European provinces also, see \ruleref{chSpecific:England:Sea Hounds}.
+\bparag Pirate may loot following \ruleref{chEvents:PiracyTarget}. After a
+turn of looting, non-eliminated pirates go back to the \STZ they belong to.
+\bparag The privateer intending on looting is placed in the concerned
+province, Trading Post or Colony. They have to disembark during any round
+except the last from the sea zone they are operating in.
+\bparag If privateer/pirate unit is still present at the Redeployment phase,
+it loots. Looting privateer/pirate are unaffected by forces or battles (except
+that those forces may attempt to destroy them during the military phases).
+\bparag A maximum of 1 privateer/pirate unit (any side up) can loot the same
+Colony/province in the same turn. Privateers/Pirates looting a province or
+\COL/\TP can not attack at the same turn the \CTZ/\STZ.
+
+\aparag[Actions of Pirates and Privateers] In \STZ/\CTZ where
+pirates/privateers are active, one die is rolled on \tableref{table:Pirates
+  Natives Raids}.
+\bparag Pirates attack all fleets in the zone and are resolved first as a
+separate atack in each zone.  countries.
+\bparag Privateers of \terme{Barabaresque} countries make joint attacks after
+Pirates.  Turkish privateers may be added to the same attack if at war against
+all the aimed christian countries, or if taking advantage of rule
+\ruleref{chSpecific:Balkans}.
+\bparag Then one attack is resolved for all the Privateers of the same
+alliance, in the order of Initiative.  Privateers may target only fleets of
+countries against which their owner is at war (or overseas
+war). \emph{Exception:} see the restricted Overseas War of the
+\pays{chevaliers} or the "Barbaresques" countries.
+
+\bparag The die is modified as follows:
+\begin{modlist}
+\item[+2] if the \corsaire is not exactly in the sea zone of the \STZ.
+\item[+3] if only one \corsaire\facemoins
+\item[+1] per side of target \TradeFLEET or \FLEET (a Convoy counts as 2
+  sides)
+\item[+1] If one or more \ND in defence and no \FLEET
+\item[+2/+4] per \FLEET\facemoins/\Faceplus defending
+\item[+M] \Man of a defending \LeaderA
+\item[-1] per round at sea (max. -3) (NA on Convoy attacks)
+\item[-M] \Man of a \corsaire admiral %(\textonehalf for land raids in Europe)
+\item[+1] if a naval battle occurred in the sea %(not for land raids)
+\item[-2] \pays{chevaliers} with Christian port on \seazone{Egee} or
+  \seazone{Mediterranee E}
+\end{modlist}
+\bparag Levels losses are taken on the target players' fleets present in the
+\STZ/\CTZ (including minors).
+
+\aparag[Defense against Pirates and Privateers]
+\bparag[Defending naval force] A defending naval force is a stack of
+fleet/detachment markers present at the start of the Redeployment phase in a
+sea zone that is part of the concerned \STZ/\CTZ, that decides to defend (and
+can do so because of war status).
+\bparag The player can choose to suffer his losses from his warships in the
+\STZ/\CTZ (if any). In such a case, one eliminated \ND equals the loss of 1
+level of commercial fleet.
+
+\aparag[Return of lost levels] All levels eliminated by privateers and pirates
+are losses to the \terme{current level}, not the \terme{maximum level}. See
+\ruleref{chExpenses:Commercial Fleet Adjustment}.
+\bparag Each \textetoile result destroys permanently one level of commercial
+fleet (it reduces by one the \terme{maximum level}).  The largest fleet is
+affected by this permanent loss. In case of equality, the owner of the
+Privateer decide the fleet to be reduced; for Pirates, this is done at random.
+
+\aparag[Income of Privateers] Each level eliminated by a Privateer brings an
+income to the player that controls the privateer unit equal to the small
+number printed in the \STZ. Privateers of minor countries give no income (even
+if Vassals).
+\bparag This ``privateers income'' is to be placed in \lignebudget{Pillages,
+  privateers} of the privateering player.
+\bparag In case of stacks with \corsaire from several powers, this income is
+divided between the powers (including minor ones).
+
+\aparag[Results of Pirates \& Privateers Looting] These lootings are resolved
+exactly in the same manner: one die-roll on \tableref{table:Pirates Natives
+  Raids}, modified as follows:
+\begin{modlist}
+\item[+3] if only one \corsaire\facemoins
+\item[+2/+4] per \ARMY\facemoins/\Faceplus defending
+\item[+1] Per \LD (including militia) %against land raids
+\item[+M] \Man of a defending \LeaderG/\LeaderC/\LeaderGov
+\item[-1] per round in province (max. -3) %(NA on Convoy attacks)
+\item[-M] \Man of a \corsaire admiral (\textonehalf for land raids in Europe)
+  % \item[+1] if a naval battle occurred in the sea (not for land raids)
+\item[-2] \pays{chevaliers} with Christian port on \seazone{Egee} or
+  \seazone{Mediterranee E}
+\item[+N] Twice the level of the fortress, +1 for fort
+\end{modlist}
+\bparag If a result \textddag\ is obtained on the table, the province or
+\TP/\COL is looted: place a marker \PILLAGE\faceplus. The privateer's owner
+receives the total income of the province/settlement (gold stored here and
+resources exploited included).
+\bparag If a result \textdag\ is obtained on the table, the province or
+\TP/\COL is weakly looted: place a marker \PILLAGE\facemoins. The privateer's
+owner receives half the total income of the province/settlement (resources
+exploited included), but Gold stored here is entirely captured.
+\bparag Pirates receive no income for looting.
+\bparag These incomes are placed in \lignebudget{Pillages, privateers}, except
+stored gold in \lignebudget{Gold from ROTW & Convoys}.
+\bparag There is neither loss of land forces due to the looting (opposite to
+Natives attack) nor protection by sacrificing forces in the province.
+
+\aparag[Minor countries against Piracy]
+\bparag Minor countries at war can use their naval forces against Privateers
+and Pirates in \STZ or \CTZ where they have a \TradeFLEET of their own.
+\bparag Christian Minor countries whose \TradeFLEET are attacked by privateers
+of \terme{Barbarques} may also use their naval forces to fight against those
+privateers (Patron's choice to deplace their forces), even if at peace.
+\bparag Against Pirates, minor countries at peace fight in an abstract way.
+Roll 1d10 for each \STZ or \CTZ with Pirates and add 1 for each commercial
+fleet of a minor country (+2 if the fleet is \Faceplus).  If the result is 8
+or higher, one \corsaire\facemoins is eliminated.
+
+
+
+\section{Extension of Revolts}
+
+\aparag \REVOLT in inactive minor countries are automatically removed without
+any roll.
+
+
+\subsection{Loss of \STAB due to Revolts}
+\label{chRedep:Revolts Stability}
+\aparag [TBD] \REVOLT in minor countries cause loss of \STAB to their
+diplomatic patron as if they were in it.
+
+\aparag If one or more \REVOLT still exist in a country, the country loses
+\STAB
+\bparag for each \REVOLT\faceplus, it loses 1 \STAB level
+\bparag for all \REVOLT\facemoins, it loses only one additional \STAB level
+\aparag However, the maximum a player can lose from revolts of all types is 3
+\STAB levels.
+
+
+\subsection{Extension of \REVOLT}
+\label{chRedep:Extension Revolts}
+\aparag Then, after \STAB losses, \REVOLT extend. Adjust the \REVOLT markers
+simultaneously:
+\bparag A previously \REVOLT\facemoins becomes a \REVOLT\faceplus
+\bparag A previously \REVOLT\faceplus generates a \REVOLT\facemoins in the
+same or adjacent province (belonging to the victim country, or in the region
+allowed if the \REVOLT was created by an event), of the choice of the player
+controlling the \REVOLT.
+% Jym, following JC.
+\bparag \textbf{[TBD]} \REVOLT in \regionIrlande may extend this way across
+the \seazoneMan into \ANG.
+\bparag If the extension of a \REVOLT\faceplus is not possible, a \REVOLT \LD
+is placed in the same province (or an \ARMY\facemoins if there was already 1
+\REVOLT \LD present, the \LD being absorbed in the \ARMY).
+\bparag Remember that there can be at most 2 \REVOLT markers stacked together.
+\bparag Unbesieged cities in revolt and revolted troops generate a
+\REVOLT\facemoins in their province if there is no \REVOLT counter in it.
+% Jym, yes this was in EU6...  removed, 04/2011.
+% \bparag When all provinces bordering all the sea zones attached to a
+% particular \STZ or \CTZ are in revolt (unusual but possible), place one
+% pirate \corsaire\facemoins in this \STZ/\CTZ at the beginning of the Peace
+% phase (during the extension of revolts).
+
+% Jym: si PB pas sur, je vire.
+% \bparag \textbf{[TBD]} Revolt \Faceplus in provinces with at least an \ARMY
+% counter of the owner is controlled: it does not extend.  (PB 07/2008: I
+% favor that; 09/2009: I am not so sure now....)
+
+% \begin{todo}
+%   Check if this is useful. Jym believes the events allowing this explicitly
+%   state the provinces allowed for proliferation. Anyway, this is too fuzzy
+%   to be used as a rule without crosschecking every event that generates
+%   revolts. Plus it may have a bad effect (eg Pugatchev revolt spreading in
+%   still independant Khanates...)
+% \end{todo}
+% \aparag[Ethnic Revolts] Revolts appearing through the play of political
+% events different from the R result on the event are considered as ethnic
+% revolts.
+% \bparag Ethnic revolts always proliferate in all provinces described in the
+% political event, even if the owner of that province is not the country
+% victim of the event.
+
+
+\subsection{Independence of Revolted Principalities}\label{chRedep:Peace:Independence Revolt}
+A \MAJ may give the independence to some groups of provinces (usually
+separated from the mainland of the power) if all the provinces of the group he
+owns (except at most one) have a revolt \Facemoins.  This announce is made
+during the diplomatic phase.  See the rule
+\ruleref{chSpecific:Peace:Independence Revolt}.
+
+
+\subsection{Execution of the
+  Monarch}\label{chRedep:ExecutionMonarchByRevolts}
+\aparag If, at the moment of the Peace phase, half of all owned national
+provinces (rounded up; they are shown on the map by a coat of arms of the
+power) are in revolt, the regime of the country is overthrown and the monarch
+is executed.
+\aparag[Consequences]
+All revolts present in the country are removed. A new monarch is
+determined. The new monarch is considering as suffering a "Dynastic Crisis".
+% Jym: useless, c'est deja l'effet DC...
+% \bparag All the values of the new Monarch are obtained disregarding the
+% values of the former ruler.
+\bparag The \STAB is reduced by \textbf{2} levels%.
+% Jym, memories of ruling during WoSS when I was FRA and HOL was overthrown.
+and no \STAB improvement action is allowed this turn.
+\bparag The \DTI is reduced by one (1 is the minimum).
+\bparag 3 levels of Commercial fleets are reduced in the \CTZ box of the
+country (chosen at random, even on other players' commercial fleets - NB: it
+represents pillage and lost properties due to this really unstable situation!)
+% \bparag The Stability is reduced by 4 levels.
+
+
+
+\section{Land Military Looting}
+
+Powers may receive supplementary income at this phase by looting provinces,
+Colonies or Trading Posts of the other players (or minor countries) that their
+units occupy.
+\aparag A power can loot a province (or Colony/Trading Post) if he possesses
+land units there (i.e. armies or detachments, or Turkish pashas) during this
+phase (and so has been able to besiege the fortress).  Looting is allowed even
+if the player does not in control the fortress of the province, Colony or
+Trading Post.
+\aparag[Adjustment of Already Existing Looting Markers]
+Remove all \Facemoins looting markers, then adjust all \Faceplus looting
+markers to their side \Facemoins, before to proceed to looting of the current
+turn.
+\aparag[Looting Income]
+Unless there already was a looting marker in the province, the player that
+loots receives immediately in his Royal Treasury a sum equal to the total
+cumulated income of all looted provinces, not including exotic resources for
+Colonies/Trading Posts.
+\aparag[Placement of New Looting Markers]
+When a looting takes place, one looting marker \Faceplus is placed on the map,
+in the looted province, Colony or Trading Post.
+\aparag[Looting in \ROTW]
+If a land force has less than 2 \LD, it can only loot weakly a \COL/\TP.  Put
+a \Facemoins looting marker in the province and the power gains only half of
+the regular income.  If the power has at least 2 \LD, it may loot completely
+the province.
+\aparag[Consequences of Looting]
+A side \Faceplus or side \Facemoins looting marker in a province (Colony,
+Trading Post) cancels all land income of this province (or Colony, Trading
+Post) and the exploitation of income from exotic resources.
+\aparag[Elimination of Trading Posts]
+A force occupying an enemy \TP at this phase may, instead of looting, destroy
+it (player's choice).
+
+
+
+\section{Mandatory Retreat of Sieges, \Presidios}
+
+\aparag[Lack of Supply] Forces that have no LOS makes a mandatory redeployment
+and have to test for attrition at {\bf +2} for this movement.
+\aparag[Inadequate Siegeworks]
+If a besieged fortress has no Siegework\faceplus placed over it, or has not
+suffered a Breach or HW result during the course of the turn, the besieger has
+to retreat to the closest friendly unbesieged city or port. This redeployment
+causes an attrition roll for movement.
+\aparag[Continued Sieges]
+If a besieged fortress has a Siegework\faceplus, or a suffered from a Breach
+or HW result during the course of the turn, the besieging player may either:
+\bparag Decide to raise the siege and make a redeployement movement, with
+attrition at {\bf -2};
+\bparag Continue Siege, keeping only a Siegework\facemoins marker.
+
+\aparag[Construction of \Presidios]\label{chRedep:BuildPresidios}
+In some provinces, a Power may build or increase \Presidios if the province is
+not owned but where its has military control, or is besieging the fortress
+with adequate Siegeworks to continue the siege (even if the power decides to
+raise the siege).
+\bparag Provinces where \Presidios can be built are shown by a circled anchor
+on the map.
+\bparag A \Presidio is marked by a fortress counter. Its price is the same as
+the fortress. The maximum level of a \Presidio is 3.  A power has to pay for
+the Maintenance of \Presidio.  \Presidios may never be built or increased
+during the Logistic Phase.
+\bparag A power may only increase the fortress level of an existing \Presidios
+at the exact same conditions for building it in the first place.
+\bparag Ifever the power gains ownership of a province containing its own
+\Presidio, the \Presidio is converted as a regular fortress for the province
+(if higher than the current level), or dismantled.
+
+
+
+\section{Return to Port}
+
+\aparag Naval units being located in a sea zone have the choice to
+\bparag retreat to a friendly, unblockaded port of their choice (not
+necessarily the closest one). They roll for attrition in this movement.
+\bparag stay at sea, by doing an attrition with a modifier of {\bf +2}, the
+difficulty of the sea they are in, and the modifier due to being at sea of +3
+or +6 depending of the distance to the nearest Sea Supply Source
+(port/arsenal).
+\aparag Then all privateers have to be repatriated to a port of their owner's
+choice.
+\aparag Pirates are never repatriated and remain permanently in their
+\STZ/\CTZ of appearance until their destruction by a player.
+\aparag No interception may ever occur during this phase, not even by
+\Presidios or \StraitFort.
+
+
+
+\section{Gold repatriation}\label{chRedep:GoldRepatriation}
+
+\aparag[Before redeployment] For the income phase, see
+\ruleref{chIncomes:GoldProduction}.
+\bparag For the transportation for convoys, see
+\ruleref{chIncomes:SpanishConvoys} and \ruleref{chMilitary:Convoys}.
+\bparag Remark that gold that was recuperated during the military rounds
+(through convoy reception or attack) is available as soon as it arrives in a
+province on the European map of the power. Still, usually it is recorded
+during this segment.
+\aparag[Gold transportation]\label{chRedep:GoldTransportation} During the
+redeployment phase, gold can be transported by land as long as it can find a
+way of \TP, \COL or forts at most 12\MP apart crossing only friendly land. If
+there is a land path to National Territory, it can not be stocked in \ROTW.
+\bparag This is especially the case for \RUS exploiting mines in
+\continent{Siberia}.
+\bparag Gold stored in a \COL bordering the \seazone{Caspienne} (on the \ROTW
+map) before the redeployment phase can be moved to a province on the other
+side during this segment (and probably to their home country, either \POL or
+\TUR).
+\bparag Gold repatriated by land or stolen cannot be intercepted in any
+way. If it reaches the main country, it is added to the royal treasury.
+
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
