@@ -1607,6 +1607,27 @@ def
     endpion
 } def
 
+/communrebellion {
+    (Rebellion   ) 50 80 100 18 italic
+    dup (faceplus) eq {
+    (img:soldatrebelle)  8 9 .3 putimage
+    (img:soldatrebelle) 40 2 .3 putimage
+    }{(img:soldatrebelle) 30 6 .3 putimage}ifelse
+    1 -80 80 begints fg_ sc xobject endts
+    blasontopright
+} def
+/pionREBELLION {% (aucun argument) %%
+    /pays (rebelles) def
+    /nompion (Counter Rebellion) def
+    /filepion (Generic_Rebellion) def
+    /style 1 def
+    2 beginpion
+    (faceplus) communrebellion
+    autreface
+    (facemoins) communrebellion
+    endpion
+} def
+
 /pionTRADECENTRE {
     /pays (neutre) def
     /nameX exch def
