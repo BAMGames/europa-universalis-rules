@@ -1,7 +1,7 @@
 \definechapterbackground{Redeployment}{victories}
 \chapter{Redeployment}\label{chapter:Redep}
 
-After the military phase, some ``cleaning'' is require before the next
+After the military phase, some ``cleaning'' is required before the next
 turn. During the redeployment phase, lasting military affairs are
 resolved. First, attacks by natives and privateers, then looting of occupied
 provinces, extension of revolts and construction of \Presidios, and lastly
@@ -11,41 +11,78 @@ mandatory retreat of some troops and bringing gold back home.
 
 \section{Attacks by Natives}\label{chRedep:Native Attack}
 
-\aparag At the end of the military round, either activated Natives (activated
-because of Military presence or an ongoing war) or forces of a \ROTW minor
-country may attack offending settlements \COL or \TP in each province. Natives
-and minor countries in their own area always attack; minor countries in areas
-that they do not own will attack on choice of their controller.
-\bparag Natives and minor countries add their force to do one attack only.
-\bparag If the Natives have been defeated this turn and a minor country
-attacks, the controller may choose to let only the forces of the minor country
-do the attack alone.
-\aparag The attack is resolved immediately by one die-roll on
-\tableref{table:Pirates Natives Raids}. This die-roll is modified by:
+\aparag Natives activated during the turn, as well as forces of \ROTW minor
+countries may attack colonial establishments.
+\bparag Natives always attack in each and every province where they have been
+activated during the turn (whatever the cause of activation).
+\bparag Troops of \ROTW minor countries inside \Areas owned by the minor
+always attack.
+\bparag Troops of \ROTW minor countries outside \Areas owned by the minor may
+attack. The controlled of the minor decide whether they attack or not.
+
+\aparag[Combined attacks]
+\bparag If, in a given province, several forces attack, there are combined in
+one and only one attack is resolved, totalling all the troops participating in
+it.
+\bparag This may includes natives of the province as well as one or more
+(allied) \ROTW minors.
+\bparag In case of a combined attack with minor troops and natives, the
+controller of the minor may choose to attack with the minor troops only
+(typically, in order to avoid malus if the natives were defeated this turn).
+
+\aparag[Forces attacking]
+\bparag In each province, sum up the number of \LD participating in the
+attack.
+\bparag Remember that each province of a given \Area holds the same number of
+native \LD and that killing natives in one province does not change the number
+of natives in other provinces of the \Area.
+\bparag Example: There are 40\LD in \granderegionJapon. That means there are
+40\LD in each of the four provinces of the \Area. Even if 30\LD have been
+killed in \provinceEdo in a given turn, there are still 40\LD in
+\provinceKyoto at this turn.
+
+\aparag[Resolving the attack]
+\bparag Each attack is resolved by rolling one die on \ref{table:Pirates
+  Natives Raids}. This die-roll is modified by:
 \begin{modlist}
-\item[+1] for each \LD in defence (even besieged).
-\item[+2/+4] for each \ARMY\facemoins/\Faceplus in defence (even besieged).
+\item[+1] for each \LD in defence of the establishment (even besieged).
+%\item[+2/+4] for each \ARMY\facemoins/\Faceplus in defence (even besieged).
 \item[+N] level of the fortress.
 \item[+M] Manoeuvre value of a \terme{land leader} in defence.
-\item[-1] For each full \LD of the Natives (or attacking forces).
+\item[-1] For each \LD of the attacking force (native or \ROTW minor).
 \item[-1] For each foreign \COL or \TP in the same \Area.
-\item[-M] Manoeuvre value of a Native (or attacking) leader.
-\item[+3]If the Natives were defeated at least once in the province this turn
+\item[-M] Manoeuvre value of an attacking leader (native or \ROTW minor).
+\item[+3] If the Natives were defeated at least once in the province this turn
   without being routed.
-\item[+6]If the Natives were defeated at least once in the province this turn
-  and were routed, not cumulative with above.
+\item[+6]If the Natives were routed at least once in the province this turn.
 \end{modlist}
-\aparag Losses on settlements is given in the table. Each lost level step is
-applied to the Colony/Trading Post present. If a Colony, or a Trading Post is
-reduced to the level 0, the establishment is destroyed.
-\aparag Losses on land forces in defense are also given. The losses are
-applied to fortifications and land forces (one level of fortifiction equals
-one \LD here), divided as the player prefers.
-\aparag Natives that were activated due to Administrative actions or Military
-presence, cease now to be active. Those that are active because of a war, stay
-as they are (they will behave in the same way as the minor country).
 
+\aparag[Reading the result]
+\bparag The result is read by cross-referencing the (modified) die roll with
+the last two columns of the table.
+\bparag The ``Pillages \TP/\COL'' column gives a number of losses on the
+settlement. Ignore the \textddag and \textdag.
+\bparag The ``Perm. losses on land'' column gives a number of losses on land
+forces.
+\bparag Both results (losses on settlements \textbf{and} on land forces) are
+applied.
 
+\aparag[Applying losses]
+\bparag Losses on settlements: The establishment of the province losses as
+many level as indicated. If it reaches level 0, it is immediately
+destroyed. Exceeding losses are ignored.
+\bparag Losses on land forces: as many \LD as indicated are lost. The losses
+may also be applied to fortifications (loosing 1 level of fortress instead of
+1\LD). The controller chooses whether to loose troops or fortifications, but
+as many loses as possible must be satisfied. Exceeding loses are ignored.
+
+\aparag[End of activation]
+\bparag Once the attack is resolved in a province, natives of this province
+cease to be active.
+\bparag Remark: Natives of provinces owned by \ROTW minors at war will be
+automatically reactivated next turn unless peace with the minor is signed.
+
+\GTtable{atendofturnattacks}
 
 \section{Attacks by Pirates \& Privateers}\label{chRedep:CorsairAttack}
 
@@ -110,7 +147,7 @@ forces.
 % and \corsaire\faceplus if they have 2\ND (or \NGD) or more, with no
 % capacity as a naval force. It tests for attrition only if decides to move to
 % another sea zone; it can not attack, intercept of be attacked or intercepted
-% (except to attack Convoys as per Privateer rules)).
+% (except to attack Convoys as per Privateer rules).
 % \bparag If a roll to reduce Privateer succeed, the stack suffers 50\%
 % attrition.  If it losed forces so as to have less than 2\de, the stack
 % becomes a regular naval force at the beginning of its next movement segment.
