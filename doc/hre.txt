@@ -194,21 +194,75 @@ At the peace phase:
 
 Provinces: Braunschweig, Hannover.
 
+It would be more reasonable to split *Hanover* and *Braunschweig* in
+three provinces:
+
+  * _Calenberg_ (city Hanover)
+  * _Luneburg_ (city Luneburg or Celle)
+  * _Braunschweig_ (city Brunswick)
+
+All these three provinces were occupied by different branches of the
+House of Brunswick. The main division is between Brunswick-Lüneburg and
+Brünswick-Wolfenbuttel, but it seems that these lines never warred
+against one another, and mostly participated on the same sides of the
+war.
+
+One decision could be to unite all of these lines in the same minor
+country (**Brunsvicum**) and to change the Vassalization of Hanovere by
+the annexation of the *Calenberg* and *Luneburg* provinces.
+
+Two possible implementations of the minor Brunsvicum. The first one
+implies redistributing one protestant army somewhere.
+
+    BRUNSVICUM
+    Control: ANG, HOL, DAN, SUE, FRA, HIS, AUS, VEN, PRU, POL, RUS, POR, TUR.
+    Member of the HRE, Protestant (first wave).
+    Income: ~22.
+
+    RM: 10, SUB: 30, MA: 4, EC: 3, EW: 3, VA: 8. Fidelity 15.
+    Basic forces: A+, 1G.
+    Counter limits: A, 3 LD.
+    Basic reinforcements: 1 LD.
+    Military doctrine: Latin, class III.
+
+    ANG gets one Army counter available marked Hanover after the
+    annexation of *Luneburg* and *Calenberg*.
+    
+Other view:
+
+    BRUNSVICUM
+    Control: ANG, HOL, DAN, SUE, FRA, HIS, AUS, VEN, PRU, POL, RUS, POR, TUR.
+    Member of the HRE, Protestant (first wave).
+    Income: ~22.
+
+    RM: 10, SUB: 20, MA: 2, EC: 2, EW: 2, Fidelity 14.
+    RM: 8, SUB: 40, MA: 4, EC: 4, EW: 4, Fidelity 8. (used after annexation
+    by ANG)
+    Basic forces: A-, LD, 1G. (only LD after annexation by ANG).
+    Counter limits: 2A, 2 LD. (only A, LD after annexation by ANG).
+    Basic reinforcements: 1 LD. (None after annexation by ANG).
+    Military doctrine: Latin, class III.
+
+
+An Elector is added with the event *Annexation of Hanover*, and goes to
+**Brunsvicum** as long as the Annexation is not effective (in case of
+pre-conditions not fulfilled). Modify the text of the annexation.
+
 ## History of Wurttemberg
 
-Provinces: Wurttemberg
+Provinces: Wurttemberg, Schwaben.
 
 ## History of Baden
 
 Provinces: Baden
 
+## History of Franconia
+
+Provinces: Franken
+
 ## History of Lorraine
 
 Provinces: Lorraine, Alsace
-
-## History of Austria in Germany
-
-Provinces: Schwaben, Franken
 
 ## History of Bohemia
 
@@ -219,6 +273,15 @@ Provinces: Hessen, Nassau
 ## The North
 
 Provinces: Oldenburg, Bremen, Holstein, Lübeck, Slesvig, Mecklenburg, Hinterpommern, Vorpommern
+### Holstein
+
+ * T1: Dominated by Hansa (Hamburg)? Owned by Dania?
+ * T34: Ceded to Sweden (independent Schleswig-Holstein).
+ * T46: More or less independent (see Great Northern War).
+ * T57: Returned to Dania by Russia (received by inheritance, Paul I).
+
+Could be summed up as: interest of Dania for it, owned by Hansa, taken
+by Sweden, GNW gives it to Dania.
 
 ## History of Brandenburg
 
@@ -243,6 +306,14 @@ fortress is removed from the map until the end of the war).
 
 The LD usually dedicated to these minors should be redistributed on
 other minor countries of the HRE.
+
+## League of Schmalkalde
+
+This league comprised many protestant countries. Currently, this is a
+defensive alliance between Thuringia, Saxony, Hesse, Wurtemberg. It was
+also joined at the time by the Hansa and (officially at least) the
+Palatinate.
+
 
 ## Notes on geography
 

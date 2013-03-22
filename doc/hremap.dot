@@ -2,9 +2,10 @@
 # perl -e 'open FILE,"doc/hremap.dot";while(<FILE>) {if (/(\w+)--(\w+).*;/) { s/(\w+)--(\w+)/$2--$1/ if ($2 lt $1); push @lines,$_} else { push @otherlines,$_;}}; close FILE; open FILE,">doc/hremap.dot";pop @otherlines;print FILE @otherlines;print FILE sort @lines;print FILE "}\n";close FILE;'
 
 graph HRE {
-        size="8,11"
+        size="16,22"
         label="Symbolic map of HRE"
-        fontsize=8;
+        fontsize=6;
+        edge[K=4];
         node [shape=box,fillcolor=white,style=filled];
         alsace;
         altmark;
@@ -43,7 +44,15 @@ graph HRE {
         friesland;
         gelderland;
         overijssel;
+        utrecht;
+        holland;
+        zeeland;
         node [shape=box,fillcolor=yellow];
+        vlaanderen;
+        flandres;
+        hainaut;
+        brabant;
+        artois;
         liege;
         limburg;
         luxemburg;
@@ -53,6 +62,8 @@ graph HRE {
         morava;
         osterreich;
         salzburg;        
+        node [shape=box,fillcolor=cadetblue1];
+        champagne;
         overlap = prism;
         alsace--baden [penwidth=3];
         alsace--lorraine;
@@ -66,6 +77,9 @@ graph HRE {
         anhalt--braunschweig;
         anhalt--sachsen;
         anhalt--thuringen;
+        artois--champagne;
+        artois--flandres;
+        artois--hainaut;
         baden--pfalz [penwidth=3];
         baden--schwaben;
         baden--wurtemberg;
@@ -78,6 +92,11 @@ graph HRE {
         berg--munster;
         berg--nassau;
         berg--trier [penwidth=3];
+        brabant--hainaut;
+        brabant--liege;
+        brabant--limburg;
+        brabant--utrecht;
+        brabant--vlaanderen [penwidth=3];
         brandenburg--hinterpommern [penwidth=3];
         brandenburg--lausitz;
         brandenburg--mecklenburg;
@@ -97,6 +116,11 @@ graph HRE {
         cechy--osterreich;
         cechy--sachsen [penwidth=3];
         cechy--slezsko;
+        champagne--hainaut;
+        champagne--lorraine;
+        champagne--luxemburg;
+        flandres--hainaut [penwidth=3];
+        flandres--vlaanderen;
         franken--hessen;
         franken--mainz [penwidth=3];
         franken--nassau;
@@ -104,12 +128,18 @@ graph HRE {
         franken--schwaben;
         franken--thuringen;
         franken--wurtemberg;
+        friesland--holland [penwidth=3,style=dashed];
         friesland--munster;
         friesland--oldenburg;
         friesland--overijssel;
+        gelderland--holland;
         gelderland--limburg [penwidth=3];
         gelderland--munster;
         gelderland--overijssel;
+        gelderland--utrecht [penwidth=3];
+        hainaut--liege;
+        hainaut--luxemburg;
+        hainaut--vlaanderen [penwidth=3];
         hannover--hessen;
         hannover--holstein [penwidth=3];
         hannover--mecklenburg [penwidth=3];
@@ -120,6 +150,9 @@ graph HRE {
         hessen--thuringen;
         hinterpommern--neumark;
         hinterpommern--vorpommern [penwidth=3];
+        holland--overijssel [penwidth=3,style=dashed];
+        holland--utrecht [penwidth=3];
+        holland--zeeland [penwidth=3,style=dashed];
         holstein--lubeck;
         holstein--slesvig;
         koln--limburg;
@@ -131,6 +164,7 @@ graph HRE {
         liege--limburg;
         liege--luxemburg;
         limburg--luxemburg;
+        limburg--utrecht;
         lorraine--luxemburg;
         lorraine--pfalz;
         lubeck--mecklenburg;
@@ -158,4 +192,7 @@ graph HRE {
         pfalz--wurtemberg [penwidth=3];
         sachsen--thuringen;
         schwaben--wurtemberg;
+        utrecht--vlaanderen [penwidth=3];
+        utrecht--zeeland [penwidth=3,style=dashed];
+        vlaanderen--zeeland [penwidth=3,style=dashed];
 }
