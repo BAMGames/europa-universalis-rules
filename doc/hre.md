@@ -37,7 +37,7 @@ SPA, Bavaria, Palatinate, Brandenburg, Münster, Hesse, etc.
 Historically, HOL, Brandenburg, ANG, Protestant Union against SPA,
 Catholic League against AUS.
 
-TODO.
+TODO REREAD
 
  * Statu quo: partition of Berg in two provinces, the minor
    Archbishopric of Köln gets territory (usual minor
@@ -149,6 +149,8 @@ Historically, FRA chose to abandon AUS, ANG would have helped PRU but
 was busy somewhere else, and RUS was not willing to overcommit in Europe
 this time.
 
+TODO REREAD
+
 ## History of Trier
 
 The Archbishopric of Trier mostly had a territorial base. As such, it
@@ -158,6 +160,8 @@ over, no noticeable facts. It was catholic, but the Sponheim county,
 part of the *Trier* province, was protestant (on the border of the
 Palatinate).
 
+TODO FINISH
+
 ## History of Mainz
 
 The territory of Mainz was very fragmented (from Erfurt to Mainz, and,
@@ -165,6 +169,10 @@ in fact, very little territory around Mainz). Most of it is more or less
 the eastern half of the current province. Many losses incurred during
 the reformation, compensated (partially) during the TYW. No military
 action beyond being burned once, apparently.
+
+I propose to include the Archbishopric of Mainz in the Franconia minor
+(other bishoprics). The territory is reaffected to Hesse (Darmstadt
+house).
 
 ## History of Thuringia and Saxony
 Thuringia mostly occupies the Ernestine Saxony, and the rest is the
@@ -183,19 +191,23 @@ During the event:
     agreement.
 
 At the peace phase:
-  * For one condition of peace for LoS, Saxony is reunited (no
+
+  * For all conditions of peace for LoS, Saxony is reunited (no
     Wettin minor created)
   * For one condition of peace for HRE, or if Saxony is pushed out of
     the war, the Wettin minor is created with only Thuringen province.
     (usual setup)
   * Else, Wettin minor is created but still part of the LoS.
 
+For practical reasons, the Wettin minor will be called Turingia.
+
+TODO REREAD
+
 ## History of Brunswick
 
 Provinces: Braunschweig, Hannover.
 
-It would be more reasonable to split *Hanover* and *Braunschweig* in
-three provinces:
+It is possible to split *Hanover* and *Braunschweig* in three provinces:
 
   * _Calenberg_ (city Hanover)
   * _Luneburg_ (city Luneburg or Celle)
@@ -212,7 +224,8 @@ country (**Brunsvicum**) and to change the Vassalization of Hanovere by
 the annexation of the *Calenberg* and *Luneburg* provinces.
 
 Two possible implementations of the minor Brunsvicum. The first one
-implies redistributing one protestant army somewhere.
+implies redistributing one protestant army somewhere (suggestion: Berg
+minor before annexation by PRU).
 
     BRUNSVICUM
     Control: ANG, HOL, DAN, SUE, FRA, HIS, AUS, VEN, PRU, POL, RUS, POR, TUR.
@@ -248,31 +261,111 @@ An Elector is added with the event *Annexation of Hanover*, and goes to
 **Brunsvicum** as long as the Annexation is not effective (in case of
 pre-conditions not fulfilled). Modify the text of the annexation.
 
+TODO REREAD
+
 ## History of Wurttemberg
 
 Provinces: Wurttemberg, Schwaben.
+
+Wurttemberg is the Duchy of Württemberg, early supporter of the
+Protestant Faith. Attacked by the Swabian League in the early game (and
+Bavaria as a backup), Württemberg is sold to the Emperor (for a large
+sum). It got free of it with the help of Hesse. Württemberg was one of
+the founders of the Schmalkaldic League.
+
+Schwaben was a composite province of many origines (including Catholic
+Hohenzollern, territories belonging in full right to AUS, Catholic
+bishoprics). It is best seen as a possible expansion for AUS and under
+the keep of the Duchy of Württemberg (which is what is was for some
+time).
+
+In game:
+  * T6: AUS/SPA launches an attack against Württemberg to gain
+    Schwaben. Schwaben annexed, Württemberg on AUS track.
+  * T8: Württemberg no more on AUS track.
+  * T28: Württemberg late comer in TYW on protestant side. Occupied
+    quickly by Catholics.
+  * Regularily run over by France. How fun (1688, 1703 and 1707).
+  * Catholic in the end, but nobody cares any more.
+
+    \minorcountry{wurtemberg}{Duchy of Wurtemberg and principalities of Schwaben}{Virtenberga}
+    \minorreligion{wurtemberg}{catholique}
+    \minordiplo{wurtemberg}{8}{30}{1}{4}{5}{*}{*}
+    \minorpref{wurtemberg}{\SPA, \AUS, \FRA, \POL, \HOL, \VEN, \PRU, \ENG,
+    \POR, \SUE, \RUS, \TUR}
+    \minorfid{wurtemberg}{14}
+    \minorcapital{wurtemberg}{Wurtemberg}7
+    \minorprovince{wurtemberg}{Schwaben}6
+    \minorbasicforces{wurtemberg}{\LD}
+    \minorarmyclass{wurtemberg}{Latin}{III}
+    \minorHRE{wurtemberg}  
+    \minorforces{wurtemberg}{2 \LD}
 
 ## History of Baden
 
 Provinces: Baden
 
+Two main lines in Baden: one Catholic (Baden-Baden) and one protestant
+(Baden-Durlach). They warred at times against each other. The province
+was pillaged completely during TYW. Baden could not engage in TYW at the
+beginning of TYW was occupying militarily Baden-Baden. In game terms, it
+could be resolved as Baden being both Protestant and Catholic, and
+possibly going in TYW on one side or another.
+
+The state of Freiburg (im Breisgau) was a proponent of the catholic
+faith. I propose an geopolitic modifier in favor of HAB to represent
+that.
+
+    \minorcountry{bade}{Margravate(s) of Baden}{Badenia}
+    \minorreligion{bade}{catholique}
+    \minorHRE{bade}
+    \minordiplo{bade}{6}{20}{1}{2}{4}{*}{*} 
+    \minorpref{bade}{\FRA, \SPA, \POL, \AUS, \PRU, \HOL, \VEN, \POR, \ENG,
+    \RUS, \SUE, \TUR} 
+    \minorfid{bade}{14}
+    \minorcapital{bade}{Baden}6
+    \minorbasicforces{bade}{\LD}
+    \minorarmyclass{bade}{Latin}{III}
+    \minorforces{bade}{2 \LD}
+    \minorgeo{bade}{\HAB +1}
+
 ## History of Franconia
 
 Provinces: Franken
+
+TODO DO (boring catholic bishoprics)
 
 ## History of Lorraine
 
 Provinces: Lorraine, Alsace
 
+TODO DO (boring catholic warriors)
+
 ## History of Bohemia
+
+TODO DO (nothing much to say, part of AUS)
 
 ## History of Hesse
 
-Provinces: Hessen, Nassau
+Provinces: Hessen, Nassau, Mainz
+
+Idea: When Hesse declares war after the second wave of reformation,
+Darmstadt may be called upon by the opponent on the opposite side if an
+opponent is member of the HRE. Darmstadt has basic one LD (max of two
+LD), steals half of the income of Hassia for its own reinforcement roll,
+and controls Darmstadt province (plus Hesse province if Darmstadt lost
+in TYW).
+
+Idea 2: Nassau is a boring protestant minor (1 LD, max 1 LD).
+
+TODO DO (two minors: Hassia, Nassovia, with interesting things between
+Darmstadt and Hassia).
 
 ## The North
 
-Provinces: Oldenburg, Bremen, Holstein, Lübeck, Slesvig, Mecklenburg, Hinterpommern, Vorpommern
+Provinces: Oldenburg, Bremen, Holstein, Lübeck, Slesvig, Mecklenburg,
+Hinterpommern, Vorpommern
+
 ### Holstein
 
  * T1: Dominated by Hansa (Hamburg)? Owned by Dania?
