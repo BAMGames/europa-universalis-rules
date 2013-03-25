@@ -417,6 +417,79 @@ almost touching Neumark (but we do not want contact). Lausitz is smaller
 and rounder. Anhalt should touch Oberpfalz (and not Sachsen touch
 Thüringen)
 
+# Summary
+
+## Envisioned minors
+
+ * .c. Münster
+ * .ce Bavaria
+ * .c. Alsace
+ * .c. Lorraine
+ * .c. Franconia
+ * xcE Mainz
+ * xcE Cologne
+ * .cE Trier
+ * .~. Baden
+ * .~E Palatinate
+ * .~E Saxonia
+ * .XE Bohemia
+ * .pe Brunswick
+ * .p. Hesse
+ * .p. Hansa
+ * .p. Berg
+ * .p. Nassau
+ * .p. Württemberg
+ * .p. Ansbach
+ * .p. Thuringia
+ * .pE Brandenburg
+
+Legend: 
+ * . → minor / x → minor without any territory
+ * c → catholic / p → protestant / ~ → protestant or catholic / X ~ not relevant
+ * E → Elector / e → late Elector
+
+## Territory modifications
+
+Ansbach-Bayreuth province created on top of Oberpfalz.
+
+ * Oberpfalz → Sachsen, Thüringen, Franken removed
+ * Ansbach → Sachsen, Franken, Schwaben, Cechy, Württemberg, Anhalt
+
+Anhalt moved vertically:
+
+ * Sachsen → Thüringen removed
+ * Anhalt → Franken, Ansbach (new) added
+
+Silesia connected with Neumark:
+
+ * Lausitz → Wielkopolska removed
+ * Slezsko → Neumark added
+
+Mainz renamed to Darmstadt
+
+Köln renamed to Jülich
+
+Osnabrück renamed to Minden
+
+Hanover split in two:
+
+ * Kalenberg → Bremen, Lüneburg, Braunschweig, Cassel (form. Hesse), Westfalia (form. part of Nassau), Minden (form. Osnabrück), Münster, Oldenburg
+ * Lüneburg → Bremen, Holstein, Mecklenburg, Brandenburg, Altmark, Braunschweig, Kalenberg
+ * Bremen → Osnabrück removed (or not: incl. county of Hoya in Bremen/Minden?)
+ * Mecklenburg → Altmark removed
+ 
+Redistributing lands of Hesse-Nassau in four provinces: Hesse, Cassel,
+Nassau, Westfalia
+ * Westfalia → Minden (form. Osnabrück), Kalenberg (form. Hanover), Cassel, Nassau, Berg, Münster.
+ * Cassel → Kalenberg, Braunschweig, Thüringen, Franken, Hesse, Nassau, Westfalia
+ * Hesse → Cassel, Franken, Darmstadt (form. Mainz), Nassau
+ * Nassau → Darmstadt (form. Mainz), Pfalz, Trier, Berg, Westfalia, Cassel, Hesse
+
+Trier now touches Lorraine
+
+ * Trier → Lorraine added
+ * Pfalz → Luxemburg removed
+
 # Quick notes
 
 Baden: union of Baden (split in two, one catholic, the largest?, one
