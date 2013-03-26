@@ -16,10 +16,13 @@ Farnese), Italian mercenaries and Bavaria.
 From that time, the fate of the Prince-Bishopric of Münster is merged
 with the fate of the Archbishopric.
 
+However, the Archbishopric is represented as a minor without any
+territory if this rule is acceptable.
+
 ### Timeline of Jülich
 
 The duchy is united with Berg and Cleve at the beginning of pII (1521),
-and allied before. So the *Köln* province should in fact belong to Berg.
+and allied before. So the *Jülich* province should in fact belong to Berg.
 
 ### The Cologne city
 
@@ -35,9 +38,7 @@ war. Authorized to intervene: pretty much everyone? HOL, FRA, ANG, AUS,
 SPA, Bavaria, Palatinate, Brandenburg, Münster, Hesse, etc.
 
 Historically, HOL, Brandenburg, ANG, Protestant Union against SPA,
-Catholic League against AUS.
-
-TODO REREAD
+Catholic League (esp. Bavaria) against AUS (played by VEN).
 
  * Statu quo: partition of Berg in two provinces, the minor
    Archbishopric of Köln gets territory (usual minor
@@ -45,7 +46,7 @@ TODO REREAD
  * Win for protestant: Berg remains intact (and that is one more
    Protestant province for the Protestant Union).
  * Win for Catholic League (historical result): partition of Berg in two
-   provinces, Münster becomes Catholic and gets the *Köln* province.
+   provinces, Münster becomes Catholic and gets the *Jülich* province.
  * Win for AUS: The Duchy of Jülich is annexed by AUS.
 
 ### Event: Conversion of the Archbishop of Köln
@@ -64,9 +65,9 @@ Add +3 for Bavaria, +1 for Palatinate if Palatinate is not at war. No
 reinforcement roll. 50 D$ will by a +1 for Bavaria/Palatinate. The
 General is considered rank A and may command allied troops.
 
-A forteress level 2 is placed in the *Köln* province.
+A forteress level 2 is placed in the *Jülich* province.
 
-Win: The controller of *Köln* province and the new Fortress is the same,
+Win: The controller of *Jülich* province and the new Fortress is the same,
 and the Fortress is level 2 (HOL/Palatinate) or level 1 (SPA/Bavaria) at
 the end of the turn wins.
 
@@ -75,7 +76,7 @@ Statu quo: Any other solution.
 SPA and HOL intervene as they see fit. 
 
 Free passage granted in the HRE for the course of
-the war.  The Emperor has to intervene.
+the war. The Emperor has to intervene.
 
   * HOL/Palatinate wins: The Archbishopric becomes
     protestant. Archbishopric goes to MA (unless already better) of HOL
@@ -88,7 +89,7 @@ the war.  The Emperor has to intervene.
     if HOL did intervene, else goes to MA (unless already better) of
     AUS (if major), else goes to neutral.
 
-## History of Palatinate
+## History of Palatinate and Bavaria
 
 Palatinate is in fact up to four lines:
 
@@ -113,7 +114,7 @@ mostly Mannheim.
 
 The third line joined the Protestant in 1608. However, it remained
 strictly neutral. Mainly noted for inheriting Jülich and Cleves (aka
-province of *Köln*) just before TYW, it remained strictly neutral during
+province of *Jülich*) just before TYW, it remained strictly neutral during
 TYW. It was merged with the fourth in 1742 (T51) and Bavaria in 1777
 (T58). This should intervene in the *War of Bavarian Succession*.
 
@@ -125,18 +126,18 @@ This event (hist. turn 40) gives *Pfalz* to Bavaria. Palatinate is no
 more. If *OberPfalz* still belonged to Pfalz, then the resulting Bavaria
 is neutral (and amend event *War of Bavarian Succession*, maybe). The resulting
 country has 3 A counters.
-
+ 
 ### Event: War of Bavarian Succession
-Historic setting: Bavaria has now merged with Palatinate and
-Köln. Prussia and Saxony are against *Bavaria province* being given to
+Historic setting: Bavaria has now merged with Palatinate and possibly
+Jülich. Prussia and Saxony are against *Bavaria province* being given to
 Austria (in exchange for Belgian provinces, originally, but it could
 have been anything that allowed the ruler of Bavaria to give territories
-to his illegitimate heirs.
+to his illegitimate heirs).
 
-Win for AUS: Bavaria annexed, Palatinate reinstated in full force
-(OberPfalz+Pfalz+Köln+2 A). Possibility to exchange provinces of AUS in
-Belgium against provinces of Palatinate. The Bavarian A is fully usable
-by AUS.
+Win for AUS: Bavaria annexed, Palatinate may be reinstated in full force
+(OberPfalz+Pfalz+Jülich+2 A). Possibility to exchange provinces of AUS
+in Belgium against provinces of Palatinate. The Bavarian A is fully
+usable by AUS.
 
 Win for PRU: Statu quo, possibly gaining one province over one of the
 belligerants.
@@ -149,7 +150,40 @@ Historically, FRA chose to abandon AUS, ANG would have helped PRU but
 was busy somewhere else, and RUS was not willing to overcommit in Europe
 this time.
 
-TODO REREAD
+### Minors
+
+
+    \minorcountry{palatinat}{Electorate of Pfalz}{Palatinatus}
+    \minorreligion{palatinat}{protestant}
+    \minordiplo{palatinat}{10}{40}{2}{3}{4}{*}{*}
+    \minorpref{palatinat}{\FRA, \HOL, \PRU, \POL, \ENG, \HIS, \AUS, \VEN, \POR, \RUS, \SUE, \TUR}
+    \minorfid{palatinat}{9}
+    \minorcapital{palatinat}{Pfalz}7
+    \minorprovince{palatinat}{OberPfalz}7
+    \minorbasicforces{palatinat}{\ARMY\faceplus}
+    \minorbasicrenforts{palatinat}{\LD}
+    \minorarmyclass{palatinat}{Latin}{III}
+    \minorHRE[Elector]{palatinat}
+    \minorforces{palatinat}{2 \ARMY, 2 \LD}
+    \minorspecial{palatinat}{Electorat of the \HRE.}
+    \minorspecial{palatinat}{May lose its second \ARMY,
+    \province{OberPfalz} and the electorate after \eventref{pIV:TYW}.}
+    
+    \minorcountry{baviere}{Duchy of Bavaria}{Bavaria}
+    \minorHRE{baviere}
+    \minorreligion{baviere}{catholique}
+    \minordiplo{baviere}{10}{20}{2}{4}{6}{*}{*}
+    \minorfid{baviere}{16}
+    \minorgeo{baviere}{FRA+1}
+    \minorpref{baviere}{\SPA, \FRA, \HOL, \VEN, \POR, \ENG, \SUE, \AUS, \RUS, \TUR, \PRU} 
+    \minorcapital{baviere}{Bayern}9
+    \minorbasicforces{baviere}{\ARMY\facemoins, \LD}
+    \minorbasicrenforts{baviere}{\LD}
+    \minorarmyclass{baviere}{Latin}{III}
+    \minorforces{baviere}{\ARMY, 3 \LD}
+    \minorspecial{baviere}{After dynastic action \shortdynasticaction{C}{4} has been played, \HAB\ has a +1 geopolitic bonus for diplomatic actions on Bavaria.}
+    \minorspecial{baviere}{May use two \ARMY\ during \eventref{pIV:TYW} and \eventref{pIV:Bohemian Revolt}.}
+    \minorspecial{baviere}{May permanently gain a second \ARMY, \province{OberPfalz} and an electorate as a consequence of \eventref{pIV:TYW}.}
 
 ## History of Trier
 
@@ -160,7 +194,19 @@ over, no noticeable facts. It was catholic, but the Sponheim county,
 part of the *Trier* province, was protestant (on the border of the
 Palatinate).
 
-TODO FINISH
+    \minorcountry{treves}{Archbishopric of Trier}{Trevorum}
+    \minorreligion{treves}{catholique}
+    \minordiplo{treves}{8}{30}{1}{4}{5}{*}{*}
+    \minorpref{treves}{\SPA, \AUS, \FRA, \POL, \HOL, \VEN, \PRU, \ENG,
+    \POR, \RUS, \SUE, \TUR}
+    \minorfid{treves}{14}
+    \minorcapital{treves}{Trier}4
+    \minorbasicforces{treves}{\LD}
+    \minorarmyclass{treves}{Latin}{III}
+    \minorHRE[Elector]{treves}
+    \minorforces{treves}{\LD}
+    \minorspecial{treves}{Electorate of the \HRE.}
+    (left as-is)
 
 ## History of Mainz
 
@@ -174,7 +220,12 @@ I propose to include the Archbishopric of Mainz in the Franconia minor
 (other bishoprics). The territory is reaffected to Hesse (Darmstadt
 house).
 
+However, the Archbishopric is represented as a minor without any
+territory if this rule is acceptable.
+
 ## History of Thuringia and Saxony
+
+### Ernest and Albert
 Thuringia mostly occupies the Ernestine Saxony, and the rest is the
 Albertine Saxony. If the provinces are modified as proposed, *Anhalt*
 province is more or less historical Anhalt plus the Ernestine lands
@@ -201,7 +252,11 @@ At the peace phase:
 
 For practical reasons, the Wettin minor will be called Turingia.
 
-TODO REREAD
+### Modifications to TYW
+
+### Minors
+
+TODO
 
 ## History of Brunswick
 
@@ -222,6 +277,10 @@ war.
 One decision could be to unite all of these lines in the same minor
 country (**Brunsvicum**) and to change the Vassalization of Hanovere by
 the annexation of the *Calenberg* and *Luneburg* provinces.
+
+Another decision is to leave as-is the Hanover minor. It starts with a
+capital in *Luneburg* and gains *Hanover* at the peace of Prague (free
+CB pour the owner if 
 
 Two possible implementations of the minor Brunsvicum. The first one
 implies redistributing one protestant army somewhere (suggestion: Berg
@@ -379,6 +438,7 @@ by Sweden, GNW gives it to Dania.
 ## History of Brandenburg
 
 Provinces: Altmark+Magdeburg, Brandenburg, Neumark, Hinterpommern, Vorpommern
+
 
 # Rules proposal
 
