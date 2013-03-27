@@ -136,16 +136,16 @@ SPA and HOL intervene with only one small stack.
 Free passage granted in the HRE for the course of
 the war. The Emperor has to intervene.
 
-* HOL/Palatinate wins: The Archbishopric becomes
-protestant. Archbishopric goes to MA (unless already better) of HOL
-if HOL did intervene, else neutral.
-* Statu quo: The Archbishopric is neutral, and may vote for anyone.
-Archbishopric goes to neutral.
-* SPA/Bavaria wins: The Archbishopric remains catholic (historical:
-Ernst of Bavaria, also Duke of Westfalia, becomes Archbishop).
-Archbishopric goes to MA (unless already better) of SPA
-if HOL did intervene, else goes to MA (unless already better) of
-AUS (if major), else goes to neutral.
+  * HOL/Palatinate wins: The Archbishopric becomes
+    protestant. Archbishopric goes to MA (unless already better) of HOL
+    if HOL did intervene, else neutral.
+  * Statu quo: The Archbishopric is neutral, and may vote for anyone.
+    Archbishopric goes to neutral.
+  * SPA/Bavaria wins: The Archbishopric remains catholic (historical:
+    Ernst of Bavaria, also Duke of Westfalia, becomes Archbishop).
+    Archbishopric goes to MA (unless already better) of SPA
+    if HOL did intervene, else goes to MA (unless already better) of
+    AUS (if major), else goes to neutral.
 
 ## History of Palatinate and Bavaria
 
@@ -367,10 +367,10 @@ league, of which **Saxonia** is not part.
 
 Schmalkaldic league event allows HAB to break the Saxon alliance:
 
-  * HAB gets the help of the intervention of Maurice of Wettin. Maurice
-comes to his help with 1 LD of veteran troops anywhere in the HRE during
-the first turn of the LoS war. The Saxony division has to be part of the
-peace agreement.
+  * HAB gets the help of the intervention of Maurice of Saxe. Maurice
+    comes to his help with 1 LD of veteran troops anywhere in the HRE
+    during the first turn of the LoS war. The Saxony division has to be
+    part of the peace agreement.
 
 At the peace phase:
 
@@ -383,15 +383,15 @@ At the peace phase:
     reunited which means that **Turingia** is dissolved as a minor, the
     Electorate goes to **Saxonia** as well as all **Turingia**
     provinces. However, **Saxonia** will have the -4 malus to enter TYW.
-  * Else, **Turingia** keeps the electorate, *Anhalt* and the alliance
+  * Else, **Turingia** keeps the electorate and the alliance
     still runs after the LoS is broken, which means that Saxonia will
     enter the TYW with **Turingia** (no separate test for **Saxonia**).
-    **Saxonia** gains *Altmark*.
+    **Saxonia** gains *Anhalt*.
   * For one positive condition of peace of HRE over LoS, or if
     **Turingia** is pushed out of the LoS by HRE, **Turingia** loses its
     electorate, the territory of *Anhalt* becomes part of **Saxonia** and
     the alliance is broken.
-  * For two positive conditions of peace of HRE over LoS, **Turingia**
+  * For three positive conditions of peace of HRE over LoS, **Turingia**
     loses its electorate, the territory of *Anhalt* becomes part of
     **Saxonia** and the alliance is broken. Moreover, **Saxonia** will
     not intervene in the TYW on the side of the the Protestant League,
@@ -451,9 +451,9 @@ Provinces: Braunschweig, Hannover.
 
 It is possible to split *Hanover* and *Braunschweig* in three provinces:
 
-* _Calenberg_ (city Hanover)
-* _Luneburg_ (city Luneburg or Celle)
-* _Braunschweig_ (city Brunswick)
+  * _Calenberg_ (city Hanover)
+  * _Luneburg_ (city Luneburg or Celle)
+  * _Braunschweig_ (city Brunswick)
 
 All these three provinces were occupied by different branches of the
 House of Brunswick. The main division is between Brunswick-Lüneburg and
@@ -461,48 +461,8 @@ Brünswick-Wolfenbuttel, but it seems that these lines never warred
 against one another, and mostly participated on the same sides of the
 war.
 
-One decision could be to unite all of these lines in the same minor
-country (**Brunsvicum**) and to change the Vassalization of Hanovere by
-the annexation of the *Calenberg* and *Luneburg* provinces.
-
-Another decision is to leave as-is the Hanover minor. It starts with a
-capital in *Luneburg* and gains *Hanover* at the peace of Prague (free
-CB for the owner till the peace of Westphalia).
-
-Two possible implementations of the minor Brunsvicum. The first one
-implies redistributing one protestant army somewhere (suggestion: Berg
-minor before annexation by PRU).
-
-    BRUNSVICUM
-    Control: ANG, HOL, DAN, SUE, FRA, HIS, AUS, VEN, PRU, POL, RUS, POR, TUR.
-    Member of the HRE, Protestant (first wave).
-    Income: ~22.
-    
-    RM: 10, SUB: 30, MA: 4, EC: 3, EW: 3, VA: 8. Fidelity 15.
-    Basic forces: A+, 1G.
-    Counter limits: A, 3 LD.
-    Basic reinforcements: 1 LD.
-    Military doctrine: Latin, class III.
-    
-    ANG gets one Army counter available marked Hanover after the
-    annexation of *Luneburg* and *Calenberg*.
-
-Other view:
-
-    BRUNSVICUM
-    Control: ANG, HOL, DAN, SUE, FRA, HIS, AUS, VEN, PRU, POL, RUS, POR, TUR.
-    Member of the HRE, Protestant (first wave).
-    Income: ~22.
-    
-    RM: 10, SUB: 20, MA: 2, EC: 2, EW: 2, Fidelity 14.
-    RM: 8, SUB: 40, MA: 4, EC: 4, EW: 4, Fidelity 8. (used after annexation
-    by ANG)
-    Basic forces: A-, LD, 1G. (only LD after annexation by ANG).
-    Counter limits: 2A, 2 LD. (only A, LD after annexation by ANG).
-    Basic reinforcements: 1 LD. (None after annexation by ANG).
-    Military doctrine: Latin, class III.
-
-Third view (statu quo):
+It starts with a capital in *Luneburg* and gains *Hanover* at the peace
+of Prague (free CB for the owner till the peace of Westphalia).
 
     \minorcountry{brunswick}{Duchy of Brunswick-Wolfenbuttel}{Brunsvicum}
     \minorreligion{brunswick}{protestant}
@@ -529,7 +489,7 @@ Third view (statu quo):
     \minorforces{hanovre}{\ARMY, 2 \LD}
 
 An Elector is added with the event *Annexation of Hanover*, and goes to
-**Brunsvicum** as long as the Annexation is not effective (in case of
+**Hanovere** as long as the Annexation is not effective (in case of
 pre-conditions not fulfilled). Modify the text of the annexation.
 
 In the statu quo situation, the Electorate is given to **Hanover**.
@@ -596,59 +556,59 @@ See in the summary.
 # Summary
 ## Envisioned minors
 
-* .c.D Münster
-* .ce* Bavaria
-* .c.d Alsace
-* .c.D Lorraine
-* .c.D Franconia
-* xcE. Mainz
-* xcE. Cologne
-* .cEd Trier
-* .~.D Baden
-* .~E* Palatinate
-* .~eA Saxonia
-* .XEA Bohemia
-* .peA Luneburg
-* .p.A Brunswick
-* .p.A Hesse
-* .p.A Hansa
-* .p. Berg
-* .p. Nassau         **New**
-* .p. Ansbach        **New**
-* .p. Württemberg
-* .pÊ Thuringia
-* .pE Brandenburg
+  * .c.D Münster
+  * .ce* Bavaria
+  * .c.d Alsace
+  * .c.D Lorraine
+  * .c.D Franconia
+  * xcE. Mainz
+  * xcE. Cologne
+  * .cEd Trier
+  * .~.D Baden
+  * .~E* Palatinate
+  * .~eA Saxonia
+  * .XEA Bohemia
+  * .peA Luneburg
+  * .p.A Brunswick
+  * .p.A Hesse
+  * .p.A Hansa
+  * .p. Berg
+  * .p. Nassau         **New**
+  * .p. Ansbach        **New**
+  * .p. Württemberg
+  * .pÊ Thuringia
+  * .pE Brandenburg
 
 Legend:
 
-* . → minor / x → minor without any territory
-* c → catholic / p → protestant / ~ → protestant or catholic / X ~ not relevant
-* E → Elector / Ê → loses electorate / e → late Elector / . → nothing
-* A → Army / * → Several armies / D → several LD / d → 1 LD / . → no troops
+  * . → minor / x → minor without any territory
+  * c → catholic / p → protestant / ~ → protestant or catholic / X ~ not relevant
+  * E → Elector / Ê → loses electorate / e → late Elector / . → nothing
+  * A → Army / * → Several armies / D → several LD / d → 1 LD / . → no troops
 
 ## New events
 
  *  [War of the Jülich succession](#event-war-of-the-jülich-succession)
- *  Event: Conversion of the Archbishop of Köln
- *  Event: Union of Palatinate and Bavaria
+ *  [Conversion of the Archbishop of Köln](#event-conversion-of-the-archbishop-of-köln)
+ *  [Union of Palatinate and Bavaria](#event-union-of-palatinate-and-bavaria)
 
 
 ## Territory modifications
 
 Ansbach-Bayreuth province created on top of Oberpfalz.
 
-* Oberpfalz → Sachsen, Thüringen, Franken removed
-* Ansbach → Sachsen, Franken, Schwaben, Cechy, Württemberg, Anhalt
+  * Oberpfalz → Sachsen, Thüringen, Franken removed
+  * Ansbach → Sachsen, Franken, Schwaben, Cechy, Württemberg, Anhalt
 
 Anhalt moved vertically:
 
-* Sachsen → Thüringen removed
-* Anhalt → Franken, Ansbach (new) added
+  * Sachsen → Thüringen removed
+  * Anhalt → Franken, Ansbach (new) added
 
 Silesia connected with Neumark:
 
-* Lausitz → Wielkopolska removed
-* Slezsko → Neumark added
+  * Lausitz → Wielkopolska removed
+  * Slezsko → Neumark added
 
 Mainz renamed to Darmstadt
 
@@ -658,30 +618,29 @@ Osnabrück renamed to Minden
 
 Hanover split in two:
 
-* Kalesnberg → Bremen, Lüneburg, Braunschweig, Cassel (form. Hesse),
-Westfalia (form. part of Nassau), Minden (form. Osnabrück), Münster,
-Oldenburg
-* Lüneburg → Bremen, Holstein, Mecklenburg, Brandenburg, Altmark,
-Braunschweig, Kalenberg
-* Bremen → Osnabrück removed (or not: incl. county of Hoya in
-Bremen/Minden?)
-* Mecklenburg → Altmark removed
+  * Kalesnberg → Bremen, Lüneburg, Braunschweig, Cassel (form. Hesse),
+    Westfalia (form. part of Nassau), Minden (form. Osnabrück), Münster,
+    Oldenburg
+  * Lüneburg → Bremen, Holstein, Mecklenburg, Altmark, Braunschweig, Kalenberg
+  * Bremen → Osnabrück removed (or not: incl. county of Hoya in
+    Bremen/Minden?)
+  * Mecklenburg → Altmark removed
 
 Redistributing lands of Hesse-Nassau in four provinces: Hesse, Cassel,
 Nassau, Westfalia
 
-* Westfalia → Minden (form. Osnabrück), Kalenberg (form. Hanover),
-Cassel, Nassau, Berg, Münster.
-* Cassel → Kalenberg, Braunschweig, Thüringen, Franken, Hesse, Nassau,
-Westfalia
-* Hesse → Cassel, Franken, Darmstadt (form. Mainz), Nassau
-* Nassau → Darmstadt (form. Mainz), Pfalz, Trier, Berg, Westfalia,
-Cassel, Hesse
+  * Westfalia → Minden (form. Osnabrück), Kalenberg (form. Hanover),
+    Cassel, Nassau, Berg, Münster.
+  * Cassel → Kalenberg, Braunschweig, Thüringen, Franken, Hesse, Nassau,
+    Westfalia
+  * Hesse → Cassel, Franken, Darmstadt (form. Mainz), Nassau
+  * Nassau → Darmstadt (form. Mainz), Pfalz, Trier, Berg, Westfalia,
+    Cassel, Hesse
 
 Trier now touches Lorraine
 
-* Trier → Lorraine added
-* Pfalz → Luxemburg removed
+  * Trier → Lorraine added
+  * Pfalz → Luxemburg removed
 
 # Quick notes
 
