@@ -1,6 +1,8 @@
+Notes about the Holy Roman Empire
+
 # About various HRE provinces and countries
 
-## History of Cologne (done)
+## History of Cologne
 
 Interesting case study: Cologne is one of the main cities of the
 Hanseatic League, an electorate, and a duchy (united with Berg/Cleves).
@@ -31,6 +33,35 @@ long as it is not destroyed. It will be if Hansa is destroyed. As long
 as the Kontor is there, the territory is only useful as strategic point
 (no income).
 
+### Minors
+
+I put here the Kleve-Jülich-Berg minor
+
+    \minorcountry{berg}{United Duchies of Berg, Kleve, Mark and Jülich, County of Ravensberg}{Clivia}
+    \minorreligion{berg}{protestant}
+    \minordiplo{berg}{4}{30}{2}{2}{4}{8}{*}
+    \minorpref{berg}{\POL, \PRU, \HOL, \POR, \SUE, \ENG, \FRA, \VEN, \SPA, \AUS, \RUS, \TUR}
+    \minorfid{berg}{14}
+    \minorcapital{berg}{Berg}3
+    \minorprovince{berg}{Minden}2
+    \minorprovince{berg}{Jülich}3
+    \minorbasicforces{berg}{\LD}
+    \minorarmyclass{berg}{Latin}{III}
+    \minorHRE{berg}
+    \minorforces{berg}{2\LD}
+
+    \minorcountry{cologne}{Archbishopric of Cologne}{Colonia}
+    \minorreligion{cologne}{catholique}
+    \minordiplo{cologne}{8}{20}{1}{2}{3}{8}{*}
+    \minorpref{cologne}{\FRA, \VEN, \SPA, \AUS, \POL, \PRU, \HOL, \POR, \SUE, \ENG, \RUS, \TUR}
+    \minorfid{cologne}{10}
+    \minorfixedincome{cologne}0{Prince-Bishopric}{5}
+    \minorbasicforces{cologne}{}
+    \minorarmyclass{cologne}{Latin}{III}
+    \minorHRE[Elector]{cologne}
+    \minorspecial{cologne}{Electorat of the \HRE.}
+
+
 ### Event: War of the Jülich succession
 
 This event may degenerate in TYW.  This is a religious civil
@@ -38,28 +69,55 @@ war. Authorized to intervene: pretty much everyone? HOL, FRA, ANG, AUS,
 SPA, Bavaria, Palatinate, Brandenburg, Münster, Hesse, etc.
 
 Historically, HOL, Brandenburg, ANG, Protestant Union against SPA,
-Catholic League (esp. Bavaria) against AUS (played by VEN).
+Catholic League (esp. Bavaria) against AUS (played by VEN or RUS if not
+possible). 1610, turn 25.
 
-* Statu quo: partition of Berg in two provinces, the minor
-Archbishopric of Köln gets territory (usual minor
-now).^[Design note: this reflects the fact that the Duchy would have fallen in the hands of two Wittelbach lines and would have been allied. This avoids creating a minor that owns just the Jülich territory with no power.]
-* Win for protestant: Berg remains intact (and that is one more
-Protestant province for the Protestant Union).
-* Win for Catholic League (historical result): partition of Berg in two
-provinces, Münster becomes Catholic and gets the *Jülich* province.
-* Win for AUS: The Duchy of Jülich is annexed by AUS.
+Each side may hope to conquer some of the provinces. No initial control
+is given (enemy for every side). Each side will count 2 points for
+Jülich or Berg, 1 point for Minden. PRU will always intervene, as well
+as Bavaria (Catholic League). SPA may intervene on the catholic side,
+AUS as itself (it can only send one stack). AUS can begin with troops
+inside *Jülich* or *Berg*.
+
+AUS may send the army of the HRE (historically with forces from Alsace
+and Liège). HOL, ANG, FRA (if not Catholic/CR) may intervene on the side
+of FRA. PRU will enter in full war. Third side is **Palatinatus** that
+may send only one small stack. SPA may send one small stack too, as well
+as FRA if Catholic/CR.
+
+The sides are written here PRU, SPA and AUS, even if SPA may not
+intervene.
+
+  * If AUS obtains the *Jülich* province and keeps it, the *Jülich* goes
+    to AUS and will be part of the Spanish Low Countries.
+  * If AUS also obtains the *Berg* province and keeps it, *Berg* also
+    goes to AUS and will be part of the spanish low countries. But only
+    if Jülich is taken.
+  * If SPA takes both *Jülich* and *Berg*, **Palatinatus** gains *Jülich* and
+    *Berg*.
+  * If SPA gets at least 2 points, then the Chambers of Reunion event
+    will turn **Palatinatus** in a catholic country. +10 VP for SPA.
+  * If PRU gets 5 points, all provinces are annexed by PRU. PRU may
+    benefit from its second army right now, but the army counter may
+    only be reinforced in these new possessions.
+  * If PRU got 4 points of less, and *Jülich* is not given to AUS,
+    *Jülich* is given to **Palatinatus**.
+  * The rest is given to PRU.
+
+If the event did not happen before TYW, it may not happen during
+TYW. However, is will happen at the same time as IV-11 (Great Elector)
+if it did not happen before.
 
 ### Event: Conversion of the Archbishop of Köln
 
-This is a religious civil war. Authorized to intervene: HOL, AUS?, SPA,
-Bavaria (as a minor), Palatinate (as a minor).
+This is a religious civil war. Authorized to intervene.
 
 Roll 1d10 on this table:
-1-2: Not coming
-3-4: LD G
-5-7: A- G
-8-9: A- LD G
-10+: A+ G
+ * 1-2: Not coming
+ * 3-4: LD G
+ * 5-7: A- G
+ * 8-9: A- LD G
+ * 10+: A+ G
 
 Add +3 for Bavaria, +1 for Palatinate if Palatinate is not at war. No
 reinforcement roll. 50 D$ will by a +1 for Bavaria/Palatinate. The
@@ -73,7 +131,7 @@ the end of the turn wins.
 
 Statu quo: Any other solution.
 
-SPA and HOL intervene as they see fit.
+SPA and HOL intervene with only one small stack.
 
 Free passage granted in the HRE for the course of
 the war. The Emperor has to intervene.
@@ -89,14 +147,14 @@ Archbishopric goes to MA (unless already better) of SPA
 if HOL did intervene, else goes to MA (unless already better) of
 AUS (if major), else goes to neutral.
 
-## History of Palatinate and Bavaria (done)
+## History of Palatinate and Bavaria
 
 Palatinate is in fact up to four lines:
 
-* Duchy of Zweibrücken
-* Palatinate of the Rhine
-* Palatinate Neuburg
-* Palatinate Sulzbach
+  * Duchy of Zweibrücken
+  * Palatinate of the Rhine
+  * Palatinate Neuburg
+  * Palatinate Sulzbach
 
 These lines are cousin to the Bavarian lines of the Wittelsbach, and
 indeed in 1799, all territories became Bavarian (well, sort of: the
@@ -110,7 +168,7 @@ Palatinate. Besides giving a claim of Sweden on Bavaria, nothing much.
 The second line became extinct in 1685. It converted in 1559 (end of
 pII) to protestantism, and probably represents best the *Palatinate
 minor*. It became extinct in 1685 (T40). Fragmented territory,
-mostly Mannheim.
+mostly Mannheim. It was merged with the third line.
 
 The third line joined the Protestant in 1608. However, it remained
 strictly neutral. Mainly noted for inheriting Jülich and Cleves (aka
@@ -121,15 +179,39 @@ TYW. It was merged with the fourth in 1742 (T51) and Bavaria in 1777
 The fourth line had not many powers, but finally received all others,
 including Bavaria, and started the *War of Bavarian Succession*.
 
-### Event: Extinction of Palatinate
-This event (hist. turn 40) gives *Pfalz* to Bavaria. Palatinate is no
-more. If *OberPfalz* still belonged to Pfalz, then the resulting Bavaria
-is neutral (and amend event *War of Bavarian Succession*, maybe). The resulting
-country has 3 A counters.
+Time marks for Palatinate:
+
+ * 1560: **Pfalz** becomes a staunch Calvinist.
+ * 1614: *Jülich* goes to Neuburg line.
+ * 1623: *OberPfalz* goes to Bavaria (as well as the main Elector).
+ * 1648: Elector title restored.
+ * 1654: *Bremen* and Sweden go to Zweibrücken. OK. Forget it.
+ * 1685: *Pfalz* again catholic, joined with *Jülich*.
+ * 1742: Extinction of the Neuburg line, union of all lines
+   together. **Bavaria** may be considered as united to **Pfalz**.
+ * 1777: War of Bavarian succession (AUS tries to annex Bavaria).
+
+Proposal: consider Jülich part of Pfalz after the War of Jülich
+succession. Anticipate a bit the Catholic version of Pfalz, or join this
+with the Chambers of Reunion event (only if SPA did intervene on the
+behalf of Pfalz and won the province in the war of Jülich
+succession). Create a period VI event uniting Palatinate and
+Bavaria. Make a precondition of it for the war of Bavarian Succession.
+
+### Event: Union of Palatinate and Bavaria
+
+This event (hist. turn 40) gives all the territories of **Bavaria** to
+**Palatinatus**. Bavaria is no more. The diplomatic marker goes to
+Neutral. The resulting country has 3 A counters (it cannot use the both
+*Oberpfalz* counters). If the countries were involved in wars, they
+remain as if they were the owner of the OberPfalz province, but will
+propose a white peace immediately to the opponent if the other minor was
+on the other side.
 
 ### Event: War of Bavarian Succession
+
 Historic setting: Bavaria has now merged with Palatinate and possibly
-Jülich. Prussia and Saxony are against *Bavaria province* being given to
+Jülich. Prussia and Saxony are against *Bayern* being given to
 Austria (in exchange for Belgian provinces, originally, but it could
 have been anything that allowed the ruler of Bavaria to give territories
 to his illegitimate heirs).
@@ -153,39 +235,53 @@ this time.
 ### Minors
 
 
-    minorcountry{palatinat}{Electorate of Pfalz}{Palatinatus}
-    minorreligion{palatinat}{protestant}
-    minordiplo{palatinat}{10}{40}{2}{3}{4}{*}{*}
-    minorpref{palatinat}{\FRA, \HOL, \PRU, \POL, \ENG, \HIS, \AUS, \VEN, \POR, \RUS, \SUE, \TUR}
-    minorfid{palatinat}{9}
-    minorcapital{palatinat}{Pfalz}7
-    minorprovince{palatinat}{OberPfalz}7
-    minorbasicforces{palatinat}{\ARMY\faceplus}
-    minorbasicrenforts{palatinat}{\LD}
-    minorarmyclass{palatinat}{Latin}{III}
-    minorHRE[Elector]{palatinat}
-    minorforces{palatinat}{2 \ARMY, 2 \LD}
-    minorspecial{palatinat}{Electorat of the \HRE.}
-    minorspecial{palatinat}{May lose its second \ARMY,
-    province{OberPfalz} and the electorate after \eventref{pIV:TYW}.}
-    
-    minorcountry{baviere}{Duchy of Bavaria}{Bavaria}
-    minorHRE{baviere}
-    minorreligion{baviere}{catholique}
-    minordiplo{baviere}{10}{20}{2}{4}{6}{*}{*}
-    minorfid{baviere}{16}
-    minorgeo{baviere}{FRA+1}
-    minorpref{baviere}{\SPA, \FRA, \HOL, \VEN, \POR, \ENG, \SUE, \AUS, \RUS, \TUR, \PRU}
-    minorcapital{baviere}{Bayern}9
-    minorbasicforces{baviere}{\ARMY\facemoins, \LD}
-    minorbasicrenforts{baviere}{\LD}
-    minorarmyclass{baviere}{Latin}{III}
-    minorforces{baviere}{\ARMY, 3 \LD}
-    minorspecial{baviere}{After dynastic action \shortdynasticaction{C}{4} has been played, \HAB\ has a +1 geopolitic bonus for diplomatic actions on Bavaria.}
-    minorspecial{baviere}{May use two \ARMY\ during \eventref{pIV:TYW} and \eventref{pIV:Bohemian Revolt}.}
-    minorspecial{baviere}{May permanently gain a second \ARMY, \province{OberPfalz} and an electorate as a consequence of \eventref{pIV:TYW}.}
+    \minorcountry{palatinat}{Electorate of Pfalz}{Palatinatus}
+    % Strongly protestant (wave 3)
+    \minorreligion{palatinat}{protestant}
+    \minordiplo{palatinat}{10}{40}{2}{3}{4}{*}{*}
+    \minorreligion{palatinat}{protestant}
+    \minorfid{palatinat}{9}
+    % Catholic (at beginning and late-game)
+    %\minorreligion{palatinat}{catholic}
+    %\minordiplo{palatinat}{5}{60}{2}{3}{4}{*}{*}
+    %\minorfid{palatinat}{12}
+    % Weakly protestant (wave 1, maybe after TYW)
+    %\minorreligion{palatinat}{protestant}
+    %\minordiplo{palatinat}{8}{50}{2}{3}{4}{*}{*}
+    %\minorfid{palatinat}{12}
+    \minorpref{palatinat}{\FRA, \HOL, \PRU, \POL, \ENG, \SPA, \AUS, \VEN, \POR, \RUS, \SUE, \TUR}
+    \minorcapital{palatinat}{Pfalz}7
+    \minorprovince{palatinat}{OberPfalz}7
+    \minorbasicforces{palatinat}{\ARMY\faceplus}
+    \minorbasicrenforts{palatinat}{\LD}
+    \minorarmyclass{palatinat}{Latin}{III}
+    \minorHRE[Elector]{palatinat}
+    \minorforces{palatinat}{2 \ARMY, 2 \LD}
+    \minorspecial{palatinat}{Electorat of the \HRE.}
+    \minorspecial{palatinat}{May lose its second \ARMY, \province{OberPfalz} and the electorate after \eventref{pIV:TYW}.}
+    \minorspecial{palatinat}{May gain \province{Jülich}.}
+    \minorspecial{palatinat}{May merge with \paysbaviere.}
+    \minorspecial{palatinat}{Has Fidelity 12 unless strongly Protestant.}
+    \minorspecial{palatinat}{Prefers the Emperor, then \AUS and \SPA while Catholic.}
 
-## History of Trier (done)
+    \minorcountry{baviere}{Duchy of Bavaria}{Bavaria}
+    \minorHRE[Potential elector]{baviere}
+    \minorreligion{baviere}{catholique}
+    \minordiplo{baviere}{10}{20}{2}{4}{6}{*}{*}
+    \minorfid{baviere}{16}
+    \minorgeo{baviere}{FRA+1}
+    \minorpref{baviere}{\SPA, \FRA, \HOL, \VEN, \POR, \ENG, \SUE, \AUS, \RUS, \TUR, \PRU}
+    \minorcapital{baviere}{Bayern}9
+    \minorbasicforces{baviere}{\ARMY\facemoins, \LD}
+    \minorbasicrenforts{baviere}{\LD}
+    \minorarmyclass{baviere}{Latin}{III}
+    \minorforces{baviere}{\ARMY, 3 \LD}
+    \minorspecial{baviere}{After dynastic action \shortdynasticaction{C}{4} has been played, \HAB\ has a +1 geopolitic bonus for diplomatic actions on Bavaria.}
+    \minorspecial{baviere}{May use two \ARMY\ during \eventref{pIV:TYW} and \eventref{pIV:Bohemian Revolt}.}
+    \minorspecial{baviere}{May permanently gain a second \ARMY, \province{OberPfalz} and an electorate as a consequence of \eventref{pIV:TYW}.}
+    \minorspecial{palatinat}{May merge with \payspalatinat.}
+
+## History of Trier
 
 The Archbishopric of Trier mostly had a territorial base. As such, it
 was run over and the city pillaged several times over the period (mostly
@@ -196,19 +292,19 @@ Palatinate).
 
 (left as-is)
 
-    minorcountry{treves}{Archbishopric of Trier}{Trevorum}
-    minorreligion{treves}{catholique}
-    minordiplo{treves}{8}{30}{1}{4}{5}{*}{*}
-    minorpref{treves}{\SPA, \AUS, \FRA, \POL, \HOL, \VEN, \PRU, \ENG, \POR, \RUS, \SUE, \TUR}
-    minorfid{treves}{14}
-    minorcapital{treves}{Trier}4
-    minorbasicforces{treves}{\LD}
-    minorarmyclass{treves}{Latin}{III}
-    minorHRE[Elector]{treves}
-    minorforces{treves}{\LD}
-    minorspecial{treves}{Electorate of the \HRE.}
+    \minorcountry{treves}{Archbishopric of Trier}{Trevorum}
+    \minorreligion{treves}{catholique}
+    \minordiplo{treves}{8}{30}{1}{4}{5}{8}{*}
+    \minorpref{treves}{\SPA, \AUS, \FRA, \POL, \HOL, \VEN, \PRU, \ENG, \POR, \RUS, \SUE, \TUR}
+    \minorfid{treves}{14}
+    \minorcapital{treves}{Trier}4
+    \minorbasicforces{treves}{\LD}
+    \minorarmyclass{treves}{Latin}{III}
+    \minorHRE[Elector]{treves}
+    \minorforces{treves}{\LD}
+    \minorspecial{treves}{Electorate of the \HRE.}
 
-## History of Mainz (done)
+## History of Mainz and Franconia
 
 The territory of Mainz was very fragmented (from Erfurt to Mainz, and,
 in fact, very little territory around Mainz). Most of it is more or less
@@ -216,27 +312,44 @@ the eastern half of the current province. Many losses incurred during
 the reformation, compensated (partially) during the TYW. No military
 action beyond being burned once, apparently.
 
-I propose to include the Archbishopric of Mainz in the Franconia minor
-(other bishoprics). The territory is reaffected to Hesse (Darmstadt
-house).
+Other large Bishoprics and HRE territorial existed in the centre of
+Germany. They more or less occupy the territory of *Franken*, with some
+parts to be removed to form the southern parts of Hesse: namely the
+bishoprics of Fulda, Würzburg and Bamberg. These large territories more
+or less cover the old territory of Franconia (the Würzburg prince-bishop
+would style himself Duke in Franconia). During TYW, cities were stormed
+by SUE. **Franconia** will use the former shield of **Turingia**.
 
-However, the Archbishopric is represented as a minor without any
+I propose to include the Archbishopric of Mainz forces in the
+**Franconia** minor (other bishoprics). The territory is reaffected to
+**Hessia** (Darmstadt house).
+
+However, the Archbishopric is still represented as a minor without any
 territory if this rule is acceptable.
 
-    minorcountry{mayence}{Archbishopric of Mainz}{Mogentium}
-    minorreligion{mayence}{catholique}
-    minordiplo{mayence}{6}{40}{3}{2}{5}{*}{*}
-    minorpref{mayence}{\FRA, \AUS, \SPA, \POL, \PRU, \HOL, \VEN, \POR, \ENG, \RUS, \SUE, \TUR}
-    minorfid{mayence}{10}
-    minorfixedincome{mayence}0{Prince-Bishopric}{5}
-    minorbasicforces{mayence}{}
-    minorarmyclass{mayence}{Latin}{III}
-    minorHRE{mayence}
-    minorspecial{mayence}{Electorat of the \HRE.}
-    minorforces{mayence}{\LD}
+    \minorcountry{mayence}{Archbishopric of Mainz}{Mogentium}
+    \minorreligion{mayence}{catholique}
+    \minordiplo{mayence}{6}{40}{3}{2}{5}{8}{*}
+    \minorpref{mayence}{\FRA, \AUS, \SPA, \POL, \PRU, \HOL, \VEN, \POR, \ENG, \RUS, \SUE, \TUR}
+    \minorfid{mayence}{12}
+    \minorfixedincome{mayence}0{Prince-Bishopric}{5}
+    \minorbasicforces{mayence}{}
+    \minorarmyclass{mayence}{Latin}{III}
+    \minorHRE{mayence}
+    \minorspecial{mayence}{Electorat of the \HRE.}
 
+    \minorcountry{franconia}{Bishoprics of Würzburg, Bamberg, Mainz and Fulda}{Franconia}
+    \minorreligion{franconia}{catholique}
+    \minordiplo{franconia}{5}{40}{2}{2}{2}{*}{*}
+    \minorpref{franconia}{\AUS, \SPA, \POL, \VEN, \POR, \PRU, \FRA, \HOL, \ENG, \RUS, \SUE, \TUR}
+    \minorfid{franconia}{10}
+    \minorcapital{Franken}{6}
+    \minorbasicforces{franconia}{2\LD}
+    \minorarmyclass{franconia}{Latin}{III}
+    \minorHRE{franconia}
+    \minorforces{franconia}{3\LD}
 
-## History of Turingia and Saxonia (done)
+## History of Turingia and Saxonia
 
 ### Ernest and Albert
 
@@ -302,37 +415,37 @@ TODO?
 
 **Turingia** may possibly use the a simple black on top and yellow at bottom coat of arms.
 
-    minorcountry{thuringe}{Ernestine line of the Wettin House}{Turingia}
-    minorreligion{thuringe}{protestant}
-    minordiplo{thuringe}{4}{60}{1}{3}{4}{*}{*}
-    minorpref{thuringe}{\PRU,\SPA, \HOL, \ENG, \AUS, \SUE, \VEN, \POL, \FRA, \POR, \RUS, \TUR}
-    minorfid{thuringe}{14}
-    minorcapital{thuringe}{Thüringen}7
-    minorprovince{thuringe}{Franken}6
-    minorbasicforces{thuringe}{\LD}
-    minorarmyclass{thuringe}{Latin}{III}
-    minorHRE[Elector]{thuringe}
-    minorforces{thuringe}{2\LD}
-    minorspecial{thuringe}{Begins as an Electorate of the HRE. May lose it to \payssaxe.}
+    \minorcountry{thuringe}{Ernestine line of the Wettin House}{Turingia}
+    \minorreligion{thuringe}{protestant}
+    \minordiplo{thuringe}{4}{60}{1}{3}{4}{*}{*}
+    \minorpref{thuringe}{\PRU,\SPA, \HOL, \ENG, \AUS, \SUE, \VEN, \POL, \FRA, \POR, \RUS, \TUR}
+    \minorfid{thuringe}{14}
+    \minorcapital{thuringe}{Thüringen}7
+    \minorprovince{thuringe}{Franken}6
+    \minorbasicforces{thuringe}{\LD}
+    \minorarmyclass{thuringe}{Latin}{III}
+    \minorHRE[Elector]{thuringe}
+    \minorforces{thuringe}{2\LD}
+    \minorspecial{thuringe}{Begins as an Electorate of the HRE. May lose it to \payssaxe.}
 
-    minorcountry{saxe}{Duchy of Saxony}{Saxonia}
-    minorreligion{saxe}{protestant}
-    minordiplo{saxe}{6}{30}{1}{3}{4}{*}{*}
-    minorpref{saxe}{\POL, \FRA, \ENG, \SUE, \HOL, \RUS, \VEN, \POR, \SPA, \AUS, \PRU, \TUR}
-    minorfid{saxe}{11}
-    minorcapital{saxe}{Sachsen}9
-    minorprovince{saxe}{Anhalt}8
-    minorbasicforces{saxe}{\ARMY\faceplus, 1 \LeaderG}
-    minorbasicrenforts{saxe}{\LD}
-    minorarmyclass{saxe}{Latin}{IIIM}
-    minorHRE[Potential elector]{saxe}
-    minorforces{saxe}{\ARMY, 2 \LD}
-    minorbonusrenforts{saxe}{+2 \EUminorremark{during periods \period{I} to \period{IV}.}{(pI--pIV)}}
-    minorspecial{saxe}{Electorate of the \HRE.}
-    minorspecial{saxe}{May become a special vassal of \POL\ after \eventref{pV:Saxon King Poland}.}
-    minorgeo{\HAB +1}
+    \minorcountry{saxe}{Duchy of Saxony}{Saxonia}
+    \minorreligion{saxe}{protestant}
+    \minordiplo{saxe}{6}{30}{1}{3}{4}{*}{*}
+    \minorpref{saxe}{\POL, \FRA, \ENG, \SUE, \HOL, \RUS, \VEN, \POR, \SPA, \AUS, \PRU, \TUR}
+    \minorfid{saxe}{11}
+    \minorcapital{saxe}{Sachsen}9
+    \minorprovince{saxe}{Anhalt}8
+    \minorbasicforces{saxe}{\ARMY\faceplus, 1 \LeaderG}
+    \minorbasicrenforts{saxe}{\LD}
+    \minorarmyclass{saxe}{Latin}{IIIM}
+    \minorHRE[Potential elector]{saxe}
+    \minorforces{saxe}{\ARMY, 2 \LD}
+    \minorbonusrenforts{saxe}{+2 \EUminorremark{during periods \period{I} to \period{IV}.}{(pI--pIV)}}
+    \minorspecial{saxe}{Electorate of the \HRE.}
+    \minorspecial{saxe}{May become a special vassal of \POL\ after \eventref{pV:Saxon King Poland}.}
+    \minorgeo{\HAB +1}
 
-## History of Brunswick (done)
+## History of Brunswick
 
 Provinces: Braunschweig, Hannover.
 
@@ -391,35 +504,52 @@ Other view:
 
 Third view (statu quo):
 
-    minorcountry{brunswick}{Duchy of Brunswick-Wolfenbuttel}{Brunsvicum}
-    minorreligion{brunswick}{protestant}
-    minordiplo{brunswick}{8}{40}{4}{3}{3}{*}{*}
-    minorpref{brunswick}{\FRA, \SPA, \AUS, \POL, \PRU, \HOL, \VEN, \POR, \SUE, \ENG, \RUS, \TUR}
-    minorfid{brunswick}{14}
-    minorcapital{brunswick}{Braunschweig}{11}
-    minorbasicforces{brunswick}{\ARMY\facemoins}
-    minorarmyclass{brunswick}{Latin}{III}
-    minorHRE{brunswick}
-    minorforces{brunswick}{\ARMY, \LD}
+    \minorcountry{brunswick}{Duchy of Brunswick-Wolfenbuttel}{Brunsvicum}
+    \minorreligion{brunswick}{protestant}
+    \minordiplo{brunswick}{8}{40}{4}{3}{3}{*}{*}
+    \minorpref{brunswick}{\FRA, \SPA, \AUS, \POL, \PRU, \HOL, \VEN, \POR, \SUE, \ENG, \RUS, \TUR}
+    \minorfid{brunswick}{14}
+    \minorcapital{brunswick}{Braunschweig}{11}
+    \minorbasicforces{brunswick}{\ARMY\facemoins}
+    \minorarmyclass{brunswick}{Latin}{III}
+    \minorHRE{brunswick}
+    \minorforces{brunswick}{\ARMY, \LD}
     
-    minorcountry{hanovre}{Duchy of Brunswick-Luneburg (later called Electorate of Hanover)}{Hanovere}
-    minorreligion{hanovre}{protestant}
-    minordiplo{hanovre}{12}{20}{1}{2}{3}{6}{*}
-    minorpref{hanovre}{\ENG, \HOL, \SUE, \FRA, \AUS, \RUS, \POL, \PRU, \POR, \VEN, \SPA, \TUR}
-    minorfid{hanovre}{15}
-    minorgeo{hanovre}{\ENG +1 in periods \period{VI} and \period{VII}}
-    minorprovince{hanovre}{Osnabruck}7
-    minorcapital{hanovre}{Hannover}{11}
-    minorbasicforces{hanovre}{\ARMY\facemoins, \LD, 1 \LeaderG}
-    minorarmyclass{hanovre}{Latin}{III}
-    minorHRE{hanovre}
-    minorforces{hanovre}{\ARMY, 2 \LD}
+    \minorcountry{hanovre}{Duchy of Brunswick-Luneburg (later called Electorate of Hanover)}{Hanovere}
+    \minorreligion{hanovre}{protestant}
+    \minordiplo{hanovre}{12}{20}{1}{2}{3}{6}{*}
+    \minorpref{hanovre}{\ENG, \HOL, \SUE, \FRA, \AUS, \RUS, \POL, \PRU, \POR, \VEN, \SPA, \TUR}
+    \minorfid{hanovre}{15}
+    \minorgeo{hanovre}{\ENG +1 in periods \period{VI} and \period{VII}}
+    \minorprovince{hanovre}{Osnabruck}7
+    \minorcapital{hanovre}{Hannover}{11}
+    \minorbasicforces{hanovre}{\ARMY\facemoins, \LD, 1 \LeaderG}
+    \minorarmyclass{hanovre}{Latin}{III}
+    \minorHRE{hanovre}
+    \minorforces{hanovre}{\ARMY, 2 \LD}
 
 An Elector is added with the event *Annexation of Hanover*, and goes to
 **Brunsvicum** as long as the Annexation is not effective (in case of
 pre-conditions not fulfilled). Modify the text of the annexation.
 
 In the statu quo situation, the Electorate is given to **Hanover**.
+
+## History of Baden-Württemberg (TODO)
+
+## History of Hansa (TODO)
+
+## History of Brandenburg (TODO)
+
+## History of Hesse-Nassau (TODO)
+
+## History of Münster (TODO)
+
+## History of Ansbach-Bayreuth (TODO)
+
+## History of Liège (TODO)
+
+## History of Bohemia (TODO)
+
 
 # Rules proposal
 
@@ -496,6 +626,13 @@ Legend:
 * E → Elector / Ê → loses electorate / e → late Elector / . → nothing
 * A → Army / * → Several armies / D → several LD / d → 1 LD / . → no troops
 
+## New events
+
+ *  [War of the Jülich succession](#event-war-of-the-jülich-succession)
+ *  Event: Conversion of the Archbishop of Köln
+ *  Event: Union of Palatinate and Bavaria
+
+
 ## Territory modifications
 
 Ansbach-Bayreuth province created on top of Oberpfalz.
@@ -547,6 +684,9 @@ Trier now touches Lorraine
 * Pfalz → Luxemburg removed
 
 # Quick notes
+
+German Peasant war: simultaneous revolts **Wurttemberg**, **Bavaria**,
+**Baden**, **Alsatia** and **Palatinatus**. Wow.
 
 Baden: union of Baden (split in two, one catholic, the largest?, one
 protestant)+Breisgau/Friburg (catholic)+Fuerstenberg (catholic).
