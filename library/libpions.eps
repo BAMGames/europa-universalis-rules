@@ -1243,7 +1243,9 @@ def
     5 beginpion
     blasonsmallright
     nameX communnomchef
-    (img:mission) 23 5 0.35 putimage
+    (img:mission) 23 5 0.35 
+    pays (turquie) eq { pop (img:mecca) 23 5 0.35 }if
+    putimage
     endpion
 } def
 
