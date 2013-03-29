@@ -75,7 +75,8 @@ done
 
 FINISHED=
 while [ -n "$1" ]&&[ -z "$FINISHED" ]; do
-    cat $SCRIPT|sed -e $SUB > $TMPS
+    echo "(gimp-message-set-handler 1)" > $TMPS
+    cat $SCRIPT|sed -e $SUB >> $TMPS
     COUNT=0
     ARGS=""
     while [ "$COUNT" -lt "$LIMIT" ]&&[ -n "$1" ]; do
@@ -90,7 +91,9 @@ while [ -n "$1" ]&&[ -z "$FINISHED" ]; do
             echo -n " \"${THIRD}\"" >> $TMPS
         fi
         echo -n ")" >> $TMPS
+        echo -n "(gimp-message \"${file}\")" >> $TMPS        
     done
+    echo >> $TMPS
     X="(load \"$TMPS\")"
     echo "Calling gimp/${FUNCTION} for$ARGS" >> $LOGFILE
     if [ "$VERSION" -gt 22 ]; then
