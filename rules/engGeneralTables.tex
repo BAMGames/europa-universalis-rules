@@ -534,7 +534,7 @@
   \GTcontent{
     \graytabular\begin{tabular}{c|l|l|l|c} 
       1d10  & \multicolumn{4}{c}{Minor country attitude}\\\ghline\noalign{\global\countrow=0}
-      +mod. & Offensive & Defensive & Naval & Leader \\\ghline\hline
+      +mod. & Offensive & Defensive & Naval & Leader? \\\ghline\hline
       \leq1 & 1\LD      & 1\LD      & \de   & 0 \\\ghline
       2	    & 1\LD      & \fortress & \de   & 0 \\\ghline
       3	    & 2\LD      & 1\LD/\fortress & \de/\CM & 1 \\\ghline
@@ -576,8 +576,8 @@
   \mbox{1\de=1\NDE or 1\NGD,} \mbox{1\ND=1\NWD, 1 \VGD, 2\NGD or 1\NTD.}\\
   \mbox{\CM=1 multiple campaign}.
   \mbox{{\bf Note:} 1 free active each round}.\\
-  Leaders: reroll 1d10, if result\leq\emph{Leaders?} column, 1 \leader{random}\\
-  During periods V--VII, add \fortress\ if Income\geq16 and at least 2 provinces.
+  Leader: reroll 1d10, if result\leq\emph{Leader?} column, 1 \leader{random}\\
+  During pV--VII, add \fortress\ to basic forces if Income\geq16.
 }
 \newcommand{\minorforcesb}{
   \begin{modlist}
@@ -746,7 +746,7 @@
     \end{tabular}
   }
   \GTlegend{
-    *= x2 before \terme{Arquebuse} **=x2 before Turn 40 \dag=in \ROTW,
+    *= x2 before \terme{Arquebuse} **=x2 before Turn 40\\ \dag=in \ROTW,
     only arsenal may be at level 3 or more.
   }
   \GTdecorate
@@ -2082,11 +2082,12 @@
     \GTheader{Modifiers against Natives}
     \begin{modlist}
     \item[+1] per \LD defending
-    \item[+2/+4] per \ARMY\facemoins/\faceplus defending
+%    \item[+2/+4] per \ARMY\facemoins/\faceplus defending
+    \item[+M] \Man of a defending leader
     \item[+N] Level of the fortress
-    \item[-1] per Native \LD
+    \item[-1] per attacking \LD
     \item[-1] per third party \COL/\TP in the \terme{area}
-    \item[-M] \Man of a native leader
+    \item[-M] \Man of an attacking leader
     \item[+6/+3] if Natives beaten this turn (routed/not routed)
     \end{modlist}
   }

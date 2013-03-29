@@ -1243,7 +1243,9 @@ def
     5 beginpion
     blasonsmallright
     nameX communnomchef
-    (img:mission) 23 5 0.35 putimage
+    (img:mission) 23 5 0.35 
+    pays (turquie) eq { pop (img:mecca) 23 5 0.35 }if
+    putimage
     endpion
 } def
 
@@ -1604,6 +1606,27 @@ def
     (faceplus) communrevolte
     autreface
     (facemoins) communrevolte
+    endpion
+} def
+
+/communrebellion {
+    (Rebellion   ) 50 80 100 18 italic
+    dup (faceplus) eq {
+    (img:soldatrebelle)  8 9 .3 putimage
+    (img:soldatrebelle) 40 2 .3 putimage
+    }{(img:soldatrebelle) 30 6 .3 putimage}ifelse
+    1 -80 80 begints fg_ sc xobject endts
+    blasontopright
+} def
+/pionREBELLION {% (aucun argument) %%
+    /pays (rebelles) def
+    /nompion (Counter Rebellion) def
+    /filepion (Generic_Rebellion) def
+    /style 1 def
+    2 beginpion
+    (faceplus) communrebellion
+    autreface
+    (facemoins) communrebellion
     endpion
 } def
 

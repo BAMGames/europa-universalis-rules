@@ -254,6 +254,7 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engGreatCampaign.tex\
  engHolland.tex\
  engIncomes.tex\
+ engInterphase.tex\
  engIntroduction.tex\
  engLeaders.tex\
  engMilitary.tex\
@@ -266,6 +267,7 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engPoliticalRules.tex\
  engPortugal.tex\
  engPrussia.tex\
+ engRedeployment.tex\
  engRussia.tex\
  engScenarios.tex\
  engSpain.tex\
@@ -419,7 +421,7 @@ for xtarget in euTables.pdf:TEXT engAlpha.pdf:TEX euMinors.pdf:TEXH euObjectives
 root=$${xtarget#*:};\
 rm -f $(RULESDIR)/$${target} 2>&1 > /dev/null;\
 DEPENDS=1 make -s $(RULESDIR)/$$target;\
-grep -v ENOENT /tmp/eu8depends.txt |grep O_RDONLY|cut -f2 -d\"|grep -v ^/|sort|uniq>/tmp/eu8depends2.txt;\
+grep -v ENOENT /tmp/eu8depends.txt |grep O_RDONLY|cut -f2 -d\"|grep -v ^/|LC_ALL=C sort|uniq>/tmp/eu8depends2.txt;\
 echo -n "$${root}FIGFILES" '= $$(addprefix $$(FIGDIR)/,' >> $(RULESDIR)/rules.mk2;\
 grep ^$${figdir} /tmp/eu8depends2.txt|sed -e "s|^$${figdir}/||g"|xargs -n 1 echo -ne '\\\n' >> $(RULESDIR)/rules.mk2;\
 echo ")" >> $(RULESDIR)/rules.mk2;\
@@ -446,7 +448,7 @@ $(RULESDIR)/view: $(RULESDIR)/engAlpha.pdf
 	@$(BINDIR)/acroread $^
 
 $(RULESDIR)/errors:
-	@(if [ -f "$(RULESDIR)/engAlpha.log" ]; then cat $(RULESDIR)/engAlpha.log ; else tar xzOf $(RULESDIR)/engAlpha.tgz engAlpha.log;fi)|perl -e 'BEGIN {$$DISPLAY=0;$$BUF="";$$currpage=0} while (<>) {chomp; s/\x9f/\xC2\xA7/g; $$currpage=sprintf("%03d",$$1+1) if (/^Page:(.*)$$/); $$DISPLAY=1 if (/(^..Package.*Warning)|(^LaTeX War)|(^pdfTeX war)|(^Overfull)|(^Underfull)|(^Missing character:)/ || s/^.*(pdfTeX war.*)$$/$$1/g);next unless ($$DISPLAY);$$BUF.=$$_;next unless (/^$$/ or /^Missing character:/);if ($$BUF=~ /^Overfull/ or $$BUF=~/^Underfull/) {$$BUF=~s/\\LUC[^T]*/~~~\\T/g;$$BUF=~s/[\\\\][A-Z][^ ]* /\xC2\xB7/g;$$BUF=~s/\xC2\xB7//g};printf "%s: %s\n",$$currpage,$$BUF;$$BUF="";$$DISPLAY=0;};'|sort
+	@(if [ -f "$(RULESDIR)/engAlpha.log" ]; then cat $(RULESDIR)/engAlpha.log ; else tar xzOf $(RULESDIR)/engAlpha.tgz engAlpha.log;fi)|perl -e 'BEGIN {$$DISPLAY=0;$$BUF="";$$currpage=0} while (<>) {chomp; s/\x9f/\xC2\xA7/g; $$currpage=sprintf("%03d",$$1+1) if (/^Page:(.*)$$/); $$DISPLAY=1 if (/(^..Package.*Warning)|(^LaTeX War)|(^pdfTeX war)|(^Overfull)|(^Underfull)|(^Missing character:)/ || s/^.*(pdfTeX war.*)$$/$$1/g);next unless ($$DISPLAY);$$BUF.=$$_;next unless (/^$$/ or /^Missing character:/);if ($$BUF=~ /^Overfull/ or $$BUF=~/^Underfull/) {$$BUF=~s/\\LUC[^T]*/~~~\\T/g;$$BUF=~s/[\\\\][A-Z][^ ]* /\xC2\xB7/g;$$BUF=~s/\xC2\xB7//g};printf "%s: %s\n",$$currpage,$$BUF;$$BUF="";$$DISPLAY=0;};'|LC_ALL=C sort
 
 $(RULESDIR)/reformat:
 	@cd $(RULESDIR);for i in engAlpha.tex engEvnt*.tex engAnnexe.tex engVictories.tex engDiplomacyAlliance.tex engThePowers.tex engDiplomacy.tex engDiplomacyMinor.tex engExpenses.tex engExpAdmin.tex engExpLogistic.tex engDiplomacyWar.tex engPoliticalRules.tex engBasic.tex engObjectives.tex euObjectives.tex; do ../bin/reformattex $$i; done

@@ -235,13 +235,25 @@ event only affects the player rolling it.
 of piracy.
 \bparag Combined with the \ref{eco:Piracy}, it is now possible to place
 \emph{Piracy} on the map.
+\bparag The result of the die is kept. It will be used during the
+Administrative phase to handle the variation of prices of exotic
+resources. See~\ref{chExpenses:ExoticResourcesPrices}.
 
+\begin{designnote}
+  The die roll for economic situation must be made during the event
+  phase as it has an influence on piracy (see below). However, variation
+  of prices must be made after the diplomatic phase as speculation has
+  an effect on prices and is declared during diplomacy. Thus, the result
+  of this die must be kept and reused later in the turn.
 
+  In practice, speculation is rare and the important point is that
+  prices variation occurs once per turn.
+\end{designnote}
 
 
 \section{Piracy}\label{chEvents:Piracy}
 
-
+\GTtable{ecopiracypiracy}
 
 \subsection{Raise of the Piracy}
 
@@ -277,18 +289,16 @@ check whether they stay at see or try and loot an establishment.
 
 \aparag[Targets of piracy] Depending on the target, roll for the \STZ
 indicated, in order.
-\bparag Everywhere: \seazoneCaraibes, \seazone{Atlantique W},
-\seazoneIndien, \seazoneOman, \seazoneGuinee, \seazoneRecife,
-\seazonePerou, \seazoneFormose, \seazonePatagonie, \seazoneTempetes,
+\bparag Everywhere: \stz{Caraibes}, \stz{Atlantique W}, \stz{Indien},
+\stz{Oman}, \stz{Guinee}, \stz{Recife}, \stz{Perou}, \stz{Formose},
+\stz{Patagonie}, \stz{Tempetes}, \stz{Canarias}.
+\bparag America: \stz{Caraibes}, \stz{Atlantique W}, \stz{Guinee},
+\stz{Recife}, \stz{Patagonie}, \stz{Tempetes}, \stz{Canarias}.
+\bparag Asia: \stz{Indien}, \stz{Oman}, \stz{Perou}, \stz{Formose},
 \stz{Canarias}.
-\bparag America: \seazoneCaraibes, \seazone{Atlantique W},
-\seazoneGuinee, \seazoneRecife, \seazonePatagonie, \seazoneTempetes,
-\stz{Canarias}.
-\bparag Asia: \seazoneIndien, \seazoneOman, \seazonePerou,
-\seazoneFormose, \stz{Canarias}.
 \bparag Yes, \stz{Canarias} is both for piracy in America and in
-Asia. Yes \seazoneGuinee and \seazoneTempetes are only for America. Yes,
-\seazonePerou is for Asia.
+Asia. Yes \stz{Guinee} and \stz{Tempetes} are only for America. Yes,
+\stz{Perou} is for Asia.
 
 \aparag[Appearance threshold]\label{chEvents:Piracy Level}
 The appearance threshold for \PIRATE for each \ROTW \STZ is written on
@@ -452,10 +462,10 @@ because a specific event description told to apply a \RD event), then a
 and~\ruleref{chEvents:diplomacy}.
 \bparag If one or more revolts already occurred this turn, then the
 event given by the number occurs.
-\bparag Events creating revolts without explicitly applying a \RD event
-(eg \ref{pI:Revolt Comuneros}) are not considered as a \RD and thus do
-not prevent further 'R' result to be treated as a \RD rather than a
-number.
+\bparag Events creating revolts or rebellions without explicitly
+applying a \RD event (eg \ref{pI:Revolt Comuneros}) are not considered
+as a \RD and thus do not prevent further 'R' result to be treated as a
+\RD rather than a number.
 \aparag If the result is a number, the corresponding event occurs
 \bparag Check the event description for effects and applicability.
 
@@ -722,8 +732,22 @@ instead of a \REVOLT. Ignore the troops or capture of the city if any
 and use a \LeaderA instead of a \LeaderG. The \PIRATE attacks all
 \TradeFLEET in the \CTZ/\STZ.
 
+\subsection{Revolts and Rebellions}
+\aparag Revolts may occurs both from \RD events or during civil wars
+events. In the second case, they are called Rebellions.
+\bparag Both of these case may put \REVOLT (or \REBELLION) counters as
+well as \ARMY or \LD in play.
+\bparag Unless specified otherwise, use counters labelled ``Rebellion''
+when they come from a political event and counters labelled ``Revolt''
+in all other cases (\RD, \TUR survival roll, \ldots)
+\bparag ``Revolt'' and ``Rebellion'' counters are not considered
+friendly to one another. That is, if a \RD occurs during a civil war, it
+is considered to be a peasants revolting against any and all factions at
+war.
 
-
+\aparag Apart from this, \REVOLT and \REBELLION work in the same
+way. Especially for rolling dice to determine where it occurs and at
+which strength.
 
 \section{Technology adjustment}\label{chEvents:Technology}
 
