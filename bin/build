@@ -1,0 +1,149 @@
+#!/bin/sh
+set -e
+CCOL=0
+if [ -n "$DEBUG" ]; then set -x; fi
+
+statusReportColumn() {
+    if [ -n "$DEBUG" ]; then set +x; fi
+    exec < /dev/tty
+    oldstty=$(stty -g)
+    stty raw -echo min 0
+    tput u7 > /dev/tty
+    read -r -d R -a pos
+    stty $oldstty
+    CCOL="${pos#*;}"
+    CCOL=$((CCOL-1))
+    if [ -n "$DEBUG" ]; then set -x; fi
+}
+newline() {
+    statusReportColumn
+    if [ "$CCOL" -gt 0 ]; then
+        echo
+    fi
+}
+finish() {
+    a=$?
+    newline
+    trap - HUP INT QUIT KILL TERM EXIT
+    exit $a
+}
+trap finish HUP INT QUIT KILL TERM EXIT
+
+setup() {
+    HOMEDIR=$(git rev-parse --show-cdup)
+    HOMEDIR=${HOMEDIR%/}
+    HOMEDIR=${HOMEDIR:-.}
+    ABSHOMEDIR=$(git rev-parse --show-toplevel)
+    TMPD="${ABSHOMEDIR}/.tmp"
+    BINDIR=${ABSHOMEDIR}/bin
+    LIBDIR=${ABSHOMEDIR}/bin
+    Xttybold=$(tput bold)
+    Xttyreset=$(tput sgr0)
+    Xttyinv=$(tput smso)
+    Xttystd=$(tput rmso)
+    Xttysou=$(tput smul)
+    Xttynos=$(tput rmul)
+    if [ -z "$COLS" ]; then
+        XCOLS=$(stty size|cut -f2 -d' ')
+    else
+        XCOLS="$COLS"
+    fi
+    mkdir -p ${ABSHOMEDIR}/.tmp
+    touch ${TMPD}/ensure_install
+    . ${TMPD}/ensure_install
+}
+
+LASTSTATUS=
+status() {
+    local dest
+    if [ "$1" != "$LASTSTATUS" ]; then
+        [ -z "$LASTSTATUS" ] || echo
+        echo "${Xttyinv}${1}${Xttystd}"
+        LASTSTATUS="$1"
+    fi
+    statusReportColumn
+    dest="${#2}"
+    dest=$((dest+2+CCOL))
+    if [ "$dest" -gt $XCOLS ]; then
+        echo
+        CCOL=0
+    fi
+    if [ "$CCOL" = 0 ]; then
+        echo -n "    "
+    fi
+    echo -n "[${2}]"
+}
+
+recordInstall() {
+    sed < ${TMPD}/ensure_install -e "/^$1=/ d" > ${TMPD}/ensure_install.tmp
+    if [ -n "$2" ]; then
+        echo "$1=$2" >> ${TMPD}/ensure_install.tmp
+    fi
+    mv ${TMPD}/ensure_install.tmp ${TMPD}/ensure_install
+    . ${TMPD}/ensure_install
+    rm -f ${TMPD}/TODO
+}
+
+build() {
+    TARGET="${1}"
+    shift||true
+    SUBTARGET="${1:-__all__}"
+    shift||true
+    if [ "$TARGET" = "basic" ]||[ -z "$TARGET" ]; then
+        ensureGimp 1
+    fi
+    if [ "$TARGET" = "blasons" ]||[ -z "$TARGET" ]; then
+        build_blasons "$SUBTARGET" "$@"
+    fi
+}
+
+build_blasons() {
+    if [ "$1" = "__all__" ]; then
+        SUBTARGETS=$(find "${ABSHOMEDIR}/blasons/src" -name 'shield_*.xcf' \
+            |xargs -n 1 -i% basename % .xcf|cut -f2 -d_|LC_ALL=C sort)
+    else
+        SUBTARGETS="$@"
+    fi
+    echo "gimpit $HOMEDIR/blasons/src $HOMEDIR/blasons $SUBTARGETS"
+}
+
+doTest() {
+    ensureGimp 1
+    failure 1 "Something complicated" I really want to get out of that.
+}
+
+
+setup
+
+. ${BINDIR}/libbuild-help
+. ${BINDIR}/libbuild-gimp
+
+REMOVE=0
+FINISHED=0
+ACTION="build"
+
+while [ -n "$1" ]&&[ "$FINISHED" = 0 ]; do
+    case "$1" in
+        help|build)
+            ACTION="$1"
+            shift
+            FINISHED=1
+            ;;
+        *)
+            FINISHED=1
+            ;;
+    esac
+done
+
+case "$ACTION" in
+    build)
+        build "$@"
+        ;;
+    test)
+        doTest "$@"
+        ;;
+    help)
+        help
+        ;;
+esac
+exit 0

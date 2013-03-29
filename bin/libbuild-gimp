@@ -1,0 +1,24 @@
+#!/bin/sh
+
+ensureGimp() {
+    if [ -z "$CHECK_GIMP_VERSION" ]; then
+        status "Checking installation" "gimp"
+        if [ $(which gimp 2>&1|grep ^/|wc -l) -lt 1 ]; then 
+            status "Checking installation" "failed"
+            recordInstall CHECK_GIMP_VERSION ''
+        else
+            CHECK_GIMP_VERSION=$(LANG=C gimp --version | sed -e 's/[^0-9]//g' -e 's/^\(..\).*/\1/g')
+            recordInstall CHECK_GIMP_VERSION "$CHECK_GIMP_VERSION"
+        fi
+    fi
+    if [ "$CHECK_GIMP_VERSION" -ge "$1" ]; then
+            # Silently 
+        return 0
+    else
+        status "Checking installation" "gimp"
+        status "Checking installation" "failed"
+        return 1
+    fi
+}
+
+ensureGimp 1

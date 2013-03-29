@@ -1,0 +1,37 @@
+#!/bin/sh
+
+helpoption() {
+    XFCOLS=$((XCOLS-20))
+    XARG="$1"
+    ARG="${Xttysou}$1${Xttynos}"
+    if [ -n "$2" ]; then
+        XARG="$XARG $2"
+        ARG="$ARG ${Xttybold}$2${Xttyreset}"
+    fi
+    FINALCOLS=$((19+${#ARG}-${#XARG}))
+    printf "%-${FINALCOLS}s " "$ARG"
+    echo "$2"|fmt -s -w$XFCOLS|sed -e '2,$ s/^/                    /g'
+}
+helpsection() {
+    [ -z "$FIRSTHELP" ] || echo
+    FIRSTHELP=1
+    echo "${Xttyinv}$*${Xttystd}"
+    echo
+}
+help() {
+    helpsection "Basic options for build"
+    helpoption "help" "" "This help"
+    helpoption "remove" "spec" "Remove specified files in "
+    helpoption "blasons" "" "Build all the image files for the blasons in the various formats"
+    helpsection "Specifications"
+    helpoption "blasons" "" "All shield files located under blasons/src/"
+    helpoption "blasons" "x y z" "All shield files codenamed x, y or z"
+}
+failure() {
+    status="$1"
+    shift
+    helpsection "Failure in $1"
+    shift
+    echo "$@" | fmt -s
+    exit $status
+}
