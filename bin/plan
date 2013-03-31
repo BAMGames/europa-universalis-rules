@@ -1,0 +1,107 @@
+#!/usr/bin/perl
+
+
+use strict;
+use warnings;
+use JSON::PP;
+use Data::Dumper;
+
+my @axioms=();
+my @theorems=();
+my %generation=();
+my @rules;
+my $trigger=[];
+
+sub readAxioms() {
+  foreach my $axiomfile (@_) {
+    open FILE,$axiomfile;
+    while (my $line=<FILE>) {
+      chomp $line;
+      push @axioms,$line;
+    }
+    close FILE;
+  }
+}
+sub readRules() {
+  local $/;
+  open (my $fh,'<','./library/rules');
+  my $json=<$fh>;
+  my $rules=decode_json($json);
+  @rules=@{$rules};
+}
+
+sub recordGeneration() {
+  my $gen=shift @_;
+  my $actor=shift @_;
+  my $arg=shift @_;
+  foreach my $thm (@_) {
+    die "Regenerated $thm in generation $gen" if (exists $generation{$thm});
+    $generation{$thm}=[$gen,$actor,$arg];
+  }
+}
+
+sub nextGeneration() {
+  my ($gen,$previousthm) = @_;
+  my @current=@$previousthm;
+  my $rulenum=-1;
+  foreach my $rule (@rules) {
+    $rulenum++;
+    if ($rule->{'type'} eq 'pattern' ) {
+      my $pattern=$rule->{'pattern'};
+      my $patternRE=qr/$pattern/;
+      foreach my $candidate (@current) {
+        my @list;
+        if (@list = ($candidate =~ $patternRE)) {
+          my @in=();
+          my @out=();
+          foreach my $infile (@{$rule->{'in'}}) {
+            push @in, $infile;
+          }
+          foreach my $infile (@{$rule->{'out'}}) {
+            push @out, $infile;
+          }
+          my $argument=$rule->{'argument'};
+          foreach my $counter (1..$#list+1) {
+            $argument =~ s/\$$counter/$list[$counter-1]/ge;
+            foreach (@in,@out) {
+              s/\$$counter/$list[$counter-1]/ge;
+            }
+          }
+          push $trigger,{
+                         'rulenum' => $rulenum,
+                         'actor' => $rule->{'actor'},
+                         'arg' => $argument,
+                         'in' => [ @in ],
+                         'wanted' => [ @in ],
+                         'out' => [ @out ]
+                        };
+        }
+      }
+    }
+  }
+  foreach my $delayed (@$trigger) {
+    my @wanted=@{$delayed->{'wanted'}};
+    my $i=0;
+    foreach my $wanted (@wanted) {
+      if (exists($generation{$wanted})) {
+        delete  ${$delayed->{'wanted'}}[$i];
+      }
+      $i++;
+    }
+    @wanted=@{$delayed->{'wanted'}};
+    if (scalar @wanted == 0) {
+      &recordGeneration($gen,$delayed->{'actor'},$delayed->{'arg'},@{$delayed->{'out'}});
+    }
+  }
+}
+
+&readAxioms(@ARGV);
+&readRules();
+&recordGeneration(0,"AXIOM",undef,@axioms);
+my $currentgen=\@axioms;
+my $generation=1;
+my $nextgen=&nextGeneration($generation,$currentgen);
+my $morefiles=0;
+
+#print Dumper($trigger);
+print Dumper(\%generation);
