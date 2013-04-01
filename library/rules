@@ -1,15 +1,25 @@
 [
    {
+      "argument" : "$1",
       "out" : [
          "blasons/shield_$1.png",
          "blasons/shield_$1.pnm"
       ],
       "pattern" : "blasons/src/shield_(.*).xcf",
       "in" : [
-         "blasons/src/shield_$1.xcf"
+         "blasons/src/shield_$1.xcf",
+         ".tmp/proof-gimp",
+         "blasons/templates/modele.xcf"
       ],
       "type" : "pattern",
-      "actor" : "BLASONS",
-      "argument" : "$1"
+      "actor" : "BLASONS"
+   },
+   {
+      "out" : [
+         ".tmp/proof-gimp"
+      ],
+      "in" : [],
+      "type" : "simple",
+      "actor" : "CHECKGIMP"
    }
 ]

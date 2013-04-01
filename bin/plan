@@ -11,6 +11,7 @@ my @theorems=();
 my %generation=();
 my @rules;
 my $trigger=[];
+my %alreadyseen=();
 
 sub readAxioms() {
   foreach my $axiomfile (@_) {
@@ -22,6 +23,15 @@ sub readAxioms() {
     close FILE;
   }
 }
+
+sub shallowCopy() {
+  my $a=[];
+  foreach my $b (@{$_[0]}) {
+    push $a,$b;
+  }
+  return $a;
+}
+
 sub readRules() {
   local $/;
   open (my $fh,'<','./library/rules');
@@ -35,18 +45,38 @@ sub recordGeneration() {
   my $actor=shift @_;
   my $arg=shift @_;
   foreach my $thm (@_) {
-    die "Regenerated $thm in generation $gen" if (exists $generation{$thm});
+    warn "Regenerated $thm in generation $gen" if (exists $generation{$thm});
     $generation{$thm}=[$gen,$actor,$arg];
   }
+}
+
+sub actionKey() {
+  my ($a,$b)=@_;
+  return $a."\n".$b if (defined($b));
+  return $a;
 }
 
 sub nextGeneration() {
   my ($gen,$previousthm) = @_;
   my @current=@$previousthm;
   my $rulenum=-1;
+  my $found=[];
   foreach my $rule (@rules) {
     $rulenum++;
-    if ($rule->{'type'} eq 'pattern' ) {
+    if ($rule->{'type'} eq 'simple' ) {
+      next if (exists($alreadyseen{&actionKey($rule->{'actor'},undef)}));
+      my $allfound=1;
+      foreach my $requirement (@{$rule->{'in'}}) {
+        if (!exists($generation{$rule}) && $generation{$rule} < $gen) {
+          $allfound=0;last;
+        }
+      }
+      if ($allfound) {
+        $alreadyseen{&actionKey($rule->{'actor'},undef)}=1;
+        &recordGeneration($gen,$rule->{'actor'},undef,@{$rule->{'out'}});
+        push $found,@{$rule->{'out'}};
+      }
+    } elsif ($rule->{'type'} eq 'pattern' ) {
       my $pattern=$rule->{'pattern'};
       my $patternRE=qr/$pattern/;
       foreach my $candidate (@current) {
@@ -79,20 +109,29 @@ sub nextGeneration() {
       }
     }
   }
-  foreach my $delayed (@$trigger) {
+  my $delayednumber=0;
+  my $triggercopy=&shallowCopy($trigger);
+  foreach my $delayed (@$triggercopy) {
     my @wanted=@{$delayed->{'wanted'}};
     my $i=0;
-    foreach my $wanted (@wanted) {
-      if (exists($generation{$wanted})) {
-        delete  ${$delayed->{'wanted'}}[$i];
+    my $wantedcopy=&shallowCopy(\@wanted);
+    foreach my $wanted (@$wantedcopy) {
+      if (exists($generation{$wanted}) && $generation{$wanted}->[0]<$gen) {
+        splice $delayed->{'wanted'},$i,1;
+        $i--;
       }
       $i++;
     }
     @wanted=@{$delayed->{'wanted'}};
     if (scalar @wanted == 0) {
       &recordGeneration($gen,$delayed->{'actor'},$delayed->{'arg'},@{$delayed->{'out'}});
+      push $found,@{$delayed->{'out'}};
+      splice $trigger,$delayednumber,1;
+      $delayednumber--;
     }
+    $delayednumber++;
   }
+  return $found;
 }
 
 &readAxioms(@ARGV);
@@ -100,8 +139,34 @@ sub nextGeneration() {
 &recordGeneration(0,"AXIOM",undef,@axioms);
 my $currentgen=\@axioms;
 my $generation=1;
-my $nextgen=&nextGeneration($generation,$currentgen);
+my $newlength=scalar @axioms;
+while ($newlength) {
+  $currentgen=&nextGeneration($generation,$currentgen);
+  $newlength=scalar @{$currentgen};
+  $generation++;
+}
+
 my $morefiles=0;
 
-#print Dumper($trigger);
-print Dumper(\%generation);
+my @result=();
+my %alreadyseenresult=();
+foreach (keys %generation) {
+  my $key=$generation{$_}->[1];
+  if (defined($generation{$_}->[2])) {
+    $key.="\n".$generation{$_}->[2];
+  }
+  if (!exists($alreadyseenresult{$key})) {
+    push @result,[ @{$generation{$_}} ];
+    $alreadyseenresult{$key}=1;
+  }
+}
+
+my @sresult=sort {
+  ($a->[0] <=> $b->[0]) || ($a->[1] cmp $b->[1]) || (!defined($a->[2])?1:(!defined($b->[2])?-1:$a->[2] cmp $b->[2]))
+} @result;
+
+
+foreach (@sresult) {
+  my @a = @{$_};
+  print $a[0].' '.$a[1],(defined($a[2])?' '.$a[2]:''),"\n";
+}
