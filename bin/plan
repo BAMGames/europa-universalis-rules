@@ -5,6 +5,10 @@ use strict;
 use warnings;
 use JSON::PP;
 use Data::Dumper;
+use URI::Escape;
+
+my $axiomdir='./plan/axioms';
+my $rulefile='./plan/rules';
 
 my @axioms=();
 my @theorems=();
@@ -14,14 +18,19 @@ my $trigger=[];
 my %alreadyseen=();
 
 sub readAxioms() {
-  foreach my $axiomfile (@_) {
+  opendir(my $dh, $axiomdir) || die;
+  while (readdir $dh) {
+    next if /^[.]/;
+    my $axiomfile=$axiomdir."/".$_;
     open FILE,$axiomfile;
     while (my $line=<FILE>) {
       chomp $line;
-      push @axioms,$line;
+      next if $line=~/^#/;
+      push @axioms,uri_unescape($line);
     }
     close FILE;
   }
+  closedir $dh;
 }
 
 sub shallowCopy() {
@@ -34,7 +43,7 @@ sub shallowCopy() {
 
 sub readRules() {
   local $/;
-  open (my $fh,'<','./library/rules');
+  open (my $fh,'<',$rulefile);
   my $json=<$fh>;
   my $rules=decode_json($json);
   @rules=@{$rules};
