@@ -15,7 +15,7 @@ my @theorems=();
 my %generation=();
 my @rules;
 my $trigger=[];
-my %alreadyseen=();
+my %bottomupseen=();
 
 sub readAxioms() {
   opendir(my $dh, $axiomdir) || die;
@@ -51,18 +51,20 @@ sub readRules() {
 
 sub recordGeneration() {
   my $gen=shift @_;
+  my $in=shift @_;
   my $actor=shift @_;
   my $arg=shift @_;
-  foreach my $thm (@_) {
+  my $out=shift @_;
+  foreach my $thm (@$out) {
     warn "Regenerated $thm in generation $gen" if (exists $generation{$thm});
-    $generation{$thm}=[$gen,$actor,$arg];
+    $generation{$thm}=[$gen,$actor,$arg,[@$in],[@$out]];
   }
 }
 
 sub actionKey() {
-  my ($a,$b)=@_;
-  return $a."\n".$b if (defined($b));
-  return $a;
+  my @a=@{$_[0]};
+  return &uri_escape($a[1])." ".&uri_escape($a[2]) if (defined($a[2]));
+  return &uri_escape($a[1]);
 }
 
 sub nextGeneration() {
@@ -73,7 +75,8 @@ sub nextGeneration() {
   foreach my $rule (@rules) {
     $rulenum++;
     if ($rule->{'type'} eq 'simple' ) {
-      next if (exists($alreadyseen{&actionKey($rule->{'actor'},undef)}));
+      my $key=&actionKey([undef,$rule->{'actor'},undef]);
+      next if (exists($bottomupseen{$key}));
       my $allfound=1;
       foreach my $requirement (@{$rule->{'in'}}) {
         if (!exists($generation{$rule}) && $generation{$rule} < $gen) {
@@ -81,8 +84,8 @@ sub nextGeneration() {
         }
       }
       if ($allfound) {
-        $alreadyseen{&actionKey($rule->{'actor'},undef)}=1;
-        &recordGeneration($gen,$rule->{'actor'},undef,@{$rule->{'out'}});
+        $bottomupseen{$key}=1;
+        &recordGeneration($gen,$rule->{'in'},$rule->{'actor'},undef,$rule->{'out'});
         push $found,@{$rule->{'out'}};
       }
     } elsif ($rule->{'type'} eq 'pattern' ) {
@@ -106,6 +109,9 @@ sub nextGeneration() {
               s/\$$counter/$list[$counter-1]/ge;
             }
           }
+          my $key=&actionKey([undef,$rule->{'actor'},$argument]);
+          next if exists($bottomupseen{$key});
+          $bottomupseen{$key}=1;
           push $trigger,{
                          'rulenum' => $rulenum,
                          'actor' => $rule->{'actor'},
@@ -133,7 +139,7 @@ sub nextGeneration() {
     }
     @wanted=@{$delayed->{'wanted'}};
     if (scalar @wanted == 0) {
-      &recordGeneration($gen,$delayed->{'actor'},$delayed->{'arg'},@{$delayed->{'out'}});
+      &recordGeneration($gen,$delayed->{'in'},$delayed->{'actor'},$delayed->{'arg'},$delayed->{'out'});
       push $found,@{$delayed->{'out'}};
       splice $trigger,$delayednumber,1;
       $delayednumber--;
@@ -145,7 +151,7 @@ sub nextGeneration() {
 
 &readAxioms(@ARGV);
 &readRules();
-&recordGeneration(0,"AXIOM",undef,@axioms);
+&recordGeneration(0,[],"AXIOM",undef,[@axioms]);
 my $currentgen=\@axioms;
 my $generation=1;
 my $newlength=scalar @axioms;
@@ -157,23 +163,34 @@ while ($newlength) {
 
 my $morefiles=0;
 
-my @result=();
-my %alreadyseenresult=();
-foreach (keys %generation) {
-  my $key=$generation{$_}->[1];
-  if (defined($generation{$_}->[2])) {
-    $key.="\n".$generation{$_}->[2];
-  }
-  if (!exists($alreadyseenresult{$key})) {
-    push @result,[ @{$generation{$_}} ];
-    $alreadyseenresult{$key}=1;
-  }
+# Now, collect only the goals
+
+my %topdownseen=();
+my $goals=[@ARGV];
+my %idontknow=();
+my %ineed=();
+
+while (scalar @$goals) {
+  my $goal=pop $goals;
+  do {
+    $idontknow{$goal}=1;next;
+  } unless (exists($generation{$goal}));
+  my $key=&actionKey($generation{$goal});
+  next if exists($topdownseen{$key});
+  $topdownseen{$key}=1;
+  $ineed{$key}=$generation{$goal};
+  push $goals,@{$generation{$goal}->[3]};
+}
+
+if (scalar keys %idontknow) {
+  print "I do not know how to build the following goals:\n";
+  print join("\n",sort keys %idontknow),"\nStopping.\n";
+  exit 1;
 }
 
 my @sresult=sort {
   ($a->[0] <=> $b->[0]) || ($a->[1] cmp $b->[1]) || (!defined($a->[2])?1:(!defined($b->[2])?-1:$a->[2] cmp $b->[2]))
-} @result;
-
+} values %ineed;
 
 foreach (@sresult) {
   my @a = @{$_};
