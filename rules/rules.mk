@@ -62,6 +62,7 @@ TEXFIGFILES = $(addprefix $(FIGDIR)/,\
  events.jpg\
  expenses.jpg\
  incomes.jpg\
+ interphase.jpg\
  military.jpg\
  mine.png\
  orthodoxe.pdf\
