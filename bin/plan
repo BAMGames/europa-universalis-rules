@@ -16,6 +16,7 @@ my %generation=();
 my @rules;
 my $trigger=[];
 my %bottomupseen=();
+my %rules=();
 
 sub readAxioms() {
   opendir(my $dh, $axiomdir) || die;
@@ -47,6 +48,9 @@ sub readRules() {
   my $json=<$fh>;
   my $rules=decode_json($json);
   @rules=@{$rules};
+  foreach my $rule (@rules) {
+    $rules{$rule->{"actor"}}=$rule;
+  }
 }
 
 sub recordGeneration() {
@@ -57,14 +61,14 @@ sub recordGeneration() {
   my $out=shift @_;
   foreach my $thm (@$out) {
     warn "Regenerated $thm in generation $gen" if (exists $generation{$thm});
-    $generation{$thm}=[$gen,$actor,$arg,[@$in],[@$out]];
+    $generation{$thm}=[$gen,uri_escape($actor),uri_escape($arg),[@$in],[@$out]];
   }
 }
 
 sub actionKey() {
   my @a=@{$_[0]};
-  return &uri_escape($a[1])." ".&uri_escape($a[2]) if (defined($a[2]));
-  return &uri_escape($a[1]);
+  return $a[1]." ".$a[2] if (defined($a[2]));
+  return $a[1];
 }
 
 sub nextGeneration() {
@@ -149,50 +153,60 @@ sub nextGeneration() {
   return $found;
 }
 
+sub bottomUp {
+  my $currentgen=\@axioms;
+  my $generation=1;
+  my $newlength=scalar @axioms;
+  while ($newlength) {
+    $currentgen=&nextGeneration($generation,$currentgen);
+    $newlength=scalar @{$currentgen};
+    $generation++;
+  }
+}
+
+
+sub topDown {
+  # Now, collect only the goals
+  my %topdownseen=();
+  my $goals=[@ARGV];
+  my %idontknow=();
+  my %ineed=();
+
+  if (scalar @$goals == 0) {
+    $goals=[keys %generation];
+  }
+
+  while (scalar @$goals) {
+    my $goal=pop $goals;
+    do {
+      $idontknow{$goal}=1;next;
+    } unless (exists($generation{$goal}));
+    my $key=&actionKey($generation{$goal});
+    next if exists($topdownseen{$key});
+    $topdownseen{$key}=1;
+    $ineed{$key}=$generation{$goal};
+    push $goals,@{$generation{$goal}->[3]};
+  }
+
+  if (scalar keys %idontknow) {
+    print "I do not know how to build the following goals:\n";
+    print join("\n",sort keys %idontknow),"\nStopping.\n";
+    exit 1;
+  }
+
+  my @result=sort {
+    ($a->[0] <=> $b->[0]) || ($a->[1] cmp $b->[1]) || (!defined($a->[2])?1:(!defined($b->[2])?-1:$a->[2] cmp $b->[2]))
+  } values %ineed;
+  return \@result;
+}
+
 &readAxioms(@ARGV);
 &readRules();
 &recordGeneration(0,[],"AXIOM",undef,[@axioms]);
-my $currentgen=\@axioms;
-my $generation=1;
-my $newlength=scalar @axioms;
-while ($newlength) {
-  $currentgen=&nextGeneration($generation,$currentgen);
-  $newlength=scalar @{$currentgen};
-  $generation++;
-}
+&bottomUp();
+my $result=&topDown();
 
-my $morefiles=0;
-
-# Now, collect only the goals
-
-my %topdownseen=();
-my $goals=[@ARGV];
-my %idontknow=();
-my %ineed=();
-
-while (scalar @$goals) {
-  my $goal=pop $goals;
-  do {
-    $idontknow{$goal}=1;next;
-  } unless (exists($generation{$goal}));
-  my $key=&actionKey($generation{$goal});
-  next if exists($topdownseen{$key});
-  $topdownseen{$key}=1;
-  $ineed{$key}=$generation{$goal};
-  push $goals,@{$generation{$goal}->[3]};
-}
-
-if (scalar keys %idontknow) {
-  print "I do not know how to build the following goals:\n";
-  print join("\n",sort keys %idontknow),"\nStopping.\n";
-  exit 1;
-}
-
-my @sresult=sort {
-  ($a->[0] <=> $b->[0]) || ($a->[1] cmp $b->[1]) || (!defined($a->[2])?1:(!defined($b->[2])?-1:$a->[2] cmp $b->[2]))
-} values %ineed;
-
-foreach (@sresult) {
+foreach (@$result) {
   my @a = @{$_};
   print $a[0].' '.$a[1],(defined($a[2])?' '.$a[2]:''),"\n";
 }
