@@ -51,6 +51,7 @@ sub readRules() {
   foreach my $rule (@rules) {
     $rules{$rule->{"actor"}}=$rule;
   }
+  $rules{'AXIOM'}={};
 }
 
 sub recordGeneration() {
@@ -200,11 +201,68 @@ sub topDown {
   return \@result;
 }
 
+sub collapseCompound {
+  my $plan = $_[0];
+  my $newplan=[];
+  return $plan unless (scalar @$plan);
+  my $begin=0;
+  my $end=0;
+  while ($begin < scalar @$plan) {
+    $end=$begin+1;
+    my $maxend;
+    my $axiom=$plan->[$begin]->[1];
+    if (defined($rules{$axiom}->{'maxargs'})) {
+      $maxend=$begin+$rules{$axiom}->{'maxargs'};
+    } else {
+      $maxend=$begin+100000000;
+    }
+    while (
+           $end < scalar @$plan and
+           $end < $maxend and
+           $plan->[$end]->[0] == $plan->[$begin]->[0] and
+           $plan->[$end]->[1] eq $plan->[$begin]->[1]
+          ) {
+      $end++;
+    }
+    my $newplanrule=[ $plan->[$begin]->[0],
+                      $plan->[$begin]->[1]
+                    ];
+    if (!defined($plan->[$begin]->[2])) {
+      push $newplanrule,undef;
+    } else {
+      my $newargs=[];
+      for (my $i=$begin;$i<$end;$i++) {
+        push $newargs,$plan->[$i]->[2];
+      }
+      push $newplanrule,join(' ',@$newargs);
+    }
+    my $newin={};
+    my $newout={};
+    for (my $i=$begin;$i<$end;$i++) {
+      foreach my $j (@{$plan->[$i]->[3]}) {
+        $newin->{$j}=1;
+      }
+      foreach my $j (@{$plan->[$i]->[4]}) {
+        $newout->{$j}=1;
+      }
+    }
+    my @newin=sort keys $newin;
+    my @newout=sort keys $newout;
+    push $newplanrule,\@newin,\@newout;
+    push $newplan,$newplanrule;
+    $begin=$end;
+  }
+  $plan=$newplan;
+}
+
 &readAxioms(@ARGV);
 &readRules();
-&recordGeneration(0,[],"AXIOM",undef,[@axioms]);
+foreach my $axiom (@axioms) {
+  &recordGeneration(0,[],"AXIOM",$axiom,[$axiom]);
+}
 &bottomUp();
 my $result=&topDown();
+$result=&collapseCompound($result);
 
 foreach (@$result) {
   my @a = @{$_};
