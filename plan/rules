@@ -13,7 +13,7 @@
          "library/makeshield.scm"
       ],
       "type" : "pattern",
-      "actor" : "BLASONS",
+      "actor" : "BLASONS"
    },
    {
       "out" : [
@@ -22,5 +22,15 @@
       "in" : [],
       "type" : "simple",
       "actor" : "CHECKGIMP"
+   },
+   {
+      "out" : [
+         "fonts/encodings.eps"
+      ],
+      "in" : [
+         "bin/makeencodings"
+      ],
+      "type" : "simple",
+      "actor" : "FONTENCODING"
    }
 ]
