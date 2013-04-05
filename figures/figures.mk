@@ -5,7 +5,7 @@ SDWPNGFILESCMD=$(GIMPIT) --logfile $(LOGFILE) --script $(LIBDIR)/shadowtopng.scm
 XCFJPGFILESCMD=$(GIMPIT) --logfile $(LOGFILE) --script $(LIBDIR)/xcftojpg.scm --input "$(FIGDIR)" --output "$(FIGDIR)" --class "Building chapter heads" --marker XCFJPGFILES --
 
 XFIGDEF=definitions.txt
-XCFJPGSTEMS=basics powers diplomacy incomes expenses military victories specificrules events economicalevents politicalevents appendix appendixmajor winning scenarios index chess strategy default
+XCFJPGSTEMS=basics powers diplomacy incomes expenses military redeployment victories interphase specificrules events economicalevents politicalevents appendix appendixmajor winning scenarios index chess strategy default
 SDWPNGSTEMS=ville1 ville2 villechine1 villechine2 villeinde1 villeinde2 anchor anchor2 anchor3 anchor4 anchor5 blocus bateau sel mine
 XFIGSTEMS=$(shell cut -f1 -d: $(FIGDIR)/$(XFIGDEF))
 
