@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# This program updates the plan
+# bin/plan executes a fixed plan
+# Probably, this should be launched before plan, but some parts will only
+# work after plan (for example, latex dependencies are hard to compute and
+# require, in fact, execution of the plan.
+# The second part will be executed only if arg is non-void
+
+
+# First part
+ls blasons/src/shield_*xcf | LC_ALL=C sort > plan/axioms/blasons.auto
+ls fonts/*afm fonts/*pfb fonts/*.spec | LC_ALL=C sort > plan/axioms/fonts.auto
+for k in fonts/*.spec; do
+    stem=$(basename "$k" .spec)
+    for i in $(cat "$k" |grep '^files '|cut -f2- -d' '); do
+        echo "fonts/$i.afm"
+    done | LC_ALL=C sort > plan/in/$stem.in
+done
+
+if [ -z "$1" ]; then
+    exit 0
+fi
+
+# Second part
