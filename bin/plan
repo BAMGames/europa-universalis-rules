@@ -1,5 +1,11 @@
 #!/usr/bin/perl
 
+# Idea: allow for lazy axioms in plan/lazy
+## These axioms would not be considered if option --hard is given
+## Overwriting these axioms is not considered an error.
+## A rule overwriting only these axioms must be ignored.
+## Example: generating .pfb .afm from .sfd files
+
 use strict;
 use warnings;
 use JSON::PP;
