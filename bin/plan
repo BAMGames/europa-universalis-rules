@@ -1,6 +1,5 @@
 #!/usr/bin/perl
 
-
 use strict;
 use warnings;
 use JSON::PP;
@@ -61,7 +60,7 @@ sub recordGeneration() {
   my $arg=shift @_;
   my $out=shift @_;
   foreach my $thm (@$out) {
-    warn "Regenerated $thm in generation $gen" if (exists $generation{$thm});
+    die "Regenerated $thm in generation $gen" if (exists $generation{$thm});
     $generation{$thm}=[$gen,uri_escape($actor),uri_escape($arg),[@$in],[@$out]];
   }
 }
@@ -104,8 +103,23 @@ sub nextGeneration() {
           foreach my $infile (@{$rule->{'in'}}) {
             push @in, $infile;
           }
-          foreach my $infile (@{$rule->{'out'}}) {
-            push @out, $infile;
+          foreach my $outfile (@{$rule->{'out'}}) {
+            push @out, $outfile;
+          }
+          if (defined($rule->{'infile'})) {
+            foreach my $infile (@{$rule->{'infile'}}) {
+              my $inf=''.$infile;
+              foreach my $counter (1..$#list+1) {
+                $inf =~ s/\$$counter/$list[$counter-1]/ge;
+              }
+              if (open FILE,$inf) {
+                foreach (<FILE>) {
+                  chomp;
+                  push @in,$_;
+                }
+                close FILE;
+              }
+            }
           }
           my $argument=$rule->{'argument'};
           foreach my $counter (1..$#list+1) {
@@ -267,4 +281,5 @@ $result=&collapseCompound($result);
 foreach (@$result) {
   my @a = @{$_};
   print $a[0].' '.$a[1],(defined($a[2])?' '.$a[2]:''),"\n";
+  print "In: ",join(' ',@{$a[3]}),"\n";
 }
