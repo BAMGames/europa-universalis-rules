@@ -32,5 +32,19 @@
       ],
       "type" : "simple",
       "actor" : "FONTENCODING"
+   },
+   {
+      "argument" : "$1",
+      "out" : [
+         "fonts/$1.eps"
+      ],
+      "maxargs" : 1,
+      "pattern" : "fonts/(.*).spec",
+      "infile" : [
+         "plan/in/$1.in"
+      ],
+      "in" : [ "fonts/$1.spec" ],
+      "type" : "pattern",
+      "actor" : "FONTENCODINGPATTERN"
    }
 ]
