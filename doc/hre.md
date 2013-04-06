@@ -500,7 +500,66 @@ In the statu quo situation, the Electorate is given to **Hanover**.
 
 ## History of Brandenburg (TODO)
 
-## History of Hesse-Nassau (TODO)
+## History of Hesse-Nassau (INCOMPLETE)
+
+The house of Hesse (descended from the Saxony duchy) was split in two
+main lines: Hesse-Cassel and Hesse Darmstadt. Both were protestant, and
+sometimes prone to in-house fighting (one was Calvinist, the other one
+was Lutherian).
+
+The predominant one was the one of the Electorate (Hesse-Cassel). As
+such, the minor Hesse will represent the house of Hesse-Cassel. It also
+came to own territories just north of the main, in the current province
+of *Franken*.
+
+The house of Hesse-Darmstadt first was stuck between Palatinate to the
+west and the territories of Mainz to the east (Mainz itself was west of
+the Rhine, but owned very little territory around it). The province
+called Mainz should become *Darmstadt* and be home to this house. The
+territories of Mainz are merged with the Archbishoprics of Würzburg,
+Fulda and Bamberg.
+
+Hesse-Darmstadt came to acquire territories north of the Main, in the
+disputed area currently part of *Franken*. They already owned some
+(Giessen), but they owned the majority of it (especially the county of
+Isenberg) after helping the Emperor in TYW.
+
+Since the House of Nassau of Germany is not very interesting gamewise
+(split branches, no real politics), the territory formerly called
+*Nassau* should first lose the part that was really the Duchy of
+Westfalia (belonging to [Münster](#history-of-munster)), then merge with
+the portion of franken directly North of the main. The new province is
+called *Hesse*
+
+### Cassel-Darmstadt fighting
+
+**Hessia** is one minor only.
+
+    \minorcountry{hesse}{Landgraviats of Hessen-Cassel and Hessen-Darmstadt, County of Nassau}{Hassia}
+    \minorreligion{hesse}{protestant}
+    \minordiplo{hesse}{7}{20}{1}{3}{3}{6}{*}
+    \minorpref{hesse}{\HOL, \ENG, \SUE, \FRA, \PRU, \AUS, \SPA, \POL,
+    \RUS, \POR, \VEN, \TUR}
+    \minorfid{hesse}{14}
+    \minorcapital{hesse}{Cassel}6
+    \minorcapital{hesse}{Darmstadt}4
+    \minorprovince{hesse}{Hesse}4
+    \minorbasicforces{hesse}{\ARMY \facemoins, \LD}
+    \minorarmyclass{hesse}{Latin}{III}
+    \minorHRE{hesse}
+    \minorforces{hesse}{\ARMY, 2 \LD}
+
+But when **Hessia** is at war against the Emperor, the Emperor may call
+upon the House of Darmstadt for help. If this is the case, the following
+consequences apply:
+
+  * The Emperor has the initial control of the province of *Darmstadt*
+  * If the previous call to help ended up with a positive peace for the
+    Emperor (white peace if this was the TYW), the Emperor also has the
+    initial control of *Hesse*
+  * 1 LD of troops may join the HRE armies, on a roll of 4 or more.
+  * A 10 to this same roll will bring a minor general.
+  * The income of the minor **Hessia** is considered to be 6 no matter what.
 
 ## History of Münster (TODO)
 
@@ -573,7 +632,6 @@ See in the summary.
   * .p.A Hesse
   * .p.A Hansa
   * .p. Berg
-  * .p. Nassau         **New**
   * .p. Ansbach        **New**
   * .p. Württemberg
   * .pÊ Thuringia
@@ -605,10 +663,11 @@ Anhalt moved vertically:
   * Sachsen → Thüringen removed
   * Anhalt → Franken, Ansbach (new) added
 
-Silesia connected with Neumark:
+Silesia cut in two and connected with Neumark:
 
   * Lausitz → Wielkopolska removed
-  * Slezsko → Neumark added
+  * Schlesien → Lausitz, Neumark, Wielkopolska, Oppeln, Cechy
+  * Oppeln → Schlesien, Wielkopolska, Malopolska, Morava, Cechy
 
 Mainz renamed to Darmstadt
 
@@ -622,8 +681,7 @@ Hanover split in two:
     Westfalia (form. part of Nassau), Minden (form. Osnabrück), Münster,
     Oldenburg
   * Lüneburg → Bremen, Holstein, Mecklenburg, Altmark, Braunschweig, Kalenberg
-  * Bremen → Osnabrück removed (or not: incl. county of Hoya in
-    Bremen/Minden?)
+  * Bremen → Osnabrück removed
   * Mecklenburg → Altmark removed
 
 Redistributing lands of Hesse-Nassau in four provinces: Hesse, Cassel,
@@ -636,6 +694,9 @@ Nassau, Westfalia
   * Hesse → Cassel, Franken, Darmstadt (form. Mainz), Nassau
   * Nassau → Darmstadt (form. Mainz), Pfalz, Trier, Berg, Westfalia,
     Cassel, Hesse
+  * Not sure about creating the Nassau province. Maybe just collapse it
+    with Hesse (that would make it touch Cassel, Franken, Darmstadt,
+    Pfalz, Trier, Berg, Westfalia)
 
 Trier now touches Lorraine
 
@@ -643,6 +704,16 @@ Trier now touches Lorraine
   * Pfalz → Luxemburg removed
 
 # Quick notes
+
+Neumark should touch Vorpommern:
+
+  * Vorpommern → Neumark added
+  * Hinterpommern → Brandenburg removed
+
+We may have to cheat about that because of the russian invasion from
+Kolburg to Berlin in 1762. So, rejected.
+
+Add one occupation counter for France for use only in the HRE.
 
 German Peasant war: simultaneous revolts **Wurttemberg**, **Bavaria**,
 **Baden**, **Alsatia** and **Palatinatus**. Wow.
@@ -652,11 +723,6 @@ protestant)+Breisgau/Friburg (catholic)+Fuerstenberg (catholic).
 
 Ansbach+Bayreuth: minor branches of Hohenzollern, Protestant. Not
 necessarily on the side of the Protestant, though.
-
-Hesse: Darmstadt and Cassel, one Calvinist, one Lutherean. Darmstadt
-with the Emperor, Cassel against.
-
-Nassau: very divided. Protestant.
 
 Liège: I have doubts on the real vassal status. And it did touch the
 Rhine, instead of Limburg. Rename Utrecht to Staats/Breda and use Breda
