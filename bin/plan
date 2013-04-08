@@ -11,6 +11,7 @@ use warnings;
 use JSON::PP;
 use Data::Dumper;
 use URI::Escape;
+use Digest::MD5;
 
 my $axiomdir='./plan/axioms';
 my $rulefile='./plan/rules';
@@ -22,6 +23,41 @@ my @rules;
 my $trigger=[];
 my %bottomupseen=();
 my %rules=();
+my %fingerprintCache=();
+
+sub fingerprint() {
+  my ($f)=@_;
+  my $hash="0";
+  return "$f:0" if (-d $f);
+  return "$f:0" unless (-e $f);
+  open FILE,"$f" or return "$f:0";
+  my $hashing = Digest::MD5->new;
+  $hashing->addfile(*FILE);
+  $hash=$hashing->hexdigest;
+  close FILE;
+}
+
+sub fingerprintArray() {
+  my @a=@{$_[0]};
+  my @hashArray=sort map {&fingerprint($_)} @a;
+  return \@hashArray;
+}
+
+sub writeCache() {
+  open CACHE,">.tmp/cache";
+  print CACHE encode_json \%fingerprintCache;
+  close CACHE;
+}
+
+sub readCache() {
+  local $/;
+  open (my $fh,'<',".tmp/cache") or return;
+  my $json=<$fh>;
+  my $cache=decode_json($json);
+  foreach (keys %{$cache}) {
+    $fingerprintCache{$_}=$cache->{$_};
+  }
+}
 
 sub readAxioms() {
   opendir(my $dh, $axiomdir) || die;
@@ -60,21 +96,28 @@ sub readRules() {
 }
 
 sub recordGeneration() {
-  my $gen=shift @_;
-  my $in=shift @_;
-  my $actor=shift @_;
-  my $arg=shift @_;
-  my $out=shift @_;
-  foreach my $thm (@$out) {
+  my %rule=%{$_[0]};
+  my $gen=$rule{'gen'};
+  my $arrayarg=[];
+  if (defined($rule{'arg'})) {
+    push $arrayarg,map {&uri_escape($_)} @{$rule{'arg'}};
+  }
+  $rule{'arg'}=$arrayarg;
+  foreach my $thm (@{$rule{'out'}}) {
     die "Regenerated $thm in generation $gen" if (exists $generation{$thm});
-    $generation{$thm}=[$gen,uri_escape($actor),uri_escape($arg),[@$in],[@$out]];
+    $generation{$thm}={'gen' => $gen,
+                       'actor' => uri_escape($rule{'actor'}),
+                       'arg' => $arrayarg,
+                       'in' => [@{$rule{'in'}}],
+                       'out' => [@{$rule{'out'}}],
+                      };
   }
 }
 
 sub actionKey() {
-  my @a=@{$_[0]};
-  return $a[1]." ".$a[2] if (defined($a[2]));
-  return $a[1];
+  my %a=%{$_[0]};
+  return $a{'actor'}." ".uri_escape($a{'arg'}) if (defined($a{'arg'}));
+  return $a{'actor'};
 }
 
 sub nextGeneration() {
@@ -85,7 +128,7 @@ sub nextGeneration() {
   foreach my $rule (@rules) {
     $rulenum++;
     if ($rule->{'type'} eq 'simple' ) {
-      my $key=&actionKey([undef,$rule->{'actor'},undef]);
+      my $key=&actionKey($rule);
       next if (exists($bottomupseen{$key}));
       my $allfound=1;
       foreach my $requirement (@{$rule->{'in'}}) {
@@ -95,7 +138,10 @@ sub nextGeneration() {
       }
       if ($allfound) {
         $bottomupseen{$key}=1;
-        &recordGeneration($gen,$rule->{'in'},$rule->{'actor'},undef,$rule->{'out'});
+        &recordGeneration({'gen' => $gen,
+                           'in' => $rule->{'in'},
+                           'actor' => $rule->{'actor'},
+                           'out' => $rule->{'out'}});
         push $found,@{$rule->{'out'}};
       }
     } elsif ($rule->{'type'} eq 'pattern' ) {
@@ -134,13 +180,13 @@ sub nextGeneration() {
               s/\$$counter/$list[$counter-1]/ge;
             }
           }
-          my $key=&actionKey([undef,$rule->{'actor'},$argument]);
+          my $key=&actionKey({'actor'=>$rule->{'actor'},'arg'=>[$argument]});
           next if exists($bottomupseen{$key});
           $bottomupseen{$key}=1;
           push $trigger,{
                          'rulenum' => $rulenum,
                          'actor' => $rule->{'actor'},
-                         'arg' => $argument,
+                         'arg' => [$argument],
                          'in' => [ @in ],
                          'wanted' => [ @in ],
                          'out' => [ @out ]
@@ -156,7 +202,7 @@ sub nextGeneration() {
     my $i=0;
     my $wantedcopy=&shallowCopy(\@wanted);
     foreach my $wanted (@$wantedcopy) {
-      if (exists($generation{$wanted}) && $generation{$wanted}->[0]<$gen) {
+      if (exists($generation{$wanted}) && $generation{$wanted}->{'gen'}<$gen) {
         splice $delayed->{'wanted'},$i,1;
         $i--;
       }
@@ -164,7 +210,8 @@ sub nextGeneration() {
     }
     @wanted=@{$delayed->{'wanted'}};
     if (scalar @wanted == 0) {
-      &recordGeneration($gen,$delayed->{'in'},$delayed->{'actor'},$delayed->{'arg'},$delayed->{'out'});
+      $delayed->{'gen'}=$gen;
+      &recordGeneration($delayed);
       push $found,@{$delayed->{'out'}};
       splice $trigger,$delayednumber,1;
       $delayednumber--;
@@ -196,7 +243,6 @@ sub topDown {
   if (scalar @$goals == 0) {
     $goals=[keys %generation];
   }
-
   while (scalar @$goals) {
     my $goal=pop $goals;
     do {
@@ -206,84 +252,90 @@ sub topDown {
     next if exists($topdownseen{$key});
     $topdownseen{$key}=1;
     $ineed{$key}=$generation{$goal};
-    push $goals,@{$generation{$goal}->[3]};
+    push $goals,@{$generation{$goal}->{'in'}};
   }
-
   if (scalar keys %idontknow) {
     print "I do not know how to build the following goals:\n";
     print join("\n",sort keys %idontknow),"\nStopping.\n";
     exit 1;
   }
-
   my @result=sort {
-    ($a->[0] <=> $b->[0]) || ($a->[1] cmp $b->[1]) || (!defined($a->[2])?1:(!defined($b->[2])?-1:$a->[2] cmp $b->[2]))
+    ($a->{'gen'} <=> $b->{'gen'}) || ($a->{'actor'} cmp $b->{'actor'}) || (join(' ',$a->{'arg'}) cmp join(' ',$a->{'arg'}))
   } values %ineed;
   return \@result;
 }
 
-sub collapseCompound {
+sub firstCompound {
   my $plan = $_[0];
   my $newplan=[];
-  return $plan unless (scalar @$plan);
+  return undef unless (scalar @$plan);
   my $begin=0;
-  my $end=0;
-  while ($begin < scalar @$plan) {
-    $end=$begin+1;
-    my $maxend;
-    my $axiom=$plan->[$begin]->[1];
-    if (defined($rules{$axiom}->{'maxargs'})) {
-      $maxend=$begin+$rules{$axiom}->{'maxargs'};
-    } else {
-      $maxend=$begin+100000000;
-    }
-    while (
-           $end < scalar @$plan and
-           $end < $maxend and
-           $plan->[$end]->[0] == $plan->[$begin]->[0] and
-           $plan->[$end]->[1] eq $plan->[$begin]->[1]
-          ) {
-      $end++;
-    }
-    my $newplanrule=[ $plan->[$begin]->[0],
-                      $plan->[$begin]->[1]
-                    ];
-    if (!defined($plan->[$begin]->[2])) {
-      push $newplanrule,undef;
-    } else {
-      my $newargs=[];
-      for (my $i=$begin;$i<$end;$i++) {
-        push $newargs,$plan->[$i]->[2];
-      }
-      push $newplanrule,join(' ',@$newargs);
-    }
-    my $newin={};
-    my $newout={};
-    for (my $i=$begin;$i<$end;$i++) {
-      foreach my $j (@{$plan->[$i]->[3]}) {
-        $newin->{$j}=1;
-      }
-      foreach my $j (@{$plan->[$i]->[4]}) {
-        $newout->{$j}=1;
-      }
-    }
-    my @newin=sort keys $newin;
-    my @newout=sort keys $newout;
-    push $newplanrule,\@newin,\@newout;
-    push $newplan,$newplanrule;
-    $begin=$end;
+  my $end=1;
+  my $maxend;
+  my $axiom=$plan->[$begin]->{'actor'};
+  if (defined($rules{$axiom}->{'maxargs'})) {
+    $maxend=$begin+$rules{$axiom}->{'maxargs'};
+  } else {
+    $maxend=$begin+100000000;
   }
-  $plan=$newplan;
+  while (
+         $end < scalar @$plan and
+         $end < $maxend and
+         $plan->[$end]->{'gen'} == $plan->[$begin]->{'gen'} and
+         $plan->[$end]->{'actor'} eq $plan->[$begin]->{'actor'}
+        ) {
+    $end++;
+  }
+  my $newplanrule={'gen' =>$plan->[$begin]->{'gen'},
+                   'actor' =>$plan->[$begin]->{'actor'},
+                   'arg' => [],
+                  };
+  my $newargs=$newplanrule->{'arg'};
+  foreach my $i ($begin..$end-1) {
+    push $newargs,@{$plan->[$i]->{'arg'}};
+  }
+  my $newin={};
+  my $newout={};
+  foreach my $i ($begin..$end-1) {
+    foreach my $j (@{$plan->[$i]->{'in'}}) {
+      $newin->{$j}=1;
+    }
+    foreach my $j (@{$plan->[$i]->{'out'}}) {
+      $newout->{$j}=1;
+    }
+  }
+  my @newin=sort keys $newin;
+  my @newout=sort keys $newout;
+  $newplanrule->{'in'}=\@newin;
+  $newplanrule->{'out'}=\@newout;
+  splice $plan,$begin,$end;
+  return $newplanrule;
+}
+
+sub attempt() {
+  my $todo=$_[0];
+  print $todo->{'actor'};
+  print " ",join(' , ',@{$todo->{'arg'}}) if (scalar @{$todo->{'arg'}});
+  print "\n";
 }
 
 &readAxioms(@ARGV);
+&readCache();
 &readRules();
 foreach my $axiom (@axioms) {
-  &recordGeneration(0,[],"AXIOM",$axiom,[$axiom]);
+  &recordGeneration({'gen'=>0,
+                     'actor' => "AXIOM",
+                     'in' => [],
+                     'arg' => [$axiom],
+                     'out' => [$axiom]
+                    });
 }
 &bottomUp();
 my $result=&topDown();
-$result=&collapseCompound($result);
-
+my $todo;
+while ($todo=&firstCompound($result)) {
+  &attempt($todo);
+}
 foreach (@$result) {
   my @a = @{$_};
   print $a[0].' '.$a[1],(defined($a[2])?' '.$a[2]:''),"\n";
