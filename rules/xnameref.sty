@@ -63,6 +63,12 @@
 
 \def\XNRdefaultrefhandler#1#2#3{\ifXNRnotyperef\else#1~\fi#2\ifXNRshortref\else\ (\TUpp #3\unskip)\fi}
 
+%%% Chapter handler
+
+\def\XNRchapterrefhandler#1#2#3{\ifXNRnameref\TUpp #3 (%\ifXNRnotyperef\else#1~\fi
+#2)\else\ifXNRnotyperef\else#1~\fi#2\ifXNRshortref\else\ (\TUpp #3\unskip)\fi\fi}
+
+
 %%% Page helper
 
 \def\fulltext@pagehelper{\@ifnextchar[%]

@@ -1,14 +1,10 @@
-<meta>
-Title: The great adventures of the kingdom of Denmark
-</meta>
+Something is rotten in the state of Denmark
 
 # TODO
 
-Event End of Kalmar Union
 Revise Northern wars
 Revise ending of TYW
 Examine specific territories
-Colonisation of America/India by Denmark
 
 # Major Denmark in periods I and II
 
@@ -116,6 +112,12 @@ to protect the Livonian orders, which makes Sweden angry).
 
  * T14: Retake of Slesvig territory (Hanseatic Kontor).
 
+ * Period III: Denmark gets Ösel (Forward to the Baltic or Fall of the
+   Teutonics, whichever comes first).
+
+ * T15-16: War between POL, DAN, Hansa on one side and SUE on the other
+   one. Stalemate (DAN ends up with the Sund rights)
+
 ## Sources of income
 
 Under Kalmar Union:
@@ -168,12 +170,12 @@ south Baltic shore (hard). A last way may be to build a level 6 colony
 ## Area Groenland and Danish colonisation
 
 A new area Groenland is created with 2 provinces (Iceland+Groenland)
-(2/9/-) in mountains, double Cold, Fish*5 with a special rule (see
+(1/9/-) in mountains, double Cold, Fish*5 with a special rule (see
 below). There are no natives.
 
 In 1492, DAN owns the colony Reykjavik in Iceland, which is level 1 in
 1492^[A large plague had happened in 1494] and exploits 2 Fish. Danish
-colonization malus is -1.
+colonization malus is 0.
 
 DAN has 2 COL counters and 1 TP. DAN has 1 TP/COL implementation every
 even turn.
@@ -340,25 +342,97 @@ grant immediate Strong Union for the turn (like if a favourable peace
 were just signed).
 
 Provinces of Scotia must be given to Norway and grant immediate merging
-of the kingdoms with Norway army kept.
+of the kingdoms with Norway Army kept.
 
 Other provinces go to Denmark.
 
 # Modifications to Dania
- 
+
+## New Provinces
+
+### Halland / Västergotland
+
+Halland: Income 4, western part of old Västergotland. Gets the Sund
+mark. City: Halmstad, level 1. Touches Østlandet (mountain), Bergslagen (pass),
+Västergotland, Skåne.
+
+Västergotland: Income 5, touches Skåne, Småland, Svealand (river), Halland,
+Bergslagen (detroit)
+
+### Ösel
+
+Income 2, serves as a praesido for Livonija. City level 1.
+
+### Skåne, Svealand, Nyland, Småland
+
+Skåne: income 5->6.
+Nuland: income 5->6.
+Svealand: income 9->13.
+Småland: income 5->6.
+
+### Bergslagen
+
+Becomes swamp terrain. Receives new MNU side (+) Metal (large) (20).
+
+### Oldenburg
+
+Oldenburg: now protodanemark
+
+### Jämtland
+
+Loses mine, gains protonorvege. Initially Norway. Sweden gains a strong
+mine located in Bergslagen, side (+) instead of normal side (-) (income
+7 -> income 20).
+
+### Impact on Sweden
+
+Halland/Västergötland: initial income +5, maximal income +4.
+Skåne: maximal income +1
+Jämtland: initial income -25, maximal income -20
+Metal MNU: initial income +14, maximal income +6
+Ösel: maximal income +2
+Svealand: initial income: +4, maximal income +4
+Nyland: initial income +1, maximal income +1
+Småland: initial income +1, maximal income +1
+Oldenburg: may become +2 if not taken by greedier powers
+
+initial income: +5-25+14+4+1+1 = 0
+maximal income: +4+1-20+6+2+4+1(+2?)= -1 to +1, one less side of MNU to raise
+
 ## Initial situation
 
 Trøndelag switches to 3.
 DAN owns Västergotland, Skåne, Oldenburg, Gotland+current national territory.
-Norway owns Jämtland (25!).
-Kontors in Danish territory: Slesvig (4), Oldenburg (3), Skåne (5)
+Norway owns Jämtland (5).
+Kontors in Danish territory: Slesvig (4), Oldenburg (3), Skåne (5).
+
+Colonies: Godthåb;Reykjavík
+Trading-Post: Vinland
 
 Level 0 in Baltic, level 1 in North Sea.
 
+If the projected rule on military occupation is available, DAN has a one
+military occupation usable only in the HRE.
+
 ## Period 3 transition
 
-DAN automatically goes to protestantism (even if returned by SPA), and
+DAN automatically goes to Protestantism (even if returned by SPA), and
 annexation of Norway becomes effective.
+
+BTW, SUE ought to own Västergotland in period III (in fact it owned it
+all the time).
+
+## Military forces
+
+The recruitment area of DAN is owned provinces in Danish, Norwegian
+(after annexation of Norway) and Swedish national territory.
+
+DAN has two armies, plus the Norwegian army that can get supply only
+from Norway.
+
+DAN uses the Norvegia forces when calling Norway for help. It has
+ARMY(-) of basic (veteran) forces, everything else has to be paid for
+(and maintained).
 
 ## Trade fleets
 
@@ -378,13 +452,21 @@ Christian III: 8/5/7, general 4.3.3, 7 turns, 3 turns without death test.
 
 ### Søren Norby
 
-(see wikipedia. Admiral/explorer ?)
+Norby (Søren): Most faithful companion of Christian II, fought many wars
+against Sweden and Lübeck.
+
+Amiral A 4.4.3 / Explorer 4.2.2. T 5-8.
+(no *; choose at beginning of turn)
 
 ### Johann Rantzau
-This is the uncle of Daniel Rantzau (wars in Livonia).
+This is the uncle of Daniel Rantzau (the one of the wars in Livonia).
 
-Rantzau: General A 5.3.3 -1 appears by event End of Kalmar Union (after
+Rantzau (Johann): Military commander under Frederick I and Christian
+III, he lead the Danish armies to victory in the Danish Civil War.
+
+General A 5.3.3 -1 appears by event End of Kalmar Union (after
 it). Lasts up till turn 14 (included).
+
 
 ### Gustav Vasa
 
@@ -432,9 +514,6 @@ only two turns.
  * T31: Annexed by SUE (Torstenson's war)
  * T47: Annexed by RUS
 
-This province should have income 2 and be a praesido over Livonija
-(fortress level 1).
-
 ### Jämtland
 
  * T31: Annexed by SUE (Torstenson's war)
@@ -478,12 +557,15 @@ forces are kept by its controller for the first "call to peasants". The
 fleet will appear in the Baltic sea at any moment (Lübeck intervention).
 The modifier of the reinforcements is +2.
 
+Denmark forces are reduced to its basic forces. Admiral Norby goes away,
+and Pirate(-) is put in Baltic.
+
 Denmark receives the control of some provinces and the cities therein:
  * Svealand
  * If the Union was weak or better, it receives also Småland or
    Västergotland (if the Union was in Dissidence, control the province
    but not the city)
- * If the Union was strong, it also receives Gästrikland
+ * If the Union was strong, it also receives Gästrikland.
 
 The controller of Sweden decides whether the Swedish fortresses are
 maintained or not.
@@ -583,7 +665,8 @@ with only one province missing.
 The "close ties" later counts as "claim to the Swedish crown" when SUE is
 in play.
 
-These are the only things that can be exchanged by this war.
+These are the only things that can be exchanged by this war. DAN may
+also exchange money with participants in the war.
 
 ## Count's Feud
 
@@ -626,6 +709,12 @@ when all revolts are destroyed.
 Rebel side gets reinforcements only if one of the two Generals is alive
 and in an Hansa-controlled province. Rebel side has 1 normal campaign
 every round, and SDoCF can pay for more expensive types of campaigns.
+
+## Thirty Years' War
+
+After dissolving the HANSA, all Kontors are removed, and all provinces
+owned by **Hansa** at the beginning of the peace phase get a Kontor
+instead.
 
 
 # Minor Denmark

@@ -80,6 +80,16 @@ $(HOMEDIR)/.stamp-lftp:
 	@if [ $$(which lftp 2>&1|grep ^/|wc -l) -lt 1 ]; then $(DISP) "Checking installation" failed; rm -f $@; false;fi
 	@touch $@
 
+$(HOMEDIR)/.stamp-pandoc:
+	@$(DISP) "Checking installation" "pandoc"
+	@if [ $$(which pandoc 2>&1|grep ^/|wc -l) -lt 1 ]; then $(DISP) "Checking installation" failed; rm -f $@; false;fi
+	@touch $@
+
+$(HOMEDIR)/.stamp-curl:
+	@$(DISP) "Checking installation" "curl"
+	@if [ $$(which curl 2>&1|grep ^/|wc -l) -lt 1 ]; then $(DISP) "Checking installation" failed; rm -f $@; false;fi
+	@touch $@
+
 $(HOMEDIR)/.stamp-git:
 	@$(DISP) "Checking installation" "git"
 	@if [ $$(which git 2>&1|grep ^/|wc -l) -lt 1 ]; then $(DISP) "Checking installation" failed; rm -f $@; false;fi
@@ -97,13 +107,13 @@ $(HOMEDIR)/.stamp-tex:
 	@version=$$(LANG=C pdflatex --version | grep 3.1415 | cut -f2 -d-| cut -c3-4); if [ "$$version" -lt "21" ]; then version=$$(LANG=C pdflatex --version | grep 3.1415 | cut -f3 -d-| cut -c3-4); if [ "$$version" -lt "21" ]; then $(DISP) "Checking installation" "too old"; rm -f $@; false;fi;fi
 	@touch $@
 
-HOMEFINALTARGETS=conf.mk .stamp-gs .stamp-gimp .stamp-tex .stamp-git .stamp-lftp
+HOMEFINALTARGETS=conf.mk .stamp-gs .stamp-gimp .stamp-tex .stamp-git .stamp-lftp .stamp-curl .stamp-pandoc
 HOMEVIRTUALS=conf
 HOMEDEBUGTARGETS=build.log cl.db doc/serve/counters.php
 HOMENOTALLTARGETS=
 HOMETARGETS=$(HOMENOTALLTARGETS)
 HOMECRUFT=players-changelog.txt script.ftp changelog.txt index.html
-HOMEPERSISTENTFILES=$(HOMEDIR)/conf.mk $(HOMEDIR)/.stamp-gs $(HOMEDIR)/.stamp-gimp $(HOMEDIR)/.stamp-tex $(HOMEDIR)/.stamp-git $(HOMEDIR)/cl.db $(HOMEDIR)/.stamp-lftp
+HOMEPERSISTENTFILES=$(HOMEDIR)/conf.mk $(HOMEDIR)/.stamp-gs $(HOMEDIR)/.stamp-gimp $(HOMEDIR)/.stamp-tex $(HOMEDIR)/.stamp-git $(HOMEDIR)/cl.db $(HOMEDIR)/.stamp-lftp $(HOMEDIR)/.stamp-pandoc $(HOMEDIR)/.stamp-curl
 
 NAMES=HOME SHADOW FONTS BLASONS ROTW CARTE RECORDS PIONS FIG RULES PRINT WEB
 include $(SHADOWDIR)/shadow.mk
