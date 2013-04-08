@@ -286,17 +286,22 @@ sub firstCompound {
         ) {
     $end++;
   }
-  my $newplanrule={'gen' =>$plan->[$begin]->{'gen'},
-                   'actor' =>$plan->[$begin]->{'actor'},
-                   'arg' => [],
-                  };
-  my $newargs=$newplanrule->{'arg'};
-  foreach my $i ($begin..$end-1) {
+  my @candidates=($begin..$end-1);
+  # weed out already done candidates
+  # TODO
+  my $compoundRule={'gen' =>$plan->[$begin]->{'gen'},
+                    'actor' =>$plan->[$begin]->{'actor'},
+                    'arg' => [],
+                   };
+  my $individualRules=[];
+  my $newargs=$compoundRule->{'arg'};
+  foreach my $i (@candidates) {
     push $newargs,@{$plan->[$i]->{'arg'}};
+    push $individualRules,$plan->[$i];
   }
   my $newin={};
   my $newout={};
-  foreach my $i ($begin..$end-1) {
+  foreach my $i (@candidates) {
     foreach my $j (@{$plan->[$i]->{'in'}}) {
       $newin->{$j}=1;
     }
@@ -306,10 +311,10 @@ sub firstCompound {
   }
   my @newin=sort keys $newin;
   my @newout=sort keys $newout;
-  $newplanrule->{'in'}=\@newin;
-  $newplanrule->{'out'}=\@newout;
+  $compoundRule->{'in'}=\@newin;
+  $compoundRule->{'out'}=\@newout;
   splice $plan,$begin,$end;
-  return $newplanrule;
+  return ($compoundRule,$individualRules);
 }
 
 sub attempt() {
@@ -333,7 +338,9 @@ foreach my $axiom (@axioms) {
 &bottomUp();
 my $result=&topDown();
 my $todo;
-while ($todo=&firstCompound($result)) {
+my $todoIndividuals;
+while (($todo,$todoIndividuals)=&firstCompound($result)) {
+  last unless defined ($todo);
   &attempt($todo);
 }
 foreach (@$result) {
