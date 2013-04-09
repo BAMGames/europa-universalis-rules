@@ -12,14 +12,18 @@ use JSON::PP;
 use Data::Dumper;
 use URI::Escape;
 use Digest::MD5;
+use Symbol 'gensym';
 
 
 # Command execution with stderr filtering
 
 use IPC::Open3;
 use POSIX ":sys_wait_h";
+use IO::Select;
 my %statusCommand=();
 my %childCommand=();
+select(STDERR); $| = 1;
+select(STDOUT);
 
 sub REAPER {
   my $child;
@@ -39,13 +43,37 @@ sub setupCommand {
   };
 }
 
+my $specialprefix=qr/^PARTIAL PLAN:(.*)$/;
+$ENV{'SPECIALPREFIX'}="PARTIAL PLAN:";
+my @partiallydone=();
+
+sub errorCommand {
+  my $line=$_[0];
+  chomp $line;
+  if ($line =~ $specialprefix) {
+    my $part=$1;
+    print "[  ]",$part,"\n";
+    if ($part =~ /^failed:/) {
+    } else {
+      push @partiallydone,$part;
+    }
+  } else {
+    print STDERR $line,"\n";
+  }
+}
+
 sub execCommand {
-  my $pid = open3("<&STDIN",">&STDOUT", \*ERROR, @_);
+  my $line;
+  my $err = gensym;
+  my $pid = open3("<&STDIN",">&STDOUT", $err, @_);
   if ($pid) {
     $childCommand{$pid}=1;
+    my $sel= new IO::Select;
+    $sel->add($err);
     while (scalar keys %childCommand > 0) {
-      while (<ERROR>) {
-        print STDERR "$_";
+      foreach my $readhandle ($sel->can_read(1)) {
+        sysread $readhandle,$line,4096;
+        &errorCommand($line);
       }
     }
   }
@@ -56,9 +84,8 @@ sub execCommand {
 
 &setupCommand;
 
-
-my $axiomdir='./plan/axioms';
-my $rulefile='./plan/rules';
+my $axiomdir='plan/axioms';
+my $rulefile='plan/rules';
 
 my @axioms=();
 my @theorems=();
@@ -140,9 +167,11 @@ sub readRules() {
   my $rules=decode_json($json);
   @rules=@{$rules};
   foreach my $rule (@rules) {
+    $rule->{'in'}=[] unless (defined($rule->{'in'}));
+    push $rule->{'in'},'plan/bin/'.$rule->{'actor'};
     $rules{$rule->{"actor"}}=$rule;
   }
-  $rules{'AXIOM'}={};
+  $rules{'AXIOM'}={'in'=>['plan/bin/AXIOM']};
 }
 
 sub recordGeneration() {
@@ -245,6 +274,7 @@ sub nextGeneration() {
       }
     }
   }
+
   my $delayednumber=0;
   my $triggercopy=&shallowCopy($trigger);
   foreach my $delayed (@$triggercopy) {
@@ -282,7 +312,6 @@ sub bottomUp {
   }
 }
 
-
 sub topDown {
   # Now, collect only the goals
   my %topdownseen=();
@@ -310,7 +339,7 @@ sub topDown {
     exit 1;
   }
   my @result=sort {
-    ($a->{'gen'} <=> $b->{'gen'}) || ($a->{'actor'} cmp $b->{'actor'}) || (join(' ',$a->{'arg'}) cmp join(' ',$a->{'arg'}))
+    ($a->{'gen'} <=> $b->{'gen'}) || ($a->{'actor'} cmp $b->{'actor'}) || (join(' ',$a->{'arg'}) cmp join(' ',$b->{'arg'}))
   } values %ineed;
   return \@result;
 }
@@ -335,7 +364,7 @@ sub firstCompound {
         ) {
     $end++;
   }
-  my @candidates=();
+  my $candidates=[];
   # weed out already done candidates
   foreach my $i ($begin..$end-1) {
     my $key=&actionKey($plan->[$i]);
@@ -344,7 +373,7 @@ sub firstCompound {
     next if ((defined($fingerprintCache{$key})
               and $fingerprintCache{$key} eq $fingerprintIn)
             );
-    push @candidates,$i;
+    push $candidates,$i;
   }
   # TODO
   my $compoundRule={'gen' =>$plan->[$begin]->{'gen'},
@@ -353,13 +382,14 @@ sub firstCompound {
                    };
   my $individualRules=[];
   my $newargs=$compoundRule->{'arg'};
-  foreach my $i (@candidates) {
+
+  foreach my $i (@$candidates) {
     push $newargs,@{$plan->[$i]->{'arg'}};
     push $individualRules,$plan->[$i];
   }
   my $newin={};
   my $newout={};
-  foreach my $i (@candidates) {
+  foreach my $i (@$candidates) {
     foreach my $j (@{$plan->[$i]->{'in'}}) {
       $newin->{$j}=1;
     }
@@ -371,14 +401,28 @@ sub firstCompound {
   my @newout=sort keys $newout;
   $compoundRule->{'in'}=\@newin;
   $compoundRule->{'out'}=\@newout;
-  return ($compoundRule,\@candidates,$end);
+  return ($compoundRule,$candidates,$end);
 }
 
 sub attempt() {
   my $todo=$_[0];
-  print $todo->{'actor'};
-  print " ",join(' , ',@{$todo->{'arg'}}) if (scalar @{$todo->{'arg'}});
-  print "\n";
+  @partiallydone=();
+  my @execLine=($todo->{'actor'});
+  push @execLine,map {uri_unescape($_)} @{$todo->{'arg'}} if (scalar @{$todo->{'arg'}});
+  my $line=join(' ',@execLine);
+  $execLine[0]='plan/bin/'.$todo->{'actor'};
+  my $success=substr $line,0,72;
+  $success.="..." if ($success ne $line);
+  print "[ex]$success\n";
+  my $status=&execCommand(@execLine);
+  if ($status) {
+    foreach my $ok (@partiallydone) {
+      print "Registering $ok as done TODO\n";
+    }
+    die "Failed with status $status: ".join(' ',@execLine) if ($status);
+  }
+  # register success of everybody
+  print "[ok]$success\n";
 }
 
 &readAxioms(@ARGV);
@@ -398,11 +442,10 @@ my $todo;
 my $todoIndividuals;
 my $begin=0;
 my $end=0;
+
 while ($end < scalar @$result) {
   ($todo,$todoIndividuals,$end)=&firstCompound($result,$begin);
   $begin=$end;
   next if ((scalar @{$todoIndividuals}) == 0);
   &attempt($todo);
 }
-
-print Dumper($result);

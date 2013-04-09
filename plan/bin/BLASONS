@@ -1,0 +1,18 @@
+#!/bin/sh
+while [ "$1" ]; do
+    BLASON="$1"
+    if [ ! -f "blasons/src/shield_${BLASON}.xcf" ]; then
+        echo "${SPECIALPREFIX}failed:$1" 1>&2
+        exit 1
+    fi
+    if [ "$1" = "aden" ]; then
+        echo "${SPECIALPREFIX}failed:$1" 1>&2
+        exit 1
+    fi
+    dd if=/dev/urandom count=1 2> /dev/null | hexdump > blasons/shield_${BLASON}.png
+    dd if=/dev/urandom count=1 2> /dev/null | hexdump > blasons/shield_${BLASON}.pnm
+    echo "${SPECIALPREFIX}${BLASON}" 1>&2
+    sleep 1
+    shift
+done
+exit 0

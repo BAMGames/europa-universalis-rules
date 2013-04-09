@@ -9,6 +9,7 @@
 
 
 # First part
+find plan/bin -type f > plan/axioms/plan.auto
 ls blasons/src/shield_*xcf | LC_ALL=C sort > plan/axioms/blasons.auto
 ls fonts/*afm fonts/*pfb fonts/*.spec | LC_ALL=C sort > plan/axioms/fonts.auto
 for k in fonts/*.spec; do
