@@ -13,6 +13,50 @@ use Data::Dumper;
 use URI::Escape;
 use Digest::MD5;
 
+
+# Command execution with stderr filtering
+
+use IPC::Open3;
+use POSIX ":sys_wait_h";
+my %statusCommand=();
+my %childCommand=();
+
+sub REAPER {
+  my $child;
+  while (($child = waitpid(-1, WNOHANG)) > 0) {
+    delete $childCommand{$child};
+    $statusCommand{$child} = $?;
+  }
+  $SIG{CHLD} = \&REAPER;        # still loathe SysV
+}
+sub setupCommand {
+  $SIG{CHLD} = \&REAPER;
+  $SIG{INT} = sub {
+    foreach my $pid (keys %childCommand) {
+      kill 2,$pid;
+    }
+    die "Killed by SIGINT";
+  };
+}
+
+sub execCommand {
+  my $pid = open3("<&STDIN",">&STDOUT", \*ERROR, @_);
+  if ($pid) {
+    $childCommand{$pid}=1;
+    while (scalar keys %childCommand > 0) {
+      while (<ERROR>) {
+        print STDERR "$_";
+      }
+    }
+  }
+  my $status=$statusCommand{$pid};
+  delete $statusCommand{$pid};
+  return $status;
+}
+
+&setupCommand;
+
+
 my $axiomdir='./plan/axioms';
 my $rulefile='./plan/rules';
 
@@ -38,9 +82,15 @@ sub fingerprint() {
 }
 
 sub fingerprintArray() {
-  my @a=@{$_[0]};
-  my @hashArray=sort map {&fingerprint($_)} @a;
-  return \@hashArray;
+  # example: $rule, 'in'
+  my @a=@{$_[0]->{$_[1]}};
+  my $hashing = Digest::MD5->new;
+  my $fp;
+  foreach my $file (@a) {
+    $fp=&fingerprint($file);
+    $hashing->add($file.$fp);
+  }
+  return $hashing->hexdigest;
 }
 
 sub writeCache() {
@@ -266,11 +316,10 @@ sub topDown {
 }
 
 sub firstCompound {
-  my $plan = $_[0];
+  my ($plan,$begin) = @_;
   my $newplan=[];
   return undef unless (scalar @$plan);
-  my $begin=0;
-  my $end=1;
+  my $end=$begin+1;
   my $maxend;
   my $axiom=$plan->[$begin]->{'actor'};
   if (defined($rules{$axiom}->{'maxargs'})) {
@@ -286,8 +335,17 @@ sub firstCompound {
         ) {
     $end++;
   }
-  my @candidates=($begin..$end-1);
+  my @candidates=();
   # weed out already done candidates
+  foreach my $i ($begin..$end-1) {
+    my $key=&actionKey($plan->[$i]);
+    my $fingerprintIn=&fingerprintArray($plan->[$i],'in');
+    $plan->[$i]->{'fingerprintIn'}=$fingerprintIn;
+    next if ((defined($fingerprintCache{$key})
+              and $fingerprintCache{$key} eq $fingerprintIn)
+            );
+    push @candidates,$i;
+  }
   # TODO
   my $compoundRule={'gen' =>$plan->[$begin]->{'gen'},
                     'actor' =>$plan->[$begin]->{'actor'},
@@ -313,8 +371,7 @@ sub firstCompound {
   my @newout=sort keys $newout;
   $compoundRule->{'in'}=\@newin;
   $compoundRule->{'out'}=\@newout;
-  splice $plan,$begin,$end;
-  return ($compoundRule,$individualRules);
+  return ($compoundRule,\@candidates,$end);
 }
 
 sub attempt() {
@@ -339,12 +396,13 @@ foreach my $axiom (@axioms) {
 my $result=&topDown();
 my $todo;
 my $todoIndividuals;
-while (($todo,$todoIndividuals)=&firstCompound($result)) {
-  last unless defined ($todo);
+my $begin=0;
+my $end=0;
+while ($end < scalar @$result) {
+  ($todo,$todoIndividuals,$end)=&firstCompound($result,$begin);
+  $begin=$end;
+  next if ((scalar @{$todoIndividuals}) == 0);
   &attempt($todo);
 }
-foreach (@$result) {
-  my @a = @{$_};
-  print $a[0].' '.$a[1],(defined($a[2])?' '.$a[2]:''),"\n";
-  print "In: ",join(' ',@{$a[3]}),"\n";
-}
+
+print Dumper($result);
