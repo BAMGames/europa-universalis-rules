@@ -120,7 +120,7 @@ sub execCommand {
   return $status;
 }
 
-&out(2,'init','Initialize harness for command executions');
+&out(1,'init','Initialize harness for command executions');
 &setupCommand;
 
 my $axiomdir='plan/axioms';
@@ -146,6 +146,7 @@ sub fingerprint() {
   $hashing->addfile(*FILE);
   $hash=$hashing->hexdigest;
   close FILE;
+  return $hash;
 }
 
 sub fingerprintArray() {

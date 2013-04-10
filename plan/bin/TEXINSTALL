@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+for i in $(cat fonts/texfonts.def); do
+    c=${i%;*}
+    d=${i##*;}
+    bin/install-pack ${d:+--test ${d}} --fail .tmp/proof-texinstall \
+        ${c%:*} ${c##*:}
+    echo "$i" >> .tmp/proof-texinstall
+    LC_ALL=C sort < .tmp/proof-texinstall > .tmp/proof-texinstall2 && mv .tmp/proof-texinstall2 .tmp/proof-texinstall
+done

@@ -1,44 +1,25 @@
 #!/bin/sh
 set -e
-FAILFILE=
-TESTFILE=
-LOGFILE=/tmp/build.log
-CLASS="Testing TeX fonts and files"
+FAILFILE=/dev/null
+SPECIALPREFIX=${SPECIALPREFIX:-"install-pack:"}
 
-trap exitscript EXIT
-exitscript() {
-    a=$?
-    set +e
-    trap '' EXIT
-    if [ "$a" != "0" ]&&[ -n "$FAILFILE" ]; then
-        rm -f "$FAILFILE"
-    fi
-    exit $a
-}
-
-xwd="$(pwd)"
-cd "$BINDIR"
-binpath=$(pwd)
-cd "$xwd"
-
-if [ -z "$1" ]; then echo "No arguments !"; exit 1; fi
-if [ "$1" = "--logfile" ]; then
-    LOGFILE=${xwd}/"$2"
-    shift;shift
-fi
 xlog() {
-    echo "$@" >> $LOGFILE
+    echo "$@" >> $FAILFILE
 }
 say() {
-    ${binpath}/statedisplay $XID "$CLASS" "$1"
+    echo "${SPECIALPREFIX}$@" 1>&2
 }
 
+if [ -z "$1" ]; then echo "No arguments !"; exit 1; fi
 if [ "$1" = "--test" ]; then
     TESTFILE="$2"
     shift;shift
 fi
 if [ "$1" = "--fail" ]; then
     FAILFILE="$2"
+    if [ "$FAILFILE#/" != "$FAILFILE" ]; then
+        FAILFILE="$(pwd)/$FAILFILE"
+    fi
     shift;shift
 fi
 if [ -n "$TESTFILE" ]; then
@@ -48,14 +29,14 @@ if [ -n "$TESTFILE" ]; then
     if [ -n "$a" ]; then
         if [ "$teststring" != "$TESTFILE" ]; then
             if grep -q $teststring $a; then
-                say "$1:system"
+                say "$1"
                 exit 0
             else
                 say "$1:version differs"
             fi
         else
             # No check
-            say "$1:system"
+            say "$1"
             exit 0
         fi
     fi
@@ -103,6 +84,11 @@ VERSION="$2"
 cd "$TEXMF"
 VERSION=${VERSION:-1}
 
+if [ "$VERSION" = 0 ]; then
+    say "$PACKAGE:system only"
+    exit 1
+fi
+
 say "${PACKAGE}:${VERSION}"
 
 if [ -n "$VERSION" ]; then
@@ -129,13 +115,13 @@ fi
 if [ -f "lib/$PACKAGE-remove.sh" ]; then
     xlog "Removing previous version of $PACKAGE"
     say "upgrading"
-    sh "lib/$PACKAGE-remove.sh"
+    sh "lib/$PACKAGE-remove.sh" > /dev/null 2>/dev/null ||true
 else
     say "installing"
 fi
 xlog "Installing $PACKAGE"
 tar xzf "/tmp/$PACKAGE.tgz"
-texhash > /dev/null 2>&1
+texhash > /dev/null 2>/dev/null
 if [ ! -f doc/$PACKAGE-version.txt ]; then
     xlog "No version available."
     say "corrupted"
