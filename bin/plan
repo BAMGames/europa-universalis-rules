@@ -14,6 +14,33 @@ use URI::Escape;
 use Digest::MD5;
 use Symbol 'gensym';
 
+my $verbosity=3;
+my %verbcategories=('exec'=>0,
+                    'init'=>0,
+                    'plan'=>0,
+                    'display'=>1);
+# Logging
+
+sub out {
+  my $v=shift @_;
+  if ($verbosity>=$v) {
+    my $n=shift @_;
+    if ($verbcategories{$n}) {
+      if ($n ne "display") {
+        print $n,':',@_,"\n";
+      } else {
+        print @_,"\n";
+      }
+    }
+  }
+}
+
+sub stop {
+  my $status=shift @_;
+  &out(1,'display',@_);
+  exit ($status);
+}
+
 
 # Command execution with stderr filtering
 
@@ -28,8 +55,8 @@ select(STDOUT);
 sub REAPER {
   my $child;
   while (($child = waitpid(-1, WNOHANG)) > 0) {
-    delete $childCommand{$child};
     $statusCommand{$child} = $?;
+    delete $childCommand{$child};
   }
   $SIG{CHLD} = \&REAPER;        # still loathe SysV
 }
@@ -39,7 +66,7 @@ sub setupCommand {
     foreach my $pid (keys %childCommand) {
       kill 2,$pid;
     }
-    die "Killed by SIGINT";
+    &stop(2,"Killed by SIGINT");
   };
 }
 
@@ -64,24 +91,36 @@ sub errorCommand {
 
 sub execCommand {
   my $line;
+  &out(1,"exec",@_);
   my $err = gensym;
   my $pid = open3("<&STDIN",">&STDOUT", $err, @_);
   if ($pid) {
     $childCommand{$pid}=1;
-    my $sel= new IO::Select;
-    $sel->add($err);
+    # This method still outputs $err to the tty
+    # It is supposed to be less risky wrt block
+    # my $sel= new IO::Select;
+    # $sel->add($err);
+    # while (scalar keys %childCommand > 0) {
+    #   foreach my $readhandle ($sel->can_read(1)) {
+    #     my $length=sysread $readhandle,$line,4096;
+    #     if ($length) {
+    #       &errorCommand($line);
+    #     }
+    #   }
+    # }
     while (scalar keys %childCommand > 0) {
-      foreach my $readhandle ($sel->can_read(1)) {
-        sysread $readhandle,$line,4096;
+      while (my $line=<$err>) {
         &errorCommand($line);
       }
     }
   }
-  my $status=$statusCommand{$pid};
+  my $status=0+$statusCommand{$pid};
   delete $statusCommand{$pid};
+  &out(1,"exec","Command finished with status $status");
   return $status;
 }
 
+&out(2,'init','Initialize harness for command executions');
 &setupCommand;
 
 my $axiomdir='plan/axioms';
@@ -95,6 +134,7 @@ my $trigger=[];
 my %bottomupseen=();
 my %rules=();
 my %fingerprintCache=();
+my $result=[];
 
 sub fingerprint() {
   my ($f)=@_;
@@ -111,6 +151,7 @@ sub fingerprint() {
 sub fingerprintArray() {
   # example: $rule, 'in'
   my @a=@{$_[0]->{$_[1]}};
+  return 'none' unless (scalar @a);
   my $hashing = Digest::MD5->new;
   my $fp;
   foreach my $file (@a) {
@@ -121,7 +162,8 @@ sub fingerprintArray() {
 }
 
 sub writeCache() {
-  open CACHE,">.tmp/cache";
+  open STDIN,"/dev/null" unless fileno(STDIN);
+  open CACHE,'>','.tmp/cache';
   print CACHE encode_json \%fingerprintCache;
   close CACHE;
 }
@@ -195,12 +237,13 @@ sub recordGeneration() {
 
 sub actionKey() {
   my %a=%{$_[0]};
-  return $a{'actor'}." ".uri_escape($a{'arg'}) if (defined($a{'arg'}));
+  return join(' ',$a{'actor'},@{$a{'arg'}}) if (defined($a{'arg'}));
   return $a{'actor'};
 }
 
 sub nextGeneration() {
   my ($gen,$previousthm) = @_;
+  &out(3,"plan","Building list of buildable files, generation $gen");
   my @current=@$previousthm;
   my $rulenum=-1;
   my $found=[];
@@ -305,6 +348,7 @@ sub bottomUp {
   my $currentgen=\@axioms;
   my $generation=1;
   my $newlength=scalar @axioms;
+  &out(2,"plan","Building list of buildable files");
   while ($newlength) {
     $currentgen=&nextGeneration($generation,$currentgen);
     $newlength=scalar @{$currentgen};
@@ -314,6 +358,7 @@ sub bottomUp {
 
 sub topDown {
   # Now, collect only the goals
+  &out(2,"plan","Isolating goals paths");
   my %topdownseen=();
   my $goals=[@ARGV];
   my %idontknow=();
@@ -370,9 +415,17 @@ sub firstCompound {
     my $key=&actionKey($plan->[$i]);
     my $fingerprintIn=&fingerprintArray($plan->[$i],'in');
     $plan->[$i]->{'fingerprintIn'}=$fingerprintIn;
-    next if ((defined($fingerprintCache{$key})
-              and $fingerprintCache{$key} eq $fingerprintIn)
-            );
+    my $fingerprintOut=&fingerprintArray($plan->[$i],'out');
+    if ((defined($fingerprintCache{$key})
+         and $fingerprintCache{$key} eq "$fingerprintIn $fingerprintOut")
+       ) {
+      &out(3,"plan","Not considering $key");
+      next;
+    } elsif (!defined($fingerprintCache{$key})) {
+      &out(2,"plan","Considering $key (never seen)");
+    } else {
+      &out(2,"plan","Considering $key (input or output changed)");
+    }
     push $candidates,$i;
   }
   # TODO
@@ -404,30 +457,60 @@ sub firstCompound {
   return ($compoundRule,$candidates,$end);
 }
 
+sub registerSuccess() {
+  my ($candidate,$plan)=@_;
+  my $rule=$plan->[$candidate];
+  my $fingerprintOut=&fingerprintArray($rule,'out');
+  my $fingerprintIn=$rule->{'fingerprintIn'};
+  my $key=&actionKey($rule);
+  &out(2,"plan","Registering success of $key");
+  $fingerprintCache{$key}="$fingerprintIn $fingerprintOut";
+}
+
 sub attempt() {
   my $todo=$_[0];
+  my @candidateRules=@{$_[1]};
   @partiallydone=();
   my @execLine=($todo->{'actor'});
   push @execLine,map {uri_unescape($_)} @{$todo->{'arg'}} if (scalar @{$todo->{'arg'}});
   my $line=join(' ',@execLine);
-  $execLine[0]='plan/bin/'.$todo->{'actor'};
   my $success=substr $line,0,72;
   $success.="..." if ($success ne $line);
-  print "[ex]$success\n";
+  $execLine[0]='plan/bin/'.$todo->{'actor'};
+  if ($todo->{'actor'} eq "AXIOM") {
+    &out(2,'display',$success);
+  } else {
+    &out(1,'display',$success);
+  }
   my $status=&execCommand(@execLine);
   if ($status) {
     foreach my $ok (@partiallydone) {
-      print "Registering $ok as done TODO\n";
+      my $protectedok=uri_escape($ok);
+      foreach my $i (@candidateRules) {
+        my $rule=$result->[$i];
+        if (defined $rule->{'arg'}
+            and scalar @{$rule->{'arg'}} == 1
+            and $rule->{'arg'}->[0] eq $protectedok) {
+          &registerSuccess($i,$result);
+          last;
+        }
+      }
     }
-    die "Failed with status $status: ".join(' ',@execLine) if ($status);
+    writeCache();
+    &stop(1,"One rule failed with status $status") if ($status);
   }
   # register success of everybody
-  print "[ok]$success\n";
+  &out(3,"plan","Everything was successful");
+  foreach my $i (@candidateRules) {
+    &registerSuccess($i,$result);
+  }
+  writeCache();
 }
 
 &readAxioms(@ARGV);
 &readCache();
 &readRules();
+&out(3,"plan","Recording axioms");
 foreach my $axiom (@axioms) {
   &recordGeneration({'gen'=>0,
                      'actor' => "AXIOM",
@@ -437,15 +520,23 @@ foreach my $axiom (@axioms) {
                     });
 }
 &bottomUp();
-my $result=&topDown();
+$result=&topDown();
 my $todo;
 my $todoIndividuals;
 my $begin=0;
 my $end=0;
 
+my $done=0;
 while ($end < scalar @$result) {
   ($todo,$todoIndividuals,$end)=&firstCompound($result,$begin);
   $begin=$end;
   next if ((scalar @{$todoIndividuals}) == 0);
-  &attempt($todo);
+  $done++;
+  &attempt($todo,$todoIndividuals);
 }
+
+if ($done==0) {
+  &out(1,"display","Everything is up to date");
+}
+
+exit 0;
