@@ -23,14 +23,12 @@ my %verbcategories=('exec'=>0,
 
 sub out {
   my $v=shift @_;
-  if ($verbosity>=$v) {
-    my $n=shift @_;
-    if ($verbcategories{$n}) {
-      if ($n ne "display") {
-        print $n,':',@_,"\n";
-      } else {
-        print @_,"\n";
-      }
+  my $n=shift @_;
+  if ($verbosity{$n}>=$v) {
+    if ($n ne "display") {
+      print $n,':',@_,"\n";
+    } else {
+      print @_,"\n";
     }
   }
 }
