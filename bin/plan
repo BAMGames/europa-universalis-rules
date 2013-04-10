@@ -217,7 +217,7 @@ sub readRules() {
     push $rule->{'in'},'plan/bin/'.$rule->{'actor'};
     $rules{$rule->{"actor"}}=$rule;
   }
-  $rules{'AXIOM'}={'in'=>['plan/bin/AXIOM']};
+  $rules{'AXIOM'}={'type' => 'AXIOM','in'=>['plan/bin/AXIOM']};
 }
 
 sub recordGeneration() {
@@ -258,11 +258,13 @@ sub nextGeneration() {
       next if (exists($bottomupseen{$key}));
       my $allfound=1;
       foreach my $requirement (@{$rule->{'in'}}) {
-        if (!exists($generation{$requirement}) || $generation{$requirement} < $gen) {
+        if (!exists($generation{$requirement})
+            or $generation{$requirement} < $gen) {
           $allfound=0;last;
         }
       }
       if ($allfound) {
+        $rules{$rule->{"actor"}}->{'seen'}=1;
         $bottomupseen{$key}=1;
         &recordGeneration({'gen' => $gen,
                            'in' => $rule->{'in'},
@@ -357,6 +359,13 @@ sub bottomUp {
     $currentgen=&nextGeneration($generation,$currentgen);
     $newlength=scalar @{$currentgen};
     $generation++;
+  }
+  foreach my $actor (keys %rules) {
+    if (!defined($rules{$actor}->{'seen'})
+        and $rules{$actor}->{'type'} eq 'simple') {
+      &out(2,'plan',"The rule $actor was not used at all");
+      &out(3,'plan',Dumper($rules{$actor}));
+    }
   }
 }
 

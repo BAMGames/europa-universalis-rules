@@ -1,10 +1,10 @@
 [
    {
-      "argument" : "$1",
       "out" : [
          "blasons/shield_$1.png",
          "blasons/shield_$1.pnm"
       ],
+      "argument" : "$1",
       "pattern" : "blasons/src/shield_(.*).xcf",
       "in" : [
          "blasons/src/shield_$1.xcf",
@@ -34,17 +34,20 @@
       "actor" : "FONTENCODING"
    },
    {
-      "argument" : "$1",
       "out" : [
          "fonts/$1.eps"
       ],
       "maxargs" : 1,
-      "pattern" : "fonts/(.*).spec",
       "infile" : [
          "plan/in/$1.in"
       ],
-      "in" : [ "fonts/$1.spec" ],
-      "type" : "pattern",
-      "actor" : "FONTENCODINGPATTERN"
+      "actor" : "FONTENCODINGPATTERN",
+      "argument" : "$1",
+      "pattern" : "fonts/(.*).spec",
+      "in" : [
+         "fonts/$1.spec",
+         "bin/makeencodings"
+      ],
+      "type" : "pattern"
    }
 ]

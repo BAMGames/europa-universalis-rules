@@ -9,6 +9,7 @@
 
 
 # First part
+json_pp -json_opt pretty -f json -t json < plan/rules > plan/rules2 && mv plan/rules2 plan/rules
 find plan/bin -type f > plan/axioms/plan.auto
 ls blasons/src/shield_*xcf | LC_ALL=C sort > plan/axioms/blasons.auto
 ls fonts/*afm fonts/*pfb fonts/*.spec | LC_ALL=C sort > plan/axioms/fonts.auto
