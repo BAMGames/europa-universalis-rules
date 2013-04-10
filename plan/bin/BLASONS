@@ -1,14 +1,64 @@
 #!/bin/sh
-while [ "$1" ]; do
-    BLASON="$1"
-    if [ ! -f "blasons/src/shield_${BLASON}.xcf" ]; then
-        echo "${SPECIALPREFIX}failed:$1" 1>&2
-        exit 1
+set -e
+error() {
+    a=$1
+    if [ -n "$TMPFILE" ]; then rm -f "$TMPFILE"; fi
+    trap - HUP INT QUIT KILL TERM EXIT
+    if [ -z "$1" ]; then
+        a=1
+    else
+        a=$1
+        shift
     fi
-    dd if=/dev/urandom count=1 2> /dev/null | hexdump > blasons/shield_${BLASON}.png
-    dd if=/dev/urandom count=1 2> /dev/null | hexdump > blasons/shield_${BLASON}.pnm
-    echo "${SPECIALPREFIX}${BLASON}" 1>&2
-    sleep 1
-    shift
+    if [ -n "$1" ]; then
+        echo "${SPECIALPREFIX}failed:$@" 1>&2
+    fi
+    exit $a
+}
+finish() {
+    trap - EXIT
+    exit 0
+}
+trap error HUP INT QUIT KILL TERM EXIT
+
+
+TMPFILE=$(mktemp)
+if [ -f .tmp/proof-gimp ]; then
+    . .tmp/proof-gimp
+else
+    error 1 "no gimp"
+fi
+
+if [ "$GIMP_VERSION" -gt 20 ]; then
+    SUB='s/nothing/nothing/g'
+else
+    SUB='s/gimp-context-set-foreground/gimp-palette-set-foreground/g;s/gimp-context-set-background/gimp-palette-set-background/g'
+fi
+
+LC_ALL=C
+export LC_ALL
+FINISHED=
+
+# I keep a MAXCOUNT for debugging purposes
+MAXCOUNT=${MAXGIMPCOUNT:-200}
+while [ -n "$1" ]&&[ -z "$FINISHED" ]; do
+    COUNT=0
+    echo "(gimp-message-set-handler 1)" > $TMPFILE
+    cat library/makeshield.scm|sed -e $SUB >> $TMPFILE
+    while [ -n "$1" ]&&[ "$COUNT" -lt "$MAXCOUNT" ]; do
+        BLASON="$1"
+        echo -n '(makeshield "blasons/src/shield_'${BLASON}'" "blasons/shield_'${BLASON}'" "blasons/templates/")' >> $TMPFILE
+        echo -n '(gimp-message "'${BLASON}'")' >> $TMPFILE        
+        shift
+        COUNT=$((COUNT+1))
+    done
+    X="(load \"$TMPFILE\")"
+    if [ "$GIMP_VERSION" -gt 22 ]; then
+        gimp --batch-interpreter plug-in-script-fu-eval --no-data --no-interface --batch "$X" --batch '(gimp-quit 0)' 2>&1 >/dev/null|sed -une '/^script-fu/ {s/^.*: /'"${SPECIALPREFIX}"'/g;p}' 1>&2
+    elif [ "$GIMP_VERSION" -gt 20 ]; then
+        gimp --batch-interpreter plug_in_script_fu_eval --no-data --no-interface --batch "$X" "(gimp-quit 1)"
+    else
+        gimp --no-data --no-interface --batch "$X" "(gimp-quit 1)" 2>&1 >/dev/null|sed -ne '/^script-fu/ {s/^.*: /'"${SPECIALPREFIX}"'/g;p}'
+    fi
 done
-exit 0
+finish

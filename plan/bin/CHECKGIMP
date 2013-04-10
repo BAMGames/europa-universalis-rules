@@ -1,7 +1,9 @@
 #!/bin/sh
 if [ $(which gimp 2>&1|grep ^/|wc -l) -lt 1 ]; then 
    echo "failed:gimp" 1>&2
-   exit 1
    rm -f .tmp/proof-gimp
+   exit 1
 fi
-touch .tmp/proof-gimp
+GIMP_VERSION=$(LANG=C gimp --version | sed -e 's/[^0-9]//g' -e 's/^\(..\).*/\1/g')
+mkdir -p .tmp
+echo "GIMP_VERSION=$GIMP_VERSION" > .tmp/proof-gimp

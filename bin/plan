@@ -5,6 +5,8 @@
 ## Overwriting these axioms is not considered an error.
 ## A rule overwriting only these axioms must be ignored.
 ## Example: generating .pfb .afm from .sfd files
+# Idea: pseudo-targets clean distclean and plan/finals listing the difference
+# Idea: manage inside files (both written and read in one actor)
 
 use strict;
 use warnings;
@@ -13,12 +15,12 @@ use Data::Dumper;
 use URI::Escape;
 use Digest::MD5;
 use Symbol 'gensym';
+use File::Path qw(make_path);
 
-my $verbosity=3;
-my %verbcategories=('exec'=>0,
-                    'init'=>0,
-                    'plan'=>0,
-                    'display'=>1);
+my %verbosity=('exec'=>0,
+               'init'=>0,
+               'plan'=>0,
+               'display'=>1);
 # Logging
 
 sub out {
@@ -45,10 +47,11 @@ sub stop {
 use IPC::Open3;
 use POSIX ":sys_wait_h";
 use IO::Select;
+use IO::Handle;
 my %statusCommand=();
 my %childCommand=();
 select(STDERR); $| = 1;
-select(STDOUT);
+select(STDOUT); $| = 1;
 
 sub REAPER {
   my $child;
@@ -64,7 +67,6 @@ sub setupCommand {
     foreach my $pid (keys %childCommand) {
       kill 2,$pid;
     }
-    &stop(2,"Killed by SIGINT");
   };
 }
 
@@ -159,11 +161,15 @@ sub fingerprintArray() {
   return $hashing->hexdigest;
 }
 
+
 sub writeCache() {
+  my $cachehandle;
   open STDIN,"/dev/null" unless fileno(STDIN);
-  open CACHE,'>','.tmp/cache';
-  print CACHE encode_json \%fingerprintCache;
-  close CACHE;
+  make_path('.tmp');
+  open $cachehandle,'>','.tmp/cache' or die;
+  print $cachehandle encode_json \%fingerprintCache;
+  $cachehandle->sync();
+  close $cachehandle;
 }
 
 sub readCache() {
@@ -502,7 +508,7 @@ sub attempt() {
   foreach my $i (@candidateRules) {
     &registerSuccess($i,$result);
   }
-  writeCache();
+  &writeCache($todo->{'actor'});
 }
 
 &readAxioms(@ARGV);
@@ -536,5 +542,4 @@ while ($end < scalar @$result) {
 if ($done==0) {
   &out(1,"display","Everything is up to date");
 }
-
 exit 0;
