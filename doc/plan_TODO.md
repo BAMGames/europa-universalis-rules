@@ -16,15 +16,6 @@ A makefile replacement
  * remove when argv == distclean
  * remove except "finals" when argv == clean
 
-# Introduce ARGV
-
-  * --verbosity *category* *number* (plus other options)
-  * --goal all
-  * --goal finals (or no argument)
-  * --clean
-  * --distclean
-  * --trace *goal*
-
 # Introduce trace mode
 
 Will follow process with strace and point out read, written and junk

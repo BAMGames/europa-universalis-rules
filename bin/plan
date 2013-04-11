@@ -5,7 +5,7 @@
 ## Overwriting these axioms is not considered an error.
 ## A rule overwriting only these axioms must be ignored.
 ## Example: generating .pfb .afm from .sfd files
-# Idea: pseudo-targets clean distclean and plan/finals listing the difference
+# Idea: pseudo-targets clean distclean
 # Idea: manage inside files (both written and read in one actor)
 
 use strict;
@@ -41,6 +41,53 @@ sub stop {
   exit ($status);
 }
 
+# ARGV
+
+sub parseARGV {
+  my $goals=[];
+  my $mode="goal";
+  my $target="finals";
+  my %target=('all'=>1,'finals'=>1);
+  my $x=0;
+  while ($x < scalar @ARGV) {
+    my $arg=$ARGV[$x];
+    if ($arg eq '--verbosity') {
+      die "Wrong option: --verbosity must be followed by two arguments" unless defined($ARGV[$x+2]);
+      my $cat=$ARGV[$x+1];
+      my $level=$ARGV[$x+2];
+      $x+=2;
+      die "Wrong option: --verbosity must be followed by either ".join(' or ',keys %verbosity) unless defined($verbosity{$cat});
+      die "Wrong option: --verbosity must be followed by a category and an integer" unless $level =~ /^[0-9]+$/;
+      $verbosity{$cat}=$level;
+    } elsif ($arg eq 'clean' or $arg eq '--clean') {
+      $mode="clean";
+    } elsif ($arg eq 'distclean' or $arg eq '--distclean') {
+      $mode="distclean";
+    } elsif (defined($target{$arg}) or $arg eq '--target') {
+      if ($arg eq '--target') {
+        $x++;
+        $arg=$ARGV[$x];
+      }
+      $target=$arg;
+    } elsif ($arg eq '--') {
+      $x++;
+      while ($x < scalar @ARGV) {
+        push $goals,$ARGV[$x];
+        $x++;
+      }
+    } else {
+      push $goals,$arg;
+    }
+    $x++;
+  }
+  return ($goals,$target,$mode);
+}
+
+my ($goals,$target,$mode)=&parseARGV();
+&out(1,"init","Parsing ARGV done");
+
+my %implemented=("goal" => 1,"distclean" => 1);
+die "$mode is not implemented yet" unless defined($implemented{$mode});
 
 # Command execution with stderr filtering
 
@@ -124,9 +171,11 @@ sub execCommand {
 &setupCommand;
 
 my $axiomdir='plan/axioms';
+my $finaldir='plan/finals';
 my $rulefile='plan/rules';
 
-my @axioms=();
+my %axioms=();
+my %finals=();
 my @theorems=();
 my %generation=();
 my @rules;
@@ -134,6 +183,7 @@ my $trigger=[];
 my %bottomupseen=();
 my %rules=();
 my %fingerprintCache=();
+my %generatedCache=();
 my $result=[];
 
 sub fingerprint() {
@@ -164,27 +214,58 @@ sub fingerprintArray() {
 
 
 sub writeCache() {
+  my ($cacheHash,$path)=@_;
   my $cachehandle;
   open STDIN,"/dev/null" unless fileno(STDIN);
   make_path('.tmp');
-  open $cachehandle,'>','.tmp/cache' or die;
-  print $cachehandle encode_json \%fingerprintCache;
+  open $cachehandle,'>',".tmp/$path" or die;
+  print $cachehandle encode_json $cacheHash;
   $cachehandle->sync();
   close $cachehandle;
 }
 
 sub readCache() {
+  my ($cacheHash,$path)=@_;
+  &out(1,'init',"Reading $path cache");
   local $/;
   open (my $fh,'<',".tmp/cache") or return;
   my $json=<$fh>;
   my $cache=decode_json($json);
   foreach (keys %{$cache}) {
-    $fingerprintCache{$_}=$cache->{$_};
+    $cacheHash->{$_}=$cache->{$_};
   }
 }
 
+sub removeGenerated() {
+  my ($cacheHash,$path,$axioms)=@_;
+  if (defined($axioms)) {
+    &out(2,'display','Removing old files')
+  } else {
+    &out(1,'init','Cleaning old files cache')
+  }
+  # If not defined, just test presence
+  # Else, unlink all files not in $axioms hash
+  my $result=[];
+  foreach my $key (keys %$cacheHash) {
+    if (-f $key) {
+      if (!defined($axioms->{$key})) {
+        &out(1,"display","rm $key");
+        unlink $cacheHash->{$key};
+        delete $cacheHash->{$key};
+      }
+    } else {
+      delete $cacheHash->{$key};
+    }
+  }
+  &writeCache($cacheHash,$path);
+}
+
 sub readAxioms() {
-  opendir(my $dh, $axiomdir) || die;
+  my $axiomtype=shift @_;
+  my $axiomdir=shift @_;
+  my $axioms=shift @_;
+  &out(1,"init","Reading $axiomtype from $axiomdir");
+  opendir(my $dh, $axiomdir) || return;
   while (readdir $dh) {
     next if /^[.]/;
     my $axiomfile=$axiomdir."/".$_;
@@ -192,7 +273,7 @@ sub readAxioms() {
     while (my $line=<FILE>) {
       chomp $line;
       next if $line=~/^#/;
-      push @axioms,uri_unescape($line);
+      $axioms->{uri_unescape($line)}=1;
     }
     close FILE;
   }
@@ -352,6 +433,7 @@ sub nextGeneration() {
 }
 
 sub bottomUp {
+  my @axioms=sort keys %axioms;
   my $currentgen=\@axioms;
   my $generation=1;
   my $newlength=scalar @axioms;
@@ -372,17 +454,21 @@ sub bottomUp {
 
 sub topDown {
   # Now, collect only the goals
-  &out(2,"plan","Isolating goals paths");
+  &out(2,"plan","Isolating goals paths from $target");
   my %topdownseen=();
-  my $goals=[@ARGV];
+  my $mygoals=$goals;
   my %idontknow=();
   my %ineed=();
 
-  if (scalar @$goals == 0) {
-    $goals=[keys %generation];
+  if ($target eq 'all') {
+    push $mygoals,keys %generation;
+  } elsif ($target eq 'finals') {
+    push $mygoals,keys %finals;
   }
-  while (scalar @$goals) {
-    my $goal=pop $goals;
+
+  &out(4,"plan","Final list of goals established: ".join(' ',@$mygoals));
+  while (scalar @$mygoals) {
+    my $goal=pop $mygoals;
     do {
       $idontknow{$goal}=1;next;
     } unless (exists($generation{$goal}));
@@ -390,7 +476,7 @@ sub topDown {
     next if exists($topdownseen{$key});
     $topdownseen{$key}=1;
     $ineed{$key}=$generation{$goal};
-    push $goals,@{$generation{$goal}->{'in'}};
+    push $mygoals,@{$generation{$goal}->{'in'}};
   }
   if (scalar keys %idontknow) {
     print "I do not know how to build the following goals:\n";
@@ -496,6 +582,13 @@ sub attempt() {
   } else {
     &out(1,'display',$success);
   }
+  my @tab=();
+  push @tab,@{$todo->{'out'}} if defined($todo->{'out'});
+  push @tab,@{$todo->{'junk'}} if defined($todo->{'junk'});
+  foreach my $file (@tab) {
+    $generatedCache{$file}=1;
+  }
+  &writeCache(\%generatedCache,'generated');
   my $status=&execCommand(@execLine);
   if ($status) {
     foreach my $ok (@partiallydone) {
@@ -510,7 +603,7 @@ sub attempt() {
         }
       }
     }
-    writeCache();
+    &writeCache(\%fingerprintCache,'fingerprint');
     &stop(1,"One rule failed with status $status") if ($status);
   }
   # register success of everybody
@@ -518,14 +611,30 @@ sub attempt() {
   foreach my $i (@candidateRules) {
     &registerSuccess($i,$result);
   }
-  &writeCache($todo->{'actor'});
+  &writeCache(\%fingerprintCache,'fingerprint');
 }
 
-&readAxioms(@ARGV);
-&readCache();
+&readAxioms("axioms",$axiomdir,\%axioms);
+&readAxioms("finals",$finaldir,\%finals);
+&readCache(\%fingerprintCache,'fingerprint');
+
+&readCache(\%generatedCache,'generated');
+&removeGenerated(\%generatedCache,'generated',undef);
+&writeCache(\%generatedCache,'generated');
+
+if ($mode eq "distclean") {
+  my %protected=();
+  foreach my $i (keys %axioms) {
+    $protected{$i}=1;
+  }
+  &removeGenerated(\%generatedCache,'generated',\%protected);
+  &writeCache(\%generatedCache,'generated');
+  exit 0;
+}
+
 &readRules();
 &out(3,"plan","Recording axioms");
-foreach my $axiom (@axioms) {
+foreach my $axiom (sort keys %axioms) {
   &recordGeneration({'gen'=>0,
                      'actor' => "AXIOM",
                      'in' => [],
