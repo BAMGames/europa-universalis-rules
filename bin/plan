@@ -86,7 +86,7 @@ sub parseARGV {
 my ($goals,$target,$mode)=&parseARGV();
 &out(1,"init","Parsing ARGV done");
 
-my %implemented=("goal" => 1,"distclean" => 1);
+my %implemented=('goal' => 1,'distclean' => 1, 'clean' => 1);
 die "$mode is not implemented yet" unless defined($implemented{$mode});
 
 # Command execution with stderr filtering
@@ -215,6 +215,7 @@ sub fingerprintArray() {
 
 sub writeCache() {
   my ($cacheHash,$path)=@_;
+  &out(3,'init',"Storing $path cache");
   my $cachehandle;
   open STDIN,"/dev/null" unless fileno(STDIN);
   make_path('.tmp');
@@ -228,7 +229,7 @@ sub readCache() {
   my ($cacheHash,$path)=@_;
   &out(1,'init',"Reading $path cache");
   local $/;
-  open (my $fh,'<',".tmp/cache") or return;
+  open (my $fh,'<',".tmp/$path") or return;
   my $json=<$fh>;
   my $cache=decode_json($json);
   foreach (keys %{$cache}) {
@@ -238,19 +239,20 @@ sub readCache() {
 
 sub removeGenerated() {
   my ($cacheHash,$path,$axioms)=@_;
+  my $count=0;
   if (defined($axioms)) {
-    &out(2,'display','Removing old files')
+    &out(1,'display','Removing old files');
   } else {
-    &out(1,'init','Cleaning old files cache')
+    &out(1,'init','Cleaning old files cache');
   }
   # If not defined, just test presence
   # Else, unlink all files not in $axioms hash
-  my $result=[];
-  foreach my $key (keys %$cacheHash) {
+  foreach my $key (keys %{$cacheHash}) {
     if (-f $key) {
-      if (!defined($axioms->{$key})) {
-        &out(1,"display","rm $key");
-        unlink $cacheHash->{$key};
+      if (defined($axioms) and !defined($axioms->{$key})) {
+        # clean or distclean
+        $count++;
+        unlink uri_unescape($key);
         delete $cacheHash->{$key};
       }
     } else {
@@ -258,6 +260,9 @@ sub removeGenerated() {
     }
   }
   &writeCache($cacheHash,$path);
+  if (defined($axioms)) {
+    &out(1,'display',"Removed $count old files");
+  }
 }
 
 sub readAxioms() {
@@ -620,15 +625,18 @@ sub attempt() {
 
 &readCache(\%generatedCache,'generated');
 &removeGenerated(\%generatedCache,'generated',undef);
-&writeCache(\%generatedCache,'generated');
 
-if ($mode eq "distclean") {
+if ($mode eq "distclean" or $mode eq "clean") {
   my %protected=();
   foreach my $i (keys %axioms) {
     $protected{$i}=1;
   }
+  if ($mode eq "clean") {
+    foreach my $i (keys %finals) {
+      $protected{$i}=1;
+    }
+  }
   &removeGenerated(\%generatedCache,'generated',\%protected);
-  &writeCache(\%generatedCache,'generated');
   exit 0;
 }
 
