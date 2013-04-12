@@ -14,7 +14,8 @@
          "library/makeshield.scm"
       ],
       "type" : "pattern",
-      "actor" : "BLASONS", "class" : "Shield images"
+      "class" : "Shield images",
+      "actor" : "BLASONS"
    },
    {
       "out" : [
@@ -30,31 +31,38 @@
          "library/xcftoshadow.scm"
       ],
       "type" : "pattern",
-      "actor" : "SHADOW", "class" : "Decompositing pictures"
+      "class" : "Decompositing pictures",
+      "actor" : "SHADOW"
    },
    {
       "out" : [
          ".tmp/proof-gimp"
       ],
       "in" : [],
+      "subclass" : "gimp",
       "type" : "simple",
-      "actor" : "CHECKGIMP", "class" : "Checking programs", "subclass" : "gimp"
+      "class" : "Checking programs",
+      "actor" : "CHECKGIMP"
    },
    {
       "out" : [
          ".tmp/proof-tex"
       ],
       "in" : [],
+      "subclass" : "TeX",
       "type" : "simple",
-      "actor" : "CHECKTEX", "class" : "Checking programs", "subclass" : "TeX"
+      "class" : "Checking programs",
+      "actor" : "CHECKTEX"
    },
    {
       "out" : [
          ".tmp/proof-curl"
       ],
       "in" : [],
+      "subclass" : "curl",
       "type" : "simple",
-      "actor" : "CHECKCURL", "class" : "Checking programs", "subclass" : "curl"
+      "class" : "Checking programs",
+      "actor" : "CHECKCURL"
    },
    {
       "out" : [
@@ -66,8 +74,10 @@
          ".tmp/proof-curl",
          ".tmp/proof-tex"
       ],
+      "subclass" : "TeX packages",
       "type" : "simple",
-      "actor" : "TEXINSTALL", "class" : "Checking programs", "subclass" : "TeX packages"
+      "class" : "Checking programs",
+      "actor" : "TEXINSTALL"
    },
    {
       "out" : [

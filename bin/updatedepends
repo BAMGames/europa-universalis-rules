@@ -12,7 +12,7 @@
 
 ## Plan self-management
 json_pp -json_opt pretty -f json -t json < plan/rules > plan/rules2 && mv plan/rules2 plan/rules
-find plan/bin -type f > plan/axioms/plan.auto
+find plan/bin -type f |LC_ALL=C sort > plan/axioms/plan.auto
 
 ## blasons
 ls blasons/src/shield_*xcf | LC_ALL=C sort > plan/axioms/blasons.auto
@@ -30,8 +30,8 @@ done
 (for i in shadow/*.pnm; do j=${i%.pnm}; j=${j#*/};if [ ! -f "shadow/$j.xcf" ]; then echo "shadow/$j.pnm"; echo "shadow/$j.pgm";fi; done;ls shadow/*.xcf)| LC_ALL=C sort > plan/axioms/shadow.auto
 
 ## pions
-ls pions/*.txt | grep -v 'pions/\(counters\)\|\(moreadmin\).txt' > plan/in/pionseps.in
-ls pions/*.txt > plan/axioms/pions.auto
+ls pions/*.txt | grep -v 'pions/\(manifest\)\|\(counters\)\|\(moreadmin\).txt' > plan/in/pionseps.in
+ls pions/*.txt | grep -v pions/manifest.txt > plan/axioms/pions.auto
 
 # Second part
 if [ -z "$1" ]; then
