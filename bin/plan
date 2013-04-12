@@ -17,29 +17,80 @@ use Digest::MD5;
 use Symbol 'gensym';
 use File::Path qw(make_path);
 use Cwd;
+use Term::ANSIColor;
 
 my %verbosity=('exec'=>0,
                'init'=>0,
                'plan'=>0,
-               'display'=>1);
+               'out'=>1,
+               'display'=>3);
 # Logging
+
+my $class='';
+my $oldclass='';
+my $subclass='';
+my $oldsubclass='';
+my $currentcol=0;
+sub finish {
+  &newline();
+  die @_;
+}
+sub newline {
+  print "\n" if ($currentcol);
+  $currentcol=0;
+}
+sub class {
+  &newline();
+  $oldclass=$class;
+  $class=$_[0];
+  if ($class ne $oldclass) {
+    $subclass='';
+    print color 'bold';
+    print $class,"\n";
+    print color 'reset';
+  }
+}
+sub subclass {
+  $oldsubclass=$subclass;
+  $subclass=$_[0];
+  if ($class ne $oldclass) {
+    print color 'bold';
+    &out(3,'display',$subclass);
+    print color 'reset';
+  }
+}
 
 sub out {
   my $v=shift @_;
   my $n=shift @_;
   if ($verbosity{$n}>=$v) {
-    if ($n ne "display") {
-      print $n,':',@_,"\n";
+    if ($n eq "display") {
+      if ($v==1) {
+        &class(@_);
+      } elsif ($v==2) {
+        &subclass(@_);
+      } else {
+        my $str=join('',@_);
+        my $len=length($str);
+        if ($currentcol+2+$len>80) {
+          &newline();
+        }
+        if ($currentcol==0) {
+          print "    ";
+        }
+        print '[',$str,']';
+        $currentcol+=2+$len;
+      }
+    } elsif ($n eq "out") {
+      &newline();
+      print color 'blue';
+      print "      ",@_,"\n";
+      print color 'reset';
     } else {
-      print @_,"\n";
+      &newline();
+      print $n,':',@_,"\n";
     }
   }
-}
-
-sub stop {
-  my $status=shift @_;
-  &out(1,'display',@_);
-  exit ($status);
 }
 
 # ARGV
@@ -53,12 +104,12 @@ sub parseARGV {
   while ($x < scalar @ARGV) {
     my $arg=$ARGV[$x];
     if ($arg eq '--verbosity') {
-      die "Wrong option: --verbosity must be followed by two arguments" unless defined($ARGV[$x+2]);
+      finish("Wrong option: --verbosity must be followed by two arguments") unless defined($ARGV[$x+2]);
       my $cat=$ARGV[$x+1];
       my $level=$ARGV[$x+2];
       $x+=2;
-      die "Wrong option: --verbosity must be followed by either ".join(' or ',keys %verbosity) unless defined($verbosity{$cat});
-      die "Wrong option: --verbosity must be followed by a category and an integer" unless $level =~ /^[0-9]+$/;
+      finish("Wrong option: --verbosity must be followed by either ".join(' or ',keys %verbosity)) unless defined($verbosity{$cat});
+      finish("Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $verbosity{$cat}=$level;
     } elsif ($arg eq 'clean' or $arg eq '--clean') {
       $mode="clean";
@@ -88,7 +139,7 @@ my ($goals,$target,$mode)=&parseARGV();
 &out(1,"init","Parsing ARGV done");
 
 my %implemented=('goal' => 1,'distclean' => 1, 'clean' => 1);
-die "$mode is not implemented yet" unless defined($implemented{$mode});
+finish("$mode is not implemented yet") unless defined($implemented{$mode});
 
 # Command execution with stderr filtering
 
@@ -127,12 +178,13 @@ sub errorCommand {
   chomp $line;
   if ($line =~ $specialprefix) {
     my $part=$1;
-    print "[  ]",$part,"\n";
+    &out(3,'display',$part);
     if ($part =~ /^failed:/) {
     } else {
       push @partiallydone,$part;
     }
   } else {
+    &newline();
     print STDERR $line,"\n";
   }
 }
@@ -140,25 +192,24 @@ sub errorCommand {
 sub execCommand {
   my $line;
   &out(1,"exec",@_);
+  my $out = gensym;
   my $err = gensym;
-  my $pid = open3("<&STDIN",">&STDOUT", $err, @_);
+  my $pid = open3("<&STDIN",$out, $err, @_);
   if ($pid) {
     $childCommand{$pid}=1;
-    # This method still outputs $err to the tty
-    # It is supposed to be less risky wrt block
-    # my $sel= new IO::Select;
-    # $sel->add($err);
-    # while (scalar keys %childCommand > 0) {
-    #   foreach my $readhandle ($sel->can_read(1)) {
-    #     my $length=sysread $readhandle,$line,4096;
-    #     if ($length) {
-    #       &errorCommand($line);
-    #     }
-    #   }
-    # }
+    my $sel= new IO::Select;
+    $sel->add($err,$out);
     while (scalar keys %childCommand > 0) {
-      while (my $line=<$err>) {
-        &errorCommand($line);
+      foreach my $readhandle ($sel->can_read(.5)) {
+        my $length=sysread $readhandle,$line,4096;
+        if ($length) {
+          if (fileno($readhandle)==fileno($err)) {
+            &errorCommand($line);
+          } else {
+            chomp $line;
+            &out(1,'out',$line);
+          }
+        }
       }
     }
   }
@@ -220,7 +271,7 @@ sub findGitTopdir {
     chdir('..');
     $cwd=getcwd();
   }
-  die "Could not find the top-level directory" if $cwd eq $oldcwd;
+  finish("Could not find the top-level directory") if $cwd eq $oldcwd;
   closedir(GITDIR);
 }
 
@@ -230,7 +281,7 @@ sub writeCache() {
   my $cachehandle;
   open STDIN,"/dev/null" unless fileno(STDIN);
   make_path('.tmp');
-  open $cachehandle,'>',".tmp/$path" or die;
+  open $cachehandle,'>',".tmp/$path" or finish("I cannot open my $path cache!");
   print $cachehandle encode_json $cacheHash;
   $cachehandle->sync();
   close $cachehandle;
@@ -272,7 +323,7 @@ sub removeGenerated() {
   }
   &writeCache($cacheHash,$path);
   if (defined($axioms)) {
-    &out(1,'display',"Removed $count old files");
+    &out(3,'display',"Removed $count old files");
   }
 }
 
@@ -315,7 +366,7 @@ sub readRules() {
     push $rule->{'in'},'plan/bin/'.$rule->{'actor'};
     $rules{$rule->{"actor"}}=$rule;
   }
-  $rules{'AXIOM'}={'type' => 'AXIOM','in'=>['plan/bin/AXIOM']};
+  $rules{'AXIOM'}={'type' => 'AXIOM','in'=>['plan/bin/AXIOM'],'class' => 'Checking axioms'};
 }
 
 sub recordGeneration() {
@@ -327,7 +378,7 @@ sub recordGeneration() {
   }
   $rule{'arg'}=$arrayarg;
   foreach my $thm (@{$rule{'out'}}) {
-    die "Regenerated $thm in generation $gen" if (exists $generation{$thm});
+    finish("Regenerated $thm in generation $gen") if (exists $generation{$thm});
     $generation{$thm}={'gen' => $gen,
                        'actor' => uri_escape($rule{'actor'}),
                        'arg' => $arrayarg,
@@ -439,7 +490,7 @@ sub nextGeneration() {
     my $i=0;
     my $wantedcopy=&shallowCopy(\@wanted);
     foreach my $wanted (@$wantedcopy) {
-      if (exists($generation{$wanted}) && $generation{$wanted}->{'gen'}<$gen) {
+      if (exists($generation{$wanted}) and $generation{$wanted}->{'gen'}<$gen) {
         splice $delayed->{'wanted'},$i,1;
         $i--;
       }
@@ -604,8 +655,11 @@ sub attempt() {
   my $success=substr $line,0,72;
   $success.="..." if ($success ne $line);
   $execLine[0]='plan/bin/'.$todo->{'actor'};
-  if ($todo->{'actor'} eq "AXIOM") {
-    &out(2,'display',$success);
+  if (defined($todo->{'class'})) {
+    &out(1,'display',$todo->{'class'});
+    if (defined($todo->{'subclass'})) {
+      &out(2,'display',$todo->{'subclass'});
+    }
   } else {
     &out(1,'display',$success);
   }
@@ -631,7 +685,7 @@ sub attempt() {
       }
     }
     &writeCache(\%fingerprintCache,'fingerprint');
-    &stop(1,"One rule failed with status $status") if ($status);
+    &finish("One rule failed with status $status") if ($status);
   }
   # register success of everybody
   &out(3,"plan","Everything was successful");
@@ -693,4 +747,5 @@ while ($end < scalar @$result) {
 if ($done==0) {
   &out(1,"display","Everything is up to date");
 }
+&newline();
 exit 0;
