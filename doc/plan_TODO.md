@@ -4,17 +4,10 @@ A makefile replacement
 
  * blasons : done
  * fonts : done
- * shadow : to do
+ * shadow : done
  * pions : to do after shadow/
 
 # Introduce auto documentation
-
-# Clean and Distclean
-
- * store an inventory of all junk and out files
- * remove from inventory at start if file was removed
- * remove when argv == distclean
- * remove except "finals" when argv == clean
 
 # Introduce trace mode
 
