@@ -16,6 +16,7 @@ use URI::Escape;
 use Digest::MD5;
 use Symbol 'gensym';
 use File::Path qw(make_path);
+use Cwd;
 
 my %verbosity=('exec'=>0,
                'init'=>0,
@@ -212,6 +213,16 @@ sub fingerprintArray() {
   return $hashing->hexdigest;
 }
 
+sub findGitTopdir {
+  my $oldcwd='';
+  my $cwd=getcwd();
+  while ($oldcwd ne $cwd and !opendir(GITDIR,".git")) {
+    chdir('..');
+    $cwd=getcwd();
+  }
+  die "Could not find the top-level directory" if $cwd eq $oldcwd;
+  closedir(GITDIR);
+}
 
 sub writeCache() {
   my ($cacheHash,$path)=@_;
@@ -344,6 +355,17 @@ sub nextGeneration() {
       my $key=&actionKey($rule);
       next if (exists($bottomupseen{$key}));
       my $allfound=1;
+      if (defined($rule->{'infile'})) {
+        foreach my $infile (@{$rule->{'infile'}}) {
+          if (open FILE,$infile) {
+            foreach (<FILE>) {
+              chomp;
+              push $rule->{'in'},$_;
+            }
+            close FILE;
+          }
+        }
+      }
       foreach my $requirement (@{$rule->{'in'}}) {
         if (!exists($generation{$requirement})
             or $generation{$requirement} < $gen) {
@@ -410,7 +432,6 @@ sub nextGeneration() {
       }
     }
   }
-
   my $delayednumber=0;
   my $triggercopy=&shallowCopy($trigger);
   foreach my $delayed (@$triggercopy) {
@@ -619,6 +640,8 @@ sub attempt() {
   }
   &writeCache(\%fingerprintCache,'fingerprint');
 }
+
+&findGitTopdir();
 
 &readAxioms("axioms",$axiomdir,\%axioms);
 &readAxioms("finals",$finaldir,\%finals);
