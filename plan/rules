@@ -1,11 +1,8 @@
-[
-   {
-      "out" : [
-         "blasons/shield_$1.png",
-         "blasons/shield_$1.pnm"
-      ],
+{
+   "BLASONS" : {
+      "actor" : "BLASONS",
       "argument" : "$1",
-      "pattern" : "blasons/src/shield_(.*).xcf",
+      "class" : "Shield images",
       "in" : [
          "blasons/src/shield_$1.xcf",
          ".tmp/proof-gimp",
@@ -13,116 +10,60 @@
          "bin/gimpexec",
          "library/makeshield.scm"
       ],
-      "type" : "pattern",
-      "class" : "Shield images",
-      "actor" : "BLASONS"
-   },
-   {
       "out" : [
-         "shadow/$1.png",
-         "shadow/$1.pnm"
+         "blasons/shield_$1.png",
+         "blasons/shield_$1.pnm"
       ],
-      "argument" : "$1",
-      "pattern" : "shadow/(.*).xcf",
-      "in" : [
-         "shadow/$1.xcf",
-         ".tmp/proof-gimp",
-         "bin/gimpexec",
-         "library/xcftoshadow.scm"
-      ],
-      "type" : "pattern",
-      "class" : "Decompositing pictures",
-      "actor" : "SHADOW"
+      "pattern" : "blasons/src/shield_(.*).xcf",
+      "type" : "pattern"
    },
-   {
+   "CHECKGIMP" : {
+      "actor" : "CHECKGIMP",
+      "class" : "Checking programs",
+      "in" : [],
       "out" : [
          ".tmp/proof-gimp"
       ],
-      "in" : [],
       "subclass" : "gimp",
-      "type" : "simple",
-      "class" : "Checking programs",
-      "actor" : "CHECKGIMP"
+      "type" : "simple"
    },
-   {
+   "CHECKTEX" : {
+      "actor" : "CHECKTEX",
+      "class" : "Checking programs",
+      "in" : [],
       "out" : [
          ".tmp/proof-tex"
       ],
-      "in" : [],
       "subclass" : "TeX",
-      "type" : "simple",
-      "class" : "Checking programs",
-      "actor" : "CHECKTEX"
+      "type" : "simple"
    },
-   {
+   "CHECKURL" : {
+      "actor" : "CHECKCURL",
+      "class" : "Checking programs",
+      "in" : [],
       "out" : [
          ".tmp/proof-curl"
       ],
-      "in" : [],
       "subclass" : "curl",
-      "type" : "simple",
-      "class" : "Checking programs",
-      "actor" : "CHECKCURL"
+      "type" : "simple"
    },
-   {
-      "out" : [
-         ".tmp/proof-texinstall"
-      ],
-      "in" : [
-         "fonts/texfonts.def",
-         "bin/install-pack",
-         ".tmp/proof-curl",
-         ".tmp/proof-tex"
-      ],
-      "subclass" : "TeX packages",
-      "type" : "simple",
-      "class" : "Checking programs",
-      "actor" : "TEXINSTALL"
-   },
-   {
-      "out" : [
-         "fonts/encodings.eps"
-      ],
-      "in" : [
-         "bin/makeencodings"
-      ],
-      "type" : "simple",
-      "actor" : "FONTENCODING"
-   },
-   {
-      "out" : [
-         "fonts/$1.eps"
-      ],
-      "maxargs" : 1,
-      "infile" : [
-         "plan/in/$1.in"
-      ],
-      "actor" : "FONTENCODINGPATTERN",
-      "argument" : "$1",
-      "pattern" : "fonts/(.*).spec",
-      "in" : [
-         "fonts/$1.spec",
-         "bin/makeencodings"
-      ],
-      "type" : "pattern"
-   },
-   {
-      "out" : [
-         "pions/pions.eps"
-      ],
+   "COUNTERTEMPLATE" : {
+      "actor" : "COUNTERTEMPLATE",
+      "class" : "Counters templates",
       "in" : [
          "bin/extract"
       ],
       "infile" : [
          "plan/in/pionseps.in"
       ],
-      "type" : "simple",
-      "actor" : "COUNTERTEMPLATE"
-   },
-   {
       "out" : [
-         "pions/pions-ops.eps"
+         "pions/pions.eps"
       ],
+      "type" : "simple"
+   },
+   "COUNTERTEMPLATEOPS" : {
+      "actor" : "COUNTERTEMPLATEOPS",
+      "class" : "Counters templates",
       "in" : [
          "pions/moreadmin.txt",
          "bin/extract"
@@ -130,7 +71,70 @@
       "infile" : [
          "plan/in/pionseps.in"
       ],
-      "type" : "simple",
-      "actor" : "COUNTERTEMPLATEOPS"
+      "out" : [
+         "pions/pions-ops.eps"
+      ],
+      "type" : "simple"
+   },
+   "FONTENCODING" : {
+      "actor" : "FONTENCODING",
+      "class" : "Font encodings",
+      "in" : [
+         "bin/makeencodings"
+      ],
+      "out" : [
+         "fonts/encodings.eps"
+      ],
+      "type" : "simple"
+   },
+   "FONTENCODINGPATTERN" : {
+      "actor" : "FONTENCODINGPATTERN",
+      "argument" : "$1",
+      "class" : "Font encodings",
+      "in" : [
+         "fonts/$1.spec",
+         "bin/makeencodings"
+      ],
+      "infile" : [
+         "plan/in/$1.in"
+      ],
+      "maxargs" : 1,
+      "out" : [
+         "fonts/$1.eps"
+      ],
+      "pattern" : "fonts/(.*).spec",
+      "type" : "pattern"
+   },
+   "SHADOW" : {
+      "actor" : "SHADOW",
+      "argument" : "$1",
+      "class" : "Decompositing pictures",
+      "in" : [
+         "shadow/$1.xcf",
+         ".tmp/proof-gimp",
+         "bin/gimpexec",
+         "library/xcftoshadow.scm"
+      ],
+      "out" : [
+         "shadow/$1.png",
+         "shadow/$1.pnm"
+      ],
+      "pattern" : "shadow/(.*).xcf",
+      "type" : "pattern"
+   },
+   "TEXINSTALL" : {
+      "actor" : "TEXINSTALL",
+      "class" : "Checking programs",
+      "in" : [
+         "fonts/texfonts.def",
+         "bin/install-pack",
+         ".tmp/proof-curl",
+         ".tmp/proof-tex"
+      ],
+      "out" : [
+         ".tmp/proof-texinstall"
+      ],
+      "subclass" : "TeX packages",
+      "type" : "simple"
    }
-]
+}

@@ -56,6 +56,7 @@ while [ -n "$1" ]&&[ -z "$FINISHED" ]; do
         COUNT=$((COUNT+1))
     done
     X="(load \"$TMPFILE\")"
+    echo "${SPECIALPREFIX}gimp" 1>&2
     if [ "$GIMP_VERSION" -gt 22 ]; then
         gimp --batch-interpreter plug-in-script-fu-eval --no-data --no-interface --batch "$X" --batch '(gimp-quit 0)' 2>&1 >/dev/null|sed -une '/^script-fu/ {s/^.*: /'"${SPECIALPREFIX}"'/g;p}' 1>&2
     elif [ "$GIMP_VERSION" -gt 20 ]; then
@@ -63,5 +64,6 @@ while [ -n "$1" ]&&[ -z "$FINISHED" ]; do
     else
         gimp --no-data --no-interface --batch "$X" "(gimp-quit 1)" 2>&1 >/dev/null|sed -ne '/^script-fu/ {s/^.*: /'"${SPECIALPREFIX}"'/g;p}'
     fi
+    echo "${SPECIALPREFIX}done" 1>&2
 done
 finish

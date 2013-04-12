@@ -23,7 +23,9 @@ my %verbosity=('exec'=>0,
                'init'=>0,
                'plan'=>0,
                'out'=>1,
+               'err'=>1,
                'display'=>3);
+my $color=1;
 # Logging
 
 my $class='';
@@ -49,18 +51,18 @@ sub class {
   if ($class ne $oldclass) {
     &newline();
     $subclass='';
-    print color 'bold';
+    print color 'bold' if ($color);
     print $class,"\n";
-    print color 'reset';
+    print color 'reset' if ($color);
   }
 }
 sub subclass {
   $oldsubclass=$subclass;
   $subclass=$_[0];
   if ($subclass ne $oldsubclass) {
-    print color 'bold';
+    print color 'bold' if ($color);
     &out(3,'display',$subclass);
-    print color 'reset';
+    print color 'reset' if ($color);
   }
 }
 
@@ -88,9 +90,14 @@ sub out {
       }
     } elsif ($n eq "out") {
       &newline();
-      print color 'blue';
+      print color 'blue' if ($color);
       print "      ",@_,"\n";
-      print color 'reset';
+      print color 'reset' if ($color);
+    } elsif ($n eq 'err') {
+      &newline();
+      print color 'red' if ($color);
+      print @_,"\n";
+      print color 'reset' if ($color);
     } else {
       &newline();
       print $n,':',@_,"\n";
@@ -189,8 +196,7 @@ sub errorCommand {
       push @partiallydone,$part;
     }
   } else {
-    &newline();
-    print STDERR $line,"\n";
+    &out(1,'err',$line);
   }
 }
 
@@ -365,13 +371,30 @@ sub readRules() {
   open (my $fh,'<',$rulefile);
   my $json=<$fh>;
   my $rules=decode_json($json);
-  @rules=@{$rules};
+  @rules=values %{$rules};
   foreach my $rule (@rules) {
     $rule->{'in'}=[] unless (defined($rule->{'in'}));
     push $rule->{'in'},'plan/bin/'.$rule->{'actor'};
     $rules{$rule->{"actor"}}=$rule;
   }
-  $rules{'AXIOM'}={'type' => 'AXIOM','in'=>['plan/bin/AXIOM'],'class' => 'Checking axioms'};
+  $rules{'AXIOM'}={'type' => 'simple',
+                   'actor' => 'AXIOM',
+                   'in'=>['plan/bin/AXIOM'],
+                   'class' => 'Checking axioms'};
+}
+
+sub shallowCopyRule() {
+  my ($oldrule,$rule)=@_;
+  foreach my $k (keys %$oldrule) {
+    if (ref($k) ne 'ARRAY') {
+      $rule->{$k}=$oldrule->{$k};
+    } else {
+      $rule->{$k}=[@{$oldrule->{$k}}];
+    }
+  }
+  $rule->{'arg'}=[] if (!defined($rule->{'arg'}));
+  $rule->{'class'}='' if (!defined($rule->{'class'}));
+  $rule->{'subclass'}='' if (!defined($rule->{'subclass'}));
 }
 
 sub recordGeneration() {
@@ -379,16 +402,7 @@ sub recordGeneration() {
   my $oldrule=$_[0];
   foreach my $thm (@{$oldrule->{'out'}}) {
     my $rule={};
-    foreach my $k (keys %$oldrule) {
-      if (ref($k) ne 'ARRAY') {
-        $rule->{$k}=$oldrule->{$k};
-      } else {
-        $rule->{$k}=[@{$oldrule->{$k}}];
-      }
-    }
-    $rule->{'arg'}=[] if (!defined($rule->{'arg'}));
-    $rule->{'class'}='' if (!defined($rule->{'class'}));
-    $rule->{'subclass'}='' if (!defined($rule->{'subclass'}));
+    &shallowCopyRule($oldrule,$rule);
     &finish(1,"Regenerated $thm in generation ".$oldrule->{'gen'}) if (exists $generation{$thm});
     $generation{$thm}=$rule;
   }
@@ -404,10 +418,8 @@ sub nextGeneration() {
   my ($gen,$previousthm) = @_;
   &out(3,"plan","Building list of buildable files, generation $gen");
   my @current=@$previousthm;
-  my $rulenum=-1;
   my $found=[];
   foreach my $rule (@rules) {
-    $rulenum++;
     if ($rule->{'type'} eq 'simple' ) {
       my $key=&actionKey($rule);
       next if (exists($bottomupseen{$key}));
@@ -422,6 +434,8 @@ sub nextGeneration() {
             close FILE;
           }
         }
+        $rule->{'oldinfile'} = $rule->{'infile'};
+        delete $rule->{'infile'};
       }
       foreach my $requirement (@{$rule->{'in'}}) {
         if (!exists($generation{$requirement})
@@ -433,7 +447,7 @@ sub nextGeneration() {
         $rules{$rule->{"actor"}}->{'seen'}=1;
         $bottomupseen{$key}=1;
         $rule->{'gen'}=$gen;
-        &recordGeneration($rule);
+        &recordGeneration($rule); # TODO: Copy not necessary
         push $found,@{$rule->{'out'}};
       }
     } elsif ($rule->{'type'} eq 'pattern' ) {
@@ -472,17 +486,16 @@ sub nextGeneration() {
               s/\$$counter/$list[$counter-1]/ge;
             }
           }
-          my $key=&actionKey({'actor'=>$rule->{'actor'},'arg'=>[$argument]});
+          my $newrule={};
+          &shallowCopyRule($rule,$newrule);
+          $newrule->{'arg'}=[$argument];
+          my $key=&actionKey($newrule);
           next if exists($bottomupseen{$key});
           $bottomupseen{$key}=1;
-          push $trigger,{
-                         'rulenum' => $rulenum,
-                         'actor' => $rule->{'actor'},
-                         'arg' => [$argument],
-                         'in' => [ @in ],
-                         'wanted' => [ @in ],
-                         'out' => [ @out ]
-                        };
+          $newrule->{'in'}=[@in];
+          $newrule->{'wanted'}=[@in];
+          $newrule->{'out'}=[@out];
+          push $trigger,$newrule;
         }
       }
     }
@@ -503,7 +516,7 @@ sub nextGeneration() {
     @wanted=@{$delayed->{'wanted'}};
     if (scalar @wanted == 0) {
       $delayed->{'gen'}=$gen;
-      &recordGeneration($delayed);
+      &recordGeneration($delayed,0); # TODO: Copy not necessary
       push $found,@{$delayed->{'out'}};
       splice $trigger,$delayednumber,1;
       $delayednumber--;
@@ -611,15 +624,8 @@ sub firstCompound {
     push $candidates,$i;
   }
   # TODO
-  my $oldrule=$plan->[$begin];
   my $compoundRule={};
-  foreach my $k (keys %$oldrule) {
-    if (ref($k) ne 'ARRAY') {
-      $compoundRule->{$k}=$oldrule->{$k};
-    } else {
-      $compoundRule->{$k}=[@{$oldrule->{$k}}];
-    }
-  }
+  &shallowCopyRule($plan->[$begin],$compoundRule);
   $compoundRule->{'arg'}=[];
   my $individualRules=[];
   my $newargs=$compoundRule->{'arg'};
@@ -729,13 +735,13 @@ if ($mode eq "distclean" or $mode eq "clean") {
 &readRules();
 &out(3,"plan","Recording axioms");
 foreach my $axiom (sort keys %axioms) {
-  &recordGeneration({'gen'=>0,
-                     'actor' => "AXIOM",
-                     'in' => [],
-                     'arg' => [$axiom],
-                     'out' => [$axiom],
-                     'class' => 'Checking axioms'
-                    });
+  my $axiomrule={};
+  &shallowCopyRule($rules{'AXIOM'},$axiomrule);
+  $axiomrule->{'gen'}=0;
+  $axiomrule->{'in'}=[] if ($axiom eq 'plan/bin/AXIOM');
+  $axiomrule->{'arg'}=[$axiom];
+  $axiomrule->{'out'}=[$axiom];
+  &recordGeneration($axiomrule);
 }
 &bottomUp();
 $result=&topDown();
