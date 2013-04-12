@@ -1,2 +1,2 @@
 #!/bin/sh
-cat plan/in/pionseps.in |xargs bin/extract pions/moreadmin.txt > pions/pions-ops.eps
+cat plan/in/pionseps.in |xargs bin/extract pions/moreadmin.txt | sed -e '2 s|$|/counteralone true def/pageheight 100 def/pagewidth 100 def|g' > pions/pions-ops.eps
