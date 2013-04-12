@@ -1,10 +1,10 @@
 [
    {
-      "argument" : "$1",
       "out" : [
          "blasons/shield_$1.png",
          "blasons/shield_$1.pnm"
       ],
+      "argument" : "$1",
       "pattern" : "blasons/src/shield_(.*).xcf",
       "in" : [
          "blasons/src/shield_$1.xcf",
@@ -17,11 +17,11 @@
       "actor" : "BLASONS"
    },
    {
-      "argument" : "$1",
       "out" : [
          "shadow/$1.png",
          "shadow/$1.pnm"
       ],
+      "argument" : "$1",
       "pattern" : "shadow/(.*).xcf",
       "in" : [
          "shadow/$1.xcf",
@@ -95,5 +95,32 @@
          "bin/makeencodings"
       ],
       "type" : "pattern"
+   },
+   {
+      "out" : [
+         "pions/pions.eps"
+      ],
+      "in" : [
+         "bin/extract"
+      ],
+      "infile" : [
+         "plan/in/pionseps.in"
+      ],
+      "type" : "simple",
+      "actor" : "COUNTERTEMPLATE"
+   },
+   {
+      "out" : [
+         "pions/pions-ops.eps"
+      ],
+      "in" : [
+         "pions/moreadmin.txt",
+         "bin/extract"
+      ],
+      "infile" : [
+         "plan/in/pionseps.in"
+      ],
+      "type" : "simple",
+      "actor" : "COUNTERTEMPLATEOPS"
    }
 ]

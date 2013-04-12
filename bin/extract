@@ -49,7 +49,7 @@ sub sendit {
     @comm=split(/\n/,$command);
     foreach $u (@comm) {
 	chomp $u;
-	$u =~ /^.*dessine([A-Z]*)$/;
+	$u =~ /^.*dessine([A-Za-z]*)$/;
 	$type=$1;
 	$commands{$type}.="$u\n";
     }
