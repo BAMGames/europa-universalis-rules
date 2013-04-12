@@ -13,6 +13,7 @@ json_pp -json_opt pretty -f json -t json < plan/rules > plan/rules2 && mv plan/r
 find plan/bin -type f > plan/axioms/plan.auto
 ls blasons/src/shield_*xcf | LC_ALL=C sort > plan/axioms/blasons.auto
 ls fonts/*afm fonts/*pfb fonts/*.spec | LC_ALL=C sort > plan/axioms/fonts.auto
+(for i in shadow/*.pnm; do j=${i%.pnm}; j=${j#*/};if [ ! -f "shadow/$j.xcf" ]; then echo "shadow/$j.pnm"; echo "shadow/$j.pgm";fi; done;ls shadow/*.xcf)| LC_ALL=C sort > plan/axioms/shadow.auto
 for k in fonts/*.spec; do
     stem=$(basename "$k" .spec)
     for i in $(cat "$k" |grep '^files '|cut -f2- -d' '); do

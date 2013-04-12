@@ -16,6 +16,21 @@
       "actor" : "BLASONS"
    },
    {
+      "argument" : "$1",
+      "out" : [
+         "shadow/$1.png",
+         "shadow/$1.pnm"
+      ],
+      "pattern" : "shadow/(.*).xcf",
+      "in" : [
+         "shadow/$1.xcf",
+         ".tmp/proof-gimp",
+         "library/xcftoshadow.scm"
+      ],
+      "type" : "pattern",
+      "actor" : "SHADOW"
+   },
+   {
       "out" : [
          ".tmp/proof-gimp"
       ],
