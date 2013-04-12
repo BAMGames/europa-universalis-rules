@@ -3243,6 +3243,13 @@ utilisation.
 
 Et ça supprime une règle spéciale utile pour 2 chefs seulement...
 
+Ou alors, si on veut vraiment gérer le nombre de C HOL, on fait 2 pions
+chacun (et donc nouveau "pouvoir" que le deuxième est là même si le
+premier est mort, mais bon...) Pour JM, ça ferait 2 simple face, pour
+Brouwer, 1 simple face et un double face. 2 pions de plus (3 avec le
+suivant), mais suppression d'une exception où les gens oublient de
+regarder au dos du pions et reçoivent leur chef trop tard...
+
 * Beniowsky
 On continue.
 Quel intérêt d'en faire un double face ? On veut vraiment priver FRA de
@@ -3256,6 +3263,130 @@ Impérial ? À priori, c'est 2 camps opposés (en règle générale), donc
 c'est pas du changement simple (pas comme Barberousse,
 typiquement). Bon, je fouillerai les règles avant de re-râler
 sérieusement.
+
+En fait, non, je rerâle tout de suite.
+On a à la fois Ferdinand (de Brunswick) :
+
+LEADERPAIRE;Ferdinand;von Braunschweig;Ferdinand;;Ferdinand von Braunschweig;52;57;prusse;G;D 4.3.4;;;Young brother of the Duke of Brunswick, fought the Seven Years War;Ferdinand2;von Braunschweig;Ferdinand;;Ferdinand von Braunschweig;52;57;saint-empire;G;A 4.3.4;;;Young brother of the Duke of Brunswick, victor at Minden and Crefeld
+
+Et Brunswick (Ferdinand de) :
+LEADER;Braunschweig;Ferdinand von;Braunschweig;;;58;62;prusse;G;A 4.3.2;;;Prussian field marshal, won the battles of Krefeld and Minden
+
+Les dates sont différentes (T52-57 puis T58-62), mais ça sent quand même
+le duplicata... 
+Bon, j'attends d'avoir une connexion pour essayer de fouiller ça et
+savoir comment simplifier.
+
+Bon, alors...
+On a 3 "Brunswick" dans le jeu.
+
+LEADER;Braunschweig-Bevern;August-Wilhelm, duke of Brunswick-Bevern;Braunschweig-Bevern;;August-Wilhelm, duke of Brunswick-Bevern;54;58;prusse;G;E 5.3.3;;;Lost the battle of Breslau but commanded an outnumbered prussian army skillfully
+ 
+1755-1780
+http://en.wikipedia.org/wiki/Augustus_William,_Duke_of_Brunswick-Bevern
+Principalement NCO à part en défense (bonne maneuvre) mais quand même défaite
+à Breslau. Plus tard victoire à Reichenbach.
+Pas hyper important dans l'ensemble.
+ 
+ 
+ 
+LEADER;Braunschweig;Ferdinand von;Braunschweig;;;58;62;prusse;G;A 4.3.2;;;Prussian field marshal, won the battles of Krefeld and Minden
+ 
+1775-1800
+http://en.wikipedia.org/wiki/Karl_Wilhelm_Ferdinand,_Duke_of_Brunswick-Luneburg
+???
+ 
+Actif pendant les guerres révolutionnaires (1790-1800).
+NCO pendant SYW.
+Duc à partir de 1780.
+Neveu de "Ferdinand"
+ 
+ 
+ 
+LEADERPAIRE;Ferdinand;von Braunschweig;Ferdinand;;Ferdinand von Braunschweig;52;57;prusse;G;D 4.3.4;;;Young brother of the Duke of Brunswick, fought the Seven Years War;Ferdinand2;von Braunschweig;Ferdinand;;Ferdinand von Braunschweig;52;57;saint-empire;G;A 4.3.4;;;Young brother of the Duke of Brunswick, victor at Minden and Crefeld
+ 
+1745-1775
+http://en.wikipedia.org/wiki/Duke_Ferdinand_of_Brunswick-Wolfenb%C3%BCttel
+ 
+Actif pendant WoAS et SYW (1745-1760), retiré ensuite mais vit jusqu'en 1792.
+Commande en Saxe pendant SYW, puis commande les Anglo-hannovriens.
+=> besoin d'un pouvoir spécial mais pas d'appartenir au HRE.
+ 
+
+Les dates et les pions sont globalement corrects, y'a eu confusion sur
+les bios des deux Ferdinand.
+
+Je pense que le minimum est de renommer "Brunswick" en
+"Brunswick-Luneburg" et de corriger son prénom. Hum, sauf que son titre
+sur wiki (anglais comme allemand) est "Brunswick-Wolfenbuttel". Et que
+"Ferdinand" est précisé "Prince of Brunswick-Luneburg".
+Arg ! Font chier ces allemands...
+
+Bon, clairement, Ferdinand, c'est Ferdinand de Brunswick, donc c'est
+pour lui qu'il faut garder les noms simples. C'est lui qui est connu
+sous ces noms. L'autre, du coup, je sais pas... Grmpf. C'est quand même
+lui qui écrit le "manifeste de Brunswick". D'où le nom court. Bon, il va
+falloir s'en sortir par un "K. Brunswick" pour clarifer.
+
+À noter qu'il commande en Hollande (révolution) et qu'il commande
+l'armée "fédérale" allemande anti-révolutionnaire (et les émigrés).
+
+Pour Ferdinand, y'a un peu de boulot. Je suis pas hyper fan de l'appeler
+simplement Ferdinand (prénom, c'est pas cohérent avec le reste), mais
+Brunswick-Wolfenbuttel est pire. En plus, il est relativement connu en
+tant que simplement Ferdinand (eg, je crois que c'est son nom à Clash of
+Monarchs). Laissons. Sinon, ça serait "F. Brunswick".
+[Sur les pages de ses batailles, il est tantôt "Duke of Brunswick",
+tantôt "Prince Ferdinand", tantôt "Ferdinand of Brunswick".]
+
+Par contre, le double-façage impérial est NiMP. Il n'a pas servi les
+impériaux (contrairement à un de ses frères non représenté chez
+nous). Mais il a commandé les anglo-hannovriens sans avoir de majorité
+de troupes prussiennes, donc sans avoir le droit de commander chez nous.
+
+Je vois quelques solutions pas trop compliquées :
+1/ Il a un pouvoir spécial qui l'autorise à commander des troupes d'un
+allié de PRU (y compris majeur). On peut rappeler le pouvoir en mettant
+son symbole de couleur (c'est un pouvoir spécial de chef PRU).
+2/ PRU peut envoyer 1 chef (à la fois) commander les troupes de ses
+alliés. Hors roi (qui commande si il vient avec 1LD). C'est plus
+générique car on le lie pas au gus en question, mais on peut à l'inverse
+considérer que c'est parce qu'il était "Brunswick" et pas "prussien" que
+les hannovriens l'ont accepté...
+3/ On mélange en donnant le pouvoir spécial de commander les alliés à
+plusieurs chefs prussiens. Mais je suis pas convaincu que ça s'applique
+à d'autres avec raison...
+Karl de Brunswick pourrait être dans ce cas pour la commande des
+anti-révolutionaires, mais on doit à l'heure actuelle considérer qu'il a
+des prussiens en nombre sufisant.
+4/ On le double-face PRU*/ANG (et pas PRU/HRE) avec utilisation par ANG
+seulement si alliée à PRU.
+Comme il est PRU*, il compte toujours dans la limite de PRU et c'est PRU
+qui choisit à chaque round si il le donne à, ANG ou pas. C'est à coupler
+avec une précision que ANG peut utiliser ses chefs pour commander des
+troupes du Hannovre après la vassalisation.
+C'est relativement simple (ça ressemble à Barberousse/Dragut), mais
+c'est aussi très peu souple (uniquement ce chef, et uniquement avec
+ANG).
+À l'inverse, ça donne vraiment le chef, donc le contrôle de la pile, à
+ANG au lieu de le laisser à PRU avec les autres solutions qui peut poser
+des problèmes du genre "je bouge ta pile" avec toujours une possibilité
+de grotesquerie.
+
+Je pense que le double-face étoilé est le mieux pour représenter ce qui
+s'est passé. Mais ça serait vraiment bien que l'autre face soit pas
+spécifique à ANG. Mais je vois pas trop de solution propre pour ça. HRE
+me va pas parce que c'est le camp d'en face dans les guerres de
+PRU. Mercenaire pourrait le faire (les mercenaires commandent tous les
+pays), mais c'est un peu bof quand même. Ou pas finalement si on passe
+plusieurs nommés en mercenaire (Cabot, Wallenstein, Saxe-Weimar) avec
+des règles spéciales pour certain (Wallenstein, Saxe-Weimar).
+
+Si c'est un double-façage mercenaire, il faut sans doute le mettre sans
+étoile (donc PRU choisit à chaque tour de le donner ou pas) et on peut
+mettre un prix à son usage dans sa règle (genre 10D$/tour), mais de
+toutes façons, PRU se fait financer pendant ses guerres, donc ça semble
+inutile...
 
 * Poniatowski
 Chez nous, il est là juste pour la durée (historique) de la GNW. Hist.,
@@ -3271,3 +3402,15 @@ Hongrie] - 1740 [fin de WoPS]) avec pendant GNW l'effet (déjà présent)
 de "il passe SUE et lève une armée".
 
 Il est 322, c'est pas de le prolonger qui va sauver la Pologne...
+
+
+* Wallenstein
+je pense qu'on devrait le mettre mercenaire et pas HAB. Ça correspond
+mieux, d'autant qu'il a le droit de commander toutes les piles de la
+ligue (hors Bavière). Et règle spéciale dans TYW qui dit que seule HAB
+peut le recruter, bien sûr (mais c'est déjà là).
+
+* Saxe-Weimar
+Même remarque pour lui. Là aussi, il a une règle spéciale pour commander
+n'importe quelles troupes de l'alliance si il est mercenaire FRA, donc
+il serait mieux en mercennaire.
