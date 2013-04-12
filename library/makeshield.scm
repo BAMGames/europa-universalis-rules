@@ -27,8 +27,11 @@
     )
   )
 
-(define (makeshield stringinput stringoutput modeldir)
+(define (makeshield arg)
   (let* (
+         (stringinput (string-append "blasons/src/shield_" arg))
+         (stringoutput (string-append "blasons/shield_" arg))
+         (modeldir "blasons/templates/")
 	 (pgmsource (string-append modeldir "blason.pgm"))
          (modelsource (string-append modeldir "modele.xcf"))
          (filename0 (string-append stringinput ".xcf"))
