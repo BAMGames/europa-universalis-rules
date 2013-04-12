@@ -32,18 +32,22 @@ my $subclass='';
 my $oldsubclass='';
 my $currentcol=0;
 sub finish {
+  my $status=shift @_;
   &newline();
-  die @_;
+  if ($status == 1) {
+    die @_;
+  }
+  exit($status);
 }
 sub newline {
   print "\n" if ($currentcol);
   $currentcol=0;
 }
 sub class {
-  &newline();
   $oldclass=$class;
   $class=$_[0];
   if ($class ne $oldclass) {
+    &newline();
     $subclass='';
     print color 'bold';
     print $class,"\n";
@@ -53,7 +57,7 @@ sub class {
 sub subclass {
   $oldsubclass=$subclass;
   $subclass=$_[0];
-  if ($class ne $oldclass) {
+  if ($subclass ne $oldsubclass) {
     print color 'bold';
     &out(3,'display',$subclass);
     print color 'reset';
@@ -77,6 +81,7 @@ sub out {
         }
         if ($currentcol==0) {
           print "    ";
+          $currentcol=4;
         }
         print '[',$str,']';
         $currentcol+=2+$len;
@@ -104,12 +109,12 @@ sub parseARGV {
   while ($x < scalar @ARGV) {
     my $arg=$ARGV[$x];
     if ($arg eq '--verbosity') {
-      finish("Wrong option: --verbosity must be followed by two arguments") unless defined($ARGV[$x+2]);
+      &finish(1,"Wrong option: --verbosity must be followed by two arguments") unless defined($ARGV[$x+2]);
       my $cat=$ARGV[$x+1];
       my $level=$ARGV[$x+2];
       $x+=2;
-      finish("Wrong option: --verbosity must be followed by either ".join(' or ',keys %verbosity)) unless defined($verbosity{$cat});
-      finish("Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
+      &finish(1,"Wrong option: --verbosity must be followed by either ".join(' or ',keys %verbosity)) unless defined($verbosity{$cat});
+      &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $verbosity{$cat}=$level;
     } elsif ($arg eq 'clean' or $arg eq '--clean') {
       $mode="clean";
@@ -139,7 +144,7 @@ my ($goals,$target,$mode)=&parseARGV();
 &out(1,"init","Parsing ARGV done");
 
 my %implemented=('goal' => 1,'distclean' => 1, 'clean' => 1);
-finish("$mode is not implemented yet") unless defined($implemented{$mode});
+finish(1,"$mode is not implemented yet") unless defined($implemented{$mode});
 
 # Command execution with stderr filtering
 
@@ -271,7 +276,7 @@ sub findGitTopdir {
     chdir('..');
     $cwd=getcwd();
   }
-  finish("Could not find the top-level directory") if $cwd eq $oldcwd;
+  &finish(1,"Could not find the top-level directory") if $cwd eq $oldcwd;
   closedir(GITDIR);
 }
 
@@ -281,7 +286,7 @@ sub writeCache() {
   my $cachehandle;
   open STDIN,"/dev/null" unless fileno(STDIN);
   make_path('.tmp');
-  open $cachehandle,'>',".tmp/$path" or finish("I cannot open my $path cache!");
+  open $cachehandle,'>',".tmp/$path" or &finish(1,"I cannot open my $path cache!");
   print $cachehandle encode_json $cacheHash;
   $cachehandle->sync();
   close $cachehandle;
@@ -314,7 +319,7 @@ sub removeGenerated() {
       if (defined($axioms) and !defined($axioms->{$key})) {
         # clean or distclean
         $count++;
-        unlink uri_unescape($key);
+        unlink $key;
         delete $cacheHash->{$key};
       }
     } else {
@@ -370,28 +375,29 @@ sub readRules() {
 }
 
 sub recordGeneration() {
-  my %rule=%{$_[0]};
-  my $gen=$rule{'gen'};
-  my $arrayarg=[];
-  if (defined($rule{'arg'})) {
-    push $arrayarg,map {&uri_escape($_)} @{$rule{'arg'}};
-  }
-  $rule{'arg'}=$arrayarg;
-  foreach my $thm (@{$rule{'out'}}) {
-    finish("Regenerated $thm in generation $gen") if (exists $generation{$thm});
-    $generation{$thm}={'gen' => $gen,
-                       'actor' => uri_escape($rule{'actor'}),
-                       'arg' => $arrayarg,
-                       'in' => [@{$rule{'in'}}],
-                       'out' => [@{$rule{'out'}}],
-                      };
+  # Shallow cloning (2 levels is enough)
+  my $oldrule=$_[0];
+  foreach my $thm (@{$oldrule->{'out'}}) {
+    my $rule={};
+    foreach my $k (keys %$oldrule) {
+      if (ref($k) ne 'ARRAY') {
+        $rule->{$k}=$oldrule->{$k};
+      } else {
+        $rule->{$k}=[@{$oldrule->{$k}}];
+      }
+    }
+    $rule->{'arg'}=[] if (!defined($rule->{'arg'}));
+    $rule->{'class'}='' if (!defined($rule->{'class'}));
+    $rule->{'subclass'}='' if (!defined($rule->{'subclass'}));
+    &finish(1,"Regenerated $thm in generation ".$oldrule->{'gen'}) if (exists $generation{$thm});
+    $generation{$thm}=$rule;
   }
 }
 
 sub actionKey() {
-  my %a=%{$_[0]};
-  return join(' ',$a{'actor'},@{$a{'arg'}}) if (defined($a{'arg'}));
-  return $a{'actor'};
+  my $a=$_[0];
+  return join(' ',$a->{'actor'},map {&uri_escape($_)} @{$a->{'arg'}}) if (defined($a->{'arg'}));
+  return $a->{'actor'};
 }
 
 sub nextGeneration() {
@@ -426,10 +432,8 @@ sub nextGeneration() {
       if ($allfound) {
         $rules{$rule->{"actor"}}->{'seen'}=1;
         $bottomupseen{$key}=1;
-        &recordGeneration({'gen' => $gen,
-                           'in' => $rule->{'in'},
-                           'actor' => $rule->{'actor'},
-                           'out' => $rule->{'out'}});
+        $rule->{'gen'}=$gen;
+        &recordGeneration($rule);
         push $found,@{$rule->{'out'}};
       }
     } elsif ($rule->{'type'} eq 'pattern' ) {
@@ -558,11 +562,11 @@ sub topDown {
   }
   if (scalar keys %idontknow) {
     print "I do not know how to build the following goals:\n";
-    print join("\n",sort keys %idontknow),"\nStopping.\n";
-    exit 1;
+    print join("\n",sort keys %idontknow),"\n";
+    &finish(1,"Stopping");
   }
   my @result=sort {
-    ($a->{'gen'} <=> $b->{'gen'}) || ($a->{'actor'} cmp $b->{'actor'}) || (join(' ',$a->{'arg'}) cmp join(' ',$b->{'arg'}))
+    ($a->{'gen'} <=> $b->{'gen'}) || ($a->{'class'} cmp $b->{'class'}) || ($a->{'subclass'} cmp $b->{'subclass'}) || ($a->{'actor'} cmp $b->{'actor'}) || (join(' ',$a->{'arg'}) cmp join(' ',$b->{'arg'}))
   } values %ineed;
   return \@result;
 }
@@ -607,20 +611,24 @@ sub firstCompound {
     push $candidates,$i;
   }
   # TODO
-  my $compoundRule={'gen' =>$plan->[$begin]->{'gen'},
-                    'actor' =>$plan->[$begin]->{'actor'},
-                    'arg' => [],
-                   };
+  my $oldrule=$plan->[$begin];
+  my $compoundRule={};
+  foreach my $k (keys %$oldrule) {
+    if (ref($k) ne 'ARRAY') {
+      $compoundRule->{$k}=$oldrule->{$k};
+    } else {
+      $compoundRule->{$k}=[@{$oldrule->{$k}}];
+    }
+  }
+  $compoundRule->{'arg'}=[];
   my $individualRules=[];
   my $newargs=$compoundRule->{'arg'};
+  my $newin={};
+  my $newout={};
 
   foreach my $i (@$candidates) {
     push $newargs,@{$plan->[$i]->{'arg'}};
     push $individualRules,$plan->[$i];
-  }
-  my $newin={};
-  my $newout={};
-  foreach my $i (@$candidates) {
     foreach my $j (@{$plan->[$i]->{'in'}}) {
       $newin->{$j}=1;
     }
@@ -641,7 +649,7 @@ sub registerSuccess() {
   my $fingerprintOut=&fingerprintArray($rule,'out');
   my $fingerprintIn=$rule->{'fingerprintIn'};
   my $key=&actionKey($rule);
-  &out(2,"plan","Registering success of $key");
+  &out(4,"plan","Registering success of $key");
   $fingerprintCache{$key}="$fingerprintIn $fingerprintOut";
 }
 
@@ -650,14 +658,14 @@ sub attempt() {
   my @candidateRules=@{$_[1]};
   @partiallydone=();
   my @execLine=($todo->{'actor'});
-  push @execLine,map {uri_unescape($_)} @{$todo->{'arg'}} if (scalar @{$todo->{'arg'}});
+  push @execLine,@{$todo->{'arg'}} if (scalar @{$todo->{'arg'}});
   my $line=join(' ',@execLine);
   my $success=substr $line,0,72;
   $success.="..." if ($success ne $line);
   $execLine[0]='plan/bin/'.$todo->{'actor'};
-  if (defined($todo->{'class'})) {
+  if ($todo->{'class'} ne '') {
     &out(1,'display',$todo->{'class'});
-    if (defined($todo->{'subclass'})) {
+    if ($todo->{'subclass'} ne '') {
       &out(2,'display',$todo->{'subclass'});
     }
   } else {
@@ -685,7 +693,7 @@ sub attempt() {
       }
     }
     &writeCache(\%fingerprintCache,'fingerprint');
-    &finish("One rule failed with status $status") if ($status);
+    &finish(1,"One rule failed with status $status") if ($status);
   }
   # register success of everybody
   &out(3,"plan","Everything was successful");
@@ -715,7 +723,7 @@ if ($mode eq "distclean" or $mode eq "clean") {
     }
   }
   &removeGenerated(\%generatedCache,'generated',\%protected);
-  exit 0;
+  &finish(0);
 }
 
 &readRules();
@@ -725,11 +733,13 @@ foreach my $axiom (sort keys %axioms) {
                      'actor' => "AXIOM",
                      'in' => [],
                      'arg' => [$axiom],
-                     'out' => [$axiom]
+                     'out' => [$axiom],
+                     'class' => 'Checking axioms'
                     });
 }
 &bottomUp();
 $result=&topDown();
+
 my $todo;
 my $todoIndividuals;
 my $begin=0;
@@ -748,4 +758,4 @@ if ($done==0) {
   &out(1,"display","Everything is up to date");
 }
 &newline();
-exit 0;
+&finish(0);
