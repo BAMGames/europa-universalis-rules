@@ -51,7 +51,7 @@ $definitions="";
 foreach ("france","angleterre","turquie","hollande","espagne","russie") {
     $NTcountries{$_}++;
 }
-foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","fralicence","revolutionnaires","angnomalus","angseahound","porviceroy","prunomalus","holvoc") {
+foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","fralicence","revolutionnaires","angnomalus","angseahound","porviceroy","prunomalus","holvoc","habmercenaires","framercenaires","prumercenaires") {
     $Scountries{$_}++;
 }
 %conversion=(
@@ -67,8 +67,10 @@ foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","f
     "pologne" => "Pologne",
     "suede" => "Suede",
     "porviceroy" => "Portugal",
-    "holvoc" => "Hollande"
-);
+    "holvoc" => "Hollande",
+    "habmercenaires" => "Habsbourg",
+    "framercenaires" => "France",
+    "prumercenaires" => "Prusse");
 sub terrestrenaval {
     return "N" if ($_[0] =~ /^[AEPd]/);
     return "T";
@@ -123,6 +125,15 @@ sub realcountry {
     }
     if ($pays eq "holvoc") {
 	return "hollandeM"; 
+    }
+    if ($pays eq "habmercenaires") { # Wallenstein
+	return "habsbourgM"; 
+    }
+    if ($pays eq "framercenaires") { # Saxe-Weimar
+	return "franceT"; 
+    }
+    if ($pays eq "prumercenaires") { # Ferdinand de Brunswick
+	return "prusseM"; 
     }
     return $pays;
 }

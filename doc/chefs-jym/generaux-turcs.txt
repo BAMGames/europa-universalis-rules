@@ -6,35 +6,10 @@ lieu de juste écrire "10 pachas" ;-)
 
 * Règles :
 ** TUR passe à 1G de base, sauf en pIII où il en a 2 (actuellement, 4).
-#   J'hésite même à le mettre à 0 de base, 1 en pIII tant il n'y a pas de
-#   "vrais" généraux TUR dans la période historique (hors Sultans et
-#   Vizirs). Voire 0 tout le temps, il y a des G nommés pour la pIII.
-#** Le Sultan TUR ne peut pas aller dans des provinces non reliées par
-#   terre à Istanbul (il peut prendre le bateau mais pas aller dans les
-#   îles, contrairement aux Timars qui ne peuvent pas prendre le bateau
-#   du tout).
 ** Les pachas ne peuvent pas commander de grosse pile.
 
-#   [ => c'est ici que je suis pas trop sûr de la limite à mettre,
-#   plusieurs idées pas toutes satisfaisantes :
-#   * pas de pion A. + : facile. - : pas d'artillerie pour le siège
-#     (alors que sièges balkaniques voire Géorgie) ni de feu en Ren
-#     (alors que flancs face à Perse ou Mamelouks)
-#   * pas de grosse pile. + : limite déjà existante. - : 5LD + pacha, ça
-#     va vite dans les 6/7 LD, donc c'est une pile qui fait ce qu'elle
-#     veut et on ne limite pas les piles de pachas...
-#   * pas plus que 3LD. + : c'est un peu la bonne limite (équivalent à
-#     pas de pion A), c'est une limite existante (attrition des campagnes sans
-#     logistiques). - : ça veut dire que TUR va stocker ses pions A en
-#     A- et pas en A+ et ça va être galère... ça interdit aussi la grosse
-#     concentration en siège (notamment, 0 art dans une A- timar en pI).
-#   * pas plus de 4LD. + : c'est intermédiaire entre les précédents et ça
-#     évite leur inconvénients, ça force un choix intéressant en cas de
-#     perte (pacha/chef ou A+ et ses canons ?). - : c'est une nouvelle
-#     limite de taille de pile.] 
-
 ** La réforme M-2 (qui supprime les timars et fait que les pachas ne
-   sont plus des unités militaires) ajoute 2G (ou 3 ?) à la limite de TUR.
+   sont plus des unités militaires) ajoute 2G à la limite de TUR.
    [on revient au 3 actuel, sauf en pVII où on était qu'à 2, on peut ne
    rajouter qu'1G en pVII ou laisser tel quel (plus simple)]
 
@@ -44,9 +19,9 @@ lieu de juste écrire "10 pachas" ;-)
    corrompt] peut choisir 1 pacha (corrompu ou non) qui est
    immédiatement remplacé par 1 autre tiré au hasard (non corrompu). Si
    il le fait, TUR peut le faire aussi, et ainsi de suite en alternant
-   ». Cet effet se déclenche (i) juste avant la corruption (E-7 b) et
-   (ii) sur un résultat de survie du sultan (modifié) de 5 ou 7. [max de
-   +3 à la survie, donc on est dans des résultats toujours faisables]
+   ». Cet effet se déclenche sur un résultat de survie du sultan
+   (modifié) de 5 ou 7. [max de +3 à la survie, donc on est dans des
+   résultats toujours faisables]
 
    [évite que TUR puisse trop se reposer sur des pachas bourrins
    puisqu'ils ont 2/10 de mourir à chaque tour. Tout en laissant un
@@ -58,15 +33,14 @@ lieu de juste écrire "10 pachas" ;-)
    faire, elles coûtent 2 de STAB au lieu d'1))). Mais en décorrompant
    ainsi, on va aussi voir plus de bons mourir. Niark. Choix, choix,
    choix.]
-** => Éventuellement, supprimer la corruption de pachas sur E-7 mais la
-   mettre sur 6 au jet de survie TUR (auquel cas la corruption ne cause
-   pas de mort en plus). En gros, c'est un jet "d'état interne du pays"
-   au sens large mais seul TUR a un effet autre que la survie de son roi
+
+** => Supprimer la corruption de pachas sur E-7 mais la mettre sur 6 au
+   jet de survie TUR. En gros, c'est un jet "d'état interne du pays" au
+   sens large mais seul TUR a un effet autre que la survie de son roi
    pour cause de structure féodale (et ces effets disparaissent avec les
    bonnes réformes).
 
-Tous les G TUR non mentionnés ici sont à supprimer. J'ai pas fini de
-regarder les G TUR post 1600, donc il y en aura p'tet un ou 2 de plus.
+Tous les G TUR non mentionnés ici sont à supprimer. 
 
 * Sultans
 On a déjà Soliman en général nommé, je pense qu'il faut rajouter Sélim.
@@ -224,18 +198,23 @@ Dans ce cas :
 
 
 * Vizirs nommés (d'autres en pIV+ sont possibles quand j'aurai regardé)
-[discussions sur leur cas plus loin le cas échéant]
 
 (new) LEADER;Borovinic;Hadım Ali Paşa and Hadım Sinan Paşa;Boroviniç;;;1;6;turquie;K;A 3.2.3;;;Two Viziers from the same Bosniac family. Hadım Ali failed at invading the mameluks and died crushing the Şahkulu Rebellion. Hadım Sinan illustratred himself against the mameluk at Khan Yunis and Ridaniya (where he died)
+
 (new) LEADER;Ibrahim;Pargalı İbrahim Paşa;İbrahim;;Pargalı İbrahim Paşa;7;10;turquie;K;A 2.2.4;;;Personal friend and first vizir of Suleiman. Skilled diplomat who sealed many deals with Europeans. During a successful expedition to Persia, he gave himself a too high title and was executed on Suleiman's order afterwards.
+
 LEADER;Sokollu;Mehmed Paşa;Sokollu;;Sokollu Mehmed Paşa;13;18;turquie;K;A 4.1.4;;;Long standing Grand Vizier and de facto ruler of the empire. Seized Transylvania, fought in Persia, crushed several revolts in Europe and Asia. Launched expeditions against Habsbourgs and Russia
+
 LEADERDOUBLE;Sinan;Sinan Pashë Topojani;Sınan Paşa;;Sinan Pashë Topojani;17;22;turquie;K;A 3.4.4 -1;CR;H 3.4.4;Ottoman soldier and statesman, appointed five times Grand Vizier, conquered Yemen. Fought in the Long War with both victories and defeats
+
 LEADER;Koprulu;Mehmed, Fazıl Ahmed and Kara Mustafa;Köprülü;;The early Köprülü viziers;V;15;turquie;K;A 4.3.4 -1;;;A dynasty of Grand Viziers that tried to relaunch the Turkish dynamism but ultimately failed at the siege of Vienna led by Kara Mustafa
 
 
-* Autres G nommés (d'autres en pIV+ sont possibles quand j'aurai regardé)
+* Autres G nommés 
 LEADER;Lala Mustafa;Lala Kara Mustafa Paşa;Lala Mustafa;;Lala Kara Mustafa Paşa;14;18;turquie;G;D 2.2.4;;;Commander at the siege of Malta and conqueror of Cyprus
+
 (new) LEADERDOUBLE;Osman;Özdemiroğlu;Osman Paşa;;;15;19;turquie;G;A 3.4.4;gR;I 5.3.3;Able governor of Yemen and Ethiopia. Good general in Persia, secured Caucasus at the battle of Torches. Dethroned a reluctant Crimean Khan. Later briefly Grand Vizier
+
 (new) LEADERDOUBLE;Yusuf Sinan;Cığalazade Yusuf Sinan Paşa;Yusuf Sinan;;Cığalazade Yusuf Sinan Paşa;18;23;turquie;G;C 3.1.3;A;C 3.2.2;Lead the fleet to capture Tunis and apointed two times Kapudan pasha. Lead several campaigns in Persia and Hungary with mitigated success. Briefly Grand Vizier
 
 => les 3 dans la même période (T14-23), mais 2 sont aussi g/A donc
@@ -465,10 +444,6 @@ Après, le déclin des pachas fait qu'ils tiennent plus trop la route tous
 seuls face à AUS et l'absence de Sultan/Vizir nommés de qualité fait
 qu'il n'y a plus beaucoup d'actions possibles.
 
-Bon, je pourrai faire une proposition complète avec des caracs pour tout
-ce monde si vous voulez, en attendant je continue à réfléchir à une TUR
-"normale" (donc avec des chefs comme les autres pays).
-
 Pour les amiraux, par contre, ça va, le Sultan/Vizir ne prend pas
 vraiment la mer et il y a des amiraux comme ailleurs.
 
@@ -580,7 +555,7 @@ et commandant victorieux en Perse entre 1578-1590, Kapudan Pasha en
 jours), gouverneur de Damas en 97-98, de nouveau KP en 99, puis retour
 sur le front Perse en 1604 sans succès et avec mort en retraite en 1605.
 
-(new) LEADERDOUBLE;Yusuf Sinan;Cığalazade Yusuf Sinan Paşa;Yusuf Sinan;;Cığalazade Yusuf Sinan Paşa;18;23;turquie;G;C 3.1.3;A;C 3.2.2;Lead the fleet to capture Tunis and apointed two times Kapudan pasha. Lead seveeral campaigns in Persia and Hungary with mitigated success. Briefly Grand Vizier
+(new) LEADERDOUBLE;Yusuf Sinan;Cığalazade Yusuf Sinan Paşa;Yusuf Sinan;;Cığalazade Yusuf Sinan Paşa;18;23;turquie;G;C 3.1.3;A;C 3.2.2;Lead the fleet to capture Tunis and apointed two times Kapudan pasha. Lead several campaigns in Persia and Hungary with mitigated success. Briefly Grand Vizier
 
 Sur terre, capable du pire comme du meilleur. La première campagne perse
 est contre le chah 522, la deuxième contre le 433... Sur mer, il a
