@@ -119,6 +119,9 @@
     (porviceroy)	[[.9  1   .75] [.75 .95 .5 ] cred cblack]
     (prunomalus)	[[.75 .75 .75] [.25 .25 .25] cblack cwhite]
     (holvoc)		[[.5  .5  .9 ] [.8  .8  .2 ] cred cblack]
+    (habmercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
+    (framercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
+    (prumercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
 >> def
 %pays {/i exch def pays {/j exch def i j eq not {color_dict i get 0 get color_dict j get 0 get comparethree color_dict i get 1 get color_dict j get 1 get comparethree add 20 string cvs ( )! i 50 string cvs(-)! j 50 string cvs !(\n)! ! display}if}forall}forall
 %/comparethree {/a exch def /b exch def 0 0 1 2 {/c exch def a c get b c get sub dup mul add}for}def
@@ -163,6 +166,9 @@
     (porviceroy)	(Portugallia)
     (prunomalus)	(Prussia)
     (holvoc)		(Hollande)
+    (habmercenaires)	(Habsburgum)
+    (framercenaires)	(Francia)
+    (prumercenaires)	(Prussia)
 % Ici, on met les mineurs 
     (alliance)		(Protestant Alliance)
     (blanc)		( )
@@ -294,6 +300,9 @@
     (prunomalus)	(prusse)
     (holvoc)		(hollande)
     (revolt)            (rebelles)
+    (habmercenaires)	(habsbourg)
+    (framercenaires)	(france)
+    (prumercenaires)	(prusse)
 >> def
 /majeurslist [
     (angleterre)
