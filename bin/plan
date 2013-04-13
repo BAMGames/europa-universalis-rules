@@ -5,8 +5,8 @@
 ## Overwriting these axioms is not considered an error.
 ## A rule overwriting only these axioms must be ignored.
 ## Example: generating .pfb .afm from .sfd files
-# Idea: pseudo-targets clean distclean
 # Idea: manage inside files (both written and read in one actor)
+# Idea: pseudo-target sweep to remove unmakeable non-axiom files
 
 use strict;
 use warnings;
@@ -409,9 +409,16 @@ sub recordGeneration() {
 }
 
 sub actionKey() {
-  my $a=$_[0];
-  return join(' ',$a->{'actor'},map {&uri_escape($_)} @{$a->{'arg'}}) if (defined($a->{'arg'}));
-  return $a->{'actor'};
+  my $a=shift @_;
+  if (defined($a->{'key'})) {
+    return $a->{'key'};
+  }
+  if (defined($a->{'arg'}) and scalar @{$a->{'arg'}} > 0) {
+    $a->{'key'}=join(' ',$a->{'actor'},map {&uri_escape($_)} @{$a->{'arg'}});
+  } else {
+    $a->{'key'}=$a->{'actor'};
+  }
+  return $a->{'key'};
 }
 
 sub nextGeneration() {
@@ -447,7 +454,7 @@ sub nextGeneration() {
         $rules{$rule->{"actor"}}->{'seen'}=1;
         $bottomupseen{$key}=1;
         $rule->{'gen'}=$gen;
-        &recordGeneration($rule); # TODO: Copy not necessary
+        &recordGeneration($rule);
         push $found,@{$rule->{'out'}};
       }
     } elsif ($rule->{'type'} eq 'pattern' ) {
@@ -489,6 +496,7 @@ sub nextGeneration() {
           my $newrule={};
           &shallowCopyRule($rule,$newrule);
           $newrule->{'arg'}=[$argument];
+          delete $newrule->{'key'};
           my $key=&actionKey($newrule);
           next if exists($bottomupseen{$key});
           $bottomupseen{$key}=1;
@@ -516,7 +524,7 @@ sub nextGeneration() {
     @wanted=@{$delayed->{'wanted'}};
     if (scalar @wanted == 0) {
       $delayed->{'gen'}=$gen;
-      &recordGeneration($delayed,0); # TODO: Copy not necessary
+      &recordGeneration($delayed);
       push $found,@{$delayed->{'out'}};
       splice $trigger,$delayednumber,1;
       $delayednumber--;
@@ -626,6 +634,7 @@ sub firstCompound {
   # TODO
   my $compoundRule={};
   &shallowCopyRule($plan->[$begin],$compoundRule);
+  delete $compoundRule->{'key'};
   $compoundRule->{'arg'}=[];
   my $individualRules=[];
   my $newargs=$compoundRule->{'arg'};
