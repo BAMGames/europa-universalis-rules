@@ -126,14 +126,14 @@ sub realcountry {
     if ($pays eq "holvoc") {
 	return "hollandeM"; 
     }
-    if ($pays eq "habmercenaires") {
-	return "habsbourgT"; 
+    if ($pays eq "habmercenaires") { # Wallenstein
+	return "habsbourgM"; 
     }
-    if ($pays eq "framercenaires") {
+    if ($pays eq "framercenaires") { # Saxe-Weimar
 	return "franceT"; 
     }
-    if ($pays eq "prumercenaires") {
-	return "prusseT"; 
+    if ($pays eq "prumercenaires") { # Ferdinand de Brunswick
+	return "prusseM"; 
     }
     return $pays;
 }
