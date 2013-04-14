@@ -26,6 +26,8 @@ my %verbosity=('exec'=>0,
                'err'=>1,
                'display'=>3);
 my $color=1;
+$color=0 unless -t STDOUT;
+my $trace=1;
 # Logging
 
 my $class='';
