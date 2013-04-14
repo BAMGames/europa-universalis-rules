@@ -360,6 +360,48 @@ sub readAxioms() {
   closedir $dh;
 }
 
+sub cleanDir() {
+  my $dir=shift @_;
+  opendir(my $dh, $dir) || return;
+  while (readdir $dh) {
+    next if /^[.]/;
+    my $file=$dir."/".$_;
+    unlink $file;
+  }
+  closedir $dh;
+}
+
+sub parseTrace() {
+  my $dir=shift @_;
+  my $rule=shift @_;
+  &out(1,'err',"Begun parsing trace in $dir\n");
+  my %out=();
+  my %in=();
+  opendir(my $dh, $dir) || return;
+  while (readdir $dh) {
+    next if /^[.]/;
+    my $file=$dir."/".$_;
+    open FILE,$file;
+    my $line;
+    my $currentdir='';
+    while ($line=<FILE>) {
+      if ($line =~ /^open\("(.*)", ([^"]+)\)\W+=\W+[0-9]+$/) {
+        my $found=$1;
+        $found=~s/\\"/"/g;
+        &out(1,'err',"Detected $found");
+      } elsif ($line =~ /^open/) {
+        chomp $line;
+        &out(1,'err',"Rejected $line");
+      } elsif ($line =~ /chdir/) {
+        chomp $line;
+        &out(1,'err',"Rejected $line");
+      }
+    }
+    close FILE;
+  }
+  closedir $dh;
+}
+
 sub shallowCopy() {
   my $a=[];
   foreach my $b (@{$_[0]}) {
@@ -695,6 +737,12 @@ sub attempt() {
     $generatedCache{$file}=1;
   }
   &writeCache(\%generatedCache,'generated');
+  &actionKey($todo);
+  if ($trace) {
+    make_path('.tmp/trace');
+    &cleanDir('.tmp/trace');
+    unshift @execLine,'strace','-o','.tmp/trace/trace'.$todo->{'key'},'-ff';
+  }
   my $status=&execCommand(@execLine);
   if ($status) {
     foreach my $ok (@partiallydone) {
@@ -710,8 +758,10 @@ sub attempt() {
       }
     }
     &writeCache(\%fingerprintCache,'fingerprint');
+    &cleanDir('.tmp/trace');
     &finish(1,"One rule failed with status $status") if ($status);
   }
+  &parseTrace('.tmp/trace',$todo);
   # register success of everybody
   &out(3,"plan","Everything was successful");
   foreach my $i (@candidateRules) {

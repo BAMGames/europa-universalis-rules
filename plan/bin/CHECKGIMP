@@ -1,4 +1,7 @@
 #!/bin/sh
+cd .tmp
+touch toto
+cd ..
 if [ $(which gimp 2>&1|grep ^/|wc -l) -lt 1 ]; then 
    echo "failed:gimp" 1>&2
    rm -f .tmp/proof-gimp
