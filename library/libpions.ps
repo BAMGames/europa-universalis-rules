@@ -11,28 +11,28 @@ HOMEDIR(/library/common.ps)! include
 /log {pop} bind def
 /column 80 def
 /countercolumn 0 def
-/phase (build:) def
+/phase (count:build:) def
 /listelog {} def
 /logOUT {
     /countercolumn countercolumn 1 add def
-%    STDOUT PREFIX writestring
-    STDOUT phase writestring
-    STDOUT countercolumn 10000 add 5 string cvs 1 4 getinterval writestring
-%    STDOUT SUFFIX writestring
-    STDOUT (]\n) writestring STDOUT flushfile
+    STDERR PREFIX writestring
+    STDERR phase writestring
+    STDERR countercolumn 10000 add 5 string cvs 1 4 getinterval writestring
+    STDERR (\n) writestring
+    STDERR flushfile
 } bind def
 /initlogWRITE { /SUFFIX (/)
 objects 100000 add 6 string cvs 1 5 getinterval ! def 
     /writecount 0 def
-    /phase (pdf:) def
+    /phase (count:pdf:) def
 } def
 /logWRITE {
     /writecount writecount 1 add def
-%    STDOUT PREFIX writestring
-    STDOUT phase writestring
-    STDOUT writecount 100000 add 6 string cvs 1 5 getinterval writestring
-%    STDOUT SUFFIX writestring
-    STDOUT (]\n) writestring STDOUT flushfile
+    STDERR PREFIX writestring
+    STDERR phase writestring
+    STDERR writecount 100000 add 6 string cvs 1 5 getinterval writestring
+    STDERR (\n) writestring
+    STDERR flushfile
 } bind def
 CURRENTDIR(/pays.ps)! include
 CURRENTDIR(/translation.ps)! include

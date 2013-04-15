@@ -35,6 +35,7 @@ my $oldclass='';
 my $subclass='';
 my $oldsubclass='';
 my $currentcol=0;
+my $nomove=0;
 sub finish {
   my $status=shift @_;
   &newline();
@@ -46,6 +47,7 @@ sub finish {
 sub newline {
   print "\n" if ($currentcol);
   $currentcol=0;
+  $nomove=0;
 }
 sub class {
   $oldclass=$class;
@@ -67,18 +69,32 @@ sub subclass {
     print color 'reset' if ($color);
   }
 }
-
+my $countphase='';
+my $lastcountcol=0;
 sub out {
   my $v=shift @_;
   my $n=shift @_;
   if ($verbosity{$n}>=$v) {
     if ($n eq "display") {
+      my $storepos=0;
       if ($v==1) {
         &class(@_);
       } elsif ($v==2) {
         &subclass(@_);
       } else {
         my $str=join('',@_);
+        if ($_[0]=~ /^count:(.*):([0-9\/]+)$/) {
+          $str="$1:$2";
+          my $oldcountphase=$countphase;
+          $countphase="$1";
+          if ($nomove == 1 and $countphase eq $oldcountphase) {
+            $storepos=2;
+          } else {
+            $storepos=1;
+          }
+        } else {
+          $countphase='';
+        }
         my $len=length($str);
         if ($currentcol+2+$len>80) {
           &newline();
@@ -87,8 +103,19 @@ sub out {
           print "    ";
           $currentcol=4;
         }
-        print '[',$str,']';
+        if ($storepos == 1) {
+          $nomove=1;
+          $lastcountcol=$currentcol;
+          print "\x1b[s";
+        } elsif ($storepos == 2) {
+          $nomove=1;
+          $currentcol=$lastcountcol;
+          print "\x1b[u";
+        } else {
+          $nomove=0;
+        }
         $currentcol+=2+$len;
+        print '[',$str,']';
       }
     } elsif ($n eq "out") {
       &newline();
@@ -188,17 +215,20 @@ $ENV{'SPECIALPREFIX'}="PARTIAL PLAN:";
 my @partiallydone=();
 
 sub errorCommand {
-  my $line=$_[0];
-  chomp $line;
-  if ($line =~ $specialprefix) {
-    my $part=$1;
-    &out(3,'display',$part);
-    if ($part =~ /^failed:/) {
+  my $lines=$_[0];
+  foreach my $line (split /\n/m,$lines) {
+    chomp $line;
+    if ($line =~ $specialprefix) {
+      my $part=$1;
+      &out(3,'display',$part);
+      if ($part =~ /^failed:/ or $part =~ /^count:/) {
+        1;
+      } else {
+        push @partiallydone,$part;
+      }
     } else {
-      push @partiallydone,$part;
+      &out(1,'err',$line);
     }
-  } else {
-    &out(1,'err',$line);
   }
 }
 
