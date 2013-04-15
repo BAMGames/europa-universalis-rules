@@ -1,8 +1,8 @@
 /! { 2 copy length exch length exch 1 index add string dup 0 6 -1
     roll putinterval dup 4 2 roll exch putinterval} bind def	
 /include systemdict /DEPENDS known 
-{ systemdict /DEPENDS get (a)file dup (----\n)writestring closefile { systemdict /DEPENDS get (a)file
-    dup 2 index writestring dup(\n)writestring closefile (r) file run}
+{ { systemdict /DEPENDS get (a)file
+    dup (+)writestring dup 2 index writestring dup(\n)writestring closefile (r) file run}
 }{{(r) file run}}ifelse bind def
 /openfile systemdict /DEPENDS known 
 { { systemdict /DEPENDS get (a)file

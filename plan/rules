@@ -117,8 +117,12 @@
       "in" : [
          "pions/$1.eps"
       ],
+      "infile" : [
+         "plan/in/$1pdf.in"
+      ],
       "out" : [
-         "pions/$1.pdf"
+         "pions/$1.pdf",
+         "pions/$1.depends.txt"
       ],
       "pattern" : "pions/(.*).eps",
       "subclass" : "$1",
@@ -135,7 +139,7 @@
          "library/xcftoshadow.scm"
       ],
       "out" : [
-         "shadow/$1.png",
+         "shadow/$1.pgm",
          "shadow/$1.pnm"
       ],
       "pattern" : "shadow/(.*).xcf",
