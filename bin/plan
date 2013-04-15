@@ -87,10 +87,21 @@ sub out {
           $str="$1:$2";
           my $oldcountphase=$countphase;
           $countphase="$1";
-          if ($nomove == 1 and $countphase eq $oldcountphase) {
-            $storepos=2;
+          if ($color == 0) {
+            $lastcountcol++;
+            if ($lastcountcol == 500) {
+              $lastcountcol=0;
+            }
+            if ($countphase ne $oldcountphase) {
+              $lastcountcol=0;
+            }
+            return if ($lastcountcol != 0);
           } else {
-            $storepos=1;
+            if ($nomove == 1 and $countphase eq $oldcountphase) {
+              $storepos=2;
+            } else {
+              $storepos=1;
+            }
           }
         } else {
           $countphase='';
