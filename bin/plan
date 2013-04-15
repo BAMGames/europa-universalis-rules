@@ -254,8 +254,8 @@ my $result=[];
 sub fingerprint() {
   my ($f)=@_;
   my $hash="0";
-  return "$f:0" if (-d $f);
-  return "$f:0" unless (-e $f);
+  return "0" if (-d $f);
+  return "0" unless (-e $f);
   open FILE,"$f" or return "$f:0";
   my $hashing = Digest::MD5->new;
   $hashing->addfile(*FILE);
@@ -288,6 +288,7 @@ sub findGitTopdir {
   closedir(GITDIR);
 }
 
+my $jsonEncoder=JSON::PP->new->pretty;
 sub writeCache() {
   my ($cacheHash,$path)=@_;
   &out(3,'init',"Storing $path cache");
@@ -295,7 +296,7 @@ sub writeCache() {
   open STDIN,"/dev/null" unless fileno(STDIN);
   make_path('.tmp');
   open $cachehandle,'>',".tmp/$path" or &finish(1,"I cannot open my $path cache!");
-  print $cachehandle encode_json $cacheHash;
+  print $cachehandle $jsonEncoder->encode($cacheHash);
   $cachehandle->sync();
   close $cachehandle;
 }
@@ -448,7 +449,7 @@ sub nextGeneration() {
       }
       foreach my $requirement (@{$rule->{'in'}}) {
         if (!exists($generation{$requirement})
-            or $generation{$requirement} < $gen) {
+            or $generation{$requirement}->{'gen'} >= $gen) {
           $allfound=0;last;
         }
       }
@@ -554,7 +555,6 @@ sub bottomUp {
       &out(3,'plan',Dumper($rules{$actor}));
     }
   }
-  &out(4,"plan",Dumper(\%generation));
 }
 
 sub topDown {
