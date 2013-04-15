@@ -39,7 +39,7 @@ highprecision {
     roll putinterval dup 4 2 roll exch putinterval} bind def	
 /currentpointxy { currentpoint 0.5 add cvi exch 0.5 add cvi 
 }def
-pdfoutput {/carrefile CURRENTDIR(/carres.ps)!(w)file def}if
+pdfoutput {/carrefile CURRENTDIR(/carres.ps)! writefile def}if
 /carrenum -1 def
 /carre { /rough exch def /myname exch def /myutf exch def /mypos exch def /carrenum carrenum 1 add def /myy exch def /myx exch def (carre)
 carrenum 2 string cvs ! cvn beginpath
@@ -448,7 +448,7 @@ traces {
 
 /dopage_traces {
     10 setflat
-    /tracefile dotgraph{(/dev/null)}{Output}ifelse (w)file def
+    /tracefile dotgraph{(/dev/null)}{Output}ifelse writefile def
     % All paths are simple; no jumps
     %
     /pathSAFE [] def
@@ -561,7 +561,7 @@ traces {
     (']['e']=contours.length;\n) tracestr
     tracefile closefile
     dotgraph{
-    /tracefile Output (w)file def
+    /tracefile Output writefile def
     (graph G {)traceln
     /id 0 def
     provs{

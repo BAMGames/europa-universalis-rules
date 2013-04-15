@@ -29,7 +29,7 @@
 /page 0 def
 /deletedfiles [] def
 /targetname { CURRENTDIR(/targets/)! exch !} def
-/target { CURRENTDIR(/targets/)! exch ! dup /deletedfiles push (w) file} def
+/target { CURRENTDIR(/targets/)! exch ! dup /deletedfiles push writefile} def
 /R {(#R#) exch !} bind def
 /followref {(#R#) search pop pop pop} bind def
 /log { loglevel le {print}{pop} ifelse} bind def
@@ -326,7 +326,7 @@ cpstream closefile
 /logWRITE { } bind def
 /initlogWRITE { } bind def
 /enddocument {
-    /realoutputfile Output (w) file def
+    /realoutputfile Output writefile def
     /out {/bytes bytes 2 index length add def realoutputfile exch writestring} def
     usedobjdict {objdict 1 index known {pop pop}{
 	pop futureobjdict 1 index get exch 60 string cvs defobj

@@ -548,7 +548,7 @@ copyfile
 }def
 
 /inittrace {
-    /tracesfile CURRENTDIR(/moretraces.js)!(w)file def
+    /tracesfile CURRENTDIR(/moretraces.js)! writefile def
     tracesfile (var contours;\nif \(contours == undefined\) {contours=[];}\ncontoursbase=contours.length;\n\n) writestring
     tracesfile (var contourshooks;\nif \(contourshooks == undefined\) {contourshooks=[];}\n\n) writestring
     tracesfile (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[')writestring

@@ -60,7 +60,7 @@ CURRENTDIR(/images.ps)! include
 /counteralone false defaultvalue
 counteralone {
 /listelog {
-    /LISTE CURRENTDIR(/counters.txt)!(w) file def
+    /LISTE CURRENTDIR(/counters.txt)! writefile def
     /log {
 	STDERR 1 index writestring STDERR flushfile
 	LISTE exch writestring LISTE flushfile

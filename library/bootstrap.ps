@@ -8,4 +8,8 @@
 { { systemdict /DEPENDS get (a)file
     dup (*)writestring dup 2 index writestring dup(\n)writestring closefile (r) file}
 }{{(r) file}}ifelse bind def
+/writefile systemdict /DEPENDS known
+{ { systemdict /DEPENDS get (a)file
+    dup (_)writestring dup 2 index writestring dup(\n)writestring closefile (w)file}
+}{{(w) file}}ifelse bind def
 /bd {bind def} bind def
