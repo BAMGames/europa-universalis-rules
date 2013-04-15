@@ -83,7 +83,7 @@
          "bin/makeencodings"
       ],
       "out" : [
-         "fonts/encodings.eps"
+         "fonts/encodings.ps"
       ],
       "type" : "simple"
    },
@@ -100,9 +100,23 @@
       ],
       "maxargs" : 1,
       "out" : [
-         "fonts/$1.eps"
+         "fonts/$1.ps"
       ],
       "pattern" : "fonts/(.*).spec",
+      "type" : "pattern"
+   },
+   "PIONS" : {
+      "actor" : "PIONS",
+      "argument" : "$1",
+      "class" : "Building counters",
+      "in" : [
+         "pions/$1.eps"
+      ],
+      "out" : [
+         "pions/$1.pdf"
+      ],
+      "pattern" : "pions/(.*).eps",
+      "subclass" : "$1",
       "type" : "pattern"
    },
    "SHADOW" : {

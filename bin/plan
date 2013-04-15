@@ -490,8 +490,11 @@ sub nextGeneration() {
             }
           }
           my $argument=$rule->{'argument'};
+          my $subclass='';
+          $subclass=$rule->{'subclass'} if (defined($rule->{'subclass'}));
           foreach my $counter (1..$#list+1) {
             $argument =~ s/\$$counter/$list[$counter-1]/ge;
+            $subclass =~ s/\$$counter/$list[$counter-1]/ge;
             foreach (@in,@out) {
               s/\$$counter/$list[$counter-1]/ge;
             }
@@ -499,6 +502,7 @@ sub nextGeneration() {
           my $newrule={};
           &shallowCopyRule($rule,$newrule);
           $newrule->{'arg'}=[$argument];
+          $newrule->{'subclass'}=$subclass;
           delete $newrule->{'key'};
           my $key=&actionKey($newrule);
           next if exists($bottomupseen{$key});

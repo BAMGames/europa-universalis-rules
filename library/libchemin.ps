@@ -39,7 +39,7 @@ highprecision {
     roll putinterval dup 4 2 roll exch putinterval} bind def	
 /currentpointxy { currentpoint 0.5 add cvi exch 0.5 add cvi 
 }def
-pdfoutput {/carrefile CURRENTDIR(/carres.eps)!(w)file def}if
+pdfoutput {/carrefile CURRENTDIR(/carres.ps)!(w)file def}if
 /carrenum -1 def
 /carre { /rough exch def /myname exch def /myutf exch def /mypos exch def /carrenum carrenum 1 add def /myy exch def /myx exch def (carre)
 carrenum 2 string cvs ! cvn beginpath

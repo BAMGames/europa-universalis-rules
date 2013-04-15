@@ -2,8 +2,8 @@
 /pagewidth 595 defaultvalue
 /pageheight 842 defaultvalue
 
-HOMEDIR(/library/library.eps)! include
-HOMEDIR(/library/common.eps)! include
+HOMEDIR(/library/library.ps)! include
+HOMEDIR(/library/common.ps)! include
 /concatall {counttomark 1 sub {!} repeat exch pop}bind def
 /STDERR (%stderr) (w) file def
 /STDOUT (%stdout) (w) file def
@@ -15,10 +15,10 @@ HOMEDIR(/library/common.eps)! include
 /listelog {} def
 /logOUT {
     /countercolumn countercolumn 1 add def
-    STDOUT PREFIX writestring
+%    STDOUT PREFIX writestring
     STDOUT phase writestring
     STDOUT countercolumn 10000 add 5 string cvs 1 4 getinterval writestring
-    STDOUT SUFFIX writestring
+%    STDOUT SUFFIX writestring
     STDOUT (]\n) writestring STDOUT flushfile
 } bind def
 /initlogWRITE { /SUFFIX (/)
@@ -28,15 +28,15 @@ objects 100000 add 6 string cvs 1 5 getinterval ! def
 } def
 /logWRITE {
     /writecount writecount 1 add def
-    STDOUT PREFIX writestring
+%    STDOUT PREFIX writestring
     STDOUT phase writestring
     STDOUT writecount 100000 add 6 string cvs 1 5 getinterval writestring
-    STDOUT SUFFIX writestring
+%    STDOUT SUFFIX writestring
     STDOUT (]\n) writestring STDOUT flushfile
 } bind def
-CURRENTDIR(/pays.eps)! include
-CURRENTDIR(/translation.eps)! include
-CURRENTDIR(/images.eps)! include
+CURRENTDIR(/pays.ps)! include
+CURRENTDIR(/translation.ps)! include
+CURRENTDIR(/images.ps)! include
 
 /chiffresromains {
     [ (0) (I) (II) (III) (IV) (V) (VI) (VII) (VIII) (IX) (X) ]
