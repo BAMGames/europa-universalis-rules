@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+fail() {
+    echo "${SPECIALPREFIX}failed:$1" 1>&2
+    exit 1
+}
+mkdir -p pions/targets
+for i in "$@"; do
+    gs -dEPSCrop -r20x20 -sDEVICE=ppm -SOutputFile=/dev/null -DBATCH -DNOPAUSE -q -SHOMEDIR=. -SCURRENTDIR=./pions -SBOOTFILE=./library/bootstrap.ps  -SDEPENDS=pions/$1.depends.txt -sOutput=pions/$1.pdf -DPDFOUTPUT pions/$1.eps || fail "$1"
+    echo "${SPECIALPREFIX}$1" 1>&2
+    shift
+done
+rm -rf pions/targets
