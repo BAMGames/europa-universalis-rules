@@ -8,6 +8,34 @@
 # Idea: manage inside files (both written and read in one actor)
 # Idea: pseudo-target sweep to remove unmakeable non-axiom files
 
+
+if (0) {
+
+=pod
+
+=head1 NAME
+
+plan - build files by applying a set of fixed rules
+
+=head1 SYNOPSIS
+
+plan [B<--target>] I<targetname> ...
+
+plan [B<-->] I<goal> [I<goal>] (only goals)
+
+plan B<--why> I<goal> [I<goal>] (only goals)
+
+plan B<--how> I<goal> [I<goal>] (only goals)
+
+plan B<--help>|B<--man>|B<--nroff>|B<--usage>
+
+If a goal could be mistaken for another option, use the B<--> form.
+
+=cut
+
+}
+
+
 use strict;
 use warnings;
 use JSON::PP;
@@ -147,11 +175,49 @@ sub out {
 
 # ARGV
 
+
+=pod
+
+=head2 GENERIC OPTIONS
+
+B<--verbosity> I<category> I<level> Change the verbosity to I<level> in I<category>.
+
+B<--I<category>> I<level> Shortcut, as above.
+
+If verbosity can be mistaken for a target name, use the B<--verbosity> form, because the target will take precedence.
+
+The verbosity level is a positive integer (including 0).
+
+The various categories are :
+
+=over
+
+=item * B<init> initialization information (not usefule)
+
+=item * B<plan> informations about the building plan (can be very verbose)
+
+=item * B<exec> informations about the commands launched by the plan
+
+=item * B<err> the error output of the various commands
+
+=item * B<out> the console output of the various commands
+
+=item * B<display> the summary of the building (1: each class, 2: each subclass, 3: each item)
+
+=back
+
+Each rule can define a class and a subclass, and each item built will be
+output in a synthetic manner. The default setting is 3 for B<display>
+and 1 for B<out> and B<err>. A quiet effect can be obtained by setting
+everything to 0.
+
+=cut
+
 sub parseARGV {
   my $goals=[];
   my $mode="goal";
-  my $target="finals";
-  my %target=('all'=>1,'finals'=>1);
+  my $targets=[];
+  my %target=('all'=>1,'finals'=>1); # TODO read from the plan/targets/ DIR
   my $x=0;
   while ($x < scalar @ARGV) {
     my $arg=$ARGV[$x];
@@ -163,8 +229,20 @@ sub parseARGV {
       &finish(1,"Wrong option: --verbosity must be followed by either ".join(' or ',keys %verbosity)) unless defined($verbosity{$cat});
       &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $verbosity{$cat}=$level;
-    } elsif ($arg eq 'clean' or $arg eq '--clean') {
-      $mode="clean";
+    } elsif ($arg eq '--help') {
+      $mode="help-help";
+    } elsif ($arg eq '--help' or $arg eq '-h') {
+      $mode="help-help";
+    } elsif ($arg eq '--man') {
+      $mode="help-man";
+    } elsif ($arg eq '--usage') {
+      $mode="help-usage";
+    } elsif ($arg eq '--nroff') {
+      $mode="help-nroff";
+    } elsif ($arg eq 'why' or $arg eq '--why') {
+      $mode="why";
+    } elsif ($arg eq 'how' or $arg eq '--how') {
+      $mode="how";
     } elsif ($arg eq 'distclean' or $arg eq '--distclean') {
       $mode="distclean";
     } elsif (defined($target{$arg}) or $arg eq '--target') {
@@ -172,7 +250,7 @@ sub parseARGV {
         $x++;
         $arg=$ARGV[$x];
       }
-      $target=$arg;
+      push $targets,$arg;
     } elsif ($arg eq '--') {
       $x++;
       while ($x < scalar @ARGV) {
@@ -184,14 +262,70 @@ sub parseARGV {
     }
     $x++;
   }
-  return ($goals,$target,$mode);
+  if (scalar @$goals == 0 and scalar @$targets == 0) {
+    push $targets,'finals';
+  }
+  return ($goals,$targets,$mode);
 }
 
 my ($goals,$target,$mode)=&parseARGV();
 &out(1,"init","Parsing ARGV done");
 
-my %implemented=('goal' => 1,'distclean' => 1, 'clean' => 1);
+my %implemented=('goal' => 1,'distclean' => 1, 'clean' => 1,
+                 'help-help' => 1,
+                 'help-man' => 1,
+                 'help-nroff' => 1,
+                 'help-usage' => 1,
+                );
 finish(1,"$mode is not implemented yet") unless defined($implemented{$mode});
+
+# help
+
+sub usage {
+
+=pod
+
+=head2 HELP OPTIONS
+
+B<--help>|B<-h> Generate this help (long version).
+
+B<--usage> Generate this help (short version).
+
+B<--man> Generate man page.
+
+B<--nroff> Generate man page in NROFF format.
+
+=cut
+
+  ### usage ($option)
+  ### Provides all kinds of textual help and stops
+  my ($option)=@_;
+  if (!defined($option)) {
+    $option="usage";
+  }
+  my $cmd="pod2txt";
+  my $release="0.6";
+  my ($a,$out,$b);
+  if ($option eq "man"||$option eq "nroff") {
+    ($a,$out,$b)=@{&executeCommand("","pod2man","$0","--center","User commands","--release",$release)};
+    if ($a==0 && $option eq "man") {
+      ($a,$out,$b)=@{&executeCommand($out,"nroff","-man","-")};
+    }
+  } else {
+    ($a,$out,$b)=@{&executeCommand("","pod2text","$0")};
+  }
+  if ($option eq "usage") {
+    $out =~ s/OPTIONS.*$//s;
+  }
+  if ($option ne "man") {
+    print $out;
+  } else {
+    open FILE,"|pager";
+    print FILE $out;
+    close FILE;
+  }
+  &finish(0);
+}
 
 # Command execution with stderr filtering
 
@@ -271,6 +405,31 @@ sub execCommand {
   delete $statusCommand{$pid};
   &out(1,"exec","Command finished with status $status");
   return $status;
+}
+
+sub executeCommand {
+  my $in=shift @_;
+  &out(1,"exec",join(' ',@_));
+  my $outputtext="";
+  my $errtext="";
+  my $pid=open3(\*INPUT, \*OUTPUT, \*ERR,@_);
+  print INPUT $in if $in;
+  close(INPUT);
+  my $done=0;
+  do {
+    while (<OUTPUT>) {
+      $outputtext.=$_;
+    }
+    while (<ERR>) {
+      $errtext.=$_;
+    }
+    $done=waitpid($pid,WNOHANG);
+  } until ($done>0);
+  return [ $?, $outputtext, $errtext ];
+}
+
+if ($mode =~ /^help-([a-z]+)/) {
+  &usage($1);
 }
 
 &out(1,'init','Initialize harness for command executions');
@@ -763,7 +922,7 @@ sub attempt() {
   my $status=&execCommand(@execLine);
   if ($status) {
     foreach my $ok (@partiallydone) {
-      my $protectedok=uri_escape($ok);
+      my $protectedok=uri_escape($ok); # TODO: Really use actionKeys here, not filenames
       foreach my $i (@candidateRules) {
         my $rule=$result->[$i];
         if (defined $rule->{'arg'}
@@ -841,3 +1000,72 @@ if ($done==0) {
 }
 &newline();
 &finish(0);
+
+=pod
+
+=head1 PRINCIPLE
+
+TODO
+
+=head1 RULES
+
+TODO
+
+=head1 EXPLAINING
+
+The B<--why> and B<--how> specifiers will disable file generation and
+explain by a simple graph which file is output starting from the
+specified goals (B<--why>) or an input from the specified goals
+(B<--how). The graph is in I<graphviz> format.
+
+=head1 GOALS AND TARGETS
+
+The various goals files are filenames with one name per line. The names
+may be escaped by using the %(hexadecimal) notation (you will most
+probably never encounter that).
+
+Targets are predefined list of goals that can be used instead of
+specifying individual goals. The target names are usually sufficient to
+use them as goals.
+
+There is one default target: the I<all> target is the list of all
+buildable files.
+
+If no goals are given, then the target I<finals> will be used by default
+(even if it is not defined).
+
+=head1 FILES
+
+=over
+
+=item * C<plan/targets/I<target>> a list of goals aliased as a target
+
+=item * C<plan/lazy> a list of goals stored in git but not axioms
+
+=item * C<plan/axioms> a list of goals not stored in git but considered as axioms
+
+Beware that if plan/axioms is not empty, your project may be buildable
+locally, but fail from the repository.
+
+=item * C<plan/in/I<name>> a good place to put files read by "infile" directives.
+
+=item * C<plan/out/I<name>> a good place to put files read by "outfile" directives.
+
+=item * C<plan/actors/I<ACTOR>> a short script that executes the rule named
+I<ACTOR> and receives the various arguments as $1, $2, etc.
+
+=item * C<plan/rules> a JSON encoded file containing the rules.
+
+=back
+
+=head1 AUTHOR
+
+Copyright Jean-Christophe Dubacq 2013
+
+=head1 COPYING
+
+This work is licensed under the BSD licence. It is explicitly stated
+here that the license does not extend to the data managed by the
+program, in case anyone had doubts.
+
+=cut

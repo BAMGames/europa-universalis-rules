@@ -6,8 +6,7 @@ A makefile replacement
  * fonts : done
  * shadow : done
  * pions : done except for figures
-
-# Introduce auto documentation
+ * carte, rotw
 
 # Introduce trace mode
 
@@ -30,3 +29,7 @@ each file is a good starting point).
 # Introduce args for 'ignore'
 generate .gitignore in each directory. All buildable files are
 ignored, unless a lazy axiom.
+
+# Do --how and --why modes
+These modes generate a graph explaining what is produced from one file and
+what is necessary to build a file.
