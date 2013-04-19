@@ -9,7 +9,7 @@
 # Idea: pseudo-target sweep to remove unmakeable non-axiom files
 
 
-if (0) {
+if ('' cmp 'DOC SYNOPSIS') {
 
 =pod
 
@@ -35,9 +35,17 @@ If a goal could be mistaken for another option, use the B<--> form.
 
 }
 
-
 use strict;
 use warnings;
+# Unicode safety
+use utf8;
+use Encode;
+binmode(STDOUT,':utf8');
+binmode(STDERR,':utf8');
+binmode(STDIN,':utf8');
+use open OUT => ':utf8';
+use open IN => ':utf8';
+
 use JSON::PP;
 use Data::Dumper;
 use URI::Escape;
@@ -46,135 +54,74 @@ use Symbol 'gensym';
 use File::Path qw(make_path);
 use Cwd;
 use Term::ANSIColor;
+# command execution
+use IPC::Open3;
+use POSIX ":sys_wait_h";
+use IO::Select;
+use IO::Handle;
 
-my %verbosity=('exec'=>0,
-               'init'=>0,
-               'plan'=>0,
-               'out'=>1,
-               'err'=>1,
-               'display'=>3);
-my $color=1;
-$color=0 unless -t STDOUT;
-my $trace=1;
+my $execContext;
+my $planContext;
+my $outContext;
+
+# Directories
+
+my $axiomdir='plan/axioms';
+my $finaldir='plan/finals';
+my $rulefile='plan/rules';
+my $actordir='plan/bin';
+my $targetdir='plan/targets';
+
+# Convenience
+
+sub clone {
+  my $obj=shift @_;my $t=ref($obj);
+  return $obj unless ($t);
+  return [map {&clone($_)} @$obj] if ($t eq 'ARRAY');
+  my $n={};
+  foreach my $key (keys %$obj) {
+    $n->{$key}=&clone($obj->{$key});
+  }
+  return $n;
+}
+
+sub findGitTopdir {
+  my $oldcwd='';
+  my $cwd=getcwd();
+  while ($oldcwd ne $cwd and !opendir(GITDIR,".git")) {
+    chdir('..');
+    $cwd=getcwd();
+  }
+  closedir(GITDIR);
+  &finish(1,"Could not find the top-level directory") if $cwd eq $oldcwd;
+  &out(1,'init','Relocated to project top directory');
+}
+
+sub main {
+  my %implemented=('goal' => 1,
+                   'distclean' => 1,
+                   'clean' => 1,
+                   'help-help' => 1,
+                   'help-man' => 1,
+                   'help-nroff' => 1,
+                   'help-usage' => 1,
+                  );
+  &initLogging();
+  &findGitTopdir();
+  my ($goals,$targets,$mode)=&parseARGV();
+  if ($mode =~ /^help-([a-z]+)/) {
+    &usage($1);
+  }
+  &finish(1,"$mode is not implemented yet") unless defined($implemented{$mode});
+  &setupCommand();
+  &finish(0);
+}
+
+&main();
+
 # Logging
 
-my $class='';
-my $oldclass='';
-my $subclass='';
-my $oldsubclass='';
-my $currentcol=0;
-my $nomove=0;
-sub finish {
-  my $status=shift @_;
-  &newline();
-  if ($status == 1) {
-    die @_;
-  }
-  exit($status);
-}
-sub newline {
-  print "\n" if ($currentcol);
-  $currentcol=0;
-  $nomove=0;
-}
-sub class {
-  $oldclass=$class;
-  $class=$_[0];
-  if ($class ne $oldclass) {
-    &newline();
-    $subclass='';
-    print color 'bold' if ($color);
-    print $class,"\n";
-    print color 'reset' if ($color);
-  }
-}
-sub subclass {
-  $oldsubclass=$subclass;
-  $subclass=$_[0];
-  if ($subclass ne $oldsubclass) {
-    print color 'bold' if ($color);
-    &out(3,'display',$subclass);
-    print color 'reset' if ($color);
-  }
-}
-my $countphase='';
-my $lastcountcol=0;
-sub out {
-  my $v=shift @_;
-  my $n=shift @_;
-  if ($verbosity{$n}>=$v) {
-    if ($n eq "display") {
-      my $storepos=0;
-      if ($v==1) {
-        &class(@_);
-      } elsif ($v==2) {
-        &subclass(@_);
-      } else {
-        my $str=join('',@_);
-        if ($_[0]=~ /^count:(.*):([0-9\/]+)$/) {
-          $str="$1:$2";
-          my $oldcountphase=$countphase;
-          $countphase="$1";
-          if ($color == 0) {
-            $lastcountcol++;
-            if ($lastcountcol == 500) {
-              $lastcountcol=0;
-            }
-            if ($countphase ne $oldcountphase) {
-              $lastcountcol=0;
-            }
-            return if ($lastcountcol != 0);
-          } else {
-            if ($nomove == 1 and $countphase eq $oldcountphase) {
-              $storepos=2;
-            } else {
-              $storepos=1;
-            }
-          }
-        } else {
-          $countphase='';
-        }
-        my $len=length($str);
-        if ($currentcol+2+$len>80) {
-          &newline();
-        }
-        if ($currentcol==0) {
-          print "    ";
-          $currentcol=4;
-        }
-        if ($storepos == 1) {
-          $nomove=1;
-          $lastcountcol=$currentcol;
-          print "\x1b[s";
-        } elsif ($storepos == 2) {
-          $nomove=1;
-          $currentcol=$lastcountcol;
-          print "\x1b[u";
-        } else {
-          $nomove=0;
-        }
-        $currentcol+=2+$len;
-        print '[',$str,']';
-      }
-    } elsif ($n eq "out") {
-      &newline();
-      print color 'blue' if ($color);
-      print "      ",@_,"\n";
-      print color 'reset' if ($color);
-    } elsif ($n eq 'err') {
-      &newline();
-      print color 'red' if ($color);
-      print @_,"\n";
-      print color 'reset' if ($color);
-    } else {
-      &newline();
-      print $n,':',@_,"\n";
-    }
-  }
-}
-
-# ARGV
-
+sub initLogging {
 
 =pod
 
@@ -213,6 +160,148 @@ everything to 0.
 
 =cut
 
+  my $verbosity={'exec'=>0,
+                 'init'=>0,
+                 'plan'=>0,
+                 'out'=>1,
+                 'err'=>1,
+                 'display'=>3};
+  my $jsonEncoder=JSON::PP->new->pretty;
+  $outContext={
+               'color' => 1,
+               'class' => '',
+               'subclass' => '',
+               'currentcol' => 0,
+               'nomove' => 0,
+               'countphase' => '',
+               'lastcountcol' => 0,
+               'verbosity' => $verbosity,
+               'specialprefix' => qr/^PARTIAL PLAN:(.*)$/,
+               'json' => $jsonEncoder;
+              };
+  $ENV{'SPECIALPREFIX'}="PARTIAL PLAN:";
+  $outContext->{'color'}=0 unless -t STDOUT;
+  &out(1,'init','Logging system ready');
+} # DOC INSIDE
+sub finish {
+  my $status=shift @_;
+  &newline();
+  if ($status == 1) {
+    print "Dying: ",@_,"\n";
+  }
+  exit($status);
+}
+sub newline {
+  print "\n" if ($outContext->{'currentcol'});
+  $outContext->{'currentcol'}=0;
+  $outContext->{'nomove'}=0;
+}
+sub class {
+  my $class=$_[0];
+  if ($class ne $outContext->{'class'}) {
+    &newline();
+    $outContext->{'subclass'}='';
+    print color 'bold' if ($outContext->{'color'});
+    print $class,"\n";
+    print color 'reset' if ($outContext->{'color'});
+    $outContext->{'class'}=$class;
+  }
+}
+sub subclass {
+  my $subclass=$_[0];
+  if ($subclass ne $outContext->{'subclass'}) {
+    $outContext->{'subclass'}=$subclass;
+    print color 'bold' if ($outContext->{'color'});
+    &outDisplay($subclass);
+    print color 'reset' if ($outContext->{'color'});
+  }
+}
+sub outDisplay {
+  my $str=join('',@_);
+  my $storepos;
+  if ($str =~ /^count:(.*):([0-9\/]+)$/) {
+    $str="$1:$2";
+    my $oldcountphase=$outContext->{'countphase'};
+    my $countphase="$1";
+    $outContext->{'countphase'}=$countphase;
+    if ($outContext->{'color'} == 0) {
+      my $lastcountcol=$outContext->{'lastcountcol'}+1;
+      if ($lastcountcol == 500) {
+        $lastcountcol=0;
+      }
+      if ($countphase ne $oldcountphase) {
+        $lastcountcol=0;
+      }
+      $outContext->{'lastcountcol'}=$lastcountcol;
+      return if ($lastcountcol != 0);
+    } else {
+      if ($outContext->{'nomove'} == 1 and $countphase eq $oldcountphase) {
+        $storepos=2;
+      } else {
+        $storepos=1;
+      }
+    }
+  } else {
+    $outContext->{'countphase'}='';
+  }
+  my $len=length($str);
+  if ($outContext->{'currentcol'}+2+$len>80) {
+    &newline();
+  }
+  if ($outContext->{'currentcol'}==0) {
+    print "    ";
+    $outContext->{'currentcol'}=4;
+  }
+  if ($storepos == 1) {
+    $outContext->{'nomove'}=1;
+    $outContext->{'lastcountcol'}=$outContext->{'currentcol'};
+    print "\x1b[s";
+  } elsif ($storepos == 2) {
+    $outContext->{'nomove'}=1;
+    $outContext->{'currentcol'}=$outContext->{'lastcountcol'};
+    print "\x1b[u";
+  } else {
+    $$outContext->{'nomove'}=0;
+  }
+  $outContext->{'currentcol'}+=2+$len;
+  print '[',$str,']';
+}
+sub out {
+  my $v=shift @_;
+  my $n=shift @_;
+  if ($outContext->{'verbosity'}->{$n}>=$v) {
+    if (ref($_[0])) {
+      $_[1] = Data::Dumper->Dump([$_[0]],[$_[1]]);
+      shift @_;
+    }
+    if ($n eq "display") {
+      my $storepos=0;
+      if ($v==1) {
+        &class(@_);
+      } elsif ($v==2) {
+        &subclass(@_);
+      } else {
+        &outDisplay(@_);
+      }
+    } elsif ($n eq "out") {
+      &newline();
+      print color 'blue' if ($outContext->{'color'});
+      print "      ",@_,"\n";
+      print color 'reset' if ($outContext->{'color'});
+    } elsif ($n eq 'err') {
+      &newline();
+      print color 'red' if ($outContext->{'color'});
+      print @_,"\n";
+      print color 'reset' if ($outContext->{'color'});
+    } else {
+      &newline();
+      print $n,':',@_,"\n";
+    }
+  }
+}
+
+# ARGV
+
 sub parseARGV {
   my $goals=[];
   my $mode="goal";
@@ -226,9 +315,9 @@ sub parseARGV {
       my $cat=$ARGV[$x+1];
       my $level=$ARGV[$x+2];
       $x+=2;
-      &finish(1,"Wrong option: --verbosity must be followed by either ".join(' or ',keys %verbosity)) unless defined($verbosity{$cat});
+      &finish(1,"Wrong option: --verbosity must be followed by one of ".join(' or ',keys %{$outContext->{'verbosity'}})) unless defined($outContext->{'verbosity'}->{$cat});
       &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
-      $verbosity{$cat}=$level;
+      $outContext->{'verbosity'}->{$cat}=$level;
     } elsif ($arg eq '--help') {
       $mode="help-help";
     } elsif ($arg eq '--help' or $arg eq '-h') {
@@ -243,6 +332,8 @@ sub parseARGV {
       $mode="why";
     } elsif ($arg eq 'how' or $arg eq '--how') {
       $mode="how";
+    } elsif ($arg eq 'clean' or $arg eq '--clean') {
+      $mode="distclean";
     } elsif ($arg eq 'distclean' or $arg eq '--distclean') {
       $mode="distclean";
     } elsif (defined($target{$arg}) or $arg eq '--target') {
@@ -265,22 +356,35 @@ sub parseARGV {
   if (scalar @$goals == 0 and scalar @$targets == 0) {
     push $targets,'finals';
   }
+  &out(1,"init","Parsing ARGV done");
   return ($goals,$targets,$mode);
 }
+sub instantiateTargets {
+  my $targets=shift @_;
+  my $goals=shift @_;
+  my $generation=shift @_;
+  my $goalHash={};
+  foreach my $g (@$goals) {
+    $goalHash->{$g}++;
+  }
+  foreach my $f (@$targets) {
+    if ($f eq 'all') {
+      foreach my $g (keys %$generation) {
+        $goalHash->{$g}++;
+      }
+    } else {
+      if (open FILE,$targetdir.'/'.$f) {
+        my $g=<FILE>;
+        $g=decodeGoalLine($g);
+        $goalHash->{$g}++;
+        close FILE;
+      }
+    }
+  }
+  return sort keys %$goalHash;
+}
 
-my ($goals,$target,$mode)=&parseARGV();
-&out(1,"init","Parsing ARGV done");
-
-my %implemented=('goal' => 1,'distclean' => 1, 'clean' => 1,
-                 'help-help' => 1,
-                 'help-man' => 1,
-                 'help-nroff' => 1,
-                 'help-usage' => 1,
-                );
-finish(1,"$mode is not implemented yet") unless defined($implemented{$mode});
-
-# help
-
+# Help
 sub usage {
 
 =pod
@@ -328,55 +432,47 @@ B<--nroff> Generate man page in NROFF format.
 }
 
 # Command execution with stderr filtering
-
-use IPC::Open3;
-use POSIX ":sys_wait_h";
-use IO::Select;
-use IO::Handle;
-my %statusCommand=();
-my %childCommand=();
-select(STDERR); $| = 1;
-select(STDOUT); $| = 1;
-
 sub REAPER {
   my $child;
   while (($child = waitpid(-1, WNOHANG)) > 0) {
-    $statusCommand{$child} = $?;
-    delete $childCommand{$child};
+    $execContext->{'statusCommand'}->{$child} = $?;
+    delete $execContext->{'children'}->{$child};
   }
   $SIG{CHLD} = \&REAPER;        # still loathe SysV
 }
 sub setupCommand {
+  &out(1,'init','Initialize harness for command executions');
+  select(STDERR); $| = 1;
+  select(STDOUT); $| = 1;
+  $execContext={
+                'status' => {},
+                'children' => {},
+                'partiallyDone' => [],
+               };
   $SIG{CHLD} = \&REAPER;
   $SIG{INT} = sub {
-    foreach my $pid (keys %childCommand) {
+    foreach my $pid (keys %{$execContext->{'children'}}) {
       kill 2,$pid;
     }
-  };
+  }
 }
-
-my $specialprefix=qr/^PARTIAL PLAN:(.*)$/;
-$ENV{'SPECIALPREFIX'}="PARTIAL PLAN:";
-my @partiallydone=();
-
 sub errorCommand {
   my $lines=$_[0];
   foreach my $line (split /\n/m,$lines) {
     chomp $line;
-    if ($line =~ $specialprefix) {
+    if ($line =~ $outContext->{'specialprefix'}) {
       my $part=$1;
       &out(3,'display',$part);
       if ($part =~ /^failed:/ or $part =~ /^count:/) {
         1;
       } else {
-        push @partiallydone,$part;
+        push $execContext->{'partiallydone'},$part;
       }
     } else {
       &out(1,'err',$line);
     }
   }
 }
-
 sub execCommand {
   my $line;
   &out(1,"exec",@_);
@@ -384,10 +480,10 @@ sub execCommand {
   my $err = gensym;
   my $pid = open3("<&STDIN",$out, $err, @_);
   if ($pid) {
-    $childCommand{$pid}=1;
+    $execContext->{'children'}->{$pid}=1;
     my $sel= new IO::Select;
     $sel->add($err,$out);
-    while (scalar keys %childCommand > 0) {
+    while (scalar keys %{$execContext->{'children'}} > 0) {
       foreach my $readhandle ($sel->can_read(.5)) {
         my $length=sysread $readhandle,$line,4096;
         if ($length) {
@@ -401,13 +497,13 @@ sub execCommand {
       }
     }
   }
-  my $status=0+$statusCommand{$pid};
-  delete $statusCommand{$pid};
+  my $status=0+$execContext->{'status'}->{$pid};
+  delete $execContext->{'status'}->{$pid};
   &out(1,"exec","Command finished with status $status");
   return $status;
 }
-
 sub executeCommand {
+  # a much simpler version for the manual page
   my $in=shift @_;
   &out(1,"exec",join(' ',@_));
   my $outputtext="";
@@ -428,34 +524,12 @@ sub executeCommand {
   return [ $?, $outputtext, $errtext ];
 }
 
-if ($mode =~ /^help-([a-z]+)/) {
-  &usage($1);
-}
-
-&out(1,'init','Initialize harness for command executions');
-&setupCommand;
-
-my $axiomdir='plan/axioms';
-my $finaldir='plan/finals';
-my $rulefile='plan/rules';
-
-my %axioms=();
-my %finals=();
-my @theorems=();
-my %generation=();
-my @rules;
-my $trigger=[];
-my %bottomupseen=();
-my %rules=();
-my %fingerprintCache=();
-my %generatedCache=();
-my $result=[];
-
+# Disk Input/Output
 sub fingerprint() {
   my ($f)=@_;
   my $hash="0";
-  return "0" if (-d $f);
   return "0" unless (-e $f);
+  return "0" if (-d $f);       # TODO: recursive version for directories
   open FILE,"$f" or return "$f:0";
   my $hashing = Digest::MD5->new;
   $hashing->addfile(*FILE);
@@ -463,7 +537,6 @@ sub fingerprint() {
   close FILE;
   return $hash;
 }
-
 sub fingerprintArray() {
   # example: $rule, 'in'
   my @a=@{$_[0]->{$_[1]}};
@@ -477,31 +550,31 @@ sub fingerprintArray() {
   return $hashing->hexdigest;
 }
 
-sub findGitTopdir {
-  my $oldcwd='';
-  my $cwd=getcwd();
-  while ($oldcwd ne $cwd and !opendir(GITDIR,".git")) {
-    chdir('..');
-    $cwd=getcwd();
-  }
-  &finish(1,"Could not find the top-level directory") if $cwd eq $oldcwd;
-  closedir(GITDIR);
+sub encodeGoalLine {
+  join("",
+       map { ($_ > 127 || $_ < 32 || $_ == 37 )?
+               sprintf("%%(%d)", $_) :
+                 chr($_)
+               } unpack("W*", &decode_utf8($_[0]))); # unpack Unicode characters
+}
+sub decodeGoalLine {
+  my $a=$_[0];
+  $a =~ s/%\(([0-9]+)\)/chr($1)/eg;
+  return $a;
 }
 
-my $jsonEncoder=JSON::PP->new->pretty;
-sub writeCache() {
+sub writeCache {
   my ($cacheHash,$path)=@_;
   &out(3,'init',"Storing $path cache");
   my $cachehandle;
   open STDIN,"/dev/null" unless fileno(STDIN);
   make_path('.tmp');
   open $cachehandle,'>',".tmp/$path" or &finish(1,"I cannot open my $path cache!");
-  print $cachehandle $jsonEncoder->encode($cacheHash);
+  print $cachehandle $outContext->{'json'}->encode($cacheHash);
   $cachehandle->sync();
   close $cachehandle;
 }
-
-sub readCache() {
+sub readCache {
   my ($cacheHash,$path)=@_;
   &out(1,'init',"Reading $path cache");
   local $/;
@@ -513,7 +586,11 @@ sub readCache() {
   }
 }
 
-sub removeGenerated() {
+sub forceUnlink {
+  my $_=shift @_;
+  unlink $_; # TODO: this may be a directory
+}
+sub removeGenerated {
   my ($cacheHash,$path,$axioms)=@_;
   my $count=0;
   if (defined($axioms)) {
@@ -521,14 +598,14 @@ sub removeGenerated() {
   } else {
     &out(1,'init','Cleaning old files cache');
   }
-  # If not defined, just test presence
+  # If $axioms not defined, just test presence
   # Else, unlink all files not in $axioms hash
   foreach my $key (keys %{$cacheHash}) {
     if (-f $key) {
       if (defined($axioms) and !defined($axioms->{$key})) {
         # clean or distclean
         $count++;
-        unlink $key;
+        &forceUnlink($key);
         delete $cacheHash->{$key};
       }
     } else {
@@ -540,6 +617,39 @@ sub removeGenerated() {
     &out(3,'display',"Removed $count old files");
   }
 }
+
+sub readRules {
+}
+sub readFileList {
+  my ($path)=@_;
+  my $hash={};
+  if (open FILE,$path) {
+    my $line;
+    while ($line=<FILE>) {
+      chomp $line;
+      my $g=&decodeGoalLine($line);
+      $hash->{$g}++;
+    }
+    close FILE;
+  } else {
+    &out(1,err,"Could not open $path");
+  }
+  return $hash;
+}
+
+# Planning
+my %axioms=();
+my %finals=();
+my @theorems=();
+my %generation=();
+my $trigger=[];
+my %bottomupseen=();
+my %rules=();
+my %fingerprintCache=();
+my %generatedCache=();
+my $result=[];
+
+
 
 sub readAxioms() {
   my $axiomtype=shift @_;
@@ -574,16 +684,17 @@ sub readRules() {
   open (my $fh,'<',$rulefile);
   my $json=<$fh>;
   my $rules=decode_json($json);
-  @rules=values %{$rules};
-  foreach my $rule (@rules) {
+  my $prules=[map { $rules->{$_} } sort keys %$rules];
+  foreach my $rule (@$prules) {
     $rule->{'in'}=[] unless (defined($rule->{'in'}));
-    push $rule->{'in'},'plan/bin/'.$rule->{'actor'};
+    push $rule->{'in'},$actordir.'/'.$rule->{'actor'};
     $rules{$rule->{"actor"}}=$rule;
   }
   $rules{'AXIOM'}={'type' => 'simple',
                    'actor' => 'AXIOM',
-                   'in'=>['plan/bin/AXIOM'],
+                   'in'=>[$actordir.'/AXIOM'],
                    'class' => 'Checking axioms'};
+  return $prules;
 }
 
 sub shallowCopyRule() {
@@ -634,104 +745,142 @@ sub listEqual() {
   return 1;
 }
 
+sub cleanRules() {
+  my $rules=shift @_;
+  foreach my $rule (@$rules) {
+    if (defined($rule->{'infile'})) {
+      foreach my $infile (@{$rule->{'infile'}}) {
+        if (open FILE,$infile) {
+          foreach (<FILE>) {
+            chomp;
+            push $rule->{'in'},$_;
+          }
+          close FILE;
+        }
+      }
+      $rule->{'oldinfile'} = $rule->{'infile'};
+      delete $rule->{'infile'};
+    }
+    if (defined($rule->{'outfile'})) {
+      foreach my $outfile (@{$rule->{'outfile'}}) {
+        if (open FILE,$outfile) {
+          foreach (<FILE>) {
+            chomp;
+            push $rule->{'out'},$_;
+          }
+          close FILE;
+        }
+      }
+      $rule->{'oldoutfile'} = $rule->{'outfile'};
+      delete $rule->{'outfile'};
+    }
+    my @infiles=@{$rule->{'in'}};
+    $rule->{'in'}=[sort @infiles];
+    if (!defined($rule->{'wanted'})) {
+      $rule->{'wanted'}=[sort @infiles];
+    }
+    my @outfiles=@{$rule->{'out'}};
+    $rule->{'out'}=[sort @infiles];
+  }
+}
+
 sub nextGeneration() {
   my ($gen,$previousthm) = @_;
   &out(3,"plan","Building list of buildable files, generation $gen");
   my @current=@$previousthm;
   my $found=[];
-  foreach my $rule (@rules) {
-    if ($rule->{'type'} eq 'simple' ) {
-      my $key=&actionKey($rule);
-      next if (exists($bottomupseen{$key}));
-      my $allfound=1;
-      if (defined($rule->{'infile'})) {
-        foreach my $infile (@{$rule->{'infile'}}) {
-          if (open FILE,$infile) {
-            foreach (<FILE>) {
-              chomp;
-              push $rule->{'in'},$_;
+  foreach my $rule (@{$outContext->{'simpleRules'}}) {
+    my $key=&actionKey($rule);
+    next if (exists($bottomupseen{$key}));
+    my $allfound=1;
+    if (defined($rule->{'infile'})) {
+      foreach my $infile (@{$rule->{'infile'}}) {
+        if (open FILE,$infile) {
+          foreach (<FILE>) {
+            chomp;
+            push $rule->{'in'},$_;
+          }
+          close FILE;
+        }
+      }
+      $rule->{'oldinfile'} = $rule->{'infile'};
+      delete $rule->{'infile'};
+    }
+    foreach my $requirement (@{$rule->{'in'}}) {
+      if (!exists($generation{$requirement})
+          or $generation{$requirement}->{'gen'} >= $gen) {
+        $allfound=0;last;
+      }
+    }
+    if ($allfound) {
+      $rules{$rule->{"actor"}}->{'seen'}=1;
+      $bottomupseen{$key}=1;
+      $rule->{'gen'}=$gen;
+      &recordGeneration($rule);
+      push $found,@{$rule->{'out'}};
+    }
+  }
+  foreach my $rule (@{$outContext->{'patternRules'}}) {
+    my $pattern=$rule->{'pattern'};
+    my $patternRE=qr/$pattern/;
+    foreach my $candidate (@current) {
+      my @list;
+      if (@list = ($candidate =~ $patternRE)) {
+        if (defined($rule->{'allowedargs'})) {
+          my $ok=0;
+          foreach my $allow (@{$rule->{'allowedargs'}}) {
+            if (&listEqual($allow,\@list)) {
+              $ok=1;
+              last;
             }
-            close FILE;
+          }
+          next unless $ok;
+        }
+        my @in=();
+        my @out=();
+        foreach my $infile (@{$rule->{'in'}}) {
+          push @in, $infile;
+        }
+        foreach my $outfile (@{$rule->{'out'}}) {
+          push @out, $outfile;
+        }
+        if (defined($rule->{'infile'})) {
+          foreach my $infile (@{$rule->{'infile'}}) {
+            my $inf=''.$infile;
+            foreach my $counter (1..$#list+1) {
+              $inf =~ s/\$$counter/$list[$counter-1]/ge;
+            }
+            if (open FILE,$inf) {
+              foreach (<FILE>) {
+                chomp;
+                push @in,$_;
+              }
+              close FILE;
+            }
           }
         }
-        $rule->{'oldinfile'} = $rule->{'infile'};
-        delete $rule->{'infile'};
-      }
-      foreach my $requirement (@{$rule->{'in'}}) {
-        if (!exists($generation{$requirement})
-            or $generation{$requirement}->{'gen'} >= $gen) {
-          $allfound=0;last;
+        my $argument=$rule->{'argument'};
+        my $subclass='';
+        $subclass=$rule->{'subclass'} if (defined($rule->{'subclass'}));
+        foreach my $counter (1..$#list+1) {
+          $argument =~ s/\$$counter/$list[$counter-1]/ge;
+          $subclass =~ s/\$$counter/$list[$counter-1]/ge;
+          foreach (@in,@out) {
+            s/\$$counter/$list[$counter-1]/ge;
+          }
         }
-      }
-      if ($allfound) {
-        $rules{$rule->{"actor"}}->{'seen'}=1;
+        my $newrule={};
+        &shallowCopyRule($rule,$newrule);
+        $newrule->{'arg'}=[$argument];
+        $newrule->{'subclass'}=$subclass;
+        delete $newrule->{'key'};
+        my $key=&actionKey($newrule);
+        next if exists($bottomupseen{$key});
         $bottomupseen{$key}=1;
-        $rule->{'gen'}=$gen;
-        &recordGeneration($rule);
-        push $found,@{$rule->{'out'}};
-      }
-    } elsif ($rule->{'type'} eq 'pattern' ) {
-      my $pattern=$rule->{'pattern'};
-      my $patternRE=qr/$pattern/;
-      foreach my $candidate (@current) {
-        my @list;
-        if (@list = ($candidate =~ $patternRE)) {
-          if (defined($rule->{'allowedargs'})) {
-            my $ok=0;
-            foreach my $allow (@{$rule->{'allowedargs'}}) {
-              if (&listEqual($allow,\@list)) {
-                $ok=1;
-                last;
-              }
-            }
-            next unless $ok;
-          }
-          my @in=();
-          my @out=();
-          foreach my $infile (@{$rule->{'in'}}) {
-            push @in, $infile;
-          }
-          foreach my $outfile (@{$rule->{'out'}}) {
-            push @out, $outfile;
-          }
-          if (defined($rule->{'infile'})) {
-            foreach my $infile (@{$rule->{'infile'}}) {
-              my $inf=''.$infile;
-              foreach my $counter (1..$#list+1) {
-                $inf =~ s/\$$counter/$list[$counter-1]/ge;
-              }
-              if (open FILE,$inf) {
-                foreach (<FILE>) {
-                  chomp;
-                  push @in,$_;
-                }
-                close FILE;
-              }
-            }
-          }
-          my $argument=$rule->{'argument'};
-          my $subclass='';
-          $subclass=$rule->{'subclass'} if (defined($rule->{'subclass'}));
-          foreach my $counter (1..$#list+1) {
-            $argument =~ s/\$$counter/$list[$counter-1]/ge;
-            $subclass =~ s/\$$counter/$list[$counter-1]/ge;
-            foreach (@in,@out) {
-              s/\$$counter/$list[$counter-1]/ge;
-            }
-          }
-          my $newrule={};
-          &shallowCopyRule($rule,$newrule);
-          $newrule->{'arg'}=[$argument];
-          $newrule->{'subclass'}=$subclass;
-          delete $newrule->{'key'};
-          my $key=&actionKey($newrule);
-          next if exists($bottomupseen{$key});
-          $bottomupseen{$key}=1;
-          $newrule->{'in'}=[@in];
-          $newrule->{'wanted'}=[@in];
-          $newrule->{'out'}=[@out];
-          push $trigger,$newrule;
-        }
+        $newrule->{'in'}=[@in];
+        $newrule->{'wanted'}=[@in];
+        $newrule->{'out'}=[@out];
+        push $trigger,$newrule;
       }
     }
   }
@@ -903,7 +1052,7 @@ sub attempt() {
   my $line=join(' ',@execLine);
   my $success=substr $line,0,72;
   $success.="..." if ($success ne $line);
-  $execLine[0]='plan/bin/'.$todo->{'actor'};
+  $execLine[0]=$actordir.'/'.$todo->{'actor'};
   if ($todo->{'class'} ne '') {
     &out(1,'display',$todo->{'class'});
     if ($todo->{'subclass'} ne '') {
@@ -973,7 +1122,7 @@ foreach my $axiom (sort keys %axioms) {
   my $axiomrule={};
   &shallowCopyRule($rules{'AXIOM'},$axiomrule);
   $axiomrule->{'gen'}=0;
-  $axiomrule->{'in'}=[] if ($axiom eq 'plan/bin/AXIOM');
+  $axiomrule->{'in'}=[] if ($axiom eq $actordir.'/AXIOM');
   $axiomrule->{'arg'}=[$axiom];
   $axiomrule->{'out'}=[$axiom];
   &recordGeneration($axiomrule);
