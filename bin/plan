@@ -23,9 +23,11 @@ plan [B<--target>] I<targetname> ...
 
 plan [B<-->] I<goal> [I<goal>] (only goals)
 
-plan B<--why> I<goal> [I<goal>] (only goals)
+plan B<[--]what>
 
-plan B<--how> I<goal> [I<goal>] (only goals)
+plan B<[--]why> I<goal> [I<goal>] (only goals)
+
+plan B<[--]how> I<goal> [I<goal>] (only goals)
 
 plan B<--help>|B<--man>|B<--nroff>|B<--usage>
 
@@ -106,7 +108,7 @@ sub addHash {
   return $hash;
 }
 sub subHash {
-  my $hash={}; # TODO optimize if first hash much larger than second?
+  my $hash={};    # TODO optimize if first hash much larger than second?
   my $init=shift @_;
   foreach my $k (keys %$init) {
     $hash->{$k}=1;
@@ -127,6 +129,7 @@ sub main {
                    'help-man' => 1,
                    'help-nroff' => 1,
                    'help-usage' => 1,
+                   'what' => 1,
                   );
   &initLogging();
   &findGitTopdir();
@@ -143,13 +146,19 @@ sub main {
   my $realaxioms=addHash($axioms,$exceptions);
   $realaxioms=subHash($realaxioms,$notaxioms);
   my $plan=&preparePlan($realaxioms);
+  my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+  my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+  if ($mode eq 'what') {
+    &explainPlan($unbuildable);
+    &finish(0);
+  }
+  my $narrowPlan=&narrowPlan($goalHash,$planContext->{'generated'});
   &finish(0);
 }
 
 &main();
 
 # Logging
-
 sub initLogging {
 
 =pod
@@ -331,12 +340,15 @@ sub out {
 }
 
 # ARGV
-
 sub parseARGV {
   my $goals=[];
   my $mode="goal";
   my $targets=[];
-  my %target=('all'=>1,'finals'=>1); # TODO read from the plan/targets/ DIR
+  my @target=&readDir('plan/targets');
+  my %target=('all' => 1);
+  foreach my $t (@target) {
+    $target{$t}=1;
+  }
   my $x=0;
   while ($x < scalar @ARGV) {
     my $arg=$ARGV[$x];
@@ -364,6 +376,8 @@ sub parseARGV {
       $mode="help-usage";
     } elsif ($arg eq '--nroff') {
       $mode="help-nroff";
+    } elsif ($arg eq 'what' or $arg eq '--what') {
+      $mode="what";
     } elsif ($arg eq 'why' or $arg eq '--why') {
       $mode="why";
     } elsif ($arg eq 'how' or $arg eq '--how') {
@@ -396,28 +410,23 @@ sub parseARGV {
   return ($goals,$targets,$mode);
 }
 sub instantiateTargets {
-  my $targets=shift @_;
-  my $goals=shift @_;
-  my $generation=shift @_;
+  my ($targets,$goals,$generation,$axioms)=@_;
   my $goalHash={};
+  my $targetHashes=[];
+  my $all=0;
   foreach my $g (@$goals) {
     $goalHash->{$g}++;
   }
   foreach my $f (@$targets) {
     if ($f eq 'all') {
-      foreach my $g (keys %$generation) {
-        $goalHash->{$g}++;
-      }
+      my $allHash=subHash($generation,$axioms);
+      push $targetHashes,$allHash;
     } else {
-      if (open FILE,$targetdir.'/'.$f) {
-        my $g=<FILE>;
-        $g=decodeGoalLine($g);
-        $goalHash->{$g}++;
-        close FILE;
-      }
+      push $targetHashes,&readFileList($targetdir.'/'.$f,1);
     }
   }
-  return sort keys %$goalHash;
+  $goalHash=&addHash($goalHash,@$targetHashes);
+  return $goalHash;
 }
 
 # Help
@@ -676,10 +685,14 @@ sub readRules {
     my $rule=$rules->{$rulename};
     $rule->{'in'}=[] unless (defined($rule->{'in'}));
     $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
+    $rule->{'class'}='' unless (defined($rule->{'class'}));
+    $rule->{'subclass'}='' unless (defined($rule->{'subclass'}));
   }
   $rules->{'AXIOM'}={'type' => 'axiom',
                      'actor' => 'AXIOM',
-                     'class' => 'Checking axioms'};
+                     'class' => 'Checking axioms',
+                     'subclass' => '',
+                    };
   $planContext->{'pristineRules'}=$rules;
   &out(1,'init',"Read rules");
 }
@@ -698,6 +711,17 @@ sub readFileList {
     &out(1,'err',"Could not open $path") if $mandatory;
   }
   return $hash;
+}
+sub readDir {
+  my ($dir,$mandatory)=shift @_;
+  my @dirlist;
+  if (opendir(my $dh, $dir)) {
+    @dirlist=grep {!/^\./} readdir($dh);
+    closedir($dh);
+  } else {
+    &out(1,'err','Could not open directory $dir') if ($mandatory);
+  }
+  return @dirlist;
 }
 
 # Planning
@@ -723,8 +747,10 @@ sub recordGeneration {
     $planContext->{'generatedgen'}->{$outfile}=$gen;
   }
 }
+
 sub recordAxioms {
   foreach my $axiom (keys %{$_[0]}) {
+    $planContext->{'usedRules'}->{'AXIOM'}++;
     my $axiomRule=&clone($planContext->{'pristineRules'}->{'AXIOM'});
     $axiomRule->{'type'}='simple';
     $axiomRule->{'out'}={$axiom => 1};
@@ -738,6 +764,7 @@ sub recordAxioms {
 sub sortRules {
   my $prule=$planContext->{'pristineRules'};
   foreach my $rulename (keys %$prule) {
+    $planContext->{'usedRules'}->{$rulename}=0;
     if ($prule->{$rulename}->{'type'} eq 'simple') {
       my $rule=&cleanRule(&clone($prule->{$rulename}));
       $planContext->{'simpleRules'}->{&actionKey($rule)}=$rule;
@@ -747,12 +774,25 @@ sub sortRules {
     }
   }
 }
-
 sub cleanRule {
   my ($rule,@list)=@_;
   my $list=scalar @list;
   my $in={};
   my $out={};
+  my $class=$rule->{'class'};
+  if ($class =~ /\$/) {
+    foreach my $counter (1..$list) {
+      $class =~ s/\$$counter/$list[$counter-1]/ge;
+    }
+  }
+  $rule->{'class'}=$class;
+  my $subclass=$rule->{'subclass'};
+  if ($subclass =~ /\$/) {
+    foreach my $counter (1..$list) {
+      $subclass =~ s/\$$counter/$list[$counter-1]/ge;
+    }
+  }
+  $rule->{'subclass'}=$subclass;
   foreach my $file (@{$rule->{'in'}}) {
     foreach my $counter (1..$list) {
       $file =~ s/\$$counter/$list[$counter-1]/ge;
@@ -793,7 +833,6 @@ sub cleanRule {
   $rule->{'wanted'}=&clone($in);
   return $rule;
 }
-
 sub developPatterns {
   my ($gen,$theorems)=@_;
   foreach my $rulename (@{$planContext->{'patternRules'}}) {
@@ -817,21 +856,20 @@ sub developPatterns {
         next unless $ok;
       }
       $rule->{'arg'}=[$arg];
-      &out(1,'dev',"Developping pattern $rulename with $theorem: $arg");
       my $newrule=&cleanRule(&clone($rule),@list);
-      &out(1,'dev',$newrule);
+      my $key=&actionKey($newrule);
+      $newrule->{'trigger'}=$theorem;
       foreach my $wanted (keys %{$newrule->{'wanted'}}) {
-        if (exists($planContext->{'generatedgen'}->{$wanted}) and
-            $planContext->{'generatedgen'}->{$wanted} < $gen) {
-          delete $planContext->{'generatedgen'}->{$wanted};
+        if (exists($planContext->{'generatedgen'}->{$wanted})
+            and $planContext->{'generatedgen'}->{$wanted} < $gen) {
+          delete $newrule->{'wanted'}->{$wanted};
         }
       }
-      $planContext->{'simpleRules'}->{&actionKey($rule)}=$newrule;
+      $planContext->{'simpleRules'}->{&actionKey($newrule)}=$newrule;
       $planContext->{'usedRules'}->{$rulename}++;
     }
   }
 }
-
 sub resolveSimpleRules {
   my $newtheorems={};
   my ($gen,$theorems)=@_;
@@ -850,7 +888,6 @@ sub resolveSimpleRules {
   return $newtheorems;
 }
 
-
 sub preparePlan {
   &out(1,'plan','Initializing plan');
   my ($axioms)=@_;              # include list of lazy here
@@ -859,282 +896,84 @@ sub preparePlan {
   $planContext->{'simpleRules'}={};
   $planContext->{'patternRules'}=[];
   $planContext->{'usedRules'}={};
+  &out(3,'plan','Sorting rules');
+  &sortRules();
   &out(2,'plan','Recording axioms');
   &recordAxioms($axioms);
   my $theorems=$axioms;
-  my $gen=1;
-  &out(3,'plan','Sorting rules');
-  &sortRules();
+  my $gen=0;
   while (scalar keys %$theorems) {
+    $gen++;
     &out(2,'plan',"Building theorems (generation $gen), still ".
          (scalar keys %{$planContext->{'simpleRules'}}).' rules to go');
     &developPatterns($gen,$theorems);
-    &out(1,'dev',$planContext->{'simpleRules'});
     $theorems=&resolveSimpleRules($gen,$theorems);
     &out(3,'plan','Found '.(scalar keys %$theorems).' new theorems');
   }
-  die "";
+}
+sub explainPlan {
+  &out(1,'plan','Explaining plan');
+  foreach my $key (sort keys %{$planContext->{'simpleRules'}}) {
+    my $rule=$planContext->{'simpleRules'}->{$key};
+    &out(1,'err',"The rule $key did not complete.");
+    foreach my $missingfile (sort keys %{$rule->{'wanted'}}) {
+      &out(1,'err','The file "'.&encodeGoalLine($missingfile).'" was missing.');
+    }
+    &out(1,'err','This rule was triggered by "'.&encodeGoalLine($rule->{'trigger'}).'".') if ($rule->{'trigger'});
+  }
+  my $notUsed=[];
+  foreach my $rulename (sort keys %{$planContext->{'usedRules'}}) {
+    my $count=$planContext->{'usedRules'}->{$rulename};
+    if ($count) {
+      &out(1,'out',"The rule named $rulename was used $count times.");
+    } else {
+      push $notUsed,$rulename;
+    }
+  }
+  if (scalar @$notUsed > 0) {
+    foreach my $rulename (@$notUsed) {
+      &out(1,'err',"The rule named $rulename was not used at all.");
+    }
+  }
 }
 
-# # Planning
-# my %axioms=();
-# my %finals=();
-# my @theorems=();
-# my %generation=();
-# my $trigger=[];
-# my %bottomupseen=();
-# my %rules=();
-# my %fingerprintCache=();
-# my %generatedCache=();
-# my $result=[];
-
-
-
-# sub readAxioms() {
-#   my $axiomtype=shift @_;
-#   my $axiomdir=shift @_;
-#   my $axioms=shift @_;
-#   &out(1,"init","Reading $axiomtype from $axiomdir");
-#   opendir(my $dh, $axiomdir) || return;
-#   while (readdir $dh) {
-#     next if /^[.]/;
-#     my $axiomfile=$axiomdir."/".$_;
-#     open FILE,$axiomfile;
-#     while (my $line=<FILE>) {
-#       chomp $line;
-#       next if $line=~/^#/;
-#       $axioms->{uri_unescape($line)}=1;
-#     }
-#     close FILE;
-#   }
-#   closedir $dh;
-# }
-
-# sub shallowCopy() {
-#   my $a=[];
-#   foreach my $b (@{$_[0]}) {
-#     push $a,$b;
-#   }
-#   return $a;
-# }
-
-# sub shallowCopyRule() {
-#   my ($oldrule,$rule)=@_;
-#   foreach my $k (keys %$oldrule) {
-#     if (ref($k) ne 'ARRAY') {
-#       $rule->{$k}=$oldrule->{$k};
-#     } else {
-#       $rule->{$k}=[@{$oldrule->{$k}}];
-#     }
-#   }
-#   $rule->{'arg'}=[] if (!defined($rule->{'arg'}));
-#   $rule->{'class'}='' if (!defined($rule->{'class'}));
-#   $rule->{'subclass'}='' if (!defined($rule->{'subclass'}));
-# }
-
-# sub recordGeneration() {
-#   # Shallow cloning (2 levels is enough)
-#   my $oldrule=$_[0];
-#   foreach my $thm (@{$oldrule->{'out'}}) {
-#     my $rule={};
-#     &shallowCopyRule($oldrule,$rule);
-#     &finish(1,"Regenerated $thm in generation ".$oldrule->{'gen'}) if (exists $generation{$thm});
-#     $generation{$thm}=$rule;
-#   }
-# }
-
-# sub listEqual() {
-#   # Compares two arrays of strings
-#   my ($a,$b)=@_;
-#   return 0 unless (scalar @$a == scalar @$b);
-#   foreach my $i (0..scalar @$a-1) {
-#     return 0 if $a->[$i] ne $b->[$i];
-#   }
-#   return 1;
-# }
-
-# sub nextGeneration() {
-#   my ($gen,$previousthm) = @_;
-#   &out(3,"plan","Building list of buildable files, generation $gen");
-#   my @current=@$previousthm;
-#   my $found=[];
-#   foreach my $rule (@{$outContext->{'simpleRules'}}) {
-#     my $key=&actionKey($rule);
-#     next if (exists($bottomupseen{$key}));
-#     my $allfound=1;
-#     if (defined($rule->{'infile'})) {
-#       foreach my $infile (@{$rule->{'infile'}}) {
-#         if (open FILE,$infile) {
-#           foreach (<FILE>) {
-#             chomp;
-#             push $rule->{'in'},$_;
-#           }
-#           close FILE;
-#         }
-#       }
-#       $rule->{'oldinfile'} = $rule->{'infile'};
-#       delete $rule->{'infile'};
-#     }
-#     foreach my $requirement (@{$rule->{'in'}}) {
-#       if (!exists($generation{$requirement})
-#           or $generation{$requirement}->{'gen'} >= $gen) {
-#         $allfound=0;last;
-#       }
-#     }
-#     if ($allfound) {
-#       $rules{$rule->{"actor"}}->{'seen'}=1;
-#       $bottomupseen{$key}=1;
-#       $rule->{'gen'}=$gen;
-#       &recordGeneration($rule);
-#       push $found,@{$rule->{'out'}};
-#     }
-#   }
-#   foreach my $rule (@{$outContext->{'patternRules'}}) {
-#     my $pattern=$rule->{'pattern'};
-#     my $patternRE=qr/$pattern/;
-#     foreach my $candidate (@current) {
-#       my @list;
-#       if (@list = ($candidate =~ $patternRE)) {
-#         if (defined($rule->{'allowedargs'})) {
-#           my $ok=0;
-#           foreach my $allow (@{$rule->{'allowedargs'}}) {
-#             if (&listEqual($allow,\@list)) {
-#               $ok=1;
-#               last;
-#             }
-#           }
-#           next unless $ok;
-#         }
-#         my @in=();
-#         my @out=();
-#         foreach my $infile (@{$rule->{'in'}}) {
-#           push @in, $infile;
-#         }
-#         foreach my $outfile (@{$rule->{'out'}}) {
-#           push @out, $outfile;
-#         }
-#         if (defined($rule->{'infile'})) {
-#           foreach my $infile (@{$rule->{'infile'}}) {
-#             my $inf=''.$infile;
-#             foreach my $counter (1..$#list+1) {
-#               $inf =~ s/\$$counter/$list[$counter-1]/ge;
-#             }
-#             if (open FILE,$inf) {
-#               foreach (<FILE>) {
-#                 chomp;
-#                 push @in,$_;
-#               }
-#               close FILE;
-#             }
-#           }
-#         }
-#         my $argument=$rule->{'argument'};
-#         my $subclass='';
-#         $subclass=$rule->{'subclass'} if (defined($rule->{'subclass'}));
-#         foreach my $counter (1..$#list+1) {
-#           $argument =~ s/\$$counter/$list[$counter-1]/ge;
-#           $subclass =~ s/\$$counter/$list[$counter-1]/ge;
-#           foreach (@in,@out) {
-#             s/\$$counter/$list[$counter-1]/ge;
-#           }
-#         }
-#         my $newrule={};
-#         &shallowCopyRule($rule,$newrule);
-#         $newrule->{'arg'}=[$argument];
-#         $newrule->{'subclass'}=$subclass;
-#         delete $newrule->{'key'};
-#         my $key=&actionKey($newrule);
-#         next if exists($bottomupseen{$key});
-#         $bottomupseen{$key}=1;
-#         $newrule->{'in'}=[@in];
-#         $newrule->{'wanted'}=[@in];
-#         $newrule->{'out'}=[@out];
-#         push $trigger,$newrule;
-#       }
-#     }
-#   }
-#   my $delayednumber=0;
-#   my $triggercopy=&shallowCopy($trigger);
-#   foreach my $delayed (@$triggercopy) {
-#     my @wanted=@{$delayed->{'wanted'}};
-#     my $i=0;
-#     my $wantedcopy=&shallowCopy(\@wanted);
-#     foreach my $wanted (@$wantedcopy) {
-#       if (exists($generation{$wanted}) and $generation{$wanted}->{'gen'}<$gen) {
-#         splice $delayed->{'wanted'},$i,1;
-#         $i--;
-#       }
-#       $i++;
-#     }
-#     @wanted=@{$delayed->{'wanted'}};
-#     if (scalar @wanted == 0) {
-#       $delayed->{'gen'}=$gen;
-#       &recordGeneration($delayed);
-#       push $found,@{$delayed->{'out'}};
-#       splice $trigger,$delayednumber,1;
-#       $delayednumber--;
-#     }
-#     $delayednumber++;
-#   }
-#   return $found;
-# }
-
-# sub bottomUp {
-#   my @axioms=sort keys %axioms;
-#   my $currentgen=\@axioms;
-#   my $generation=1;
-#   my $newlength=scalar @axioms;
-#   &out(2,"plan","Building list of buildable files");
-#   while ($newlength) {
-#     $currentgen=&nextGeneration($generation,$currentgen);
-#     $newlength=scalar @{$currentgen};
-#     $generation++;
-#   }
-#   foreach my $actor (keys %rules) {
-#     if (!defined($rules{$actor}->{'seen'})
-#         and $rules{$actor}->{'type'} eq 'simple') {
-#       &out(2,'plan',"The rule $actor was not used at all");
-#       &out(3,'plan',Dumper($rules{$actor}));
-#     }
-#   }
-# }
-
-# sub topDown {
-#   # Now, collect only the goals
-#   &out(2,"plan","Isolating goals paths from $target");
-#   my %topdownseen=();
-#   my $mygoals=$goals;
-#   my %idontknow=();
-#   my %ineed=();
-
-#   if ($target eq 'all') {
-#     push $mygoals,keys %generation;
-#   } elsif ($target eq 'finals') {
-#     push $mygoals,keys %finals;
-#   }
-
-#   &out(4,"plan","Final list of goals established: ".join(' ',@$mygoals));
-#   while (scalar @$mygoals) {
-#     my $goal=pop $mygoals;
-#     do {
-#       $idontknow{$goal}=1;next;
-#     } unless (exists($generation{$goal}));
-#     my $key=&actionKey($generation{$goal});
-#     next if exists($topdownseen{$key});
-#     $topdownseen{$key}=1;
-#     $ineed{$key}=$generation{$goal};
-#     push $mygoals,@{$generation{$goal}->{'in'}};
-#   }
-#   if (scalar keys %idontknow) {
-#     print "I do not know how to build the following goals:\n";
-#     print join("\n",sort keys %idontknow),"\n";
-#     &finish(1,"Stopping");
-#   }
-#   my @result=sort {
-#     ($a->{'gen'} <=> $b->{'gen'}) || ($a->{'class'} cmp $b->{'class'}) || ($a->{'subclass'} cmp $b->{'subclass'}) || ($a->{'actor'} cmp $b->{'actor'}) || (join(' ',$a->{'arg'}) cmp join(' ',$b->{'arg'}))
-#   } values %ineed;
-#   return \@result;
-# }
+sub narrowPlan {
+  &out(1,'plan','Narrowing build paths for selected goals');
+  my ($goals,$generation)=@_;
+  my $plan={};
+  my $seen={};
+  my $requirement=&clone($goals);
+  while (scalar keys %$requirement) {
+    my $tab=[keys %$requirement];
+    foreach my $file (keys %$requirement) {
+      delete ($requirement->{$file});
+      next if ($seen->{$file});
+      $seen->{$file}=1;
+      if (!exists($generation->{$file})) {
+        &out(1,'err','No build path to "'.&encodeGoalLine($file).'".');
+        next;
+      }
+      my $actionkey=$generation->{$file};
+      my $inFiles=$planContext->{'plan'}->{$actionkey}->{'in'};
+      foreach my $in (keys %$inFiles) {
+        $requirement->{$in}=1 unless $seen->{$in};
+      }
+      $plan->{$actionkey}=1;
+    }
+  }
+  $planContext->{'narrowPlan'}=$plan;
+  my $planKeys=[sort {
+    my $pa=$planContext->{'plan'}->{$a};
+    my $pb=$planContext->{'plan'}->{$b};
+    return ($pa->{'gen'} <=> $pb->{'gen'}) ||
+      ($pa->{'actor'} cmp $pb->{'actor'}) ||
+        ($pa->{'class'} cmp $pb->{'class'}) ||
+          ($pa->{'subclass'} cmp $pb->{'subclass'}) ||
+            ($pa->{'key'} cmp $pb->{'key'})
+          } keys %$plan];
+  &out(2,'plan',$planKeys);
+  return $planKeys;
+}
 
 # sub firstCompound {
 #   my ($plan,$begin) = @_;
@@ -1262,12 +1101,7 @@ sub preparePlan {
 #   &writeCache(\%fingerprintCache,'fingerprint');
 # }
 
-# &findGitTopdir();
-
-# &readAxioms("axioms",$axiomdir,\%axioms);
-# &readAxioms("finals",$finaldir,\%finals);
 # &readCache(\%fingerprintCache,'fingerprint');
-
 # &readCache(\%generatedCache,'generated');
 # &removeGenerated(\%generatedCache,'generated',undef);
 
@@ -1284,20 +1118,6 @@ sub preparePlan {
 #   &removeGenerated(\%generatedCache,'generated',\%protected);
 #   &finish(0);
 # }
-
-# &readRules();
-# &out(3,"plan","Recording axioms");
-# foreach my $axiom (sort keys %axioms) {
-#   my $axiomrule={};
-#   &shallowCopyRule($rules{'AXIOM'},$axiomrule);
-#   $axiomrule->{'gen'}=0;
-#   $axiomrule->{'in'}=[] if ($axiom eq $actordir.'/AXIOM');
-#   $axiomrule->{'arg'}=[$axiom];
-#   $axiomrule->{'out'}=[$axiom];
-#   &recordGeneration($axiomrule);
-# }
-# &bottomUp();
-# $result=&topDown();
 
 # my $todo;
 # my $todoIndividuals;
