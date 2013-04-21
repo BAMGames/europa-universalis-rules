@@ -116,23 +116,12 @@ sub subHash {
 }
 
 sub main {
-  my %implemented=('goal' => 1,
-                   'distclean' => 1,
-                   'clean' => 1,
-                   'help-help' => 1,
-                   'help-man' => 1,
-                   'help-nroff' => 1,
-                   'help-usage' => 1,
-                   'what' => 1,
-                   'how' => 1,
-                  );
   &initLogging();
   &findGitTopdir();
   my ($goals,$targets,$mode)=&parseARGV();
   if ($mode =~ /^help-([a-z]+)/) {
     &usage($1);
   }
-  &finish(1,"$mode is not implemented yet") unless defined($implemented{$mode});
   &readRules();
   my $axioms=&readAxiomsFromGit(); # TODO use some form of exec command instead of open|
   &setupCommand();
@@ -147,42 +136,62 @@ sub main {
     &readCache($planContext->{'junk'},'junk');
     &removeGenerated($planContext->{'generated'},'generated',$preserve);
     &finish(0);
-  }
-  my $plan=&preparePlan($realaxioms);
-  my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-  my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
-  if ($mode eq 'what') {
+  } elsif ($mode eq 'what') {
+    &preparePlan($realaxioms);
+    my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+    my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
     &explainPlan($unbuildable);
     &finish(0);
-  }
-  my $narrowPlan=&narrowPlan($goalHash,$planContext->{'generated'});
-  if ($mode eq 'how') {
+  } elsif ($mode eq 'how') {
+    &preparePlan($realaxioms);
+    my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+    my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+    my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
     &graphviz($narrowPlan,$goalHash);
-  }
-  $planContext->{'fingerprint'}={};
-  $planContext->{'generated'}={};
-  &readCache($planContext->{'fingerprint'},'fingerprint');
-  &readCache($planContext->{'junk'},'junk');
-  &removeGenerated($planContext->{'generated'},'generated',undef);
-  if ($mode eq 'goal') {
+    &finish(0);
+  } elsif ($mode eq 'goal') {
     my $steps=0;
     my $finished=0;
-    my $begin=0;
+    $planContext->{'fingerprint'}={};
+    $planContext->{'generated'}={};
+    &readCache($planContext->{'fingerprint'},'fingerprint');
+    &readCache($planContext->{'junk'},'junk');
+    &removeGenerated($planContext->{'generated'},'generated',undef);
+    my $narrowPlan;
     while (!$finished) {
-      my ($todo,$end)=&firstCompound($narrowPlan,$begin);
-      if (defined($todo)) {
-        $steps++;
-        &attempt($todo);
+      &preparePlan($realaxioms);
+      my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+      my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+      $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
+      my $begin=0;
+      my $xfinished=0;
+      my $todo=undef;
+      while (!$xfinished) {
+        my $end;
+        ($todo,$end)=&firstCompound($narrowPlan,$begin);
+        if (defined($todo)) {
+          $steps++;
+          $xfinished=1;
+        } else {
+          $begin=$end;
+          if ($begin >= scalar @$narrowPlan) {
+            $xfinished=1;
+            $finished=1;
+          }
+        }
       }
-      $begin=$end;
-      $finished=1 if ($end >= scalar @$narrowPlan);
+      &attempt($todo) if defined($todo);
     }
     if ($steps==0) {
-      &out(1,"display","Everything is up to date");
+      if (scalar @$narrowPlan) { 
+        &out(1,"display","Everything is up to date");
+      } else {
+        &out(1,"display","Nothing to be done");
+      }
     }
     &finish(0);
   }
-  &finish(0);
+  &finish(1,"$mode is not implemented yet");
 }
 
 &main();
@@ -970,7 +979,7 @@ sub explainPlan {
     }
   }
 }
-sub narrowPlan {
+sub reducePlan {
   &out(1,'plan','Narrowing build paths for selected goals');
   my ($goals,$generation)=@_;
   my $plan={};
