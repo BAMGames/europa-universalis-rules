@@ -42,9 +42,6 @@ use warnings;
 # Unicode safety
 use utf8;
 use Encode;
-binmode(STDOUT,':utf8');
-binmode(STDERR,':utf8');
-binmode(STDIN,':utf8');
 
 use JSON::PP;
 use Data::Dumper;
@@ -60,14 +57,11 @@ use POSIX ":sys_wait_h";
 use IO::Select;
 use IO::Handle;
 
-my $execContext;
-my $planContext;
-my $outContext;
+my ($execContext,$planContext,$outContext);
 
 # Directories
 
 my $axiomdir='plan/axioms';
-my $finaldir='plan/finals';
 my $rulefile='plan/rules';
 my $actordir='plan/bin';
 my $targetdir='plan/targets';
@@ -130,6 +124,7 @@ sub main {
                    'help-nroff' => 1,
                    'help-usage' => 1,
                    'what' => 1,
+                   'how' => 1,
                   );
   &initLogging();
   &findGitTopdir();
@@ -138,13 +133,21 @@ sub main {
     &usage($1);
   }
   &finish(1,"$mode is not implemented yet") unless defined($implemented{$mode});
-  &setupCommand();
   &readRules();
-  my $axioms=&readAxiomsFromGit();
+  my $axioms=&readAxiomsFromGit(); # TODO use some form of exec command instead of open|
+  &setupCommand();
   my $exceptions=&readFileList('plan/axioms');
   my $notaxioms=&readFileList('plan/notaxioms');
   my $realaxioms=addHash($axioms,$exceptions);
   $realaxioms=subHash($realaxioms,$notaxioms);
+  if ($mode eq 'clean' or $mode eq 'distclean') {
+    my $finals={};
+    $finals=&readFileList('plan/targets/finals') if $mode eq 'clean';
+    my $preserve=addHash($realaxioms,$finals);
+    &readCache($planContext->{'junk'},'junk');
+    &removeGenerated($planContext->{'generated'},'generated',$preserve);
+    &finish(0);
+  }
   my $plan=&preparePlan($realaxioms);
   my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
   my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
@@ -153,6 +156,32 @@ sub main {
     &finish(0);
   }
   my $narrowPlan=&narrowPlan($goalHash,$planContext->{'generated'});
+  if ($mode eq 'how') {
+    &graphviz($narrowPlan,$goalHash);
+  }
+  $planContext->{'fingerprint'}={};
+  $planContext->{'generated'}={};
+  &readCache($planContext->{'fingerprint'},'fingerprint');
+  &readCache($planContext->{'junk'},'junk');
+  &removeGenerated($planContext->{'generated'},'generated',undef);
+  if ($mode eq 'goal') {
+    my $steps=0;
+    my $finished=0;
+    my $begin=0;
+    while (!$finished) {
+      my ($todo,$end)=&firstCompound($narrowPlan,$begin);
+      if (defined($todo)) {
+        $steps++;
+        &attempt($todo);
+      }
+      $begin=$end;
+      $finished=1 if ($end >= scalar @$narrowPlan);
+    }
+    if ($steps==0) {
+      &out(1,"display","Everything is up to date");
+    }
+    &finish(0);
+  }
   &finish(0);
 }
 
@@ -198,6 +227,9 @@ everything to 0.
 
 =cut
 
+  binmode(STDOUT,':utf8');
+  binmode(STDERR,':utf8');
+  binmode(STDIN,':utf8');
   my $verbosity={'exec'=>0,
                  'init'=>0,
                  'plan'=>0,
@@ -480,7 +512,8 @@ B<--nroff> Generate man page in NROFF format.
 sub REAPER {
   my $child;
   while (($child = waitpid(-1, WNOHANG)) > 0) {
-    $execContext->{'statusCommand'}->{$child} = $?;
+    &out(1,'exec',"Caught $child dying with status $?");
+    $execContext->{'status'}->{$child} = $?;
     delete $execContext->{'children'}->{$child};
   }
   $SIG{CHLD} = \&REAPER;        # still loathe SysV
@@ -492,7 +525,6 @@ sub setupCommand {
   $execContext={
                 'status' => {},
                 'children' => {},
-                'partiallyDone' => [],
                };
   $SIG{CHLD} = \&REAPER;
   $SIG{INT} = sub {
@@ -511,7 +543,7 @@ sub errorCommand {
       if ($part =~ /^failed:/ or $part =~ /^count:/) {
         1;
       } else {
-        push $execContext->{'partiallydone'},$part;
+        push $execContext->{'partiallyDone'},$part;
       }
     } else {
       &out(1,'err',$line);
@@ -520,28 +552,30 @@ sub errorCommand {
 }
 sub execCommand {
   my $line;
-  &out(1,"exec",@_);
+  &out(1,"exec",'Executing '.join(' ',@_));
   my $out = gensym;
   my $err = gensym;
+  $execContext->{'partiallyDone'}=[];
   my $pid = open3("<&STDIN",$out, $err, @_);
-  if ($pid) {
-    $execContext->{'children'}->{$pid}=1;
-    my $sel= new IO::Select;
-    $sel->add($err,$out);
-    while (scalar keys %{$execContext->{'children'}} > 0) {
-      foreach my $readhandle ($sel->can_read(.5)) {
-        my $length=sysread $readhandle,$line,4096;
-        if ($length) {
-          if (fileno($readhandle)==fileno($err)) {
-            &errorCommand($line);
-          } else {
-            chomp $line;
-            &out(1,'out',$line);
-          }
+  return 1 if (!$pid);
+  &out(1,"exec","Forked pid $pid");
+  $execContext->{'children'}->{$pid}=1;
+  my $sel= new IO::Select;
+  $sel->add($err,$out);
+  while (scalar keys %{$execContext->{'children'}} > 0) {
+    foreach my $readhandle ($sel->can_read(.5)) {
+      my $length=sysread $readhandle,$line,4096;
+      if ($length) {
+        if (fileno($readhandle)==fileno($err)) {
+          &errorCommand($line);
+        } else {
+          chomp $line;
+          &out(1,'out',$line);
         }
       }
     }
   }
+  &out(3,'exec',$execContext);
   my $status=0+$execContext->{'status'}->{$pid};
   delete $execContext->{'status'}->{$pid};
   &out(1,"exec","Command finished with status $status");
@@ -584,7 +618,7 @@ sub fingerprint {
 }
 sub fingerprintArray {
   # example: $rule, 'in'
-  my @a=@{$_[0]->{$_[1]}};
+  my @a=sort keys %{$_[0]->{$_[1]}};
   return 'none' unless (scalar @a);
   my $hashing = Digest::MD5->new;
   my $fp;
@@ -647,7 +681,7 @@ sub removeGenerated {
   # Else, unlink all files not in $axioms hash
   foreach my $key (keys %{$cacheHash}) {
     if (-f $key) {
-      if (defined($axioms) and !defined($axioms->{$key})) {
+      if (defined($axioms) and !exists($axioms->{$key})) {
         # clean or distclean
         $count++;
         &forceUnlink($key);
@@ -664,11 +698,11 @@ sub removeGenerated {
 }
 
 sub readAxiomsFromGit {
+  &out(1,'init',"Reading axioms from git");
   open READ,"git ls-files -z|";
   my $a=<READ>;
   close READ;
   my @b=sort map {decode_utf8($_)} split("\x{00}",$a);
-  &out(1,'init',"Reading axioms from git");
   &out(2,'init',\@b);
   my $hash={};
   foreach my $k (@b) {
@@ -708,7 +742,7 @@ sub readFileList {
     }
     close FILE;
   } else {
-    &out(1,'err',"Could not open $path") if $mandatory;
+    &out(1,'err',"Could not open $path") if defined($mandatory); 
   }
   return $hash;
 }
@@ -936,7 +970,6 @@ sub explainPlan {
     }
   }
 }
-
 sub narrowPlan {
   &out(1,'plan','Narrowing build paths for selected goals');
   my ($goals,$generation)=@_;
@@ -975,169 +1008,157 @@ sub narrowPlan {
   return $planKeys;
 }
 
-# sub firstCompound {
-#   my ($plan,$begin) = @_;
-#   my $newplan=[];
-#   return undef unless (scalar @$plan);
-#   my $end=$begin+1;
-#   my $maxend;
-#   my $axiom=$plan->[$begin]->{'actor'};
-#   if (defined($rules{$axiom}->{'maxargs'})) {
-#     $maxend=$begin+$rules{$axiom}->{'maxargs'};
-#   } else {
-#     $maxend=$begin+100000000;
-#   }
-#   while (
-#          $end < scalar @$plan and
-#          $end < $maxend and
-#          $plan->[$end]->{'gen'} == $plan->[$begin]->{'gen'} and
-#          $plan->[$end]->{'actor'} eq $plan->[$begin]->{'actor'}
-#         ) {
-#     $end++;
-#   }
-#   my $candidates=[];
-#   # weed out already done candidates
-#   foreach my $i ($begin..$end-1) {
-#     my $key=&actionKey($plan->[$i]);
-#     my $fingerprintIn=&fingerprintArray($plan->[$i],'in');
-#     $plan->[$i]->{'fingerprintIn'}=$fingerprintIn;
-#     my $fingerprintOut=&fingerprintArray($plan->[$i],'out');
-#     if ((defined($fingerprintCache{$key})
-#          and $fingerprintCache{$key} eq "$fingerprintIn $fingerprintOut")
-#        ) {
-#       &out(3,"plan","Not considering $key");
-#       next;
-#     } elsif (!defined($fingerprintCache{$key})) {
-#       &out(2,"plan","Considering $key (never seen)");
-#     } else {
-#       &out(2,"plan","Considering $key (input or output changed)");
-#     }
-#     push $candidates,$i;
-#   }
-#   # TODO
-#   my $compoundRule={};
-#   &shallowCopyRule($plan->[$begin],$compoundRule);
-#   delete $compoundRule->{'key'};
-#   $compoundRule->{'arg'}=[];
-#   my $individualRules=[];
-#   my $newargs=$compoundRule->{'arg'};
-#   my $newin={};
-#   my $newout={};
+sub firstCompound {
+  my ($plan,$begin) = @_;
+  my $newplan=[];
+  my $end=$begin+1;
+  return (undef,$end) unless ($begin < scalar @$plan);
+  my $planList=$planContext->{'plan'};
+  my $maxend;
+  my $first=$planList->{$plan->[$begin]};
+  if (defined($first->{'maxargs'})) {
+    $maxend=$begin+$first->{'maxargs'};
+  } else {
+    $maxend=$begin+100000000;
+  }
+  while (
+         $end < scalar @$plan and
+         $end < $maxend and
+         $planList->{$plan->[$end]}->{'gen'} == $first->{'gen'} and
+         $planList->{$plan->[$end]}->{'actor'} eq $first->{'actor'}
+        ) {
+    $end++;
+  }
+  my $candidates=[];
+  # weed out already done candidates
+  foreach my $i ($begin..$end-1) {
+    my $rule=$planList->{$plan->[$i]};
+    my $key=&actionKey($rule);
+    my $fingerprintIn=&fingerprintArray($rule,'in');
+    $rule->{'fingerprintIn'}=$fingerprintIn;
+    my $fingerprintOut=&fingerprintArray($rule,'out');
+    if (!defined($planContext->{'fingerprint'}->{$key})) {
+      &out(2,"plan","Considering $key (never seen)");
+    } elsif ($planContext->{'fingerprint'}->{$key} eq "$fingerprintIn $fingerprintOut") {
+      &out(3,"plan","Not considering $key");
+      next;
+    } else {
+      &out(2,"plan","Considering $key (input or output changed)");
+    }
+    push $candidates,$key;
+  }
+  if (scalar @$candidates == 0) {
+    return (undef,$end);
+  }
+  if (scalar @$candidates == 1) {
+    return ($planList->{$candidates->[0]},$end);
+  }
+  my $compoundRule=&clone($first);
+  delete $compoundRule->{'key'};
+  my $individualRules=[];
+  my $newargs=[];
+  my $newins=[];
+  my $newouts=[];
+  foreach my $key (@$candidates) {
+    my $rule=$planList->{$key};
+    push $newargs,@{$rule->{'arg'}};
+    push $newins,$rule->{'in'};
+    push $newouts,$rule->{'out'};
+  }
+  my $newin=addHash(@$newins);
+  my $newout=addHash(@$newouts);
+  $compoundRule->{'arg'}=$newargs;
+  $compoundRule->{'origin'}=$candidates;
+  $compoundRule->{'in'}=$newin;
+  $compoundRule->{'out'}=$newout;
+  return ($compoundRule,$end);
+}
 
-#   foreach my $i (@$candidates) {
-#     push $newargs,@{$plan->[$i]->{'arg'}};
-#     push $individualRules,$plan->[$i];
-#     foreach my $j (@{$plan->[$i]->{'in'}}) {
-#       $newin->{$j}=1;
-#     }
-#     foreach my $j (@{$plan->[$i]->{'out'}}) {
-#       $newout->{$j}=1;
-#     }
-#   }
-#   my @newin=sort keys $newin;
-#   my @newout=sort keys $newout;
-#   $compoundRule->{'in'}=\@newin;
-#   $compoundRule->{'out'}=\@newout;
-#   return ($compoundRule,$candidates,$end);
-# }
+# Execution control
 
-# sub registerSuccess() {
-#   my ($candidate,$plan)=@_;
-#   my $rule=$plan->[$candidate];
-#   my $fingerprintOut=&fingerprintArray($rule,'out');
-#   my $fingerprintIn=$rule->{'fingerprintIn'};
-#   my $key=&actionKey($rule);
-#   &out(4,"plan","Registering success of $key");
-#   $fingerprintCache{$key}="$fingerprintIn $fingerprintOut";
-# }
+sub registerSuccess {
+  my ($rule)=@_;
+  my $fingerprintOut=&fingerprintArray($rule,'out');
+  my $fingerprintIn=$rule->{'fingerprintIn'};
+  my $key=&actionKey($rule);
+  &out(3,"plan","Registering success of $key");
+  $planContext->{'fingerprint'}->{$key}="$fingerprintIn $fingerprintOut";
+}
 
-# sub attempt() {
-#   my $todo=$_[0];
-#   my @candidateRules=@{$_[1]};
-#   @partiallydone=();
-#   my @execLine=($todo->{'actor'});
-#   push @execLine,@{$todo->{'arg'}} if (scalar @{$todo->{'arg'}});
-#   my $line=join(' ',@execLine);
-#   my $success=substr $line,0,72;
-#   $success.="..." if ($success ne $line);
-#   $execLine[0]=$actordir.'/'.$todo->{'actor'};
-#   if ($todo->{'class'} ne '') {
-#     &out(1,'display',$todo->{'class'});
-#     if ($todo->{'subclass'} ne '') {
-#       &out(2,'display',$todo->{'subclass'});
-#     }
-#   } else {
-#     &out(1,'display',$success);
-#   }
-#   my @tab=();
-#   push @tab,@{$todo->{'out'}} if defined($todo->{'out'});
-#   push @tab,@{$todo->{'junk'}} if defined($todo->{'junk'});
-#   foreach my $file (@tab) {
-#     $generatedCache{$file}=1;
-#   }
-#   &writeCache(\%generatedCache,'generated');
-#   my $status=&execCommand(@execLine);
-#   if ($status) {
-#     foreach my $ok (@partiallydone) {
-#       my $protectedok=uri_escape($ok); # TODO: Really use actionKeys here, not filenames
-#       foreach my $i (@candidateRules) {
-#         my $rule=$result->[$i];
-#         if (defined $rule->{'arg'}
-#             and scalar @{$rule->{'arg'}} == 1
-#             and $rule->{'arg'}->[0] eq $protectedok) {
-#           &registerSuccess($i,$result);
-#           last;
-#         }
-#       }
-#     }
-#     &writeCache(\%fingerprintCache,'fingerprint');
-#     &finish(1,"One rule failed with status $status") if ($status);
-#   }
-#   # register success of everybody
-#   &out(3,"plan","Everything was successful");
-#   foreach my $i (@candidateRules) {
-#     &registerSuccess($i,$result);
-#   }
-#   &writeCache(\%fingerprintCache,'fingerprint');
-# }
+sub attempt {
+  my $rule=shift @_;
+  my $key=&actionKey($rule);
+  &out(2,'exec',"Preparing for $key");
+  my @execLine=($actordir.'/'.$rule->{'actor'},@{$rule->{'arg'}});
+  if ($rule->{'class'} ne '') {
+    &out(1,'display',$rule->{'class'});
+    if ($rule->{'subclass'} ne '') {
+      &out(2,'display',$rule->{'subclass'});
+    }
+  } else {
+    &out(1,'display',substr $key,0,72); # Default class = key
+  }
+  # in doubt, every possibly generated file will have been generated in the first
+  # steps of the rule, so let's suppose they were.
+  my $generatedHash=&addHash($planContext->{'junk'},$rule->{'out'});
+  $planContext->{'junk'}=$generatedHash;
+  &writeCache($planContext->{'junk'},'junk');
+  my $status=&execCommand(@execLine);
+  if ($status) {
+    foreach my $ok (@{$execContext->{'partiallyDone'}}) {
+      my $okEscaped=$rule->{'actor'}.' '.&encodeGoalLine($ok); # actionKey
+      if (exists $rule->{'origin'}->{$okEscaped}) {
+        &registerSuccess($planContext->{'plan'}->{$okEscaped});
+      } else {
+        &out(1,'err',"$ok was registered as done, but no rule by that name exists");
+      }
+    }
+    &writeCache($planContext->{'fingerprint'},'fingerprint');
+    &finish(1,"One rule failed with status $status");
+  } else {
+    if (exists($rule->{'origin'})) {
+      foreach my $ok (@{$rule->{'origin'}}) {
+        &registerSuccess($planContext->{'plan'}->{$ok});
+      }
+    } else {
+      &registerSuccess($rule);
+    }
+    &writeCache($planContext->{'fingerprint'},'fingerprint');
+  }
+}
 
-# &readCache(\%fingerprintCache,'fingerprint');
-# &readCache(\%generatedCache,'generated');
-# &removeGenerated(\%generatedCache,'generated',undef);
+# Graphing
 
-# if ($mode eq "distclean" or $mode eq "clean") {
-#   my %protected=();
-#   foreach my $i (keys %axioms) {
-#     $protected{$i}=1;
-#   }
-#   if ($mode eq "clean") {
-#     foreach my $i (keys %finals) {
-#       $protected{$i}=1;
-#     }
-#   }
-#   &removeGenerated(\%generatedCache,'generated',\%protected);
-#   &finish(0);
-# }
+sub graphviz {
+  # TODO enhance.
+  # Collapse all targets produced by patterns as one node.
+  # Collapse all actions produced by patterns as one node.
+  my ($plan,$gen)=@_;
+  my $rule;
+  print "digraph How {\n  node [shape=box];\n";
+  foreach my $key (@$plan) {
+    $rule=$planContext->{'plan'}->{$key};
+    next if $rule->{'actor'} eq 'AXIOM';
+    print "  \"$key\";\n";
+  }
+  print "  node [shape=ellipse];\n";
+  foreach my $key (@$plan) {
+    $rule=$planContext->{'plan'}->{$key};
+    next if $rule->{'actor'} eq 'AXIOM';
+    foreach my $file (keys %{$rule->{'out'}}) {
+      print "  \"$key\" -> \"$file\";\n";
+    }
+    foreach my $file (keys %{$rule->{'in'}}) {
+      print "  \"$file\" -> \"$key\";\n";
+    }
+  }
+  print "}\n";
+}
 
-# my $todo;
-# my $todoIndividuals;
-# my $begin=0;
-# my $end=0;
+# Documentation
 
-# my $done=0;
-# while ($end < scalar @$result) {
-#   ($todo,$todoIndividuals,$end)=&firstCompound($result,$begin);
-#   $begin=$end;
-#   next if ((scalar @{$todoIndividuals}) == 0);
-#   $done++;
-#   &attempt($todo,$todoIndividuals);
-# }
-
-# if ($done==0) {
-#   &out(1,"display","Everything is up to date");
-# }
-# &newline();
-# &finish(0);
+if ('' eq 'DOC PRINCIPLES') {
+  1;
 
 =pod
 
@@ -1207,3 +1228,5 @@ here that the license does not extend to the data managed by the
 program, in case anyone had doubts.
 
 =cut
+
+}
