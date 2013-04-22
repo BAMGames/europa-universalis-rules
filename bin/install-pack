@@ -29,14 +29,14 @@ if [ -n "$TESTFILE" ]; then
     if [ -n "$a" ]; then
         if [ "$teststring" != "$TESTFILE" ]; then
             if grep -q $teststring $a; then
-                say "$1"
+                say "done:$1"
                 exit 0
             else
-                say "$1:version differs"
+                say "done:$1:version differs"
             fi
         else
             # No check
-            say "$1"
+            say "done:$1"
             exit 0
         fi
     fi

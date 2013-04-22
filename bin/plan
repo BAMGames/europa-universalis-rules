@@ -548,12 +548,11 @@ sub errorCommand {
     chomp $line;
     if ($line =~ $outContext->{'specialprefix'}) {
       my $part=$1;
-      &out(3,'display',$part);
-      if ($part =~ /^failed:/ or $part =~ /^count:/) {
-        1;
-      } else {
+      if ($part =~ /^done:(.*)$/) {
+        $part=$1;
         push $execContext->{'partiallyDone'},$part;
       }
+      &out(3,'display',$part);
     } else {
       &out(1,'err',$line);
     }
@@ -918,21 +917,35 @@ sub developPatterns {
   }
 }
 sub resolveSimpleRules {
-  my $newtheorems={};
-  my ($gen,$theorems)=@_;
+  my ($theorems)=@_;
   foreach my $key (keys %{$planContext->{'simpleRules'}}) {
     my $rule=$planContext->{'simpleRules'}->{$key};
     $rule->{'wanted'}=&subHash($rule->{'wanted'},$theorems);
     next if (scalar keys $rule->{'wanted'});
     # we found everyone!
+    $planContext->{'completeRules'}->{$key}=$planContext->{'simpleRules'}->{$key};
+    delete($planContext->{'simpleRules'}->{$key});
+  }
+}
+
+sub eliminateCompleteRules {
+  my ($gen)=@_;
+  my $newtheorems={};
+  my $mingen=1000000;
+  foreach my $key (keys %{$planContext->{'completeRules'}}) {
+    my $rule=$planContext->{'completeRules'}->{$key};
+    if (defined($rule->{'mingen'}) and $gen<$rule->{'mingen'}) {
+      $mingen=$rule->{'mingen'} if ($rule->{'mingen'}<$mingen);
+      next;
+    }
     $rule->{'gen'}=$gen;
     &recordGeneration($rule);
     foreach my $out (keys %{$rule->{'out'}}) {
       $newtheorems->{$out}=1;
     }
-    delete($planContext->{'simpleRules'}->{$key});
+    delete($planContext->{'completeRules'}->{$key});
   }
-  return $newtheorems;
+  return ($mingen,$newtheorems);
 }
 
 sub preparePlan {
@@ -940,6 +953,7 @@ sub preparePlan {
   my ($axioms)=@_;              # include list of lazy here
   $planContext->{'generated'}={};
   $planContext->{'plan'}={};
+  $planContext->{'completeRules'}={};
   $planContext->{'simpleRules'}={};
   $planContext->{'patternRules'}=[];
   $planContext->{'usedRules'}={};
@@ -948,14 +962,20 @@ sub preparePlan {
   &out(2,'plan','Recording axioms');
   &recordAxioms($axioms);
   my $theorems=$axioms;
+  my $mingen;
   my $gen=1;
-  while (scalar keys %$theorems) {
+  while ($gen<1000000) {
     &out(2,'plan',"Building theorems (generation $gen), still ".
          (scalar keys %{$planContext->{'simpleRules'}}).' rules to go');
     &developPatterns($gen,$theorems);
-    $theorems=&resolveSimpleRules($gen,$theorems);
+    &resolveSimpleRules($theorems);
+    ($mingen,$theorems)=&eliminateCompleteRules($gen);
     &out(3,'plan','Found '.(scalar keys %$theorems).' new theorems');
-    $gen++;
+    if (scalar keys %$theorems) {
+      $gen++;
+    } else {
+      $gen=$mingen;
+    }
   }
 }
 sub explainPlan {
@@ -1072,16 +1092,18 @@ sub firstCompound {
   my $newargs=[];
   my $newins=[];
   my $newouts=[];
+  my $origin={};
   foreach my $key (@$candidates) {
     my $rule=$planList->{$key};
     push $newargs,@{$rule->{'arg'}};
     push $newins,$rule->{'in'};
     push $newouts,$rule->{'out'};
+    $origin->{$key}=1;
   }
   my $newin=addHash(@$newins);
   my $newout=addHash(@$newouts);
   $compoundRule->{'arg'}=$newargs;
-  $compoundRule->{'origin'}=$candidates;
+  $compoundRule->{'origin'}=$origin;
   $compoundRule->{'in'}=$newin;
   $compoundRule->{'out'}=$newout;
   return ($compoundRule,$end);
@@ -1121,7 +1143,7 @@ sub attempt {
   if ($status) {
     foreach my $ok (@{$execContext->{'partiallyDone'}}) {
       my $okEscaped=$rule->{'actor'}.' '.&encodeGoalLine($ok); # actionKey
-      if (exists $rule->{'origin'}->{$okEscaped}) {
+      if (exists($rule->{'origin'}->{$okEscaped})) {
         &registerSuccess($planContext->{'plan'}->{$okEscaped});
       } else {
         &out(1,'err',"$ok was registered as done, but no rule by that name exists");
@@ -1131,7 +1153,7 @@ sub attempt {
     &finish(1,"One rule failed with status $status");
   } else {
     if (exists($rule->{'origin'})) {
-      foreach my $ok (@{$rule->{'origin'}}) {
+      foreach my $ok (keys %{$rule->{'origin'}}) {
         &registerSuccess($planContext->{'plan'}->{$ok});
       }
     } else {
