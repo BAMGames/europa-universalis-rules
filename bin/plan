@@ -262,7 +262,7 @@ everything to 0.
   $ENV{'SPECIALPREFIX'}="PARTIAL PLAN:";
   $outContext->{'color'}=0 unless -t STDOUT;
   &out(1,'init','Logging system ready');
-}  # DOC INSIDE
+}                               # DOC INSIDE
 sub finish {
   my $status=shift @_;
   &newline();
@@ -948,14 +948,14 @@ sub preparePlan {
   &out(2,'plan','Recording axioms');
   &recordAxioms($axioms);
   my $theorems=$axioms;
-  my $gen=0;
+  my $gen=1;
   while (scalar keys %$theorems) {
-    $gen++;
     &out(2,'plan',"Building theorems (generation $gen), still ".
          (scalar keys %{$planContext->{'simpleRules'}}).' rules to go');
     &developPatterns($gen,$theorems);
     $theorems=&resolveSimpleRules($gen,$theorems);
     &out(3,'plan','Found '.(scalar keys %$theorems).' new theorems');
+    $gen++;
   }
 }
 sub explainPlan {
