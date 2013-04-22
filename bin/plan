@@ -262,7 +262,7 @@ everything to 0.
   $ENV{'SPECIALPREFIX'}="PARTIAL PLAN:";
   $outContext->{'color'}=0 unless -t STDOUT;
   &out(1,'init','Logging system ready');
-}                               # DOC INSIDE
+}  # DOC INSIDE
 sub finish {
   my $status=shift @_;
   &newline();
@@ -1097,7 +1097,6 @@ sub registerSuccess {
   &out(3,"plan","Registering success of $key");
   $planContext->{'fingerprint'}->{$key}="$fingerprintIn $fingerprintOut";
 }
-
 sub attempt {
   my $rule=shift @_;
   my $key=&actionKey($rule);
@@ -1241,6 +1240,18 @@ Copyright Jean-Christophe Dubacq 2013
 This work is licensed under the BSD licence. It is explicitly stated
 here that the license does not extend to the data managed by the
 program, in case anyone had doubts.
+
+=head1 TODO
+
+Graph output for how is suboptimal (read unusable).
+
+Action what is not implemented yet.
+
+Action ignore is not implemented yet.
+
+C<main> has a lot of redundancy in some parts
+
+Some form of minimumGeneration should be implemented
 
 =cut
 
