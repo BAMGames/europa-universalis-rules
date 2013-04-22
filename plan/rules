@@ -76,6 +76,40 @@
       ],
       "type" : "simple"
    },
+   "FIGURESHADOW" : {
+      "actor" : "FIGURESHADOW",
+      "allowedargs" : [
+         "ville1",
+         "ville2",
+         "villechine1",
+         "villechine2",
+         "villeinde1",
+         "villeinde2",
+         "anchor",
+         "anchor2",
+         "anchor3",
+         "anchor4",
+         "anchor5",
+         "blocus",
+         "bateau",
+         "sel",
+         "mine"
+      ],
+      "argument" : "$1",
+      "class" : "Recompositing pictures",
+      "in" : [
+         "shadow/$1.pnm",
+         "shadow/$1.pgm",
+         ".tmp/proof-gimp",
+         "bin/gimpexec",
+         "library/shadowtopng.scm"
+      ],
+      "out" : [
+         "figures/$1.png"
+      ],
+      "pattern" : "shadow/(.*).pnm",
+      "type" : "pattern"
+   },
    "FONTENCODING" : {
       "actor" : "FONTENCODING",
       "class" : "Font encodings",
@@ -108,7 +142,7 @@
    "PIONS" : {
       "actor" : "PIONS",
       "allowedargs" : [
-            "pions"
+         "pions"
       ],
       "argument" : "$1",
       "class" : "Building counters",

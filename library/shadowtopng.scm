@@ -1,5 +1,7 @@
-(define (shadowtopng stringinput stringoutput)
+(define (shadowtopng arg)
   (let* (
+         (stringinput (string-append "shadow/" arg))
+         (stringoutput (string-append "figures/" arg))
 	 (namepnm (string-append stringinput ".pnm"))
 	 (namepgm (string-append stringinput ".pgm"))
 	 (namepng (string-append stringoutput ".png"))

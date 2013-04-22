@@ -133,8 +133,8 @@ sub main {
     my $finals={};
     $finals=&readFileList('plan/targets/finals') if $mode eq 'clean';
     my $preserve=addHash($realaxioms,$finals);
-    &readCache($planContext->{'junk'},'junk');
-    &removeGenerated($planContext->{'generated'},'generated',$preserve);
+    &readCache($planContext,'junk');
+    &removeGenerated($planContext,'junk',$preserve);
     &finish(0);
   } elsif ($mode eq 'what') {
     &preparePlan($realaxioms);
@@ -154,9 +154,9 @@ sub main {
     my $finished=0;
     $planContext->{'fingerprint'}={};
     $planContext->{'generated'}={};
-    &readCache($planContext->{'fingerprint'},'fingerprint');
-    &readCache($planContext->{'junk'},'junk');
-    &removeGenerated($planContext->{'generated'},'generated',undef);
+    &readCache($planContext,'fingerprint');
+    &readCache($planContext,'junk');
+    &removeGenerated($planContext,'junk',undef);
     my $narrowPlan;
     while (!$finished) {
       &preparePlan($realaxioms);
@@ -658,19 +658,22 @@ sub writeCache {
   open STDIN,"/dev/null" unless fileno(STDIN);
   make_path('.tmp');
   open $cachehandle,'>',".tmp/$path" or &finish(1,"I cannot open my $path cache!");
-  print $cachehandle $outContext->{'json'}->encode($cacheHash);
+  print $cachehandle $outContext->{'json'}->encode($cacheHash->{$path});
   $cachehandle->sync();
   close $cachehandle;
 }
 sub readCache {
   my ($cacheHash,$path)=@_;
+  if (!defined($cacheHash->{$path})) {
+    $cacheHash->{$path}={};
+  }
   &out(1,'init',"Reading $path cache");
   local $/;
   open (my $fh,'<',".tmp/$path") or return;
   my $json=<$fh>;
   my $cache=decode_json($json);
-  foreach (keys %{$cache}) {
-    $cacheHash->{$_}=$cache->{$_};
+  foreach my $f (keys %{$cache}) {
+    $cacheHash->{$path}->{$f}=$cache->{$f};
   }
 }
 
@@ -688,16 +691,16 @@ sub removeGenerated {
   }
   # If $axioms not defined, just test presence
   # Else, unlink all files not in $axioms hash
-  foreach my $key (keys %{$cacheHash}) {
+  foreach my $key (keys %{$cacheHash->{$path}}) {
     if (-f $key) {
       if (defined($axioms) and !exists($axioms->{$key})) {
         # clean or distclean
         $count++;
         &forceUnlink($key);
-        delete $cacheHash->{$key};
+        delete $cacheHash->{$path}->{$key};
       }
     } else {
-      delete $cacheHash->{$key};
+      delete $cacheHash->{$path}->{$key};
     }
   }
   &writeCache($cacheHash,$path);
@@ -727,6 +730,7 @@ sub readRules {
   foreach my $rulename (keys %$rules) {
     my $rule=$rules->{$rulename};
     $rule->{'in'}=[] unless (defined($rule->{'in'}));
+    push $rule->{'in'},$actordir.'/'.$rule->{'actor'};
     $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
     $rule->{'class'}='' unless (defined($rule->{'class'}));
     $rule->{'subclass'}='' unless (defined($rule->{'subclass'}));
@@ -1109,9 +1113,11 @@ sub attempt {
   }
   # in doubt, every possibly generated file will have been generated in the first
   # steps of the rule, so let's suppose they were.
-  my $generatedHash=&addHash($planContext->{'junk'},$rule->{'out'});
-  $planContext->{'junk'}=$generatedHash;
-  &writeCache($planContext->{'junk'},'junk');
+  if ($rule ne 'AXIOM') {
+    my $junkHash=&addHash($planContext->{'junk'},$rule->{'out'});
+    $planContext->{'junk'}=$junkHash;
+    &writeCache($planContext,'junk');
+  }
   my $status=&execCommand(@execLine);
   if ($status) {
     foreach my $ok (@{$execContext->{'partiallyDone'}}) {
@@ -1122,7 +1128,7 @@ sub attempt {
         &out(1,'err',"$ok was registered as done, but no rule by that name exists");
       }
     }
-    &writeCache($planContext->{'fingerprint'},'fingerprint');
+    &writeCache($planContext,'fingerprint');
     &finish(1,"One rule failed with status $status");
   } else {
     if (exists($rule->{'origin'})) {
@@ -1132,7 +1138,7 @@ sub attempt {
     } else {
       &registerSuccess($rule);
     }
-    &writeCache($planContext->{'fingerprint'},'fingerprint');
+    &writeCache($planContext,'fingerprint');
   }
 }
 
