@@ -17,6 +17,16 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
+   "CHECKFONTFORGE" : {
+      "actor" : "CHECKFONTFORGE",
+      "class" : "Checking programs",
+      "in" : [],
+      "out" : [
+         ".tmp/proof-fontforge"
+      ],
+      "subclass" : "fontforge",
+      "type" : "simple"
+   },
    "CHECKGIMP" : {
       "actor" : "CHECKGIMP",
       "class" : "Checking programs",
@@ -104,10 +114,10 @@
          "bin/gimpexec",
          "library/shadowtopng.scm"
       ],
+      "mingen" : 3,
       "out" : [
          "figures/$1.png"
       ],
-      "mingen" : 3,
       "pattern" : "shadow/(.*).pnm",
       "type" : "pattern"
    },
@@ -138,6 +148,22 @@
          "fonts/$1.ps"
       ],
       "pattern" : "fonts/(.*).spec",
+      "type" : "pattern"
+   },
+   "FONTFORGE" : {
+      "actor" : "FONTFORGE",
+      "argument" : "$1",
+      "class" : "Generating postscript fonts",
+      "in" : [
+         "fonts/$1.sfd",
+         ".tmp/proof-fontforge"
+      ],
+      "lazy" : 1,
+      "out" : [
+         "fonts/$1.pfb",
+         "fonts/$1.afm"
+      ],
+      "pattern" : "fonts/(.*).sfd",
       "type" : "pattern"
    },
    "PIONS" : {
