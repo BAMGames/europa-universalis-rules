@@ -116,14 +116,16 @@ sub subHash {
 }
 
 sub main {
+  my $goalHash;
+  my $unbuildable;
   &initLogging();
   &findGitTopdir();
-  my ($goals,$targets,$mode)=&parseARGV();
+  my ($goals,$targets,$mode,$ignore,$hard)=&parseARGV();
   if ($mode =~ /^help-([a-z]+)/) {
     &usage($1);
   }
   &readRules();
-  my $axioms=&readAxiomsFromGit(); # TODO use some form of exec command instead of open|
+  my $axioms=&readAxiomsFromGit();
   &setupCommand();
   my $exceptions=&readFileList('plan/axioms');
   my $notaxioms=&readFileList('plan/notaxioms');
@@ -138,14 +140,13 @@ sub main {
     &finish(0);
   } elsif ($mode eq 'what') {
     &preparePlan($realaxioms);
-    my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-    my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+    $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+    $unbuildable=&subHash($goalHash,$planContext->{'generated'});
     &explainPlan($unbuildable);
     &finish(0);
   } elsif ($mode eq 'how') {
     &preparePlan($realaxioms);
-    my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-    my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+    $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
     my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
     &graphviz($narrowPlan,$goalHash);
     &finish(0);
@@ -160,8 +161,7 @@ sub main {
     my $narrowPlan;
     while (!$finished) {
       &preparePlan($realaxioms);
-      my $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-      my $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+      $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
       $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
       my $begin=0;
       my $xfinished=0;
@@ -181,6 +181,11 @@ sub main {
         }
       }
       &attempt($todo) if defined($todo);
+    }
+    $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+    if (scalar keys %$unbuildable) {
+      &explainPlan($unbuildable);
+      &finish(1,"Some files could not be built");
     }
     if ($steps==0) {
       if (scalar @$narrowPlan) { 
@@ -390,6 +395,7 @@ sub parseARGV {
   foreach my $t (@target) {
     $target{$t}=1;
   }
+  my $ignore=1;
   my $x=0;
   while ($x < scalar @ARGV) {
     my $arg=$ARGV[$x];
@@ -407,6 +413,8 @@ sub parseARGV {
       &finish(1,"Wrong option: --verbosity must be followed by one of ".join(' or ',keys %{$outContext->{'verbosity'}})) unless defined($outContext->{'verbosity'}->{$cat});
       &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $outContext->{'verbosity'}->{$cat}=$level;
+    } elsif ($arg eq '--no-ignore') {
+      $ignore=0;
     } elsif ($arg eq '--help') {
       $mode="help-help";
     } elsif ($arg eq '--help' or $arg eq '-h') {
@@ -655,8 +663,13 @@ sub writeCache {
   &out(3,'init',"Storing $path cache");
   my $cachehandle;
   open STDIN,"/dev/null" unless fileno(STDIN);
-  make_path('.tmp');
-  open $cachehandle,'>',".tmp/$path" or &finish(1,"I cannot open my $path cache!");
+  if ($path eq 'lazyfingerprint') {
+    make_path('plan');
+    open $cachehandle,'>',"plan/$path" or &finish(1,"I cannot open my $path cache!");
+  } else {
+    make_path('.tmp');
+    open $cachehandle,'>',".tmp/$path" or &finish(1,"I cannot open my $path cache!");
+  }
   print $cachehandle $outContext->{'json'}->encode($cacheHash->{$path});
   $cachehandle->sync();
   close $cachehandle;
@@ -674,6 +687,48 @@ sub readCache {
   foreach my $f (keys %{$cache}) {
     $cacheHash->{$path}->{$f}=$cache->{$f};
   }
+}
+sub outputSection {
+  my ($file,$section,$data)=@_;
+  my @lines=();
+  my $inside=0;
+  my $done=0;
+  if (-f $file and -r $file) {
+    open FILE,$file;
+    while (my $line=<FILE>) {
+      chomp $line;
+      if ($line =~ /^# start automatic section for $section$/) {
+        $inside=1;
+        if (!$done) {
+          $done=1;
+          push @lines,"# start automatic section for $section";
+          push @lines,$data;
+          push @lines,"# stop automatic section for $section";
+        }
+        next;
+      }
+      if ($line =~ /^# stop automatic section for $section$/) {
+        $inside=0;next;
+      }
+      next if $inside==1;
+      push @lines,$_;
+    }
+    if (!$done) {
+      push @lines,"# start automatic section for $section";
+      push @lines,$data;
+      push @lines,"# stop automatic section for $section";
+    }
+    close FILE;
+  } else {
+    push @lines,"# start automatic section for $section\n";
+    push @lines,$data;
+    push @lines,"# stop automatic section for $section\n";
+  }
+  open FILE,">$file";
+  foreach my $line (@lines) {
+    print FILE $line."\n";;
+  }
+  close FILE;
 }
 
 sub forceUnlink {
@@ -710,6 +765,7 @@ sub removeGenerated {
 
 sub readAxiomsFromGit {
   &out(1,'init',"Reading axioms from git");
+  # TODO use some form of exec command instead of open|
   open READ,"git ls-files -z|";
   my $a=<READ>;
   close READ;
@@ -789,8 +845,24 @@ sub recordGeneration {
   &out(2,'plan',"Rule $key is complete at generation $gen");
   $planContext->{'plan'}->{$key}=$rule;
   foreach my $outfile (keys %{$rule->{'out'}}) {
-    $planContext->{'generated'}->{$outfile}=$key;
-    $planContext->{'generatedgen'}->{$outfile}=$gen;
+    if (defined($planContext->{'generated'}->{$outfile})) {
+      if (defined($planContext->{'realAxioms'})
+          and $planContext->{'generated'}->{$outfile} =~ /^AXIOM /) {
+        if (defined($rule->{'lazy'})) {
+          goto OK;
+        }
+        &out(1,'err',"Non lazy-rule $key is regenerating axiom $outfile.");
+      } else {
+        &out(1,'err',"Rule $key is regenerating $outfile, already generated by ".$planContext->{'generated'}->{$outfile}.'.');
+      }
+    BAD:
+      &finish(1,"Please fix your rules.");
+    } else {
+    OK:
+      $planContext->{'generated'}->{$outfile}=$key;
+      $planContext->{'generatedgen'}->{$outfile}=$gen;
+      next;
+    }
   }
 }
 
@@ -957,6 +1029,7 @@ sub preparePlan {
   $planContext->{'simpleRules'}={};
   $planContext->{'patternRules'}=[];
   $planContext->{'usedRules'}={};
+  $planContext->{'realAxioms'}=&clone($axioms);
   &out(3,'plan','Sorting rules');
   &sortRules();
   &out(2,'plan','Recording axioms');
@@ -979,6 +1052,7 @@ sub preparePlan {
   }
 }
 sub explainPlan {
+  my $unbuildable=shift @_;
   &out(1,'plan','Explaining plan');
   foreach my $key (sort keys %{$planContext->{'simpleRules'}}) {
     my $rule=$planContext->{'simpleRules'}->{$key};
@@ -989,10 +1063,11 @@ sub explainPlan {
     &out(1,'err','This rule was triggered by "'.&encodeGoalLine($rule->{'trigger'}).'".') if ($rule->{'trigger'});
   }
   my $notUsed=[];
-  foreach my $rulename (sort keys %{$planContext->{'usedRules'}}) {
-    my $count=$planContext->{'usedRules'}->{$rulename};
+  my $usedRules=$planContext->{'usedRules'};
+  foreach my $rulename (sort {$usedRules->{$b} <=> $usedRules->{$a} || $a cmp $b} keys %$usedRules) {
+    my $count=$usedRules->{$rulename};
     if ($count) {
-      &out(1,'out',"The rule named $rulename was used $count times.");
+      &out(1,'out',"The rule named $rulename was used $count time".($count>1?'s.':'.'));
     } else {
       push $notUsed,$rulename;
     }
@@ -1001,6 +1076,9 @@ sub explainPlan {
     foreach my $rulename (@$notUsed) {
       &out(1,'err',"The rule named $rulename was not used at all.");
     }
+  }
+  foreach my $file (sort keys %$unbuildable) {
+    &out(1,'err',"Impossible to build $file");
   }
 }
 sub reducePlan {
@@ -1016,7 +1094,7 @@ sub reducePlan {
       next if ($seen->{$file});
       $seen->{$file}=1;
       if (!exists($generation->{$file})) {
-        &out(1,'err','No build path to "'.&encodeGoalLine($file).'".');
+        &out(1,'err','No build path to "'.&encodeGoalLine($file).'" yet.');
         next;
       }
       my $actionkey=$generation->{$file};
@@ -1118,6 +1196,7 @@ sub registerSuccess {
   my $key=&actionKey($rule);
   &out(3,"plan","Registering success of $key");
   $planContext->{'fingerprint'}->{$key}="$fingerprintIn $fingerprintOut";
+  $planContext->{'lazyfingerprint'}->{$key}="$fingerprintIn $fingerprintOut" if defined($rule->{'lazy'});
 }
 sub attempt {
   my $rule=shift @_;
@@ -1150,6 +1229,7 @@ sub attempt {
       }
     }
     &writeCache($planContext,'fingerprint');
+    &writeCache($planContext,'lazyfingerprint') if defined($rule->{'lazy'});
     &finish(1,"One rule failed with status $status");
   } else {
     if (exists($rule->{'origin'})) {
@@ -1160,6 +1240,7 @@ sub attempt {
       &registerSuccess($rule);
     }
     &writeCache($planContext,'fingerprint');
+    &writeCache($planContext,'lazyfingerprint') if defined($rule->{'lazy'});
   }
 }
 
@@ -1205,6 +1286,29 @@ TODO
 =head1 RULES
 
 TODO
+
+=head1 LAZY AXIOMS
+
+A lazy axiom is an axiom that is version-controlled, but may be rebuilt
+from others. For some reason (because it needs special tools to build,
+because it is very long or expensive), it is in fact a theorem that is
+delivered as an axiom. It can be used for building, but some manual
+action must be made to rebuild it.
+
+A rule that produces a I<lazy axiom> is a I<lazy rule>. A lazy rule will
+be ignored unless the B<--hard> option is enabled. Moreover, the lazy
+rule fingerprint will be stored in C<plan/lazy> instead of being stored
+in a temporary location. If C<plan/lazy> is under version control also,
+the file will not be redone if it depends only on identical files. For
+example, an archive file of results shipped in the project for commodity
+could be regenerated only if the archived files change. If none of the
+archived files change, then the fingerprint of the rule will be
+identical to the stored one, and the archive will not be regenerated
+(archive files tend to differ in result even if archiving the same
+contents, which is a pain for keeping them under version control).
+
+An axiom regenerated by a lazy rule will not generate any warning.
+An axiom regenerated by an ordinaru rule will generate a warning.
 
 =head1 EXPLAINING
 
