@@ -274,10 +274,23 @@ everything to 0.
                'specialprefix' => qr/^PARTIAL PLAN:(.*)$/,
                'json' => $jsonEncoder,
               };
+  &columns();
+  $SIG{WINCH} = sub { &columns(); };
   $ENV{'SPECIALPREFIX'}="PARTIAL PLAN:";
   $outContext->{'color'}=0 unless -t STDOUT;
   &out(1,'init','Logging system ready');
 }                               # DOC INSIDE
+sub columns {
+  require 'sys/ioctl.ph';
+  my $winsize;
+  die "no TIOCGWINSZ" unless defined &TIOCGWINSZ;
+  open(TTY, "+</dev/tty") or die "No tty: $!";
+  unless (ioctl(TTY, &TIOCGWINSZ, $winsize='')) {
+    die sprintf "$0: ioctl TIOCGWINSZ (%08x: $!)\n", &TIOCGWINSZ;
+  }
+  my ($row, $col, $xpixel, $ypixel) = unpack('S4', $winsize);
+  $outContext->{'columns'}=$col;
+}
 sub finish {
   my $status=shift @_;
   &newline();
@@ -340,7 +353,7 @@ sub outDisplay {
     $outContext->{'countphase'}='';
   }
   my $len=length($str);
-  if ($outContext->{'currentcol'}+2+$len>80) {
+  if ($outContext->{'currentcol'}+2+$len>$outContext->{'columns'}) {
     &newline();
   }
   if ($outContext->{'currentcol'}==0) {
