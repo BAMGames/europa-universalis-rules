@@ -91,7 +91,7 @@ sub findGitTopdir {
     $cwd=getcwd();
   }
   closedir(GITDIR);
-  &finish(1,"Could not find the top-level directory") if $cwd eq $oldcwd;
+  &finish(1,'Could not find the top-level directory') if $cwd eq $oldcwd;
   &out(1,'init','Relocated to project top directory');
 }
 
@@ -198,13 +198,13 @@ sub main {
     $unbuildable=&subHash($goalHash,$planContext->{'generated'});
     if (scalar keys %$unbuildable) {
       &explainPlan($unbuildable);
-      &finish(1,"Some files could not be built");
+      &finish(1,'Some files could not be built');
     }
     if ($steps==0) {
       if (scalar @$narrowPlan) { 
-        &out(1,"display","Everything is up to date");
+        &out(1,'display','Everything is up to date');
       } else {
-        &out(1,"display","Nothing to be done");
+        &out(1,'display','Nothing to be done');
       }
     }
     &finish(0);
@@ -286,7 +286,7 @@ everything to 0.
 sub columns {
   require 'sys/ioctl.ph';
   my $winsize;
-  die "no TIOCGWINSZ" unless defined &TIOCGWINSZ;
+  die 'no TIOCGWINSZ' unless defined &TIOCGWINSZ;
   open(TTY, "+</dev/tty") or die "No tty: $!";
   unless (ioctl(TTY, &TIOCGWINSZ, $winsize='')) {
     die sprintf "$0: ioctl TIOCGWINSZ (%08x: $!)\n", &TIOCGWINSZ;
@@ -366,7 +366,7 @@ sub outDisplay {
     &newline();
   }
   if ($outContext->{'currentcol'}==0) {
-    print "    ";
+    print '    ';
     $outContext->{'currentcol'}=4;
   }
   if ($storepos == 1) {
@@ -387,7 +387,7 @@ sub out {
       $_[1] = Data::Dumper->Dump([$_[0]],[$_[1]]);
       shift @_;
     }
-    if ($n eq "display") {
+    if ($n eq 'display') {
       my $storepos=0;
       if ($v==1) {
         &class(@_);
@@ -396,10 +396,10 @@ sub out {
       } else {
         &outDisplay(@_);
       }
-    } elsif ($n eq "out") {
+    } elsif ($n eq 'out') {
       &newline();
       print color 'blue' if ($outContext->{'color'});
-      print "      ",@_,"\n";
+      print '      ',@_,"\n";
       print color 'reset' if ($outContext->{'color'});
     } elsif ($n eq 'err' or $n eq 'dev') {
       &newline();
@@ -418,7 +418,7 @@ if ('' eq 'DOC OUTPUT OPTIONS') {
 }
 sub parseARGV {
   my $goals=[];
-  my $mode="goal";
+  my $mode='goal';
   my $targets=[];
   my @target=&readDir('plan/targets');
   my %target=('all' => 1);
@@ -444,27 +444,27 @@ sub parseARGV {
       &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $outContext->{'verbosity'}->{$cat}=$level;
     } elsif ($arg eq '--nroff') {
-      $mode="help-nroff";
+      $mode='help-nroff';
     } elsif ($arg eq '--hard') {
       $lazy=0;
     } elsif ($arg eq '--help' or $arg eq '-h') {
-      $mode="help-help";
+      $mode='help-help';
     } elsif ($arg eq '--man') {
-      $mode="help-man";
+      $mode='help-man';
     } elsif ($arg eq '--usage') {
-      $mode="help-usage";
+      $mode='help-usage';
     } elsif ($arg eq '--nroff') {
-      $mode="help-nroff";
+      $mode='help-nroff';
     } elsif ($arg eq 'what' or $arg eq '--what') {
-      $mode="what";
+      $mode='what';
     } elsif ($arg eq 'why' or $arg eq '--why') {
-      $mode="why";
+      $mode='why';
     } elsif ($arg eq 'how' or $arg eq '--how') {
-      $mode="how";
+      $mode='how';
     } elsif ($arg eq 'clean' or $arg eq '--clean') {
-      $mode="distclean";
+      $mode='distclean';
     } elsif ($arg eq 'distclean' or $arg eq '--distclean') {
-      $mode="distclean";
+      $mode='distclean';
     } elsif ($arg =~ '--(\w+)' and defined($outContext->{'verbosity'}->{$1})) {
       my $cat=$1;
       my $level=$ARGV[$x+1];
@@ -485,7 +485,7 @@ sub parseARGV {
   if (scalar @$goals == 0 and scalar @$targets == 0) {
     push $targets,'finals';
   }
-  &out(1,"init","Parsing ARGV done");
+  &out(1,'init','Parsing ARGV done');
   $planContext->{'lazyOption'}=$lazy;
   return ($goals,$targets,$mode);
 }
@@ -530,23 +530,23 @@ B<--nroff> Generate man page in NROFF format.
   ### Provides all kinds of textual help and stops
   my ($option)=@_;
   if (!defined($option)) {
-    $option="usage";
+    $option='usage';
   }
-  my $cmd="pod2txt";
+  my $cmd='pod2txt';
   my $release="0.6";
   my ($a,$out,$b);
-  if ($option eq "man"||$option eq "nroff") {
-    ($a,$out,$b)=@{&executeCommand("","pod2man","$0","--center","User commands","--release",$release)};
-    if ($a==0 && $option eq "man") {
-      ($a,$out,$b)=@{&executeCommand($out,"nroff","-man","-")};
+  if ($option eq 'man'||$option eq 'nroff') {
+    ($a,$out,$b)=@{&executeCommand('','pod2man',"$0",'--center','User commands','--release',$release)};
+    if ($a==0 && $option eq 'man') {
+      ($a,$out,$b)=@{&executeCommand($out,'nroff','-man','-')};
     }
   } else {
-    ($a,$out,$b)=@{&executeCommand("","pod2text","$0")};
+    ($a,$out,$b)=@{&executeCommand('','pod2text',"$0")};
   }
-  if ($option eq "usage") {
+  if ($option eq 'usage') {
     $out =~ s/OPTIONS.*$//s;
   }
-  if ($option ne "man") {
+  if ($option ne 'man') {
     print $out;
   } else {
     open FILE,"|pager";
@@ -599,13 +599,13 @@ sub errorCommand {
 }
 sub execCommand {
   my $line;
-  &out(1,"exec",'Executing '.join(' ',@_));
+  &out(1,'exec','Executing '.join(' ',@_));
   my $out = gensym;
   my $err = gensym;
   $execContext->{'partiallyDone'}=[];
   my $pid = open3("<&STDIN",$out, $err, @_);
   return 1 if (!$pid);
-  &out(1,"exec","Forked pid $pid");
+  &out(1,'exec',"Forked pid $pid");
   $execContext->{'children'}->{$pid}=1;
   my $sel= new IO::Select;
   $sel->add($err,$out);
@@ -625,15 +625,15 @@ sub execCommand {
   &out(3,'exec',$execContext);
   my $status=0+$execContext->{'status'}->{$pid};
   delete $execContext->{'status'}->{$pid};
-  &out(1,"exec","Command finished with status $status");
+  &out(1,'exec',"Command finished with status $status");
   return $status;
 }
 sub executeCommand {
   # a much simpler version for the manual page
   my $in=shift @_;
-  &out(1,"exec",join(' ',@_));
-  my $outputtext="";
-  my $errtext="";
+  &out(1,'exec',join(' ',@_));
+  my $outputtext='';
+  my $errtext='';
   my $pid=open3(\*INPUT, \*OUTPUT, \*ERR,@_);
   print INPUT $in if $in;
   close(INPUT);
@@ -653,9 +653,9 @@ sub executeCommand {
 # Disk Input/Output
 sub fingerprint {
   my ($f)=@_;
-  my $hash="0";
-  return "0" unless (-e $f);
-  return "0" if (-d $f);       # TODO: recursive version for directories
+  my $hash='0';
+  return '0' unless (-e $f);
+  return '0' if (-d $f);       # TODO: recursive version for directories
   open FILE,"$f" or return "$f:0";
   my $hashing = Digest::MD5->new;
   $hashing->addfile(*FILE);
@@ -677,7 +677,7 @@ sub fingerprintArray {
 }
 
 sub encodeGoalLine {
-  join("",
+  join('',
        map { ($_ > 127 || $_ < 32 || $_ == 37 )?
                sprintf("%%(%d)", $_) :
                  chr($_)
@@ -797,7 +797,7 @@ sub removeGenerated {
 }
 
 sub readAxiomsFromGit {
-  &out(1,'init',"Reading axioms from git");
+  &out(1,'init','Reading axioms from git');
   # TODO use some form of exec command instead of open|
   open READ,"git ls-files -z|";
   my $a=<READ>;
@@ -829,7 +829,7 @@ sub readRules {
                      'subclass' => '',
                     };
   $planContext->{'pristineRules'}=$rules;
-  &out(1,'init',"Read rules");
+  &out(1,'init','Read rules');
 }
 sub readFileList {
   my ($path,$mandatory)=@_;
@@ -1199,12 +1199,12 @@ sub firstCompound {
     $rule->{'fingerprintIn'}=$fingerprintIn;
     my $fingerprintOut=&fingerprintArray($rule,'out');
     if (!defined($planContext->{'fingerprint'}->{$key})) {
-      &out(2,"plan","Considering $key (never seen)");
+      &out(2,'plan',"Considering $key (never seen)");
     } elsif ($planContext->{'fingerprint'}->{$key} eq "$fingerprintIn $fingerprintOut") {
-      &out(3,"plan","Not considering $key");
+      &out(3,'plan',"Not considering $key");
       next;
     } else {
-      &out(2,"plan","Considering $key (input or output changed)");
+      &out(2,'plan',"Considering $key (input or output changed)");
     }
     push $candidates,$key;
   }
@@ -1244,7 +1244,7 @@ sub registerSuccess {
   my $fingerprintOut=&fingerprintArray($rule,'out');
   my $fingerprintIn=$rule->{'fingerprintIn'};
   my $key=&actionKey($rule);
-  &out(3,"plan","Registering success of $key");
+  &out(3,'plan',"Registering success of $key");
   $planContext->{'fingerprint'}->{$key}="$fingerprintIn $fingerprintOut";
   $planContext->{'lazyfingerprint'}->{$key}="$fingerprintIn $fingerprintOut" if defined($rule->{'lazy'});
 }
@@ -1395,9 +1395,9 @@ If no goals are given, then the target I<finals> will be used by default
 Beware that if plan/axioms is not empty, your project may be buildable
 locally, but fail from the repository.
 
-=item * C<plan/in/I<name>> a good place to put files read by "infile" directives.
+=item * C<plan/in/I<name>> a good place to put files read by C<infile> directives.
 
-=item * C<plan/out/I<name>> a good place to put files read by "outfile" directives.
+=item * C<plan/out/I<name>> a good place to put files read by C<outfile> directives.
 
 =item * C<plan/actors/I<ACTOR>> a short script that executes the rule named
 I<ACTOR> and receives the various arguments as $1, $2, etc.
