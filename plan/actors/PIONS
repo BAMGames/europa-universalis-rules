@@ -1,14 +1,3 @@
 #!/bin/sh
 set -e
-fail() {
-    echo "${SPECIALPREFIX}failed:$1" 1>&2
-    exit 1
-}
-for i in "$@"; do
-    mkdir -p pions/targets
-    rm -f pions/${i}.depends.txt
-    gs -dEPSCrop -r20x20 -sDEVICE=ppm -SOutputFile=/dev/null -DBATCH -DNOPAUSE -q -SPREFIX="${SPECIALPREFIX}" -SHOMEDIR=. -SCURRENTDIR=./pions -SBOOTFILE=./library/bootstrap.ps  -SDEPENDS=pions/${i}.depends.txt -sOutput=pions/${i}.pdf -DPDFOUTPUT pions/${i}.eps || fail "${i}"
-    echo "${SPECIALPREFIX}done:${i}" 1>&2
-    rm -rf pions/targets
-    grep ^[+*] pions/${i}.depends.txt |cut -c4-|grep -v ^pions/targets| LC_ALL=C sort -u > plan/in/${i}pdf.in
-done
+cp pions/pions-ops.counters.txt pions/counters.txt

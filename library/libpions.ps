@@ -12,7 +12,10 @@ HOMEDIR(/library/common.ps)! include
 /column 80 def
 /countercolumn 0 def
 /phase (count:build:) def
-/listelog {} def
+/LISTE systemdict (LISTS) get writefile def
+/log {
+    LISTE exch writestring LISTE flushfile
+} bind def
 /logOUT {
     /countercolumn countercolumn 1 add def
     STDERR PREFIX writestring
@@ -59,13 +62,6 @@ CURRENTDIR(/images.ps)! include
 }def
 /counteralone false defaultvalue
 counteralone {
-/listelog {
-    /LISTE CURRENTDIR(/counters.txt)! writefile def
-    /log {
-	STDERR 1 index writestring STDERR flushfile
-	LISTE exch writestring LISTE flushfile
-    } bind def
-} def
 /beginpagehook {
     /face exch def /grandspions exch def /doubleface exch def
     /format doubleface{grandspions{0}{2}ifelse face not{1 add}if}

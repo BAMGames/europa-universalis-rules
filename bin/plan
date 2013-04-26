@@ -165,7 +165,6 @@ sub main {
     $generable->{'.tmp'} = 1;
     my $data='/'.join("\n/",sort keys %$generable)."\n";
     &outputSection('.gitignore','plan',$data);
-    &out(1,'dev',$generable);
     &finish(0);
   } elsif ($mode eq 'how') {
     &preparePlan($realaxioms);
@@ -773,7 +772,8 @@ sub outputSection {
   }
   open FILE,">$file";
   foreach my $line (@lines) {
-    print FILE $line."\n";;
+    next unless defined($line);
+    print FILE $line."\n";
   }
   close FILE;
 }

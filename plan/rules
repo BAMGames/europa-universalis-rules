@@ -170,6 +170,7 @@
       "actor" : "PIONS",
       "allowedargs" : [
          "pions",
+         "pions-ops",
          "planchecontact"
       ],
       "argument" : "$1",
@@ -182,11 +183,25 @@
       ],
       "out" : [
          "pions/$1.pdf",
+         "pions/$1.counters.txt",
          "pions/$1.depends.txt"
       ],
       "pattern" : "pions/(.*).eps",
       "subclass" : "$1",
       "type" : "pattern"
+   },
+   "PIONSLIST" : {
+      "actor" : "PIONSLIST",
+      "class" : "Building counters",
+      "in" : [
+         "pions/pions-ops.counters.txt"
+      ],
+      "lazy" : 1,
+      "out" : [
+         "pions/counters.txt"
+      ],
+      "subclass" : "counters list",
+      "type" : "simple"
    },
    "SHADOW" : {
       "actor" : "SHADOW",
