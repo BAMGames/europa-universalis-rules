@@ -261,7 +261,7 @@ everything to 0.
                  'err'=>1,
                  'dev'=>1,
                  'display'=>3};
-  my $jsonEncoder=JSON::PP->new->pretty;
+  my $jsonEncoder=JSON::PP->new->pretty->canonical;
   $outContext={
                'color' => 1,
                'class' => '',
