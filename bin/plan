@@ -155,6 +155,18 @@ sub main {
     $unbuildable=&subHash($goalHash,$planContext->{'generated'});
     &explainPlan($unbuildable);
     &finish(0);
+  } elsif ($mode eq 'ignore') {
+    &preparePlan($realaxioms);
+    my $generable={};
+    foreach my $k (keys %{$planContext->{'generated'}}) {
+      $generable->{$k}=1 unless $k =~ '^.tmp';
+    }
+    $generable=&subHash($generable,$axioms);
+    $generable->{'.tmp'} = 1;
+    my $data='/'.join("\n/",sort keys %$generable)."\n";
+    &outputSection('.gitignore','plan',$data);
+    &out(1,'dev',$generable);
+    &finish(0);
   } elsif ($mode eq 'how') {
     &preparePlan($realaxioms);
     $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
@@ -457,6 +469,8 @@ sub parseARGV {
       $mode='help-nroff';
     } elsif ($arg eq 'what' or $arg eq '--what') {
       $mode='what';
+    } elsif ($arg eq 'ignore' or $arg eq '--ignore') {
+      $mode='ignore';
     } elsif ($arg eq 'why' or $arg eq '--why') {
       $mode='why';
     } elsif ($arg eq 'how' or $arg eq '--how') {
