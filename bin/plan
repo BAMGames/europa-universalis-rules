@@ -352,8 +352,14 @@ sub outDisplay {
   } else {
     $outContext->{'countphase'}='';
   }
+  if ($storepos == 2) {
+    $outContext->{'nomove'}=1;
+    $outContext->{'currentcol'}=$outContext->{'lastcountcol'};
+    print "\x1b[u";
+  }
   my $len=length($str);
-  if ($outContext->{'currentcol'}+2+$len>$outContext->{'columns'}) {
+  my $margin=2; # Two chars required for []
+  if ($outContext->{'currentcol'}+$margin+$len>$outContext->{'columns'}) {
     &newline();
   }
   if ($outContext->{'currentcol'}==0) {
@@ -364,11 +370,7 @@ sub outDisplay {
     $outContext->{'nomove'}=1;
     $outContext->{'lastcountcol'}=$outContext->{'currentcol'};
     print "\x1b[s";
-  } elsif ($storepos == 2) {
-    $outContext->{'nomove'}=1;
-    $outContext->{'currentcol'}=$outContext->{'lastcountcol'};
-    print "\x1b[u";
-  } else {
+  } elsif ($storepos != 2) {
     $outContext->{'nomove'}=0;
   }
   $outContext->{'currentcol'}+=2+$len;
