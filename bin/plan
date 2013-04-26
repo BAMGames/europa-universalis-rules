@@ -1,10 +1,5 @@
 #!/usr/bin/perl
 
-# Idea: allow for lazy axioms in plan/lazy
-## These axioms would not be considered if option --hard is given
-## Overwriting these axioms is not considered an error.
-## A rule overwriting only these axioms must be ignored.
-## Example: generating .pfb .afm from .sfd files
 # Idea: manage inside files (both written and read in one actor)
 # Idea: pseudo-target sweep to remove unmakeable non-axiom files
 
@@ -19,19 +14,27 @@ plan - build files by applying a set of fixed rules
 
 =head1 SYNOPSIS
 
-plan [B<--target>] I<targetname> ...
+=head2 RULES AND GOALS
 
-plan [B<-->] I<goal> [I<goal>] (only goals)
+plan [B<--target>] I<targetname> ... (see L</"GOALS AND TARGETS">).
+
+plan [B<--hard>] ... (see L</"LAZY AXIOMS">).
+
+plan [B<-->] [I<goals>] (only goals after B<-->) (see L</"GOALS AND TARGETS">).
+
+=head2 ACTIONS
+
+plan B<[--]ignore>
 
 plan B<[--]what>
 
-plan B<[--]why> I<goal> [I<goal>] (only goals)
+plan B<[--]how> [I<goals>]
 
-plan B<[--]how> I<goal> [I<goal>] (only goals)
+plan B<[--]why> [I<goals>]
 
 plan B<--help>|B<--man>|B<--nroff>|B<--usage>
 
-If a goal could be mistaken for another option, use the B<--> form.
+If a goal could be mistaken for another option, use the B<--> syntax.
 
 =cut
 
@@ -128,7 +131,7 @@ sub main {
   my $unbuildable;
   &initLogging();
   &findGitTopdir();
-  my ($goals,$targets,$mode,$ignore,$hard)=&parseARGV();
+  my ($goals,$targets,$mode)=&parseARGV();
   if ($mode =~ /^help-([a-z]+)/) {
     &usage($1);
   }
@@ -216,11 +219,11 @@ sub initLogging {
 
 =pod
 
-=head2 GENERIC OPTIONS
+=head2 OUTPUT OPTIONS
 
 B<--verbosity> I<category> I<level> Change the verbosity to I<level> in I<category>.
 
-B<--I<category>> I<level> Shortcut, as above.
+B<--I<category>> I<level> Shortcut, as above (see L</"VERBOSITY">).
 
 If verbosity can be mistaken for a target name, use the B<--verbosity> form, because the target will take precedence.
 
@@ -358,7 +361,7 @@ sub outDisplay {
     print "\x1b[u";
   }
   my $len=length($str);
-  my $margin=2; # Two chars required for []
+  my $margin=2;                 # Two chars required for []
   if ($outContext->{'currentcol'}+$margin+$len>$outContext->{'columns'}) {
     &newline();
   }
@@ -411,6 +414,8 @@ sub out {
 }
 
 # ARGV
+if ('' eq 'DOC OUTPUT OPTIONS') {
+}
 sub parseARGV {
   my $goals=[];
   my $mode="goal";
@@ -420,7 +425,7 @@ sub parseARGV {
   foreach my $t (@target) {
     $target{$t}=1;
   }
-  my $ignore=1;
+  my $lazy=1;
   my $x=0;
   while ($x < scalar @ARGV) {
     my $arg=$ARGV[$x];
@@ -438,10 +443,10 @@ sub parseARGV {
       &finish(1,"Wrong option: --verbosity must be followed by one of ".join(' or ',keys %{$outContext->{'verbosity'}})) unless defined($outContext->{'verbosity'}->{$cat});
       &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $outContext->{'verbosity'}->{$cat}=$level;
-    } elsif ($arg eq '--no-ignore') {
-      $ignore=0;
-    } elsif ($arg eq '--help') {
-      $mode="help-help";
+    } elsif ($arg eq '--nroff') {
+      $mode="help-nroff";
+    } elsif ($arg eq '--hard') {
+      $lazy=0;
     } elsif ($arg eq '--help' or $arg eq '-h') {
       $mode="help-help";
     } elsif ($arg eq '--man') {
@@ -481,6 +486,7 @@ sub parseARGV {
     push $targets,'finals';
   }
   &out(1,"init","Parsing ARGV done");
+  $planContext->{'lazyOption'}=$lazy;
   return ($goals,$targets,$mode);
 }
 sub instantiateTargets {
@@ -914,6 +920,8 @@ sub recordAxioms {
 sub sortRules {
   my $prule=$planContext->{'pristineRules'};
   foreach my $rulename (keys %$prule) {
+    next if (defined($prule->{$rulename}->{'lazy'})
+             and $planContext->{'lazyOption'} == 1);
     $planContext->{'usedRules'}->{$rulename}=0;
     if ($prule->{$rulename}->{'type'} eq 'simple') {
       my $rule=&cleanRule(&clone($prule->{$rulename}));
