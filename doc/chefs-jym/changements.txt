@@ -113,9 +113,9 @@ donne un CB commercial à la victime.
 
 [Malahayati]
 Apparaît par II-22(2) pour 9 tours.
-Pendant sa vie, Aceh reçoit une F+ additionnelle en force de base et bloque 
-le détroit de Malacca à quiconque n'a pas d'AT avec lui (même si il ne possède 
-pas Malacca).
+Pendant sa vie, Aceh reçoit une F+ additionnelle en force de base et si
+il reste au moins une F-, Aceh bloque le détroit de Malacca à quiconque
+n'a pas d'AT avec lui (même si il ne possède pas Malacca).
 
 [COL Russe]
 Mettre un malus à l'explo/COL russe avant ??? (bof)
@@ -202,6 +202,8 @@ Changer I-16 en I-9 dans la table. Changer II-6 en "appliquer I-9".
 Les chefs corsaires TUR (AP/P) peuvent diriger les pions corsaires des
 mineurs TUR (ie des barbaresques), mais comptent toujours dans la limite
 de chefs TUR. Choix à faire pour le tour avant de tirer les events.
+(on peut metter leur icone en rouge pour faire comme les copains et
+rappeler le pouvoir spécial)
 
 [Corsaires anonymes]
 Remplacer tous les P anonymes par des AP pour pas pourrir un tour en ne
@@ -209,10 +211,6 @@ pouvant pas commander de flotte (FRA, HIS, HOL, POR, RUS, VEN).
 
 [Barbaresques]
 Tripoli et Maroc commencent sans leur P qui arrivera donc en renfort au T2.
-
-[Hongrie/Mamelouks]
-Les mineurs ne peuvent pas construire de forteresse à prix doublé tant
-que toutes leurs provinces sont pas déjà au niveau max (à prix simple).
 
 [Hongrie, version subtile]
 * Lors de la chute de la Hongrie, le morceau HAB reste un mineur qui est
@@ -239,6 +237,16 @@ La chute est provoquée aussi si 3 (4 ?) provinces sont contrôllées.
 TUR peut faire chuter sans limite de temps.
 Mettre TUR en tête des controlleurs de la Hongrie.
 
+[Hongrie]
+Je propose d'adapter soit la version subtile (j'aime être subtil quand
+je joue TUR), soit les versions facile+triviale en même temps.
+
+[Chute]
+Les condtions de chute (Buda/n provinces/bataille majeure) font que (i)
+les autre (POL/HAB/TUR) peuvent intervenir de suite, (ii) pas de pais
+avec la Hongrie à ce tour et (iii) le premier event du prochain tour
+sera la chute.
+
 [Transylvanie]
 Faire de la Transylvanie un vassal spécial (no diplo) de son protecteur,
 attribuée automatiquement au possesseur de Buda.
@@ -262,6 +270,9 @@ attribuée automatiquement au possesseur de Buda.
   province. Éventuellement, coût en STAB pour l'occupant comme pour
   l'occupé.
 * On les met au lieu de mettre des contrôles sous certaines conditions.
+* Ils restent à la paix et peuvent sauter par une déclaration
+  diplomatique.
+* Et on supprime les règles d'occupation militaire d'un mineur.
 
 [Placement des occupations]
 * Caraïbes : en remplacement des contrôles. Remplace la règle actuelle.
@@ -276,6 +287,10 @@ attribuée automatiquement au possesseur de Buda.
 * VEN : En Italie si "Itali e San Marco" est déclaré ?
 * ANG : En territoires de guerre de 100 ans (Guyenne, Quercy, Poitou,
         Picardie) ?
+* FRA : Provinces du HRE adjacente à une province possédée.
+        [ie : Lorraine (hist depuis guerres d'Italie), Alsace après
+        annexion de Franche-Comté (semi-hist), puis Baden/Pfalz
+        (non-hist mais tolérable de lapin)]
 
 [Little War, Long War]
 Entre la chute et un traité de paix TUR/AUS ou V-z, la Hongrie est
@@ -290,6 +305,28 @@ semie balkanisée :
 
 [Arabie et Soudan]
 Passer Soudan à diff 5, revenu 2 et Nedj à diff 6 revenu 1.
+
+[Guerre de Morée] (pas sûr)
+* Ajouter un event guerre VEN-TUR en pV (similaire à celui de pVI) ?
+* Ajouter des PV au contrôleur de VEN en cas de victoire (~10) ou
+  annexion (~30) par le mineur lors de ces events ?
+
+[Itali e San Marco/Ligue de Cambrai]
+* Baisser en pI la limite de G VEN de 2 à 1.
+* Ajouter 1G à la limite VEN en pI-II si /Itali e San Marco/ est déclaré.
+* Lier un ou des chefs nommés à cette politique ? (Pitigliano) (Bof)
+
+[Maximilien II]
+Pour toute la durée de WoSS l'héritier, si il n'est pas empereur, a un
+bonus de +5 à la diplo sur un électorat choisi en début de guerre. Par
+exception, il peut diplomatiser même si le pays est en guerre.
+
+[Mercy]
+Clarifier son apparition (à la mort de Tilly/tout de suite si pas de
+IV-1) et sa durée de vie (4 tours) dans IV-A.
+
+[Tilly]
+Donner à sa pile soit "être toujours vétéran", soit "être tercios".
 
 [Chefs]
 (!) (méta-)cosmétique déjà fait.
@@ -357,6 +394,7 @@ Lorraine : rang A => rang B.
 OU à la place des 2 précédents : Lorraine : rang A => rang C.
 
 Commercy : T39-45 => T40-45.
+(!) Wallenstein => habmercenaire
 [**************** Hollande ***************]
 Houtman : T21-23, 664 => T21-26 334
 Tasman : 662 => 622
@@ -437,12 +475,46 @@ Selman Reis : TUR, T6-9 422 => Égypte, T4-9 433, utilisable par TUR après la c
 (new) LEADER;Husain Pasha;Gazi Deli Hüseyin Paşa;Hüseyin Paşa;;Gazi Deli Hüseyin Paşa;29;34;turquie;A;A 4.2.3 -1;;;Escaped the blocaded Dardanelles and laid siege to Heraklion in Creta
 (new) LEADER;Mezzomorto;Hacı Hüseyin Mezzomorto;Mezzomorto;;Hacı Hüseyin Mezzomorto;39;42;turquie;AP;C 3.2.4;;;Algerian privateer. Fought Dusquenne at Algiers. Later Kapudan Pacha in the Agean, retook Chios from Venise. Wrote a treaty on naval reforms. Gain his nickname after being left for dead during a battle
 A?3 423 => 413 (sans conviction).
+[**************** Venise ***************]
+(!) Grimano => Grimani
+Mocenigo : T33-36 => T31-34
+Morosini : A/G => A 455-2
 [**************** mineurs ***************]
 (new) LEADER;Malahayati;;Malahayati;;;III;22(2);aceh;A@;A 6.4.5;;;First woman in the World to became admiral. Brilliant defender of Aceh during its golden age
+(new) LEADER;Juel;Niels;;;;34;42;danemark;A;B 4.2.3;;;Learned seamanship under Tromp and de Ruyter in the Anglo-dutch wars. Then succesful amiral of the Scanian War and reformer of the Danish navy
+(!) Gabor => Bethlen
+
+Caliph => supprimé, remplacé par
+(new) LEADERDOUBLE;Burji;المماليك البرجية;Burji dynasty;Burji;Al-Ashraf Qansuh Al-Ghawri (قانصوہ الغوری لأشرف) and Al-Ashraf Tuman Bay II (طومان بای لأشرف);;;mamelouks;K;A 5.1.4;K;A 3.1.4;Ruling mameluk dynasty since 1382. Its last two Sultans died loosing at Marj Dabiq and Ridaniya during the Turkish conquest
+
+(!) MA Colonna => Colonna
+
+Johann Frederick : T13-17 => T9-16
+
+Johann Georg II, T27-31 => supprimé, remplacé par
+LEADER;Johann Georg I;;Johann Georg I.;;;25;33;saxe;K;A 1.2.2;;;Elector of Saxony during the Thirty Years War. First supporter of the emperor, he joined the Swedes after being invaded by Tilly and went back to the emperor after the death of Gustavus Adolphus. Fleed at Breitenfeld and severly beaten at Wittstock
+
+JG3, T32-40, 122 => supprimé, remplacé par
+LEADER;Johann Georg III;Johann Georg II. and III.;Johann Georg III;;Johann Georg II. and III.;34;40;saxe;K;A 2.2.3;;;Electors of Saxony. Johann Georg II. reconstructed his state ravaged by the Thirty Years War. Johann Georg III. fought at Vienna, during the Great Turkish War and lately joined the league of Augburg
 
 
 
-[**************** Turquie old style ***************]
+
+[****************  Spéciaux  ***************]
+Brouwer => E/C T23-31 (sans règle spéciale sur les tours)
+Johan-Maurits => C/G T29-37 (sans règle spéciale pour les tours)
+Poniatowski : T43-46 => T42-50
+(!) Beniowski => séparé en 2 chefs indépendants (1 FRA, 1 POL).
+(!) Saxe-Weimar : SUE/FRA => SUE/framercenaires
+(!) Ferdinand : PRU/HRE => PRU/prumercenaires, PRU choisit de le donner
+            à un allié mineur ou majeur pour le tour.
+Ferdinand => F. Brunswick (bof ?)
+
+[**************** Prusse    ****************]
+(!) Brunswick => K. Brunswick
+K. Brunswick => PRU/prumercenaires (???)
+
+[**************** IGNORER   Turquie old style    IGNORER   ***************]
 Iskander => supprimé, remplacé par :
 (mod) LEADER;Skender Pasa;Mihajlovic;Skender Paşa;;Skender Paşa Mihajlovic;1;5;turquie;G;A 3.2.3;;;Took part in Venetian wars and captured parts of Dalmatia
 
