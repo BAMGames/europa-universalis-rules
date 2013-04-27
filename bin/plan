@@ -131,8 +131,8 @@ sub main {
   my $unbuildable;
   &initLogging();
   &findGitTopdir();
-  my ($goals,$targets,$mode)=&parseARGV();
-  if ($mode =~ /^help-([a-z]+)/) {
+  my ($goals,$targets,$action)=&parseARGV();
+  if ($action =~ /^help-([a-z]+)/) {
     &usage($1);
   }
   &readRules();
@@ -142,20 +142,20 @@ sub main {
   my $notaxioms=&readFileList('plan/notaxioms');
   my $realaxioms=addHash($axioms,$exceptions);
   $realaxioms=subHash($realaxioms,$notaxioms);
-  if ($mode eq 'clean' or $mode eq 'distclean') {
+  if ($action eq 'clean' or $action eq 'distclean') {
     my $finals={};
-    $finals=&readFileList('plan/targets/finals') if $mode eq 'clean';
+    $finals=&readFileList('plan/targets/finals') if $action eq 'clean';
     my $preserve=addHash($realaxioms,$finals);
     &readCache($planContext,'junk');
     &removeGenerated($planContext,'junk',$preserve);
     &finish(0);
-  } elsif ($mode eq 'what') {
+  } elsif ($action eq 'what') {
     &preparePlan($realaxioms);
     $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
     $unbuildable=&subHash($goalHash,$planContext->{'generated'});
     &explainPlan($unbuildable);
     &finish(0);
-  } elsif ($mode eq 'ignore') {
+  } elsif ($action eq 'ignore') {
     &preparePlan($realaxioms);
     my $generable={};
     foreach my $k (keys %{$planContext->{'generated'}}) {
@@ -166,13 +166,13 @@ sub main {
     my $data='/'.join("\n/",sort keys %$generable)."\n";
     &outputSection('.gitignore','plan',$data);
     &finish(0);
-  } elsif ($mode eq 'how') {
+  } elsif ($action eq 'how') {
     &preparePlan($realaxioms);
     $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
     my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
     &graphviz($narrowPlan,$goalHash);
     &finish(0);
-  } elsif ($mode eq 'goal') {
+  } elsif ($action eq 'goal') {
     my $steps=0;
     my $finished=0;
     $planContext->{'fingerprint'}={};
@@ -220,7 +220,7 @@ sub main {
     }
     &finish(0);
   }
-  &finish(1,"$mode is not implemented yet");
+  &finish(1,"$action is not implemented yet");
 }
 
 &main();
@@ -429,7 +429,7 @@ if ('' eq 'DOC OUTPUT OPTIONS') {
 }
 sub parseARGV {
   my $goals=[];
-  my $mode='goal';
+  my $action='goal';
   my $targets=[];
   my @target=&readDir('plan/targets');
   my %target=('all' => 1);
@@ -455,29 +455,29 @@ sub parseARGV {
       &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $outContext->{'verbosity'}->{$cat}=$level;
     } elsif ($arg eq '--nroff') {
-      $mode='help-nroff';
+      $action='help-nroff';
     } elsif ($arg eq '--hard') {
       $lazy=0;
     } elsif ($arg eq '--help' or $arg eq '-h') {
-      $mode='help-help';
+      $action='help-help';
     } elsif ($arg eq '--man') {
-      $mode='help-man';
+      $action='help-man';
     } elsif ($arg eq '--usage') {
-      $mode='help-usage';
+      $action='help-usage';
     } elsif ($arg eq '--nroff') {
-      $mode='help-nroff';
+      $action='help-nroff';
     } elsif ($arg eq 'what' or $arg eq '--what') {
-      $mode='what';
+      $action='what';
     } elsif ($arg eq 'ignore' or $arg eq '--ignore') {
-      $mode='ignore';
+      $action='ignore';
     } elsif ($arg eq 'why' or $arg eq '--why') {
-      $mode='why';
+      $action='why';
     } elsif ($arg eq 'how' or $arg eq '--how') {
-      $mode='how';
+      $action='how';
     } elsif ($arg eq 'clean' or $arg eq '--clean') {
-      $mode='distclean';
+      $action='distclean';
     } elsif ($arg eq 'distclean' or $arg eq '--distclean') {
-      $mode='distclean';
+      $action='distclean';
     } elsif ($arg =~ '--(\w+)' and defined($outContext->{'verbosity'}->{$1})) {
       my $cat=$1;
       my $level=$ARGV[$x+1];
@@ -500,7 +500,7 @@ sub parseARGV {
   }
   &out(1,'init','Parsing ARGV done');
   $planContext->{'lazyOption'}=$lazy;
-  return ($goals,$targets,$mode);
+  return ($goals,$targets,$action);
 }
 sub instantiateTargets {
   my ($targets,$goals,$generation,$axioms)=@_;
