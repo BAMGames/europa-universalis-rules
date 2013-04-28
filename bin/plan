@@ -16,6 +16,8 @@ plan - build files by applying a set of fixed rules
 
 =head2 RULES AND GOALS
 
+plan [B<--mode>] I<modename> ... (see L</"MODES">).
+
 plan [B<--target>] I<targetname> ... (see L</"GOALS AND TARGETS">).
 
 plan [B<--hard>] ... (see L</"LAZY AXIOMS">).
@@ -135,6 +137,7 @@ sub main {
   if ($action =~ /^help-([a-z]+)/) {
     &usage($1);
   }
+  &writeModes();
   &readRules();
   my $axioms=&readAxiomsFromGit();
   &setupCommand();
@@ -147,6 +150,7 @@ sub main {
     $finals=&readFileList('plan/targets/finals') if $action eq 'clean';
     my $preserve=addHash($realaxioms,$finals);
     &readCache($planContext,'junk');
+    $planContext->{'junk'}->{'.tmp/mode'}=1;
     &removeGenerated($planContext,'junk',$preserve);
     &finish(0);
   } elsif ($action eq 'what') {
@@ -181,6 +185,7 @@ sub main {
     &readCache($planContext,'lazyfingerprint');
     &addHashInPlace($planContext->{'fingerprint'},$planContext->{'lazyfingerprint'});
     &readCache($planContext,'junk');
+    $planContext->{'junk'}->{'.tmp/mode'}=1;
     &removeGenerated($planContext,'junk',undef);
     my $narrowPlan;
     while (!$finished) {
@@ -431,6 +436,7 @@ sub parseARGV {
   my $goals=[];
   my $action='goal';
   my $targets=[];
+  $planContext->{'mode'}={};
   my @target=&readDir('plan/targets');
   my %target=('all' => 1);
   foreach my $t (@target) {
@@ -456,6 +462,11 @@ sub parseARGV {
       $outContext->{'verbosity'}->{$cat}=$level;
     } elsif ($arg eq '--nroff') {
       $action='help-nroff';
+    } elsif ($arg eq '--mode') {
+      my $cat=$ARGV[$x+1];
+      $x++;
+      &finish(1,"Wrong option: --mode must be followed by a string of letters and _ only") unless $cat=~ /^[a-zA-Z_]+$/;
+      $planContext->{'mode'}->{$cat}=1;
     } elsif ($arg eq '--hard') {
       $lazy=0;
     } elsif ($arg eq '--help' or $arg eq '-h') {
@@ -775,6 +786,15 @@ sub outputSection {
     next unless defined($line);
     print FILE $line."\n";
   }
+  close FILE;
+}
+sub writeModes {
+  &out(1,'init','Outputting modes');
+  make_path('.tmp');
+  open FILE,'>','.tmp/mode' or die 'I could not write to .tmp/mode';
+  my @array=sort keys %{$planContext->{'mode'}};
+  push @array,'default' unless scalar @array;
+  print FILE join("\n",@array),"\n";
   close FILE;
 }
 
@@ -1396,6 +1416,17 @@ buildable files.
 
 If no goals are given, then the target I<finals> will be used by default
 (even if it is not defined).
+
+=head1 MODES
+
+To be able to build projects in several modes, a facility is provided
+through the B<--mode> I<modename> option. A file C<.tmp/mode> is created
+with each selected mode on a line by itself. For example: C<debug> and
+C<mariadb> may build a project using debug flags and the MariaDB
+database internally, while C<default> might use no debug flags and
+C<sqlite>. Introducing this file in the input of the actor allows to act
+differently. Currently, all mode-dependent rules characteristics are
+invariable. This is considered a bug.
 
 =head1 FILES
 
