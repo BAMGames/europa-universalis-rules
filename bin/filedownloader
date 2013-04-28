@@ -2,65 +2,72 @@
 use Digest::MD5;
 use Cwd qw(chdir);
 use File::Basename;
+use strict;
+use warnings;
 
 # Just for memory
 $zerosum='00000000000000000000000000000000';
 
-# Find binpath
+my $manifest='pions/manifest.txt';
+my $bitmapdir='pions/bitmap';
+my $wanted='pions/wanted.txt';
+my $index=$bitmapdir.'/index.txt';
+my $url='';
+my $index_mtime={};
+my $index_sum={};
 
-$inipath=$ENV{'PWD'};
-chdir $ENV{'HOMEDIR'};
-$homepath=$ENV{'PWD'};
-chdir $inipath;
-chdir $ENV{'BINDIR'};
-$binpath=$ENV{'PWD'};
-chdir $inipath;
-%vars=('LOGFILE'=> 'logfile','MANIFEST' => 'manifest', 'CATEGORY' => 'category', 'INDEX' => 'index');
-$DONE=0;
-$ALL=0;
-
-LOOP: while (@ARGV) {
-    foreach $v (keys %vars) {
-        if ($ARGV[0] eq "--$vars{$v}") {
-            shift @ARGV;
-            ${$v}=shift @ARGV;
-            next LOOP;
-        }
-    }
-    if ($ARGV[0]  eq '--all') {
-        shift @ARGV;
-        $ALL=1;
-    }
-    if ($ARGV[0] eq '--') {
-        $DONE=1;
-        shift @ARGV;last LOOP;
-    }
-    die "Unknown option $ARGV[0]";
+if (!(-d $bitmapdir)) {
+    mkdir $bitmapdir or die "Cannot create directory $directories";
+}
+sub readIndex {
+  open FILE,$index or return;
+  while (<FILE>) {
+    next unless (/^([0-9a-f]+) ([0-9a-f]+) (.+)$/);
+    $index_mtime->{$3}=$2;
+    $index_sum->{$3}=$1;
+  }
+  close FILE;
 }
 
-foreach $v (keys %vars) {
-    if (!defined(${$v})) {
-        print "$vars{$v} is not defined\n";
-        exit 1;
+sub updateIndex {
+  my $currentdir=shift @_;
+  my @dirlist;
+  opendir(my $dh, $currentdir) or return;
+  @dirlist=grep {!/^\./} readdir($dh);
+  closedir($dh);
+ FILE:
+  foreach $file (@dirlist) {
+    my $filename=$currentdir.'/'.$file;
+    if (-d $file) {
+      updateIndex($filename);
+    } elsif ($file =~ /\.png$/) {
+      my ($d,$i,$m,$nl,$u,$g,$rd,$s,$at,$mt,$ct,$bs,$bl) = stat($file);
+      if (defined($index_mtime->{$file})) {
+        next FILE if $index_mtime->{$file} eq $mt;
+      }
+      open FILE,$filename;
+      binmode(FILE);
+      $md5=Digest::MD5->new;
+      $md5->addfile(*FILE);
+      my $digest = $md5->hexdigest;
+      $index_mtime->{$file}=$mt;
+      $index_sum->{$file}=$mt;
     }
+  }
 }
-$LOGFILE=$inipath.'/'.$LOGFILE;
-$MANIFEST=$inipath.'/'.$MANIFEST;
-$INDEX=$inipath.'/'.$INDEX;
-if ($ALL) {
-    $CLASS="Creating bitmap index";
-} else {
-    $CLASS="Downloading bitmaps";
+
+sub readManifest {
+  open FILE,$manifest or die "Cannot read manifest $manifest";
+  while (<FILE>) {
+    next unless (/^([0-9a-f]+) ([0-9a-f]+) (.+)$/);
+    $index_sum->{$3}=$1;
+  }
+  close FILE;
 }
-if (!$DONE) {
-    print "No file marker found\n";
-    exit 1;
-}
-my ($filename,$directories,$suffix)=fileparse($INDEX);
-if (!(-d $directories)) {
-    mkdir $directories or die "Cannot create directory $directories";
-}
-chdir($directories);
+
+&readIndex;
+&updateIndex($bitmapdir);
+
 $count=0;
 sub state() {
     system("${binpath}/statedisplay",$ENV{'XID'},$CLASS,@_);
