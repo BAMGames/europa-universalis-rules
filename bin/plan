@@ -157,7 +157,8 @@ sub main {
     &preparePlan($realaxioms);
     $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
     $unbuildable=&subHash($goalHash,$planContext->{'generated'});
-    &explainPlan($unbuildable);
+    my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
+    &explainPlan($unbuildable,$narrowPlan);
     &finish(0);
   } elsif ($action eq 'ignore') {
     &preparePlan($realaxioms);
@@ -793,7 +794,10 @@ sub writeModes {
   make_path('.tmp');
   open FILE,'>','.tmp/mode' or die 'I could not write to .tmp/mode';
   my @array=sort keys %{$planContext->{'mode'}};
-  push @array,'default' unless scalar @array;
+  do {
+    $planContext->{'mode'}->{'default'} = 1;
+    push @array,'default';
+  } unless scalar @array;
   print FILE join("\n",@array),"\n";
   close FILE;
 }
@@ -954,8 +958,16 @@ sub recordAxioms {
 sub sortRules {
   my $prule=$planContext->{'pristineRules'};
   foreach my $rulename (keys %$prule) {
-    next if (defined($prule->{$rulename}->{'lazy'})
-             and $planContext->{'lazyOption'} == 1);
+    if (defined($prule->{$rulename}->{'lazy'})
+        and $planContext->{'lazyOption'} == 1) {
+      &out(1,'plan',"Skipping rule $rulename because of lazy mode");
+      next;
+    }
+    if (defined($prule->{$rulename}->{'mode'}) and
+        !defined($planContext->{'mode'}->{$prule->{$rulename}->{'mode'}})) {
+      &out(1,'dev',"Skipping rule $rulename because not in mode ".$prule->{$rulename}->{'mode'});
+      next;
+    }
     $planContext->{'usedRules'}->{$rulename}=0;
     if ($prule->{$rulename}->{'type'} eq 'simple') {
       my $rule=&cleanRule(&clone($prule->{$rulename}));
@@ -1137,6 +1149,7 @@ sub preparePlan {
 }
 sub explainPlan {
   my $unbuildable=shift @_;
+  my $narrowPlan=shift @_;
   &out(1,'plan','Explaining plan');
   foreach my $key (sort keys %{$planContext->{'simpleRules'}}) {
     my $rule=$planContext->{'simpleRules'}->{$key};
@@ -1163,6 +1176,13 @@ sub explainPlan {
   }
   foreach my $file (sort keys %$unbuildable) {
     &out(1,'err',"Impossible to build $file");
+  }
+  &out(1,'out',"Here is the plan so far:");
+  my $begin=0;
+  while ($begin < scalar @$narrowPlan) {
+    my ($todo,$end)=&firstCompound($narrowPlan,$begin);
+    &out(1,'out',&actionKey($todo));
+    $begin=$end;
   }
 }
 sub reducePlan {
