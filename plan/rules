@@ -198,6 +198,52 @@
       "subclass" : "counters list",
       "type" : "simple"
    },
+   "PIONSBITMAP_default" : {
+      "actor" : "PIONSBITMAP",
+      "arg" : [ "minimal" ],
+      "mode" : "default",
+      "class" : "Downloading counters bitmap",
+      "in" : [
+         "pions/minimal.txt",
+         "pions/manifest.txt.bz2"
+      ],
+      "out" : [
+         "pions/bitmap"
+      ],
+      "subclass" : "fetching",
+      "type" : "simple"
+   },
+   "PIONSBITMAP_fulldownload" : {
+      "actor" : "PIONSBITMAP",
+      "arg" : [ "full" ],
+      "mode" : "fulldownload",
+      "class" : "Downloading counters bitmap",
+      "class_rebuild" : "Rebuilding counters bitmap",
+      "in" : [
+         "pions/manifest.txt.bz2"
+      ],
+      "out" : [
+         "pions/bitmap"
+      ],
+      "subclass" : "fetching",
+      "type" : "simple"
+   },
+   "PIONSBITMAP_rebuild" : {
+      "actor" : "PIONSBITMAP",
+      "lazy" : 1,
+      "mode" : "rebuild",
+      "arg" : [ "rebuild" ],
+      "class" : "Rebuilding counters bitmap",
+      "in" : [
+         "pions/pions-ops.pdf"
+      ],
+      "out" : [
+         "pions/bitmap",
+         "pions/manifest.txt.bz2"
+      ],
+      "subclass" : "fetching",
+      "type" : "simple"
+   },
    "SHADOW" : {
       "actor" : "SHADOW",
       "argument" : "$1",
