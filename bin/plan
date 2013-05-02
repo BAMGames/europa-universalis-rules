@@ -1445,8 +1445,13 @@ with each selected mode on a line by itself. For example: C<debug> and
 C<mariadb> may build a project using debug flags and the MariaDB
 database internally, while C<default> might use no debug flags and
 C<sqlite>. Introducing this file in the input of the actor allows to act
-differently. Currently, all mode-dependent rules characteristics are
-invariable. This is considered a bug.
+differently. Rules using the different modes should depend on this file.
+
+Moreover, rules may use a C<mode> property. The rules with a C<mode>
+property currently not active are not considered. This allows for
+possibly completely different properties (input, output, ...).
+
+If no mode is selected, then the mode C<default> is automatically selected.
 
 =head1 FILES
 
@@ -1495,6 +1500,10 @@ Graph output for how is suboptimal (read unusable).
 Action C<why> is not implemented yet.
 
 C<sub main> has a lot of redundancy in some parts
+
+Variables may be useful. They should behave more or less like modes.
+
+In case of multiple modes, clean and distclean do not do what they should do.
 
 =cut
 
