@@ -75,16 +75,16 @@
       "actor" : "COUNTERTEMPLATEOPS",
       "class" : "Counters templates",
       "in" : [
-         "pions/moreadmin.txt",
-         "bin/extract"
-      ],
-      "infile" : [
-         "plan/in/pionseps.in"
+         "bin/extract",
+         "pions/$1_c.txt"
       ],
       "out" : [
-         "pions/pions-ops.eps"
+         "pions/$1-ops.eps"
       ],
-      "type" : "simple"
+      "argument" : "$1",
+      "type" : "pattern",
+      "subclass" : "one-per-sheet",
+      "pattern" : "pions/(.*)_c.txt"
    },
    "FIGURESHADOW" : {
       "actor" : "FIGURESHADOW",
@@ -168,11 +168,6 @@
    },
    "PIONS" : {
       "actor" : "PIONS",
-      "allowedargs" : [
-         "pions",
-         "pions-ops",
-         "planchecontact"
-      ],
       "argument" : "$1",
       "class" : "Building counters",
       "in" : [
