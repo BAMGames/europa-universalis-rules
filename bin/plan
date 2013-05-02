@@ -676,11 +676,34 @@ sub executeCommand {
 }
 
 # Disk Input/Output
+sub fingerprintDir {
+  my ($f)=@_;
+  opendir (my $dh, $f) || return "$f:unreadable";
+  my $hashing = Digest::MD5->new;
+  my @files=();
+  while (my $file=readdir $dh) {
+    next if $file =~ /^\./;
+    push @files,$f.'/'.$file;
+  }
+  closedir $dh;
+  @files=sort @files;
+  my $data;
+  foreach my $f (@files) {
+    if (-d $f) {
+      $data=&fingerprintDir($f);
+    } else {
+      my ($d,$i,$m,$nl,$u,$g,$rd,$s,$at,$mt,$ct,$bs,$bl) = stat($f);
+      $data="$f:$s";
+    }
+    $hashing->add($data);
+  }
+  return $hashing->hexdigest;
+}
 sub fingerprint {
   my ($f)=@_;
   my $hash='0';
   return '0' unless (-e $f);
-  return '0' if (-d $f);       # TODO: recursive version for directories
+  return &fingerprintDir($f) if (-d $f);       # TODO: recursive version for directories
   open FILE,"$f" or return "$f:0";
   my $hashing = Digest::MD5->new;
   $hashing->addfile(*FILE);
@@ -965,7 +988,7 @@ sub sortRules {
     }
     if (defined($prule->{$rulename}->{'mode'}) and
         !defined($planContext->{'mode'}->{$prule->{$rulename}->{'mode'}})) {
-      &out(1,'dev',"Skipping rule $rulename because not in mode ".$prule->{$rulename}->{'mode'});
+      &out(1,'plan',"Skipping rule $rulename because not in mode ".$prule->{$rulename}->{'mode'});
       next;
     }
     $planContext->{'usedRules'}->{$rulename}=0;
