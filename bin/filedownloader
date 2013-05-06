@@ -24,6 +24,9 @@ my $baseUrl='file:///data/ro/';
 #my $baseUrl='http://old-lipn.univ-paris13.fr/~dubacq/europa/pions/';
 my $specialprefix='FILEDOWNLOADER';
 my $tmpFiles={};
+my $count=0;
+my $maxcount=0;
+my $maxcountnumber=0;
 $SIG{INT} = sub { &finish(2); };
 
 $specialprefix=$ENV{'SPECIALPREFIX'} if defined($ENV{'SPECIALPREFIX'});
@@ -52,7 +55,7 @@ sub sumFile {
 }
 sub updateIndex {
   my $currentdir=shift @_;
-  my $fulldir=$bitmapdir.$currentdir;
+  my $fulldir=$bitmapdir.'/'.$currentdir;
   my @dirlist;
   opendir(my $dh, $fulldir) or return;
   @dirlist=grep {!/^\./} readdir($dh);
@@ -60,11 +63,11 @@ sub updateIndex {
  FILE:
   foreach my $file (@dirlist) {
     my $filename=$fulldir.'/'.$file;
-    my $key=(substr $currentdir,1).'/'.$file;
+    my $key=$currentdir.($currentdir?'/':'').$file;
     if (-d $filename) {
       updateIndex($key);
       next;
-    } elsif ($file =~ /\.png$/) {
+    } elsif ($key ne 'index.txt') {
       my ($d,$i,$m,$nl,$u,$g,$rd,$s,$at,$mt,$ct,$bs,$bl) = stat($filename);
       $indexed->{$key}=1;
       if (defined($index_mtime->{$key})) {
@@ -98,7 +101,7 @@ sub readWanted {
 }
 
 sub dumpIndex {
-  open FILE,'>',$index or return;   # We are leaving, anyway
+  open FILE,'>',$index or return; # We are leaving, anyway
   foreach my $key (sort keys %$index_sum) {
     print FILE $index_sum->{$key}.' '.$index_mtime->{$key}.' '.$key."\n";
   }
@@ -114,12 +117,21 @@ sub finish {
 }
 sub fail {
   print STDERR $specialprefix.'failed:'.$_[0]."\n";
-  &finish(1);
+}
+sub info {
+  print STDERR $specialprefix.$_[0]."\n";
 }
 sub success {
   my $w=shift @_;
-  my ($filename,$directories,$suffix)=fileparse($w,'.png');
-  print STDERR $specialprefix.'done:'.$filename."\n";
+  my $c=shift @_;
+  if ($c < 100) {
+    my ($filename,$directories,$suffix)=fileparse($w,'.png');
+    print STDERR $specialprefix.'done:'.$filename."\n";
+  } else {
+    $count++;
+    my $x=sprintf('count:download:%0*d',$maxcountnumber,$count).$maxcount;
+    print STDERR $specialprefix.$x;
+  }
 }
 sub notsuccess {
   my $w=shift @_;
@@ -135,18 +147,71 @@ sub download {
 }
 sub checkDownload {
   my @wanted=@{$_[0]};
+  my $tofix=$_[1];
+  my $todownload={};
+  my $ok={};
+  my $impossible={};
   foreach my $file (@wanted) {
     my $wsum='none';
     my $csum='none';
     $wsum=$manifest_sum->{$file} if defined($manifest_sum->{$file});
     $csum=$index_sum->{$file} if defined($index_sum->{$file});
     if ($wsum eq 'none') {
-      &fail($file);
-    }
-    if ($wsum eq $csum) {
-      &success($file);
+      $impossible->{$file}=1;
       next;
     }
+    if ($wsum eq $csum) {
+      $ok->{$file}=1;
+      next;
+    }
+    $todownload->{$file}=1;
+  }
+  return ($todownload,$ok,$impossible);
+}
+sub checkManifest {
+  # check for indexed files not present in the manifest; delete them
+  # also list indexed files not matching the manifest.
+  my $manifest=shift @_;
+  my $todelete={};
+  my $tofix={};
+  foreach my $key (sort keys %$index_sum) {
+    if (!defined($manifest_sum->{$key})) {
+      $todelete->{$key}=1;
+    } elsif ($manifest_sum->{$key} ne $index_sum->{$key}) { 
+      $tofix->{$key}=1;
+    }
+  }
+  return ($todelete,$tofix);
+}
+sub deleteFiles {
+  my $deleteFiles=shift @_;
+  my $deleteDirs={};
+  my $success=1;
+  foreach my $file (keys %$deleteFiles) {
+    $success=unlink($bitmapdir.'/'.$file);
+    if (!$success) {
+      &fail($file);
+      &finish(1);
+    }
+    $deleteDirs->{dirname($file)}=1;
+  }
+  while (scalar keys %$deleteDirs) {
+    my $newDeleteDirs={};
+    foreach my $dir (keys %$deleteDirs) {
+      next if $dir eq '.';
+      $newDeleteDirs->{dirname($dir)}=1 if rmdir($bitmapdir.'/'.$dir);
+    }
+    $deleteDirs=$newDeleteDirs;
+  }
+  &info('deleted');
+}
+sub doDownload {
+  my $toDownload=shift @_;
+  foreach my $file (sort keys %$toDownload) {
+    my $wsum='none';
+    my $csum='none';
+    $wsum=$manifest_sum->{$file} if defined($manifest_sum->{$file});
+    $csum=$index_sum->{$file} if defined($index_sum->{$file});
     my $dest=$bitmapdir.'/'.$file;
     my $tmp=$dest.'.tmp';
     $tmpFiles->{$tmp}=1;
@@ -157,7 +222,7 @@ sub checkDownload {
       my ($d,$i,$m,$nl,$u,$g,$rd,$s,$at,$mt,$ct,$bs,$bl) = stat($dest);
       $index_sum->{$file}=$nsum;
       $index_mtime->{$file}=$mt;
-      &success($file);
+      &success($file,scalar keys %$toDownload);
       delete $tmpFiles->{$tmp};
     } else {                    # Download failed
       if ($csum ne 'none') {
@@ -166,356 +231,48 @@ sub checkDownload {
       } else {
         unlink($tmp);
         &fail($file);
+        &finish(1);
       }
     }
   }
 }
 
-&readIndex;
-&updateIndex('/');
-foreach my $file (keys %$index_sum) {
-  if (!defined($indexed->{$file})) {
-    delete $index_sum->{$file};
-    delete $index_mtime->{$file};
+sub main {
+  &readIndex;
+  &updateIndex('');
+  foreach my $file (keys %$index_sum) {
+    if (!defined($indexed->{$file})) {
+      delete $index_sum->{$file};
+      delete $index_mtime->{$file};
+    }
   }
+  &readManifest($manifest);
+  my ($todelete,$tofix)=&checkManifest($manifest);
+  my $wantedList=&readWanted($wanted);
+  my ($todownload,$ok,$impossible)=&checkDownload($wantedList);
+  if (scalar keys %$ok) {
+    &info((scalar keys %$ok).' already downloaded');
+  }
+  if (scalar keys %$todownload) {
+    &info((scalar keys %$todownload).' to download');
+  }
+  if (scalar keys %$impossible) {
+    &info((scalar keys %$impossible).' unavailable');
+    foreach my $key (sort keys %$impossible) {
+      &fail($key);
+    }
+    &finish(1);
+  }
+  if (scalar keys %$todelete) {
+    &info((scalar keys %$todelete).' to delete');
+    &deleteFiles($todelete);
+  }
+  $maxcount=scalar keys %$todownload;
+  if ($maxcount) {
+    $maxcountnumber=int(0.00001+log($maxcount)/log(10))+1;
+    &doDownload($todownload);
+  }
+  &finish(0);
 }
-&readManifest($manifest);
-my $wantedList=&readWanted($wanted);
-&checkDownload($wantedList);
-&finish(0);
 
-#&download("manifest.txt.bz2");
-
-# First, ensure we have all that is needed
-
-
-
-
-# $count=0;
-# sub state() {
-#     system("${binpath}/statedisplay",$ENV{'XID'},$CLASS,@_);
-# }
-# $a="";
-# sub xstate() {
-#     open(DISP,"${binpath}/statedisplay $ENV{'XID'} multiple \"$CLASS\" \"".join(' ',@_)."\"|");
-#     $a=<DISP>;
-#     chomp $a;
-#     close DISP;
-# }
-# sub ystate() {
-#     print $a."[".join(' ',@_)."\n";
-# #    &state(@_);
-# }
-
-# sub xlog() {
-#     open LOGFILE,">>$LOGFILE";
-#     print LOGFILE "<DOWNLOAD $CATEGORY>".join(' ',@_)."\n";
-#     close LOGFILE;
-# }
-# &xlog("\n-----");
-# sub xcheckpoint() {
-#     &xstate(@_) if ($ALL);
-#     &state(@_) if ($ALL);
-# }
-# sub ycheckpoint() {
-#     &ystate(@_) if ($ALL);
-# }
-# sub zcheckpoint() {
-#     &xlog(@_);
-#     &state(@_);
-# }
-# sub wcheckpoint() {
-#     &xlog(@_);
-#     &state(@_) unless ($ALL);
-# }
-# sub checkpoint() {
-#     &xlog(@_);
-#     &state(@_) if ($ALL);
-# }
-
-# &checkpoint("manifest");
-# open MANIFEST,"$MANIFEST" or die "Could not open $MANIFEST from $ENV{'PWD'}";
-# %expsize=();
-# %expbytes=();
-# %expsum=();
-# while ($line=<MANIFEST>) {
-#     chomp $line;
-#     if (!($line=~/([a-f0-9]{32}) (.) ([^ ]+) (.*)$/)) {
-#         die "Incorrect manifest in line $line.";
-#     } else {
-#         $expsum{$4}=$1;
-#         $expsize{$4}=$2;
-#         $expbytes{$4}=$3;
-#     }
-# }
-# close MANIFEST;
-
-# &checkpoint("index");
-# %indsize=();
-# %indbytes=();
-# %indsum=();
-# $indlines=0;
-# if (open INDEX,"$INDEX") {
-#     while ($line=<INDEX>) {
-#         chomp $line;
-#         if (!($line=~/([a-f0-9]{32}) (.) ([0-9]+) (.*)$/)) {
-#             $indlines++;
-#             next;
-#         } else {
-#             $indsum{$4}=$1;
-#             $indsize{$4}=$2;
-#             $indbytes{$4}=$3;
-#         }
-#     }
-#     close INDEX;
-# }
-
-# %status=();
-
-# foreach (@ARGV) {
-#     $status{$_}=1;
-# }
-
-# @subdirs=('');
-# if ($ALL) {
-#     foreach (keys %expsum) {
-#         $status{$_}=1;
-#     }
-#     opendir ($dh,".") or die "Cannot open current directory ?!";
-#     @moresubdirs = grep { /^\./ && -d "./$_" } readdir($dh);
-#     foreach (@moresubdirs) {
-#         push @subdirs,"./$_";
-#     }
-#     closedir $dh;
-#     foreach (@subdirs) {
-#         opendir ($dh,"./".$_) or die "Cannot open directory $_ ?!";
-#         @files = (@files,grep { /.png$/} readdir($dh));
-#         closedir $dh;
-#     }
-#     foreach (@files) {$status{$_}=1;}
-# }
-# %subdirstocreate=();
-# foreach $f (keys %status) {
-#     my ($filename,$directories,$suffix)=fileparse($f);
-#     $subdirstocreate{$directories}++;
-# }
-
-# foreach (keys %subdirstocreate) {
-#     if (!(-d $_)) {
-#     mkdir $_ or die "Cannot create directory $_";
-#     }
-# }
-
-# sub check() {
-#     my ($f,$retcodeok,$retcodebad)=@_;
-#     if ((-l $f)&&($expsum{$f} eq $zerosum)) {
-#         if (readlink($f) eq $expsize{$f}) {
-#             $status{$f}=$retcodeok;
-#         } else {
-#             $status{$f}=$retcodebad;
-#         }
-#         return
-#     }
-#     if (!open(FILE, $f)) {
-#         $status{$f}=$retcodebad;
-#         return;
-#     }
-#     binmode(FILE);
-#     $md5=Digest::MD5->new;
-#     $md5->addfile(*FILE);
-#     $digest = $md5->hexdigest;
-#     if ($digest ne $expsum{$f}) {
-#         # Wrong file. Download.
-#         $status{$f}=$retcodebad;
-#     } else {
-#         # File is ok. Fill in index.
-#         $status{$f}=$retcodeok;
-#         $indbytes{$f}=$size; # We may as well fix that.
-#         $indsum{$f}=$expsum{$f}; # We may as well fix that.
-#         $indsize{$f}=$expsize{$f}; # We may as well fix that.
-#     }
-#     close FILE;
-# }
-
-# sub removefile() {
-#     my ($f)=@_;
-#     if (-e $f) {
-#         unlink $f;
-#         if (-e $f) {
-#             die "Could not remove $f"
-#         }
-#     }
-#     delete $indsum{$f};
-#     delete $indbytes{$f};
-#     delete $indsize{$f};
-# }
-
-# sub download() {
-#     my ($f)=@_;
-#     system("curl","-s","-o","$f","http://old-lipn.univ-paris13.fr/~dubacq/europa/$CATEGORY/$f");
-#     system("touch","$f");
-# }
-
-# sub nocheck() {
-#     my ($f,$retcodeok,$retcodebad)=@_;
-#     if ((-l $f)) {
-#         $indsum{$f}=$zerosum;
-#         $indsize{$f}=readlink($f);
-#         $status{$f}=$retcodeok;
-#         return;
-#     }
-#     if (!open(FILE, $f)) {
-#         $status{$f}=$retcodebad;
-#         &removefile($f);
-#         return;
-#     }
-#     binmode(FILE);
-#     $md5=Digest::MD5->new;
-#     $md5->addfile(*FILE);
-#     $digest = $md5->hexdigest;
-#     close FILE;
-#     ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime,$ctime,$blksize,$blocks)  = stat($f);
-#     $indsum{$f}=$digest;
-#     $indbytes{$f}=$size;
-#     $indsize{$f}=$expsize{$f};
-#     $status{$f}=$retcodeok;
-# }
-
-# $mc=(scalar keys %status);
-# $count=0;
-# &xcheckpoint(sprintf("check:%05d/%05d",$count,$mc));
-# $t=time();
-
-# #######################
-
-# foreach $f (keys %status) {
-#     $count++;
-#     $ot=$t;
-#     $t=time();
-#     if ($t!=$ot) {
-#         &ycheckpoint(sprintf("check:%05d/%05d",$count,$mc));
-#     }
-#     if (!defined($expsum{$f})) {
-#         $status{$f}=2; # deletelist
-#         next;
-#     }
-#     if ($expsum{$f} eq $zerosum) {
-#         if ((! -l $f)||(readlink($f) != $expsize{$f})) {
-#             # Bad link
-#             $status{$f}=8;
-#         } else {
-#             $status{$f}=4;
-#         }
-#         next;
-#     }
-#     if (! -f $f) {
-#         # No file. Download anyway.
-#         $status{$f}=3; # to download
-#         next;
-#     } else {
-#         ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime,$ctime,$blksize,$blocks)  = stat(_);
-#         if ($size != $expbytes{$f}) {
-#             # Wrong size. Download.
-#             $status{$f}=3;
-#             next;
-#         }
-#         if (defined($indbytes{$f}) && ($size==$indbytes{$f})) {
-#             # File exists, right size, in the index. We trust that.
-#             if ($expsum{$f}==$indsum{$f}) {
-#                 $status{$f}=4; # ok
-#                 $indsize{$f}=$expsize{$f}; # We may as well fix that.
-#             }
-#         } else {
-#             # Index does not match or does not exist. Check.
-#             &check($f,4,3);
-#         }
-#     }
-# }
-# &ycheckpoint(sprintf("check:%05d/%05d",$count,$mc));
-# $dcount=0;
-# $rcount=0;
-# foreach $f (keys %status) {
-#     next if ($status{$f} == 4);
-#     do {$rcount++ if -e $f;next;} if ($status{$f} == 2);
-#     $dcount++;
-# }
-# $count=0;
-# &ycheckpoint(sprintf("erase:%05d/%05d",$count,($rcount+$dcount)));
-
-# foreach $f (keys %status) {
-#     next if ($status{$f} == 4);
-#     next unless -e "$f";
-#     $count++;
-#     &ycheckpoint(sprintf("erase:%05d/%05d",$count,($rcount+$dcount)));
-#     &removefile($f);
-# }
-
-# #####################
-
-# @failed=();
-# @hardfailed=();
-# $count=0;
-# $failed=0;
-# $hardfailed=0;
-# &ycheckpoint(sprintf("fetch:%05d/%05d",$count,$dcount));
-# foreach $f (keys %status) {
-#     next if ($status{$f} == 4);
-#     if (@ARGV && $status{$f}==2) {
-#         push @hardfailed,$f;
-#         &wcheckpoint("$f");
-#     }
-#     next if ($status{$f}==2);
-#     $count++;
-#     if ($status{$f}==8) {
-#         symlink $expbytes{$f},$f;
-#         $indsum{$f}=$zerosum;
-#         $indbytes{$f}=$expbytes{$f};
-#         $indsize{$f}=$expsize{$f};
-#         $status{$f}=4;
-#     }
-#     &ycheckpoint(sprintf("fetch:%05d/%05d",$count,$dcount));
-#     if ($status{$f} == 3) {
-#         &wcheckpoint("$f");
-#         &download($f);
-#         &check($f,4,5);
-#         # Status 5 for mismatch/missing after download
-#         if ($status{$f} == 5) {
-#             &removefile($f);
-#             # TODO should use inipath, HOMEDIR, etc.
-#             system "cp",$homepath."/images/blank".$expsize{$f}.".png","./$f";
-#             &nocheck($f,6,7);
-#             # Code 6 is generic image
-#             push @failed,$f if ($status{$f}==6);
-#             # Code 7 is missing requested image (hard).
-#             push @hardfailed,$f if ($status{$f}==7);
-#         }
-#     }
-# }
-# &checkpoint("store");
-# open INDEX,">$INDEX" or die "could not open $INDEX from $ENV{PWD}";
-# foreach $f (sort keys %indsum) {
-#     if (!defined($status{$f})) {
-#         $status{$f}=4;
-#     }
-#     print INDEX $indsum{$f}.
-#         ' '.$indsize{$f}.
-#         ' '.$indbytes{$f}.
-#         ' '.$f."\n" unless ($status{$f}==2);
-# }
-# close INDEX;
-
-# foreach (@failed) {
-#     &zcheckpoint("replaced:$_");
-# }
-# foreach (@hardfailed) {
-#     &zcheckpoint("error:$_");
-# }
-
-# if (!$ALL) {
-#     my $time=time();
-#     foreach (@ARGV) {
-#         if (-e $_) {
-#             utime $time,$time,$_;
-#         }
-#     }
-# }
+&main();
