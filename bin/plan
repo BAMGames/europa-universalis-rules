@@ -703,7 +703,7 @@ sub fingerprint {
   my ($f)=@_;
   my $hash='0';
   return '0' unless (-e $f);
-  return &fingerprintDir($f) if (-d $f);       # TODO: recursive version for directories
+  return &fingerprintDir($f) if (-d $f);
   open FILE,"$f" or return "$f:0";
   my $hashing = Digest::MD5->new;
   $hashing->addfile(*FILE);
@@ -1506,6 +1506,19 @@ I<ACTOR> and receives the various arguments as $1, $2, etc.
 
 =back
 
+=head1 BUGS
+
+The fingerprint of a directory (to avoid declaring gazillions of files,
+a rule may declare a directory as its output or input) is computed
+solely from the list of its files and their sizes (and recursively for
+directories inside directories). So, changing one byte in a file will
+not change the fingerprint of the directory and may so not trigger
+further actions. This is more or less a feature (one does not want to
+checksum several gigabytes of data in an input directory everytime).
+
+There is no automatic dependency on C<bin/plan> itself. Hopefully, the
+result of the build should not depend on the building tool.
+
 =head1 AUTHOR
 
 Copyright Jean-Christophe Dubacq 2013
@@ -1526,7 +1539,13 @@ C<sub main> has a lot of redundancy in some parts
 
 Variables may be useful. They should behave more or less like modes.
 
-In case of multiple modes, clean and distclean do not do what they should do.
+In case of multiple modes, clean and distclean do not do what they
+should do. 
+
+Modes should be declared in a fileC<plan/modes>.
+
+An array of allowed modes instead of a single mode should be done for
+rules.
 
 =cut
 
