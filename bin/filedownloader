@@ -20,8 +20,8 @@ my $indexed={};
 my $index_mtime={};
 my $index_sum={};
 my $manifest_sum={};
-my $baseUrl='file:///data/ro/';
-#my $baseUrl='http://old-lipn.univ-paris13.fr/~dubacq/europa/pions/';
+#my $baseUrl='file:///data/ro/';
+my $baseUrl='http://old-lipn.univ-paris13.fr/~dubacq/europa/pions/';
 my $specialprefix='FILEDOWNLOADER';
 my $tmpFiles={};
 my $count=0;
@@ -129,7 +129,7 @@ sub success {
     print STDERR $specialprefix.'done:'.$filename."\n";
   } else {
     $count++;
-    my $x=sprintf('count:download:%0*d',$maxcountnumber,$count).$maxcount;
+    my $x=sprintf('count:download:%0*d',$maxcountnumber,$count).'/'.$maxcount;
     print STDERR $specialprefix.$x;
   }
 }

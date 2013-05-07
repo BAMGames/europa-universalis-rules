@@ -3,7 +3,7 @@ set -e
 rm -f pions/manifest.txt
 bunzip2 -k pions/manifest.txt.bz2
 for i in "$@"; do
-    if [ "$1" = "fulldownload" ]; then
+    if [ "$1" = "full" ]; then
         echo "all" > pions/wanted.txt
     else
         cp pions/${i}.txt pions/wanted.txt
