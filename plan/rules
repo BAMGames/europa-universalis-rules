@@ -17,6 +17,26 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
+   "CHECKPDFTOPPM" : {
+      "actor" : "CHECKPDFTOPPM",
+      "class" : "Checking programs",
+      "in" : [],
+      "out" : [
+         ".tmp/proof-pdftoppm"
+      ],
+      "subclass" : "pdftoppm",
+      "type" : "simple"
+   },
+   "CHECKPNGCRUSH" : {
+      "actor" : "CHECKPNGCRUSH",
+      "class" : "Checking programs",
+      "in" : [],
+      "out" : [
+         ".tmp/proof-pngcrush"
+      ],
+      "subclass" : "pngcrush",
+      "type" : "simple"
+   },
    "CHECKFONTFORGE" : {
       "actor" : "CHECKFONTFORGE",
       "class" : "Checking programs",
@@ -156,7 +176,8 @@
       "class" : "Generating postscript fonts",
       "in" : [
          "fonts/$1.sfd",
-         ".tmp/proof-fontforge"
+         ".tmp/proof-fontforge",
+         "library/generatefont"
       ],
       "lazy" : 1,
       "out" : [
