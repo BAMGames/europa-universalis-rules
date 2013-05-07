@@ -641,8 +641,10 @@ sub execCommand {
         if (fileno($readhandle)==fileno($err)) {
           &errorCommand($line);
         } else {
-          chomp $line;
-          &out(1,'out',$line);
+          foreach my $linebit (split /\n/m,$line) {
+            chomp $linebit;
+            &out(1,'out',$linebit);
+          }
         }
       }
     }
