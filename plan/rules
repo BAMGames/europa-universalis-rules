@@ -203,7 +203,7 @@
          "pions/$1.depends.txt"
       ],
       "pattern" : "pions/(.*).eps",
-      "subclass" : "$1",
+      "subclass" : "compiling",
       "type" : "pattern"
    },
    "PIONSLIST" : {
@@ -252,19 +252,21 @@
       "type" : "simple"
    },
    "PIONSBITMAP_rebuild" : {
-      "actor" : "PIONSBITMAP",
+      "actor" : "PIONSBITMAPGEN",
       "lazy" : 1,
       "mode" : "rebuild",
       "arg" : [ "rebuild" ],
       "class" : "Rebuilding counters bitmap",
       "in" : [
-         "pions/pions-ops.pdf"
+         ".tmp/proof-pdftoppm",
+         ".tmp/proof-pngcrush"
       ],
+      "infile" : [ "plan/in/pionsbitmap.in" ],
       "out" : [
          "pions/bitmap",
          "pions/manifest.txt.bz2"
       ],
-      "subclass" : "fetching",
+      "subclass" : "rebuilding",
       "type" : "simple"
    },
    "SHADOW" : {

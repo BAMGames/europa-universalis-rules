@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+resol=800
+croplarge=498x498+307+218
+cropsmall=398x398+357+218
+xname=bitmap
+zoomlevel=8
+minzoomlevel=8
+
+mkdir -p pions/targets
+for file in $(cat plan/in/pionsbitmap.in); do
+    root=${file%-ops.pdf}
+    root=${root#pions/}
+    echo "${SPECIALPREFIX}subclass:$root" 1>&2
+    PPMDIR="pions/targets/$root"
+    if [ ! -d "${PPMDIR}" ]; then
+        mkdir -p "${PPMDIR}"
+        pdftoppm "${file}" -r $resol "${PPMDIR}/toto"
+    fi
+done
+if [ ! -f .tmp/debug-bitmapgen ]; then
+    rm -rf pions/targets
+fi
+exit 1

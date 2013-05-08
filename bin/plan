@@ -347,6 +347,10 @@ sub subclass {
 sub outDisplay {
   my $str=join('',@_);
   my $storepos=0;
+  if ($str =~ /^subclass:(.*)$/) {
+    &subclass($1);
+    return;
+  }
   if ($str =~ /^count:(.*):([0-9\/]+)$/) {
     $str="$1:$2";
     my $oldcountphase=$outContext->{'countphase'};
