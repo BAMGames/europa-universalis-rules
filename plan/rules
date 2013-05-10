@@ -17,6 +17,16 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
+   "CHECKCONVERT" : {
+      "actor" : "CHECKCONVERT",
+      "class" : "Checking programs",
+      "in" : [],
+      "out" : [
+         ".tmp/proof-convert"
+      ],
+      "subclass" : "convert",
+      "type" : "simple"
+   },
    "CHECKFONTFORGE" : {
       "actor" : "CHECKFONTFORGE",
       "class" : "Checking programs",
@@ -206,6 +216,23 @@
       "subclass" : "compiling",
       "type" : "pattern"
    },
+   "PIONSBITMAPSYNC" : {
+      "actor" : "BITMAPSYNC",
+      "arg" : [
+         "pions"
+      ],
+      "class" : "Rebuilding counters bitmap",
+      "in" : [
+         "pions/bitmap",
+         "pions/manifest.txt.bz2"
+      ],
+      "mode" : "rebuild",
+      "out" : [
+         ".tmp/pionslastsync"
+      ],
+      "subclass" : "syncing",
+      "type" : "simple"
+   },
    "PIONSBITMAP_default" : {
       "actor" : "PIONSBITMAP",
       "arg" : [
@@ -249,6 +276,7 @@
       ],
       "class" : "Rebuilding counters bitmap",
       "in" : [
+         ".tmp/proof-convert",
          ".tmp/proof-pdftoppm",
          ".tmp/proof-pngcrush"
       ],
@@ -262,21 +290,6 @@
          "pions/manifest.txt.bz2"
       ],
       "subclass" : "rebuilding",
-      "type" : "simple"
-   },
-   "PIONSBITMAPSYNC" : {
-      "actor" : "BITMAPSYNC",
-      "arg" : [ "pions" ],
-      "class" : "Rebuilding counters bitmap",
-      "in" : [
-         "pions/bitmap",
-         "pions/manifest.txt.bz2"
-      ],
-      "mode" : "rebuild",
-      "out" : [
-         ".tmp/pionslastsync"
-      ],
-      "subclass" : "syncing",
       "type" : "simple"
    },
    "PIONSLIST" : {
