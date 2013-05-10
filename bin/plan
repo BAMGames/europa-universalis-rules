@@ -53,7 +53,7 @@ use Data::Dumper;
 use URI::Escape;
 use Digest::MD5;
 use Symbol 'gensym';
-use File::Path qw(make_path);
+use File::Path qw(make_path remove_tree);
 use Cwd;
 use Term::ANSIColor;
 # command execution
@@ -70,6 +70,7 @@ my $axiomdir='plan/axioms';
 my $rulefile='plan/rules';
 my $actordir='plan/actors';
 my $targetdir='plan/targets';
+my $modesfile='plan/modes';
 
 # Convenience
 
@@ -161,10 +162,15 @@ sub main {
     &explainPlan($unbuildable,$narrowPlan);
     &finish(0);
   } elsif ($action eq 'ignore') {
-    &preparePlan($realaxioms);
     my $generable={};
-    foreach my $k (keys %{$planContext->{'generated'}}) {
-      $generable->{$k}=1 unless $k =~ '^.tmp';
+    foreach my $mode (sort keys %{$planContext->{'availableModes'}}) {
+      $planContext->{'mode'} = {};
+      $planContext->{'mode'}->{$mode}=1;
+      &preparePlan($realaxioms);
+      foreach my $k (keys %{$planContext->{'generated'}},
+                     keys %{$planContext->{'junkable'}}) {
+        $generable->{$k}=1 unless $k =~ '^.tmp';
+      }
     }
     $generable=&subHash($generable,$axioms);
     $generable->{'.tmp'} = 1;
@@ -442,6 +448,8 @@ sub parseARGV {
   my $action='goal';
   my $targets=[];
   $planContext->{'mode'}={};
+  $planContext->{'availableModes'}=&readFileList($modesfile,1);
+  $planContext->{'availableModes'}->{'default'}=1;
   my @target=&readDir('plan/targets');
   my %target=('all' => 1);
   foreach my $t (@target) {
@@ -462,7 +470,7 @@ sub parseARGV {
       my $cat=$ARGV[$x+1];
       my $level=$ARGV[$x+2];
       $x+=2;
-      &finish(1,"Wrong option: --verbosity must be followed by one of ".join(' or ',keys %{$outContext->{'verbosity'}})) unless defined($outContext->{'verbosity'}->{$cat});
+      &finish(1,"Wrong option: --verbosity must be followed by one of \"".join('" or "',sort keys %{$outContext->{'verbosity'}}).'"') unless defined($outContext->{'verbosity'}->{$cat});
       &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
       $outContext->{'verbosity'}->{$cat}=$level;
     } elsif ($arg eq '--nroff') {
@@ -470,7 +478,7 @@ sub parseARGV {
     } elsif ($arg eq '--mode') {
       my $cat=$ARGV[$x+1];
       $x++;
-      &finish(1,"Wrong option: --mode must be followed by a string of letters and _ only") unless $cat=~ /^[a-zA-Z_]+$/;
+      &finish(1,"Wrong option: --mode must be followed by one of \"".join('" or "',sort keys %{$planContext->{'availableModes'}}).'"') unless defined($planContext->{'availableModes'}->{$cat});
       $planContext->{'mode'}->{$cat}=1;
     } elsif ($arg eq '--hard') {
       $lazy=0;
@@ -833,7 +841,11 @@ sub writeModes {
 
 sub forceUnlink {
   my $_=shift @_;
-  unlink $_;                    # TODO: this may be a directory
+  if (-d $_) {
+    remove_tree($_);
+  } elsif (-e $_) {
+    unlink $_;
+  }
 }
 sub removeGenerated {
   my ($cacheHash,$path,$axioms)=@_;
@@ -846,7 +858,7 @@ sub removeGenerated {
   # If $axioms not defined, just test presence
   # Else, unlink all files not in $axioms hash
   foreach my $key (keys %{$cacheHash->{$path}}) {
-    if (-f $key) {
+    if (-e $key) {
       if (defined($axioms) and !exists($axioms->{$key})) {
         # clean or distclean
         $count++;
@@ -859,7 +871,12 @@ sub removeGenerated {
   }
   &writeCache($cacheHash,$path);
   if (defined($axioms)) {
-    &out(3,'display',"Removed $count old files");
+    # -1 because .tmp/modes is always created at the start of the program
+    if ($count>1) {
+      &out(3,'display',"removed ".($count-1)." old files");
+    } else {
+      &out(3,'display',"all files already removed");
+    }
   }
 }
 
@@ -884,6 +901,8 @@ sub readRules {
   my $rules=decode_json($json);
   foreach my $rulename (keys %$rules) {
     my $rule=$rules->{$rulename};
+    $rule->{'out'}=[] unless (defined($rule->{'out'}));
+    $rule->{'junk'}=[] unless (defined($rule->{'junk'}));
     $rule->{'in'}=[] unless (defined($rule->{'in'}));
     push $rule->{'in'},$actordir.'/'.$rule->{'actor'};
     $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
@@ -910,7 +929,7 @@ sub readFileList {
     }
     close FILE;
   } else {
-    &out(1,'err',"Could not open $path") if defined($mandatory); 
+    &out(1,'err',"Could not open $path") if defined($mandatory);
   }
   return $hash;
 }
@@ -965,6 +984,9 @@ sub recordGeneration {
       next;
     }
   }
+  foreach my $outfile (keys %{$rule->{'junk'}}) {
+    $planContext->{'junkable'}->{$outfile}=1;
+  }
 }
 
 sub recordAxioms {
@@ -1012,6 +1034,7 @@ sub cleanRule {
   my $list=scalar @list;
   my $in={};
   my $out={};
+  my $junk={};
   my $class=$rule->{'class'};
   if ($class =~ /\$/) {
     foreach my $counter (1..$list) {
@@ -1043,6 +1066,12 @@ sub cleanRule {
     }
     &addHashInPlace($in,@$hash);
   }
+  foreach my $file (@{$rule->{'junk'}}) {
+    foreach my $counter (1..$list) {
+      $file =~ s/\$$counter/$list[$counter-1]/ge;
+    }
+    $junk->{$file}=1;
+  }
   foreach my $file (@{$rule->{'out'}}) {
     foreach my $counter (1..$list) {
       $file =~ s/\$$counter/$list[$counter-1]/ge;
@@ -1063,6 +1092,7 @@ sub cleanRule {
   # Do something
   $rule->{'in'}=$in;
   $rule->{'out'}=$out;
+  $rule->{'junk'}=$junk;
   $rule->{'wanted'}=&clone($in);
   return $rule;
 }
@@ -1146,6 +1176,7 @@ sub preparePlan {
     $axioms=&subHash($axioms,$lazy);
   }
   $planContext->{'generated'}={};
+  $planContext->{'junkable'}={};
   $planContext->{'plan'}={};
   $planContext->{'completeRules'}={};
   $planContext->{'simpleRules'}={};
@@ -1303,20 +1334,24 @@ sub firstCompound {
   my $newargs=[];
   my $newins=[];
   my $newouts=[];
+  my $newjunks=[];
   my $origin={};
   foreach my $key (@$candidates) {
     my $rule=$planList->{$key};
     push $newargs,@{$rule->{'arg'}};
     push $newins,$rule->{'in'};
     push $newouts,$rule->{'out'};
+    push $newjunks,$rule->{'junk'};
     $origin->{$key}=1;
   }
   my $newin=addHash(@$newins);
   my $newout=addHash(@$newouts);
+  my $newjunk=addHash(@$newjunks);
   $compoundRule->{'arg'}=$newargs;
   $compoundRule->{'origin'}=$origin;
   $compoundRule->{'in'}=$newin;
   $compoundRule->{'out'}=$newout;
+  $compoundRule->{'junk'}=$newjunk;
   return ($compoundRule,$end);
 }
 
@@ -1348,6 +1383,7 @@ sub attempt {
   # steps of the rule, so let's suppose they were.
   if ($rule ne 'AXIOM') {
     &addHashInPlace($planContext->{'junk'},$rule->{'out'});
+    &addHashInPlace($planContext->{'junk'},$rule->{'junk'});
     &writeCache($planContext,'junk');
   }
   my $status=&execCommand(@execLine);
@@ -1465,6 +1501,19 @@ buildable files.
 
 If no goals are given, then the target I<finals> will be used by default
 (even if it is not defined).
+
+=head1 JUNK
+
+While executing a rule, some temporary files may be created and cleaned
+up. However, premature termination of the rule may leave behind these
+temporary files. Even if it is good to automatically clean up these
+files in the process of the rules, diagnostic may require leaving these
+behind for examination. To be able to clean these by invoking the clean
+functionality, and to ignore these by invoking the ignore functionality,
+one may declare C<junk> files. The junk files are not checked for
+anything (they may even be axioms), but they will be automatically added
+to the list of files generated while running a rule, and will be ignored
+(unless some other reason, such as being an axiom, prevents it).
 
 =head1 MODES
 
