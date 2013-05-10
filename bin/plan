@@ -256,7 +256,7 @@ The various categories are :
 
 =over
 
-=item * B<init> initialization information (not usefule)
+=item * B<init> initialization information (not useful)
 
 =item * B<plan> informations about the building plan (can be very verbose)
 
@@ -1586,6 +1586,8 @@ program, in case anyone had doubts.
 
 =head1 TODO
 
+Improve documentation.
+
 Graph output for how is suboptimal (read unusable).
 
 Action C<why> is not implemented yet.
@@ -1594,13 +1596,43 @@ C<sub main> has a lot of redundancy in some parts
 
 Variables may be useful. They should behave more or less like modes.
 
-In case of multiple modes, clean and distclean do not do what they
-should do. 
-
-Modes should be declared in a fileC<plan/modes>.
-
 An array of allowed modes instead of a single mode should be done for
 rules.
+
+C<--hardfile X> to do C<--hard> only for one file.
+
+What happens if a target is multiply defined? And same in hard mode?
+
+=head2 TODO SMART TARGETS
+
+A target file is now a sequence of lines beginning with one of the
+following chars: C<->, C<+>, space, C<@>. If none of the chars is used,
+the line is considered to have one supplementary space in the beginning.
+
+C<+> or space add a file to the targets. C<-> removes it from the list
+of targets.
+
+C<@> introduces a sub-command: either another target file
+
+=over
+
+=item * B<@target(I<targetname>)> include another target file.
+
+=item * B<@hardfile(I<filename>)> as C<--hardfile I<filename>>
+
+=item * B<@hard()> as C<--hard>
+
+=item * B<@all()> as if target all had been used at this point
+
+=item * B<@mode(modename)> as C<--mode modename>
+
+=item * B<@removetarget(I<targetname>)> exclude another target file.
+
+=back
+
+This remains to be seen how everything like this could work. Maybe
+decomposing parseARGV function in two parts, one rewriting @ARGV to a
+target-file-like syntax, and another one instantiating it. Not sure.
 
 =cut
 
