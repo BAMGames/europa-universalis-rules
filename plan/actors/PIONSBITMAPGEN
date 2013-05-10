@@ -79,11 +79,11 @@ for file in $(cat plan/in/pionsbitmap.in); do
             if [ "$double" = "S" ]; then
                 getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name" "$size"
             else # double != S
-                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name-recto" "$size"
+                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name_recto" "$size"
                 counter=$((counter+1))
                 xcounter=$(printf $counterfmt $counter)
                 echo 1>&2 "${SPECIALPREFIX}count:cropping:$xcounter/$filesfound"
-                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name-verso" "$size"
+                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name_verso" "$size"
             fi
         done
     fi

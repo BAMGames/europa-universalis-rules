@@ -27,7 +27,7 @@ close DOC;
 my $release='';
 foreach my $releaseline (@linesdoc) {
   next unless $releaseline =~ /^release=(.*)/;
-  chomp;
+  chomp $releaseline;
   $release=$1.'/';
 }
 $baseUrl.=$release;
