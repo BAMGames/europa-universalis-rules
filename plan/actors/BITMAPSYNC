@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+if [ "$(whoami)" != "jcdubacq" ]; then
+    echo 1>&2 "You are not allowed to do that. Please contact jcdubacq"
+    exit 1
+fi
+if [ -z "$1" ]; then
+    echo 1>&2 "You must tell me pions or carte. Please contact jcdubacq"
+    exit 1
+fi
+if [ -n "$(bin/displaybranch)" ]; then
+    echo 1>&2 "You are publishing a non-master branch; sleeping 5s, hit ^C if you are unsure"
+    sleep 5
+fi
+RELEASE=$(grep ^release= doc/release.txt|cut -f2- -d=|xargs printf %s)
+echo 1>&2 "${SPECIALPREFIX}releasing ${RELEASE} of remote \"${1}\""
+ssh ebene.lipn mkdir -p public_html/europa/$1/${RELEASE}
+rsync -a --delete ${1}/bitmap/. ebene.lipn:public_html/europa/${1}/${RELEASE}/.
+echo 1>&2 "${SPECIALPREFIX}deduplication of remote \"${1}\""
+scp ${1}/manifest.txt.bz2 ebene.lipn:public_html/europa/${1}/manifest.txt.bz2
+scp ${1}/minimal.txt ebene.lipn:public_html/europa/${1}/minimal.txt
+ssh ebene.lipn hardlink public_html/europa/$1 # this is long
+echo "1" > .tmp/${1}-lastsync

@@ -20,8 +20,18 @@ my $indexed={};
 my $index_mtime={};
 my $index_sum={};
 my $manifest_sum={};
-#my $baseUrl='file:///data/ro/';
 my $baseUrl='http://old-lipn.univ-paris13.fr/~dubacq/europa/pions/';
+open DOC,"doc/release.txt" or die "No release document";
+my @linesdoc=<DOC>;
+close DOC;
+my $release='';
+foreach my $releaseline (@linesdoc) {
+  next unless $releaseline =~ /^release=(.*)/;
+  chomp;
+  $release=$1.'/';
+}
+$baseUrl.=$release;
+#my $baseUrl='file:///data/ro/';
 my $specialprefix='FILEDOWNLOADER';
 my $tmpFiles={};
 my $count=0;

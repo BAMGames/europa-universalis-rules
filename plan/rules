@@ -264,6 +264,21 @@
       "subclass" : "rebuilding",
       "type" : "simple"
    },
+   "PIONSBITMAPSYNC" : {
+      "actor" : "BITMAPSYNC",
+      "arg" : [ "pions" ],
+      "class" : "Rebuilding counters bitmap",
+      "in" : [
+         "pions/bitmap",
+         "pions/manifest.txt.bz2"
+      ],
+      "mode" : "rebuild",
+      "out" : [
+         ".tmp/pionslastsync"
+      ],
+      "subclass" : "syncing",
+      "type" : "simple"
+   },
    "PIONSLIST" : {
       "actor" : "PIONSLIST",
       "class" : "Building counters",

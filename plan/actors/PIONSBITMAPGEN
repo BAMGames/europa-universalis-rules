@@ -6,20 +6,196 @@ croplarge=498x498+307+218
 cropsmall=398x398+357+218
 xname=bitmap
 zoomlevel=8
-minzoomlevel=8
+minzoomlevel=3
 
+getCounter() {
+    if [ -f "$2/$3.png" ]; then
+        return
+    fi
+    echo "$4 $3" >> "${MANIFESTDIR}/list.txt"
+    if [ "$size" = "L" ]; then
+	convert -crop $croplarge -bordercolor black -border 1 "$1" +repage "$2/$3.png"
+    else
+	convert -crop $cropsmall -bordercolor black -border 1 "$1" +repage "$2/$3.png"
+    fi
+    if [ "$3" != "${3##Manufacture}" ]; then
+	cp $2/$3.png $2/$3.old.png
+	convert $2/$3.old.png pions/masqueMNU$resol.png -compose CopyOpacity -composite $2/$3.png
+	rm $2/$3.old.png
+    fi
+}
+
+if [ ! -f .tmp/debug-bitmapgen ]; then
+    rm -rf pions/targets
+fi
 mkdir -p pions/targets
+rm -rf pions/targets/bitmap
+rm -rf pions/targets/manifest.txt
 for file in $(cat plan/in/pionsbitmap.in); do
     root=${file%-ops.pdf}
     root=${root#pions/}
     echo "${SPECIALPREFIX}subclass:$root" 1>&2
     PPMDIR="pions/targets/$root"
+    CROPDIR="pions/targets/$root-crop"
+    PNGDIR="pions/targets/$root-png"
+    MANIFESTDIR="pions/targets/$root-manifest"
+    COUNTERFILE="pions/$root-ops.counters.txt"
     if [ ! -d "${PPMDIR}" ]; then
         mkdir -p "${PPMDIR}"
+        echo 1>&2 "${SPECIALPREFIX}bitmapping"
         pdftoppm "${file}" -r $resol "${PPMDIR}/toto"
     fi
+    # Basic checks
+    filesfound=$(ls $PPMDIR/*.ppm|wc -l)
+    doubleside=$(grep '^.DS ' "${COUNTERFILE}"|wc -l)
+    singleside=$(grep '^.SS ' "${COUNTERFILE}"|wc -l)
+    difference=$((filesfound-2*doubleside-singleside))
+    if [ "$difference" != 0 ]; then
+        printf 1>&2 "In %s: %s files found, but\n%s double sided counters and %s single sided counters expected" "$PPMDIR" $filesfound $doubleside $singleside
+        exit 1
+    fi
+    if [ ! -d "${CROPDIR}" ]||[ ! -f "${MANIFESTDIR}"/list.txt ]; then
+        counter=0
+        if [ $filesfound -lt 10 ]; then
+            counterfmt=%01d
+        elif [ $filesfound -lt 100 ]; then
+            counterfmt=%02d
+        elif [ $filesfound -lt 1000 ]; then
+            counterfmt=%03d
+        else
+            counterfmt=%04d
+        fi
+        mkdir -p "${CROPDIR}/counter_${zoomlevel}" "${MANIFESTDIR}"
+        cut -f1-2 -d\# < ${COUNTERFILE} \
+            |while read a; do
+            counter=$((counter+1))
+            xcounter=$(printf $counterfmt $counter)
+            chunk=${a%#*}
+            name=${a#*#}
+            size=${chunk%???}
+            double=${chunk#?}
+            double=${double%??}
+            echo 1>&2 "${SPECIALPREFIX}count:cropping:$counter/$filesfound"
+            if [ "$double" = "S" ]; then
+                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name" "$size"
+            else # double != S
+                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name-recto" "$size"
+                counter=$((counter+1))
+                xcounter=$(printf $counterfmt $counter)
+                echo 1>&2 "${SPECIALPREFIX}count:cropping:$xcounter/$filesfound"
+                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name-verso" "$size"
+            fi
+        done
+    fi
+    realcounters=$(wc -l < ${MANIFESTDIR}/list.txt)
+    if [ $realcounters -lt 10 ]; then
+        counterfmt=%01d
+    elif [ $realcounters -lt 100 ]; then
+        counterfmt=%02d
+    elif [ $realcounters -lt 1000 ]; then
+        counterfmt=%03d
+    else
+        counterfmt=%04d
+    fi
+    zoom=$((zoomlevel-1))
+    while [ $zoom -ge $minzoomlevel ]; do
+        if [ ! -d "${CROPDIR}/counter_${zoom}" ]; then
+            if [ $zoom = 7 ]; then
+                smallsize=200;largesize=250
+            elif [ $zoom = 6 ]; then
+                smallsize=100;largesize=125
+            elif [ $zoom = 5 ]; then
+                smallsize=50;largesize=63
+            elif [ $zoom = 4 ]; then
+                smallsize=25;largesize=32
+            elif [ $zoom = 3 ]; then
+                smallsize=13;largesize=16
+            elif [ $zoom = 2 ]; then
+                smallsize=7;largesize=8
+            fi
+            counter=0
+            mkdir -p "${CROPDIR}/counter_${zoom}"
+            while read a ; do
+                counter=$((counter+1))
+                xcounter=$(printf $counterfmt $counter)
+                name=${a#??}
+                size=${a%% *}
+                if [ "$size" = "S" ]; then
+                    targetsize=$smallsize
+                else
+                    targetsize=$largesize
+                fi
+                echo 1>&2 "${SPECIALPREFIX}count:size $zoom:$xcounter/$realcounters"
+                convert -resize "${targetsize}x${targetsize}" "${CROPDIR}/counter_${zoomlevel}/${name}.png" "${CROPDIR}/counter_${zoom}/${name}.png"
+            done < ${MANIFESTDIR}/list.txt
+        fi
+        zoom=$((zoom-1))
+    done
+    zoom=$((zoomlevel))
+    while [ $zoom -ge $minzoomlevel ]; do
+        if [ ! -d "${PNGDIR}/counter_${zoom}" ]; then
+            echo 1>&2 "${SPECIALPREFIX}crushing $zoom"
+            mkdir -p "${PNGDIR}/counter_${zoom}"
+            find  "${CROPDIR}/counter_${zoom}" -name "*.png" | xargs  pngcrush -rem bKGD -rem tEXt -q -force -d "${PNGDIR}/counter_${zoom}"
+        fi
+        zoom=$((zoom-1))
+    done
+    if [ ! -f "${MANIFESTDIR}/manifest.txt" ]; then
+        rm -f "${MANIFESTDIR}/manifest.txt"
+        zoom=$((zoomlevel))
+        while [ $zoom -ge $minzoomlevel ]; do
+            echo 1>&2 "${SPECIALPREFIX}manifest $zoom"
+            if [ $zoom = 8 ]; then
+                smallsize=M;largesize=A
+            elif [ $zoom = 7 ]; then
+                smallsize=N;largesize=B
+            elif [ $zoom = 6 ]; then
+                smallsize=O;largesize=C
+            elif [ $zoom = 5 ]; then
+                smallsize=P;largesize=D
+            elif [ $zoom = 4 ]; then
+                smallsize=Q;largesize=E
+            elif [ $zoom = 3 ]; then
+                smallsize=R;largesize=F
+            elif [ $zoom = 2 ]; then
+                smallsize=S;largesize=G
+            fi
+            while read a ; do
+                name=${a#??}
+                size=${a%% *}
+                if [ "$size" = "S" ]; then
+                    targetsize=$smallsize
+                else
+                    targetsize=$largesize
+                fi
+                bytes=$(stat -c %s ${PNGDIR}/counter_${zoom}/${name}.png)
+                sum=$(md5sum ${PNGDIR}/counter_${zoom}/${name}.png|cut -c1-32)
+                echo "$sum $targetsize $bytes counter_${zoom}/${name}.png" >> "${MANIFESTDIR}/manifest.txt"
+            done < "${MANIFESTDIR}/list.txt"
+            zoom=$((zoom-1))
+        done
+    fi
+    BITMAPDIR=pions/targets/bitmap
+    mkdir -p "${BITMAPDIR}"
+    zoom=$((zoomlevel))
+    while [ $zoom -ge $minzoomlevel ]; do
+        mkdir -p "${BITMAPDIR}/counter_${zoom}"
+        echo 1>&2 "${SPECIALPREFIX}merging $zoom"
+        find  "${PNGDIR}/counter_${zoom}" -name "*.png" -print0 | xargs -0 cp -t "${BITMAPDIR}/counter_${zoom}"
+        zoom=$((zoom-1))
+    done
+    echo 1>&2 "${SPECIALPREFIX}merging manifest"
+    touch pions/targets/manifest.txt
+    cp pions/targets/manifest.txt pions/targets/manifest.txt.old
+    cat pions/targets/manifest.txt.old "${MANIFESTDIR}/manifest.txt"|LC_ALL=C sort -u -k 4 > pions/targets/manifest.txt
+    rm -f pions/targets/manifest.txt.old
 done
+echo 1>&2 "${SPECIALPREFIX}merging"
+bzip2 -9 -k pions/targets/manifest.txt
+mv pions/targets/manifest.txt.bz2 pions/manifest.txt.bz2
+rm -rf pions/bitmap
+mv pions/targets/bitmap pions/bitmap
 if [ ! -f .tmp/debug-bitmapgen ]; then
     rm -rf pions/targets
 fi
-exit 1
+exit 0
