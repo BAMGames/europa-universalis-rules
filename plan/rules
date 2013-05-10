@@ -17,26 +17,6 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
-   "CHECKPDFTOPPM" : {
-      "actor" : "CHECKPDFTOPPM",
-      "class" : "Checking programs",
-      "in" : [],
-      "out" : [
-         ".tmp/proof-pdftoppm"
-      ],
-      "subclass" : "pdftoppm",
-      "type" : "simple"
-   },
-   "CHECKPNGCRUSH" : {
-      "actor" : "CHECKPNGCRUSH",
-      "class" : "Checking programs",
-      "in" : [],
-      "out" : [
-         ".tmp/proof-pngcrush"
-      ],
-      "subclass" : "pngcrush",
-      "type" : "simple"
-   },
    "CHECKFONTFORGE" : {
       "actor" : "CHECKFONTFORGE",
       "class" : "Checking programs",
@@ -55,6 +35,26 @@
          ".tmp/proof-gimp"
       ],
       "subclass" : "gimp",
+      "type" : "simple"
+   },
+   "CHECKPDFTOPPM" : {
+      "actor" : "CHECKPDFTOPPM",
+      "class" : "Checking programs",
+      "in" : [],
+      "out" : [
+         ".tmp/proof-pdftoppm"
+      ],
+      "subclass" : "pdftoppm",
+      "type" : "simple"
+   },
+   "CHECKPNGCRUSH" : {
+      "actor" : "CHECKPNGCRUSH",
+      "class" : "Checking programs",
+      "in" : [],
+      "out" : [
+         ".tmp/proof-pngcrush"
+      ],
+      "subclass" : "pngcrush",
       "type" : "simple"
    },
    "CHECKTEX" : {
@@ -93,6 +93,7 @@
    },
    "COUNTERTEMPLATEOPS" : {
       "actor" : "COUNTERTEMPLATEOPS",
+      "argument" : "$1",
       "class" : "Counters templates",
       "in" : [
          "bin/extract",
@@ -101,10 +102,9 @@
       "out" : [
          "pions/$1-ops.eps"
       ],
-      "argument" : "$1",
-      "type" : "pattern",
+      "pattern" : "pions/(.*)_c.txt",
       "subclass" : "one-per-sheet",
-      "pattern" : "pions/(.*)_c.txt"
+      "type" : "pattern"
    },
    "FIGURESHADOW" : {
       "actor" : "FIGURESHADOW",
@@ -206,29 +206,18 @@
       "subclass" : "compiling",
       "type" : "pattern"
    },
-   "PIONSLIST" : {
-      "actor" : "PIONSLIST",
-      "class" : "Building counters",
-      "lazy" : 1,
-      "in" : [
-         "pions/pions-ops.counters.txt"
-      ],
-      "out" : [
-         "pions/counters.txt"
-      ],
-      "subclass" : "counters list",
-      "type" : "simple"
-   },
    "PIONSBITMAP_default" : {
       "actor" : "PIONSBITMAP",
-      "arg" : [ "minimal" ],
-      "mode" : "default",
+      "arg" : [
+         "minimal"
+      ],
       "class" : "Downloading counters bitmap",
       "in" : [
          "pions/minimal.txt",
          "pions/manifest.txt.bz2",
          "bin/filedownloader"
       ],
+      "mode" : "default",
       "out" : [
          "pions/bitmap"
       ],
@@ -237,14 +226,16 @@
    },
    "PIONSBITMAP_fulldownload" : {
       "actor" : "PIONSBITMAP",
-      "arg" : [ "full" ],
-      "mode" : "fulldownload",
+      "arg" : [
+         "full"
+      ],
       "class" : "Downloading counters bitmap",
       "class_rebuild" : "Rebuilding counters bitmap",
       "in" : [
          "pions/manifest.txt.bz2",
          "bin/filedownloader"
       ],
+      "mode" : "fulldownload",
       "out" : [
          "pions/bitmap"
       ],
@@ -253,20 +244,37 @@
    },
    "PIONSBITMAP_rebuild" : {
       "actor" : "PIONSBITMAPGEN",
-      "lazy" : 1,
-      "mode" : "rebuild",
-      "arg" : [ "rebuild" ],
+      "arg" : [
+         "rebuild"
+      ],
       "class" : "Rebuilding counters bitmap",
       "in" : [
          ".tmp/proof-pdftoppm",
          ".tmp/proof-pngcrush"
       ],
-      "infile" : [ "plan/in/pionsbitmap.in" ],
+      "infile" : [
+         "plan/in/pionsbitmap.in"
+      ],
+      "lazy" : 1,
+      "mode" : "rebuild",
       "out" : [
          "pions/bitmap",
          "pions/manifest.txt.bz2"
       ],
       "subclass" : "rebuilding",
+      "type" : "simple"
+   },
+   "PIONSLIST" : {
+      "actor" : "PIONSLIST",
+      "class" : "Building counters",
+      "in" : [
+         "pions/pions-ops.counters.txt"
+      ],
+      "lazy" : 1,
+      "out" : [
+         "pions/counters.txt"
+      ],
+      "subclass" : "counters list",
       "type" : "simple"
    },
    "SHADOW" : {
