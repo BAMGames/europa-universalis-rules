@@ -17,6 +17,22 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
+   "CHAPTERHEADS" : {
+      "actor" : "CHAPTERHEADS",
+      "argument" : "$1",
+      "class" : "Building chapter heads",
+      "in" : [
+         "figures/$1.xcf",
+         ".tmp/proof-gimp",
+         "bin/gimpexec",
+         "library/xcftojpg.scm"
+      ],
+      "out" : [
+         "figures/$1.jpg"
+      ],
+      "pattern" : "figures/(.*).xcf",
+      "type" : "pattern"
+   },
    "CHECKCONVERT" : {
       "actor" : "CHECKCONVERT",
       "class" : "Checking programs",

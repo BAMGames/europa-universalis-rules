@@ -1,6 +1,7 @@
-(define (xcftojpg input output)
+(define (xcftojpg arg)
   (let* (
-         (fn (string-append output ".jpg"))
+         (input (string-append "figures/" arg))
+         (fn (string-append input ".jpg"))
          (fx (string-append input ".xcf"))
          (Ifx (car (gimp-file-load 1 fx fx)))
          (Ifl (car (gimp-image-flatten Ifx)))
