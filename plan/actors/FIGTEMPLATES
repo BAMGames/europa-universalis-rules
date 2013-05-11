@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+rm -f plan/out/figureseps.out
+while read a; do
+    name=${a%%:*}
+    command=${a##*:}
+    z=${a#*:}
+    xy=${z%:*}
+    if [ "$name" != "$a" ]; then
+        echo "figures/${name}.eps" >> plan/out/figureseps.out
+        DEST="figures/${name}.eps"
+ 	echo '%!PS' > "${DEST}"
+        echo 'BOOTFILE (r) file run'>> "${DEST}"
+        echo '/compress true def/translation true def' >> "${DEST}"
+        echo "/outputoutlines false def $xy /pageheight exch def /pagewidth exch def" >> "${DEST}"
+        echo 'HOMEDIR(/library/pdf_library.ps)! include' >> "${DEST}"
+        echo 'HOMEDIR(/library/xobjects.ps)! include' >> "${DEST}"
+        echo '<< /Title (('"${name}"')) >> infochunk'>>"${DEST}"
+        echo '/beginpagehook{} def begindocument beginpage' >> "${DEST}"
+        echo "($${a##*:}) xobject" >> "${DEST}"
+        echo 'endpage enddocument quit' >> "${DEST}"
+    fi
+done < figures/definitions.txt
