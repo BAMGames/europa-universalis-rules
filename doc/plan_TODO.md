@@ -6,12 +6,13 @@ A makefile replacement
  * fonts : done
  * shadow : done
  * pions : done
- * figures: shadow2png and chapter heads done, micropdf todo
+ * figures: done
  * carte, rotw
  * rules
+ * records
  * web
 
-# Introduce trace mode
+# Introduce trace action
 
 Will follow process with strace and point out read, written and junk
 (both read and written) files that are accessed below the root of the
@@ -19,17 +20,26 @@ directory.
 
 => NOT SURE
 
-# Introduce easytrace mode
+# Introduce easytrace action
 
 Will warn about 'in' missing or in excess, and 'out' missing or in
-excess, by snapping the whole 
+excess, by storing the mtime for all files and telling what was
+modified. Out files will modify the mtime. For in files, it is a bit
+more difficult. One possibility is to launch in a separate tree and see
+if this fails (but this is not failproof : consider cat * > result as a
+rule). The best would be the full trace action outlined above.
 
-# Introduce args for 'ignore'
-generate .gitignore in each directory. All buildable files are
-ignored, unless a lazy axiom.
+# Do --how and --why actions
 
-=> NOT SURE
-
-# Do --how and --why modes
-These modes generate a graph explaining what is produced from one file and
+These actions generate a graph explaining what is produced from one file and
 what is necessary to build a file.
+
+# Introduce variables
+
+Like modes, variables modify the actions, but opposite to them, not the plan.
+Dependency on .tmp/vars should suffice.
+
+# Introduce smart targets
+
+See inside man pages. Smart targets can add files, remove files, add
+mode, set hardrule.
