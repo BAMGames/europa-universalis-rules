@@ -1,14 +1,2 @@
 #!/bin/sh
-set -e
-fail() {
-    echo "${SPECIALPREFIX}failed:$1" 1>&2
-    exit 1
-}
-for i in "$@"; do
-    mkdir -p figures/targets
-    rm -f figures/${i}.depends.txt
-    gs -dEPSCrop -r20x20 -sDEVICE=ppm -SOutputFile=/dev/null -DBATCH -DNOPAUSE -q -SPREFIX="${SPECIALPREFIX}" -SHOMEDIR=. -SCURRENTDIR=./figures -SBOOTFILE=./library/bootstrap.ps  -SDEPENDS=figures/${i}.depends.txt -SLISTS=figures/${i}.counters.txt -sOutput=figures/${i}.pdf -DPDFOUTPUT figures/${i}.eps || fail "${i}"
-    echo "${SPECIALPREFIX}done:${i}" 1>&2
-    rm -rf figures/targets
-    grep ^[+*] figures/${i}.depends.txt |cut -c4-|grep -v ^figures/targets| LC_ALL=C sort > plan/in/${i}pdf.in
-done
+exec bin/gsexec figures "$@"

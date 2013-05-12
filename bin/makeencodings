@@ -1145,7 +1145,7 @@ sub printmetrics {
     }
     print "](Font${stem}Widths${encodingname})futureobj";
   }
-  print '(/Filename\()FONTDIR(/'.$stem.'.pfb\)/Filter/ASCII85Decode#DICT#)!'.
+  print '(/Filename\()FONTDIR('.$stem.'.pfb\)/Filter/ASCII85Decode#DICT#)!'.
     "\n!(Font${stem}Program)futureobj\n";
   print "<</Type/FontDescriptor/FontName/$stem/Flags\n4/FontBBox[".
     $header{'FontBBox'}."]/ItalicAngle ".$header{'ItalicAngle'}.

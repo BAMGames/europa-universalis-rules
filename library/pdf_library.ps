@@ -1,14 +1,15 @@
-/! { 2 copy length exch length exch 1 index add string dup 0 6 -1
-    roll putinterval dup 4 2 roll exch putinterval} bind def
+% This library allows the generation of a PDF file with a simple API
+
 %default values for pdfgen
-/defaultvalue{1 index where {pop pop pop}{def}ifelse}def
+/defaultvalue{1 index where {pop pop pop}{def}ifelse}bind def
 /translation true defaultvalue
 /compress true defaultvalue
 /comments false defaultvalue
 /outputoutlines true defaultvalue
 /loglevel 1 defaultvalue
 /globalscale 1 defaultvalue
-/Output (blah.pdf) defaultvalue
+/Output TARGET (.pdf)! defaultvalue
+/BASEDIR [ TARGET { (/) search not {exit}if exch 3 -1 roll } loop pop ]!! def
 
 /push { dup where {}{(Weirderror in push) print weirderror}ifelse exch [ 1 index load aload pop counttomark 4 add -1 roll ] put } def
 /dictdef { begin def end } def
@@ -28,8 +29,8 @@
 /totalpages 0 def
 /page 0 def
 /deletedfiles [] def
-/targetname { CURRENTDIR(/targets/)! exch !} def
-/target { CURRENTDIR(/targets/)! exch ! dup /deletedfiles push writefile} def
+/targetname { BASEDIR(targets/)! exch !} def
+/target { BASEDIR(targets/)! exch ! dup /deletedfiles push writefile} def
 /R {(#R#) exch !} bind def
 /followref {(#R#) search pop pop pop} bind def
 /log { loglevel le {print}{pop} ifelse} bind def

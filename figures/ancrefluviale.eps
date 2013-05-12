@@ -1,9 +1,8 @@
 %!PS
-BOOTFILE (r) file run
 /compress false def
 /outputoutlines false def 132 132 /pageheight exch def /pagewidth exch def
-HOMEDIR(/library/pdf_library.ps)! include
-HOMEDIR(/library/xobjects.ps)! include
+(library/pdf_library.ps) include
+(library/xobjects.ps) include
 << /Title ((etoile)) >> infochunk
 /beginpagehook{} def begindocument beginpage
     /col0[.3 .6 .88]def/col1[.88 .88 .88]def

@@ -1,12 +1,12 @@
 %/pagewidth 100 def
 %/pageheight 20 def
-/BLASONDIR HOMEDIR(/blasons)! def
-/IMAGEDIR HOMEDIR(/images)! def
-/SHADOWDIR HOMEDIR(/shadow)! def
-/FONTDIR HOMEDIR(/fonts)! def
-HOMEDIR(/library/pdf_library.ps)! include
-FONTDIR(/encodings.ps)! include
-FONTDIR(/arial_narrow.ps)! include
+/BLASONDIR (blasons/) def
+/IMAGEDIR (images/) def
+/SHADOWDIR (shadow/) def
+/FONTDIR (fonts/) def
+(library/pdf_library.ps) include
+FONTDIR(encodings.ps)! include
+FONTDIR(arial_narrow.ps)! include
 /@ {
     translation {translationdict 1 index known {translationdict exch get}if}if
 }def

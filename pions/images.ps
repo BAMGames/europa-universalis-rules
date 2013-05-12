@@ -1,8 +1,8 @@
 /regimage { /tmp exch def
-    << /Filename SHADOWDIR(/)! tmp ! (.pgm) ! >> (sdw:) tmp ! defimage
-    << /Filename SHADOWDIR(/)! tmp ! (.pnm) ! /Alpha (sdw:) tmp ! >> (img:) tmp ! defimage
+    << /Filename SHADOWDIR tmp ! (.pgm) ! >> (sdw:) tmp ! defimage
+    << /Filename SHADOWDIR tmp ! (.pnm) ! /Alpha (sdw:) tmp ! >> (img:) tmp ! defimage
 }def
 
-/regimagedir{/DIR exch def [DIR(/*.pnm)! {(.pnm) search{3 1 roll pop pop}{bug}ifelse DIR(/)! search{pop pop}{bug}ifelse ()!} 50 string filenameforall]{regimage}forall}def
+/regimagedir{/DIR exch def [DIR(*.pnm)! {(.pnm) search{3 1 roll pop pop}{bug}ifelse DIR search{pop pop}{bug}ifelse ()!} 50 string filenameforall]{regimage}forall}def
 
 SHADOWDIR regimagedir

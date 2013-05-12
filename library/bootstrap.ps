@@ -1,15 +1,30 @@
-/! { 2 copy length exch length exch 1 index add string dup 0 6 -1
-    roll putinterval dup 4 2 roll exch putinterval} bind def	
-/include systemdict /DEPENDS known 
-{ { systemdict /DEPENDS get (a)file
-    dup (+)writestring dup 2 index writestring dup(\n)writestring closefile (r) file run}
-}{{(r) file run}}ifelse bind def
-/openfile systemdict /DEPENDS known 
-{ { systemdict /DEPENDS get (a)file
-    dup (*)writestring dup 2 index writestring dup(\n)writestring closefile (r) file}
-}{{(r) file}}ifelse bind def
-/writefile systemdict /DEPENDS known
-{ { systemdict /DEPENDS get (a)file
-    dup (_)writestring dup 2 index writestring dup(\n)writestring closefile (w)file}
-}{{(w) file}}ifelse bind def
+% This library sets up a dependency tracking system and runs the program
+% defined as TARGET.eps, where target is defined on command line with -DTARGET=
+
 /bd {bind def} bind def
+/! { 2 copy length exch length exch 1 index add string dup 0 6 -1
+     roll putinterval dup 4 2 roll exch putinterval} bd
+/!! { 0 1 index { length add } forall string 0 3 2 roll
+      { 3 copy putinterval length add } forall pop } bd
+
+% fail if no TARGET
+systemdict /TARGET known not {ERROR_TARGETnotspecified} if
+/DEPENDS TARGET (.depends.txt)! def
+DEPENDS (w) file dup (+library/bootstrap.ps\n) writestring closefile
+/include {
+    DEPENDS (a) file
+    dup (+) writestring dup 2 index writestring dup (\n) writestring closefile
+    run
+} bd
+/openfile {
+    DEPENDS (a) file
+    dup (*) writestring dup 2 index writestring dup (\n) writestring closefile
+    (r) file
+} bd
+/writefile {
+    DEPENDS (a) file
+    dup (_) writestring dup 2 index writestring dup (\n) writestring closefile
+    (w) file
+} bd
+
+TARGET(.eps)! include

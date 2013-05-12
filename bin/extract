@@ -597,10 +597,9 @@ foreach $k (@infoRaw) {
 delete $info{"Raw"};
 
 $header="%!PS
-BOOTFILE (r) file run
 /compress true def
 /translation true def
-HOMEDIR(/library/libpions.ps)! include
+(library/libpions.ps) include
 << /Title ((Europa 8 counters)) >> infochunk
 begindocument initpages\n";
 $footer="%(-----\\n)log count {50 string cvs (\\n)! log} repeat (-----\\n)log\n closepages enddocument quit\n";

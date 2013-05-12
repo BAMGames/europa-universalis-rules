@@ -10,11 +10,10 @@ while read a; do
         echo "figures/${name}.eps" >> plan/out/figureseps.out
         DEST="figures/${name}.eps"
  	echo '%!PS' > "${DEST}"
-        echo 'BOOTFILE (r) file run'>> "${DEST}"
         echo '/compress true def/translation true def' >> "${DEST}"
         echo "/outputoutlines false def $xy /pageheight exch def /pagewidth exch def" >> "${DEST}"
-        echo 'HOMEDIR(/library/pdf_library.ps)! include' >> "${DEST}"
-        echo 'HOMEDIR(/library/xobjects.ps)! include' >> "${DEST}"
+        echo '(library/pdf_library.ps) include' >> "${DEST}"
+        echo '(library/xobjects.ps) include' >> "${DEST}"
         echo '<< /Title (('"${name}"')) >> infochunk'>>"${DEST}"
         echo '/beginpagehook{} def begindocument beginpage' >> "${DEST}"
         echo "(${command}) xobject" >> "${DEST}"

@@ -2,8 +2,8 @@
 /pagewidth 595 defaultvalue
 /pageheight 842 defaultvalue
 
-HOMEDIR(/library/library.ps)! include
-HOMEDIR(/library/common.ps)! include
+(library/library.ps) include
+(library/common.ps) include
 /concatall {counttomark 1 sub {!} repeat exch pop}bind def
 /STDERR (%stderr) (w) file def
 /STDOUT (%stdout) (w) file def
@@ -12,7 +12,7 @@ HOMEDIR(/library/common.ps)! include
 /column 80 def
 /countercolumn 0 def
 /phase (count:build:) def
-/LISTE systemdict (LISTS) get writefile def
+/LISTE TARGET (.counters.txt)! writefile def
 /log {
     LISTE exch writestring LISTE flushfile
 } bind def
@@ -37,9 +37,9 @@ objects 100000 add 6 string cvs 1 5 getinterval ! def
     STDERR (\n) writestring
     STDERR flushfile
 } bind def
-CURRENTDIR(/pays.ps)! include
-CURRENTDIR(/translation.ps)! include
-CURRENTDIR(/images.ps)! include
+BASEDIR(pays.ps)! include
+BASEDIR(translation.ps)! include
+BASEDIR(images.ps)! include
 
 /chiffresromains {
     [ (0) (I) (II) (III) (IV) (V) (VI) (VII) (VIII) (IX) (X) ]
