@@ -17,7 +17,7 @@ while read a; do
         echo 'HOMEDIR(/library/xobjects.ps)! include' >> "${DEST}"
         echo '<< /Title (('"${name}"')) >> infochunk'>>"${DEST}"
         echo '/beginpagehook{} def begindocument beginpage' >> "${DEST}"
-        echo "($${a##*:}) xobject" >> "${DEST}"
+        echo "(${command}) xobject" >> "${DEST}"
         echo 'endpage enddocument quit' >> "${DEST}"
     fi
 done < figures/definitions.txt

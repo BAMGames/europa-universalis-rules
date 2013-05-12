@@ -134,7 +134,7 @@
    },
    "FIGTEMPLATES" : {
       "actor" : "FIGTEMPLATES",
-      "class" : "Preparing figures",
+      "class" : "Building figures",
       "in" : [
          "figures/definitions.txt"
       ],
@@ -222,6 +222,27 @@
          "fonts/$1.afm"
       ],
       "pattern" : "fonts/(.*).sfd",
+      "type" : "pattern"
+   },
+   "GSFIGURES" : {
+      "actor" : "GSFIGURES",
+      "argument" : "$1",
+      "class" : "Building figures",
+      "in" : [
+         "figures/$1.eps"
+      ],
+      "infile" : [
+         "plan/in/$1pdf.in"
+      ],
+      "junk" : [
+         "figures/targets"
+      ],
+      "out" : [
+         "figures/$1.pdf",
+         "figures/$1.depends.txt"
+      ],
+      "pattern" : "figures/(.*).eps",
+      "subclass" : "compiling",
       "type" : "pattern"
    },
    "PIONS" : {
