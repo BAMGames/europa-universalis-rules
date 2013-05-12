@@ -1,9 +1,12 @@
 /provinceshook {} def
-/schematic systemdict /SCHEMATIC  known def
-/traces systemdict /TRACES  known def
-/dotgraph systemdict /GRAPH  known def
-/pdfoutput systemdict /PDFOUTPUT known def
-/plain systemdict /PLAIN known def
+/booleanValue {where dup {exch pop} if def} bd
+/schematic /SCHEMATIC booleanValue
+/traces /TRACES booleanValue
+/dotgraph /GRAPH booleanValue
+/pdfoutput /PDFOUTPUT booleanValue
+/plain /PLAIN booleanValue
+plain {/pdfoutput false def}if
+/target TARGET (.clp)! writefile def
 /partplain 0 def
 usertime srand
 /defaultvalue{1 index where {pop pop pop}{def}ifelse}def
@@ -39,7 +42,7 @@ highprecision {
     roll putinterval dup 4 2 roll exch putinterval} bind def	
 /currentpointxy { currentpoint 0.5 add cvi exch 0.5 add cvi 
 }def
-pdfoutput {/carrefile CURRENTDIR(/carres.ps)! writefile def}if
+pdfoutput {/carrefile BASEDIR (/carres.ps)! writefile def} if
 /carrenum -1 def
 /carre { /rough exch def /myname exch def /myutf exch def /mypos exch def /carrenum carrenum 1 add def /myy exch def /myx exch def (carre)
 carrenum 2 string cvs ! cvn beginpath
@@ -79,9 +82,9 @@ pdfoutput {
 pdfoutput {carrefile (/carresize )carresize 3 string cvs( def\n)! ! writestring
 carrefile (/carredict 100 dict def\n/provincecolors 100 dict def\n) writestring
 }if
-/currentpointdisp { jumpingdict pr known {pop}{print
-    currentpointxy 4 string cvs print ( ) print 4 string cvs print ( ) print
-    pr 100 string cvs print jumpingdict pr known {(:) print jumpingdict pr get print}if (\n) print}ifelse
+/currentpointdisp { jumpingdict pr known {pop}{out
+    currentpointxy 4 string cvs out ( ) out 4 string cvs out ( ) out
+    pr 100 string cvs out jumpingdict pr known {(:) out jumpingdict pr get out}if (\n) out}ifelse
 }def
 /debugclosed {
     lastmx -1 eq lastmy -1 eq and {
@@ -101,7 +104,7 @@ carrefile (/carredict 100 dict def\n/provincecolors 100 dict def\n) writestring
 /debugdiscpath {
     (%Discontinuous path:) currentpointdisp
 }def
-/out {print} bd
+/out {target exch writestring} bd
 /sdisplay { 20 string cvs out } bd
 /display { round cvi 10 string cvs out } bd
 /space {( )out} bd
@@ -113,28 +116,28 @@ pdfoutput plain or{
     /savestateS {/ccw currentlinewidth def /ccj currentlinecap def /crgb [currentrgbcolor] def}def
     /savestateF {/ccw currentlinewidth def /ccj currentlinecap def /cfrgb [currentrgbcolor] def}def
     /comparestateS {
-	currentlinewidth ccw eq not {currentlinewidth nd ( w\n) print}if
-	currentlinecap ccj eq not {currentlinecap nd ( J\n) print}if
+	currentlinewidth ccw eq not {currentlinewidth nd ( w\n) out}if
+	currentlinecap ccj eq not {currentlinecap nd ( J\n) out}if
 	currentrgbcolor crgb 2 get eq 3 -1 roll crgb 0 get eq and exch crgb
-	1 get eq and not{currentrgbcolor 3 -1 1 {-1 roll nds}for(RG\n) print}if
+	1 get eq and not{currentrgbcolor 3 -1 1 {-1 roll nds}for(RG\n) out}if
     }def
     /comparestateF {
-	currentlinewidth ccw eq not {currentlinewidth nd ( w\n) print}if
-	currentlinecap ccj eq not {currentlinecap nd ( J\n) print}if
+	currentlinewidth ccw eq not {currentlinewidth nd ( w\n) out}if
+	currentlinecap ccj eq not {currentlinecap nd ( J\n) out}if
 	currentrgbcolor cfrgb 2 get eq 3 -1 roll crgb 0 get eq and exch crgb
-	1 get eq and not {currentrgbcolor 3 -1 1{-1 roll nds}for(rg\n) print}if
+	1 get eq and not {currentrgbcolor 3 -1 1{-1 roll nds}for(rg\n) out}if
     }def
-    /nd {10 string cvs print}def
-    /nds {nd ( ) print}def
+    /nd {10 string cvs out}def
+    /nds {nd ( ) out}def
     /old {systemdict exch get cvx exec}def
     /newpath {(%newpath\n) pop /newpath old} def
-    /moveto {2 copy exch nds nd ( m\n) print /moveto old}def
-    /curveto {6 copy 6 -1 1 {-1 roll nds}for (c\n) print /curveto old}def
-    /lineto {2 copy exch nds nd ( l\n) print /lineto old}def
-    /closepath {(h\n) print /closepath old}def
-    /stroke {comparestateS savestateS (S\n) print /stroke old} def
-    /fill {comparestateF savestateF (f\n) print /fill old} def
-    (1 j 1 w 1 J\n) print 1 setlinewidth 1 setlinecap 1 setlinejoin
+    /moveto {2 copy exch nds nd ( m\n) out /moveto old}def
+    /curveto {6 copy 6 -1 1 {-1 roll nds}for (c\n) out /curveto old}def
+    /lineto {2 copy exch nds nd ( l\n) out /lineto old}def
+    /closepath {(h\n) out /closepath old}def
+    /stroke {comparestateS savestateS (S\n) out /stroke old} def
+    /fill {comparestateF savestateF (f\n) out /fill old} def
+    (1 j 1 w 1 J\n) out 1 setlinewidth 1 setlinecap 1 setlinejoin
 }if
 realtime srand
 /R {
@@ -253,7 +256,7 @@ realtime srand
     stroke
 }def
 /draw_mark {
-    stroke (%MARK\n)print
+    stroke (%MARK\n)out
 }def
 
 /schematic_draw {
@@ -331,33 +334,33 @@ realtime srand
     grestore}def
 
 /pdfgsave {
-    (q\n) print gsave /ccw ccw /ccj ccj /crgb crgb /cfrgb cfrgb
+    (q\n) out gsave /ccw ccw /ccj ccj /crgb crgb /cfrgb cfrgb
 }def
 /pdfgrestore {
-    def def def def grestore (Q\n) print
+    def def def def grestore (Q\n) out
 }def
 
 % fills a province with a pdfgraylevel gray
 /prov_pdfgrayfill {
-    (%) print pr sdisplay (\n) print
+    (%) out pr sdisplay (\n) out
     pdfgsave pdfgraylevel setgray
-    gsave comparestateF savestateF (W f\n) print grestore
+    gsave comparestateF savestateF (W f\n) out grestore
     pdfgrestore
 }def
 
 % strokes a province inner contour with a wide black line.
 /prov_pdfnofill {
-    (%) print pr sdisplay (\n) print
+    (%) out pr sdisplay (\n) out
     pdfgsave 10 setlinewidth
-    gsave comparestateF savestateF (W S\n) print grestore
+    gsave comparestateF savestateF (W S\n) out grestore
     pdfgrestore
 }def
 
 % 
 /prov_pdffill {
-    (%) print pr sdisplay (\n) print
+    (%) out pr sdisplay (\n) out
     pdfgsave tb_co aload pop setrgbcolor
-    gsave comparestateF savestateF (W f\n) print grestore
+    gsave comparestateF savestateF (W f\n) out grestore
     allege
     precision0 precision4 10 {
 	dup precision0 div bumpcolorinterpolate setlinewidth
@@ -370,7 +373,7 @@ realtime srand
             3 -1 roll display space
             2 -1 roll display space
             display ( c\n) out
-	}{(h\n) print}pathforall comparestateS savestateS (S\n) print
+	}{(h\n) out}pathforall comparestateS savestateS (S\n) out
     }for
     pdfgrestore
 }def
@@ -384,9 +387,9 @@ realtime srand
   2 copy .5 add cvi ta_co 3 get eq exch .5 add cvi ta_co 2 get eq and {/pathcounter false def}if
 }def
 /prov_pdffill3 {
-    (%) print pr sdisplay (\n) print
-    pdfgsave (/GSalphaZone gs\n)print tb_co aload pop setrgbcolor
-    gsave comparestateF savestateF (W n\n) print grestore
+    (%) out pr sdisplay (\n) out
+    pdfgsave (/GSalphaZone gs\n)out tb_co aload pop setrgbcolor
+    gsave comparestateF savestateF (W n\n) out grestore
     allege
     ta_co 1 get dup ta_co 0 get sub precision7 div ta_co 0 get {
 	setlinewidth /pathcounter true def
@@ -406,8 +409,8 @@ realtime srand
             display ( c\n) out
 	  }{6{pop}repeat}ifelse
 	}
-	{pathcounter {(h\n) print}if}
-	pathforall comparestateS savestateS (S\n) print
+	{pathcounter {(h\n) out}if}
+	pathforall comparestateS savestateS (S\n) out
     }for
     pdfgrestore
 }def
@@ -649,7 +652,7 @@ schematic {/dopage /dopage_schematic load def}if
 pdfoutput {/dopage /dopage_pdf load def}if
 plain {/dopage /dopage_pdfplain load def}if
 
-/push { dup where {}{(Weirderror in push) print weirderror}ifelse exch [ 1 index load aload pop counttomark 4 add -1 roll] put } def
+/push { dup where {}{(Weirderror in push) out weirderror}ifelse exch [ 1 index load aload pop counttomark 4 add -1 roll] put } def
 /paths []def
 /provs []def
 /m={3 1 roll 3 array astore}bd

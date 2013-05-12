@@ -246,6 +246,28 @@
       "subclass" : "compiling",
       "type" : "pattern"
    },
+   "CARTEBACKGROUND" : {
+      "actor" : "GSCARTE",
+      "arg" : [ "chemins" ],
+      "class" : "Building map",
+      "in" : [
+         "bin/gsexec"
+      ],
+      "infile" : [
+         "plan/in/$1pdf.in"
+      ],
+      "junk" : [
+         "carte/targets"
+      ],
+      "out" : [
+         "carte/chemins.depends.txt"
+      ],
+      "outfile" : [
+         "plan/out/cartechemins.out"
+      ],
+      "subclass" : "map background",
+      "type" : "simple"
+   },
    "PIONS" : {
       "actor" : "PIONS",
       "argument" : "$1",

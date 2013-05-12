@@ -9,7 +9,6 @@
 /loglevel 1 defaultvalue
 /globalscale 1 defaultvalue
 /Output TARGET (.pdf)! defaultvalue
-/BASEDIR [ TARGET { (/) search not {exit}if exch 3 -1 roll } loop pop ]!! def
 
 /push { dup where {}{(Weirderror in push) print weirderror}ifelse exch [ 1 index load aload pop counttomark 4 add -1 roll ] put } def
 /dictdef { begin def end } def

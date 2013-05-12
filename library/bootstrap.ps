@@ -27,4 +27,6 @@ DEPENDS (w) file dup (+library/bootstrap.ps\n) writestring closefile
     (w) file
 } bd
 
+/BASEDIR [ TARGET { (/) search not {exit}if exch 3 -1 roll } loop pop ]!! def
+
 TARGET(.eps)! include
