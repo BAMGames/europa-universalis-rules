@@ -1,8 +1,8 @@
 /regimage { /tmp exch def
-    << /Filename IMAGEDIR(/)! tmp ! (.pnm) ! >> (img:) tmp ! defimage
+    << /Filename IMAGEDIR tmp ! (.pnm) ! >> (img:) tmp ! defimage
 }def
 
-/regimagedir{/DIR exch def [DIR(/*.pnm)! {(.pnm) search{3 1 roll pop pop}{bug}ifelse DIR(/)! search{pop pop}{bug}ifelse ()!} 50 string filenameforall]{regimage}forall}def
+/regimagedir{/DIR exch def [DIR(*.pnm)! {(.pnm) search{3 1 roll pop pop}{bug}ifelse DIR search{pop pop}{bug}ifelse ()!} 50 string filenameforall]{regimage}forall}def
 
 IMAGEDIR regimagedir
 
@@ -23,22 +23,22 @@ IMAGEDIR regimagedir
 ]def
 
 /regimage { /tmp exch def
-    << /Filename SHADOWDIR(/)! tmp ! (.pgm) ! >> (sdw:) tmp ! defimage
-    << /Filename SHADOWDIR(/)! tmp ! (.pnm) ! /Alpha (sdw:) tmp ! >> (img:) tmp ! defimage
+    << /Filename SHADOWDIR tmp ! (.pgm) ! >> (sdw:) tmp ! defimage
+    << /Filename SHADOWDIR tmp ! (.pnm) ! /Alpha (sdw:) tmp ! >> (img:) tmp ! defimage
 }def
 
 SHADOWDIR regimagedir
 
-<< /Filename BLASONDIR(/templates/blason.pgm)! >> (sdw:blason) defimage
-<< /Filename BLASONDIR(/templates/protoblason.pgm)! >> (sdw:protoblason) defimage
+<< /Filename BLASONDIR(templates/blason.pgm)! >> (sdw:blason) defimage
+<< /Filename BLASONDIR(templates/protoblason.pgm)! >> (sdw:protoblason) defimage
 
 [(catalogne)(corse)(courlande)(crimee)(espagne)(finlande)(grenade)(habsbourg)(hanse)(huguenots)(irlande)(ligue)(maroc)(naples)(norvege)(pologne)(prusse)(russie)(savoie)(ukraine)(venise)]
 {/pays exch def
-    <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
+    <<  /Filename BLASONDIR(shield_)! pays !(.pnm)!
 	/Alpha (sdw:protoblason)>> (img:) (proto)pays ! ! defimage
 } forall
 countrylist
 {/pays exch def
-    <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
+    <<  /Filename BLASONDIR(shield_)! pays !(.pnm)!
 	/Alpha (sdw:blason)>> (img:) pays ! defimage
 } forall

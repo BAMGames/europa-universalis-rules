@@ -17,6 +17,15 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
+   "CARTECLIPPING" : {
+      "actor" : "CARTECLIPPING",
+      "class" : "Building map",
+      "out" : [
+         "carte/clipping.txt"
+      ],
+      "subclass" : "clipping",
+      "type" : "simple"
+   },
    "CHAPTERHEADS" : {
       "actor" : "CHAPTERHEADS",
       "argument" : "$1",
@@ -227,7 +236,8 @@
    "GSCARTE" : {
       "actor" : "GSCARTE",
       "allowedargs" : [
-         "chemins"
+         "chemins",
+         "europe"
       ],
       "argument" : "$1",
       "class" : "Building map",
@@ -267,6 +277,21 @@
       ],
       "pattern" : "figures/(.*).eps",
       "subclass" : "compiling",
+      "type" : "pattern"
+   },
+   "MAPTEXT" : {
+      "actor" : "MAPTEXT",
+      "argument" : "$1",
+      "class" : "Building map",
+      "in" : [
+         "bin/analyse.pl",
+         "carte/$1.utf"
+      ],
+      "out" : [
+         "carte/$1.text.ps"
+      ],
+      "pattern" : "carte/(.*).utf",
+      "subclass" : "text",
       "type" : "pattern"
    },
    "PIONS" : {

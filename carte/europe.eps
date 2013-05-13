@@ -1,5 +1,4 @@
 %!PS
-BOOTFILE (r) file run
 /clipping false def
 systemdict /CLIP known {/compress false def /clipping true def}if
 /translation true def
@@ -7,10 +6,10 @@ systemdict /CLIP known {/compress false def /clipping true def}if
 /pagewidth 8425 def
 /pageheight 5840 def
 clipping {/pagewidth 1300 def /pageheight 1300 def}if
-HOMEDIR(/library/library.eps)! include
-HOMEDIR(/library/libcarte.eps)! include
-CURRENTDIR(/images.eps)! include
-FONTDIR(/champion.eps)! include
+(library/library.ps) include
+(library/libcarte.ps) include
+BASEDIR(images.ps)! include
+FONTDIR(champion.ps)! include
 /xfact 40955 3500 sub 8425 0 sub div def
 /yfact 29465 3500 sub 5840 0 sub div def
 /xbase 3500 0 xfact mul sub .5 add def
@@ -48,7 +47,7 @@ FONTDIR(/champion.eps)! include
 begindocument
 beginpage
 clipping{(q\n1 0 0 1 00000 00000 cm 00000 00000 01300 01300%Clipping info\nre W n\n)out}if
-(fonddecarte.clp) copymap
+(chemins.clp) copymap
 
 %%%%%%%%% TEMPETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 (img:orage4) 7545 1570 (Mer Caspienne) false orage
@@ -77,7 +76,7 @@ clipping{(q\n1 0 0 1 00000 00000 cm 00000 00000 01300 01300%Clipping info\nre W 
 (img:orage6) 1337 5609 (Mer de Norvège) false orage
 
 %%%%%%%%% ILES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-CURRENTDIR(/carres.eps)! include
+BASEDIR(chemins.carres.ps)! include
 /carretext 48 def
 1 beginalpha
 (0 0 0 rg\n) out
@@ -145,9 +144,9 @@ zven2 zven 20 2 (Venezia) pop (Venetia) 3113 2182 1 zp
 (20) 2 3571 1406 []zm
 (10) 1 5025 2558 []zm
 (5) 1 7129 2616 []zm
-CURRENTDIR(/portsandmines.eps)! include
+BASEDIR(portsandmines.ps)! include
 (q\n)out
-CURRENTDIR(/text.eps)! include
+TARGET(.text.ps)! include
 (Q\n)out
 
 begindetroit

@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+for ii in "$@"; do
+    i="carte/${ii}"
+    echo 1>&2 "${SPECIALPREFIX}${ii}"
+    bin/analyse.pl "${i}.utf" > "${i}.text.ps"
+    echo 1>&2 "${SPECIALPREFIX}done:${ii}"
+done

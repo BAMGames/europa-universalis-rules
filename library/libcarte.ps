@@ -1,16 +1,18 @@
-HOMEDIR(/library/common.ps)! include
+(library/common.ps) include
+(carte/clipping.txt) include % Must leave 4 int on the stack
+/MAXY exch def /MAXX exch def /MINY exch def /MINX exch def
+
 %X (file) copymap
-/copymap {
-    CURRENTDIR(/)! exch !
-/realoutputfile cpstream def
-copyfile
-/zoneopacity 0.15 defaultvalue
+/copymap { % (filename) => 
+    BASEDIR exch !
+    /realoutputfile cpstream def
+    copyfile
+    /zoneopacity 0.15 defaultvalue
 % high precision: uncomment below
 % /zoneopacity 0.075 defaultvalue
-
-<< /Type /ExtGState /CA zoneopacity /ca zoneopacity >> (GSalphaZone) defobj
-(GSalphaZone) /pagegss push
-(%Jean-Christophe Dubacq est l'auteur de ce fichier.\n)out
+    << /Type /ExtGState /CA zoneopacity /ca zoneopacity >> (GSalphaZone) defobj
+    (GSalphaZone) /pagegss push
+    (%Jean-Christophe Dubacq est l'auteur de ce fichier.\n)out
 }def
 %X (img:foo) x y putsymbol
 /putsymbol {
@@ -548,7 +550,7 @@ copyfile
 }def
 
 /inittrace {
-    /tracesfile CURRENTDIR(/moretraces.js)! writefile def
+    /tracesfile BASEDIR(moretraces.js)! writefile def
     tracesfile (var contours;\nif \(contours == undefined\) {contours=[];}\ncontoursbase=contours.length;\n\n) writestring
     tracesfile (var contourshooks;\nif \(contourshooks == undefined\) {contourshooks=[];}\n\n) writestring
     tracesfile (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[')writestring
