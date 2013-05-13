@@ -17,6 +17,30 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
+   "CARTEBACKGROUND" : {
+      "actor" : "GSCARTE",
+      "allowedargs" : [
+         "chemins"
+      ],
+      "argument" : "$1",
+      "class" : "Building map",
+      "in" : [
+         "bin/gsexec"
+      ],
+      "infile" : [
+         "plan/in/gs-carte-$1.in"
+      ],
+      "junk" : [
+         "carte/targets",
+         "carte/$1.depends.txt"
+      ],
+      "outfile" : [
+         "plan/out/gs-carte-$1.out"
+      ],
+      "pattern" : "carte/(.*).eps",
+      "subclass" : "compiling",
+      "type" : "pattern"
+   },
    "CHAPTERHEADS" : {
       "actor" : "CHAPTERHEADS",
       "argument" : "$1",
@@ -229,63 +253,38 @@
       "argument" : "$1",
       "class" : "Building figures",
       "in" : [
-         "bin/gsexec",
-         "figures/$1.eps"
+         "bin/gsexec"
       ],
       "infile" : [
-         "plan/in/$1pdf.in"
+         "plan/in/gs-figures-$1.in"
       ],
       "junk" : [
-         "figures/targets"
-      ],
-      "out" : [
-         "figures/$1.pdf",
+         "figures/targets",
          "figures/$1.depends.txt"
+      ],
+      "outfile" : [
+         "plan/out/gs-figures-$1.out"
       ],
       "pattern" : "figures/(.*).eps",
       "subclass" : "compiling",
       "type" : "pattern"
-   },
-   "CARTEBACKGROUND" : {
-      "actor" : "GSCARTE",
-      "arg" : [ "chemins" ],
-      "class" : "Building map",
-      "in" : [
-         "bin/gsexec"
-      ],
-      "infile" : [
-         "plan/in/$1pdf.in"
-      ],
-      "junk" : [
-         "carte/targets"
-      ],
-      "out" : [
-         "carte/chemins.depends.txt"
-      ],
-      "outfile" : [
-         "plan/out/cartechemins.out"
-      ],
-      "subclass" : "map background",
-      "type" : "simple"
    },
    "PIONS" : {
       "actor" : "PIONS",
       "argument" : "$1",
       "class" : "Building counters",
       "in" : [
-         "bin/gsexec",
-         "pions/$1.eps"
+         "bin/gsexec"
       ],
       "infile" : [
-         "plan/in/$1pdf.in"
+         "plan/in/gs-pions-$1.in"
       ],
       "junk" : [
-         "pions/targets"
-      ],
-      "out" : [
-         "pions/$1.pdf",
-         "pions/$1.counters.txt",
+         "pions/targets",
          "pions/$1.depends.txt"
+      ],
+      "outfile" : [
+         "plan/out/gs-pions-$1.out"
       ],
       "pattern" : "pions/(.*).eps",
       "subclass" : "compiling",

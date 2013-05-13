@@ -225,6 +225,9 @@ sub doDownload {
     my $dest=$bitmapdir.'/'.$file;
     my $tmp=$dest.'.tmp';
     $tmpFiles->{$tmp}=1;
+    if (scalar keys %$toDownload < 100) {
+      &info($file);
+    }
     &download($file,$tmp);
     my $nsum=&sumFile($tmp);
     if ($wsum eq $nsum) {

@@ -627,6 +627,7 @@ sub errorCommand {
       if ($part =~ /^done:(.*)$/) {
         $part=$1;
         push $execContext->{'partiallyDone'},$part;
+        next;
       }
       &out(3,'display',$part);
     } else {

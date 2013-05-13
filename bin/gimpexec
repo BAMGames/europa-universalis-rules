@@ -50,15 +50,16 @@ while [ -n "$1" ]&&[ -z "$FINISHED" ]; do
     cat library/${SCRIPT}.scm|sed -e $SUB >> $TMPFILE
     while [ -n "$1" ]&&[ "$COUNT" -lt "$MAXCOUNT" ]; do
         ARG="$1"
-        echo -n "(${SCRIPT} \"${ARG}\")" >> $TMPFILE
         echo -n '(gimp-message "'${ARG}'")' >> $TMPFILE        
+        echo -n "(${SCRIPT} \"${ARG}\")" >> $TMPFILE
+        echo -n '(gimp-message "'done:${ARG}'")' >> $TMPFILE        
         shift
         COUNT=$((COUNT+1))
     done
     X="(load \"$TMPFILE\")"
     echo "${SPECIALPREFIX}gimp" 1>&2
     if [ "$GIMP_VERSION" -gt 22 ]; then
-        gimp --batch-interpreter plug-in-script-fu-eval --no-data --no-interface --batch "$X" --batch '(gimp-quit 0)' 2>&1 >/dev/null|sed -une '/^script-fu/ {s/^.*: /'"${SPECIALPREFIX}done:"'/g;p}' 1>&2
+        gimp --batch-interpreter plug-in-script-fu-eval --no-data --no-interface --batch "$X" --batch '(gimp-quit 0)' 2>&1 >/dev/null|sed -une '/^script-fu/ {s/^.*: /'"${SPECIALPREFIX}"'/g;p}' 1>&2
     elif [ "$GIMP_VERSION" -gt 20 ]; then
         gimp --batch-interpreter plug_in_script_fu_eval --no-data --no-interface --batch "$X" "(gimp-quit 1)"
     else
