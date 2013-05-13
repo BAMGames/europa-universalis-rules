@@ -17,30 +17,6 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
-   "CARTEBACKGROUND" : {
-      "actor" : "GSCARTE",
-      "allowedargs" : [
-         "chemins"
-      ],
-      "argument" : "$1",
-      "class" : "Building map",
-      "in" : [
-         "bin/gsexec"
-      ],
-      "infile" : [
-         "plan/in/gs-carte-$1.in"
-      ],
-      "junk" : [
-         "carte/targets",
-         "carte/$1.depends.txt"
-      ],
-      "outfile" : [
-         "plan/out/gs-carte-$1.out"
-      ],
-      "pattern" : "carte/(.*).eps",
-      "subclass" : "compiling",
-      "type" : "pattern"
-   },
    "CHAPTERHEADS" : {
       "actor" : "CHAPTERHEADS",
       "argument" : "$1",
@@ -246,6 +222,30 @@
          "fonts/$1.afm"
       ],
       "pattern" : "fonts/(.*).sfd",
+      "type" : "pattern"
+   },
+   "GSCARTE" : {
+      "actor" : "GSCARTE",
+      "allowedargs" : [
+         "chemins"
+      ],
+      "argument" : "$1",
+      "class" : "Building map",
+      "in" : [
+         "bin/gsexec"
+      ],
+      "infile" : [
+         "plan/in/gs-carte-$1.in"
+      ],
+      "junk" : [
+         "carte/targets",
+         "carte/$1.depends.txt"
+      ],
+      "outfile" : [
+         "plan/out/gs-carte-$1.out"
+      ],
+      "pattern" : "carte/(.*).eps",
+      "subclass" : "compiling",
       "type" : "pattern"
    },
    "GSFIGURES" : {
