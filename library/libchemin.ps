@@ -1,5 +1,4 @@
 %!PS
-
 true pop
 % Path documentation
 % type of path (pathtype)
@@ -35,6 +34,9 @@ true pop
 % [ [ type name terrain bbox ] [ [moveA lineA1 lineA2] [moveB lineB1 lineB2] ...]]
 % when running over various moves, if one comes to a starting point, do a move
 % and define a new starting point (new array)
+
+/marcopoloisimportant false def
+/captionisimportant false def
 
 systemdict /.min known not {
     /.min {2 copy gt {exch} if pop} bd
@@ -76,10 +78,10 @@ systemdict /.max known not {
 } bd
 /carreinit {
     /carrenum -1 def
-    /carrefile TARGET (.carres.ps)! writefile def carrefile
+    /carrefile TARGET (.clp.ps)! writefile def carrefile
     [ (/carresize ) carresize 3 string cvs( def\n)
     (/carredict 100 dict def\n/provincecolors 100 dict def\n)
-    ]!! writestring    
+    ]!! writestring  
 } bd
 carreinit
 /carre { % centerx centery below0above1 label internalname rough => -
@@ -197,44 +199,115 @@ true {
 
 /out { t exch writestring } bd
 /dopage {
-    dopage_colorbackground
+    dopage_simple_color_background
 } bd
-/dopage_colorbackground {
-    /t TARGET (.clp) ! writefile def
+/setrgbstroke {
+    /xcolor exch def true 0 1 2 {
+        /i exch def xcolor i get lastcolor i get eq and
+    } for not {
+        /lastcolor xcolor def
+        xcolor aload pop eq exch xcolor 1 get eq and not {
+            [ xcolor {10 string cvs} forall (RG) ]!!! out
+        } {
+            [ xcolor 0 get 10 string cvs (G) ]!!! out
+        } ifelse
+    } if} bd
+/setrgbfill {
+    /xcolor exch def true 0 1 2 {
+        /i exch def xcolor i get lastfillcolor i get eq and
+    } for not {
+        /lastfillcolor xcolor def
+        xcolor aload pop eq exch xcolor 1 get eq and not {
+            [ xcolor {10 string cvs} forall (rg) ]!!! out
+        } {
+            [ xcolor 0 get 10 string cvs (g) ]!!! out
+        } ifelse
+    } if} bd
+/setwidth {
+     dup lastwidth ne {
+        [ 1 index 3 string cvs (w) ] !!! out /lastwidth exch def
+    } { pop } ifelse
+} bd
+/savecontext {
+    (q\n) out
+    /contexts [ contexts {} forall [ lastwidth lastcolor lastfillcolor ] ] def
+} bd
+/restorecontext {
+    (Q\n) out
+    /contexts [ contexts {} forall aload pop
+    /lastfillcolor exch def
+    /lastcolor exch def
+    /lastwidth exch def
+    ] def
+} bd
+
+/styleinit {
+    /cache /aaaaaaaaaaa def
     /pathwidth << 0 4  1 4  2 6  3 6  4 6  5 6  6 4  7 2  8 4 >> def
     /pathcolor << 
-        0 [1 -1 -1 -1]
-        1 [0 -1 -1 -1]
-        2 [-1 0.355 0.575 0.875]
-        3 [-1 1 .8 .8]
-        4 [-1 .6 .1 .1]
-        5 [-1 .6 .1 .1]
-        6 [0 -1 -1 -1]
-        7 [0 -1 -1 -1]
-        8 [0 -1 -1 -1]
+        0 [1 1 1]
+        1 [0 0 0]
+        2 [0.355 0.575 0.875]
+        3 [1 .8 .8]
+        4 [.6 .1 .1]
+        5 [.6 .1 .1]
+        6 [0 0 0]
+        7 [0 0 0]
+        8 [0 0 0]
     >> def
-    (1 w 1 j 1 J\n) out % linewidth linecap linejoin
-    sortpaths
+    /colordict <<
+        /normal <<
+            /mer    [.325 .6  .875    .255 .475 .775]
+            /plaine [.9   .9  .7      .8   .8   .5]
+            /desert [1    1   .4      .9   .9   .3]
+            /monts  [.9   .6  .2       .7   .5   .3]
+            /foret  [.6   1   .3      .4   .9   .4]
+            /foreto [.6   .8  .6       .5   .7   .5]
+            /marais [.5   .6  .5       .3   .4   .3]
+            /terrain[0    0   0        1    1    1 ]
+            /noman  [1    1   1        .804 .804 .9]
+            /lac    [.425 .7  1        .355 .575 .875]
+        >>
+        /othermap <<
+            /mer [0.425 0.9 0.875    0.355 0.775 0.775]
+            /terrain [0.9 0.9 0.9    0.5 0.5 0.8]
+        >>
+    >> def
+    colordict /marcopolo <<
+        colordict /normal get {} forall
+    >> put
+    colordict /magnification <<
+        colordict /normal get {
+            [ exch aload pop 2 {
+                3 copy add add /tmp exch def 3 {
+                    3 1 roll tmp add 4 div
+                } repeat 6 3 roll
+            } repeat ]
+        } forall
+    >> put
     /lastwidth -1 def
-    /lastcolor [ -1 -1 -1 -1 ] def
-    [ 0 8 1 6 7 4 5 2 3 ] {
-        /currenttype exch def
-        pathwidth currenttype get dup lastwidth ne {
-            [ 1 index 3 string cvs (w) ] !!! out
-            /lastwidth exch def
-        } if
-        pathcolor currenttype get /xcolor exch def true 0 1 3 {
-            /i exch def xcolor i get lastcolor i get eq and
-        } for not {
-            /lastcolor xcolor def
-            xcolor 0 get -1 eq {
-                [ xcolor 1 3 getinterval {10 string cvs} forall (RG) ]!!! out
-            } {
-                [ xcolor 0 get 10 string cvs (G) ]!!! out
-            } ifelse
-        } if
-        currenttype drawpaths
+    /lastcolor [ -1 -1 -1 ] def
+    /lastfillcolor [ -1 -1 -1 ] def
+    /contexts [] def
+} bd
+/percent ( ) dup 0 37 put def
+/dopage_simple_color_background {
+    /t TARGET (.clp) ! writefile def
+    (1 w 1 j 1 J\n) out % linewidth linecap linejoin
+    sortpaths 
+    styleinit
+    provs { /p exch def /pn exch def /pp p 0 get def
+        [ percent pn 40 string cvs pp 1 get ] !!! out
+        provcolors
+        savecontext
+        colors 0 3 getinterval setrgbfill
+        colors 3 3 getinterval setrgbstroke
+        20 setwidth
+        drawcontourprov (W n\n) out
+        drawcontourprov (B\n) out
+        restorecontext
     } forall
+    [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
 } bd
 /sortpaths { % sorts paths by type in sortedpaths
@@ -242,15 +315,44 @@ true {
     paths {0 get 0 get sortedpaths exch get exch true put} forall
 } bd
 /drawpaths { % type => -
-    sortedpaths exch get {
+    /currenttype exch def
+    pathwidth currenttype get setwidth
+    pathcolor currenttype get setrgbstroke
+    sortedpaths currenttype get {
         pop paths exch get /p exch def
         [ p 1 get {10 string cvs} forall (m) ]!!! out
-        2 1 p length 1 sub { 
+        2 1 p length 1 sub {
             [ exch p exch get {10 string cvs} forall
             counttomark 6 eq {(c)}{(l)}ifelse ]!!! out
-            } for (S\n) out 
-        } forall
-    } bd
+        } for (S\n) out 
+    } forall
+} bd
+/drawcontourprov { % define pn and p first
+    pn cache ne {
+        /cache pn def /cachedstring [
+        0 1 p 1 get length 1 sub {
+            /firstinpath true def
+            p 1 get exch get {
+                dup length 2 eq {
+                    {10 string cvs ( )} forall (l\n) firstinpath {/firstinpath false def pop (m\n)} if 
+                } {
+                    {10 string cvs ( )} forall (c\n) 
+                } ifelse
+            } forall
+            (h\n)
+        } for ] !! def
+    } if cachedstring out
+} bd
+/provcolors { % - => -
+        /xtype pp 0 get def
+        /terrain pp 2 get def
+        /colorset /normal
+        xtype 16 and 0 ne { pop /othermap } if
+        xtype 32 and 0 ne { pop /magnification } if
+        xtype 8 and 0 ne marcopoloisimportant and { pop /marcopolo } if
+        def
+        /colors colordict colorset get terrain get def    
+} bd
 /!!! { % [ a0 a1 ... an ] => (a0 a1 ... an\n)
     0 1 index { length add 1 add } forall string 0 3 2 roll {
         3 1 roll dup 0 ne {2 copy 32 put 1 add} if 3 -1 roll

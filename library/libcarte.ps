@@ -4,15 +4,14 @@
 
 %X (file) copymap
 /copymap { % (filename) => 
-    BASEDIR exch !
+    BASEDIR exch ! dup (.ps) ! include
     /realoutputfile cpstream def
     copyfile
-    /zoneopacity 0.15 defaultvalue
-% high precision: uncomment below
-% /zoneopacity 0.075 defaultvalue
-    << /Type /ExtGState /CA zoneopacity /ca zoneopacity >> (GSalphaZone) defobj
-    (GSalphaZone) /pagegss push
-    (%Jean-Christophe Dubacq est l'auteur de ce fichier.\n)out
+%    /zoneopacity 0.15 defaultvalue
+%% high precision: uncomment below
+%% /zoneopacity 0.075 defaultvalue
+%    << /Type /ExtGState /CA zoneopacity /ca zoneopacity >> (GSalphaZone) defobj
+%    (GSalphaZone) /pagegss push
 }def
 %X (img:foo) x y putsymbol
 /putsymbol {
