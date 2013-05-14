@@ -44,43 +44,43 @@ systemdict /.max known not {
 } if
 /bboxinit {
     /maxy -10000 def /maxx -10000 def /miny 30000 def /minx 30000 def
-    } bd
+} bd
 /bbox { % x y => x y
     /maxy maxy 2 index .max def /miny miny 2 index .min def
     /maxx maxx 3 index .max def /minx minx 3 index .min def
-    } bd
+} bd
 /lastpoint { % x y => x y
     /lasty  1 index def /lastx 2 index def
-    } bd
+} bd
 /paths 2000 dict def
 /provs 2000 dict def
 /beginpath {
     mark pathtype bboxinit
-    } def
+} bd
 /m {
     lastpoint bbox 2 array astore
-    } bd
+} bd
 /l {
     lastpoint bbox 2 array astore
-    } bd
+} bd
 /c {
     lastpoint bbox 6 2 roll bbox 6 2 roll bbox 6 2 roll 6 array astore
-    } bd
+} bd
 /endpath {
     counttomark array astore
     dup 0 [ pathtype minx miny maxx maxy ] put
     paths 4 -1 roll 3 -1 roll put pop
-    } bd
+} bd
 /contpath {
     lastx lasty m
-    } bd
+} bd
 /carreinit {
     /carrenum -1 def
     /carrefile TARGET (.carres.ps)! writefile def carrefile
-    [	(/carresize ) carresize 3 string cvs( def\n)
-        (/carredict 100 dict def\n/provincecolors 100 dict def\n)
+    [ (/carresize ) carresize 3 string cvs( def\n)
+    (/carredict 100 dict def\n/provincecolors 100 dict def\n)
     ]!! writestring    
-    } bd
+} bd
 carreinit
 /carre { % centerx centery below0above1 label internalname rough => -
     /rough exch def /myname exch def /myutf exch def
@@ -93,7 +93,7 @@ carreinit
         myx carresize add myy carresize add l
         myx carresize sub myy carresize add l
         myx carresize sub myy carresize sub l
-        } {
+    } {
         /css carresize 0.8 mul def
         myx css sub myy carresize sub m
         myx css add myy carresize sub l
@@ -104,22 +104,21 @@ carreinit
         myx carresize sub myy css add l
         myx carresize sub myy css sub l
         myx css sub myy carresize sub l
-        } ifelse
+    } ifelse
     endpath def carrefile
-    [
-        (carredict /) myname ( [ \() myutf (\)) myx 4 string cvs ( )
-        myy 4 string cvs ( ) mypos 1 eq {(false)}{(true)}ifelse ( ] put\n)
+    [(carredict /) myname ( [ \() myutf (\)) myx 4 string cvs ( )
+    myy 4 string cvs ( ) mypos 1 eq {(false)}{(true)}ifelse ( ] put\n)
     ]!! writestring
-    } bd
+} bd
 /ppdef { % symbolicname type terrain mark moves [] provincename => -
     /pname exch def pop counttomark array astore /moves exch def pop
     /terrain exch def /xtype exch def
     [ [ xtype pname terrain minx miny maxx maxy ] moves ]
     provs 3 1 roll put 
-    } bd
+} bd
 /beginprov {
     bboxinit /firstpoint true def mark
-    } bd
+} bd
 /provinceshook {} def
 true {
     /mer {1 /mer beginprov} bd
@@ -158,19 +157,18 @@ true {
         aload 3 1 roll /starty exch def /startx exch def
         /firstpoint false def
     } {
-        aload pop lasty ne exch lastx ne or {
-            continuationPointIsNotTheSame
-            } if
-        } ifelse
+        aload pop lasty ne exch lastx ne or {continuationPointIsNotTheSame} if
+    } ifelse
     2 1 p length 1 sub {p exch get} for
     mark 1 index aload pop /lasty exch def /lastx exch def cleartomark
     lasty starty eq lastx startx eq and {
         /firstpoint true def % Closing a loop
         counttomark array astore exch 
-        } if 
-    } bd
+    } if 
+} bd
 /A {paths exch get AP} bd
-/AR {paths exch get /p exch def [ p 0 get
+/AR {
+    paths exch get /p exch def [ p 0 get
     % Now we revert the path
     false p length 1 sub -1 1 {
         % ~p = [ a b c d e f ], false => [ e f ] c d a b true
@@ -183,24 +181,24 @@ true {
                 pp 2 get pp 3 get pp 0 get pp 1 get true
             } {
                 pp aload pop 6 array astore false
-                } ifelse
+            } ifelse
         } {
             pp length 6 eq {
                 pp 4 get pp 5 get 2 array astore
                 pp 2 get pp 3 get pp 0 get pp 1 get true
             } {
                 pp false
-                } ifelse
             } ifelse
-        } for pop
-    ] AP } bd
-
+        } ifelse
+    } for pop ] AP
+} bd
 /BH {} def
 /EH {} def
+
 /out { t exch writestring } bd
 /dopage {
     dopage_colorbackground
-    } bd
+} bd
 /dopage_colorbackground {
     /t TARGET (.clp) ! writefile def
     /pathwidth << 0 4  1 4  2 6  3 6  4 6  5 6  6 4  7 2  8 4 >> def
@@ -215,7 +213,7 @@ true {
         7 [0 -1 -1 -1]
         8 [0 -1 -1 -1]
     >> def
-    (1 w 1 j 1 J\n) out
+    (1 w 1 j 1 J\n) out % linewidth linecap linejoin
     sortpaths
     /lastwidth -1 def
     /lastcolor [ -1 -1 -1 -1 ] def
@@ -224,25 +222,25 @@ true {
         pathwidth currenttype get dup lastwidth ne {
             [ 1 index 3 string cvs (w) ] !!! out
             /lastwidth exch def
-            } if
+        } if
         pathcolor currenttype get /xcolor exch def true 0 1 3 {
             /i exch def xcolor i get lastcolor i get eq and
-            } for not {
-                /lastcolor xcolor def
-                xcolor 0 get -1 eq {
-                    [ xcolor 1 3 getinterval {10 string cvs} forall (RG) ]!!! out
-                } {
-                    [ xcolor 0 get 10 string cvs (G) ]!!! out
-                    } ifelse
-            } if
+        } for not {
+            /lastcolor xcolor def
+            xcolor 0 get -1 eq {
+                [ xcolor 1 3 getinterval {10 string cvs} forall (RG) ]!!! out
+            } {
+                [ xcolor 0 get 10 string cvs (G) ]!!! out
+            } ifelse
+        } if
         currenttype drawpaths
-        } forall
+    } forall
     t closefile
-    } bd
+} bd
 /sortpaths { % sorts paths by type in sortedpaths
     /sortedpaths [ 10 { 10 dict } repeat ] def
     paths {0 get 0 get sortedpaths exch get exch true put} forall
-    } bd
+} bd
 /drawpaths { % type => -
     sortedpaths exch get {
         pop paths exch get /p exch def
@@ -253,9 +251,12 @@ true {
             } for (S\n) out 
         } forall
     } bd
-/!!! { 0 1 index { length add 1 add } forall string 0 3 2 roll
-      { 3 1 roll dup 0 ne {2 copy 32 put 1 add} if 3 -1 roll
-        3 copy putinterval length add} forall 2 copy 10 put pop} bd
+/!!! { % [ a0 a1 ... an ] => (a0 a1 ... an\n)
+    0 1 index { length add 1 add } forall string 0 3 2 roll {
+        3 1 roll dup 0 ne {2 copy 32 put 1 add} if 3 -1 roll
+        3 copy putinterval length add
+    } forall 2 copy 10 put pop
+} bd
 
 
 % /provinceshook {} def
