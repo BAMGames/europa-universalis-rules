@@ -1,17 +1,40 @@
 %!PS
+
+true pop
 % Path documentation
 % type of path (pathtype)
 %  0 -> sea/sea
-%  1 -> land/land
+%  1 -> land/land or sea/land
 %  2 -> river
 %  3 -> pass
 %  4 -> sea strait (sea/sea)
 %  5 -> land strait (sea/land or land/land)
+%  6 -> border
+%  7 -> lines
+%  8 -> squares (closed lines)
 % coordinates
 %  [ 1 x y ] line
 %  [ 2 x y a b c d ] curve
 % path
-% [ [ type bbox ] coordinate0 coordinate1 ... ]
+% [ [ type bbox ] [x0 y0] [x1 y1] ...]
+true pop
+% Province documentation
+% a province is composed of several elements
+% (strongly connected components possibly with holes inside)
+%
+% type of province: sum of
+%   1: is water
+%   2: is special
+%   4: is noman
+%   8: is marcopolo
+%  16: is othermap
+%  32: is in magnification
+% name is the name of the province the "prov" belongs to A star indicates
+% terrain is a key in color dicts
+% moves are either 2 digits
+% [ [ type name terrain bbox ] [ [moveA lineA1 lineA2] [moveB lineB1 lineB2] ...]]
+% when running over various moves, if one comes to a starting point, do a move
+% and define a new starting point (new array)
 
 systemdict /.min known not {
     /.min {2 copy gt {exch} if pop} bd
@@ -22,14 +45,15 @@ systemdict /.max known not {
 /bboxinit {
     /maxy -10000 def /maxx -10000 def /miny 30000 def /minx 30000 def
     } bd
-/bbox {
+/bbox { % x y => x y
     /maxy maxy 2 index .max def /miny miny 2 index .min def
     /maxx maxx 3 index .max def /minx minx 3 index .min def
     } bd
-/lastpoint {
+/lastpoint { % x y => x y
     /lasty  1 index def /lastx 2 index def
     } bd
 /paths 2000 dict def
+/provs 2000 dict def
 /beginpath {
     mark pathtype bboxinit
     } def
@@ -43,11 +67,196 @@ systemdict /.max known not {
     lastpoint bbox 6 2 roll bbox 6 2 roll bbox 6 2 roll 6 array astore
     } bd
 /endpath {
-    counttomark array astore paths 4 -1 roll 3 -1 roll put pop
+    counttomark array astore
+    dup 0 [ pathtype minx miny maxx maxy ] put
+    paths 4 -1 roll 3 -1 roll put pop
     } bd
 /contpath {
     lastx lasty m
     } bd
+/carreinit {
+    /carrenum -1 def
+    /carrefile TARGET (.carres.ps)! writefile def carrefile
+    [	(/carresize ) carresize 3 string cvs( def\n)
+        (/carredict 100 dict def\n/provincecolors 100 dict def\n)
+    ]!! writestring    
+    } bd
+carreinit
+/carre { % centerx centery below0above1 label internalname rough => -
+    /rough exch def /myname exch def /myutf exch def
+    /mypos exch def /myy exch def /myx exch def
+    /pathtype pathtype 1 index 8 def
+    (carre) myname ! cvn beginpath
+    rough {
+        myx carresize sub myy carresize sub m
+        myx carresize add myy carresize sub l
+        myx carresize add myy carresize add l
+        myx carresize sub myy carresize add l
+        myx carresize sub myy carresize sub l
+        } {
+        /css carresize 0.8 mul def
+        myx css sub myy carresize sub m
+        myx css add myy carresize sub l
+        myx carresize add myy css sub l
+        myx carresize add myy css add l
+        myx css add myy carresize add l
+        myx css sub myy carresize add l
+        myx carresize sub myy css add l
+        myx carresize sub myy css sub l
+        myx css sub myy carresize sub l
+        } ifelse
+    endpath def carrefile
+    [
+        (carredict /) myname ( [ \() myutf (\)) myx 4 string cvs ( )
+        myy 4 string cvs ( ) mypos 1 eq {(false)}{(true)}ifelse ( ] put\n)
+    ]!! writestring
+    } bd
+/ppdef { % symbolicname type terrain mark moves [] provincename => -
+    /pname exch def pop counttomark array astore /moves exch def pop
+    /terrain exch def /xtype exch def
+    [ [ xtype pname terrain minx miny maxx maxy ] moves ]
+    provs 3 1 roll put 
+    } bd
+/beginprov {
+    bboxinit /firstpoint true def mark
+    } bd
+/provinceshook {} def
+true {
+    /mer {1 /mer beginprov} bd
+    /lac {4 /lac beginprov} bd
+    /europemer {17 /mer beginprov} bd
+    /terrain {0 /terrain beginprov} bd
+    /noman {4 /noman beginprov} bd
+    /europe {16 /terrain beginprov} bd
+    /foreto {0 /foreto beginprov} bd
+    /desert {0 /desert beginprov} bd
+    /plaine {0 /plaine beginprov} bd
+    /monts {0 /monts beginprov} bd
+    /foret {0 /foret beginprov} bd
+    /marais {0 /marais beginprov} bd
+    /kforet {8 /foret beginprov} bd
+    /kmonts {8 /monts beginprov} bd
+    /kmarais {8 /marais beginprov} bd
+    /kdesert {8 /desert beginprov} bd
+    /kplaine {8 /plaine beginprov} bd
+    /lmer {33 /mer beginprov} bd
+    /ldesert {32 /desert beginprov} bd
+    /lplaine {32 /plaine beginprov} bd
+    /lmonts {32 /monts beginprov} bd
+    /lforet {32 /foret beginprov} bd
+    /lmarais {32 /marais beginprov} bd
+    /lkforet {40 /foret beginprov} bd
+    /lkmonts {40 /monts beginprov} bd
+    /lkmarais {40 /marais beginprov} bd
+    /lkdesert {40 /desert beginprov} bd
+    /lkplaine {40 /plaine beginprov} bd
+} if % terrains types definitions
+/AP {
+    /p exch def p 0 get aload pop bbox pop pop bbox pop pop pop
+    p 1 get firstpoint {
+        dup length 2 ne {startPointIsACurve} if % DEBUG
+        aload 3 1 roll /starty exch def /startx exch def
+        /firstpoint false def
+    } {
+        aload pop lasty ne exch lastx ne or {
+            continuationPointIsNotTheSame
+            } if
+        } ifelse
+    2 1 p length 1 sub {p exch get} for
+    mark 1 index aload pop /lasty exch def /lastx exch def cleartomark
+    lasty starty eq lastx startx eq and {
+        /firstpoint true def % Closing a loop
+        counttomark array astore exch 
+        } if 
+    } bd
+/A {paths exch get AP} bd
+/AR {paths exch get /p exch def [ p 0 get
+    % Now we revert the path
+    false p length 1 sub -1 1 {
+        % ~p = [ a b c d e f ], false => [ e f ] c d a b true
+        %      z t x y true => [ z t x y e f ] c d a b true
+        % ~p = [ a b ], false => [ a b ]
+        %      z t x y true => [ z t x y a b ] false
+        p exch get /pp exch def {
+            pp length 6 eq {
+                pp 4 get pp 5 get 6 array astore
+                pp 2 get pp 3 get pp 0 get pp 1 get true
+            } {
+                pp aload pop 6 array astore false
+                } ifelse
+        } {
+            pp length 6 eq {
+                pp 4 get pp 5 get 2 array astore
+                pp 2 get pp 3 get pp 0 get pp 1 get true
+            } {
+                pp false
+                } ifelse
+            } ifelse
+        } for pop
+    ] AP } bd
+
+/BH {} def
+/EH {} def
+/out { t exch writestring } bd
+/dopage {
+    dopage_colorbackground
+    } bd
+/dopage_colorbackground {
+    /t TARGET (.clp) ! writefile def
+    /pathwidth << 0 4  1 4  2 6  3 6  4 6  5 6  6 4  7 2  8 4 >> def
+    /pathcolor << 
+        0 [1 -1 -1 -1]
+        1 [0 -1 -1 -1]
+        2 [-1 0.355 0.575 0.875]
+        3 [-1 1 .8 .8]
+        4 [-1 .6 .1 .1]
+        5 [-1 .6 .1 .1]
+        6 [0 -1 -1 -1]
+        7 [0 -1 -1 -1]
+        8 [0 -1 -1 -1]
+    >> def
+    (1 w 1 j 1 J\n) out
+    sortpaths
+    /lastwidth -1 def
+    /lastcolor [ -1 -1 -1 -1 ] def
+    [ 0 8 1 6 7 4 5 2 3 ] {
+        /currenttype exch def
+        pathwidth currenttype get dup lastwidth ne {
+            [ 1 index 3 string cvs (w) ] !!! out
+            /lastwidth exch def
+            } if
+        pathcolor currenttype get /xcolor exch def true 0 1 3 {
+            /i exch def xcolor i get lastcolor i get eq and
+            } for not {
+                /lastcolor xcolor def
+                xcolor 0 get -1 eq {
+                    [ xcolor 1 3 getinterval {10 string cvs} forall (RG) ]!!! out
+                } {
+                    [ xcolor 0 get 10 string cvs (G) ]!!! out
+                    } ifelse
+            } if
+        currenttype drawpaths
+        } forall
+    t closefile
+    } bd
+/sortpaths { % sorts paths by type in sortedpaths
+    /sortedpaths [ 10 { 10 dict } repeat ] def
+    paths {0 get 0 get sortedpaths exch get exch true put} forall
+    } bd
+/drawpaths { % type => -
+    sortedpaths exch get {
+        pop paths exch get /p exch def
+        [ p 1 get {10 string cvs} forall (m) ]!!! out
+        2 1 p length 1 sub { 
+            [ exch p exch get {10 string cvs} forall
+            counttomark 6 eq {(c)}{(l)}ifelse ]!!! out
+            } for (S\n) out 
+        } forall
+    } bd
+/!!! { 0 1 index { length add 1 add } forall string 0 3 2 roll
+      { 3 1 roll dup 0 ne {2 copy 32 put 1 add} if 3 -1 roll
+        3 copy putinterval length add} forall 2 copy 10 put pop} bd
+
 
 % /provinceshook {} def
 % /booleanValue {where dup {exch pop} if def} bd

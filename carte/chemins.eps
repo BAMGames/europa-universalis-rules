@@ -37,6 +37,7 @@
 /zaut [0 0 0] def
 /zhol [0.5 0.5 0.9] def
 
+true {
 /pathtype 0 def
 /mer00 beginpath
 1407 4929 m
@@ -237,14 +238,9 @@ endpath
 0697 5320 m
 0673 5330 l
 endpath
-
-
-
-
-
-
-
-/defaultw 5 def
+}if % sea/sea
+true {
+/pathtype 6 def
 /bord00 beginpath
 1200 5840 m
 1035 5840 l
@@ -474,8 +470,9 @@ endpath
 /bord72 beginpath contpath
 2187 5840 l
 endpath
-
-/defaultw 5 def
+} if % contour
+true {
+/pathtype 1 def
 /path0000 beginpath
 4392 5840 m
 4380 5834 4391 5831 4389 5823 c
@@ -5514,6 +5511,8 @@ endpath
 0534 4334 0538 4311 0534 4310 c
 0524 4305 0519 4328 0526 4331 c
 endpath
+} if % land
+true {
 /path0400 beginpath
 1322 4338 m
 1317 4321 1321 4316 1323 4306 c
@@ -16786,11 +16785,9 @@ endpath
 8355 0007 l
 8347 0000 l
 endpath
-
-/defaultw 4 def
-%#D REMOVE
-/legendedisplay plain not traces not and def
-legendedisplay {
+} if % land2
+true {
+/pathtype 7 def
 /trait0 beginpath
 0906 0627 m
 0888 0700 l
@@ -16807,23 +16804,9 @@ endpath
 1615 0512 m
 1608 0700 l
 endpath
-} if
-%#D /REMOVE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                 PROV DEFS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-/defaultw 5 def
-%#D REMOVE
-legendedisplay {
+} if % lines
+true {
+/pathtype 1 def
 %Premier carré de légende
 /path1451 beginpath
 0775 0437 m
@@ -16893,17 +16876,9 @@ endpath
 1495 0663 l
 1495 0437 l
 endpath
-path1456 0 get 0 6.5 put
-path1457 0 get 0 6 put
-path1460 0 get 0 6 put
-path1461 0 get 0 6 put
-path1462 0 get 0 6 put
-path1463 0 get 0 6 put
-}if
-%#D /REMOVE
-
-/defaultw 5 def
-
+} if % caption
+true {
+/pathtype 1 def
 %Coefficients magiques: 1.75 160 1700 12630
 %Zoom
 /path1466 beginpath
@@ -17485,13 +17460,8 @@ endpath
 0013 5779 0013 5781 0000 5781 c
 endpath
 %finzoom
-
-
-/defaultw 5 def
-
-%Carres
-%#D REMOVE
-legendedisplay {
+} if % magnification
+true {
 0888 0550 0(Mer/Plaine)(legendeplaine) true carre
 1128 0550 0(Montagne)(legendemonts) true carre
 1088 200 sub 0275 0(Infranchissable)(legendenoman) true carre
@@ -17499,42 +17469,31 @@ legendedisplay {
 1328 200 sub 0275 0(Forêt clairsemée)(legendeforeto) true carre
 1608 0550 0(Désert/Marais)(legendedesert) true carre
 1568 200 sub 0275 0(Hors-Europe)(legendeeurope) true carre
-}if
-%#D /REMOVE
+} if % squares of caption
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                 RIVER DEFS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+true {
 [
 /path0187 /path0188 /path0385 /path0386 /path0453 /path0503 /path0438 /path0358 /path0451 /path0417 /path0416 /path0415 /path0423 /path0455 /path0357 /path0452 /path0164 /path0165 /path0166 /path0208 /path0209 /path0210 /path0218 /path0012 /path0046 /path0131 /path0105 /path0106 /path0177 /path0266 /path0267 /path0087 /path0088 /path0114 /path0089 /path0263 /path0057 /path0056 /path0055 /path0061 /path0060 /path0059 /path0172 /path0326 /path0314 /path0313 /path0312 /path0235 /path0236 /path0237 /path0033 /path0032 /path0363 /path0364 /path0365 /path0366 /path0518 /path0648 /path0786 /path0863 /path0651 /path1000 /path0657 /path1300 /path1299 /path1402 /path1272 /path0946 /path0947 /path0948 /path1237 /path1416 /path1408 /path1409 /path1410 /path1209 /path1208 /path1229 /path1007 /path1006 /path1125 /path1124 /path1123 /path1163 /path1164 /path1014 /path1013 /path1179 /path1016 /path1104 /path1095 /path1021 /path1022 /path1080 /path1106 /path0812 /path0914 /path0913 /path0966 /path0960 /path0824 /path0637 /path0638 /path0639 /path0640 /path0832 /path0830 /path0691 /path0692 /path0643 /path0682 /path0644 /path0680 /path0495 /path0615 /path0623 /path0630 /path0491 /path0492 /path0549 /path0554 /path0555 /path0556 /path0557 /path0558 /path0559 /path0673 /path0683 /path0590 /path0674 /path0732 /path0759 /path0757 /path0758 /path0297 /path0414 /path0412 /path0459 /path0426 /path0430 /path0504 /path0505 /path0461 /path0490 /path0486 /path0285 /path0570 /path0281 /path0432 /path0507 /path0517 /path0512 /path0539 /path0511 /path0537 /path0374 /path0247 /path0248 /path0324 /path0251 /path0250 /path0362 /path0767 /path0774 /path0775 /path0776 /path0777 /path0889 /path0782 /path0778 /path0779 /path0815 /path0970 /path0971 /path0701 /path0702 /path0982 /path0958 /path0959 /path0706 /path0991 /path0840 /path0725 /path0726 /path0727 /path0728 /path0789 /path0729 /path0477 /path0476 /path0825 /path0826 /path0924 /path0794 /path0795 /path0995 /path0986 /path0796 /path1003 /path0797 /path0965 /path0964 /path0741 /path0471 /path0766 /path0854 /path0744 /path0468 /path0336 /path0403 /path0521 /path0467 /path0524 /path0625 /path0466 /path0665 /path0666 /path0734 /path0746 /path0667 /path0668 /path0760 /path0669 /path0783 /path0784 /path0820 /path0785 /path0738 /path0620 /path0621 /path0528 /path0527 /path0526 /path0525 /path0765 /path0522 /path0523 /path0456 /path0371 /path1477 /path1478 /path1494 /path1499 /path1500 /path1501 /path1502 /path1503 /path1481 /path1537 /path1540 /path1542 /path1548
 ]
 {
-    cvx exec 0 get 0 6 put
+    paths exch get 0 get 0 2 put % change pathtype to river
 } forall
+
 %Mountain passes
 [
 /path0001 /path0002 /path0003 /path0652 /path1310 /path1144 /path1145 /path1276 /path1203 /path0940 /path1218 /path0939 /path0937 /path0935 /path1435 /path1325 /path1267 /path1357 /path1361 /path1360 /path1378 /path1216 /path1122 /path1121 /path1162 /path0810 /path0811 /path0781 /path0977 /path0722 /path0717 /path0716 /path0836 /path0837 /path0843 /path0879 /path0516 /path0844 /path0845 /path0922 /path1105 /path1092 /path1088 /path0618 /path0628 /path0141 /path1056 /path1057
 ]
 {
-    cvx exec 0 get 0 6.5 put
+    paths exch get 0 get 0 3 put % change pathtype to pass
 } forall
 %Strait fortress controlled frontiers
 [
     /mer21 /mer26 /mer28 /mer29 /mer30 /mer33 /path1075
 ]
 {
-    cvx exec 0 get 0 7 put
+    paths exch get 0 get dup 0 get 4 add 0 exch put % change pathtype to strait
 } forall
-
+} if % river / pass / strait
 provinceshook
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17708,7 +17667,7 @@ provinceshook
 /prov024 mer [/path0841 AR /path0993 A /path0994 A /path0712 A /path0713 A /mer30 A /path1199 A /mer29 AR /path1076 A /path1077 A /path0899 AR /path0967 AR /path0953 AR /path0893 AR /path0925 AR BH /path0983 A /path0984 A /path0992 A /path0996 A /path0999 A /path1032 A /path1034 A /path1035 A /path1061 A /path1063 A /path1066 A /path1070 A /path1079 A /path1090 A /path1096 A /path1103 A EH](Adriatique)ppdef
 %#rrr ROTW Seas
 %#rrrr Aral
-/prov025 europemer [/bord41 A /path0748 AR /path0860 A /path0861 A /bord39 A /path0864 A BH /path0877 A EH](*Mer d’Aral)ppdef
+/prov025 europemer [/bord41 A /path0748 AR /path0860 A /path0861 A /bord39 A /path0864 A BH /path0877 A EH](*/AMer d’Aral)ppdef
 %#rrrr Persique
 /prov026 europemer [/path1422 AR /path1421 AR /bord32 A /path1450 A /bord34 A /path1441 AR /path1273 AR BH EH /path1423 A /path1424 A BH /path1425 A /path1442 A /path1443 A /path1444 A /path1448 A /path1449 A EH](Golfe Persique)ppdef
 %#rrrr Rouge
@@ -18749,7 +18708,7 @@ provinceshook
 /prov494 monts [/path1260 AR /path1364 A /path1368 AR /path1261 AR](Tânger)ppdef
 %#*** Sahara
 /prov495 noman [/bord25 A /path1436 AR /path1434 AR /path1250 A /path1251 A /path1252 A /path1253 A /path1254 A /path1255 A /path1256 A /path1257 A /path1396 A /path1397 A /path1398 A %
-legendedisplay {carrelegendenoman R carrelegendemonts R carrelegendeforet R carrelegendeforeto R carrelegendeplaine R carrelegendedesert R carrelegendeeurope R} if](*Sahara)ppdef
+true {/carrelegendenoman AR /carrelegendemonts AR /carrelegendeforet AR /carrelegendeforeto AR /carrelegendeplaine AR /carrelegendedesert AR /carrelegendeeurope AR} if](*Sahara)ppdef
 %#rrr ROTW Mauritanie
 /prov496 europe [/path1391 A /bord24 A /path1398 AR /path1432 AR](Mauritanie N)ppdef
 %#++ Iberic peninsula and spanish isles <Cat>
@@ -19292,12 +19251,12 @@ legendedisplay {carrelegendenoman R carrelegendemonts R carrelegendeforet R carr
 
 %#D REMOVE
 %légende
-legendedisplay {
-/prov740 noman [carrelegendenoman](*Caption)ppdef
+true {
+/prov740 noman [/carrelegendenoman](*Caption)ppdef
 /prov741 foret [/path1457 A /path1458 A](*Caption)ppdef
 /prov742 plaine [/path1457 AR /path1459 A](*Caption)ppdef
-/prov743 foreto [carrelegendeforeto](*Caption)ppdef
-/prov744 europe [carrelegendeeurope](*Caption)ppdef
+/prov743 foreto [/carrelegendeforeto](*Caption)ppdef
+/prov744 europe [/carrelegendeeurope](*Caption)ppdef
 /prov745 desert [/path1460 A /path1463 A /path1462 A /path1465 A](*Caption)ppdef
 /prov746 marais [/path1460 AR /path1464 A /path1462 AR /path1461 AR](*Caption)ppdef
 /prov747 lac [/path1461 A /path1463 AR](*Caption)ppdef
@@ -19306,6 +19265,7 @@ legendedisplay {
 /prov750 monts [/path1454 A /path1456 AR](*Caption)ppdef
 /prov751 monts [/path1455 A /path1456 A](*Caption)ppdef
 } if
+false {
 %Zones transnationales : sous-developpement
 /prov752 [[1 1 0][80 10 7006 2497] 2] [/path0053 A /path0046 A /path0052 AR /path0051 AR /path0050 AR /path0049 AR /path0131 AR /path0104 A /path0105 A /path0107 AR /path0177 A /path0178 A /path0135 A /path0266 A /path0267 A /path0338 AR /path0337 AR /path0403 AR /path0521 A /path0625 A /path0466 A /path0665 A /path0666 A /path0667 A /path0668 A /path0669 A /path0783 A /path0784 A /path0785 A /path0738 A /path0882 AR /path0881 AR /path0530 AR /path0529 AR /path0862 A /path0952 AR /path1042 AR /path0652 A /path1000 A /path0904 AR /path0787 A /path0788 A /path0663 A /path0318 AR /path0317 AR /path0316 AR /path0035 A /path0036 A /bord46 A /bord47 A /bord48 A /bord49 A /bord50 A /bord51 A /bord52 A](*Special)ppdef
 %Zones transnationales : perse
@@ -19318,8 +19278,9 @@ legendedisplay {
 /prov756 [[1 0 0.5][30 6 -1 -1] 2] [/path0689 A /path0773 A /path0821 A /path0695 A /path0833 A /path0758 A /path0594 AR /path0597 AR /path0849 A /path0847 AR /path0837 A /path0843 AR /path0879 A /path0868 A /path0892 A /path0893 A /path0894 A /path0895 A /path0915 AR /path0870 A /path0481 AR /path0480 AR /path0823 A /path0478 AR /path0729 AR /path0789 AR /path0679 A /path0515 AR /path0514 AR /path0585 AR /path0570 AR /path0284 AR /path0283 AR /path0282 AR /path0281 AR /path0280 AR /path0279 AR /path0278 AR /path0277 AR /path0276 AR /path0275 AR /path0274 AR /path0411 A /path0447 AR /path0298 A /path0302 AR /path0301 AR /path0500 AR /path0540 A /path0550 AR /path0554 A /path0575 A /path0646 A /path0671 A /path0559 A /path0560 A](*Special)ppdef
 %Zones transnationales : italie (sans sicile, sardaigne, corse)
 /prov757 [[0.5 0.5 1][30 6 2287 2390]2] [/path0892 AR /path0868 AR /path0879 AR /path0843 A /path0837 AR /path0836 AR /path0835 AR /path0891 AR /path0699 AR /path0890 AR /path0889 AR /path0781 AR /path0990 A /path0969 AR /path1038 AR /path0979 A /path0980 A /path1026 AR /path1039 A /path1089 A /path0719 AR /path1131 A /path1178 A /path1176 AR /path1175 AR /path1174 AR /path0714 AR /path0713 AR /path0712 AR /path0994 AR /path0993 AR /path0841 A /path0925 A](*Special)ppdef
+} if
 
-traces {
+/traces pop false {
     /magic [
         [[(Kyklades) 4311 1230 4580 1467][/prov016 /prov455]]
         [[(Rhodos) 4600 1100 4850 1250][/prov016 /prov017 /prov469]]
