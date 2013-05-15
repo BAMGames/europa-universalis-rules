@@ -12,7 +12,7 @@ for i in "$@"; do
     gs -dEPSCrop -r20x20 -sDEVICE=ppm -SOutputFile=/dev/null -DBATCH -DNOPAUSE -q -SPREFIX="${SPECIALPREFIX}" -STARGET="${DIRECTORY}/${i}" -DPDFOUTPUT library/bootstrap.ps || fail "${i}"
     echo "${SPECIALPREFIX}done:${i}" 1>&2
     rm -rf ${DIRECTORY}/targets
-    grep ^[+*] ${DIRECTORY}/${i}.depends.txt |cut -c2-|grep -v ^${DIRECTORY}/targets| LC_ALL=C sort > plan/in/gs-${DIRECTORY}-${i}.in
-    grep ^[_] ${DIRECTORY}/${i}.depends.txt |cut -c2-|grep -v ^${DIRECTORY}/targets| LC_ALL=C sort > plan/out/gs-${DIRECTORY}-${i}.out
+    grep ^[+*] ${DIRECTORY}/${i}.depends.txt |cut -c2-|grep -v ^${DIRECTORY}/targets| LC_ALL=C sort -u > plan/in/gs-${DIRECTORY}-${i}.in
+    grep ^[_] ${DIRECTORY}/${i}.depends.txt |cut -c2-|grep -v ^${DIRECTORY}/targets| LC_ALL=C sort -u > plan/out/gs-${DIRECTORY}-${i}.out
     rm -f ${DIRECTORY}/${i}.depends.txt    
 done
