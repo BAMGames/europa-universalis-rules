@@ -28,15 +28,13 @@ true pop
 %   8: is marcopolo
 %  16: is othermap
 %  32: is in magnification
-% name is the name of the province the "prov" belongs to A star indicates
+% name is the name of the province the "prov" belongs to. A star indicates
 % terrain is a key in color dicts
 % moves are either 2 digits
 % [ [ type name terrain bbox ] [ [moveA lineA1 lineA2] [moveB lineB1 lineB2] ...]]
 % when running over various moves, if one comes to a starting point, do a move
 % and define a new starting point (new array)
 
-/marcopoloisimportant false def
-/captionisimportant false def
 
 systemdict /.min known not {
     /.min {2 copy gt {exch} if pop} bd
@@ -44,6 +42,9 @@ systemdict /.min known not {
 systemdict /.max known not {
     /.max {2 copy lt {exch} if pop} bd
 } if
+/bboxset {
+    /MAXy exch def /MAXx exch def /MINy exch def /MINx exch def
+} bd
 /bboxinit {
     /maxy -10000 def /maxx -10000 def /miny 30000 def /minx 30000 def
 } bd
@@ -241,6 +242,9 @@ true {
     ] def
 } bd
 
+/testbbox {
+    
+} bd
 /styleinit {
     /cache /aaaaaaaaaaa def
     /pathwidth << 0 4  1 4  2 6  3 6  4 6  5 6  6 4  7 2  8 4 >> def

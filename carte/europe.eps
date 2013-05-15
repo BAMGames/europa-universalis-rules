@@ -8,6 +8,7 @@ systemdict /CLIP known {/compress false def /clipping true def}if
 clipping {/pagewidth 1300 def /pageheight 1300 def}if
 (library/library.ps) include
 (library/libcarte.ps) include
+TARGET(.background.clipping.txt)! include
 BASEDIR(images.ps)! include
 FONTDIR(champion.ps)! include
 /xfact 40955 3500 sub 8425 0 sub div def
@@ -47,7 +48,8 @@ FONTDIR(champion.ps)! include
 begindocument
 beginpage
 clipping{(q\n1 0 0 1 00000 00000 cm 00000 00000 01300 01300%Clipping info\nre W n\n)out}if
-(chemins.clp) copymap
+
+TARGET(.background.clp)! copymap
 
 %%%%%%%%% TEMPETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 (img:orage4) 7545 1570 (Mer Caspienne) false orage

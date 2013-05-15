@@ -1,10 +1,11 @@
 (library/common.ps) include
-(carte/clipping.txt) include % Must leave 4 int on the stack
-/MAXY exch def /MAXX exch def /MINY exch def /MINX exch def
+/bboxset {
+    /MAXy exch def /MAXx exch def /MINy exch def /MINx exch def
+} bd
 
 %X (file) copymap
 /copymap { % (filename) => 
-    BASEDIR exch ! dup (.ps) ! include
+    dup (.ps) ! include
     /realoutputfile cpstream def
     copyfile
 %    /zoneopacity 0.15 defaultvalue

@@ -1,0 +1,35 @@
+%!PS
+
+/carresize 113 def
+/marcopoloisimportant false def
+/captionisimportant false def
+/traces false def
+
+(library/libchemin.ps) include
+TARGET (.clipping.txt)! include
+BASEDIR (chemins.ps)! include
+
+dopage
+stop
+
+% Affine transformation for javascript contours
+% 0 0 -> 3500 3500
+% 8425 5840 -> 40955 29465
+% /mapname (Carte) def
+% /xfact 40955 3500 sub 8425 0 sub div def
+% /yfact 29465 3500 sub 5840 0 sub div def
+% /xbase 3500 0 xfact mul sub .5 add def
+% /ybase 3500 0 yfact mul sub .5 add def
+%
+% /zred [1 0 0] def
+% /zgreen [0 0 1] def
+% /zang [1 0 0] def
+% /zsue [0.67 0.85 0.90] def
+% /zrus [0.55 0.27 0.07] def
+% /zpol [1 0.75 0.75] def
+% /zpru [0.75 0.75 0.75] def
+% /zfra [0 0 1] def
+% /zesp [1 1 0] def
+% /ztur [0.5 0.6 0.5] def
+% /zaut [0 0 0] def
+% /zhol [0.5 0.5 0.9] def

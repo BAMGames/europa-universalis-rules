@@ -1,42 +1,5 @@
 %!PS
 
-%Liste des erreurs à ne pas signaler (province incluse dans une autre)
-% no more used?
-/jumpingdict
-<<
->> def
-/carresize 113 def
-
-
-% Affine transformation for javascript contours
-% 0 0 -> 3500 3500
-% 8425 5840 -> 40955 29465
-/mapname (Carte) def
-/xfact 40955 3500 sub 8425 0 sub div def
-/yfact 29465 3500 sub 5840 0 sub div def
-/xbase 3500 0 xfact mul sub .5 add def
-/ybase 3500 0 yfact mul sub .5 add def
-
-%-------------- Colors definitions (non-terrains) ----------------
-%Colors definition are to be put here.
-%#D COLORS
-
-%-------------- fin de configuration utilisateur -----------------
-(library/libchemin.ps) include
-
-/zred [1 0 0] def
-/zgreen [0 0 1] def
-/zang [1 0 0] def
-/zsue [0.67 0.85 0.90] def
-/zrus [0.55 0.27 0.07] def
-/zpol [1 0.75 0.75] def
-/zpru [0.75 0.75 0.75] def
-/zfra [0 0 1] def
-/zesp [1 1 0] def
-/ztur [0.5 0.6 0.5] def
-/zaut [0 0 0] def
-/zhol [0.5 0.5 0.9] def
-
 true {
 /pathtype 0 def
 /mer00 beginpath
@@ -19280,7 +19243,7 @@ false {
 /prov757 [[0.5 0.5 1][30 6 2287 2390]2] [/path0892 AR /path0868 AR /path0879 AR /path0843 A /path0837 AR /path0836 AR /path0835 AR /path0891 AR /path0699 AR /path0890 AR /path0889 AR /path0781 AR /path0990 A /path0969 AR /path1038 AR /path0979 A /path0980 A /path1026 AR /path1039 A /path1089 A /path0719 AR /path1131 A /path1178 A /path1176 AR /path1175 AR /path1174 AR /path0714 AR /path0713 AR /path0712 AR /path0994 AR /path0993 AR /path0841 A /path0925 A](*Special)ppdef
 } if
 
-/traces pop false {
+traces {
     /magic [
         [[(Kyklades) 4311 1230 4580 1467][/prov016 /prov455]]
         [[(Rhodos) 4600 1100 4850 1250][/prov016 /prov017 /prov469]]
