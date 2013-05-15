@@ -34,6 +34,15 @@ true pop
 % [ [ type name terrain bbox ] [ [moveA lineA1 lineA2] [moveB lineB1 lineB2] ...]]
 % when running over various moves, if one comes to a starting point, do a move
 % and define a new starting point (new array)
+% A move has length 3: x y and open/closed. A province is always composed of closed
+% loops only.
+%
+% Pathset documentation
+% A pathset is a succession of paths. It is composed of several (possibly open)
+% paths
+% [ [ 2 name terrain bbox ] [ [moveA lineA1 lineA2] ... ]]
+% same as a province, but type is 2. They are stored in pathsets instead of provs.
+% They may contain open loops, opposite to provs. They can only be stroked.
 
 
 systemdict /.min known not {
@@ -120,7 +129,7 @@ carreinit
     /pname exch def pop counttomark array astore /moves exch def pop
     /terrain exch def /xtype exch def
     [ [ xtype pname terrain minx miny maxx maxy ] moves ]
-    provs 3 1 roll put 
+    provs 3 1 roll put
 } bd
 /beginprov {
     bboxinit /firstpoint true def mark
@@ -169,7 +178,7 @@ true {
     mark 1 index aload pop /lasty exch def /lastx exch def cleartomark
     lasty starty eq lastx startx eq and {
         /firstpoint true def % Closing a loop
-        counttomark array astore exch 
+        counttomark array astore dup dup 0 get [ exch aload pop true ] 0 exch put exch 
     } if 
 } bd
 /A {paths exch get AP} bd
@@ -202,9 +211,6 @@ true {
 /EH {} def
 
 /out { t exch writestring } bd
-/dopage {
-    dopage_simple_color_background
-} bd
 /setrgbstroke {
     /xcolor exch def true 0 1 2 {
         /i exch def xcolor i get lastcolor i get eq and
@@ -229,7 +235,7 @@ true {
     } if} bd
 /setwidth {
      dup lastwidth ne {
-        [ 1 index 3 string cvs (w) ] !!! out /lastwidth exch def
+        [ 1 index 7 string cvs (w) ] !!! out /lastwidth exch def
     } { pop } ifelse
 } bd
 /savecontext {
@@ -301,6 +307,11 @@ true {
 /provbboxtest {
     pp 3 4 getinterval aload pop bboxtest
 } bd 
+/colorinterpolate {
+    /.coa exch def /.cob 1 .coa sub def
+    [ exch aload pop 3 {4 -1 roll .coa mul 1 index .cob mul add 4 1 roll 6 1 roll} repeat 6 3 roll pop pop pop ]
+} bd
+
 /dopage_simple_color_background {
     /t TARGET (.clp) ! writefile def
     (1 w 1 j 1 J\n) out % linewidth linecap linejoin
@@ -316,6 +327,36 @@ true {
             20 setwidth
             drawcontourprov (W n\n) out
             drawcontourprov (B\n) out
+            restorecontext
+        } if
+    } forall
+    [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
+    t closefile
+} bd
+/dopage_rich_color_background {
+    /t TARGET (.clp) ! writefile def
+    (1 w 1 j 1 J\n) out % linewidth linecap linejoin
+    sortpaths 
+    styleinit
+    provs { /p exch def /pn exch def /pp p 0 get def
+        provbboxtest {
+            [ percent pn 40 string cvs pp 1 get ] !!! out
+            provcolors
+            savecontext
+            colors 0 3 getinterval setrgbfill
+            drawcontourprov (W n\n) out
+            drawcontourprov (f\n) out
+ %           (q /GSalphaZone gs\n)out
+            1 -.1 0 {
+                /step exch def
+                colors step colorinterpolate setrgbstroke
+                20 30 step mul add setwidth
+                drawcontourprov (S\n) out
+            } for
+%            (Q\n) out
+%            carrefile (<< /Type /ExtGState /CA .1 /ca zoneopacity >> (GSalphaZone) defobj\n) writestring
+%            carrefile (\(GSalphaZone\) /pagegss push\n) writestring
+            drawcontourprov (S\n) out
             restorecontext
         } if
     } forall
@@ -345,22 +386,30 @@ true {
         } for (S\n) out 
     } forall
 } bd
+
 /drawcontourprov { % define pn and p first
     pn cache ne {
         /cache pn def /cachedstring [
-        0 1 p 1 get length 1 sub {
-            /firstinpath true def
+            0 1 p 1 get length 1 sub {
+            /closedsegment true def
             p 1 get exch get {
-                dup length 2 eq {
-                    {10 string cvs ( )} forall (l\n) firstinpath {/firstinpath false def pop (m\n)} if 
+                dup length 5 lt {
+                    dup length 3 eq {
+                        aload pop /closedsegment exch def
+                        10 string cvs exch 10 string cvs exch ( ) exch ( m\n)
+                    } {
+                        aload pop
+                        10 string cvs exch 10 string cvs exch ( ) exch ( l\n)
+                    } ifelse 
                 } {
                     {10 string cvs ( )} forall (c\n) 
                 } ifelse
             } forall
-            (h\n)
+            closedsegment {(h\n)}if
         } for ] !! def
     } if cachedstring out
 } bd
+
 /provcolors { % - => -
         /xtype pp 0 get def
         /terrain pp 2 get def
