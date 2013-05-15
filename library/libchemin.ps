@@ -45,6 +45,9 @@ systemdict /.max known not {
 /bboxset {
     /MAXy exch def /MAXx exch def /MINy exch def /MINx exch def
 } bd
+/bboxtest {
+    MINy lt 4 1 roll MINx lt 4 1 roll MAXy gt 4 1 roll MAXx gt 4 1 roll or or or not
+} bd
 /bboxinit {
     /maxy -10000 def /maxx -10000 def /miny 30000 def /minx 30000 def
 } bd
@@ -295,28 +298,39 @@ true {
     /contexts [] def
 } bd
 /percent ( ) dup 0 37 put def
+/provbboxtest {
+    pp 3 4 getinterval aload pop bboxtest
+} bd 
 /dopage_simple_color_background {
     /t TARGET (.clp) ! writefile def
     (1 w 1 j 1 J\n) out % linewidth linecap linejoin
     sortpaths 
     styleinit
     provs { /p exch def /pn exch def /pp p 0 get def
-        [ percent pn 40 string cvs pp 1 get ] !!! out
-        provcolors
-        savecontext
-        colors 0 3 getinterval setrgbfill
-        colors 3 3 getinterval setrgbstroke
-        20 setwidth
-        drawcontourprov (W n\n) out
-        drawcontourprov (B\n) out
-        restorecontext
+        provbboxtest {
+            [ percent pn 40 string cvs pp 1 get ] !!! out
+            provcolors
+            savecontext
+            colors 0 3 getinterval setrgbfill
+            colors 3 3 getinterval setrgbstroke
+            20 setwidth
+            drawcontourprov (W n\n) out
+            drawcontourprov (B\n) out
+            restorecontext
+        } if
     } forall
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
 } bd
 /sortpaths { % sorts paths by type in sortedpaths
     /sortedpaths [ 10 { 10 dict } repeat ] def
-    paths {0 get 0 get sortedpaths exch get exch true put} forall
+    paths {
+        0 get dup 1 4 getinterval aload pop bboxtest {
+            0 get sortedpaths exch get exch true put
+        } {
+            pop pop
+        } ifelse
+    } forall
 } bd
 /drawpaths { % type => -
     /currenttype exch def

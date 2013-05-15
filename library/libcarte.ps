@@ -2,6 +2,45 @@
 /bboxset {
     /MAXy exch def /MAXx exch def /MINy exch def /MINx exch def
 } bd
+/bboxtest {
+    MINy lt 4 1 roll MINx lt 4 1 roll MAXy gt 4 1 roll MAXx gt 4 1 roll or or or not
+} bd
+/centertextbbox {
+    5 copy pop 2 index add 4 -1 roll 1 index 2 div sub 4 1 roll exch 3 index add exch bboxtest {
+        centertext
+    } {
+        /underlinenotblocked false def
+        6 { pop } repeat
+    } ifelse
+} bd
+/lefttextbbox {
+   5 copy pop 2 index add exch 3 index add exch bboxtest {
+        lefttext
+    } {
+        /underlinenotblocked false def
+        6 { pop } repeat
+    } ifelse
+} bd
+/righttextbbox {
+    5 copy pop 2 index add 4 -1 roll 1 index sub 4 1 roll exch 3 index add exch bboxtest {
+        righttext
+    } {
+        /underlinenotblocked false def
+        6 { pop } repeat
+    } ifelse
+} bd
+/circletextbbox {
+    7 copy pop exch pop exch pop add 3 copy add exch 2 index add exch 5 2 roll 3 -1 roll 1 index sub 3 1 roll sub 4 2 roll bboxtest {
+        circletext
+    } {
+        8 { pop } repeat
+    } ifelse
+} bd
+/underlinenotblocked true def
+/underlinebbox {
+    underlinenotblocked {underline}if
+    /underlinenotblocked true def
+} bd
 
 %X (file) copymap
 /copymap { % (filename) => 
@@ -16,11 +55,15 @@
 }def
 %X (img:foo) x y putsymbol
 /putsymbol {
-    0.8 3 1 roll begints useimage endts
+    2 copy 40 sub exch 40 sub exch 2 copy 200 add exch 200 add exch bboxtest {
+        0.8 3 1 roll begints useimage endts
+    } { pop pop pop } ifelse 
 }def
 %X (img:foo) x y scale putxsymbol
 /putxsymbol {
-    3 1 roll begints useimage endts
+    2 copy 40 sub exch 40 sub exch 2 copy 200 add exch 200 add exch bboxtest {
+        3 1 roll begints useimage endts
+    } { pop pop pop pop } ifelse 
 }def
 %X (img:orageN) x y (Name) textbelow orage
 %X N risque
@@ -29,35 +72,39 @@
     /seaname exch def
     /seay exch def /seax exch def
     /seaimage exch def
-    0.675 seax seay begints
-	seaimage useimage
-	seaname (\n) search {
-	    80 below{202}{-42}ifelse 300 42 ab centertext pop
-	    80 below{160}{-84}ifelse 300 42 ab  centertext
-	} { (%) out dup out (\n) out
-	    80 below{160}{-42}ifelse 300 42 ab  centertext
-	} ifelse
-    endts
+    seax 50 sub seay 42 sub seax 155 add seay 140 add bboxtest {
+        0.675 seax seay begints
+	    seaimage useimage
+	    seaname 80 below{160}{-42}ifelse 300 42 ab  centertext
+        endts
+    } if
 } def
 
 /risque {
-    dup 1 sub 1 string cvs /seaname exch def
-    dup 2 exch sub 1 string cvs /below exch def
-    (+) exch 1 string cvs ! /seaimage exch def
     /seax seax 125 add def
     /seay seay 3 add def
-    (q 1 )seaname !( 0 rg\n)! out
-    newpath seax seay 20 add moveto seax 20 sub seay 20 add 20 0 360
-    arc closepath (h f\n) exporttopdf
-    below ( )! below !( )! below !( rg\n)! out
-    seaimage seax 20 sub seay 4 add 32 32  ab  centertext
-    (Q\n) out
+    seax 40 sub seay seax seay 40 add bboxtest {
+        dup 1 sub 1 string cvs /seaname exch def
+        dup 2 exch sub 1 string cvs /below exch def
+        (+) exch 1 string cvs ! /seaimage exch def
+        (q 1 )seaname !( 0 rg\n)! out
+        newpath seax seay 20 add moveto seax 20 sub seay 20 add 20 0 360
+        arc closepath (h f\n) exporttopdf
+        below ( )! below !( )! below !( rg\n)! out
+        seaimage seax 20 sub seay 4 add 32 32  ab  centertext
+        (Q\n) out
+    } if
 }def
 %X [(Name) X Y textbelow] carre
 /carre {
     aload pop carresize exch{-1 mul 24 sub}if add
-    3 -1 roll (C#) exch ! @ (C#) anchorsearch {pop}if 3 1 roll
-    carresize 2 mul 24 ab centertext
+    carresize 2 mul 24 
+    4 copy 4 -1 roll carresize sub 4 1 roll exch 3 index add exch 2 index add
+    bboxtest {
+        ab centertext
+    } {
+        pop pop pop pop pop
+    } ifelse
 }def
 /counter 0 def
 /zpp {%[colora] [colorb] name2 name x y pen
@@ -66,7 +113,7 @@
     /name2 exch def
     /col1 exch def
     /col0 exch def
-    deffunlin
+    x 5 sub y 5 sub x 205 add y 205 add bboxtest {
     deffunlin
     objdict (ShadingSquare)toto ! known not {
 	<</Coords [30 30 50 170] /Extend [true true] /Function
@@ -82,6 +129,7 @@
     name 100 30 140 30  ab  centertext
     name2 100 140 140 30  ab  centertext
     endts
+    } if
 }def
 /zpc {%[colora] [colorb] value value2 name x y pen image
     /ximage exch def /pen exch def /y exch def /x exch def
@@ -90,6 +138,7 @@
     /value exch 5 string cvs def
     /col1 exch def
     /col0 exch def
+    x 5 sub y 5 sub x 205 add y 205 add bboxtest {
     deffunlin
     objdict (ShadingCircle)toto ! known not {
 	<</Coords [60 140 0 100 100 100] /Function (FunctionLin)
@@ -108,6 +157,7 @@
    value2 dup(0)eq{pop}{105 122 110 24  ab  centertext}ifelse
    endts
    /counter counter 1 add def
+    } if
 }def
 
 /zmc {%X value x y pirates image zm
@@ -115,6 +165,7 @@
     /value2 exch 5 string cvs def
     /value exch 5 string cvs def
     /col0 zneu def /col1 zneu2 def
+    x y x 150 add y 150 add bboxtest {
     deffunlin
     objdict (ShadingSquare)toto ! known not {
 	<</Coords [30 30 50 170] /Extend [true true] /Function
@@ -143,6 +194,7 @@
       /first false def
     } forall
     endts
+    } if
 }def
 
 /zm {(img:bateau) zmc}def
@@ -165,9 +217,8 @@
      /a1 exch def /y1 exch def /x1 exch def 
     /t1 ra a1 cos mul def /u1 ra a1 sin mul def
     /t2 ra a2 cos mul def /u2 ra a2 sin mul def
-    (S\n)
-    (f\n)
-    2 {
+    x1 150 sub y1 150 sub x1 150 add y1 150 add bboxtest {
+    (B\n)
     x1 display space y1 display ( m\n)out
     x1 t1 cxx mul add u1 sub display space y1 u1 cxx mul add t1 add display ( l\n)out
     x1 t1 cxx mul add u1 0.5 mul sub display space y1 u1 cxx mul add t1 0.5 mul add display ( l\n)out
@@ -181,7 +232,8 @@
     x2 t2 impulsion mul add u2 0.5 mul sub display space y2 u2 impulsion mul add t2 0.5 mul add display space
     x1 t1 impulsion mul add u1 0.5 mul add display space y1 u1 impulsion mul add t1 0.5 mul sub display space
     x1 t1 cxx mul add u1 0.5 mul add display space y1 u1 cxx mul add t1 0.5 mul sub display ( c\n)out
-    x1 t1 cxx mul add u1 add display space y1 u1 cxx mul add t1 sub display ( l h\n)out out} repeat
+    x1 t1 cxx mul add u1 add display space y1 u1 cxx mul add t1 sub display ( l h\n)out out
+    } if
 }def
 
 /f1 (FontChampionCourrierNormal) def

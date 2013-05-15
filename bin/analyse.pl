@@ -153,7 +153,7 @@ $underlinecolor="(0.1 w\\n) out\n";
 sub treattext {
     if ($soul eq " _") {
 	setupunderline($col);
-	$underline="(q 0.1 w".$underlinecolor."\\n) out underline (Q\\n)out";
+	$underline="(q 0.1 w".$underlinecolor."\\n) out underlinebbox (Q\\n)out";
 	$soul="";
     } else {
 	$underline="";
@@ -195,7 +195,7 @@ foreach $ville (sort keys %NOM) {
 	    ($way,$px,$py,$disp,$col,$soul)=($1,$2,$3,$4,$5,$6);
 	    $style=$styles{$way};
 	    treattext;
-	    print "($disp) $px $py 1000 24 (FontArialNarrow${z}) ${style}text$underline\n";
+	    print "($disp) $px $py 1000 24 (FontArialNarrow${z}) ${style}textbbox$underline\n";
 	} else {
 	    die "$ville, pas de posx\n" unless defined($posx{$ville});
 	    die "$_" unless m/(?:ALT)?NOM +([hbgd][HBUDLRlruo]*) +"(.+)" ([BNJWRGL])( _)?/;
@@ -213,7 +213,7 @@ foreach $ville (sort keys %NOM) {
 		$py+=${$styles{$courant}}[1];
 	    }
 	    $disp=~s/^_//;
-	    printf "($disp) %4d %4d 1001 24 (FontArialNarrow$z) ${style}text$underline\n",$px,$py;
+	    printf "($disp) %4d %4d 1001 24 (FontArialNarrow$z) ${style}textbbox$underline\n",$px,$py;
 	}
     }
 }
@@ -232,7 +232,7 @@ foreach $ville (sort keys %PROV) {
 	    $disp=~s/\)/\\051/g;
 	    $provposx{$ville}=$px;
 	    $provposy{$ville}=$py;
-	    print "(",$disp,") $px $py 1000 36 (FontArialNarrow$z) centertext\n";
+	    print "(",$disp,") $px $py 1000 36 (FontArialNarrow$z) centertextbbox\n";
 	} else {
 	    die "Prov error for $_" unless m/(?:ALT)?PROV( +[HBRLavuolr]+)? +"(.+)" ([BNJWRGL])([*])?/;
 	    die "Pas de provx!" unless ($provposx{$ville});
@@ -244,7 +244,7 @@ foreach $ville (sort keys %PROV) {
 		$px+=${$styles{$courant}}[0];
 		$py+=${$styles{$courant}}[1];
 	    }
-	    print "(",$disp,") $px $py 1000 36 (FontArialNarrow$z) centertext\n";
+	    print "(",$disp,") $px $py 1000 36 (FontArialNarrow$z) centertextbbox\n";
 	}
     }
 }
@@ -257,7 +257,7 @@ foreach $ville (sort keys %PROVCURVE) {
 	$z="-Bold";
 	treattext;
 	if ($star) {$finalname{$ville}=$disp;}
-	print "(",$disp,") ",join(' ',($px,$py,$r,$as,$w,36))," (FontArialNarrow$z) circletext\n";
+	print "(",$disp,") ",join(' ',($px,$py,$r,$as,$w,36))," (FontArialNarrow$z) circletextbbox\n";
     }
 }
 
@@ -274,7 +274,7 @@ foreach $ville (sort keys %PROVCURVEX) {
 	$py-=$r*sin($ai*3.14159265358979/180);
 	treattext;
 	if ($star) {$finalname{$ville}=$disp;}
-	print "(",$disp,") ",join(' ',($px,$py,$r,$as,$w,36))," (FontArialNarrow$z) circletext\n";
+	print "(",$disp,") ",join(' ',($px,$py,$r,$as,$w,36))," (FontArialNarrow$z) circletextbbox\n";
     }
 }
 
@@ -286,7 +286,7 @@ foreach $ville (sort keys %VALUE) {
 	    setupcolor($col);
 	    $disp=~s/\(/\\050/g;
 	    $disp=~s/\)/\\051/g;
-	    print "($disp) $px $py 1000 48 (FontArialNarrow) centertext\n";
+	    print "($disp) $px $py 1000 48 (FontArialNarrow) centertextbbox\n";
 	} else {
 	    die unless m/VALUE( +[HBGDLRlruo]+)? +(\d+) ([BNJWRGL])/;
 	    die "Pas de provx!" unless ($provposx{$ville});
@@ -299,7 +299,7 @@ foreach $ville (sort keys %VALUE) {
 		$px+=${$styles{$courant}}[0];
 		$py+=${$styles{$courant}}[1];
 	    }
-	    print "($disp) $px $py 1000 48 (FontArialNarrow) centertext\n";
+	    print "($disp) $px $py 1000 48 (FontArialNarrow) centertextbbox\n";
 	}
     }
 #    print VALUES "$finalname{$ville}:$disp\n" if ($finalname{$ville});

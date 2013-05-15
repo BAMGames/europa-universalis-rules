@@ -16,23 +16,24 @@
 (img:sel) 2425 1686 putsymbol
 (img:sel) 2831 2613 putsymbol
 (img:sel) 1344 2779 putsymbol
-(2) 1369 2779 50 40 (FontArialNarrow-Bold) centertext
+(2) 1369 2779 50 40 (FontArialNarrow-Bold) centertextbbox
 (img:sel) 3695 3344 putsymbol
-(2) 3720 3344 50 40 (FontArialNarrow-Bold) centertext
+(2) 3720 3344 50 40 (FontArialNarrow-Bold) centertextbbox
 (img:sel) 1844 1769 putsymbol
-(2) 1869 1769 50 40 (FontArialNarrow-Bold) centertext
+(2) 1869 1769 50 40 (FontArialNarrow-Bold) centertextbbox
 (img:sel) 3011 2990 putsymbol
-(3) 3036 2990 50 40 (FontArialNarrow-Bold) centertext
+(3) 3036 2990 50 40 (FontArialNarrow-Bold) centertextbbox
 (img:sel) 3158 2709 putsymbol
-%(2) 3183 2709 50 40 (FontArialNarrow-Bold) centertext
+%(2) 3183 2709 50 40 (FontArialNarrow-Bold) centertextbbox
 (img:blocus) 3600 1700 0.4 putxsymbol
 (img:blocus) 4980 2180 0.4 putxsymbol
 (img:blocus) 4455 1740 0.4 putxsymbol
 (img:blocus) 3226 1543 0.4 putxsymbol
 (img:blocus) 8350 0054 0.4 putxsymbol
 /ancrefluviale {
+    2 copy 20 sub exch 20 sub exch 2 copy 90 add exch 90 add exch bboxtest {
 begints 
-(-10 -20 m 70 -20 l 70 60 l -10 60 l h S\n) out
+(1 w 0 g 0 G -10 -20 m 70 -20 l 70 60 l -10 60 l h S\n) out
 -5 -5 -15 {/yyyy exch def
 1 0 yyyy begints
 (0 5 m )out
@@ -49,6 +50,7 @@ endts
 } for
 (ancremarine) xobject
 endts
+    }if
 } def
 0.8 5360 3184 ancrefluviale
 0.8 6160 3258 ancrefluviale
