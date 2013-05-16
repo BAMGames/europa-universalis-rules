@@ -93,7 +93,7 @@ systemdict /.max known not {
     /carrenum -1 def
     /carrefile TARGET (.clp.ps)! writefile def carrefile
     [ (/carresize ) carresize 3 string cvs( def\n)
-    (/carredict 100 dict def\n/provincecolors 100 dict def\n)
+    (/carredict 100 dict def\n/provincecolors 100 dict def /detroitdict 100 dict def\n)
     ]!! writestring  
 } bd
 carreinit
@@ -125,6 +125,11 @@ carreinit
     myy 4 string cvs ( ) mypos 1 eq {(false)}{(true)}ifelse ( ] put\n)
     ]!! writestring
 } bd
+/detroit { % detroitname [ x y angle x y angle impulse ] => ---
+    carrefile [ (detroitdict) 5 -1 roll 20 string cvs (/) exch ! ([) 6 -1 roll {10 string cvs} forall (]) (put) ] !!! writestring
+} bd
+
+
 /ppdef { % symbolicname type terrain mark moves [] provincename => -
     /pname exch def pop counttomark array astore /moves exch def pop
     /terrain exch def /xtype exch def
@@ -312,6 +317,18 @@ true {
     [ exch aload pop 3 {4 -1 roll .coa mul 1 index .cob mul add 4 1 roll 6 1 roll} repeat 6 3 roll pop pop pop ]
 } bd
 
+/dopage_simple_white_background {
+    /t TARGET (.clp) ! writefile def
+    (1 w 1 j 1 J\n) out % linewidth linecap linejoin
+    sortpaths 
+    styleinit
+    /pathwidth << 0 4  1 4  2 4  3 8  4 6  5 6  6 4  7 2  8 4 >> def
+    /pathcolor << pathcolor {pop[0 0 0]}forall >> def
+    pathcolor 2  [0 0 1] put
+    pathcolor 3 [.5 .5 .5] put
+    [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
+    t closefile
+} bd
 /dopage_simple_color_background {
     /t TARGET (.clp) ! writefile def
     (1 w 1 j 1 J\n) out % linewidth linecap linejoin

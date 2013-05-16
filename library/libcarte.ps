@@ -211,6 +211,32 @@
 (2 w 0.5 0 0 rg 1 1 1 RG )out
 } def
 /enddetroit {endalpha}def
+/detroitsimple { aload pop
+    /angledelta 22.5 def
+     /ra 10 def /cxx 3 def /impulsion exch cxx mul def
+     /a2 exch def /y2 exch def /x2 exch def
+     /a1 exch def /y1 exch def /x1 exch def 
+    /t1 ra a1 cos mul def /u1 ra a1 sin mul def
+    /t2 ra a2 cos mul def /u2 ra a2 sin mul def
+    /ra 20 def
+    (6 w 0 G 0 g\n)out
+    x1 display space y1 display ( m\n)out
+    x1 ra a1 angledelta add cos mul add display space
+    y1 ra a1 angledelta add sin mul add display ( l\n)out
+    x1 ra a1 angledelta sub cos mul add display space
+    y1 ra a1 angledelta sub sin mul add display ( l h f\n)out
+    x2 display space y2 display ( m\n)out
+    x2 ra a2 angledelta add cos mul add display space
+    y2 ra a2 angledelta add sin mul add display ( l\n)out
+    x2 ra a2 angledelta sub cos mul add display space
+    y2 ra a2 angledelta sub sin mul add display ( l h f\n)out
+    x1 t1 add display space y1 u1 add display ( m\n)out
+    x1 t1 impulsion mul add display space
+    y1 u1 impulsion mul add display space
+    x2 t2 impulsion mul add display space
+    y2 u2 impulsion mul add display space
+    x2 t2 add display space y2 u2 add display ( c S\n)out
+} def
 /detroit { aload pop
      /ra 10 def /cxx 3 def /impulsion exch cxx mul def
      /a2 exch def /y2 exch def /x2 exch def
@@ -602,33 +628,38 @@
 }def
 
 /inittrace {
-    /tracesfile TARGET(.moretraces.js)! writefile def
-    tracesfile (var contours;\nif \(contours == undefined\) {contours=[];}\ncontoursbase=contours.length;\n\n) writestring
-    tracesfile (var contourshooks;\nif \(contourshooks == undefined\) {contourshooks=[];}\n\n) writestring
-    tracesfile (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[')writestring
-    /mapname exch def tracesfile mapname writestring
-    tracesfile (']={s:contours.length};\n\n)writestring
+    traces {
+        /tracesfile TARGET(.moretraces.js)! writefile def
+        tracesfile (var contours;\nif \(contours == undefined\) {contours=[];}\ncontoursbase=contours.length;\n\n) writestring
+        tracesfile (var contourshooks;\nif \(contourshooks == undefined\) {contourshooks=[];}\n\n) writestring
+        tracesfile (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[')writestring
+        /mapname exch def tracesfile mapname writestring
+        tracesfile (']={s:contours.length};\n\n)writestring
+    } if
 }def
 /tracefmt {cvi 6 string cvs writestring}bind def
-/writetrace {
-    % (name) west south width height  => ---
-    tracesfile (contours.push\({n:') writestring
-    tracesfile 5 index writestring
-    tracesfile (',t:2,o:') writestring
-    tracesfile 6 -1 roll writestring
-    tracesfile (',b:[) writestring
-    tracesfile 4 index xfact mul xbase add tracefmt
-    tracesfile (,) writestring
-    tracesfile 3 index yfact mul ybase add tracefmt
-    tracesfile (,) writestring
-    tracesfile 5 -1 roll 4 -1 roll add xfact mul xbase add tracefmt
-    tracesfile (,) writestring
-    tracesfile 3 1 roll add yfact mul ybase add tracefmt
-    tracesfile (]}\);\n) writestring
+/writetrace { % (name) west south width height  => ---
+    traces {
+        tracesfile (contours.push\({n:') writestring
+        tracesfile 5 index writestring
+        tracesfile (',t:2,o:') writestring
+        tracesfile 6 -1 roll writestring
+        tracesfile (',b:[) writestring
+        tracesfile 4 index xfact mul xbase add tracefmt
+        tracesfile (,) writestring
+        tracesfile 3 index yfact mul ybase add tracefmt
+        tracesfile (,) writestring
+        tracesfile 5 -1 roll 4 -1 roll add xfact mul xbase add tracefmt
+        tracesfile (,) writestring
+        tracesfile 3 1 roll add yfact mul ybase add tracefmt
+        tracesfile (]}\);\n) writestring
+    } { 5 {pop} repeat }ifelse
 }def
 /finishtrace {
-    tracesfile (\n\ncontourssections[') writestring
-    tracesfile mapname writestring
-    tracesfile (']['e']=contours.length;\n) writestring
-    tracesfile closefile
+    traces {
+        tracesfile (\n\ncontourssections[') writestring
+        tracesfile mapname writestring
+        tracesfile (']['e']=contours.length;\n) writestring
+        tracesfile closefile
+    } if
 }def
