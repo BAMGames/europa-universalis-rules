@@ -1,3 +1,5 @@
+pstree.pdf: pstree.dot
+	dot -Tpdf $< > $@
 inclusion.pdf: inclusion.dot
 	dot -Tpdf $< > $@
 inclusion.dot:

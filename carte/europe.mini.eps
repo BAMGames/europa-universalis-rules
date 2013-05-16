@@ -3,13 +3,9 @@
 /pagewidth 595 def
 /pageheight 842 def
 
-(library/library.ps) include
+(library/pdf_library.ps) include
 (library/libcarte.ps) include
 0 0 8425 5840 bboxset
-
-% Images
-BASEDIR(images.ps)! include
-FONTDIR(champion.ps)! include
 
 << /Title ((Europe Map for EU9 - White version)) >> infochunk
 begindocument

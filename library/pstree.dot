@@ -1,0 +1,68 @@
+digraph inclusion {
+        subgraph cluster_c {
+                "c/chemin.ps";
+                "c/europe";
+                "c/europe.background";
+                "c/europe.background.clipping";
+                "c/europe.background.clp";
+                "c/europe.mini";
+                "c/europe.mini.background";
+                "c/europe.mini.background.clipping";
+                "c/europe.mini.background.clp";
+                "c/europe.text";
+                "c/europe.utf";
+                "c/images";
+                "c/portsandmines";
+        }
+        subgraph cluster_f {
+                "f/arial_narrow";
+                "f/champion";
+                "f/encodings";
+        }
+        subgraph cluster_l {
+                "l/common";
+                "l/libcarte";
+                "l/libchemin.ps";
+                "l/libpions";
+                "l/library";
+                "l/pdf_library";
+                "l/xobjects";
+        }
+        subgraph cluster_p {
+                "p/images";
+                "p/pays";
+                "p/pions";
+                "p/translation";
+        }       
+        "c/europe.background" -> "l/libchemin.ps";
+        "c/europe.background" -> "c/chemin.ps";
+        "c/europe.background" -> "c/europe.background.clipping";
+        "c/europe.background.clp" -> "c/europe.background" [arrowhead=dot,style=dashed];
+        "c/europe.mini.background" -> "l/libchemin.ps";
+        "c/europe.mini.background" -> "c/chemin.ps";
+        "c/europe.mini.background" -> "c/europe.mini.background.clipping";
+        "c/europe.mini.background.clp" -> "c/europe.mini.background" [arrowhead=dot,style=dashed];
+        "c/europe.text" -> "c/europe.utf" [arrowhead=dot,style=dashed];
+        "c/europe.mini" -> "l/pdf_library";        
+        "c/europe.mini" -> "l/libcarte";        
+        "c/europe.mini" -> "c/europe.mini.background.clp";        
+        "c/europe" -> "c/europe.background.clp";        
+        "c/europe" -> "l/library";        
+        "c/europe" -> "l/libcarte";        
+        "c/europe" -> "c/images";        
+        "c/europe" -> "f/champion";        
+        "c/europe" -> "c/portsandmines";        
+        "c/europe" -> "c/europe.text";        
+        "c/europe" -> "c/europe.background.clipping";
+        "l/library" -> "l/pdf_library";        
+        "l/library" -> "f/encodings";        
+        "l/library" -> "f/arial_narrow";        
+        "l/libcarte" -> "l/common";
+        "l/common" -> "l/xobjects";
+        "p/pions" -> "l/libpions";
+        "l/libpions" -> "l/common";
+        "l/libpions" -> "l/library";
+        "l/libpions" -> "p/images";
+        "l/libpions" -> "p/pays";
+        "l/libpions" -> "p/translation";
+}
