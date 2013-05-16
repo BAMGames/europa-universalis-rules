@@ -1,0 +1,13 @@
+%!PS
+
+/carresize 113 def
+/marcopoloisimportant false def
+/captionisimportant false def
+/traces false def
+
+(library/libchemin.ps) include
+TARGET (.clipping.txt)! include
+BASEDIR (chemins.ps)! include
+
+dopage_simple_color_background
+stop

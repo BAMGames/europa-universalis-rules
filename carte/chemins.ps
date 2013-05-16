@@ -17576,6 +17576,7 @@ provinceshook
 %#++ Seas
 %#+++ Atlantic
 %#==== Norvege
+true {
 /prov000 mer [/bord13 A /bord14 A /bord15 A /bord16 A /mer04 AR /path0186 A /path0256 A /mer00 A /path0038 AR /path0037 AR BH /path0078 A /path0092 A /path0108 A /path0124 A /path0128 A /path0142 A /path0156 A /path0157 A /path0174 A /path0181 A EH](Mer de Norvège) ppdef
 %#==== Western Approaches
 /prov001 mer [/bord17 A /bord18 A /bord19 A /mer10 A /path0359 AR /path0350 A /path0351 A /mer08 A /path0189 AR /path0185 A /mer04 A BH /path0435 A /path0448 A /path0203 A /path0217 A /path0254 A /path0255 A /path0260 A /path0303 A /path0304 A /path0306 A /path0321 A /path0322 A /path0329 A /path0330 A /path0339 A EH](Western Approaches) ppdef
@@ -18181,6 +18182,8 @@ provinceshook
 /prov269 europe [/bord44 A /path0229 AR /path0035 AR /path0316 A /path0450 A](Sibérie W)ppdef
 %#rrrr Siberia S
 /prov270 europe [/bord43 A /path0450 AR /path0317 A /path0318 A /path0319 A /path0320 A](Sibérie S)ppdef
+} if % /prov001 -- /prov270
+true {
 %#++ Central Europe <Cat>
 %#+++ Poland-Lithuania
 %#++++ Poland
@@ -18772,6 +18775,8 @@ true {/carrelegendenoman AR /carrelegendemonts AR /carrelegendeforet AR /carrele
 /prov536 plaine [/path0707 A /path0708 A /path0709 A /path1037 AR /path0993 AR /path0840 AR /path0991 A BH /path0998 A EH](Romagna)ppdef
 %#///// Comacchio
 /prov537 lac [/path0998 AR](*Romagna)ppdef
+} if % /prov271 -- /prov537
+true {
 %#+++ Kingdom of Napoli
 %#==== Sardegna
 /prov538 plaine [/path1129 AR /path1128 AR /path1127 AR /path1126 AR](Saldígna)ppdef
@@ -19112,6 +19117,8 @@ true {/carrelegendenoman AR /carrelegendemonts AR /carrelegendeforet AR /carrele
 /prov692 monts [/path0815 AR /path0968 A /path0969 A /path0990 AR /path0780 AR](Provence)ppdef
 %#==== Berry
 /prov693 foret [/path0828 A /path0829 A /path0830 A /path0832 AR /path0640 AR /path0639 AR](Berry)ppdef
+} if % /prov538 -- /prov693
+true {
 %#%% Zoom
 %#%%% Seas
 %#%%%% Atlantic
@@ -19211,9 +19218,8 @@ true {/carrelegendenoman AR /carrelegendemonts AR /carrelegendeforet AR /carrele
 %#%%%% England <Mix>
 %#%%%%% Kent
 /prov739 lplaine [/path1522 AR /path1521 AR /bord15 AR](Kent)ppdef
-
+} if % zoom /prov694 -- /prov739
 %#D REMOVE
-%légende
 true {
 /prov740 noman [/carrelegendenoman](*Caption)ppdef
 /prov741 foret [/path1457 A /path1458 A](*Caption)ppdef
@@ -19227,7 +19233,7 @@ true {
 /prov749 mer [/path1452 A /path1453 A](*Caption)ppdef
 /prov750 monts [/path1454 A /path1456 AR](*Caption)ppdef
 /prov751 monts [/path1455 A /path1456 A](*Caption)ppdef
-} if
+} if % caption
 false {
 %Zones transnationales : sous-developpement
 /prov752 [[1 1 0][80 10 7006 2497] 2] [/path0053 A /path0046 A /path0052 AR /path0051 AR /path0050 AR /path0049 AR /path0131 AR /path0104 A /path0105 A /path0107 AR /path0177 A /path0178 A /path0135 A /path0266 A /path0267 A /path0338 AR /path0337 AR /path0403 AR /path0521 A /path0625 A /path0466 A /path0665 A /path0666 A /path0667 A /path0668 A /path0669 A /path0783 A /path0784 A /path0785 A /path0738 A /path0882 AR /path0881 AR /path0530 AR /path0529 AR /path0862 A /path0952 AR /path1042 AR /path0652 A /path1000 A /path0904 AR /path0787 A /path0788 A /path0663 A /path0318 AR /path0317 AR /path0316 AR /path0035 A /path0036 A /bord46 A /bord47 A /bord48 A /bord49 A /bord50 A /bord51 A /bord52 A](*Special)ppdef
@@ -19241,7 +19247,7 @@ false {
 /prov756 [[1 0 0.5][30 6 -1 -1] 2] [/path0689 A /path0773 A /path0821 A /path0695 A /path0833 A /path0758 A /path0594 AR /path0597 AR /path0849 A /path0847 AR /path0837 A /path0843 AR /path0879 A /path0868 A /path0892 A /path0893 A /path0894 A /path0895 A /path0915 AR /path0870 A /path0481 AR /path0480 AR /path0823 A /path0478 AR /path0729 AR /path0789 AR /path0679 A /path0515 AR /path0514 AR /path0585 AR /path0570 AR /path0284 AR /path0283 AR /path0282 AR /path0281 AR /path0280 AR /path0279 AR /path0278 AR /path0277 AR /path0276 AR /path0275 AR /path0274 AR /path0411 A /path0447 AR /path0298 A /path0302 AR /path0301 AR /path0500 AR /path0540 A /path0550 AR /path0554 A /path0575 A /path0646 A /path0671 A /path0559 A /path0560 A](*Special)ppdef
 %Zones transnationales : italie (sans sicile, sardaigne, corse)
 /prov757 [[0.5 0.5 1][30 6 2287 2390]2] [/path0892 AR /path0868 AR /path0879 AR /path0843 A /path0837 AR /path0836 AR /path0835 AR /path0891 AR /path0699 AR /path0890 AR /path0889 AR /path0781 AR /path0990 A /path0969 AR /path1038 AR /path0979 A /path0980 A /path1026 AR /path1039 A /path1089 A /path0719 AR /path1131 A /path1178 A /path1176 AR /path1175 AR /path1174 AR /path0714 AR /path0713 AR /path0712 AR /path0994 AR /path0993 AR /path0841 A /path0925 A](*Special)ppdef
-} if
+} if % areas
 
 traces {
     /magic [
@@ -19253,6 +19259,6 @@ traces {
         [[(Çanakkale Boğazı) 4398 1755 4601 1869][/prov432 /prov433 /prov015 /prov016]]
         [[(Illes Baleares) 1660 1679 1960 1879][/prov522 /prov023 /prov022 /prov021]]
     ] def
-}if
+}if % unsual traces (islands)
 
 %#D /REMOVE
