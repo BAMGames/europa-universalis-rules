@@ -14,5 +14,11 @@ for i in "$@"; do
     rm -rf ${DIRECTORY}/targets
     grep ^[+*] ${DIRECTORY}/${i}.depends.txt |cut -c2-|grep -v ^${DIRECTORY}/targets| LC_ALL=C sort -u > plan/in/gs-${DIRECTORY}-${i}.in
     grep ^[_] ${DIRECTORY}/${i}.depends.txt |cut -c2-|grep -v ^${DIRECTORY}/targets| LC_ALL=C sort -u > plan/out/gs-${DIRECTORY}-${i}.out
+    cat plan/out/gs-${DIRECTORY}-${i}.out plan/in/gs-${DIRECTORY}-${i}.in | LC_ALL=C sort | uniq -d > plan/out/gs-${DIRECTORY}-${i}.junk
+    if [ $(stat -c %s plan/out/gs-${DIRECTORY}-${i}.junk) -le 0 ]; then
+        rm -f plan/out/gs-${DIRECTORY}-${i}.junk
+    else
+        cat plan/out/gs-${DIRECTORY}-${i}.junk | xargs rm -f
+    fi
     rm -f ${DIRECTORY}/${i}.depends.txt    
 done
