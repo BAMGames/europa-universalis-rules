@@ -1,0 +1,17 @@
+%!PS
+/globalscale 72 180 div def
+/pagewidth 8425 def % default values
+/pageheight 5840 def % default values
+
+(library/library.ps) include
+(library/libcarte.ps) include
+0 0 8425 5840 bboxset
+/compress false def
+
+<< /Title ((Europe Map for EU9 - Schematic version)) >> infochunk
+begindocument
+beginpage
+TARGET(.background.clp)! copymap
+detroitdict {detroitsimple pop} forall
+endpage
+enddocument

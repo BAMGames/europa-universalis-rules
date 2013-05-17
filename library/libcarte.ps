@@ -46,14 +46,9 @@
 
 %X (file) copymap
 /copymap { % (filename) => 
-    dup (.ps) ! include
     /realoutputfile cpstream def
-    copyfile
-%    /zoneopacity 0.15 defaultvalue
-%% high precision: uncomment below
-%% /zoneopacity 0.075 defaultvalue
-%    << /Type /ExtGState /CA zoneopacity /ca zoneopacity >> (GSalphaZone) defobj
-%    (GSalphaZone) /pagegss push
+    dup copyfile
+    (.ps) ! include
 }def
 %X (img:foo) x y putsymbol
 /putsymbol {

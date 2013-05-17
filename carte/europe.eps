@@ -23,10 +23,11 @@ FONTDIR(champion.ps)! include
 (CarteSource) inittrace
 
 << /Title ((Europe Map for EU9)) >> infochunk
+/compress false def
 begindocument
 beginpage
-(q\n1 0 0 1 )out
-MINx display space MINy display ( cm 0 0 )out pagewidth display space pageheight display ( re W n\n)out
+(q\n0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
+MINx neg display space MINy neg display ( cm\n)out
 TARGET(.background.clp)! copymap
 
 %%%%%%%%% TEMPETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

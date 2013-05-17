@@ -150,7 +150,7 @@ carreinit
 /provinceshook {} def
 true {
     /mer {1 /mer beginprov} bd
-    /lac {4 /lac beginprov} bd
+    /lac {5 /lac beginprov} bd
     /europemer {17 /mer beginprov} bd
     /terrain {0 /terrain beginprov} bd
     /noman {4 /noman beginprov} bd
@@ -289,17 +289,17 @@ true {
             /mer    [.325 .6  .875    .255 .475 .775]
             /plaine [.9   .9  .7      .8   .8   .5]
             /desert [1    1   .4      .9   .9   .3]
-            /monts  [.9   .6  .2       .7   .5   .3]
+            /monts  [.9   .6  .2      .7   .5   .3]
             /foret  [.6   1   .3      .4   .9   .4]
-            /foreto [.6   .8  .6       .5   .7   .5]
-            /marais [.5   .6  .5       .3   .4   .3]
-            /terrain[0    0   0        1    1    1 ]
-            /noman  [1    1   1        .804 .804 .9]
-            /lac    [.425 .7  1        .355 .575 .875]
+            /foreto [.6   .8  .6      .5   .7   .5]
+            /marais [.5   .6  .5      .3   .4   .3]
+            /terrain[0    0   0       1    1    1 ]
+            /noman  [1    1   1       .8   .8   9 ]
+            /lac    [.425 .7  1       .355 .575 .875]
         >>
         /othermap <<
-            /mer [0.425 0.9 0.875    0.355 0.775 0.775]
-            /terrain [0.9 0.9 0.9    0.5 0.5 0.8]
+            /mer    [0.425 0.9 0.875    0.355 0.775 0.775]
+            /terrain[0.8 0.8 0.8    0.7 0.7 0.85]
         >>
     >> def
     colordict /marcopolo <<
@@ -350,6 +350,49 @@ true {
         } for (S\n) out 
     } forall
 } bd
+/drawpathsschematic { % type => -
+    /currenttype exch def
+    sortedpaths currenttype get {
+        pop /pn exch def /p paths pn get def
+        p 1 get aload pop /ys exch def /xs exch def
+        p p length 1 sub get aload pop /ye exch def /xe exch def
+        [0 0 1] setrgbstroke
+        1 setwidth [ xs ys (m) 
+        2 1 p length 1 sub {
+            p exch get dup length 2 eq {
+                aload pop (l)
+            } {
+                dup 4 get exch 5 get (l)
+            } ifelse
+        } for (S) ] [ exch {10 string cvs} forall ]!!! out 
+        [.4 .4 1] setrgbfill
+        1 1 p length 1 sub {
+            p exch get dup length 2 eq {
+                aload pop /yy exch def /xx exch def
+            } {
+                dup 4 get /xx exch def 5 get /yy exch def
+            } ifelse
+            [[xx 1 add yy (m) xx yy 1 add (l) xx 1 sub yy (l) xx yy 1 sub (l f)
+             ] {10 string cvs} forall ]!!! out
+        } for
+        3 setwidth
+        [1 1 1] setrgbstroke
+        [ [ xs ys (m) xe ye (l S) ]{10 string cvs} forall ]!!! dup out
+        2 setwidth [0 0 0] setrgbstroke out [0 0 0] setrgbfill
+        carrefile [
+        xe xs ne ye ys ne or {
+            (\(q )
+            [[xe xs sub ye ys sub atan dup sin exch cos dup neg 2 index
+            xs xe add 2 idiv ys ye add 2 idiv]{12 string cvs}forall (cm)]!!!
+            (\) out)
+        } {
+            (\(q 1 0 0 1 )xs xe add 2 idiv 10 string cvs ( )
+            ys ye add 2 idiv 10 string cvs ( cm \)out\n)
+        } ifelse
+        (\() pn 30 string cvs (\) 0 0 100 12 (FontArialNarrow) centertextbbox (Q )out)
+        ] !! writestring
+    } forall
+} bd
 /drawcontourprov { % define pn and p first
     pn cache ne {/debug false def
         /cache pn def /cachedstring [
@@ -394,6 +437,25 @@ true {
         def
         /colors colordict colorset get terrain get def    
 } bd
+/drawprovs {
+    /.proc exch def
+    provs { /p exch def /pn exch def /pp p 0 get def
+        provbboxtest {
+            [ percent pn 40 string cvs pp 1 get ] !!! out
+            provcolors .proc
+        } if
+    } forall
+} bd
+/drawpathsets {
+    /.proc exch def
+    pathsets { /p exch def /pn exch def /pp p 0 get def
+        /found false def
+        provbboxtest {
+            [ percent pn 40 string cvs pp 1 get ] !!! out
+            .proc
+        } if
+    } forall
+} bd
 styleinit
 
 % Set of painting styles
@@ -405,48 +467,60 @@ styleinit
     /pathcolor << pathcolor {pop[0 0 0]}forall >> def
     pathcolor 2  [0 0 1] put
     pathcolor 3 [.5 .5 .5] put
+    colordict /special get /suede [.5 .5 .5]put
+    {
+        pp 0 get 5 and 0 ne {
+            savecontext
+            pp 0 get 4 and 0 ne {(.5 g\n)}{(.9 g\n)}ifelse out
+            drawcontourprov (f\n) out
+            restorecontext
+        } if
+    } drawprovs
+    {
+        savecontext
+        colordict /special get pp 2 get get setrgbstroke
+        50 setwidth
+        /fillunclosed true def
+        drawcontourprov
+        /fillunclosed false def
+        (W n\n) out
+        drawcontourprov (S\n) out           
+        restorecontext
+    } drawpathsets
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
 } bd
 /dopage_simple_color_background {
     /t TARGET (.clp) ! writefile def
     (1 w 1 j 1 J\n) out % linewidth linecap linejoin
-    sortpaths 
-    provs { /p exch def /pn exch def /pp p 0 get def
-        provbboxtest {
-            [ percent pn 40 string cvs pp 1 get ] !!! out
-            provcolors
-            savecontext
-            colors 0 3 getinterval setrgbfill
-            colors 3 3 getinterval setrgbstroke
-            20 setwidth
-            drawcontourprov (W n\n) out
-            drawcontourprov (B\n) out
-            restorecontext
-        } if
-    } forall
-    pathsets { /p exch def /pn exch def /pp p 0 get def
-        /found false def
-        provbboxtest {
-            [ percent pn 40 string cvs pp 1 get ] !!! out
-            colordict /special get pp 2 get get setrgbstroke
-            50 setwidth
-            savecontext
-            /fillunclosed true def
-            drawcontourprov
-            /fillunclosed false def
-            (W n\n) out
-            (q 0 J 0 j /GSalphaZone gs\n)out
-            drawcontourprov (S\n) out           
-            (Q\n) out
-            restorecontext
-            /found true def
-        } if
-        found {
-            carrefile (<< /Type /ExtGState /LC 0 /CA .5 >> (GSalphaZone) defobj\n) writestring
-            carrefile (\(GSalphaZone\) /pagegss push\n) writestring
-        } if
-    } forall
+    sortpaths
+    {
+        savecontext
+        colors 0 3 getinterval setrgbfill
+        colors 3 3 getinterval setrgbstroke
+        20 setwidth
+        drawcontourprov (W n\n) out
+        drawcontourprov (B\n) out
+        restorecontext
+    } drawprovs
+    /found false def
+    {
+        savecontext
+        colordict /special get pp 2 get get setrgbstroke
+        50 setwidth
+        /fillunclosed true def
+        drawcontourprov
+        /fillunclosed false def
+        (W n\n) out
+        (/GSalphaZone gs\n)out
+        drawcontourprov (S\n) out           
+        /found true def
+        restorecontext
+    } drawpathsets
+    found {
+        carrefile (<< /Type /ExtGState /LC 0 /CA .5 >> (GSalphaZone) defobj\n) writestring
+        carrefile (\(GSalphaZone\) /pagegss push\n) writestring
+    } if
     [ percent (Paths) ] !!! out
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
@@ -454,32 +528,81 @@ styleinit
 /dopage_rich_color_background {
     /t TARGET (.clp) ! writefile def
     (1 w 1 j 1 J\n) out % linewidth linecap linejoin
-    sortpaths 
-    provs { /p exch def /pn exch def /pp p 0 get def
-        provbboxtest {
-            [ percent pn 40 string cvs pp 1 get ] !!! out
-            provcolors
-            savecontext
-            colors 0 3 getinterval setrgbfill
-            drawcontourprov (W n\n) out
-            drawcontourprov (f\n) out
- %           (q /GSalphaZone gs\n)out
-            1 -.1 0 {
-                /step exch def
-                colors step colorinterpolate setrgbstroke
-                20 30 step mul add setwidth
-                drawcontourprov (S\n) out
-            } for
-%            (Q\n) out
-%            carrefile (<< /Type /ExtGState /CA .1 /ca zoneopacity >> (GSalphaZone) defobj\n) writestring
-%            carrefile (\(GSalphaZone\) /pagegss push\n) writestring
+    sortpaths
+    {
+        savecontext
+        colors 0 3 getinterval setrgbfill
+        drawcontourprov (W n\n) out
+        drawcontourprov (f\n) out
+        1 -.1 0 {
+            /step exch def
+            colors step colorinterpolate setrgbstroke
+            20 30 step mul add setwidth
             drawcontourprov (S\n) out
-            restorecontext
-        } if
-    } forall
+        } for
+        drawcontourprov (S\n) out
+        restorecontext
+    } drawprovs
+    /found false def
+    {
+        savecontext
+        colordict /special get pp 2 get get setrgbstroke
+        50 setwidth
+        /fillunclosed true def
+        drawcontourprov
+        /fillunclosed false def
+        (W n\n) out
+        (/GSalphaZone gs\n)out
+        1 -.1 0 {
+            /step exch def
+            20 30 step mul add setwidth
+            drawcontourprov (S\n) out
+        } for
+        /found true def
+        restorecontext
+    } drawpathsets
+    found {
+        carrefile (<< /Type /ExtGState /LC 0 /CA .075 >> (GSalphaZone) defobj\n) writestring
+        carrefile (\(GSalphaZone\) /pagegss push\n) writestring
+    } if
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
 } bd
+/dopage_schematic_color_background {
+    /t TARGET (.clp) ! writefile def
+    (1 w 1 j 1 J\n) out % linewidth linecap linejoin
+    sortpaths
+    {
+        savecontext
+        colors 0 3 getinterval setrgbfill
+        drawcontourprov (W n\n) out
+        drawcontourprov (f\n) out
+        restorecontext
+    } drawprovs
+    /found false def
+    {
+        savecontext
+        colordict /special get pp 2 get get setrgbstroke
+        20 setwidth
+        /fillunclosed true def
+        drawcontourprov
+        /fillunclosed false def
+        (W n\n) out
+        (/GSalphaZone gs\n)out
+        drawcontourprov (S\n) out           
+        /found true def
+        restorecontext
+    } drawpathsets
+    found {
+        carrefile (<< /Type /ExtGState /LC 0 /D [[20] 0] >> (GSalphaZone) defobj\n) writestring
+        carrefile (\(GSalphaZone\) /pagegss push\n) writestring
+    } if
+    [ percent (Paths) ] !!! out
+    [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
+    [ 0 8 1 6 7 4 5 2 3 ] {drawpathsschematic} forall
+    t closefile
+} bd
+
 
 % /provinceshook {} def
 % /booleanValue {where dup {exch pop} if def} bd
