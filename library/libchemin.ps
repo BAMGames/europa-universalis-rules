@@ -580,7 +580,7 @@ styleinit
         drawcontourprov (f\n) out
         carrefile [
             ((0 G 0 g )out \() pp 1 get (\) ) pp 3 4 getinterval aload pop exch 4 1 roll add 2 div 12 string cvs
-            3 1 roll add 2 div 12 string cvs exch ( ) exch ( 100 18 (FontArialNarrow-Bold) centertextbbox\n)
+            3 1 roll add 2 div 12 string cvs exch ( ) exch ( 100 )pp 1 get 0 get 42 eq{(9)}{(18)}ifelse((FontArialNarrow-Bold) centertextbbox\n)
         ]!! writestring
         restorecontext
     } drawprovs
