@@ -660,3 +660,28 @@
         tracesfile closefile
     } if
 }def
+
+/schematicgrid {
+    /pw pagewidth 10 string cvs def
+    /ph pageheight 10 string cvs def
+    (.25 w 0 G\n)out
+    0 100 pageheight {
+        [ exch (0 ) exch 10 string cvs ( m ) pw ( ) 3 index ( l S\n)]!! out
+    } for
+    0 100 pagewidth {
+        [ exch 10 string cvs ( 0 m ) 1 index ( ) ph ( l S\n)]!! out
+    } for
+    (1 w 0 G\n)out
+    0 500 pageheight {
+        [ exch (0 ) exch 10 string cvs ( m ) pw ( ) 3 index ( l S\n)]!! out
+    } for
+    0 500 pagewidth {
+        [ exch 10 string cvs ( 0 m ) 1 index ( ) ph ( l S\n)]!! out
+    } for
+    0 500 pageheight { /yy exch def
+        0 500 pagewidth { /xx exch def
+            [ (\() xx 10 string cvs (,) yy 10 string cvs (\)) ]!!
+            xx 2 add yy 2 add 100 12 (FontArialNarrow) lefttext
+        } for
+    } for
+} bd
