@@ -19,6 +19,14 @@ colordict /special
     (oregon) zmagenta
     (californie) zyellow
     (nevada) zcyan
+    (arizona) zblue
+    (texas) zgreen
+    (rocheuses) zblack
+    (kansas) zred
+    (manitoba) zmauve
+    (hudson) zblack
+    (labrador) zwhite
+    (terre-neuve) zyellow
     end
 >> put
 
@@ -11220,7 +11228,7 @@ provinceshook
 true {
 /prov000 noman [/path0009 A /bord59 A](*Artic America)ppdef
 /prov001 noman [/path0088 A /path0089 A /bord55 A /path0010 AR /bord57 A](*Artic America)ppdef
-/prov002 noman [/path0011 A /path0012 A /bord53 A](*Artic America)ppdef
+/prov002 noman [/path0011 A /path0012 A /bord53 A](*Greenland)ppdef
 /prov003 noman [/path0013 A /path0014 A /bord51 A](*Artic America)ppdef
 /prov004 noman [/path0156 A](*Artic America)ppdef
 /prov005 noman [/path0158 A](*Artic America)ppdef
@@ -11281,50 +11289,49 @@ true {
 /prov059 monts [/path0296 A /path0297 A /path0298 A /path0518 AR /path0512 AR](Nevada C)ppdef
 /prov060 monts [/path0518 A /path0299 A /path0300 A /path0540 AR /path0495 AR /path0513 AR](Nevada SE)ppdef
 /prov061 (nevada) zone [/path0291 A /path0292 A /path0503 A /path0504 A /path0580 A /path0440 A  /path0441 A /path0442 A /path0297 A /path0298 A /path0299 A /path0300 A /path0540 AR /path0495 AR /path0494 AR /path0386 AR /path0385 AR /path0384 AR /path0446 AR](*Nevada)ppdef
-} if % /prov000 - /prov054
-false {
-%Arizona
-/prov062 plaine [/path0441 AR /path0600 AR /path0599 AR /path0598 AR /path0297 AR /path0442 AR]pdef
-/prov063 desert [/path0629 A /path0654 A /path0658 A /path0652 AR /path0599 A]pdef
-/prov064 monts [/path0298 AR /path0598 A /path0652 A /path0653 A /path0591 AR /path0590 AR /path0299 AR]pdef
-/prov065 zblue (arizona) zone [/path0442 AR /path0441 AR /path0600 AR /path0629 A /path0654 A /path0658 A /path0653 A /path0591 AR /path0590 AR /path0299 AR /path0298 AR /path0297 AR]pdef
-%Texas
-/prov066 plaine [/path0590 A /path0596 AR /path0645 A /path0617 AR /path0302 AR /path0301 AR /path0300 AR]pdef
-/prov067 plaine [/path0591 A /path0592 A /path0593 A /path0594 A /path0595 A /path0596 A]pdef
-/prov068 plaine [/path0595 AR /path0753 A /path0718 A /path0618 AR /path0645 AR]pdef
-/prov069 zgreen (texas) zone [/path0590 A /path0591 A /path0592 A /path0593 A /path0594 A /path0753 A /path0718 A /path0618 AR /path0617 AR /path0302 AR /path0301 AR /path0300 AR]pdef
-%Rocheuses
-/prov070 monts [/path0197 AR /path0289 A /path0290 A /path0446 A /path0383 AR /path0361 AR /path0198 AR]pdef
-/prov071 monts [/path0361 A /path0362 A /path0382 AR /path0355 AR /path0199 AR]pdef
-/prov072 monts [/path0383 A /path0384 A /path0385 A /path0458 AR /path0363 AR /path0362 AR]pdef
-/prov073 monts [/path0363 A /path0364 A /path0356 AR /path0382 A]pdef
-/prov074 monts [/path0458 A /path0386 A /path0387 A /path0388 A /path0357 AR /path0364 AR]pdef
-/prov075 zblack (rocheuses) zone [/path0197 AR /path0289 A /path0290 A /path0446 A /path0384 A /path0385 A /path0386 A /path0387 A /path0388 A /path0357 AR /path0356 AR /path0355 AR /path0199 AR /path0198 AR]pdef
-%Kansas
-/prov076 foret [/path0494 A /path0495 A /path0496 A /path0309 A /path0497 AR /path0387 AR]pdef
-/prov077 foret [/path0388 AR /path0497 A /path0310 A /path0311 A /path0312 A /path0358 AR]pdef
-/prov078 foret [/path0311 AR /path0501 A /path0462 AR /path0466 AR]pdef
-/prov079 plaine [/path0540 A /path0301 A /path0576 AR /path0308 A /path0496 AR]pdef
-/prov080 plaine [/path0310 AR /path0309 AR /path0308 AR /path0307 AR /path0464 AR /path0463 AR /path0501 AR]pdef
-/prov081 zred (kansas) zone [/path0494 A /path0495 A /path0540 A /path0301 A /path0576 AR /path0307 AR /path0464 AR /path0463 AR /path0462 AR /path0466 AR /path0312 A /path0358 AR /path0388 AR /path0387 AR]pdef
-%Manitoba
-/prov082 foret [/path0201 AR /path0345 A /path0325 A /path0368 AR /path0346 AR /path0264 AR /path0262 A /path0270 AR /path0204 A]pdef
-/prov083 foret [/path0200 AR /path0355 A /path0356 A /path0357 A /path0358 A /path0313 A /path0347 AR /path0368 A /path0326 A /path0345 AR]pdef
-/prov084 zmauve (manitoba) zone [/path0201 AR /path0200 AR /path0355 A /path0356 A /path0357 A /path0358 A /path0313 A /path0347 AR /path0346 AR /path0264 AR /path0262 A /path0270 AR /path0204 A]pdef
+/prov062 plaine [/path0441 AR /path0600 AR /path0599 AR /path0598 AR /path0297 AR /path0442 AR](Arizona N)ppdef
+/prov063 desert [/path0629 A /path0654 A /path0658 A /path0652 AR /path0599 A](Arizona S)ppdef
+/prov064 monts [/path0298 AR /path0598 A /path0652 A /path0653 A /path0591 AR /path0590 AR /path0299 AR](Arizona E)ppdef
+/prov065 (arizona) zone [/path0442 AR /path0441 AR /path0600 AR /path0629 A /path0654 A /path0658 A /path0653 A /path0591 AR /path0590 AR /path0299 AR /path0298 AR /path0297 AR](*Arizona)ppdef
+/prov066 plaine [/path0590 A /path0596 AR /path0645 A /path0617 AR /path0302 AR /path0301 AR /path0300 AR](Texas N)ppdef
+/prov067 plaine [/path0591 A /path0592 A /path0593 A /path0594 A /path0595 A /path0596 A](Texas W)ppdef
+/prov068 plaine [/path0595 AR /path0753 A /path0718 A /path0618 AR /path0645 AR](Texas SE)ppdef
+/prov069 (texas) zone [/path0590 A /path0591 A /path0592 A /path0593 A /path0594 A /path0753 A /path0718 A /path0618 AR /path0617 AR /path0302 AR /path0301 AR /path0300 AR](*Texas)ppdef
+/prov070 monts [/path0197 AR /path0289 A /path0290 A /path0446 A /path0383 AR /path0361 AR /path0198 AR](Rocheuses NW)ppdef
+/prov071 monts [/path0361 A /path0362 A /path0382 AR /path0355 AR /path0199 AR](Rocheuses N)ppdef
+/prov072 monts [/path0383 A /path0384 A /path0385 A /path0458 AR /path0363 AR /path0362 AR](Rocheuses S)ppdef
+/prov073 monts [/path0363 A /path0364 A /path0356 AR /path0382 A](Rocheuses E)ppdef
+/prov074 monts [/path0458 A /path0386 A /path0387 A /path0388 A /path0357 AR /path0364 AR](Rocheuses SE)ppdef
+/prov075 (rocheuses) zone [/path0197 AR /path0289 A /path0290 A /path0446 A /path0384 A /path0385 A /path0386 A /path0387 A /path0388 A /path0357 AR /path0356 AR /path0355 AR /path0199 AR /path0198 AR](*Rocheuses)ppdef
+/prov076 foret [/path0494 A /path0495 A /path0496 A /path0309 A /path0497 AR /path0387 AR](Kansas W)ppdef
+/prov077 foret [/path0388 AR /path0497 A /path0310 A /path0311 A /path0312 A /path0358 AR](Kansas N)ppdef
+/prov078 foret [/path0311 AR /path0501 A /path0462 AR /path0466 AR](Kansas NE)ppdef
+/prov079 plaine [/path0540 A /path0301 A /path0576 AR /path0308 A /path0496 AR](Kansas S)ppdef
+/prov080 plaine [/path0310 AR /path0309 AR /path0308 AR /path0307 AR /path0464 AR /path0463 AR /path0501 AR](Kansas E)ppdef
+/prov081 (kansas) zone [/path0494 A /path0495 A /path0540 A /path0301 A /path0576 AR /path0307 AR /path0464 AR /path0463 AR /path0462 AR /path0466 AR /path0312 A /path0358 AR /path0388 AR /path0387 AR](*Kansas)ppdef
+/prov082 foret [/path0201 AR /path0345 A /path0325 A /path0368 AR /path0346 AR /path0264 AR /path0262 A /path0270 AR /path0204 A](Manitoba N)ppdef
+/prov083 foret [/path0200 AR /path0355 A /path0356 A /path0357 A /path0358 A /path0313 A /path0347 AR /path0368 A /path0326 A /path0345 AR](Manitoba S)ppdef
+/prov084 (manitoba) zone [/path0201 AR /path0200 AR /path0355 A /path0356 A /path0357 A /path0358 A /path0313 A /path0347 AR /path0346 AR /path0264 AR /path0262 A /path0270 AR /path0204 A](*Manitoba)ppdef
 %Hudson
-/prov085 foret [/path0006 A /path0008 AR /path0162 A /path0163 A /path0222 A /path0254 AR /path0130 AR /path0004 A /path0005 A]pdef
-/prov086 foret [/path0164 A /path0230 AR /path0203 A /path0270 A /path0263 A /path0264 A /path0265 A /path0266 A /path0224 AR /path0223 AR /path0222 AR /path0276 A]pdef
-/prov087 foret [/path0254 A /path0223 A /path0370 A /path0228 A /path0229 A /path0131 AR]pdef
-/prov088 foret [/path0229 AR /path0390 A /path0459 AR /path0380 AR /path0132 AR]pdef
-/prov089 zblack (hudson) zone [/path0004 A /path0005 A /path0006 A /path0008 AR /path0162 A /path0163 A /path0164 A /path0230 AR /path0203 A /path0270 A /path0263 A /path0264 A /path0265 A /path0266 A /path0224 AR /path0370 A /path0228 A /path0390 A /path0459 AR /path0380 AR /path0132 AR /path0131 AR /path0130 AR]pdef
+/prov085 foret [/path0006 A /path0008 AR /path0162 A /path0163 A /path0222 A /path0254 AR /path0130 AR /path0004 A /path0005 A](Hudson N)ppdef
+/prov086 foret [/path0164 A /path0230 AR /path0203 A /path0270 A /path0263 A /path0264 A /path0265 A /path0266 A /path0224 AR /path0223 AR /path0222 AR /path0276 A](Hudson W)ppdef
+/prov087 foret [/path0254 A /path0223 A /path0370 A /path0228 A /path0229 A /path0131 AR](Hudson C)ppdef
+/prov088 foret [/path0229 AR /path0390 A /path0459 AR /path0380 AR /path0132 AR](Hudson S)ppdef
+/prov089 (hudson) zone [/path0004 A /path0005 A /path0006 A /path0008 AR /path0162 A /path0163 A /path0164 A /path0230 AR /path0203 A /path0270 A /path0263 A /path0264 A /path0265 A /path0266 A /path0224 AR /path0370 A /path0228 A /path0390 A /path0459 AR /path0380 AR /path0132 AR /path0131 AR /path0130 AR](*Hudson)ppdef
 %Labrador
-/prov090 foret [/path0288 A /path0136 AR /path0135 AR /path0134 AR]pdef
-/prov091 foret [/path0135 A /path0220 AR /path0219 AR /path0218 AR /path0217 AR /path0317 A]pdef
-/prov092 zwhite (labrador) zone [/path0288 A /path0136 AR /path0220 AR /path0219 AR /path0218 AR /path0217 AR /path0134 AR]pdef
+/prov090 foret [/path0288 A /path0136 AR /path0135 AR /path0134 AR](Labrador W)ppdef
+/prov091 foret [/path0135 A /path0220 AR /path0219 AR /path0218 AR /path0217 AR /path0317 A](Labrador E)ppdef
+/prov092 (labrador) zone [/path0288 A /path0136 AR /path0220 AR /path0219 AR /path0218 AR /path0217 AR /path0134 AR](*Labrador)ppdef
 %Terre-Neuve
-/prov093 foret [/path0376 AR /path0372 A /path0378 AR /path0377 AR]pdef
-/prov094 foret [/path0375 AR /path0374 AR /path0373 AR /path0372 AR]pdef
-/prov095 zyellow (terre-neuve) zone [/path0376 AR /path0375 AR /path0374 AR /path0373 AR /path0378 AR /path0377 AR]pdef
+/prov093 foret [/path0376 AR /path0372 A /path0378 AR /path0377 AR](Terre-Neuve N)ppdef
+/prov094 foret [/path0375 AR /path0374 AR /path0373 AR /path0372 AR](Terre-Neuve S)ppdef
+/prov095 (terre-neuve) zone [/path0376 AR /path0375 AR /path0374 AR /path0373 AR /path0378 AR /path0377 AR](*Terre-Neuve)ppdef
+} if % /prov000 - /prov054
+
+false {
+%Rocheuses
+%Kansas
+%Manitoba
 
 %%%%% Partie pas grossie
 %Acadie
