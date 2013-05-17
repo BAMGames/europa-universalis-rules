@@ -1,0 +1,13 @@
+%!PS
+
+/carresize 56 def
+/marcopoloisimportant false def
+/captionisimportant true def
+/traces false def
+
+(library/libchemin.ps) include
+TARGET (.clipping.txt)! include
+BASEDIR (rotw.grid.ps)! include
+
+dopage_simple_color_background
+stop

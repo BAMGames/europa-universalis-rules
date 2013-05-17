@@ -1,0 +1,35 @@
+%!PS
+/globalscale 72 180 div def
+/pagewidth 8425 def % default values
+/pageheight 5840 def % default values
+/traces BASEDIR (rotw) ! TARGET eq def
+
+(library/library.ps) include
+(library/libcarte.ps) include
+
+% map clipping settings
+TARGET(.background.clipping.txt)! include
+/pagewidth MAXx MINx sub def
+/pageheight MAXy MINy sub def
+
+% Images
+BASEDIR(images.ps)! include
+FONTDIR(champion.ps)! include
+
+/xfact 40955 3500 sub 8425 0 sub div def
+/yfact 29465 3500 sub 5840 0 sub div def
+/xbase 3500 0 xfact mul sub .5 add def
+/ybase 3500 0 yfact mul sub .5 add def
+(RotwSource) inittrace
+
+<< /Title ((ROTW Map for EU9)) >> infochunk
+
+begindocument
+beginpage
+(q\n0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
+MINx neg display space MINy neg display ( cm\n)out
+TARGET(.background.clp)! copymap
+(Q\n)out
+endpage
+enddocument
+finishtrace

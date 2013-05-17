@@ -149,6 +149,7 @@ carreinit
 } bd
 /provinceshook {} def
 true {
+    /zone {2 exch beginprov} bd
     /mer {1 /mer beginprov} bd
     /lac {5 /lac beginprov} bd
     /europemer {17 /mer beginprov} bd
@@ -383,11 +384,11 @@ true {
         xe xs ne ye ys ne or {
             (\(q )
             [[xe xs sub ye ys sub atan dup sin exch cos dup neg 2 index
-            xs xe add 2 idiv ys ye add 2 idiv]{12 string cvs}forall (cm)]!!!
+            xs xe add 2 div ys ye add 2 div]{12 string cvs}forall (cm)]!!!
             (\) out)
         } {
-            (\(q 1 0 0 1 )xs xe add 2 idiv 10 string cvs ( )
-            ys ye add 2 idiv 10 string cvs ( cm \)out\n)
+            (\(q 1 0 0 1 )xs xe add 2 div 10 string cvs ( )
+            ys ye add 2 div 10 string cvs ( cm \)out\n)
         } ifelse
         (\() pn 30 string cvs (\) 0 0 100 12 (FontArialNarrow) centertextbbox (Q )out)
         ] !! writestring
@@ -577,6 +578,10 @@ styleinit
         colors 0 3 getinterval setrgbfill
         drawcontourprov (W n\n) out
         drawcontourprov (f\n) out
+        carrefile [
+            ((0 G 0 g )out \() pp 1 get (\) ) pp 3 4 getinterval aload pop exch 4 1 roll add 2 div 12 string cvs
+            3 1 roll add 2 div 12 string cvs exch ( ) exch ( 100 18 (FontArialNarrow-Bold) centertextbbox\n)
+        ]!! writestring
         restorecontext
     } drawprovs
     /found false def

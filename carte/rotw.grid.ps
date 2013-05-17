@@ -1,87 +1,29 @@
-%!PS-Adobe-3 EPSF-3
-%%Creator: JCDUBACQ+MOYE
-%%Title: Carte Europa Universalis
-%%CreationDate: Mon Apr 28 20:02:51 2003
-%BoundingBox: -5 -5 813 360
-%%BoundingBox: -50 -50 8230 3600
-%%DocumentData: Clean7Bit
-%%EndComments
-BOOTFILE (r) file run
+%!PS
 
-%Liste des erreurs à ne pas signaler (province incluse dans une autre)
-% no more used?
-/jumpingdict
+colordict /special
 <<
-    /prov019 (Grand Nord:5)
-    /prov038 (Grands Lacs:1)
-    /prov086 (Hudson W:1)
-    /prov091 (Labrador W:1)
-    /prov124 (Grand lac N:1)
-    /prov187 (Nicaragua:1)
-    /prov249 (Nicaragua de loupe:1)
-    /prov286 (Scandinavie:2)
-    /prov308 (Europe:4)
-    /prov309 (Himalaya:4)
-    /prov519 (Afrique intérieure:8)
-    /prov629 (Grands Lacs de loupe:1)
-    /prov763 (Mer d'Alaska:6)
-    /prov764 (Baie d'Hudson:8)
-    /prov767 (Saint-Laurent:2)
-    /prov772 (Mer du Nord:3)
-    /prov773 (Baltique:6)
-    /prov776 (Mediterrannee:9)
-    /prov777 (Zone Açores:3)
-    /prov779 (Canaries:5)
-    /prov783 (Mer de Californie:1)
-    /prov793 (Mer des Caraïbes:4)
-    /prov795 (Cape-Verde)
-    /prov807 (Saint-Laurent de loupe:2)
-    /prov809 (Baie d'Hudson de loupe:1)
-    /prov816 (Mer du Chili:1)
-    /prov817 (Cap Horn:2)
-    /prov818 (Golfe d'Amazonie)
-    /prov829 (Golfe de Guinée)
-    /prov832 (Zanzibar)
-    /prov840 (Océan Indien central:3)
-    /prov851 (Mer de Java:2)
-    /prov853 (Mer des Moluques:12)
-    /prov854 (Mer du Timor:5)
-    /prov855 (Mer de Papouasie:1)
-    /prov856 (Mer d'Australie:1)
-    /prov857 (Mer de Tasmanie:4)
-    /prov860 (Détroit de Formose:1)
-    /prov861 (Mer des Philippines:5)
->> def
-/carresize 56 def
+    <<
+        /zred [1 0 0] def
+        /zblue [0 0 1] def
+        /zyellow [1 1 0] def
+        /zblack [0 0 0] def
+        /zwhite [1 1 1] def
+        /zgreen [0 0.6 0] def
+        /zmagenta [1 0 1] def
+        /zcyan [0 1 1] def
+        /zdark [0.3 0.3 0.3] def
+        /zmauve [0.4 0.4 0.8] def
+        /zaqua [0.2 0.5 0.5] def
+    >> begin
+    (alaska) zred
+    (oregon) zmagenta
+    (californie) zyellow
+    (nevada) zcyan
+    end
+>> put
 
-%-------------- fin de configuration utilisateur -----------------
-HOMEDIR(/library/libchemin.eps)! include
-
-/zred [1 0 0] def
-/zblue [0 0 1] def
-/zyellow [1 1 0] def
-/zblack [0 0 0] def
-/zwhite [1 1 1] def
-/zgreen [0 0.6 0] def
-/zmagenta [1 0 1] def
-/zcyan [0 1 1] def
-/zdark [0.3 0.3 0.3] def
-/zmauve [0.4 0.4 0.8] def
-/zaqua [0.2 0.5 0.5] def
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                 PATH DEFS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-/defaultw 9 def
+true {
+/pathtype 0 def
 /mer000 beginpath
 0045 3546 m
 0100 2986 l
@@ -936,7 +878,9 @@ endpath
 6409 1518 m
 6423 1497 l
 endpath
-/defaultw 5 def
+} if % sea/sea
+true {
+/pathtype 6 def
 /bord00 beginpath
 0045 3546 m
 0000 3546 l
@@ -1240,8 +1184,9 @@ endpath
 /bord95 beginpath contpath
 5844 0015 5874 0012 5905 0012 c
 endpath
-
-/defaultw 5 def
+} if % contour
+true {
+/pathtype 1 def
 /path0000 beginpath
 0111 3546 m
 0111 3540 0110 3536 0111 3534 c
@@ -11133,8 +11078,10 @@ endpath
 /path1630 beginpath contpath
 0990 0012 0990 0006 0993 0000 c
 endpath
+} if % land
 
-/defaultw 4 def
+true {
+/pathtype 7 def
 /trait00 beginpath
 2194 2235 m
 2194 2115 l
@@ -11203,173 +11150,139 @@ endpath
 5344 2252 m
 5224 2342 l
 endpath
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                 RIVER DEFS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+} if % lines
+true {
+    [
+        /path0036 /path0037 /path0237 /path0249 /path0193 /path0044 /path0045 /path0212 /path0210 /path0172 /path0051 /path0047 /path0050 /path0177 /path0175 /path0054 /path0260 /path0055 /path0056 /path0273 /path0272 /path0181 /path0182 /path0077 /path0216 /path0071 /path0087 /path0111 /path0110 /path0083 /path0082 /path0075 /path0074 /path0084 /path0073 /path0129 /path0086 /path0167 /path0168
+        /path0396 /path0322 /path0320 /path0348 /path0354 /path0187 /path0186 /path0185 /path0353 /path0121 /path0122 /path0469 /path0568 /path0559 /path0558 /path0667 /path0562 /path0557 /path0681 /path0549 /path0550 /path0551
+        /path0840 /path0820 /path0821 /path0541
+        /path0405 /path0406 /path0726 /path0411 /path0757 /path0758 /path0695 /path0696 /path0697 
+        /path0663 /path0664 /path0665 /path0683 
+        /path1291 /path1292 /path1293 /path1342 
+        /path1220 /path1266 /path1379 /path1380 /path1442 /path1443 /path1417 /path1418 /path1177
+        /path0614 /path0098 /path0025 /path1213 /path1327 /path1008 /path1137 /path1002 /path0997 /path0999 /path0916 
+        /path0645 /path0618 /path0646 /path0303 /path0302 /path0301 /path0304 /path0305 /path0528 /path0527 /path0577 /path0520 /path0519 /path0306 /path0464 /path0463 /path0462 /path0307 /path0308 /path0309 /path0497 /path0388 /path0496
+        /path0448 /path0453 /path0144 /path0142 /path0141 /path0140 /path0479 /path0392 /path0493 /path0426 /path0538 /path0566 /path0430 /path0155
+        /path1595 /path1609 /path1550 /path1549 /path1548 /path1572 /path1582 /path1581 /path1487 /path1486 /path1485 /path1505 /path1484 /path1250 /path1495 /path1081 /path1247 /path1488 /path1489 /path1390 /path1391 /path1392 /path1454 /path1452 /path1531 /path1503 /path1466 /path1358
+        /path1078 /path1384 /path1407 /path1404 /path1337 /path1338 /path1339 /path1198
+        /path1628 /path0753 /path0594 /path0593 /path0592 /path0591 /path0655 /path0654 /path0629 /path0600 /path0441 /path0442 /path0481 /path0291
+        /path1053 /path0986 /path1189 /path1133 /path1207 /path1190 /path0964 /path1142 /path0963 /path1165 /path1111 /path0960
+        /path1373 /path1372 /path1371 /path1370 /path1369 /path1037 /path1036 /path1447 /path1509 /path1544 /path1526 /path1368 /path0434
+    ] {
+        paths exch get 0 get 0 2 put % change pathtype to river
+    } forall
+    [ /path0711 /path0899 ] {
+        paths exch get 0 get 0 3 put % change pathtype to pass
+    } forall
+    [
+        /path0375 /path0376 /mer212 /mer010 /path0219 /mer091 /mer092 /mer093 /mer096 /mer100 /mer213 /path0827 /path0893 /path0670 /mer098 /path0607 /mer215 /path1097 /mer190 /path1107
+    ] {
+        paths exch get 0 get dup 0 get 4 add 0 exch put % change pathtype to strait
+    } forall
+} if % river / pass / strait
+true {
+    0545 3130 0(Reine-Charlotte)(reinecharlotte) false carre
+    1739 1304 1(Cap-Breton)(princeedward) false carre
+    2371 0261 0(Malouines)(malouines) true carre
+    2465 1900 0(Trinidad)(trinidad) false carre
+    2465 2315 0(St-Martin)(stmartin) false carre 
+    2465 2178 0(Guadeloupe)(guadeloupe) false carre
+    2600 2140 0(Martinique)(martinique) false carre
+    2465 2041 0(La Barbade)(barbade) false carre
+    1900 2080 0(Jamaïque)(jamaique) false carre
+    2194 2291 1(Porto-Rico)(puertorico) false carre
+    3688 1266 1(Ste-Hélène)(sthelene) true carre
+    3947 1662 0(Fernando Po)(fernandopo) true carre
+    5150 1000 0(Mauritius)(maurice) true carre
+    5150 0850 0(Bourbon)(reunion) true carre
+    4875 1494 1(Zanzibar)(zanzibar) true carre
+    5213 1564 1(Seychelles)(seychelles) true carre
+    5160 1974 1(Socotra)(socotra) true carre
+    6785 1572 0(Sulawesi S.)(macassar) false carre
+    6849 1698 1(Sulawesi N.)(manado) false carre
+    6803 1433 0(Florès)(flores) false carre
+    6945 1409 0(Timor)(timor) false carre
+    7002 1610 0(Amboine)(amboine) false carre
+    7102 1752 1(Ternate)(ternate) false carre
+    7222 1752 1(Banda)(banda) false carre
+    6855 2072 1(Luzon)(lucon) false carre
+    6839 1931 0(Visayas)(cebu) false carre
+    7064 1940 0(Samar)(mindoro) false carre
+    7184 1910 1(Mindanao)(mindanao) false carre
+    6850 2255 1(Formose)(formose) true carre
+    7866 2450 0(Hawaï)(hawai) true carre
+    7866 2300 0(Îles Mariannes)(mariannes) true carre
+    7866 2150 0(Tahiti)(tahiti) true carre
+} if % islands
 
-[
-/path0036 /path0037 /path0237 /path0249 /path0193 /path0044 /path0045 /path0212 /path0210 /path0172 /path0051 /path0047 /path0050 /path0177 /path0175 /path0054 /path0260 /path0055 /path0056 /path0273 /path0272 /path0181 /path0182 /path0077 /path0216 /path0071 /path0087 /path0111 /path0110 /path0083 /path0082 /path0075 /path0074 /path0084 /path0073 /path0129 /path0086 /path0167 /path0168
-/path0396 /path0322 /path0320 /path0348 /path0354 /path0187 /path0186 /path0185 /path0353 /path0121 /path0122 /path0469 /path0568 /path0559 /path0558 /path0667 /path0562 /path0557 /path0681 /path0549 /path0550 /path0551
-/path0840 /path0820 /path0821 /path0541
-/path0405 /path0406 /path0726 /path0411 /path0757 /path0758 /path0695 /path0696 /path0697 
-/path0663 /path0664 /path0665 /path0683 
-/path1291 /path1292 /path1293 /path1342 
-/path1220 /path1266 /path1379 /path1380 /path1442 /path1443 /path1417 /path1418 /path1177
-/path0614 /path0098 /path0025 /path1213 /path1327 /path1008 /path1137 /path1002 /path0997 /path0999 /path0916 
-/path0645 /path0618 /path0646 /path0303 /path0302 /path0301 /path0304 /path0305 /path0528 /path0527 /path0577 /path0520 /path0519 /path0306 /path0464 /path0463 /path0462 /path0307 /path0308 /path0309 /path0497 /path0388 /path0496
-/path0448 /path0453 /path0144 /path0142 /path0141 /path0140 /path0479 /path0392 /path0493 /path0426 /path0538 /path0566 /path0430 /path0155
-/path1595 /path1609 /path1550 /path1549 /path1548 /path1572 /path1582 /path1581 /path1487 /path1486 /path1485 /path1505 /path1484 /path1250 /path1495 /path1081 /path1247 /path1488 /path1489 /path1390 /path1391 /path1392 /path1454 /path1452 /path1531 /path1503 /path1466 /path1358
-/path1078 /path1384 /path1407 /path1404 /path1337 /path1338 /path1339 /path1198
-/path1628 /path0753 /path0594 /path0593 /path0592 /path0591 /path0655 /path0654 /path0629 /path0600 /path0441 /path0442 /path0481 /path0291
-/path1053 /path0986 /path1189 /path1133 /path1207 /path1190 /path0964 /path1142 /path0963 /path1165 /path1111 /path0960
-/path1373 /path1372 /path1371 /path1370 /path1369 /path1037 /path1036 /path1447 /path1509 /path1544 /path1526 /path1368 /path0434
+provinceshook
 
-]
-{
-    cvx exec 0 get 0 6 put
-} forall
-%%% Mountain passes.
-[
-    /path0711 /path0899 
-]
-{
-    cvx exec 0 get 0 6.5 put
-} forall
-%%% Straits fortresses controlled areas
-[
-    /path0375 /path0376 /mer212 /mer010 /path0219 /mer091 /mer092 /mer093 /mer096 /mer100 /mer213 /path0827 /path0893 /path0670 /mer098 /path0607 /mer215 /path1097 /mer190 /path1107
-]
-{
-    cvx exec 0 get 0 7 put
-} forall
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                 PROV DEFS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-/defaultw 5 def
-%Carres
-0545 3130 0(Reine-Charlotte)(reinecharlotte) false carre
-1739 1304 1(Cap-Breton)(princeedward) false carre
-2371 0261 0(Malouines)(malouines) true carre
-2465 1900 0(Trinidad)(trinidad) false carre
-2465 2315 0(St-Martin)(stmartin) false carre 
-2465 2178 0(Guadeloupe)(guadeloupe) false carre
-2600 2140 0(Martinique)(martinique) false carre
-2465 2041 0(La Barbade)(barbade) false carre
-1900 2080 0(Jamaïque)(jamaique) false carre
-2194 2291 1(Porto-Rico)(puertorico) false carre
-3688 1266 1(Ste-Hélène)(sthelene) true carre
-3947 1662 0(Fernando Po)(fernandopo) true carre
-5150 1000 0(Mauritius)(maurice) true carre
-5150 0850 0(Bourbon)(reunion) true carre
-4875 1494 1(Zanzibar)(zanzibar) true carre
-5213 1564 1(Seychelles)(seychelles) true carre
-5160 1974 1(Socotra)(socotra) true carre
-6785 1572 0(Sulawesi S.)(macassar) false carre
-6849 1698 1(Sulawesi N.)(manado) false carre
-6803 1433 0(Florès)(flores) false carre
-6945 1409 0(Timor)(timor) false carre
-7002 1610 0(Amboine)(amboine) false carre
-7102 1752 1(Ternate)(ternate) false carre
-7222 1752 1(Banda)(banda) false carre
-6855 2072 1(Luzon)(lucon) false carre
-6839 1931 0(Visayas)(cebu) false carre
-7064 1940 0(Samar)(mindoro) false carre
-7184 1910 1(Mindanao)(mindanao) false carre
-6850 2255 1(Formose)(formose) true carre
-7866 2450 0(Hawaï)(hawai) true carre
-7866 2300 0(Îles Mariannes)(mariannes) true carre
-7866 2150 0(Tahiti)(tahiti) true carre
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Amerique du Nord -> Islande
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Decorations
-/prov000 noman [/path0009 A /bord59 A]pdef
-/prov001 noman [/path0088 A /path0089 A /bord55 A /path0010 AR /bord57 A]pdef
-/prov002 noman [/path0011 A /path0012 A /bord53 A]pdef
-/prov003 noman [/path0013 A /path0014 A /bord51 A]pdef
-/prov004 noman [/path0156 A]pdef
-/prov005 noman [/path0158 A]pdef
-/prov006 noman [/path0159 A]pdef
-/prov007 noman [/path0279 A]pdef
-/prov008 noman [/path0166 A]pdef
-/prov009 noman [/path0183 A]pdef
-/prov010 noman [/path0215 A]pdef
-/prov011 noman [/path0268 AR]pdef
-/prov012 noman [/path0269 AR]pdef
-/prov013 noman [/path0278 AR]pdef
-/prov014 noman [/path0281 AR]pdef
-/prov015 noman [/path0259 A]pdef
-/prov016 noman [/path0389 A]pdef
-/prov017 noman [/path0352 A]pdef
-/prov018 noman [/path0397 A]pdef
-/prov019 noman [/path0000 A /path0002 AR /path0194 A /path0221 A /path0198 A /path0199 A /path0200 A /path0201 A /path0202 A /path0230 A /path0165 A /path0162 AR /path0007 AR /path0006 AR /path0128 A /path0004 AR /path0003 AR /bord61 A /path0160 A /path0231 A /path0127 A /path0157 A /path0241 A]pdef
-/prov020 noman [/path0486 AR]pdef
-/prov021 lac [/path0010 A /bord56 A]pdef
-/prov022 lac [/path0128 AR /path0005 AR]pdef
-/prov023 lac [/path0007 A /path0008 A]pdef
-/prov024 lac [/path0127 AR]pdef
-/prov025 lac [/path0157 AR]pdef
-/prov026 lac [/path0160 AR]pdef
-/prov027 lac [/path0241 AR]pdef
-/prov028 lac [/path0231 AR]pdef
-/prov029 lac [/path0165 AR /path0164 AR /path0163 AR]pdef
-/prov030 lac [/path0317 AR]pdef
-/prov031 lac [/path0276 AR]pdef
-/prov032 lac [/path0262 AR /path0263 AR]pdef
-/prov033 lac [/path0204 AR /path0203 AR /path0202 AR]pdef
-/prov034 lac [/path0326 AR /path0325 AR]pdef
-/prov035 lac [/path0346 A /path0347 A /path0314 A /path0315 A /path0265 AR]pdef
-/prov036 lac [/path0395 AR]pdef
-/prov037 lac [/path0394 AR /path0460 A /path0465 A /path0447 AR /path0226 AR]pdef
-/prov038 lac [/path0449 A /path0450 A /path0451 A /path0452 A /path0477 AR /path0482 AR /path0486 A]pdef
-/prov039 lac [/path0523 AR /path0529 A /path0146 AR /path0145 AR /path0454 AR]pdef
-/prov040 lac [/path0143 A /path0502 A /path0499 AR]pdef
-/prov041 lac [/path0967 AR]pdef
-/prov042 noman [/path0803 AR /path0802 AR]pdef
-
-%Provinces
-%Alaska
-/prov043 monts [/path0001 A /path0002 A]pdef
-/prov044 foret [/path0327 AR]pdef
-/prov045 foret [/path0195 A /path0196 A /path0197 A /path0221 AR]pdef
-/prov046 zred (alaska) zone [/path0001 A /path0002 A /carrereinecharlotte A /path0195 A /path0196 A /path0197 A /path0221 AR]pdef
-%Oregon
-/prov047 foret [/path0340 A /path0341 A /path0342 A /path0289 AR /path0196 AR]pdef
-/prov048 foret [/path0435 A /path0481 A /path0291 AR /path0290 AR /path0342 AR]pdef
-/prov049 foret [/path0436 A /path0516 A /path0503 AR /path0292 AR /path0481 AR]pdef
-/prov050 zmagenta (oregon) zone [/path0340 A /path0341 A /path0435 A /path0436 A /path0516 A /path0503 AR /path0292 AR /path0291 AR /path0290 AR /path0289 AR /path0196 AR]pdef
-%Californie
-/prov051 monts [/path0437 A /path0505 AR /path0504 AR /path0516 AR]pdef
-/prov052 plaine [/path0438 A /path0439 A /path0580 AR /path0505 A]pdef
-/prov053 monts [/path0639 A /path0630 AR /path0629 AR /path0600 A /path0440 AR /path0439 AR]pdef
-/prov054 zyellow (californie) zone [/path0437 A /path0438 A /path0639 A /path0630 AR /path0629 AR /path0600 A /path0440 AR /path0580 AR /path0504 AR /path0516 AR]pdef
-%Nevada
-/prov055 monts [/path0291 A /path0292 A /path0293 A /path0294 A /path0498 AR /path0384 AR /path0446 AR]pdef
-/prov056 monts [/path0503 A /path0504 A /path0580 A /path0440 A /path0441 A /path0515 AR /path0293 AR]pdef
-/prov057 monts [/path0515 A /path0442 A /path0296 AR /path0295 AR /path0294 AR]pdef
-/prov058 monts [/path0385 AR /path0498 A /path0295 A /path0512 A /path0513 A /path0494 AR /path0386 AR]pdef
-/prov059 monts [/path0296 A /path0297 A /path0298 A /path0518 AR /path0512 AR]pdef
-/prov060 monts [/path0518 A /path0299 A /path0300 A /path0540 AR /path0495 AR /path0513 AR]pdef
-/prov061 zcyan (nevada) zone [/path0291 A /path0292 A /path0503 A /path0504 A /path0580 A /path0440 A  /path0441 A /path0442 A /path0297 A /path0298 A /path0299 A /path0300 A /path0540 AR /path0495 AR /path0494 AR /path0386 AR /path0385 AR /path0384 AR /path0446 AR]pdef
+true {
+/prov000 noman [/path0009 A /bord59 A](*Artic America)ppdef
+/prov001 noman [/path0088 A /path0089 A /bord55 A /path0010 AR /bord57 A](*Artic America)ppdef
+/prov002 noman [/path0011 A /path0012 A /bord53 A](*Artic America)ppdef
+/prov003 noman [/path0013 A /path0014 A /bord51 A](*Artic America)ppdef
+/prov004 noman [/path0156 A](*Artic America)ppdef
+/prov005 noman [/path0158 A](*Artic America)ppdef
+/prov006 noman [/path0159 A](*Artic America)ppdef
+/prov007 noman [/path0279 A](*Artic America)ppdef
+/prov008 noman [/path0166 A](*Artic America)ppdef
+/prov009 noman [/path0183 A](*Artic America)ppdef
+/prov010 noman [/path0215 A](*Artic America)ppdef
+/prov011 noman [/path0268 AR](*Artic America)ppdef
+/prov012 noman [/path0269 AR](*Artic America)ppdef
+/prov013 noman [/path0278 AR](*Artic America)ppdef
+/prov014 noman [/path0281 AR](*Artic America)ppdef
+/prov015 noman [/path0259 A](*Artic America)ppdef
+/prov016 noman [/path0389 A](*Artic America)ppdef
+/prov017 noman [/path0352 A](*Artic America)ppdef
+/prov018 noman [/path0397 A](*Artic America)ppdef
+/prov019 noman [/path0000 A /path0002 AR /path0194 A /path0221 A /path0198 A /path0199 A /path0200 A /path0201 A /path0202 A /path0230 A /path0165 A /path0162 AR /path0007 AR /path0006 AR /path0128 A /path0004 AR /path0003 AR /bord61 A BH /path0160 A /path0231 A /path0127 A /path0157 A /path0241 A EH](*Artic America)ppdef
+/prov020 noman [/path0486 AR](*Artic America)ppdef
+/prov021 lac [/path0010 A /bord56 A](*Artic America)ppdef
+/prov022 lac [/path0128 AR /path0005 AR](*Artic America)ppdef
+/prov023 lac [/path0007 A /path0008 A](*Artic America)ppdef
+/prov024 lac [/path0127 AR](*Artic America)ppdef
+/prov025 lac [/path0157 AR](*Artic America)ppdef
+/prov026 lac [/path0160 AR](*Artic America)ppdef
+/prov027 lac [/path0241 AR](*Artic America)ppdef
+/prov028 lac [/path0231 AR](*Artic America)ppdef
+/prov029 lac [/path0165 AR /path0164 AR /path0163 AR](*Artic America)ppdef
+/prov030 lac [/path0317 AR](*Artic America)ppdef
+/prov031 lac [/path0276 AR](*Artic America)ppdef
+/prov032 lac [/path0262 AR /path0263 AR](*Artic America)ppdef
+/prov033 lac [/path0204 AR /path0203 AR /path0202 AR](*Artic America)ppdef
+/prov034 lac [/path0326 AR /path0325 AR](*Artic America)ppdef
+/prov035 lac [/path0346 A /path0347 A /path0314 A /path0315 A /path0265 AR](*Artic America)ppdef
+/prov036 lac [/path0395 AR](*Artic America)ppdef
+/prov037 lac [/path0394 AR /path0460 A /path0465 A /path0447 AR /path0226 AR](*Artic America)ppdef
+/prov038 lac [/path0449 A /path0450 A /path0451 A /path0452 A /path0477 AR /path0482 AR /path0486 A](*Artic America)ppdef
+/prov039 lac [/path0523 AR /path0529 A /path0146 AR /path0145 AR /path0454 AR](*Artic America)ppdef
+/prov040 lac [/path0143 A /path0502 A /path0499 AR](*Artic America)ppdef
+/prov041 lac [/path0967 AR](*Artic America)ppdef
+/prov042 noman [/path0803 AR /path0802 AR](*Artic America)ppdef
+/prov043 monts [/path0001 A /path0002 A](Alaska W)ppdef
+/prov044 foret [/path0327 AR](Alaska QC)ppdef
+/prov045 foret [/path0195 A /path0196 A /path0197 A /path0221 AR](Alaska E)ppdef
+/prov046 (alaska) zone [/path0001 A /path0002 A /path0195 A /path0196 A /path0197 A /path0221 AR](*Alaska)ppdef
+/prov9046 (alaska) zone [/carrereinecharlotte A](*Alaska)ppdef
+/prov047 foret [/path0340 A /path0341 A /path0342 A /path0289 AR /path0196 AR](Oregon N)ppdef
+/prov048 foret [/path0435 A /path0481 A /path0291 AR /path0290 AR /path0342 AR](Oregon C)ppdef
+/prov049 foret [/path0436 A /path0516 A /path0503 AR /path0292 AR /path0481 AR](Oregon S)ppdef
+/prov050 (oregon) zone [/path0340 A /path0341 A /path0435 A /path0436 A /path0516 A /path0503 AR /path0292 AR /path0291 AR /path0290 AR /path0289 AR /path0196 AR](*Oregon)ppdef
+/prov051 monts [/path0437 A /path0505 AR /path0504 AR /path0516 AR](California N)ppdef
+/prov052 plaine [/path0438 A /path0439 A /path0580 AR /path0505 A](California C)ppdef
+/prov053 monts [/path0639 A /path0630 AR /path0629 AR /path0600 A /path0440 AR /path0439 AR](California S)ppdef
+/prov054 (californie) zone [/path0437 A /path0438 A /path0639 A /path0630 AR /path0629 AR /path0600 A /path0440 AR /path0580 AR /path0504 AR /path0516 AR](*California)ppdef
+/prov055 monts [/path0291 A /path0292 A /path0293 A /path0294 A /path0498 AR /path0384 AR /path0446 AR](Nevada NW)ppdef
+/prov056 monts [/path0503 A /path0504 A /path0580 A /path0440 A /path0441 A /path0515 AR /path0293 AR](Nevada SW)ppdef
+/prov057 monts [/path0515 A /path0442 A /path0296 AR /path0295 AR /path0294 AR](Nevada W)ppdef
+/prov058 monts [/path0385 AR /path0498 A /path0295 A /path0512 A /path0513 A /path0494 AR /path0386 AR](Nevada NE)ppdef
+/prov059 monts [/path0296 A /path0297 A /path0298 A /path0518 AR /path0512 AR](Nevada C)ppdef
+/prov060 monts [/path0518 A /path0299 A /path0300 A /path0540 AR /path0495 AR /path0513 AR](Nevada SE)ppdef
+/prov061 (nevada) zone [/path0291 A /path0292 A /path0503 A /path0504 A /path0580 A /path0440 A  /path0441 A /path0442 A /path0297 A /path0298 A /path0299 A /path0300 A /path0540 AR /path0495 AR /path0494 AR /path0386 AR /path0385 AR /path0384 AR /path0446 AR](*Nevada)ppdef
+} if % /prov000 - /prov054
+false {
 %Arizona
 /prov062 plaine [/path0441 AR /path0600 AR /path0599 AR /path0598 AR /path0297 AR /path0442 AR]pdef
 /prov063 desert [/path0629 A /path0654 A /path0658 A /path0652 AR /path0599 A]pdef
@@ -12367,6 +12280,5 @@ endpath
 /prov859 mer [/path0925 AR /path0924 AR /mer191 A /path1064 AR /path1060 AR /mer211 AR /path0970 A /mer210 A /path0974 A /mer208 AR /path0867 A /path0823 A /path0542 A /path0926 AR]pdef
 /prov860 mer [/path0818 A /path0866 A /mer208 A /path0975 A /mer209 A /path0874 A /mer102 AR /path0800 A /mer101 AR /path0553 AR /path0552 AR /path0838 A /path0864 A]pdef
 /prov861 mer [/path0873 A /mer209 AR /path0976 A /mer210 AR /path0969 A /mer211 A /path1059 AR /path1068 AR /mer198 AR /path1120 A /mer197 AR /mer199 A /path1192 A /mer201 A /mer108 AR /mer105 AR /path0994 A /path0978 A /path0933 A /path0934 A /path0927 A]pdef
-
-dopage showpage
+}if
 

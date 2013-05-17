@@ -1,0 +1,18 @@
+%!PS
+/globalscale 1 def
+/pagewidth 595 def
+/pageheight 842 def
+
+(library/pdf_library.ps) include
+(library/libcarte.ps) include
+0 0 8425 5840 bboxset
+
+<< /Title ((ROTW Map for EU9 - White version)) >> infochunk
+begindocument
+beginpage
+(q 0.0 0.096 -0.096 -0.0 575.0 15.0 cm\n) out
+TARGET(.background.clp)! copymap
+detroitdict {detroitsimple pop} forall
+(Q\n) out
+endpage
+enddocument

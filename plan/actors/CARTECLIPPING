@@ -1,5 +1,8 @@
 #!/bin/sh
 set -e
-echo "0 0 8425 5840 bboxset" > carte/europe.background.clipping.txt
-echo "0 0 8425 5840 bboxset" > carte/europe.simple.background.clipping.txt
-cp carte/europe.eps carte/europe.simple.eps
+for i in europe rotw; do
+  for m in '' .simple; do
+      echo "0 0 8425 5840 bboxset" > carte/${i}${m}.background.clipping.txt
+  done
+  cp carte/${i}.eps carte/${i}.simple.eps
+done
