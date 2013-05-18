@@ -144,6 +144,9 @@ carreinit
     [ [ xtype pname terrain minx miny maxx maxy ] moves ]
     xtype 2 eq {pathsets}{provs}ifelse 3 1 roll put
 } bd
+/pdef { % symbolicname type terrain mark moves [] => -
+    5 index 40 string cvs ppdef
+} bd
 /beginprov {
     bboxinit /firstpoint true def mark
 } bd
@@ -431,11 +434,12 @@ true {
 /provcolors { % - => -
         /xtype pp 0 get def
         /terrain pp 2 get def
-        /colorset /normal
-        xtype 16 and 0 ne { pop /othermap } if
-        xtype 32 and 0 ne { pop /magnification } if
-        xtype 8 and 0 ne marcopoloisimportant and { pop /marcopolo } if
-        def
+        /colorset {
+            xtype 8 and 0 ne marcopoloisimportant and { /marcopolo exit } if
+            xtype 16 and 0 ne { /othermap exit } if
+            xtype 32 and 0 ne { /magnification exit } if
+            /normal exit
+        } loop def
         /colors colordict colorset get terrain get def    
 } bd
 /drawprovs {
