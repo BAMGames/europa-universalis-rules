@@ -262,6 +262,9 @@
     } if
 }def
 
+
+
+
 /f1 (FontChampionCourrierNormal) def
 /f2 (FontChampionExpertNormal) def
 /f3 (FontChampionTraditionNormal) def
@@ -271,46 +274,6 @@
 
 
 %%% Grandes regions
-/otherlanguage false def
-/provind [
-    [(img:indigene00) 0  0 0.5]% Indien apache
-    [(img:indigene01) 8  0 0.5]% Indien iroquois
-    [(img:indigene02) 0  0 0.5]% Mongol
-    [(img:indigene03) 0  3 0.5]% Japonais
-    [(img:indigene04) 0  0 0.5]% Chinois
-    [(img:indigene05) 0  3 0.5]% Hindou
-    [(img:indigene06) 3  0 0.5]% Zoulou
-    [(img:indigene07) 3  0 0.5]% Mamelouk
-    [(img:indigene08) 0  5 0.5]% Brésilien
-    [(img:indigene09) 4  0 0.5]% Perse
-    [(img:indigene10) 0  4 0.5]% Oceanie
-    [(img:indigene11) 3  0 0.5]% Azteque
-    [(img:indigene12) 1  0 0.5]% Inca
-    [(img:indigene13) 0  4 0.5]% Mapuche
-    [(img:indigene14) 0 10 0.5]% Poissons
-    [(img:indigene15) 0  0 0.5]% Indochine
-    [(img:indigene16) 0  5 0.5]% Baleines
-    [(img:indigene17) 0 15 0.5]% Kangourous
-    [(img:indigene18)10  0 0.5]% Indien pacifique
-    [(img:indigene19) 0  6 0.5]% Ours polaires
-    [(img:indigene20)10  0 0.5]% Indiens du nord
-    [(img:indigene21) 9  0 0.5]% Caribes
-    [(img:indigene22) 9  0 0.5]% Napoleons
-    [(img:indigene23) 8  0 0.5]% Masai
-] def
-/provincepens <<
-    (1 0 0) (1 1 1)
-    (0 0 1) (1 1 0)
-    (1 1 0) (0 0 0)
-    (0 0 0) (1 1 0)
-    (1 1 1) (0 0 0)
-    (0 0.6 0) (1 1 1)
-    (1 0 1) (0 0 0)
-    (0 1 1) (0 0 0)
-    (0.3 0.3 0.3) (1 1 1)
-    (0.4 0.4 0.8) (1 1 1)
-    (0.2 0.5 0.5) (1 1 0)
->> def
 /provincesetup {
     /provcode exch def
     /provres ressdict provcode get 3 get def
@@ -407,78 +370,78 @@
 /provinceresv {
     j 0 get 0 get bx 40 add j 0 get 1 get add by provinceres1
 }def
-/provinceh {
-    /provmax 230 def
-    provincesetup 
-    /provwidth
-      provw0
-      provw1 5 provw2 add add
-      2 copy lt {exch} if pop
-    provw3 15 add add def
-    /provwspace provwidth provw3 5 add provw1 add provw2 add sub 3 div def
-    /provht 80 def
-    provres length 45 mul provinceframe 
-    provname 0 get provx provwidth provw3 sub 5 sub 2 div add provw3 add 5 add
-    provy 40 sub provmax 40
-    (FontArialNarrow-Bold) centertext
-    provx 5 add provy 80 sub provstyle provincecolindh
-    0 1 provres length 1 sub {
-	/i exch def /j couleurproduitsdict provres i get 0 get get def
-	/bx provx provwidth add i 45 mul add def
-	/by provy 40 sub def
-	provinceres
-    } for
-} bind def
-/provincev {
-    /provmax 120 def
-    provincesetup
-    /provwidth provw0
-    provw3 provw1 5 add add 2 copy lt {exch} if pop
-    provw3 provw2 5 add add 2 copy lt {exch} if pop
-    provres length 0 gt {85 2 copy lt {exch} if pop} if
-    10 add def
-    /provwspace provwidth provw3 5 provw1 provw2 2 copy lt {exch} if pop
-    add add sub 2 div def
-    /provht 80 provres length provname length add 40 mul add def
-    0 provinceframe
-    /decy 40 def
-    provname {provx provwidth 2 div add provy decy sub provmax 40
-    (FontArialNarrow-Bold) centertext /decy decy 40 add def}forall
-    provx provwspace add provy 40 decy add sub
-    provstyle provincecolindv
-    /provwspace
-      provwidth provres length 40 mul sub provres length 1 add div def
-    0 1 provres length 1 sub {
-	/i exch def /j couleurproduitsdict provres i get 0 get get def
-	/bx provx provwidth 85 sub 2 div add def
-	/by provy 80 decy add i 40 mul add sub def
-	provinceresv
-    } for
-} bind def
-/link {
-    /yy exch def /xx exch def dup cvi /ll exch def dup cvi sub /lp exch def
-    0.5 beginalpha
-	provcolor out( RG )out provcolor out( rg 1 J 4 w\n) out
-	/xxp provpoints 0 get
-	    ll 0 eq {provpoints 2 get lp mul add}if
-	    ll 1 eq {provpoints 2 get add}if
-	    ll 2 eq {provpoints 2 get 1 lp sub mul add}if
-	def
-	/yyp provpoints 1 get
-	    ll 1 eq {provpoints 3 get lp mul add}if
-	    ll 2 eq {provpoints 3 get add}if
-	    ll 3 eq {provpoints 3 get 1 lp sub mul add}if
-	def
-	xxp display space yyp display ( m\n)out
-	xx display space yy display ( l\n)out
-	/aa yy yyp sub xx xxp sub atan def
-	xx 10 aa 135 sub cos mul add display space
-	yy 10 aa 135 sub sin mul add display ( l\n)out
-	xx 10 aa 135 add cos mul add display space
-	yy 10 aa 135 add sin mul add display ( l\n)out
-	xx display space yy display ( l b\n)out
-    endalpha
-}bind def
+% /provinceh {
+%     /provmax 230 def
+%     provincesetup 
+%     /provwidth
+%       provw0
+%       provw1 5 provw2 add add
+%       2 copy lt {exch} if pop
+%     provw3 15 add add def
+%     /provwspace provwidth provw3 5 add provw1 add provw2 add sub 3 div def
+%     /provht 80 def
+%     provres length 45 mul provinceframe 
+%     provname 0 get provx provwidth provw3 sub 5 sub 2 div add provw3 add 5 add
+%     provy 40 sub provmax 40
+%     (FontArialNarrow-Bold) centertext
+%     provx 5 add provy 80 sub provstyle provincecolindh
+%     0 1 provres length 1 sub {
+% 	/i exch def /j couleurproduitsdict provres i get 0 get get def
+% 	/bx provx provwidth add i 45 mul add def
+% 	/by provy 40 sub def
+% 	provinceres
+%     } for
+% } bind def
+% /provincev {
+%     /provmax 120 def
+%     provincesetup
+%     /provwidth provw0
+%     provw3 provw1 5 add add 2 copy lt {exch} if pop
+%     provw3 provw2 5 add add 2 copy lt {exch} if pop
+%     provres length 0 gt {85 2 copy lt {exch} if pop} if
+%     10 add def
+%     /provwspace provwidth provw3 5 provw1 provw2 2 copy lt {exch} if pop
+%     add add sub 2 div def
+%     /provht 80 provres length provname length add 40 mul add def
+%     0 provinceframe
+%     /decy 40 def
+%     provname {provx provwidth 2 div add provy decy sub provmax 40
+%     (FontArialNarrow-Bold) centertext /decy decy 40 add def}forall
+%     provx provwspace add provy 40 decy add sub
+%     provstyle provincecolindv
+%     /provwspace
+%       provwidth provres length 40 mul sub provres length 1 add div def
+%     0 1 provres length 1 sub {
+% 	/i exch def /j couleurproduitsdict provres i get 0 get get def
+% 	/bx provx provwidth 85 sub 2 div add def
+% 	/by provy 80 decy add i 40 mul add sub def
+% 	provinceresv
+%     } for
+% } bind def
+% /link {
+%     /yy exch def /xx exch def dup cvi /ll exch def dup cvi sub /lp exch def
+%     0.5 beginalpha
+% 	provcolor out( RG )out provcolor out( rg 1 J 4 w\n) out
+% 	/xxp provpoints 0 get
+% 	    ll 0 eq {provpoints 2 get lp mul add}if
+% 	    ll 1 eq {provpoints 2 get add}if
+% 	    ll 2 eq {provpoints 2 get 1 lp sub mul add}if
+% 	def
+% 	/yyp provpoints 1 get
+% 	    ll 1 eq {provpoints 3 get lp mul add}if
+% 	    ll 2 eq {provpoints 3 get add}if
+% 	    ll 3 eq {provpoints 3 get 1 lp sub mul add}if
+% 	def
+% 	xxp display space yyp display ( m\n)out
+% 	xx display space yy display ( l\n)out
+% 	/aa yy yyp sub xx xxp sub atan def
+% 	xx 10 aa 135 sub cos mul add display space
+% 	yy 10 aa 135 sub sin mul add display ( l\n)out
+% 	xx 10 aa 135 add cos mul add display space
+% 	yy 10 aa 135 add sin mul add display ( l\n)out
+% 	xx display space yy display ( l b\n)out
+%     endalpha
+% }bind def
 
 /province {{provinceh}{provincev}ifelse}def
 

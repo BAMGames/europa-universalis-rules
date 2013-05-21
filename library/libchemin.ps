@@ -463,6 +463,27 @@ true {
 } bd
 styleinit
 
+/outputGroupsNames {
+    carrefile (/namesdict <<\n) writestring [
+        pathsets {
+            0 get /header exch def pop
+            header 1 get dup 0 40 put
+            ( [) dup 0 41 put colordict /special get header 2 get get {
+                12 string cvs ( )
+            } forall pop (]\n)
+        } forall
+    ]!! carrefile exch writestring
+    carrefile (>> def\n) writestring
+} bd
+/outputClips {
+    carrefile (/clippeddict 3 dict def\n) writestring
+    clipped { /pn exch def /p provs pn get def
+        carrefile [
+            (clippeddict\() p 0 get 1 get (\)\() drawcontourprov (\)put\n)
+        ]!! writestring
+    }forall
+} bd
+
 % Set of painting styles
 /dopage_simple_white_background {
     /t TARGET (.clp) ! writefile def
@@ -494,6 +515,7 @@ styleinit
     } drawpathsets
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
+    outputGroupsNames
 } bd
 /dopage_simple_color_background {
     /t TARGET (.clp) ! writefile def
@@ -529,12 +551,8 @@ styleinit
     [ percent (Paths) ] !!! out
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
-    carrefile (/clippeddict 3 dict def\n) writestring
-    clipped { /pn exch def /p provs pn get def
-        carrefile [
-            (clippeddict\() p 0 get 1 get (\)\() drawcontourprov (\)put\n)
-        ]!! writestring
-    }forall
+    outputClips
+    outputGroupsNames
 } bd
 /dopage_rich_color_background {
     /t TARGET (.clp) ! writefile def
@@ -578,6 +596,8 @@ styleinit
     } if
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
+    outputClips
+    outputGroupsNames
 } bd
 /dopage_schematic_color_background {
     /t TARGET (.clp) ! writefile def

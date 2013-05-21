@@ -14,5 +14,35 @@ beginpage
 TARGET(.background.clp)! copymap
 detroitdict {detroitsimple pop} forall
 (Q\n) out
+
+BASEDIR(rotw.resources.ps)! include
+/countdict 10 dict def
+resourcesdict {
+    /cdict exch def
+    /cname exch def
+    countdict cname known not {
+        countdict cname 0 put
+    }if
+    cdict {
+        cname (forces) eq cname (values) eq or not {
+            countdict cname 2 copy get 4 -1 roll add put
+        }{pop} ifelse
+        20 string cvs /cc exch def
+        namesdict cc known not {
+            cc (Europe~) anchorsearch {
+                pop pop
+            } { pop
+                [cc ( in resource )cname 20 string cvs (: unknown province)] !! print mismatchError
+            } ifelse
+        } if
+    } forall
+}forall
+
+/stats BASEDIR(rotw.resources.txt)! writefile def
+countdict {
+    /cval exch def /cname exch def
+    stats [cname 20 string cvs (: ) cval 12 string cvs (\n)]!! writestring
+} forall
+
 endpage
 enddocument
