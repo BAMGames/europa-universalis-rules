@@ -1,13 +1,14 @@
 %!PS
 
 (library/common.ps) include
-/bboxset {
+/bboxset { % sets global bounding box
     /MAXy exch def /MAXx exch def /MINy exch def /MINx exch def
 } bd
-/bboxtest {
+/bboxtest { % xmin ymin xmax ymax => bool
+    % (true if intersection with global bbox)
     MINy lt 4 1 roll MINx lt 4 1 roll MAXy gt 4 1 roll MAXx gt 4 1 roll or or or not
 } bd
-/centertextbbox {
+/centertextbbox { % centertext only if in bbox
     5 copy pop 2 index add 4 -1 roll 2 index 2 div sub 4 1 roll exch 3 index add exch bboxtest {
         centertext
     } {
@@ -15,7 +16,7 @@
         6 { pop } repeat
     } ifelse
 } bd
-/lefttextbbox {
+/lefttextbbox { % centertext only if in bbox
    5 copy pop 2 index add exch 3 index add exch bboxtest {
         lefttext
     } {
@@ -23,7 +24,7 @@
         6 { pop } repeat
     } ifelse
 } bd
-/righttextbbox {
+/righttextbbox { % centertext only if in bbox
     5 copy pop 2 index add 4 -1 roll 1 index sub 4 1 roll exch 3 index add exch bboxtest {
         righttext
     } {
@@ -31,7 +32,7 @@
         6 { pop } repeat
     } ifelse
 } bd
-/circletextbbox {
+/circletextbbox { % centertext only if in bbox
     7 copy pop exch pop exch pop add 3 copy add exch 2 index add exch 5 2 roll 3 -1 roll 1 index sub 3 1 roll sub 4 2 roll bboxtest {
         circletext
     } {
@@ -39,32 +40,36 @@
     } ifelse
 } bd
 /underlinenotblocked true def
-/underlinebbox {
+/underlinebbox { % underline only if in bbox
     underlinenotblocked {underline}if
     /underlinenotblocked true def
 } bd
+/mtbbox { % multitext only if in bbox
+    /.size exch def /.y exch def /.x exch def
+    .x .size sub .y .size sub .x .size 9 mul add .y .size 2 mul add bboxtest {
+        .x .y .size multitext
+    } if
+} bd
 
-%X (file) copymap
-/copymap { % (filename) => 
+/copymap { % (filename) =>
     /realoutputfile cpstream def
     dup copyfile
     (.ps) ! include
+    % copies file to current page, then executes auxiliary .ps file
 }def
-%X (img:foo) x y putsymbol
-/putsymbol {
+/putsymbol { % (img:foo) x y putsymbol => ---
+    % puts symbol at coordinates only if in bbox
     2 copy 40 sub exch 40 sub exch 2 copy 200 add exch 200 add exch bboxtest {
         0.8 3 1 roll begints useimage endts
     } { pop pop pop } ifelse 
 }def
-%X (img:foo) x y scale putxsymbol
-/putxsymbol {
+/putxsymbol { % (img:foo) x y scale putxsymbol => ---
+    % puts symbol at coordinates with scale only if in bbox
     2 copy 40 sub exch 40 sub exch 2 copy 200 add exch 200 add exch bboxtest {
         3 1 roll begints useimage endts
     } { pop pop pop pop } ifelse 
 }def
-%X (img:orageN) x y (Name) textbelow orage
-%X N risque
-/orage {
+/orage { % (img:orageN) x y (Name) textbelow orage => ---
     /below exch def
     /seaname exch def
     /seay exch def /seax exch def
@@ -76,24 +81,22 @@
         endts
     } if
 } def
-
-/risque {
+/risque { % N risque
     /seax seax 125 add def
     /seay seay 3 add def
     seax 40 sub seay seax seay 40 add bboxtest {
-        dup 1 sub 1 string cvs /seaname exch def
-        dup 2 exch sub 1 string cvs /below exch def
-        (+) exch 1 string cvs ! /seaimage exch def
+        dup 1 sub 1 string cvs /seaname exch def % colorbg
+        dup 2 exch sub 1 string cvs /below exch def % colorfg
+        (+) exch 1 string cvs ! /seaimage exch def % string
         (q 1 )seaname !( 0 rg\n)! out
         newpath seax seay 20 add moveto seax 20 sub seay 20 add 20 0 360
         arc closepath (h f\n) exporttopdf
         below ( )! below !( )! below !( rg\n)! out
-        seaimage seax 20 sub seay 4 add 32 32  ab  centertext
+        seaimage seax 20 sub seay 4 add 32 32 ab centertext
         (Q\n) out
     } if
 }def
-%X [(Name) X Y textbelow] carre
-/carre {
+/carre { % [(Name) X Y textbelow] carre
     aload pop carresize exch{-1 mul 24 sub}if add
     carresize 2 mul 24 
     4 copy 4 -1 roll carresize sub 4 1 roll exch 3 index add exch 2 index add
@@ -103,6 +106,8 @@
         pop pop pop pop pop
     } ifelse
 }def
+
+% Trade zones
 /counter 0 def
 /zpp {%[colora] [colorb] name2 name x y pen
     /pen exch def /y exch def /x exch def
@@ -156,7 +161,6 @@
    /counter counter 1 add def
     } if
 }def
-
 /zmc {%X value x y pirates image zm
     /ximage exch def /pirates exch def /y exch def /x exch def
     /value2 exch 5 string cvs def
@@ -193,7 +197,6 @@
     endts
     } if
 }def
-
 /zm {(img:bateau) zmc}def
 /zp {(img:bateau) zpc}def
 /zmg {(img:flandrebrabant) 3 index 3 index 8 3 roll (img:bateau) zmc putsymbol}def
@@ -632,7 +635,7 @@
         tracesfile (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[')writestring
         /mapname exch def tracesfile mapname writestring
         tracesfile (']={s:contours.length};\n\n)writestring
-    } if
+    }{pop} ifelse
 }def
 /tracefmt {cvi 6 string cvs writestring}bind def
 /writetrace { % (name) west south width height  => ---

@@ -429,7 +429,7 @@ true {
                 } if
             } ifelse
         } for ] !! def 
-    } if cachedstring out
+    } if cachedstring
 } bd
 /provcolors { % - => -
         /xtype pp 0 get def
@@ -477,7 +477,7 @@ styleinit
         pp 0 get 5 and 0 ne {
             savecontext
             pp 0 get 4 and 0 ne {(.5 g\n)}{(.9 g\n)}ifelse out
-            drawcontourprov (f\n) out
+            drawcontourprov out (f\n) out
             restorecontext
         } if
     } drawprovs
@@ -486,10 +486,10 @@ styleinit
         colordict /special get pp 2 get get setrgbstroke
         50 setwidth
         /fillunclosed true def
-        drawcontourprov
+        drawcontourprov out
         /fillunclosed false def
         (W n\n) out
-        drawcontourprov (S\n) out           
+        drawcontourprov out (S\n) out           
         restorecontext
     } drawpathsets
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
@@ -504,8 +504,8 @@ styleinit
         colors 0 3 getinterval setrgbfill
         colors 3 3 getinterval setrgbstroke
         20 setwidth
-        drawcontourprov (W n\n) out
-        drawcontourprov (B\n) out
+        drawcontourprov out (W n\n) out
+        drawcontourprov out (B\n) out
         restorecontext
     } drawprovs
     /found false def
@@ -514,11 +514,11 @@ styleinit
         colordict /special get pp 2 get get setrgbstroke
         50 setwidth
         /fillunclosed true def
-        drawcontourprov
+        drawcontourprov out
         /fillunclosed false def
         (W n\n) out
         (/GSalphaZone gs\n)out
-        drawcontourprov (S\n) out           
+        drawcontourprov out (S\n) out           
         /found true def
         restorecontext
     } drawpathsets
@@ -529,6 +529,12 @@ styleinit
     [ percent (Paths) ] !!! out
     [ 0 8 1 6 7 4 5 2 3 ] {drawpaths} forall
     t closefile
+    carrefile (/clippeddict 3 dict def\n) writestring
+    clipped { /pn exch def /p provs pn get def
+        carrefile [
+            (clippeddict\() p 0 get 1 get (\)\() drawcontourprov (\)put\n)
+        ]!! writestring
+    }forall
 } bd
 /dopage_rich_color_background {
     /t TARGET (.clp) ! writefile def
@@ -537,15 +543,15 @@ styleinit
     {
         savecontext
         colors 0 3 getinterval setrgbfill
-        drawcontourprov (W n\n) out
-        drawcontourprov (f\n) out
+        drawcontourprov out (W n\n) out
+        drawcontourprov out (f\n) out
         1 -.1 0 {
             /step exch def
             colors step colorinterpolate setrgbstroke
             20 30 step mul add setwidth
-            drawcontourprov (S\n) out
+            drawcontourprov out (S\n) out
         } for
-        drawcontourprov (S\n) out
+        drawcontourprov out (S\n) out
         restorecontext
     } drawprovs
     /found false def
@@ -554,14 +560,14 @@ styleinit
         colordict /special get pp 2 get get setrgbstroke
         50 setwidth
         /fillunclosed true def
-        drawcontourprov
+        drawcontourprov out
         /fillunclosed false def
         (W n\n) out
         (/GSalphaZone gs\n)out
         1 -.1 0 {
             /step exch def
             20 30 step mul add setwidth
-            drawcontourprov (S\n) out
+            drawcontourprov out (S\n) out
         } for
         /found true def
         restorecontext
@@ -580,8 +586,8 @@ styleinit
     {
         savecontext
         colors 0 3 getinterval setrgbfill
-        drawcontourprov (W n\n) out
-        drawcontourprov (f\n) out
+        drawcontourprov out (W n\n) out
+        drawcontourprov out (f\n) out
         carrefile [
             ((0 G 0 g )out \() pp 1 get (\) ) pp 3 4 getinterval aload pop exch 4 1 roll add 2 div 12 string cvs
             3 1 roll add 2 div 12 string cvs exch ( ) exch ( 100 )pp 1 get 0 get 42 eq{(9)}{(18)}ifelse((FontArialNarrow-Bold) centertextbbox\n)
@@ -594,11 +600,11 @@ styleinit
         colordict /special get pp 2 get get setrgbstroke
         20 setwidth
         /fillunclosed true def
-        drawcontourprov
+        drawcontourprov out
         /fillunclosed false def
         (W n\n) out
         (/GSalphaZone gs\n)out
-        drawcontourprov (S\n) out           
+        drawcontourprov out (S\n) out           
         /found true def
         restorecontext
     } drawpathsets

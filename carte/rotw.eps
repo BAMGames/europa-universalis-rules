@@ -12,7 +12,7 @@ TARGET(.background.clipping.txt)! include
 /pagewidth MAXx MINx sub def
 /pageheight MAXy MINy sub def
 
-% Images
+% Images & Fonts
 BASEDIR(images.ps)! include
 FONTDIR(champion.ps)! include
 
@@ -26,10 +26,173 @@ FONTDIR(champion.ps)! include
 
 begindocument
 beginpage
-(q\n0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
-MINx neg display space MINy neg display ( cm\n)out
-TARGET(.background.clp)! copymap
-(Q\n)out
+true {
+    (0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
+    MINx neg display space MINy neg display ( cm\n)out
+    TARGET(.background.clp)! copymap
+} if % include background
+true {
+    (img:orage6) 0240 3040 (Mer d’Alaska) true orage
+    (img:orage5) 0430 2800 (Golfe de Californie) false orage
+    (img:orage7) 0366 2150 (Pacifique nord-est) true orage
+    1 risque
+    (img:orage8) 0366 1835 (Pacifique sud-est) true orage
+    1 risque
+    (img:orage8) 1390 0050 (Pacifique sud-est) true orage
+    1 risque
+    (img:orage6) 1181 1861 (Golfe de Panama) true orage
+    (img:orage5) 1702 0623 (Côte du Pérou) true orage
+    (img:orage5) 1636 0197 (Côte du Chili) true orage
+    (img:orage8) 1842 0014 (Cap Horn) true orage
+    2 risque
+    (img:orage6) 2387 0359 (Côte de Patagonie) true orage
+    (img:orage4) 2695 0750 (Rio de la Plata) false orage
+    (img:orage4) 2860 0851 (Mer de Bahia) true orage
+    (img:orage5) 2964 1187 (Mer de Recife) true orage
+    (img:orage6) 2935 1935 (Atlantique équatorial) false orage
+    (img:orage5) 2696 1645 (Golfe d’Amazonie) true orage
+    (img:orage6) 2546 2229 (Îles sous-le-vent) false orage
+    (img:orage6) 2150 1965 (Caraïbes) false orage
+    (img:orage6) 1490 2240 (Golfe du Mexique) false orage
+    (img:orage6) 1992 2206 (Cuba) true orage
+    (img:orage6) 2254 2244 (Puerto Rico) false orage
+    (img:orage7) 2386 2472 (Triangle des Bermudes) false orage
+    (img:orage5) 2355 2716 (Atlantique nord-ouest) true orage
+    (img:orage6) 2338 3354 (Mer du Labrador) false orage
+    (img:orage6) 1638 3265 (Baie d’Hudson) true orage
+    2 risque
+    (img:orage5) 2964 3228 (Grœnland) false orage
+    (img:orage6) 3230 2780 (Mer des Açores) false orage
+    (img:orage5) 3293 2507 (Mer des Canaries) true orage
+    (img:orage6) 2735 2660 (Atlantique nord) false orage
+    (img:orage6) 2735 2380 (Atlantique) false orage
+    (img:orage5) 3260 2130 (Banc d’Arguin) true orage
+    (img:orage5) 3323 1667 (Baie de Gambie) false orage
+    (img:orage6) 3552 1427 (Golfe de Guinée) true orage
+    (img:orage5) 3837 1302 (Côte d’Angola) false orage
+    (img:orage7) 3298 1188 (Atlantique sud) false orage
+    (img:orage6) 2972 0621 (Atlantique sud-ouest) true orage
+    1 risque
+    (img:orage6) 3654 0621 (Atlantique sud-est) true orage
+    1 risque
+    (img:orage7) 4001 0621 (Cap de Bonne-Espérance) true orage
+    1 risque
+    (img:orage7) 4726 0621 (Cap des tempêtes) true orage
+    1 risque
+    (img:orage6) 5243 0064 (Quarantièmes rugissants) false orage
+    1 risque
+    (img:orage5) 4753 1048 (Canal de Mozambique) true orage
+    (img:orage6) 5127 1247 (Océan Indien ouest) true orage
+    (img:orage5) 5002 1514 (Mer des Seychelles) true orage
+    (img:orage4) 5251 1980 (Côte de Mascate) true orage
+    (img:orage5) 5248 1815 (Mer d’Oman) true orage
+    (img:orage5) 5472 1584 (Maldives) true orage
+    (img:orage5) 5963 1658 (Océan Indien) true orage
+    1 risque
+    (img:orage5) 6032 1844 (Détroit de Malaisie) true orage
+    (img:orage4) 6405 1669 (Mer de Java) false orage
+    (img:orage5) 6670 1204 (Mer de Sawu) true orage
+    (img:orage5) 6493 1254 (Bassin de Wharton) true orage
+    (img:orage5) 6435 0064 (Océan Indien sud) false orage
+    (img:orage6) 6873 0064 (Grande Baie australienne) false orage
+    (img:orage6) 7598 0064 (Mer de Tasman) false orage
+    1 risque
+    (img:orage6) 7793 0842 (Mer de Corail) true orage
+    1 risque
+    (img:orage6) 7839 1284 (Pacifique sud-ouest) true orage
+    (img:orage4) 7449 1262 (Mer d’Arafura) false orage
+    (img:orage4) 7351 1697 (Mer des Épices) false orage
+    (img:orage5) 7645 1684 (Mer des Philippines) true orage
+    (img:orage6) 6546 1822 (Mer de Chine sud) false orage
+    (img:orage6) 6648 2106 (Détroit de Formose) false orage
+    (img:orage5) 7150 2230 (Mer de Chine nord) false orage
+    (img:orage4) 6885 2392 (Mer de Corée) false orage
+    (img:orage4) 7130 2667 (Mer du Japon) false orage
+    (img:orage6) 7430 3020 (Mer d’Okhotsk) false orage
+    (img:orage7) 7745 2830 (Pacifique nord-ouest) true orage
+    (img:orage8) 7485 2310 (Pacifique ouest) true orage
+    (img:orage8) 7920 2530 (Grand océan Pacifique) true orage
+    2 risque
+    (img:orage6) 0554 0032 (Détroit de Floride) true orage
+    (img:orage6) 1434 0523 (Atlantique ouest) true orage
+    (img:orage5) 1548 0835 (Bay of Fundy) false orage
+    (img:orage4) 5298 0517 (Golfe de l’Indus) true orage
+    (img:orage4) 5368 0340 (Côte de Malabar) true orage
+    (img:orage4) 6131 0240 (Mer du Bengale) true orage
+    (q\n)out clippeddict (Golfe Persique) get out (W n\n) out
+    (img:orage4) 5098 2263 (Golfe persique) true orage
+    4956 2268 5156 2468 bboxtest {
+        [-50 dup cos 1 index sin dup neg 2 index]{display space}forall
+        ( 5056 2368 cm\n)out
+        (Golfe) 0 10 300 28.35 (FontArialNarrow-Bold) centertext
+        (Persique) 0 -10 300 28.35 (FontArialNarrow-Bold) centertext
+    } if
+    (Q\n)out
+    (q\n)out clippeddict (Saint-Laurent) get out (W n\n) out
+    (img:orage4) 2205 2874 () true orage
+    (Saint-) 2222 2984 300 28.35 (FontArialNarrow-Bold) centertextbbox
+    (Laurent) 2313 2984 300 28.35 (FontArialNarrow-Bold) lefttextbbox
+    (Q\n)out
+    (q\n)out clippeddict (Mer Rouge) get out (W n\n) out
+    (img:orage4) 4788 2035 () true orage
+    (Mer Rouge) 5021 1962 300 28.35 (FontArialNarrow-Bold) centertext
+    (Q\n)out
+} if % Sea difficulties
+true {
+    0.8 beginalpha
+    (1 1 0 rg\n) out
+    carredict {carre pop}forall
+    endalpha
+} if % Islands
+true {
+    [[(Europa Universa)f1][(1)f2][(li)f3][(s )f2]] 3935 2940 256 mtbbox
+    (20) 4 1183 0312 [7 6] zm %Amérique
+    ( ) ( ) 2007 2521 [] zm %Amérique
+    (10) 2 1839 0818 [9 7] zm %Pérou
+    (10) 2 2367 0482 [9 6] zm%Patagonie
+    (20) 4 1950 1955 [8 6 4] zm %Antilles
+    (15) 3 3672 1502 [8 7] zm %Guinée
+    (20) 4 5352 1801 [6] zm %Oman
+    (30) 6 5745 1634 [5] zm %Indien
+    (20) 4 6549 1936 [4] zm %Chine
+    (10) 2 4656 0260 [9 7] zm %Tempêtes
+    (20) 4 3078 2421 [9] zm %Canaries
+    (10) 2 2998 1438 [9 8 7] zm %Recife
+} if % Trade zones
+true {
+    BASEDIR(rotw.portsandmines.ps)! include
+    (q\n)out
+    BASEDIR(rotw.text.ps)! include
+    (Q\n)out
+    begindetroit
+    detroitdict {detroit pop} forall
+    enddetroit
+}if % Other included elements
+true {
+    /i 0 def
+    [
+        [(0 0 0) 5786 1431]
+        [(0 0 0) 5560 2640]
+        [(0 0 0) 6014 1074]
+        [(1 1 0) 6434 1024]
+        [(0 0 0) 5608 0925]
+        [(0 0 0) 5665 1106]
+        [(0 0 0) 5525 1326]
+        [(0 0 0) 5431 2356]
+        [(1 1 0) 6214 0786]
+        [(0 0 0) 6025 0775]
+        [(0 0 0) 5822 0820]
+        [(0 0 0) 5808 0593]
+        [(0 0 0) 5799 0459]
+        [(0 0 0) 5848 0218]
+    ] {
+        /i i 1 add def aload pop 1 3 1 roll begints
+        dup out( rg )out out( RG )out
+        newpath 30 0 moveto 0 0 30 0 360 arc closepath (h S\n) exporttopdf
+        i 2 string cvs 0 -20 50 40 an centertext
+        endts
+    } forall
+} if % Mogol progression
 endpage
 enddocument
 finishtrace
