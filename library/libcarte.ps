@@ -48,7 +48,7 @@
     /.size exch def /.y exch def /.x exch def
     .x .size sub .y .size sub .x .size 9 mul add .y .size 2 mul add bboxtest {
         .x .y .size multitext
-    } if
+    }{pop} ifelse
 } bd
 
 /copymap { % (filename) =>
@@ -94,7 +94,7 @@
         below ( )! below !( )! below !( rg\n)! out
         seaimage seax 20 sub seay 4 add 32 32 ab centertext
         (Q\n) out
-    } if
+    }{pop} ifelse
 }def
 /carre { % [(Name) X Y textbelow] carre
     aload pop carresize exch{-1 mul 24 sub}if add
@@ -272,178 +272,6 @@
 /an (FontArialNarrow) def
 /ai (FontArialNarrow-Italic) def
 
-
-%%% Grandes regions
-/provincesetup {
-    /provcode exch def
-    /provres ressdict provcode get 3 get def
-    /provstyle ressdict provcode get 2 get def
-    /provcarac2 ressdict provcode get 1 get def
-    /provcarac1 ressdict provcode get 0 get def
-    /provcolor provincecolors provcode get def
-    /provpen (1 0 0) def
-    provincepens provcolor known {/provpen provincepens provcolor get def}if
-    /provx resspos provcode get 0 get def
-    /provy resspos provcode get 1 get def
-    /provname [
-	resspos provcode get 3 get{(\n)search{exch pop exch}{exit}ifelse}loop
-    ] def
-    40 (FontArialNarrow-Bold) setbasefont
-    /provw0 0 provname {_ stringwidth 2 copy lt{exch}if pop}forall 
-	provmax 2 copy gt {exch} if pop def
-    40 (FontArialNarrow) setbasefont
-    /provw1 provcarac1 _ stringwidth def
-    /provw2 provcarac2 _ stringwidth def
-    /provw3 60 def
-} def
-/provinceframe {/supwidth exch def
-    0.5 beginalpha
-	provpen out( RG )out provcolor out( rg\n) out
-	provx display space
-	provy provht sub display space provwidth supwidth add display
-	space provht display ( re f\n) out
-    endalpha
-    provpen out( RG )out provpen out( rg\n) out
-    /provpoints [provx provy provht sub provwidth supwidth add provht] def
-} def
-/provincecolindh {/bn exch def /by exch def /bx exch def
-    provind bn get 3 get
-    bx provind bn get 1 get add by provind bn get 2 get add
-    begints provind bn get 0 get useimage endts
-  provcarac1
-  bx provw3 add provwspace add
-  by
-  200
-  40 (FontArialNarrow) lefttext
-  
-  provcarac2
-  bx provw3 add 2 provwspace mul add provw1 add
-  by
-  200
-  40 (FontArialNarrow) lefttext
-} def
-/provincecolindv {/bn exch def /by exch def /bx exch def
-    provind bn get 3 get
-    bx provind bn get 1 get add by provind bn get 2 get add
-    begints provind bn get 0 get useimage endts
-  provcarac1
-  bx provw3 add 5 add
-  by 40 add
-  provwidth provw3 sub 15 sub
-  40 (FontArialNarrow) lefttext
-  
-  provcarac2
-  bx provw3 add 5 add
-  by
-  provwidth provw3 sub 15 sub
-  40 (FontArialNarrow) lefttext
-} def
-/provinceres1 {
-    j 0 get 2 get add putsymbol
-    j 1 get dup 2 get exch dup 1 get exch 0 get 3 {display space}repeat
-    (rg 0 0 0 RG 2 w\n) out
-    j 0 get 4 get 0 eq
-    {	bx 2 add display space by 2 add display ( 36 36 re f\n) out
-	bx 2 add display space by 2 add display ( 36 36 re S\n) out
-    }
-    {j 0 get 4 get 1 eq
-    {	newpath bx 38 add by 20 add moveto bx 20 add by 20 add 18 0 360
-	arc closepath (h f\n) exporttopdf
-	newpath bx 38 add by 20 add moveto bx 20 add by 20 add 18 0 360
-	arc closepath (h S\n) exporttopdf
-    }
-    {	newpath bx 20 add by 2 add moveto bx 38 add by 20 add lineto
-	bx 20 add by 38 add lineto bx 2 add by 20 add lineto closepath
-	(h f\n) exporttopdf
-	newpath bx 20 add by 2 add moveto bx 38 add by 20 add lineto
-	bx 20 add by 38 add lineto bx 2 add by 20 add lineto closepath
-	(h S\n) exporttopdf
-    }
-    ifelse}ifelse
-    j 2 get dup 2 get exch dup 1 get exch 0 get 3 {display space}repeat
-    (rg\n) out
-    provres i get 1 get bx 20 add by 40 40(FontArialNarrow)centertext
-}def
-/provinceres {
-    j 0 get 0 get bx j 0 get 1 get add by 40 sub provinceres1
-}def
-/provinceresv {
-    j 0 get 0 get bx 40 add j 0 get 1 get add by provinceres1
-}def
-% /provinceh {
-%     /provmax 230 def
-%     provincesetup 
-%     /provwidth
-%       provw0
-%       provw1 5 provw2 add add
-%       2 copy lt {exch} if pop
-%     provw3 15 add add def
-%     /provwspace provwidth provw3 5 add provw1 add provw2 add sub 3 div def
-%     /provht 80 def
-%     provres length 45 mul provinceframe 
-%     provname 0 get provx provwidth provw3 sub 5 sub 2 div add provw3 add 5 add
-%     provy 40 sub provmax 40
-%     (FontArialNarrow-Bold) centertext
-%     provx 5 add provy 80 sub provstyle provincecolindh
-%     0 1 provres length 1 sub {
-% 	/i exch def /j couleurproduitsdict provres i get 0 get get def
-% 	/bx provx provwidth add i 45 mul add def
-% 	/by provy 40 sub def
-% 	provinceres
-%     } for
-% } bind def
-% /provincev {
-%     /provmax 120 def
-%     provincesetup
-%     /provwidth provw0
-%     provw3 provw1 5 add add 2 copy lt {exch} if pop
-%     provw3 provw2 5 add add 2 copy lt {exch} if pop
-%     provres length 0 gt {85 2 copy lt {exch} if pop} if
-%     10 add def
-%     /provwspace provwidth provw3 5 provw1 provw2 2 copy lt {exch} if pop
-%     add add sub 2 div def
-%     /provht 80 provres length provname length add 40 mul add def
-%     0 provinceframe
-%     /decy 40 def
-%     provname {provx provwidth 2 div add provy decy sub provmax 40
-%     (FontArialNarrow-Bold) centertext /decy decy 40 add def}forall
-%     provx provwspace add provy 40 decy add sub
-%     provstyle provincecolindv
-%     /provwspace
-%       provwidth provres length 40 mul sub provres length 1 add div def
-%     0 1 provres length 1 sub {
-% 	/i exch def /j couleurproduitsdict provres i get 0 get get def
-% 	/bx provx provwidth 85 sub 2 div add def
-% 	/by provy 80 decy add i 40 mul add sub def
-% 	provinceresv
-%     } for
-% } bind def
-% /link {
-%     /yy exch def /xx exch def dup cvi /ll exch def dup cvi sub /lp exch def
-%     0.5 beginalpha
-% 	provcolor out( RG )out provcolor out( rg 1 J 4 w\n) out
-% 	/xxp provpoints 0 get
-% 	    ll 0 eq {provpoints 2 get lp mul add}if
-% 	    ll 1 eq {provpoints 2 get add}if
-% 	    ll 2 eq {provpoints 2 get 1 lp sub mul add}if
-% 	def
-% 	/yyp provpoints 1 get
-% 	    ll 1 eq {provpoints 3 get lp mul add}if
-% 	    ll 2 eq {provpoints 3 get add}if
-% 	    ll 3 eq {provpoints 3 get 1 lp sub mul add}if
-% 	def
-% 	xxp display space yyp display ( m\n)out
-% 	xx display space yy display ( l\n)out
-% 	/aa yy yyp sub xx xxp sub atan def
-% 	xx 10 aa 135 sub cos mul add display space
-% 	yy 10 aa 135 sub sin mul add display ( l\n)out
-% 	xx 10 aa 135 add cos mul add display space
-% 	yy 10 aa 135 add sin mul add display ( l\n)out
-% 	xx display space yy display ( l b\n)out
-%     endalpha
-% }bind def
-
-/province {{provinceh}{provincev}ifelse}def
 
 %X (img:truc) (region) tordesillas
 /tordesillas {/pays exch def resspos pays get dup 0 get 25 sub exch 1 get 60 sub resspos pays get 2 get not {80 sub}if putsymbol} def

@@ -332,7 +332,7 @@ cpstream closefile
 	pop futureobjdict 1 index get exch 60 string cvs defobj
     }ifelse} forall
     (%PDF-1.4\n) out
-    objects initlogWRITE
+    initlogWRITE
     labelref {logWRITE /cl exch def objdict cl get
 	dup type dup /dicttype eq {pop dictobjd}
 	{/stringtype eq {streamobjd}{simpleobjd}ifelse  }ifelse
@@ -350,6 +350,10 @@ cpstream closefile
     (\n>>\nstartxref\n) out
     10 string cvs out (\n%%EOF\n) out
     realoutputfile closefile
+    count 0 ne {
+        (Leftover elements in the stack\n) print
+        pstack
+    } if
 } def
 /copyfile {/filename exch def(%Here is the content of )out filename out(\n)out
     /inputfile filename openfile def

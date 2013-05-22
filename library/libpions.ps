@@ -24,8 +24,7 @@
     STDERR (\n) writestring
     STDERR flushfile
 } bind def
-/initlogWRITE { /SUFFIX (/)
-objects 100000 add 6 string cvs 1 5 getinterval ! def 
+/initlogWRITE {
     /writecount 0 def
     /phase (count:pdf:) def
 } def
@@ -200,7 +199,7 @@ def
 %    false false true beginpage
 }def
 /closepages {
-    cparray {dup 0 eq not {loadpage endrangee endpage}if}forall
+    cparray {dup 0 eq not {loadpage endrangee endpage}{pop}ifelse}forall
 }def
 /defobllinshade {/col1 exch def /col0 exch def
     deffunlin
@@ -1240,7 +1239,7 @@ def
     blasonsmallright
     nameX communnomchef
     (img:mission) 23 5 0.35 
-    pays (turquie) eq { pop (img:mecca) 23 5 0.35 }if
+    pays (turquie) eq { 4 {pop} repeat (img:mecca) 23 5 0.35 }if
     putimage
     endpion
 } def

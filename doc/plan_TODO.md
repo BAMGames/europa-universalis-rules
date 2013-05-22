@@ -7,7 +7,7 @@ A makefile replacement
  * shadow : done
  * pions : done
  * figures: done
- * carte, rotw
+ * carte, rotw: in progress
  * rules
  * records
  * web
@@ -43,3 +43,7 @@ Dependency on .tmp/vars should suffice.
 
 See inside man pages. Smart targets can add files, remove files, add
 mode, set hardrule.
+
+# Introduce sweeping
+
+Remove all generated files no more generable.

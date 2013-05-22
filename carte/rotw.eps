@@ -8,7 +8,7 @@
 (library/libcarte.ps) include
 
 % map clipping settings
-TARGET(.background.clipping.txt)! include
+0 0 8425 5840 bboxset
 /pagewidth MAXx MINx sub def
 /pageheight MAXy MINy sub def
 
@@ -194,7 +194,6 @@ true {
     } forall
 } if % Mogol progression
 true {
-    BASEDIR(rotw.resources.ps)! include
     /suffixdisplaynamedict <<
         (Ormus)		( (ﺱﺭﺎﭘ))
         (Sibérie)	(\n(Сибирь))
@@ -237,124 +236,123 @@ true {
     >> def
     /indigenesdict <<
         (Acadie)		[20 1678 1092 false]
-        (Formose)		[4 6935 2342 false]
+        (Aden)			[7 4420 2066 true ]
+        (Afghanistan)		[9 5720 2747 false ]
+        (Alaska)		[18  0327 3490 true]
+        (Amazonia)		[8 2034 1552 true ]
+        (America)		[1 1406 1057 false ]
+        (Amour)			[2 7263 3243 true ]
+        (Angola)		[6 4285 1463 false ]
+        (Antilles)		[21 2550 2050 true ]
+        (Ayodhyā)		[5 6242 1411 false ]
+        (Ayutthaya)		[10 5716 2460 true ]
+        (Aral)			[9 5445 2986 false ]
+        (Arizona)		[0 0700 2550 false ]
+        (Azteca)		[11 0970 2124 true ]
+        (Baïkal)		[2 6532 3187 true ]
+        (Balouchistan)		[7 5506 2402 false ]
+        (Belém)			[8 2471 1496 true ]
+        (Bānglā)		[5 6319 0755 true ]
+        (Birmanie)		[15 5796 2330 true ]
+        (Bornéo)		[10 6569 1744 false ]
+        (California)		[0 0620 2720 false ]
+        (Cameroun)		[6 4041 1955 true ]
+        (Canton)		[4 5876 2640 true ]
+        (Cap)			[6 4344 1116 true ]
+        (Cabo Verde)		[14 3025 2240 false ]
+        (Carolina)		[1 1012 0509 false ]
+        (Célèbes)		[10 6808 1326 false ]
+        (Chichimeca)		[0 0845 2324 true ]
+        (Chili)			[13 1850 0808 true ]
+        (Congo)			[6 4239 1618 true ]
+        (Corée)			[4 7024 2427 true ]
+        (Côte d’Ivoire)		[6 3661 2091 true ]
+        (Côte d’Or)		[6  3781 1991 true]
+        (Cuba)			[21 1700 2430 true ]
+        (Đại Việt)		[15 5816 2550 true ]
+        (Dellī)			[5 5910 1489 true ]
+        (Ecuador)		[12 1698 1744 false ]
+        (Éthiopie)		[23 4595 1952 false ]
+        (Florida)		[21 0906 0121 true ]
+        (Formose)		[4 6935 2342 false ]
+        (Gabon)			[6 4223 1764 true ]
+        (Gonḍānā)		[5 6250 0660 false ]
+        (Grands Lacs)		[20 0316 1656 true ]
+        (Gujarat)		[5 5242 0891 false ]
+        (Guyana)		[8 2551 1900 true ]
+        (Haïti)			[21 2001 2542 true ]
+        (Hudson)		[19 1176 3527 true ]
+        (Hydārabad)		[5 5480 0420 false ]
+        (Ienisseï)		[2 5710 2977 true ]
+        (Îles aux Épices)	[10 7103 1658 false ]
+        (Îles de la Sonde)	[10 7037 1441 false ]
+        (Illinois)		[1  0110 1022 true]
+        (Inca)			[12 1921 1137 false ]
+        (Indus)			[5 5612 1644 true ]
+        (Iroquois)		[1 0070 0880 true ]
+        (Japon)			[3 7345 2730 true ]
+        (Java)			[10 6729 1160 false ]
+        (Kamchatka)		[19 7874 3322 false ]
+        (Kansas)		[1 1603 2746 true ]
+        (Karnāṭaka)		[5 5960 0500 false ]
+        (Kenya)			[23 4483 1737 true  ]
+        (Labrador)		[19 2030 3285 true ]
+        (Lena)			[2 6103 2991 true ]
+        (Madagascar)		[6 4879 0956 false ]
+        (Malabāṟ)		[5 5460 0126 true ]
+        (Malacca)		[15 5840 2080 true ]
+        (Malouines)		[16 2446 0271 true ]
+        (Mandchourie)		[4 6450 2961 true ]
+        (Manitoba)		[20 1129 3439 false  ]
+        (Mascareignes)		[14 4937 0732 true ]
+        (Mauritanie)		[6 3551 2291 true ]
+        (Minas Gerais)		[8 2430 1344 true ]
+        (Mississipi)		[1 0233 0208 false ]
+        (Mumbaī)		[5 5427 0757 false ]
+        (Namibie)		[6 4297 1278 false ]
+        (Nankin)		[4 5918 2730 true ]
+        (Natal)			[6 4458 1290 false ]
+        (Nedj)			[7 4729 2485 false ]
+        (Nevada)		[0 0925 2745 true ]
+        (Nyasa)			[23 4531 1505 false ]
+        (Ob)			[2 5425 3121 true ]
+        (Océanie)		[17 7093 1028 true ]
+        (Oman)			[7 4930 2221 true ]
+        (Oregon)		[18 0625 2960 false ]
+        (Orissā)		[5 6107 0623 false ]
+        (Ormus)			[9 4938 2603 true]
+        (Pacifique)		[14 7946 2340 true ]
+        (Panamá)		[8 1694 1834 true ]
+        (Paraguay)		[8 2205 1064 false ]
+        (Patagonia)		[13 2225 0483 false ]
+        (Pékin)			[4 6290 2740 true ]
+        (Pãjāb)			[5 5938 1385 true ]
+        (Philippines)		[10 7273 1964 true ]
+        (Plata)			[13 2518 0777 false ]
+        (Québec)		[20 0749 1702 false ]
+        (Recife)		[8 2984 1438 true ]
+        (Rio)			[8 2855 1160 true ]
+        (Rocheuses)		[18 0862 3266 true ]
+        (Sénégal)		[6 3611 2191 true ]
+        (Seychelles)		[14 5279 1650 false ]
+        (Singala)		[5 6035 0160 true ]
+        (Sibérie)		[2 5000 3500 false ]
+        (Soudan)		[7 4340 2186 true ]
+        (Sainte-Hélène)		[22 3692 1181 false ]
+        (Sumatra)		[10 6075 1753 false ]
+        (Terre-Neuve)		[16 2570 3020 true ]
+        (Texas)			[0 1535 2517 true ]
+        (Venezuela)		[8 2040 1751 true ]
+        (Virginia)		[1 1187 0847 false ]
+        (Yakoutie)		[2 7333 3508 true ]
+        (Yucatán)		[8 1492 1992 false ]
     >> def
-    /otherindigenesdict <<
-        (Acadie)		20
-        (Aden)			7
-        (Afghanistan)		9
-        (Alaska)		18
-        (Amazonia)		8
-        (America)		1
-        (Amour)			2
-        (Angola)		6
-        (Antilles)		21
-        (Ayodhyā)		5
-        (Ayutthaya)		10
-        (Aral)			9
-        (Arizona)		0
-        (Azteca)		11
-        (Baïkal)		2
-        (Balouchistan)		7
-        (Belém)			8
-        (Bānglā)		5
-        (Birmanie)		15
-        (Bornéo)		10
-        (California)		0
-        (Cameroun)		6
-        (Canton)		4
-        (Cap)			6
-        (Cabo Verde)		14
-        (Carolina)		1
-        (Célèbes)		10
-        (Chichimeca)		0
-        (Chili)			13
-        (Congo)			6
-        (Corée)			4
-        (Côte d’Ivoire)		6
-        (Côte d’Or)		6
-        (Cuba)			21
-        (Đại Việt)		15
-        (Dellī)			5
-        (Ecuador)		12
-        (Éthiopie)		23
-        (Florida)		21
-        (Formose)		4
-        (Gabon)			6
-        (Gonḍānā)		5
-        (Grands Lacs)		20
-        (Gujarat)		5
-        (Guyana)		8
-        (Haïti)			21
-        (Hudson)		19
-        (Hydārabad)		5
-        (Ienisseï)		2
-        (Îles aux Épices)	10
-        (Îles de la Sonde)	10
-        (Illinois)		1
-        (Inca)			12
-        (Indus)			5
-        (Iroquois)		1
-        (Japon)			3
-        (Java)			10
-        (Kamchatka)		19
-        (Kansas)		1
-        (Karnāṭaka)		5
-        (Kenya)			23
-        (Labrador)		19
-        (Lena)			2
-        (Madagascar)		6
-        (Malabāṟ)		5
-        (Malacca)		15
-        (Malouines)		16
-        (Mandchourie)		4
-        (Manitoba)		20
-        (Mascareignes)		14
-        (Mauritanie)		6
-        (Minas Gerais)		8
-        (Mississipi)		1
-        (Mumbaī)		5
-        (Namibie)		6
-        (Nankin)		4
-        (Natal)			6
-        (Nedj)			7
-        (Nevada)		0
-        (Nyasa)			23
-        (Ob)			2
-        (Océanie)		17
-        (Oman)			7
-        (Oregon)		18
-        (Orissā)		5
-        (Ormus)			9
-        (Pacifique)		14
-        (Panamá)		8
-        (Paraguay)		8
-        (Patagonia)		13
-        (Pékin)			4
-        (Pãjāb)			5
-        (Philippines)		10
-        (Plata)			13
-        (Québec)		20
-        (Recife)		8
-        (Rio)			8
-        (Rocheuses)		18
-        (Sénégal)		6
-        (Seychelles)		14
-        (Singala)		5
-        (Sibérie)		2
-        (Soudan)		7
-        (Sainte-Hélène)		22
-        (Sumatra)		10
-        (Terre-Neuve)		16
-        (Texas)			0
-        (Venezuela)		8
-        (Virginia)		1
-        (Yakoutie)		2
-        (Yucatán)		8
+    /provlinkdict <<
+        (Chichimeca) [2.5 1400 2400]
     >> def
     /provind [
-        [(img:indigene00) 0  0 0.5]% Indien apache
-        [(img:indigene01) 8  0 0.5]% Indien iroquois
+        [(img:indigene00) -2.5  0 0.5]% Indien apache
+        [(img:indigene01) 2  0 0.5]% Indien iroquois
         [(img:indigene02) 0  0 0.5]% Mongol
         [(img:indigene03) 0  3 0.5]% Japonais
         [(img:indigene04) 0  0 0.5]% Chinois
@@ -373,55 +371,161 @@ true {
         [(img:indigene17) 0 15 0.5]% Kangourous
         [(img:indigene18)10  0 0.5]% Indien pacifique
         [(img:indigene19) 0  6 0.5]% Ours polaires
-        [(img:indigene20)10  0 0.5]% Indiens du nord
+        [(img:indigene20) 1  0 0.5]% Indiens du nord
         [(img:indigene21) 9  0 0.5]% Caribes
         [(img:indigene22) 9  0 0.5]% Napoleons
         [(img:indigene23) 8  0 0.5]% Masai
     ] def
     /provincepens <<
-        100 (1 1 1)
-          1 (1 1 0)
-        110 (0 0 0)
-          0 (1 1 0)
-        111 (0 0 0)
-         60 (1 1 1)
-        101 (0 0 0)
-         11 (0 0 0)
-        333 (1 1 1)
-        448 (1 1 1)
-        255 (1 1 0)
+        (:00) (1 1 1)
+        (00:) (1 1 0)
+        (::0) (0 0 0)
+        (000) (1 1 0)
+        (:::) (0 0 0)
+        (060) (1 1 1)
+        (:0:) (0 0 0)
+        (0::) (0 0 0)
+        (333) (1 1 1)
+        (448) (1 1 1)
+        (255) (1 1 0)
     >> def
+} if % Ressources setup    
+
+true {
+    BASEDIR(rotw.resources.ps)! include
+    /provinceresourcedraw {% [type quantity] x1 y1 x2 y2 => ---
+        /provresyy exch def
+        /provresxx exch def
+        /provresy exch def
+        /provresx exch def
+        aload pop exch couleurproduitsdict exch get aload pop pop pop
+        [ exch {12 string cvs ( )}forall pop ]!! /provrespencolor exch def
+        [ exch {12 string cvs ( )}forall pop ]!! /provresbgcolor exch def
+        /provresview exch def 2 string cvs /provresquantity exch def
+        provresview 0 3 getinterval aload pop provresy add
+        exch provresx add exch putsymbol
+        provresbgcolor out (rg 0 0 0 RG 2 w\n) out provresview 4 get
+        {
+           dup 0 eq {
+                provresxx 2 add display space provresyy 2 add display
+                ( 36 36 re B\n)out
+                exit
+            } if
+            dup 1 eq {
+                newpath provresxx 38 add provresyy 20 add moveto
+                provresxx 20 add provresyy 20 add 18 0 360 arc closepath (h B\n) exporttopdf
+                exit
+            } if
+            dup 2 eq {
+                newpath provresxx 20 add provresyy 2 add moveto
+                provresxx 38 add provresyy 20 add lineto
+	        provresxx 20 add provresyy 38 add lineto
+                provresxx 2 add provresyy  20 add lineto
+                closepath
+	        (h B\n) exporttopdf
+                exit
+            } if
+            exit
+        } loop pop provrespencolor( rg\n)! out
+        provresquantity provresxx 20 add provresyy 40 40(FontArialNarrow)centertext
+    } bd
     /provinceindigene {% x y => ---
         /provimy exch def
         /provimx exch def
         provind provheader 0 get get aload pop
         /provimscale exch def
-        /provimxx exch def
         /provimyy exch def
+        /provimxx exch def
         /provimname exch def
         provimscale provimx provimxx add provimy provimyy add
-        pstack begints provimname useimage endts
+        begints provimname useimage endts
+    } bd
+    /provincerelpos { % relpos => coordinates
+        dup 0 lt {4 add} if dup 4 ge {4 sub} if
+        dup cvi 1 index exch sub /provlinkxprop exch def
+        cvi /provlinkxcorner exch def
+        {
+            provlinkxcorner 0 eq {
+                provx provlinkxprop provwidth mul add
+                provy provheight sub
+                exit
+            } if
+            provlinkxcorner 1 eq {
+                provx provwidth add
+                provy provheight 1 provlinkxprop sub mul sub
+                exit
+            } if
+            provlinkxcorner 2 eq {
+                provx provwidth 1 provlinkxprop sub mul add
+                provy
+                exit
+            } if
+            provlinkxcorner 3 eq {
+                provx 
+                provy provheight provlinkxprop mul sub
+                exit
+            } if
+            provlinkbug
+        } loop
     } bd
     /provinceframe {
-        /supwidth exch def
-        %0.5 beginalpha
-	provpen out( RG )out provcolor{display space}forall(rg\n)out
-	provx display space
-	provy provheight sub display space provwidth supwidth add display
-	space provheight display ( re f\n) out
-        %endalpha
-        (0 0 0 RG 0 0 0 rg 1 w\n)out
-        0 40 provheight 1 sub { % pstack (----) print
-            provx display space provy exch sub 40 sub display space
-            provwidth display space 40 display (re S\n)out
-        } for
-        provpen out( RG )out provpen out( rg\n) out
-%        /provpoints [provx provy provht sub provwidth supwidth add provht] def
+        provlinkdict provcode known {
+            /provlinkpos provlinkdict provcode get aload pop
+            /provlinkyy exch def
+            /provlinkxx exch def def
+            provlinkpos provincerelpos /provlinky exch def /provlinkx exch def
+            provx provlinkxx 10 sub .min
+            provy provheight sub provlinkyy 10 sub .min
+            provx provwidth add provlinkxx 10 add .max
+            provy provlinkyy 10 add .max
+        }{
+            provx provy provheight sub provx provwidth add provy
+        }ifelse
+        bboxtest {
+            0.5 1 beginbialpha
+	    provpen out( RG 0 G 1 w )out provcolor{display space}forall(rg\n)out
+	    provx display space
+	    provy provheight sub display space
+            provlinkdict provcode known {
+                provlinkpos .05 sub provincerelpos exch display space display ( m\n)out
+                /provlinkalpha provlinkyy provlinky sub provlinkxx provlinkx sub atan def
+                /provlinklen provlinkyy provlinky sub dup mul provlinkxx provlinkx sub dup mul add sqrt def
+                provlinkx provlinklen 5 sub 5 .max provlinkalpha cos mul add
+                2 provlinkalpha sin mul add display space
+                provlinky provlinklen 5 sub 5 .max provlinkalpha sin mul add
+                2 provlinkalpha cos mul sub display ( l\n)out
+                provlinkx provlinklen 5 sub 5 .max provlinkalpha cos mul add
+                5 provlinkalpha sin mul add display space
+                provlinky provlinklen 5 sub 5 .max provlinkalpha sin mul add
+                5 provlinkalpha cos mul sub display ( l\n)out
+                provlinkxx display space provlinkyy display ( l\n)out
+                provlinkx provlinklen 5 sub 5 .max provlinkalpha cos mul add
+                5 provlinkalpha sin mul sub display space
+                provlinky provlinklen 5 sub 5 .max provlinkalpha sin mul add
+                5 provlinkalpha cos mul add display ( l\n)out
+                provlinkx provlinklen 5 sub 5 .max provlinkalpha cos mul add
+                2 provlinkalpha sin mul sub display space
+                provlinky provlinklen 5 sub 5 .max provlinkalpha sin mul add
+                2 provlinkalpha cos mul add display ( l\n)out
+                provlinkpos .05 add provincerelpos exch display space display
+                ( l\n)out
+                provlinkxcorner 1 add 1 provlinkxcorner 4 add {
+                    provincerelpos exch display space display ( l\n)out
+                } for (h\n) out
+            }{
+                provwidth display space provheight display ( re )out
+            } ifelse
+            (B\n) out
+            endalpha
+            provpen out( RG )out provpen out( rg\n) out
+        }if
     } bd
-    /provsetup { % minimal width => ---
+    /provincesetup { % minimal width => ---
         /provmax exch def
         /provcolor namesdict provcode get def
-        /provcolorcode provcolor aload pop 10 mul exch 100 mul add exch 1000 mul add def
+        /provcolorcode 3 string -1 provcolor {
+            10 mul 48 add cvi exch 1 add exch 3 copy put pop
+        } forall pop def
         /provpen (1 0 0) 
         provincepens provcolorcode known {pop provincepens provcolorcode get}if def
         /provname [
@@ -435,7 +539,7 @@ true {
             {(\n)search{exch pop exch}{exit}ifelse}loop
         ] def
         /provresources [
-            [/orient /epices /america /sucre /sucrebr /peche /peaux /soie /cotonas /coton /esclaves /bois /areacold] {
+            [/orient /epices /america /sucre /sucrebr /peche /peaux /soie /cotonas /coton /esclaves /sel /bois /areacold] {
                 /provres exch def
                 resourcesdict provres get dup provcode known {
                     provcode get [ provres 3 -1 roll ]
@@ -454,20 +558,51 @@ true {
         /provy provheader 2 get def
     } bd
     /provincev {
-        120 provsetup
+        120 provincesetup
         /provwidth provw0 [
             provw3 provw1 5 add add
             provw3 provw2 5 add add
             provresources length 0 gt {85} if
         ] {.max} forall 10 add def
-        /provheight 80 provres length provname length add 40 mul add def
-        0 provinceframe
-        /decy 40 def
-        provname {provx provwidth 2 div add provy decy sub provmax 40
-        (FontArialNarrow-Bold) centertext /decy decy 40 add def}forall
-        /decy decy 40 add def
-        provx provwidth provw1 provw2 .max provw3 15 add add sub 2 div add
-        provy decy sub provinceindigene
+        /provheight 80 provresources length provname length add 40 mul add def
+        provinceframe
+        provx provy provheight sub provx provwidth add provy bboxtest {
+            /decy 40 def
+            provname {provx provwidth 2 div add provy decy sub provmax 40
+            (FontArialNarrow-Bold) centertext /decy decy 40 add def}forall
+            /decy decy 40 add def
+            /provspacing provwidth provw1 provw2 .max provw3 5 add add sub 2 div def
+            provx provspacing add dup provy decy sub provinceindigene
+            provw3 add 5 add provy decy sub 200 40 (FontArialNarrow)
+            5 copy provcarac1 6 1 roll 4 -1 roll 40 add 4 1 roll lefttext provcarac2 6 1 roll lefttext
+            /provspacing provwidth 85 sub 2 div def
+            provresources {
+                /decy decy 40 add def
+                provx provspacing add provy decy sub 2 copy exch 45 add exch
+                4 2 roll provinceresourcedraw
+            } forall
+        } if
+    } bd
+    /provinceh {
+        120 provincesetup
+        /provspacing provw0 provw1 provw2 15 add add .max def
+        /provwidth 80 provspacing add provresources length 40 mul add def
+        /provheight 80 def
+        provinceframe
+        provx provy provheight sub provx provwidth add provy bboxtest {
+            [provname {( )}forall pop]!! provx 70 add provspacing 2 div add
+            provy 40 sub provspacing 40 (FontArialNarrow-Bold) centertext
+            provx 5 add provy 80 sub provinceindigene
+            provx 70 add provspacing provw1 provw2 15 add add sub 2 div add
+            provy 80 sub provw1 40 (FontArialNarrow) 5 copy
+            provcarac1 6 1 roll lefttext 5 -1 roll provw1 add 15 add
+            provcarac2 exch 6 2 roll lefttext
+            /provspacing provx 75 add provspacing add def
+            provresources {
+                provspacing provy 80 sub 2 copy 40 add provinceresourcedraw
+                /provspacing provspacing 40 add def
+            } forall
+        } if
     } bd
 
     indigenesdict {

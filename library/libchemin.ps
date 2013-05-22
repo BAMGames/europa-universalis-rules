@@ -454,7 +454,6 @@ true {
 /drawpathsets {
     /.proc exch def
     pathsets { /p exch def /pn exch def /pp p 0 get def
-        /found false def
         provbboxtest {
             [ percent pn 40 string cvs pp 1 get ] !!! out
             .proc
@@ -541,8 +540,8 @@ styleinit
         (W n\n) out
         (/GSalphaZone gs\n)out
         drawcontourprov out (S\n) out           
-        /found true def
         restorecontext
+        /found true def
     } drawpathsets
     found {
         carrefile (<< /Type /ExtGState /LC 0 /CA .5 >> (GSalphaZone) defobj\n) writestring
