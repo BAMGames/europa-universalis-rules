@@ -26,6 +26,7 @@ FONTDIR(champion.ps)! include
 
 begindocument
 beginpage
+
 true {
     (0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
     MINx neg display space MINy neg display ( cm\n)out
@@ -200,6 +201,7 @@ true {
     } forall
 } if % Mogol progression
 true {
+    /sortedresources [/orient /epices /soie /esclaves /sel /peaux /peche /bois /sucrebr /sucre /america /cotonas /coton /areacold /inflation] def
     /suffixdisplaynamedict <<
         (Ormus)		( (ﺱﺭﺎﭘ))
         (Sibérie)	(\n(Сибирь))
@@ -591,7 +593,7 @@ true {
             {(\n)search{exch pop exch}{exit}ifelse}loop
         ] def
         /provresources [
-            [/orient /epices /soie /esclaves /sel /peaux /peche /bois /sucrebr /sucre /america /cotonas /coton /areacold] {
+            sortedresources {
                 /provres exch def
                 resourcesdict provres get dup provcode known {
                     provcode get [ provres 3 -1 roll ]
@@ -712,6 +714,356 @@ true {
     
     (q 10 w 0000 3750 m 8425 3750 l s Q\n)out
 } if % Turn track
+true {
+    % Frise de prix des produits exotiques
+    /inflationdict <<
+        10 [()(inflation)]
+        12 [(peche)]
+        15 [(america)(sel)]
+        16 [(coton)(peaux)]
+        17 [(esclaves)]
+        18 [(epices)]
+        19 [(sucre)]
+        20 [(orient)(soie)]
+    >> def
+    /productpricedict <<
+        1  [(america)]
+        2  [(sucre)(inflation)]
+        3  [(peche)]
+        4  [(sel)]
+        5  [(coton)]
+        6  [(esclaves)(peaux)]
+        9  [(epices)]
+        12 [(soie)]
+        13 [(orient)]
+    >> def
+    /xstart 0030 def
+    /ystart 3765 def
+    /shadepen (0.8 0.8 0.8) def
+    /shaderatio 2 def
+    [0.5 0 0][0 0 1] xstart ystart 20 112.5 {
+        i 10 le {
+	    [5 5 5 10 10 10 20 20 25 33] i 1 sub get 2 string cvs percent !
+	    10 size 0.25 mul size size 2 div ai lefttext
+        } if
+        i 1 sub 2 idiv dup i 1 sub 2 div ne
+        {1 string cvs (R)!}{2 string cvs (L)!} ifelse
+        i 20 eq {pop (10)}if i 19 eq {pop (9)}if
+        (Inflation:)exch ! xtrace ytrace xsize size writetrace
+        inflationdict i known {
+            inflationdict i get dup length 1 eq {
+	        0 get 72.5 16.25 presenteproduit
+	    } {
+	        dup
+	        0 get dup length 0 gt {22 16.25 presenteproduit}{pop}ifelse
+	        1 get 124 16.25 presenteproduit
+	    } ifelse
+        } if
+    } hshade
+    (Maximal values) xstart 30 add ystart size 0.4 mul add 1000 55 an lefttextbbox
+    (& Inflation) xstart 30 add ystart 1000 55 an lefttextbbox
+    [0.5 0 0][0 0 1]0030 ystart size add 20 112.5 {
+        i 1 sub 2 idiv dup i 1 sub 2 div ne
+        {1 string cvs (R)!}{2 string cvs (L)!} ifelse
+        i 20 eq {pop (10)}if i 19 eq {pop (9)}if
+        (Prices:)exch ! xtrace ytrace xsize size writetrace
+        i 1 sub 2 idiv i 20 eq {1 add} if 2 string cvs xsize 5 sub 0 130 size ab righttext
+        productpricedict i known {
+            productpricedict i get dup length 1 eq {
+	        0 get 72.5 16.25 presenteproduit
+	    } {
+	        dup
+	        0 get 5 16.25 presenteproduit
+	        1 get 85 16.25 presenteproduit
+	    } ifelse
+        } if
+    } hshade
+    (Initial and Minimal) xstart 30 add ystart size 0.4 mul add 1000 55 an lefttextbbox
+    (prices & values)@ xstart 30 add ystart 1000 55 an lefttextbbox
+    /shadepen (0 0 0) def
+    /shaderatio 1 def
+    /xstart 0030 def
+    /ystart ystart size add def
+    xstart ystart xstart 4700 add ystart size add bboxtest {
+        (pVII)(pIV)(Availability of resources: pIII) [
+            [(soie)(orient)(epices)(peaux)(esclaves)(peche)(sel)(cotonas)] pop
+            [(sucrebr)]
+            [(sucre)(america)]
+            [(coton)]
+        ] {
+            exch xstart ystart 12 add 1000 55 ab lefttext
+            /xstart xstart Textwidth add 15 add def
+            {
+                xstart ystart 2 add presenteproduit
+ 	        /xstart xstart 75 add def
+            } forall
+            /xstart xstart 25 add def
+        } forall
+        /xstart xstart 100 add def
+        sortedresources {
+            dup /areacold ne {
+                xstart ystart 2 add presenteproduit
+                j 4 get @ xstart 90 add ystart 12 add 250 55 an lefttext
+                /xstart xstart 80 add Textwidth add 25 add def
+            }{pop} ifelse
+        } forall
+    } if
+    % Frise de production de ressources
+    /prodcounta {
+        /i exch i add def
+        i 2 string cvs shadename 1 index ! xtrace ytrace xsize size writetrace
+        xsize 0.5 mul 0 xsize xsize (FontArialNarrow-Bold) centertext
+    } def
+    /dim {dup [ exch {0.8 mul}forall]}def
+    /printres {
+        << exch {true} forall >> /tempdict exch def
+        sortedresources {
+            tempdict 1 index known {
+                xstart ystart 16.25 add presenteproduit /xstart xstart 80 add def
+            } { pop } ifelse
+        } forall
+    } def
+    /printtri {
+        2 xstart 40 add ystart 36.25 add begints xobject endts
+        /xstart xstart 90 add def
+    } def
+    /shadename (Resources40:) def
+    /ystart ystart 84 add def
+    [0 1 0]dim 0030 ystart 5 size{0 prodcounta}hshade
+    [0 1 1]dim xstart ystart  5 size{ 5 prodcounta}hshade
+    [1 1 1]dim xstart ystart 10 size{10 prodcounta}hshade
+    [1 0 1]dim xstart ystart 10 size{20 prodcounta}hshade
+    [1 1 0]dim xstart ystart  5 size{30 prodcounta}hshade
+    [1 0 0][0.8 0 0] xstart ystart 5 size {35 prodcounta}hshade
+    /memy ystart 84 sub def
+    /memx xstart 10 add def
+    /shadename (Resources30:) def
+    [0 1 0]dim 0030 ystart size add 5 size{0 prodcounta}hshade
+    [0 1 1]dim xstart ystart 5 size{ 5 prodcounta}hshade
+    [1 1 1]dim xstart ystart 5 size{10 prodcounta}hshade
+    [1 0 1]dim xstart ystart 5 size{15 prodcounta}hshade
+    [1 1 0]dim xstart ystart 5 size{20 prodcounta}hshade
+    [1 0 0]dim xstart ystart 5 size{25 prodcounta}hshade
+    xstart ystart xstart 1000 add ystart size add bboxtest {
+        (ltriangle) printtri
+        [(peche)(coton)]printres
+        /xstart xstart 50 add def
+        (dtriangle) printtri
+        [(orient)(epices)(peaux)(sucre)(esclaves)]printres
+    } if
+    /shadename (Resources20:) def
+    [0 1 0]dim 0030 ystart size add 3 112.5{ 0 prodcounta}hshade
+    [0 1 1]dim xstart ystart 4 size{ 3 prodcounta}hshade
+    [1 1 1]dim xstart ystart 4 size{ 7 prodcounta}hshade
+    [1 0 1]dim xstart ystart 4 size{11 prodcounta}hshade
+    [1 1 0]dim xstart ystart 4 size{15 prodcounta}hshade
+    [1 0 0]dim xstart ystart 1 size{19 prodcounta}hshade
+    xstart ystart xstart 1000 add ystart size add bboxtest {
+        (ltriangle) printtri
+        [(america)(sel)(soie)]printres
+        (Exotic Resources) xstart 50 add ystart 800 110 (FontArialNarrow-Bold) lefttext
+    } if
+    /ddc {i 1 sub get dup 2 string cvs exch 0 gt {(+) exch !}if xsize 2 div dup 2 div xsize size 2 div ai centertext} def
+    [0 1 0]dim exch memx memy 3 size {[0 2 2]ddc} hshade
+    [0 1 1]dim exch memx ystart size add 3 size {[0 1 2]ddc} hshade
+    [1 1 1]dim exch memx ystart size add 3 size {[-1 1 2]ddc} hshade
+    [1 0 1]dim exch memx ystart size add 3 size {[-1 1 1]ddc} hshade
+    [1 1 0]dim exch memx ystart size add 3 size {[-1 0 1]ddc} hshade
+    [1 0 0]dim exch memx ystart size add 3 size {[-2 0 1]ddc} hshade
+    (1-3) memx 0.5 size mul add memy size 6 mul add 120 size 2 div an centertextbbox
+    (4-7) memx 1.5 size mul add memy size 6 mul add 120 size 2 div an centertextbbox
+    (8-10) memx 2.5 size mul add memy size 6 mul add 120 size 2 div an centertextbbox
+    (Economic situation) memx size 1.5 mul add memy 6.5 size mul add 1000 55 ab centertextbbox
+} if % Production & Price
+true {
+    (/Type /XObject /Subtype /Form /FormType 1 /BBox [-30 5 30 65]  /Matrix [1 0 0 1 30 -5]/Resources << >>#DICT#q 2 w 0 50 m 2.761 50 5 52.239 5 55 c 5 57.761 2.761 60 0 60 c 0 50 m -2.761 50 -5 52.239 -5 55 c -5 57.761 -2.761 60 0 60 c S 4 w 0 50 m 0 10 l s 3 w -15 40 m 15 40 l s 1 J 5 w 12 40 m 15 40 l -12 40 m -15 40 l S -17.5 14.689 m -17.5 14.689 l -12.179 11.617 -6.144 10 0 10 c 6.144 10 12.179 11.617 17.5 14.689 c S 18.366 15.189 m 18.268 9.359 l 24.428 18.689 l 13.268 18.019 l h -18.366 15.189 m -18.268 9.359 l -24.428 18.689 l -13.268 18.019 l f Q\n) (ancremarine) futureobj
+    (/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 60 60]  /Matrix [1 0 0 1 0 0]/Resources << >>#DICT#q 6 w 1 J 5 5 m 47 47 l 55 5 m 13 47 l S 3 w 7 23 m 23 7 l 53 23 m 37 7 l S 49.121 44.879 m 44.879 49.121 l 52.657 52.657 l h 10.879 44.879 m 15.121 49.121 l 7.343 52.657 l h f Q\n) (epees) futureobj
+    /techcount {
+        /i exch i add def
+        i 2 string cvs size 0.5 mul size 3 div size size 3 div (FontArialNarrow-Bold) centertext
+        [
+	    [1 false (Great Ship)][1 true (Médiéval)][10 true (Renaissance)]
+	    [11 false (Caraque)][16 true (Tercios)]
+	    [21 true (Arquebuse)][17 false (Não Galeón)][24 false (Galion)]
+	    [26 false (Galéasse)][30 true (Mousquet)]
+	    [40 true (Baroque)][34 false (Batterie)][43 false (Vaisseau)]
+	    [51 true (Manœuvre)][58 false (Three-Decker)][67 true (Dentelle)]
+	    [68 false(Seventy-four)]
+        ] {
+            dup 0 get i eq {
+	        dup 1 get /terre exch def 2 get @
+	        1 15 15 terre{135 add}if begints
+	        terre{(epees)}{(ancremarine)}ifelse xobject
+	        70 7.5 size 90 sub 45 an lefttext
+	        endts
+            }{pop}ifelse
+        }forall
+    } def
+    /techcount {
+        /i exch i add def
+        (Tech:) i 2 string cvs ! xtrace ytrace xsize size writetrace
+        i 2 string cvs size 0.5 mul size 3 div size size 3 div (FontArialNarrow-Bold) centertext
+    } def
+    [0 1 1][0 0 1]0030 4460 10 225 {60 techcount} hshade
+    (Technology) xstart 80 add ystart size 0.5 mul add 3 size mul 80 sub 110 ab lefttextbbox
+    (Track) xstart 80 add ystart 3 size mul 80 sub 110 ab lefttextbbox
+    2 xstart 20 add ystart size 0.5 mul add 20 sub
+    2 copy 2 copy 40 add exch 40 add exch bboxtest {
+        begints (ltriangle)xobject endts
+    }{pop pop pop}ifelse
+    [0 1 0]col0 0030 ystart size add 12 size {48 techcount} hshade
+    [1 1 0]col0 0030 ystart size add 12 size {36 techcount} hshade
+    [1 0 0]col0 0030 ystart size add 12 size {24 techcount} hshade
+    [1 0 1]col0 0030 ystart size add 12 size {12 techcount} hshade
+    [1 1 1]col0 0030 ystart size add 12 size { 0 techcount} hshade
+    /memy ystart 112.5 add def
+} if % Technology track
+true {
+    [1 0 0][0 1 1]2800 4420 7 245 {
+        i 4 sub 2 string cvs i 4 gt{(+) exch !}if
+        (Stability:) 1 index ! xtrace ytrace xsize size writetrace
+        size 2 div size 4 div size size 2 div ab centertext
+        i 4 lt {
+	    0.5 beginalpha
+	    (1 1 1 rg 61.25 9 122.5 36 re f\n)out
+	    endalpha
+	    (+1 survival) size 2 div 9 size 36 an centertext
+        } if
+    } hshade
+    (Stability) xstart size 3.5 mul sub ystart size add 330 110 ab centertext
+} if % Stability track
+true {
+    BASEDIR(rotw.activation.ps)! include
+    /nationdict << 
+        /aden (Aden)
+        /oman (Ayman)
+        /azteque (Azteca)
+        /vijayanagar (Bisinagar)
+        /chine (China)
+        /afghans (Durranis Imp.)
+        /gujarat (Guzarate/Aceh)
+        /hyderabad (Hyderabada)
+        /japon (Iaponia)
+        /inca (Inca)
+        /mogol (Mogolis Imp.)
+        /mysore (Mysuria)
+        /iroquois (Iroquois)
+        /perse (Persia)
+        /siberie (Siberia)
+        /soudan (Sudania)
+    >> def
+    /shaderatio 2.25 def
+    /shadepen (0.5 0.5 0.5) def
+    /centerincell {
+        nationdict 1 index get (Diplomacy:) exch ! xtrace ytrace xsize size writetrace
+        (0 0 0 rg\n)out nationdict 1 index get xsize 2 div 2 xsize 110 an centertext
+        dup activationdict exch get (Activation if  ) dup 14 60 put exch !
+        xsize 2 div 10 sub 142 xsize 0.67 mul 50 an centertext
+        (img:) exch ! 2 400 100 begints useimage endts
+    } def
+    /ystart 5810 113 sub def /memy ystart def /size 225 def
+    [(soudan)(oman)(aden)(gujarat)] {
+        [1 1 0.5][0.75 0.75 0]2800 ystart size sub 1 225 {
+            centerincell (0.5 w 0 0 0 RG 2 0 0 2 -35 -140 cm )out(sunnite)xobject
+        } hshade
+    } forall
+    /memx xstart def /ystart memy def
+    (Diplomacy with ROTW minors)2800 ystart 2 add xsize 4 mul 110 ab lefttextbbox
+    2 2800 Textwidth add 20 add ystart 20 add
+    2 copy 2 copy 40 add exch 40 add exch bboxtest {
+        begints (dtriangle) xobject endts
+    } {pop pop pop}ifelse
+    [(mogol)(vijayanagar)(mysore)(hyderabad)] {
+        [0.5 1 1][0 0.75 0.75]memx ystart size sub 1 225{centerincell}hshade
+    } forall
+    /memx xstart def
+    /ystart memy def
+    [(inca)(azteque)(iroquois)] {
+        [1 1 1][0.75 0.75 0.75]memx ystart size sub 1 225{centerincell}hshade
+    } forall
+    [(chine)]{
+        [1 0.5 1][0.75 0 0.75]memx ystart size sub 1 225{centerincell}hshade
+    }forall
+    /memx xstart def
+    /ystart memy def
+    [(siberie)(afghans)(perse)]{
+        [1 0.5 0.5][0.75 0 0]memx ystart size sub 1 225{centerincell}hshade
+    }forall
+    [(japon)] {
+        [1 0.5 1][0.75 0 0.75]memx ystart size sub 1 225{centerincell}hshade
+    }forall
+    /ducats {
+    /ig exch def /ie exch 1 add def
+    /ix 2780 2.25 ig mul 0.25 add 225 mul add def
+    /iy memy ie 225 mul sub 112.5 add def
+    (D) ix iy 2 add 225 110 an centertext (5 w\n)out
+    ix 6 sub display space iy 22 add display ( m )out
+    ix 6 sub display space iy 92.5 add display ( l S\n)out
+    ix 6 add display space iy 22 add display ( m )out
+    ix 6 add display space iy 92.5 add display ( l S\n)out
+}def
+    3 0 ducats 0 1 ducats 0 2 ducats 1 2 ducats 3 2 ducats 1 3 ducats 3 3 ducats
+} if % ROTW diplomatic track
+true {
+    /shadepen (0.5 0.5 0.5) def
+    /shaderatio 2 def
+    /shadeskip 1 def
+    /size 168 def
+    /ystart 3765 size sub def
+    /majorsdiploname <<
+        (sue) [(Suecia)(suede)]
+        (por) [(Portugallia)(portugal)]
+        (spa) [(Hispania)(espagne)]
+        (hab) [(Austria)(habsbourg)]
+        (hol) [(Hollandia)(hollande)]
+        (ven) [(Venetia)(venise)]
+        (pru) [(Prussia)(prusse)]
+        (pol) [(Polonia)(pologne)]
+        (eng) [(Anglia)(angleterre)]
+        (tur) [(Turcia)(turquie)]
+        (fra) [(Francia)(france)]
+        (rus) [(Russia)(russie)]
+    >> def
+    /majorlist[(sue)(por)(spa)(hab)(hol)(ven)(pru)(pol)(eng)(tur)(fra)(rus)]def
+    /majorsdiplolevels [(RM) (Su) (MA) (EC) (EW) (Va) (An)] def
+    majorlist {
+        /pays exch def /level 0 def
+        (z) pays ! dup cvx exec exch (2) ! cvx exec exch
+        5347 ystart size add 9 size {
+            level 6 le {
+                (Diplomacy:) majorsdiplolevels level get ! (:) !
+                majorsdiploname pays get 0 get !
+                xtrace ytrace xsize size writetrace
+            } if /level level 1 add def
+        } hshade
+        1 xstart xsize 2 mul sub ystart begints
+	(1 w 1 1 1 RG 0 0 0 rg\n)out
+	/TextRenderingMode 2 def
+	majorsdiploname pays get 0 get 553 2 div 29 553 110 ab centertext
+	/TextRenderingMode 0 def
+	(img:) majorsdiploname pays get 1 get ! 2 560 19 begints useimage endts
+        endts
+    } forall
+    (q 5 w )out shadepen out( RG 0 0 0 rg )out
+    (5347 3765 m )out
+    (4900 3765 l )out%5160
+    (4900 )out ystart size sub display( l )out
+    (4900 )out ystart size sub display( l )out
+    (4900 )out ystart size add display( l )out
+    (5347 )out ystart size add display( l h S 0 1 -1 0 5267 3765 cm\n)out
+    (Neutrals) ystart size add 3765 sub 2 div 28 1 index 2 mul 110 ab centertextbbox
+    (Diplomacy:Neutrals) 4900 3765 5347 4900 sub size 12 mul writetrace
+    (Q\n)out
+    /shadepen (0 0 0) def
+    /shaderatio 1 def
+    /shadeskip 0 def
+    /j 0 def
+    [(Mariage royal +1)(Subsides +1)(Alliance militaire +2)(Corps Exp. +2)(Entrée en guerre +3)(Vassal +3)(Annexion +3)]
+    {@ 5347 j 0.5 add xsize mul add ystart size add xsize 55 ab centertext /j j 1 add def}forall
+    (Charte diplomatique européenne)@ 4820 memy 2000 110 ab righttext
+    2 4840 memy 37.5 add begints (rtriangle) xobject endts
+} if
+
 endpage
 enddocument
 finishtrace

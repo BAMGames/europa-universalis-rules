@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+FILE=carte/rotw.activation.ps
+echo '/activationdict << ' > ${FILE}
+grep ^.minoractivation rules/engCorpsMineurs.tex|perl -pe 's/^.*minoractivation{([a-z]*)}{([\/0-9]*).*/\/\1 (\2\3)/g;s/ormus/perse/g;' >> ${FILE}
+echo '>> def' >> ${FILE}
