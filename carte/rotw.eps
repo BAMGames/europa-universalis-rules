@@ -213,7 +213,7 @@ true {
         (Amour)		( (Амур))
         (Japon)		( (日本))
         (Kamchatka\n)	(\n(Камчатска))
-        (Manchourie)	( (滿洲))
+        (Mandchourie)	( (滿洲))
         (Corée)		( (조선)) % Chosǒn
         (Pékin)		( (北京))
         (Nankin)	( (南京))
@@ -226,6 +226,7 @@ true {
         (Aden)		( (ﻥﺪﻋ))
         (Oman)		( (ﻥﺎﻤﻋ))
         (Bānglā)	( ())
+        (Gonḍānā)	(\n())
         (Orissā)	(\n())
         (Mumbaī)	(\n())
         (Karnāṭaka)	(\n())
@@ -933,6 +934,25 @@ true {
     (Stability) xstart size 3.5 mul sub ystart size add 330 110 ab centertext
 } if % Stability track
 true {
+    [1 1 1][.5 .5 .5]5500 2750 10 112.5 {
+        i 1 sub 10 mul 2 string cvs (GreatOrient) 1 index ! xtrace ytrace xsize
+        size writetrace xsize 0.5 mul xsize 0.5 mul xsize xsize 0.5 mul
+        (FontArialNarrow) centertext
+        [()(Ormus)(Soqotra)(Sumatra Malacca)(non-European TP/COL)(Christian TP/COL)(Christian OMAN/INDIEN)(TUR/Persia war)()()()]
+            i get ( ) search {
+                xsize 0.5 mul xsize 0.4 mul xsize xsize 0.2 mul (FontArialNarrow) centertext
+                pop
+                xsize 0.5 mul xsize 0.2 mul xsize xsize 0.2 mul (FontArialNarrow) centertext
+            }{
+                xsize 0.5 mul xsize 0.3 mul xsize xsize 0.2 mul (FontArialNarrow) centertext
+            } ifelse
+        [()(+10)(+10)(+10)(+10 per 3)(-10 per 5)(-10, max -50)(-50)()()()]
+            i get xsize 0.5 mul xsize 0 mul xsize xsize 0.2 mul
+            (FontArialNarrow-Bold) centertext
+    }hshade
+    (Great Orient Income) 6110 2860 330 xsize 0.5 mul (FontArialNarrow-Bold) lefttextbbox
+} if % Asiatic income
+true {
     BASEDIR(rotw.activation.ps)! include
     /nationdict << 
         /aden (Aden)
@@ -1035,42 +1055,44 @@ true {
     /xmid 5347 def
     /xmin 4900 def
     /ymin 3765 def
-    /ystart ymax 55 sub def
-    /size ystart ymin sub majorlist length div def
-    /xsize xmax xmid sub 9 div def
-    /shaderatio xsize size div def
-    /shadeskip 1 def
-    (European diplomatic chart) 4820 memy 2000 110 ab righttext
-    2 4840 memy 37.5 add begints (rtriangle) xobject endts /j 0 def
-    majorsdiplolevels {
-        majorsdiplolevelnames exch get 5347 j 0.5 add xsize mul add
-        ystart xsize 55 ab centertext /j j 1 add def
-    } forall
-    /ystart ymin def
-    majorlist {
-        /pays exch def /level 0 def
-        (z) pays ! dup cvx exec exch (2) ! cvx exec exch
-        xmid ystart 9 size {
-            level 6 le {
-                (Diplomacy:) majorsdiplolevels level get ! (:) !
-                majorsdiploname pays get 0 get !
-                xtrace ytrace xsize size writetrace
-            } if
-            /level level 1 add def 
-        } hshade
-        1 xstart xsize 2 mul sub ystart begints
-        (1 w 1 1 1 RG 0 0 0 rg\n)out /TextRenderingMode 2 def
-        majorsdiploname pays get 0 get 2 xsize mul 111 sub 2 div size 110 sub 2 div xsize 2 mul 111 sub 110 ab centertext 
-        /TextRenderingMode 0 def
-        (img:) majorsdiploname pays get 1 get ! 2 xsize 2 mul 106 sub size 108 sub 2 div begints useimage endts
-        endts
-        /ystart ystart size add def
-    } forall
-    (q 5 w )out shadepen out( RG 0 0 0 rg )out
-    xmin display space ymin display space
-    xmid xmin sub display space ymax 55 sub ymin sub display (re S\n)out
-    (0 1 -1 0 ) out xmid display space ymin display ( cm\n)out
-    (Neutrals) ymax 55 sub ymin sub 2 div xmid xmin sub 110 sub 2 div 1 index 2 mul 110 ab centertext
+    xmin ymin xmax ymax bboxtest {
+        /ystart ymax 55 sub def
+        /size ystart ymin sub majorlist length div def
+        /xsize xmax xmid sub 9 div def
+        /shaderatio xsize size div def
+        /shadeskip 1 def
+        (European diplomatic chart) 4820 memy 2000 110 ab righttext
+        2 4840 memy 37.5 add begints (rtriangle) xobject endts /j 0 def
+        majorsdiplolevels {
+            majorsdiplolevelnames exch get 5347 j 0.5 add xsize mul add
+            ystart xsize 55 ab centertext /j j 1 add def
+        } forall
+        /ystart ymin def
+        majorlist {
+            /pays exch def /level 0 def
+            (z) pays ! dup cvx exec exch (2) ! cvx exec exch
+            xmid ystart 9 size {
+                level 6 le {
+                    (Diplomacy:) majorsdiplolevels level get ! (:) !
+                    majorsdiploname pays get 0 get !
+                    xtrace ytrace xsize size writetrace
+                } if
+                /level level 1 add def 
+            } hshade
+            1 xstart xsize 2 mul sub ystart begints
+            (1 w 1 1 1 RG 0 0 0 rg\n)out /TextRenderingMode 2 def
+            majorsdiploname pays get 0 get 2 xsize mul 111 sub 2 div size 110 sub 2 div xsize 2 mul 111 sub 110 ab centertext 
+            /TextRenderingMode 0 def
+            (img:) majorsdiploname pays get 1 get ! 2 xsize 2 mul 106 sub size 108 sub 2 div begints useimage endts
+            endts
+            /ystart ystart size add def
+        } forall
+        (q 5 w )out shadepen out( RG 0 0 0 rg )out
+        xmin display space ymin display space
+        xmid xmin sub display space ymax 55 sub ymin sub display (re S\n)out
+        (0 1 -1 0 ) out xmid display space ymin display ( cm\n)out
+        (Neutrals) ymax 55 sub ymin sub 2 div xmid xmin sub 110 sub 2 div 1 index 2 mul 110 ab centertext
+    } if
 } if % Diplomatic chart
 
 endpage
