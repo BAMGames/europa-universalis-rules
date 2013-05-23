@@ -9,6 +9,7 @@
 
 % map clipping settings
 0 0 8425 5840 bboxset
+%5000 2000 7000 3000 bboxset
 /pagewidth MAXx MINx sub def
 /pageheight MAXy MINy sub def
 
@@ -87,7 +88,7 @@ true {
     (img:orage4) 5251 1980 (Côte de Mascate) true orage
     (img:orage5) 5248 1815 (Mer d’Oman) true orage
     (img:orage5) 5472 1584 (Maldives) true orage
-    (img:orage5) 5963 1658 (Océan Indien) true orage
+    (img:orage5) 5943 1658 (Océan Indien) true orage
     1 risque
     (img:orage5) 6032 1844 (Détroit de Malaisie) true orage
     (img:orage4) 6405 1669 (Mer de Java) false orage
@@ -206,7 +207,7 @@ true {
         (Japon)		( (日本))
         (Kamchatka\n)	(\n(Камчатска))
         (Manchourie)	( (滿洲))
-        (Corée)		( (조선)\nChosǒn)
+        (Corée)		( (조선)) % Chosǒn
         (Pékin)		( (北京))
         (Nankin)	( (南京))
         (Canton)	( (广东))
@@ -218,7 +219,7 @@ true {
         (Aden)		( (ﻥﺪﻋ))
         (Oman)		( (ﻥﺎﻤﻋ))
         (Bānglā)	( ())
-        (Orissā)	( ())
+        (Orissā)	(\n())
         (Mumbaī)	(\n())
         (Karnāṭaka)	(\n())
         (Malabāṟ)	( ())
@@ -237,7 +238,7 @@ true {
     /indigenesdict <<
         (Acadie)		[20 1678 1092 false]
         (Aden)			[7 4420 2066 true ]
-        (Afghanistan)		[9 5720 2747 false ]
+        (Afghanistan)		[9 5690 2747 false ]
         (Alaska)		[18  0327 3490 true]
         (Amazonia)		[8 2034 1552 true ]
         (America)		[1 1406 1057 false ]
@@ -295,7 +296,7 @@ true {
         (Kamchatka)		[19 7874 3322 false ]
         (Kansas)		[1 1603 2746 true ]
         (Karnāṭaka)		[5 5960 0500 false ]
-        (Kenya)			[23 4483 1737 true  ]
+        (Kenya)			[23 4478 1737 true  ]
         (Labrador)		[19 2030 3285 true ]
         (Lena)			[2 6103 2991 true ]
         (Madagascar)		[6 4879 0956 false ]
@@ -318,7 +319,7 @@ true {
         (Ob)			[2 5425 3121 true ]
         (Océanie)		[17 7093 1028 true ]
         (Oman)			[7 4930 2221 true ]
-        (Oregon)		[18 0625 2960 false ]
+        (Oregon)		[18 0605 2960 false ]
         (Orissā)		[5 6107 0623 false ]
         (Ormus)			[9 4938 2603 true]
         (Pacifique)		[14 7946 2340 true ]
@@ -348,7 +349,32 @@ true {
         (Yucatán)		[8 1492 1992 false ]
     >> def
     /provlinkdict <<
-        (Chichimeca) [2.5 1400 2400]
+        (Aden) 			[1.5 4896 2022]
+        (Arizona) 		[1.5 1180 2550]
+        (Ayutthaya) 		[1 6296 2262]
+        (Bānglā) 		[2.5 6540 0837]
+        (Canton) 		[1 6358 2345]
+        (Célèbes) 		[2.5 6859 1604]
+        (Corée) 		[3 6984 2545]
+        (Côte d’Ivoire) 	[0.25 3646 1867]
+        (Côte d’Or) 		[0.25 3831 1893]
+        (Cuba) 			[0.5 1880 2242]
+        (Đại Việt) 		[1 6354 2238]
+        (Éthiopie)		[1.5 4895 1872]
+        (Gonḍānā) 		[3 6160 0829]
+        (Haïti) 		[0.5 2103 2170]
+        (Hydārabad) 		[1.75 5757 0561]
+        (Inca) 			[2.5 2027 1292]
+        (Indus) 		[0 5534 1397]
+        (Iroquois) 		[1.5 0500 0676]
+        (Java) 			[3 6538 1450]
+        (Malacca) 		[1.5 6243 1872]
+        (Natal) 		[1 4584 1028]
+        (Ormus) 		[0.75 5224 2352]
+        (Pãjāb) 		[3.5 5746 1266]
+        (Sénégal) 		[0.0 3549 1986]
+        (Nankin) 		[1 6390 2518]
+        (Sibérie) 		[1.5 5286 3420]
     >> def
     /provind [
         [(img:indigene00) -2.5  0 0.5]% Indien apache
@@ -389,8 +415,23 @@ true {
         (448) (1 1 1)
         (255) (1 1 0)
     >> def
+    /tordesillasdict <<
+        (Amazonia) [(tordesillas)]
+        (Minas Gerais) [(tordesillas)]
+        (Philippines) [(tordesillas)]
+        (Japon) [(tordesillas)]
+        (Kamchatka) [(tordesillas)]
+        (Mandchourie) [(tordesillas)]
+        (Corée) [(tordesillas)]
+        (Pékin) [(tordesillas)]
+        (Nankin) [(tordesillas)]
+        (Formose) [(tordesillas)]
+        (Guyana) [(tordesillas)]
+        (Belém) [(portugal)]
+        (Recife) [(portugal)]
+        (Rio) [(portugal)]
+    >> def
 } if % Ressources setup    
-
 true {
     BASEDIR(rotw.resources.ps)! include
     /provinceresourcedraw {% [type quantity] x1 y1 x2 y2 => ---
@@ -440,29 +481,34 @@ true {
         provimscale provimx provimxx add provimy provimyy add
         begints provimname useimage endts
     } bd
-    /provincerelpos { % relpos => coordinates
+    /provincerelpos { % relpos adjust => coordinates
+        /provlinkadjust exch def
         dup 0 lt {4 add} if dup 4 ge {4 sub} if
-        dup cvi 1 index exch sub /provlinkxprop exch def
-        cvi /provlinkxcorner exch def
+        /provlinkxxcorner exch def
+        /provlinkxcorner provlinkxxcorner dup cvi 2 copy eq {
+            provlinkadjust 0 lt{1 sub}if
+        } if dup 0 lt {/provlinkxxcorner provlinkxxcorner 4 add def 4 add} if
+        exch pop def
+        /provlinkxprop provlinkxxcorner provlinkxcorner sub def
         {
             provlinkxcorner 0 eq {
-                provx provlinkxprop provwidth mul add
+                provx provlinkxprop provwidth mul provlinkadjust add add
                 provy provheight sub
                 exit
             } if
             provlinkxcorner 1 eq {
                 provx provwidth add
-                provy provheight 1 provlinkxprop sub mul sub
+                provy provheight 1 provlinkxprop sub mul sub provlinkadjust add
                 exit
             } if
             provlinkxcorner 2 eq {
-                provx provwidth 1 provlinkxprop sub mul add
+                provx provwidth 1 provlinkxprop sub mul provlinkadjust sub add
                 provy
                 exit
             } if
             provlinkxcorner 3 eq {
                 provx 
-                provy provheight provlinkxprop mul sub
+                provy provheight provlinkxprop mul sub provlinkadjust sub
                 exit
             } if
             provlinkbug
@@ -473,7 +519,7 @@ true {
             /provlinkpos provlinkdict provcode get aload pop
             /provlinkyy exch def
             /provlinkxx exch def def
-            provlinkpos provincerelpos /provlinky exch def /provlinkx exch def
+            provlinkpos 0 provincerelpos /provlinky exch def /provlinkx exch def
             provx provlinkxx 10 sub .min
             provy provheight sub provlinkyy 10 sub .min
             provx provwidth add provlinkxx 10 add .max
@@ -487,7 +533,7 @@ true {
 	    provx display space
 	    provy provheight sub display space
             provlinkdict provcode known {
-                provlinkpos .05 sub provincerelpos exch display space display ( m\n)out
+                provlinkpos -5 provincerelpos exch display space display ( m\n)out
                 /provlinkalpha provlinkyy provlinky sub provlinkxx provlinkx sub atan def
                 /provlinklen provlinkyy provlinky sub dup mul provlinkxx provlinkx sub dup mul add sqrt def
                 provlinkx provlinklen 5 sub 5 .max provlinkalpha cos mul add
@@ -507,10 +553,11 @@ true {
                 2 provlinkalpha sin mul sub display space
                 provlinky provlinklen 5 sub 5 .max provlinkalpha sin mul add
                 2 provlinkalpha cos mul add display ( l\n)out
-                provlinkpos .05 add provincerelpos exch display space display
+                provlinkpos 5 provincerelpos exch display space display
                 ( l\n)out
-                provlinkxcorner 1 add 1 provlinkxcorner 4 add {
-                    provincerelpos exch display space display ( l\n)out
+                provlinkxcorner 1 add 1 provlinkxcorner 4 add
+                provlinkxxcorner provlinkxcorner eq {1 sub} if {
+                    0 provincerelpos exch display space display ( l\n)out
                 } for (h\n) out
             }{
                 provwidth display space provheight display ( re )out
@@ -539,7 +586,7 @@ true {
             {(\n)search{exch pop exch}{exit}ifelse}loop
         ] def
         /provresources [
-            [/orient /epices /america /sucre /sucrebr /peche /peaux /soie /cotonas /coton /esclaves /sel /bois /areacold] {
+            [/orient /epices /soie /esclaves /sel /peaux /peche /bois /sucrebr /sucre /america /cotonas /coton /areacold] {
                 /provres exch def
                 resourcesdict provres get dup provcode known {
                     provcode get [ provres 3 -1 roll ]
@@ -549,7 +596,7 @@ true {
         /provcarac1 resourcesdict (values) get provcode get def
         /provcarac2 resourcesdict (forces) get provcode get def
         40 (FontArialNarrow-Bold) setbasefont
-        /provw0 0 provname {_ stringwidth .max}forall provmax .max def
+        /provw0 0 provname {_ stringwidth .max}forall provmax .min def
         40 (FontArialNarrow) setbasefont
         /provw1 provcarac1 _ stringwidth def
         /provw2 provcarac2 _ stringwidth def
@@ -558,7 +605,7 @@ true {
         /provy provheader 2 get def
     } bd
     /provincev {
-        120 provincesetup
+        150 provincesetup
         /provwidth provw0 [
             provw3 provw1 5 add add
             provw3 provw2 5 add add
@@ -584,7 +631,7 @@ true {
         } if
     } bd
     /provinceh {
-        120 provincesetup
+        230 provincesetup
         /provspacing provw0 provw1 provw2 15 add add .max def
         /provwidth 80 provspacing add provresources length 40 mul add def
         /provheight 80 def
@@ -604,13 +651,24 @@ true {
             } forall
         } if
     } bd
-
     indigenesdict {
         /provheader exch def
         /provcode exch 30 string cvs def
         provheader 3 get {provinceh}{provincev}ifelse
+        tordesillasdict provcode known {
+            /provyy provy 60 sub
+                provheader 3 get not {provname length 40 mul sub}if
+                tordesillasdict provcode get length 1 gt {20 add} if
+            def
+            /provxx provx 25 sub def
+            tordesillasdict provcode get {
+                (img:) exch ! provxx provyy putsymbol /provyy provyy 40 sub def
+            } forall
+        } if
     } forall
 } if % Ressources
+
+
 endpage
 enddocument
 finishtrace
