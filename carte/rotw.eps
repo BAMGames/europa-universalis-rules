@@ -9,7 +9,6 @@
 
 % map clipping settings
 0 0 8425 5840 bboxset
-%5000 2000 7000 3000 bboxset
 /pagewidth MAXx MINx sub def
 /pageheight MAXy MINy sub def
 
@@ -31,6 +30,7 @@ true {
     (0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
     MINx neg display space MINy neg display ( cm\n)out
     TARGET(.background.clp)! copymap
+    % (5 w 0 G )out MINx display space MINy display space MAXx MINx sub display space MAXy MINy sub display ( re S\n)out
 } if % include background
 true {
     (img:orage6) 0240 3040 (Mer d’Alaska) true orage
@@ -188,11 +188,15 @@ true {
         [(0 0 0) 5799 0459]
         [(0 0 0) 5848 0218]
     ] {
-        /i i 1 add def aload pop 1 3 1 roll begints
-        dup out( rg )out out( RG )out
-        newpath 30 0 moveto 0 0 30 0 360 arc closepath (h S\n) exporttopdf
-        i 2 string cvs 0 -20 50 40 an centertext
-        endts
+        /i i 1 add def aload pop
+        2 copy 35 sub exch 35 sub exch 2 copy 70 add exch 70 add exch
+        bboxtest {
+            1 3 1 roll begints
+            dup out( rg )out out( RG )out
+            newpath 30 0 moveto 0 0 30 0 360 arc closepath (h S\n) exporttopdf
+            i 2 string cvs 0 -20 50 40 an centertext
+            endts
+        }{pop pop pop}ifelse
     } forall
 } if % Mogol progression
 true {
@@ -701,8 +705,8 @@ true {
     zspa zspa2 xstart ystart 11 size{14 yearcount}hshade
     zhol zhol2 xstart ystart 9  size{25 yearcount}hshade
     zfra zfra2 xstart ystart 8  size{34 yearcount}hshade
-    zrus zrus2 xstart ystart 10 size{42 yearcount}yshade
-    zeng zeng2 xstart ystart 10 size{52 yearcount}yshade
+    zrus zrus2 xstart ystart 10 size{42 yearcount}vshade
+    zeng zeng2 xstart ystart 10 size{52 yearcount}vshade
     (0 0 0 rg 0 0 0 RG\n) out
     (Game Turn) 8187 size 42 mul sub 2 div 3580 1 index 10 sub 2 mul 110 ab centertextbbox
     

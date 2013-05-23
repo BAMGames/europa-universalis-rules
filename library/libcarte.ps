@@ -273,79 +273,59 @@
 /shaderatio 1 def
 /shadeskip 0 def
 
-
-%X col0 col1 x y N size {i do_something} hshade
-/hshade { /boucle 1 index /nop eq not def
+/hshade { % X col0 col1 x y N size {i do_something} => ---
+    /boucle 1 index /nop eq not def
     /prog exch def /size exch def /N exch def /ystart exch def /xstart exch def
     /col1 exch def /col0 exch def
     /xsize size shaderatio mul def
-    1 xstart ystart begints
-    /xtrace xstart def /ytrace ystart def
-    (5 w )out shadepen out( RG )out shadepen out( rg\n)out
-    (q )out xsize N mul display ( 0 0 )out size display space
-    ( 0 0 cm 0 0 1 1 re W n\n)out
-    useshade( Q\n)out
-    1 1 N 1 sub shadeskip sub {/i exch def
-    xsize i mul display ( 0 m\n) out
-    xsize i mul display space size display ( l\n) out
-    } for
-    (0 0 )out xsize N mul display space size display ( re S\n)out
-    boucle{1 1 N {
-	/i exch def
-	1 xsize i 1 sub mul 0 begints
-        /xtrace xstart xsize i 1 sub mul add def
-	/prog cvx exec
-	endts
-    } for}if
-    endts
+    xstart ystart xstart xsize N mul add ystart size add bboxtest {
+        1 xstart ystart begints
+        /xtrace xstart def /ytrace ystart def
+        (5 w )out shadepen out( RG )out shadepen out( rg\n)out
+        (q )out xsize N mul display ( 0 0 )out size display space
+        ( 0 0 cm 0 0 1 1 re W n\n)out
+        useshade( Q\n)out
+        1 1 N 1 sub shadeskip sub {/i exch def
+        xsize i mul display ( 0 m\n) out
+        xsize i mul display space size display ( l\n) out
+        } for
+        (0 0 )out xsize N mul display space size display ( re S\n)out
+        boucle{1 1 N {
+	    /i exch def
+	    1 xsize i 1 sub mul 0 begints
+            /xtrace xstart xsize i 1 sub mul add def
+	    /prog cvx exec
+	    endts
+        } for}if
+        endts
+    } if
     /xstart xstart xsize N mul add def
 }def
-/vshade { /boucle 1 index /nop eq not def
+/vshade { % X col0 col1 x y N size {i do_something} => ---
+    /boucle 1 index /nop eq not def
     /prog exch def /size exch def /N exch def /ystart exch def /xstart exch def
     /col1 exch def /col0 exch def
-    1 xstart ystart begints
-    /xtrace xstart def /ytrace ystart def
-    (5 w )out shadepen out( RG )out shadepen out( rg\n)out
-    (q 0 )out size N mul display space size display space
-    ( 0 0 0 cm 0 0 1 1 re W n\n)out
-    useshade( Q\n)out
-    1 1 N 1 sub {/i exch def
-    (0 )out size i mul display ( m\n) out
-    size display space size i mul display( l\n) out
-    } for
-    (0 0 )out size display space size N mul display ( re S\n)out
-    boucle {1 1 N {
-	/i exch def
-	1 0 size i 1 sub mul begints
-        /ytrace ystart size i 1 sub mul add def
-	/prog cvx exec
-	endts
-    } for}if
-    endts
-    /ystart ystart size N mul add def
-}def
-/yshade { /boucle 1 index /nop eq not def
-    /prog exch def /size exch def /N exch def /ystart exch def /xstart exch def
-    /col1 exch def /col0 exch def
-    1 xstart ystart begints
-    /xtrace xstart def /ytrace ystart def
-    (5 w )out shadepen out( RG )out shadepen out( rg\n)out
-    (q 0 )out size N mul -1 mul display space size display space
-    ( 0 0 )out size display( cm 0 0 1 1 re W n\n)out
-    useshade( Q\n)out
-    1 1 N 1 sub {/i exch def
-    (0 )out size i mul -1 mul size add display ( m\n) out
-    size display space size i mul -1 mul size add display( l\n) out
-    } for
-    (0 )out size display space size display space size N mul -1 mul display ( re S\n)out
-    boucle {1 1 N {
-	/i exch def
-	1 0 size i 1 sub mul -1 mul begints
-        /ytrace ystart size i 1 sub mul -1 mul add def
-	/prog cvx exec
-	endts
-    } for}if
-    endts
+    xstart ystart size N 1 sub mul sub xstart xsize add ystart size add bboxtest {
+        1 xstart ystart begints
+        /xtrace xstart def /ytrace ystart def
+        (5 w )out shadepen out( RG )out shadepen out( rg\n)out
+        (q 0 )out size N mul -1 mul display space size display space
+        ( 0 0 )out size display( cm 0 0 1 1 re W n\n)out
+        useshade( Q\n)out
+        1 1 N 1 sub {/i exch def
+        (0 )out size i mul -1 mul size add display ( m\n) out
+        size display space size i mul -1 mul size add display( l\n) out
+        } for
+        (0 )out size display space size display space size N mul -1 mul display ( re S\n)out
+        boucle {1 1 N {
+	    /i exch def
+	    1 0 size i 1 sub mul -1 mul begints
+            /ytrace ystart size i 1 sub mul -1 mul add def
+	    /prog cvx exec
+	    endts
+        } for}if
+        endts
+    } if
     /ystart ystart size N mul sub def
 }def
 
