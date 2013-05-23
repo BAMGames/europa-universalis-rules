@@ -1005,11 +1005,16 @@ true {
     3 0 ducats 0 1 ducats 0 2 ducats 1 2 ducats 3 2 ducats 1 3 ducats 3 3 ducats
 } if % ROTW diplomatic track
 true {
-    /shadepen (0.5 0.5 0.5) def
-    /shaderatio 2 def
-    /shadeskip 1 def
-    /size 168 def
-    /ystart 3765 size sub def
+    /majorlist[(sue)(por)(spa)(hab)(hol)(ven)(pru)(pol)(eng)(tur)(fra)(rus)]def
+    /majorsdiplolevelnames <<
+        (RM)	(Royal Marriage +1)
+        (Su)	(Subsidies +1)
+        (MA)	(Military Alliance +2)
+        (EC)	(Exp. Corps +2)
+        (EW)	(Entry in War +3)
+        (Va)	(Vassal +3)
+        (An)	(Annexion +3)
+    >>	def
     /majorsdiploname <<
         (sue) [(Suecia)(suede)]
         (por) [(Portugallia)(portugal)]
@@ -1024,45 +1029,49 @@ true {
         (fra) [(Francia)(france)]
         (rus) [(Russia)(russie)]
     >> def
-    /majorlist[(sue)(por)(spa)(hab)(hol)(ven)(pru)(pol)(eng)(tur)(fra)(rus)]def
     /majorsdiplolevels [(RM) (Su) (MA) (EC) (EW) (Va) (An)] def
+    /ymax 5810 def
+    /xmax 8372 def
+    /xmid 5347 def
+    /xmin 4900 def
+    /ymin 3765 def
+    /ystart ymax 55 sub def
+    /size ystart ymin sub majorlist length div def
+    /xsize xmax xmid sub 9 div def
+    /shaderatio xsize size div def
+    /shadeskip 1 def
+    (European diplomatic chart) 4820 memy 2000 110 ab righttext
+    2 4840 memy 37.5 add begints (rtriangle) xobject endts /j 0 def
+    majorsdiplolevels {
+        majorsdiplolevelnames exch get 5347 j 0.5 add xsize mul add
+        ystart xsize 55 ab centertext /j j 1 add def
+    } forall
+    /ystart ymin def
     majorlist {
         /pays exch def /level 0 def
         (z) pays ! dup cvx exec exch (2) ! cvx exec exch
-        5347 ystart size add 9 size {
+        xmid ystart 9 size {
             level 6 le {
                 (Diplomacy:) majorsdiplolevels level get ! (:) !
                 majorsdiploname pays get 0 get !
                 xtrace ytrace xsize size writetrace
-            } if /level level 1 add def
+            } if
+            /level level 1 add def 
         } hshade
         1 xstart xsize 2 mul sub ystart begints
-	(1 w 1 1 1 RG 0 0 0 rg\n)out
-	/TextRenderingMode 2 def
-	majorsdiploname pays get 0 get 553 2 div 29 553 110 ab centertext
-	/TextRenderingMode 0 def
-	(img:) majorsdiploname pays get 1 get ! 2 560 19 begints useimage endts
+        (1 w 1 1 1 RG 0 0 0 rg\n)out /TextRenderingMode 2 def
+        majorsdiploname pays get 0 get 2 xsize mul 111 sub 2 div size 110 sub 2 div xsize 2 mul 111 sub 110 ab centertext 
+        /TextRenderingMode 0 def
+        (img:) majorsdiploname pays get 1 get ! 2 xsize 2 mul 106 sub size 108 sub 2 div begints useimage endts
         endts
+        /ystart ystart size add def
     } forall
     (q 5 w )out shadepen out( RG 0 0 0 rg )out
-    (5347 3765 m )out
-    (4900 3765 l )out%5160
-    (4900 )out ystart size sub display( l )out
-    (4900 )out ystart size sub display( l )out
-    (4900 )out ystart size add display( l )out
-    (5347 )out ystart size add display( l h S 0 1 -1 0 5267 3765 cm\n)out
-    (Neutrals) ystart size add 3765 sub 2 div 28 1 index 2 mul 110 ab centertextbbox
-    (Diplomacy:Neutrals) 4900 3765 5347 4900 sub size 12 mul writetrace
-    (Q\n)out
-    /shadepen (0 0 0) def
-    /shaderatio 1 def
-    /shadeskip 0 def
-    /j 0 def
-    [(Mariage royal +1)(Subsides +1)(Alliance militaire +2)(Corps Exp. +2)(Entrée en guerre +3)(Vassal +3)(Annexion +3)]
-    {@ 5347 j 0.5 add xsize mul add ystart size add xsize 55 ab centertext /j j 1 add def}forall
-    (Charte diplomatique européenne)@ 4820 memy 2000 110 ab righttext
-    2 4840 memy 37.5 add begints (rtriangle) xobject endts
-} if
+    xmin display space ymin display space
+    xmid xmin sub display space ymax 55 sub ymin sub display (re S\n)out
+    (0 1 -1 0 ) out xmid display space ymin display ( cm\n)out
+    (Neutrals) ymax 55 sub ymin sub 2 div xmid xmin sub 110 sub 2 div 1 index 2 mul 110 ab centertext
+} if % Diplomatic chart
 
 endpage
 enddocument
