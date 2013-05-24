@@ -1,0 +1,96 @@
+#!/bin/sh
+set -e
+
+resol=800
+xname=bitmap
+zoom_level=4
+minzoomlevel=0
+TARGETDIR="carte/bitmapgen"
+
+# 8425 5840
+BTSIZE=9106   # pixels units of bigtiles
+SIZE=2048     # postscript units of bigtiles
+CUTOFFMAPS=3  # number of bigtiles vertically for one map
+CUTOFFY=6     # double of the preceding
+CUTOFFX=5     # number of bigtiles horizontally for one map
+
+say() {
+  echo "${SPECIALPREFIX}$@" 1>&2
+}
+
+crushit() {
+    # pngcrush -rem bKGD -rem tEXt -q -force blankX.png blank.png
+    true
+}
+
+generate_blank() {
+    pgmtoppm white < carte/blank.pnm > ${TARGETDIR}/blank.pnm
+    convert ${TARGETDIR}/blank.pnm ${TARGETDIR}/blank.png
+    crushit ${TARGETDIR}/blank.png
+    convert -resize ${BTSIZE}x${BTSIZE} carte/blank.pnm ${TARGETDIR}/bigtile/blank.png
+}
+
+generate_crop() {
+    local xa;
+    local xb;
+    say "crop:$2:$3"
+    xa="$2";xb="$3"
+    xxa=$((SIZE*xa));xxb=$((SIZE*xb))
+    xxxa=$((SIZE*xa+SIZE+2));xxxb=$((SIZE*xb+SIZE+2)) # remove 5 pixels after
+    sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g' < carte/$1.background.eps > carte/clip.background.eps
+    sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g' < carte/$1.eps > carte/clip.eps
+    bin/gsexec carte clip.background clip 2> /dev/null
+    rm -f plan/in/gs-carte-clip.background.in plan/in/gs-carte-clip.in plan/out/gs-carte-clip.background.out plan/out/gs-carte-clip.out carte/clip.background.clp.ps carte/clip.background.clp carte/clip.eps
+    pdftoppm -singlefile -png -r "$resol" carte/clip.pdf ${TARGETDIR}/tmp/clipORIG
+    rm -f carte/clip.pdf
+    convert ${TARGETDIR}/tmp/clipORIG.png -crop ${BTSIZE}x${BTSIZE}+0+0 ${TARGETDIR}/tmp/clip.png
+    rm -f ${TARGETDIR}/tmp/clip-1.ppm
+}
+
+generate_bigtile() {
+    local tmp
+    tname=${TARGETDIR}/bigtile/$1_$2
+    if [ -f $tname ]; then
+        return
+    elif [ "$1" -ge "$CUTOFFX" ] || [ "$1" -lt "0" ]; then
+        ln -s ./blank.png $tname
+    elif [ "$2" -ge "$CUTOFFY" ] || [ "$2" -lt "0" ]; then
+        ln -s ./blank.png $tname
+    elif [ "$2" -lt "$CUTOFFMAPS" ]; then
+        generate_crop europe $1 $2
+        mv ${TARGETDIR}/tmp/clip.png $tname
+    else
+        tmp=$2
+        tmp=$((tmp-CUTOFFMAPS))
+        generate_crop rotw $1 $tmp
+        mv ${TARGETDIR}/tmp/clip.png $tname
+    fi
+}
+
+warmup() {
+    if [ ! -f .tmp/debug-bitmapgen ]; then
+        rm -rf ${TARGETDIR}
+    fi
+    mkdir -p ${TARGETDIR}
+    rm -rf ${TARGETDIR}/bitmap
+    rm -rf ${TARGETDIR}/tmp
+    rm -rf ${TARGETDIR}/manifest.txt
+    mkdir -p ${TARGETDIR}/tmp
+    mkdir -p ${TARGETDIR}/bigtile
+    mkdir -p ${TARGETDIR}/tile_${zoom_level}
+}
+
+warmup
+generate_blank
+generate_bigtile 0 0
+generate_bigtile 1 0
+generate_bigtile 1 1
+
+# zip2 -9 -k ${TARGETDIR}/manifest.txt
+# mv ${TARGETDIR}/manifest.txt.bz2 carte/manifest.txt.bz2
+# rm -rf carte/bitmap
+# mv ${TARGETDIR}/bitmap carte/bitmap
+# if [ ! -f .tmp/debug-bitmapgen ]; then
+#     rm -rf ${TARGETDIR}
+# fi
+exit 0

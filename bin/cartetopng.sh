@@ -4,13 +4,9 @@ set -e
 # -r highres|lowres: select resolution
 # This program takes file pions-ops.pdf and transforms all counters in
 # single-sided correctly-named counter bitmaps in a directory bitmap-myres.
-CLASS="Building maps"
-cwd=$(pwd)
-cd $BINDIR
-binpath=$(pwd)
-cd $cwd
-STATE="$binpath/statedisplay $XID"
-#STATE="echo"
+cd carte
+#STATE="$binpath/statedisplay $XID"
+STATE="echo"
 KEEP=0
 CRUSH=1
 resol=1

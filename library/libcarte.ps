@@ -5,10 +5,13 @@
 (library/common.ps) include
 /bboxset { % sets global bounding box
     /MAXy exch def /MAXx exch def /MINy exch def /MINx exch def
+    % A bit of fuzz (line widths, etc.)
+    /MAXXy MAXy 5 add def /MAXXx MAXx 5 add def
+    /MINNy MINy 5 add def /MINNx MINx 5 add def
 } bd
 /bboxtest { % xmin ymin xmax ymax => bool
     % (true if intersection with global bbox)
-    MINy lt 4 1 roll MINx lt 4 1 roll MAXy gt 4 1 roll MAXx gt 4 1 roll or or or not
+    MINNy lt 4 1 roll MINNx lt 4 1 roll MAXXy gt 4 1 roll MAXXx gt 4 1 roll or or or not
 } bd
 /centertextbbox { % centertext only if in bbox
     5 copy pop 2 index add 4 -1 roll 2 index 2 div sub 4 1 roll exch 3 index add exch bboxtest {

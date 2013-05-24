@@ -26,9 +26,12 @@ FONTDIR(champion.ps)! include
 
 begindocument
 beginpage
-(q\n0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
-MINx neg display space MINy neg display ( cm\n)out
-TARGET(.background.clp)! copymap
+true {
+    (0 0 )out pagewidth display space pageheight display ( re W n 1 0 0 1 )out
+    MINx neg display space MINy neg display ( cm\n)out
+    TARGET(.background.clp)! copymap
+    % (5 w 0 G )out MINx display space MINy display space MAXx MINx sub display space MAXy MINy sub display ( re S\n)out
+} if % include background
 
 %%%%%%%%% TEMPETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 (img:orage4) 7545 1570 (Mer Caspienne) false orage
@@ -234,7 +237,6 @@ posx 10 sub posy 10 sub posx 1300 add posy 600 add bboxtest {
 (Red arrow = "Extended campaign", if natural 1,3,5="Bad weather") 1550 carresize 5.5 mul add 0142 carresize 2.75 mul add 1001 30 ab centertext
 ("Poor weather" event: +2 to Season continuation roll, all W with "Bad weather", natural 1 before W="Sund Frozen") 1550 carresize 5.5 mul add 0142 carresize 2.25 mul add 1001 30 ab centertext
 } if
-(Q\n)out
 endpage
 enddocument
 finishtrace
