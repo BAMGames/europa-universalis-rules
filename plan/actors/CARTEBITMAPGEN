@@ -3,16 +3,20 @@ set -e
 
 resol=800
 xname=bitmap
-zoom_level=4
+zoom_level=8
 minzoomlevel=0
 TARGETDIR="carte/bitmapgen"
 
 # 8425 5840
-BTSIZE=9106   # pixels units of bigtiles
+BTSIZE=9102   # pixels units of bigtiles
+BTENSIZE=9472
 SIZE=2048     # postscript units of bigtiles
 CUTOFFMAPS=3  # number of bigtiles vertically for one map
 CUTOFFY=6     # double of the preceding
 CUTOFFX=5     # number of bigtiles horizontally for one map
+
+PZX=13568      # Origin of Europe map X in absolute pixels
+PZY=6144     # Origin of Europe map X in absolute pixels
 
 say() {
   echo "${SPECIALPREFIX}$@" 1>&2
@@ -20,7 +24,8 @@ say() {
 
 crushit() {
     # pngcrush -rem bKGD -rem tEXt -q -force blankX.png blank.png
-    true
+    mv "${1}" "${1%.png}X.png"
+    pngcrush -rem bKGD -rem tEXt -q -force "${1%.png}X.png" "${1}"
 }
 
 generate_blank() {
@@ -31,39 +36,150 @@ generate_blank() {
 }
 
 generate_crop() {
-    local xa;
-    local xb;
-    say "crop:$2:$3"
+    local xa
+    local xb
+    local xxa
+    local xxb
+    local xxxa
+    local xxxb
     xa="$2";xb="$3"
-    xxa=$((SIZE*xa));xxb=$((SIZE*xb))
-    xxxa=$((SIZE*xa+SIZE+2));xxxb=$((SIZE*xb+SIZE+2)) # remove 5 pixels after
-    sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g' < carte/$1.background.eps > carte/clip.background.eps
+    xxa=$((SIZE*xa-1));xxb=$((SIZE*xb-1))
+    xxxa=$((SIZE*xa+SIZE+1));xxxb=$((SIZE*xb+SIZE+1))
+    sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g;s/dopage_rich_color_background/dopage_simple_color_background/g' < carte/$1.background.eps > carte/clip.background.eps
     sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g' < carte/$1.eps > carte/clip.eps
     bin/gsexec carte clip.background clip 2> /dev/null
-    rm -f plan/in/gs-carte-clip.background.in plan/in/gs-carte-clip.in plan/out/gs-carte-clip.background.out plan/out/gs-carte-clip.out carte/clip.background.clp.ps carte/clip.background.clp carte/clip.eps
+    rm -f plan/in/gs-carte-clip.background.in plan/in/gs-carte-clip.in plan/out/gs-carte-clip.background.out plan/out/gs-carte-clip.out carte/clip.background.clp.ps carte/clip.background.clp carte/clip.eps carte/clip.background.eps
     pdftoppm -singlefile -png -r "$resol" carte/clip.pdf ${TARGETDIR}/tmp/clipORIG
     rm -f carte/clip.pdf
-    convert ${TARGETDIR}/tmp/clipORIG.png -crop ${BTSIZE}x${BTSIZE}+0+0 ${TARGETDIR}/tmp/clip.png
+    convert ${TARGETDIR}/tmp/clipORIG.png -crop ${BTSIZE}x${BTSIZE}+5+5 ${TARGETDIR}/tmp/clip.png
     rm -f ${TARGETDIR}/tmp/clip-1.ppm
 }
 
 generate_bigtile() {
-    local tmp
-    tname=${TARGETDIR}/bigtile/$1_$2
-    if [ -f $tname ]; then
-        return
+    local tmpq
+    local tname=${TARGETDIR}/bigtile/$1_$2
+    if [ -f $tname.png ]; then
+        true
     elif [ "$1" -ge "$CUTOFFX" ] || [ "$1" -lt "0" ]; then
-        ln -s ./blank.png $tname
+        ln -s ./blank.png $tname.png
     elif [ "$2" -ge "$CUTOFFY" ] || [ "$2" -lt "0" ]; then
-        ln -s ./blank.png $tname
+        ln -s ./blank.png $tname.png
     elif [ "$2" -lt "$CUTOFFMAPS" ]; then
+        say "crop:$1:$2"
         generate_crop europe $1 $2
-        mv ${TARGETDIR}/tmp/clip.png $tname
+        mv ${TARGETDIR}/tmp/clip.png $tname.png
     else
         tmp=$2
         tmp=$((tmp-CUTOFFMAPS))
+        say "crop:$1:$2"
         generate_crop rotw $1 $tmp
-        mv ${TARGETDIR}/tmp/clip.png $tname
+        mv ${TARGETDIR}/tmp/clip.png $tname.png
+    fi
+    if [ ! -d $tname.precut ]; then
+        echo mkdir $tname.precut
+        bigtile_to_pixel "$1" "$2"
+        modx=$((LLPX%256))
+        mody=$(( 255-URPY%256 ))
+        basex=$((LLPX-modx))
+        basey=$(( (BTSIZE+mody-256+LLPY-(LLPY%256)) ))
+        echo convert -repage ${BTENSIZE}x${BTENSIZE}+${modx}+${mody} $tname.png ${TARGETDIR}/tmp/cut.png
+        echo convert ${TARGETDIR}/tmp/cut.png -crop 256x256 -set filename:tile "%[fx:page.x+${basex}]_%[fx:${basey}-page.y]" +repage +adjoin "$tname.precut/tile_%[filename:tile].png"
+        return
+    fi
+}
+
+bigtile_to_pixel() {
+    local xx=$1
+    local yy=$2
+    LLPX=$((PZX+BTSIZE*xx))
+    LLPY=$((PZY+BTSIZE*yy))
+    URPX=$((LLPX+BTSIZE-1))
+    URPY=$((LLPY+BTSIZE-1))
+}
+
+pixel_to_bigtile() {
+    local xx=$1
+    local yy=$2
+    BTX=$(( (xx-PZX)/BTSIZE ))
+    BTY=$(( (yy-PZY)/BTSIZE ))
+    BTLX=$(( (xx-PZX)-BTSIZE*BTX ))
+    BTLY=$(( (yy-PZY)-BTSIZE*BTY ))
+    if [ $BTLX -lt 0 ]; then
+        BTX=$((BTX-1))
+        BTLX=$((BTLX+BTSIZE))
+    fi
+    if [ "$BTLY" -lt 0 ]; then
+        BTY=$((BTY-1))
+        BTLY=$((BTLY+BTSIZE))
+    fi
+}
+
+tile_to_bigtile() {
+    local xx=$1 # Tile number (x)
+    local yy=$2 # Tile number (y)
+    local ACX=$(( xx*256 ))
+    local ACY=$(( yy*256 ))
+    pixel_to_bigtile $ACX $ACY
+    LLBTX=$BTX;LLBTY=$BTY;LLBTLX=$BTLX;LLBTLY=$BTLY
+    ACX=$((ACX+255))
+    ACY=$((ACY+255))
+    pixel_to_bigtile $ACX $ACY
+    URBTX=$BTX;URBTY=$BTY;URBTLX=$BTLX;URBTLY=$BTLY
+}
+
+cutout() {
+    echo convert -crop "${4}x${5}+${2}+${3}" +repage ${1} ${6}
+    rm -f "${6}"
+    convert -crop "${4}x${5}+${2}+${3}" +repage ${1} ${6}
+}
+
+generate_tile() {
+    local stdir=${TARGETDIR}/tile_${zoom_level}
+    local stname=${stdir}/$1_$2.png
+    local tname
+    local tnamea
+    local tnameb
+    local tnamec
+    local tmp=${TARGETDIR}/tmp/cutout
+    if [ -f "$stname" ]; then
+        return
+    fi
+    tile_to_bigtile "$1" "$2"
+    say "cut:$1:$2"
+    if [ "$LLBTX" = "$URBTX" ]; then
+        if [ "$LLBTY" = "$URBTY" ]; then
+            tname=${TARGETDIR}/bigtile/${LLBTX}_${LLBTY}
+            [ -e $tname ]||generate_bigtile $LLBTX $LLBTY
+            echo "Cutting from 1"
+            if [ -L $tname ]; then
+                ln -s ../blank.png $stname
+                return
+            fi
+            cutout $tname $LLBTLX $LLBTLY 256 256 ${tmp}1.png
+            mv ${tmp}1.png ${stname}
+        else
+            echo "Cutting from 2 vertical $LLBTX $LLBTY => $URBTX $URBTY"
+            tname=${TARGETDIR}/bigtile/${LLBTX}_${LLBTY}
+            tnamea=${TARGETDIR}/bigtile/${LLBTX}_${URBTY}
+            [ -e $tname ]||generate_bigtile $LLBTX $LLBTY
+            [ -e $tnamea ]||generate_bigtile $LLBTX $URBTY
+            if [ -L $tname ] && [ -L $tnamea ]; then
+                ln -s ../blank.png $stname
+                return
+            fi
+            local remx=256
+            local remy=$(( BTSIZE-LLBTLY ))
+            cutout $tname $LLBTLX $LLBTLY $remx $remy ${tmp}1.png
+            remy=$((256-remy))
+            cutout $tnamea 0 0 $remx $remy ${tmp}2.png
+            exit 0
+        fi
+    else 
+        if [ "$LLBTY" = "$URBTY" ]; then
+            true
+        else
+            true
+        fi
     fi
 }
 
@@ -82,9 +198,21 @@ warmup() {
 
 warmup
 generate_blank
-generate_bigtile 0 0
-generate_bigtile 1 0
-generate_bigtile 1 1
+for i in $(seq 0 $((CUTOFFX-1)) ); do
+    for j in $(seq 0 $((CUTOFFY-1)) ); do
+        generate_bigtile $i $j
+    done
+done
+
+exit 0
+
+for i in $(seq 0 255); do
+    for j in $(seq 0 255); do
+        generate_tile $i $j
+    done
+done
+
+
 
 # zip2 -9 -k ${TARGETDIR}/manifest.txt
 # mv ${TARGETDIR}/manifest.txt.bz2 carte/manifest.txt.bz2

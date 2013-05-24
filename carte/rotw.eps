@@ -975,6 +975,7 @@ true {
     /shaderatio 2.25 def
     /shadepen (0.5 0.5 0.5) def
     /centerincell {
+        pays
         nationdict 1 index get (Diplomacy:) exch ! xtrace ytrace xsize size writetrace
         (0 0 0 rg\n)out nationdict 1 index get xsize 2 div 2 xsize 110 an centertext
         dup activationdict exch get (Activation if  ) dup 14 60 put exch !
@@ -983,6 +984,7 @@ true {
     } def
     /ystart 5810 113 sub def /memy ystart def /size 225 def
     [(soudan)(oman)(aden)(gujarat)] {
+        /pays exch def
         [1 1 0.5][0.75 0.75 0]2800 ystart size sub 1 225 {
             centerincell (0.5 w 0 0 0 RG 2 0 0 2 -35 -140 cm )out(sunnite)xobject
         } hshade
@@ -994,22 +996,27 @@ true {
         begints (dtriangle) xobject endts
     } {pop pop pop}ifelse
     [(mogol)(vijayanagar)(mysore)(hyderabad)] {
+        /pays exch def
         [0.5 1 1][0 0.75 0.75]memx ystart size sub 1 225{centerincell}hshade
     } forall
     /memx xstart def
     /ystart memy def
     [(inca)(azteque)(iroquois)] {
+        /pays exch def
         [1 1 1][0.75 0.75 0.75]memx ystart size sub 1 225{centerincell}hshade
     } forall
     [(chine)]{
+        /pays exch def
         [1 0.5 1][0.75 0 0.75]memx ystart size sub 1 225{centerincell}hshade
     }forall
     /memx xstart def
     /ystart memy def
     [(siberie)(afghans)(perse)]{
+        /pays exch def
         [1 0.5 0.5][0.75 0 0]memx ystart size sub 1 225{centerincell}hshade
     }forall
     [(japon)] {
+        /pays exch def
         [1 0.5 1][0.75 0 0.75]memx ystart size sub 1 225{centerincell}hshade
     }forall
     /ducats {
