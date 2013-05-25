@@ -29,10 +29,14 @@ crushit() {
 }
 
 generate_blank() {
-    pgmtoppm white < carte/blank.pnm > ${TARGETDIR}/blank.pnm
-    convert ${TARGETDIR}/blank.pnm ${TARGETDIR}/blank.png
-    crushit ${TARGETDIR}/blank.png
-    convert -resize ${BTSIZE}x${BTSIZE} carte/blank.pnm ${TARGETDIR}/bigtile/blank.png
+    if [ ! -f ${TARGETDIR}/blank.pnm ]; then
+        pgmtoppm white < carte/blank.pnm > ${TARGETDIR}/blank.pnm
+        convert ${TARGETDIR}/blank.pnm ${TARGETDIR}/blank.png
+        crushit ${TARGETDIR}/blank.png
+    fi
+    if [ ! -f ${TARGETDIR}/bigtile/blank.png ]; then
+        convert -resize ${BTSIZE}x${BTSIZE} carte/blank.pnm ${TARGETDIR}/bigtile/blank.png
+    fi
 }
 
 generate_crop() {
@@ -56,7 +60,7 @@ generate_crop() {
 }
 
 generate_bigtile() {
-    local tmpq
+    local tmp
     local tname=${TARGETDIR}/bigtile/$1_$2
     if [ -f $tname.png ]; then
         true
@@ -75,15 +79,59 @@ generate_bigtile() {
         generate_crop rotw $1 $tmp
         mv ${TARGETDIR}/tmp/clip.png $tname.png
     fi
-    if [ ! -d $tname.precut ]; then
-        echo mkdir $tname.precut
+    if [ ! -f $tname.precut/done ]; then
+        say "cut:$1:$2"
+        rm -rf $tname.staging
+        rm -rf $tname.precut
+        mkdir -p $tname.staging
+        mkdir -p $tname.precut
         bigtile_to_pixel "$1" "$2"
-        modx=$((LLPX%256))
-        mody=$(( 255-URPY%256 ))
-        basex=$((LLPX-modx))
-        basey=$(( (BTSIZE+mody-256+LLPY-(LLPY%256)) ))
-        echo convert -repage ${BTENSIZE}x${BTENSIZE}+${modx}+${mody} $tname.png ${TARGETDIR}/tmp/cut.png
-        echo convert ${TARGETDIR}/tmp/cut.png -crop 256x256 -set filename:tile "%[fx:page.x+${basex}]_%[fx:${basey}-page.y]" +repage +adjoin "$tname.precut/tile_%[filename:tile].png"
+# Let X and Y be the absolute pixel coordinates of the lower-left corner of
+# the bigtile : X=i*BTSIZE+PZX, Y=j*BTSIZE+PZY
+# We are going to offset (left and top, because that's the way it is)
+# by Ox and Oy pixels. Ox must be such that (X+Ox)%256=0, and Oy such that
+# (Y+BTSIZE+Oy)%256=0, and the size of the englobing picture must have its
+# upper-left corner be a multiple of 256.
+# The width height could be cut off to BTSIZE+Ox,BTSIZE+Oy
+# Formula: Ox=(65536-X)%256    Oy=(65536-Y-BTSIZE)%256
+# Once offset, we will cut the bigtile in squares of size 256. Their name
+# will be tile_X_Y, with X or Y being either a multiple of 256 or Ox or Oy
+        offsetX=$(( (65536-LLPX)%256 ))
+        offsetY=$(( (65536-LLPY-BTSIZE)%256 ))
+        sizeX=$(( BTSIZE+offsetX ))
+        sizeY=$(( BTSIZE+offsetY ))
+        convert -repage ${sizeX}x${sizeY}+${offsetX}+${offsetY} $tname.png ${TARGETDIR}/tmp/cut.png
+        convert ${TARGETDIR}/tmp/cut.png -crop 256x256 -set filename:tile "%[fx:page.x]_%[fx:page.y]" +repage +adjoin "$tname.staging/tile_%[filename:tile].png"
+        leftmost=$(( LLPX-offsetX ))
+        topmost=$(( LLPY+BTSIZE+offsetY-256 ))
+        for LX in $offsetX $(seq 256 256 $((sizeX-1 )) ); do
+            if [ "$LX" = "$offsetX" ]; then
+                KX=0
+            else
+                KX=$LX
+            fi
+            for LY in $offsetY $(seq 256 256 $((sizeY-1)) ); do
+                if [ "$LY" = "$offsetY" ]; then
+                    KY=0
+                else
+                    KY=$LY
+                fi
+                if [ -f $tname.staging/tile_${LX}_${LY}.png ]; then
+                    mv $tname.staging/tile_${LX}_${LY}.png $tname.precut/tile_$((leftmost+KX))_$((topmost-KY)).png
+                else
+                    echo "Failed: $LX $LY"
+                    exit 1
+                fi
+            done
+        done
+        if [ $(find $tname.staging -type f|wc -l) -lt 1 ]; then
+            rmdir $tname.staging
+            touch $tname.precut/done
+        else
+            echo "Failed: $tname.staging"
+            find $tname.staging
+            exit 1
+        fi
         return
     fi
 }
@@ -93,8 +141,6 @@ bigtile_to_pixel() {
     local yy=$2
     LLPX=$((PZX+BTSIZE*xx))
     LLPY=$((PZY+BTSIZE*yy))
-    URPX=$((LLPX+BTSIZE-1))
-    URPY=$((LLPY+BTSIZE-1))
 }
 
 pixel_to_bigtile() {
