@@ -49,6 +49,7 @@
   pVII:Vassalisation Hanover|O{pVI:Vassalisation Hanover},%
   pVII:William Pitt|,%
   pVII:Kaunitz|,%
+  pVII:Xhosa|E/E,%
   pVII:USA-Morocco|,%
 } \newpage\startevents
 
@@ -421,7 +422,8 @@ least three turns (as soon as possible)
 \condition{}
 \aparag If none of the following already occurred, do not mark off and
 re-roll:
-\bparag \ref{pVII:SYW:French Indian War}.
+\bparag \ref{pVII:SYW:French Indian War} (only if the war is already
+finished).
 \bparag \ref{pVII:William Pitt}.
 \bparag \ref{pVII:French Revolution}
 % (Jym) I split in three separate events, it is easier this way. Just getting
@@ -644,7 +646,7 @@ are crushed.
 \bparag End of \xnameref{pVII:Seven Years War}.
 \bparag Beginning of \xnameref{pVII:Independence War} (the revolt must have
 started).
-\bparag Beginning of \xnameref{pVII:Batavian Revolution}.
+\bparag \xnameref{pVII:Batavian Revolution} is finished and was successful.
 \aparag The first time, apply \xnameref{pVII:Revolution:Bastille}. The second
 time, apply \xnameref{pVII:Revolution:Terror}.
 \begin{designnote}
@@ -1378,7 +1380,10 @@ replenish one or another.
 \dure{as long as \strongministre{Potemkine} remains the excellent minister}
 
 \condition{\RUS can refuse this event if it so wishes. In that case mark off
-  as played.}
+  as played.
+
+If \monarque{Pierre II} rules Russia, \RUS may choose to postpone the event
+for one turn.}
 \aparag \RUS can freely dismiss \ministrePotemkine at the end of any following
 monarch survival phase and the event terminates.
 
@@ -1472,6 +1477,10 @@ monarch survival phase and the event terminates.
 He will last for a random length for Minister, see \ref{eco:Excellent
   Minister}.
 
+\phdipl
+\aparag \ANG may send \VASSAL troops in the \ROTW without paying the \STAB
+indicated in~\ref{chSpecific:England:Minors at war}.
+
 \phadm
 \aparag \ANG basic forces are increased by \FLEET\facemoins and \ARMY\faceplus
 during every turn where \ANG is engaged in a war (including oversea war) and
@@ -1494,9 +1503,17 @@ monarch survival phase and the event terminates.
 9/8/7.  He will last for a random length for Minister, see \ref{eco:Excellent
   Minister}.
 
-% (Jym), Placeholder, potential veto
+% (Jym), Placeholder
 
+\event{pVII:Xhosa}{VII-y}{Xhosa wars}{1}{JymNotReallyWritten}
+\history{1779-1781/1789-1793/1799-1803}
 
+\begin{todo}
+  These may be the true intention of the ``Bantu raids'' of pVI. May
+  replace~\ref{pVII:Revolt Indonesia} since it moved in \REVOLT tables.
+
+  Same effect as~\ref{pVI:Bantu Raids}.
+\end{todo}
 
 \event{pVII:USA-Morocco}{VII-z}{Moroccan-American Treaty of
   Friendship}{1}{JymVetoPending}

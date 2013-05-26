@@ -46,6 +46,11 @@
   pVI:Last Great Mughals|,%
   pVI:Wars India|T{A}/T{B}/T{C},%
   pVI:Mazepa|,%
+  pVI:WoQA|,%
+  pVI:Alberoni|,%
+  pVI:Delition Ottoman|,%
+  pVI:Bulavin Rebellion|,%
+  pVI:Africa|E/E,%
   pVI:Camisards|,%
   pVI:Barbaresques|,%
 }
@@ -127,6 +132,10 @@ and the protector of \paysukraine to be used during the next turn.
 % (Jym) In \PPI, the \CB was against enemies of \SUE if \TUR used it. Here,
 % \TUR already has a \CB because of the revolt of \leaderMazepa and it gives a
 % double \CB to \TUR (against either \RUS or \SUE). Easier to write like that
+
+% (Jym), notes Pierre, small civil war even if absolutism:
+\aparag Fortress owned by \POL and controlled by \SUE gives full supply to
+\SUE.
 
 \phpaix
 \aparag[Starting the Revolt of Mazepa] If there is any \ARMY counter of \SUE
@@ -344,6 +353,12 @@ expansion was chosen earlier.
 
 \event{pVI:WoSS}{VI-2}{The War of Spanish Succession}{1}{PBMod}
 
+\begin{todo}
+  Add possibility to gives ``compensations'' to some minors to ``buy'' them in
+  the war and make them change side. Historically: Sicily for \paysSavoie and
+  bid on the imperial throne for \paysBaviere.
+\end{todo}
+
 \condition{This event is the same as \ref{pV:WoSS} which happens now if it did
   not occur yet. Else, treat as \RD and mark off.}
 
@@ -375,13 +390,19 @@ conditions. Apply the rules hereafter, but read initial placement in
   Charlie}.
 
 \phdipl
+\aparag The rebellion is controlled by \FRA if Catholic, otherwise by \HIS.
 \aparag If \FRA is \CATHCR, it has a \CB to make a full intervention at the
 side of \paysecosse.
 \bparag If \FRA is Catholic, it can make a limited intervention at the side of
 \paysecosse.
 \bparag If \FRA is Protestant, it can make a limited intervention at the side
 of \ANG.
+\aparag \HOL can make a limited intervention at the side of \ANG.
 \aparag \HIS can make a limited intervention at the side of \paysecosse.
+\begin{todo}
+  Intervention only if Alberoni is or was minister. Need to write Alberoni
+  before enforcing this condition.
+\end{todo}
 \aparag Other countries can make foreign intervention as per normal religious
 wars rules (see \ref{chDiplo:Religious Civil War}). \paysecosse is considered
 to be Catholic during this war.
@@ -438,8 +459,8 @@ his successor.
 long as the war lasts (for incomes or victory condition purpose).
 \aparag Place a \REVOLT \facemoins in each of the following provinces:
 \provinceHighlands, \provinceMoray and \provinceAlba.
-\bparag Place a \ARMY\facemoins of \paysecosse in one of the revolted
-provinces.
+%\bparag Place a \ARMY\facemoins of \paysecosse in one of the revolted
+%provinces.
 
 
 \subevent[pVI:Jacobite:Bonny Prince Charlie]{Bonny Prince Charlie}
@@ -449,9 +470,9 @@ provinces.
 \aparag If \paysecosse was allied to \ANG, remove all its troops from the map.
 \bparag \paysecosse is not considered to be \VASSAL or \ANNEXION by \ANG as
 long as the war lasts (for incomes or victory condition purpose).
-\aparag Place a \REVOLT \faceplus in each of the following provinces:
+\aparag Place a \REVOLT \facemoins in each of the following provinces:
 \provinceHighlands, \provinceMoray and \provinceAlba.
-\bparag Place a \ARMY\facemoins of \paysecosse and general \leader{Prince
+\bparag Place a \ARMY\faceplus of \paysecosse and general \leader{Prince
   Charles} in one of the revolted provinces.
 
 
@@ -614,7 +635,9 @@ national provinces of \ENG.
 
 
 \event{pVI:Bill Test}{VI-9}{Bill of Test}{1}{Risto}
-
+\begin{todo}
+  Change!
+\end{todo}
 \history{1673}
 
 \effetlong
@@ -966,7 +989,7 @@ does not exist.
 \phevnt
 \aparag Roll 1d10 for each power having \COL in areas \granderegionCuba,
 \granderegionHaiti and/or \granderegionAntilles. On a result of 7 or more, a
-\REVOLT\facemoins is placed in one randomly chosen \COL of the power.
+\REVOLT\faceplus is placed in one randomly chosen \COL of the power.
 
 
 
@@ -974,9 +997,15 @@ does not exist.
 
 \history{No precise date}
 
+\begin{todo}
+  May represent the early Xhosa wars starting in 1779 but should then be
+  pushed in VII. Otherwise, could be removed.
+\end{todo}
+
 \phevnt
-\aparag Natives of area \granderegionNatal and the two provinces bordering it
-are activated for this turn and shall attack all \COL/\TP in these provinces.
+\aparag Natives of area \granderegionNatal and the two coastal provinces
+bordering it are activated for this turn and shall attack all \COL/\TP in
+these provinces.
 
 \phadm
 \aparag The strength of the natives activated by this event is always 6\LD
@@ -1156,9 +1185,52 @@ the provinces still belonging to the minor after the peace is signed).
 % (Jym), Placeholders
 
 
+\event{pVI:WoQA}{VI-t}{War of the Quadruple Alliance}{1}{PBNotEvenWritten}
+\history{1718-1720}
+\begin{todo}
+  \SPA vs \paysNaples.
+\end{todo}
+
+\event{pVI:Alberoni}{VI-u}{Alberoni}{1}{PBNotEvenWritten}
+\history{1711-1719}
+\begin{todo}
+  Excellent (?) minister for \HIS. Should be VI-2(2). Could be related
+  to~\ref{pVI:WoQA}.
+\end{todo}
+
+\event{pVI:Delition Ottoman}{VI-v}{Delition of the Ottoman Empire}{1}{PBNotEvenWritten}
+\begin{todo}
+  I don't have the slightest idea of what Pierre meant with this ones\ldots
+\end{todo}
+
+\event{pVI:Bulavin Rebellion}{VI-w}{Bulavin's Rebellion}{1}{PBNotEvenWritten}
+\history{1707-1708}
+\begin{todo}
+  Revolt in \paysAstrakhan.
+\end{todo}
+
+
+\event{pVI:Africa}{VI-x}{Troubles in Africa}{*}{JymNew}
+\history{No precise date. Hypothetical clashes with inland African empires.}
+
+\begin{todo}
+  Should replace~\ref{pVI:Bantu Raids}.
+\end{todo}
+
+\phevnt
+\aparag Roll one die on the following table: 1. \granderegionSenegal ;
+2. \granderegionCotedivoire ; 3. \granderegionCotedor ;
+4. \granderegionCameroun (except \province{Fernando Po}; 5. \granderegionGabon
+; 6. \granderegionCongo ; 7. \granderegionAngola ; 8. \granderegionNyasa (two
+Southern provinces) ; 9. \granderegionNyasa (two Northern provinces) ;
+10. \granderegionKenya.
+\bparag The natives in the two provinces designed are activated. They have a
+strength of 4\LD and one \LeaderG, whatever the printed value.
 
 \event{pVI:Camisards}{VI-y}{Revolt of the Camisards}{1}{JymNew}
-
+\begin{todo}
+  Maybe should be V-6 (2).
+\end{todo}
 \history{1702-1711}
 
 \condition{If \ref{pV:Expulsion French Protestants} %
@@ -1174,7 +1246,9 @@ the provinces still belonging to the minor after the peace is signed).
 
 \event{pVI:Barbaresques}{VI-z}{End of the Ottoman rule in North
   Africa}{1}{PBNotEvenWritten}
-
+\begin{todo}
+  Maybe should be removed form here and the same as~\ref{pV:Tangiers}.
+\end{todo}
 \history{17??}
 \dure{Until the end of the game}
 

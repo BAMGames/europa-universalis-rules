@@ -50,6 +50,10 @@
   pV:Japan Trade|,%
   pV:Revolt Cossacks|O{pIV:Revolt Cossacks},%
   pV:Revolt Catalunya|,%
+  pV:Revolt Pueblos|,%
+  pV:Tangiers|,%
+  pV:Khoikhoi|E/E,%
+  pV:Bill Test|,%
   pV:Kuruc|,%
 }
 
@@ -137,32 +141,50 @@ with each other (but they may decide so if both sides agree).
 \history{1688-1690}
 
 \condition{}
-\aparag If \ENG is Protestant (not \PROTANG), put a \REVOLT \facemoins in all
-Irish provinces except \provinceUladh, one \LD and one general in one of the
-revolted provinces. \ENG is not in Civil war, the \REVOLT are controlled by
-\HOL and the rest if the event is ignored.
-\aparag Else (\CATHCR, \CATHCO or \PROTANG), use the rest of the event.
+\aparag If \ENG is \PROTRIG:
+\bparag Put a \REVOLT \facemoins in each Irish province except \provinceUladh,
+one \LD and one general in one of the revolted provinces. \ENG is not in Civil
+war, the \REVOLT are controlled by \HOL.
+\bparag \paysEcosse declares war on \ANG (breaking any alliance it may have
+with \ANG) and call for allies as per normal rules.
+\aparag Otherwise (\CATHCR, \CATHCO or \PROTANG), use the rest of the event.
 % (Jym) What if \ANG is \CATHCR? (JCD) Rest of the event seems to support that
 % the event is used anyway.
 
 \phevnt
-\aparag \ENG is considered to have overthrown its current monarch.  \ENG is
-now in Civil war between two sides: the Rebels are Royalists (followers of the
-old king) and catholics, and the Orange Partisans are Anglicans (see
-\ref{chDiplo:Religious Civil War}).
-\bparag The Royalists are controlled by a Catholic \FRA, or \SPA otherwise.
-\bparag Roll for the statistics of the new English monarch from the House of
-Orange. If the same House is ruling in \HOL, both countries share an offensive
-alliance and a mandatory defensive alliance. They make an immediate white
-peace.
+\aparag \ENG is considered to have overthrown its current monarch. \ENG is now
+in Civil war between two sides: the Rebels, called ``Royalists'' (followers of
+the old king) are \CATHCR , and the Loyalists, called ``Orange'' are \PROTANG
+(see \ref{chDiplo:Religious Civil War}).
+\bparag The Royalists are controlled by a Catholic \FRA, or \SPA
+otherwise. They use the counters of \paysroyalistes.
+% \bparag Roll for the statistics of the new English monarch from the House of
+% Orange. If the same House is ruling in \HOL, both countries share an offensive
+% alliance and a mandatory defensive alliance. They make an immediate white
+% peace.
+\begin{todo}
+  \ANG choose be able to choose the order in which he propose the crown to
+  other protestant countries.
+
+  Clarify the rules for the union in case ``Orange'' is not \HOL.
+\end{todo}
+\bparag The loyalists are controlled by the English player and use the
+counters of \ANG. They are automatically allied with the first country in the
+following list who accept: \HOL, Protestant \FRA, \SUE. These countries are
+allied as per (REF NEEDED) and immediately makes a white peace.
 \aparag In support of the overthrown monarch, two \REVOLT are rolled for in
 England. Furthermore a \REVOLT \faceplus is placed both in \provinceConnacht
 and \provinceMumhan and the rebels control both fortresses. A \LD and a
 general are placed in one Irish province.
 \bparag If this event is caused by \ref{pIV:English Restoration}, a royalist
-\ARMY \facemoins is raised in \provinceCymru or in any province of Scotland if
-\xnameref{pIV:Union Scotland} is effective. The Royalists control the fortress
-in this province and one other (or two other provinces if in Scotland).
+\ARMY \faceplus is raised in \provinceCymru (or in any province of Scotland
+if~\ref{pIV:Union Scotland} is effective). The Royalists control the fortress
+in this province and one other (or two other provinces if in
+Scotland). Otherwise, Royalists get an \ARMY\facemoins and control of the
+fortress in this province and one other.
+\aparag If~\ref{pIV:Union Scotland} is effective, \paysEcosse allies itself to
+\paysroyalistes and is at war with the Loyalists (with no declaration of
+war).
 
 \phdipl
 \aparag The controller of the rebels has a \CB against \ENG to make a limited
@@ -592,7 +614,8 @@ presence):
 \aparag Armies of \AUSaus are now of class \CAIV.
 \aparag \AUSMin now has a Land Technological marker that increases of two
 levels each turn, beginning on the Latin level.
-\bparag On turn 41, \HAB automatically take the \TMAN technology.
+% (Jym) 05/2013: commented out in Pierre's notes from 2007...
+% \bparag On turn 41, \HAB automatically take the \TMAN technology.
 
 
 
@@ -618,7 +641,7 @@ this terminates the event before the new monarch is chosen.
 \phadm
 \aparag \HOL basic forces are increased by \FLEET\facemoins and \ARMY\faceplus
 during every turn if is engaged in a war (Overseas, limited or full-fledged)
-as long as this events last.
+as long as \ministre{de Witt} is minister or monarch.
 
 
 
@@ -653,8 +676,9 @@ play \RD with the \REVOLT in \POL instead.
 off and re-roll.
 
 \phevnt
-\aparag The king of \POL dies. The new king is \monarque{August II}, elector
-of Saxony.
+\aparag The king of \POL is replaced, if it is a named general, he stay to
+serve \POL as a general, otherwise, he is removed from the game. The new king
+is \monarque{August II}, elector of Saxony.
 \bparag He is scheduled to last for 7 turns.
 \bparag His value are randomly chosen like after a \terme{Dynastic Crisis}.
 \bparag \monarque{August II} may not be used as a general.
@@ -719,7 +743,8 @@ against \paysBrandebourg.
 \effetlong
 \aparag Basic forces of \paysBrandebourg are now 2 \ARMY\faceplus, one general
 and 3 levels of fortification.
-\bparag Its counters limit becomes 3 \ARMY and 5 \LD.
+\bparag Its counters limit becomes 3 \ARMY and 5 \LD and its basic
+reinforcement becomes 2 \LD.
 \aparag Troops of \paysBrandebourg can freely cross the \HRE even if not at
 war, in the same way the Emperor can.
 \aparag The Elector of \paysBrandebourg wants to become king. This happens as
@@ -731,7 +756,7 @@ the Emperor (usually \HAB).
 royal crown.
 % (Jym) Does it mean that if the royal dignity is not given, let's say, before
 % WoAS, PRU may not hope to gain anything but the crown (especially not
-% \provinceSilesie/\provinceLausitz? This looks a bit rough especially since
+% \provinceSilesie/\provinceLausitz)? This looks a bit rough especially since
 % WoAS is may be the first time that \PRU is played, so before the player may
 % really have an influence on the crown (typically, if \AUS does not need the
 % alliance of \PRUmin in WoSS)...
@@ -872,6 +897,10 @@ turn.
 
 \history{1683}
 
+\begin{todo}
+  Add test depending on situation and possibility of failure?
+\end{todo}
+
 \phevnt
 \aparag \paysChina invades \granderegionFormose.  This province is now owned
 by \paysChina and subjected to all the relevant rules. Activation level for
@@ -920,7 +949,33 @@ to the first of those countries that is an enemy of \SPA.
 
 % Placeholder
 
+\event{pV:Revolt Pueblos}{V-v}{Revolt of the Pueblos}{1}{PBNotEvenWritten}
+\history{1680}
 
+
+\event{pV:Tangiers}{V-w}{Reconquest of Tangiers}{1}{PBNotEvenWritten}
+\history{16??}
+
+\begin{todo}
+  This may be the actual place of~\ref{pVI:Barbaresques}. Or something
+  completely different. I have no idea.
+\end{todo}
+
+\event{pV:Khoikhoi}{V-x}{Khoikhoi-Dutch wars}{*}{RistoMoved}
+\history{1659/1673/1674-1677}
+\begin{todo}
+  May replace \ref{pV:Slave revolt WI} in the table since this one has
+  been moved in the \REVOLT table.
+\end{todo}
+
+\phevnt
+\aparag Natives in \granderegion{Cap} W. province are activated with 2\LD and
+a leader, whatever the printed value.
+
+\event{pV:Bill Test}{V-y}{Bill of Test}{1}{RistoMoved}
+\history{1673}
+
+Same as~\ref{pVI:Bill Test}. Should be moved in pV.
 
 \event{pV:Kuruc}{V-z}{The Great Kuruc Uprising}{1}{PBNotEvenWritten}
 

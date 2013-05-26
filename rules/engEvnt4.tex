@@ -58,6 +58,8 @@
   pIV:China Colonial Attitude|O{pIII:China Colonial
     Attitude}/S{pIV:CCA:Vassalisation Korea},%
   pIV:Japan Colonial Attitude|,%
+  pIV:Deluge|,%
+  pIV:Koprulu|,%
   O|,%
   pIV:TYW|,%
   pIV:Polish Civil War|,%
@@ -134,10 +136,12 @@ are disbanded and its provinces not yet military controlled by \HAB are
 considered controlled by rebels (use Control markers of \paysBoheme); they
 surrender as soon as an \ARMY \faceplus besieges them, or by regular siege
 with smaller forces.
+
 \aparag[Bethlén]
 \bparag The forces of \leaderBethlen are always in restricted supply in the
-national provinces of \paysHongrie. They use the \REVOLT in \paysHongrie and
-the cities they control as regular supply sources.
+national provinces of \paysHongrie (provinces with Hungarian shield). They use
+the \REVOLT in \paysHongrie and the cities they control as regular supply
+sources.
 \bparag A force lead by \leaderBethlen can withdraw in \paysTransylvanie or
 national provinces of \payshongrie owned by \TUR (by retreat or movement). If
 he retreats there, he must stay there until the end of turn but may go out on
@@ -502,7 +506,7 @@ mark off and re-roll.
 
 \phevnt
 \aparag All effects of the \xnameref{pIII:POR Ann.:Portugal Annexed} are
-cancelled and \paysPortugal returns to play as a minor country.  \paysPortugal
+cancelled and \paysPortugal returns to play as a minor country. \paysPortugal
 receives the same provinces it had at the time of its annexation to \SPA
 notwithstanding who currently owns such provinces. It also receives all
 Portuguese \COL/\TP, missions, forts/fortresses, commercial fleets etc. that
@@ -523,7 +527,7 @@ then to \SUE; if no country accepts, it remains neutral.
 \aparag All players who are forced to cede provinces to Portugal by this event
 receive a temporary free \CB to be used this turn.
 \aparag Players who want to fight against Portuguese \REVOLT in their own \COL
-have to declare an Overseas war against \paysPortugal and have a free \CB to
+have to declare an Overseas war against \paysPortugal and have a free \OCB to
 do so.  Else, their \COL is freely given to \paysportugal (no loss of \STAB or
 \VPs).
 \aparag \SPA receives a free \CB that lasts until the end of the next period
@@ -1038,7 +1042,6 @@ place the \REVOLT if not inside \SUE, but do not reroll either) and a Revolted
 \aparag The resulting \REVOLT are controlled by \SPA.
 
 
-
 \event{pIV:La Rochelle}{IV-14}{Revolt of La Rochelle}{1}{RistoMod}
 
 \history{1626}
@@ -1047,14 +1050,17 @@ place the \REVOLT if not inside \SUE, but do not reroll either) and a Revolted
 
 \condition{}
 \aparag If \ref{pIII:FWR} is not finished yet, do not mark off and re-roll.
-\aparag If the owner of \provincePoitou is Protestant, one Revolt \faceplus is
-put in the province.  The event is maked off and considered as played.
+\aparag If the owner of \provincePoitou is Protestant, roll on its Revolt
+table and place a \REVOLT\Faceplus if this is a Catholic province, and a
+\REVOLT\Facemoins otherwise. The event is marked off and considered as played.
 
 \phevnt
 \aparag Place 2 \REVOLT \faceplus and a \LD in \provincePoitou.  Retreat all
 other units from the province.
-\aparag Place 2 Revolts \facemoins in other protestant provinces (randomly),
-or in Protestant or Mixed provinces if \FRA is \CATHCR.
+\bparag Roll for two Revolts in \FRA. Place a \REVOLT\Facemoins if the
+province is Protestant (or mixed if \FRA is \CATHCR) and nothing otherwise.
+% \aparag Place 2 Revolts \facemoins in other protestant provinces (randomly),
+% or in Protestant or Mixed provinces if \FRA is \CATHCR.
 \aparag The fortress of La Rochelle is controlled by the Rebels and upgraded
 to the highest level available to the owner of the province.
 \aparag Place a \PIRATE\faceplus in \CTZ of \FRA.
@@ -1308,8 +1314,8 @@ or if the enemy (not their foreign allies) has no forces left.
 following conditions.
 
 \bparag Rebels win if \monarque{Boris Godunov} is dead and they control
-\villeMoscou and they fulfil the military condition of victory; or they +win
-if \monarque{Boris Godunov} is dead and Loyalists surrender willingfully.
+\villeMoscou and they fulfil the military condition of victory; or they win if
+\monarque{Boris Godunov} is dead and Loyalists surrender willingfully.
 
 \bparag The Loyalists win if all the \REVOLT are eliminated in owned national
 provinces and they fulfil the military condition of victory.
@@ -1356,29 +1362,38 @@ controls or occupies (its choice).
 \tour{Turn 1}
 
 \phevnt
-\aparag One province of \paysukraine belonging to \POL (if none, belonging to
+\aparag One province of \paysUkraine belonging to \POL (if none, belonging to
 \HAB) secedes and create the new minor \paysukraine. The province is
-\provincePoltava if available, else, the closest to this one. Units of other
-countries inside are immediately redeployed.
+\provincePoltava if available, else, the closest to this one (chosen by the
+new protector or controller of \paysUkraine). Units of other countries inside
+are immediately redeployed.
 \aparag The new minor is a special \VASSAL of its protector. No diplomacy is
 allowed on it.
 \bparag The protector stops being protector if it declares war to
 \paysukraine. The next possible protector in the list becomes the new
 protector.
 % (Jym) Originally also if does not come to help, but vassal means war to the
-% minor is war to the major, so no way no to help
-\aparag \paysukraine never makes a separate peace without its protector and
+% minor is war to the major, so no way not to help
+\aparag \paysUkraine never makes a separate peace without its protector and
 must be included in the same peace treaty.
 \aparag Possible protectors are (in order): \POL (if Orthodox), \RUS, \TUR,
-\POL (if not Orthodox). If there are no (more) protectors, \paysukraine
+\POL (if not Orthodox). If there are no (more) protectors, \paysUkraine
 becomes a normal minor country.
 
 \phdipl
-\aparag \POL has a free \CB against \paysukraine if it loses at least one
+\aparag \POL has a free \CB against \paysUkraine if it loses at least one
 province during the formation of that country.
 % (JCD): the event does not happen if \POL is orthodox! removing
 % \aparag If \POL is Orthodox and does not declare the war, roll for two
 % \REVOLT in \POL and ignore the rest of the event.
+\aparag If \paysUkraine (as a special Polish \VASSAL) owns a province of
+\paysCrimee (a province with a Crimean shield, even blurred), then \POL may
+ask for a limited intervention of \paysCrimee in this war.
+\bparag This does not change the diplomatic status of \paysCrimee nor its
+controller. \paysCrimee is played by its usual controller decided by the usual
+rules.
+\bparag If \POL wins after an intervention of \paysCrimee, it must give one
+province back to it.
 
 \phadm
 \aparag If \POL is at war against another \MAJ during the event, \HAB can make
@@ -1549,6 +1564,25 @@ more Japanese or destroyed, normal activation rules for Natives apply.
 \phpaix
 \aparag If \paysJapon does not lose the war and there is no \TP in any of the
 3 provinces claimed, it places a \TP in there of level 1.
+
+% Jym, 05/2013, Pierre's notes (2007).
+\event{pIV:Deluge}{IV-y}{Swedish Deluge}{1}{PBNotEvenWritten}
+
+\history{1648 (Khmelnytsky Uprising)-1667 (Truce  of
+  Andrusovo)}[Russo-Swedo-Polish wars, Second Northern war]
+\dure{2 turns.}
+
+If \POL is at war, fortresses in \paysLithuanie let enemy supply go through
+their province.
+
+Should appear either during IV-17(2), or as IV-10(2).
+
+
+% Jym, 05/2013, Pierre's notes (2007).
+\event{pIV:Koprulu}{IV-z}{\ministreKoprulu}{1}{RistoMod} 
+
+Same as~\ref{pV:Koprulu}. Should appear late in the table only. (Jym):
+Possibly as IV-17(3) or IV-11(2).
 
 \vfill \pagebreak
 
