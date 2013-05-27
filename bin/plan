@@ -494,6 +494,7 @@ sub parseARGV {
       $action='what';
     } elsif ($arg eq 'ignore' or $arg eq '--ignore') {
       $action='ignore';
+      $lazy=0;
     } elsif ($arg eq 'why' or $arg eq '--why') {
       $action='why';
     } elsif ($arg eq 'how' or $arg eq '--how') {
