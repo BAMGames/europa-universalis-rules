@@ -49,7 +49,7 @@ crushit() {
 generate_blank() {
     mkdir -p ${TARGETDIR}/blank
     if [ ! -e ${TARGETDIR}/blank/${1}x${2}.png ]; then
-        convert -size ${1}x${2} canvas:white ${TARGETDIR}/blank/${1}x${2}.png
+        convert -size ${1}x${2} canvas:white PNG32:${TARGETDIR}/blank/${1}x${2}.png
     fi
 }
 
@@ -69,7 +69,7 @@ generate_crop() {
     rm -f plan/in/gs-carte-clip.background.in plan/in/gs-carte-clip.in plan/out/gs-carte-clip.background.out plan/out/gs-carte-clip.out carte/clip.background.clp.ps carte/clip.background.clp carte/clip.eps carte/clip.background.eps
     pdftoppm -singlefile -png -r "$resol" carte/clip.pdf ${TARGETDIR}/tmp/clipORIG
     rm -f carte/clip.pdf
-    convert ${TARGETDIR}/tmp/clipORIG.png -crop ${BTSIZE}x${BTSIZE}+5+5 ${TARGETDIR}/tmp/clip.png
+    convert ${TARGETDIR}/tmp/clipORIG.png -crop ${BTSIZE}x${BTSIZE}+5+5 PNG32:${TARGETDIR}/tmp/clip.png
     rm -f ${TARGETDIR}/tmp/clip-1.ppm ${TARGETDIR}/tmp/clipORIG.png
 }
 
@@ -121,8 +121,8 @@ precut_bigtile() {
         offsetY=$(( (65536-LLPY-BTSIZE)%256 ))
         sizeX=$(( BTSIZE+offsetX ))
         sizeY=$(( BTSIZE+offsetY ))
-        convert -repage ${sizeX}x${sizeY}+${offsetX}+${offsetY} $tname/big.png ${TARGETDIR}/tmp/cut.png
-        convert -colorspace RGB ${TARGETDIR}/tmp/cut.png -crop 256x256 -set filename:tile "%[fx:page.x]_%[fx:page.y]" +repage +adjoin "$tname.staging/tile_%[filename:tile].png"
+        convert -repage ${sizeX}x${sizeY}+${offsetX}+${offsetY} $tname/big.png PNG32:${TARGETDIR}/tmp/cut.png
+        convert ${TARGETDIR}/tmp/cut.png -crop 256x256 -set filename:tile "%[fx:page.x]_%[fx:page.y]" +repage +adjoin "PNG32:$tname.staging/tile_%[filename:tile].png"
         rm -f ${TARGETDIR}/tmp/cut.png
         leftmost=$(( LLPX-offsetX ))
         topmost=$(( LLPY+BTSIZE+offsetY-256 ))
@@ -259,7 +259,7 @@ generate_tile() {
             tnamea=${TARGETDIR}/bt_${URBTX}_${URBTY}.cut/tile_${ACX}_${ACY}.png
             if [ ! -e $tname ]; then blank_tile $tname $LLBTX $LLBTY $ACX $ACY; fi
             if [ ! -e $tnamea ]; then blank_tile $tnamea $URBTX $URBTY $ACX $ACY; fi
-            montage -mode concatenate -tile 1x2 $tnamea $tname $stname
+            convert $tnamea $tname -append PNG32:$stname
             crushit $stname
         fi
     else 
@@ -269,7 +269,7 @@ generate_tile() {
             tnamea=${TARGETDIR}/bt_${URBTX}_${URBTY}.cut/tile_${ACX}_${ACY}.png
             if [ ! -e $tname ]; then blank_tile $tname $LLBTX $LLBTY $ACX $ACY; fi
             if [ ! -e $tnamea ]; then blank_tile $tnamea $URBTX $URBTY $ACX $ACY; fi
-            montage -mode concatenate -tile 2x1 $tname $tnamea $stname
+            convert $tname $tnamea +append PNG32:$stname
             crushit $stname
         else
             #echo "Cutting from 4 across $LLBTX $LLBTY => $URBTX $URBTY"
@@ -281,7 +281,7 @@ generate_tile() {
             if [ ! -e $tnamea ]; then blank_tile $tnamea $LLBTX $URBTY $ACX $ACY; fi
             if [ ! -e $tnameb ]; then blank_tile $tnameb $URBTX $LLBTY $ACX $ACY; fi
             if [ ! -e $tnamec ]; then blank_tile $tnamec $URBTX $URBTY $ACX $ACY; fi
-            montage -mode concatenate -tile 2x2 $tnamea $tnamec $tname $tnameb $stname
+            convert \( $tnamea $tnamec +append \) \( $tname $tnameb +append \) -append -resize 256x256 PNG32:$stname
             crushit $stname
         fi
     fi
@@ -323,9 +323,7 @@ unzoom() {
                     if [ -L $tnamea ]&&[  -L $tnameb ]&&[  -L $tnamec ]&&[  -L $tnamed ]; then
                         ln -s ../blank/256x256.png $tname
                     else
-                        montage -mode concatenate -tile 2x2 $tnamea $tnameb $tnamec $tnamed $tname.new
-                        convert -resize 256x256 $tname.new $tname
-                        rm -f $tname.new
+                        convert \( $tnamea $tnameb +append \) \( $tnamec $tnamed +append \) -append -resize 256x256 PNG32:$tname
                         crushit $tname
                     fi
                 done
@@ -405,8 +403,8 @@ main() {
     manifest
     say "copy"
     rm -rf carte/bitmap
-    mkdir -p carte/bitmap
-    cp -r ${TARGETDIR}/blank carte/bitmap/
+    mkdir -p carte/bitmap/blank
+    cp -r ${TARGETDIR}/blank/256x256.png carte/bitmap/blank/
     for z in $(seq $zoom_level -1 0); do
         cp -r ${TARGETDIR}/tile_${z} carte/bitmap/
     done

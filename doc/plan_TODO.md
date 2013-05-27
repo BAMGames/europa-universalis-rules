@@ -7,7 +7,7 @@ A makefile replacement
  * shadow : done
  * pions : done
  * figures: done
- * carte, rotw: in progress
+ * carte, rotw: almost done
  * rules
  * records
  * web
@@ -47,3 +47,9 @@ mode, set hardrule.
 # Introduce sweeping
 
 Remove all generated files no more generable.
+
+# Introduce timings
+
+Produce timing stats on demand. For example, --global-time reports how
+much time was expanded rebuilding the targets.
+

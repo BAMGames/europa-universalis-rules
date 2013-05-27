@@ -303,7 +303,8 @@ mV.map.prototype._displayTile=function(z,x,y) {
         self.h.h[s].empty().append('No tile available')
     }).appendTo(k)
     k.appendTo(d)
-    window.setTimeout(function() {i.attr('src',u)},1000+3000*Math.random())
+//    window.setTimeout(function() {i.attr('src',u)},1000+3000*Math.random())
+    i.attr('src',u)
     return res
 }
 mV.map.prototype.setGoal=function(g) {

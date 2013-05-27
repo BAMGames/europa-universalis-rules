@@ -1,6 +1,5 @@
 #!/bin/sh
 set -e
-
 resol=800
 croplarge=498x498+307+218
 cropsmall=398x398+357+218
@@ -12,6 +11,7 @@ getCounter() {
     if [ -f "$2/$3.png" ]; then
         return
     fi
+    if [ -z "$3" ]; then echo "$@"; echo "die"; exit 2; fi
     echo "$4 $3" >> "${MANIFESTDIR}/list.txt"
     if [ "$size" = "L" ]; then
 	convert -crop $croplarge -bordercolor black -border 1 "$1" +repage "$2/$3.png"
@@ -79,11 +79,11 @@ for file in $(cat plan/in/pionsbitmap.in); do
             if [ "$double" = "S" ]; then
                 getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name" "$size"
             else # double != S
-                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name_recto" "$size"
+                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "${name}_recto" "$size"
                 counter=$((counter+1))
                 xcounter=$(printf $counterfmt $counter)
                 echo 1>&2 "${SPECIALPREFIX}count:cropping:$xcounter/$filesfound"
-                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "$name_verso" "$size"
+                getCounter "$PPMDIR/toto-${xcounter}.ppm" "${CROPDIR}/counter_${zoomlevel}" "${name}_verso" "$size"
             fi
         done
     fi

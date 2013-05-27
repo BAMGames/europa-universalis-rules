@@ -709,6 +709,7 @@ sub fingerprintDir {
       $data=&fingerprintDir($f);
     } else {
       my ($d,$i,$m,$nl,$u,$g,$rd,$s,$at,$mt,$ct,$bs,$bl) = stat($f);
+      $s='unk' unless defined($s);
       $data="$f:$s";
     }
     $hashing->add($data);

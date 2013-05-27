@@ -14,5 +14,5 @@ TILESIZE=256
 
 var map;
 $(function() {
-    map=new mV.map('map_canvas',{url: XBASE+'tile_', blankUrl: 'img/bkgnd.png', maxZoom: 9});
+    map=new mV.map('map_canvas',{url: XBASE+'tile_', blankUrl: 'img/bkgnd.png', maxZoom: 8});
 })
