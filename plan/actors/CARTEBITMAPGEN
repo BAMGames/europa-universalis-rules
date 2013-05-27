@@ -309,7 +309,7 @@ unzoom() {
             val=$((val-1))
             local zzz=$((z+1))
             for i in $(seq 0 $val); do
-                if [ "$((i%16))" = 0 ]; then say "zoom:${z}:$i"; fi
+                if [ "$((i%4))" = 0 ]; then say "zoom:${z}:$i"; fi
                 local iia=$((2*i))
                 local iib=$((2*i+1))
                 for j in $(seq 0 $val); do
