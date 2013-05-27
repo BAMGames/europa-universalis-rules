@@ -70,7 +70,7 @@ generate_crop() {
     pdftoppm -singlefile -png -r "$resol" carte/clip.pdf ${TARGETDIR}/tmp/clipORIG
     rm -f carte/clip.pdf
     convert ${TARGETDIR}/tmp/clipORIG.png -crop ${BTSIZE}x${BTSIZE}+5+5 ${TARGETDIR}/tmp/clip.png
-    rm -f ${TARGETDIR}/tmp/clip-1.ppm
+    rm -f ${TARGETDIR}/tmp/clip-1.ppm ${TARGETDIR}/tmp/clipORIG.png
 }
 
 generate_bigtile() {
@@ -361,7 +361,7 @@ manifest() {
             done
         done
         mv $MANIFEST $MANIFEST.unsorted
-        cat $MANIFEST.unsorted "${MANIFESTDIR}/manifest.txt"|LC_ALL=C sort -u -k 4 > $MANIFEST
+        cat $MANIFEST.unsorted|LC_ALL=C sort -u -k 4 > $MANIFEST
         bzip2 -9 -k $MANIFEST
         touch ${TARGETDIR}/done/manifest
     fi
@@ -404,6 +404,7 @@ main() {
     say "copy"
     rm -rf carte/bitmap
     mkdir -p carte/bitmap
+    cp -r ${TARGETDIR}/blank carte/bitmap/
     for z in $(seq $zoom_level -1 0); do
         cp -r ${TARGETDIR}/tile_${z} carte/bitmap/
     done
