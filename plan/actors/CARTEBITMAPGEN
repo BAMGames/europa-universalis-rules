@@ -6,6 +6,7 @@ xname=bitmap
 zoom_level=8
 minzoomlevel=0
 TARGETDIR="carte/bitmapgen"
+MODE=${1:-"simple_color"}
 
 # 8425 5840
 BTSIZE=9102   # pixels units of bigtiles
@@ -24,17 +25,19 @@ say() {
 
 sumit() {
     MDSUM=$(md5sum "$1")
-    MDSUM=${MDSUM% *}
+    MDSUM=${MDSUM%% *}
 }
 
 sizeit() {
     CKSIZE=$(stat -c %s "$1")
 }
 
-SPECIALMDSUM="0"
 crushit() {
+    if [ -L "${1}" ]; then
+        return
+    fi
     mv "${1}" "${1%.png}X.png"
-    pngcrush -rem bKGD -rem tEXt -q -force "${1%.png}X.png" "${1}"
+    pngcrush -rem bKGD -rem tEXt -rem pHYs -q -force "${1%.png}X.png" "${1}"
     rm -f "${1%.png}X.png"
     sumit "$1"
     if [ "$MDSUM" = "$SPECIALMDSUM" ]; then
@@ -60,7 +63,7 @@ generate_crop() {
     xa="$2";xb="$3"
     xxa=$((SIZE*xa-1));xxb=$((SIZE*xb-1))
     xxxa=$((SIZE*xa+SIZE+1));xxxb=$((SIZE*xb+SIZE+1))
-    sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g;s/dopage_rich_color_background/dopage_simple_color_background/g' < carte/$1.background.eps > carte/clip.background.eps
+    sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g;s/dopage_rich_color_background/dopage_'"${MODE}"'_background/g' < carte/$1.background.eps > carte/clip.background.eps
     sed -e '/bboxset/ s/^.*$/'"${xxa} ${xxb} ${xxxa} ${xxxb}"' bboxset/g' < carte/$1.eps > carte/clip.eps
     bin/gsexec carte clip.background clip 2> /dev/null
     rm -f plan/in/gs-carte-clip.background.in plan/in/gs-carte-clip.in plan/out/gs-carte-clip.background.out plan/out/gs-carte-clip.out carte/clip.background.clp.ps carte/clip.background.clp carte/clip.eps carte/clip.background.eps
@@ -72,51 +75,55 @@ generate_crop() {
 
 generate_bigtile() {
     local tmp
-    tname=${TARGETDIR}/bigtile/$1_$2
-    if [ -f $tname.png ]; then
+    tname=${TARGETDIR}/bt_$1_$2
+    mkdir -p $tname
+    if [ -f $tname/big.png ]; then
         true
     elif [ "$1" -ge "$CUTOFFX" ] || [ "$1" -lt "0" ]; then
         generate_blank $BTSIZE $BTSIZE
-        ln -s ../blank/${BTSIZE}x${BTSIZE}.png $tname.png
+        ln -s ../blank/${BTSIZE}x${BTSIZE}.png $tname/big.png
+        say "warning:bigtile $1,$2 requested"
     elif [ "$2" -ge "$CUTOFFY" ] || [ "$2" -lt "0" ]; then
         generate_blank $BTSIZE $BTSIZE
-        ln -s ../blank/${BTSIZE}x${BTSIZE}.png $tname.png
+        ln -s ../blank/${BTSIZE}x${BTSIZE}.png $tname/big.png
+        say "warning:bigtile $1,$2 requested"
     elif [ "$2" -lt "$CUTOFFMAPS" ]; then
         say "crop:$1:$2"
         generate_crop europe $1 $2
-        mv ${TARGETDIR}/tmp/clip.png $tname.png
+        mv ${TARGETDIR}/tmp/clip.png $tname/big.png
     else
         tmp=$2
         tmp=$((tmp-CUTOFFMAPS))
         say "crop:$1:$2"
         generate_crop rotw $1 $tmp
-        mv ${TARGETDIR}/tmp/clip.png $tname.png
+        mv ${TARGETDIR}/tmp/clip.png $tname/big.png
     fi
     precut_bigtile "$1" "$2"
 }
 
 precut_bigtile() {
-    if [ ! -f $tname.cut ]; then
+    if [ ! -e ${TARGETDIR}/done/cut.$1_$2 ]; then
         say "cut:$1:$2"
-        rm -rf $tname.staging $tname.precut $tname.crushed
-        mkdir -p $tname.staging $tname.precut
+        rm -rf $tname.staging $tname.crushed $tname.cut
+        mkdir -p $tname.staging $tname.cut
         bigtile_to_pixel "$1" "$2"
         # Let X and Y be the absolute pixel coordinates of the lower-left corner of
         # the bigtile : X=i*BTSIZE+PZX, Y=j*BTSIZE+PZY
         # We are going to offset (left and top, because that's the way it is)
-        # by Ox and Oy pixels. Ox must be such that (X+Ox)%256=0, and Oy such that
+        # by Ox and Oy pixels. Ox must be such that (X-Ox)%256=0, and Oy such that
         # (Y+BTSIZE+Oy)%256=0, and the size of the englobing picture must have its
         # upper-left corner be a multiple of 256.
         # The width height could be cut off to BTSIZE+Ox,BTSIZE+Oy
-        # Formula: Ox=(65536-X)%256    Oy=(65536-Y-BTSIZE)%256
+        # Formula: Ox=X%256    Oy=(65536-Y-BTSIZE)%256
         # Once offset, we will cut the bigtile in squares of size 256. Their name
         # will be tile_X_Y, with X or Y being either a multiple of 256 or Ox or Oy
         offsetX=$(( LLPX%256 ))
         offsetY=$(( (65536-LLPY-BTSIZE)%256 ))
         sizeX=$(( BTSIZE+offsetX ))
         sizeY=$(( BTSIZE+offsetY ))
-        convert -repage ${sizeX}x${sizeY}+${offsetX}+${offsetY} $tname.png ${TARGETDIR}/tmp/cut.png
+        convert -repage ${sizeX}x${sizeY}+${offsetX}+${offsetY} $tname/big.png ${TARGETDIR}/tmp/cut.png
         convert ${TARGETDIR}/tmp/cut.png -crop 256x256 -set filename:tile "%[fx:page.x]_%[fx:page.y]" +repage +adjoin "$tname.staging/tile_%[filename:tile].png"
+        rm -f ${TARGETDIR}/tmp/cut.png
         leftmost=$(( LLPX-offsetX ))
         topmost=$(( LLPY+BTSIZE+offsetY-256 ))
         for LX in $offsetX $(seq 256 256 $((sizeX-1 )) ); do
@@ -132,7 +139,7 @@ precut_bigtile() {
                     KY=$LY
                 fi
                 if [ -f $tname.staging/tile_${LX}_${LY}.png ]; then
-                    mv $tname.staging/tile_${LX}_${LY}.png $tname.precut/tile_$((leftmost+KX))_$((topmost-KY)).png
+                    mv $tname.staging/tile_${LX}_${LY}.png $tname.cut/tile_$((leftmost+KX))_$((topmost-KY)).png
                 else
                     echo "Failed: $LX $LY"
                     exit 1
@@ -141,17 +148,17 @@ precut_bigtile() {
         done
         if [ $(find $tname.staging -type f|wc -l) -lt 1 ]; then
             rmdir $tname.staging
-            touch $tname.cut
+            touch ${TARGETDIR}/done/cut.$1_$2
         else
             echo "Failed: $tname.staging"
             find $tname.staging
             exit 1
         fi
     fi
-    if [ ! -f "$tname.crushed" ]; then
+    if [ ! -f ${TARGETDIR}/done/crushed.$1_$2 ]; then
         say "crush:$1:$2"
-        for a in $(find $tname.precut -type f); do crushit $a; done
-        touch $tname.crushed
+        for a in $(find $tname.cut -type f); do crushit $a; done
+        touch ${TARGETDIR}/done/crushed.$1_$2
     fi
 }
 
@@ -193,7 +200,6 @@ tile_to_bigtile() {
 }
 
 blank_tile() {
-    echo "BLANK $@"
     NX=$2;NY=$3;ACX=$4;ACY=$5
     bigtile_to_pixel $NX $NY
     local stxmin=$ACX
@@ -206,7 +212,7 @@ blank_tile() {
         xmin=$btxmin
     fi
     if [ "$xmax" -gt "$btxmax" ]; then
-        xmin=$btxmax
+        xmax=$btxmax
     fi
     local stymin=$ACY
     local stymax=$((ACY+256))
@@ -218,22 +224,20 @@ blank_tile() {
         ymin=$btymin
     fi
     if [ "$ymax" -gt "$btymax" ]; then
-        ymin=$btymax
+        ymax=$btymax
     fi
     generate_blank $((xmax-xmin)) $((ymax-ymin))
     local dd=${1%/*}
     [ -d "$dd" ] || mkdir -p $dd
-    ln -s ../../blank/$((xmax-xmin))x$((ymax-ymin)).png $1
+    ln -s ../blank/$((xmax-xmin))x$((ymax-ymin)).png $1
 }
 
 generate_tile() {
-    local stdir=${TARGETDIR}/tile_${zoom_level}
-    local stname=${stdir}/$1_$2.png
+    local stname=${TARGETDIR}/tile_${zoom_level}/$1_$2.png
     local tname
     local tnamea
     local tnameb
     local tnamec
-    local tmp=${TARGETDIR}/tmp/cutout
     if [ -e "$stname" ]; then
         return
     fi
@@ -241,16 +245,18 @@ generate_tile() {
     if [ "$LLBTX" = "$URBTX" ]; then
         if [ "$LLBTY" = "$URBTY" ]; then
             #echo "Cutting from 1"
-            tname=${TARGETDIR}/bigtile/${LLBTX}_${LLBTY}.precut/tile_${ACX}_${ACY}.png
+            tname=${TARGETDIR}/bt_${LLBTX}_${LLBTY}.cut/tile_${ACX}_${ACY}.png
             if [ ! -e $tname ]; then
-                ln -s ../blank/256x256.png $stname
+                ln -s $BLANK $stname
+            elif [ -L $tname ]; then
+                ln -s $BLANK $stname
             else
                 cp ${tname} ${stname}
             fi
         else
             #echo "Cutting from 2 vertical $LLBTX $LLBTY => $URBTX $URBTY"
-            tname=${TARGETDIR}/bigtile/${LLBTX}_${LLBTY}.precut/tile_${ACX}_${ACY}.png
-            tnamea=${TARGETDIR}/bigtile/${URBTX}_${URBTY}.precut/tile_${ACX}_${ACY}.png
+            tname=${TARGETDIR}/bt_${LLBTX}_${LLBTY}.cut/tile_${ACX}_${ACY}.png
+            tnamea=${TARGETDIR}/bt_${URBTX}_${URBTY}.cut/tile_${ACX}_${ACY}.png
             if [ ! -e $tname ]; then blank_tile $tname $LLBTX $LLBTY $ACX $ACY; fi
             if [ ! -e $tnamea ]; then blank_tile $tnamea $URBTX $URBTY $ACX $ACY; fi
             montage -mode concatenate -tile 1x2 $tnamea $tname $stname
@@ -259,18 +265,18 @@ generate_tile() {
     else 
         if [ "$LLBTY" = "$URBTY" ]; then
             #echo "Cutting from 2 horizontal $LLBTX $LLBTY => $URBTX $URBTY"
-            tname=${TARGETDIR}/bigtile/${LLBTX}_${LLBTY}.precut/tile_${ACX}_${ACY}.png
-            tnamea=${TARGETDIR}/bigtile/${URBTX}_${URBTY}.precut/tile_${ACX}_${ACY}.png
+            tname=${TARGETDIR}/bt_${LLBTX}_${LLBTY}.cut/tile_${ACX}_${ACY}.png
+            tnamea=${TARGETDIR}/bt_${URBTX}_${URBTY}.cut/tile_${ACX}_${ACY}.png
             if [ ! -e $tname ]; then blank_tile $tname $LLBTX $LLBTY $ACX $ACY; fi
             if [ ! -e $tnamea ]; then blank_tile $tnamea $URBTX $URBTY $ACX $ACY; fi
             montage -mode concatenate -tile 2x1 $tname $tnamea $stname
             crushit $stname
         else
             #echo "Cutting from 4 across $LLBTX $LLBTY => $URBTX $URBTY"
-            tname=${TARGETDIR}/bigtile/${LLBTX}_${LLBTY}.precut/tile_${ACX}_${ACY}.png
-            tnamea=${TARGETDIR}/bigtile/${LLBTX}_${URBTY}.precut/tile_${ACX}_${ACY}.png
-            tnameb=${TARGETDIR}/bigtile/${URBTX}_${LLBTY}.precut/tile_${ACX}_${ACY}.png
-            tnamec=${TARGETDIR}/bigtile/${URBTX}_${URBTY}.precut/tile_${ACX}_${ACY}.png
+            tname=${TARGETDIR}/bt_${LLBTX}_${LLBTY}.cut/tile_${ACX}_${ACY}.png
+            tnamea=${TARGETDIR}/bt_${LLBTX}_${URBTY}.cut/tile_${ACX}_${ACY}.png
+            tnameb=${TARGETDIR}/bt_${URBTX}_${LLBTY}.cut/tile_${ACX}_${ACY}.png
+            tnamec=${TARGETDIR}/bt_${URBTX}_${URBTY}.cut/tile_${ACX}_${ACY}.png
             if [ ! -e $tname ]; then blank_tile $tname $LLBTX $LLBTY $ACX $ACY; fi
             if [ ! -e $tnamea ]; then blank_tile $tnamea $LLBTX $URBTY $ACX $ACY; fi
             if [ ! -e $tnameb ]; then blank_tile $tnameb $URBTX $LLBTY $ACX $ACY; fi
@@ -285,17 +291,15 @@ warmup() {
     if [ ! -f .tmp/debug-bitmapgen ]; then
         rm -rf ${TARGETDIR}
     fi
-    mkdir -p ${TARGETDIR}
-    rm -rf ${TARGETDIR}/bitmap
     rm -rf ${TARGETDIR}/tmp
     mkdir -p ${TARGETDIR}/tmp
-    mkdir -p ${TARGETDIR}/bigtile
-    mkdir -p ${TARGETDIR}/tile_${zoom_level}
+    mkdir -p ${TARGETDIR}/done
+    mkdir -p ${TARGETDIR}/blank
 }
 
 unzoom() {
     for z in $(seq $((zoom_level-1)) -1 0); do
-        if [ ! -e ${TARGETDIR}/tile_${z}.unzoom ]; then
+        if [ ! -e ${TARGETDIR}/done/zoom.$z ]; then
             rm -rf ${TARGETDIR}/tile_${z}
             mkdir -p ${TARGETDIR}/tile_${z}
             val=1
@@ -305,7 +309,7 @@ unzoom() {
             val=$((val-1))
             local zzz=$((z+1))
             for i in $(seq 0 $val); do
-                say zoom:${z}:${i}
+                if [ "$((i%16))" = 0 ]; then say "zoom:${z}:$i"; fi
                 local iia=$((2*i))
                 local iib=$((2*i+1))
                 for j in $(seq 0 $val); do
@@ -324,62 +328,89 @@ unzoom() {
                     fi
                 done
             done
-            touch ${TARGETDIR}/tile_${z}.unzoom
+            touch ${TARGETDIR}/done/zoom.$z
         fi
     done
 }
 
 manifest() {
     MANIFEST=${TARGETDIR}/manifest.txt
-    if [ ! -f "${MANIFEST}.done" ]; then
+    if [ ! -f ${TARGETDIR}/done/manifest ]; then
         rm -rf $MANIFEST
         sumit "${TARGETDIR}/blank/256x256.png"
         sizeit "${TARGETDIR}/blank/256x256.png"
         echo "$MDSUM Z $CKSIZE blank/256x256.png" >> $MANIFEST
         for z in $(seq $zoom_level -1 0); do
-            say "manifest:$z"
-            for file in $(find ${TARGETDIR}/tile_${z} -type f -print|cut -f3- -d/); do
-                sumit "${TARGETDIR}/tile_${z}/$file"
-                sizeit "${TARGETDIR}/tile_${z}/$file"
-                echo "$MDSUM Z $CKSIZE $file" >> $MANIFEST
+            val=1
+            for zz in $(seq 1 1 $z); do
+                val=$((val*2))
             done
-            for file in $(find ${TARGETDIR}/tile_${z} -type L -print|cut -f3- -d/); do
-                sumit "${TARGETDIR}/tile_${z}/$file"
-                CKSIZE=$(readlink "${TARGETDIR}/tile_${z}/$file")
-                echo "$MDSUM Z $CKSIZE $file" >> $MANIFEST
+            val=$((val-1))
+            for i in $(seq 0 1 $val); do
+                say "manifest:$z:$i"
+                for j in $(seq 0 1 $val); do
+                    stname=${TARGETDIR}/tile_${z}/${i}_${j}.png
+                    if [ -L $stname ]; then
+                        echo "$SPECIALMDSUM Z $BLANK tile_${z}/${i}_${j}.png" >> $MANIFEST
+                    else
+                        sumit $stname
+                        sizeit $stname
+                        echo "$MDSUM Z $CKSIZE tile_${z}/${i}_${j}.png" >> $MANIFEST
+                    fi
+                done
             done
         done
+        mv $MANIFEST $MANIFEST.unsorted
+        cat $MANIFEST.unsorted "${MANIFESTDIR}/manifest.txt"|LC_ALL=C sort -u -k 4 > $MANIFEST
         bzip2 -9 -k $MANIFEST
-        touch "${MANIFEST}.done"
+        touch ${TARGETDIR}/done/manifest
+    fi
+}
+
+generate_tiles() {
+    if [ ! -f ${TARGETDIR}/done/tiles ]; then
+        mkdir -p ${TARGETDIR}/tile_${zoom_level}
+        for i in $(seq 0 255); do
+            if [ "$((i%32))" = 0 ]; then say "copy:$i"; fi
+            for j in $(seq 0 255); do
+                generate_tile $i $j
+            done
+        done
+        touch ${TARGETDIR}/done/tiles
     fi
 }
 
 main() {
     warmup
-    # Generate all colourfull tiles from bigtiles
     generate_blank 256 256
-    sumit ${TARGETDIR}/blank/256x256.png
+    SPECIALMDSUM="0"
+    crushit ${TARGETDIR}/blank/256x256.png
     SPECIALMDSUM="$MDSUM"
-    BLANK=../../blank/256x256.png
-
+    BLANK=../blank/256x256.png
+    
+    # Generate all colourfull tiles from bigtiles done/cut_* done/crushed_*
     for i in $(seq 0 $((CUTOFFX-1)) ); do
         for j in $(seq 0 $((CUTOFFY-1)) ); do
             generate_bigtile $i $j
         done
     done
+    rmdir ${TARGETDIR}/tmp
 
     # Use the precuts and fill in with blanks
-
-    BLANK=../blank/256x256.png
-    for i in $(seq 0 255); do
-        say "copy:$i"
-        for j in $(seq 0 255); do
-            generate_tile $i $j
-        done
-    done
-
+    generate_tiles
+    # Unzoom and manifest done/zoom_* done/manifest
     unzoom
     manifest
+    say "copy"
+    rm -rf carte/bitmap
+    mkdir -p carte/bitmap
+    for z in $(seq $zoom_level -1 0); do
+        cp -r ${TARGETDIR}/tile_${z} carte/bitmap/
+    done
+    cp $MANIFEST.bz2 carte/
+    if [ ! -f .tmp/debug-bitmapgen ]; then
+        rm -rf ${TARGETDIR}
+    fi
 }
 
 main
