@@ -17,6 +17,47 @@
       "pattern" : "blasons/src/shield_(.*).xcf",
       "type" : "pattern"
    },
+   "CARTEACTIVATION" : {
+      "actor" : "CARTEACTIVATION",
+      "class" : "Building map",
+      "in" : [
+         "rules/engCorpsMineurs.tex"
+      ],
+      "out" : [
+         "carte/rotw.activation.ps"
+      ],
+      "subclass" : "activation",
+      "type" : "simple"
+   },
+   "CARTEBITMAP_rebuild" : {
+      "actor" : "CARTEBITMAPGEN",
+      "arg" : [
+         "rich_color"
+      ],
+      "class" : "Rebuilding maps bitmap",
+      "in" : [
+         ".tmp/proof-convert",
+         ".tmp/proof-pdftoppm",
+         ".tmp/proof-pngcrush"
+      ],
+      "infile" : [
+         "plan/in/gs-carte-rotw.in",
+         "plan/in/gs-carte-europe.in"
+      ],
+      "junk" : [
+         "plan/in/gs-carte-clip.in",
+         "plan/in/gs-carte-clip.out",
+         "carte/bitmapgen"
+      ],
+      "lazy" : 1,
+      "mode" : "rebuild",
+      "out" : [
+         "carte/bitmap",
+         "carte/manifest.txt.bz2"
+      ],
+      "subclass" : "rebuilding",
+      "type" : "simple"
+   },
    "CARTECLIPPING" : {
       "actor" : "CARTECLIPPING",
       "class" : "Building map",
@@ -29,18 +70,6 @@
          "carte/rotw.simple.eps"
       ],
       "subclass" : "copying",
-      "type" : "simple"
-   },
-   "CARTEACTIVATION" : {
-      "actor" : "CARTEACTIVATION",
-      "class" : "Building map",
-      "in" : [
-         "rules/engCorpsMineurs.tex"
-      ],
-      "out" : [
-         "carte/rotw.activation.ps"
-      ],
-      "subclass" : "activation",
       "type" : "simple"
    },
    "CHAPTERHEADS" : {
