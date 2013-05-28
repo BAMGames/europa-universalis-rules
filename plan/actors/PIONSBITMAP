@@ -1,14 +1,11 @@
 #!/bin/sh
 set -e
-rm -f pions/manifest.txt
-bunzip2 -k pions/manifest.txt.bz2
 for i in "$@"; do
     if [ "$1" = "full" ]; then
         echo "all" > pions/wanted.txt
     else
         cp pions/${i}.txt pions/wanted.txt
     fi
-    bin/filedownloader
+    bin/filedownloader pions
 done
-rm -f pions/manifest.txt
 rm -f pions/wanted.txt

@@ -10,17 +10,8 @@ use File::Copy;
 use strict;
 use warnings;
 use Data::Dumper;
+use IO::Uncompress::Bunzip2 qw(bunzip2 $Bunzip2Error);
 
-my $manifest='pions/manifest.txt';
-my $bitmapdir='pions/bitmap';
-my $wanted='pions/wanted.txt';
-my $index=$bitmapdir.'/index.txt';
-my $url='';
-my $indexed={};
-my $index_mtime={};
-my $index_sum={};
-my $manifest_sum={};
-my $baseUrl='http://old-lipn.univ-paris13.fr/~dubacq/europa/pions/';
 open DOC,"doc/release.txt" or die "No release document";
 my @linesdoc=<DOC>;
 close DOC;
@@ -30,21 +21,49 @@ foreach my $releaseline (@linesdoc) {
   chomp $releaseline;
   $release=$1.'/';
 }
-$baseUrl.=$release;
-#my $baseUrl='file:///data/ro/';
-my $specialprefix='FILEDOWNLOADER';
-my $tmpFiles={};
-my $count=0;
-my $maxcount=0;
-my $maxcountnumber=0;
 $SIG{INT} = sub { &finish(2); };
-
+my $specialprefix='FILEDOWNLOADER';
 $specialprefix=$ENV{'SPECIALPREFIX'} if defined($ENV{'SPECIALPREFIX'});
 
-if (!(-d $bitmapdir)) {
-  mkdir $bitmapdir or die "Cannot create directory $bitmapdir";
-}
+my $category;
+my $baseUrl;
+my $manifest;
+my $bitmapdir;
+my $wanted;
+my $index;
+my $url;
+my $indexed;
+my $index_mtime;
+my $index_sum;
+my $manifest_sum;
+my $tmpFiles;
+my $count;
+my $maxcount;
+my $maxcountnumber;
 
+while (@ARGV) {
+  $category=shift @ARGV;
+  die if $category ne 'pions' and $category ne 'carte';
+  $baseUrl='http://old-lipn.univ-paris13.fr/~dubacq/europa/'.$category.'/';
+  $baseUrl.=$release;
+  $manifest=$category.'/manifest.txt.bz2';
+  $bitmapdir=$category.'/bitmap';
+  $wanted=$category.'/wanted.txt';
+  $index=$bitmapdir.'/index.txt';
+  $url='';
+  $indexed={};
+  $index_mtime={};
+  $index_sum={};
+  $manifest_sum={};
+  $tmpFiles={};
+  $count=0;
+  $maxcount=0;
+  $maxcountnumber=0;
+  if (!(-d $bitmapdir)) {
+    mkdir $bitmapdir or die "Cannot create directory $bitmapdir";
+  }
+  &main();
+}
 sub readIndex {
   open FILE,$index or return;
   while (<FILE>) {
@@ -92,12 +111,12 @@ sub updateIndex {
 }
 sub readManifest {
   my $manifest=shift @_;
-  open FILE,$manifest or die "Cannot read manifest $manifest";
-  while (<FILE>) {
+  my $z = new IO::Uncompress::Bunzip2 $manifest or die "Cannot read manifest $manifest";
+  while (<$z>) {
     next unless (/^([0-9a-f]+) (.) ([0-9]+) (.+)$/);
     $manifest_sum->{$4}=$1;
   }
-  close FILE;
+  $z->close();
 }
 sub readWanted {
   my $wanted=shift @_;
@@ -181,13 +200,12 @@ sub checkDownload {
 sub checkManifest {
   # check for indexed files not present in the manifest; delete them
   # also list indexed files not matching the manifest.
-  my $manifest=shift @_;
   my $todelete={};
   my $tofix={};
   foreach my $key (sort keys %$index_sum) {
     if (!defined($manifest_sum->{$key})) {
       $todelete->{$key}=1;
-    } elsif ($manifest_sum->{$key} ne $index_sum->{$key}) { 
+    } elsif ($manifest_sum->{$key} ne $index_sum->{$key}) {
       $tofix->{$key}=1;
     }
   }
@@ -260,7 +278,7 @@ sub main {
     }
   }
   &readManifest($manifest);
-  my ($todelete,$tofix)=&checkManifest($manifest);
+  my ($todelete,$tofix)=&checkManifest();
   my $wantedList=&readWanted($wanted);
   my ($todownload,$ok,$impossible)=&checkDownload($wantedList);
   if (scalar keys %$ok) {
@@ -287,5 +305,3 @@ sub main {
   }
   &finish(0);
 }
-
-&main();
