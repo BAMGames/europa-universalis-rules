@@ -13,12 +13,15 @@ if [ -n "$(bin/displaybranch)" ]; then
     sleep 5
 fi
 RELEASE=$(grep ^release= doc/release.txt|cut -f2- -d=|xargs printf %s)
-REMOTEDIR="ebene.lipn:public_html/europa/${1}/${RELEASE}"
-echo 1>&2 "${SPECIALPREFIX}releasing ${RELEASE} of remote \"${1}\""
-ssh ebene.lipn mkdir -p public_html/europa/$1/${RELEASE}
-rsync -rlpt --exclude /manifest.txt.bz2 --exclude /minimal/txt --delete ${1}/bitmap/. ${REMOTEDIR}/.
-echo 1>&2 "${SPECIALPREFIX}deduplication of remote \"${1}\""
-scp ${1}/manifest.txt.bz2 ${REMOTEDIR}/manifest.txt.bz2
-scp ${1}/minimal.txt ${REMOTEDIR}/minimal.txt
-ssh ebene.lipn hardlink public_html/europa/$1 # this is long
-echo "1" > .tmp/${1}-lastsync
+while [ -n "$1" ]; do
+    REMOTEDIR="ebene.lipn:public_html/europa/${1}/${RELEASE}"
+    echo 1>&2 "${SPECIALPREFIX}releasing ${RELEASE} of remote \"${1}\""
+    ssh ebene.lipn mkdir -p public_html/europa/$1/${RELEASE}
+    rsync -rlpt --exclude /manifest.txt.bz2 --exclude /minimal/txt --delete ${1}/bitmap/. ${REMOTEDIR}/.
+    echo 1>&2 "${SPECIALPREFIX}deduplication of remote \"${1}\""
+    scp ${1}/manifest.txt.bz2 ${REMOTEDIR}/manifest.txt.bz2
+    scp ${1}/minimal.txt ${REMOTEDIR}/minimal.txt
+    ssh ebene.lipn hardlink public_html/europa/$1 # this is long
+    echo "1" > .tmp/${1}-lastsync
+    shift
+done
