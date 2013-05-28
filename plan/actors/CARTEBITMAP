@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+for i in "$@"; do
+    if [ "$1" = "full" ]; then
+        echo "all" > carte/wanted.txt
+    else
+        cp carte/${i}.txt carte/wanted.txt
+    fi
+    bin/filedownloader carte
+done
+rm -f carte/wanted.txt

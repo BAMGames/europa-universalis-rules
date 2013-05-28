@@ -22,7 +22,7 @@ foreach my $releaseline (@linesdoc) {
   $release=$1.'/';
 }
 $SIG{INT} = sub { &finish(2); };
-my $specialprefix='FILEDOWNLOADER';
+my $specialprefix='FILEDOWNLOADER ';
 $specialprefix=$ENV{'SPECIALPREFIX'} if defined($ENV{'SPECIALPREFIX'});
 
 my $category;
@@ -35,7 +35,9 @@ my $url;
 my $indexed;
 my $index_mtime;
 my $index_sum;
+my $index_link;
 my $manifest_sum;
+my $manifest_link;
 my $tmpFiles;
 my $count;
 my $maxcount;
@@ -54,7 +56,9 @@ while (@ARGV) {
   $indexed={};
   $index_mtime={};
   $index_sum={};
+  $index_link={};
   $manifest_sum={};
+  $manifest_link={};
   $tmpFiles={};
   $count=0;
   $maxcount=0;
@@ -67,9 +71,10 @@ while (@ARGV) {
 sub readIndex {
   open FILE,$index or return;
   while (<FILE>) {
-    next unless (/^([0-9a-f]+) ([0-9]+) (.+)$/);
-    $index_mtime->{$3}=$2;
-    $index_sum->{$3}=$1;
+    next unless (/^([0-9a-f]+) ([0-9]+) "(.*)" (.+)$/);
+    $index_mtime->{$4}=$2;
+    $index_sum->{$4}=$1;
+    $index_link->{$4}=$3;
   }
   close FILE;
 }
@@ -96,16 +101,23 @@ sub updateIndex {
     if (-d $filename) {
       updateIndex($key);
       next;
-    } elsif ($key ne 'index.txt') {
+    } elsif (-l $filename and $key ne 'index.txt') {
+      my $link = readlink($filename);
+      $indexed->{$key}=1;
+      $index_sum->{$key}='L';
+      $index_link->{$key}=$link;
+      $index_mtime->{$key}=0;
+    } elsif (-f $filename and $key ne 'index.txt') {
       my ($d,$i,$m,$nl,$u,$g,$rd,$s,$at,$mt,$ct,$bs,$bl) = stat($filename);
       $indexed->{$key}=1;
+      $index_link->{$key}='';
       if (defined($index_mtime->{$key})) {
         next FILE if $index_mtime->{$key} eq $mt;
       }
       my $digest=&sumFile($filename);
-      $index_mtime->{$key}=$mt;
-      $index_sum->{$key}=$digest;
       $indexed->{$key}=1;
+      $index_sum->{$key}=$digest;
+      $index_mtime->{$key}=$mt;
     }
   }
 }
@@ -113,8 +125,13 @@ sub readManifest {
   my $manifest=shift @_;
   my $z = new IO::Uncompress::Bunzip2 $manifest or die "Cannot read manifest $manifest";
   while (<$z>) {
-    next unless (/^([0-9a-f]+) (.) ([0-9]+) (.+)$/);
-    $manifest_sum->{$4}=$1;
+    if (/^(L) (.) ([^ ]+) (.+)$/) {
+      $manifest_sum->{$4}=$1;
+      $manifest_link->{$4}=$3;
+    } elsif (/^([0-9a-f]+) (.) ([0-9]+) (.+)$/) {
+      $manifest_sum->{$4}=$1;
+      $manifest_link->{$4}='';
+    }
   }
   $z->close();
 }
@@ -132,7 +149,7 @@ sub readWanted {
 sub dumpIndex {
   open FILE,'>',$index or return; # We are leaving, anyway
   foreach my $key (sort keys %$index_sum) {
-    print FILE $index_sum->{$key}.' '.$index_mtime->{$key}.' '.$key."\n";
+    print FILE $index_sum->{$key}.' '.$index_mtime->{$key}.' "'.$index_link->{$key}.'" '.$key."\n";
   }
   close FILE;
 }
@@ -159,7 +176,7 @@ sub success {
   } else {
     $count++;
     my $x=sprintf('count:download:%0*d',$maxcountnumber,$count).'/'.$maxcount;
-    print STDERR $specialprefix.$x;
+    print STDERR ($specialprefix.$x)  if ($count%100==0);
   }
 }
 sub notsuccess {
@@ -176,15 +193,14 @@ sub download {
 }
 sub checkDownload {
   my @wanted=@{$_[0]};
-  my $tofix=$_[1];
   my $todownload={};
   my $ok={};
   my $impossible={};
   foreach my $file (@wanted) {
     my $wsum='none';
     my $csum='none';
-    $wsum=$manifest_sum->{$file} if defined($manifest_sum->{$file});
-    $csum=$index_sum->{$file} if defined($index_sum->{$file});
+    $wsum=$manifest_sum->{$file}.$manifest_link->{$file} if defined($manifest_sum->{$file});
+    $csum=$index_sum->{$file}.$index_link->{$file} if defined($index_sum->{$file});
     if ($wsum eq 'none') {
       $impossible->{$file}=1;
       next;
@@ -200,16 +216,13 @@ sub checkDownload {
 sub checkManifest {
   # check for indexed files not present in the manifest; delete them
   # also list indexed files not matching the manifest.
-  my $todelete={};
-  my $tofix={};
+  my $todelete={};             # present in any form, absent in manifest
   foreach my $key (sort keys %$index_sum) {
     if (!defined($manifest_sum->{$key})) {
       $todelete->{$key}=1;
-    } elsif ($manifest_sum->{$key} ne $index_sum->{$key}) {
-      $tofix->{$key}=1;
     }
   }
-  return ($todelete,$tofix);
+  return $todelete;
 }
 sub deleteFiles {
   my $deleteFiles=shift @_;
@@ -246,12 +259,33 @@ sub doDownload {
     if (scalar keys %$toDownload < 100) {
       &info($file);
     }
+    if ($wsum eq 'L') {
+      unlink($dest);
+      my ($filename,$directories,$suffix)=fileparse($dest);
+      (-d $directories) or make_path($directories);
+      symlink $manifest_link->{$file},$dest;
+      if (-l $dest) {
+        my $link = readlink($dest);
+        $indexed->{$file}=1;
+        $index_sum->{$file}='L';
+        $index_link->{$file}=$link;
+        $index_mtime->{$file}=0;
+        if ($index_link->{$file} eq $manifest_link->{$file}) {
+          &success($file,scalar keys %$toDownload);
+          next;
+        } else {
+          &finish(1);
+        }
+      }
+    }
     &download($file,$tmp);
     my $nsum=&sumFile($tmp);
     if ($wsum eq $nsum) {
+      unlink($dest);
       move($tmp,$dest) or die "Copy failed: $!";
       my ($d,$i,$m,$nl,$u,$g,$rd,$s,$at,$mt,$ct,$bs,$bl) = stat($dest);
       $index_sum->{$file}=$nsum;
+      $index_link->{$file}='';
       $index_mtime->{$file}=$mt;
       &success($file,scalar keys %$toDownload);
       delete $tmpFiles->{$tmp};
@@ -275,17 +309,18 @@ sub main {
     if (!defined($indexed->{$file})) {
       delete $index_sum->{$file};
       delete $index_mtime->{$file};
+      delete $index_link->{$file};
     }
   }
   &readManifest($manifest);
-  my ($todelete,$tofix)=&checkManifest();
+  my $todelete=&checkManifest();
   my $wantedList=&readWanted($wanted);
   my ($todownload,$ok,$impossible)=&checkDownload($wantedList);
   if (scalar keys %$ok) {
-    &info((scalar keys %$ok).' already downloaded');
+    &info((scalar keys %$ok).' already correct');
   }
   if (scalar keys %$todownload) {
-    &info((scalar keys %$todownload).' to download');
+    &info((scalar keys %$todownload).' to fix');
   }
   if (scalar keys %$impossible) {
     &info((scalar keys %$impossible).' unavailable');

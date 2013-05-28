@@ -29,6 +29,48 @@
       "subclass" : "activation",
       "type" : "simple"
    },
+   "CARTEBITMAP_default" : {
+      "actor" : "CARTEBITMAP",
+      "arg" : [
+         "minimal"
+      ],
+      "class" : "Downloading maps bitmap",
+      "in" : [
+         "carte/minimal.txt",
+         "carte/manifest.txt.bz2",
+         "bin/filedownloader"
+      ],
+      "junk" : [
+         "carte/wanted.txt"
+      ],
+      "mode" : "default",
+      "out" : [
+         "carte/bitmap"
+      ],
+      "subclass" : "fetching",
+      "type" : "simple"
+   },
+   "CARTEBITMAP_fulldownload" : {
+      "actor" : "CARTEBITMAP",
+      "arg" : [
+         "full"
+      ],
+      "class" : "Downloading maps bitmap",
+      "class_rebuild" : "Rebuilding maps bitmap",
+      "in" : [
+         "carte/manifest.txt.bz2",
+         "bin/filedownloader"
+      ],
+      "junk" : [
+         "carte/wanted.txt"
+      ],
+      "mode" : "fulldownload",
+      "out" : [
+         "carte/bitmap"
+      ],
+      "subclass" : "fetching",
+      "type" : "simple"
+   },
    "CARTEBITMAP_rebuild" : {
       "actor" : "CARTEBITMAPGEN",
       "arg" : [
