@@ -497,8 +497,8 @@ sub initOptions {
        '--ignore' => [ '--action', 'ignore' ],
        'distclean' => [ '--action', 'distclean' ],
        '--distclean' => [ '--action', 'distclean' ],
-       'clean' => [ '--action', 'distclean' ],
-       '--clean' => [ '--action', 'distclean' ],
+       'clean' => [ '--action', 'distclean', 'finals' ],
+       'sweep' => [ '--action', 'distclean', '--all' ],
       };
   my @target=&readDir('plan/targets');
   foreach my $t (@target) {
@@ -1596,6 +1596,71 @@ if ('' eq 'DOC PRINCIPLES') {
 TODO
 
 =head1 RULES
+
+A rule is the description of an action that can be done.
+
+A rule has a name that must be unique, and properties. The values of
+these properties are either integer, strings or arrays of strings.
+
+The C<plan/rules> file contains all the rules in JSON format.
+
+A rule basically must have an actor (a script or program, stored in
+C<plan/actors> directory with its name in the C<actor> property. The
+actor is executed whenever the rule may apply (see below). The program
+stops if an actor returns with an error. During the execution of the
+actor, its standard input is still accessible to the actor. Standard
+output is written in blue, so as to be more detectable, and standard
+error in red, except for some messages pertaining to the communication
+between the I<plan> utility and the actors.
+
+=head2 RULES INPUT, OUTPUT AND JUNK
+
+A simple rule will apply as soon as its C<in> files are available, and
+after the actor has run without errors, the C<out> files are considered
+to be produced (even if they are absent on the filesystem).
+
+The list of C<in> files is computed from the C<in> property of the rule
+plus the contents of the files mentioned in the C<infile>
+property. Likewise, the list of C<out> files comes from the C<out>
+property and the contents of the files listed in the C<outfile>
+property.
+
+The C<infile> and C<outfile> are in a very simple format: one file name
+per line, with %(hexadecimal) escaping. A file name with a newline in it
+could be given as C<file%(0A)name>, for example. Such a file name is not
+recommended anyway. C<infile> and C<outfile> properties are evaluated
+before each rule application (so several times per run), in case one
+script changes the contents of the files.
+
+TODO JUNK
+
+=head2 RULES TRIGGERING AND COMPOUNDING
+
+Starting from the axioms (see L</"AXIOMS">) the I<plan> utility will
+build a plan targetting the goals indicated by the user. The plan is a
+succession of rules necessary in order to build the required goals. Each
+rule retains a fingerprint that depends on its C<in> files before
+execution and its C<out> files after execution. If one of these changed,
+or the rule was never run, then the rule is not correctly
+fingerprinted. The first rule in the topologic order that is not
+correctly fingerprinted will be selected for execution.
+
+To gain time, and because executing the same actor for several targets
+at once, if the first rules all have the same actor and no
+interdependencies, they are compound: the actor is only run once with
+several arguments (the C<arg> property of the rule). This however is
+limited by the C<maxargs> property (this limits the number of arguments
+given to the compound actor: with 1, each rule remains executed
+individually).
+
+After each execution the plan is recomputed. Since the plan is mostly
+identical, the first (compound) rules have been done and need not be
+redone. Working piece by piece, the plan is fully executed.
+
+There are theoretical possibilities that the plan never ends, if a rule
+keeps changing its input files list.
+
+=head2 PATTERN RULES vs SIMPLE RULES
 
 TODO
 
