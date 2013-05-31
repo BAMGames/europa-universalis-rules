@@ -20,9 +20,7 @@ plan [B<--mode>] I<modename> ... (see L</"MODES">).
 
 plan [B<--target>] I<targetname> ... (see L</"GOALS AND TARGETS">).
 
-plan [B<--hard>] ... (see L</"LAZY AXIOMS">).
-
-plan [B<--hardrule> I<rule>] ... (see L</"LAZY AXIOMS">).
+plan [B<--hard>] [B<--hardrule> I<rule>] ... (see L</"LAZY AXIOMS">).
 
 plan [B<-->] [I<goals>] (only goals after B<-->) (see L</"GOALS AND TARGETS">).
 
@@ -64,9 +62,10 @@ use POSIX ":sys_wait_h";
 use IO::Select;
 use IO::Handle;
 
-my ($execContext,$planContext,$outContext,$optionContext);
+my ($execContext,$planContext,$outContext,$optionContext,$progContext);
 
 $planContext=undef;
+$progContext={'tmpfiles' => {}};
 
 # Directories
 
@@ -134,8 +133,6 @@ sub subHash {
 }
 
 sub main {
-  my $goalHash;
-  my $unbuildable;
   &initLogging();
   &findGitTopdir();
   &parseARGV();
@@ -146,13 +143,15 @@ sub main {
   &readRules();
   my $gitaxioms=&readAxiomsFromGit();
   &setupCommand();
+  &writeModes();
   my $exceptions=&readFileList('plan/axioms');
+  $exceptions->{'.tmp/mode'}=1; # TODO in fact all of progContext->{'tmpFiles'}
   my $notaxioms=&readFileList('plan/notaxioms');
   my $realaxioms=addHash($gitaxioms,$exceptions);
   $realaxioms=subHash($realaxioms,$notaxioms);
   $planContext={};
-  &readCache($planContext,'junk');
-  &cleanJunk($planContext,'junk');
+  &readCache($progContext,'junk');
+  &cleanJunk($progContext,'junk');
   if (defined($actions->{'distclean'})) {
     # distclean = Remove everything in JUNK, NOT IN GOALS_MULTIMODE
     # clean = distclean finals (removes everything except files in finals)
@@ -165,10 +164,11 @@ sub main {
     }
     $preserve=&addHash($preserve,$realaxioms);
     $preserve=&subHash($preserve,$optionContext->{'excludedFiles'});
-    &readCache($planContext,'junk');
-    my $remove=&subHash($planContext->{'junk'},$preserve);
-    &removeFiles($planContext,'junk',$remove);
-  } elsif (defined($actions->{'ignore'})) {
+    &readCache($progContext,'junk');
+    my $remove=&subHash($progContext->{'junk'},$preserve);
+    &removeFiles($progContext,'junk',$remove);
+  }
+  if (defined($actions->{'ignore'})) {
     my $generable=&getGenerable($realaxioms,1);
     foreach my $k (keys %{$generable}) {
       delete ($generable->{$k}) if $k =~ '^\.tmp';
@@ -178,72 +178,61 @@ sub main {
     my $data='/'.join("\n/",sort keys %$generable)."\n";
     &outputSection('.gitignore','plan',$data);
     &finish(0);
-  } elsif (defined($actions->{'build'})) {
-    &finish(3,"WIP");
-    # } elsif ($action eq 'goal') {
-    #   my $steps=0;
-    #   my $finished=0;
-    #   $planContext->{'fingerprint'}={};
-    #   $planContext->{'generated'}={};
-    #   &readCache($planContext,'fingerprint');
-    #   &readCache($planContext,'lazyfingerprint');
-    #   &addHashInPlace($planContext->{'fingerprint'},$planContext->{'lazyfingerprint'});
-    #   &readCache($planContext,'junk');
-    #   $planContext->{'junk'}->{'.tmp/mode'}=1;
-    #   &removeGenerated($planContext,'junk',undef);
-    #   my $narrowPlan;
-    #   while (!$finished) {
-    #     &preparePlan($realaxioms);
-    #     $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-    #     $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
-    #     my $begin=0;
-    #     my $xfinished=0;
-    #     my $todo=undef;
-    #     while (!$xfinished) {
-    #       my $end;
-    #       ($todo,$end)=&firstCompound($narrowPlan,$begin);
-    #       if (defined($todo)) {
-    #         $steps++;
-    #         $xfinished=1;
-    #       } else {
-    #         $begin=$end;
-    #         if ($begin >= scalar @$narrowPlan) {
-    #           $xfinished=1;
-    #           $finished=1;
-    #         }
-    #       }
-    #     }
-    #     &attempt($todo) if defined($todo);
-    #   }
-    #   $unbuildable=&subHash($goalHash,$planContext->{'generated'});
-    #   if (scalar keys %$unbuildable) {
-    #     &explainPlan($unbuildable);
-    #     &finish(1,'Some files could not be built');
-    #   }
-    #   if ($steps==0) {
-    #     if (scalar @$narrowPlan) { 
-    #       &out(1,'display','Everything is up to date');
-    #     } else {
-    #       &out(1,'display','Nothing to be done');
-    #     }
-    #   }
-    #   &finish(0);
-    # }
   }
-  # &finish(1,"$action is not implemented yet");
-  # } elsif ($action eq 'what') {
-  #   &preparePlan($realaxioms);
-  #   $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-  #   $unbuildable=&subHash($goalHash,$planContext->{'generated'});
-  #   my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
-  #   &explainPlan($unbuildable,$narrowPlan);
-  #   &finish(0);
-  # } elsif ($action eq 'how') {
-  #   &preparePlan($realaxioms);
-  #   $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-  #   my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
-  #   &graphviz($narrowPlan,$goalHash);
-  #   &finish(0);
+  if (defined($actions->{'build'})) {
+    my $steps=0;
+    my $finished=0;
+    $progContext->{'fingerprint'}={};
+    $progContext->{'lazyfingerprint'}={};
+    $planContext->{'generated'}={};
+    &readCache($progContext,'fingerprint');
+    &readCache($progContext,'lazyfingerprint');
+    &addHashInPlace($progContext->{'fingerprint'},$progContext->{'lazyfingerprint'});
+    my $narrowPlan;
+    while (!$finished) {
+      &preparePlan($realaxioms);
+      $narrowPlan=&reducePlan();
+      if (scalar keys %{$planContext->{'unbuildable'}}) {
+        &explainPlan($narrowPlan);
+        &finish(1,'Some files could not be built');
+      }
+      my $begin=0;
+      my $xfinished=0;
+      my $todo=undef;
+      while (!$xfinished) {
+        my $end;
+        ($todo,$end)=&firstCompound($narrowPlan,$begin);
+        if (defined($todo)) {
+          $steps++;
+          $xfinished=1;
+        } else {
+          $begin=$end;
+          if ($begin >= scalar @$narrowPlan) {
+            $xfinished=1;
+            $finished=1;
+          }
+        }
+      }
+      &attempt($todo) if defined($todo);
+    }
+    if (!$steps) {
+      if (scalar @$narrowPlan) { 
+        &out(1,'display','Everything is up to date');
+      } else {
+        &out(1,'display','Nothing to be done');
+      }
+    }
+  }
+  if (defined($actions->{'what'})) {
+    &preparePlan($realaxioms);
+    my $narrowPlan=&reducePlan();
+    &explainPlan($narrowPlan);
+  }
+  if (defined($actions->{'how'})) {
+    &preparePlan($realaxioms);
+    my $narrowPlan=&reducePlan();
+    &graphviz($narrowPlan);
+  }
   &finish(0);
 }
 
@@ -260,7 +249,8 @@ B<--verbosity> I<category> I<level> Change the verbosity to I<level> in I<catego
 
 B<--I<category>> I<level> Shortcut, as above (see L</"VERBOSITY">).
 
-If verbosity can be mistaken for a target name, use the B<--verbosity> form, because the target will take precedence.
+If verbosity can be mistaken for a target name, use the B<--verbosity>
+form, because the target will take precedence.
 
 The verbosity level is a positive integer (including 0).
 
@@ -299,7 +289,7 @@ everything to 0.
                  'err'=>1,
                  'dev'=>1,
                  'display'=>3};
-  my $jsonEncoder=JSON::PP->new->pretty->canonical;
+  my $jsonEncoder=JSON::PP->new->utf8->pretty->canonical;
   $outContext={
                'color' => 1,
                'class' => '',
@@ -334,6 +324,9 @@ sub finish {
   &newline();
   if ($status) {
     print "Dying: ",@_,"\n";
+  }
+  foreach my $key (keys %{$progContext->{'tmpfiles'}}) {
+    unlink($key);
   }
   exit($status);
 }
@@ -892,7 +885,11 @@ sub readCache {
   local $/;
   open (my $fh,'<',$filepath) or return;
   my $json=<$fh>;
-  my $cache=decode_json($json);
+  my $cache;
+  eval {$cache=decode_json($json)};
+  if ($@) {
+    die "Corrupted file $filepath";
+  }
   foreach my $f (keys %{$cache}) {
     $cacheHash->{$path}->{$f}=$cache->{$f};
   }
@@ -944,6 +941,7 @@ sub writeModes {
   &out(1,'init','Outputting modes');
   make_path('.tmp');
   open FILE,'>','.tmp/mode' or die 'I could not write to .tmp/mode';
+  $progContext->{'tmpfiles'}->{'.tmp/mode'}=1;
   my @array=sort keys %{$planContext->{'mode'}};
   print FILE join("\n",@array),"\n";
   close FILE;
@@ -1012,6 +1010,7 @@ sub readRules {
                      'actor' => 'AXIOM',
                      'class' => 'Checking axioms',
                      'subclass' => '',
+                     'name' => 'AXIOM'
                     };
   $optionContext->{'pristineRules'}=$rules;
   &out(1,'init','Read rules');
@@ -1138,6 +1137,7 @@ sub sortRules {
     $planContext->{'usedRules'}->{$rulename}=0;
     if ($origrule->{'type'} eq 'simple') {
       my $rule=&cleanRule(&clone($origrule));
+      $rule->{'name'}=$rulename;
       $planContext->{'simpleRules'}->{&actionKey($rule)}=$rule;
       $planContext->{'usedRules'}->{$rulename}=1;
     } elsif ($origrule->{'type'} eq 'pattern') {
@@ -1236,6 +1236,7 @@ sub developPatterns {
       }
       $rule->{'arg'}=[$arg];
       my $newrule=&cleanRule(&clone($rule),@list);
+      $newrule->{'name'}=$rulename;
       my $key=&actionKey($newrule);
       $newrule->{'trigger'}=$theorem;
       foreach my $wanted (keys %{$newrule->{'wanted'}}) {
@@ -1282,16 +1283,21 @@ sub eliminateCompleteRules {
 }
 
 sub preparePlan {
+  my ($axioms,$ignoredup,$modes,$lazy)=@_; # include list of lazy here
+  # ignoredup=0/undef => normal
+  # ignoredup=1     => ignore duplicates, do not recompute order
+  # ignoredup=2     => order being recomputed, do not ignore dup
   $planContext={};
   $planContext->{'pristineRules'}=&clone($optionContext->{'pristineRules'});
-  my ($axioms,$ignoreduplicatesandorder,$modes,$lazy)=@_; # include list of lazy here
-  $planContext->{'ignoreDuplicates'}=0;
-  $planContext->{'ignoreDuplicates'}=1 if defined($ignoreduplicatesandorder);
-  if (!defined($lazy)) {
+  $ignoredup=0 if (!defined($ignoredup));
+  $planContext->{'ignoreDuplicates'}=$ignoredup;
+  if ($ignoredup==0) {
     &out(1,'plan','Initializing plan');
     $planContext->{'lazy'}={};
-    &writeModes();
-  } else {
+  } elsif ($ignoredup==1) {
+    &out(1,'plan','Quick multimode plan');
+    $planContext->{'lazy'}={};
+  } elsif ($ignoredup==2) {
     &out(1,'plan','Recomputing plan (with lazy axioms)');
     $planContext->{'lazy'}=$lazy;
     $axioms=&subHash($axioms,$lazy);
@@ -1329,9 +1335,12 @@ sub preparePlan {
       $gen=$mingen;
     }
   }
-  if (scalar keys %{$planContext->{'lazy'}} > 0 and !defined($lazy) and
+  if (scalar keys %{$planContext->{'lazy'}} > 0 and
+      !defined($lazy) and
       $planContext->{'ignoreDuplicates'} == 0 ) {
-    &preparePlan($axioms,undef,&clone($planContext->{'mode'}),&clone($planContext->{'lazy'}));
+    &preparePlan($axioms,2,
+                 &clone($planContext->{'mode'}),
+                 &clone($planContext->{'lazy'}));
   }
 }
 sub getGenerable {
@@ -1352,7 +1361,6 @@ sub getGenerable {
   return $generable;
 }
 sub explainPlan {
-  my $unbuildable=shift @_;
   my $narrowPlan=shift @_;
   &out(1,'plan','Explaining plan');
   foreach my $key (sort keys %{$planContext->{'simpleRules'}}) {
@@ -1378,7 +1386,7 @@ sub explainPlan {
       &out(1,'err',"The rule named $rulename was not used at all.");
     }
   }
-  foreach my $file (sort keys %$unbuildable) {
+  foreach my $file (sort keys %{$planContext->{'unbuildable'}}) {
     &out(1,'err',"Impossible to build $file");
   }
   &out(1,'out',"Here is the plan so far:");
@@ -1391,16 +1399,25 @@ sub explainPlan {
 }
 sub reducePlan {
   &out(1,'plan','Narrowing build paths for selected goals');
-  my ($goals,$generation)=@_;
   my $plan={};
   my $seen={};
+  my $goals=&clone($optionContext->{'includedFiles'});
+  if ($optionContext->{'allFiles'} == 1) {
+    foreach my $key (keys %{$planContext->{'generated'}}) {
+      $goals->{$key}=1;
+    }
+  }
+  foreach my $key ($optionContext->{'excludedFiles'}) {
+    delete $goals->{$key} if defined($goals->{$key});
+  }
   my $requirement=&clone($goals);
+  my $generation=$planContext->{'generated'};
+  foreach my $key (keys %$requirement) {
+    $seen->{$key}=1;
+  }
   while (scalar keys %$requirement) {
-    my $tab=[keys %$requirement];
     foreach my $file (keys %$requirement) {
       delete ($requirement->{$file});
-      next if ($seen->{$file});
-      $seen->{$file}=1;
       if (!exists($generation->{$file})) {
         &out(1,'err','No build path to "'.&encodeGoalLine($file).'" yet.');
         next;
@@ -1409,6 +1426,7 @@ sub reducePlan {
       my $inFiles=$planContext->{'plan'}->{$actionkey}->{'in'};
       foreach my $in (keys %$inFiles) {
         $requirement->{$in}=1 unless $seen->{$in};
+        $seen->{$in}=1;
       }
       $plan->{$actionkey}=1;
     }
@@ -1424,6 +1442,8 @@ sub reducePlan {
             ($pa->{'key'} cmp $pb->{'key'})
           } keys %$plan];
   &out(2,'plan',$planKeys);
+  $planContext->{'unbuildable'}=&subHash($goals,$planContext->{'generated'});
+  $planContext->{'goals'}=$goals;
   return $planKeys;
 }
 
@@ -1456,9 +1476,9 @@ sub firstCompound {
     my $fingerprintIn=&fingerprintArray($rule,'in');
     $rule->{'fingerprintIn'}=$fingerprintIn;
     my $fingerprintOut=&fingerprintArray($rule,'out');
-    if (!defined($planContext->{'fingerprint'}->{$key})) {
+    if (!defined($progContext->{'fingerprint'}->{$key})) {
       &out(2,'plan',"Considering $key (never seen)");
-    } elsif ($planContext->{'fingerprint'}->{$key} eq "$fingerprintIn $fingerprintOut") {
+    } elsif ($progContext->{'fingerprint'}->{$key} eq "$fingerprintIn $fingerprintOut") {
       &out(3,'plan',"Not considering $key");
       next;
     } else {
@@ -1507,8 +1527,8 @@ sub registerSuccess {
   my $fingerprintIn=$rule->{'fingerprintIn'};
   my $key=&actionKey($rule);
   &out(3,'plan',"Registering success of $key");
-  $planContext->{'fingerprint'}->{$key}="$fingerprintIn $fingerprintOut";
-  $planContext->{'lazyfingerprint'}->{$key}="$fingerprintIn $fingerprintOut" if defined($rule->{'lazy'});
+  $progContext->{'fingerprint'}->{$key}="$fingerprintIn $fingerprintOut";
+  $progContext->{'lazyfingerprint'}->{$key}="$fingerprintIn $fingerprintOut" if defined($rule->{'lazy'});
 }
 sub attempt {
   my $rule=shift @_;
@@ -1526,9 +1546,9 @@ sub attempt {
   # in doubt, every possibly generated file will have been generated in the first
   # steps of the rule, so let's suppose they were.
   if ($rule ne 'AXIOM') {
-    &addHashInPlace($planContext->{'junk'},$rule->{'out'});
-    &addHashInPlace($planContext->{'junk'},$rule->{'junk'});
-    &writeCache($planContext,'junk');
+    &addHashInPlace($progContext->{'junk'},$rule->{'out'});
+    &addHashInPlace($progContext->{'junk'},$rule->{'junk'});
+    &writeCache($progContext,'junk');
   }
   my $status=&execCommand(@execLine);
   if ($status) {
@@ -1540,8 +1560,8 @@ sub attempt {
         &out(1,'err',"$ok was registered as done, but no rule by that name exists");
       }
     }
-    &writeCache($planContext,'fingerprint');
-    &writeCache($planContext,'lazyfingerprint') if defined($rule->{'lazy'});
+    &writeCache($progContext,'fingerprint');
+    &writeCache($progContext,'lazyfingerprint') if defined($rule->{'lazy'});
     &finish(1,"One rule failed with status $status");
   } else {
     if (exists($rule->{'origin'})) {
@@ -1551,8 +1571,8 @@ sub attempt {
     } else {
       &registerSuccess($rule);
     }
-    &writeCache($planContext,'fingerprint');
-    &writeCache($planContext,'lazyfingerprint') if defined($rule->{'lazy'});
+    &writeCache($progContext,'fingerprint');
+    &writeCache($progContext,'lazyfingerprint') if defined($rule->{'lazy'});
   }
 }
 
@@ -1564,23 +1584,130 @@ sub graphviz {
   # Collapse all actions produced by patterns as one node.
   my ($plan,$gen)=@_;
   my $rule;
+  my $name;
+  my $rulenames={};
   print "digraph How {\n  node [shape=box];\n";
   foreach my $key (@$plan) {
     $rule=$planContext->{'plan'}->{$key};
-    next if $rule->{'actor'} eq 'AXIOM';
-    print "  \"$key\";\n";
+    $name=$rule->{'name'}.' '.$rule->{'gen'};
+    $rulenames->{$name}={} unless (defined($rulenames->{$name}));
+    $rulenames->{$name}->{$key}=1;
   }
-  print "  node [shape=ellipse];\n";
+  foreach my $rulename (sort keys %$rulenames) {
+    next if ($rulename eq 'AXIOM 0');
+    my @keys=sort keys %{$rulenames->{$rulename}};
+    my $caption;
+    if (scalar @keys > 9) {
+      my $len=scalar @keys;
+      splice @keys,8,$len,"...total $len";
+    }
+    $caption=join('\n',@keys);
+    print '  "'.$rulename.'" [ label="'.$caption.'"];'."\n";
+  }
+  print '  node [shape=box,fillcolor="#FFFFD0",style=filled];'."\n";
+  my $filetoinofrule={};
+  my $filetooutofrule={};
+  my $files={};
   foreach my $key (@$plan) {
     $rule=$planContext->{'plan'}->{$key};
-    next if $rule->{'actor'} eq 'AXIOM';
+    $name=$key;
+    $name=$rule->{'name'}.' '.$rule->{'gen'};;
+    next if ($name eq 'AXIOM 0');
     foreach my $file (keys %{$rule->{'out'}}) {
-      print "  \"$key\" -> \"$file\";\n";
+      if (!defined($filetooutofrule->{$file})) {
+        $filetooutofrule->{$file}={};
+      }
+      $filetooutofrule->{$file}->{$name}=1;
+      $files->{$file}=1;
     }
     foreach my $file (keys %{$rule->{'in'}}) {
-      print "  \"$file\" -> \"$key\";\n";
+      if (!defined($filetoinofrule->{$file})) {
+        $filetoinofrule->{$file}={};
+      }
+      $filetoinofrule->{$file}->{$name}=1;
+      $files->{$file}=1;
     }
   }
+  my $alias={};
+  my $nodes={};
+  foreach my $file (keys %$files) {
+    if (!defined($filetooutofrule->{$file})) {
+      $filetooutofrule->{$file}={};
+    }
+    if (!defined($filetoinofrule->{$file})) {
+      $filetoinofrule->{$file}={};
+    }
+    my $data='IN:'.join("\n",sort keys %{$filetoinofrule->{$file}})."\n";
+    $data.='OUT:'.join("\n",sort keys %{$filetooutofrule->{$file}});
+    my $hashing = Digest::MD5->new;
+    $hashing->add($data);
+    my $node='NODE'.$hashing->hexdigest;
+    $alias->{$file}=$node;
+    $nodes->{$node}={} unless defined($nodes->{$node});
+    $nodes->{$node}->{$file}=1;
+  }
+  foreach my $node (keys %$nodes) {
+    my @keys=sort keys %{$nodes->{$node}};
+    my $caption;
+    if (scalar @keys > 9) {
+      my $len=scalar @keys;
+      splice @keys,8,$len,"...total $len";
+    }
+    $caption=join('\n',@keys);
+    print $node.' [ label="'.$caption.'"];'."\n";
+  }
+  my $links={};
+  foreach my $key (@$plan) {
+    $rule=$planContext->{'plan'}->{$key};
+    $name=$rule->{'name'}.' '.$rule->{'gen'};
+    next if ($name eq 'AXIOM 0');
+    foreach my $file (keys %{$rule->{'out'}}) {
+      $links->{$name}->{$alias->{$file}}=1;
+    }
+    foreach my $file (keys %{$rule->{'in'}}) {
+      $links->{$alias->{$file}}->{$name}=1;
+    }
+  }
+  foreach my $start (sort keys %$links) {
+    foreach my $end (sort keys %{$links->{$start}}) {
+      print '  "'.$start.'" -> "'.$end.'";'."\n";
+    }
+  }
+  # my $alias={};
+  # my $aliasusable={};
+  # my $revertalias={};
+  # foreach my $file (keys %$usedfilein) {
+  #   my $data=join("\n",sort keys %{$usedfilein->{$file}});
+  #   $alias->{$file}=$data;
+  #   my $hashing = Digest::MD5->new;
+  #   $hashing->add($data);
+  #   $aliasusable->{$file}='NODE'.$hashing->hexdigest;
+  #   if (!defined($revertalias->{$aliasusable->{$file}})) {
+  #     $revertalias->{$aliasusable->{$file}}={};
+  #   }
+  #   $revertalias->{$aliasusable->{$file}}->{$file}=1;
+  # }
+  # foreach my $node (keys %$revertalias) {
+  #   print $node.' [ label="'.join('\n',sort keys %{$revertalias->{$node}}).'"];'."\n";
+  # }
+  # foreach my $key (@$plan) {
+  #   $rule=$planContext->{'plan'}->{$key};
+  #   next if $rule->{'actor'} eq 'AXIOM';
+  #   my $links={};
+  #   foreach my $file (keys %{$rule->{'out'}}) {
+  #     $links->{$aliasusable->{$file}}=1;
+  #   }
+  #   foreach my $link (keys %$links) {
+  #     print '  "'.$key.'" -> "'.$link.'";'."\n";
+  #   }
+  #   $links={};
+  #   foreach my $file (keys %{$rule->{'in'}}) {
+  #     $links->{$aliasusable->{$file}}=1;
+  #   }
+  #   foreach my $link (keys %$links) {
+  #     print '  "'.$link.'" -> "'.$key.'";'."\n";
+  #   }
+  # }
   print "}\n";
 }
 
