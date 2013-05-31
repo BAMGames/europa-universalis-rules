@@ -64,7 +64,9 @@ use POSIX ":sys_wait_h";
 use IO::Select;
 use IO::Handle;
 
-my ($execContext,$planContext,$outContext);
+my ($execContext,$planContext,$outContext,$optionContext);
+
+$planContext=undef;
 
 # Directories
 
@@ -136,105 +138,113 @@ sub main {
   my $unbuildable;
   &initLogging();
   &findGitTopdir();
-  my ($goals,$targets,$action)=&parseARGV();
-  if ($action =~ /^help-([a-z]+)/) {
-    &usage($1);
+  &parseARGV();
+  my $actions=$optionContext->{'actions'};
+  if (defined($actions->{'help'})) {
+    &usage($optionContext->{'help'});
   }
-  &writeModes();
   &readRules();
-  my $axioms=&readAxiomsFromGit();
+  my $gitaxioms=&readAxiomsFromGit();
   &setupCommand();
   my $exceptions=&readFileList('plan/axioms');
   my $notaxioms=&readFileList('plan/notaxioms');
-  my $realaxioms=addHash($axioms,$exceptions);
+  my $realaxioms=addHash($gitaxioms,$exceptions);
   $realaxioms=subHash($realaxioms,$notaxioms);
-  if ($action eq 'clean' or $action eq 'distclean') {
-    my $finals={};
-    $finals=&readFileList('plan/targets/finals') if $action eq 'clean';
-    my $preserve=addHash($realaxioms,$finals);
-    &readCache($planContext,'junk');
-    $planContext->{'junk'}->{'.tmp/mode'}=1;
-    &removeGenerated($planContext,'junk',$preserve);
-    &finish(0);
-  } elsif ($action eq 'what') {
-    &preparePlan($realaxioms);
-    $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-    $unbuildable=&subHash($goalHash,$planContext->{'generated'});
-    my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
-    &explainPlan($unbuildable,$narrowPlan);
-    &finish(0);
-  } elsif ($action eq 'ignore') {
-    my $generable={};
-    foreach my $mode (sort keys %{$planContext->{'availableModes'}}) {
-      $planContext->{'mode'} = {};
-      $planContext->{'mode'}->{$mode}=1;
-      &preparePlan($realaxioms);
-      foreach my $k (keys %{$planContext->{'generated'}},
-                     keys %{$planContext->{'junkable'}}) {
-        $generable->{$k}=1 unless $k =~ '^.tmp';
-      }
+  $planContext={};
+  &readCache($planContext,'junk');
+  &cleanJunk($planContext,'junk');
+  if (defined($actions->{'distclean'})) {
+    # distclean = Remove everything in JUNK, NOT IN GOALS_MULTIMODE
+    # clean = distclean finals (removes everything except files in finals)
+    # sweep = distclean GENERABLE_MULTIMODE (removes everything no more generable)
+    # GOALS_MULTIMODE = if all, GENERABLE_MULTIMODE sub EXCLUDED_FILES
+    #                   if not all, INCLUDED_FILES sub EXCLUDED_FILES
+    my $preserve=&clone($optionContext->{'includedFiles'});
+    if ($optionContext->{'allFiles'} == 1) {
+      $preserve=&addHash($preserve,&getGenerable($realaxioms,0));
     }
-    $generable=&subHash($generable,$axioms);
+    $preserve=&addHash($preserve,$realaxioms);
+    $preserve=&subHash($preserve,$optionContext->{'excludedFiles'});
+    &readCache($planContext,'junk');
+    my $remove=&subHash($planContext->{'junk'},$preserve);
+    &removeFiles($planContext,'junk',$remove);
+  } elsif (defined($actions->{'ignore'})) {
+    my $generable=&getGenerable($realaxioms,1);
+    foreach my $k (keys %{$generable}) {
+      delete ($generable->{$k}) if $k =~ '^\.tmp';
+    }
     $generable->{'.tmp'} = 1;
+    $generable=&subHash($generable,$gitaxioms);
     my $data='/'.join("\n/",sort keys %$generable)."\n";
     &outputSection('.gitignore','plan',$data);
     &finish(0);
-  } elsif ($action eq 'how') {
-    &preparePlan($realaxioms);
-    $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-    my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
-    &graphviz($narrowPlan,$goalHash);
-    &finish(0);
-  } elsif ($action eq 'goal') {
-    my $steps=0;
-    my $finished=0;
-    $planContext->{'fingerprint'}={};
-    $planContext->{'generated'}={};
-    &readCache($planContext,'fingerprint');
-    &readCache($planContext,'lazyfingerprint');
-    &addHashInPlace($planContext->{'fingerprint'},$planContext->{'lazyfingerprint'});
-    &readCache($planContext,'junk');
-    $planContext->{'junk'}->{'.tmp/mode'}=1;
-    &removeGenerated($planContext,'junk',undef);
-    my $narrowPlan;
-    while (!$finished) {
-      &preparePlan($realaxioms);
-      $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
-      $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
-      my $begin=0;
-      my $xfinished=0;
-      my $todo=undef;
-      while (!$xfinished) {
-        my $end;
-        ($todo,$end)=&firstCompound($narrowPlan,$begin);
-        if (defined($todo)) {
-          $steps++;
-          $xfinished=1;
-        } else {
-          $begin=$end;
-          if ($begin >= scalar @$narrowPlan) {
-            $xfinished=1;
-            $finished=1;
-          }
-        }
-      }
-      &attempt($todo) if defined($todo);
-    }
-    $unbuildable=&subHash($goalHash,$planContext->{'generated'});
-    if (scalar keys %$unbuildable) {
-      &explainPlan($unbuildable);
-      &finish(1,'Some files could not be built');
-    }
-    if ($steps==0) {
-      if (scalar @$narrowPlan) { 
-        &out(1,'display','Everything is up to date');
-      } else {
-        &out(1,'display','Nothing to be done');
-      }
-    }
-    &finish(0);
+  } elsif (defined($actions->{'build'})) {
+    &finish(3,"WIP");
+    # } elsif ($action eq 'goal') {
+    #   my $steps=0;
+    #   my $finished=0;
+    #   $planContext->{'fingerprint'}={};
+    #   $planContext->{'generated'}={};
+    #   &readCache($planContext,'fingerprint');
+    #   &readCache($planContext,'lazyfingerprint');
+    #   &addHashInPlace($planContext->{'fingerprint'},$planContext->{'lazyfingerprint'});
+    #   &readCache($planContext,'junk');
+    #   $planContext->{'junk'}->{'.tmp/mode'}=1;
+    #   &removeGenerated($planContext,'junk',undef);
+    #   my $narrowPlan;
+    #   while (!$finished) {
+    #     &preparePlan($realaxioms);
+    #     $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+    #     $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
+    #     my $begin=0;
+    #     my $xfinished=0;
+    #     my $todo=undef;
+    #     while (!$xfinished) {
+    #       my $end;
+    #       ($todo,$end)=&firstCompound($narrowPlan,$begin);
+    #       if (defined($todo)) {
+    #         $steps++;
+    #         $xfinished=1;
+    #       } else {
+    #         $begin=$end;
+    #         if ($begin >= scalar @$narrowPlan) {
+    #           $xfinished=1;
+    #           $finished=1;
+    #         }
+    #       }
+    #     }
+    #     &attempt($todo) if defined($todo);
+    #   }
+    #   $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+    #   if (scalar keys %$unbuildable) {
+    #     &explainPlan($unbuildable);
+    #     &finish(1,'Some files could not be built');
+    #   }
+    #   if ($steps==0) {
+    #     if (scalar @$narrowPlan) { 
+    #       &out(1,'display','Everything is up to date');
+    #     } else {
+    #       &out(1,'display','Nothing to be done');
+    #     }
+    #   }
+    #   &finish(0);
+    # }
   }
-  &finish(1,"$action is not implemented yet");
+  # &finish(1,"$action is not implemented yet");
+  # } elsif ($action eq 'what') {
+  #   &preparePlan($realaxioms);
+  #   $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+  #   $unbuildable=&subHash($goalHash,$planContext->{'generated'});
+  #   my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
+  #   &explainPlan($unbuildable,$narrowPlan);
+  #   &finish(0);
+  # } elsif ($action eq 'how') {
+  #   &preparePlan($realaxioms);
+  #   $goalHash=&instantiateTargets($targets,$goals,$planContext->{'generated'},$realaxioms);
+  #   my $narrowPlan=&reducePlan($goalHash,$planContext->{'generated'});
+  #   &graphviz($narrowPlan,$goalHash);
+  #   &finish(0);
+  &finish(0);
 }
 
 &main();
@@ -322,7 +332,7 @@ sub columns {
 sub finish {
   my $status=shift @_;
   &newline();
-  if ($status == 1) {
+  if ($status) {
     print "Dying: ",@_,"\n";
   }
   exit($status);
@@ -443,105 +453,184 @@ sub out {
 }
 
 # ARGV
-if ('' eq 'DOC OUTPUT OPTIONS') {
-}
-sub parseARGV {
-  my $goals=[];
-  my $action='goal';
-  my $targets=[];
-  $planContext->{'mode'}={};
-  $planContext->{'availableModes'}=&readFileList($modesfile,1);
-  $planContext->{'availableModes'}->{'default'}=1;
-  $planContext->{'hardrules'}={};
+sub initOptions {
+  $optionContext={};
+  $optionContext->{'verbosity'}=$outContext->{'verbosity'};
+  $optionContext->{'availableModes'}=&readFileList($modesfile,1);
+  $optionContext->{'availableModes'}->{'default'}=1;
+  $optionContext->{'availableHelps'}={
+                                      'help' => 1,
+                                      'nroff' => 1,
+                                      'man' => 1,
+                                      'usage' => 1,
+                                     };
+  $optionContext->{'availableActions'}={
+                                        'ignore' => 1,
+                                        'what' => 1,
+                                        'why' => 1,
+                                        'how' => 1,
+                                        'distclean' => 1,
+                                        'build' => 1,
+                                       };
+  $optionContext->{'excludedFiles'}={};
+  $optionContext->{'includedFiles'}={};
+  $optionContext->{'actions'}={};
+  $optionContext->{'targets'}={};
+  $optionContext->{'hardrules'}={};
+  $optionContext->{'allFiles'}=0;
+  $optionContext->{'lazy'}=1;
+  $optionContext->{'standardTargets'}
+    = {
+       'all' => [ '--all' ],
+       '--help' => [ '--help-action', 'help' ],
+       '-h' => [ '--help-action', 'help' ],
+       '--usage' => [ '--help-action', 'usage' ],
+       '--man' => [ '--help-action', 'man' ],
+       '--nroff' => [ '--help-action', 'nroff' ],
+       'what' => [ '--action', 'what' ],
+       '--what' => [ '--action', 'what' ],
+       'how' => [ '--action', 'how' ],
+       '--how' => [ '--action', 'how' ],
+       'why' => [ '--action', 'why' ],
+       '--why' => [ '--action', 'why' ],
+       'ignore' => [ '--action', 'ignore' ],
+       '--ignore' => [ '--action', 'ignore' ],
+       'distclean' => [ '--action', 'distclean' ],
+       '--distclean' => [ '--action', 'distclean' ],
+       'clean' => [ '--action', 'distclean' ],
+       '--clean' => [ '--action', 'distclean' ],
+      };
   my @target=&readDir('plan/targets');
-  my %target=('all' => 1);
   foreach my $t (@target) {
-    $target{$t}=1;
+    $optionContext->{'targets'}->{$t}=1;
   }
-  my $lazy=1;
+}
+sub checkOptionArg {
+  my ($x,$option,$available,$where)=@_;
+  my $optname=$option->[$x];
+  &finish(1,"Wrong option: $optname must be followed by one argument") unless defined($option->[$x+1]);
+  my $cat=$option->[$x+1];
+  if ( $available and !defined($optionContext->{$available}->{$cat}) ) {
+    &finish(1,"Wrong option: $optname must be followed by one of \"".join('" or "',sort keys %{$optionContext->{$available}}).'"');
+  }
+  $optionContext->{$where}->{$cat}=1 if $where;
+  return $cat;
+}
+sub parseOptions {
+  my ($desc,$options)=@_;
+  my @option=@$options;
+  &out(1,'init',"Treating $desc options");
+  &out(2,'init',$options);
   my $x=0;
-  while ($x < scalar @ARGV) {
-    my $arg=$ARGV[$x];
-    if (defined($target{$arg}) or $arg eq '--target') {
-      if ($arg eq '--target') {
-        $x++;
-        $arg=$ARGV[$x];
-      }
-      push $targets,$arg;
-    } elsif ($arg eq '--verbosity') {
-      &finish(1,"Wrong option: --verbosity must be followed by two arguments") unless defined($ARGV[$x+2]);
-      my $cat=$ARGV[$x+1];
-      my $level=$ARGV[$x+2];
-      $x+=2;
-      &finish(1,"Wrong option: --verbosity must be followed by one of \"".join('" or "',sort keys %{$outContext->{'verbosity'}}).'"') unless defined($outContext->{'verbosity'}->{$cat});
-      &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
-      $outContext->{'verbosity'}->{$cat}=$level;
-    } elsif ($arg eq '--nroff') {
-      $action='help-nroff';
-    } elsif ($arg eq '--mode') {
-      my $cat=$ARGV[$x+1];
+  while ($x < scalar @option) {
+    my $arg=$option[$x];
+    if ($arg eq '--') {
       $x++;
-      &finish(1,"Wrong option: --mode must be followed by one of \"".join('" or "',sort keys %{$planContext->{'availableModes'}}).'"') unless defined($planContext->{'availableModes'}->{$cat});
-      $planContext->{'mode'}->{$cat}=1;
-    } elsif ($arg eq '--hardrule') {
-      my $cat=$ARGV[$x+1];
-      $x++;
-      $planContext->{'hardrules'}->{$cat}={};
-    } elsif ($arg eq '--hardrule-limited') {
-      my $cat=$ARGV[$x+1];
-      my $arg=$ARGV[$x+2];
-      $x+=2;
-      if (!defined($planContext->{'hardrules'}->{$cat})) {
-        $planContext->{'hardrules'}->{$cat}={};
+      while (defined($option[$x])) {
+        $optionContext->{'includedFiles'}->{$option[$x]}=1;
       }
-      $planContext->{'hardrules'}->{$cat}->{$arg}=1;
+    } elsif ($arg eq '--help-action') {
+      &checkOptionArg($x++,$options,'availableHelps','help');
+      $optionContext->{'actions'}->{'help'}=1;
+    } elsif ($arg eq '--action') {
+      &checkOptionArg($x++,$options,'availableActions','actions');
+    } elsif ($arg eq '--all') {
+      $optionContext->{'allFiles'}=1;
     } elsif ($arg eq '--hard') {
-      $lazy=0;
-    } elsif ($arg eq '--help' or $arg eq '-h') {
-      $action='help-help';
-    } elsif ($arg eq '--man') {
-      $action='help-man';
-    } elsif ($arg eq '--usage') {
-      $action='help-usage';
-    } elsif ($arg eq '--nroff') {
-      $action='help-nroff';
-    } elsif ($arg eq 'what' or $arg eq '--what') {
-      $action='what';
-    } elsif ($arg eq 'ignore' or $arg eq '--ignore') {
-      $action='ignore';
-      $lazy=0;
-    } elsif ($arg eq 'why' or $arg eq '--why') {
-      $action='why';
-    } elsif ($arg eq 'how' or $arg eq '--how') {
-      $action='how';
-    } elsif ($arg eq 'clean' or $arg eq '--clean') {
-      $action='distclean';
-    } elsif ($arg eq 'distclean' or $arg eq '--distclean') {
-      $action='distclean';
-    } elsif ($arg =~ '--(\w+)' and defined($outContext->{'verbosity'}->{$1})) {
-      my $cat=$1;
-      my $level=$ARGV[$x+1];
-      $x++;
-      &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
-      $outContext->{'verbosity'}->{$cat}=$level;
-    } elsif ($arg eq '--') {
-      $x++;
-      while ($x < scalar @ARGV) {
-        push $goals,$ARGV[$x];
-        $x++;
+      $optionContext->{'lazy'}=0;
+    } elsif ($arg eq '--mode') {
+      &checkOptionArg($x++,$options,'availableModes','mode');
+    } elsif ($arg eq '--hardrule') {
+      my $cat=&checkOptionArg($x++,$options,undef,'hardrules');
+    } elsif ($arg eq '--hardrule-limited') {
+      &finish(1,"Wrong option: --hardrule-limited must be followed by two arguments") unless defined($option[$x+2]);
+      my $cat=$option[++$x];
+      my $level=$option[++$x];
+      if (ref($optionContext->{'hardrules'}->{$cat}) ne 'HASH') {
+        $optionContext->{'hardrules'}->{$cat}={};
       }
+      $optionContext->{'hardrules'}->{$cat}->{$level}=1;
+    } elsif ($arg =~ '--(\w+)' and defined($optionContext->{'verbosity'}->{$1})) {
+      my $cat=$1;
+      my $level=$option[++$x];
+      &finish(1,"Wrong option: --$cat must be followed by an integer") unless $level =~ /^[0-9]+$/;
+      $optionContext->{'verbosity'}->{$cat}=$level;
+    } elsif ($arg eq '--verbosity') {
+      &finish(1,"Wrong option: --verbosity must be followed by two arguments") unless defined($option[$x+2]);
+      my $cat=&checkOptionArg($x++,$options,'verbosity');
+      my $level=$option[++$x];
+      &finish(1,"Wrong option: --verbosity must be followed by a category and an integer") unless $level =~ /^[0-9]+$/;
+      $optionContext->{'verbosity'}->{$cat}=$level;
+    } elsif ($arg eq '--exclude') {
+      &checkOptionArg($x++,$options,undef,'excludedFiles');
+    } elsif ($arg eq '--file') {
+      &checkOptionArg($x++,$options,undef,'includedFiles');
+    } elsif (
+             defined($optionContext->{'targets'}->{$arg}) or
+             defined($optionContext->{'standardTargets'}->{$arg}) or
+             $arg eq '--target'
+            ) {
+      if ($arg eq '--target') {
+        $arg=&checkOptionArg($x++,$options,'targets');
+      }
+      &parseTarget($arg);
     } else {
-      push $goals,$arg;
+      $optionContext->{'includedFiles'}->{$arg}=1;
     }
     $x++;
   }
-  if (scalar @$goals == 0 and scalar @$targets == 0) {
-    push $targets,'finals';
-  }
-  &out(1,'init','Parsing ARGV done');
-  $planContext->{'lazyOption'}=$lazy;
-  return ($goals,$targets,$action);
 }
+sub parseTarget {
+  my $target=shift @_;
+  if (ref($optionContext->{'targets'}->{$target}) ne 'ARRAY') {
+    my $targetOptions=[];
+    if (defined($optionContext->{'standardTargets'}->{$target})) {
+      $targetOptions=$optionContext->{'standardTargets'}->{$target};
+    } else {
+      my $targetName='plan/targets/'.$target;
+      open TARGET,$targetName or &finish(1,"Unable to open $targetName");
+      while (my $l=<TARGET>) {
+        chomp $l;
+        push $targetOptions,map {&decodeGoalLine($_)} split(/ /,$l);
+      }
+      close TARGET;
+      $optionContext->{'targets'}->{$target}=$targetOptions;
+    }
+    &parseOptions('target '.$target,$targetOptions);
+  } else {
+    &out(2,'init',"Skipping $target because it was already invoked");
+  }
+}
+sub parseARGV {
+  &initOptions();
+  &parseOptions('command line',[@ARGV]);
+  if (scalar keys %{$optionContext->{'actions'}} == 0) {
+    $optionContext->{'actions'}->{'build'}=1;
+  }
+  if ( (
+        defined($optionContext->{'actions'}->{'build'}) or
+        defined($optionContext->{'actions'}->{'why'}) or
+        defined($optionContext->{'actions'}->{'how'})
+       ) and
+       scalar keys %{$optionContext->{'includedFiles'}} == 0 and
+       $optionContext->{'allFiles'} == 0 and
+       defined($optionContext->{'targets'}->{'finals'}) ) {
+    &parseOptions('backup plan #1',['--target','finals']);
+  }
+  if ( (
+        defined($optionContext->{'actions'}->{'build'}) or
+        defined($optionContext->{'actions'}->{'why'}) or
+        defined($optionContext->{'actions'}->{'how'})
+       ) and
+       scalar keys %{$optionContext->{'includedFiles'}} == 0 ) {
+    &parseOptions('backup plan #2',['--all']);
+  }
+  if (scalar keys %{$optionContext->{'mode'}} == 0) {
+    $optionContext->{'mode'}->{'default'}=1;
+  }
+  &out(3,'init',$optionContext);
+}
+
 sub instantiateTargets {
   my ($targets,$goals,$generation,$axioms)=@_;
   my $goalHash={};
@@ -577,11 +666,15 @@ B<--man> Generate man page.
 
 B<--nroff> Generate man page in NROFF format.
 
+B<--help-action usage|help|man|nroff> One of the above.
+
 =cut
 
   ### usage ($option)
   ### Provides all kinds of textual help and stops
-  my ($option)=@_;
+  my ($options)=@_;
+  my $option=(sort keys %$options)[0];
+  &out(1,'init',"Entering help with option $option");
   if (!defined($option)) {
     $option='usage';
   }
@@ -787,6 +880,9 @@ sub writeCache {
 }
 sub readCache {
   my ($cacheHash,$path)=@_;
+  if (!defined($cacheHash)) {
+    $cacheHash={};
+  }
   if (!defined($cacheHash->{$path})) {
     $cacheHash->{$path}={};
   }
@@ -849,52 +945,37 @@ sub writeModes {
   make_path('.tmp');
   open FILE,'>','.tmp/mode' or die 'I could not write to .tmp/mode';
   my @array=sort keys %{$planContext->{'mode'}};
-  do {
-    $planContext->{'mode'}->{'default'} = 1;
-    push @array,'default';
-  } unless scalar @array;
   print FILE join("\n",@array),"\n";
   close FILE;
 }
 
-sub forceUnlink {
-  my $_=shift @_;
-  if (-d $_) {
-    remove_tree($_);
-  } elsif (-e $_) {
-    unlink $_;
-  }
-}
-sub removeGenerated {
-  my ($cacheHash,$path,$axioms)=@_;
-  my $count=0;
-  if (defined($axioms)) {
-    &out(1,'display','Removing old files');
-  } else {
-    &out(1,'init','Cleaning old files cache');
-  }
-  # If $axioms not defined, just test presence
-  # Else, unlink all files not in $axioms hash
+sub cleanJunk {
+  my ($cacheHash,$path)=@_;
+  &out(1,'init','Cleaning old files cache');
   foreach my $key (keys %{$cacheHash->{$path}}) {
-    if (-e $key) {
-      if (defined($axioms) and !exists($axioms->{$key})) {
-        # clean or distclean
-        $count++;
-        &forceUnlink($key);
-        delete $cacheHash->{$path}->{$key};
+    delete $cacheHash->{$path}->{$key} unless (-e $key);
+  }
+  &writeCache($cacheHash,$path);
+}
+sub removeFiles {
+  my ($cacheHash,$path,$toRemove)=@_;
+  my $count=0;
+  foreach my $key (keys %$toRemove) {
+    if (-l $key or -e $key) {
+      $count++;
+      if (-d $key) {
+        remove_tree($key);
+      } elsif (-e $key or -l $key) {
+        unlink $key;
       }
-    } else {
       delete $cacheHash->{$path}->{$key};
     }
   }
-  &writeCache($cacheHash,$path);
-  if (defined($axioms)) {
-    # -1 because .tmp/modes is always created at the start of the program
-    if ($count>1) {
-      &out(3,'display',"removed ".($count-1)." old files");
-    } else {
-      &out(3,'display',"all files already removed");
-    }
+  if ($count>1) {
+    &out(3,'display',"removed ".($count-1)." old files");
+    &writeCache($cacheHash,$path);
+  } else {
+    &out(3,'display',"all files already removed");
   }
 }
 
@@ -932,7 +1013,7 @@ sub readRules {
                      'class' => 'Checking axioms',
                      'subclass' => '',
                     };
-  $planContext->{'pristineRules'}=$rules;
+  $optionContext->{'pristineRules'}=$rules;
   &out(1,'init','Read rules');
 }
 sub readFileList {
@@ -983,6 +1064,7 @@ sub recordGeneration {
   $planContext->{'plan'}->{$key}=$rule;
   foreach my $outfile (keys %{$rule->{'out'}}) {
     if (defined($planContext->{'generated'}->{$outfile})) {
+      goto OK if ($planContext->{'ignoreDuplicates'} == 1);
       if (defined($planContext->{'realAxioms'})
           and $planContext->{'generated'}->{$outfile} =~ /^AXIOM /) {
         if (defined($rule->{'lazy'})) {
@@ -1029,16 +1111,16 @@ sub sortRules {
   foreach my $rulename (keys %$prule) {
     my $origrule=$prule->{$rulename};
     if (defined($origrule->{'lazy'})
-        and $planContext->{'lazyOption'} == 1) {
-      if (defined($planContext->{'hardrules'}->{$rulename})) {
+        and $optionContext->{'lazy'} == 1) {
+      if (defined($optionContext->{'hardrules'}->{$rulename})) {
         &out(1,'plan',"Rule $rulename is usually lazy, but hardened");
-        if (scalar keys %{$planContext->{'hardrules'}->{$rulename}}) {
+        if (scalar keys %{$optionContext->{'hardrules'}->{$rulename}}) {
           if (!defined($origrule->{'allowedargs'})) {
             $origrule->{'allowedargs'}=[keys %{$planContext->{'hardrules'}->{$rulename}}];
           } else {
             my $a={};
             foreach my $b (@{$origrule->{'allowedargs'}}) {
-              $a->{$b}=1 if (defined($planContext->{'hardrules'}->{$rulename}->{$b}));
+              $a->{$b}=1 if (defined($optionContext->{'hardrules'}->{$rulename}->{$b}));
             }
             $origrule->{'allowedargs'}=[keys %$a];
           }
@@ -1200,14 +1282,24 @@ sub eliminateCompleteRules {
 }
 
 sub preparePlan {
-  my ($axioms,$lazy)=@_;        # include list of lazy here
+  $planContext={};
+  $planContext->{'pristineRules'}=&clone($optionContext->{'pristineRules'});
+  my ($axioms,$ignoreduplicatesandorder,$modes,$lazy)=@_; # include list of lazy here
+  $planContext->{'ignoreDuplicates'}=0;
+  $planContext->{'ignoreDuplicates'}=1 if defined($ignoreduplicatesandorder);
   if (!defined($lazy)) {
     &out(1,'plan','Initializing plan');
     $planContext->{'lazy'}={};
+    &writeModes();
   } else {
     &out(1,'plan','Recomputing plan (with lazy axioms)');
     $planContext->{'lazy'}=$lazy;
     $axioms=&subHash($axioms,$lazy);
+  }
+  if (defined($modes)) {
+    $planContext->{'mode'}=$modes;
+  } else {
+    $planContext->{'mode'}=&clone($optionContext->{'mode'});
   }
   $planContext->{'generated'}={};
   $planContext->{'junkable'}={};
@@ -1237,9 +1329,27 @@ sub preparePlan {
       $gen=$mingen;
     }
   }
-  if (scalar keys %{$planContext->{'lazy'}} > 0 and !defined($lazy)) {
-    &preparePlan($axioms,&clone($planContext->{'lazy'}));
+  if (scalar keys %{$planContext->{'lazy'}} > 0 and !defined($lazy) and
+      $planContext->{'ignoreDuplicates'} == 0 ) {
+    &preparePlan($axioms,undef,&clone($planContext->{'mode'}),&clone($planContext->{'lazy'}));
   }
+}
+sub getGenerable {
+  my ($axioms,$junk)=@_;
+  my $lazy=$optionContext->{'lazy'};
+  $optionContext->{'lazy'}=0;
+  &preparePlan($axioms,1,$optionContext->{'availableModes'});
+  my $generable={};
+  foreach my $k (keys %{$planContext->{'generated'}}) {
+    $generable->{$k}=1 unless (defined($axioms->{$k}));
+  }
+  if ($junk) {
+    foreach my $k (keys %{$planContext->{'junkable'}}) {
+      $generable->{$k}=1 unless (defined($axioms->{$k}));
+    }
+  }
+  $optionContext->{'lazy'}=$lazy;
+  return $generable;
 }
 sub explainPlan {
   my $unbuildable=shift @_;
@@ -1489,6 +1599,24 @@ TODO
 
 TODO
 
+=head1 CLEANING
+
+An index of all files built is kept, and cleaning is basically removing
+all files built. The action is B<--action distclean> or equivalently the
+target B<distclean>.
+
+When adding goals, these goals will be preserved from being removed (as
+are all axioms). As a side-effect, B<--exclude I<filename>> will
+actually add I<filename> to the list of the files to be removed.
+
+The default target B<clean> will add the B<finals> target to the goals
+(and thus preserve all the files built by finals). The default target
+B<sweep> will add all generable files to the targets, which means that
+it will remove all files that are no more generable.
+
+Note that the junk files are not considered as generable, and thus will
+be removed.
+
 =head1 LAZY AXIOMS
 
 A lazy axiom is an axiom that is version-controlled, but may be rebuilt
@@ -1558,19 +1686,23 @@ specified goals (B<--why>) or an input from the specified goals
 
 =head1 GOALS AND TARGETS
 
-The various goals files are filenames with one name per line. The names
-may be escaped by using the %(hexadecimal) notation (you will most
-probably never encounter that).
+The target files are options (they can be separated by spaces or by
+newlines). The names may be escaped by using the %(hexadecimal) notation.
+You will most probably never encounter that.
 
-Targets are predefined list of goals that can be used instead of
-specifying individual goals. The target names are usually sufficient to
-use them as goals.
+Files can be included with option B<--file> or simply their name if this
+does not conflict with something else, such as a target's name. They can
+also be excluded with option B<--exclude>, which does not seem very
+useful, unless the option B<--all> is also used. This option (also
+B<all>) includes all possibly generated files.
 
-There is one default target: the I<all> target is the list of all
-buildable files.
+The target names are usually sufficient to use them as goals; if needed,
+use B<--target I<targetname>>. However, it's best not to call your
+target '--verbosity' or 'all' (or any other name already taken).
 
-If no goals are given, then the target I<finals> will be used by default
-(even if it is not defined).
+If no goals are given and one is required (for actions I<build>, I<why>
+and I<how>), then the target C<finals> will be used if it does
+exist. Else, C<all> will be used.
 
 =head1 JUNK
 
@@ -1631,7 +1763,7 @@ I<ACTOR> and receives the various arguments as $1, $2, etc.
 
 =back
 
-=head1 BUGS
+=head1 BUGS OR FEATURES
 
 The fingerprint of a directory (to avoid declaring gazillions of files,
 a rule may declare a directory as its output or input) is computed
@@ -1656,6 +1788,8 @@ program, in case anyone had doubts.
 
 =head1 TODO
 
+Use IPC::Run3 that does many things better than we do.
+
 Improve documentation.
 
 Graph output for how is suboptimal (read unusable).
@@ -1668,40 +1802,6 @@ Variables may be useful. They should behave more or less like modes.
 
 An array of allowed modes instead of a single mode should be done for
 rules.
-
-=head2 TODO SMART TARGETS
-
-A target file is now a sequence of lines beginning with one of the
-following chars: C<->, C<+>, space, C<@>. If none of the chars is used,
-the line is considered to have one supplementary space in the beginning.
-
-C<+> or space add a file to the targets. C<-> removes it from the list
-of targets.
-
-C<@> introduces a sub-command: either another target file
-
-=over
-
-=item * B<@target(I<targetname>)> include another target file.
-
-=item * B<@hardfile(I<filename>)> as C<--hardfile I<filename>>
-
-=item * B<@hard()> as C<--hard>
-
-=item * B<@all()> as if target all had been used at this point
-
-=item * B<@mode(modename)> as C<--mode modename>
-
-=item * B<@removetarget(I<targetname>)> exclude another target file.
-
-=back
-
-This remains to be seen how everything like this could work. Maybe
-decomposing parseARGV function in two parts, one rewriting @ARGV to a
-target-file-like syntax, and another one instantiating it. Not sure.
-
-Also possible: simplified smart targets: a target is in fact a
-succession of args appended to @ARGV.
 
 =cut
 
