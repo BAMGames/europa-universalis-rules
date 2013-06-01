@@ -58,7 +58,7 @@ use Cwd;
 use Term::ANSIColor;
 # command execution
 use IPC::Open3;
-use POSIX ":sys_wait_h";
+use POSIX qw(:sys_wait_h dup dup2);
 use IO::Select;
 use IO::Handle;
 
@@ -743,7 +743,9 @@ sub execCommand {
   my $out = gensym;
   my $err = gensym;
   $execContext->{'partiallyDone'}=[];
-  my $pid = open3("<&STDIN",$out, $err, @_);
+  my $savedstdin=dup(0);
+  my $pid = open3("<&".$savedstdin,$out, $err, @_);
+  die "Could not fork: $!" unless defined($pid);
   return 1 if (!$pid);
   &out(1,'exec',"Forked pid $pid");
   $execContext->{'children'}->{$pid}=1;
@@ -859,7 +861,6 @@ sub writeCache {
   my ($cacheHash,$path)=@_;
   &out(3,'init',"Storing $path cache");
   my $cachehandle;
-  open STDIN,"/dev/null" unless fileno(STDIN);
   if ($path eq 'lazyfingerprint') {
     make_path('plan');
     open $cachehandle,'>',"plan/$path" or &finish(1,"I cannot open my $path cache!");
