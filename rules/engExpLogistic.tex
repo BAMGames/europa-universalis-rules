@@ -1311,9 +1311,9 @@ allowed to do during the turn.
 % adjacent to the minor country territory, or within possible reach of same
 % (i.e. maximum 12 MP away). The minor's move must be effective during the 1st
 % or the 2nd round of the Military phase.
-\bparag[Defensive:] the troops of the minor country may only move in
-provinces that it owns or owned at some point in the game, as well as
-provinces adjacent to the ones it owns. This is the best attitude for getting
+\bparag[Defensive:] the troops of the minor country may only move in provinces
+that it owns or owned at some point in the game, as well as provinces adjacent
+to the ones it currently owns. This is the best attitude for getting
 fortresses.
 \bparag[Naval:] this attitude may only be chosen for a minor country that has
 naval counters at its disposal. It is the only attitude that gives naval
@@ -1657,14 +1657,15 @@ phases, to the owner of the port (or its Patron, if it is a minor vassal).
 (see \ruleref{chMilitary:Convoys}).
 
 \aparag[Levant Convoy]\label{chIncomes:Levant Convoy} This
-convoy %is a fleet of
-% transport,
-contains 3 \NTD, each carrying an income of 15\ducats.  It appears every turn
-in \province{Izmir}, at the administrative phase, if the \CCs{Grand Orient} is
-owned by \TUR.
+convoy contains 2 to 4 \NTD, each carrying an income of 15\ducats.  It appears
+every turn in \province{Izmir}, at the administrative phase, if the \CCs{Grand
+  Orient} is owned by \TUR.
 % TODO: variable number of \NTD (2 to 4) ??
 \bparag If \province{Izmir} does no more belong to \TUR, any Turkish port on
 \region{Mediterranee} will do instead.
+\bparag The actual content of the Convoy depends on the current income of the
+\CCs{Grand Orient}: 4\NTD if 100\ducats or more, 3 \NTD if 50\ducats or more
+and 2 \NTD if less than 50\ducats.
 \bparag The convoy is attributed by \TUR to any other player of his choice,
 provided that this player either has a port in \region{Mediterranee} (owned or
 vassal) or controls the \CCs{Mediterranee}, and it accepts the convoy. This
@@ -1690,8 +1691,9 @@ sub-phase).
 force may always participate in the defence of the convoy, whatever the status
 of war between the interceptor and the escort
 (see~\ruleref{chMilitary:Convoys}).
-\bparag If the convoy never arrives at its final destination, the penalty for
-not attributing the convoy is applied immediately to \TUR.
+\bparag If the convoy never arrives at its final destination (in a port of the
+designed \MAJ), the penalty for not attributing the convoy is applied
+immediately to \TUR.
 
 \aparag[East Indies convoy] It is attributed to the player that does exploit
 the most of the following resources: Silk, Products of Orient, Spices, and at
