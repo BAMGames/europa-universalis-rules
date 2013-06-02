@@ -999,6 +999,7 @@ sub readRules {
   my $rules=decode_json($json);
   foreach my $rulename (keys %$rules) {
     my $rule=$rules->{$rulename};
+    $rule->{'actor'}=$rulename unless (defined($rule->{'actor'}));
     $rule->{'out'}=[] unless (defined($rule->{'out'}));
     $rule->{'junk'}=[] unless (defined($rule->{'junk'}));
     $rule->{'in'}=[] unless (defined($rule->{'in'}));
