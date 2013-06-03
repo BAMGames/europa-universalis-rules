@@ -29,27 +29,22 @@ more difficult. One possibility is to launch in a separate tree and see
 if this fails (but this is not failproof : consider cat * > result as a
 rule). The best would be the full trace action outlined above.
 
-# Do --how and --why actions
+# Do --why actions
 
-These actions generate a graph explaining what is produced from one file and
-what is necessary to build a file.
+These actions generate a graph explaining what is produced from one file.
 
 # Introduce variables
 
 Like modes, variables modify the actions, but opposite to them, not the plan.
 Dependency on .tmp/vars should suffice.
 
-# Introduce smart targets
-
-See inside man pages. Smart targets can add files, remove files, add
-mode, set hardrule.
-
-# Introduce sweeping
-
-Remove all generated files no more generable.
-
 # Introduce timings
 
 Produce timing stats on demand. For example, --global-time reports how
 much time was expanded rebuilding the targets.
+
+# Introduce silent mode
+
+Make a silent mode, outputting less things. Reintroduce --no-color ?
+
 

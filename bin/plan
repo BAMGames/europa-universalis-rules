@@ -160,7 +160,7 @@ sub main {
       print "$key\n";
     }
   }
-  if (defined($actions->{'distclean'})) {
+  if (defined($actions->{'clean'})) {
     # distclean = Remove everything in JUNK, NOT IN GOALS_MULTIMODE
     # clean = distclean finals (removes everything except files in finals)
     # sweep = distclean GENERABLE_MULTIMODE (removes everything no more generable)
@@ -470,7 +470,7 @@ sub initOptions {
                                         'what' => 1,
                                         'why' => 1,
                                         'how' => 1,
-                                        'distclean' => 1,
+                                        'clean' => 1,
                                         'build' => 1,
                                         'show-targets' => 1,
                                        };
@@ -498,10 +498,10 @@ sub initOptions {
        '--why' => [ '--action', 'why' ],
        'ignore' => [ '--action', 'ignore' ],
        '--ignore' => [ '--action', 'ignore' ],
-       'distclean' => [ '--action', 'distclean' ],
-       '--distclean' => [ '--action', 'distclean' ],
-       'clean' => [ '--action', 'distclean', 'finals' ],
-       'sweep' => [ '--action', 'distclean', '--all' ],
+       'distclean' => [ '--action', 'clean' ],
+       '--distclean' => [ '--action', 'clean' ],
+       'clean' => [ '--action', 'clean', 'finals' ],
+       'sweep' => [ '--action', 'clean', '--all' ],
       };
   my @target=&readDir('plan/targets');
   foreach my $t (@target) {
@@ -674,6 +674,8 @@ B<--man> Generate man page.
 B<--nroff> Generate man page in NROFF format.
 
 B<--help-action usage|help|man|nroff> One of the above.
+
+The built-in target C<help> is equivalent to option B<--man>.
 
 =cut
 
@@ -1827,10 +1829,40 @@ keeps changing its input files list.
 
 TODO
 
+=head1 POSSIBLE ACTIONS
+
+The actions are chose with B<--action I<actionname>>, or more often by
+an alias. An action will always be selected.
+
+B<build> is the default action if none is explicitely selected. This
+action will build the selected goals (see L</"GOALS AND TARGETS">).
+
+B<ignore> will build a C<.gitignore> file (preserving user-edited
+parts). Goals are irrelevant for this action.
+
+B<what> will explain what this utility plans to do to build the selected
+targets.
+
+B<why> will explain what can be derived from the selected targets. For
+example, C<plan why foo.c> may explain that C<foo.c> is compiled to
+C<foo.o>, linked to C<something.o> as C<foo>, and then run to produce
+C<foo.lib>. The output is in graphviz format.
+
+B<how> will explain from what a selected target is derived. For example,
+C<plan how foo.c> may show that C<foo.c> is in fact generated from
+C<foo.in> and C<foo_stub.c>, the last one being generated from
+C<stub.sh>.
+
+B<clean> will clean the selected targets (see L</"CLEANING">).
+
+B<show-targets> will output (one name per line) the built-in targets and
+the user targets. This can be used to build command-line completion, for
+example.
+
 =head1 CLEANING
 
 An index of all files built is kept, and cleaning is basically removing
-all files built. The action is B<--action distclean> or equivalently the
+all files built. The action is B<--action clean> or equivalently the
 target B<distclean>.
 
 When adding goals, these goals will be preserved from being removed (as
