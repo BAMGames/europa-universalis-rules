@@ -1,0 +1,15 @@
+#!/bin/sh
+
+## Plan self-management
+set -e
+touch plan/rules.d/nothing.new # under the sun
+rm -f plan/rules.d/*.new 
+for i in plan/rules.d/*; do
+    json_pp -json_opt pretty,canonical -f json -t json < $i > $i.new && mv $i.new $i
+done
+printf 'HOMEDIR ?= .\n' > Makefile
+./bin/plan --action show-targets |grep -v ^.tmp/|sed -e 's/$/\\/g;$ s/.$//g;1 s/^/TARGETS=/g' >> Makefile
+printf '$(TARGETS): %%:\n\t$(HOMEDIR)/bin/plan "$@"\n' >> Makefile
+printf '%%:\n\t$(HOMEDIR)/bin/plan "$@"\n' >> Makefile
+printf '.PHONY: $(TARGETS)\n' >> Makefile
+find plan/targets -type f > plan/in/makefile.in

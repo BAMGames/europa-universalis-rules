@@ -1,0 +1,2 @@
+--hardrule MAKEFILE
+--file Makefile

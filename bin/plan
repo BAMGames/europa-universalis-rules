@@ -152,6 +152,14 @@ sub main {
   $planContext={};
   &readCache($progContext,'junk');
   &cleanJunk($progContext,'junk');
+  if (defined($actions->{'show-targets'})) {
+    foreach my $key (sort keys %{$optionContext->{'standardTargets'}}) {
+      print "$key\n" unless ($key =~ /^-/);
+    }
+    foreach my $key (sort keys %{$optionContext->{'targets'}}) {
+      print "$key\n";
+    }
+  }
   if (defined($actions->{'distclean'})) {
     # distclean = Remove everything in JUNK, NOT IN GOALS_MULTIMODE
     # clean = distclean finals (removes everything except files in finals)
@@ -464,6 +472,7 @@ sub initOptions {
                                         'how' => 1,
                                         'distclean' => 1,
                                         'build' => 1,
+                                        'show-targets' => 1,
                                        };
   $optionContext->{'excludedFiles'}={};
   $optionContext->{'includedFiles'}={};
@@ -478,6 +487,7 @@ sub initOptions {
        '--help' => [ '--help-action', 'help' ],
        '-h' => [ '--help-action', 'help' ],
        '--usage' => [ '--help-action', 'usage' ],
+       'help' => [ '--help-action', 'man' ],
        '--man' => [ '--help-action', 'man' ],
        '--nroff' => [ '--help-action', 'nroff' ],
        'what' => [ '--action', 'what' ],
@@ -535,6 +545,9 @@ sub parseOptions {
       &checkOptionArg($x++,$options,'availableModes','mode');
     } elsif ($arg eq '--hardrule') {
       my $cat=&checkOptionArg($x++,$options,undef,'hardrules');
+      if (ref($optionContext->{'hardrules'}->{$cat}) ne 'HASH') {
+        $optionContext->{'hardrules'}->{$cat}={};
+      }
     } elsif ($arg eq '--hardrule-limited') {
       &finish(1,"Wrong option: --hardrule-limited must be followed by two arguments") unless defined($option[$x+2]);
       my $cat=$option[++$x];
@@ -1329,6 +1342,7 @@ sub preparePlan {
   } else {
     $planContext->{'mode'}=&clone($optionContext->{'mode'});
   }
+  &writeModes();
   $planContext->{'generated'}={};
   $planContext->{'junkable'}={};
   $planContext->{'plan'}={};
