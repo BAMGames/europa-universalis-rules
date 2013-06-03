@@ -1,0 +1,26 @@
+{
+   "actor" : "PIONSBITMAPGEN",
+   "arg" : [
+      "rebuild"
+   ],
+   "class" : "Rebuilding counters bitmap",
+   "in" : [
+      ".tmp/proof-convert",
+      ".tmp/proof-pdftoppm",
+      ".tmp/proof-pngcrush"
+   ],
+   "infile" : [
+      "plan/in/pionsbitmap.in"
+   ],
+   "junk" : [
+      "pions/targets"
+   ],
+   "lazy" : 1,
+   "mode" : "rebuild",
+   "out" : [
+      "pions/bitmap",
+      "pions/manifest.txt.bz2"
+   ],
+   "subclass" : "rebuilding",
+   "type" : "simple"
+}

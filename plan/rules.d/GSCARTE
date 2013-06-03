@@ -1,0 +1,23 @@
+{
+   "argument" : "$1",
+   "class" : "Building map",
+   "in" : [
+      "bin/gsexec"
+   ],
+   "infile" : [
+      "plan/in/gs-carte-$1.in"
+   ],
+   "junk" : [
+      "carte/targets",
+      "carte/$1.depends.txt"
+   ],
+   "junkfile" : [
+      "plan/out/gs-carte-$1.junk"
+   ],
+   "outfile" : [
+      "plan/out/gs-carte-$1.out"
+   ],
+   "pattern" : "carte/(.*).eps",
+   "subclass" : "compiling",
+   "type" : "pattern"
+}

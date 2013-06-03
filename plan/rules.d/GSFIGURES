@@ -1,0 +1,23 @@
+{
+   "argument" : "$1",
+   "class" : "Building figures",
+   "in" : [
+      "bin/gsexec"
+   ],
+   "infile" : [
+      "plan/in/gs-figures-$1.in"
+   ],
+   "junk" : [
+      "figures/targets",
+      "figures/$1.depends.txt"
+   ],
+   "junkfile" : [
+      "plan/out/gs-figures-$1.junk"
+   ],
+   "outfile" : [
+      "plan/out/gs-figures-$1.out"
+   ],
+   "pattern" : "figures/(.*).eps",
+   "subclass" : "compiling",
+   "type" : "pattern"
+}

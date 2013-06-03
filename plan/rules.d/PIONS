@@ -1,0 +1,23 @@
+{
+   "argument" : "$1",
+   "class" : "Building counters",
+   "in" : [
+      "bin/gsexec"
+   ],
+   "infile" : [
+      "plan/in/gs-pions-$1.in"
+   ],
+   "junk" : [
+      "pions/targets",
+      "pions/$1.depends.txt"
+   ],
+   "junkfile" : [
+      "plan/out/gs-pions-$1.junk"
+   ],
+   "outfile" : [
+      "plan/out/gs-pions-$1.out"
+   ],
+   "pattern" : "pions/(.*).eps",
+   "subclass" : "compiling",
+   "type" : "pattern"
+}

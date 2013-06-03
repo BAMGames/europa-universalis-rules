@@ -613,7 +613,8 @@ sub parseARGV {
   if ( (
         defined($optionContext->{'actions'}->{'build'}) or
         defined($optionContext->{'actions'}->{'why'}) or
-        defined($optionContext->{'actions'}->{'how'})
+        defined($optionContext->{'actions'}->{'how'}) or
+        defined($optionContext->{'actions'}->{'what'})
        ) and
        scalar keys %{$optionContext->{'includedFiles'}} == 0 ) {
     &parseOptions('backup plan #2',['--all']);
@@ -994,9 +995,29 @@ sub readAxiomsFromGit {
 }
 sub readRules {
   local $/;
-  open (my $fh,'<',$rulefile);
-  my $json=<$fh>;
-  my $rules=decode_json($json);
+  my $rules={};
+  if ( -f $rulefile) {
+    &out(1,'init','Read rules');
+    open (my $fh,'<',$rulefile);
+    my $json=<$fh>;
+    close $fh;
+    $rules=decode_json($json);
+  }
+  my @fragments=();
+  if ( -d "$rulefile" ) {
+    &out(1,'init','Read rules directory '."$rulefile");
+    push @fragments,map { [ $_, "${rulefile}/$_" ] } sort &readDir($rulefile);
+  }
+  if ( -d "${rulefile}.d" ) {
+    &out(1,'init','Read rules directory '."${rulefile}.d");
+    push @fragments, map { [ $_, "${rulefile}.d/$_" ] } sort &readDir("${rulefile}.d");
+  }
+  foreach my $fragment (@fragments) {
+    open (my $fh,'<',$fragment->[1]);
+    my $json=<$fh>;
+    close $fh;
+    $rules->{$fragment->[0]}=decode_json($json);
+  }
   foreach my $rulename (keys %$rules) {
     my $rule=$rules->{$rulename};
     $rule->{'actor'}=$rulename unless (defined($rule->{'actor'}));
@@ -1015,7 +1036,6 @@ sub readRules {
                      'name' => 'AXIOM'
                     };
   $optionContext->{'pristineRules'}=$rules;
-  &out(1,'init','Read rules');
 }
 sub readFileList {
   my ($path,$mandatory)=@_;

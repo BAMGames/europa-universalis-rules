@@ -1,0 +1,17 @@
+{
+   "actor" : "BITMAPSYNC",
+   "arg" : [
+      "pions"
+   ],
+   "class" : "Rebuilding counters bitmap",
+   "in" : [
+      "pions/bitmap",
+      "pions/manifest.txt.bz2"
+   ],
+   "mode" : "rebuild",
+   "out" : [
+      ".tmp/pions-lastsync"
+   ],
+   "subclass" : "syncing",
+   "type" : "simple"
+}

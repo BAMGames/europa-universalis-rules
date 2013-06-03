@@ -1,0 +1,16 @@
+{
+   "argument" : "$1",
+   "class" : "Generating postscript fonts",
+   "in" : [
+      "fonts/$1.sfd",
+      ".tmp/proof-fontforge",
+      "library/generatefont"
+   ],
+   "lazy" : 1,
+   "out" : [
+      "fonts/$1.pfb",
+      "fonts/$1.afm"
+   ],
+   "pattern" : "fonts/(.*).sfd",
+   "type" : "pattern"
+}
