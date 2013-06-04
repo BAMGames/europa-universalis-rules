@@ -10,6 +10,8 @@ FONTDIR(arial_narrow.ps)! include
 FONTDIR(encodings.ps)! include
 0 0 8425 5840 bboxset
 
+BASEDIR(rotw.resources.ps)! include
+
 << /Title ((ROTW Map for EU9 - White version)) >> infochunk
 begindocument
 beginpage
@@ -23,23 +25,37 @@ detroitdict {detroitsimple pop} forall
 /cx 50 def
 /cxi 800 def
 /cy 5640 def
-/onemore { /cy cy 80 sub def cy 3520 lt {/cy 5640 def /cx cx cxi add def}if } def
-/orage {pop [[counter 3 string cvs ( )! (FontArialNarrow)][ 4 -1 roll (FontArialNarrow-Bold)]] cx cy 80 onemore multitext (q 0 G 1 g )out 2 copy exch display space display ( 80 80 re B Q\n)out exch 40 add exch counter 3 string cvs /counter counter 1 add def 3 1 roll 1001 80 (FontArialNarrow) centertext pop}bd
-/treatzone {resspos exch get dup 3 get (\n) search {( ) ! exch pop exch !}if(\n) search {( ) ! exch pop exch !}if /p exch def 4 get dup length 1 le {[[p(FontArialNarrow-Bold)]3 -1 roll{[exch( )exch !(FontArialNarrow)]}forall] cx cy onemore 80 multitext}{[[p(FontArialNarrow-Bold)]]cx cy onemore 80 multitext [exch {stringlt} .sort {[exch( )!(FontArialNarrow)]}forall]cx cy onemore 80 multitext}ifelse} def
+/nullonemore {  cy 3520 lt {/cy 5640 def /cx cx cxi add def}if } bd
+/onemore { /cy cy 80 sub def nullonemore } bd
+/orage {pop [[counter 3 string cvs ( )! (FontArialNarrow)][ 4 -1 roll (FontArialNarrow-Bold)]] cx cy 80 onemore multitext (q 0 G 1 g )out 2 copy exch display space display ( 80 80 re B Q\n)out exch 40 add exch counter 3 string cvs /counter counter 1 add def 3 1 roll 1001 80 (FontArialNarrow) centertext pop} bd
+/treatzone {
+    /pays exch def
+    [
+        resourcesdict /values get dup pays known {
+            pays get [ exch (   )! (FontArialNarrow) ]
+        } {pop} ifelse
+        [pays(FontArialNarrow-Bold)]
+        subnamesdict pays get dup length 0 gt {
+            [ exch (   ) exch {( / )} forall pop ]!! [ exch (FontArialNarrow) ]
+        } { pop } ifelse
+    ] cx cy 80 multitext onemore
+} bd
+
 /equivs << (Éthiopie) (Ethiopie) (Đại Việt) (Dai Viet)(Bānglā ())(Bangla)
  (Îles de\nla Sonde) (Iles de la Sonde) (Îles aux\népices) (Iles aux epices)
 >> def
 /stringlt {equivs 1 index known {equivs exch get}if /a exch def equivs 1 index known {equivs exch get}if /b exch def /i 0 def {a length 1 sub i lt b length 1 sub i lt or{a length b length lt exit}if a i get b i get 2 copy eq {pop pop /i i 1 add def}{gt exit}ifelse} loop} def
 
 BASEDIR(orage.ps)! include
-
-
-
+onemore
+(Europe) treatzone
+/cy 0 def onemore
+/cxi 1200 def
+[ subnamesdict { pop 50 string cvs dup (Europe) eq {pop} if } forall ] {stringlt} bind .sort
+{treatzone} forall
 
 (Q\n) out
 
-
-BASEDIR(rotw.resources.ps)! include
 /countdict 10 dict def
 resourcesdict {
     /cdict exch def
@@ -61,7 +77,6 @@ resourcesdict {
         } if
     } forall
 }forall
-
 /stats BASEDIR(rotw.resources.txt)! writefile def
 countdict {
     /cval exch def /cname exch def

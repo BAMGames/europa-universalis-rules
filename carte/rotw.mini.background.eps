@@ -9,7 +9,11 @@
 0 0 8425 5840 bboxset
 BASEDIR (rotw.grid.ps)! include
 
-colordict /special get /suede [.5 .5 .5]put
+colordict /special get dup {
+    aload pop add add 3 eq {
+        2 copy [ .5 .5 .5 ] put
+    } if pop
+} forall
 /specialwidth 20 def
 
 dopage_simple_white_background

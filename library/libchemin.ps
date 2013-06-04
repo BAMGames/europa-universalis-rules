@@ -144,9 +144,6 @@ carreinit
     [ [ xtype pname terrain minx miny maxx maxy ] moves ]
     xtype 2 eq {pathsets}{provs}ifelse 3 1 roll put
 } bd
-/pdef { % symbolicname type terrain mark moves [] => -
-    5 index 40 string cvs ppdef
-} bd
 /beginprov {
     bboxinit /firstpoint true def mark
 } bd
@@ -493,11 +490,18 @@ styleinit
     /pathcolor << pathcolor {pop[0 0 0]}forall >> def
     pathcolor 2  [0 0 1] put
     pathcolor 3 [.5 .5 .5] put
-    colordict /special get /suede [.5 .5 .5]put
     {
-        pp 0 get 5 and 0 ne {
+        pp 0 get 13 and 0 ne {
             savecontext
-            pp 0 get 4 and 0 ne {(.5 g\n)}{(.9 g\n)}ifelse out
+            pp 0 get 4 and 0 ne {
+                (.5 g\n)
+            }{
+                pp 0 get 8 and 0 ne {
+                    (.8 g\n)
+                } {
+                    (.95 g\n)
+                } ifelse
+            }ifelse out
             drawcontourprov out (f\n) out
             restorecontext
         } if
@@ -1286,70 +1290,3 @@ styleinit
 %     paths {{straitforts_only 0 setgray}{just_draw} path_trace} forall
 %     provs {{only_spec}{prov_pdfnofill} prov_fill} forall
 % }def
-
-% /dopage /dopage_std load def
-% traces {/dopage /dopage_traces load def}if
-% schematic {/dopage /dopage_schematic load def}if
-% pdfoutput {/dopage /dopage_pdf load def}if
-% plain {/dopage /dopage_pdfplain load def}if
-
-% /push { dup where {}{(Weirderror in push) out weirderror}ifelse exch [ 1 index load aload pop counttomark 4 add -1 roll] put } def
-% /paths []def
-% /provs []def
-% /m={3 1 roll 3 array astore}bd
-% /m {defaultw m=}bd
-% /m*{7 m=}bd
-% /l {2 array astore}bd
-% /c {6 array astore}bd
-% /h {[]}bd
-% /beginpath {dup /paths push mark}bd
-% /endpath{dup /tmp exch def] def}bd
-% /lastpoint {dup length 2 sub 2 getinterval aload pop}bd
-% /contpath {tmp lastpoint m}bd
-% /specdict 300 dict def
-% /A {specdict begin dup 0 def end cvx exec} bind def
-% /AR {specdict begin dup 0 def end cvx exec R} bind def
-% /BH {} def
-% /EH {} def
-% /pdef {[3 1 roll {aload pop} forall] 1 index /provs push def}def
-% /pnames 1000 dict def
-% /ppdef {pnames begin 3 index exch def end pdef}def
-% % RGB Color definition for terrain type.
-% % 2 args to make it smooth...
-% /foret  [[0.6  1.0  0.3][0.4  0.9  0.4] 0] def
-% /foreto [[0.6  0.8  0.6][0.5  0.7  0.5] 0] def
-% /monts  [[0.9  0.6  0.2][0.7  0.5  0.3] 0] def
-% /marais [[0.5  0.6  0.5][0.3  0.4  0.3] 0] def
-% /plaine [[0.9  0.9  0.7][0.8  0.8  0.5] 0] def
-% /desert [[1.0  1.0  0.4][0.9  0.9  0.3] 0] def
-% /terrain [[1.000000 1.000000 1.000000][0.803922 0.803922 0.898039] 0] def
-% /noman [[1.000000 1.000000 1.000000][0.803922 0.803922 0.898039] 4] def
-% /europe [[0.9 0.9 0.9][0.5 0.5 0.8] 16] def
-
-% /mer [[0.325 0.6 0.875][0.255 0.475 0.775] 1] def
-% /lac [[0.425 0.7 1.0][0.355 0.575 0.875] 1] def
-% /europemer [[0.425 0.9 0.875][0.355 0.775 0.775] 17] def
-
-% % Creating the kxxx for provinces known by Marco Polo
-% [(foret) (monts) (marais) (plaine) (desert)] {
-%     dup (k) exch ! cvn exch cvx exec [ exch aload pop 8 add ] def
-% } forall
-    
-% % Creating the lxxx for provinces magnified in a loop.
-% [(foret) (monts) (marais) (plaine) (desert) (mer) (kforet) (kmonts) (kmarais) (kplaine) (kdesert)] {
-%     dup (l) exch ! cvn exch cvx exec [exch aload pop 3 1 roll
-%     2 {exch [exch aload 4 1 roll add add /tmp exch def {tmp add 4 div} forall ] } repeat 3 -1 roll
-%    ] def
-% } forall
-
-% /spec [[1.5 250 100]dup] def
-% /zone { pdfoutput {
-%     carrefile (provincecolors /) writestring
-%     carrefile exch writestring
-%     carrefile ( \() writestring
-%     0 1 2 {
-% 	2 copy get carrefile exch 10 string cvs writestring
-% 	2 ne {carrefile ( ) writestring}if
-%     } for
-%     carrefile (\) put\n) writestring}{pop}ifelse
-% [exch [30 10 -1 -1] 2] } def
