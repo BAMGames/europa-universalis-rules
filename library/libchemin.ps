@@ -156,6 +156,7 @@ true {
     /mer {1 /mer beginprov} bd
     /lac {5 /lac beginprov} bd
     /europemer {17 /mer beginprov} bd
+    /europemerrotw {19 /mer beginprov} bd
     /terrain {0 /terrain beginprov} bd
     /noman {4 /noman beginprov} bd
     /europe {16 /terrain beginprov} bd
@@ -504,7 +505,7 @@ styleinit
     {
         savecontext
         colordict /special get pp 2 get get setrgbstroke
-        50 setwidth
+        specialwidth setwidth
         /fillunclosed true def
         drawcontourprov out
         /fillunclosed false def

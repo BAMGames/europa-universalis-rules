@@ -9,5 +9,37 @@
 0 0 8425 5840 bboxset
 BASEDIR (rotw.grid.ps)! include
 
+colordict /special get /suede [.5 .5 .5]put
+/specialwidth 20 def
+
 dopage_simple_white_background
+/outputProvincesNames {
+    /provincesNamesdict << >> def
+    provs {
+        0 get dup 0 get /xtype exch def 1 get exch pop /n exch def
+        n 0 get 42 ne xtype 19 and dup 0 eq exch 19 eq or and {
+            n (~) search {
+                /nn exch def pop /nm exch def
+            } {
+                /nn exch def /nm false def
+            } ifelse
+            provincesNamesdict nn known not {
+               provincesNamesdict nn 1 dict put
+            } if
+            nm false eq not {
+                provincesNamesdict nn get nm
+                1 put
+            } if
+        } if
+    } forall
+    carrefile (/subnamesdict <<\n) writestring [
+    provincesNamesdict {/nm exch def /nn exch def (\()nn 50 string cvs (\) [)
+    nm { pop (\() exch 50 string cvs (\))
+    } forall
+    (]\n) } forall
+    ]!! carrefile exch writestring
+    carrefile (>> def\n) writestring
+} bd
+outputProvincesNames
+
 stop
