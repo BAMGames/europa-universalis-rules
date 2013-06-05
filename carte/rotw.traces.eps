@@ -8,12 +8,19 @@
 (library/libchemin.ps) include
 0 0 8200 3800 bboxset
 /detroit { pop pop } bd
-/carreinit {} def
+/carreinit {/specialcounter 0 def /specialdict 10 dict def /specialcarredict 10 dict def} def
+carreinit
 /carrehook {
-    myutf (carre) myname ! [
-        myx carresize sub myy carresize sub
-        myx carresize add myy carresize add
-    ] tracebox } bd
+    myutf 0 get 42 ne {
+        myutf (carre) myname ! [
+            myx carresize sub myy carresize sub
+            myx carresize add myy carresize add
+        ] tracebox
+        specialcarredict specialcounter myutf put
+        specialdict specialcounter tbbox put
+        /specialcounter specialcounter 1 add def
+    } if
+} bd
 /xbase 13568 def
 /ybase 33450 def % 6144 for Europe
 % It should be exactly 800 180 div but there is some mismatch when

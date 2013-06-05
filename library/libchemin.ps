@@ -662,24 +662,159 @@ styleinit
     (']['e']=contours.length;\n) tracestr
     t closefile
 } bd
+/tracebboxtest {% [ a b c d ] [ a' b' c' d' ] => true if no intersection
+    2 copy 0 get exch 2 get gt 3 1 roll
+    2 copy 2 get exch 0 get lt 3 1 roll
+    2 copy 1 get exch 3 get gt 3 1 roll
+    3 get exch 1 get lt or or or
+} bd
+/displayvector {
+    4 -1 roll 12 string cvs (<)exch !(,)! 4 -1 roll 12 string cvs !( -- )!
+    3 -1 roll 12 string cvs !(,)! exch 12 string cvs !(>)!
+} bd
+/tracesegmentintersect {% [x0 y0 x1 y1] [a0 b0 a1 b1 a2 b2 ... an bn] => bool
+    % true if P0P1 intersects any P'(i)P'(i+1)
+    /vcross false def
+    /vv exch def /v1 exch def
+    /v1x0 v1 0 get def
+    /v1y0 v1 1 get def
+    /v1x1 v1 2 get def
+    /v1y1 v1 3 get def
+    /v1x v1x1 v1x0 sub def
+    /v1y v1y1 v1y0 sub def
+    /v2xx -1 def
+    /v2yy -1 def
+    /v2x1 -1 def
+    /v2y1 -1 def
+    0 2 vv length 1 sub {
+        /vim exch def
+        /v2x0 v2x1 def
+        /v2y0 v2y1 def
+        /v2x1 vv vim get def
+        /v2y1 vv vim 1 add get def
+        v2xx -1 eq {
+            /v2xx v2x1 def
+            /v2yy v2y1 def
+        } {
+            /v2x v2x1 v2x0 sub def 
+            /v2y v2y1 v2y0 sub def
+            /vd v1x v2y mul v2x v1y mul sub def
+            vd 0 ne {
+                /vs v1y v2x0 v1x0 sub mul v1x v1y0 v2y0 sub mul add vd div def
+                /vt v2x v1y0 v2y0 sub mul v2y v1x0 v2x0 sub mul sub vd div def
+                vs 0 ge vs 1 le and vt 0 ge vt 1 le and and {
+                    /vcross true def exit
+                } if
+            } if
+        } ifelse
+    } for
+    vcross
+} bd
 /dopage_traces_background {
     10 setflat
-%    { p == stopnow } drawprovs
+    {
+        pp 1 get 0 get 42 ne {
+            /tbbox pp 3 4 getinterval def
+            /tname pp 1 get def
+            /torigin pn 30 string cvs def
+            /tover [
+                specialdict {
+                    tbbox tracebboxtest {pop} if
+                } forall
+            ] def
+            /tpath [
+                0 1 p 1 get length 1 sub {
+                    /i exch def [ p 1 get i get
+                    newpath 
+                    { 
+                        dup length 3 eq {
+                            aload pop pop moveto
+                        } { 
+                            dup length 2 eq {
+                                aload pop lineto
+                            } {
+                                aload pop curveto
+                            } ifelse
+                        } ifelse
+                    } forall
+                    closepath flattenpath
+                    {}{}{}{}pathforall ]
+                } for
+            ] def
+            /tover [ tover {
+                /tw 0 def % 0 : not inside
+                /tcandidate exch def /tcand specialdict tcandidate get def
+                {
+                    tcand aload pop 3 -1 roll add 2 div /ty exch def
+                    add 2 div /tx exch def
+                    /txx -1 def /tyy -1 def
+                    /ta -1 def /tb -1 def /tc -1 def /td -1 def
+                    /tenv tpath 0 get def /tw 0 def
+                    0 2 tenv length 1 sub {
+                        /tm exch def
+                        /ta tc def /tb td def
+                        /tc tenv tm get def
+                        /td tenv tm 1 add get def
+                        txx -1 eq {
+                            /txx tc def /tyy td def
+                        } {
+                            /tval tx ta sub td tb sub mul ty tb sub tc ta sub mul sub def
+                            td ty gt tb ty le and tval 0 le and {
+                                /tw tw 1 add def
+                            } if
+                            td ty lt tb ty ge and tval 0 ge and {
+                                /tw tw 1 sub def
+                            } if
+                            txx tc eq tyy td eq and {
+                                /txx -1 def /tyy -1 def
+                            } if
+                        } ifelse
+                    } for
+                    tw 0 ne {exit}if % Center inside tenv! great!
+                    % Now we have to see if the bbox of the special does intersect with
+                    % a line of the envelop
+                    [ tcand 0 get tcand 1 get tcand 2 get tcand 1 get ] tenv tracesegmentintersect
+                    {/tw 1 def exit}if
+                    [ tcand 2 get tcand 1 get tcand 2 get tcand 3 get ] tenv tracesegmentintersect
+                    {/tw 1 def exit}if
+                    [ tcand 2 get tcand 3 get tcand 0 get tcand 3 get ] tenv tracesegmentintersect
+                    {/tw 1 def exit}if
+                    [ tcand 0 get tcand 3 get tcand 0 get tcand 1 get ] tenv tracesegmentintersect
+                    {/tw 1 def exit}if
+                    exit
+                }loop
+                tw 0 ne { tcandidate } if
+            } forall ] def
+            /tpath [ tpath {aload pop} forall ] def
+            [
+                (contours.push\({n:')tname
+                (',t:1,o:')torigin
+                tover length 0 ne {
+                    (',m:[)tover {
+                        10 string cvs (+contoursbase)(,)
+                    }forall pop(])
+                }{(')} ifelse
+                (,c:)tpath tracecommalist
+                (',b:)tbbox tracecommalist
+                (}\);\n)
+            ]!! tracestr
+        } if
+    } drawprovs
 } bd
 /tracebox {% name origin bbox
     /tbbox exch def
     /torigin exch def
     /tname exch def
-    [(contours.push\({n:')tname(',t:2,o:')torigin(',b:')tbbox tracecommalist(}\);\n)]!! tracestr
+    [(contours.push\({n:')tname(',t:2,o:')torigin(',b:)tbbox tracecommalist(}\);\n)]!! tracestr
 } def
 /tracecommalist {
     [exch([) exch true exch {
         exch {
-            xfact mul xbase add cvi
+            xfact mul xbase add .5 add cvi
             12 string cvs(,)
             false
         } {
-            yfact mul ybase add cvi
+            yfact mul ybase add .5 add cvi
             12 string cvs(,)
             true
         } ifelse
