@@ -36,6 +36,21 @@ dopage_simple_white_background
             } if
         } if
     } forall
+    carreNamesdict {
+        pop 50 string cvs /n exch def
+        n (~) search {
+            /nn exch def pop /nm exch def
+        } {
+            /nn exch def /nm false def
+        } ifelse
+        provincesNamesdict nn known not {
+            provincesNamesdict nn 1 dict put
+        } if
+        nm false eq not {
+            provincesNamesdict nn get nm
+            1 put
+        } if
+    } forall
     carrefile (/subnamesdict <<\n) writestring [
     provincesNamesdict {/nm exch def /nn exch def (\()nn 50 string cvs (\) [)
     nm { pop (\() exch 50 string cvs (\))

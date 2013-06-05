@@ -1,0 +1,28 @@
+%!PS
+
+/carresize 56 def
+/marcopoloisimportant false def
+/captionisimportant true def
+/traces true def
+/mapname (rotw) def
+(library/libchemin.ps) include
+0 0 8200 3800 bboxset
+/detroit { pop pop } bd
+/carreinit {} def
+/carrehook {
+    myutf (carre) myname ! [
+        myx carresize sub myy carresize sub
+        myx carresize add myy carresize add
+    ] tracebox } bd
+/xbase 13568 def
+/ybase 33450 def % 6144 for Europe
+% It should be exactly 800 180 div but there is some mismatch when
+% bitmapping. We are approximately 1 pixel to 1000 off.
+/xfact 51020 13568 sub 8425 0 sub div def
+/yfact 32108 6144 sub 5840 0 sub div def
+
+traceinit
+BASEDIR (rotw.grid.ps)! include
+dopage_traces_background
+tracefinish
+stop

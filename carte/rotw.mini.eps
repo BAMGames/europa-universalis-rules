@@ -36,13 +36,14 @@ detroitdict {detroitsimple pop} forall
         } {pop} ifelse
         [pays(FontArialNarrow-Bold)]
         subnamesdict pays get dup length 0 gt {
+            {2 copy length exch length exch 2 copy eq {pop pop lt}{lt exch pop exch pop} ifelse} .sort
             [ exch (   ) exch {( / )} forall pop ]!! [ exch (FontArialNarrow) ]
         } { pop } ifelse
     ] cx cy 80 multitext onemore
 } bd
 
-/equivs << (Éthiopie) (Ethiopie) (Đại Việt) (Dai Viet)(Bānglā ())(Bangla)
- (Îles de\nla Sonde) (Iles de la Sonde) (Îles aux\népices) (Iles aux epices)
+/equivs << (Éthiopie) (Ethiopie) (Đại Việt) (Dai Viet)(Bānglā)(Bangla)(Célèbes)(Celebes)(Côte d’Ivoire)(Cote d'Ivoire)
+        (Côte d’Or)(Cote d'Or)(Îles de la Sonde) (Iles de la Sonde) (Îles aux Épices) (Iles aux epices)
 >> def
 /stringlt {equivs 1 index known {equivs exch get}if /a exch def equivs 1 index known {equivs exch get}if /b exch def /i 0 def {a length 1 sub i lt b length 1 sub i lt or{a length b length lt exit}if a i get b i get 2 copy eq {pop pop /i i 1 add def}{gt exit}ifelse} loop} def
 

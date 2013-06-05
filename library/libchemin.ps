@@ -104,11 +104,19 @@ systemdict /.max known not {
     (/carredict 100 dict def\n/provincecolors 100 dict def /detroitdict 100 dict def\n)
     ]!! writestring  
 } bd
-carreinit
+traces not {carreinit}if
+/carrehook {
+    carrefile [
+        (carredict /) myname ( [ \() myutf (\)) myx 4 string cvs ( )
+        myy 4 string cvs ( ) mypos 1 eq {(false)}{(true)}ifelse ( ] put\n)
+    ]!! writestring
+} bd
+/carreNamesdict 10 dict def
 /carre { % centerx centery below0above1 label internalname rough => -
-    /rough exch def /myname exch def /myutf exch def
+    /rough exch def /myname exch def /mynick exch def /myutf exch def
     /mypos exch def /myy exch def /myx exch def
     /pathtype pathtype 1 index 8 def
+    carreNamesdict mynick true put
     (carre) myname ! cvn beginpath
     rough {
         myx carresize sub myy carresize sub m
@@ -128,11 +136,8 @@ carreinit
         myx carresize sub myy css sub l
         myx css sub myy carresize sub l
     } ifelse
-    endpath def carrefile
-    [(carredict /) myname ( [ \() myutf (\)) myx 4 string cvs ( )
-    myy 4 string cvs ( ) mypos 1 eq {(false)}{(true)}ifelse ( ] put\n)
-    ]!! writestring
-} bd
+    endpath def carrehook
+} def
 /detroit { % detroitname [ x y angle x y angle impulse ] => ---
     carrefile [ (detroitdict) 5 -1 roll 20 string cvs (/) exch ! ([) 6 -1 roll {10 string cvs} forall (]) (put) ] !!! writestring
 } bd
@@ -444,7 +449,7 @@ true {
     /.proc exch def
     provs { /p exch def /pn exch def /pp p 0 get def
         provbboxtest {
-            [ percent pn 40 string cvs pp 1 get ] !!! out
+            traces not {[ percent pn 40 string cvs pp 1 get ] !!! out}if
             provcolors .proc
         } if
     } forall
@@ -641,6 +646,49 @@ styleinit
     [ 0 8 1 6 7 4 5 2 3 ] {drawpathsschematic} forall
     t closefile
 } bd
+
+% Traces
+/tracestr { t exch writestring } bd
+/traceinit {
+    /t TARGET (.js) ! writefile def
+    (var contours;\nif \(contours == undefined\) {contours=[];}\ncontoursbase=contours.length;\n\n) tracestr
+    (var contourssections;\nif \(contourssections == undefined\) {contourssections={};}\ncontourssections[') tracestr
+    mapname tracestr
+    (']={s:contours.length};\n\n) tracestr    
+} bd
+/tracefinish {
+    (\n\ncontourssections[') tracestr
+    mapname tracestr
+    (']['e']=contours.length;\n) tracestr
+    t closefile
+} bd
+/dopage_traces_background {
+    10 setflat
+%    { p == stopnow } drawprovs
+} bd
+/tracebox {% name origin bbox
+    /tbbox exch def
+    /torigin exch def
+    /tname exch def
+    [(contours.push\({n:')tname(',t:2,o:')torigin(',b:')tbbox tracecommalist(}\);\n)]!! tracestr
+} def
+/tracecommalist {
+    [exch([) exch true exch {
+        exch {
+            xfact mul xbase add cvi
+            12 string cvs(,)
+            false
+        } {
+            yfact mul ybase add cvi
+            12 string cvs(,)
+            true
+        } ifelse
+    }forall pop pop(])]!!
+} bd
+traces {
+    /BH {mark} bd
+    /EH {mark ne {NHEHmechanismfailed}if cleartomark mark} bd
+} if
 
 
 % /provinceshook {} def
@@ -1065,10 +1113,6 @@ styleinit
 %     bogus
 % }def
 
-% /tracestr {tracefile exch writestring} def
-% /trace {tracefile (,) writestring 30 string cvs tracefile exch writestring}def
-% /nocommatrace { /trace { 30 string cvs tracefile exch writestring /trace {tracefile (,) writestring 30 string cvs tracefile exch writestring}def } def} def
-% /traceln {30 string cvs tracefile exch writestring tracefile (\n) writestring}def
 % /.sort 
 %     { 1 index length 1 sub -1 1 
 %         { 2 index exch 2 copy get 3 copy 0 1 3 index 1 sub 
