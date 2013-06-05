@@ -14,7 +14,7 @@ maps\
 pions\
 reboot
 $(TARGETS): %:
-	$(HOMEDIR)/bin/plan "$@"
+	@$(HOMEDIR)/bin/plan "$@"
 %:
 	$(HOMEDIR)/bin/plan "$@"
 .PHONY: $(TARGETS)

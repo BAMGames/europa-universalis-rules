@@ -7,7 +7,7 @@ A makefile replacement
  * shadow : done
  * pions : done
  * figures: done
- * carte, rotw: done except for traces
+ * carte, rotw: done
  * rules
  * records
  * web

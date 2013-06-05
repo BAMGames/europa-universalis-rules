@@ -1,2 +1,3 @@
+--display 0
 --hardrule MAKEFILE
 --file Makefile
