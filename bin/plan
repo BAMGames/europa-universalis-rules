@@ -1039,7 +1039,14 @@ sub readRules {
     $rule->{'out'}=[] unless (defined($rule->{'out'}));
     $rule->{'junk'}=[] unless (defined($rule->{'junk'}));
     $rule->{'in'}=[] unless (defined($rule->{'in'}));
-    push $rule->{'in'},$actordir.'/'.$rule->{'actor'};
+    if (!defined($rule->{'command'})) {
+      $rule->{'command'}=[$actordir.'/'.$rule->{'actor'}];
+      push $rule->{'in'},$rule->{'command'}->[0];
+    }
+    if (ref($rule->{'command'}) ne 'ARRAY') {
+      my $com=$rule->{'command'};
+      $rule->{'command'}=[map {&decodeGoalLine($_)} split(/ /,$com)];
+    }
     $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
     $rule->{'class'}='' unless (defined($rule->{'class'}));
     $rule->{'subclass'}='' unless (defined($rule->{'subclass'}));
@@ -1048,7 +1055,8 @@ sub readRules {
                      'actor' => 'AXIOM',
                      'class' => 'Checking axioms',
                      'subclass' => '',
-                     'name' => 'AXIOM'
+                     'name' => 'AXIOM',
+                     'command' => [$actordir.'/AXIOM']
                     };
   $optionContext->{'pristineRules'}=$rules;
 }
@@ -1578,7 +1586,7 @@ sub attempt {
   my $rule=shift @_;
   my $key=&actionKey($rule);
   &out(2,'exec',"Preparing for $key");
-  my @execLine=($actordir.'/'.$rule->{'actor'},@{$rule->{'arg'}});
+  my @execLine=(@{$rule->{'command'}},@{$rule->{'arg'}});
   if ($rule->{'class'} ne '') {
     &out(1,'display',$rule->{'class'});
     if ($rule->{'subclass'} ne '') {
@@ -1717,41 +1725,6 @@ sub graphviz {
       print '  "'.$start.'" -> "'.$end.'";'."\n";
     }
   }
-  # my $alias={};
-  # my $aliasusable={};
-  # my $revertalias={};
-  # foreach my $file (keys %$usedfilein) {
-  #   my $data=join("\n",sort keys %{$usedfilein->{$file}});
-  #   $alias->{$file}=$data;
-  #   my $hashing = Digest::MD5->new;
-  #   $hashing->add($data);
-  #   $aliasusable->{$file}='NODE'.$hashing->hexdigest;
-  #   if (!defined($revertalias->{$aliasusable->{$file}})) {
-  #     $revertalias->{$aliasusable->{$file}}={};
-  #   }
-  #   $revertalias->{$aliasusable->{$file}}->{$file}=1;
-  # }
-  # foreach my $node (keys %$revertalias) {
-  #   print $node.' [ label="'.join('\n',sort keys %{$revertalias->{$node}}).'"];'."\n";
-  # }
-  # foreach my $key (@$plan) {
-  #   $rule=$planContext->{'plan'}->{$key};
-  #   next if $rule->{'actor'} eq 'AXIOM';
-  #   my $links={};
-  #   foreach my $file (keys %{$rule->{'out'}}) {
-  #     $links->{$aliasusable->{$file}}=1;
-  #   }
-  #   foreach my $link (keys %$links) {
-  #     print '  "'.$key.'" -> "'.$link.'";'."\n";
-  #   }
-  #   $links={};
-  #   foreach my $file (keys %{$rule->{'in'}}) {
-  #     $links->{$aliasusable->{$file}}=1;
-  #   }
-  #   foreach my $link (keys %$links) {
-  #     print '  "'.$link.'" -> "'.$key.'";'."\n";
-  #   }
-  # }
   print "}\n";
 }
 
