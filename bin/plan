@@ -849,13 +849,18 @@ sub fingerprint {
 }
 sub fingerprintArray {
   # example: $rule, 'in'
-  my @a=sort keys %{$_[0]->{$_[1]}};
+  my $context=shift @_;
+  my $key=shift @_;
+  my @a=sort keys %{$context->{$key}};
   return 'none' unless (scalar @a);
   my $hashing = Digest::MD5->new;
   my $fp;
   foreach my $file (@a) {
     $fp=&fingerprint($file);
     $hashing->add($file.$fp);
+  }
+  foreach my $supp (@_) {
+    $hashing->add(join(' ',@$supp));
   }
   return $hashing->hexdigest;
 }
@@ -1042,6 +1047,9 @@ sub readRules {
     if (!defined($rule->{'command'})) {
       $rule->{'command'}=[$actordir.'/'.$rule->{'actor'}];
       push $rule->{'in'},$rule->{'command'}->[0];
+      $rule->{'inline'} = 0;
+    } else {
+      $rule->{'inline'} = 1;
     }
     if (ref($rule->{'command'}) ne 'ARRAY') {
       my $com=$rule->{'command'};
@@ -1055,6 +1063,7 @@ sub readRules {
                      'actor' => 'AXIOM',
                      'class' => 'Checking axioms',
                      'subclass' => '',
+                     'inline' => 0,
                      'name' => 'AXIOM',
                      'command' => [$actordir.'/AXIOM']
                     };
@@ -1525,7 +1534,12 @@ sub firstCompound {
   foreach my $i ($begin..$end-1) {
     my $rule=$planList->{$plan->[$i]};
     my $key=&actionKey($rule);
-    my $fingerprintIn=&fingerprintArray($rule,'in');
+    my $fingerprintIn;
+    if ($rule->{'inline'} == 0) {
+      $fingerprintIn=&fingerprintArray($rule,'in');
+    } else {
+      $fingerprintIn=&fingerprintArray($rule,'in',$rule->{'command'});
+    }
     $rule->{'fingerprintIn'}=$fingerprintIn;
     my $fingerprintOut=&fingerprintArray($rule,'out');
     if (!defined($progContext->{'fingerprint'}->{$key})) {

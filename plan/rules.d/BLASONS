@@ -1,6 +1,7 @@
 {
    "argument" : "$1",
    "class" : "Shield images",
+   "command" : "bin/gimpexec makeshield",
    "in" : [
       "blasons/src/shield_$1.xcf",
       ".tmp/proof-gimp",
@@ -8,7 +9,6 @@
       "bin/gimpexec",
       "library/makeshield.scm"
    ],
-   "command" : "bin/gimpexec makeshield",
    "out" : [
       "blasons/shield_$1.png",
       "blasons/shield_$1.pnm"
