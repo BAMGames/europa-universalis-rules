@@ -7,7 +7,7 @@ A makefile replacement
  * shadow : done
  * pions : done
  * figures: done
- * carte, rotw: done except for traces
+ * carte: done
  * rules
  * records
  * web
@@ -47,4 +47,29 @@ much time was expanded rebuilding the targets.
 
 Make a silent mode, outputting less things. Reintroduce --no-color ?
 
+# Introduce plan making cache
 
+While building a plan, MD5sum-ify everything. If everything is the same
+for the next call to plan, just dump the last plan. When called in a loop,
+this should speed up things in between recompiles.
+
+Files to fingerprint:
+ * rules (maybe just the ascii things of it)
+ * infiles
+ * outfiles
+ * arguments to plan
+
+Do the same thing for the narrow_plan (if planId is same and
+includedFiles list is the same, not includedFiles contents).
+
+Just clone planContext and here you are.
+
+# Introduce display property
+
+Display [this] before exec'ing. Compound will display all. If not set,
+do not display anything (the program will either display nothing, or
+use its own way).
+
+Also introduce --recursive to tell plan not to filter its 'display' output.
+
+Clarify displaying procedures.
