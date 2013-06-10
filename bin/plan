@@ -1632,7 +1632,7 @@ sub attempt {
     }
     &writeCache($progContext,'fingerprint');
     &writeCache($progContext,'lazyfingerprint') if defined($rule->{'lazy'});
-    &finish(1,"One rule failed with status $status");
+    &finish(1,&actionKey($rule)." failed with status $status");
   } else {
     if (exists($rule->{'origin'})) {
       foreach my $ok (keys %{$rule->{'origin'}}) {
