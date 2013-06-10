@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ $(which pdftoppm 2>&1|grep ^/|wc -l) -lt 1 ]; then 
-   echo "failed:pdftoppm" 1>&2
+   echo "${SPECIALPREFIX}failed:pdftoppm" 1>&2
    echo "maybe install poppler-utils" 1>&2
    rm -f .tmp/proof-pdftoppm
    exit 1

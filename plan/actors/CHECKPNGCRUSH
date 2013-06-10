@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ $(which pngcrush 2>&1|grep ^/|wc -l) -lt 1 ]; then 
-   echo "failed:pngcrush" 1>&2
+   echo "${SPECIALPREFIX}failed:pngcrush" 1>&2
    rm -f .tmp/proof-pngcrush
    exit 1
 fi

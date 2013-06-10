@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ $(which convert 2>&1|grep ^/|wc -l) -lt 1 ]; then 
-   echo "failed:convert" 1>&2
+   echo "${SPECIALPREFIX}failed:convert" 1>&2
    echo "maybe install imagemagick" 1>&2
    rm -f .tmp/proof-convert
    exit 1
