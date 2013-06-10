@@ -860,7 +860,7 @@ sub fingerprintArray {
     $hashing->add($file.$fp);
   }
   foreach my $supp (@_) {
-    $hashing->add(join(' ',@$supp));
+    $hashing->add(join('|',@$supp));
   }
   return $hashing->hexdigest;
 }
@@ -1053,7 +1053,11 @@ sub readRules {
     }
     if (ref($rule->{'command'}) ne 'ARRAY') {
       my $com=$rule->{'command'};
-      $rule->{'command'}=[map {&decodeGoalLine($_)} split(/ /,$com)];
+      if ($com =~ /[|;<>&]/) {
+        $rule->{'command'}=['sh','-c',$com,$rule->{'actor'}];
+      } else {
+        $rule->{'command'}=[map {&decodeGoalLine($_)} split(/ /,$com)];
+      }
     }
     $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
     $rule->{'class'}='' unless (defined($rule->{'class'}));
