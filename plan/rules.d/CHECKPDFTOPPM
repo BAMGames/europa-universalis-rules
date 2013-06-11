@@ -1,9 +1,10 @@
 {
    "class" : "Checking programs",
-   "in" : [],
+   "arg" : ["pdftoppm"],
+   "command" : "which \"$@\" > /dev/null && touch .tmp/proof-pdftoppm",
+   "failmessage" : "maybe install poppler-utils",
    "out" : [
       ".tmp/proof-pdftoppm"
    ],
-   "subclass" : "pdftoppm",
    "type" : "simple"
 }

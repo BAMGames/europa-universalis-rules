@@ -1562,7 +1562,7 @@ sub firstCompound {
     if ($rule->{'inline'} == 0) {
       $fingerprintIn=&fingerprintArray($rule,'in');
     } else {
-      $fingerprintIn=&fingerprintArray($rule,'in',$rule->{'command'});
+      $fingerprintIn=&fingerprintArray($rule,'in',$rule->{'command'},$rule->{'arg'});
     }
     $rule->{'fingerprintIn'}=$fingerprintIn;
     my $fingerprintOut=&fingerprintArray($rule,'out');
@@ -1655,6 +1655,9 @@ sub attempt {
     }
     &writeCache($progContext,'fingerprint');
     &writeCache($progContext,'lazyfingerprint') if defined($rule->{'lazy'});
+    if (defined($rule->{'failmessage'})) {
+      &out(1,'err',$rule->{'failmessage'});
+    }
     &finish(1,&actionKey($rule)." failed with status $status");
   } else {
     if (exists($rule->{'origin'})) {

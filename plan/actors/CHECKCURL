@@ -1,7 +1,0 @@
-#!/bin/sh
-if [ $(which curl 2>&1|grep ^/|wc -l) -lt 1 ]; then 
-   echo "${SPECIALPREFIX}failed:curl" 1>&2
-   rm -f .tmp/proof-curl
-   exit 1
-fi
-touch .tmp/proof-curl

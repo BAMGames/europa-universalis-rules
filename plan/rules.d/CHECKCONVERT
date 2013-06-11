@@ -1,9 +1,11 @@
 {
    "class" : "Checking programs",
-   "in" : [],
+   "arg" : ["convert"],
+   "display" : "ImageMagick",
+   "command" : "which \"$@\" > /dev/null && touch .tmp/proof-convert",
+   "failmessage" : "maybe install imagemagick",
    "out" : [
       ".tmp/proof-convert"
    ],
-   "subclass" : "convert",
    "type" : "simple"
 }
