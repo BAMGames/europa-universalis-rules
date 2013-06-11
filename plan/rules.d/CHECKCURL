@@ -1,6 +1,8 @@
 {
+   "arg" : [
+      "curl"
+   ],
    "class" : "Checking programs",
-   "arg" : ["curl"],
    "command" : "which \"$@\" > /dev/null && touch .tmp/proof-curl",
    "failmessage" : "maybe install fontforge",
    "out" : [
