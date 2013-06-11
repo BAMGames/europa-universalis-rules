@@ -262,6 +262,7 @@ form, because the target will take precedence.
 
 The verbosity level is a positive integer (including 0).
 
+
 The various categories are :
 
 =over
@@ -278,12 +279,14 @@ The various categories are :
 
 =item * B<display> the summary of the building (1: each class, 2: each subclass, 3: each item)
 
+=item * B<what> the verbosity of the explications mostly action C<what>.
+
 =back
 
 Each rule can define a class and a subclass, and each item built will be
-output in a synthetic manner. The default setting is 3 for B<display>
-and 1 for B<out> and B<err>. A quiet effect can be obtained by setting
-everything to 0.
+output in a synthetic manner. The default setting is 3 for B<display>, 1
+for B<what> and 1 for B<out> and B<err>. A quiet effect can be obtained
+by setting everything to 0.
 
 =cut
 
@@ -293,6 +296,7 @@ everything to 0.
   my $verbosity={'exec'=>0,
                  'init'=>0,
                  'plan'=>0,
+                 'what'=>1,
                  'out'=>1,
                  'err'=>1,
                  'dev'=>1,
@@ -849,13 +853,18 @@ sub fingerprint {
 }
 sub fingerprintArray {
   # example: $rule, 'in'
-  my @a=sort keys %{$_[0]->{$_[1]}};
+  my $context=shift @_;
+  my $key=shift @_;
+  my @a=sort keys %{$context->{$key}};
   return 'none' unless (scalar @a);
   my $hashing = Digest::MD5->new;
   my $fp;
   foreach my $file (@a) {
     $fp=&fingerprint($file);
     $hashing->add($file.$fp);
+  }
+  foreach my $supp (@_) {
+    $hashing->add(join('|',@$supp));
   }
   return $hashing->hexdigest;
 }
@@ -1033,23 +1042,16 @@ sub readRules {
     close $fh;
     $rules->{$fragment->[0]}=decode_json($json);
   }
-  foreach my $rulename (keys %$rules) {
-    my $rule=$rules->{$rulename};
-    $rule->{'actor'}=$rulename unless (defined($rule->{'actor'}));
-    $rule->{'out'}=[] unless (defined($rule->{'out'}));
-    $rule->{'junk'}=[] unless (defined($rule->{'junk'}));
-    $rule->{'in'}=[] unless (defined($rule->{'in'}));
-    push $rule->{'in'},$actordir.'/'.$rule->{'actor'};
-    $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
-    $rule->{'class'}='' unless (defined($rule->{'class'}));
-    $rule->{'subclass'}='' unless (defined($rule->{'subclass'}));
-  }
   $rules->{'AXIOM'}={'type' => 'axiom',
-                     'actor' => 'AXIOM',
                      'class' => 'Checking axioms',
                      'subclass' => '',
-                     'name' => 'AXIOM'
+                     'display' => '',
+                     'command' => ['true'] # [$actordir.'/AXIOM']
                     };
+  foreach my $rulename (keys %$rules) {
+    my $rule=$rules->{$rulename};
+    &cleanPristineRule($rule,$rulename);
+  }
   $optionContext->{'pristineRules'}=$rules;
 }
 sub readFileList {
@@ -1126,17 +1128,13 @@ sub recordGeneration {
 }
 
 sub recordAxioms {
+  my $origRule=$planContext->{'pristineRules'}->{'AXIOM'};
+  &cleanRule($origRule);
   foreach my $axiom (keys %{$_[0]}) {
     $planContext->{'usedRules'}->{'AXIOM'}++;
-    my $axiomRule=&clone($planContext->{'pristineRules'}->{'AXIOM'});
+    my $axiomRule=&clone($origRule);
     $axiomRule->{'type'}='simple';
     $axiomRule->{'out'}={$axiom => 1};
-    if ($axiom eq $actordir.'/AXIOM') {
-      $axiomRule->{'in'}={}
-    } else {
-      $axiomRule->{'in'}={$actordir.'/AXIOM' => 1};
-    }
-    $axiomRule->{'wanted'}={};
     $axiomRule->{'arg'}=[$axiom];
     $axiomRule->{'gen'}=0;
     &recordGeneration($axiomRule);
@@ -1166,10 +1164,16 @@ sub sortRules {
         next;
       }
     }
-    if (defined($origrule->{'mode'}) and
-        !defined($planContext->{'mode'}->{$origrule->{'mode'}})) {
-      &out(1,'plan',"Skipping rule $rulename because not in mode ".$origrule->{'mode'});
-      next;
+    if (defined($origrule->{'mode'})) {
+      my $modefound=0;
+      my @modes=split(/,/,$origrule->{'mode'});
+      foreach my $candidatemode (@modes) {
+        $modefound++ if defined($planContext->{'mode'}->{$origrule->{'mode'}});
+      }
+      if ($modefound == 0) {
+        &out(1,'plan',"Skipping rule $rulename because not in mode ".$origrule->{'mode'});
+        next;
+      }
     }
     $planContext->{'usedRules'}->{$rulename}=0;
     if ($origrule->{'type'} eq 'simple') {
@@ -1182,37 +1186,68 @@ sub sortRules {
     }
   }
 }
+sub cleanPristineRule {
+  my ($rule,$rulename)=@_;
+  $rule->{'actor'}=$rulename unless (defined($rule->{'actor'}));
+  $rule->{'out'}=[] unless (defined($rule->{'out'}));
+  $rule->{'junk'}=[] unless (defined($rule->{'junk'}));
+  $rule->{'in'}=[] unless (defined($rule->{'in'}));
+  if (!defined($rule->{'command'})) {
+    $rule->{'command'}=[$actordir.'/'.$rule->{'actor'}];
+    push $rule->{'in'},$rule->{'command'}->[0];
+    $rule->{'inline'} = 0;
+  } else {
+    $rule->{'inline'} = 1;
+  }
+  if (ref($rule->{'command'}) ne 'ARRAY') {
+    my $com=$rule->{'command'};
+    if ($com =~ /[|;<>&]/) {
+      $rule->{'command'}=['sh','-e','-c',$com,$rule->{'actor'}];
+    } else {
+      $rule->{'command'}=[map {&decodeGoalLine($_)} split(/ /,$com)];
+    }
+  }
+  $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
+  $rule->{'class'}='' unless (defined($rule->{'class'}));
+  $rule->{'subclass'}='' unless (defined($rule->{'subclass'}));
+}
 sub cleanRule {
   my ($rule,@list)=@_;
   my $list=scalar @list;
   my $in={};
   my $out={};
   my $junk={};
-  my $class=$rule->{'class'};
-  if ($class =~ /\$/) {
-    foreach my $counter (1..$list) {
-      $class =~ s/\$$counter/$list[$counter-1]/ge;
+  if ($list) {
+    my $class=$rule->{'class'};
+    my $subclass=$rule->{'subclass'};
+    if ($class =~ /\$/) {
+      foreach my $counter (1..$list) {
+        $class =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
-  }
-  $rule->{'class'}=$class;
-  my $subclass=$rule->{'subclass'};
-  if ($subclass =~ /\$/) {
-    foreach my $counter (1..$list) {
-      $subclass =~ s/\$$counter/$list[$counter-1]/ge;
+    if ($subclass =~ /\$/) {
+      foreach my $counter (1..$list) {
+        $subclass =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
+    $rule->{'class'}=$class;
+    $rule->{'subclass'}=$subclass;
   }
-  $rule->{'subclass'}=$subclass;
   foreach my $file (@{$rule->{'in'}}) {
-    foreach my $counter (1..$list) {
-      $file =~ s/\$$counter/$list[$counter-1]/ge;
+    if ($list) {
+      foreach my $counter (1..$list) {
+        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
     $in->{$file}=1;
   }
   if (defined($rule->{'infile'})) {
     my $hash=[];
     foreach my $file (@{$rule->{'infile'}}) {
-      foreach my $counter (1..$list) {
-        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      if ($list) {
+        foreach my $counter (1..$list) {
+          $file =~ s/\$$counter/$list[$counter-1]/ge;
+        }
       }
       &out(2,'plan',"Expanding infile $file");
       push $hash,readFileList($file);
@@ -1226,16 +1261,20 @@ sub cleanRule {
     $junk->{$file}=1;
   }
   foreach my $file (@{$rule->{'out'}}) {
-    foreach my $counter (1..$list) {
-      $file =~ s/\$$counter/$list[$counter-1]/ge;
+    if ($list) {
+      foreach my $counter (1..$list) {
+        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
     $out->{$file}=1;
   }
   if (defined($rule->{'outfile'})) {
     my $hash=[];
     foreach my $file (@{$rule->{'outfile'}}) {
-      foreach my $counter (1..$list) {
-        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      if ($list) {
+        foreach my $counter (1..$list) {
+          $file =~ s/\$$counter/$list[$counter-1]/ge;
+        }
       }
       &out(2,'plan',"Expanding outfile $file");
       push $hash,readFileList($file);
@@ -1400,38 +1439,46 @@ sub getGenerable {
 }
 sub explainPlan {
   my $narrowPlan=shift @_;
-  &out(1,'plan','Explaining plan');
+  &out(5,'what','Explaining plan');
   foreach my $key (sort keys %{$planContext->{'simpleRules'}}) {
     my $rule=$planContext->{'simpleRules'}->{$key};
-    &out(1,'err',"The rule $key did not complete.");
+    &out(3,'what',"The rule $key did not complete.");
     foreach my $missingfile (sort keys %{$rule->{'wanted'}}) {
-      &out(1,'err','The file "'.&encodeGoalLine($missingfile).'" was missing.');
+      &out(4,'what','The file "'.&encodeGoalLine($missingfile).'" was missing.');
     }
-    &out(1,'err','This rule was triggered by "'.&encodeGoalLine($rule->{'trigger'}).'".') if ($rule->{'trigger'});
+    &out(3,'what','This rule was triggered by "'.&encodeGoalLine($rule->{'trigger'}).'".') if ($rule->{'trigger'});
   }
   my $notUsed=[];
   my $usedRules=$planContext->{'usedRules'};
   foreach my $rulename (sort {$usedRules->{$b} <=> $usedRules->{$a} || $a cmp $b} keys %$usedRules) {
     my $count=$usedRules->{$rulename};
     if ($count) {
-      &out(1,'out',"The rule named $rulename was used $count time".($count>1?'s.':'.'));
+      &out(4,'what',"The rule named $rulename was used $count time".($count>1?'s.':'.'));
     } else {
       push $notUsed,$rulename;
     }
   }
   if (scalar @$notUsed > 0) {
     foreach my $rulename (@$notUsed) {
-      &out(1,'err',"The rule named $rulename was not used at all.");
+      &out(3,'what',"The rule named $rulename was not used at all.");
     }
   }
   foreach my $file (sort keys %{$planContext->{'unbuildable'}}) {
     &out(1,'err',"Impossible to build $file");
   }
-  &out(1,'out',"Here is the plan so far:");
+  &out(1,'what',"Here is the plan so far:");
   my $begin=0;
   while ($begin < scalar @$narrowPlan) {
     my ($todo,$end)=&firstCompound($narrowPlan,$begin);
-    &out(1,'out',&actionKey($todo));
+    if ($outContext->{'verbosity'}->{'what'}<2) {
+      my @keys=@{$todo->{'arg'}};
+      if (scalar @keys > 6) {
+        my $len=scalar @keys;
+        splice @keys,5,$len,"...total $len";
+      }
+      $todo->{'arg'}=\@keys;
+    }
+    &out(1,'what',&actionKey($todo));
     $begin=$end;
   }
 }
@@ -1511,7 +1558,12 @@ sub firstCompound {
   foreach my $i ($begin..$end-1) {
     my $rule=$planList->{$plan->[$i]};
     my $key=&actionKey($rule);
-    my $fingerprintIn=&fingerprintArray($rule,'in');
+    my $fingerprintIn;
+    if ($rule->{'inline'} == 0) {
+      $fingerprintIn=&fingerprintArray($rule,'in');
+    } else {
+      $fingerprintIn=&fingerprintArray($rule,'in',$rule->{'command'},$rule->{'arg'});
+    }
     $rule->{'fingerprintIn'}=$fingerprintIn;
     my $fingerprintOut=&fingerprintArray($rule,'out');
     if (!defined($progContext->{'fingerprint'}->{$key})) {
@@ -1572,14 +1624,17 @@ sub attempt {
   my $rule=shift @_;
   my $key=&actionKey($rule);
   &out(2,'exec',"Preparing for $key");
-  my @execLine=($actordir.'/'.$rule->{'actor'},@{$rule->{'arg'}});
-  if ($rule->{'class'} ne '') {
+  my @execLine=(@{$rule->{'command'}},@{$rule->{'arg'}});
+  if ($rule->{'class'}) {
     &out(1,'display',$rule->{'class'});
-    if ($rule->{'subclass'} ne '') {
-      &out(2,'display',$rule->{'subclass'});
-    }
+    &out(2,'display',$rule->{'subclass'}) if ($rule->{'subclass'});
+  }
+  if (defined($rule->{'display'})) {
+    &out(3,'display',$rule->{'display'}) if ($rule->{'display'});
   } else {
-    &out(1,'display',substr $key,0,72); # Default class = key
+    foreach my $arg (@{$rule->{'arg'}}) {
+      &out(3,'display',$arg);
+    }
   }
   # in doubt, every possibly generated file will have been generated in the first
   # steps of the rule, so let's suppose they were.
@@ -1600,7 +1655,10 @@ sub attempt {
     }
     &writeCache($progContext,'fingerprint');
     &writeCache($progContext,'lazyfingerprint') if defined($rule->{'lazy'});
-    &finish(1,"One rule failed with status $status");
+    if (defined($rule->{'failmessage'})) {
+      &out(1,'err',$rule->{'failmessage'});
+    }
+    &finish(1,&actionKey($rule)." failed with status $status");
   } else {
     if (exists($rule->{'origin'})) {
       foreach my $ok (keys %{$rule->{'origin'}}) {
@@ -1711,41 +1769,6 @@ sub graphviz {
       print '  "'.$start.'" -> "'.$end.'";'."\n";
     }
   }
-  # my $alias={};
-  # my $aliasusable={};
-  # my $revertalias={};
-  # foreach my $file (keys %$usedfilein) {
-  #   my $data=join("\n",sort keys %{$usedfilein->{$file}});
-  #   $alias->{$file}=$data;
-  #   my $hashing = Digest::MD5->new;
-  #   $hashing->add($data);
-  #   $aliasusable->{$file}='NODE'.$hashing->hexdigest;
-  #   if (!defined($revertalias->{$aliasusable->{$file}})) {
-  #     $revertalias->{$aliasusable->{$file}}={};
-  #   }
-  #   $revertalias->{$aliasusable->{$file}}->{$file}=1;
-  # }
-  # foreach my $node (keys %$revertalias) {
-  #   print $node.' [ label="'.join('\n',sort keys %{$revertalias->{$node}}).'"];'."\n";
-  # }
-  # foreach my $key (@$plan) {
-  #   $rule=$planContext->{'plan'}->{$key};
-  #   next if $rule->{'actor'} eq 'AXIOM';
-  #   my $links={};
-  #   foreach my $file (keys %{$rule->{'out'}}) {
-  #     $links->{$aliasusable->{$file}}=1;
-  #   }
-  #   foreach my $link (keys %$links) {
-  #     print '  "'.$key.'" -> "'.$link.'";'."\n";
-  #   }
-  #   $links={};
-  #   foreach my $file (keys %{$rule->{'in'}}) {
-  #     $links->{$aliasusable->{$file}}=1;
-  #   }
-  #   foreach my $link (keys %$links) {
-  #     print '  "'.$link.'" -> "'.$key.'";'."\n";
-  #   }
-  # }
   print "}\n";
 }
 
@@ -1989,7 +2012,9 @@ differently. Rules using the different modes should depend on this file.
 
 Moreover, rules may use a C<mode> property. The rules with a C<mode>
 property currently not active are not considered. This allows for
-possibly completely different properties (input, output, ...).
+possibly completely different properties (input, output, ...). The
+C<mode> property can be a list of modes separated by commas; in this
+case, the rule is active if any of these modes is selected.
 
 If no mode is selected, then the mode C<default> is automatically selected.
 

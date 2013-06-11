@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-for i in $@; do
-    LC_ALL=C fontforge -lang=ff -script library/generatefont fonts/${i}.sfd 2>/dev/null
-    echo "${SPECIALPREFIX}${i}" 1>&2
-done

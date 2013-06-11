@@ -1,9 +1,10 @@
 {
    "class" : "Checking programs",
-   "in" : [],
+   "arg" : ["curl"],
+   "command" : "which \"$@\" > /dev/null && touch .tmp/proof-curl",
+   "failmessage" : "maybe install fontforge",
    "out" : [
       ".tmp/proof-curl"
    ],
-   "subclass" : "curl",
    "type" : "simple"
 }

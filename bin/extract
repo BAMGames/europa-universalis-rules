@@ -1,4 +1,9 @@
 #!/usr/bin/perl
+my $standalone=0;
+if ($ARGV[0] eq '--ops') {
+  $standalone=1;
+  shift @ARGV;
+}
 @files=@ARGV;
 %info=();
 @roman=("0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX");
@@ -597,8 +602,9 @@ foreach $k (@infoRaw) {
 delete $info{"Raw"};
 
 $header="%!PS
-/compress true def
-/translation true def
+/compress true def";
+$header.='/counteralone true def/pageheight 100 def/pagewidth 100 def' if ($standalone);
+$header.="\n/translation true def
 (library/libpions.ps) include
 << /Title ((Europa 8 counters)) >> infochunk
 begindocument initpages\n";

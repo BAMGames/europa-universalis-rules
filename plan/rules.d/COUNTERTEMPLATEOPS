@@ -1,10 +1,12 @@
 {
    "argument" : "$1",
    "class" : "Counters templates",
+   "command": "for i in \"$@\"; do echo 1>&2 ${SPECIALPREFIX}${i} && bin/extract --ops pions/${i}_c.txt > pions/${i}-ops.eps && echo 1>&2 ${SPECIALPREFIX}done:${i}; done",
    "in" : [
       "bin/extract",
       "pions/$1_c.txt"
    ],
+   "mode" : "rebuild",
    "out" : [
       "pions/$1-ops.eps"
    ],

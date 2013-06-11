@@ -1,9 +1,10 @@
 {
    "class" : "Checking programs",
-   "in" : [],
+   "arg" : ["pngcrush"],
+   "command" : "which \"$@\" > /dev/null && touch .tmp/proof-pngcrush",
+   "failmessage" : "maybe install pngcrush",
    "out" : [
       ".tmp/proof-pngcrush"
    ],
-   "subclass" : "pngcrush",
    "type" : "simple"
 }

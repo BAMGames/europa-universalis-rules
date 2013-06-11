@@ -1,9 +1,10 @@
 {
    "class" : "Checking programs",
-   "in" : [],
+   "arg" : ["fontforge"],
+   "command" : "which \"$@\" > /dev/null && touch .tmp/proof-fontforge",
+   "failmessage" : "maybe install fontforge",
    "out" : [
       ".tmp/proof-fontforge"
    ],
-   "subclass" : "fontforge",
    "type" : "simple"
 }

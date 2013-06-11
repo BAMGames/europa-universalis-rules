@@ -1,12 +1,14 @@
 {
    "argument" : "$1",
    "class" : "Generating postscript fonts",
+   "command" : "LC_ALL=C fontforge -lang=ff -script library/generatefont fonts/$1.sfd 2>/dev/null",
    "in" : [
       "fonts/$1.sfd",
       ".tmp/proof-fontforge",
       "library/generatefont"
    ],
    "lazy" : 1,
+   "maxargs" : 1,
    "out" : [
       "fonts/$1.pfb",
       "fonts/$1.afm"

@@ -1,6 +1,7 @@
 {
    "argument" : "$1",
    "class" : "Building map",
+   "command" : "bin/analyse.pl carte/$1.utf > carte/$1.text.ps",
    "in" : [
       "bin/analyse.pl",
       "carte/$1.utf"
@@ -8,6 +9,7 @@
    "out" : [
       "carte/$1.text.ps"
    ],
+   "maxargs" : 1,
    "pattern" : "carte/(.*).utf",
    "subclass" : "text",
    "type" : "pattern"
