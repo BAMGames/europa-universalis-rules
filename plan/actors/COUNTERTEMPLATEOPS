@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-for i in "$@"; do
-    bin/extract pions/${i}_c.txt | sed -e '2 s|$|/counteralone true def/pageheight 100 def/pagewidth 100 def|g' > pions/${i}-ops.eps
-    echo 1>&2 "${SPECIALPREFIX}done:${i}"
-done

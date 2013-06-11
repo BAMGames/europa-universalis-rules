@@ -262,6 +262,7 @@ form, because the target will take precedence.
 
 The verbosity level is a positive integer (including 0).
 
+
 The various categories are :
 
 =over
@@ -278,12 +279,14 @@ The various categories are :
 
 =item * B<display> the summary of the building (1: each class, 2: each subclass, 3: each item)
 
+=item * B<what> the verbosity of the explications mostly action C<what>.
+
 =back
 
 Each rule can define a class and a subclass, and each item built will be
-output in a synthetic manner. The default setting is 3 for B<display>
-and 1 for B<out> and B<err>. A quiet effect can be obtained by setting
-everything to 0.
+output in a synthetic manner. The default setting is 3 for B<display>, 1
+for B<what> and 1 for B<out> and B<err>. A quiet effect can be obtained
+by setting everything to 0.
 
 =cut
 
@@ -293,6 +296,7 @@ everything to 0.
   my $verbosity={'exec'=>0,
                  'init'=>0,
                  'plan'=>0,
+                 'what'=>1,
                  'out'=>1,
                  'err'=>1,
                  'dev'=>1,
@@ -1069,7 +1073,7 @@ sub readRules {
                      'subclass' => '',
                      'inline' => 0,
                      'name' => 'AXIOM',
-                     'command' => [$actordir.'/AXIOM']
+                     'command' => ['true'] # [$actordir.'/AXIOM']
                     };
   $optionContext->{'pristineRules'}=$rules;
 }
@@ -1152,11 +1156,7 @@ sub recordAxioms {
     my $axiomRule=&clone($planContext->{'pristineRules'}->{'AXIOM'});
     $axiomRule->{'type'}='simple';
     $axiomRule->{'out'}={$axiom => 1};
-    if ($axiom eq $actordir.'/AXIOM') {
-      $axiomRule->{'in'}={}
-    } else {
-      $axiomRule->{'in'}={$actordir.'/AXIOM' => 1};
-    }
+    $axiomRule->{'in'}={};
     $axiomRule->{'wanted'}={};
     $axiomRule->{'arg'}=[$axiom];
     $axiomRule->{'gen'}=0;

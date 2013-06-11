@@ -1,6 +1,16 @@
-#!/bin/sh
-set -e
-FILE=carte/rotw.activation.ps
-echo '/activationdict << ' > ${FILE}
-grep ^.minoractivation rules/engCorpsMineurs.tex|perl -pe 's/^.*minoractivation{([a-z]*)}{([\/0-9]*).*/\/\1 (\2\3)/g;s/ormus/perse/g;' >> ${FILE}
-echo '>> def' >> ${FILE}
+#!/usr/bin/perl
+use strict;
+use warnings;
+my $prefix='';
+$prefix=$ENV{'SPECIALPREFIX'} if defined($ENV{'SPECIALPREFIX'});
+open FILE,">carte/rotw.activation.ps" or die "${prefix}failed:activation";
+open INFILE,"rules/engCorpsMineurs.tex" or die "${prefix}failed:activation";
+print FILE "/activationdict <<\n";
+while (<INFILE>) {
+    next unless /^.minoractivation/;
+    chomp;
+    s/^.*minoractivation{([a-z]*)}{([\/0-9]*).*/\/$1 ($2)/g;
+        s/ormus/perse/g;
+        print FILE "$_\n";
+}
+print FILE ">> def\n";
