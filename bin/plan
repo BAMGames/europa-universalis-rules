@@ -1217,7 +1217,7 @@ sub cleanRule {
   my $in={};
   my $out={};
   my $junk={};
-  if ($list) {
+  if ($list) { # class and subclass
     my $class=$rule->{'class'};
     my $subclass=$rule->{'subclass'};
     if ($class =~ /\$/) {
@@ -1249,6 +1249,7 @@ sub cleanRule {
           $file =~ s/\$$counter/$list[$counter-1]/ge;
         }
       }
+      $planContext->{'fingerprintUseful'}->{$file}=1;
       &out(2,'plan',"Expanding infile $file");
       push $hash,readFileList($file);
     }
@@ -1276,6 +1277,7 @@ sub cleanRule {
           $file =~ s/\$$counter/$list[$counter-1]/ge;
         }
       }
+      $planContext->{'fingerprintUseful'}->{$file}=1;
       &out(2,'plan',"Expanding outfile $file");
       push $hash,readFileList($file);
     }
@@ -1363,6 +1365,17 @@ sub preparePlan {
   # ignoredup=0/undef => normal
   # ignoredup=1     => ignore duplicates, do not recompute order
   # ignoredup=2     => order being recomputed, do not ignore dup
+  if (defined($planContext->{'fingerprintPlan'}) and
+      (!defined($ignoredup) or ($ignoredup == 0))
+     ) {
+    my $oldfp=$planContext->{'fingerprintPlan'};
+    my $newfp=&fingerprintArray($planContext,'fingerprintUseful');
+    if ($oldfp eq $newfp) {
+      $planContext->{'reuse'}=1;
+      &out(1,'plan','Reusing plan');
+      return;
+    }
+  }
   $planContext={};
   $planContext->{'pristineRules'}=&clone($optionContext->{'pristineRules'});
   $ignoredup=0 if (!defined($ignoredup));
@@ -1384,6 +1397,8 @@ sub preparePlan {
     $planContext->{'mode'}=&clone($optionContext->{'mode'});
   }
   &writeModes();
+  $planContext->{'fingerprintPlan'}="0";
+  $planContext->{'fingerprintUseful'}={};
   $planContext->{'generated'}={};
   $planContext->{'junkable'}={};
   $planContext->{'plan'}={};
@@ -1412,6 +1427,8 @@ sub preparePlan {
       $gen=$mingen;
     }
   }
+  $planContext->{'fingerprintPlan'}=&fingerprintArray($planContext,
+                                                      'fingerprintUseful');
   if (scalar keys %{$planContext->{'lazy'}} > 0 and
       !defined($lazy) and
       $planContext->{'ignoreDuplicates'} == 0 ) {
@@ -1483,6 +1500,10 @@ sub explainPlan {
   }
 }
 sub reducePlan {
+  if (defined($planContext->{'reuse'})) {
+    &out(1,'plan','Reusing build paths for selected goals');
+    return &clone($planContext->{'sortedPlan'});
+  }
   &out(1,'plan','Narrowing build paths for selected goals');
   my $plan={};
   my $seen={};
@@ -1529,6 +1550,7 @@ sub reducePlan {
   &out(2,'plan',$planKeys);
   $planContext->{'unbuildable'}=&subHash($goals,$planContext->{'generated'});
   $planContext->{'goals'}=$goals;
+  $planContext->{'sortedPlan'}=$planKeys;
   return $planKeys;
 }
 
@@ -2060,6 +2082,8 @@ checksum several gigabytes of data in an input directory everytime).
 
 There is no automatic dependency on C<bin/plan> itself. Hopefully, the
 result of the build should not depend on the building tool.
+
+The rules are not reread during a single run. This is probably a bug.
 
 =head1 AUTHOR
 
