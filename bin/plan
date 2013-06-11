@@ -1045,6 +1045,7 @@ sub readRules {
   $rules->{'AXIOM'}={'type' => 'axiom',
                      'class' => 'Checking axioms',
                      'subclass' => '',
+                     'display' => '',
                      'command' => ['true'] # [$actordir.'/AXIOM']
                     };
   foreach my $rulename (keys %$rules) {
@@ -1624,13 +1625,16 @@ sub attempt {
   my $key=&actionKey($rule);
   &out(2,'exec',"Preparing for $key");
   my @execLine=(@{$rule->{'command'}},@{$rule->{'arg'}});
-  if ($rule->{'class'} ne '') {
+  if ($rule->{'class'}) {
     &out(1,'display',$rule->{'class'});
-    if ($rule->{'subclass'} ne '') {
-      &out(2,'display',$rule->{'subclass'});
-    }
+    &out(2,'display',$rule->{'subclass'}) if ($rule->{'subclass'});
+  }
+  if (defined($rule->{'display'})) {
+    &out(3,'display',$rule->{'display'}) if ($rule->{'display'});
   } else {
-    &out(1,'display',substr $key,0,72); # Default class = key
+    foreach my $arg (@{$rule->{'arg'}}) {
+      &out(3,'display',$arg);
+    }
   }
   # in doubt, every possibly generated file will have been generated in the first
   # steps of the rule, so let's suppose they were.
