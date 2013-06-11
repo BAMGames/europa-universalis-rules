@@ -1042,39 +1042,15 @@ sub readRules {
     close $fh;
     $rules->{$fragment->[0]}=decode_json($json);
   }
-  foreach my $rulename (keys %$rules) {
-    my $rule=$rules->{$rulename};
-    $rule->{'actor'}=$rulename unless (defined($rule->{'actor'}));
-    $rule->{'out'}=[] unless (defined($rule->{'out'}));
-    $rule->{'junk'}=[] unless (defined($rule->{'junk'}));
-    $rule->{'in'}=[] unless (defined($rule->{'in'}));
-    if (!defined($rule->{'command'})) {
-      $rule->{'command'}=[$actordir.'/'.$rule->{'actor'}];
-      push $rule->{'in'},$rule->{'command'}->[0];
-      $rule->{'inline'} = 0;
-    } else {
-      $rule->{'inline'} = 1;
-    }
-    if (ref($rule->{'command'}) ne 'ARRAY') {
-      my $com=$rule->{'command'};
-      if ($com =~ /[|;<>&]/) {
-        $rule->{'command'}=['sh','-c',$com,$rule->{'actor'}];
-      } else {
-        $rule->{'command'}=[map {&decodeGoalLine($_)} split(/ /,$com)];
-      }
-    }
-    $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
-    $rule->{'class'}='' unless (defined($rule->{'class'}));
-    $rule->{'subclass'}='' unless (defined($rule->{'subclass'}));
-  }
   $rules->{'AXIOM'}={'type' => 'axiom',
-                     'actor' => 'AXIOM',
                      'class' => 'Checking axioms',
                      'subclass' => '',
-                     'inline' => 0,
-                     'name' => 'AXIOM',
                      'command' => ['true'] # [$actordir.'/AXIOM']
                     };
+  foreach my $rulename (keys %$rules) {
+    my $rule=$rules->{$rulename};
+    &cleanPristineRule($rule,$rulename);
+  }
   $optionContext->{'pristineRules'}=$rules;
 }
 sub readFileList {
@@ -1151,13 +1127,13 @@ sub recordGeneration {
 }
 
 sub recordAxioms {
+  my $origRule=$planContext->{'pristineRules'}->{'AXIOM'};
+  &cleanRule($origRule);
   foreach my $axiom (keys %{$_[0]}) {
     $planContext->{'usedRules'}->{'AXIOM'}++;
-    my $axiomRule=&clone($planContext->{'pristineRules'}->{'AXIOM'});
+    my $axiomRule=&clone($origRule);
     $axiomRule->{'type'}='simple';
     $axiomRule->{'out'}={$axiom => 1};
-    $axiomRule->{'in'}={};
-    $axiomRule->{'wanted'}={};
     $axiomRule->{'arg'}=[$axiom];
     $axiomRule->{'gen'}=0;
     &recordGeneration($axiomRule);
@@ -1195,7 +1171,7 @@ sub sortRules {
       }
       if ($modefound == 0) {
         &out(1,'plan',"Skipping rule $rulename because not in mode ".$origrule->{'mode'});
-      next;
+        next;
       }
     }
     $planContext->{'usedRules'}->{$rulename}=0;
@@ -1209,37 +1185,68 @@ sub sortRules {
     }
   }
 }
+sub cleanPristineRule {
+  my ($rule,$rulename)=@_;
+  $rule->{'actor'}=$rulename unless (defined($rule->{'actor'}));
+  $rule->{'out'}=[] unless (defined($rule->{'out'}));
+  $rule->{'junk'}=[] unless (defined($rule->{'junk'}));
+  $rule->{'in'}=[] unless (defined($rule->{'in'}));
+  if (!defined($rule->{'command'})) {
+    $rule->{'command'}=[$actordir.'/'.$rule->{'actor'}];
+    push $rule->{'in'},$rule->{'command'}->[0];
+    $rule->{'inline'} = 0;
+  } else {
+    $rule->{'inline'} = 1;
+  }
+  if (ref($rule->{'command'}) ne 'ARRAY') {
+    my $com=$rule->{'command'};
+    if ($com =~ /[|;<>&]/) {
+      $rule->{'command'}=['sh','-e','-c',$com,$rule->{'actor'}];
+    } else {
+      $rule->{'command'}=[map {&decodeGoalLine($_)} split(/ /,$com)];
+    }
+  }
+  $rule->{'arg'}=[] unless (defined($rule->{'arg'}));
+  $rule->{'class'}='' unless (defined($rule->{'class'}));
+  $rule->{'subclass'}='' unless (defined($rule->{'subclass'}));
+}
 sub cleanRule {
   my ($rule,@list)=@_;
   my $list=scalar @list;
   my $in={};
   my $out={};
   my $junk={};
-  my $class=$rule->{'class'};
-  if ($class =~ /\$/) {
-    foreach my $counter (1..$list) {
-      $class =~ s/\$$counter/$list[$counter-1]/ge;
+  if ($list) {
+    my $class=$rule->{'class'};
+    my $subclass=$rule->{'subclass'};
+    if ($class =~ /\$/) {
+      foreach my $counter (1..$list) {
+        $class =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
-  }
-  $rule->{'class'}=$class;
-  my $subclass=$rule->{'subclass'};
-  if ($subclass =~ /\$/) {
-    foreach my $counter (1..$list) {
-      $subclass =~ s/\$$counter/$list[$counter-1]/ge;
+    if ($subclass =~ /\$/) {
+      foreach my $counter (1..$list) {
+        $subclass =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
+    $rule->{'class'}=$class;
+    $rule->{'subclass'}=$subclass;
   }
-  $rule->{'subclass'}=$subclass;
   foreach my $file (@{$rule->{'in'}}) {
-    foreach my $counter (1..$list) {
-      $file =~ s/\$$counter/$list[$counter-1]/ge;
+    if ($list) {
+      foreach my $counter (1..$list) {
+        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
     $in->{$file}=1;
   }
   if (defined($rule->{'infile'})) {
     my $hash=[];
     foreach my $file (@{$rule->{'infile'}}) {
-      foreach my $counter (1..$list) {
-        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      if ($list) {
+        foreach my $counter (1..$list) {
+          $file =~ s/\$$counter/$list[$counter-1]/ge;
+        }
       }
       &out(2,'plan',"Expanding infile $file");
       push $hash,readFileList($file);
@@ -1253,16 +1260,20 @@ sub cleanRule {
     $junk->{$file}=1;
   }
   foreach my $file (@{$rule->{'out'}}) {
-    foreach my $counter (1..$list) {
-      $file =~ s/\$$counter/$list[$counter-1]/ge;
+    if ($list) {
+      foreach my $counter (1..$list) {
+        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      }
     }
     $out->{$file}=1;
   }
   if (defined($rule->{'outfile'})) {
     my $hash=[];
     foreach my $file (@{$rule->{'outfile'}}) {
-      foreach my $counter (1..$list) {
-        $file =~ s/\$$counter/$list[$counter-1]/ge;
+      if ($list) {
+        foreach my $counter (1..$list) {
+          $file =~ s/\$$counter/$list[$counter-1]/ge;
+        }
       }
       &out(2,'plan',"Expanding outfile $file");
       push $hash,readFileList($file);
