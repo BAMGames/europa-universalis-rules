@@ -20,23 +20,24 @@ plan [B<--mode>] I<modename> ... (see L</"MODES">).
 
 plan [B<--target>] I<targetname> ... (see L</"GOALS AND TARGETS">).
 
-plan [B<--hard>] [B<--hardrule> I<rule>] ... (see L</"LAZY AXIOMS">).
+plan [B<--file>] I<filename> ... (see L</"GOALS AND TARGETS">).
 
-plan [B<-->] [I<goals>] (only goals after B<-->) (see L</"GOALS AND TARGETS">).
+plan [B<--exclude> I<filename>] ... (see L</"GOALS AND TARGETS">).
+
+plan [B<--hard|--hardrule I<rule>>] ... (see L</"LAZY AXIOMS">).
 
 =head2 ACTIONS
 
-plan B<[--]ignore>
+Actions are things that C<plan> does if asked (see L</"POSSIBLE ACTIONS">).
+If no action is specified, then B<--build> is used instead.
 
-plan B<[--]what>
-
-plan B<[--]how> [I<goals>]
-
-plan B<[--]why> [I<goals>]
+plan B<[--]what>|B<[--]how>|B<[--]why>|B<[--]build>|B<[--]clean> I<goals>
 
 plan B<--help>|B<--man>|B<--nroff>|B<--usage>
 
-If a goal could be mistaken for another option, use the B<--> syntax.
+If a goal could be mistaken for another option, use the B<--> syntax or
+the B<--action I<actionname>> syntax. The ignore action just ignores the
+goals.
 
 =cut
 
@@ -185,7 +186,6 @@ sub main {
     $generable=&subHash($generable,$gitaxioms);
     my $data='/'.join("\n/",sort keys %$generable)."\n";
     &outputSection('.gitignore','plan',$data);
-    &finish(0);
   }
   if (defined($actions->{'build'})) {
     my $steps=0;
@@ -277,7 +277,8 @@ The various categories are :
 
 =item * B<out> the console output of the various commands
 
-=item * B<display> the summary of the building (1: each class, 2: each subclass, 3: each item)
+=item * B<display> the summary of the building (1: only classes, 2:
+classes and subclasses, 3: each item)
 
 =item * B<what> the verbosity of the explications mostly action C<what>.
 
@@ -494,6 +495,8 @@ sub initOptions {
        'help' => [ '--help-action', 'man' ],
        '--man' => [ '--help-action', 'man' ],
        '--nroff' => [ '--help-action', 'nroff' ],
+       'build' => [ '--action', 'build' ],
+       '--build' => [ '--action', 'build' ],
        'what' => [ '--action', 'what' ],
        '--what' => [ '--action', 'what' ],
        'how' => [ '--action', 'how' ],
@@ -1427,8 +1430,8 @@ sub preparePlan {
       $gen=$mingen;
     }
   }
-  $planContext->{'fingerprintPlan'}=&fingerprintArray($planContext,
-                                                      'fingerprintUseful');
+  $planContext->{'fingerprintPlan'}=
+    &fingerprintArray($planContext,'fingerprintUseful') if $ignoredup==0;
   if (scalar keys %{$planContext->{'lazy'}} > 0 and
       !defined($lazy) and
       $planContext->{'ignoreDuplicates'} == 0 ) {
@@ -1812,16 +1815,31 @@ A rule is the description of an action that can be done.
 A rule has a name that must be unique, and properties. The values of
 these properties are either integer, strings or arrays of strings.
 
-The C<plan/rules> file contains all the rules in JSON format.
+The combination of the C<plan/rules> file and C<plan/rules.d> directory
+contents contains all the rules in JSON format; in the one-file format,
+each rule is contained in an associative array where the key would be
+the filename in the directory format, and the value would be the
+contents of the file.
 
-A rule basically must have an actor (a script or program, stored in
-C<plan/actors> directory with its name in the C<actor> property. The
-actor is executed whenever the rule may apply (see below). The program
-stops if an actor returns with an error. During the execution of the
-actor, its standard input is still accessible to the actor. Standard
-output is written in blue, so as to be more detectable, and standard
-error in red, except for some messages pertaining to the communication
-between the I<plan> utility and the actors.
+    {
+      "out":[".tmp/proof-gimp"],
+      "subclass":"gimp",
+      "type":"simple",
+      "class":"Checking programs"
+    }
+
+
+
+A rule basically must have a command. If no command is given, then the
+actor (a script or program, stored in C<plan/actors> directory with its
+name in the C<actor> property) is used instead. If no actor name is
+given, then the rule name is used as the name f the actor. The actor is
+executed whenever the rule may apply (see below). The program stops if
+an actor returns with an error. During the execution of the actor, its
+standard input is still accessible to the actor. Standard output is
+written in blue, so as to be more detectable, and standard error in red,
+except for some messages pertaining to the communication between the
+I<plan> utility and the actors.
 
 =head2 RULES INPUT, OUTPUT AND JUNK
 
