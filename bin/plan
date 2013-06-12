@@ -729,7 +729,11 @@ sub REAPER {
   while (($child = waitpid(-1, WNOHANG)) > 0) {
     &out(1,'exec',"Caught $child dying with status $?");
     $execContext->{'status'}->{$child} = $?;
-    delete $execContext->{'children'}->{$child};
+    if (!defined($execContext->{'children'}->{$child})) {
+      $execContext->{'unborn'}->{$child} = 1;
+    } else {
+      delete $execContext->{'children'}->{$child};
+    }
   }
   $SIG{CHLD} = \&REAPER;        # still loathe SysV
 }
@@ -740,6 +744,7 @@ sub setupCommand {
   $execContext={
                 'status' => {},
                 'children' => {},
+                'unborn' => {},
                };
   $SIG{CHLD} = \&REAPER;
   $SIG{INT} = sub {
@@ -779,6 +784,10 @@ sub execCommand {
   $execContext->{'children'}->{$pid}=1;
   my $sel= new IO::Select;
   $sel->add($err,$out);
+  if (defined($execContext->{'unborn'}->{$pid})) {
+    delete $execContext->{'unborn'}->{$pid};
+    delete $execContext->{'children'}->{$pid};
+  }
   while (scalar keys %{$execContext->{'children'}} > 0) {
     foreach my $readhandle ($sel->can_read(.5)) {
       my $length=sysread $readhandle,$line,4096;
@@ -1226,7 +1235,7 @@ sub cleanRule {
   my $in={};
   my $out={};
   my $junk={};
-  if ($list) { # class and subclass
+  if ($list) {                  # class and subclass
     my $class=$rule->{'class'};
     my $subclass=$rule->{'subclass'};
     if ($class =~ /\$/) {
