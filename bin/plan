@@ -241,6 +241,11 @@ sub main {
     my $narrowPlan=&reducePlan();
     &graphviz($narrowPlan);
   }
+  if (defined($actions->{'why'})) {
+    &preparePlan($realaxioms);
+    my $narrowPlan=&consequencesPlan();
+    &graphviz($narrowPlan);
+  }
   &finish(0);
 }
 
@@ -1046,6 +1051,7 @@ sub readRules {
     $rules->{$fragment->[0]}=decode_json($json);
   }
   $rules->{'AXIOM'}={'type' => 'axiom',
+                     'name' => 'AXIOM',
                      'class' => 'Checking axioms',
                      'subclass' => '',
                      'display' => '',
@@ -1502,6 +1508,64 @@ sub explainPlan {
     $begin=$end;
   }
 }
+sub consequencesPlan {
+  &out(1,'plan','Narrowing build paths from selected goals');
+  my $plan={};
+  my $seen={};
+  my $goals=&clone($optionContext->{'includedFiles'});
+  if ($optionContext->{'allFiles'} == 1) {
+    foreach my $key (keys %{$planContext->{'generated'}}) {
+      $goals->{$key}=1;
+    }
+  }
+  foreach my $key ($optionContext->{'excludedFiles'}) {
+    delete $goals->{$key} if defined($goals->{$key});
+  }
+  my $requirement=&clone($goals);
+  my $generation=$planContext->{'generated'};
+  my $rules=$planContext->{'plan'};
+  my $ruleseen={};
+  foreach my $key (keys %$requirement) {
+    $seen->{$key}=1;
+  }
+  while (scalar keys %$requirement) {
+    foreach my $file (keys %$requirement) {
+      delete ($requirement->{$file});
+      if (!exists($generation->{$file})) {
+        &out(1,'err','No build path to "'.&encodeGoalLine($file).'" yet.');
+        next;
+      }
+      foreach my $rulename (keys %$rules) {
+        my $rule=$rules->{$rulename};
+        next if defined($ruleseen->{&actionKey($rule)});
+        next unless defined($rule->{'in'}->{$file});
+        my $actionkey=&actionKey($rule);
+        $ruleseen->{$actionkey}=1;
+        $plan->{$actionkey}=1;
+        my $outFiles=$rules->{$actionkey}->{'out'};
+        foreach my $out (keys %$outFiles) {
+          $requirement->{$out}=1 unless $seen->{$out};
+          $seen->{$out}=1;
+        }
+      }
+    }
+  }
+  $planContext->{'narrowPlan'}=$plan;
+  my $planKeys=[sort {
+    my $pa=$planContext->{'plan'}->{$a};
+    my $pb=$planContext->{'plan'}->{$b};
+    return ($pa->{'gen'} <=> $pb->{'gen'}) ||
+      ($pa->{'actor'} cmp $pb->{'actor'}) ||
+        ($pa->{'class'} cmp $pb->{'class'}) ||
+          ($pa->{'subclass'} cmp $pb->{'subclass'}) ||
+            ($pa->{'key'} cmp $pb->{'key'})
+          } keys %$plan];
+  &out(2,'plan',$planKeys);
+  $planContext->{'unbuildable'}=&subHash($goals,$planContext->{'generated'});
+  $planContext->{'goals'}=$goals;
+  $planContext->{'sortedPlan'}=$planKeys;
+  return $planKeys;
+}
 sub reducePlan {
   if (defined($planContext->{'reuse'})) {
     &out(1,'plan','Reusing build paths for selected goals');
@@ -1703,7 +1767,7 @@ sub graphviz {
   # TODO enhance.
   # Collapse all targets produced by patterns as one node.
   # Collapse all actions produced by patterns as one node.
-  my ($plan,$gen)=@_;
+  my ($plan)=@_;
   my $rule;
   my $name;
   my $rulenames={};
@@ -1914,7 +1978,7 @@ C<foo.lib>. The output is in graphviz format.
 B<how> will explain from what a selected target is derived. For example,
 C<plan how foo.c> may show that C<foo.c> is in fact generated from
 C<foo.in> and C<foo_stub.c>, the last one being generated from
-C<stub.sh>.
+C<stub.sh>. The output is in graphviz format.
 
 B<clean> will clean the selected targets (see L</"CLEANING">).
 
@@ -1999,13 +2063,6 @@ Another possibility is to put C<test.png> in C<plan/notaxioms>. However,
 in this case, on a new installation of the project, C<test.png> will
 always be rebuilt even if already present. C<plan/notaxioms> just
 disconnects the git status and the axiom status.
-
-=head1 EXPLAINING
-
-The B<--why> and B<--how> specifiers will disable file generation and
-explain by a simple graph which file is output starting from the
-specified goals (B<--why>) or an input from the specified goals
-(B<--how>). The graph is in I<graphviz> format.
 
 =head1 GOALS AND TARGETS
 
@@ -2115,15 +2172,7 @@ program, in case anyone had doubts.
 
 =head1 TODO
 
-Use IPC::Run3 that does many things better than we do.
-
 Improve documentation.
-
-Graph output for how is suboptimal (read unusable).
-
-Action C<why> is not implemented yet.
-
-C<sub main> has a lot of redundancy in some parts
 
 Variables may be useful. They should behave more or less like modes.
 
