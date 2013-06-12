@@ -80,17 +80,17 @@ For each goal:
   Run the runplan. Some items (discover) may append elements to the runplan.
   Run the postplan.
 
-A plan part is a array:
+A plan part is a hash:
 
-{
-  'order' => [ keys ],
-  'key0' => {
-    'filemustexist' => { filehash },
-    'in' => { filehash },
-    'out' => { filehash },
-    'junk' => { filehash }
-    'command' => [ 'pdflatex','--jobname','x','source.tex' ],
-    'display' => 'pdflatex source (x)'
-  },
-  'key1' => {...}
-}
+    {
+      'order' => [ keys ],
+      'key0' => {
+        'filemustexist' => { filehash },
+        'in' => { filehash },
+        'out' => { filehash },
+        'junk' => { filehash }
+        'command' => [ 'pdflatex','--jobname','x','source.tex' ],
+        'display' => 'pdflatex source (x)'
+      },
+      'key1' => {...}
+    }
