@@ -80,12 +80,14 @@ For each goal:
   Run the runplan. Some items (discover) may append elements to the runplan.
   Run the postplan.
 
+A run entices running at least 
+
 A plan part is a hash:
 
     {
       'order' => [ keys ],
       'key0' => {
-        'filemustexist' => { filehash },
+        'runonce' => boolean,
         'in' => { filehash },
         'out' => { filehash },
         'junk' => { filehash }
@@ -94,3 +96,23 @@ A plan part is a hash:
       },
       'key1' => {...}
     }
+
+
+## Elements
+
+### Pre-plan
+
+No pre-plan foreseen right now.
+Maybe a list of files to be built absolutely, or a command to run.
+
+### latex
+
+runs with --jobname (always) and --recorder. The recorder is analysed to
+give the 'in', 'junk' and 'out' arrays.
+
+### discover
+
+This module analyses all files output by the 'latex' plan part.
+
+ * Read all outputs to find bibtex strings
+ * Append an index
