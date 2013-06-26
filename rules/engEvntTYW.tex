@@ -16,12 +16,14 @@ may happen only once; before that, at the end of the first turn of a war
 caused by one of the previous event, make the following test.
 \aparag Roll 1d10 and add the modifiers:\par
 \begin{modlist}
-\item[\bonus{+2}] in period II and III
+\item[\bonus{+4}] in period \period{II}
+\item[\bonus{+2}] in period \period{III}
 \item[\bonus{-2}]for each turn of the current war before this turn
 \item[\bonus{-1}] if the peace modifier of the \HAB is >0
 \item[\bonus{+2}] if \monarque{Charles V} rules \SPA
 \item[\bonus{+2}] if \SPA has chosen \CATHCO
 \item[\bonus{+2}] if \villeVienne is not owned and controlled by \HAB
+\item[\bonus{+2}] if Augsburg confession was granted
 \item[\bonus{+4}] is test during \xnameref{pII:Schmalkaldic League}
 \item[\bonus{+2}] if test during \xnameref{pIII:League Nassau} and \SPA is
   \CATHCR
@@ -58,6 +60,8 @@ of this turn in the \HRE (except for specific rules of this war about
 conquered minor countries).  The Thirty Years' War is now about to begin.
 
 \phevnt
+\aparag For the duration of the war, all countries have an additional trade
+refusal of 150\ducats.
 \begin{digressions}[War setup]
 
 
@@ -138,7 +142,8 @@ conquered minor countries).  The Thirty Years' War is now about to begin.
       Country & Side & Mod. & Forces \\\hline
       \paysBaviere & \ligue & Auto. & \ARMY\faceplus, \LD, \fortress and at
       least 1 General (if none available, use \leader{Mercy} that will stay
-      until his death or when this war ends); may use 2 \ARMY counters for all
+      until his death or when this war ends); has a minimum of 1\LeaderG for
+      the duration of the war; may use 2 \ARMY counters for all
       the duration of the war; starting forces are Veterans.\\
       \paysCologne & \ligue & & \LD, 1 \fortress\\
       \paysLiege & \ligue & & \fortress\\
@@ -265,7 +270,7 @@ separate peace from the German alliance is required.
       Nassau},
   \item \villeSpeyer, \villePrague if the war follows \xnameref{pIV:Bohemian
       Revolt}
-  \item \villeFrankfurt, \villeErfurt if the war follows
+  \item \villeBrunswick, \villeWeimar if the war follows
     \xnameref{pIV:Augsburg Revocation} or \xnameref{pIV:Unity HRE}.
   \end{itemize}
   \aparag The reinforcements of the \alliance are also lowered by 1 \LD for
@@ -540,7 +545,7 @@ Religious War in the \HRE.
 \STAB.
 \aparag[Suing for peace] As described in \ref{pIV:TYW:Suing turn 2}.
 \aparag If \SUE, \ENG or \POL (in full intervention) do not hold any city nor
-have any land forces left in the \HRE, they make a mandatory white peace
+have any \ARMY left in the \HRE, they make a mandatory white peace
 against all its enemies in this war. This will count as a losing position in
 \xnameref{pIV:TYW:Peace Westphalie}.
 \aparag If \POL is doing a limited intervention and wins a battle against at
@@ -744,7 +749,8 @@ loses no battle in the \HRE, the alliance it helps gains {\bf 1} in \STAB
   territory. The neutral provinces can not be pillaged, besieged nor give
   supply (but supply lines can cross those if there are no enemy force
   within).
-  \bparag
+  \aparag In any cases, \paysHanse has no more capital (all its provinces can
+  be annexed regularly).
   \aparag[Victory Points]
   \bparag A Major Power in dominant position at the end of the war wins 30 \PV
   (added to those of the treaties of Peace).

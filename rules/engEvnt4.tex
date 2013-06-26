@@ -31,6 +31,7 @@
   pIV:Unity HRE|,%
   pIV:War Persia Turkey|,%
   pIV:Persian Safavids|O{pIII:Persian Safavids},%
+  % Change to Morocco/Portuguese Revolt ?
   pIV:Portuguese Revolt|,%
   pIV:Morocco|,%
   pIV:Act Navigation|,%
@@ -47,7 +48,7 @@
   pIV:Union Poland Sweden|O{pIII:Union Poland Sweden},%
   pIV:Torstensson|,%
   pIV:Swedish Nobles Unrest|,%
-  pIV:La Rochelle|,%
+  pIV:La Rochelle|E/O{pIV:Morocco},%
   pIV:Richelieu|,%
   pIV:Fronde|,%
   pIV:Times of Troubles|,%
@@ -146,11 +147,15 @@ sources.
 national provinces of \payshongrie owned by \TUR (by retreat or movement). If
 he retreats there, he must stay there until the end of turn but may go out on
 any following turn.
-\bparag As long as \leaderBethlen and/or its forces are in \paysTransylvanie
-or national provinces of \payshongrie owned by \TUR, \TUR has a free \CB
-against \leaderBethlen. If \TUR uses it, the forces of \leaderBethlen are also
-at war against \TUR and \TUR may enter, besiege and attack any force in
-national provinces of \payshongrie.
+\bparag If \leaderBethlen and/or its forces are in \paysTransylvanie
+or national provinces of \payshongrie owned by \TUR, \TUR may make a foreign
+intervention against both the revolt of \leaderBethlen and \HAB. Declaring the
+intervention cost 1\STAB to \TUR.
+% \bparag As long as \leaderBethlen and/or its forces are in \paysTransylvanie
+% or national provinces of \payshongrie owned by \TUR, \TUR has a free \CB
+% against \leaderBethlen. If \TUR uses it, the forces of \leaderBethlen are
+% also at war against \TUR and \TUR may enter, besiege and attack any force in
+% national provinces of \payshongrie.
 
 \phpaix
 \aparag Before any peace is made, roll a test for the possible breakout of a
@@ -168,7 +173,7 @@ right to make the complete conquest of \paysBoheme.  \paysBoheme and
 \aparag \HAB and \paysBoheme stop war only when \paysBoheme is destroyed or if
 \villeVienne is occupied by enemies.  Other countries use normal peace rules
 (but are allied to \HAB and \paysBoheme and subjects to Separate Peace
-modifiers).
+modifiers if any).
 \aparag[Victory conditions if the war becomes the TYW]
 \bparag if the \nameref{pIV:TYW:Peace Prague} favours the \alliance and they
 control \villeVienne, apply \ref{pIV:BR:Survival} if \paysBoheme still exists.
@@ -250,10 +255,10 @@ the \GE.
   Augsburg}
 
 \phevnt
-\aparag The Emperor of the HRE has the possibility to revoke this Truce. If he
-declines to do so, his country loses {\bf 2 \STAB} and the event terminates.
-If the Truce of Augsburg is revoked, alliances are created in the \HRE and the
-\HRE is in Civil War.
+\aparag The Emperor of the HRE has the possibility to revoke this Truce (even
+if it was not given in game terms). If he declines to do so, his country loses
+{\bf 2 \STAB} and the event terminates.  If the Truce of Augsburg is revoked,
+alliances are created in the \HRE and the \HRE is in Civil War.
 \aparag[Northern Alliance] If a Northern Alliance already exists, skip this
 paragraph.
 \bparag A Northern Alliance of countries of the \HRE is created.  The
@@ -496,6 +501,18 @@ nullified.
 \event{pIV:Portuguese Revolt}{IV-4 (1)}{National Revolt of the
   Portugal}{1}{Risto}
 
+\begin{todo}
+  Province Tanger should go to Morocco. Helper of POR should gain a predisio
+  on Tanger + a \TP of POR in case of victory (no reannexion). HIS should not
+  be able to attack if at war otherwise. Helper should be first in order at
+  Methuen. Helper should be Catholic?
+
+  Maybe swap Portuguese revolt with Alaouite dynasty and re-add Portuguese
+  revolt as secondary event in pV (typically of WoSS which is four times in
+  the table). The real war only started in 1660, the turning point between pIV
+  and pV.
+\end{todo}
+
 \history{1640-1668}
 
 \condition{Occurs only if \xnameref{pIII:POR Ann.:Portugal Annexed} is
@@ -560,7 +577,11 @@ gains \provinceTanger if the province was Portuguese.
 
 
 \event{pIV:Morocco}{IV-4 (2)}{Alaouite dynasty in
-  \paysmaroc}{1}{PBNotEvenWritten}
+  \paysmaroc}{1}{PB+JymNew}
+
+\begin{todo}
+  Maybe here for giving back Tangier (except presidio?) to Morocco?
+\end{todo}
 
 \history{1631}
 \dure{Until the end of the game}
@@ -831,6 +852,9 @@ we choose to ignore this and separate the general from the king).
 .
 \bparag \SPA, if \CATHCR, has a free \CB against \ENG.
 \aparag[Refusal]
+\begin{todo}
+  ``CHANGE'' (Pierre's notes).
+\end{todo}
 \bparag Apply \ref{pV:Glorious Revolution} now (with worsened consequences).
 
 
@@ -899,17 +923,20 @@ not occur later.
 turn.
 
 \effetlong
-\aparag \ENG can from now on lend 150\ducats in the Diplomacy phase, plus
-100\ducats during the turn (instead of 100\ducats plus 50\ducats).
-\aparag \ENG has more money available for international loans.
-\begin{oldcompta}
-  \aparag From now on \ENG receives a bonus equal to its \DTI to all die-rolls
-  on international loan amount and interest (not length) in the loans table
-  % (Jym) Table just said "international" and usually more up to date
-  \aparag \ENG is also more resistant to Bankrupt and more tolerant to
-  trespassing of commercial limits.
-  % (Jym) According to the rule of chapter 3, it is actually less resilient
-\end{oldcompta}
+\aparag \ENG can from now on lend 250\ducats per turn to other countries.
+% in the Diplomacy phase, plus 100\ducats during the turn (instead of
+% 100\ducats plus 50\ducats).
+\aparag The amount of money available for international loans increase.
+\aparag \ENG is also more resistant to Bankrupt and more tolerant to
+trespassing of commercial limits.
+% \begin{oldcompta}
+%   \aparag From now on \ENG receives a bonus equal to its \DTI to all die-rolls
+%   on international loan amount and interest (not length) in the loans table
+%   % (Jym) Table just said "international" and usually more up to date
+%   \aparag \ENG is also more resistant to Bankrupt and more tolerant to
+%   trespassing of commercial limits.
+%   % (Jym) According to the rule of chapter 3, it is actually less resilient
+% \end{oldcompta}
 
 
 
@@ -1492,7 +1519,8 @@ have to confront the Natives if they react.
 
 \phpaix
 \aparag If a \TP has survived, \pays{Chine} concedes a new \dipAT to the owner
-of the \TP, if it didn't have any.
+of the \TP, if it didn't have any. The owner still has to pay as for usual
+\dipAT with \paysChine.
 
 
 

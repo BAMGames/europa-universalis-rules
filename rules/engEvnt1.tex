@@ -88,6 +88,7 @@
 \condition{}
 \aparag Re-roll and do not mark off if \continentAmerica has not been
 discovered.
+% or apply War in Italy (Napoli) ?? 
 \aparag Both \SPA and \POR have to accept this event for it to take
 effect. Otherwise it is marked off, but can occur again.
 
@@ -126,7 +127,8 @@ at the beginning of the next turn.
 \bparag Until the end of period \period{III}, \SPA and \POR may attack
 \terme{Minor establishments} in their area at no cost in \STAB.
 \bparag Until the end of period III, \SPA and \POR have the capability to burn
-down \COL installed in their area (same condition as for burning \TP).
+down European \COL installed in their area (same condition as for burning
+\TP).
 \bparag Spanish Missionaries and Missions can only go in the exclusive area of
 \SPA until the end of the Treaty (not in the shared area).
 \aparag[Shared Area]
@@ -161,11 +163,11 @@ the monarchs of \SPA, \FRA, \ENG, and \POL if they are Catholic.  Each
 Pretender makes a secret bid of Ducats (a multiple of 10\ducats) for the
 title, and the country with the highest bid will win. In case of draw, those
 Pretenders bid again secretly an additional bid. All bids are lost.
-\aparag A candidate from one (unspecified) minor country makes a bid of 2d10
-times 10\ducats (rolled for after the initial bids of the players ; in case of
-ties, this candidate bids in addition of 1d10 times 10\ducats). If the winner
-of the bid, and so the Emperor is a from a Minor Power, he will live 1d10
-turns before a new election takes place. The event is still marked.
+\aparag A candidate from one (unspecified) minor country makes a bid of (1d10
+$\times$ 10)+30 \ducats (rolled for after the initial bids of the players ; in
+case of ties, this candidate bids in addition of 1d10 times 10\ducats). If the
+winner of the bid, and so the Emperor is a from a Minor Power, he will live
+1d10 turns before a new election takes place. The event is still marked.
 \aparag Each Minor Country that has the Electoral Dignity: \paysCologne,
 \paysPalatinat, \paysSaxe, \paysTreves, \paysMayence, \paysBrandebourg,
 \paysBoheme gives a free bid of 10\ducats to the Pretender secretly decided at
@@ -198,6 +200,8 @@ permanently and no elections are held. The title of emperor reverts back to
 \AUSaus and all effects of the event are cancelled. Furthermore, the
 \dynasticaction{C}{2} is activated now if possible.
 % C2=Spanish Milanese
+\bparag Exception: If \monarque{Charles V} has not been reigning yet, then the
+emperor stay \HIS.
 
 
 
@@ -279,6 +283,10 @@ draw its supply from \regionItalie.
 \HAB gain free access in, but only supply across, Italian minor countries not
 engaged in this war. Supply across a province is impossible if its city is
 under siege by an enemy of this city.
+
+\phpaix
+\aparag During this war, \FRA may annex \provinceCampania as a regular
+province, even if it's a capital.
 
 \phinter
 \aparag If \FRA does not manage the military conquest of \ville{Napoli} at any
@@ -461,6 +469,11 @@ happens.
 
 \event{pI:Milanese Alliance}{I-6}{Dynastic Alliance with Milano}{1}{Risto}
 
+\begin{todo}
+  Remove (happens to early). Replace with something else. Maybe something for
+  \DAN? In the meantime, mark off and reroll.
+\end{todo}
+
 \condition{If \shortdynasticaction{C}{1} or \ref{pI:Hungarian Freedom} has
   already been played, mark off and re-roll.}
 
@@ -620,6 +633,7 @@ current period. Control of \payspapaute is lost.
   \bparag \bonus{+1} bonus to \STAB improvement attempts this period and the
   following one.
   \aparag[Protestantism]
+  \bparag \ANG is automatically \PROTPUR.
   \bparag The turn and period limits of \ENG are changed. \ENG receives an
   explorer for one turn as per~\ref{eco:Explorer}.
   \bparag Each time \ENG is rolled-for in the Revolt Country chart, the number
@@ -793,7 +807,8 @@ diplomatic attempts from other Major powers.
 \seazone{Seychelles} to \seazone{Malaisie}, bordering coastal zones (and
 \seazone{Indien} excepted). From now on, \paysEgypte has only one \ARMY
 counter, but has also one \FLEET counter (but no navy in basic forces) and can
-use all its detachments as \LD or \ND, and gains 2 counters \LDENDE.
+use all its detachments as \LD or \ND, and gains 2 counters \LDENDE. Its basic
+forces are changed.
 \bparag If \paysEgypte exists no more, \TUR gains the discoveries of
 \seazone{Mascate} and \seazone{Indus} (only).
 \aparag In the first turn of war induced by the event \paysEgypte chooses
@@ -817,6 +832,7 @@ any means, receive part of its income.
 
 \phdipl
 \aparag \TUR gains a temporary free \OCB against \VEN.
+\aparag \TUR gains a \CB vs \paysSyria and \paysMamelouks.
 \aparag At any following turn, \VEN can nullify the event by announcing it at
 the beginning of the Declaration phases.  \VEN loses {\bf 1 } \STAB and \TUR
 regains rights to part of the income of \CCs{Grand Orient} if it controls

@@ -46,9 +46,10 @@
   pVI:Last Great Mughals|,%
   pVI:Wars India|T{A}/T{B}/T{C},%
   pVI:Mazepa|,%
+  pVI:WoJE|,%
+  pVI:Comuneros|,%
   pVI:WoQA|,%
   pVI:Alberoni|,%
-  pVI:Delition Ottoman|,%
   pVI:Bulavin Rebellion|,%
   pVI:Africa|E/E,%
   pVI:Camisards|,%
@@ -1040,9 +1041,6 @@ respective specific rules.
 \event{pVI:Wars India}{VI-18}{Wars in India}{3}{PBnew}
 
 \condition{}
-% (Jym) added
-\aparag If \ref{pVI:Last Great Mughals} has not happened yet, apply it
-instead.
 \aparag Roll 1d10 and apply the correct subevents.
 \bparag 1-4 = A) War between \paysmogol and \paysperse. Apply
 \xnameref{pVI:India:Mughal Persian War}.
@@ -1051,14 +1049,18 @@ instead.
   Safavids}.
 \bparag 9-10 = C) War between \paysafghans and \paysmogol. Apply both
 \xnameref{pVI:India:Afghan Empire} and \xnameref{pVI:India:Rise Marathi}. This
-case may not happen before either case A above, re-roll another case if
-needed.
+case may not happen before either~\ref{pVI:Last Great Mughals}, re-roll
+another case if needed.
+
 \aparag Each of the three previous cases can only happen once. If it already
 happen, re-roll another case.
+
 \aparag Each of the following sub-event can only happen
 once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 (B and C). The second time, ignore it and only plays the other sub-event.
 
+\aparag In each of the three case, natives in one random province in
+\continentIndia are activated.
 
 \subevent[pVI:India:Mughal Persian War]{\paysmogol-\paysperse War}
 \history{1739}
@@ -1068,8 +1070,11 @@ once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 \granderegionAoudh, \granderegionBengale, \granderegionGondwana and
 \granderegionOrissa.
 \aparag Lower the difficulty and tolerance (for \COL and \TP implantation) by
-2 in every province controlled by \paysmogol.
+2 in every province controlled by \paysmogol
 \aparag \paysperse gets the general \leaderwithdata{Nadir Shah} for 5 turns.
+
+\phdipl
+\aparag Test fidelity of \paysPerse and \paysOrmus.
 
 
 \subevent[pVI:India:Afghan Empire]{Afghan Empire}
@@ -1077,7 +1082,7 @@ once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 
 \phevnt
 \aparag The minor country \paysafghans is created and owns area
-\granderegionAfghanistan.
+\granderegionAfghanistan except \provinceHerat if owned by \paysPerse.
 
 
 \subevent[pVI:India:Fall Persian Safavids]{Fall of the Persian Safavids}
@@ -1085,7 +1090,10 @@ once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 
 \phevnt
 \aparag The lasting effect of \ref{pIII:Persian Safavids} are cancelled.
+\aparag \provinceHerat is annexed by \paysafghans
 
+\phdipl
+\aparag Test fidelity of \paysPerse and \paysOrmus.
 
 \subevent[pVI:India:Rise Marathi]{Rise of the Marathi}
 \history{1746-1761}
@@ -1184,23 +1192,30 @@ the provinces still belonging to the minor after the peace is signed).
 
 % (Jym), Placeholders
 
+\event{pVI:WoJE}{VI-s}{War of Jenkins' ear}{1}{PBNotEvenWritten}
+\history{1739-1748}
+\begin{todo}
+  \ANG vs \HIS in America. Later part of~\ref{pVI:WoAS}.
+\end{todo}
 
-\event{pVI:WoQA}{VI-t}{War of the Quadruple Alliance}{1}{PBNotEvenWritten}
+
+\event{pVI:Comuneros}{VI-t}{Revolt of the Comuneros}{1}{PBNotEvenWritten}
+\history{1721-1735}
+\begin{todo}
+  Revolt in Paraguay. Maybe doable via revolt tables only.
+\end{todo}
+
+\event{pVI:WoQA}{VI-u}{War of the Quadruple Alliance}{1}{PBNotEvenWritten}
 \history{1718-1720}
 \begin{todo}
   \SPA vs \paysNaples.
 \end{todo}
 
-\event{pVI:Alberoni}{VI-u}{Alberoni}{1}{PBNotEvenWritten}
+\event{pVI:Alberoni}{VI-v}{Alberoni}{1}{PBNotEvenWritten}
 \history{1711-1719}
 \begin{todo}
   Excellent (?) minister for \HIS. Should be VI-2(2). Could be related
   to~\ref{pVI:WoQA}.
-\end{todo}
-
-\event{pVI:Delition Ottoman}{VI-v}{Delition of the Ottoman Empire}{1}{PBNotEvenWritten}
-\begin{todo}
-  I don't have the slightest idea of what Pierre meant with this ones\ldots
 \end{todo}
 
 \event{pVI:Bulavin Rebellion}{VI-w}{Bulavin's Rebellion}{1}{PBNotEvenWritten}
@@ -1246,9 +1261,6 @@ strength of 4\LD and one \LeaderG, whatever the printed value.
 
 \event{pVI:Barbaresques}{VI-z}{End of the Ottoman rule in North
   Africa}{1}{PBNotEvenWritten}
-\begin{todo}
-  Maybe should be removed form here and the same as~\ref{pV:Tangiers}.
-\end{todo}
 \history{17??}
 \dure{Until the end of the game}
 
@@ -1276,3 +1288,4 @@ addition to this event.
 % LocalWords: Leszinski Poniatowski PBMod RistoMod offensive Jym malus Quo
 % LocalWords: pIV Risto Theresia PBnew JCD TODO von Sachsen Mughal pII Sadri
 % LocalWords: subevents Safavids Azam JymNew PBNotEvenWritten GNW PPI
+%  LocalWords:  Comuneros
