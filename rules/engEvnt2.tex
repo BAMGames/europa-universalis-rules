@@ -71,24 +71,29 @@
 % \condition{Takes only place if the event \ref{pI:Reformation2} has already
 % occurred. Otherwise re-roll and do not mark off.}
 
-\condition{Takes place when rolled for, or when \monarque{Henry VIII} dies.}
+\condition{Takes place when rolled for, or when \monarque{Henry VIII}
+  dies. May not happen before \monarque{Henri VIII}.}
 
 \phevnt
-\aparag \ENG has to choose its Heir, in accordance with its current religion.
+\aparag \ENG has to choose the Heir of \monarque{Henri VIII}, in accordance
+with its current religion.
 \bparag[Catholic/No Reform] Mary I Tudor, or Edward VI
 \bparag[\CATHCR] Mary I Tudor, or Edward VI
-\bparag[\CATHCO] Edward VI, Jane Grey
-\bparag[Protestantism] Jane Grey
+\bparag[\CATHCO] Edward VI or Jane Grey
+\bparag[\PROTPUR] Jane Grey
+
+\aparag When the chosen heir ascend throne, apply the following effects,
+depending on the heir.
 
 \aparag[Marie I Tudor] \ENG is forced to be \CATHCR.  If it has changed, both
 general and particular effects of \ref{pI:Reformation2} are applied
 immediately.
-\bparag It has a mandatory Dynastic (Defensive and Offensive) Alliance with
+\bparag \ANG has a mandatory Dynastic (Defensive and Offensive) Alliance with
 \SPA for 3 turns.  If at war, \SPA and \ENG make an immediate white peace.
 \bparag Roll for 2 \REVOLT in \ENG in the table, using 1d10-2 for
 localisation.
 
-\aparag[Lady Jane Grey] \ENG is forced to be Protestant.  If it has changed,
+\aparag[Lady Jane Grey] \ENG is forced to be \PROTPUR.  If it has changed,
 both general and particular effects of \ref{pI:Reformation2} are applied
 immediately.
 \bparag Alliance between \ENG and \SPA are forbidden for 3 turns.
@@ -322,6 +327,9 @@ diplomacy attempts against all \terme{Barbaresque} countries is cancelled.
 against all \terme{Barbaresque} countries is cancelled.
 \aparag \paysTunisie is immediately placed on \VASSAL of \TUR if \leaderDragut
 is alive.
+\bparag If it was on someone else Diplomatic track, it's former patron gain a
+\CB against \paysTunisie this turn.
+\aparag The \corsaire of \paysMaroc is now available.
 
 
 
@@ -404,7 +412,8 @@ an ally of the League.
 and the Emperor. This test is modified by {\bf +4}. See \ref{pIV:TYW} for the
 result of the test and the possibility of this Religious War. If no such war
 occurs, peace can be made on the following conditions.
-\aparag Each minor country obeys to the usual rules for peace. As they are
+\aparag Each minor country obeys to the usual rules for peace (except that it
+is not possible to annex provinces of minors during this war). As they are
 allied, a peace against only one country is a separate peace.
 \aparag A minor country forced to sign an unconditional surrender breaks from
 the League for ever. This replace all the peace conditions.
@@ -449,6 +458,9 @@ different countries).
 \phdipl
 \aparag \TUR has an overseas \CB against \POR at this turn. \TUR gains the
 discoveries of \seazone{Mascate} and \seazone{Indus}
+
+\phadm
+\POR does not get the incomes (exotic resources) from the revolted countries.
 
 \phmil
 \aparag The Natives of the region \granderegionOman or \granderegionAden are

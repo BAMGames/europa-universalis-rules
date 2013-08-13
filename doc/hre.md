@@ -563,6 +563,22 @@ consequences apply:
 
 ## History of Münster (TODO)
 
+### Oldenburg and Eastern Frisia
+
+Oldenburg: now a minor without a capital. Very reliable. Starts as
+annexed by DAN.
+
+    \minorcountry{oldenburg}{County of Oldenburg}{Frisia}
+    \minorreligion{oldenburg}{protestant}
+    \minordiplo{oldenburg}{8}{40}{1}{2}{3}{*}{2}
+    \minorpref{oldenburg}{\ENG, \HOL, \SUE, \FRA, \AUS, \RUS, \POL, \PRU, \POR, \VEN, \SPA, \TUR}
+    \minorfid{oldenburg}{17}
+    \minorprovince{oldenburg}{Oldenburg}3
+    \minorbasicforces{oldenburg}{\LD}
+    \minorarmyclass{oldenburg}{Latin}{III}
+    \minorHRE{oldenburg}
+    \minorforces{oldenburg}{1 \LD}
+
 ## History of Ansbach-Bayreuth (TODO)
 
 ## History of Liège (TODO)
@@ -631,11 +647,12 @@ See in the summary.
   * .p.A Brunswick
   * .p.A Hesse
   * .p.A Hansa
-  * .p. Berg
-  * .p. Ansbach        **New**
-  * .p. Württemberg
-  * .pÊ Thuringia
-  * .pE Brandenburg
+  * .p.d Frisia        **New** (split of Oldenburg/Münster)
+  * .p.d Berg
+  * .p.d Ansbach        **New**
+  * .p.D Württemberg
+  * .pÊd Thuringia
+  * .pEA Brandenburg
 
 Legend:
 
@@ -675,11 +692,13 @@ Köln renamed to Jülich
 
 Osnabrück renamed to Minden
 
+Oldenburg renamed to Frisia
+
 Hanover split in two:
 
   * Kalesnberg → Bremen, Lüneburg, Braunschweig, Cassel (form. Hesse),
     Westfalia (form. part of Nassau), Minden (form. Osnabrück), Münster,
-    Oldenburg
+    Frisia (form. Oldenburg)
   * Lüneburg → Bremen, Holstein, Mecklenburg, Altmark, Braunschweig, Kalenberg
   * Bremen → Osnabrück removed
   * Mecklenburg → Altmark removed

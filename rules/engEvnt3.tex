@@ -60,7 +60,7 @@
   pIII:Revolt Ceylon|,%
   pIII:Mughal Akbar|E/E/O{pIII:Sultanate of Aceh},%
   pIII:Fall Vijayanagar|E/E,%
-  pIII:China Colonial Attitude|,%
+  pIII:China Colonial Attitude|E/O{pIII:Sultanate of Aceh},%
   pIII:Sultanate of Aceh|,%
   pIII:Japanese Expedition|,%
   O|,%
@@ -141,9 +141,9 @@ The result is:
 \MAJHOLx changes to this new power according to the rules for the Grand
 Campaign.
 \aparag \HOL owns its national territory: \theminorprovincesshort{hollande},
-regardless of their last owner. \SPA loses 5 \VP for each of the provinces now
-of \HOL that were not his just before the event. \paysprovincesne is dissolved
-and does not exist anymore.
+regardless of their last owner. \SPA loses 10 \VP for each of the provinces
+now of \HOL that were not his just before the event. \paysprovincesne is
+dissolved and does not exist anymore.
 \bparag Former (non-Spanish) owners of those provinces can declare a war
 against \HOL but have no \CB.
 \aparag\label{onlyfirstrevolt1} \provinceBrabant and \provinceLimburg are
@@ -158,7 +158,7 @@ remain Spanish.
 \aparag \SPA owns a \Presidio of level 3 in \provinceZeeland.
 \aparag \HOL has a \STAB of {\bf +2}, a \DTI and a \FTI of 3; the
 technological markers of \HOL are placed 1d6 boxes in front of the Latin
-technology, and 1d6+2 for Naval technology (separate rolls). Its initial Royal
+technology, and 7-1d6 for Naval technology (same roll!) Its initial Royal
 Treasury is 400\ducats.
 \aparag \HOL deploys the following counters: \MNU of \RES{Instruments} in
 \provinceZeeland, of \RES{Cloth} in \provinceUtrecht, of \RES{Metal} in
@@ -169,9 +169,13 @@ fortification anywhere in owned provinces.
 \monarque{Willem I} with values 7/9/9. He lasts seven turns and does not check
 for survival during the first three. He is also a general
 \leaderwithdata{Willem I}. The government is \terme{Stadhouder}.
-\aparag\label{onlyfirstrevolt3} \HOL knows 1d10+4 sea zones,
-chosen between those of \SPA and \POR, forming a continuous path from Europa
-(add 4 if \emph{Commercial Liberties} were granted).
+\aparag\label{onlyfirstrevolt3} \HOL knows 
+% Pierre notes, 2008
+\seazoneAcores, \seazoneCanarias and 8 other zones of its choice. Sea zones
+with malus count as 1+malus zones in this count.
+% 1d10+4 sea zones,
+% chosen between those of \SPA and \POR, forming a continuous path from Europa
+% (add 4 if \emph{Commercial Liberties} were granted).
 \aparag All non-Dutch units inside territories held by \HOL are removed as per
 normal peace procedure.
 \aparag \HOL is at war with \SPA and \SPA is considered to be victim of a
@@ -360,7 +364,7 @@ immediately become \HOL.
 
 
 
-\event{pIII:VOC}{III-1 (2)}{Creation of the VOC}{1}{RistoMod}
+\event{pIII:VOC}{III-1 (2)}{Vereenigde Oostindische Compagnie}{1}{RistoMod}
 
 \history{Vereenigde Oostindische Compagnie was created in 1602}
 
@@ -374,21 +378,23 @@ Dutch government is \terme{Parliament}.
 \phevnt
 \aparag \HOL may create the VOC at any event phase, as soon as it wants. It
 costs 100\ducats and causes the rest of the event.
-\aparag \HOL receives 3 levels of commercial fleets to be placed in any
+\aparag At the moment the VOC is created:
+\bparag \HOL receives 3 levels of commercial fleets to be placed in any
 eligible \STZ bordering \continent{Asia}.
+\bparag \FTI for \HOL is immediately raised by one level.
+
 
 \phadm
 \aparag The turn the VOC is created, \HOL may ignore restriction
 of~\ref{chExpenses:Pioneering}.
 
 \effetlong
-\aparag \FTI for \HOL is immediately raised by one level. \FTI in the \ROTW is
-now 5 in periods III and IV.
-\aparag \HOL gains one action of \TP and a minimum of one \LeaderC in period
-III.
+% Maximum \FTI in the \ROTW is now 5 in periods III and IV.
+% \aparag \HOL gains one action of \TP and a minimum of one \LeaderC in period
+% III.
 \aparag \HOL gains an \OCB against any Catholic country having \TP or \COL in
 \continent{Asia}, valid during periods III and IV.
-
+\aparag Periods limits of \HOL change once the VOC is created. 
 
 
 \event{pIII:League Nassau}{III-1 (3)}{League of Nassau}{1}{PBNew}
@@ -397,7 +403,11 @@ III.
 
 \condition{}
 \aparag If \HOL is a Major country and \SPA did not recognise it, apply \RD
-with a \REVOLT in \SPA instead of this event and mark off.
+with a \REVOLT in the following table instead of this event and mark off.
+\bparag 1.~\provinceZeeland, 2.~\provinceHolland, 3.~\provinceUtrecht,
+4.~\provinceLimburg, 5.~\provinceLiege, 6.~\provinceLuxemburg,
+7.~\provinceHainaut, 8.~\provinceFlandre, 9.~\provinceVlaanderen,
+10.~\provinceBrabant.
 \aparag If the Independence of \HOL was recognised or if \paysHollande is
 minor country, apply the rest of the event.
 
@@ -493,8 +503,7 @@ minor country left in the League at the end of a war.
 
 
 
-\event{pIII:East Indian Company}{III-3 (1)}{Creation of the East Indian
-  Company}{1}{Risto}
+\event{pIII:East Indian Company}{III-3 (1)}{East Indian Company}{1}{Risto}
 
 \history{1600}
 
@@ -512,6 +521,7 @@ eligible \STZ bordering \continent{Asia}.
 \effetlong
 \aparag \FTI for \ENG is immediately raised by one level and its maximum level
 is permanently raised as written in the tables.
+\aparag Turn limits for \ANG change.
 
 
 
@@ -847,10 +857,14 @@ added to the forces of \paysperse until the end of the war.
 \provinceCordoba and \province{La Mancha}. The \REVOLT are controlled by \TUR.
 
 \phdipl
-\aparag If \TUR declares war to the controller of \provinceGranada, it
-receives 5 \VP at the moment its (or its minor allies) troops arrive to any of
-the revolted provinces. This does not have to be done during the current turn,
-but the bonus \VP are gained only once.
+\aparag \TUR has a \CB against all the owners of revolted provinces.
+\bparag Exceptionally, \TUR may make a limited intervention at the side of the
+\REVOLT as if this was a civil war.
+\aparag If \TUR declares war to the controller of \provinceGranada or is in
+limited intervention against it, it receives 5 \VP at the moment its (or its
+minor allies) troops arrive to any of the revolted provinces. This does not
+have to be done during the current turn, but the bonus \VP are gained only
+once.
 
 \phmil
 \aparag During the rebellion there exists an additional malus of \bonus{-3} to
@@ -878,7 +892,9 @@ this event as having been activated again, but without the malus of \bonus{-3}
 for suppress of \REVOLT . If \paysGrenade still exists (owning other provinces
 than \provinceGranada), consider this \REVOLT as being controlled by it.
 
-
+\effetlong
+\aparag[Final expulsion of the Moriscos] Certain effects of the politics of
+expulsion are removed.
 
 \event{pIII:FWR}{III-11}{Wars of Religion in France}{5}{PBNew}
 
@@ -917,8 +933,9 @@ in a war.
 \aparag If the \REVOLT survives the first turn, place \leaderSampiero who is
 now available for 5 turns.
 \aparag If the \REVOLT survives four turns, a new minor country \paysCorse is
-created and the rebellion is over. The controller of the \REVOLT gains 20 \PV.
-
+created and the rebellion is over. The controller of the \REVOLT gains 10
+\VPs.
+\aparag If the rebellion is crushed, controller of \paysGenes gains 10\VPs.
 
 
 \event{pIII:Union Poland Sweden}{III-13}{Union between \paysmajeurPologne and
@@ -960,16 +977,17 @@ at this turn to claim for its Inheritance. In case of Dynastic Crisis in \SUE,
 \POL is a valid pretender as long as it has Dynastic Claims over Sweden.
 \bparag The first time after the beginning of the event that this situation
 happens, \POL must either use the \CB or lose 2 \STAB or renounce its Claims
-(costs 1 \STAB).
+(costs 2 \STAB).
 \aparag The first new Swedish Monarch after this event will be
-\monarque{Charles IX}, with values 8/6/6 (but not a general).  Exception: if
-\monarque{Gustave Adolphe} was to be the new monarch due to another event, use
-\monarque{Gustave Adolphe}.
+\monarque{Charles IX}, with values 8/6/6 (but not a general) and random
+duration (ignore \terme{Fragile health} and \terme{Dynastic crisis}.
+Exception: if \monarque{Gustave Adolphe} was to be the new monarch due to
+another event, use \monarque{Gustave Adolphe}.
 
 \phdipl
-\aparag If a war is declared because of its \CB, \SUE is now in Civil War (see
-\ref{chDiplo:Religious Civil War}). Apart from \POL, only foreign intervention
-in the war is allowed.
+\aparag If a war is declared because of its \CB, \SUE is now in Civil
+Religious War (see \ref{chDiplo:Religious Civil War}). Apart from \POL, only
+foreign intervention in the war is allowed.
 \aparag The first time a war is declared due to Dynastic Claims, \POL gains
 the military control of one province owned by \SUE, chosen by \POL (the
 capital is forbidden). This effect is not applied for subsequent wars.
@@ -1033,10 +1051,11 @@ off and re-roll.
 first time (with a \REVOLT in \RUS), the second event the next time.
 
 \phevnt
+\aparag \RUS is in Civil War for the duration of the event.
 \aparag \REVOLT are placed in \provinceMoscou and \provinceNovgorod; their
 force is randomly decided.
 \aparag Another \REVOLT is rolled for in Russia.
-\aparag The Russian leader \leaderKurbskii is withdrawn from game as long as
+\aparag The Russian leader \leaderKurbsky is withdrawn from game as long as
 \monarque{Ivan IV} rules in \RUS and can not be used.
 
 \phadm
@@ -1087,18 +1106,18 @@ gains {\bf 1} in \STAB.
 in \continent{Siberia}.
 
 \phadm
-\aparag All remaining native forces within the revolted provinces are
-activated.
+\aparag Native forces within the revolted provinces return to their full
+strength and are activated.
 \aparag Furthermore, during the first turn only, an unmodified die-roll is
 made for rebel reinforcements in offensive attitude. Troops thus received fill
 the former \payssiberie counters and can be placed in any of the revolted
 provinces.
 
 \phmil
-\aparag Rebels using \payssiberie counters cannot draw supplies from native
-territories the same way as natives do, but must do so either from captured
-forts/fortresses or from the \REVOLT counters, which they can use as supply
-bases.
+\aparag Rebels using \payssiberie counters draw supplies from native
+territories (the same way as natives do), but can only do so either if there
+is no \RUS controlled forts/fortresses in the province, or from the \REVOLT
+counters, which they can use as supply bases.
 \aparag Rebels using \payssiberie counters can move also outside their
 original provinces.
 \aparag Rebel natives and \payssiberie units automatically try to destroy
@@ -1254,10 +1273,10 @@ army only (no overseas garrisons of fleets).
 of \paysChine becomes 11 (except for areas conquered that are not mainland
 \paysChine, where the Activation is 6).
 
-\aparag The only way to have a new \TP is to take control of the \TP of
-another country (then the Treaty status is given to the new controller of the
-\TP and lost by the previous one) or to force a Treaty on \paysChine by means
-of a war against it.
+\aparag The only way to have a new \TP in \paysChine is to take control of the
+\TP of another country (then the Treaty status is given to the new controller
+of the \TP and lost by the previous one) or to force a Treaty on \paysChine by
+means of a war against it.
 
 \aparag From now on, the \terme{Manila Galleon} is
 available. See~\ref{chSpecific:Manila Galleon}.
@@ -1302,8 +1321,10 @@ and 2 \LD, 2 \ND for the garrisons.
 \history{1565}
 
 \phevnt
-\aparag Create the Sultanate of \paysaceh. Place its \TP\facemoins in
-\granderegionSumatra (in the first empty province: North, Centre then South;
+\aparag Create the Sultanate of \paysaceh. Place its \TP\facemoins with 3
+levels in
+% (Jym) putting Centre first as is control the strait for the CC GO.
+\granderegionSumatra (in the first empty province: Centre, North then South;
 if none, place it in the Northern one and make automatic concurrence).
 \bparag It proposes a \dipAT to \TUR that has the choice to accept it or not
 immediately.
@@ -1311,10 +1332,16 @@ immediately.
 
 \effetlong
 % (JCD) This is not a reminder
-\aparag \paysaceh has a \TP action every turn (strong investment) to increase
-its \TP up to the original level 3, if ever its level is less (or was
-destroyed).
+\aparag Before 1700 \paysaceh has a \TP action every turn (strong investment)
+to increase its \TP up to the original level 3, if ever its level is less (or
+was destroyed).
 
+\aparag The \TP of \paysaceh may never be annexed at peace.
+
+\aparag No other establishment (\COL or \TP) may be created in the province if
+the \TP of \paysaceh is here.
+\bparag Existing establishments, including those that would be created while
+the \TP of \paysaceh is temporarily destroyed, stay without harm.
 
 
 \event{pIII:Japanese Expedition}{III-23}{Japanese Expedition in
@@ -1552,3 +1579,4 @@ turn.
 % LocalWords: Vereenigde Oostindische PBNew TYW Risto EIC POR Teutoniques de
 % LocalWords: Kurland Duche Mancha malus interphase WPT Jym Prusse Zygmunt
 % LocalWords: Vasa Moghol Mughals Petersbourg Petersburg CCA Formose URP JCD
+%  LocalWords:  Moriscos

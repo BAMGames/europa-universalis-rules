@@ -147,9 +147,9 @@ turn (at the Monarch Survival Phase). A malus of \bonus{-1} is applied for
 each \ref{pIII:FWR} rolled since the beginning of the game.
 \bparag If a Dynastic Crisis occurs (because of the previous test or of a
 normal test after the death of the Monarch), apply directly \ref{pIII:FWR
-  Succession}.  If a Dynastic Crisis occurs without the death of the Monarch,
-the rules of the event use the historical name \anchormonarque{Henri III} to
-designate the current Monarch of \FRA.
+  Succession} as the first event of the turn.  If a Dynastic Crisis occurs
+without the death of the Monarch, the rules of the event use the historical
+name \anchormonarque{Henri III} to designate the current Monarch of \FRA.
 
 \aparag[Mandatory Change of Religious Attitude] \FRA can be complied to change
 its Religious choice during the war because of a Coup (\ref{pIII:FWR
@@ -168,6 +168,7 @@ mandatory change is made.
   \digression[pIII:FWR:Politic Crisis]{Politic crisis}
 
   \phevnt
+  \aparag \FRA may not be part of a new loan treaty until~\ref{pIII:FWR Final}
   \aparag \FRA loses {\bf 2} \STAB.
   \aparag The diplomacy of \FRA is lowered by \bonus{-2} (minimum of 3).
   \aparag \FRA and its adversaries make a mandatory white peace (exception:
@@ -182,10 +183,11 @@ mandatory change is made.
 
   \phevnt
   \aparag On the first event, the Royal Treasury of \FRA is diminished by half
-  and loses at least 50\ducats.  On subsequent events, the Royal Treasury of
-  \FRA is diminished by 50\ducats if greater than 50\ducats, goes to 0\ducats
-  if greater than 20\ducats, and be diminished by 20\ducats if less than
-  20\ducats.
+  and loses at least 100\ducats.  On subsequent events, the Royal Treasury of
+  \FRA is halved with a minimum loss of 50\ducats.
+  % diminished by 50\ducats if greater than 50\ducats, goes to 0\ducats
+  % if greater than 20\ducats, and be diminished by 20\ducats if less than
+  % 20\ducats.
 
   \bparag If \FRA makes a bankruptcy while at war against the rebels, they
   will receive \ARMY\facemoins extra reinforcement (\LD each if there are two
@@ -251,7 +253,8 @@ mandatory change is made.
   \aparag The Rebels receive 2 minor unnamed generals to be placed on \REVOLT
   (they can only lead \REVOLT , not forces of the Rebels, and are eliminated
   when the \REVOLT is finally suppressed).
-  \aparag The Rebels own its provinces %and any province of \FRA where
+  \aparag The Rebels own its provinces and control those where there is a
+  \REVOLT\faceplus %and any province of \FRA where
   % there is a \REVOLT .
 
 
@@ -286,7 +289,7 @@ mandatory change is made.
   \bparag result of 9: 1 \DN is given to the Major Power controlling the
   Rebels and the rest are Rebel forces.
   \bparag result of 0: 1 \DN is given to the first Protestant country of the
-  list: \HOL, \ENG, \SUE, \POL, or to the Major Power controlling the rebels
+  list: \ANG, \HOL, \SUE, \POL, or to the Major Power controlling the rebels
   if there is none, and the rest are Rebel forces.
   \bparag Naval forces of the Rebels have to go in a port of Rebels.  When, at
   the end of a round, there is no port left to Rebels, the navy comes back in
@@ -391,15 +394,16 @@ mandatory change is made.
   loses stability for both the \REVOLT and the duration of war.
   \aparag Two white peaces count as a losing truce toward french objectives
   (but a single white peace has no effect).
-  \aparag If \FRA removes all the \REVOLT counters and retakes all rebel
-  fortresses, it may ask for an (automatic) unconditional surrender. It
-  immediately gains 20 \VP and 2 stability. The next \ref{pIII:FWR} rolled
-  will be played as \ref{pIII:FWR Succession} (even if \FRA is \CATHCO) after
-  which the civil wars will permanently stop.
+  % \aparag If \FRA removes all the \REVOLT counters and retakes all rebel
+  % fortresses, it may ask for an (automatic) unconditional surrender. It
+  % immediately gains 20 \VP and 2 stability. The next \ref{pIII:FWR} rolled
+  % will be played as \ref{pIII:FWR Succession} (even if \FRA is \CATHCO) after
+  % which the civil wars will permanently stop.
   \aparag If \FRA is for two consecutive turns of the same war at -3 in
   stability and does not manage to sign a peace, it must surrender
   unconditionally and suffer a mandatory change of religion.
-  \aparag If \FRA sign a favourable peace, it gain 1 stability.
+  \aparag If \FRA sign a unfavourable peace, it loses 1 stability.
+%  \aparag If \FRA sign a favourable peace, it gains 1 stability.
 
   \aparag[Effect of a Truce] All \REVOLT are suppressed in \FRA; the naval
   forces are back in the ownership of \FRA (except the \DN that might have
@@ -428,13 +432,14 @@ mandatory change is made.
   controllers.
   \aparag The Truce can be questioned at the beginning of any phase of
   Diplomacy:
-  \bparag Roll 1d10 + %the difference between the position value for
+  \bparag If the Rebels have at least their basic forces, Roll 1d10
+  + %the difference between the position value for
   % Rebels at the end of last war and the value for \FRA + \STAB of \FRA
   the level of the peace (in favour of the rebel) \bonus{-1} per turn since
   the beginning of the Truce. If the result is 4 or below, the Rebels will
   break the Truce.
   \bparag Else, if \FRA did not have a favourable Truce and wants to break it,
-  it is automatic.
+  it can do it after one full turn of peace at least.
   \bparag If the Truce is broken, apply \ref{pIII:FWR:Politic Crisis},
   \ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings},
   \ref{pIII:FWR:Military Troubles} at the end of the Diplomatic phase.
@@ -447,16 +452,16 @@ mandatory change is made.
 \tour{Turn 1}
 
 \phevnt
+\aparag[Michel de l'Hospital]\label{pIII:FWR:Hospital} If \FRA is \CATHCR, it
+can now decide to play the rest of the event as \CATHCO.  Its religion changes
+immediately, using only the lasting effects of the \ref{pI:Reformation}; the
+initial \REVOLT are played as \CATHCR though.
 \aparag The Wars of Religion begin; apply the general conditions and the
 lasting effects on the Valois as found in \numberref{pIII:FWR Detailed}.
 \aparag Apply the full effects of \ref{pIII:FWR:Politic Crisis},
 \ref{pIII:FWR:Economic Crisis}, \ref{pIII:FWR:Uprisings} and
 \ref{pIII:FWR:Military Troubles}.
-\aparag[Michel de l'Hospital]\label{pIII:FWR:Hospital} If \FRA is \CATHCR, it
-can now decide to play the rest of the event as \CATHCO.  Its religion changes
-immediately, using only the lasting effects of the \ref{pI:Reformation}; the
-initial \REVOLT are played as \CATHCR though.
-\aparag For each \REVOLT that should be placed, roll a die: the \REVOLT
+\bparag For each \REVOLT that should be placed, roll a die: the \REVOLT
 actually happens only if the result if 6 or higher. Add 1 to the die roll if
 \FRA is not \CATHCO (do not add if \FRA just changed its attitude due to
 Michel de l'Hospital, but still use the \CATHCR line for placing \REVOLT ).
@@ -466,7 +471,7 @@ Michel de l'Hospital, but still use the \CATHCR line for placing \REVOLT ).
 \aparag \REB can make a very limited intervention in the war, only with naval
 forces (in order to install or break a blockade; no naval movement of Rebel
 land forces), that costs no \STAB.
-\aparag If \FRA is \CATHCR, \LIG can make a limited intervention as an ally of
+\aparag If \FRA is \CATHCR, \LIG can make a foreign intervention as an ally of
 \FRA.
 
 \begin{digressions}[Specific conditions of the first event]
@@ -505,7 +510,7 @@ land forces), that costs no \STAB.
   % or Stability loss).
   \aparag No peace of level higher than 2 can be signed during this first war,
   especially no unconditional surrender can happen.
-  \aparag If \LIG was in limited intervention, allied to a \CATHCR\ \FRA, it
+  \aparag If \LIG was in foreign intervention, allied to a \CATHCR\ \FRA, it
   wins 15 \PV if the Truce is in favour of \FRA and \LIG had forces in at
   least one battle or one siege (including voluntary surrender) against the
   Rebels.
@@ -541,9 +546,9 @@ land forces), that costs no \STAB.
 
   \phmil
   \aparag[Intervention of \paysPalatinat]\label{pIII:FWR:Palatinate} If
-  inactive, \paysPalatinat makes an intervention as an ally of the Rebels (it
-  is a mercenary army). It is played by \REB. The intervention force is
-  \leader{Jean-Casimir}, one \ARMY \faceplus and 1 \DT.  If the
+  inactive, \paysPalatinat makes a limited intervention as an ally of the
+  Rebels (it is a mercenary army). It is played by \REB. The intervention
+  force is \leader{Jean-Casimir}, one \ARMY \faceplus and 1 \DT.  If the
   \nameref{pII:Schmalkaldic League} or the \nameref{pIII:League Nassau}
   exists, and the Rebels are \hug, this intervention is made with 2 \ARMY
   \faceplus.  \leader{Jean-Casimir} is a general of \paysPalatinat (and serves
@@ -586,10 +591,10 @@ land forces), that costs no \STAB.
   \phmil
   \aparag The war is prosecuted according to \ref{pIII:FWR:Military
     Operations}, and \ref{pIII:FWR:War1 Military}.
-  \aparag[Intervention of \paysPalatinat] If inactive, \paysPalatinat makes an
-  intervention as an ally of the Rebels (it is a mercenary army). It is played
-  by \REB. The intervention force is \leader{Jean-Casimir}, one \ARMY
-  \faceplus and 1 \DT.  If the \nameref{pII:Schmalkaldic League} or the
+  \aparag[Intervention of \paysPalatinat] If inactive, \paysPalatinat makes a
+  limited intervention as an ally of the Rebels (it is a mercenary army). It
+  is played by \REB. The intervention force is \leader{Jean-Casimir}, one
+  \ARMY \faceplus and 1 \DT.  If the \nameref{pII:Schmalkaldic League} or the
   \nameref{pIII:League Nassau} exists, and the Rebels are \hug, this
   intervention is made with 2 \ARMY \faceplus.  \leader{Jean-Casimir} is a
   general of \paysPalatinat (and serves this country if it is at war
@@ -670,9 +675,9 @@ of course mandatory if this event happen due to \FRA's choice during
   \REVOLT is rolled for in France. If this \REVOLT is in the rebel minor
   country and has no \REVOLT nor Loyalist land force in it, place a new
   \REVOLT \facemoins which takes the city.
-  \aparag \FRA (and its allies) have a bonus of \bonus{+1} to suppress \REVOLT
-  in France and perform automatic surrenders of rebel fortresses as in the
-  previous war.
+  \aparag \FRA (and its allies) %have a bonus of \bonus{+1} to suppress \REVOLT
+  % in France and
+  perform automatic surrenders of rebel fortresses as in the previous war.
 \end{digressions}
 
 \phpaix
@@ -724,9 +729,9 @@ turn).
   \REVOLT is rolled for in France. If this \REVOLT is in the rebel minor
   country and has no \REVOLT nor Loyalist land force in it, place a new
   \REVOLT \facemoins which takes the city.
-  \aparag \FRA (and its allies) have a bonus of \bonus{+2} to suppress \REVOLT
-  in France and perform automatic surrenders of rebel fortresses as in the
-  previous wars.
+  \aparag \FRA (and its allies) %have a bonus of \bonus{+2} to suppress \REVOLT
+  % in France and
+  perform automatic surrenders of rebel fortresses as in the previous wars.
 
 
   \digression[pIII:FWR:League Coup]{Guise Coup and assassination}
@@ -830,12 +835,13 @@ he is appointed.
   Protestant. If \leaderNavarre is alive, the general is also the Heir; if not
   it's a cousin with random military capacities. The Heir has values 9/9/9.
   \aparag[A new religious attitude] The designation of an Heir changes
-  immediately the Religious Stand of \FRA. The Heir is Crowned now if the king
-  is dead, or assists the king and will be crowned at the time of its
-  death. If the Heir dies, another of the same family (and same
-  characteristics) will stand forward. An Heir does not make Survival Test
-  before its crowning; it will last 5 turns beginning with the turn of its
-  crowning.
+  immediately the Religious Stand of \FRA.
+  \bparag The Heir is Crowned now if the king is dead, or assists the king and
+  will be crowned at the time of its death.
+  \bparag If the Heir dies, another of the same family (and same
+  characteristics) will stand forward.
+  \bparag An Heir does not make Survival Test before its crowning; it will
+  last 5 turns beginning with the turn of its crowning.
   \aparag
   Apply one of \xnameref{pIII:FWR:France is Protestant},
   \xnameref{pIII:FWR:France is Counter-Reformation} or
@@ -933,8 +939,9 @@ for new \REVOLT of the now rebel side. The war resumes with rebels depending
 on the new religious attitude.
 \aparag If a pretender was murdered on the previous turn, new \REVOLT are
 rolled for according to \ref{pIII:FWR:Uprisings} for this side only.
-\aparag \paysSavoie will make a limited intervention as an ally of \lig (or
-\FRA if \CATHCR), with an \ARMY \faceplus and one unnamed minor general.
+\aparag \paysSavoie will make (or continue) a limited intervention as an ally
+of \lig (or \FRA if \CATHCR), with an \ARMY \faceplus and one unnamed minor
+general.
 
 \phadm
 \aparag[Reinforcements of Rebels]
@@ -954,12 +961,13 @@ their reinforcement roll.
 
   \phmil
   \aparag Use the general rules of \ref{pIII:FWR:Military Operations}.
-  \aparag \FRA and its allies have a bonus of \bonus{+3} to suppress \REVOLT
-  in France.
-  \aparag \paysPalatinat makes an intervention as an ally of the side of
-  \leaderNavarre or \monarque{Henri de Navarre} with \ARMY\faceplus, \LD and a
-  random general.  If the Monarch is \monarque{Henri III} with \monarque{Henri
-    IV} as the chosen Heir, \paysPalatinat makes no intervention.
+  % \aparag \FRA and its allies have a bonus of \bonus{+3} to suppress \REVOLT
+  % in France.
+  \aparag \paysPalatinat makes (or continues) a limited intervention as an
+  ally of the side of \leaderNavarre or \monarque{Henri de Navarre} with
+  \ARMY\faceplus, \LD and a random general. If the Monarch is \monarque{Henri
+    III} with \monarque{Henri IV} as the chosen Heir, \paysPalatinat makes no
+  intervention.
   \aparag \FRA draws supply from any province in France (including those of
   \lig and \hug), except those in \REVOLT
   \aparag \lig and \hug draw supply only from the provinces they control.
@@ -979,8 +987,10 @@ their reinforcement roll.
 
   \phpaix
   \aparag If there are only 2 sides in this war, the War of Succession ends if
-  \FRA control Paris and wins a Major Victory over Rebel forces (at least 3
-  \DT of Rebels) or if all Rebel forces and \REVOLT have been eliminated.
+  \FRA control \villeParis and all the places of safety and the fortresses
+  where there was a \REVOLT\faceplus at some point during the war and has won
+  a Major Victory over Rebel forces (at least 3 \DT of Rebels), or if all
+  Rebel forces and \REVOLT have been eliminated.
   \bparag \FRA has to spend 100\ducats to stop the war; no Coup or
   Assassination can happen. Apply \ref{pIII:FWR:End of the War of Succession}.
   \aparag If there are only 2 sides in this war, the War of Succession ends if
@@ -1002,8 +1012,8 @@ their reinforcement roll.
   (\leader{Henri de Guise} or \leaderNavarre).
   \aparag If no Coup is attempted, \FRA can try to murder one pretender of
   revolted \lig or \hug (\leader{Henri de Guise} or \leaderNavarre).
-  \aparag \FRA loses no \STAB because of the \REVOLT but loses \STAB as in an
-  usual war (1 the first turn, 2 the second, \dots)
+  % \aparag \FRA loses no \STAB because of the \REVOLT but loses \STAB as in an
+  % usual war (1 the first turn, 2 the second, \dots)
   \aparag The war keeps on until one side is victorious; there is no Truce.
 
 
@@ -1025,7 +1035,8 @@ their reinforcement roll.
   \aparag[Result of Assassination] If the result of \FRA is 9 or lower, the
   murder is failed. It may succeed if the roll is 10 or higher.  \FRA loses
   {\bf 1} \STAB, and the Valois \monarque{Henri III} will have
-  an additional permanent malus of \bonus{+3} to its Survival Test until his death. \\
+  an additional permanent malus of \bonus{+3} to its Survival Test until his
+  death. \\
   \centerline{\textit{"Il est encore plus grand mort que vivant."}}
   \aparag[If both a Coup and a Murder succeed]
   \bparag If the result of \FRA is higher of equals to the result of the Coup,
@@ -1052,7 +1063,7 @@ their reinforcement roll.
     Succession}
 
   \phinter
-  \aparag \STAB of \FRA is raised by {\bf 2}.
+%  \aparag \STAB of \FRA is raised by {\bf 2}.
   \aparag The new Monarch is the last designated Heir (\monarque{Henri III} is
   pushed aside if he is still alive...)
   \aparag All \REVOLT and forces of minor countries \hug and \lig are
@@ -1133,8 +1144,8 @@ make a limited intervention in the war.
 
   \phmil
   \aparag Use the rules of \ref{pIII:FWR:Military Operations}.
-  \aparag \FRA and its allies have a bonus of \bonus{+4} to suppress \REVOLT
-  in France.
+  % \aparag \FRA and its allies have a bonus of \bonus{+4} to suppress \REVOLT
+  % in France.
   \aparag A city in \FRA that had not a \REVOLT \faceplus at the beginning of
   the turn, makes an immediate voluntary surrender if besieged by a land stack
   of \FRA (or its allies) that sets a siege with at least one \ARMY \faceplus
@@ -1145,11 +1156,12 @@ make a limited intervention in the war.
   \digression[pIII:FWR:War5 Peace]{How to end the Last Stand?}
 
   \phpaix
-  \aparag \FRA loses no \STAB because of the \REVOLT . It loses at most {\bf
-    2} \STAB per turn because of the war.
+  \aparag \FRA loses at most {\bf 2} \STAB per turn because of the war.
   \aparag No Truce happens ever in this civil war. It keeps going until one
   side wins.
-  \aparag The War ends if \FRA controls Paris and wins a Major Victory over
+  \aparag The War ends if \FRA controls Paris, all the places of safety and
+  the fortresses in provinces where there was a \REVOLT\faceplus at some point
+  in the war and wins a Major Victory over
   Rebel forces (at least 3 \DT of Rebels) or if all Rebel forces and \REVOLT
   have been eliminated.
   \aparag The War ends if \FRA has no land forces left and the Rebel controls
@@ -1164,7 +1176,7 @@ make a limited intervention in the war.
   \digression[pIII:FWR:End of the Last Stand]{End of the Last Stand}
 
   \phpaix
-  \aparag \STAB of \FRA is raised by {\bf 2}.
+  % \aparag \STAB of \FRA is raised by {\bf 2}.
   \bparag The new Monarch is the last designated Heir (if it did change; the
   former one is pushed aside)
   \bparag All \REVOLT %and forces of minor countries \hug and \lig
@@ -1201,7 +1213,7 @@ regardless of other conditions.
 
 \phinter
 \aparag The Wars of Religion are ended. Further events \numberref{pIII:FWR}
-cause \RD.
+cause \RD with the \REVOLT in \FRA.
 \aparag The Monarch should be the designated Heir, or the Heir is crowned
 right now.
 \aparag Minor countries \hug and \lig are immediately annexed by \FRA. All
