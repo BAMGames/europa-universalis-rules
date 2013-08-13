@@ -1,15 +1,22 @@
 \definechapterbackground{Redeployment}{redeployment}
 \chapter{Redeployment}\label{chapter:Redep}
 
-After the military phase, some ``cleaning'' is required before the next
-turn. During the redeployment phase, lasting military affairs are
-resolved. First, attacks by natives and privateers, then looting of occupied
-provinces, extension of revolts and construction of \Presidios, and lastly
-mandatory retreat of some troops and bringing gold back home.
+% After the military phase, some ``cleaning'' is required before the next
+% turn. 
+
+During the redeployment phase, lasting military affairs are resolved. First,
+attacks by natives and privateers, then looting of occupied provinces,
+extension of revolts and construction of \Presidios, and lastly mandatory
+retreat of some troops and bringing \ROTW gold back home.
 
 \RedepPhase
 
 \section{Attacks by Natives}\label{chRedep:Native Attack}
+
+\begin{designnote}
+  Ignore if using the experimental rules of Attacks during the military
+  rounds.
+\end{designnote}
 
 \aparag Natives activated during the turn, as well as forces of \ROTW minor
 countries may attack colonial establishments.
@@ -36,7 +43,7 @@ controller of the minor may choose to attack with the minor troops only
 
 \aparag[Forces attacking]
 \bparag In each province, sum up the number of \LD participating in the
-attack.
+attack (ignore any remaining \LDE).
 \bparag Remember that each province of a given \Area holds the same number of
 native \LD and that killing natives in one province does not change the number
 of natives in other provinces of the \Area.
@@ -46,7 +53,8 @@ killed in \provinceEdo during a given turn, there are still 40\LD in
 \provinceKyoto this turn.
 
 \aparag[Resolving the attack]
-\bparag Each attack is resolved by rolling one die on \ref{table:Pirates
+\bparag Each attack is resolved by rolling one 
+die on \ref{table:Pirates
   Natives Raids}. This die-roll is modified by:
 \begin{modlist}
 \item[+1] for each \LD in defence of the establishment (even besieged).
@@ -60,6 +68,8 @@ killed in \provinceEdo during a given turn, there are still 40\LD in
   without being routed.
 \item[+6]If the Natives were routed at least once in the province this turn.
 \end{modlist}
+\bparag All rolls are simultaneous, that is an establishment destroyed by an
+attack still provides a \bonus{-1} to attacks in the same \Area.
 
 \aparag[Reading the result]
 \bparag The result is read by cross-referencing the (modified) die roll with
@@ -73,7 +83,7 @@ applied.
 
 \aparag[Applying losses]
 \bparag Losses on settlements: The establishment of the province losses as
-many levels as indicated. If it reaches level 3, turn it \facemoins. If it
+many levels as indicated. If it reaches level 3, turn it \Facemoins. If it
 reaches level 0, it is immediately destroyed. Exceeding losses are ignored.
 \bparag Losses on land forces: as many \LD as indicated are lost. The losses
 may also be applied to fortifications (loosing 1 level of fortress or 1 fort
@@ -224,15 +234,35 @@ Colony/province in the same turn. Privateers/Pirates looting a province or
 \COL/\TP can not attack at the same turn the \CTZ/\STZ.
 \end{todo}
 
-\aparag[Actions of Pirates and Privateers] In \STZ/\CTZ where
-pirates/privateers are active, one die is rolled on \tableref{table:Pirates
-  Natives Raids}.
-\bparag Pirates attack all fleets in the zone and are resolved first as a
-separate atack in each zone.  countries.
-\bparag Privateers of \terme{Barabaresque} countries make joint attacks after
-Pirates.  Turkish privateers may be added to the same attack if at war against
-all the aimed christian countries, or if taking advantage of rule
-\ruleref{chSpecific:Balkans}.
+\aparag[Naval actions of Pirates and Privateers] In each \STZ/\CTZ where
+\corsaire are active, one die is rolled on \tableref{table:Pirates Natives
+  Raids}.
+\bparag First, pirates attack all fleets in the zone.
+\bparag Then, each alliance resolve the attacks of its privateers, in order of
+initiative.
+\bparag All \corsaire of \terme{Barbaresque} countries are considered as one
+alliance, acting at the initiative of \TUR. They are automatically allied with
+\corsaire of \TUR if they have the exact same targets.
+\bparag The \corsaire of \paysChevaliers acts at the initiative of its
+diplomatic patron, or of the \SDCF if neutral. It is automatically allied with
+\corsaire of any and all countries having the same target (that is, only
+\TUR). 
+% precision for the insanes:
+\bparag In the rare case where several countries target \TUR in the same
+\STZ/\CTZ than \paysChevaliers but without being allied, they are nonetheless
+considered allied for the purpose of this attack only.
+
+\aparag[Targets of piracy]
+\bparag \corsaire of \paysPirates target all \TradeFLEET in the \STZ/\CTZ they
+are.
+\bparag Note that some seas may belong to several \STZ or \CTZ (especially in
+Europe). However, \corsaire of \paysPirates are specifically created in one of
+them (\emph{e.g.} \ref{eco:Piracy} creates them in the \CTZ of the country
+rolling it).
+\bparag \corsaire of \terme{Barbaresque} countries attack all christian
+\TradeFLEET in the \STZ/\CTZ they are. \TUR must declare when moving them
+which \STZ/\CTZ they'll attack
+
 \bparag Then one attack is resolved for all the Privateers of the same
 alliance, in the order of Initiative.  Privateers may target only fleets of
 countries against which their owner is at war (or overseas
