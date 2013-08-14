@@ -237,28 +237,26 @@ Colony/province in the same turn. Privateers/Pirates looting a province or
 \aparag[Naval actions of Pirates and Privateers] In each \STZ/\CTZ where
 \corsaire are active, one die is rolled on \tableref{table:Pirates Natives
   Raids}.
-\bparag First, pirates attack all fleets in the zone.
+\bparag First, \pays{pirates} \corsaire attack all \TradeFLEET in the zone.
 \bparag Then, each alliance resolve the attacks of its privateers, in order of
 initiative.
-\bparag All \corsaire of \Barbaresque are considered as one
+\bparag \corsaire of different alliance that have the exact same targets
+attack together as if they were allied.
+\bparag Especially, all \corsaire of \Barbaresque are considered as one
 alliance, acting at the initiative of \TUR. They are automatically allied with
-\corsaire of \TUR if they have the exact same targets.
+any \corsaire of \TUR if they have the exact same targets.
 \bparag The \corsaire of \paysChevaliers acts at the initiative of its
 diplomatic patron, or of the \SDCF if neutral. It is automatically allied with
-\corsaire of any and all countries having the same target (that is, only
-\TUR). 
-% precision for the insanes:
-\bparag In the rare case where several countries target \TUR in the same
-\STZ/\CTZ than \paysChevaliers but without being allied, they are nonetheless
-considered allied for the purpose of this attack only.
+any and all \corsaire of any and all countries having the same target (that
+is, only \TUR).
 
 \aparag[Targets of piracy]
 \bparag \corsaire of \pays{pirates} target all \TradeFLEET in the \STZ/\CTZ
 they are.
 \bparag Note that some seas may belong to several \STZ or \CTZ (especially in
 Europe). However, \corsaire of \pays{pirates} are specifically created in one
-of them (\emph{e.g.} \ref{eco:Piracy} creates them in the \CTZ of the country
-rolling it).
+of them (\emph{e.g.} \ref{eco:Looting and insecurity} creates them in the \CTZ
+of the country rolling it).
 \bparag \corsaire of \Barbaresque attack all christian \TradeFLEET in the
 \STZ/\CTZ they are. \TUR must declare when moving them which \STZ/\CTZ they'll
 attack
@@ -281,31 +279,34 @@ against which they are at war (including overseas wars) in their
 % or \FLEET  (a Convoy counts as 2 sides)
 % [convoys are attacked during the rounds, not here]
 \item[+1] If one or more \ND in defence and no \FLEET
-\item[+2/+4] per \FLEET\facemoins/\Faceplus defending
-\item[+M] \Man of one defending \LeaderA (commanding a \FLEET in the zone,
-  allied to at least one of the targeted \TradeFLEET, count only one defending
+\item[+2/+4] per \FLEET\facemoins/\Faceplus defending (see below).
+\item[+M] \Man of one defending \LeaderA (see below, count only one defending
   \LeaderA per attack).
-\item[-1] per year in the sea zone (max. \bonus{-3}). See below for
-  details.% (NA on Convoy attacks)
+\item[-1] per year in the sea zone (max. \bonus{-3}) (see below).
 \item[-M] \Man of one \corsaire \LeaderA (count only one attacking \LeaderA
   per attack). %(\textonehalf for land raids in Europe)
 \item[+1] if a naval battle occurred in the sea during this
   turn. %(not for land raids)
-\item[-2] \corsaire of \pays{chevaliers} if there is a Christian port on
-  \seazone{Egee} or \seazone{Mediterranee E}
+\item[-2] if the \corsaire of \pays{chevaliers} is in the attack and there is
+  a Christian port on \seazone{Egee} or \seazone{Mediterranee E}
 \end{modlist}
 
 \aparag[Years at sea]
 \bparag Each military round is named by letter ('S' or 'W') and a number (from
 0 to 5).
-\bparag Each round with a different number in its named where the \corsaire
-stays in the zone is considered as one ``year at sea'' and gives a \bonus{-1}
-to the roll.
-\bparag Two round with the same number in their name are considered as only 1
+\bparag Each round with a different number in its name, at the end of which
+the \corsaire is in the zone, is considered as one ``year at sea'' and gives a
+\bonus{-1} to the roll.
+\bparag Two rounds with the same number in their name are considered as only 1
 year and give only a bonus of \bonus{-1}.
 \bparag Example: a \corsaire stays in the same zone during the rounds 'S4',
 'W4' and 'S5'. There are only two years at sea ('4' and '5'), hence a bonus of
-\bonus{-2}.
+\bonus{-2}. If it is here during the rounds 'S2', 'W3', 'S4', 'W4' and 'S5',
+that is 4 years at sea, thus the maximum bonus of \bonus{-3}.
+
+\aparag[Defending naval force] Any naval stack in any zone of a \STZ/\CTZ may
+be declared as a ``defending force'' by its controlled if it is allowed to
+fight at least one of the \corsaire in the attack.
 
 
 \aparag[Reading the result]
@@ -323,9 +324,6 @@ zone.
 
 
 \aparag[Applying losses]
-\bparag[Defending naval force] Any naval stack in any zone of a \STZ/\CTZ may
-be declared as a ``defending force'' by its controlled if it is allowed to
-fight at least one of the \corsaire in the attack.
 \bparag First, \textbf{each} targeted \TradeFLEET\facemoins decreases its
 \emph{Current} level (see~\ref{chExpenses:Commercial Fleet Adjustment}) by the
 number of loss obtained for \TradeFLEET\facemoins.
@@ -335,14 +333,14 @@ its \emph{Current} level by the number of loss obtained for
 \bparag Instead of loosing \TradeFLEET levels, players may choose to loose \ND
 of defending naval stacks. The choice is made by the controlled of each
 defending stack on a 1 for 1 basis. It is possible to transform any number of
-level lost in \ND lost (but no more than the total number of \ND in the
-defending stack). Several defending stacks may thus protect the same or
+levels lost in \ND lost (but no more than the total number of \ND in the
+defending stacks). Several defending stacks may thus protect the same or
 different \TradeFLEET.
 \bparag Lastly, each \textetoile obtained decrease by 1 the \textbf{maximal}
 level of the largest targeted \TradeFLEET (the one with the largest maximal
 level). Apply these \textetoile one by one. In case of equality, the
 controlled of the \corsaire choose, at random if its neutral (\emph{e.g.}
-\pays{pirates}).
+\pays{pirates}) or in case of disagreement.
 \bparag This decrease of the maximal level cannot be transformed into lost
 \ND. It does not decrease the current level unless the maximal level becomes
 higher than the current (in other words, result ``5 \textetoile\textetoile''
@@ -351,7 +349,8 @@ on the first line means ``2 permanent losses and 3 temporarily losses'').
 \begin{designnote}
   Remember that temporarily lost levels return one per turn per \TradeFLEET
   automatically, but the process can be sped up with \TFI actions. Permanent
-  losses, on the other hand, are gone for good.
+  losses, on the other hand, are gone for good and \TFI actions must be use to
+  regain these.
 
   However, monopolies (both for income and \VPs) as well as attribution of
   Trade centres are computed according to the \textbf{current} levels. Thus,
@@ -360,8 +359,8 @@ on the first line means ``2 permanent losses and 3 temporarily losses'').
   influence on incomes which may be crucial during wars.
 
   End of period \VPs are computed based on maximal levels in order to avoid a
-  last moment backstab that would causes an important change in \VPs due to
-  the ``end of period'' effect.
+  last moment backstab that would causes an important change in \VPs due to an
+  ``end of period'' effect.
 \end{designnote}
 
 \aparag[Income of Privateers] Each level eliminated (temporarily or
