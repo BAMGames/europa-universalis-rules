@@ -105,28 +105,28 @@ automatically reactivated next turn unless peace with the minor is signed.
   \begin{itemize}
   \item \granderegionNyasa S.: \TP of level 2 of \HOL, no fortress.\\
     \HOL sends 2\LD and scores a victory against the Bantu (but no rout). 2\LD
-    of natives are killed, the Dutch leader has a \terme{manoeuvre} of 3 and
+    of natives are killed, the Dutch leader has a \Man of 3 and
     the Bantu has 4.
   \item \granderegionNatal N.: \TP of level 3 of \FRA, fortress of level 2.\\
     \FRA does not manage to send any troops to fight the natives ; the Bantu
-    leader has 3 in \terme{manoeuvre}.
+    leader has 3 in \Man.
   \item \granderegionNatal S.: \TP of level 2 of \ANG, no fortress.\\
     \ANG sends 1\ARMY\Faceplus and routs the Bantu, killing 5\LD. The English
-    leader has a \terme{manoeuvre} of 2 and the natives has 5.
+    leader has a \Man of 2 and the natives has 5.
   \item \granderegionCap E.: nothing.
   \end{itemize}
   The attacks are then resolved:
   \begin{itemize}
   \item \granderegionNyasa S.: the modifier is +2 (troops in defence) +3
-    (\terme{manoeuvre} of the defending leader) -4 (4\LD attacking) -4
-    (\terme{manoeuvre} of the native leader) +3 (native defeat) = 0. \HOL
+    (\Man of the defending leader) -4 (4\LD attacking) -4
+    (\Man of the native leader) +3 (native defeat) = 0. \HOL
     rolls 9 and loses 3 level of \TP (destroyed) and 2\LD (both killed).
   \item \granderegionNatal N.: the modifier is +2 (fortress in defence) -6 (6
     native \LD) -1 (presence of a foreign \TP in the \Area (the English one))
-    -3 (native \terme{manoeuvre}) = -8. \FRA rolls 6-8 = -2 and loses 6 level
+    -3 (native \Man) = -8. \FRA rolls 6-8 = -2 and loses 6 level
     of \TP (destroyed) and 8\LD or level of fortress (destroyed).
   \item \granderegionNatal S.: the modifier is +4 (\LD in defence) +2
-    (\terme{manoeuvre}) -1 (native \LD) -1 (French \TP) -5 (\terme{manoeuvre})
+    (\Man) -1 (native \LD) -1 (French \TP) -5 (\Man)
     +6 (rout) = +5. \ANG rolls 7+5 = 12 and loses 1 level of \TP (1 stays) and
     1\LD (3 remain).
   \end{itemize}
@@ -244,13 +244,13 @@ Colony/province in the same turn. Privateers/Pirates looting a province or
 \end{designnote}
 
 \aparag[Naval actions of Pirates and Privateers] In each \STZ/\CTZ where
-\corsaire are active, one die is rolled on \tableref{table:Pirates Natives
-  Raids}.
+\corsaire are active, an attack on \TradeFLEET occurs.
 \bparag First, \pays{pirates} \corsaire attack all \TradeFLEET in the zone.
 \bparag Then, each alliance resolve the attacks of its privateers, in order of
 initiative.
-\bparag \corsaire of different alliance that have the exact same targets
-attack together as if they were allied.
+\bparag \corsaire of different alliances that have the exact same targets
+(same \TradeFLEET in a given \STZ/\CTZ) attack together as if they were
+allied.
 \bparag Especially, all \corsaire of \Barbaresques are considered as one
 alliance, acting at the initiative of \TUR. They are automatically allied with
 any \corsaire of \TUR if they have the exact same targets.
@@ -277,6 +277,16 @@ against which they are at war (including overseas wars) in their
 \xnameref{chSpecific:Balkans} is active. \TUR must declare upon moving its
 \corsaire which \CTZ/\STZ and \TradeFLEET are targeted.
 
+\begin{exemple}[Combined attack]
+  Note that only \TradeFLEET in the current \STZ/\CTZ may be targeted. Thus,
+  \emph{e.g.}, if \VEN is the only country with \TradeFLEET in one zone, a
+  \corsaire of \Barbaresques will only target \VEN in that zone even if it
+  would target other \TradeFLEET elsewhere. In this case, the \corsaire could
+  combine with a \corsaire of \TUR being at war against \VEN only, even if in
+  another zone the presence of a non-belligerent \TradeFLEET of \FRA (targeted
+  by \Barbaresques but not by \TUR) prevents the combined attack.
+\end{exemple}
+
 \aparag[Resolving the attack]
 \bparag Each attack is resolved by rolling one die on \ref{table:Pirates
   Natives Raids}. This die-roll is modified by:
@@ -284,20 +294,20 @@ against which they are at war (including overseas wars) in their
 \item[+2] if the \corsaire is not exactly in the sea zone of the \STZ/\CTZ
   (the zone where the symbol is located).
 \item[+3] if a lone \corsaire\facemoins is attacking.
-\item[+1] per side of target \TradeFLEET.
+\item[+1] per side of targeted \TradeFLEET.
 % or \FLEET  (a Convoy counts as 2 sides)
 % [convoys are attacked during the rounds, not here]
-\item[+1] If one or more \ND in defence and no \FLEET
+\item[+1] If one or more \ND defending (see below) and no \FLEET.
 \item[+2/+4] per \FLEET\facemoins/\Faceplus defending (see below).
 \item[+M] \Man of one defending \LeaderA (see below, count only one defending
   \LeaderA per attack).
 \item[-1] per year in the sea zone (max. \bonus{-3}) (see below).
 \item[-M] \Man of one \corsaire \LeaderA (count only one attacking \LeaderA
   per attack). %(\textonehalf for land raids in Europe)
-\item[+1] if a naval battle occurred in the sea during this
-  turn. %(not for land raids)
+\item[+1] if a naval battle occurred in the sea where the \corsaire is located
+  during this turn. %(not for land raids)
 \item[-2] if the \corsaire of \pays{chevaliers} is in the attack and there is
-  a Christian port on \seazone{Egee} or \seazone{Mediterranee E}
+  a Christian port on \seazone{Egee} or \seazone{Mediterranee E}.
 \end{modlist}
 
 \aparag[Years at sea]
@@ -308,13 +318,15 @@ the \corsaire is in the zone, is considered as one ``year at sea'' and gives a
 \bonus{-1} to the roll.
 \bparag Two rounds with the same number in their name are considered as only 1
 year and give only a bonus of \bonus{-1}.
-\bparag Example: a \corsaire stays in the same zone during the rounds 'S4',
-'W4' and 'S5'. There are only two years at sea ('4' and '5'), hence a bonus of
-\bonus{-2}. If it is here during the rounds 'S2', 'W3', 'S4', 'W4' and 'S5',
-that is 4 years at sea, thus the maximum bonus of \bonus{-3}.
+\begin{exemple}[Years at sea]
+  A \corsaire stays in the same zone during the rounds 'S4', 'W4' and
+  'S5'. There are only two years at sea ('4' and '5'), hence a bonus of
+  \bonus{-2}. If it is here during the rounds 'S2', 'W3', 'S4', 'W4' and 'S5',
+  that is 4 years at sea, thus the maximum bonus of \bonus{-3}.
+\end{exemple}
 
 \aparag[Defending naval force] Any naval stack in any zone of a \STZ/\CTZ may
-be declared as a ``defending force'' by its controlled if it is allowed to
+be declared as a ``defending force'' by its controller if it is allowed to
 fight at least one of the \corsaire in the attack.
 
 
@@ -340,16 +352,16 @@ number of loss obtained for \TradeFLEET\facemoins.
 its \emph{Current} level by the number of loss obtained for
 \TradeFLEET\faceplus.
 \bparag Instead of loosing \TradeFLEET levels, players may choose to loose \ND
-of defending naval stacks. The choice is made by the controlled of each
-defending stack on a 1 for 1 basis. It is possible to transform any number of
-levels lost in \ND lost (but no more than the total number of \ND in the
-defending stacks). Several defending stacks may thus protect the same or
-different \TradeFLEET.
+(or \NGD) of defending naval stacks. The choice is made by the controller of
+each defending stack on a 1 for 1 basis. It is possible to transform any
+number of levels lost in \ND (or \NGD) lost (but no more than the total number
+of \ND (or \NGD) in the defending stacks). Several defending stacks may thus
+protect the same or different \TradeFLEET.
 \bparag Lastly, each \textetoile obtained decrease by 1 the \textbf{maximal}
 level of the largest targeted \TradeFLEET (the one with the largest maximal
 level). Apply these \textetoile one by one. In case of equality, the
-controlled of the \corsaire choose, at random if its neutral (\emph{e.g.}
-\pays{pirates}) or in case of disagreement.
+controller of the \corsaire chooses, at random if its neutral (\emph{e.g.}
+\pays{pirates}) or in case of disagreement (allied \corsaire).
 \bparag This decrease of the maximal level cannot be transformed into lost
 \ND. It does not decrease the current level unless the maximal level becomes
 higher than the current (in other words, result ``5 \textetoile\textetoile''
@@ -368,8 +380,8 @@ on the first line means ``2 permanent losses and 3 temporarily losses'').
   influence on incomes which may be crucial during wars.
 
   End of period \VPs are computed based on maximal levels in order to avoid a
-  last moment backstab that would causes an important change in \VPs due to an
-  ``end of period'' effect.
+  last moment backstab that would causes an important change in \VPs and
+  create an ``end of period'' effect.
 \end{playtip}
 
 \aparag[Income of Privateers] Each level eliminated (temporarily or
@@ -382,8 +394,8 @@ countries give no income (even if \VASSAL).
 equally divided between the powers (including minor ones), dropping any
 fraction.
 
-\begin{exemple}
-  During peiord \period{II}, \leaderwithdata{Barbaros2} sails out of
+\begin{exemple}[Resolving the attack]
+  During period \period{II}, \leaderwithdata{Barbaros2} sails out of
   \villeAlger with a \corsaire\faceplus into \seazone{Lion} where he is joined
   by a \corsaire\facemoins of \paysTunisie. During the turn, \leaderwithdata{A
     Doria} leads a Genoese \FLEET\facemoins at see and manage to hunt down the
@@ -400,9 +412,8 @@ fraction.
   targeted sides of \TradeFLEET (2 of \FRA, 1 of each \paysHollande,
   \paysGenes, \HIS and \VEN; the Turkish \TradeFLEET is not targeted as
   \Barbaresques only target Christian \TradeFLEET. Thus, the total DRM is +6
-  (targeted sides) +2 (\TradeFLEET\facemoins in defence) +5 (\terme{manoeuvre}
-  of \leader{A Doria}) -3 (years at sea) -5 (\terme{manoeuvre} of
-  \leader{Barbaros2}) = +5.
+  (targeted sides) +2 (\TradeFLEET\facemoins in defence) +5 (\Man of \leader{A
+    Doria}) -3 (years at sea) -5 (\Man of \leader{Barbaros2}) = +5.
 
   \TUR rolls one die and obtains 4 + 5 = 9. Thus, the \TradeFLEET\faceplus
   loses 2 level and \textbf{each} \TradeFLEET\facemoins loses 1 level. All
@@ -419,7 +430,12 @@ fraction.
   level 1 of \TUR.
 
   \FRA will be the most hurt by this attack as it will lose the monopoly
-  (income and \VPs of the \STZ for 2 turns.
+  (income and \VPs) of the \STZ for 2 turns.
+
+  4 levels were actually lost in the attack. Thus, the \corsaire generate an
+  income of 4 (levels lost) $\times$ 2 (presence income of the zone) =
+  8\ducats. However, these are ``gained'' by a minor country (\paysAlgerie)
+  and thus forgotten.
 \end{exemple}
 
 \subsection{On land}
