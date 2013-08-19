@@ -31,7 +31,7 @@
 
 \newcommand{\AdminDetails}{%
   \bparag \xnameref{chIncomes:Summary}
-  \bparag \xnameref{chExpenses:Mandatory}
+  \bparag \xnameref{chExpenses:Mandatory} % loan refund, ...
   \bparag \xnameref{chExpenses:Choice of actions}
   \bparag \xnameref{chExpenses:Maintenance}
   \bparag \xnameref{chExpenses:Recruitment}
@@ -69,13 +69,16 @@
 
 
 \newcommand{\RedepDetails}{%
-  \bparag Attacks by Natives
-  \bparag Attacks of Pirates \& Privateers
-  \bparag Military Looting
-  \bparag Extension of Revolts
-  \bparag Mandatory Retreat in Sieges, \Presidios
-  \bparag Return to port or Attrition of Fleets at sea
-  \bparag Collection of all Gold Repatriated
+  \bparag \xnameref{chRedep:Native Attack} % Attacks by Natives
+  \bparag \xnameref{chRedep:CorsairAttack} % Attacks of Pirates \& Privateers
+  \bparag \xnameref{chRedep:Revolts}} % Extension of Revolts
+  \bparag \xnameref{chRedep:Looting}} % Military Looting
+  \bparag \xnameref{chRedep:Retreat, presidios}
+  % Mandatory Retreat in Sieges, \Presidios
+  \bparag \xnameref{chRedep:Return port} 
+  % Return to port or Attrition of Fleets at sea
+  \bparag \xnameref{chRedep:Gold Repatriation} 
+  % Collection of all Gold Repatriated
 }
 \newcommand{\RedepPhase}{%
   \aparag {\bf \xnameref{chapter:Redep}}
