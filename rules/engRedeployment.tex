@@ -362,6 +362,10 @@ level of the largest targeted \TradeFLEET (the one with the largest maximal
 level). Apply these \textetoile one by one. In case of equality, the
 controller of the \corsaire chooses, at random if its neutral (\emph{e.g.}
 \pays{pirates}) or in case of disagreement (allied \corsaire).
+% Avoid gamey tactic with Pirates in Asia:
+\bparag Exception: In the \ROTW, \textetoile are always applied to \TradeFLEET
+of major countries or of countries at war (minors at peace and close to their
+base manage to repulse local piracy).
 \bparag This decrease of the maximal level cannot be transformed into lost
 \ND. It does not decrease the current level unless the maximal level becomes
 higher than the current (in other words, result ``5 \textetoile\textetoile''
@@ -412,10 +416,10 @@ fraction.
   targeted sides of \TradeFLEET (2 of \FRA, 1 of each \paysHollande,
   \paysGenes, \HIS and \VEN; the Turkish \TradeFLEET is not targeted as
   \Barbaresques only target Christian \TradeFLEET. Thus, the total DRM is +6
-  (targeted sides) +2 (\TradeFLEET\facemoins in defence) +5 (\Man of \leader{A
+  (targeted sides) +2 (\FLEET\facemoins in defence) +5 (\Man of \leader{A
     Doria}) -3 (years at sea) -5 (\Man of \leader{Barbaros2}) = +5.
 
-  \TUR rolls one die and obtains 4 + 5 = 9. Thus, the \TradeFLEET\faceplus
+  \TUR rolls one die and obtains 2 + 5 = 7. Thus, the \TradeFLEET\faceplus
   loses 2 level and \textbf{each} \TradeFLEET\facemoins loses 1 level. All
   these loses are temporarily, and there are no permanent loses. \HIS (the
   diplomatic Patron of \paysGenes) decides to lose 2 \NGD on the Genoese
@@ -436,7 +440,75 @@ fraction.
   income of 4 (levels lost) $\times$ 2 (presence income of the zone) =
   8\ducats. However, these are ``gained'' by a minor country (\paysAlgerie)
   and thus forgotten.
+  
+  \smallskip
+
+  If the Genoese \FLEET was not here, then the DRM would have been -2,
+  resulting in a 2-2=0 causing 5 levels lost on the French \TradeFLEET and 2
+  on all other, and 2 permanent losses (the first must be on the French
+  \TradeFLEET, the second on either \FRA, \paysGenes or \paysHollande, at the
+  choice of \TUR (say, \paysGenes). Thus, the situation at end would be:
+  \TradeFLEET\facemoins of level 0 (3) of \FRA, \TradeFLEET\facemoins of level
+  1 (2) of \paysGenes, \TradeFLEET\facemoins of level 1 (3) of \paysHollande,
+  \TradeFLEET\facemoins of level 0 (2) of \HIS, \TradeFLEET\facemoins of level
+  0 (2) of \VEN and \TradeFLEET\facemoins of level 1 of \TUR. A mch more
+  devastating result.
 \end{exemple}
+
+\aparag[Privateers and Trade Centres]
+\bparag Privateer attacks may cause temporary loss of incomes of the Trade
+Centre containing the \STZ/\CTZ they are located.
+\bparag For each \textetoile obtained by a \corsaire allied with the country
+owning the Trade Centre of the sea zone (at the moment of the attack),
+decrease the income of the Centre by 10\ducats for the next turn (only).
+\bparag Exception: The \corsaire of \pays{Chevaliers} never decreases the
+income of the Mediterranean Centre.
+
+\begin{designnote}
+  Trade and piracy don't go well together. Even your own merchants will become
+  suspicious of the privateers respecting their target or turning to piracy,
+  thus decreasing the overall trade in the seas and the income of the
+  Centre. This is especially true when you are dominating the trade. Since
+  most of the trade ships are yours, even your privateers may lack legitimate
+  targets and start attacking anything at sight.
+
+  In other words, to maintain a commercial domination, peace is required and
+  frequent attacks on trade, even on the trade of someone else, will make it
+  more dangerous and less profitable.
+\end{designnote}
+
+\begin{exemple}
+  In period \period{V}, a \HOL-\ANG-\SPA alliance battles \FRA. The Atlantic
+  Centre is in \HOL. \ANG chooses to send a \corsaire in \stz{Atlantique N} in
+  a attempt to dominate the trade with the new World and causes 2 \textetoile
+  on the French \TradeFLEET there. Meanwhile, \SPA sends a \corsaire in
+  \ctz{France} and causes another \textetoile on the French \TradeFLEET
+  here. All in all, 3 \textetoile have been obtained in zones of the Atlantic
+  Centre by allies of the owner, thus decreasing its income by 30\ducats (to
+  70\ducats) for the next turn.
+
+  Note that eventual \textetoile in Mediterranean seas would have cause loss
+  on the Mediterranean Trade Centre if it is also owned by a member of this
+  alliance (but not if it is owned by \FRA or \TUR).
+\end{exemple}
+
+\begin{todo}[Should move in Military]
+\aparag[Minor countries against Piracy]
+\bparag Minor countries at war can use their naval forces against \corsaire in
+\STZ or \CTZ where they have a \TradeFLEET of their own (only).
+\bparag Christian Minor countries whose \TradeFLEET are attacked by \corsaire
+of \Barbaresques may also use their naval forces to fight against those
+privateers (Patron's choice to move their forces), even if at peace.
+\bparag Remember that minors at peace have only Passive campaigns each turn,
+thus the Patron must pay for moving (when entering the zone where \corsaire
+are located).
+\bparag Against \pays{pirates}, minor countries at peace fight in an abstract
+way in the \STZ where there are no major country \TradeFLEET (usually in
+\continent{Asia} in the early game): each round, roll 1d10 for each \STZ with
+\pays{pirates} \corsaire and no major \TradeFLEET and add 1 for each side of
+commercial fleet of a minor country.  If the result is 8 or higher, one
+\corsaire\facemoins is eliminated.
+\end{todo}
 
 \subsection{On land}
 \begin{designnote}
@@ -444,47 +516,57 @@ fraction.
   rounds.
 \end{designnote}
 
-\aparag[Results of Pirates \& Privateers Looting] These lootings are resolved
-exactly in the same manner: one die-roll on \tableref{table:Pirates Natives
-  Raids}, modified as follows:
+\aparag[Land actions of Pirates and Privateers] In each province where
+\corsaire are active, an attack occurs.
+\bparag First, resolve \pays{pirates} \corsaire attacks.
+\bparag Then, each alliance resolve the attacks of its privateers, in order of
+initiative.
+
+\aparag[Resolving the attack]
+\bparag Each attack is resolved by rolling one die on \ref{table:Pirates
+  Natives Raids}. This die-roll is modified by:
 \begin{modlist}
-\item[+3] if only one \corsaire\facemoins
-\item[+2/+4] per \ARMY\facemoins/\Faceplus defending
-\item[+1] Per \LD (including militia) %against land raids
-\item[+M] \Man of a defending \LeaderG/\LeaderC/\LeaderGov
-\item[-1] per round in province (max. -3) %(NA on Convoy attacks)
-\item[-M] \Man of a \corsaire admiral (\textonehalf for land raids in Europe)
-  % \item[+1] if a naval battle occurred in the sea (not for land raids)
-\item[-2] \pays{chevaliers} with Christian port on \seazone{Egee} or
-  \seazone{Mediterranee E}
-\item[+N] Twice the level of the fortress, +1 for fort
+\item[+3] if a lone \corsaire\facemoins is attacking.
+%\item[+2/+4] per \ARMY\facemoins/\Faceplus defending
+\item[+1] Per full \LD in the province (including militia and \LD in \ARMY).
+\item[+M] \Man of a defending \LeaderG/\LeaderC/\LeaderGov.
+\item[-1] per year in province (max. -3) (computed as at
+  sea). %(NA on Convoy attacks)
+\item[-M] \Man of a \corsaire admiral (\textonehalf for land raids in Europe).
+% \item[-2] \pays{chevaliers} with Christian port on \seazone{Egee} or
+%   \seazone{Mediterranee E}
+\item[+N] Twice the level of the fortress, +1 for fort.
 \end{modlist}
-\bparag If a result \textddag\ is obtained on the table, the province or
-\TP/\COL is looted: place a marker \PILLAGE\faceplus. The privateer's owner
-receives the total income of the province/settlement (gold stored here and
-resources exploited included).
-\bparag If a result \textdag\ is obtained on the table, the province or
-\TP/\COL is weakly looted: place a marker \PILLAGE\facemoins. The privateer's
-owner receives half the total income of the province/settlement (resources
-exploited included), but Gold stored here is entirely captured.
-\bparag Pirates receive no income for looting.
-\bparag These incomes are placed in \lignebudget{Pillages, privateers}, except
-stored gold in \lignebudget{Gold from ROTW & Convoys}.
+
+\aparag[Reading and applying the result]
+\bparag The result is read by cross-referencing the (modified) die roll with
+the ``Pillages \TP/\COL'' column on the table, looking only the \textdag\ or
+\textddag.
+\bparag If a \textddag\ is obtained, the province is looted: place a
+\PILLAGE\faceplus. The \corsaire owner receives the total income of the
+province/settlement (including income of exploited resources at their current price).
+\bparag If a \textdag\ is obtained, the province is weakly looted: place a
+\PILLAGE\facemoins. The \corsaire owner receives half the total income of
+the province/settlement (including income of exploited resources at their
+current price).
+\bparag \pays{pirates} receive no income for looting.
+\bparag This income is recorded in \lignebudget{Pillages, privateers}.
 \bparag There is neither loss of land forces due to the looting (opposite to
-Natives attack) nor protection by sacrificing forces in the province.
+Natives attack) nor protection by sacrificing forces in the province (opposite
+to attacks at sea).
 
-\aparag[Minor countries against Piracy]
-\bparag Minor countries at war can use their naval forces against Privateers
-and Pirates in \STZ or \CTZ where they have a \TradeFLEET of their own.
-\bparag Christian Minor countries whose \TradeFLEET are attacked by privateers
-of \Barbaresques may also use their naval forces to fight against those
-privateers (Patron's choice to deplace their forces), even if at peace.
-\bparag Against Pirates, minor countries at peace fight in an abstract way.
-Roll 1d10 for each \STZ or \CTZ with Pirates and add 1 for each commercial
-fleet of a minor country (+2 if the fleet is \Faceplus).  If the result is 8
-or higher, one \corsaire\facemoins is eliminated.
+\aparag[Seizing gold]
+\bparag If either a \textdag\ or \textddag\ was obtained in an attack against
+a \COL/\TP with Gold stored in it, all the gold is stolen.
+\bparag Remove all the stored gold from the establishment.
+\bparag The owner of the \corsaire (nobody if \pays{pirates} or a minor)
+records that amount in \lignebudget{Gold from ROTW and Convoys}.
 
-
+\aparag[Reducing Pillages]
+\bparag \PILLAGE placed by land raid are considered simultaneous with military
+looting (\ref{chRedep:Looting}).
+\bparag Especially, they are never reduced the turn they appear (contrary to
+\PILLAGE caused by attrition during military rounds).
 
 \section{Extension of Revolts}\label{chRedep:Revolts}
 
