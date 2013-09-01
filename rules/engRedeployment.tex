@@ -550,13 +550,16 @@ the ``Pillages \TP/\COL'' column on the table, looking only the \textdag\ or
 \textddag.
 \bparag If a \textddag\ is obtained, the province is looted: place a
 \PILLAGE\faceplus. The \corsaire owner receives the total income of the
-province/settlement (including income of exploited resources at their current price).
+province/settlement (including income of exploited resources at their current
+price).
 \bparag If a \textdag\ is obtained, the province is weakly looted: place a
 \PILLAGE\facemoins. The \corsaire owner receives half the total income of
 the province/settlement (including income of exploited resources at their
 current price).
 \bparag \pays{pirates} receives no income for looting.
 \bparag This income is recorded in \lignebudget{Pillages, privateers}.
+\bparag Note that existing \PILLAGE marker neither prevent new one nor prevent
+the \corsaire from getting money.
 \bparag There is neither loss of land forces due to the looting (opposite to
 Natives attacks) nor protection by sacrificing forces in the province
 (opposite to attacks at sea).
@@ -591,8 +594,8 @@ country loses \STAB.
 \aparag However, the maximum a country may lose from \REVOLT/\REBELLION of all
 types is 3 \STAB levels. Ignore excess losses.
 
-\aparag \REVOLT/\REBELLION in minor countries are cause loss of \STAB as
-if they were in their diplomatic patron.
+\aparag \REVOLT/\REBELLION in minor countries cause loss of \STAB as if they
+were in their diplomatic patron.
 \bparag Especially, if there is a \REVOLT\Facemoins in a country and one in
 one of its minors, the country only losses 1 \STAB.
 \bparag Similarly, the maximum loss for all \REVOLT in a country and all its
@@ -626,17 +629,19 @@ not generate \REBELLION.
 \bparag When extending, \REVOLT only create \REVOLT and \REBELLION only create
 \REBELLION.
 \bparag When a \REVOLT/\REBELLION\Faceplus extends, the new counter is placed 
-in the same or adjacent province .
+in the same or adjacent province. If there are two \REVOLT\Faceplus in the
+same province, the two new \REVOLT\Facemoins may appear in separate
+provinces.
 \bparag This province must belong to the same country in case of \REVOLT.
-\bparag This province must belong to the region allowed by the even in case of
-\REBELLION (the same country if no region is specified).
+\bparag This province must belong to the region allowed by the event in case
+of \REBELLION (the same country if no region is specified).
 \bparag The choice is made by the player controlling the
 \REVOLT/\REBELLION. If none was specified, roll one country on the \REVOLT
 table of the current period as controller for this turn (reroll until the
 result is not currently allied with the victim).
 % Jym, following JC.
 \bparag \textbf{[TBD]} \REVOLT/\REBELLION in \regionIrlande may extend this
-way across the \seazoneMan into \ANG (and reciprocally): \provinceUlster is
+way across \seazoneMan into \ANG (and reciprocally): \provinceUlster is
 considered adjacent to \provinceAlba, \provinceAyr, \provinceGalloway and
 \provinceCumberland ; \provinceBrega is considered adjacent to
 \provinceCumberland, \provinceLancashire and \provinceCymru ;
@@ -646,13 +651,17 @@ considered adjacent to \provinceAlba, \provinceAyr, \provinceGalloway and
 Revolt or Rebellion \LD is placed in the same province (immediately merged
 with existing Revolted or Rebelled troops into an \ARMY\Facemoins or
 \ARMY\Faceplus using usual rules for conversion).
-\bparag Remember that there can be at most 2 \REVOLT/\REBELLION markers
+\bparag If there are several \REVOLT\Facemoins (or \REBELLION\Facemoins) in
+the same province, they are immediately merged in a
+\REVOLT/\REBELLION\Faceplus.
+\bparag Remember, that there can be at most 2 \REVOLT/\REBELLION markers
 stacked in each province.
 
 \subsection{Revolts and fortresses}
 % Jym (05/2013) : following Pierre's notes from 2007.
 \aparag If a \REVOLT (not a \REBELLION) controls a fortress, reduce the
-fortress to level 2 (turn 39 or earlier) or 3 (turn 40 or later).
+fortress to level 2 (turn 39 or earlier) or 3 (turn 40 or later) if it is
+higher.
 \bparag Each level lost that way gives one Revolt \LD which stays inside the
 fortress and is immediately merged with existing troops. Exceptionally, the
 troops in the fortress may exceed the usual fortress capacity (of 1\LD per
@@ -711,75 +720,163 @@ event in a loyalist defeat. Check the precise description of the event.
 
 
 \section{Land Military Looting}\label{chRedep:Looting}
+% Powers may receive supplementary income at this phase by looting provinces,
+% Colonies or Trading Posts of the other players (or minor countries) that their
+% units occupy.
+% \aparag A power can loot a province (or Colony/Trading Post) if he possesses
+% land units there (i.e. armies or detachments, or Turkish pashas) during this
+% phase (and so has been able to besiege the fortress).  Looting is allowed even
+% if the player does not in control the fortress of the province, Colony or
+% Trading Post.
 
-Powers may receive supplementary income at this phase by looting provinces,
-Colonies or Trading Posts of the other players (or minor countries) that their
-units occupy.
-\aparag A power can loot a province (or Colony/Trading Post) if he possesses
-land units there (i.e. armies or detachments, or Turkish pashas) during this
-phase (and so has been able to besiege the fortress).  Looting is allowed even
-if the player does not in control the fortress of the province, Colony or
-Trading Post.
-\aparag[Adjustment of Already Existing Looting Markers]
-Remove all \Facemoins looting markers, then adjust all \Faceplus looting
-markers to their side \Facemoins, before to proceed to looting of the current
-turn.
+\aparag[Adjustment of Already Existing \PILLAGE Markers]
+\bparag Remove all \PILLAGE\Facemoins.
+\bparag Then, in each province where no \PILLAGE\Facemoins was removed, flip
+one \PILLAGE\Faceplus to its \Facemoins side.
+\bparag Exception: \PILLAGE markers put this turn due to land raids of
+\corsaire are not touched. They will only be reduced next turn.
+
+\begin{designnote}
+  Each side of \PILLAGE represent one level, since there may be up to 2
+  markers in any given province, there may be up to 4 levels of
+  looting. During adjustment of the markers, the ``looting level'' of each
+  province is reduced by 1. Simply be cautious not to flip a \PILLAGE\Faceplus
+  after removing a \PILLAGE\Facemoins in the same province as this would
+  reduce the level by 2.
+
+  \smallskip
+
+  \PILLAGE obtained because of attrition during the rounds may be immediately
+  removed. Thus, a small ``tax'' on the local farms will have no
+  impact. However, if the war stays in the same area for long,
+  \PILLAGE\Faceplus may appear due to attrition and will cause a loss of
+  income the next turn.
+
+  \smallskip
+
+  \PILLAGE obtained by \corsaire are not reduced the turn they appear. That
+  is, they are considered to be placed at the same time as military looting,
+  just after adjustment, but are resolved together with other actions of
+  \corsaire.
+\end{designnote}
+
+\aparag[Looting]
+\bparag Each stack in a enemy province may loot if it has sufficiently many
+troop to besiege the province (either the province is already controlled, or
+1\LD per level of fortress).
+\bparag Looting is never mandatory.
+\bparag The decision to loot or not is taken by the controller of the
+stack. The choice may vary from one province to another (it is possible to
+loot one province and decline the possibility in anther province).
+
+\aparag[Looting and \PILLAGE]
+\bparag Place a \PILLAGE\Faceplus in each looted province.
+\bparag Exception: in the \ROTW, if the looting stack contains less than 2\LD,
+only place a \PILLAGE\Facemoins (if another already exists here, immediately
+merge both into a \PILLAGE\Faceplus).
+\bparag If there are more than two \PILLAGE markers in any province, remove
+the smallest one in each of these provinces (this can happen when looting a
+province which has already a \PILLAGE\Faceplus and a \PILLAGE\Facemoins, or
+two \PILLAGE\Faceplus).
+
 \aparag[Looting Income]
-Unless there already was a looting marker in the province, the player that
-loots receives immediately in his Royal Treasury a sum equal to the total
-cumulated income of all looted provinces, not including exotic resources for
-Colonies/Trading Posts.
-\aparag[Placement of New Looting Markers]
-When a looting takes place, one looting marker \Faceplus is placed on the map,
-in the looted province, Colony or Trading Post.
-\aparag[Looting in \ROTW]
-If a land force has less than 2 \LD, it can only loot weakly a \COL/\TP.  Put
-a \Facemoins looting marker in the province and the power gains only half of
-the regular income.  If the power has at least 2 \LD, it may loot completely
-the province.
-\aparag[Consequences of Looting]
-A side \Faceplus or side \Facemoins looting marker in a province (Colony,
-Trading Post) cancels all land income of this province (or Colony, Trading
-Post) and the exploitation of income from exotic resources.
-\aparag[Elimination of Trading Posts]
-A force occupying an enemy \TP at this phase may, instead of looting, destroy
-it (player's choice).
+\bparag If there was no \PILLAGE marker in the province before the looting
+take place, money is gained from looting.
+\bparag The controller of each looting stack gains income equal to the income
+of the looted province.
+\bparag In the \ROTW, only the regular income is taken, not income from exotic
+resources.
+\bparag In the \ROTW, if there was less than 2\LD, gain only half the income.
+\bparag The sum of these incomes is recorded in \lignebudget{Pillages,
+  privateers}.
 
-
-
+\aparag[Burning \TP]
+\bparag Instead of looting, troops controlling enemy \TP (not \COL) may choose
+to burn it down.
+\bparag Besieging is not sufficient to burn a \TP. The establishment must be
+controlled.
+\bparag Simply remove any burned \TP from the map, it now has level 0 and
+exploit no more resource.
+\bparag No income is gained from burning a \TP. Only the destruction of the
+settlement.
 \section{Mandatory Retreat of Sieges, \Presidios}\label{chRedep:Retreat, presidios}
 
-\aparag[Lack of Supply] Forces that have no LOS makes a mandatory redeployment
-and have to test for attrition at {\bf +2} for this movement.
-\aparag[Inadequate Siegeworks]
-If a besieged fortress has no Siegework\faceplus placed over it, or has not
-suffered a Breach or HW result during the course of the turn, the besieger has
-to retreat to the closest friendly unbesieged city or port. This redeployment
-causes an attrition roll for movement.
-\aparag[Continued Sieges]
-If a besieged fortress has a Siegework\faceplus, or a suffered from a Breach
-or HW result during the course of the turn, the besieging player may either:
-\bparag Decide to raise the siege and make a redeployement movement, with
-attrition at {\bf -2};
-\bparag Continue Siege, keeping only a Siegework\facemoins marker.
+\subsection{Mandatory and voluntary retreats}
+\aparag[Mandatory retreats]
+\bparag A stack without LOS must retreat.
+\bparag A besieging must retreat if there is no \USURE\Faceplus and there was
+neither Breach nor HW obtained during this turn.
 
-\aparag[Construction of \Presidios]\label{chRedep:BuildPresidios}
-In some provinces, a Power may build or increase \Presidios if the province is
-not owned but where its has military control, or is besieging the fortress
-with adequate Siegeworks to continue the siege (even if the power decides to
-raise the siege).
-\bparag Provinces where \Presidios can be built are shown by a circled anchor
-on the map.
-\bparag A \Presidio is marked by a fortress counter. Its price is the same as
-the fortress. The maximum level of a \Presidio is 3.  A power has to pay for
-the Maintenance of \Presidio.  \Presidios may never be built or increased
-during the Logistic Phase.
-\bparag A power may only increase the fortress level of an existing \Presidios
-at the exact same conditions for building it in the first place.
-\bparag Ifever the power gains ownership of a province containing its own
-\Presidio, the \Presidio is converted as a regular fortress for the province
-(if higher than the current level), or dismantled.
+\aparag[Voluntary retreats]
+\bparag Other besieging forces may choose to retreat. The controller of each
+stack decide what to do with it.
+\bparag Decisions to retreat are taken in order of initiative. Retreats are
+resolved once all decisions have been taken.
+\bparag Stacks may not partially retreat. Either the whole stack retreats or
+the whole stack stays.
 
+\aparag[Where to retreat?]
+\bparag Stacks must retreat into the closest (in \MP) friendly controlled
+territory. In case of equality, controller's choice.
+\bparag Retreating stack may not enter provinces with non-retreating enemy
+troops.
+\bparag Retreating troops may use sea move if there is a large enough naval
+stack adjacent to the retreating stack.
+\bparag Retreating stacks may not split not pick up more troops. All the stack
+retreat at the same place.
+\bparag Retreating stack may enter or cross province with friendly troops
+without any effect on these troops (no ``rout'').
+\bparag If retreat is not possible in 12\MP or less, the stack is
+destroyed. Any leader will reappear next turn as reinforcement.
+\bparag After retreat, if any province exceed its stacking limit (8\LD),
+remove any exceeding troops.
+
+\aparag[Retreat and attrition]
+\bparag Retreat is a cause of attrition. Each retreating stack must roll for
+movement attrition with the usual modifier.
+\bparag In addition, troops retreating because they have no LOS have a malus
+of \bonus{+2} to this test.
+\bparag Troops conducting a voluntary retreat have a bonus of \bonus{-2} to
+this test.
+
+\aparag[Continuing siege]
+\bparag Besieging troops which obtained either a \USURE\Faceplus, a Breach or
+a HW during the turn may continue the siege for next turn.
+\bparag In this case, remove all \USURE and keep only a \USURE\Facemoins.
+\bparag Continuing siege do not cause attrition.
+
+\subsection{\Presidios}\label{chRedep:BuildPresidios}
+\aparag[Where to build?]
+\bparag \Presidios may only be built in provinces with a port or arsenal
+depicted with a circled anchor on the map.
+\bparag \Presidios may only be built in non-owned provinces.
+
+\aparag[How to build?]
+\bparag To build a \Presidio, a country must either control the province
+besiege it and not be forced to retreat (that is, either \USURE\Faceplus,
+Breach or HW obtained during the turn).
+\bparag It is possible to build \Presidio even if deciding to voluntary
+retreat from the siege.
+\bparag \Presidios are never build during administrative phase. Similarly,
+raising a \Presidio can only happen at the same conditions than building it.
+
+\aparag[Cost]
+\bparag \Presidios are fortresses and cost the same price (construction and
+maintenance). They have the same restrictions on levels and technology.
+\bparag \Presidios may never be of level more than 3.
+\bparag Contrary to fortresses, \Presidios may be built at any level
+directly. The cost is then the sum of cost for each level.
+
+\aparag[\Presidios in play]
+\bparag \Presidios are represented by fortresses of the owning power. Thus,
+they do count toward the counter limit of that power.
+\bparag At most one country may have a \Presidio in any given province.
+\bparag Because of \Presidios, up to two fortresses of different countries may
+exist in the same province. Put the regular fortress on top of the fortress
+icon on the map, and the \Presidio on top of the anchor.
+\bparag If a country ever gain ownership of a province where it has a
+\Presidio, it may either dismantle the \Presidio or use it to replace the
+regular fortress of the country.
 
 
 \section{Return to Port}\label{chRedep:Return port}
