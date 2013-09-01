@@ -804,8 +804,8 @@ settlement.
 \subsection{Mandatory and voluntary retreats}
 \aparag[Mandatory retreats]
 \bparag A stack without LOS must retreat.
-\bparag A besieging must retreat if there is no \USURE\Faceplus and there was
-neither Breach nor HW obtained during this turn.
+\bparag A besieging stack must retreat if there is no \USURE\Faceplus and
+there was neither Breach nor HW obtained during this turn.
 
 \aparag[Voluntary retreats]
 \bparag Other besieging forces may choose to retreat. The controller of each
@@ -817,15 +817,16 @@ the whole stack stays.
 
 \aparag[Where to retreat?]
 \bparag Stacks must retreat into the closest (in \MP) friendly controlled
-territory. In case of equality, controller's choice.
-\bparag Retreating stack may not enter provinces with non-retreating enemy
+territory. In case of equality, the controller of the stack chooses.
+\bparag Retreating stacks may not enter provinces with non-retreating enemy
 troops.
-\bparag Retreating troops may use sea move if there is a large enough naval
+\bparag Retreating troops may use naval move if there is a large enough naval
 stack adjacent to the retreating stack.
-\bparag Retreating stacks may not split not pick up more troops. All the stack
+\bparag Retreating stacks may not split nor pick up more troops. All the stack
 retreat at the same place.
-\bparag Retreating stack may enter or cross province with friendly troops
+\bparag Retreating stacks may enter or cross provinces with friendly troops
 without any effect on these troops (no ``rout'').
+\bparag Retreating stacks may not be intercepted.
 \bparag If retreat is not possible in 12\MP or less, the stack is
 destroyed. Any leader will reappear next turn as reinforcement.
 \bparag After retreat, if any province exceed its stacking limit (8\LD),
@@ -833,7 +834,7 @@ remove any exceeding troops.
 
 \aparag[Retreat and attrition]
 \bparag Retreat is a cause of attrition. Each retreating stack must roll for
-movement attrition with the usual modifier.
+movement attrition with the usual modifiers.
 \bparag In addition, troops retreating because they have no LOS have a malus
 of \bonus{+2} to this test.
 \bparag Troops conducting a voluntary retreat have a bonus of \bonus{-2} to
@@ -852,7 +853,7 @@ depicted with a circled anchor on the map.
 \bparag \Presidios may only be built in non-owned provinces.
 
 \aparag[How to build?]
-\bparag To build a \Presidio, a country must either control the province
+\bparag To build a \Presidio, a country must either control the province or
 besiege it and not be forced to retreat (that is, either \USURE\Faceplus,
 Breach or HW obtained during the turn).
 \bparag It is possible to build \Presidio even if deciding to voluntary
@@ -865,61 +866,80 @@ raising a \Presidio can only happen at the same conditions than building it.
 maintenance). They have the same restrictions on levels and technology.
 \bparag \Presidios may never be of level more than 3.
 \bparag Contrary to fortresses, \Presidios may be built at any level
-directly. The cost is then the sum of cost for each level.
+directly. The cost is then the sum of costs for each level.
+\bparag This cost is recorded in \lignebudget{Presidios build}.
 
 \aparag[\Presidios in play]
 \bparag \Presidios are represented by fortresses of the owning power. Thus,
-they do count toward the counter limit of that power.
+they do count toward the counters limit of that power.
 \bparag At most one country may have a \Presidio in any given province.
 \bparag Because of \Presidios, up to two fortresses of different countries may
 exist in the same province. Put the regular fortress on top of the fortress
 icon on the map, and the \Presidio on top of the anchor.
 \bparag If a country ever gain ownership of a province where it has a
-\Presidio, it may either dismantle the \Presidio or use it to replace the
-regular fortress of the country.
+\Presidio, it may either dismantle the \Presidio or keep it and replace the
+regular fortress of the province with it (remove any existing regular fortress
+counter and move the \Presidio counter on top of the fortress icon to depict
+the new fortress).
 
 
 \section{Return to Port}\label{chRedep:Return port}
 
-\aparag Naval units being located in a sea zone have the choice to
-\bparag retreat to a friendly, unblockaded port of their choice (not
-necessarily the closest one). They roll for attrition in this movement.
-\bparag stay at sea, by doing an attrition with a modifier of {\bf +2}, the
-difficulty of the sea they are in, and the modifier due to being at sea of +3
-or +6 depending of the distance to the nearest Sea Supply Source
-(port/arsenal).
-\aparag Then all privateers have to be repatriated to a port of their owner's
-choice.
-\aparag Pirates are never repatriated and remain permanently in their
-\STZ/\CTZ of appearance until their destruction by a player.
-\aparag No interception may ever occur during this phase, not even by
-\Presidios or \StraitFort.
+\aparag[Navies]
+\bparag Naval stacks being located in a sea zone have the choice to either
+\bparag retreat to any friendly, unblockaded port (or arsenal) of the
+controller's choice (not necessarily the closest one);
+\bparag or stay at sea.
+\bparag This is considered a move (even if staying at sea) and as any naval
+move, it causes attrition with the usual modifiers.
+\bparag In addition, naval stacks staying at sea at the end of turn have a
+malus of \bonus{+2} to this roll.
+\bparag No interception, including by \Presidios or \StraitFort, may occur
+during this move.
+
+\aparag[Pirates and privateers]
+\bparag \pays{pirates} \corsaire stay where they are. They will still be
+active next turn.
+\bparag Other \corsaire are repatriated to a port of their owner's choice.
+\bparag No interception, including by \Presidios or \StraitFort, may occur
+during this move.
 
 
 
 \section{Gold repatriation}\label{chRedep:Gold Repatriation}
 
-\aparag[Before redeployment] For the income phase, see \ref{chIncomes:Gold
+\aparag[Before redeployment]
+\bparag[Income.] During Income phase, gold produce in a \COL may be stored in
+any coastal \COL in the same or adjacent \Area. See~\ref{chIncomes:Gold
   Production}.
-\bparag For the transportation for convoys, see
-\ruleref{chIncomes:SpanishConvoys} and \ref{chMilitary:Convoys}.
-\bparag Remark that gold that was recuperated during the military rounds
-(through convoy reception or attack) is available as soon as it arrives in a
-province on the European map of the power. Still, usually it is recorded
-during this segment.
-\aparag[Gold transportation]\label{chRedep:Gold Transportation} During the
-redeployment phase, gold can be transported by land as long as it can find a
-way of \TP, \COL or forts at most 12\MP apart crossing only friendly land. If
-there is a land path to National Territory, it can not be stocked in \ROTW.
-\bparag This is especially the case for \RUS exploiting mines in
-\continent{Siberia}.
-\bparag Gold stored in a \COL bordering the \seazone{Caspienne} (on the \ROTW
-map) before the redeployment phase can be moved to a province on the other
-side during this segment (and probably to their home country, either \POL or
-\TUR).
-\bparag Gold repatriated by land or stolen cannot be intercepted in any
-way. If it reaches the main country, it is added to the royal treasury.
+\bparag[Military.] During military rounds, gold may be moved either with
+troops or ships (including convoys) and intercepted by
+enemies. See~{chIncomes:SpanishConvoys} for the apparition of the Spanish
+convoys and~\ref{chMilitary:Convoys} for the attacks on convoys.
 
+\aparag[Reaching Europe]
+\bparag As soon as a land or naval stack carrying gold reaches an province on
+the European map, the gold is emptied and the amount is tallied in
+\lignebudget{Gold from ROTW and Convoys}.
+\bparag Note that \COL of level 6, as well as \provinceAcores or
+\province{Islas Canarias}, are European provinces but not on the European map
+and are thus not sufficient to bring gold back home.
+
+\aparag[Gold transportation]\label{chRedep:Gold Transportation}
+\bparag During the Redeployment phase, gold gain a free land movement (only).
+\bparag Exception: Gold in any establishment bordering the \seazoneCaspienne
+at the beginning of this segment may cross it and reach any other province
+bordering that sea.
+\bparag It may thus moves any distance along a chain of friendly
+establishments (\COL, \TP or fort).
+\bparag Each establishment along the chain must be 12\MP or less from the
+previous one (counting the cost as for \LD).
+\bparag The path may not cross an enemy occupied province.
+\bparag Gold can thus be repatriated for any distance as long as each ``leg''
+of the movement is 12\MP or less.
+\bparag If Gold reaches an owned province on the European map, it is
+immediately emptied and tallied in \lignebudget{Gold from ROTW and Convoys}.
+\bparag This movement of Gold may not be intercepted in any way.
 
 % Local Variables:
 % fill-column: 78
