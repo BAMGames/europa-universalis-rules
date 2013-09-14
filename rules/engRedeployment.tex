@@ -634,7 +634,7 @@ same province, the two new \REVOLT\Facemoins may appear in separate
 provinces.
 \bparag This province must belong to the victim country in case of \REVOLT.
 \bparag This province must belong to the region allowed by the event in case
-of \REBELLION (the same country if no region is specified).
+of \REBELLION (the victim country if no region is specified).
 \bparag The choice is made by the player controlling the
 \REVOLT/\REBELLION. If none was specified, roll one country on the \REVOLT
 table of the current period as controller for this turn (reroll until the
@@ -662,8 +662,8 @@ stacked in each province.
   \REVOLT\Faceplus in \provinceSavoia (a French ally, active in an Italian
   war), a \REVOLT\Facemoins in \provinceBerry, another in \provincePfalz
   (another active French ally) and a last \REVOLT\Faceplus in
-  \provinceLorraine (an inactive French minor). Note that there is a very
-  unlikely situation that almost never happen out of examples.
+  \provinceLorraine (an inactive French minor). Note that this is a very
+  unlikely situation that almost never happens out of examples.
 
   First, since \paysLorraine is inactive, the \REVOLT there is automatically
   removed without need for rolls or anything. Then \FRA loses 3 \STAB: 1 for
@@ -685,7 +685,7 @@ stacked in each province.
   that would cause more money loss but will likely be easily crushed next
   turn). The \REVOLT\Faceplus in \provinceSavoia may only extend in
   \paysSavoie, hence either \provinceSavoia, \provinceBresse or
-  \provinceNice. It may no go in Spanish \provinceLombardia nor even in the
+  \provinceNice. It may not go in Spanish \provinceLombardia nor even in the
   French provinces even if \paysSavoie is a French ally.
 
   \smallskip
@@ -744,7 +744,9 @@ at random among all the levels present, even on other countries' \TradeFLEET)
 
 \aparag[Execution and Civil wars]
 \bparag In most events creating \REBELLION, execution of the monarch ends the
-event in a loyalist defeat. Check the precise description of the event.
+event in a loyalist defeat. Often, the precise effect is different from the
+ones described above (\STAB loss, new monarch, \ldots) Check the precise
+description of the event.
 
 \begin{playtip}
   Beware that execution of the monarch happens after extension of
@@ -808,13 +810,18 @@ troop to besiege the province (either the province is already controlled, or
 \bparag Looting is never mandatory.
 \bparag The decision to loot or not is taken by the controller of the
 stack. The choice may vary from one province to another (it is possible to
-loot one province and decline the possibility in anther province).
+loot one province and decline the possibility in another province).
+\bparag Looting are resolved in decreasing order of initiative: the alliance
+with the higher initiative resolves all its looting, then the next and so on.
 
 \aparag[Looting and \PILLAGE]
 \bparag Place a \PILLAGE\Faceplus in each looted province.
-\bparag Exception: in the \ROTW, if the looting stack contains less than 2\LD,
-only place a \PILLAGE\Facemoins (if another already exists here, immediately
-merge both into a \PILLAGE\Faceplus).
+% Jym, 09/2013:
+% change "< 2LD" to "no A".
+% reason: A has artillery and is more expensive in the ROTW.
+\bparag Exception: in the \ROTW, if the looting stack contains no \ARMY
+counter, only place a \PILLAGE\Facemoins (if another already exists here,
+immediately merge both into a \PILLAGE\Faceplus).
 \bparag If there are more than two \PILLAGE markers in any province, remove
 the smallest one in each of these provinces (this can happen when looting a
 province which has already a \PILLAGE\Faceplus and a \PILLAGE\Facemoins, or
@@ -830,6 +837,8 @@ resources.
 \bparag In the \ROTW, if there was less than 2\LD, gain only half the income.
 \bparag The sum of these incomes is recorded in \lignebudget{Pillages,
   privateers}.
+\bparag Nobody gets money for provinces looted by minors country (including
+\VASSAL). That is, the minor keep the money for itself.
 
 \aparag[Burning \TP]
 \bparag Instead of looting, troops controlling enemy \TP (not \COL) may choose
@@ -839,7 +848,41 @@ controlled.
 \bparag Simply remove any burned \TP from the map, it now has level 0 and
 exploit no more resource.
 \bparag No income is gained from burning a \TP. Only the destruction of the
-settlement.
+establishment.
+
+\begin{exemple}
+  In period \period{III}, \SPA took control of Dutch \provinceUtrecht and
+  besieges \provinceZeeland. There is already a \PILLAGE\Facemoins in
+  \provinceUtrecht (a \PILLAGE\Faceplus was here and was reduced).
+
+  Since \SPA is still besieging \provinceZeeland and intends to continue the
+  siege in the next turn, it chooses not to loot here. The \PILLAGE would
+  hamper the siege by increasing attrition. However, \provinceUtrecht being
+  already controlled is a good target for looting. Indeed, a \PILLAGE there
+  would hamper a future attempt of Dutch reconquest\ldots The presence of an
+  existing \PILLAGE here does not prevent looting: there are always more
+  village to burn and peasants to kill. A new \PILLAGE\Faceplus is put in
+  \provinceUtrecht, but since another one was present, no income is gained for
+  \SPA.
+
+  Note that \SPA could have chosen to loot also \provinceZeeland. This would
+  be especially useful it does not intend to continue the siege as the
+  \PILLAGE would prevent Dutch income for two turns. In that case, \SPA would
+  gain 9\ducats (the income of \provinceZeeland).
+
+  \smallskip
+
+  At the same time, \HOL is besieging a \TP\Facemoins of \paysPortugal and
+  controls another \TP\Faceplus. It may choose to loot the \TP\Facemoins. It
+  may not burn it as it does not controls is. If looting it, \HOL will only
+  gain 1\ducats (regular income of a \TP\Facemoins). For such a small amount,
+  it choose to leave it, hoping to take it later. On the other hand, the
+  \TP\Faceplus is controlled and \HOL chooses to burn it (rather than looting
+  for 2\ducats). The province is now empty and open for attempt of Dutch \TP
+  placement. An efficient albeit morally disputable way of freeing old markets
+  for your merchants\ldots
+\end{exemple}
+
 \section{Mandatory Retreat of Sieges, \Presidios}\label{chRedep:Retreat, presidios}
 
 \subsection{Mandatory and voluntary retreats}
