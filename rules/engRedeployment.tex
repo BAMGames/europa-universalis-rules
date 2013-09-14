@@ -632,7 +632,7 @@ not generate \REBELLION.
 in the same or adjacent province. If there are two \REVOLT\Faceplus in the
 same province, the two new \REVOLT\Facemoins may appear in separate
 provinces.
-\bparag This province must belong to the same country in case of \REVOLT.
+\bparag This province must belong to the victim country in case of \REVOLT.
 \bparag This province must belong to the region allowed by the event in case
 of \REBELLION (the same country if no region is specified).
 \bparag The choice is made by the player controlling the
@@ -656,6 +656,47 @@ the same province, they are immediately merged in a
 \REVOLT/\REBELLION\Faceplus.
 \bparag Remember, that there can be at most 2 \REVOLT/\REBELLION markers
 stacked in each province.
+
+\begin{exemple}
+  Suppose that there is a \REVOLT\Faceplus in French \provinceBearn, a
+  \REVOLT\Faceplus in \provinceSavoia (a French ally, active in an Italian
+  war), a \REVOLT\Facemoins in \provinceBerry, another in \provincePfalz
+  (another active French ally) and a last \REVOLT\Faceplus in
+  \provinceLorraine (an inactive French minor). Note that there is a very
+  unlikely situation that almost never happen out of examples.
+
+  First, since \paysLorraine is inactive, the \REVOLT there is automatically
+  removed without need for rolls or anything. Then \FRA loses 3 \STAB: 1 for
+  each \REVOLT\Faceplus (in \provinceBearn and \provinceSavoia) and 1 for all
+  the \REVOLT\Facemoins (in \provinceBerry and \provincePfalz).
+
+  Next, \REVOLT extend. All the \REVOLT extend simultaneously, that is newly
+  created \REVOLT do not extend in the phase they were created (otherwise,
+  you're trapped in an infinite loop). Both the \REVOLT\Facemoins become
+  \REVOLT\Faceplus. The two \REVOLT\Faceplus create new
+  \REVOLT\Facemoins. Since the \REVOLT\Faceplus in \provinceBearn is in \FRA,
+  it may only extend in \FRA. Thus, the new \REVOLT\Facemoins may not be
+  created in Spanish \provinceVizcaya, \provinceNavarra, \provincePirineos nor
+  \provinceRosselo. It may, however, extend in French \provinceBearn (creating
+  a second \REVOLT here), \provinceGuyenne or \provinceLanguedoc. The
+  controller of the \REVOLT chooses to create it in \provinceBearn, hoping
+  that the mountain will give some protection to it and that it will take
+  longer to crush it (rather than risking an extension to \provinceLanguedoc
+  that would cause more money loss but will likely be easily crushed next
+  turn). The \REVOLT\Faceplus in \provinceSavoia may only extend in
+  \paysSavoie, hence either \provinceSavoia, \provinceBresse or
+  \provinceNice. It may no go in Spanish \provinceLombardia nor even in the
+  French provinces even if \paysSavoie is a French ally.
+
+  \smallskip
+
+  Note that for \FRA, the best way to get ride of this dire situation is
+  probably to sign peace, thus making its minors inactive (that will remove
+  two \REVOLT\Faceplus and one \REVOLT\Facemoins) and freeing its armies from
+  the front line to crush its peasants. However, French enemies are not likely
+  to give an easy peace as they may want to take advantage of the
+  troubles\ldots
+\end{exemple}
 
 \subsection{Revolts and fortresses}
 % Jym (05/2013) : following Pierre's notes from 2007.
