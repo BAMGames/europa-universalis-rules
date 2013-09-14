@@ -850,7 +850,7 @@ exploit no more resource.
 \bparag No income is gained from burning a \TP. Only the destruction of the
 establishment.
 
-\begin{exemple}
+\begin{exemple}[Looting]
   In period \period{III}, \SPA took control of Dutch \provinceUtrecht and
   besieges \provinceZeeland. There is already a \PILLAGE\Facemoins in
   \provinceUtrecht (a \PILLAGE\Faceplus was here and was reduced).
@@ -861,24 +861,24 @@ establishment.
   already controlled is a good target for looting. Indeed, a \PILLAGE there
   would hamper a future attempt of Dutch reconquest\ldots The presence of an
   existing \PILLAGE here does not prevent looting: there are always more
-  village to burn and peasants to kill. A new \PILLAGE\Faceplus is put in
+  villages to burn and peasants to kill. A new \PILLAGE\Faceplus is put in
   \provinceUtrecht, but since another one was present, no income is gained for
   \SPA.
 
   Note that \SPA could have chosen to loot also \provinceZeeland. This would
-  be especially useful it does not intend to continue the siege as the
+  be especially useful if it did not intend to continue the siege as the
   \PILLAGE would prevent Dutch income for two turns. In that case, \SPA would
   gain 9\ducats (the income of \provinceZeeland).
+\end{exemple}  
 
-  \smallskip
-
+\begin{exemple}[Burning \TP]
   At the same time, \HOL is besieging a \TP\Facemoins of \paysPortugal and
   controls another \TP\Faceplus. It may choose to loot the \TP\Facemoins. It
-  may not burn it as it does not controls is. If looting it, \HOL will only
+  may not burn it as it does not control it. If looting it, \HOL will only
   gain 1\ducats (regular income of a \TP\Facemoins). For such a small amount,
-  it choose to leave it, hoping to take it later. On the other hand, the
+  \HOL chooses to leave it, hoping to take it later. On the other hand, the
   \TP\Faceplus is controlled and \HOL chooses to burn it (rather than looting
-  for 2\ducats). The province is now empty and open for attempt of Dutch \TP
+  for 2\ducats). The province is now empty and open for attempts of Dutch \TP
   placement. An efficient albeit morally disputable way of freeing old markets
   for your merchants\ldots
 \end{exemple}
@@ -893,21 +893,28 @@ there was neither Breach nor HW obtained during this turn.
 
 \aparag[Voluntary retreats]
 \bparag Other besieging forces may choose to retreat. The controller of each
-stack decide what to do with it.
+stack decides what to do with it.
 \bparag Decisions to retreat are taken in order of initiative. Retreats are
 resolved once all decisions have been taken.
 \bparag Stacks may not partially retreat. Either the whole stack retreats or
 the whole stack stays.
+\bparag If the retreat of a stack would cause another stack to be out of
+supply, then the would-be OOS stack must also retreat. This is, however,
+considered as voluntary retreat.
 
 \aparag[Where to retreat?]
 \bparag Stacks must retreat into the closest (in \MP) friendly controlled
 territory. In case of equality, the controller of the stack chooses.
 \bparag Retreating stacks may not enter provinces with non-retreating enemy
-troops.
+troops (including troops that have finished their retreat: these are still
+``retreating'' until the end of the segment).
 \bparag Retreating troops may use naval move if there is a large enough naval
-stack adjacent to the retreating stack.
+stack adjacent to the retreating stack at the beginning of the
+retreat. Retreat is then done together with return to port of the naval stack
+(see below). Note that combined land/sea movement is not possible during
+retreat.
 \bparag Retreating stacks may not split nor pick up more troops. All the stack
-retreat at the same place.
+retreats at the same place.
 \bparag Retreating stacks may enter or cross provinces with friendly troops
 without any effect on these troops (no ``rout'').
 \bparag Retreating stacks may not be intercepted.
@@ -929,6 +936,88 @@ this test.
 a HW during the turn may continue the siege for next turn.
 \bparag In this case, remove all \USURE and keep only a \USURE\Facemoins.
 \bparag Continuing siege do not cause attrition.
+
+\begin{exemple}[Simple retreat]
+  A Turkish stack is besieging \provinceBanat and got a \USURE\Faceplus and a
+  \USURE\Facemoins. It may choose to either stay (and replace both \USURE by a
+  single \USURE\Facemoins) or retreat to the first friendly province between
+  \provinceValahia (1\MP), \provinceSerbia (2\MP) or \provinceBulgaristan
+  (3\MP) (or some other provinces, depending on the military situation but
+  these three are the most likely). If it retreats, it must roll for attrition
+  at +8 (entering one enemy province, namely \provinceBanat), -2 (voluntary
+  retreat) -MAN (+2 if this is a large stack as this is an extra cause of
+  attrition). If there was only a \USURE\Facemoins in \provinceBanat, then
+  retreat is mandatory and the bonus of \bonus{-2} to attrition not here.
+\end{exemple}  
+
+\begin{exemple}[Double retreat]
+  Suppose that there was another stack besieging \villeBuda in
+  \provinceMagyarorszag, with a \USURE\Faceplus. If the stack in
+  \provinceBanat retreats, then the stack in \provinceMagyarorszag must also
+  retreat as it would otherwise by out of supply (its supply line goes through
+  \provinceBanat). This is, however, voluntary retreat, even if the retreat in
+  \provinceBanat was mandatory. That is, \TUR must choose to retreat from
+  \provinceMagyarorszag, but the presence of a \USURE\Faceplus allows for an
+  orderly retreat (and the \bonus{-2} to attrition). Note that it is likely
+  that the closest province is the same from \provinceBanat and
+  \provinceMagyarorszag, thus resulting in an overstacking and destruction of
+  exceeding troops. So, voluntarily retreating both stacks might be a bad
+  idea\ldots This is not always the case due to rivers and mountain pass. For
+  example, if there was no river between \provinceMagyarorszag and
+  \provinceCroatie, then \provinceSerbia would be 4\MP from
+  \provinceMagyarorszag, same as \provinceValahia, and \TUR could retreat the
+  \provinceBanat stack to \provinceValahia and the \provinceMagyarorszag stack
+  to \provinceSerbia.
+\end{exemple}  
+
+\begin{exemple}[Mandatory retreat]
+  If a Polish counter-attack managed to relieve the siege of \provinceBanat (and
+  stay there), then the Turkish stack in \provinceMagyarorszag is out of
+  supply and must retreat (with a malus of \bonus{+2}). The closest province
+  is \provinceSerbia (provided there is no enemy troops in
+  \provinceCroatie). The Polish stack in \provinceBanat may not intercept
+  (neither in \provinceCroatie, nor in \provinceSerbia). If there was an
+  \paysHongrie stack (even a lone \LD) in \provinceCroatie, then the stack
+  must go to either \provinceMoldova (if friendly) of \provinceValahia (in
+  that case, that's a 6\MP move, hence another cause of attrition resulting in
+  another \bonus{+2} to the test).
+\end{exemple}  
+
+\begin{exemple}[Impossible retreat]
+  Suppose now that \provinceDalmacija belongs to \VEN and that there are enemy
+  troops in both \provinceCroatie and \provinceErdely (due to a way to bold
+  Turkish attack: destroy enemy troops before going deep in their
+  territory). If \paysMoldavie is neutral, the Turkish stack is trapped and
+  cannot retreat: it is simply destroyed (it may not cross neutral
+  territory). If \provinceMoldova is friendly, the troop may retreat there. If
+  both \provinceMoldova and \provinceBasarabia are enemy (eg Polish) and
+  \provinceValahia is neutral, then the stack could possibly retreat through
+  \provinceKarpatok, \provinceBukovina, \provinceMoldova and
+  \provinceBasarabia to \provinceRumeli. However, that 13\MP, more than the
+  12\MP limit, thus this retreat is not possible and the stack is destroyed.
+\end{exemple}  
+
+\begin{exemple}[Naval retreat]
+  A Turkish stack of two \Janissaire \ARMY\Faceplus landed in
+  \provinceMalta. By the end of the turn, due to the heroic defence of
+  \leader{La Valette}, \TUR only managed to get a \USURE\Facemoins and is thus
+  forced to retreat. Fortunately, the Turkish armada is still here to carry
+  the troops back home. Since naval move is 3\MP whatever the distance and
+  return to port is not constrained by distance, the stack can retreat to any
+  Turkish port (or arsenal). Contrary to regular naval move, the land stack
+  may not move after landing in the port.
+
+  Note that in addition to the mandatory retreat, the stack is conducting a
+  naval move embarking out of controlled port, and is a large stack. Two extra
+  causes for attrition, each giving a \bonus{+2} to the roll.
+
+  If there was no naval stack adjacent to \provinceMalta, then retreat would
+  have been impossible and the Turkish army is destroyed.
+
+  If \SUE is besieging \provinceDanzig and owns \provinceHinterpommern, then
+  its retreat priority is by sea (3\MP) if there is a naval stack adjacent and
+  then to \provinceHinterpommern (4\MP due to swamp and river).
+\end{exemple}
 
 \subsection{\Presidios}\label{chRedep:BuildPresidios}
 \aparag[Where to build?]
