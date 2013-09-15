@@ -1,32 +1,75 @@
 % -*- mode: LaTeX; -*-
 
-\definechapterbackground{Peaces}{victories}
-\chapter{Peaces}\label{chapter:Peace}
+\definechapterbackground{Budget and Peaces}{victories}
+\chapter{Budget and Peaces}\label{chapter:Peace}
 
-\section{Peaces and ongoing wars}
+\section{Overview of the phase}
 
 % RaW: [50]
-\aparag Wars can be ended only by a Peace. There are several types of
-Peace. These types depend on the difference between the Stabilities and
-military situation of the loser and of the winner of the peace. However
-players must be extremely careful not to be at a -3 level of Stability for two
-consecutive turns. In such a case, they would be forced to accept any
-peace. However, players still have the possibility to act on their Stability
-level before peace is concluded
-\aparag[Events and special peace conditions] A small number of political
-events can initiate wars where the peace conditions are constrained or
-modified by specific conditions. These events do not change the rules below
-for other simultaneous conflicts where one side of the war is not one of those
-described in the event.
-\bparag Remark that the other side must enter war through another means than
-the event or the alliances network called at the time of the event (else, it
-is considered part of the event).
+\aparag[Administration] At the end of the turn, final administrative actions
+are resolved and budgets must be completed. First, exceptional taxes that were
+scheduled during the administrative phase are resolved. Then comes the
+exchequer test. At this point, players roll to determine how well the taxes
+where collected this turn and to discover their precise income. If the income
+is not enough to cover for the expenses, loans must be contracted, either from
+the people of your country or from international bankers. Last but not least,
+countries may try to improve their \STAB.
+
+\aparag[Peace] Wars can be ended only by a Peace. There are several types of
+Peace, from the white peace (return to statu quo) to the unconditional
+surrender. The type depends mostly on the difference between the \STAB of the
+belligerents, slightly modified by the military situation. In some cases,
+countries must accept any peace proposed by the opponents, but usually some
+discussion occurs between the players.
+\bparag[Crusade] If \TUR conquers too many Christian provinces, the pope may
+try to launch a Crusade. 
+
+% \aparag[Events and special peace conditions] A small number of political
+% events can initiate wars where the peace conditions are constrained or
+% modified by specific conditions. These events do not change the rules below
+% for other simultaneous conflicts where one side of the war is not one of those
+% described in the event.
+% \bparag Remark that the other side must enter war through another means than
+% the event or the alliances network called at the time of the event (else, it
+% is considered part of the event).
 
 \aparag[Sequence of the Peace Phase.]
 \PeaceDetails
 
 \section{Economical and Administrative affairs}
 \subsection{Exceptional taxes}\label{chPeace:Exceptional taxes}
+\aparag[Exceptional taxes] Exceptional taxes are scheduled during the
+Administrative phase. See~\ref{chExpenses:Exceptional Taxes} for details (and
+examples). They are resolved at this point only. That is, until the end of the
+turn (and after most expenses have been planned), players won't know exactly
+the amount of collected taxes.
+\bparag Note that Exceptional taxers must be planned during Administrative
+phase. If a country forfeited the possibility to do so, it is to late now to
+decide to raise taxes.
+
+\aparag[Resolution of the taxes]
+\bparag Each country which has planned taxes should have written a modifier in
+\lignebudget{Exceptional taxes modifier A} (copied from
+\lignebudget{Exceptional taxes modifier B}). This modifier was \ADM + 3
+$\times$ \STAB (at the time of the Administrative phase).
+\bparag Roll 1d10, add the modifier and multiply the result by 10. This is the
+amount of taxes (in \ducats).
+\bparag Write this amount in \lignebudget{Exceptional taxes}. It may well be
+negative if the modifier was negative. In this case, the country will actually
+lose money because of the taxes. It is not possible to refuse a ``tax'' once
+the amount is known.
+
+\aparag[\RT before Exchequer test]
+\bparag Players can know compute their \RT before resolving the Exchequer
+test.
+\bparag This is the sum of lines \ERSlong{RT after Diplomacy} +
+\ERSlong{Pillages, privateers} + \ERSlong{Gold from ROTW and Convoys} +
+\ERSlong{Exceptional taxes} of \EcoRS. It is written in \lignebudgetlong{RT
+  before Exchequer}.
+\bparag Players should also copy \lignebudgetlong{Gross income B} in
+\lignebudgetlong{Gross income A} and \lignebudgetlong{Total expenses} in
+\lignebudgetlong{Expenses}.
+
 \subsection{Exchequer test}\label{chPeace:Exchequer test}
 \subsection{International loans}\label{chPeace:International loans}
 \subsection{Stability Improvement}\label{chPeace:Stability Improvement}
