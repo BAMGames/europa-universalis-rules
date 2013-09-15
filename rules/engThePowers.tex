@@ -53,6 +53,11 @@ down while any loss is rounded up.
 least''. If a country should gain 1.9\ducats, it has not gain 2\ducats, thus
 the sum must be rounded down; conversely, if a country has to pay 1.1\ducats,
 it has to pay more than 1\ducats and the debt must be rounded up.
+\bparag Note that if country A decides to give 1.5\ducats to country B, then
+country A has to pay more than 1\ducats, hence 2\ducats (round loss up) but
+country B has gained less than 2\ducats, hence only 1\ducats (round gain
+down). Free hint: don't plan do to this if you don't want money to
+disappear\ldots
 
 \subsection{Order of resolution}
 \aparag Often, several similar actions should theoretically be resolved
@@ -505,13 +510,8 @@ and Muslims.
 
 
 \section{The passing of time}
-
 % RaW: [24]
-
-
-
 \subsection{Periods}
-
 A period represents a number of game turns, historically homogeneous, with a
 duration of approximately 30 to 50 years (more or less). The 62 game turns are
 distributed in seven periods to simulate the different epochs of the era
@@ -526,7 +526,6 @@ exceeded, except for a very few specific cases.
 
 
 \subsection{List of periods}
-
 The seven periods (with corresponding length in game turns and main historical
 features) covered by the game are the following:
 % Jym: the colour of the period on the turn track corresponds to the main
@@ -553,12 +552,11 @@ features) covered by the game are the following:
 
 
 \subsection{Limits by period}
-
 \label{chThePowers:Limits}
-\aparag Within each of the above periods, countries represented by the
-different players have a certain number of structural limits for their
-different actions and purchases as well as for the number of available
-counters (whether military or commercial) and the content of these counters.
+\aparag Within each of the above periods, countries played by the different
+players have a certain number of structural limits for their different actions
+and purchases as well as for the number of available counters (whether
+military or commercial) and the content of these counters.
 % There are limits as well as for the number of units, strength points
 % contents and number of counters (especially Manufactures, Colonies and
 % Trading Posts).
@@ -620,7 +618,7 @@ actual value of the \FTI. If the case arise, increase the value of the special
 \aparag[Manufactures] The country has a limit of \MNU (Manufacture) counters
 (triangle shaped) that it may have in play, on the map of Europe, during a
 given period.
-\bparag This is a limit in terms of counters. Every counter has two sides
+\bparag This is a limit in terms of counters. Each counter has two sides
 representing an increasing capability of the \MNU.
 \bparag This limit may be exceeded by 2 counters, at the risk of economical
 losses. See~\ruleref{chThePowers:Exceeding Limits}.
@@ -628,7 +626,7 @@ losses. See~\ruleref{chThePowers:Exceeding Limits}.
 \aparag[Colonial establishments] The country has a limit of \COL (Colonies)
 and \TP (Trading Post) counters that may be placed on the map, outside of
 Europe, for the whole length of a period.
-\bparag This is a limit in terms of counters. Every counter has two sides with
+\bparag This is a limit in terms of counters. Each counter has two sides with
 up to 6 levels representing an increasing development of the establishment.
 \bparag This limit may never be exceeded. If at any moment a country has more
 \COL or \TP on map than counters available for the period, %
@@ -978,7 +976,8 @@ scheduled reign length, the player has to roll for a new monarch.
 \subsubsection{Initiative}
 \aparag The initiative of each player is the sum of their respective monarchs
 values.
-\bparag Ties must be solved by unmodified competitive die-rolls.
+\bparag Ties must be solved by unmodified competitive die-rolls, once per
+turn, the first time initiative is needed.
 
 \aparag The initiative is used during the military phase, to determine the
 order of play for the turn between the different players.
