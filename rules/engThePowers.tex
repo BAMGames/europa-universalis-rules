@@ -1147,11 +1147,12 @@ increase.
 
 
 \subsubsection{Technological goals}
-\aparag[Mobile markers] There are several counters on the technology track
-that may move and represent the spread of the various technologies
-(technological goal) that a country can achieve. There is no counter for the
-technologies known to everybody in 1492 (\TMED for Land technology, \TCAR and
-\TGA for Naval technology).
+\aparag[Mobile markers] Mobile markers are used to record the level of the
+different technological goals and thus show which country possess the
+corresponding technology.
+\bparag There is no counter for the technologies known to everybody in 1492
+(\TMED for Land technology, \TCAR and \TGA for Naval technology). Their level
+is always 0.
 \bparag There is also a marker for the \TTER technology (that can be taken
 only by \SPA) and for the \TVGA technology (that can be taken only by \VEN).
 \bparag Each of the mobile markers has a turn (and the corresponding year)
@@ -1177,21 +1178,22 @@ reached.
 \end{exemple}
 
 \aparag[Stacking of counters.] Two technological goals counters (of the same
-kind: Land or Sea) may never be stacked on the same box and must always have
-at least one free box between them. If a goal should move to the same box as
-another, or to the box immediately above, it stops two boxes ahead.
-\bparag The technology marker of a country (or group) may never be exactly in
-the same box as a technological goal (of the same kind). If it stop on it, it
-gains a one box bonus. Conversely, if a goal drops, it stops one level before
-any marker of the same kind.
+kind: Land or Sea) may never be at the same level (or in the same box of the
+track) and must always have at least one free level between them. If a goal
+should move to the same level as another, or to the level immediately above,
+it stops two levels ahead.
+\bparag The technology marker of a country (or group) may never be exactly at
+the same level as a technological goal (of the same kind). If it stop on it,
+it gains a one level bonus. Conversely, if a goal drops, it stops one level
+before any marker of the same kind.
 \bparag Exception: Ignore the \TTER and \TVGA for everybody (including \SPA
 and \VEN).
 
 \begin{exemple}
   At turn 11, the Land technology of \FRA is at level 20, just before \TARQ at
   level 21. \TARQ becomes available and \FRA tries to raise its Land
-  technology and manage to gain 1 level. This should put its marker in box 21
-  on top of the \TARQ marker. Since stacking of a marker and a goal is
+  technology and manage to gain 1 level. This should put its marker at level
+  21 on top of the \TARQ marker. Since stacking of a marker and a goal is
   forbidden, \FRA gets a bonus level of Land technology and goes directly to
   22.
 
@@ -1221,41 +1223,26 @@ occurrence of the technology (typically, \SUE gets \TBAR in the 1630's and
   \hline
   \TMED & & 1 && At start.\\
   \TREN & 1492 & 1 & \FRA, \TUR & Generalisation of field artillery.\\
-  \TTER & 1520 & 7 & \SPA & \SPA only.\\
+  \TTER & 1520 & 7 & \SPA & \SPA only. Mix of guns and pikes.\\
   \TARQ & 1540 & 11 & \FRA & ``\emph{Trace italienne}''.\\
-  \TMUS & 1590 & 21 & \HOL &\\
+  \TMUS & 1590 & 21 & \HOL & Better infantry firepower.\\
   \TBAR & 1650 & 33 & \SUE, \ENG & \emph{L\"{a}derkanonen}, New Model Army.\\
   \TMAN & 1685 & 40 & \FRA, \AUS & Vauban fortification system.\\
-  \TL & 1770 & 57 & \PRU & Oblique order.\\
+  \TL & 1770 & 57 & \PRU & ``\emph{War in lace}'', oblique order.\\
   \hline
 \end{tabular}
-
-% \aparag[Land Technology] Current state
-% \begin{verbatim}
-%             Year  P-T    \#box Moral First(s)       Fortress
-%             %             Medieval 0 1
-%             %             Renaissance 1492 I-1 10 1/2 FRA, TUR f3*2
-%             %             Tercio ~1520 II-7 16 3 SPA
-%             %             Arquebus 1540 II-11 21 2 FRA (Trace italienne) -1
-%             %             Ass.,f3*1
-%             %             Musket 1590 III-21 30 3 HOL/21
-%             %             Baroque 1650 IV-33 40 3 SWE/29,ENG/31 f4*2,t40:
-%             %             f4*1
-%             %             Manoeuvre 1685 V-40 51 3 FRA,AUT t40 Vauban: f5
-%             %             Lace War 1770 VII-57 67 3 PRU/54
-% \end{verbatim}
 
 \bparag List of Naval technologies:\par
 \begin{tabular}{|l|cc||c|l|}
   \hline
   Name & Year & Turn & First & Remark\\
   \hline
-  \TGA & & 1 & & At start.\\
-  \TCAR & & 1 & & At start.\\
-  \TGLN & 1492 & 1 & \POR, \SPA & Caravels, Nefs, Great ships, \ldots\\
+  \TGA & & 1 & & At start. Mediterranean and Baltic seas only.\\
+  \TCAR & & 1 & & At start. Caravels, Nefs, Great ships, \ldots\\
+  \TGLN & 1492 & 1 & \POR, \SPA & Portuguese Nao, Spanish Galleons.\\
   \TGF & 1560 & 15 & \HOL, \ANG & Dutch Fluyt, British race-built
   galleons. Smaller and faster.\\
-  \TVGA & 1560 & 15 & \VEN & \VEN only.\\
+  \TVGA & 1560 & 15 & \VEN & \VEN only. Galleys with cannons.\\
   \TBAT & 1590 & 21 & \HOL, \ANG &\\
   \TVE & 1645 & 33 & \ANG, \HOL & Ship-of-the-line, primitive battle line.\\
   \TTD & 1690 & 41 & \ANG & British standardisation, early professionalisation
@@ -1264,40 +1251,9 @@ occurrence of the technology (typically, \SUE gets \TBAR in the 1630's and
   \hline
 \end{tabular}
 
-% \aparag[Naval Technology] Current state
-% \begin{verbatim}
-%               Year  P-T   \#box Moral   First(s)
-%               %               Carrack 0 1 1
-%               %               Nao-Galeon 1492 I-1 11 2 POR SPA
-%               %               Galleon-Fluyt 1560 II-15 24 2 HOL ENG
-%               %               Galleass 1560 III-15 26 VEN only
-%               %               Battery 1590 III-21 34 3 HOL, ENG
-%               %               Vessels 1645 IV-33 44 3 ENG, HOL
-%               %               Three-Decker 1690 V-41 58 3/4 ENG, FRA
-%               %               74s 1735 VI-50 68 3/4 FRA/50,ENG
-% \end{verbatim}
-
-% \begin{designnote}
-%   Carrack: also includes Caravels, Nefs, Great Ships,...\\
-%   Nao-Galeon: Nau portugais, Galleon espagnol\\
-%   Galleon-Fluyt: British Galleon, Dutch Fluyt,... [ex Lateen Sail] {Gallion
-%   anglais affiné et petits
-%   bateaux hollandais}\\
-%   Battery: Galleass available for all\\
-%   Vessels: Galleys worthless against this, Ship-of-the-line et ligne de bataille primitive\\
-%   Three-Deckers: HOL: can not built anymore from TF action, (standardisation anglaise effective, route vers un peu de professionnalisation)\\
-%   74s: Ships 74's guns (navires de 2nde ligne plus agiles, blocus renforcé)
-% \end{designnote}
-
-
-
 
 \section{Troubles at land and sea}
-
-
-
 \subsection{Revolts}
-
 % RaW: 30
 A revolt is determined randomly, concerning where and when it occurs. A revolt
 usually brings a drop in the \STAB level of the victim country. This country
@@ -1310,8 +1266,8 @@ location of the revolt, according to the period in play. The revolt tables are
 located at the start of the Events handbook.
 
 One table is used to determine the victim country. Another group of tables
-(one per country) helps determine the revolting province. Finally a table
-gives the virulence (i.e. the strength) of the revolt.
+(one per country) helps determining the revolting province. Finally a table
+gives the strength of the revolt.
 
 \aparag[Resolving Revolts] Revolts are rolled for when required per the
 political events. See~\ruleref{chEvents:Revolts} for full details on the
@@ -1360,6 +1316,8 @@ see~\ruleref{chRedep:Extension Revolts}.
 
 \aparag[Revolt stacking] Each province may contain up to two revolt counters
 (any side) in addition to other military units (with usual stacking).
+\bparag Two \REVOLT\Facemoins in the same province are immediately exchanged
+for one \REVOLT\Faceplus, before stacking limit is enforced.
 \bparag If a third counter had to be created in a given province, simply
 ignore it but apply all the other effects of this revolt (eg taking the
 fortress, adding troops, \ldots)
@@ -1431,21 +1389,24 @@ lose their value because of inflation).
 
 \subsection{Economic Record Sheets}
 
-\aparag Each player has two sheet, separated in three actual \EcoRS.
+\aparag Each player has two sheets, separated in three actual \EcoRS.
 \bparag \EcoRS A keeps track of the \terme{Royal Treasure} (\RT) of a
 country. This represents the amount of gold stockpiled in the King's
 chests\ldots or the amount of debts he has. The final value of the \RT is
 carried over from one turn to the other.
 \bparag \EcoRS B is used to compute the income and expenses during each
-turn. The values are useless after the end of the turn.
+turn. The values are useless after the end of the turn. However, since income
+does not change that often, it is usually efficient to copy almost all of the
+column of the previous turn.
 \bparag \EcoRS C (below \EcoRS A) is used to record loans. This information
 carries over from one turn to the following one.
 
 \aparag Each column of the \EcoRS is used for one turn only. Information for
 the following turn should be written in the next column.
 
-\aparag The lines of the \EcoRS are organised in turn order. They should be
-filled from top to bottom.
+\aparag The lines of the \EcoRS are organised in turn order. They are usually
+filled from top to bottom. However, sometimes it is easier to plan expenses in
+advance and fill the corresponding lines as a reminder.
 \bparag The turn starts on top of \EcoRS A, there is a ``break'' after line
 \ERSshort{RT after Diplomacy} for computation of incomes and expenses on
 \EcoRS B.
@@ -1455,14 +1416,24 @@ extra trouble (as long as the amount of the debt is not ``too big'').
 
 
 
-\subsection{A Three stage process}
+\subsection{A Three stage process}\label{chThePowers:Exchequer}
+\begin{designnote}
+  We explain here the spirit of the economical system. For the technical
+  explanation on how to really get it working (and the precise rules),
+  see~\ref{chPeace:Exchequer test}.
+
+  The rules here try to explain the whys of the system while the more
+  technical rules there explain the hows.
+\end{designnote}
 
 \aparag The bulk of the economical system works in a three stage process
 during each turn.
-\bparag First, the \emph{gross income} is computed.
-\bparag Then, the \emph{expenses} are computed.
+\bparag First, the \emph{gross income} is computed (Administrative phase).
+\bparag Then, the \emph{expenses} are computed (Administrative and Military
+phases).
 \bparag Lastly, the \emph{Exchequer test} tells how well the taxes were
-collected and the monarchs try to find money to fill the gaps.
+collected and the monarchs try to find money to fill the gaps (Exchequer test
+segment during the Budget and Peace phase).
 
 \NPincludeA4{accounting-rt}{Economic Record sheet A and
   C}{economic-record-sheet-rt} \NPincludeA4{accounting-income}{Economic Record
@@ -1809,7 +1780,8 @@ occupant during the redeployment phase.
 
 \aparag It is possible to do concurrence action on \TP. Each successful
 concurrence action reduce the level of the \TP by 1.
-\bparag When the \TP reach level 0, remove it from the game.
+\bparag When the \TP reach level 0, remove it from the game. The counter may
+be reused by its owner.
 
 % Jym: removed, now fort (f0) for all levels.  A Trading Post of level 6
 % possesses an intrinsic level fortification 1. No fortress marker is then
@@ -1998,14 +1970,14 @@ veteran militia (Latin, class \CAIII).
 \bparag A Minor establishment \Faceplus is a fort with 2\LDE of veteran
 militia (Latin, class \CAIII).
 \bparag The militia fights out of the fort if and only if enemies are landing
-in the province (it stays inside if the enemy comes by Land). It and can only
+in the province (it stays inside if the enemy comes by Land). It can only
 retreat in the fort.
 \bparag Minor establishments never trigger native reaction or declaration of
 war by \ROTW minors.
 
 \aparag[Destruction] Any country may attack a Minor establishment during any
 round.
-\bparag Each establishment attacked during the turn costs 1\STAB (declaration
+\bparag Each establishment attacked during the turn costs 1 \STAB (declaration
 of oversea war against an unspecified country).
 \bparag A Minor establishment is immediately destroyed if a country controls
 it.
