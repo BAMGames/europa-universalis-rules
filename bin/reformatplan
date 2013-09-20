@@ -1,0 +1,2 @@
+#!/bin/sh
+for i in plan/rules.d/*;do json_pp -f json -t json -json_opt pretty,canonical,utf8 < $i > $i.new && mv $i.new $i; done
