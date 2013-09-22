@@ -238,8 +238,9 @@ is 10\% (round up) of \lignebudget{National loans at start}.
   interests}.
 
 \aparag[Mandatory refund] International loans must be refunded at most 3 turns
-after they are contracted. If an international loan ends this turn write in
-\lignebudget{Mandatory loan refund} the amount to pay.
+after they are contracted. If \lignebudget{International loans refunds} is not
+empty, an international loan ends this turn. Write in \lignebudget{Mandatory
+  loan refund} the amount in \lignebudget{International loans refunds}.
 \bparag National loans don't need to be refunded\ldots
 
 \begin{exemple}
@@ -295,10 +296,10 @@ following, in order:
   bankruptcy} the amount which is currently in \lignebudget{National loans at
   start}.
 \bparag Erase all international loans: Write in \lignebudget{International
-  bankruptcy} the amount of ongoing international loans (depends on the amount
-of previous partial refunds) and erase any value currently in
-\lignebudget{International loans interests} and \lignebudget{International
-  loans refunds} for the following turns.
+  bankruptcy} the amount of ongoing international loans (sums of the amounts
+in \lignebudge{International loans refunds} of all the following turns) and
+erase any values currently in \lignebudget{International loans interests} and
+\lignebudget{International loans refunds} for the following turns.
 \bparag Loss 30\VPs.
 \bparag Apply the worst possible bankruptcy result: loss 2 \STAB; loss either
 2 levels of \TradeFLEET or 1 level of \MNU (player's choice when a choice
@@ -316,11 +317,11 @@ in order:
 \lignebudget{National loans bankruptcy} the amount which is currently in
 \lignebudget{National loans at start}) or up to 200\ducats international loans
 (write any number between 1 and 200 in \lignebudget{International bankruptcy}
-and change the \lignebudget{International loans refunds} of the following
-turns accordingly, if this puts the amount of ongoing international loans at
-0\ducats, erase the value in \lignebudget{International loans interests} for
-the following turns). Only one of the two possibilities can be made with each
-Major bankruptcy.
+and diminish the \lignebudget{International loans refunds} of the following
+turns by the same amount (may be split among many loans), if this puts the
+amount of ongoing international loans at 0\ducats, erase the value in
+\lignebudget{International loans interests} for the following turns). Only one
+of the two possibilities can be made with each Major bankruptcy.
 \bparag Loss 15\VPs.
 \bparag Apply the worst possible bankruptcy result: loss 2 \STAB; loss either
 2 levels of \TradeFLEET or 1 level of \MNU (player's choice when a choice
@@ -431,7 +432,7 @@ affect the choice of actions and not only their resolution.
 \section{Choices of actions}\label{chExpenses:Choice of actions}
 \aparag All players simultaneously chose which administrative actions they
 which to perform. The description of actions is done in the following Sections
-(from \ref{chExpenses:Domestic} to \ref{chExpenses:Techno and Competition}).
+(from \ref{chExpenses:Refund} to \ref{chExpenses:Techno and Competition}).
 \bparag Each planned action is written down. Even if the explanation of the
 resolution of the action is done together with the explanation of the action
 itself, resolution occurs only when all actions have been planned.
@@ -440,6 +441,89 @@ itself, resolution occurs only when all actions have been planned.
 the administrative actions. Even if they have their own description later and
 their own Segments in the turn sequence, they must be planned as other
 actions.
+
+\section{Loan refund}\label{chExpenses:Refund}
+\aparag Countries may refund loans. Either national loans (this is never
+mandatory) or international loans before they come to term.
+
+\aparag[National Loans] Choose the amount of refund you want to do. It must be
+smaller than the current amount of National Loan (difference between
+\lignebudget{National loans at start} and \lignebudget{National loans
+  bankruptcy}).
+\bparag Write this amount in \lignebudget{National loans refunds}.
+
+\aparag[International Loans] Choose the amount of refund you want to do in
+advance. It must be smaller than the current amount of International Loans
+(the total of \lignebudget{International loans refunds} for all the following
+turns, but not the current one).
+\bparag Write this amount in \lignebudgte{International loans refunds}, adding
+it to the current value if any.
+\bparag Decrease the values in \lignebudget{International loans refunds} by
+the same total amount, distributed as wanted among all the following turns.
+\bparag If this put one value to 0\ducats, decrease the value of
+\lignebudget{International loans interests} by 10\% of the \textbf{initial}
+amount of that loan, for all the turns between the current one (excluded) and
+the last turn of the loan (included).
+
+\begin{exemple}[Simple loan]
+  At turn 1, \FRA contracts an International Loan of 100\ducats. Thus, it
+  writes 100\ducats in \lignebudget{New International loan} of turn 1 (new
+  money), 100\ducats in \lignebudget{International loans refunds} of turn 4
+  (refund in 3 turns) and 10\ducats in \lignebudget{International loans
+    interests} of turns 2, 3 and 4.
+
+  At turn 2, \FRA decides to refund 40\ducats of this loan. Thus, it write 40
+  in \lignebudget{International loans refunds} of turn 2 and decrease
+  \lignebudget{International loans refunds} of turn 4 by the same amount
+  (leaving 60). Since the loan is still ongoing, the interest are not changed.
+
+  At turn 3, \FRA decides to refund the last 60\ducats of the loan. Thus, it
+  writes 60 in \lignebudget{International loans refunds} of turn 3 and
+  decrease \lignebudget{International loans refunds} of turn 4 by the same
+  amount. Since this amount reaches 0\ducats, the loan has been entirely
+  refunded and no more interests shall be payed. Thus, \FRA erases
+  \lignebudget{International loans interests} for turn 4 only (all the turns
+  between 3 excluded and 4 included).
+
+  Note that interest must be payed on the turn where the capital is
+  refunded. Note also that if \FRA did not remember the initial amount of the
+  loan (typically because another loan is ongoing), it can always find it by
+  looking back at \lignebudget{New International loan} 3 turns before the
+  term that was just erased.
+\end{exemple}
+
+\begin{designnote}
+  Most practical cases fall in the previous example. The following example is
+  an extreme case that almost never happens.
+\end{designnote}
+
+\begin{exemple}[Double loan]
+  At turn 1, \POL contracts a 50\ducats International Loan and at turn 2
+  another 60\ducats one. Thus, it's loan \EcoRS is as follows:\\
+  \begin{itemize}
+  \item \lignebudget{International loans refunds}: 50\ducats at turn 4 and
+    60\ducats at turn 5 (mandatory refunds of the two loans).
+  \item \lignebudget{International loans interests}: 5\ducats at turn 2
+    (interest of first loan), 11\ducats at turn 3 and 4 (both loans are
+    ongoing) and 6\ducats at turn 5 (interests of the second loan).
+  \end{itemize}
+  At turn 3, \POL decides to refund 60\ducats of international loans. Thus, it
+  writes 60 in \lignebudget{International loans refunds} of turn 3. \POL now
+  has to decrease the amount of ongoing loans (that is,
+  \lignebudget{International loans refunds} of future turns) by 60. It may
+  choose to either refund the first loan and part of the second, or refund the
+  second, or refund part of both (probably not the best solution).
+
+  \POL choose to refund the second loan. This will remove more interests (two
+  turns), but also means that the first loan will have to be refunded at turn
+  4.
+  
+  Thus, \POL set \lignebudget{International loans refunds} of turn 5 to
+  0. This is a 60\ducats decrease, hence no other action is needed on that
+  line. Since a loan has be entirely refunded (set to 0), its interests also
+  have to be removed. Thus, \POL remove 6 from \lignebudget{International
+    loans interests} of turns 4 and 5 (between now and the term of the loan).
+\end{exemple}
 
 \section{Domestic operations}\label{chExpenses:Domestic}
 
