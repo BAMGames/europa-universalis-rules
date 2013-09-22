@@ -36,8 +36,7 @@ try to launch a Crusade.
 \aparag[Sequence of the Peace Phase.]
 \PeaceDetails
 
-\section{Economical and Administrative affairs}
-\subsection{Exceptional taxes}\label{chPeace:Exceptional taxes}
+\section{Exceptional taxes}\label{chPeace:Exceptional taxes}
 \aparag[Exceptional taxes] Exceptional taxes are scheduled during the
 Administrative phase. See~\ref{chExpenses:Exceptional Taxes} for details (and
 examples). They are resolved at this point only. That is, until the end of the
@@ -70,19 +69,144 @@ test.
 \lignebudgetlong{Gross income A} and \lignebudgetlong{Total expenses} in
 \lignebudgetlong{Expenses}.
 
-\subsection{Exchequer test}\label{chPeace:Exchequer test}
+\section{Exchequer test}\label{chPeace:Exchequer test}
+\subsection{Gross Income}
 \begin{designnote}
   We explain here the technical rules of the economical system. For a
   description of the spirit of these rules, see~\ref{chThePowers:Exchequer}.
 
   The rules here are quite ``algorithmic'' in order to have them as precise as
   possible and avoid misinterpretations. Thus, there are not well suited to
-  understand the whys of the system (only the
-  hows). Check~\ref{chThePowers:Exchequer} in order to understand what should
-  happen.
+  understand the whys of the system (only the hows). These rules are meant to
+  be closely followed step by step. Check~\ref{chThePowers:Exchequer} in order
+  to understand what should happen, as well as read some examples.
 \end{designnote}
-\subsection{International loans}\label{chPeace:International loans}
-\subsection{Stability Improvement}\label{chPeace:Stability Improvement}
+
+\aparag[Exchequer test] Each country roll a die on~\ref{table:Administrative
+  Actions} modified as follows:
+\begin{modlist}
+\item[+2] If completely at Peace (no war (including civil or overseas wars),
+  no intervention (limited or foreign)).
+\item[-1 ] per 100\ducats of National Loan, or per International Loan.
+\item[-1 ] per bankruptcy (or broken loan treaty) in the last 5 turns.
+\end{modlist}
+\bparag The result may be either F\textetoile, F, \undemi, \undemi\textetoile,
+S or S\textetoile.
+
+\begin{playtip}
+  Bankruptcies should be noted by a small \textetoile in \lignebudget{Gross
+    income A} for the turn where they affect the Exchequer test.
+\end{playtip}
+
+\aparag[Percentages] By cross-referencing this result with the first three
+columns of~\ref{table:Exchequer test}, countries obtain three percentages for
+``Regular Income'', ``Prestige Income'' and ``National Loan''.
+\bparag Add 10 to the ``National Loan'' of countries that are not completely
+at peace.
+\bparag Add 10 (cumulative) to the ``National Loan'' of \HIS if it has
+declared a politic of expulsions (see~\ref{chSpecific:Spain:Expulsion}).
+\bparag It is possible and intended that these percentages sum up to more or
+less than 100\%.
+
+\aparag[Incomes] Apply each of the three percentages to the whole Gross Income
+(\lignebudget{Gross income A}), rounding down, to obtain three incomes.
+\bparag Copy these incomes in \lignebudgetlong{Regular income},
+\lignebudgetlong{Prestige income} and \lignebudgetlong{Max. national loan}.
+
+\begin{playtip}
+  It is often convenient to cut these three boxes in half (diagonally). After
+  rolling the exchequer test, immediately copy the percentages in the top-left
+  halves, this avoid forgetting the result. Next you can take your time to
+  compute the actual value and write it in the bottom-right halves.
+\end{playtip}
+
+\GTtable{etatsauvrai}
+
+\subsection{International Loans}\label{chPeace:International loans}
+\aparag[Available money] The total amount of available money for international
+loans is:
+\bparag 50\ducats from the start (unspecified bankers).
+\bparag Always add 50\ducats, or 100\ducats for the emperor (German bankers).
+\bparag Always add 50\ducats, or 100\ducats for the diplomatic patron of
+\paysGenes (Genoese bankers).
+\bparag After~\ref{pIII:Amsterdam Stock Exchange} add 50\ducats, or 100\ducats
+for \HOL.
+\bparag After~\ref{pIV:London Stock Exchange} add 50\ducats, or 100\ducats
+for \ANG.
+\bparag Thus, the total available money will be between 150 and
+350\ducats. Note that it does depend on the country, that is all the countries
+have different loan capacities.
+
+\aparag[International Loans test] Each country may roll a die
+on~\ref{table:Administrative Actions} modified as follows:
+\begin{modlist}
+\item[+2] If completely at Peace (no war (including civil or overseas wars),
+  no intervention (limited or foreign)).
+\item[-1 ] per 100\ducats of National Loan, or per International Loan.
+\item[-1 ] per bankruptcy (or broken loan treaty) in the last 5 turns.
+\item[+1 ] if the country has a Stock Exchange (\HOL after~\ref{pIII:Amsterdam
+    Stock Exchange} and \ANG after~\ref{pIV:London Stock Exchange}).
+\end{modlist}
+\bparag The result may be either F\textetoile, F, \undemi, \undemi\textetoile,
+S or S\textetoile.
+\bparag Note that this roll is different from the Exchequer test. Do not use
+the same roll for both the Exchequer test and the International Loans test as
+this would increase the chances of extremely bad results.
+
+\aparag[International Loan] By cross-referencing this result with the last
+column of~\ref{table:Exchequer test}, countries obtain one percentages for
+``International Loan''.
+\bparag Apply this percentage to the total available money and copy the result
+in \lignebudgetlong{Max. international loan}.
+
+\begin{playtip}
+  Often, International loans are not necessarily and this step may be skipped
+  by most countries. It may be useful to start computing your budget (next
+  step) before deciding whether to take an international loan or not. Hence,
+  it is sometimes more fluent to start computing your budget and then
+  sometimes come back to looking at international loans. Since there is no new
+  knowledge gained between the Exchequer test and the Budget, this does not
+  change anything.
+
+  If you wish to follow closely the order of the steps, you should, however,
+  always roll for international loan preventively, thus avoiding bad
+  surprises.
+\end{playtip}
+
+\section{Budget}\label{chPeace:Budget}
+\subsection{Expenses}
+\aparag[Regular income] Write in \lignebudget{Remaining expenses} the
+difference between \lignebudget{Expenses} and \lignebudget{Regular income}.
+\bparag This may be a negative number in the rare case where the Regular
+income is larger than the total expenses.
+
+\aparag[Prestige income] Write in \lignebudget{from Prestige} any non-negative
+number smaller than both \lignebudget{Prestige income} and
+\lignebudget{Remaining expenses}.
+\bparag Small value means that more money is spent for prestige \VPs and less
+for day-to-day expenses. Those will be covered by loans or debt.
+
+\begin{designnote}
+  You cannot spend additional money from prestige (it must be non-negative).
+  You cannot take more from prestige than the ``Prestige Income'' (smaller
+  than \lignebudget{Prestige income}).  You cannot take more from prestige
+  than what is left to pay after the regular income is spent (smaller than
+  \lignebudget{Remaining expenses}).
+\end{designnote}
+
+\aparag[National Loans] Write in \lignebudget{from N. loan} any non-negative
+number smaller than \lignebudget{Max. national loan}.
+\bparag Copy this number in \lignbudget{New National loans}.
+
+\begin{designnote}
+  National Loans are not limited by expenses. However, you'll have to pay
+  interest for them and maybe even refund your people someday.
+\end{designnote}
+
+\subsection{Loan Management}
+
+\subsection{Prestige and Wealth}\label{chPeace:Prestige and Wealth}
+\section{Stability Improvement}\label{chPeace:Stability Improvement}
 
 \label{chPeace:Stability Improvement}
 \aparag A player can attempt to improve his Stability, but this is never
@@ -579,7 +703,7 @@ If the die-roll is inferior or equal to 5 the war with the minor continues
 normally for the following turn. Another peace attempt with that minor will be
 allowed during the peace phase of next turn.
 
-\subsection{Test for crusade}\label{chPeace:Crusade}
+\section{Test for crusade}\label{chPeace:Crusade}
 
 % Local Variables:
 % fill-column: 78
