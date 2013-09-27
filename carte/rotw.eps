@@ -830,12 +830,13 @@ true {
     (Stability) xstart size 3.5 mul sub ystart size add 330 110 ab centertext
 } if % Stability track
 true {
-    [1 1 1][.5 .5 .5]5500 2750 10 112.5 {
+    [1 1 1][.5 .5 .5]5486 2750 10 112.5 {
         i 1 sub 10 mul 2 string cvs (GreatOrient) 1 index ! xtrace ytrace xsize
         size writetrace xsize 0.5 mul xsize 0.5 mul xsize xsize 0.5 mul
         (FontArialNarrow) centertext
-        [()(Ormus)(Soqotra)(Sumatra Malacca)(non-European TP/COL)(Christian TP/COL)(Christian OMAN/INDIEN)(TUR/Persia war)()()()]
+        [()(Ormus)(Soqotra)(Sumatra Malacca)(non-European TP/COL)(Christian TP/COL)(Christian~TF OMAN/INDIEN)(TUR/Persia war)()()()]
             i get ( ) search {
+                (~) search {exch pop exch ( )exch ! !}if
                 xsize 0.5 mul xsize 0.4 mul xsize xsize 0.2 mul (FontArialNarrow) centertext
                 pop
                 xsize 0.5 mul xsize 0.2 mul xsize xsize 0.2 mul (FontArialNarrow) centertext
