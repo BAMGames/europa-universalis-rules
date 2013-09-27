@@ -60,7 +60,7 @@ unless if it is currently less than \TARQ.
 %   v1.0
 %\bparag[Yearly Campaigning] All Turkish forces suffer a malus of {\bf
 %  +2} to every Attrition test (movement, \LOS or besieging). Exception:
-%  force besieged. 
+%  force besieged.
 
 %   v2.0
 %\bparag[Yearly Campaigning] Any stack containing at least one \Timar
@@ -72,10 +72,10 @@ unless if it is currently less than \TARQ.
 %\bparag[Yearly Campaigning] Any stack containing at least one \Timar
 %counter (\ARMY, \LD or \Pasha) double the length of its Line of Supply.
 
-%   v4.0, after session 08/2008 
+%   v4.0, after session 08/2008
 \aparag[Yearly Campaigning.]\label{chSpecific:Turkey:Yearly Campaigning}
 At the passing of each Winter box (end of it, or if bypassing), there
-is a specific attrition test on all stacks containing \Timar. 
+is a specific attrition test on all stacks containing \Timar.
 \bparag Roll 1d10+ 2 times the distance in provinces to the National
 Territory of \TUR (Note: count through provinces controlled or owned,
 \pays{Egypte} and \pays{damas} counts as National Territory here once
@@ -95,13 +95,14 @@ turn.
   kind-of-feudal forces that were to withdraw almost every winter.
 \end{designnote}
 
-\aparag[Pashas]\label{chSpecific:Turkey:Pashas} 
-\TUR has a certain number of \Pasha units at his disposal.  
-Each one is similar to a general, with
-military values and a hierarchical rank, that is accompanied by their
-own intrinsic troops. A \Pasha has a standard military force of one
-\Timar \LD for each number of force increment.
-\bparag[New \Pashas.] \TUR has a maximal number of \Pashas in play
+\aparag[Pashas]\label{chSpecific:Turkey:Pashas}
+\TUR has a certain number of \Pasha units at his disposal.  Each one
+is similar to a general, with military values and a hierarchical rank,
+that is accompanied by their own intrinsic troops. A \Pasha has a
+standard military force of one \Timar \LD for each number of force
+increment.
+
+\aparag[New \Pashas.] \TUR has a maximal number of \Pashas in play
 equals to its number of owned provinces divided by 3 (rounded down).
 Each turn, it receives new \Pashas up to this limit.
 \bparag During the administrative phase of each turn, \TUR receives a
@@ -109,10 +110,10 @@ number of new \Pasha units equal at most to its \STAB, plus 1 if
 \pays{Hongrie} has fallen according to \eventref{pI:Fall Hungary}, plus
 1 if \pays{egypte} has been conquered. If this number is negative, no
 new \Pasha is received (but none lost).
-\bparag \Pasha counters are taken randomly among those not yet placed on
-the map.
-\bparag If \TUR controls more provinces than he has available \Pashas to
-rule them, the extra is lost and placement cancelled.
+\bparag \Pasha counters are taken randomly among those not yet placed
+on the map.
+\bparag If \TUR controls more provinces than he has available \Pashas
+to rule them, the extra is lost and placement cancelled.
 \bparag[Placement of \Pashas.] New \Pashas can only be placed in owned
 provinces where there is no \Pasha nor in any adjacent province, and
 that is not \TUR capital. They must be placed in \TUR national
@@ -130,19 +131,21 @@ corrupted side. On this side, a \Pasha cannot move, it has no intrinsic
 force, it is not a military leader. Its only effect is to nullify all
 the incomes coming from the province it is in.
 
-\bparag[Decadence.] One \Pasha becomes corrupted when one or more of the
+\aparag[Decadence.] One \Pasha becomes corrupted when one or more of the
 following situations occur:
 \begin{enumerate}
 \item \TUR raises exceptional taxes (see \ruleref{chIncomes:Exceptional
     Taxes})
-\item \TUR suffers bankruptcy (see \ruleref{chExpenses:bankruptcy}); 2
-  corrupted \Pasha if large or complete bankruptcy
+% [BLP] : removed.
+% \item \TUR suffers bankruptcy (see \ruleref{chExpenses:bankruptcy}); 2
+%   corrupted \Pasha if large or complete bankruptcy
 \item \TUR exceeds its \MNU limits (see \ruleref{chThePowers:Exceeding
     Limits})
+\item {[BLP]} On a roll of 6 at the survival test.
 \end{enumerate}
-\bparag Some \Pashas become corrupted also because of economical events
-(\subeventref{eco:Fiscal:Pashas Corruption}) or of failed attempts at
-Reform.
+% \bparag Some \Pashas become corrupted also because of economical events
+% (\subeventref{eco:Fiscal:Pashas Corruption}) or of failed attempts at
+% Reform.
 \bparag The newly corrupted \Pashas are chosen randomly among those that
 are not. The \terme{Sole Defender of the Catholic Faith} places each of
 them in the province it is in, or any adjacent province where there is
@@ -153,7 +156,17 @@ corrupted \Pasha can be moved in only two instances: the \Pasha is
 dismissed, or the ownership of the province is lost by \TUR (in which
 case the corrupted \Pasha is replaced as above).
 
-\bparag[Dismissal of \Pashas.] The Turkish player can dismiss (or
+\aparag[Death of a \Pasha] [BLP] This effect occurs on a roll of 5 or
+7 at the survival test.
+\bparag The \terme{Sole Defender of the Catholic Faith} may choose one
+\Pasha (corrupted or not). This \Pasha is removed from play and
+replaced by a new random (uncorrupted) \Pasha.
+\bparag If one \Pasha was removed this way, then \TUR may also choose
+one and replace it.
+\bparag The \terme{Sole Defender of the Catholic Faith} and \TUR take
+turns replacing \Pashas that way until one of them decides to stop.
+
+\aparag[Dismissal of \Pashas.] The Turkish player can dismiss (or
 impale...!) a \Pasha at any given time during the Redeployment phase
 (replace the removed \Pasha among those not yet in play). It is not
 possible if \TUR is at war or has a negative \STAB.  Every time a \Pasha
@@ -176,17 +189,21 @@ exception to the rule that limits to 3 the number of units in a
 stack. They are counted as their value in \LD for attrition and battle
 purpose (but not for activation and hierarchy).
 
-\bparag[\Pashas and Hierarchy] Even if \Pashas can be used as generals,
+\aparag[\Pashas and Hierarchy] Even if \Pashas can be used as generals,
 they are disregarded as generals to enforce the hierarchy. They can only
 command if there is no regular general.
-\bparag The force content in \LD of a \Pasha cannot be incorporated in
-any other military unit (and conversely).
+\bparag[] [BLP] \Pashas may not lead other \Pashas or more than 5\LD
+of troops (plus their owns).
+
+\aparag[\Pashas troops] The force content in \LD of a \Pasha cannot be
+incorporated in any other military unit (and conversely).
 \bparag Losses undergone during combat or attrition can be attributed to
 an engaged \Pasha, up to the number of \LD part of that \Pasha counter,
 using the normal rules of assignation of losses.  In this case, whatever
 is the supported loss, the \Pasha is lost. %(to be replaced randomly by
 %another \Pasha during the redeployment phase of the first turn following
 %peace).
+
 
 \subsubsection{Turkish Reformation}
 \aparag[Attempts of Turkish Reformation.] \TUR may attempt to reform the
@@ -207,7 +224,7 @@ reform is the heir of \monarque{Suleyman}.
 using the column (\MIL or \ADM)+\DTI-9, with the following die
 modifiers:
 \begin{modlist}
-\item[\textpm?] Stability of country 
+\item[\textpm?] Stability of country
 \item[-?] the Level of the attempted reformation
 \item[-?]  the number of corrupted \Pashas
 \end{modlist}
@@ -242,7 +259,7 @@ anymore. When this reform is achieved, the Turkish player may remove up
 to 4 corrupted \Pasha units at no cost.
 \bparag[Level 2: End of feudality]
 All corrupted \Pashas are removed and there can be no new corruption of
-Pasha anymore. From now, \TUR uses normal inflation. Gives a bonus 
+Pasha anymore. From now, \TUR uses normal inflation. Gives a bonus
 of {\bf +1} to all further attempts of Reformation.
 
 \aparag[Military Reforms] The effects are summarized on a table on the
@@ -280,6 +297,8 @@ Regarding Technology, \TMAN and \TTD are now accessible.  The malus to
 improve it is applied to \terme{Land Technology} if currently \TBAR or
 better, and to \terme{Naval Technology} if currently \TBAT or better.
 
+[BLP] Add 2\LeaderG to the limit for \TUR.
+
 \bparag[Level 3: Modernisation of the Army]
 All technologies are now accessible, and the malus to increase
 Technology is cancelled.
@@ -294,7 +313,7 @@ Technology is cancelled.
 \aparag[Turkish Conquests.]
 The Turkish player can annex the capital province of a conquered
 country. This is valid only if the conquered province is adjacent to a
-Turkish province and connex to its National Territory, or it is an island, 
+Turkish province and connex to its National Territory, or it is an island,
 and the province is occupied by a Turkish military
 unit (and not by a Turkish minor ally or vassal). This may destroy the
 country.
@@ -329,7 +348,7 @@ PB 07/2008: MORE TO DO
 \begin{designnote}
 These rules simulate both the clear trend toward inpendence of those regions,
 the occasional in-fighting that are not expliciteley dealt with, but also leave
-open the historical window of Turkish domination over those countries. 
+open the historical window of Turkish domination over those countries.
 \end{designnote}
 
 \aparag[Pirates and Ottoman admirals]
