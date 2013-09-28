@@ -1,9 +1,5 @@
 #!/usr/bin/perl
 
-# Idea: manage inside files (both written and read in one actor)
-# Idea: pseudo-target sweep to remove unmakeable non-axiom files
-# Idea: automatic diagnostic of out, junk and in files.
-
 if ('' cmp 'DOC SYNOPSIS') {
 
 =pod
@@ -43,25 +39,16 @@ goals.
 
 }
 
-use strict;
-use warnings;
+use strict;use warnings;
 # Unicode safety
-use utf8;
-use Encode;
-
-use JSON::PP;
-use Data::Dumper;
-use URI::Escape;
-use Digest::MD5;
-use Symbol 'gensym';
+use utf8;use Encode;
+use JSON::PP;use Data::Dumper;use Digest::MD5;
 use File::Path qw(make_path remove_tree);
 use Cwd;
 use Term::ANSIColor;
 # command execution
-use IPC::Open3;
-use POSIX qw(:sys_wait_h dup dup2);
-use IO::Select;
-use IO::Handle;
+use Symbol 'gensym';use IPC::Open3;
+use POSIX qw(:sys_wait_h dup dup2);use IO::Select;
 
 my ($execContext,$planContext,$outContext,$optionContext,$progContext);
 
@@ -711,7 +698,8 @@ The built-in target C<help> is equivalent to option B<--man>.
     ($a,$out,$b)=@{&executeCommand('','pod2text',"$0")};
   }
   if ($option eq 'usage') {
-    $out =~ s/OPTIONS.*$//s;
+    $out =~ s/\nPRINCIPLE.*$//s;
+    $out =~ s/\n\n/\n/gs;
   }
   if ($option ne 'man') {
     print $out;
