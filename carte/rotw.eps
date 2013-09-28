@@ -349,7 +349,7 @@ true {
         /provresview exch def 2 string cvs /provresquantity exch def
         provresview 0 3 getinterval aload pop provresy add
         exch provresx add exch putsymbol
-        provresbgcolor out (rg 0 0 0 RG 2 w\n) out provresview 4 get
+        provresbgcolor out ( rg 0 0 0 RG 2 w\n) out provresview 4 get
         {
            dup 0 eq {
                 provresxx 2 add display space provresyy 2 add display
@@ -434,8 +434,6 @@ true {
         bboxtest {
             0.5 1 beginbialpha
 	    provpen out( RG 0 G 1 w )out provcolor{display space}forall(rg\n)out
-	    provx display space
-	    provy provheight sub display space
             provlinkdict provcode known {
                 provlinkpos -5 provincerelpos exch display space display ( m\n)out
                 /provlinkalpha provlinkyy provlinky sub provlinkxx provlinkx sub atan def
@@ -464,6 +462,8 @@ true {
                     0 provincerelpos exch display space display ( l\n)out
                 } for (h\n) out
             }{
+	        provx display space
+	        provy provheight sub display space
                 provwidth display space provheight display ( re )out
             } ifelse
             (B\n) out
@@ -830,12 +830,13 @@ true {
     (Stability) xstart size 3.5 mul sub ystart size add 330 110 ab centertext
 } if % Stability track
 true {
-    [1 1 1][.5 .5 .5]5500 2750 10 112.5 {
+    [1 1 1][.5 .5 .5]5486 2750 10 112.5 {
         i 1 sub 10 mul 2 string cvs (GreatOrient) 1 index ! xtrace ytrace xsize
         size writetrace xsize 0.5 mul xsize 0.5 mul xsize xsize 0.5 mul
         (FontArialNarrow) centertext
-        [()(Ormus)(Soqotra)(Sumatra Malacca)(non-European TP/COL)(Christian TP/COL)(Christian OMAN/INDIEN)(TUR/Persia war)()()()]
+        [()(Ormus)(Soqotra)(Sumatra Malacca)(non-European TP/COL)(Christian TP/COL)(Christian~TF OMAN/INDIEN)(TUR/Persia war)()()()]
             i get ( ) search {
+                (~) search {exch pop exch ( )exch ! !}if
                 xsize 0.5 mul xsize 0.4 mul xsize xsize 0.2 mul (FontArialNarrow) centertext
                 pop
                 xsize 0.5 mul xsize 0.2 mul xsize xsize 0.2 mul (FontArialNarrow) centertext
@@ -992,7 +993,7 @@ true {
         } forall
         (q 5 w )out shadepen out( RG 0 0 0 rg )out
         xmin display space ymin display space
-        xmid xmin sub display space ymax 55 sub ymin sub display (re S\n)out
+        xmid xmin sub display space ymax 55 sub ymin sub display ( re S\n)out
         (0 1 -1 0 ) out xmid display space ymin display ( cm\n)out
         (Neutrals) ymax 55 sub ymin sub 2 div xmid xmin sub 110 sub 2 div 1 index 2 mul 110 ab centertext
     } if
