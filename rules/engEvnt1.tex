@@ -1,3 +1,4 @@
+pI:TD:Diplomatic pressures
 % -*- mode: LaTeX; -*-
 
 \section{Period I}\label{events:pI}
@@ -52,7 +53,10 @@
   pI:Reformation|,%
   pI:Reformation2|,%
   pI:Reformation3|,%
-  pI:Turkish Diplomatic Pressure|E/E,%
+  pI:Turkish Diplomatic Pressure|S{pI:TD:Barbaross
+    brothers}/S{pI:TD:Vassalisation of Algeria}/S{pI:TD:Alignement
+    Barbaresques}/E/E/E
+,%
   pI:War Scotland|,%
   pI:End Golden Horde|,%
   pI:Pskov Ryazan|,%
@@ -659,23 +663,78 @@ Protestant.
 
 
 
-\event{pI:Turkish Diplomatic Pressure}{I-9}{Turkish Diplomatic
-  Pressure}{2}{Risto}
+% \event{pI:Turkish Diplomatic Pressure}{I-9}{Turkish Diplomatic
+%   Pressure}{2}{Risto}
 
-\history{no specific date}
+% \history{no specific date}
 
-\condition{If \leaderBarbaros is in play, \TUR may choose to apply
-  \ref{pII:Algeria Vassalisation} instead.  If \leaderDragut is in play, \TUR
-  may choose to apply \ref{pII:Alignment of Barbaresques} instead.}
+% \condition{If \leaderBarbaros is in play, \TUR may choose to apply
+%   \ref{pII:Algeria Vassalisation} instead.  If \leaderDragut is in play, \TUR
+%   may choose to apply \ref{pII:Alignment of Barbaresques} instead.}
 
+% \phdipl
+% \aparag \TUR receives a bonus of \bonus{+3} for a Muslim minor of its
+% choice. Choice has to be made secretly during the negotiations step.
+
+\event{pI:Turkish Diplomatic Pressure}{I-9}{Turkish
+  Dynamism}{*}{RistoMod/PBnew/Jym [BLP]}
+% \history{Capture of Algiers: 1516, Recapture of Algiers: 1529,
+%   Conquest of Tunis: 1534.}
+
+\phevnt
+\aparag \TUR chooses, when all events of this turn have been rolled, to apply
+one of the following cases:
+\bparag If \leader{Oruc Reis} is alive, \TUR may choose~\ref{pI:TD:Barbaross
+  brothers}. This may only occur once per game.
+\bparag If \leader{Barbaros2} is alive, \TUR may
+choose~\ref{pI:TD:Vassalisation of Algeria}. This may only occur once per
+game.
+\bparag If This is period \period{II} or later, \TUR may
+choose~\ref{pI:TD:Alignment Barbaresques}. This may only occur once per game.
+\bparag \TUR may always choose~\ref{pI:TD:Diplomatic pressures}. This may
+happens any number of time.
+
+\subevent[pI:TD:Barbaross brothers]{Barbaross brothers}
+\history{Capture of Algiers by Aruj and Hayreddin Barbarossa: 1516}
+\phevnt
+\aparag \TUR immediately chooses one \Presidio in \paysAlgerie which is
+destroyed.
+
+\aparag If not controlled by \TUR, \paysAlgerie becomes immediately Neutral.
+
+\aparag On this turn, the Algerian \corsaire is raised \faceplus (even if it
+was not in play).
+
+\subevent[pI:TD:Vassalisation of Algeria]{Vassalisation of Algeria}
+\history{Recapture of Algiers by Hayreddin Barbarossa, and formal sovereignty
+  of Soliman: 1529}
+\phevnt
+\aparag \paysAlgerie is immediately placed on \VASSAL of \TUR.
+
+\aparag \leaderBarbaros is now also a Turkish leader, and as long as he is
+alive, \paysAlgerie is permanent Vassal of \TUR not subject to diplomacy.
+
+\aparag At the death of \leaderBarbaros, the {\bf -3} malus for \TUR to all
+diplomacy attempts against all \terme{Barbaresque} countries is cancelled.
+
+
+\subevent[pI:TD:Alignment Barbaresques]{Alignment of the Barbaresques}
+\history{Ottoman conquest of Tunis: 1534, alignment: around 1540}
+\phevnt
+\aparag From now on, the {\bf -3} malus for \TUR to all diplomacy attempts
+against all \terme{Barbaresque} countries is cancelled.
+
+\aparag \paysTunisie is immediately placed on \VASSAL of \TUR if \leaderDragut
+is alive.
+
+\subevent[pI:TD:Diplomatic pressures]{Turkish Diplomatic Pressures}
+\history{No precise date}
 \phdipl
 \aparag \TUR receives a bonus of \bonus{+3} for a Muslim minor of its
 choice. Choice has to be made secretly during the negotiations step.
 
 
-
 \event{pI:War Scotland}{I-10}{War with Scotland}{1}{Risto}
-
 \history{1513-1514}
 
 \condition{}
@@ -883,18 +942,19 @@ those territories.
 
 
 \event{pI:Barbaros Brothers}{I-16}{Barbaros Brothers}{1}{PBNew}
+\condition{[BLP] Apply~\ref{pI:Turkish Diplomatic Pressures}}
 
-\history{1516}
+% \history{1516}
 
-\condition{Takes place only if leader \leaderBarbaros is not yet in play or no
-  more alive.  If \leaderBarbaros is in play, apply \xnameref{pII:Algeria
-    Vassalisation}}
+% \condition{Takes place only if leader \leaderBarbaros is not yet in play or no
+%   more alive.  If \leaderBarbaros is in play, apply \xnameref{pII:Algeria
+%     Vassalisation}}
 
-\phevnt
-\aparag If not controlled by Turkish, \paysAlgerie becomes immediately in
-Neutral.
-\aparag On this turn, the Algerian \corsaire is raised \faceplus and is
-supposed to have an admiral of Manoeuvre 3 leading it (another Brother).
+% \phevnt
+% \aparag If not controlled by Turkish, \paysAlgerie becomes immediately in
+% Neutral.
+% \aparag On this turn, the Algerian \corsaire is raised \faceplus and is
+% supposed to have an admiral of Manoeuvre 3 leading it (another Brother).
 
 
 
