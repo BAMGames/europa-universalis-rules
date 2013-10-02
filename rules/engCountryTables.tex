@@ -430,13 +430,16 @@
 
 \newcommand{\VeniseTurn}{
   \stdTurn{
-    1492-1519 I  & 1 & 1  & 0  & 0     & 2     & \FLEET\facemoins3\GD & 4\ND/4\LD & 2\LeaderG/1\LeaderA\\
-    1520-1559 II & 3 & 1  & 0  & 0     & 2     & \FLEET\faceplus3\GD  & 6\ND/5\LD & 1\LeaderG/2\LeaderA\\
+% [BLP] 2nd G only if Italia e San Marco
+    1492-1519 I  & 1 & 1  & 0  & 0     & 2     & \FLEET\facemoins3\GD & 4\ND/4\LD & 1\LeaderG\xxb/1\LeaderA\\
+% [BLP] 2nd G if Italia e San Marco
+    1520-1559 II & 3 & 1  & 0  & 0     & 2     & \FLEET\faceplus3\GD  & 6\ND/5\LD & 1\LeaderG\xxb/2\LeaderA\\
     1560-1614 III& 3 & 1  & 0  & 1\xxa   & 1\xxa & \FLEET\faceplus3\GD  & 6\ND/4\LD & 1\LeaderG/1\LeaderA/1 \LeaderA (or \LeaderE\xxa)\\
     1615-1664 IV & 2 & 1  & 0  & 1\xxa & 1\xxa & \FLEET\faceplus2\GD  & 6\ND/3\LD & 1\LeaderG/1\LeaderA/1 \LeaderA (or \LeaderE\xxa)\\
   }
   \GTlegend{
-    \xxa\ Only if \pays{venise} is still a \MAJ
+    \xxa\ Only if \pays{venise} is still a \MAJ \quad \xxb +1 \LeaderG
+    if Policy of Italian Dominance is active
   }
 }
 
