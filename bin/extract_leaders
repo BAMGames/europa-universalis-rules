@@ -51,12 +51,12 @@ $definitions="";
 foreach ("france","angleterre","turquie","hollande","espagne","russie") {
     $NTcountries{$_}++;
 }
-foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","fralicence","revolutionnaires","angnomalus","angseahound","porviceroy","prunomalus","holvoc","habmercenaires","framercenaires","prumercenaires","turcorsaire","turvizir") {
+foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","fralicense","revolutionnaires","angnomalus","angseahound","porviceroy","prunomalus","holvoc","habmercenaires","framercenaires","prumercenaires","turcorsaire","turvizir") {
     $Scountries{$_}++;
 }
 %conversion=(
     "france" => "France",
-    "fralicence" => "France",
+    "fralicense" => "France",
     "revolutionnaires" => "France",
     "angleterre" => "Angleterre",
     "angnomalus" => "Angleterre",
@@ -107,7 +107,7 @@ sub realcountry {
     if ($pays eq "habsbourg" and $periode > 3) {
 	return $pays."M";
     }
-#    if ($pays eq "fralicence") {
+#    if ($pays eq "fralicense") {
 #	return "franceN";
 #    }
 #    if ($pays eq "revolutionnaires") {
@@ -116,18 +116,18 @@ sub realcountry {
     if ($pays eq "angnomalus") { # Marlborough
 	return "angleterreT";
     }
-    if ($pays eq "angseahound") {
-	return "angleterreN";
-    }
-    if ($pays eq "porviceroy") {
-	return "portugalM";
-    }
+#    if ($pays eq "angseahound") {
+#	return "angleterreN";
+#    }
+#    if ($pays eq "porviceroy") {
+#	return "portugalM";
+#    }
     if ($pays eq "prunomalus") { # Frederic II
 	return "prusseM";
     }
-    if ($pays eq "holvoc") {
-	return "hollandeM";
-    }
+#    if ($pays eq "holvoc") {
+#	return "hollandeM";
+#    }
     if ($pays eq "habmercenaires") { # Wallenstein
 	return "habsbourgM";
     }
@@ -137,12 +137,12 @@ sub realcountry {
     if ($pays eq "prumercenaires") { # Ferdinand de Brunswick
 	return "prusseM";
     }
-    if ($pays eq "turcorsaire") {
-	return "turquieN";
-    }
-    if ($pays eq "turvizir") {
-	return "turquieT";
-    }
+#    if ($pays eq "turcorsaire") {
+#	return "turquieN";
+#    }
+#    if ($pays eq "turvizir") {
+#	return "turquieT";
+#    }
     return $pays;
 }
 
