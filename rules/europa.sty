@@ -50,7 +50,7 @@
   \begin{scope}
     \path[clip] (da)--(db)--(eb)--(ea)--cycle;
     \fill [line width=0pt,top color=#1#6,bottom color=#2#6] (tlA) rectangle (blB);
-  \end{scope} 
+  \end{scope}
   \begin{scope}
     \path[clip] (tlA)--(tlB)--(TlB)--(TlA)--cycle;
     \draw [#8,color=#1#6] (0,#3)--(b)--(a);
@@ -298,8 +298,8 @@
 
 %%% Counters, Ressources, Dynastic actions
 
-\newcommand{\countermark}[1]{\SRTonemi{#1}} 
-\newcommand{\RES}[1]{\SGTonemi{#1}} 
+\newcommand{\countermark}[1]{\SRTonemi{#1}}
+\newcommand{\RES}[1]{\SGTonemi{#1}}
 \newcommand{\dynasticaction}[2]{dynastic action \underline{#1-#2}\xspace}
 \newcommand{\shortdynasticaction}[2]{\underline{#1-#2}\xspace}
 
@@ -419,7 +419,7 @@
   \EUstore{minor@H#1@blason}{shield_#1}%
   \minordiplospecial{H#1}{Can be created by Habsburg power (\AUS or \SPA), can only be a Habsburg vassal}%
   \minorreligion{H#1}{catholique}}
- 
+
 %%% Shields (setting and getting)
 \def\theminorblason#1{\expandafter\includeblason\expandafter{\csname minor@#1@blason\endcsname}}
 \def\includeblason{\includegraphics[width=24bp]}
@@ -603,6 +603,9 @@
 %%% List leaders
 \def\listleader#1{\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}}
 \def\listleadernolink#1{\bgroup\let\anchorleader\strongleader\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}\egroup}
+
+\def\listleadershort#1{\FEforeachlist{#1}{\leader{\loopitem}}{, }}
+
 
 %%% Display leader
 %% Leader data

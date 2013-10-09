@@ -107,12 +107,12 @@ sub realcountry {
     if ($pays eq "habsbourg" and $periode > 3) {
 	return $pays."M";
     }
-    if ($pays eq "fralicence") {
-	return "franceN";
-    }
-    if ($pays eq "revolutionnaires") {
-	return "france".terrestrenaval($_[1]);
-    }
+#    if ($pays eq "fralicence") {
+#	return "franceN";
+#    }
+#    if ($pays eq "revolutionnaires") {
+#	return "france".terrestrenaval($_[1]);
+#    }
     if ($pays eq "angnomalus") { # Marlborough
 	return "angleterreT";
     }
