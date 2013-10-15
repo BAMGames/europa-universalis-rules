@@ -1173,8 +1173,9 @@ def
     /nompion mark(Timar <)nameX(:)dts(:)caracs(:)numeroX(>)concatall def
     2 beginpion
     communpacha
-    dts 80 0 20 30 cadredefondbf
+    dts 80 25 20 30 cadredefondbf
     caracs 0 1 getinterval 0 0 20 30 cadredefondbf
+    caracs length 8 gt {caracs 8 2 getinterval 85 0 20 25 bolda}if
     (cimeterre) .83 25 30 begints fga_ sc fga_ fc xobject endts
     autreface
     /caracs(A 0 0 0)def
@@ -1234,7 +1235,6 @@ def
     endpion
 } def
 
-% Jym, trying... Mission existing in 1492.
 /dessineMISSIONspecial {
     /nameX exch def
     /pays exch def
