@@ -314,6 +314,12 @@ foreach $k (@infoOWNERCONTROL) {
 	$command.=" dessineCONTROLE\n";
 	sendit($k,$command);
     }
+    $count=$k->{"Occupation"};
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=" dessineOCCUPATION\n";
+	sendit($k,$command);
+    }
 }
 delete $info{"OWNERCONTROL"};
 foreach $k (@infoMANUFACTURE) {

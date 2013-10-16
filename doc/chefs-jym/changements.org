@@ -10,13 +10,13 @@ Résumé des changements.
 ** DONE Cf amiraux.txt (et liste de chefs ci-dessous) pour les amiraux qui reçoivent
   du siège.
 
-* TODO Fleet in being
+* DONE Fleet in being
 ** DONE Changer les limites minimum d'amiraux en pV/VI/VII comme suit :
    ANG : 3/4/5 (au lieu de 2/2/2)
    FRA : 2/3/4 (au lieu de 2/2/2)
    HOL : 1/2/2 [+1 si parlement] (au lieu de 1/1/1 [+1])
    HIS : 2/2/3 (au lieu de 2/1/1)
-** TODO Ajouter *en pV+** les amiraux non-nommés suivants
+** DONE Ajouter *en pV+** les amiraux non-nommés suivants
 [pV+ pour limiter la variabilité quand il y en a peu. Les amiraux sont
 sur les modèles "noble arrogant incompétent" / "capitaine compétent" /
 "noble OK" / "corsaire"]
@@ -24,7 +24,7 @@ ANG : D212 / L433 / E332, R / N412, PR
 FRA : E211 / L423, R / E233 / M411, PR
 HIS : E211 / L333 / F323, R / O211, PR
 HOL : D212 / L433 / E332, R / N412, PR
-*** TODO : mettre "V-VII" sur les pions en question.
+*** DONE : mettre "V-VII" sur les pions en question.
 
 * DONE Taille des flottes
 ** Virer le +3/6 pour 2/3 F.
@@ -160,7 +160,7 @@ o
 ** DONE Supprimer la corruption de pachas sur E-7 et la mettre sur 6 au jet
    de survie TUR.
 
-* TODO Pachas
+* DONE Pachas
 afficher le siège des pachas sur les pions.
 * Vizirs, version chefs anonymes
 #Type;Country;NameA;NameB;NameC;Stats
@@ -221,7 +221,7 @@ pouvant pas commander de flotte (FRA, HIS, HOL, POR, RUS, VEN).
 * DONE Barbaresques
 Tripoli et Maroc commencent sans leur P qui arrivera donc en renfort au T2.
 
-* TODO Hongrie, version subtile
+* Hongrie, version subtile
 ** Lors de la chute de la Hongrie, le morceau HAB reste un mineur qui est
   Vassal/annexé par HAB selon que la chute est causée par TUR/HAB.
 ** Ce qui reste de Hongrie est annexé par AUS au moment de V-z (Great
@@ -245,11 +245,7 @@ La chute est provoquée aussi si 3 (4 ?) provinces sont contrôllées.
 * DONE Hongrie, version triviale
 ** TUR peut faire chuter sans limite de temps.
 ** DONE Mettre TUR en tête des controlleurs de la Hongrie.
-
 * TODO Hongrie
-Je propose d'adapter soit la version subtile (j'aime être subtil quand
-je joue TUR), soit les versions facile+triviale en même temps.
-
 ** TODO TUR peut faire chuter en pI-III.
 ** TODO HAB ne peut plus faire chuter.
 ** TODO HAB peut annexer diplomatiquement la Hongrie, et ça fait une vraie annexion (comme HIS sur Naples).
@@ -267,53 +263,57 @@ Faire de la Transylvanie un vassal spécial (no diplo) de son protecteur,
 attribuée automatiquement au possesseur de Buda.
 
 * TODO Blasons
-** blasons effacés AUS/TUR/Transylvanie dans les provinces du partage
+** TODO blasons effacés AUS/TUR/Transylvanie dans les provinces du partage
   hongrois.
-** blasons commerciaux pour les règles "commerciales" : Raguse (TUR/VEN),
-  Caraïbes (HIS/ANG), Galion de Manille (HIS/Chine)
-** blasons chinois dans les zones de Nerschinsk.
-** blason effacé RUS dans les provinces Saint-Petersburgables ?
+** TODO blasons commerciaux pour les règles "commerciales" :
+*** TODO Raguse (TUR/VEN)
+*** TODO Caraïbes (HIS/ANG)
+*** TODO Galion de Manille (HIS/Chine)
+** TODO blasons chinois dans les zones de Nerschinsk.
+** TODO blason effacé RUS dans les provinces Saint-Petersburgables ?
 
+** TODO blason effacé Savoie en Dauphiné.
 * TODO Occupations
-** ajout de pions "occupation" en nombre limité.
-  (VEN/POL/PRU : 0, RUS/HOL/POR/SUE : 2, FRA/ANG : 3, TUR/AUS/HIS : 4)
-  (VEN : éventuellement 2)
-** effet du pion : contrôle + toucher les revenus + free CB (overseas en
+** DONE ajout de pions "occupation" en nombre limité.
+  (VEN/PRU : 0, POL : 1, RUS/HOL/POR/SUE : 2, FRA/ANG : 3, TUR/AUS/HIS : 4,
+  Savoie : 1) (VEN : éventuellement 2)
+** TODO effet du pion : contrôle + toucher les revenus + free CB (overseas en
   ROTW) de l'occupé vs l'occupant. Pour les PV et objectifs, la
   province appartient toujours à l'occupé.
-** coût du pion : l'occupant doit laisser une garnison de 1LD dans la
+** TODO coût du pion : l'occupant doit laisser une garnison de 1LD dans la
   province. Éventuellement, coût en STAB pour l'occupant comme pour
   l'occupé.
-** On les met au lieu de mettre des contrôles sous certaines conditions.
-** Ils restent à la paix et peuvent sauter par une déclaration
+** TODO On les met au lieu de mettre des contrôles sous certaines conditions.
+** TODO Ils restent à la paix et peuvent sauter par une déclaration
   diplomatique.
-** Et on supprime les règles d'occupation militaire d'un mineur.
+** TODO Et on supprime les règles d'occupation militaire d'un mineur.
 
 * TODO Placement des occupations
-** Caraïbes : en remplacement des contrôles. Remplace la règle actuelle.
+** TODO Caraïbes : en remplacement des contrôles. Remplace la règle actuelle.
   Pas de coût en STAB.
-** Oman/Aden : par POR aux conditions actuelles. Remplace la règle actuelle.
+** TODO Oman/Aden : par POR aux conditions actuelles. Remplace la règle actuelle.
   Pas de coût en STAB.
-** RUS : en remplacement des contrôles adjacent à son territoire nationnal.
+** TODO RUS : en remplacement des contrôles adjacent à son territoire nationnal.
   Pas de coût en STAB. (pas de garnison ?)
-** HIS/HOL : en remplacement des contrôles pendant III-1. Pas de coût en STAB.
-** Hongrie : Par TUR/HAB/POL à la place d'un contrôle. Coût de 1STAB/tour si
+** TODO HIS/HOL : en remplacement des contrôles pendant III-1. Pas de coût en STAB.
+** TODO Hongrie : Par TUR/HAB/POL à la place d'un contrôle. Coût de 1STAB/tour si
   pas d'autre perte de STAB pour l'occupant comme pour l'occupé.
-** VEN : En Italie si "Itali e San Marco" est déclaré ?
-** ANG : En territoires de guerre de 100 ans (Guyenne, Quercy, Poitou,
+** TODO VEN : En Italie si "Itali e San Marco" est déclaré ?
+** TODO ANG : En territoires de guerre de 100 ans (Guyenne, Quercy, Poitou,
         Picardie) ?
-** FRA : Provinces du HRE adjacente à une province possédée.
+** TODO FRA : Provinces du HRE adjacente à une province possédée.
         [ie : Lorraine (hist depuis guerres d'Italie), Alsace après
         annexion de Franche-Comté (semi-hist), puis Baden/Pfalz
         (non-hist mais tolérable de lapin)]
 
+** TODO Savoie : en début de jeu en Dauphiné + à la place d'un contrôle dans une province avec intérêts.
 * TODO Little War, Long War
 Entre la chute et un traité de paix TUR/AUS ou V-z, la Hongrie est
 semie balkanisée :
-** POL/HAB/(TUR+Crimée) peuvent chacun envoyer 1 pile en territoire non
+** TODO POL/HAB/(TUR+Crimée) peuvent chacun envoyer 1 pile en territoire non
   contrôlé. Coût de 1 point de STAB à la fin du tour si pas de perte par
   ailleurs.
-** Pendant TYW, faut reformuler un peu l'intervention pour que les Garnisons
+** TODO Pendant TYW, faut reformuler un peu l'intervention pour que les Garnisons
   TUR soient autorisées (actuellement, intervention limitée, donc 1 seule
   pile). En gros, TYW réactive le point précédent pour TUR (uniquement) si
   il a été stabilisé + autorise à aller en Autriche avec la même règle.
@@ -331,7 +331,6 @@ Passer Soudan à diff 5, revenu 2 et Nedj à diff 6 revenu 1.
 ** DONE Baisser en pI la limite de G VEN de 2 à 1.
 ** DONE Ajouter 1G à la limite VEN en pI-II si /Itali e San Marco/ est déclaré.
 ** Lier un ou des chefs nommés à cette politique ? (Pitigliano) (Bof)
-
 * DONE Maximilien II
 Pour toute la durée de WoSS l'héritier, si il n'est pas empereur, a un
 bonus de +5 à la diplo sur un électorat choisi en début de guerre. Par

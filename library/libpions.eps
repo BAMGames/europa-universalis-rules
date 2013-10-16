@@ -268,6 +268,7 @@ def
 /shadow { bga_dict pays get {510 div display space}forall /bbg 4 def fc} def
 /black {(0 0 0 )out}def
 /white {(1 1 1 )out}def
+/red {(1 0 1 )out}def
 /roman { fg (FontArialNarrow) centertext} def
 /romana { fga (FontArialNarrow) centertext} def
 /italic { fg (FontArialNarrow-Italic) centertext} def
@@ -764,6 +765,22 @@ def
     endalpha
     black fc
     (Control) 50 41 100 18 (FontArialNarrow-Bold) centertext
+    endpion
+}def
+/dessineOCCUPATION {
+    /pays exch def
+    /nompion (Occupation )countryname ! def
+    /filepion (Occupationr_)pays ! def
+    5 beginpion
+    countryname 0 80 100 20 cadredefondit
+    blasoncentre
+    0.85 beginalpha
+    red fc black sc
+    ( 0 40 100 20 re )
+    dup out(f )out out (S )out
+    endalpha
+    black fc
+    (Occupation) 50 41 100 18 (FontArialNarrow-Bold) centertext
     endpion
 }def
 
