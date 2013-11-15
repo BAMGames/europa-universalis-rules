@@ -203,6 +203,152 @@ number smaller than \lignebudget{Max. national loan}.
   interest for them and maybe even refund your people someday.
 \end{designnote}
 
+\aparag[National Loans] Write in \lignebudget{from I. loan} any
+non-negative number smaller than \lignebudget{Max. international loan}.
+\bparag Copy this number in \lignebudget{New International loans}.
+\bparag Copy this number in \lignebudget{International loans refunds},
+\textbf{three turns} after the current one.
+\bparag Copy 10\% of this number (round up) in \lignebudget{International
+  loans interests} for the \textbf{next three turns}. If there is already a
+number in one of these boxes, add the new value to it.
+\bparag That is, you should write 3 interests (for the next three turns), and
+one refund (for the same turn as the last interest).
+
+\begin{playtip}
+  International loans are usually a bad idea because of the scheduled
+  mandatory refund. Use them only when in need.
+\end{playtip}
+
+\begin{exemple}
+  A correctly filled new international loan (of 100\ducats, at turn $n$) over
+  an existing one (of 200\ducats, from turn $n-2$):
+  \begin{tabular}{|c|l|r|r|r|r|r|}
+    \hline
+    & Turn & $n-1$ & $n$ & $n+1$ & $n+2$ & $n+3$\\
+    \hline
+    1 & New International loan & & 100 & & &\\
+    \hline
+    2 & I. loan interest & 20 & 20 & 30 & 10 & 10\\
+    \hline
+    3 & I. loan refunds & & & 200 & & 100\\
+    \hline
+  \end{tabular}
+\end{exemple}
+
+\aparag[New \RT]
+\bparag Write in \lignebudget{RT balance} the sum of \lignebudget{from
+  Prestige} + \lignebudget{from N. loan} + \lignebudget{from I. loan}
+\textbf{minus} \lignebudget{Remaining expenses}. It may be negative if
+\lignebudget{Remaining expenses} is too big.
+\bparag Write in \lignebudget{RT after Exchequer test} the sum of
+\lignebudget{RT before Exchequer} + \lignebudget{RT balance}.
+
+\begin{designnote}
+  \lignebudgetlong{Remaining expenses} depict \textbf{expenses} that are left
+  to be paid after using the Regular income. Hence it is subtracted from the
+  \RT while other lines are added (they are money taken from prestige or loan
+  in order to fill the treasury).
+
+  If \lignebudget{Remaining expenses} is \emph{negative}, regular income was
+  enough to cover all expenses. Then, the surplus is added to the treasury (as
+  subtracting a negative number result in an addition).
+\end{designnote}
+
+\begin{designnote}
+  All in all, do not try to understand all the steps here while reading the
+  rules. After a couple of turns of computing your budget, things will become
+  more natural. Note that if you are having a ``teaching session'', you should
+  try several ``stupid'' things with your budget to see the consequences.
+\end{designnote}
+
+\begin{playtip}
+  When planning expenses, it is obviously a good idea to keep an eye on the
+  possible income\ldots Too many expenses result in bankruptcy while too few
+  result in money ``wasted'' for prestige (instead of being use for buying
+  troops or waging war).
+
+  Here are some guidelines in preparing your budget:
+  
+  First, check in the administrative actions table what are the possible and
+  plausible results with respect to your current (and expected) \STAB. You may
+  discard very unlikely results (with only 10\% chance of happening) but you
+  know you take a risk doing so. It is especially important to take into
+  account the worse possible result you may obtain if you want to limit risks.
+
+  Second, check in the Exchequer test table the sum of percentages these
+  results produce. Check separately the sum of Regular + Prestige income
+  (income without debt) and the sum of the three percentages (income with
+  debt). Applying these percentage to your Gross Income will give some amount
+  of money.
+
+  Do not spend more than your best income with debt, obviously, doing so
+  will result in problems. Spending more than the worse income with debt means
+  taking risks. Estimate the risks (Is it a 10\% or 30\% chance of getting the
+  worse result?) compared to the situation (Do you have lot of money in your
+  \RT to handle the loss?) and the expected gain (Will the extra expense allow
+  you to win the war?)
+
+  Spending less than the worse income without debt means that some money will
+  necessarily go into Prestige \VPs. Are you sure it won't be better used for
+  troops, economical development, \ldots? Spending less that the best income
+  without debt means that you may get Prestige \VPs but they are not
+  guaranteed either.
+
+  The good cases is when the worst income with debt is roughly equal (or
+  larger) to the best income without debt. Spending that amount of money means
+  that the worse that can happen is to take a new loan (that can be handled
+  later) and that you won't waste too much money on Prestige. Note that you
+  have to plan your administrative actions and loan refund before the military
+  phase, thus without knowing precisely how long the turn will last and how
+  much you'll spend for moving troops (especially if at war). Thus, there is
+  often some risk involved\ldots
+
+  \smallskip
+
+  Remember that the economical system works best if you have some loan that
+  you refund and recontract immediately (for a net effect of transferring
+  Prestige income into the \RT). If you plan to use this loan trick, then the
+  amount of loan involved is not really a debt, that is increase you income
+  without debt by this amount when planning your expenses.
+
+  \smallskip
+
+  Remember that the worse that can happen is a \RT collapse. But even for that
+  you need several turns of bad luck, bad management, or bad wars. Thus, don't
+  be afraid of making too big errors with the economical system. You should
+  get the hand of it before catastrophic results occur\ldots
+\end{playtip}
+
+\begin{exemple}
+  If your \STAB is +2 and your are at peace (\bonus{+2} to Exchequer test),
+  then you'll likely to get \undemi\textetoile, S or S\textetoile (with only
+  10\% chance of \undemi). \undemi\textetoile has 100\% income with debt while
+  S\textetoile has 100\% income without debt. Thus, by spending as much as
+  your Gross income, you're almost guaranteed to be able to cover your
+  expenses, maybe with some new loans. There is a small risk (10\%) of a bad
+  result (\undemi) that will leave you with only 80\% income. Estimate the
+  risk versus gain for the last 20\% of expenses. On the other hand, a good
+  result gives you up to 120\% with debt, hence some choice on whether to
+  contract loan in order to get more Prestige.
+
+  \smallskip
+
+  If your \STAB is -2 and you roll at \bonus{-3} due to heavy loans or
+  previous bankruptcies, then the likely result are F\textetoile, F or \undemi
+  (disregarding the unlikely \undemi\textetoile). If you are at war, the
+  income with debt for F\textetoile is 80\%, and the income with debt of
+  \undemi is 90\%. Thus by spending around 80\% of your Gross Income, you're
+  sure to be able to fill your budget with some loan. But you're also sure to
+  need some new loan\ldots (and a good surprise may arise in the form of
+  \undemi\textetoile).
+
+  \smallskip
+
+  Note that the true difference in the table is between \undemi (only 50/80\%
+  of the total) and \undemi\textetoile (70/100\%). Especially, being at peace
+  with a \STAB of +3 guarantees a good result.
+\end{exemple}
+
 \subsection{Loan Management}
 
 \subsection{Prestige and Wealth}\label{chPeace:Prestige and Wealth}
