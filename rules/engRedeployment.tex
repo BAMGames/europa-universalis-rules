@@ -25,7 +25,7 @@ activated during the turn (whatever the cause of activation).
 always attack establishments of countries against which they are at war.
 \bparag Troops of \ROTW minor countries outside \Areas owned by the minor may
 attack establishments of countries against which they are at war. The
-controlled of the minor decide whether they attack or not.
+controller of the minor decides whether they attack or not.
 
 \aparag[Combined attacks]
 \bparag If, in a given province, several forces attack, there are combined in
@@ -61,11 +61,14 @@ die on \ref{table:Pirates
 \item[+N] level of the fortress.
 \item[+M] Manoeuvre value of a \terme{land leader} in defence.
 \item[-1] For each \LD of the attacking force (native or \ROTW minor).
-\item[-1] For each foreign \COL or \TP in the same \Area.
+\item[-1] For each foreign \COL or \TP in the same \Area (not belonging to the
+  attacked country).
 \item[-M] Manoeuvre value of an attacking leader (native or \ROTW minor).
 \item[+3] If the Natives were defeated at least once in the province this turn
-  without being routed.
-\item[+6]If the Natives were routed at least once in the province this turn.
+  without being routed, and there is at least 1\LD of natives in the attacking
+  stack.
+\item[+6]If the Natives were routed at least once in the province this turn,
+  and there is at least 1\LD of natives in the attacking stack.
 \end{modlist}
 \bparag All rolls are simultaneous, that is an establishment destroyed by an
 attack still provides a \bonus{-1} to attacks in the same \Area.
@@ -89,6 +92,20 @@ may also be applied to fortifications (loosing 1 level of fortress or 1 fort
 instead of 1\LD). The controller chooses whether to loose troops or
 fortifications, but as many loses as possible must be satisfied. Exceeding
 loses are ignored.
+
+\aparag[Exploited resources]
+\bparag If an establishment loses levels and is still able to exploit all its
+resources, nothing change.
+\bparag If an establishment loses levels and is no more able to exploit all
+its resources, it must free some of them (controller choice) until it has
+sufficiently many levels to exploit the rest.
+\bparag Resources freed this way will be attributed during the next
+administrative phase to any establishment in the \Area with free levels to
+exploit them, using the procedure for automatic competition in case of
+disagreement between players.
+\bparag Remember that it is possible to voluntarily free some resource as a
+diplomatic announcement, typically in order to be allowed to exploit a more
+valuable resource that has just been freed.
 
 \aparag[End of activation]
 \bparag Once the attack is resolved in a province, natives of this province
@@ -131,8 +148,8 @@ automatically reactivated next turn unless peace with the minor is signed.
     1\LD (3 remain).
   \end{itemize}
   Remark : when sending troops to fight off natives, don't do it
-  half-heartily. Otherwise, you may result in loosing your troops in addition
-  to your establishment\ldots
+  half-heartily. Otherwise, you may lose your troops in addition to your
+  establishment\ldots
 \end{exemple}
 
 \section{Attacks by Pirates \& Privateers}\label{chRedep:Corsair Attack}
@@ -451,7 +468,7 @@ fraction.
   \TradeFLEET\facemoins of level 0 (3) of \FRA, \TradeFLEET\facemoins of level
   1 (2) of \paysGenes, \TradeFLEET\facemoins of level 1 (3) of \paysHollande,
   \TradeFLEET\facemoins of level 0 (2) of \HIS, \TradeFLEET\facemoins of level
-  0 (2) of \VEN and \TradeFLEET\facemoins of level 1 of \TUR. A mch more
+  0 (2) of \VEN and \TradeFLEET\facemoins of level 1 of \TUR. A much more
   devastating result.
 \end{exemple}
 
@@ -581,8 +598,8 @@ military looting (\ref{chRedep:Looting}).
 \subsection{Revolts in minor countries}
 \aparag \REVOLT/\REBELLION in inactive minor countries are automatically
 removed without any roll.
-\bparag \REVOLT in active minor countries must be fought using the normal
-rules.
+\bparag \REVOLT/\REBELLION in active minor countries must be fought using the
+normal rules.
 
 \subsection{Loss of \STAB due to Revolts}
 \label{chRedep:Revolts Stability}
@@ -647,13 +664,13 @@ considered adjacent to \provinceAlba, \provinceAyr, \provinceGalloway and
 \provinceCumberland, \provinceLancashire and \provinceCymru ;
 \provinceLeinster is considered adjacent to \provinceCymru and
 \provinceCornwall.
-\bparag If the extension of a \REVOLT/\REBELLION\faceplus is not possible, a
-Revolt or Rebellion \LD is placed in the same province (immediately merged
-with existing Revolted or Rebelled troops into an \ARMY\Facemoins or
-\ARMY\Faceplus using usual rules for conversion).
-\bparag If there are several \REVOLT\Facemoins (or \REBELLION\Facemoins) in
-the same province, they are immediately merged in a
-\REVOLT/\REBELLION\Faceplus.
+\bparag If the extension of a \REVOLT/\REBELLION\faceplus is not possible (due
+to overstacking of counters), a Revolt or Rebellion \LD is placed in the same
+province (immediately merged with existing Revolted or Rebelled troops into an
+\ARMY\Facemoins or \ARMY\Faceplus using usual rules for conversion).
+\bparag If there are two \REVOLT\Facemoins (or \REBELLION\Facemoins) in the
+same province, they are immediately merged in a \REVOLT/\REBELLION\Faceplus
+(before checking stacking).
 \bparag Remember, that there can be at most 2 \REVOLT/\REBELLION markers
 stacked in each province.
 
@@ -672,7 +689,7 @@ stacked in each province.
 
   Next, \REVOLT extend. All the \REVOLT extend simultaneously, that is newly
   created \REVOLT do not extend in the phase they were created (otherwise,
-  you're trapped in an infinite loop). Both the \REVOLT\Facemoins become
+  you're trapped in an infinite loop). Both \REVOLT\Facemoins become
   \REVOLT\Faceplus. The two \REVOLT\Faceplus create new
   \REVOLT\Facemoins. Since the \REVOLT\Faceplus in \provinceBearn is in \FRA,
   it may only extend in \FRA. Thus, the new \REVOLT\Facemoins may not be
@@ -834,7 +851,8 @@ take place, money is gained from looting.
 of the looted province.
 \bparag In the \ROTW, only the regular income is taken, not income from exotic
 resources.
-\bparag In the \ROTW, if there was less than 2\LD, gain only half the income.
+\bparag In the \ROTW, if there was strictly less than 2\LD, gain only half the
+income.
 \bparag The sum of these incomes is recorded in \lignebudget{Pillages,
   privateers}.
 \bparag Nobody gets money for provinces looted by minors country (including
@@ -844,7 +862,7 @@ resources.
 \bparag Instead of looting, troops controlling enemy \TP (not \COL) may choose
 to burn it down.
 \bparag Besieging is not sufficient to burn a \TP. The establishment must be
-controlled.
+controlled, and a stack (at least 1\LDE) has to be here.
 \bparag Simply remove any burned \TP from the map, it now has level 0 and
 exploit no more resource.
 \bparag No income is gained from burning a \TP. Only the destruction of the
@@ -852,8 +870,10 @@ establishment.
 
 \begin{exemple}[Looting]
   In period \period{III}, \SPA took control of Dutch \provinceUtrecht and
-  besieges \provinceZeeland. There is already a \PILLAGE\Facemoins in
-  \provinceUtrecht (a \PILLAGE\Faceplus was here and was reduced).
+  besieges \provinceZeeland, a stack is still present in \provinceUtrecht
+  (defending against a potential counterattack). There is already a
+  \PILLAGE\Facemoins in \provinceUtrecht (a \PILLAGE\Faceplus was here and was
+  reduced).
 
   Since \SPA is still besieging \provinceZeeland and intends to continue the
   siege in the next turn, it chooses not to loot here. The \PILLAGE would
@@ -888,6 +908,9 @@ establishment.
 \subsection{Mandatory and voluntary retreats}
 \aparag[Mandatory retreats]
 \bparag A stack without LOS must retreat.
+\bparag A besieging stack must retreat if it is too small to maintain the
+siege (less than 1\LD per level of the fortress). This typically occurs in
+case of siege attrition during the last round.
 \bparag A besieging stack must retreat if there is no \USURE\Faceplus and
 there was neither Breach nor HW obtained during this turn.
 
@@ -906,8 +929,8 @@ considered as voluntary retreat.
 \bparag Stacks must retreat into the closest (in \MP) friendly controlled
 territory. In case of equality, the controller of the stack chooses.
 \bparag Retreating stacks may not enter provinces with non-retreating enemy
-troops (including troops that have finished their retreat: these are still
-``retreating'' until the end of the segment).
+troops (troops that have finished their retreat are still ``retreating'' until
+the end of the segment and thus do not hamper other retreats).
 \bparag Retreating troops may use naval move if there is a large enough naval
 stack adjacent to the retreating stack at the beginning of the
 retreat. Retreat is then done together with return to port of the naval stack
@@ -1014,6 +1037,8 @@ a HW during the turn may continue the siege for next turn.
   If there was no naval stack adjacent to \provinceMalta, then retreat would
   have been impossible and the Turkish army is destroyed.
 
+  \smallskip
+
   If \SUE is besieging \provinceDanzig and owns \provinceHinterpommern, then
   its retreat priority is by sea (3\MP) if there is a naval stack adjacent and
   then to \provinceHinterpommern (4\MP due to swamp and river).
@@ -1049,7 +1074,7 @@ they do count toward the counters limit of that power.
 \bparag Because of \Presidios, up to two fortresses of different countries may
 exist in the same province. Put the regular fortress on top of the fortress
 icon on the map, and the \Presidio on top of the anchor.
-\bparag If a country ever gain ownership of a province where it has a
+\bparag If a country ever gains ownership of a province where it has a
 \Presidio, it may either dismantle the \Presidio or keep it and replace the
 regular fortress of the province with it (remove any existing regular fortress
 counter and move the \Presidio counter on top of the fortress icon to depict
@@ -1060,10 +1085,12 @@ the new fortress).
 
 \aparag[Navies]
 \bparag Naval stacks being located in a sea zone have the choice to either
-\bparag retreat to any friendly, unblockaded port (or arsenal) of the
+\begin{modlist}
+  \item retreat to any friendly, unblockaded port (or arsenal) of the
 controller's choice (not necessarily the closest one);
-\bparag or stay at sea.
-\bparag This is considered a move (even if staying at sea) and as any naval
+\item or stay at sea.
+\end{modlist}
+\bparag This is considered a move (even if staying at sea) and, as any naval
 move, it causes attrition with the usual modifiers.
 \bparag In addition, naval stacks staying at sea at the end of turn have a
 malus of \bonus{+2} to this roll.
@@ -1082,7 +1109,7 @@ during this move.
 \section{Gold repatriation}\label{chRedep:Gold Repatriation}
 
 \aparag[Before redeployment]
-\bparag[Income.] During Income phase, gold produce in a \COL may be stored in
+\bparag[Income.] During Income phase, gold produced in a \COL may be stored in
 any coastal \COL in the same or adjacent \Area. See~\ref{chIncomes:Gold
   Production}.
 \bparag[Military.] During military rounds, gold may be moved either with
@@ -1091,9 +1118,9 @@ enemies. See~\ref{chIncomes:SpanishConvoys} for the apparition of the Spanish
 convoys and~\ref{chMilitary:Convoys} for the attacks on convoys.
 
 \aparag[Reaching Europe]
-\bparag As soon as a land or naval stack carrying gold reaches a province on
-the European map, the gold is emptied and the amount is tallied in
-\lignebudget{Gold from ROTW and Convoys}.
+\bparag As soon as a land or naval stack carrying gold reaches a owned and
+controlled province on the European map, the gold is emptied and the amount is
+tallied in \lignebudget{Gold from ROTW and Convoys}.
 \bparag Note that \COL of level 6, as well as \provinceAcores or
 \province{Islas Canarias}, are European provinces but not on the European map
 and are thus not sufficient to bring gold back home.
@@ -1107,11 +1134,13 @@ bordering that sea.
 establishments (\COL, \TP or fort).
 \bparag Each establishment along the chain must be 12\MP or less from the
 previous one (counting the cost as for \LD).
-\bparag The path may not cross an enemy occupied province.
+\bparag The path may not cross a province with a non-besieged enemy stack or
+fortress.
 \bparag Gold can thus be repatriated for any distance as long as each ``leg''
 of the movement is 12\MP or less.
-\bparag If Gold reaches an owned province on the European map, it is
-immediately emptied and tallied in \lignebudget{Gold from ROTW and Convoys}.
+\bparag If Gold reaches an owned and controlled province on the European map,
+it is immediately emptied and tallied in \lignebudget{Gold from ROTW and
+  Convoys}.
 \bparag This movement of Gold may not be intercepted in any way.
 
 % Local Variables:
