@@ -356,7 +356,8 @@ turn.
 \aparag[International loans]
 \bparag Since the interests are not changed by partial refund of the capital,
 management of the international loans is entirely done during the
-administrative phase (when refunding) and the budget segment (for new loans).
+administrative phase (when bankrupting or refunding) and the budget segment
+(for new loans).
 
 \aparag[National loans]
 \bparag Compute in \lignebudget{National loans at end} the difference between
@@ -371,7 +372,7 @@ next turn.
 country. Wealth represent the overall economical situation of the country, as
 well as exceptionally good management (in the form of Prestige).
 \bparag At the end of each period, wealth is converted into \VPs. Each country
-has a different rate of exchange of wealth for \VPs as each country as
+has a different rate of exchange of wealth for \VPs as each country has
 different typical economical situation.
 \bparag All in all, each country is expected to score around 100\VPs for
 wealth each period, give or take a few dozens if this is supposed to be a
@@ -395,57 +396,92 @@ at each period.
 \section{Stability Improvement}\label{chPeace:Stability Improvement}
 
 \label{chPeace:Stability Improvement}
-\aparag A player can attempt to improve his Stability, but this is never
-compulsory. If he desires to improve it, he must write down the investment he
-wishes to pay for such an action and then roll for the Test of Stability
-Improvement. The Stability is then adjusted in function of the obtained
-result. This result may even be negative!
-\aparag[Investment]
-\bparag Basic Investment: 30 \ducats
-\bparag Medium (+2 to the die-roll): 50 \ducats
-\bparag Strong (+5 to the die-roll): 100 \ducats
+\aparag[Stability] A country may attempt to improve his Stability, but this is
+never mandatory. As many action, Stability improvement requires an investment
+and is resolved by a die roll. Beware that in some situation the result must
+be negative and can be forfeited once the die has been rolled.
+
+\aparag[Investment] Each player wanting to improve that Stability of his
+country first choose and investment and write it in \lignebudget{Stability
+  improvement}. As for administrative action, higher investments give bonuses
+to the roll.
+\bparag The investment are:
+\begin{modlist}
+  \item Basic Investment: 30 \ducats
+  \item Medium (+2 to the die-roll): 50 \ducats
+  \item Strong (+5 to the die-roll): 100 \ducats
+\end{modlist}
 
 \aparag[Procedure]
-This action is resolved without requiring a table.  The player rolls the die
-of conjuncture. This die-roll is modified as follows:
-\bparag +? \ADM monarch,
-% [TBD: or \MIL if at war ?]
-\bparag +? if medium or strong investment
-\bparag +2 if victim of a declaration of war (solely if the player has not
-transgressed himself an alliance, and has not declared war to anybody during
-this turn)
-\bparag -2 if at war with a minor country
-\bparag -3 if at war with one or more players (non-cumulative with the -2
-above)
-\bparag -5 if an enemy \ARMY counter is on a national province and controls
-the province city (not applicable during a Religious/Civil War or to rebel
-stacks appeared during or as a consequence of such an event)
-\bparag -3 Exception: for \SPA, the malus for having an enemy \ARMY counter
-controling the city, is -3 only, however it applies for any owned territory
-(not only its national territory).  This specificity ends
-with \eventref{pIV:Olivares} (if effects are applied), or with
-\eventref{pV:WoSS} (whatever the choices and outcomes).
-\bparag +3 for a Prosperous Power
-\bparag -3 for an Anti-Prosperous Power
-\bparag $\pm$? by event
-\aparag[Result]
-If the modified result is equal to:
-\bparag 11-14: the Stability increases 1 level
-\bparag 15-17: the Stability increases 2 levels
-\bparag 18+: the Stability increases 3 levels
-\bparag 5 or less: the Stability decreases 1 level
-\bparag Reminder: Stability varies from -3 to +3.
+This action is resolved without requiring a table.  The player rolls a die
+modified as follows (all modifiers are cumulative):
+\begin{modlist}
+  \item[+?] \ADM monarch.
+  \item[+2/5] if medium/strong investment.
+  \item[+2] if the country was victim of a declaration of war this turn
+    without having broken an alliance or declared a war itself.
+  \item[-3] if the country is at war with at least one major country
+    (including overseas wars but excluding interventions).
+  \item[-2] if the country is at war with at least one minor country and no
+    major country (including overseas wars but excluding interventions).
+  \item[-5] if an enemy \ARMY counter is in an owned national province and
+    controls the province city (not applicable during a Religious/Civil War,
+    do not count revolt and rebel troops).
+  \item[-3] Exception: for \SPA, the malus for having an enemy \ARMY counter
+    controling the city, is -3 only, however it applies for any owned
+    territory (not only its national territory). This specificity ends with
+    \eventref{pIV:Olivares} (if effects are applied), or with
+    \eventref{pV:WoSS} (whatever the choices and outcomes).
+  \item[+3] for a Prosperous Power (see below).
+  \item[-3] for an Anti-Prosperous Power (see below).
+  \item[$\pm$?] by event.
+\end{modlist}
 
-\aparag[Prosperity]\label{chPeace:Prosperity}
-The player checks on his economic form the evolution of his \terme{Gross
-  Income} on the last two consecutive turns (including the one just
-played). This evolution affects the Stability Improvement Action, as seen
-above.
-\bparag[Prosperous Power:]
-If the gross income has not decreased during the last 2 consecutive turns and
-progressed during at least one of those turns.
-\bparag[Anti-ProsperousPpower:]
-If it has decreased 2 consecutive turns.
+\begin{designnote}{Spanish empire}
+  The early Spanish empire was more of a multicultural empire including both
+  Spain, Italy and the Netherlands than a modern country. Hence, occupying
+  any part of the empire will hurt some people (and hamper Stability). There
+  is no real notion of national territory to defend at all cost opposed to
+  more distant vassals and ``colony''. However, only part of the empire is
+  shocked by the war, thus the malus is smaller. Olivares policies recentred
+  the empire on Spain, making it more like other European powers of the time.
+\end{designnote}
+
+\aparag[Result] If the modified result is equal to:
+\begin{modlist}
+  \item[5-] the Stability \textbf{decreases} by 1.
+  \item[6-10] Nothing changes.
+  \item[11-14] the Stability increases by 1.
+  \item[15-17] the Stability increases by 2.
+  \item[18+] the Stability increases by 3.
+\end{modlist}
+\bparag Reminder: Stability varies from -3 to +3. It is not possible to
+decline the result (especially the loss of Stability) once the die has been
+rolled.
+
+\aparag[Prosperity]\label{chPeace:Prosperity} tracks the evolution of the
+Gross income (as recorded in \lignebudget{Gross income A}). A regular increase
+of the Gross income will make people happy and ease Stability improvement, a
+regular decrease will make people unhappy.
+\bparag[Prosperous Power] A country is \terme{Prosperous} if its Gross income
+has not decreased during the last 2 consecutive turns and progressed during at
+least one of those turns.
+\bparag[Anti-Prosperous Power:] A country is \terme{Anti-Prosperous} if its
+Gross Income has decreased 2 consecutive turns.
+
+\begin{exemple}{Prosperity}
+  If the Gross income for the last two turns and the current one are:
+  \begin{itemize}
+  \item 100, 100, 101: the country is prosperous (no decrease, at least one
+    increase).
+  \item 100, 110, 120: the country is prosperous.
+  \item 100, 110, 109: nothing (one decrease prevents prosperity even if the
+    final result is higher than two turns earlier)
+  \item 100, 99, 98: the country is anti-prosperous.
+  \item 100, 99, 99: nothing (one stagnation prevents anti-prosperity).
+  \end{itemize}
+
+\end{exemple}
 
 \section{Peace offers and discussions}\label{chPeace:Peace offers}
 \subsection{The Informal Peace}
