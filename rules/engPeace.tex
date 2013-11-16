@@ -350,8 +350,48 @@ one refund (for the same turn as the last interest).
 \end{exemple}
 
 \subsection{Loan Management}
+\aparag Players must then correctly take care of their loans for the next
+turn.
+
+\aparag[International loans]
+\bparag Since the interests are not changed by partial refund of the capital,
+management of the international loans is entirely done during the
+administrative phase (when refunding) and the budget segment (for new loans).
+
+\aparag[National loans]
+\bparag Compute in \lignebudget{National loans at end} the difference between
+\lignebudget{National loans at start}, minus \lignebudget{National loans
+  bankruptcy}, minus \lignebudget{National loans refunds} and add
+\lignebudget{New National loans}.
+\bparag Report this number in \lignebudget{National loans at start} of the
+next turn.
 
 \subsection{Prestige and Wealth}\label{chPeace:Prestige and Wealth}
+\aparag[Wealth] During each period, a global wealth is computed for each
+country. Wealth represent the overall economical situation of the country, as
+well as exceptionally good management (in the form of Prestige).
+\bparag At the end of each period, wealth is converted into \VPs. Each country
+has a different rate of exchange of wealth for \VPs as each country as
+different typical economical situation.
+\bparag All in all, each country is expected to score around 100\VPs for
+wealth each period, give or take a few dozens if this is supposed to be a
+period of glory or decay.
+
+\aparag[Prestige] Write in \lignebudget{Prestige VPs} the difference between
+\lignebudgetlong{Prestige income} minus \lignebudgetlong{from Prestige}. That
+is the remaining Prestige income that was not spend for covering daily
+expenses.
+
+\aparag[Wealth] Turn wealth is the sum of the Gross income and the Prestige
+\VPs. Period wealth is the sum of all turn wealth over all the period.
+\bparag Write in \lignebudget{Wealth} the sum of \lignebudget{Gross income A}
+and \lignebudget{Prestige VPs}.
+\bparag Write in \lignebudget{Period wealth} the sum of \lignebudget{Period
+  wealth} of the previous turn and \lignebudget{Wealth} of the current turn.
+\bparag Exception: If this is the first turn of a period, simply copy
+\lignebudget{Wealth} into {Period wealth}. That is, period wealth is reseted
+at each period.
+
 \section{Stability Improvement}\label{chPeace:Stability Improvement}
 
 \label{chPeace:Stability Improvement}
