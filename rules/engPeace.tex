@@ -492,8 +492,8 @@ done between two alliances and not between single countries. Separate peaces
 are possible but usually harder. Peace between major countries (and their
 minor allies) are the result of an agreement between players. However, the
 Stability of the countries and the military situation creates a \terme{Peace
-  differential} and strongly constrain the peace. This represent the overall
-opinion of the countries toward the current war and prevent players from
+  Differential} and strongly constrains the peace. This represents the overall
+opinion of the countries toward the current war and prevents players from
 signing unrealistic peaces. Peaces when one side only consist in minor
 countries (most of the time, a single one) are resolved by a die roll
 depending mostly on the military situation.
@@ -504,7 +504,7 @@ peace between them.
 \aparag[Separate peace between majors] If two alliances are at war, some
 powers may sign peace with the whole enemy alliance.
 \bparag Powers signing separate peaces are considered as breaking their
-alliance (loosing 2\STAB and giving a \CB to former allies as
+alliance (loosing 2 \STAB and giving a \CB to former allies as
 per~\ref{chDiplo:Alliance:Defensive Alliance}).
 % avoid taking 3 provinces to 2 different enemies and stay at war with the
 % third
@@ -512,16 +512,13 @@ per~\ref{chDiplo:Alliance:Defensive Alliance}).
 with the same enemy alliance at a given turn, they must sign one single
 separate peace.
 
-\aparag[Minor allies] always sign peace at the same time as their diplomatic
-patron.
-
 \begin{exemple}[Separate peace]
   \TUR is at war against \VEN, \HIS (and \AUS) and \POL. After an incursion in
-  the Balkan, \provinceVeneto itself is threatened, thus \VEN would like to
-  sign peace before it's too late. On the East side, \RUS is massing troops
-  along the Polish frontier and \POL would also like to get out of here in
-  order to defend its border. On the other hand, \HIS and \AUS have not
-  suffered much and want to stay at war.
+  Hungary, \provinceVeneto itself is threatened, thus \VEN would like to sign
+  peace before it's too late. On the East side, \RUS is massing troops along
+  the Polish frontier and \POL would also like to get out of here in order to
+  defend its border. On the other hand, \HIS and \AUS have not suffered much
+  and want to stay at war.
 
   \TUR may choose to accept the separate peace either with \VEN alone, or with
   \POL alone, or with both \VEN and \POL together (treating this as a peace
@@ -533,6 +530,9 @@ patron.
   peace. Minors allies of \TUR are also part of the peace.
 \end{exemple}
 
+\aparag[Minor allies] always sign peace at the same time as their diplomatic
+patron.
+
 \aparag[Proposing separate peace with minor] An alliance may propose separate
 peace with minor allies of an opposing alliance at the following conditions:
 \bparag An alliance may propose a separate peace to minor in \VASSAL or
@@ -542,7 +542,7 @@ peace with minor allies of an opposing alliance at the following conditions:
 alliance. In this case, it must be a winning peace (level 1 or more) in favour
 of the minor.
 \bparag An alliance may propose a separate peace to minor in \VASSAL or
-\ANNEXION of one enemy if it has captured the monarch of the minor and choose
+\ANNEXION of one enemy if it has captured the monarch of the minor and chooses
 to ransom it for a separate peace.
 \bparag An alliance may propose a separate peace to minor \textbf{not} in
 \VASSAL or \ANNEXION of one enemy if it controls any province of the minor.
@@ -554,7 +554,8 @@ more) in favour of the minor.
 % \bparag An alliance may sign a unconditional peace (peace of level 5) in
 % favour of any minor that declared war by event.
 \bparag Otherwise, each alliance may propose a separate peace to one and only
-one minor ally of each opposing alliance.
+one minor ally of each opposing alliance, \textbf{not} in \VASSAL or
+\ANNEXION.
 
 \aparag[Signing separate peace with minors]
 \bparag As all peaces with minors, separate peaces with minors are resolved by
@@ -565,25 +566,44 @@ minors is resolved independently.
 it is not possible to sign a separate peace at the same turn as the global
 peace.
 
+\begin{exemple}[Separate peaces with minors]
+  \TUR, allied to \paysMaroc and \paysTripoli, with \VASSAL\ \paysAlgerie and
+  \paysTunisie is at war against \HIS, allied to \paysVenise with \VASSAL\
+  \paysChevaliers. \HIS controls \provinceJebelTubqal (in \paysMaroc),
+  \provinceOran (in \paysAlgerie) and \provinceIfriqiya (capital of
+  \paysTunisie). \TUR does not control any Christian provinces.
+
+  \TUR may not propose peace to \paysChevaliers as it is a \VASSAL. It may
+  propose peace to \paysVenise.
+
+  \HIS may propose peace to \paysMaroc because it controls one of its
+  provinces. \HIS may propose a peace to \paysTunisie, even through it is a
+  \VASSAL, because it controls its capital. \HIS may not propose peace to
+  \paysAlgerie because it is a \VASSAL and even if it controls one province,
+  it does not controls the capital. It may, in addition, propose peace to
+  \paysTripoli as each alliance is always entitled to one separate peace with
+  one enemy minor at no condition.
+\end{exemple}
+
 \aparag[Mandatory peaces between majors] It is usually not mandatory to sign a
 peace, however:
-\bparag If a country is a -3\STAB for two consecutive turns at the beginning
+\bparag If a country is a -3 \STAB for two consecutive turns at the beginning
 of the peace segment, it must \textbf{propose} a peace to all alliances
 against which it was at war during these two turns.
 \bparag If several members of the same alliance must propose a mandatory
 peace, they must propose it together (as usual with separate peaces).
-\bparag The peace proposal is made based on the \terme{Peace differential} as
+\bparag The peace proposal is made based on the \terme{Peace Differential} as
 any regular peace. That is, the country is forced to proposed a peace but the
 other regular rules for peaces are still enforced. This is not necessarily a
 surrender, and in some cases it is even possible to be forced to proposed a
 winning peace\ldots
 \bparag The opposing alliance is not forced to accept the peace. It the peace
 is refused, their is no penalty.
-\bparag If two powers at war against one another must propose a mandatory
+\bparag If two powers at war against one another must both propose a mandatory
 peace, then the peace must be signed.
 \bparag In the rare case where two alliances are at war and one (or more)
 member of each alliance must propose a mandatory peace, proceed as follows:
-(i) each power first propose a peace to the whole enemy alliance (ii) if both
+(i) each power first proposes a peace to the whole enemy alliance (ii) if both
 are refused, then the mandatory peace is signed only between the concerned
 powers.
 
@@ -597,13 +617,14 @@ that power is not considered to have broken alliance.
 the same alliance), then the minor automatically signs a mandatory
 unconditional surrender (peace of level 5) with all its enemies together. That
 is, this is one global peace and not one surrender against each enemy.
+\bparag It is not possible to refuse that peace.
 \bparag If an alliance of minors is at war with no major ally, it
-automatically accept an unconditional surrender (peace of level 5) in its
-favour if the enemy propose it.
+automatically accepts an unconditional surrender (peace of level 5) in its
+favour if the enemy proposes it.
 
 \aparag[Tri-partite wars]
-\bparag If three (or more) alliance are at war against one another, each peace
-signed is only signed between two alliances. The others stay at war.
+\bparag If three (or more) alliances are at war against one another, each
+peace signed is only signed between two alliances. The others stay at war.
 \bparag It is of course possible that all alliances at war decide to sign
 peace at the same moment.
 
@@ -619,12 +640,27 @@ including:
     minor countries.
 \end{modlist}
 
-\aparag[Peace discussions] may last for a long time, especially for big wars
-including many countries.
-\bparag It is advised to try and minimise the time involved for peace
-discussion and keep the negotiations for the Diplomatic phase. However, some
-complex transactions and evaluation of the new situation are not uncommon.
+\begin{playtip}[Peace discussions]
+  Peace discussions may last for a long time, especially for big wars
+  including many countries. It is advised to try and minimise the time
+  involved for peace discussion and keep the negotiations for the Diplomatic
+  phase. However, evaluation of the new situation is required and some complex
+  transactions are not uncommon. Discussions should be kept focused on the
+  current peace and not diverge toward long term agreements (these are best
+  suited for the Diplomatic phase).
 
+  Players may isolate themselves from other players in order to discuss
+  peaces. Either allies wanting to prepare a common proposal or enemies
+  wanting to discuss secret clauses without third party players interfering in
+  the discussion. Private discussions do not need to include all members of a
+  given alliance\ldots As a rule of thumb, peace discussions between enemies
+  is faster is there are no other players listening and commenting the
+  proposals, trying to influence it. However, do not hesitate to ask advice
+  from other players to check if some proposal is as balanced as it
+  seems. Especially, inexperimented players may have hard time to grasp all
+  the consequence of some agreement and may want to consult an experimented
+  neutral player\ldots
+\end{playtip}
 
 %% No possibility to make a white peace at any time.
 % \subsection{The Informal Peace}
