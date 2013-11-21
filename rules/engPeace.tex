@@ -530,8 +530,7 @@ separate peace.
   peace. Minors allies of \TUR are also part of the peace.
 \end{exemple}
 
-\aparag[Minor allies] always sign peace at the same time as their diplomatic
-patron.
+\aparag[Minor allies] always sign peace when their diplomatic patron does.
 
 \aparag[Proposing separate peace with minor] An alliance may propose separate
 peace with minor allies of an opposing alliance at the following conditions:
@@ -582,14 +581,18 @@ peace.
   \paysAlgerie because it is a \VASSAL and even if it controls one province,
   it does not controls the capital. It may, in addition, propose peace to
   \paysTripoli as each alliance is always entitled to one separate peace with
-  one enemy minor at no condition.
+  one enemy minor at no condition. 
+
+  Thus, \HIS may propose up to three separate peaces with minor. If it does,
+  each of these peaces is resolved separately.
 \end{exemple}
 
 \aparag[Mandatory peaces between majors] It is usually not mandatory to sign a
 peace, however:
 \bparag If a country is a -3 \STAB for two consecutive turns at the beginning
-of the peace segment, it must \textbf{propose} a peace to all alliances
-against which it was at war during these two turns.
+of the peace segment, it must \textbf{propose} a peace to each alliance
+containing at least one major against which it was at war during these two
+turns.
 \bparag If several members of the same alliance must propose a mandatory
 peace, they must propose it together (as usual with separate peaces).
 \bparag The peace proposal is made based on the \terme{Peace Differential} as
@@ -598,7 +601,7 @@ other regular rules for peaces are still enforced. This is not necessarily a
 surrender, and in some cases it is even possible to be forced to proposed a
 winning peace\ldots
 \bparag The opposing alliance is not forced to accept the peace. It the peace
-is refused, their is no penalty.
+is refused, there is no penalty.
 \bparag If two powers at war against one another must both propose a mandatory
 peace, then the peace must be signed.
 \bparag In the rare case where two alliances are at war and one (or more)
@@ -606,6 +609,10 @@ member of each alliance must propose a mandatory peace, proceed as follows:
 (i) each power first proposes a peace to the whole enemy alliance (ii) if both
 are refused, then the mandatory peace is signed only between the concerned
 powers.
+
+\aparag[Mandatory peaces and global peaces] Note that if a global peace is
+signed, no separate peace may be signed first. Thus, mandatory peace proposals
+only happen if the global peace is not signed.
 
 \aparag[Mandatory peace and alliances]
 \bparag If a power is forced to propose a peace and that peace is accepted,
@@ -618,6 +625,9 @@ the same alliance), then the minor automatically signs a mandatory
 unconditional surrender (peace of level 5) with all its enemies together. That
 is, this is one global peace and not one surrender against each enemy.
 \bparag It is not possible to refuse that peace.
+\bparag If the minor was at war allied to a major, it immediately goes to
+\Neutral before resolving the peace (the minor consider that its patron should
+have protected it).
 \bparag If an alliance of minors is at war with no major ally, it
 automatically accepts an unconditional surrender (peace of level 5) in its
 favour if the enemy proposes it.
@@ -628,7 +638,7 @@ peace signed is only signed between two alliances. The others stay at war.
 \bparag It is of course possible that all alliances at war decide to sign
 peace at the same moment.
 
-\aparag[Event and peaces]
+\aparag[Events and peaces]
 \bparag Many events create wars with specific conditions with regard to peace,
 including:
 \begin{modlist}
@@ -643,7 +653,7 @@ including:
 \begin{playtip}[Peace discussions]
   Peace discussions may last for a long time, especially for big wars
   including many countries. It is advised to try and minimise the time
-  involved for peace discussion and keep the negotiations for the Diplomatic
+  involved for peace discussions and keep the negotiations for the Diplomatic
   phase. However, evaluation of the new situation is required and some complex
   transactions are not uncommon. Discussions should be kept focused on the
   current peace and not diverge toward long term agreements (these are best
@@ -654,15 +664,15 @@ including:
   wanting to discuss secret clauses without third party players interfering in
   the discussion. Private discussions do not need to include all members of a
   given alliance\ldots As a rule of thumb, peace discussions between enemies
-  is faster is there are no other players listening and commenting the
+  is faster if there are no other players listening and commenting the
   proposals, trying to influence it. However, do not hesitate to ask advice
   from other players to check if some proposal is as balanced as it
   seems. Especially, inexperimented players may have hard time to grasp all
-  the consequence of some agreement and may want to consult an experimented
+  the consequences of some agreement and may want to consult an experimented
   neutral player\ldots
 \end{playtip}
 
-%% No possibility to make a white peace at any time.
+%% No possibility to make a white peace at will.
 % \subsection{The Informal Peace}
 
 % \aparag The informal peace is concluded following a mutual agreement between 2
@@ -676,7 +686,116 @@ including:
 % \bparag This type of peace can not be concluded with a minor.
 
 \subsection{Peace differential}
+\aparag[The \terme{Peace Differential}] is an abstract way of determining the
+winner of any war between majors. It is mostly based on the \STAB of the
+countries involved, representing the people support for the war, slightly
+modified by the military situation.
+\bparag In case of separate peace, the \terme{Peace Differential} is computed
+only between the countries involved in the proposal.
+\bparag \terme{Peace Differential} strongly constrains the possibility of
+peace.
 
+\aparag[The basic Peace Differential] is the difference between the \STAB of
+the enemies.
+\bparag In case of alliance, take the mean \STAB of all member of the
+alliance. Do not round numbers at this point.
+\bparag Note that the basic PD is symmetrical, that is if an alliance has a
+basic PD of +1.5 versus another alliance, then the second alliance has a basic
+PD of -1.5 versus the first.
+
+\aparag[The modified Peace Differential] is obtained from the basic PD by
+checking the military situation.
+\bparag The alliance that controls more enemies provinces adds (and the other
+subtracts) to its basic PD:
+\begin{modlist}
+  \item[+1] if it controls 2 or 3 more provinces.
+  \item[+2] if it controls 4 or 5 more provinces.
+  \item[+3] if it controls at least 6 more provinces.
+\end{modlist}
+\bparag Count capitals as 2 provinces.
+\bparag Do count provinces of minor allies (or provinces controlled by minor
+allies) together with those of its diplomatic patron.
+\bparag Count \COL and \TP as \undemi\ province. Exception: \COL of level
+6 are considered as European provinces and count as a full province.
+
+\begin{exemple}[Modified Peace Differential]
+  \RUS is at war against allied \TUR and \SUE. The \STAB are 1 for \RUS, 0 for
+  \SUE and 1 for \TUR. Thus, the basic PD is 0.5 (1 - (1+0)/2) in favour of
+  \RUS.
+
+  \RUS occupy Swedish \provinceNeva and \provinceKarelen but \TUR occupy both
+  \provinceAstragan and \provinceTerek (annexed by \RUS a long time
+  ago). Both side thus controls as many enemy province and the PD is not
+  modified.
+\end{exemple}
+
+\begin{exemple}[PD and separate peaces]
+  In the same situation, if \RUS wants to sign a separate peace with \SUE,
+  then its basic PD is 1 (1-0, the \STAB of \TUR does not count). Since this
+  peace is only with \SUE, provinces controlled by \TUR are not taken into
+  account. \RUS controls 2 more provinces than \SUE, and the PD in its favour
+  is increased by 1 to 2.
+
+  On the other hand, if \RUS wants to sign a separate peace with \TUR, the
+  basic PD is 0 (they both have 1 \STAB) modified to 1 as \TUR controls two
+  more provinces.
+\end{exemple}
+
+\begin{exemple}[PD and minors]
+  If \paysCrimee was at war allied to \TUR and \RUS controls \provinceHacibey,
+  this province has to be taken into account for modified peace differential
+  in any peace that include \TUR.
+\end{exemple}
+
+\aparag[Military situation in overseas war]
+\bparag During overseas wars, count occupied \COL and \TP as one province
+each.
+\bparag[Privateer effect] In addition, each \TradeFLEET of maximum level 4 or
+more which was reduced to current level 0 or 1 counts as 1 province (2 in the
+country own \CTZ).
+\bparag Do count all \CTZ/\STZ where \TradeFLEET have been reduced without
+remembering who caused the losses.
+
+\begin{designnote}[Privateer effect]
+  Privateer effect is triggered even if the losses were caused by
+  \pays{Pirates} or a third party \corsaire (typically, one of
+  \Barbaresques), which may seem illogical. However, \corsaire are only a
+  partial and abstract representation of the actual privateer activity. It is
+  assumed that the real activity is more widespread, including in zones where
+  no counter was send. Moreover, the target country probably doesn't know for
+  sure who attacked each of its merchants. Or doesn't make a real difference
+  between pirates and enemy privateers\ldots
+\end{designnote}
+
+\aparag[The net Peace Differential] is obtained by rounding the modified PD to
+the nearest integer. In case of halves, round down in disfavour of the winning
+side (that is, round toward 0).
+\bparag Note that fractions in the PD may only come from the \STAB
+difference. However, the military situation may change the winner, thus the
+direction of the final rounding.
+
+\begin{exemple}[Rounding PD]
+  \SUE, \POL and \TUR are at war against \RUS. The \STAB of \RUS and \SUE is
+  1, while the \STAB of \POL and \TUR is 0. No side controls enemy
+  provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = two
+  third in favour of \RUS, rounded to +1 in favour of \RUS.
+
+  \SUE and \TUR are at war against \RUS. The \STAB of \RUS is 0, the \STAB of
+  \TUR is 1 and the \STAB of \SUE is 2. Thus, the basic PD is +1.5 in favour
+  of the alliance. If the military situation does not modify this, it is
+  rounded to +1 in favour of the alliance.
+
+  \smallskip
+
+  \SUE and \TUR are at war against \RUS. The \STAB of \RUS and \TUR are 1
+  while the \STAB of \SUE is 0. Thus, the basic PD is +0.5 in favour of
+  \RUS. However, the alliance controls four Russian provinces while \RUS
+  controls no enemy province. Thus, the PD is modified by 2 in favour of the
+  alliance, for a result of +1.5, rounded down to +1 in favour of the
+  alliance. Note that if rounding had occured before modification, the PD
+  would have been rounded to 0 and then modified to +2 in favour of the
+  alliance. Hence, it is important not to round at the wrong time.
+\end{exemple}
 
 \subsection{The Formal Peace}
 
@@ -688,30 +807,6 @@ mechanism.
 \bparag Once the principle of such a peace is accepted by the involved
 alliances, the type of a formal peace can be negotiated or not and depends on
 differential of the involved alliances's Stability.
-\aparag[The Peace Differential]
-For the detail of peace, we will call "Peace Differential" (PD) the
-differential between the Stability values of the 2 alliances at war and
-modified by the military situation as described below.  The PD is considered
-between the dominant alliance with the highest score (presumed victor) and the
-other one with the lowest (presumed loser). The Stability value of an alliance
-is that of the Major power in the alliance.
-\bparag[Case of Allies]
-if more than one Major power is involved in a side when signing a peace, the
-Stability used is the average of the allied powers, rounded on the nearest
-number (and down if one-half is obtained).
-\bparag[Military Situation modifiers]
-The Stability of a Major power is modified if it controls more provinces in
-the enemy alliance than the ennemies control in itself's territory.  If the
-difference is at least 2, the bonus is {\bf +1}, then {\bf +2} if at least 4,
-and {\bf +3} is at least 6. Control of a capital city of a Major power counts
-as 2 provinces in this comparison; \COL and \TP count for only one-half
-province.
-\bparag[Military Situation modifiers in Overseas Wars]\label{chPeace:Privateer Effect}
-The same comparison is made but controlled \COL and \TP count as full
-provinces.  \textit{Privateer Effect:} Moreover, each Commercial fleet with
-level 4 or higher that was reduced to 0 or 1 because of Privateers count as
-one province for the looting power at this turn (or 2 if in the \CTZ of the
-enemy).
 
 \aparag[Peaces that are permitted]
 \bparag If the PD is at most +2 in favour of one alliance, a Peace of level 0
