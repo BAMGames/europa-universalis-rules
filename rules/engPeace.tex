@@ -697,7 +697,7 @@ peace.
 
 \aparag[The basic Peace Differential] is the difference between the \STAB of
 the enemies.
-\bparag In case of alliance, take the mean \STAB of all member of the
+\bparag In case of alliance, take the mean \STAB of all members of the
 alliance. Do not round numbers at this point.
 \bparag Note that the basic PD is symmetrical, that is if an alliance has a
 basic PD of +1.5 versus another alliance, then the second alliance has a basic
@@ -725,7 +725,7 @@ allies) together with those of its diplomatic patron.
 
   \RUS occupy Swedish \provinceNeva and \provinceKarelen but \TUR occupy both
   \provinceAstragan and \provinceTerek (annexed by \RUS a long time
-  ago). Both side thus controls as many enemy province and the PD is not
+  ago). Both side thus controls as many enemy provinces and the PD is not
   modified.
 \end{exemple}
 
@@ -737,14 +737,16 @@ allies) together with those of its diplomatic patron.
   is increased by 1 to 2.
 
   On the other hand, if \RUS wants to sign a separate peace with \TUR, the
-  basic PD is 0 (they both have 1 \STAB) modified to 1 as \TUR controls two
+  basic PD is 0 (they both have 1 \STAB) modified to -1 as \TUR controls two
   more provinces.
 \end{exemple}
 
 \begin{exemple}[PD and minors]
-  If \paysCrimee was at war allied to \TUR and \RUS controls \provinceHacibey,
+  If \paysCrimee was at war allied to \TUR and \RUS controls \provinceCrimee,
   this province has to be taken into account for modified peace differential
-  in any peace that include \TUR.
+  in any peace that include \TUR. Since it is a capital, it counts as 2
+  provinces. Thus, the modified PD of \RUS against the alliance is now +1.5,
+  and against \TUR (in case of separate peace), 0.
 \end{exemple}
 
 \aparag[Military situation in overseas war]
@@ -767,6 +769,18 @@ remembering who caused the losses.
   between pirates and enemy privateers\ldots
 \end{designnote}
 
+\begin{exemple}[Privateer effect]
+  \FRA and \ANG are entangled in a commercial war. A \TradeFLEET of \ANG of
+  maximum level 6 in \ctz{angleterre} was reduced to current level 0 due to
+  attacks by \leaderBart's attacks. Another \TradeFLEET of level 4 in
+  \stz{Atlantique W} was reduced to level 1 due to combined attack of a
+  \pays{Pirates} and a French \corsaire. A third \TradeFLEET of level 5 was
+  reduced to level 1 in \stz{Lion}. Meanwhile, \ANG manages to take a \COL of
+  level 4 of \FRA in \granderegionQuebec as well as a \TP in
+  \continentIndia. This counts as 4 provinces occupied by \FRA and 2 by \ANG,
+  thus a +1 to PD in favour of \FRA.
+\end{exemple}
+
 \aparag[The net Peace Differential] is obtained by rounding the modified PD to
 the nearest integer. In case of halves, round down in disfavour of the winning
 side (that is, round toward 0).
@@ -778,7 +792,7 @@ direction of the final rounding.
   \SUE, \POL and \TUR are at war against \RUS. The \STAB of \RUS and \SUE is
   1, while the \STAB of \POL and \TUR is 0. No side controls enemy
   provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = two
-  third in favour of \RUS, rounded to +1 in favour of \RUS.
+  thirds in favour of \RUS, rounded to +1 in favour of \RUS.
 
   \SUE and \TUR are at war against \RUS. The \STAB of \RUS is 0, the \STAB of
   \TUR is 1 and the \STAB of \SUE is 2. Thus, the basic PD is +1.5 in favour
