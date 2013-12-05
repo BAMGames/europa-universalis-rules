@@ -214,7 +214,8 @@ endalpha
 (15) 3 3672 1502 [8 7] zm %Guinée
 (20) 4 5352 1801 [6] zm %Oman
 (30) 6 5745 1634 [5] zm %Indien
-(20) 4 6549 1936 [4] zm %Chine
+% Bottom-left corner is on the border with Mer de Chine Sud.
+(20) 4 6549 1936 [4] (img:chineespagne) zmshieldup %Chine
 (10) 2 4656 0260 [9 7] zm %Tempêtes
 (20) 4 3078 2421 [9] zm %Canaries
 (10) 2 2998 1438 [9 8 7] zm %Recife
@@ -344,7 +345,8 @@ resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse
 % tordesillas reminder: shared areas
 (img:tordesillas) (amazonia)  tordesillas
 (img:tordesillas) (minasgerais)  tordesillas
-(img:tordesillas) (philippines)  tordesillas
+(img:tordesillas) (philippines)  tordesillasdown
+(img:chineespagne) (philippines)  tordesillasup
 %(img:tordesillas) (philippines)  tordesillas
 (img:tordesillas) (kamchatka)  tordesillas
 (img:tordesillas) (formose)  tordesillas
@@ -357,13 +359,24 @@ resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse
 (img:tordesillas) (coree)  tordesillasdown
 % Japan
 (img:tordesillas) (japon)  tordesillasdown
+
 % tordesillas reminder: Portuguese areas in America
 (img:portugal) (belem)  tordesillas
 (img:portugal) (recife)  tordesillas
 (img:portugal) (rio)  tordesillas
+
 % Nerchinsk reminder
 (img:protochine) (amour) tordesillas
 (img:protochine) (baikal) tordesillas
+
+% --- [BLP] ---
+% Caraibes reminder.
+(img:caraibes) (antilles) tordesillas
+(img:caraibes) (cuba) tordesillas
+(img:caraibes) (haiti) tordesillas
+(img:caraibes) (floride) tordesillas
+
+
 % ROTW minor ownership/interest. Often may use the natives in the area.
 % ownership if valid for all game.
 % Interest if valid for part of the game

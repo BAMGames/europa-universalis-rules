@@ -123,6 +123,8 @@
     (prumercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
     (turcorsaire)	[[.5  .6  .5 ] [0   .6  0  ] cred cwhite]
     (turvizir)		[[.5  .6  .5 ] [0   .6  0  ] cyello cwhite]
+% Special cases for some majors counters.
+    (turquievenise)	[[.5  .6  .5 ] [0   .6  0  ] cblack cwhite]
 >> def
 %pays {/i exch def pays {/j exch def i j eq not {color_dict i get 0 get color_dict j get 0 get comparethree color_dict i get 1 get color_dict j get 1 get comparethree add 20 string cvs ( )! i 50 string cvs(-)! j 50 string cvs !(\n)! ! display}if}forall}forall
 %/comparethree {/a exch def /b exch def 0 0 1 2 {/c exch def a c get b c get sub dup mul add}for}def
@@ -172,6 +174,8 @@
     (prumercenaires)	(Prussia)
     (turcorsaire)	(Turcia)
     (turvizir)		(Turcia)
+% Special cases for some majors counters.
+    (turquievenise)		(Turcia)
 % Ici, on met les mineurs
     (alliance)		(Protestant Alliance)
     (blanc)		( )

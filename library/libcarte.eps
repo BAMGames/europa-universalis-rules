@@ -145,9 +145,14 @@ copyfile
 
 /zm {(img:bateau) zmc}def
 /zp {(img:bateau) zpc}def
-/zmg {(img:flandrebrabant) 3 index 3 index 8 3 roll (img:bateau) zmc putsymbol}def
-/zph {(img:oresund) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
-/zpg {(img:flandrebrabant) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+%/zmg {(img:flandrebrabant) 3 index 3 index 8 3 roll (img:bateau) zmc putsymbol}def
+%/zph {(img:oresund) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+%/zpg {(img:flandrebrabant) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+
+% (img:foo) added in bottom left corner.
+/zmshield {3 index 3 index 8 3 roll (img:bateau) zmc putsymbol} def
+/zmshieldup {3 index 5 add 3 index 110 add 8 3 roll (img:bateau) zmc putsymbol} def
+/zpshield {3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
 
 %X begindetroit
 %X [x1 y1 a1 x2 y2 a2 tension] detroit
