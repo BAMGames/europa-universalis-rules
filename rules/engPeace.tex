@@ -602,7 +602,7 @@ peace.
   each of these peaces is resolved separately.
 \end{exemple}
 
-\subsubsection{Mandatory peaces}
+\subsubsection{Mandatory peaces}\label{chPeace:Mandatory peaces}
 \aparag[Mandatory peaces between majors] It is usually not mandatory to sign a
 peace, however:
 \bparag If a country is a -3 \STAB for two consecutive turns at the beginning
@@ -710,6 +710,16 @@ discuss any separate peace proposal from this alliance. Peace agreement may be
 global (as in ``I sign this separate peace only is this one is only
 sign''). Remember that in case of disagreement, the countries stay at war and
 that's all.
+\bparag Precise peace timing:
+\begin{modlist}
+\item Global peace proposals and discussions between majors. All proposal and
+  agreement are simultaneous and it is not possible to wait for a peace before
+  signing another.
+\item Separate peace proposals and discussions between majors, including
+  mandatory separate peaces. All proposal and agreements are simultaneous.
+\item Peace with minors, including separate peaces with minor allies. All
+  proposal are simultaneous before any die is rolled.
+\end{modlist}
 
 \begin{exemple}[Continued]
   \begin{itemize}
@@ -882,6 +892,8 @@ direction of the final rounding.
   1, while the \STAB of \POL and \TUR is 0. No side controls enemy
   provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = two
   thirds in favour of \RUS, rounded to +1 in favour of \RUS.
+  
+  \smallskip
 
   \SUE and \TUR are at war against \RUS. The \STAB of \RUS is 0, the \STAB of
   \TUR is 1 and the \STAB of \SUE is 2. Thus, the basic PD is +1.5 in favour
@@ -911,14 +923,15 @@ The \terme{peace level} represents in an abstract way the amount of
 \aparag[Peaces that are permitted]
 \bparag In any case, a Conditional Peace of level equal to the PD in favour of
 the dominant alliance is allowed. The maximum level is 5, even if the Peace
-modifier is higher.
+Differential is higher.
 \bparag If the \terme{Peace Differential} is at most +2 in favour of one
-alliance, a Peace of level 0 (White Peace) or Negotiated Peace of level 1 is
-permitted in favour of any alliance (even the one with the lowest modified
-PD, that is the apparent looser).
-\bparag Exception: if a power if forced to proposed a Mandatory peace (because
-of low \STAB), it must propose a peace of the same level as the PD.
-\bparag If at least one Major, part of an alliance, has its capital (or both
+alliance, a Peace of level 0 (White Peace) or 1 is permitted in favour of any
+alliance (even the one with the lowest modified PD, that is the apparent
+loser).
+\bparag Exception: if a power if forced to proposed a Mandatory peace (as
+in~\ref{chPeace:Mandatory peaces}), it must propose a peace of the same level
+as the PD, in favour of the dominant alliance.
+\bparag If at least one Major member of an alliance has its capital (or both
 if it has two) and at least half of its national provinces controlled by
 enemies (not necessarily allied), then a peace of level 5 is allowed against
 that alliance.
@@ -928,19 +941,19 @@ conditions that the losing alliance must give to the winning one and some
 details on these conditions, as described below.
 \bparag Only countries that are fully at war may give or take peace
 conditions. That is, countries in limited or foreign intervention do not risk
-to loose anything at peace time, but they may not either have any
-gain. Obviously, there may be some promise to be fulfilled at a later
+to lose anything at peace time, but they may not either have any
+gain. Obviously, there may be some promises to be fulfilled at a later
 diplomatic phase, but as always promises are not binding.
 \bparag There are 4 types of conditions that may be given at peace:
 \begin{modlist}
-\item[Territorial concessions] The losing alliance give ownership of one
+\item[Territorial concessions:] The losing alliance gives ownership of one
   province to the winning alliance. See~\ref{chPeace:Tranfer Provinces Peace}
   to know which province may be annexed by who. The province may belong to any
   member of the loosing alliance (including minor allies). The province can be
   given to any member of the winning alliance (including minor allies). The
   choice of the province is made either by the losing or winning alliance,
   depending on the level of the peace.
-\item[Indemnities] The losing alliance must give some money to the winning
+\item[Indemnities:] The losing alliance must give some money to the winning
   alliance. The money must come from the \RT of one or more majors of the
   loosing alliance (minor allies may not pay the indemnities) and can be given
   to one or more members of the winning alliance (minor allies may receive the
@@ -951,13 +964,13 @@ diplomatic phase, but as always promises are not binding.
 
   The losing alliance always choose who pay, while the winning alliance always
   choose who gets the money.
-\item[Diplomatic concessions] The loosing alliance must give diplomatic
+\item[Diplomatic concessions:] The loosing alliance must give diplomatic
   control of one of its minor allies to the winning alliance. If the loosing
   alliance is solely composed of minors, then the winning alliance may gain
   diplomatic control of one of them. The choice of the minor is always made by
   the winning alliance.
-\item[Special conditions] Event and other specific rules often create specific
-  concessions that may (or must) be used as peace condition for some
+\item[Special conditions:] Events and other specific rules sometimes create
+  specific concessions that may (or must) be used as peace conditions for some
   wars. Sometimes, a minimum level of the peace is required in order to ask
   for this concession. Sometimes, a concession is automatically added to other
   peace conditions as soon as the peace reaches a certain level.
@@ -970,12 +983,12 @@ sign ``a peace of level 3 with one territorial concession first and then one
 diplomatic concession''.
 \bparag Once the peace is agreed, players may choose the precise conditions
 (which province to annex, who is going to pay the indemnities, \ldots)
-\bparag The order of the concessions is important in case of disagreement
+\bparag The order of the concessions is important only in case of disagreement
 between players.
 
 \aparag[Disagreement] In each alliance, the country whose monarch has the
 higher \DIP has all power to decide which peace to sign.
-\bparag However, for the precise choice of the condition, the choice is made
+\bparag However, for the precise choice of the conditions, the choice is made
 in decreasing order of \DIP in each alliance. That is, the monarch with higher
 \DIP chooses the first condition, the second one chooses the second, and so
 one (looping back to the monarch with higher \DIP if needed).
@@ -996,14 +1009,17 @@ it is still the first territorial concession.
   \HOL, however, if \HOL wanted to stay at war, \HIS could have signed a
   separate peace.
 
-  Since \HOL has the higher \DIP, he choose how to implement the first
-  condition and decides that \HIS is going to pay all the indemnities. Even if
-  the first territorial concession is the second condition, it is the first
-  territorial one, hence chosen by the winning alliance. \FRA chooses to annex
-  a Spanish province. Lastly, the second territorial concession is
-  implemented. It is chosen by the losing alliance. Since \HOL already has
-  its turn in choosing a condition (for the indemnities) and \HIS did not has
-  its, \HIS chooses and decide to give a Dutch \COL to \paysPortugal.
+  Since \HOL has the higher \DIP, he choose how to implement the losing side
+  of the first condition and decides that \HIS is going to pay all the
+  indemnities (they could have been split in any way between the
+  losers). Being the only Major, \FRA chooses who receive the money. Even if
+  it could have given some to \paysPortugal, it prefer to keep all of it\ldots
+  Even if the first territorial concession is the second condition, it is the
+  first territorial one, hence chosen by the winning alliance. \FRA chooses to
+  annex a Spanish province. Lastly, the second territorial concession is
+  implemented. It is chosen by the losing alliance. Since \HOL already has its
+  turn in choosing a condition (for the indemnities) and \HIS did not has its,
+  \HIS chooses and decides to give a Dutch \COL to \paysPortugal.
 
   Note that letting an unwilling ally support all the weight of the peace is
   probably not a good long term strategy if you still need allies for future
@@ -1023,7 +1039,7 @@ it is still the first territorial concession.
 alliance.
 \bparag[Indemnities] The losing alliance gives 50 \ducats of war indemnities
 to the winning alliance.
-\bparag[Diplomatic concessions] One country, neither in \VASSAL nor
+\bparag[Diplomatic concession] One country, neither in \VASSAL nor
 \ANNEXION, is removed from one loser's Diplomatic Track and placed back into
 the \Neutral box. If the losing alliance is composed solely of \MIN powers,
 the winning alliance may gain one of them in \MR status. 
@@ -1034,7 +1050,7 @@ condition.
 alliance. 
 \bparag[Indemnities] The losing alliance gives 75 \ducats of war indemnities
 to the winning alliance.
-\bparag[Diplomatic concessions] One country (any status, excepted if blocked
+\bparag[Diplomatic concession] One country (any status, excepted if blocked
 by other rules of events) is removed from one loser's Diplomatic Track and
 placed back into the \Neutral box. If the losing alliance is composed solely
 of \MIN powers, the winning alliance may gain one of them in \MR status. 
@@ -1045,7 +1061,7 @@ the winning alliance, the second (if there are two) is chosen by the losing
 alliance.
 \bparag[Indemnities] The losing alliance gives 75 \ducats of war indemnities
 to the winning alliance.
-\bparag[Diplomatic concessions] One country (any status, excepted if blocked
+\bparag[Diplomatic concession] One country (any status, excepted if blocked
 by other rules of events) is removed from one loser's Diplomatic Track and
 placed back into the \Neutral box, or in \MR status of one winner. If the
 losing alliance is composed solely of \MIN powers, the winning alliance may
@@ -1054,12 +1070,12 @@ conditions.
 
 \aparag[Peace of level 4] The winning alliance receives three peace
 conditions.
-\bparag[Territorial concessions] The first and third territorial concessions
+\bparag[Territorial concession] The first and third territorial concessions
 are chosen by the winning alliance. The second one is chosen by the losing,
 alliance.
 \bparag[Indemnities] The losing alliance gives 100 \ducats of war indemnities
 to the winning alliance.
-\bparag[Diplomatic concessions] One country (any status, excepted if blocked
+\bparag[Diplomatic concession] One country (any status, excepted if blocked
 by other rules of events) is removed from one loser's Diplomatic Track and
 placed back into the \Neutral box, or in \MR status of one winner. If the
 losing alliance is composed solely of \MIN powers, the winning alliance may
@@ -1069,11 +1085,11 @@ peace conditions.
 
 \aparag[Peace of level 5 (Unconditional Peace)] The winning alliance receives
 three peace conditions.
-\bparag[Territorial concessions] All provinces are chosen by the winning
+\bparag[Territorial concession] All provinces are chosen by the winning
 alliance.
 \bparag[Indemnities] The losing alliance gives 150 \ducats of war indemnities
 to the winning alliance.
-\bparag[Diplomatic concessions] One country (any status, excepted if blocked
+\bparag[Diplomatic concession] One country (any status, excepted if blocked
 by other rules of events) is removed from one loser's Diplomatic Track and
 placed back into the \Neutral box, or in \MR status of one winner. If the
 losing alliance is composed solely of \MIN powers, the winning alliance may
