@@ -774,11 +774,11 @@ and that's all.
 
 \aparag[Cultural agreement]
 \bparag Peace agreements may include promise for future actions or agreements
-on future diplomatic phases.
+on future Diplomatic phases.
 \bparag It is, however, not possible to immediately sign any agreement (loan,
 dynastic alliance with exchange of provinces, military alliance, \ldots)
 Hence, it is always possible to ``forget'' about these between the signature
-of the peace and the next diplomatic phase. Again, do not complain that nobody
+of the peace and the next Diplomatic phase. Again, do not complain that nobody
 loves you if you keep forgetting your agreements (Europa Universalis is a long
 term game and treason is often a bad strategy).
 \bparag Such promises do not have to be publicly announced and may be kept
@@ -918,7 +918,8 @@ remembering who caused the losses.
 
 \aparag[The net Peace Differential] is obtained by rounding the modified PD to
 the nearest integer. In case of halves, round down in disfavour of the winning
-side (that is, round toward 0).
+side (that is, round toward 0). Then cap to \bonus{+5} (and \bonus{-5}) if
+needed.
 \bparag Note that fractions in the PD may only come from the \STAB
 difference. However, the military situation may change the winner, thus the
 direction of the final rounding.
@@ -928,7 +929,7 @@ sufficient to compute the PD from the point of view of one of the alliance.
 \begin{exemple}[Rounding PD]
   \SUE, \POL and \TUR are at war against \RUS. The \STAB of \RUS and \SUE is
   1, while the \STAB of \POL and \TUR is 0. No side controls enemy
-  provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = \td in
+  provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = \td\ in
   favour of \RUS, rounded to +1 in favour of \RUS.
   
   \smallskip
@@ -960,8 +961,8 @@ The \terme{peace level} represents in an abstract way the amount of
 \subsubsection{Peace levels and conditions}
 \aparag[Peaces that are permitted]
 \bparag In any case, a Conditional Peace of level equal to the PD in favour of
-the dominant alliance is allowed. The maximum level is 5, even if the Peace
-Differential is higher.
+the dominant alliance is allowed. % The maximum level is 5, even if the Peace
+% Differential is higher.
 \bparag If the \terme{Peace Differential} is at most +2 in favour of one
 alliance, a Peace of level 0 (White Peace) or 1 is permitted in favour of any
 alliance (even the one with the lowest modified PD, that is the apparent
@@ -981,7 +982,7 @@ details on these conditions, as described below.
 conditions. That is, countries in limited or foreign intervention do not risk
 to lose anything at peace time, but they may not either have any
 gain. Obviously, there may be some promises to be fulfilled at a later
-diplomatic phase, but as always promises are not binding.
+Diplomatic phase, but as always promises are not binding.
 \bparag There are 4 types of conditions that may be given at peace:
 \begin{modlist}
 \item[Territorial concessions:] The losing alliance gives ownership of one
