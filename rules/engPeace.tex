@@ -414,6 +414,9 @@ at each period.
 never mandatory. As many actions, Stability improvement requires an investment
 and is resolved by a die roll. Beware that in some situations the result may
 be negative and cannot be forfeited once the die has been rolled.
+\bparag Countries whose monarch was just overthrown due to revolts (see
+\ref{chRedep:Execution Monarch by Revolts}) may not do a \STAB improvement
+action this turn.
 
 \aparag[Investment] Each player wanting to improve the Stability of his
 country first chooses an investment and writes it in \lignebudget{Stability
@@ -499,18 +502,53 @@ Gross Income has decreased 2 consecutive turns.
 
 \end{exemple}
 
+\section{Ransoms}\label{chPeace:Ransoms}
+\aparag[Majors] If a \MAJ has its monarch (or Swedish heir) captured (due to
+battle), it \textbf{must} pay a ransom to free it.
+\bparag The ransomed country loses 2 \STAB and pay 200\ducats to the ransoming
+country.
+\bparag If the monarch was captured by a minor country, the money is lost
+(minor countries do not have treasures).
+\bparag It is not possible to avoid ransom in any way. No keeping prisoners,
+no execution, \ldots even if both the ransoming and ransomed countries agree.
+\bparag Thus, ransom may cause a later bankrupt or an immediate mandatory
+peace. Do not risk your monarch if you cannot afford the price.
+
+\aparag[Minors] If a \MIN has its monarch captured by a major country, he
+\textbf{must} be ransomed.
+\bparag The major holding the prisoners chooses one (and only one) ransom
+among:
+\begin{modlist}
+\item 50\ducats.
+\item \bonus{+2} to a peace proposal.
+\item possibility to do a separate peace proposal.
+\end{modlist}
+\bparag If a minor monarch is captured by another minor country, he is
+automatically ransomed for free (some money transfer between minors, not
+represented).
+
+\aparag Money gained or lost due to ransoms is written in \lignebudget{Ransom,
+  peace}.
+
+\aparag[The return of the king]
+\bparag Ransomed major monarchs are immediately available again as per usual
+rules.
+\bparag Ransomed minor monarchs are placed back in play during the next
+Interphase together with new leaders.
+
 \section{Peace offers and discussions}\label{chPeace:Peace offers}
 \subsection{Signing Peaces}
 Countries at war (either major or minor) may sign peaces. Peaces are usually
-done between two alliances and not between single countries. Separate peaces
-are possible but usually harder. Peace between major countries (and their
-minor allies) are the result of an agreement between players. However, the
-Stability of the countries and the military situation creates a \terme{Peace
-  Differential} and strongly constrains the peace. This represents the overall
-opinion of the countries toward the current war and prevents players from
-signing unrealistic peaces. Peaces when one side only consist in minor
-countries (most of the time, a single one) are resolved by a die roll
-depending mostly on the military situation.
+done between two alliances and not between single countries (each alliance may
+contain one or more country). Separate peaces are possible but usually
+harder. Peace between major countries (and their minor allies) are the result
+of an agreement between players. However, the Stability of the countries and
+the military situation creates a \terme{Peace Differential} and strongly
+constrains the peace. This represents the overall opinion of the countries
+toward the current war and prevents players from signing unrealistic
+peaces. Peaces when one side only consist in minor countries (most of the
+time, a single one) are resolved by a die roll depending mostly on the
+military situation.
 
 \subsubsection{Regular cases}
 \aparag[Global peace] If two alliances are at war, they may sign a global
@@ -526,6 +564,8 @@ per~\ref{chDiplo:Alliance:Defensive Alliance}).
 \bparag If several members of the same alliance want to sign a separate peace
 with the same enemy alliance at a given turn, they must sign one single
 separate peace.
+
+\aparag[Minor allies] always sign peace when their diplomatic patron does.
 
 \begin{exemple}[Separate peace]
   \TUR is at war against \VEN, \HIS (and \AUS) and \POL. After an incursion in
@@ -545,22 +585,20 @@ separate peace.
   peace. Minors allies of \TUR are also part of the peace.
 \end{exemple}
 
-\aparag[Minor allies] always sign peace when their diplomatic patron does.
-
 \aparag[Proposing separate peace with minor] An alliance may propose separate
 peace with minor allies of an opposing alliance at the following conditions:
-\bparag An alliance may propose a separate peace to minor in \VASSAL or
+\bparag An alliance may propose a separate peace to any minor in \VASSAL or
 \ANNEXION of one enemy if the alliance controls the capital of the minor.
-\bparag An alliance may propose a separate peace to minor in \VASSAL or
+\bparag An alliance may propose a separate peace to any minor in \VASSAL or
 \ANNEXION of one enemy if the minor controls the capital of one major of the
 alliance. In this case, it must be a winning peace (level 1 or more) in favour
 of the minor.
-\bparag An alliance may propose a separate peace to minor in \VASSAL or
-\ANNEXION of one enemy if it has captured the monarch of the minor and chooses
-to ransom it for a separate peace.
-\bparag An alliance may propose a separate peace to minor \textbf{not} in
+\bparag An alliance may propose a separate peace to any minor of one enemy if
+it has captured the monarch of the minor and chooses to ransom it for a
+separate peace.
+\bparag An alliance may propose a separate peace to any minor \textbf{not} in
 \VASSAL or \ANNEXION of one enemy if it controls any province of the minor.
-\bparag An alliance may propose a separate peace to minor \textbf{not} in
+\bparag An alliance may propose a separate peace to any minor \textbf{not} in
 \VASSAL or \ANNEXION of one enemy if the minor controls any province of one
 major of the alliance. In this case, it must be a winning peace (level 1 or
 more) in favour of the minor.
@@ -598,40 +636,36 @@ peace.
   \paysTripoli as each alliance is always entitled to one separate peace with
   one enemy minor at no condition. 
 
-  Thus, \HIS may propose up to three separate peaces with minor. If it does,
+  Thus, \HIS may propose up to three separate peaces with minors. If it does,
   each of these peaces is resolved separately.
 \end{exemple}
 
 \subsubsection{Mandatory peaces}\label{chPeace:Mandatory peaces}
 \aparag[Mandatory peaces between majors] It is usually not mandatory to sign a
 peace, however:
-\bparag If a country is a -3 \STAB for two consecutive turns at the beginning
+\bparag If a country is at -3 \STAB for two consecutive turns at the beginning
 of the peace segment, it must \textbf{propose} a peace to each alliance
 (containing at least one major) against which it was at war during these two
-turns.
+turns. Note that the check happens \textbf{after} \STAB improvement, thus
+mandatory peace usually occur because of a failed improvement (or a ransom).
 \bparag Exception: \RUS, before its military reform, is only forced to propose
 peace if it is at -3 \STAB for 3 consecutive turns.
 \bparag The opposing alliance is not forced to accept the peace. It the peace
 is refused, there is no penalty.
-\bparag Exception: if the level of the proposed peace (see below) is 4 or 5,
-then the enemy is forced to accept it (this is basically an unconditional
-surrender).
+\bparag Exception: if the level of the proposed peace (see below) is 4 or 5 in
+favour of the enemy, then the enemy is forced to accept it (this is basically
+an unconditional surrender).
 \bparag If two powers at war against one another must both propose a mandatory
 peace, then the peace must be signed.
-
-\aparag[Mandatory peace and alliances]
-\bparag If several members of the same alliance must propose a mandatory
-peace, they must propose it together (as usual with separate peaces).
 \bparag The peace proposal is made based on the \terme{Peace Differential} as
 any regular peace. That is, the country is forced to proposed a peace but the
 other regular rules for peaces are still enforced. This is not necessarily a
 surrender, and in some cases it is even possible to be forced to proposed a
 winning peace\ldots
-\bparag In the rare case where two alliances are at war and one (or more)
-member of each alliance must propose a mandatory peace, proceed as follows:
-(i) each power first proposes a peace to the whole enemy alliance (ii) if both
-are refused, then the mandatory peace is signed only between the concerned
-powers.
+
+\aparag[Mandatory peace and alliances]
+\bparag If several members of the same alliance must propose a mandatory
+peace, they must propose it together (as usual with separate peaces).
 
 \aparag[Mandatory peaces and global peaces] Note that if a global peace is
 signed, no separate peace may be signed first. Thus, mandatory peace proposals
@@ -647,21 +681,23 @@ that power is not considered to have broken alliance.
 the same alliance), then the minor automatically signs a mandatory
 unconditional surrender (peace of level 5) with all its enemies together. That
 is, this is one global peace and not one surrender against each enemy.
-\bparag It is not possible to refuse that peace.
+\bparag It is not possible to refuse that peace. In case of disagreement
+between the winners, they are considered allied for the resolution of the
+peace only.
 \bparag If the minor was at war allied to a major, it immediately goes to
 \Neutral before resolving the peace (the minor consider that its patron should
 have protected it).
 \bparag If an alliance of minors is at war with no major ally, it
 automatically accepts an unconditional surrender (peace of level 5) in its
-favour if the enemy proposes it.
+favour if any enemy proposes it.
 
+\subsubsection{Other specific cases}
 \aparag[Tri-partite wars]
 \bparag If three (or more) alliances are at war against one another, each
 peace signed is only signed between two alliances. The others stay at war.
 \bparag It is of course possible that all alliances at war decide to sign
 peace at the same moment.
 
-\subsubsection{Other specific cases}
 \aparag[Events and peaces]
 \bparag Many events create wars with specific conditions with regard to peace,
 including:
@@ -692,10 +728,10 @@ their allies and have a purely consultative say in the peace discussion.
   \FRA and \SPA are at war against \HOL and \ANG. \FRA and  \HOL both have
   higher \DIP than their ally.
   \begin{itemize}
-  \item If \HOL wants to sign a global peace (because \villeAmsterdam is
-    besieged) while \ANG wants to stay at war (because it think situation in
-    the \ROTW will become better), \HOL may impose its decision to \ANG and
-    sign the peace.
+  \item If \HOL wants to sign a global peace (\emph{e.g.} because
+    \villeAmsterdam is besieged) while \ANG wants to stay at war (because it
+    think situation in the \ROTW will become better), \HOL may impose its
+    decision to \ANG and sign the peace.
   \item If \HOL proposes a separate peace that \FRA wants to accept but \HIS
     would like to refuse, \FRA may impose its decision.
   \item If \ANG wants to sign a separate peace, \HOL has nothing to say about
@@ -708,10 +744,10 @@ Separate peaces between two alliances are considered simultaneous. Especially,
 a power signing a separate peace with an enemy alliance is still allowed to
 discuss any separate peace proposal from this alliance. Peace agreement may be
 global (as in ``I sign this separate peace only is this one is only
-sign''). Remember that in case of disagreement, the countries stay at war and
-that's all.
+signed''). Remember that in case of disagreement, the countries stay at war
+and that's all.
 \bparag Precise peace timing:
-\begin{modlist}
+\begin{enumerate}
 \item Global peace proposals and discussions between majors. All proposal and
   agreement are simultaneous and it is not possible to wait for a peace before
   signing another.
@@ -719,7 +755,7 @@ that's all.
   mandatory separate peaces. All proposal and agreements are simultaneous.
 \item Peace with minors, including separate peaces with minor allies. All
   proposal are simultaneous before any die is rolled.
-\end{modlist}
+\end{enumerate}
 
 \begin{exemple}[Continued]
   \begin{itemize}
@@ -728,11 +764,11 @@ that's all.
     would like to stay at war against \HIS, then \HOL is still part of the
     peace discussion and may force \ANG to accept the Spanish peace at the
     same time that it itself sign peace with \FRA.
-  \item In the same situation, \HIS may decide that is separate peace is valid
-    if and only if the Dutch peace is accepted. Typically if \ANG and \HOL try
-    to buy \HIS out of the war by offering it an advantageous peace, \HIS may
-    link it to the peace with \HOL in order to avoid leaving \FRA alone
-    against two enemies.
+  \item In the same situation, \HIS may decide that is separate peace its
+    valid if and only if the Dutch peace is accepted. Typically if \ANG and
+    \HOL try to buy \HIS out of the war by offering it an advantageous peace,
+    \HIS may link it to the peace with \HOL in order to avoid leaving \FRA
+    alone against two enemies.
   \end{itemize}
 \end{exemple}
 
@@ -886,19 +922,21 @@ side (that is, round toward 0).
 \bparag Note that fractions in the PD may only come from the \STAB
 difference. However, the military situation may change the winner, thus the
 direction of the final rounding.
+\bparag The net peace differential is also symmetrical. Thus, it is always
+sufficient to compute the PD from the point of view of one of the alliance.
 
 \begin{exemple}[Rounding PD]
   \SUE, \POL and \TUR are at war against \RUS. The \STAB of \RUS and \SUE is
   1, while the \STAB of \POL and \TUR is 0. No side controls enemy
-  provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = two
-  thirds in favour of \RUS, rounded to +1 in favour of \RUS.
+  provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = \td in
+  favour of \RUS, rounded to +1 in favour of \RUS.
   
   \smallskip
 
   \SUE and \TUR are at war against \RUS. The \STAB of \RUS is 0, the \STAB of
   \TUR is 1 and the \STAB of \SUE is 2. Thus, the basic PD is +1.5 in favour
-  of the alliance. If the military situation does not modify this, it is
-  rounded to +1 in favour of the alliance.
+  of the alliance (or -1 in ``favour'' of \RUS). If the military situation
+  does not modify this, it is rounded to +1 in favour of the alliance.
 
   \smallskip
 
