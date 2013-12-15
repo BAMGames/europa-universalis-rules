@@ -565,7 +565,10 @@ per~\ref{chDiplo:Alliance:Defensive Alliance}).
 with the same enemy alliance at a given turn, they must sign one single
 separate peace.
 
-\aparag[Minor allies] always sign peace when their diplomatic patron does.
+\aparag[Minor allies] usually sign peace when their diplomatic patron does.
+\bparag However, the diplomatic patron may choose to do a separate peace
+without some of its minor allies. In this case, the major loses 2 \STAB for
+the separate peace and the diplomatic control of the minors staying at war.
 
 \begin{exemple}[Separate peace]
   \TUR is at war against \VEN, \HIS (and \AUS) and \POL. After an incursion in
@@ -986,7 +989,7 @@ Diplomatic phase, but as always promises are not binding.
 \bparag There are 4 types of conditions that may be given at peace:
 \begin{modlist}
 \item[Territorial concessions:] The losing alliance gives ownership of one
-  province to the winning alliance. See~\ref{chPeace:Tranfer Provinces Peace}
+  province to the winning alliance. See~\ref{chPeace:Transfer Provinces Peace}
   to know which province may be annexed by who. The province may belong to any
   member of the loosing alliance (including minor allies). The province can be
   given to any member of the winning alliance (including minor allies). The
@@ -1003,11 +1006,20 @@ Diplomatic phase, but as always promises are not binding.
 
   The losing alliance always choose who pay, while the winning alliance always
   choose who gets the money.
-\item[Diplomatic concessions:] The loosing alliance must give diplomatic
-  control of one of its minor allies to the winning alliance. If the loosing
-  alliance is solely composed of minors, then the winning alliance may gain
-  diplomatic control of one of them. The choice of the minor is always made by
-  the winning alliance.
+\item[Diplomatic concessions:] Either of the choice below. The precise choice
+  is only decided when implementing the condition and is always made by the
+  winning alliance. The minor involved must not necessarily be part of the war
+  to be chosen (drastic changes of alliances and distant weddings were not
+  uncommon).
+  \begin{itemize}
+  \item (Europe) The loosing alliance must give diplomatic control of one of
+    its European minor allies to the winning alliance. If the loosing alliance
+    is solely composed of minors, then the winning alliance may gain
+    diplomatic control of one of them.
+  \item (\ROTW) One \ROTW minor breaks its diplomatic status with some member
+    of the losing alliance and may increase its status with some member of the
+    winning alliance.
+  \end{itemize}
 \item[Special conditions:] Events and other specific rules sometimes create
   specific concessions that may (or must) be used as peace conditions for some
   wars. Sometimes, a minimum level of the peace is required in order to ask
@@ -1025,8 +1037,9 @@ diplomatic concession''.
 \bparag The order of the concessions is important only in case of disagreement
 between players.
 
-\aparag[Disagreement] In each alliance, the country whose monarch has the
-higher \DIP has all power to decide which peace to sign.
+\aparag[Deciding details]\label{chPeace:Implementing conditions}
+In each alliance, the country whose monarch has the higher \DIP has all power
+to decide which peace to sign.
 \bparag However, for the precise choice of the conditions, the choice is made
 in decreasing order of \DIP in each alliance. That is, the monarch with higher
 \DIP chooses the first condition, the second one chooses the second, and so
@@ -1078,10 +1091,14 @@ it is still the first territorial concession.
 alliance.
 \bparag[Indemnities] The losing alliance gives 50 \ducats of war indemnities
 to the winning alliance.
-\bparag[Diplomatic concession] One country, neither in \VASSAL nor
-\ANNEXION, is removed from one loser's Diplomatic Track and placed back into
-the \Neutral box. If the losing alliance is composed solely of \MIN powers,
-the winning alliance may gain one of them in \MR status. 
+\bparag[European Diplomatic concession] One European country, neither in
+\VASSAL nor \ANNEXION, is removed from one loser's Diplomatic Track and placed
+back into the \Neutral box. If the losing alliance is composed solely of \MIN
+powers, the winning alliance may gain one of them in \MR status.
+\bparag[\ROTW Diplomatic concession] One \ROTW country breaks \dipFR status with
+one member of the losing alliance. If the losing alliance is composed solely
+of \MIN, then one of them is forced to sign a \dipFR with one member of the
+winning alliance.
 
 \aparag[Peace of level 2] The winning alliance receives one peace
 condition.
@@ -1089,10 +1106,15 @@ condition.
 alliance. 
 \bparag[Indemnities] The losing alliance gives 75 \ducats of war indemnities
 to the winning alliance.
-\bparag[Diplomatic concession] One country (any status, excepted if blocked
-by other rules of events) is removed from one loser's Diplomatic Track and
-placed back into the \Neutral box. If the losing alliance is composed solely
-of \MIN powers, the winning alliance may gain one of them in \MR status. 
+\bparag[European Diplomatic concession] One country (any status, excepted if
+blocked by other rules of events) is removed from one loser's Diplomatic Track
+and placed back into the \Neutral box. If the losing alliance is composed
+solely of \MIN powers, the winning alliance may gain one of them in \MR
+status.
+\bparag[\ROTW Diplomatic concession] One \ROTW country decreases one level
+(from \dipAT to \dipFR or from \dipFR to neutral) with one member of the losing
+alliance. If the losing alliance is composed solely of \MIN, then one of them
+is forced to sign a \dipFR with one member of the winning alliance.
 
 \aparag[Peace of level 3] The winning alliance receives two peace conditions.
 \bparag[Territorial concession] The first territorial concession is chosen by
@@ -1106,6 +1128,11 @@ placed back into the \Neutral box, or in \MR status of one winner. If the
 losing alliance is composed solely of \MIN powers, the winning alliance may
 gain one of them in \MR status for one peace condition or in \AM for two peace
 conditions.
+\bparag[\ROTW Diplomatic concession] One \ROTW country either breaks \dipAT with
+one member of the losing alliance or both breaks \dipFR with one member of the
+losing alliance and signs \dipFR with one member of the winning alliance. If the
+losing alliance is composed solely of \MIN, then one of them is forced to sign
+a \dipFR with one member of the winning alliance, or a \dipAT for two conditions.
 
 \aparag[Peace of level 4] The winning alliance receives three peace
 conditions.
@@ -1121,6 +1148,11 @@ losing alliance is composed solely of \MIN powers, the winning alliance may
 gain one of them in \MR status for one peace condition or in \AM for two
 peace, or in either \EG or \VASSAL (if this status is possible) for three
 peace conditions.
+\bparag[\ROTW Diplomatic concession] One \ROTW country breaks status with one
+member of the losing alliance and signs \dipFR with one member of the winning
+alliance. If the losing alliance is composed solely of \MIN, then one of them
+is forced to sign a \dipFR with one member of the winning alliance, or a
+\dipAT for two conditions.
 
 \aparag[Peace of level 5 (Unconditional Peace)] The winning alliance receives
 three peace conditions.
@@ -1135,6 +1167,11 @@ losing alliance is composed solely of \MIN powers, the winning alliance may
 gain one of them in \MR status for one peace condition or in \AM for two
 peace, or in either \EG or \VASSAL or \ANNEXION (if these status are possible)
 for three peace conditions.
+\bparag[\ROTW Diplomatic concession] One \ROTW country breaks status with one
+member of the losing alliance and signs \dipFR with one member of the winning
+alliance. If the losing alliance is composed solely of \MIN, then one of them
+is forced to sign a \dipFR with one member of the winning alliance, or a
+\dipAT for two conditions.
 
 \aparag[Indemnities] Note that the amount given for indemnities is the amount
 \emph{per condition}. That is, if a peace of level 5 is signed with three
@@ -1143,60 +1180,92 @@ indemnities as the three conditions, the total amount is 3 $\times$ 150 =
 
 
 
-\subsection{Transfers of Provinces by Peaces}\label{chPeace:Tranfer
+\subsection{Transfers of Provinces by Peaces}\label{chPeace:Transfer
   Provinces Peace}
+\aparag If a peace includes territorial concessions, some provinces owned by
+the loosing alliance (including minors) immediately change ownership and now
+belong to one member of the winning alliance (possibly a minor).
+\bparag Not all powers may annex all provinces. If there is not enough
+provinces to annex in order to fulfil all the territorial concessions, the
+peace may not be signed.
 
-\aparag Provinces are transferred as an implementation of the peace just
-concluded, immediately upon the conclusion of the Peace phase.
+\aparag[Choice of Provinces] The provinces that may be annexed are:
+\bparag Any power may annex provinces controlled by any member of its alliance
+at the time of the peace.
+\bparag Any power may annex any of its national provinces.
+\bparag Any power may annex any province it previously owned.
+\bparag Exception: capitals may never be annexed unless explicitly specified
+elsewhere.
+\bparag Any power may annex a \TP or \COL (including of level 6) if it was
+controlled during some point of the war by any member of its alliance.
+\bparag Any power may annex a \TP or \COL (including of level 6) if it owned
+an establishment in the same \Area at some point during the game.
+\bparag Exception: if a province, \TP or \COL is currently controlled by a
+third party power (not member of any of the alliances signing peace), it may
+only be annexed if the controlling power agrees. In that case, the controlling
+power must evacuate the province as per~\ref{chPeace:Evacuation}.
 
-\aparag[Choice of Provinces]
-The provinces that can be annexed are:
-\bparag provinces militarily conquered in the course of the just concluded
-conflict are still controlled (except, usually, the capital province);
-\bparag or provinces that used to belong to the victor and were annexed by the
-loser during a preceding war (including any National provinces of the loser).
-\bparag In priority, the National provinces of the winning alliance are
-chosen and annexed.
-\bparag Minor Powers that are fully at war are included in the alliance like
-any other power, so that they may gain provinces also.
+\aparag[Priority] If any national province of the winning alliance is
+currently owned by any member of the losing alliance, it must be chosen as
+territorial concession.
+\bparag If several exists, a controlled one must be chosen first.
+\bparag If tied, choice is made by the power choosing how to implement the
+condition (\ref{chPeace:Implementing conditions}).
+\bparag Not that this priority does not prevent any other peace condition
+(indemnities, diplomatic concessions, \ldots) to be obtained at peace.
+
+\begin{designnote}
+  Ownership of national provinces provides a \CB. Leaving one non-important
+  national province owned by someone else could lead to repeated wars against
+  it with big territorial gain each time (especially against minor). Thus,
+  this ``\CB-farming'' is restricted.
+\end{designnote}
 
 \aparag[Transfer of Colony or Trading Post]
-A player can choose a Colony or Trading Post instead of a province, on the
-condition that he has effectively occupied this Colony during the course of
-just ended conflict, or that the he has or used to have a \COL in the same
-\terme{area}.
-\bparag This \COL or \TP counts as half a province if controlled at the end of
-the conflict.  Only \COL at levels 6 count as a full province.
-\bparag If it is not controlled at the end of the the conflict, it may still
-be chosen but then counts a full province.
+\bparag One territorial concession (whatever the level of the peace) allow to
+annex two \COL or \TP if (i) both are controlled by the winning alliance at
+the end of the war and (ii) none of them is a \COL of level 6.
+\bparag \COL of level 6 or establishment that are not controlled at the end of
+the war are annexed for a full condition each.
+\bparag The two establishments may be annexed by different winners.
+\bparag The power choosing how to implement the peace condition does chose
+both establishments and their new owners.
 
 \aparag[Overseas Wars]
 A peace treaty ending an Overseas War may not involved change of ownership of
-any province on the European mainland. Only transfers of \TP/\COL, % provinces
-%in "Barbaresques" countries, \pays{Egypte} and \pays{Irak}, 
-or Indemnities are valid conditions of peace.
+any province on the European map, \province{Islas Canarias} or \province{Cabo
+  Verde}.
+\bparag Note that \COL of level 6 may still be annexed and that the ``two for
+one'' rule above still apply.
 % \bparag [TBD: pour annexer en Afrique, il faut une guerre normale, guerre
 % outremer permet juste les présidios + indemnités + diplomatie] [\textbf{PB:
 %   actuellement je suis en faveur de cette restriction}]
 
 \aparag[Transfer of provinces of minor countries]
-If a player, at war against an alliance, accepts to make peace, all his minors
-do the same, except those at war by event.
-\bparag If an alliance receives provinces by a favorable peace, provinces of a
-minor ally fully involved in the war, or of a Vassal or Annexed minor power,
-may be given to the victor, in place of provinces of the loser
-alliance. Howevern these provinces should obey the conditions of rule
-\ruleref{chSpecific:Tranfer Provinces Peace}.
-\bparag All minor countries provinces ceded by the controlling player count as
-his own for victory points.
-\bparag If minor cedes provinces by this way, its diplomatic marker is
-immediately move to the box \Neutral.
+\bparag Minors signing peace at the same time as their Diplomatic patron are
+involved in the peace as any power and may thus cede or annex provinces.
+\bparag For this purpose, provinces with a non-blurred shield, as well as
+provinces formerly owned by the minor, count as ``national provinces'' of the
+minor (especially for the priority of annexation rule).
+% major allies of minor Venise must give Moree to it even if it was never
+% owned by \VEN. This represents the result of the Peloponese war (Morosini)
+% where the \AUS-Venise alliance wins and Venise annex Moree.
+\bparag Additionally, provinces of \regionBalkans are considered as national
+provinces of \paysVenise.
+\bparag Provinces gained or lost by minors count as if gained or lost by their
+Diplomatic patrons for \VPs.
+% Only in case of choice made by the patron (and allies). Thus avoid \RUS
+% taking 1 province from Crimea (only) and having it drop from \TUR track as a
+% free bonus.
+% Possible \COL/\TP annexation are ignored as this probably would create too
+% strange stuff.
+\bparag If the losing alliance chooses to give a province of a minor when it
+may have chosen a province of a major from the European map, this minor goes
+to Neutral after the peace is signed.
 
 
 
 \subsection{Alliances of Major Powers}
-
-
 \subsubsection{Case of Victorious Allies}
 \aparag The number of 3 provinces transferred is a maximum. The sharing of the
 spoils of war among allies is left to their free choice.
@@ -1252,7 +1321,7 @@ Permanent \CB are canceled if their cause disappears with the war (e.g.
 return of a national Province previously annexed). Temporary \CB obtained
 before the end of the war disappears, excepted after a White Peace.
 
-\aparag[Peace and Evacuation]
+\aparag[Peace and Evacuation]\label{chPeace:Evacuation}
 All units present on the territory of a former enemy are repatriated by their
 owner to the closest friendly province of his choice, without having to pay
 the cost of activation and rolling for attrition at {\bf -2}.
