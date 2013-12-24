@@ -888,7 +888,7 @@ allies) together with those of its diplomatic patron.
   and against \TUR (in case of separate peace), 0.
 \end{exemple}
 
-\aparag[Military situation in overseas war]
+\aparag[Military situation in overseas war]\label{chPeace:Privateer Effect}
 \bparag During overseas wars, count occupied \COL and \TP as one province
 each.
 \bparag[Privateer effect] In addition, each \TradeFLEET of maximum level 4 or
@@ -1011,7 +1011,8 @@ Diplomatic phase, but as always promises are not binding.
   is only decided when implementing the condition and is always made by the
   winning alliance. The minor involved must not necessarily be part of the war
   to be chosen (drastic changes of alliances and distant weddings were not
-  uncommon).
+  uncommon). The minor involved may however not be at war elsewhere (it may be
+  part of the just finishing war).
   \begin{itemize}
   \item (Europe) The loosing alliance must give diplomatic control of one of
     its European minor allies to the winning alliance. If the loosing alliance
@@ -1298,23 +1299,26 @@ to Neutral after the peace is signed.
 \aparag Peace brings the conflict opposing the belligerent countries to an
 end.
 \bparag Unless involved in another war, the countries are now considered at
-peace for all game purpose.
+peace for all game purposes.
 
 \aparag[Resolving peaces] Peace conditions must be transferred immediately
 upon signing the peace.
 \bparag Provinces given as territorial concession change ownership. Mark with
-the correct ownership counter. If there is a fortress in the province, the new
+the correct ownership counters. If there is a fortress in the province, the new
 owner may immediately replace it with one of its fortress of the same level or
 destroy it (special European arsenals may be replaced by a fortress of the
-same level).
-\bparag \COL and \TP given as territorial concession also change
+same level or an European arsenal if one is allowed here).
+\bparag \COL and \TP given as territorial concessions also change
 ownership. Replace the counter by a counter of the same nature of the new
 owner. Level and exploited resources stay the same, update the corresponding
 record sheets. Any fortress or arsenal may be replaced by a counter of the
 same nature and level of the new owner, or destroyed.
+\bparag If not enough fortress, \COL or \TP counters are available (\COL and
+\TP limit is usually smaller than counter mix), the owner may destroy one of
+its existing one. If not enough ownership counters are available, make new or
+use whatever mean you wish to denote ownership.
 \bparag Any minor given as diplomatic concession changes patron. Place its
-diplomatic counter at the right position on the diplomatic track, even if the
-minor is at war.
+diplomatic counter at the right position on the diplomatic track.
 \bparag Indemnities must be payed immediately in full, even if this leads to a
 future bankrupt.
 \bparag Other specific conditions are also implemented immediately, marking
@@ -1326,7 +1330,8 @@ provinces is returned to their rightful owner.
 \bparag Any fortress of a country signing peace located in a province owned by
 another country signing peace with it may be immediately replaced by a counter
 of the same level of the owner, or destroyed. Owner of the province chooses.
-\bparag Exception: \Presidios do not change ownership.
+\bparag Exception: \Presidios are kept. They do not change ownership and are
+not removed.
 
 \aparag[Evacuation at land]\label{chPeace:Evacuation}
 Any land unit in a non-controlled province owned by a country not at war with
@@ -1404,7 +1409,7 @@ against any victor next turn.
 \aparag[Peace and Casus Belli]
 \bparag Any permanent \CB whose cause does not exists any more is cancelled
 (\emph{e.g.} return of the last national province).
-\bparag Unless this is a white peace, all temporary \CB from all belligerent
+\bparag Unless this is a white peace, all temporary \CB from all belligerents
 (not only the attacker) obtained before the end of the war are considered to
 have been used.
 
@@ -1444,8 +1449,9 @@ many peaces are signed.
 \end{exemple}
 
 \begin{exemple}[Peace with minors and \STAB]
-  At turn 5, \TUR attacks \paysDamas, a minor. If it sign peace at the end of
-  turn 5, it does not gain \STAB as this is a minor.
+  At turn 5, \TUR attacks \paysDamas, a minor. If it signs peace at the end of
+  turn 5, it does not gain \STAB as this is a minor and \TUR was the
+  attacker.
 
   At turn 5, \TUR attacks \paysDamas. At turn 6, \ref{pII:War Persia Turkey}
   happens early and \paysPerse attacks \TUR. At the end of turn 6, \TUR manage
@@ -1453,7 +1459,7 @@ many peaces are signed.
   by event, it should gain \STAB. However, it is still at war against
   \paysDamas and may not gain it, but the fact that it got out of a ``big''
   war is remembered. At turn 7, \TUR signs peace with \paysDamas. Since it is
-  now completely at peace, it gain 1 \STAB.
+  now completely at peace, it gains 1 \STAB.
 \end{exemple}
 
 \begin{exemple}[Separate peaces and \STAB]
