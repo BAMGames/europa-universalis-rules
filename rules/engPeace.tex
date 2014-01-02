@@ -520,8 +520,8 @@ peace. Do not risk your monarch if you cannot afford the price.
 among:
 \begin{modlist}
 \item 50\ducats.
-\item \bonus{+2} to a peace proposal.
-\item possibility to do a separate peace proposal.
+\item[OR] \bonus{+2} to a peace proposal.
+\item[OR] possibility to do a separate peace proposal.
 \end{modlist}
 \bparag If a minor monarch is captured by another minor country, he is
 automatically ransomed for free (some money transfer between minors, not
@@ -588,8 +588,9 @@ the separate peace and the diplomatic control of the minors staying at war.
   peace. Minors allies of \TUR are also part of the peace.
 \end{exemple}
 
-\aparag[Proposing separate peace with minor] An alliance may propose separate
-peace with minor allies of an opposing alliance at the following conditions:
+\aparag[Proposing separate peace with minor]\label{chPeace:Separate peace minor}
+An alliance may propose separate peace with minor allies of an opposing
+alliance at the following conditions:
 \bparag An alliance may propose a separate peace to any minor in \VASSAL or
 \ANNEXION of one enemy if the alliance controls the capital of the minor.
 \bparag An alliance may propose a separate peace to any minor in \VASSAL or
@@ -679,7 +680,7 @@ only happen if the global peace is not signed.
 that power is not considered to have broken alliance.
 \bparag Especially, this does not give a \CB to its former allies.
 
-\aparag[Mandatory peaces with minors]
+\aparag[Mandatory peaces with minors]\label{chPeace:Mandatory peace minors}
 \bparag If all provinces of a minor are controlled by enemies (not necessarily
 the same alliance), then the minor automatically signs a mandatory
 unconditional surrender (peace of level 5) with all its enemies together. That
@@ -701,17 +702,14 @@ peace signed is only signed between two alliances. The others stay at war.
 \bparag It is of course possible that all alliances at war decide to sign
 peace at the same moment.
 
-\aparag[Events and peaces]
-\bparag Many events create wars with specific conditions with regard to peace,
-including:
-\begin{modlist}
-  \item Specific way to end a war, that is, specific conditions enforcing
-    mandatory peaces.
-  \item Specific peace conditions that may be taken, in addition to the
-    regular one (described below).
-  \item Specific peace proposal that will automatically be accepted by some
-    minor countries.
-\end{modlist}
+\aparag[Events and peaces] Many events create wars with specific conditions
+with regard to peace, including:
+\bparag Specific way to end a war, that is, specific conditions enforcing
+mandatory peaces.
+\bparag Specific peace conditions that may be taken, in addition to the
+regular one (described below).
+\bparag Specific peace proposal that will automatically be accepted by some
+minor countries.
 
 \aparag[Disagreements]
 \bparag If members of an alliance do not agree toward signing a peace, all
@@ -1295,6 +1293,231 @@ Diplomatic patrons for \VPs.
 may have chosen a province of a major from the European map, this minor goes
 to Neutral after the peace is signed.
 
+\subsection{Peace with Minor powers}\label{chPeace:Peace with Minors}
+\aparag Peaces with minor powers are handled by a die roll.
+
+\aparag[Global peace] An alliance at war against an alliance composed solely
+of minors (usually a single one) may propose peace to the whole alliance of
+minors.
+
+\aparag[Separate peace] An alliance at war may propose a separate peace to
+some minors allied to an opposing alliance.
+\bparag Check~\ref{chPeace:Separate peace minor} to see at which condition an
+alliance may propose a separate peace to minor enemies (1 per alliance per
+turn + specific conditions).
+\bparag Note that this include proposing separate peace to members of an
+alliance composed solely of minors.
+\bparag Contrary to separate peace with majors, each separate peace with minor
+is signed with a single minor. However, a war may not end the same turn one or
+more separate peace with minors involved in it is attempted.
+
+\begin{exemple}[Separate and global peace]
+  At turn 7, \FRA is at war against \HIS and \paysSavoie. \FRA is crushing
+  \paysSavoie but is loosing on the Spanish side of the war. Thus, the global
+  peace differential would only allow a white peace. However, \FRA would like
+  to sign a favourable separate peace with \paysSavoie in order to annex
+  \provinceBresse, even if this forces an unfavourable peace with \HIS.
+
+  If \FRA attempts to sign a separate peace with \paysSavoie at turn 7, it may
+  not, at the same turn, sign a global peace with \HIS (whatever the result of
+  the attempted peace with \HIS). \FRA may (attempt to) sign a peace with
+  \paysSavoie at turn 7, stay at war and sign a global peace with \HIS (and
+  \paysSavoie if the separate peace failed) at turn 8. Obviously, there is a
+  risk in doing so that \HIS overrun \FRA during this extra turn of war\ldots
+\end{exemple}
+
+\aparag[Disagreement] As usual, any decision on which peace to (try to) sign
+is made by the country whose monarch has the higher \DIP.
+
+\aparag[Method]
+\bparag The alliance proposing peace choose the level of the peace, between -5
+(unconditional peace favouring the major) and +5 (unconditional peace
+favouring the minor) (that is, the level of the peace is seen from the minor's
+perspective) as well as the nature of the conditions.
+\bparag Unless this is a special case of automatic peace
+(see~\ref{chPeace:automatic peace minor} below), the alliance attempting the
+peace roll a die, modified as in~\ref{chPeace:peace minors modifiers} below.
+\bparag If the result is 6 or more, the peace is signed.
+\bparag If the result is less than 6, the peace is not signed and the
+countries stay at war.
+\bparag Note that \STAB of the majors is not taken into account. The military
+situation, however, plays a huge role in the DRM.
+
+
+\aparag[Peace modifiers]\label{chPeace:peace minors modifiers}
+The DRM to the peace roll are all cumulative.
+\bparag[Nature of the Peace] These modifiers take into account the level of
+the peace as well as the nature of the conditions given or taken.
+\begin{modlist}
+\item[$\pm$ 3] per level of the peace (positive if the minor wins the war,
+  negative if the major wins);
+\item[+ ?] per peace condition given to the minor (depending on the nature of
+  the condition);
+\item[- ?] per peace condition taken from the minor (depending on the nature of
+  the condition).
+\end{modlist}
+\bparag The modifiers for the nature of the conditions are:
+\begin{modlist}
+\item[+1] per territorial condition;
+\item[-1] per indemnities;
+\item[0] per diplomatic condition;
+\item[$\pm$ ?] per specific condition (\bonus{0} if not specified).
+\end{modlist}
+\bparag[Nationality Modifier]
+It is applied when signing peace with specific minors. In case of peace with
+an alliance of minors, apply the nationality modifiers of all the minors in
+the alliance.
+\begin{modlist}
+\item[-4] \pays{Perse}, \pays{egypte}, \pays{damas}, \pays{Chine},
+\pays{Japon};
+\item[-3] \pays{USA}, \pays{Mogol}, \pays{Venise}, \pays{Pologne},
+\pays{Habsbourg},  \pays{Brandebourg} after IV-11;
+\item[-2] \pays{Portugal}, \pays{danemark}.
+\end{modlist}
+\bparag[Modifiers for military Situation]
+\begin{modlist}
+% \item[+4] per capital owned by the minor and controlled by the major;
+% \item[-4] per capital owned by the major and controlled by the minor;
+\item[+2] per other province/\TP\faceplus/\COL/city in the \ROTW owned by the
+  minor and controlled by the major;
+\item[-2] per other province/\TP\faceplus/\COL owned by the major and
+  controlled by the minor;
+\item[+1.5] per \TP\facemoins owned by the minor and controlled by the major;
+\item[-1.5] per \TP\facemoins owned by the major and controlled by the minor;
+\item[+2] per capital province of the minor that was conquered at any point of
+  the war (even if liberated since);
+\item[-2] per capital province of the major that was conquered at any point of
+  the war (even if liberated since);
+\item[-2] If minor is heretic (Catholic vs. Protestant, before the end of the
+  \terme{Religious Dissension}).
+\end{modlist}
+\bparag[Modifiers for military action] These modifiers are only valid the turn
+they happen and are reseted at each turn.
+\begin{modlist}
+\item[-2] per major battle won by the minor;  
+\item[+2] per major battle won by the major;
+\item[-1] per battle won by the minor;
+\item[+1] per battler won by the player;
+\item[+1] per minor military leader killed or captured;
+\item[+2] if the Monarch of the minor is captured and its Ransom is used for
+  Peace;
+\item[-1] per military leader of the major killed or captured;
+\item[+1] per siege won by the major (\bonus{+2} if this is a capital); 
+\item[-1] per siege won by the minor (\bonus{-2} if this is a capital).
+\end{modlist}
+\bparag[Separate peace]
+\begin{modlist}
+\item[-2] if it is an attempt to negotiate a separate peace;
+\item[$\pm$?] the peace differential of the alliance attempting the peace
+  versus the alliance of the minor (maximum, \bonus{-3}/\bonus{+3}). If there
+  are several allied minors, use the worst (smallest) such modifier.
+\end{modlist}
+
+\aparag[Automatic peaces]\label{chPeace:automatic peace minor}
+\bparag If all provinces of a minor are controlled by enemies it automatically
+signs a mandatory unconditional surrender with all its enemies together.
+See~\ref{chPeace:Mandatory peace minors}
+\bparag If an alliance of minors is at war with no major ally, it
+automatically accepts an unconditional surrender (peace of level 5) in its
+favour if any enemy proposes it. In this case (only), the controllers of the
+minors select the nature of the condition and must choose territorial or
+specific condition if possible (and indemnities last), resolving disagreement
+as if they were allied. Note that it is still possible to attempt a regular
+peace of level +5 (favouring the minor) and rolling die.
+\bparag A Minor country always accepts to sign a White Peace in Overseas War
+(if this is not a Separate Peace). Note that the major may choose not to
+propose the peace and stay at war, or try to get a winning peace.
+
+\aparag[Consequences of Peace]
+% If the peace is signed, no Stability level is gained (exception: if this minor
+% declared war to the player by an event). The player that controlled the minor
+% does not earn anything.
+\bparag The conditions of Peace are the same as for a Peace between Major
+powers.
+\bparag A Minor country will at most pay indemnities up to 4 times its income
+(total), immediately before the conclusion of the Peace (before changing
+ownership of provinces) but disregarding enemy control, \REVOLT or
+\PILLAGE. Any other indemnities are void but are still a valid peace
+condition.
+\bparag The controller of the minor makes all decisions concerning peace if
+needed (normally, only the choice of annexed provinces, depending on the level
+of the peace and the number of territorial concessions). If the controller has
+to choose which provinces to annex, he must choose provinces adjacent to the
+minor's territory if possible.
+\bparag A minor country nevers takes Diplomatic concessions, only provinces,
+indemnities and special conditions. It may, however, give Diplomatic
+concessions.
+
+\begin{designnote}[Fair play]
+  When making decision on behalf of a minor, players should always take the
+  minor's interest into account. Neutral minors do have a controller only as a
+  game artefact because it's impossible to play them otherwise. However, the
+  controller should not take advantage of this to poorly play the minor, and
+  especially not as an asset to be negotiated (\emph{i.e.} ``I choose to have
+  the minor annex a province you don't need for your victory objectives if you
+  give me 50\ducats.'' is definitely not the way this game is intended to be
+  played\ldots)
+
+  As much as possible, we tried to have neutral minors controlled by power who
+  should have interest in letting the minor do well. But this is not always
+  the case due to circumstances. Don't abuse your position as controller of a
+  minor's country. Play it for the best interest of the minor, not
+  yours. Don't hesitate to ask advice to other players on the decisions the
+  minor should make if you have doubts.
+
+  Minors who have a Diplomatic patron are another matter. They are basically
+  part of one country's empire and more or less obey the orders. Thus, you may
+  play them however you want.
+\end{designnote}
+
+\aparag[Multiple and Separate Peace]
+If a major signs a separate peace with a minor country (and stays at war
+against the controlling country); this minor may not be again involved in a
+war against this major next turn (unless by an event or a Crusade).
+% \bparag A minor country at war by event may only make a separate peace.
+
+% \aparag[Unconditional Peace]
+% A Minor country will sign a mandatory Unconditional Peace if all of its
+% provinces are controlled by the ennemy. This peace is one global peace against
+% all the powers controlling its provinces (so it can lose only 3 provinces).
+% \bparag If a minor country loses and signs an unconditional peace its
+% political marker is moved automatically to the box \Neutral.
+
+% \aparag[Automatic Peace]
+% An alliance that proposes a victorious Unconditional Peace to a Minor power,
+% and that Minor power was the attacking one (caused by event), or is not allied
+% to an alliance (so this is not a Separate Peace), the Peace is automatically
+% accepted by the Minor power.
+
+% \aparag[Failure of Peace negotiations]
+% If the die-roll is inferior or equal to 5 the war with the minor continues
+% normally for the following turn. Another peace attempt with that minor will be
+% allowed during the peace phase of next turn.
+
+
+\begin{exemple}[Nature of the peace]
+  Proposing to a minor a peace of level -1 (the minor loses) with territorial
+  concessions (\emph{i.e.} annexing one province of the minor), creates a
+  modifier of 3 \textmultiply (-1) (level of the peace) - (+1) (territorial
+  concession) = -4. With indemnities, the modifier would be -3 - (-1) =
+  -2. Minors are more eager to sign peace giving money than territory (one
+  needs to roll high to obtain peace).
+
+  Proposing a peace of level +3 (the minor wins) with two indemnities (for a
+  total of 150\ducats) creates a modifier of 3 \textmultiply (+3) (level of,
+  the peace) + (-1) + (-1) (two indemnities) = +7. With two territorial
+  concessions, the modifier would be +9 + (+1) + (+1) = +11. It's easier to
+  sign peace if you give territory than money.
+\end{exemple}
+
+\begin{exemple}[Military situation]
+  
+\end{exemple}
+
+\begin{exemple}[Separate peace]
+  
+\end{exemple}
+
 \subsection{General Consequences of the Peace}
 \aparag Peace brings the conflict opposing the belligerent countries to an
 end.
@@ -1324,7 +1547,7 @@ future bankrupt.
 \bparag Other specific conditions are also implemented immediately, marking
 any changes as possible.
 
-\aparag[Returning control] Remove all control markers of country signing peace
+\aparag[Returning control] Remove any control markers of country signing peace
 that is located inside a country signing peace with it. Control of these
 provinces is returned to their rightful owner.
 \bparag Any fortress of a country signing peace located in a province owned by
@@ -1349,7 +1572,7 @@ transport them.
 are not limited to 12\MP), however, they may not move more than 12\MP if they
 can evacuate in 12\MP or less.
 \bparag Evacuating units may not be intercepted.
-\bparag Evacuating units roll for attrition as usual with a \bonus{-2} to the
+\bparag Evacuating units roll for attrition as usual, with a \bonus{-2} to the
 roll, and considering all provinces as friendly. Ignore any bad weather. Each
 set of 6\MP expanded is one cause of attrition.
 
@@ -1383,12 +1606,12 @@ where it starts its evacuation).
 \bparag At this point of the turn, land units should be either:
 \begin{modlist}
 \item In a controlled province.
-\item In a controlled \Presidio.
-\item Besieging a province where they could maintain siege.
-\item In a province controlled by a member of the same alliance, together at
-war. This includes troops in foreign or limited intervention.
-\item Besieged in a fortress.
-\item In the \ROTW, in a province without any establishment.
+\item[OR] In a controlled \Presidio.
+\item[OR] Besieging a province where they could maintain siege.
+\item[OR] In a province controlled by a member of the same alliance, together
+  at war. This includes troops in foreign or limited intervention.
+\item[OR] Besieged in a fortress.
+\item[OR] In the \ROTW, in a province without any establishment.
 \end{modlist}
 \bparag Any other land unit must either have redeploy or evacuate [or I did
 overlook an obvious special case].
@@ -1429,10 +1652,10 @@ Any major country that both
   a declaration of war by a minor (either by political event or \RD, the major
   must be the first victim of the war, not dragged in by alliances) during one
   the previous turns ;
-\item AND is now completely at peace (no intervention either) for the first
+\item[AND] is now completely at peace (no intervention either) for the first
   time since these wars ;
 \end{modlist}
-immediately gain 1 \STAB.
+immediately gains 1 \STAB.
 \bparag If the country is not completely at peace now, the \STAB will be
 gained when it will be at peace, even if the last peace treaties should not be
 enough to gain it.
@@ -1491,130 +1714,6 @@ many peaces are signed.
 % allowed.
 % \bparag Failure to pay all the due indemnities give a temporary free \CB to
 % the power that was wronged against the power that should have paid.
-
-\subsection{Peace with Minor powers}
-
-\aparag To make the peace with a minor, the enemy player has to indicate that
-he commits himself to peace negotiations with the minor.  The controlling
-player of the \MIN may be at war (against the player) or not; in the former
-case it is a "separate peace", attempted and signed before any peace between
-players.
-\bparag An alliance may usually offer peace with only one minor country per
-alliance at war against it and per turn; and this minor may not be a vassal ir
-annexed.
-\bparag Exception: An alliance can always propose a specific peace to a minor
-at war declared by an event .
-\bparag Exception: An alliance can offer separate peace to any or all minor
-vassal to the alliance or annexed, whose capital city is controls.
-\bparag Exception: An alliance can offer separate peace to any or all
-non-vassal, and non-annexed minors if controlling at least one of their
-provinces (each one), or if each one of them controls individually at least
-one province in the alliance.
-\bparag If allied powers do not agree, the decision is taken by the Power
-having the higher value in DIP (decide ties randomly).
-
-\aparag[Method]
-To sign peace with the minor, the player rolls 1d10, taking into account the
-sought-after peace level and all applicable modifiers. The level of peace is
-chosen by the player, without taking into account his own Stability.
-\bparag[Result]
-The peace is signed if the modified die-roll result is 6 or more.
-\bparag[Peace level Modifier]
-This modifier is the triple of the value of the peace level chosen. It is used
-as a positive modifier if the offered peace is favorable to the minor, or as a
-negative modifier if the offered peace is favorable to the player.
-\bparag[Nationality Modifier]
-It is applied for the case of conflicts with specific minor countries
-which are:
-\begin{modlist}
-\item[-4] \pays{Perse}, \pays{egypte}, \pays{damas}, \pays{Chine},
-\pays{Japon}
-\item[-3] \pays{USA}, \pays{Mogol}, \pays{Venise}, \pays{Pologne},
-\pays{Habsbourg},  \pays{Brandebourg} after IV-11
-\item[-2] \pays{Portugal}, \pays{danemark}
-\end{modlist}
-\bparag[Modifiers of Situation]
-These are is applied cumulatively according to what happened during the
-current turn (and to what happened during previous turns for the
-lost/conquered provinces only):
-\begin{modlist}
-\item[+2] per province/\TP\faceplus/\COL lost by the minor (+4 if capital)
-\item[-2] per province/\TP\faceplus/\COL conquered by the minor (-4 if
-  capital) 
-\item[+1] per \TP\facemoins  lost by the minor (round down) 
-\item[-1] per \TP\facemoins conquered by the minor 
-\item[+2] if the capital province of the \MIN was conquered this turn, or if
-  it was captured then lost since
-\item[-4] if the \MIN has captured a capital province of a \MAJ this turn, -or
-  if it was captured then lost since
-\item[-2] per major battle won by the minor  
-\item[+2] per major battle won by the player 
-\item[-1] per battle won by the minor 
-\item[+1] per battler won by the player
-\item[+1] per minor military leader killed or captured 
-\item[+2] if the Monarch of the minor country is captured and its Ransom is
-  used for Peace
-\item[-1] per military leader of the player killed or captured
-\item[+1] per siege won by the player 
-\item[-1] per siege won by the minor 
-\item[-2] If minor is heretic (Catholic vs. Protestant, before the end of the
-  \terme{Religious Dissension})
-\item[-2] if it is an attempt to negotiate a separate peace $\pm$?: the PD of
-  the controller regarding the alliance attempting the peace (if the
-  controller is at war against the alliance), max. -3/+3
-\end{modlist}
-\bparag All these modifiers are cumulative in one single turn.
-\bparag \COL and \TP\faceplus controlled counts as a full province (modifier
-of $\pm 2$); the same is true for control of cities of minor countries in the
-\ROTW;
-\bparag \TP\facemoins controlled gives a modifier of $\pm 1$ only; the same
-modifier holds for occupying a province without city of a minor country in the
-\ROTW;
-%% was \pm 1, remis à 1.5 pour être comme les tables ou la liste de modifieurs
-%% ci-dessus...
-
-\aparag[Overseas Wars]
-\bparag A Minor country always accepts to sign a White Peace in Overseas War
-(if it is not a Separate Peace).
-
-\aparag[Consequences of Peace]
-If the peace is signed, no Stability level is gained (exception: if this minor
-declared war to the player by an event). The player that controlled the minor
-does not earn anything.
-\bparag The conditions of Peace are the same as for a Peace between Major
-powers.
-\bparag A Minor country will at most indemnities up to 4 times its income,
-immediately at the conclusion of the Peace. Any other indemnities are void.
-\bparag If the minor country is the victor, the player that controls the minor
-country chooses the ceded provinces (if any). He must do so in priority among
-those located the closest from the minor country's territory, in terms of
-movement points (a sea zone is equivalent to 2 MP for this calculation).
-\bparag A minor country nevers takes Diplomatic concessions, only provinces
-and indemnities.
-
-\aparag[Multiple and Separate Peace]
-If a player signs a separate peace with a minor country (he is still at war
-against the controlling player); this minor may not be again involved in a war
-against him next turn (unless by an event or a Crusade).
-\bparag A minor country at war by event may only make a separate peace.
-
-\aparag[Unconditional Peace]
-A Minor country will sign a mandatory Unconditional Peace if all of its
-provinces are controlled by the ennemy. This peace is one global peace against
-all the powers controlling its provinces (so it can lose only 3 provinces).
-\bparag If a minor country loses and signs an unconditional peace its
-political marker is moved automatically to the box \Neutral.
-
-\aparag[Automatic Peace]
-An alliance that proposes a victorious Unconditional Peace to a Minor power,
-and that Minor power was the attacking one (caused by event), or is not allied
-to an alliance (so this is not a Separate Peace), the Peace is automatically
-accepted by the Minor power.
-
-\aparag[Failure of Peace negotiations]
-If the die-roll is inferior or equal to 5 the war with the minor continues
-normally for the following turn. Another peace attempt with that minor will be
-allowed during the peace phase of next turn.
 
 \section{Test for crusade}\label{chPeace:Crusade}
 
