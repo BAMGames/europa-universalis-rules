@@ -1266,7 +1266,11 @@ unless the province has been discovered by the country, is linked to a
 province on the European map by a continuous path of known sea zones and
 provinces (even if enemy-occupied or through closed straits fortifications),
 and at least one of the following conditions is true:
-\bparag The province is coastal.
+\begin{modlist}
+\item The province is coastal.
+\item[OR] The province is within supply distance (12\MP) by land only of a
+  \COL, \TP or European province owned by the country.
+\end{modlist}
 % \bparag The \Area contains a \COL or \TP of the same country and the
 % targeted province is within supply distance (12\MP) of it.
 % \bparag The \Area is adjacent to an \Area containing a \COL or \TP of the
@@ -1274,19 +1278,19 @@ and at least one of the following conditions is true:
 % it.
 % \bparag The \Area is adjacent to an European province owned by the country
 % and the targeted province is within supply distance (12\MP) of it.
-\bparag The province is within supply distance (12\MP) by land only of a \COL,
-\TP or European province owned by the country.
-\bparag No (other) exception.
+\bparag No exception.
 
 \aparag[Inland advance [TBD]] A province with a \COL (any level) may not be
 targeted by a colonisation attempt unless one of the following conditions is
 true:
-\bparag The province is coastal.
-\bparag The \Area contains a \COL\faceplus or a mission of the same country.
-\bparag The \Area is adjacent to an \Area containing a \COL\faceplus or a
-mission of the same country.
-\bparag The \Area is adjacent to an European province owned by the country.
-\bparag No (other) exception.
+\begin{modlist}
+\item The province is coastal.
+\item[OR] The \Area contains a \COL\faceplus or a mission of the same country.
+\item[OR] The \Area is adjacent to an \Area containing a \COL\faceplus or a
+  mission of the same country.
+\item[OR] The \Area is adjacent to an European province owned by the country.
+\end{modlist}
+\bparag No exception.
 
 \begin{designnote}
   Thus, one must first colonise coasts before going inland. Two attempts on an
