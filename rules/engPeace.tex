@@ -891,7 +891,7 @@ the alliance.
 \pays{Habsbourg},  \pays{Brandebourg} after IV-11;
 \item[-2] \pays{Portugal}, \pays{danemark}.
 \end{modlist}
-\bparag[Modifiers for military Situation]
+\bparag[Modifiers for military Situation]~
 \begin{modlist}
 % \item[+4] per capital owned by the minor and controlled by the major;
 % \item[-4] per capital owned by the major and controlled by the minor;
@@ -914,7 +914,7 @@ they happen and are reseted at each turn.
 \item[-2] per major battle won by the minor;  
 \item[+2] per major battle won by the major;
 \item[-1] per battle won by the minor;
-\item[+1] per battler won by the player;
+\item[+1] per battler won by the major;
 \item[+1] per minor military leader killed or captured;
 \item[+2] if the Monarch of the minor is captured and its Ransom is used for
   Peace;
@@ -922,7 +922,7 @@ they happen and are reseted at each turn.
 \item[+1] per siege won by the major (\bonus{+2} if this is a capital); 
 \item[-1] per siege won by the minor (\bonus{-2} if this is a capital).
 \end{modlist}
-\bparag[Separate peace]
+\bparag[Separate peace]~
 \begin{modlist}
 \item[-2] if it is an attempt to negotiate a separate peace;
 \item[$\pm$?] the peace differential of the alliance attempting the peace
@@ -1028,12 +1028,94 @@ war against this major next turn (unless by an event or a Crusade).
 \end{exemple}
 
 \begin{exemple}[Military situation]
-  
+  On turn 15, \ref{pIII:War Sweden Denmark} erupts and \paysDanemark attacks
+  \SUE.
+
+  During turn 15, \SUE wins two naval battles but loses one where its admiral
+  is killed (captured) and loses one land battle, while trying to invade
+  \provinceSkane. Meanwhile, the Swedish Northern army manages to take control
+  of \provinceTrondelag. Thus, the situation modifier is +2 (one province of
+  the minor is occupied) while the action modifier is +2 (two battles won by
+  \SUE) -2 (two battles won by \paysDanemark) -1 (one Swedish leader killed)
+  +1 (one successful siege) = 0. Since there is a -2 nationality modifier for
+  \paysDanemark and an additional -2 due to the Danish claim on the Swedish
+  crown (\ref{chSpecific:Sweden:Denmark}), the global modifier is -4. Not
+  wanting to sign a white or losing peace, \SUE decides to stay at war.
+
+  \smallskip
+
+  During turn 16, \SUE wins three naval battle, killing the Danish admiral
+  once and on land both win once. \provinceTrondelag stays in Swedish hands
+  and no other siege succeed but the Danish \leaderRantzau was nonetheless
+  killed in an unsuccessful assault. Thus, the situation modifier is still
+  +2. The action modifier, however, is now +4 (four Swedish victories) -1 (one
+  Danish victory) +2 (two Danish leaders killed) = +5. Note that the actions
+  of turn 15 are now forgotten and only what happened recently is taken into
+  account. With the nationality modifier and the special modifier, this result
+  in a +1 favouring \SUE.
+
+  Being also involved in the Livonian war, \SUE wants to sign peace. Being in
+  a not too bad situation (especially with \leaderRantzau dead), \SUE wants to
+  attempt a winning peace. Depending on the peace, the modifier will be:
+  \begin{itemize}
+  \item Peace of level +1 (Danish victory), giving indemnities (no province
+    may be given as \paysDanemark controls none): +1 (situation, action and
+    nationality modifiers) + 3 \textmultiply (+1) (level of the peace) + (-1)
+    (giving indeminties) = +3 and will have 80\% chances of success (3 or
+    more).
+  \item Peace of level 0 (back to \emph{status quo}): +1 + 3 \textmultiply 0
+    = +1 (60\% success).
+  \item Peace of level -1 (Swedish victory), annexing a province (one of the
+    three national provinces of \SUE owned by \paysDanemark): +1 + 3
+    \textmultiply (-1) (level of the peace) - (+1) (taking one territorial
+    concession) = -3 (only 20\% success only, and the special modifier for
+    future peaces stays).
+  \item Peace of level -1, taking indemnities: +1 + 3 \textmultiply (-1) -
+    (-1) (taking indemnities) = -1 (40\% success, but very little gain with
+    only 50\ducats.)
+  \item Peace of level -1, asking \paysDanemark to abandon claims on the crown
+    (special peace condition provided by~\ref{chSpecific:Sweden:Denmark}): +1
+    + 3 \textmultiply (-1) - 0 (no modifier for this condition) = -2 (30\%
+    success and future peaces will be much easier). This was the historical
+    result of the war (treaty of Stettin).
+  \item Peace of level -2, asking heavier indemnities: +1 + 3 \textmultiply
+    (-2) - (-1) = -6 (impossible). In this not really decisive situation, it
+    is simply impossible to ask for a peace of level 2.
+  \end{itemize}
 \end{exemple}
 
 \begin{exemple}[Separate peace]
-  
+  At turn 7, \FRA is at war against \HIS and \paysSavoie. \FRA controls
+  \provinceSavoia (from a previous turn) and \provinceBresse (from a previous
+  turn) but \HIS controls \provinceArtois (annexed earlier by \FRA) and
+  \provinceLanguedoc. \paysSavoie was not involved in any battles (its last
+  troops heroically defended \provinceNice against a french siege). The
+  \STAB of \FRA is +0 and the \STAB of \HIS is +1.
+
+  The Peace Differential between \HIS and \FRA is +1 (\STAB differential) not
+  modified. \HIS is not willing to sign an unfavourable negotiated peace
+  (level 1 favouring \FRA) and \FRA also refuse the conditional peace of level
+  1 (favouring \HIS). However \FRA wants to try and get \paysSavoie out of the
+  war in order to free its occupation troops and repulse the Spaniards.  The
+  situation modifier is +4 (two provinces occupied, the Spanish occupation
+  does not count for a peace with \paysSavoie) +2 (capital was conquered) =
+  +6. The action modifier is +1 (one siege) and there is a separate peace
+  modifier of -2 (Separate peace) -1 (Peace differential versus the alliance
+  of the minor) = -3. Thus, the global modifier is +4. \FRA is almost
+  guaranteed to have a white peace (90\% success) and may even try to annex
+  \provinceBresse (50\% success).
 \end{exemple}
+
+\begin{designnote}[Peace differential]
+  If the minor is on the winning side of the war, it does not want to betray
+  its allies to get out (or only with heavy spoils), thus the PD acts
+  negatively in the peace roll. On the other hand, if the minor is on the
+  loosing side of the war, it may want to try and cut its loses before being
+  involved in a dramatic peace, thus the PD acts positively. Always take the
+  PD as seen from the alliance attempting peace. Always consider the PD versus
+  the whole alliance of the minor (not only its controller, this is
+  \textbf{not} a separate peace with the controller).
+\end{designnote}
 
 \subsection{General Consequences of the Peace}
 \aparag Peace brings the conflict opposing the belligerent countries to an
