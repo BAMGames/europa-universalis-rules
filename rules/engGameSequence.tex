@@ -78,20 +78,28 @@
   \bparag \xnameref{chRedep:Return port} 
   % Return to port or Attrition of Fleets at sea
   \bparag \xnameref{chRedep:Presidios}
-  \bparag \xnameref{chRedep:Gold Repatriation} 
 }
 \newcommand{\RedepPhase}{%
   \aparag {\bf \xnameref{chapter:Redep}}
   \RedepDetails
 }
 
+\newcommand{\ExchequerDetails}{%
+  \bparag \xnameref{chRedep:Gold Repatriation} 
+  \bparag \xnameref{chBudget:Exceptional taxes}
+  \bparag \xnameref{chBudget:Exchequer test} % including Loans
+  \bparag \xnameref{chBudget:Budget} % including wealth
+  \bparag \xnameref{chBudget:Stability Improvement}
+}
+\newcommand{\ExchequerPhase}{%
+  \aparag {\bf \xnameref{chapter:Budget}}
+  \ExchequerDetails
+}
+
 \newcommand{\PeaceDetails}{%
-  \bparag \xnameref{chPeace:Exceptional taxes}
-  \bparag \xnameref{chPeace:Exchequer test} % including Loans
-  \bparag \xnameref{chPeace:Budget} % including wealth
-  \bparag \xnameref{chPeace:Stability Improvement}
   \bparag \xnameref{chPeace:Ransoms}
   \bparag \xnameref{chPeace:Peace offers}
+  \bparag \xnameref{chPeace:Stability} % losses for wars & such
   \bparag \xnameref{chPeace:Crusade} % Test for Crusade
 }
 \newcommand{\PeacePhase}{%
@@ -100,9 +108,8 @@
 }
 
 \newcommand{\InterDetails}{%
-  \bparag \xnameref{chInter:Stability} % losses for wars & such
-  \bparag \xnameref{chInter:Leaders} % Placement \& Death of Military Leaders
   \bparag \xnameref{chInter:Inflation} 
+  \bparag \xnameref{chInter:Leaders} % Placement \& Death of Military Leaders
   \bparag \xnameref{chInter:Trade Centres}
   % Moving the Trade Centres and Convoys
   \bparag \xnameref{chVictories:Turn VP} % Calculation of end of turn \VP.
@@ -113,11 +120,12 @@
 }
 
 \newcommand{\GameSequence}{%
-  \EventsPhase
-  \DiploPhase
-  \AdminPhase
-  \MilitaryPhase
-  \RedepPhase
-  \PeacePhase
-  \InterPhase
+  \EventsPhase %
+  \DiploPhase %
+  \AdminPhase %
+  \MilitaryPhase %
+  \RedepPhase %
+  \ExchequerPhase %
+  \PeacePhase %
+  \InterPhase %
 }
