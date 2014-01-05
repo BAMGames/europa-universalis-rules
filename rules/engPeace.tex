@@ -765,22 +765,14 @@ only be annexed if the controlling power agrees. In that case, the controlling
 power must evacuate the province as per~\ref{chPeace:Evacuation}.
 
 \aparag[Priority] If any national province of the winning alliance is
-currently owned by any member of the losing alliance, it must be chosen as
-territorial concession.
-\bparag If several exists, a controlled one must be chosen first.
-\bparag If tied, choice is made by the power choosing how to implement the
-condition (\ref{chPeace:Implementing conditions}).
+currently owned by any member of the losing alliance and controlled by a
+member of the winning alliance, it must be chosen as territorial concession.
+\bparag If several exists, the choice is made by the power choosing how to
+implement the condition (\ref{chPeace:Implementing conditions}).
 \bparag Note that this priority does not prevent any other peace condition
 (indemnities, diplomatic concessions, \ldots) to be obtained at peace.
 \bparag Note that provinces with blurred shield are (usually) not national
 provinces and thus don't have priority.
-
-\begin{designnote}
-  Ownership of national provinces provides a \CB. Leaving one non-important
-  national province owned by someone else could lead to repeated wars against
-  it with big territorial gain each time (especially against minor). Thus,
-  this ``\CB-farming'' is restricted.
-\end{designnote}
 
 \aparag[Transfer of Colony or Trading Post]
 \bparag One territorial concession (whatever the level of the peace) allow to
@@ -798,9 +790,6 @@ any province on the European map, \province{Islas Canarias} or \province{Cabo
   Verde}.
 \bparag Note that \COL of level 6 may still be annexed and that the ``two for
 one'' rule above still applies.
-% \bparag [TBD: pour annexer en Afrique, il faut une guerre normale, guerre
-% outremer permet juste les présidios + indemnités + diplomatie] [\textbf{PB:
-%   actuellement je suis en faveur de cette restriction}]
 
 \aparag[Transfer of provinces of minor countries]
 \bparag Minors signing peace at the same time as their Diplomatic patron are
@@ -808,34 +797,38 @@ involved in the peace as any power and may thus cede or annex provinces.
 \bparag For this purpose, provinces with a non-blurred shield, as well as
 provinces formerly owned by the minor, count as ``national provinces'' of the
 minor (especially for the priority of annexation rule).
-% major allies of minor Venise must give Moree to it even if it was never
-% owned by \VEN. This represents the result of the Peloponese war (Morosini)
-% where the \AUS-Venise alliance wins and Venise annex Moree.
+% (Jym):
 \bparag Additionally, provinces of \regionBalkans are considered as national
 provinces of \paysVenise.
+% Replaces:
+% (Pierre) major allies of minor Venise must give Moree to it even if it was
+% never owned by \VEN. This represents the result of the Peloponese war
+% (Morosini) where the \AUS-Venise alliance wins and Venise annex Moree.
 \bparag Provinces gained or lost by minors count as if gained or lost by their
 Diplomatic patrons for \VPs.
+\bparag If the losing alliance chooses to give a province of a minor when it
+may have chosen a province of a major from the European map, this minor goes
+to Neutral after the peace is signed.
 % Only in case of choice made by the patron (and allies). Thus avoid \RUS
 % taking 1 province from Crimea (only) and having it drop from \TUR track as a
 % free bonus.
 % Possible \COL/\TP annexation are ignored as this probably would create too
 % strange stuff.
-\bparag If the losing alliance chooses to give a province of a minor when it
-may have chosen a province of a major from the European map, this minor goes
-to Neutral after the peace is signed.
 
 \subsection{Peace with Minor powers}\label{chPeace:Peace with Minors}
 \aparag Peaces with minor powers are handled by a die roll.
 
 \aparag[Global peace] An alliance at war against an alliance composed solely
-of minors (usually a single one) may propose peace to the whole alliance of
-minors.
+of minors (often a single major against a single minor) may propose peace to
+the whole alliance of minors.
+\bparag As usual, minors allied to majors in the proposing alliance are
+included in the peace treaty.
 
 \aparag[Separate peace] An alliance at war may propose a separate peace to
 some minors allied to an opposing alliance.
-\bparag Check~\ref{chPeace:Separate peace minor} to see at which condition an
+\bparag Check~\ref{chPeace:Separate peace minor} to see at which conditions an
 alliance may propose a separate peace to minor enemies (1 per alliance per
-turn + specific conditions).
+turn + specific situations).
 \bparag Note that this include proposing separate peace to members of an
 alliance composed solely of minors.
 \bparag Contrary to separate peace with majors, each separate peace with minor
@@ -851,10 +844,11 @@ more separate peace with minors involved in it is attempted.
 
   If \FRA attempts to sign a separate peace with \paysSavoie at turn 7, it may
   not, at the same turn, sign a global peace with \HIS (whatever the result of
-  the attempted peace with \HIS). \FRA may (attempt to) sign a peace with
-  \paysSavoie at turn 7, stay at war and sign a global peace with \HIS (and
-  \paysSavoie if the separate peace failed) at turn 8. Obviously, there is a
-  risk in doing so that \HIS overrun \FRA during this extra turn of war\ldots
+  the attempted peace with \paysSavoie). \FRA may (attempt to) sign a peace
+  with \paysSavoie at turn 7, stay at war and sign a global peace with \HIS
+  (and \paysSavoie if the separate peace failed) at turn 8. Obviously, there
+  is a risk in doing so that \HIS overruns \FRA during this extra turn of
+  war\ldots
 \end{exemple}
 
 \aparag[Disagreement] As usual, any decision on which peace to (try to) sign
@@ -862,12 +856,12 @@ is made by the country whose monarch has the higher \DIP.
 
 \aparag[Method]
 \bparag The alliance proposing peace choose the level of the peace, between -5
-(unconditional peace favouring the major) and +5 (unconditional peace
-favouring the minor) (that is, the level of the peace is seen from the minor's
-perspective) as well as the nature of the conditions.
+(unconditional peace favouring the proposing alliance) and +5 (unconditional
+peace favouring the target alliance) (that is, the level of the peace is seen
+from the minor's perspective) as well as the nature of the conditions.
 \bparag Unless this is a special case of automatic peace
-(see~\ref{chPeace:automatic peace minor} below), the alliance attempting the
-peace roll a die, modified as in~\ref{chPeace:peace minors modifiers} below.
+(see~\ref{chPeace:automatic peace minor}), the proposing alliance roll a die,
+modified as in~\ref{chPeace:peace minors modifiers}.
 \bparag If the result is 6 or more, the peace is signed.
 \bparag If the result is less than 6, the peace is not signed and the
 countries stay at war.
@@ -880,12 +874,12 @@ The DRM to the peace roll are all cumulative.
 \bparag[Nature of the Peace] These modifiers take into account the level of
 the peace as well as the nature of the conditions given or taken.
 \begin{modlist}
-\item[$\pm$ 3] per level of the peace (positive if the minor wins the war,
-  negative if the major wins);
-\item[+ ?] per peace condition given to the minor (depending on the nature of
-  the condition);
-\item[- ?] per peace condition taken from the minor (depending on the nature of
-  the condition).
+\item[$\pm$ 3] per level of the peace (positive if the target alliance wins
+  the war, negative if the proposing alliance wins);
+\item[+ ?] per peace condition given to the target alliance (depending on the
+  nature of the condition);
+\item[- ?] per peace condition taken from the target alliance (depending on
+  the nature of the condition).
 \end{modlist}
 \bparag The modifiers for the nature of the conditions are:
 \begin{modlist}
@@ -899,49 +893,54 @@ It is applied when signing peace with specific minors. In case of peace with
 an alliance of minors, apply the nationality modifiers of all the minors in
 the alliance.
 \begin{modlist}
-\item[-4] \pays{Perse}, \pays{egypte}, \pays{damas}, \pays{Chine},
-\pays{Japon};
-\item[-3] \pays{USA}, \pays{Mogol}, \pays{Venise}, \pays{Pologne},
-\pays{Habsbourg},  \pays{Brandebourg} after IV-11;
-\item[-2] \pays{Portugal}, \pays{danemark}.
+\item[-4] peace with either \paysPerse, \paysEgypte, \paysDamas, \paysChine or
+  \paysJapon;
+\item[-3] peace with either \paysUSA, \paysMogol, \paysVenise, \paysPologne,
+  \paysHabsbourg or, after \ref{pIV:Great Elector}, \paysBrandebourg;
+\item[-2] peace with \paysPortugal or \paysDanemark.
 \end{modlist}
 \bparag[Modifiers for military Situation]~
 \begin{modlist}
 % \item[+4] per capital owned by the minor and controlled by the major;
 % \item[-4] per capital owned by the major and controlled by the minor;
-\item[+2] per other province/\TP\faceplus/\COL/city in the \ROTW owned by the
-  minor and controlled by the major;
-\item[-2] per other province/\TP\faceplus/\COL owned by the major and
-  controlled by the minor;
-\item[+1.5] per \TP\facemoins owned by the minor and controlled by the major;
-\item[-1.5] per \TP\facemoins owned by the major and controlled by the minor;
-\item[+2] per capital province of the minor that was conquered at any point of
-  the war (even if liberated since);
-\item[-2] per capital province of the major that was conquered at any point of
-  the war (even if liberated since);
-\item[-2] If minor is heretic (Catholic vs. Protestant, before the end of the
-  \terme{Religious Dissension}).
+\item[+2] per province, \TP\faceplus, \COL or city in the \ROTW owned by the
+  target alliance and controlled by the proposing alliance;
+\item[-2] per province, \TP\faceplus, \COL or city in the \ROTW owned by the
+  proposing alliance and controlled by the target alliance;
+\item[+1.5] per \TP\facemoins owned by the target alliance and controlled by
+  the proposing alliance;
+\item[-1.5] per \TP\facemoins owned by the proposing alliance and controlled
+  by the target alliance;
+\item[+2] per capital province of the target alliance that was conquered at
+  any point of the war (even if liberated since);
+\item[-2] per capital province of the proposing alliance that was conquered at
+  any point of the war (even if liberated since);
+\item[-2] If at least one member of the target alliance is heretic toward at
+  least one member of the proposing alliance (Catholic vs. Protestant, before
+  the end of the \terme{Religious Dissension}).
 \end{modlist}
 \bparag[Modifiers for military action] These modifiers are only valid the turn
 they happen and are reseted at each turn.
 \begin{modlist}
-\item[-2] per major battle won by the minor;  
-\item[+2] per major battle won by the major;
-\item[-1] per battle won by the minor;
-\item[+1] per battler won by the major;
-\item[+1] per minor military leader killed or captured;
-\item[+2] if the Monarch of the minor is captured and its Ransom is used for
-  Peace;
-\item[-1] per military leader of the major killed or captured;
-\item[+1] per siege won by the major (\bonus{+2} if this is a capital); 
-\item[-1] per siege won by the minor (\bonus{-2} if this is a capital).
+\item[+2] per major battle won by the proposing alliance;
+\item[-2] per major battle won by the target alliance;  
+\item[+1] per battle won by the proposing alliance;
+\item[-1] per battle won by the target alliance;
+\item[+1] per military leader of the target alliance (including Monarchs)
+  killed or captured;
+\item[+2] per Monarch of the target alliance captured and whose Ransom is used
+  for Peace modifier;
+\item[-1] per military leader of the proposing alliance killed or captured;
+\item[+1] per siege won by the proposing alliance (\bonus{+2} if this is a
+  capital);
+\item[-1] per siege won by the target alliance (\bonus{-2} if this is a
+  capital).
 \end{modlist}
 \bparag[Separate peace]~
 \begin{modlist}
 \item[-2] if it is an attempt to negotiate a separate peace;
-\item[$\pm$?] the peace differential of the alliance attempting the peace
-  versus the alliance of the minor (maximum, \bonus{-3}/\bonus{+3}). If there
-  are several allied minors, use the worst (smallest) such modifier.
+\item[$\pm$?] the peace differential of the proposing alliance versus the
+  alliance of the minor (maximum, \bonus{-3}/\bonus{+3}). 
 \end{modlist}
 
 \aparag[Automatic peaces]\label{chPeace:automatic peace minor}
@@ -951,13 +950,13 @@ See~\ref{chPeace:Mandatory peace minors}
 \bparag If an alliance of minors is at war with no major ally, it
 automatically accepts an unconditional surrender (peace of level 5) in its
 favour if any enemy proposes it. In this case (only), the controllers of the
-minors select the nature of the condition and must choose territorial or
-specific condition if possible (and indemnities last), resolving disagreement
+minors select the nature of the conditions and must choose territorial or
+specific conditions if possible (and indemnities last), resolving disagreement
 as if they were allied. Note that it is still possible to attempt a regular
 peace of level +5 (favouring the minor) and rolling die.
-\bparag A Minor country always accepts to sign a White Peace in Overseas War
-(if this is not a Separate Peace). Note that the major may choose not to
-propose the peace and stay at war, or try to get a winning peace.
+\bparag Minor countries always accept to sign a global White Peace in Overseas
+War. Note that the major may choose not to propose the peace and stay at war,
+or roll to try and get a winning peace.
 
 \aparag[Consequences of Peace]
 % If the peace is signed, no Stability level is gained (exception: if this minor
@@ -1002,9 +1001,9 @@ concessions.
 \end{designnote}
 
 \aparag[Multiple and Separate Peace]
-If a major signs a separate peace with a minor country (and stays at war
-against the controlling country); this minor may not be again involved in a
-war against this major next turn (unless by an event or a Crusade).
+If one or more major sign a separate peace with a minor country (and stay at
+war against the controlling country); this minor may not be again involved in
+a war against these majors next turn (unless by an event).
 % \bparag A minor country at war by event may only make a separate peace.
 
 % \aparag[Unconditional Peace]
@@ -1046,27 +1045,28 @@ war against this major next turn (unless by an event or a Crusade).
   \SUE.
 
   During turn 15, \SUE wins two naval battles but loses one where its admiral
-  is killed (captured) and loses one land battle, while trying to invade
-  \provinceSkane. Meanwhile, the Swedish Northern army manages to take control
-  of \provinceTrondelag. Thus, the situation modifier is +2 (one province of
-  the minor is occupied) while the action modifier is +2 (two battles won by
-  \SUE) -2 (two battles won by \paysDanemark) -1 (one Swedish leader killed)
-  +1 (one successful siege) = 0. Since there is a -2 nationality modifier for
-  \paysDanemark and an additional -2 due to the Danish claim on the Swedish
-  crown (\ref{chSpecific:Sweden:Denmark}), the global modifier is -4. Not
-  wanting to sign a white or losing peace, \SUE decides to stay at war.
+  is captured (in game, killed) and loses one land battle, while trying to
+  invade \provinceSkane. Meanwhile, the Swedish Northern army manages to take
+  control of \provinceTrondelag. Thus, the situation modifier is +2 (one
+  province of the minor is occupied) while the action modifier is +2 (two
+  battles won by \SUE) -2 (two battles won by \paysDanemark) -1 (one Swedish
+  leader killed) +1 (one successful siege) = 0. Since there is a -2
+  nationality modifier for \paysDanemark and an additional -2 due to the
+  Danish claim on the Swedish crown (\ref{chSpecific:Sweden:Denmark}), the
+  global modifier is -4. Not wanting to sign a white or losing peace, \SUE
+  decides to stay at war.
 
   \smallskip
 
-  During turn 16, \SUE wins three naval battle, killing the Danish admiral
+  During turn 16, \SUE wins three naval battles, killing the Danish admiral
   once and on land both win once. \provinceTrondelag stays in Swedish hands
-  and no other siege succeed but the Danish \leaderRantzau was nonetheless
-  killed in an unsuccessful assault. Thus, the situation modifier is still
-  +2. The action modifier, however, is now +4 (four Swedish victories) -1 (one
-  Danish victory) +2 (two Danish leaders killed) = +5. Note that the actions
-  of turn 15 are now forgotten and only what happened recently is taken into
-  account. With the nationality modifier and the special modifier, this result
-  in a +1 favouring \SUE.
+  and no other siege succeed but the Danish general \leaderRantzau is
+  nonetheless killed in an unsuccessful assault. Thus, the situation modifier
+  is still +2. The action modifier, however, is now +4 (four Swedish
+  victories) -1 (one Danish victory) +2 (two Danish leaders killed) = +5. Note
+  that the actions of turn 15 are now forgotten and only what happened
+  recently is taken into account. With the nationality modifier and the
+  special modifier, this results in a +1 favouring \SUE.
 
   Being also involved in the Livonian war, \SUE wants to sign peace. Being in
   a not too bad situation (especially with \leaderRantzau dead), \SUE wants to
@@ -1079,11 +1079,11 @@ war against this major next turn (unless by an event or a Crusade).
     more).
   \item Peace of level 0 (back to \emph{status quo}): +1 + 3 \textmultiply 0
     = +1 (60\% success).
-  \item Peace of level -1 (Swedish victory), annexing a province (one of the
-    three national provinces of \SUE owned by \paysDanemark): +1 + 3
-    \textmultiply (-1) (level of the peace) - (+1) (taking one territorial
-    concession) = -3 (only 20\% success only, and the special modifier for
-    future peaces stays).
+  \item Peace of level -1 (Swedish victory), annexing a province (either
+    \provinceTrondelag or one of the three national provinces of \SUE owned by
+    \paysDanemark): +1 + 3 \textmultiply (-1) (level of the peace) - (+1)
+    (taking one territorial concession) = -3 (only 20\% success only, and the
+    special modifier stays for future peaces).
   \item Peace of level -1, taking indemnities: +1 + 3 \textmultiply (-1) -
     (-1) (taking indemnities) = -1 (40\% success, but very little gain with
     only 50\ducats.)
@@ -1100,24 +1100,26 @@ war against this major next turn (unless by an event or a Crusade).
 
 \begin{exemple}[Separate peace]
   At turn 7, \FRA is at war against \HIS and \paysSavoie. \FRA controls
-  \provinceSavoia (from a previous turn) and \provinceBresse (from a previous
-  turn) but \HIS controls \provinceArtois (annexed earlier by \FRA) and
+  \provinceSavoia (from a previous turn) and \provinceBresse (from this turn)
+  but \HIS controls \provinceArtois (annexed earlier by \FRA) and
   \provinceLanguedoc. \paysSavoie was not involved in any battles (its last
-  troops heroically defended \provinceNice against a french siege). The
-  \STAB of \FRA is +0 and the \STAB of \HIS is +1.
+  troops heroically defended \provinceNice against a french siege). The \STAB
+  of \FRA is +0 and the \STAB of \HIS is +1.
 
-  The Peace Differential between \HIS and \FRA is +1 (\STAB differential) not
-  modified. \HIS is not willing to sign an unfavourable negotiated peace
-  (level 1 favouring \FRA) and \FRA also refuse the conditional peace of level
-  1 (favouring \HIS). However \FRA wants to try and get \paysSavoie out of the
-  war in order to free its occupation troops and repulse the Spaniards.  The
-  situation modifier is +4 (two provinces occupied, the Spanish occupation
-  does not count for a peace with \paysSavoie) +2 (capital was conquered) =
-  +6. The action modifier is +1 (one siege) and there is a separate peace
-  modifier of -2 (Separate peace) -1 (Peace differential versus the alliance
-  of the minor) = -3. Thus, the global modifier is +4. \FRA is almost
-  guaranteed to have a white peace (90\% success) and may even try to annex
-  \provinceBresse (50\% success).
+  The Peace Differential between the alliances, seen from the French side, is
+  -1 (\STAB differential) not modified (\FRA controls 3 provinces, the capital
+  counting as two, but \HIS controls 2, so there is only 1 extra province, not
+  enough to modify the PD). \HIS is not willing to sign an unfavourable
+  negotiated peace (level 1 favouring \FRA) and \FRA also refuse the
+  conditional peace of level 1 (favouring \HIS). However \FRA wants to try and
+  get \paysSavoie out of the war in order to free its occupation troops and
+  repulse the Spaniards.  The situation modifier is +4 (two provinces
+  occupied, the Spanish occupation does not count for a peace with
+  \paysSavoie) +2 (capital was conquered) = +6. The action modifier is +1 (one
+  siege) and there is a separate peace modifier of -2 (Separate peace) -1
+  (Peace differential versus the alliance of the minor) = -3. Thus, the global
+  modifier is +4. \FRA is almost guaranteed to have a white peace (90\%
+  success) and may even try to annex \provinceBresse (50\% success).
 \end{exemple}
 
 \begin{designnote}[Peace differential]
@@ -1126,10 +1128,27 @@ war against this major next turn (unless by an event or a Crusade).
   negatively in the peace roll. On the other hand, if the minor is on the
   loosing side of the war, it may want to try and cut its loses before being
   involved in a dramatic peace, thus the PD acts positively. Always take the
-  PD as seen from the alliance attempting peace. Always consider the PD versus
+  PD as seen from the alliance proposing peace. Always consider the PD versus
   the whole alliance of the minor (not only its controller, this is
   \textbf{not} a separate peace with the controller).
 \end{designnote}
+
+\begin{exemple}[Max indemnities]
+  \FRA is at war against the lone \paysLorraine and controls
+  \provinceLorraine. Since it is the only province of the minor, it
+  automatically accepts an unconditional surrender leaving \FRA with three
+  conditions to choose. Since its only province is a capital, \FRA may not
+  annex it. \FRA choose to take 3 indemnities. Since it is a peace of level 5,
+  each indemnity is worth 150\ducats for a total of 450\ducats. However, the
+  income of \paysLorraine is only 7\ducats, thus the maximum indemnities it
+  may pay is 7 \textmultiply 4 = 28\ducats total. The 422 other \ducats are
+  lost (but still represent a valid peace condition, that is \FRA may sign the
+  peace for 28\ducats).
+
+  Remark: in this situation, it would probably be wiser for \FRA to ask for
+  diplomatic concessions, representing in this case the long-term French
+  occupation of \paysLorraine in the 16th and 17th centuries.
+\end{exemple}
 
 \subsection{General Consequences of the Peace}
 \aparag Peace brings the conflict opposing the belligerent countries to an
@@ -1175,7 +1194,9 @@ unit is either at war or intervention with (ally) or against (enemy) the owner
 of the province.
 \bparag Evacuating units must move to owned and controlled territory.
 \bparag Evacuating units may move through any country that was part of a just
-ended war, including former enemies, regardless of the presence of any unit.
+ended war with (ally) or against (enemy) them, including former enemies,
+regardless of the presence of any unit (even those that were not part of a
+just ended war, \emph{e.g.} third party units involved in another war).
 \bparag Exception: they may not enter a province with an unbesieged enemy unit
 or fortress (from another war).
 \bparag Evacuating units may not, however, move through provinces of countries
@@ -1233,12 +1254,74 @@ where it starts its evacuation).
 \bparag Any other land unit must either have redeploy or evacuate [or I did
 overlook an obvious special case].
 
+\begin{exemple}[Returning control and Evacuation]
+  \FRA and \HIS sign peace and are now fully at peace. After any change in
+  ownership of provinces due to the treaty, \FRA must give back control of any
+  province owned by \HIS it currently controls and reciprocally \HIS must give
+  back control of French provinces. Next, any French troop in Spanish province
+  must evacuate to a French province. During evacuation, it may cross any
+  French or Spanish province and ignore the presence of any other unit
+  (stacking limit is still enforced at the end of evacuation). Similarly,
+  Spanish troops must evacuate French territory.
+\end{exemple}
+
+\begin{exemple}[Neutral provinces]
+  \FRA and \HOL sign peace and are now fully at peace. When evacuating Dutch
+  provinces, French troops may not cross Spanish provinces (typically in the
+  Spanish Netherlands) because \HIS was not part of the just ended war.
+
+  \smallskip
+
+  \FRA is involved in two separate wars, one with \HIS and the other with
+  \HOL. Both end the same turn. Now French unit evacuating Dutch territory may
+  cross Spanish provinces.
+\end{exemple}
+
+\begin{exemple}[Neutral and enemy troops]
+  \FRA is at war against \HIS and \HOL (separately) and \HIS is also at war
+  against \HOL. \FRA signs peace with \HOL but stays at war against \HIS. \HIS
+  stays at war against \HOL and currently control or besiege several Dutch
+  provinces.
+
+  \FRA must evacuate from Dutch territory as it is now at peace with
+  \HOL. \FRA do not need to evacuate from Spanish territory as it is still at
+  war against \HIS. When evacuating from Dutch territory, French troops may
+  not cross provinces owned by \HIS (they are not part of a just ended war)
+  nor Dutch provinces with Spanish control or siege (military presence of an
+  ongoing enemy).
+
+  If, on the other hand, \FRA sign peace with both \HIS and \HOL, then its
+  troops evacuating from Dutch territory may move through Spanish units
+  (ignore any non-enemy unit). Even if \FRA was not at war against \HIS (but
+  only against \HOL), its evacuating troops may move through Dutch province
+  controlled by Spanish troops.
+\end{exemple}
+
+\begin{exemple}[Alliance]
+  \FRA is at war against allied \HIS and \HOL, they sign peace and are now
+  fully at peace. \HOL must not only evacuate from French provinces but also
+  from Spanish ones (not-owned, not at war allied with). If the war goes on,
+  however, Dutch troops may stay in Spanish or French provinces. Similarly, if
+  \HOL and \HIS are still involved together in another war, Dutch troops in
+  Spanish provinces should not be evacuated and must stay here (evacuation is
+  not an option, if you don't need to evacuate, you may not evacuate).
+
+  If \ANG is in limited intervention allied to \HIS and \HOL and stops its
+  intervention (either because the war ends or because it wants to do
+  something else), then it must evacuate from the territory of \FRA, \HIS and
+  \HOL and must go back to England. If the intervention continues, however,
+  the English stack may stay on the continent.
+\end{exemple}
+
 \aparag[Pacification] Unless this is a Negotiated Peace, or a Conditional
 white peace:
 \bparag All existing \CB at the time of the peace are negated for 1 turn, even
 permanent ones.
 \bparag Additionally, each loser is forbidden to declare war without \CB
 against any victor next turn.
+\bparag For this purpose, all peaces of level 1 are considered Conditional
+peace if possible. Only the peaces that could not have been signed as
+Conditional peace are Negotiated peaces.
 
 \begin{designnote}
   This effectively prevents the losers from attacking the winners next turn,
@@ -1268,13 +1351,13 @@ Any major country that both
 \item was fully at war against at least another major country or was victim of
   a declaration of war by a minor (either by political event or \RD, the major
   must be the first victim of the war, not dragged in by alliances) during one
-  the previous turns ;
+  of the previous turns ;
 \item[AND] is now completely at peace (no intervention either) for the first
   time since these wars ;
 \end{modlist}
 immediately gains 1 \STAB.
 \bparag If the country is not completely at peace now, the \STAB will be
-gained when it will be at peace, even if the last peace treaties should not be
+gained when it will be at peace, even if the last peace treaty should not be
 enough to gain it.
 \bparag This gain is limited to 1 \STAB per country per turn, no matter how
 many peaces are signed.
@@ -1282,10 +1365,10 @@ many peaces are signed.
 \begin{exemple}[Standard case]
   At turn 46, at the end of \ref{pV:WoSS}, \FRA and \HIS sign peace with \ANG,
   \HOL and \AUS. \AUS is still involved in a war in \paysHongrie against
-  \TUR. \FRA, \HIS, \ANG and \HOL are now fully at peace and gain 1 \STAB and
-  only 1, no matter how many enemies they signed peace with. \AUS is prevented
-  from gaining it by still being at war against \TUR. At turn 47, \AUS and
-  \TUR sign peace. They both gain 1 \STAB.
+  \TUR. Since \FRA, \HIS, \ANG and \HOL are now fully at peace they each gain
+  1 \STAB, and only 1, no matter how many enemies they signed peace with. \AUS
+  is prevented from gaining it by still being at war against \TUR. At turn 47,
+  \AUS and \TUR sign peace. They are now fully at peace and both gain 1 \STAB.
 \end{exemple}
 
 \begin{exemple}[Peace with minors and \STAB]
@@ -1336,7 +1419,8 @@ many peaces are signed.
 
 \section{Stability adjustment}\label{chPeace:Stability}
 \subsection{Wars}
-\aparag The \STAB of each country that is not fully at peace decreases.
+\aparag The \STAB of each country that is not fully at peace (and some other
+cases) decreases.
 
 \aparag[Full war]
 \bparag Each country fully at war (either against a major or minor) loses as
@@ -1363,7 +1447,7 @@ bigger loss.
   been at war for one turn, while \AUS loses 2 \STAB, as it's been at war for
   two turns.
 
-  At turn 28, \SUE takes the defence of the protestant causes and enter the
+  At turn 28, \SUE takes the defence of the protestant cause and enter the
   war. At the end of the turn, \SUE loses 1 \STAB, \HIS and \HOL lose 2 each
   and \AUS loses 3\ldots
 
@@ -1402,7 +1486,7 @@ allows to reinforce the stack.
 \end{exemple}
 
 \subsection{Other cases}
-\aparag Some other rules or event cause lose of \STAB at this point.
+\aparag Some other rules or events cause lose of \STAB at this point.
 \bparag Sometime, the loss is cumulative with others losses, sometimes it's
 not. 
 
@@ -1430,17 +1514,18 @@ this turn or a previous one), the \SDCF loses 1 \STAB.
 \section{Test for crusade}\label{chPeace:Crusade}
 \aparag During periods \period{I}-\period{III}, each turn \TUR annexes a
 Christian province as a result of a peace, a test for Crusade is made.
-\bparag These tests end in \period{IV}.
+\bparag These tests end in period \period{IV}.
 \bparag The test only occurs on the turns where \TUR signs a peace resulting
 in the annexation of one or more province belonging to a Christian country. It
-does not occurs if gains ownership of provinces via Dynastic ties with another
-power, diplomatic annexation or such.
+does not occurs if \TUR gains ownership of provinces via Dynastic ties with
+another power, diplomatic annexation or such.
 
-\aparag[Call to the Crusade]
+% google battle:
+% "call to crusade" -> 9,320,00
+% "call for crusade" -> 19,200,000    WINNER!
+\aparag[Call for Crusade]
 \bparag Roll 1d10, modified as follows.
-\bparag If the unmodified result is 10 (whatever the modifiers) or if the
-modified result is 10 or more, the Pope makes a call for Crusade.
-\bparag Modifiers (up to a maximum of +5):
+\bparag[Modifiers] (up to a maximum of +5):
 \begin{modlist}
 \item[+1] for each Christian province annexed by \TUR (whatever the mean)
   during the last 5 turns;
@@ -1450,18 +1535,20 @@ modified result is 10 or more, the Pope makes a call for Crusade.
 % Replaced "against all but \TUR" by "against a Christian". A HIS-Algeria war
 % should not prevent the call...
 \item[-3] if the event \ref{pI:Reformation} has occurred at least once.
-\item[+5] if \villeVienne or \villeRoma is controlled by the Turks but not
-  owned.
+\item[+5] if \villeVienne or \villeRoma is controlled by \TUR but not owned.
 \end{modlist}
+\bparag If the unmodified result is 10 (whatever the modifiers) or if the
+modified result is 10 or more, the Pope calls for Crusade.
 
 \aparag[\villeRoma] During periods \period{I}-\period{II}, if \TUR takes
-control of \villeRoma and still hold it at the end of the turn (whether the
-peace has been signed or not), an automatic call to the Crusade is made by the
+control of \villeRoma and still holds it at the end of the turn (whether the
+peace has been signed or not), an automatic call for Crusade is made by the
 Pope.
 
-\aparag If the cal is made by the Pope, then consider that
+\aparag[Crusade] If the pope calls for Crusade, then consider that
 \eventref{pII:Crusade} is rolled as a fifth event on the following turn. There
-may be only 4 other political events (no extra event).
+may be only 4 other political events (no extra event, consider that a ``+1''
+result was already obtained).
 
 % Local Variables:
 % fill-column: 78
