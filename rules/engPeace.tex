@@ -339,6 +339,21 @@ promise between players).
 % Agreement. The Agreement is applied now.
 % \bparag This type of peace can not be concluded with a minor.
 
+\subsection{Interventions}
+\aparag Countries in limited or foreign intervention may choose to either
+continue the intervention or withdraw.
+\bparag The choice is made for each intervention separately. In case of
+disagreement, each country in decreasing order of initiative indicates for
+each intervention whether it stays or withdraws.
+\bparag The choice is made by each player. Not by the leader of the alliance
+as for signing global peaces.
+
+\aparag Continuing a limited intervention will cost some \STAB. Continuing a
+foreign intervention costs nothing but prevent reinforcing the
+stack. See~\ref{chPeace:Stability}.
+\bparag Withdrawing require evacuation of the intervening units as
+per~\ref{chPeace:Evacuation}.
+
 \subsection{Peace differential}
 \aparag[The \terme{Peace Differential}] is an abstract way of determining the
 winner of any war between majors. It is mostly based on the \STAB of the
@@ -670,11 +685,12 @@ placed back into the \Neutral box, or in \MR status of one winner. If the
 losing alliance is composed solely of \MIN powers, the winning alliance may
 gain one of them in \MR status for one peace condition or in \AM for two peace
 conditions.
-\bparag[\ROTW Diplomatic concession] One \ROTW country either breaks \dipAT with
-one member of the losing alliance or both breaks \dipFR with one member of the
-losing alliance and signs \dipFR with one member of the winning alliance. If the
-losing alliance is composed solely of \MIN, then one of them is forced to sign
-a \dipFR with one member of the winning alliance, or a \dipAT for two conditions.
+\bparag[\ROTW Diplomatic concession] One \ROTW country either breaks \dipAT
+with one member of the losing alliance or both breaks \dipFR with one member
+of the losing alliance and signs \dipFR with one member of the winning
+alliance. If the losing alliance is composed solely of \MIN, then one of them
+is forced to sign a \dipFR with one member of the winning alliance, or a
+\dipAT for two conditions.
 
 \aparag[Peace of level 4] The winning alliance receives three peace
 conditions.
@@ -719,8 +735,6 @@ is forced to sign a \dipFR with one member of the winning alliance, or a
 \emph{per condition}. That is, if a peace of level 5 is signed with three
 indemnities as the three conditions, the total amount is 3 $\times$ 150 =
 450\ducats !
-
-
 
 \subsection{Transfers of Provinces by Peaces}\label{chPeace:Transfer
   Provinces Peace}
@@ -1156,11 +1170,12 @@ of the same level of the owner, or destroyed. Owner of the province chooses.
 not removed.
 
 \aparag[Evacuation at land]\label{chPeace:Evacuation}
-Any land unit in a non-controlled province owned by a country not at war with
-(ally) or against (enemy) the owner of the unit must be evacuated by movement
-and go into any owned and controlled province.
-\bparag Evacuating units may move through any country that was part of the
-war, including former enemies, regardless of the presence of any unit.
+Any land unit in a not-owned province must evacuate unless the owner of the
+unit is either at war or intervention with (ally) or against (enemy) the owner
+of the province.
+\bparag Evacuating units must move to owned and controlled territory.
+\bparag Evacuating units may move through any country that was part of a just
+ended war, including former enemies, regardless of the presence of any unit.
 \bparag Exception: they may not enter a province with an unbesieged enemy unit
 or fortress (from another war).
 \bparag Evacuating units may not, however, move through provinces of countries
@@ -1190,6 +1205,9 @@ may either evacuate to any owned and controlled port or stay at sea.
   When, evacuating, you must also evacuate from your ally, except if your are
   still together fighting in another war.
   
+  If ending an intervention, you must also evacuate any unit that was part of
+  the intervention.
+
   Land unit in non-controlled provinces of countries at war are handled by
   \ref{chRedep:Redeployment}.
 \end{designnote}
@@ -1317,29 +1335,86 @@ many peaces are signed.
 
 
 \section{Stability adjustment}\label{chPeace:Stability}
-\aparag[Effects of ongoing wars]
-During a war, at the end of each turn, the \STAB of each participating player
-is reduced 1 cumulative level each turn (i.e.. the player loses 1 level on the
-first turn, 2 others on the second, 3 on the third and so
-on... etc.). However, after 4 consecutive war turns, the loss is limited to -4
-levels per turn, and this until the peace is made.
-\aparag[Effects of Overseas Wars]
-The same reduction of \STAB is applied in Overseas Wars excepted that the loss
-is limited to -2 levels per turn.
-\aparag[Multiple Wars] If a power is involved in more than one war, only the
-hardest lost is applied.
-\aparag[Continuing Limited Intervention]
-A limited intervention in a war may be continued from one turn to another, but
-this costs -1 level in \STAB for the intervening power.
+\subsection{Wars}
+\aparag The \STAB of each country that is not fully at peace decreases.
+
+\aparag[Full war]
+\bparag Each country fully at war (either against a major or minor) loses as
+many \STAB as the duration of the war (in turns).
+\bparag Thus, the loss is 1 \STAB on the first turn of the war, 2 on the
+second and so on.
+\bparag The loss is limited to a maximum of 4 \STAB per turn.
+\bparag Note that this loss is applied \textbf{after} peaces have been signed,
+thus countries signing peace are not affected by it.
+
+\aparag[Overseas Wars]
+\bparag The same loss of \STAB is applied for Overseas Wars
+\bparag The loss for an overseas war is limited to 2 \STAB per turn, however.
+
+\aparag[Multiple Wars] Loses for wars are not cumulative. Only apply the
+bigger loss.
+
+\begin{exemple}[Thirty years war]
+  At turn 26, \ref{pIV:Bohemian Revolt} occurs and \AUS enters war against
+  \paysBoheme. At the end of the turn, \AUS loses 1 \STAB for this war.
+
+  At turn 27, the war degenerate in \ref{pIV:TYW} and both \HIS and \HOL enter
+  the war. At the end of the turn, \HIS and \HOL both lose 1 \STAB, as they've
+  been at war for one turn, while \AUS loses 2 \STAB, as it's been at war for
+  two turns.
+
+  At turn 28, \SUE takes the defence of the protestant causes and enter the
+  war. At the end of the turn, \SUE loses 1 \STAB, \HIS and \HOL lose 2 each
+  and \AUS loses 3\ldots
+
+  At turn 29, \FRA enter the war against the Habsburg empire. At the end of
+  the turn, \FRA loses 1 \STAB, \SUE loses 2, \HIS and \HOL lose 3 each and
+  \AUS loses 4.
+
+  At the end of turn 30, \FRA loses 2 \STAB, \SUE loses 3, \HOL and \HIS lose
+  4 each and \AUS should lose 5 but the loss is limited to
+  4. \ministreRichelieu starts asking his opponents if they're ready to accept
+  his terms\ldots
+\end{exemple}
+
+\subsection{Interventions}
+\aparag[Limited Intervention]
+\bparag For each continued limited intervention, the intervening country loses
+1 \STAB.
+\bparag This loss is cumulative with the loss for full wars.
+
+\aparag[Foreign intervention]
+\bparag There is no cost for continuing a foreign intervention. However, the
+intervening stack may not be reinforced.
+\bparag Remember that it is always possible to withdraw from a foreign
+intervention and re-intervene next turn (while limited intervention may only
+be declared at the beginning of the war). This does cost 1 \STAB and de facto
+allows to reinforce the stack.
+
+\begin{exemple}[Interventions]
+  \FRA is at was against \HIS and enters a limited intervention against
+  \ANG. At the end of the turn, \FRA loses 1 \STAB for the war and 1 for the
+  intervention, for a total of 2 \STAB. At the next turn, \FRA will loses
+  2 \STAB for the war and 1 for the intervention.
+
+  \ANG is in intervention both against \FRA and against \AUS. At the end of
+  the turn, it loses 2 \STAB, one for each intervention.
+\end{exemple}
+
+\subsection{Other cases}
+\aparag Some other rules or event cause lose of \STAB at this point.
+\bparag Sometime, the loss is cumulative with others losses, sometimes it's
+not. 
 
 \aparag[Turkey and the Knights]
-If \TUR is neither at war, nor Anti-Prosperous, it loses -1 level in \STAB if
-the pirate of The \pays{chevaliers} managed to inflict losses on Turkish
-commercial fleets.
+\bparag If the \corsaire of \paysChevaliers caused the loss of at least one
+Turkish \TradeFLEET level, \TUR loses 1 \STAB.
+\bparag This loss is not cumulative with any other. Thus it happens if and
+only if \TUR did not lose \STAB at this segment yet.
 
 \aparag[\villeVienne]
-If \TUR controls \villeVienne, \HAB (\SPA or \AUS) loses 1 additional level of
-\STAB.
+\bparag If \TUR controls \villeVienne, \HAB (\SPA or \AUS) loses 1 \STAB.
+\bparag This loss is cumulative with other losses.
 
 \section{Test for crusade}\label{chPeace:Crusade}
 
