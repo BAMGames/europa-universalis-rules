@@ -1413,10 +1413,55 @@ Turkish \TradeFLEET level, \TUR loses 1 \STAB.
 only if \TUR did not lose \STAB at this segment yet.
 
 \aparag[\villeVienne]
-\bparag If \TUR controls \villeVienne, \HAB (\SPA or \AUS) loses 1 \STAB.
-\bparag This loss is cumulative with other losses.
+\bparag If \TUR took control of \villeVienne this turn and still controls it
+at the end of the turn, all Catholic countries among \HIS, \AUS, \POL, \FRA
+and \ANG lose 1 \STAB.
+\bparag If \TUR controls \villeVienne without owning the province (either from
+this turn or a previous one), \HAB (\SPA or \AUS) loses 1 \STAB.
+\bparag These losses are cumulative with other losses.
+
+\aparag[\villeRoma]
+\bparag If \TUR took control of \villeRoma this turn and still controls it
+at the end of the turn, all Catholic countries lose 1 \STAB.
+\bparag If \TUR controls \villeRoma without owning the province (either from
+this turn or a previous one), the \SDCF loses 1 \STAB.
+\bparag These losses are cumulative with other losses.
 
 \section{Test for crusade}\label{chPeace:Crusade}
+\aparag During periods \period{I}-\period{III}, each turn \TUR annexes a
+Christian province as a result of a peace, a test for Crusade is made.
+\bparag These tests end in \period{IV}.
+\bparag The test only occurs on the turns where \TUR signs a peace resulting
+in the annexation of one or more province belonging to a Christian country. It
+does not occurs if gains ownership of provinces via Dynastic ties with another
+power, diplomatic annexation or such.
+
+\aparag[Call to the Crusade]
+\bparag Roll 1d10, modified as follows.
+\bparag If the unmodified result is 10 (whatever the modifiers) or if the
+modified result is 10 or more, the Pope makes a call for Crusade.
+\bparag Modifiers (up to a maximum of +5):
+\begin{modlist}
+\item[+1] for each Christian province annexed by \TUR (whatever the mean)
+  during the last 5 turns;
+% replaced "current period" by "last 5 turns". It makes no sense to have the
+% pope forget everything suddenly (or we implement pope election...)
+\item[-2] for each Catholic major at war against a Christian country
+% Replaced "against all but \TUR" by "against a Christian". A HIS-Algeria war
+% should not prevent the call...
+\item[-3] if the event \ref{pI:Reformation} has occurred at least once.
+\item[+5] if \villeVienne or \villeRoma is controlled by the Turks but not
+  owned.
+\end{modlist}
+
+\aparag[\villeRoma] During periods \period{I}-\period{II}, if \TUR takes
+control of \villeRoma and still hold it at the end of the turn (whether the
+peace has been signed or not), an automatic call to the Crusade is made by the
+Pope.
+
+\aparag If the cal is made by the Pope, then consider that
+\eventref{pII:Crusade} is rolled as a fifth event on the following turn. There
+may be only 4 other political events (no extra event).
 
 % Local Variables:
 % fill-column: 78
