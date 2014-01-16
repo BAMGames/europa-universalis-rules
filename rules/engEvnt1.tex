@@ -1080,52 +1080,81 @@ on).
 
 
 
-\event{pI:Fall Hungary}{I-E}{Downfall of Hungary}{1}{PB}
+\event{pI:Fall Hungary}{I-E}{Downfall of Hungary}{1}{PB [BLP]}
 
 \history{1526}
 
 \activation{}
-\aparag If during Period I or II, \TUR wins a Major Battle against a stack
-with at least one \ARMY of \paysHongrie, or takes military control of
-\provinceHongrie, the collapse event is activated at the beginning of the next
-round.  Collapse is mandatory if \villeBuda is taken, optional after a Major
-Battle (Turkish choice at the end of the battle).
-\bparag After the collapse and for the remaining of the turn, \HAB and/or \POL
-can make a limited intervention as an ally of collapsing \paysHongrie, with no
-declaration of war and no cost in \STAB. This intervention can be made with
-all the available forces of the power at that time (no reinforcements),
-without the usual limit for limited intervention.
-\bparag If the collapse begins on the last round of a turn, or would begin on
-the next turn, the resolution of the event is postponed to the end of the next
-turn.
-\aparag If \ref{pI:Hungarian Freedom} has been played, military control of
-\villeBuda by \HAB in a war against \paysHongrie activates the same event,
-during any Period.
-\bparag \TUR may then make a limited intervention per the same rules as above.
+\aparag Activated by~\ref{chSpecific:Hungary} on the turn following either
+\begin{modlist}
+\item a major victory of \TUR against a stack with a least one \ARMY counter
+  of \paysHongrie, if \TUR chooses to activate it;
+\item[OR] occupation of \villeBuda by \TUR;
+\item[OR] Turkish control of at least 5 provinces owned by \paysHongrie.
+\end{modlist}
+\bparag The moment the condition is met, \POL can make a limited intervention
+at the side of \paysHongrie and \AUS may make a limited intervention or enter
+war at the side of \paysHongrie. These are not declarations of war, no \STAB
+is lost and no reinforcements are rolled.
+\bparag Once the condition is met, \TUR may not sign peace with \paysHongrie
+this turn.
+\bparag On the next turn, this event is considered to be the first event
+rolled.
 
-\phevnt
-\aparag On the end of the turn following the collapse (or one turn after if
-postponed) activating the event, \paysHongrie disappears.
-\aparag Its remaining provinces are given as follows:
+% \bparag After the collapse and for the remaining of the turn, \HAB and/or \POL
+% can make a limited intervention as an ally of collapsing \paysHongrie, with no
+% declaration of war and no cost in \STAB. This intervention can be made with
+% all the available forces of the power at that time (no reinforcements),
+% without the usual limit for limited intervention.
+% \bparag If the collapse begins on the last round of a turn, or would begin on
+% the next turn, the resolution of the event is postponed to the end of the next
+% turn.
+% [BLP] removed
+% \aparag If \ref{pI:Hungarian Freedom} has been played, military control of
+% \villeBuda by \HAB in a war against \paysHongrie activates the same event,
+% during any Period.
+% \bparag \TUR may then make a limited intervention per the same rules as above.
+
+\phpaix
+\aparag Note that this happens the turn the event is resolved, \emph{i.e.} one
+turn after \TUR causes the Downfall. Thus, there is always at least one full
+turn during witch \HAB and \POL may try and defend \paysHongrie.
+
+\aparag \paysHongrie is destroyed. Its remaining provinces are given as
+follows:
 \bparag \provincePecs, \provinceCroatie, \provinceHongrie, \provinceKarpatok,
-\provinceBukovina are annexed by whoever controls militarily the province at
-the end of the turn among \TUR, \hab and \POL (the presence of stack with
-\ARMY\faceplus in a province with fortresses of an allied collapsing
-\paysHongrie gives control to the leader of this stack).  Those controlled by
-\paysHongrie at the end are annexed by \HAB if \TUR has caused the activation
-of the event, and by \paysTransylvanie (see hereafter) if it was caused by
-\HAB.
+\provinceBukovina are annexed by whoever controls militarily the province
+among \TUR, \hab and \POL (the presence of stack with \ARMY\faceplus in a
+province with fortresses of an allied collapsing \paysHongrie gives control to
+the leader of this stack). Those controlled by \paysHongrie at the end are
+annexed by \AUS. (These provinces have no extra shield)
 \bparag \provinceSzlovakia, \provinceBalaton, \provinceKranj and
-\provinceKapela are annexed by \HAB (and nobody gains the \VP).
+\provinceKapela are annexed by \AUS (and nobody gains the \VP). (These
+provinces have a blurred Austrian shield reminder)
 \bparag \provinceBanat, \provinceSerbia and \provinceBosnia (if controlled by
-\paysHongrie or Neutral) are given to \TUR.
+\paysHongrie or Neutral) are annexed by \TUR. (These provinces have a blurred
+Turkish shield reminder)
 \bparag A minor country \paysTransylvanie is created, composed from the
 remaining provinces of \paysHongrie: likely, \provinceErdely and
-\provinceMures. This country is placed \VASSAL of whoever caused the
-activation of the event. It has no capital.
+\provinceMures (These provinces have a blurred Transylvanian shield) plus any
+province that \paysHongrie may have annexed since the beginning of the
+game. This country is created as a special \VASSAL of whoever got
+\provinceHongrie during the partition.
 \bparag Excepted for some provinces annexed by \HAB, the usual \VP are given.
+
 \aparag If a power controls provinces given to another power, it may declare
-now a war with a \CB, or its troops withdraw (mandatory redeployment).
+now a war with a \CB, or its troops withdraw (as per peace evacuation).
+
+\aparag[\paysTransylvanie] [BLP] For the rest of the game, \paysTransylvanie
+is a special \VASSAL of the owner of \provinceHongrie.
+\bparag As soon as this province changes owner, the new owner immediately
+becomes the Diplomatic patron of \paysTransylvanie.
+\bparag No diplomacy is allowed on \paysTransylvanie. It is not subject to
+Diplomatic events.
+
+\aparag The limited interventions of \HAB and \POL (if any) end immediately.
+\bparag However, if \HAB chose to enter war, a formal peace treaty must be
+obtained at this turn or another one, as usual.
 
 % \aparag The basic forces of \HAB are increased by an \ARMY\facemoins. All
 % future Hungarian leaders are now given to \HAB.
@@ -1147,6 +1176,7 @@ now a war with a \CB, or its troops withdraw (mandatory redeployment).
 counters of \paysHongrie.
 \aparag All future Hungarian leaders are now given to \HAB.
 
+\aparag[] [BLP] \ref{chSpecific:Little war} is now active.
 
 
 \event{pI:Habsburg Milano}{I-F}{Habsburg Control of Milano}{1}{RistoMod}

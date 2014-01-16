@@ -12,7 +12,8 @@
 {}{25}{\MNU limits attained and monopoly in \ctz{Angleterre}}%
 %
 \EUobjective4M{Reconquest of \provinceGuyenne}{}%
-{}{50}{\provinceGuyenne owned by \paysmajeurAngleterre}%
+{}{50}{\provinceGuyenne owned by \paysmajeurAngleterre OR [BLP] 25 per
+  occupation on French territory, max 50}%
 %
 \EUobjective5{}{Pacified Ireland}{turn}%
 {10}{40}{Each turn without any \REVOLT in \regionIrlande}%
@@ -330,9 +331,12 @@
 {}{40}{No Turkish possesions nor \VASSAL west of Ionian Sea
   (\shortprovince{Malta} included, \paystripoli excluded)}%
 %
-\EUobjective4{}{Habsburg-Sultan peace}{}%
-{}{30}{No more than one turn of war between \pays{habsbourg} and
-  \paysmajeur{Turquie}}%
+% \EUobjective4{}{Habsburg-Sultan peace}{}%
+% {}{30}{No more than one turn of war between \pays{habsbourg} and
+%   \paysmajeur{Turquie}}%
+\EUobjective4{}{Habsburg-Sultan peace [BLP]}{}%
+{}{30}{40 -5/turn where \ref{chSpecific:Little war} is active (max 30) OR no
+  \TUR Occupation in \paysHongrie}
 %
 \EUobjective5{}{Trade expansion}{}%
 {}{30}{Monopoly in \ctz{Espagne} and in at least 2 other \CTZ/\STZ}%
@@ -991,9 +995,13 @@
 %
 \EUcurrentperiod{III}
 %
-\EUobjective1M{War or Peace in \payshongrie}{}%
-{}{35}{Either there is no more than one turn of war between \AUSaus and \TUR,
-  or at least 9 provinces of \payshongrie are Turkish}%
+% \EUobjective1M{War or Peace in \payshongrie}{}%
+% {}{35}{Either there is no more than one turn of war between \AUSaus and \TUR,
+%   or at least 9 provinces of \payshongrie are Turkish}%
+\EUobjective1M{War or Peace in \payshongrie [BLP]}{}%
+{}{35}{Either there is no more than one turn of formal war between \AUSaus and
+  \TUR, or at least 9 provinces of \payshongrie are owned or controlled by
+  \TUR}%
 %
 \EUobjective2{}{\villeVienne fallen}{}%
 {}{40}{\provinceOsterreich/\villeVienne was captured this period by \TUR}%
