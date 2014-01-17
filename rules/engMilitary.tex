@@ -362,15 +362,19 @@ the peace or the number of conditions exchanged).
 declaration. In that case, the control of the province is immediately
 given back to its owner.
 
-\aparag If a country annex an occupied province:
-\bparag If this is the same country as the one occupying the province,
-the occupation is removed;
-\bparag otherwise, it stay.
+\aparag If a country annex an occupied province, the occupation is
+removed.
+
+\aparag As control markers, if an occupied province is besieged and
+taken by another power, the occupation is removed.
 
 \aparag In order to maintain occupation, a country must keep at least
 1\LD in each occupied province. If, at any moment, this garrison is
-not present, immediately remove the occupation marker and return
-control of the province to its rightful owner.
+not present, immediately remove the occupation marker and
+\bparag If the occupant and the owner are at peace, return
+control of the province to its rightful owner;
+\bparag If they are at war, replace the occupation by a control of the
+same country.
 
 \subsubsection{Effect of occupation}
 \aparag In addition to giving control of the province or
