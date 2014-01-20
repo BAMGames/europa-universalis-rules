@@ -230,15 +230,25 @@ event only affects the player rolling it.
 
 
 \section{Economic situation}
-
 \label{chEvents:Economic situation}
-\aparag A die is rolled for both the global economic situation and raise
-of piracy.
+
+\aparag[Economic Situation] A die is rolled for both the global economic
+situation and raise of piracy.
 \bparag Combined with the \ref{eco:Piracy}, it is now possible to place
 \emph{Piracy} on the map.
-\bparag The result of the die is kept. It will be used during the
+\bparag Place the \terme{Economic situation} marker on the track on the
+\ROTW map to remember the result of the roll. It will be used during the
 Administrative phase to handle the variation of prices of exotic
 resources. See~\ref{chExpenses:ExoticResourcesPrices}.
+
+\aparag[Inflation] \label{chEvents:Inflation}
+\bparag If ``Inflation'' is obtained (1 or 10), increase the level of
+inflation by 1, that is move the marker one box to the right (without
+exceeding the maximum level). This is the same effect as
+\ref{eco:Inflation} except that it can happen the same turn as another
+\ref{eco:Inflation} or \ref{eco:Deflation}.
+% Jym : not sure about the cumulativeness of this with the eco events...
+
 
 \begin{designnote}
   The die roll for economic situation must be made during the event
@@ -265,11 +275,6 @@ named pirate in play at this turn, see~\ref{chEvents:Named Pirates}.
 \bparag A \PIRATE \corsaire\facemoins or \PIRATE \corsaire\faceplus is
 placed in the target \STZ according to the table, unless a result of 1
 or 10 was obtained, in which case the procedure below is used.
-\bparag If ``Inflation'' is obtained, increase the level of inflation by
-1 (without exceeding the maximum level). This is the same effect as
-\ref{eco:Inflation} except that it can happen the same turn as another
-\ref{eco:Inflation} or \ref{eco:Deflation}.
-% Jym : not sure about the cumulativeness of this with the eco events...
 
 \aparag If the economical situation roll was 1 or 10 (or 3 or 6 and a
 named \pays{pirates} \LeaderA is alive) or if~\ref{eco:Piracy} was

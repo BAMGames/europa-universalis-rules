@@ -1481,8 +1481,8 @@ allows to reinforce the stack.
   intervention, for a total of 2 \STAB. At the next turn, \FRA will loses
   2 \STAB for the war and 1 for the intervention.
 
-  \ANG is in intervention both against \FRA and against \AUS. At the end of
-  the turn, it loses 2 \STAB, one for each intervention.
+  \ANG is in intervention both against \FRA and against \AUS (in two separate
+  wars). At the end of the turn, it loses 2 \STAB, one for each intervention.
 \end{exemple}
 
 \subsection{Other cases}
@@ -1501,7 +1501,7 @@ only if \TUR did not lose \STAB at this segment yet.
 at the end of the turn, all Catholic countries among \HIS, \AUS, \POL, \FRA
 and \ANG lose 1 \STAB.
 \bparag If \TUR controls \villeVienne without owning the province (either from
-this turn or a previous one), \HAB (\SPA or \AUS) loses 1 \STAB.
+this turn or a previous one), \HAB loses 1 \STAB.
 \bparag These losses are cumulative with other losses.
 
 \aparag[\villeRoma]
@@ -1510,6 +1510,67 @@ at the end of the turn, all Catholic countries lose 1 \STAB.
 \bparag If \TUR controls \villeRoma without owning the province (either from
 this turn or a previous one), the \SDCF loses 1 \STAB.
 \bparag These losses are cumulative with other losses.
+
+\section{Inflation}\label{chInter:Inflation}
+\aparag Each turn, the \RT of each country is decreased as a way to represent
+Inflation (increase of prices is equivalent to decrease of stockpiled money).
+\bparag Countries with negative \RT still lose money from Inflation (as the
+debt owner adjust their requests).
+
+\aparag Inflation increases quickly as the gold and silver flow from
+\continentAmerica becomes high and regular.
+
+\subsection{Increase of Inflation}
+\aparag Inflation varies between 5\% and 33\%. The Inflation counter is placed
+on the bottom line of the Resources prices track (on the \ROTW map) in the box
+corresponding to the current Inflation.
+\bparag Place the counter with the ``$\geq 3$'' side up if there is 100\ducats
+or more of gold exploited in the \ROTW this turn, and with its ``$\geq 7$''
+side up otherwise.
+\bparag Count all the gold exploited in the \ROTW, no matter who exploited it
+where (\emph{i.e} Russian gold from \continentSiberia counts) and no matter
+whether it was repatriated in Europe, kept in the \ROTW or sunk.
+\bparag Also count gold exploited from new \COL even those placed this turn.
+
+\aparag[Increase of Inflation] Roll on die. If it is larger than the threshold
+on the counter ($\geq 3$ or $\geq 7$ depending on the side up), move the
+Inflation marker on box to the right.
+\bparag Exception: the counter may never go beyond the 33\% box.
+
+\aparag[Other variations]
+\bparag Economic situation may increase Inflation as
+per~\ref{chEvents:Inflation}.
+\bparag Economic events~\ref{eco:Inflation} or~\ref{eco:Deflation} may
+increase of decrease Inflation.
+
+\subsection{Inflation}
+\aparag[Inflation value]
+\bparag Countries that do exploit gold in \continentAmerica
+have an \terme{Inflation value} equal to the percentage written in the box
+where the counter is located (between 5\% and 33\%).
+\bparag Other countries have an \terme{Inflation value} equal to the
+percentage written on the box on the left of the marker (between 5\% and 25\%,
+also use 5\% when the marker is on the leftmost box).
+\bparag Exception: \TUR before some reform use Inflation as if it exploited
+gold in the \ROTW (\ref{chSpecific:Turkey:Cost Pashas}).
+
+\aparag[Minimal inflation]
+\bparag Each country has a \terme{Minimal inflation} which is equal to its
+\terme{Inflation value}, in \ducats (\emph{e.g.} a country with an Inflation
+value of 10\% has a Minimal inflation of 10\ducats).
+\bparag Exception: \POL (always), \RUS (during periods \period{I}-\period{V})
+and \SUE (during periods \period{III}-\period{V}) % and \DAN always
+have a \terme{Minimal inflation} equal to half their \terme{Inflation value}
+(round up).
+
+\aparag[Inflation]
+\bparag Each country loses a amount of money which is the maximum between:
+\begin{modlist}
+\item Its Minimal inflation
+\item[AND] its Inflation value applied to the absolute value of its \RT (drop
+  the minus sign if any).
+\end{modlist}
+\bparag This loss is written in \lignebudget{Inflation}.
 
 \section{Test for crusade}\label{chPeace:Crusade}
 \aparag During periods \period{I}-\period{III}, each turn \TUR annexes a
@@ -1535,7 +1596,8 @@ another power, diplomatic annexation or such.
 % Replaced "against all but \TUR" by "against a Christian". A HIS-Algeria war
 % should not prevent the call...
 \item[-3] if the event \ref{pI:Reformation} has occurred at least once.
-\item[+5] if \villeVienne or \villeRoma is controlled by \TUR but not owned.
+\item[+5] if \villeVienne or \villeRoma is controlled by \TUR (whether owned
+  or not).
 \end{modlist}
 \bparag If the unmodified result is 10 (whatever the modifiers) or if the
 modified result is 10 or more, the Pope calls for Crusade.
