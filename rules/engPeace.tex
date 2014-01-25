@@ -1498,15 +1498,15 @@ only if \TUR did not lose \STAB at this segment yet.
 
 \aparag[\villeVienne]
 \bparag If \TUR took control of \villeVienne this turn and still controls it
-at the end of the turn, all Catholic countries among \HIS, \AUS, \POL, \FRA
-and \ANG lose 1 \STAB.
+at the end of the turn, each Catholic country among \HIS, \AUS, \POL, \FRA and
+\ANG loses 1 \STAB.
 \bparag If \TUR controls \villeVienne without owning the province (either from
 this turn or a previous one), \HAB loses 1 \STAB.
 \bparag These losses are cumulative with other losses.
 
 \aparag[\villeRoma]
-\bparag If \TUR took control of \villeRoma this turn and still controls it
-at the end of the turn, all Catholic countries lose 1 \STAB.
+\bparag If \TUR took control of \villeRoma this turn and still controls it at
+the end of the turn, each Catholic country loses 1 \STAB.
 \bparag If \TUR controls \villeRoma without owning the province (either from
 this turn or a previous one), the \SDCF loses 1 \STAB.
 \bparag These losses are cumulative with other losses.
@@ -1535,9 +1535,9 @@ where (\emph{i.e} Russian gold from \continentSiberia counts) and no matter
 whether it was repatriated in Europe, kept in the \ROTW or sunk.
 \bparag Also count gold exploited from new \COL even those placed this turn.
 
-\aparag[Increase of Inflation] Roll on die. If it is larger than the threshold
-on the counter ($\geq 3$ or $\geq 7$ depending on the side up), move the
-Inflation marker on box to the right.
+\aparag[Increase of Inflation] Roll 1d10. If it is larger than the
+threshold on the counter ($\geq 3$ or $\geq 7$ depending on the side up), move
+the Inflation marker one box to the right.
 \bparag Exception: the counter may never go beyond the 33\% box.
 
 \aparag[Other variations]
@@ -1554,7 +1554,7 @@ where the counter is located (between 5\% and 33\%).
 \bparag Other countries have an \terme{Inflation value} equal to the
 percentage written on the box on the left of the marker (between 5\% and 25\%,
 also use 5\% when the marker is on the leftmost box).
-\bparag Exception: \TUR before some reform use Inflation as if it exploited
+\bparag Exception: \TUR before its reform use Inflation as if it exploited
 gold in the \ROTW (\ref{chSpecific:Turkey:Cost Pashas}).
 \bparag Countries that exploit gold in the \ROTW out of \continentAmerica
 (\emph{i.e.} \RUS in \continentSiberia) do not suffer from higher
@@ -1597,7 +1597,8 @@ between its Minimal inflation and its computed inflation.
   In practice, if your \RT is between -100\ducats and 100\ducats (or between
   -50\ducats and 50\ducats for ``poor'' countries), your Actual Inflation is
   equal to your Inflation value (no need to compute). Otherwise, it's equal to
-  your Computed Inflation.
+  your Computed Inflation. Thus, the actual computation is easier than what
+  the rules suggest\ldots
 \end{designnote}
 
 \begin{exemple}[Inflation value]
@@ -1612,13 +1613,12 @@ between its Minimal inflation and its computed inflation.
 \end{exemple}
 
 \begin{exemple}[Computed and Actual Inflation]
-  In all this example, assume that the Inflation value is 25\% for the
-  concerned countries.
+  Suppose that the Inflation value for \FRA is 25\%.
 
   \FRA has thus a Minimal Inflation of 25\ducats. If its \RT is 60\ducats,
-  then its Computed Inflation is 15\ducats (25\% of 15\ducats) and its Actual
+  then its Computed Inflation is 15\ducats (25\% of 60\ducats) and its Actual
   Inflation is 25\ducats (maximum between the Minimal Inflation of 25\ducats
-  and the percentage of 15\ducats).
+  and the Computed Inflation of 15\ducats).
   
   If its \RT is 160\ducats, the Computed Inflation is 40\ducats and thus the
   Actual Inflation is also 40\ducats.
@@ -1630,13 +1630,12 @@ between its Minimal inflation and its computed inflation.
 \end{exemple}
 
 \begin{exemple}[Poor countries]
-  In all this example, assume that the Inflation value is 25\% for the
-  concerned countries.
+  Suppose that the Inflation value for \POL is 25\%.
 
-  \POL has thus a Minimal Inflation of 13\ducats. If its \RT is 40\ducats, the
-  Computed Inflation is 10\ducats and the Actual Inflation is 13\ducats. If
-  its \RT is -60\ducats, the Computed Inflation is 15\ducats and so is the
-  Actual Inflation.
+  \POL has thus a Minimal Inflation of 13\ducats (25/2, round up). If its \RT
+  is 40\ducats, the Computed Inflation is 10\ducats and the Actual Inflation
+  is 13\ducats. If its \RT is -60\ducats, the Computed Inflation is 15\ducats
+  and so is the Actual Inflation.
 \end{exemple}
 
 \begin{playtip}[Happy budget]
@@ -1665,7 +1664,8 @@ Christian province as a result of a peace, a test for Crusade is made.
 \bparag The test only occurs on the turns where \TUR signs a peace resulting
 in the annexation of one or more province belonging to a Christian country. It
 does not occurs if \TUR gains ownership of provinces via Dynastic ties with
-another power, diplomatic annexation or such.
+another power, diplomatic annexation, special \regionBalkans annexation
+(\ref{chSpecific:Balkans}) or any other mean.
 
 % google battle:
 % "call to crusade" -> 9,320,00
@@ -1674,14 +1674,16 @@ another power, diplomatic annexation or such.
 \bparag Roll 1d10, modified as follows.
 \bparag[Modifiers] (up to a maximum of +5):
 \begin{modlist}
-\item[+1] for each Christian province annexed by \TUR (whatever the mean)
-  during the last 5 turns;
+\item[+1] for each province belonging to a Christian country annexed by \TUR
+  (whatever the mean (count provinces from \regionBalkans annexed from a
+  Christian country, not those that where Neutral before annexation) during
+  the last 5 turns;
 % replaced "current period" by "last 5 turns". It makes no sense to have the
 % pope forget everything suddenly (or we implement pope election...)
 \item[-2] for each Catholic major at war against a Christian country
 % Replaced "against all but \TUR" by "against a Christian". A HIS-Algeria war
 % should not prevent the call...
-\item[-3] if the event \ref{pI:Reformation} has occurred at least once.
+\item[-3] if the event \ref{pI:Reformation} has occurred.
 \item[+5] if \villeVienne or \villeRoma is controlled by \TUR (whether owned
   or not).
 \end{modlist}
@@ -1692,8 +1694,12 @@ modified result is 10 or more, the Pope calls for Crusade.
 control of \villeRoma and still holds it at the end of the turn (whether the
 peace has been signed or not), an automatic call for Crusade is made by the
 Pope.
+\bparag This only occurs on the turn where \villeRoma is captured by \TUR. If
+it keeps control of it (including annexation of the province), there is no
+automatic call for Crusade. If \TUR loses control of \villeRoma and retakes it
+during another turn, another automatic call for Crusade may happen.
 
-\aparag[Crusade] If the pope calls for Crusade, then consider that
+\aparag[Crusade] If the pope calls for Crusade, consider that
 \eventref{pII:Crusade} is rolled as a fifth event on the following turn. There
 may be only 4 other political events (no extra event, consider that a ``+1''
 result was already obtained).
