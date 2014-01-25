@@ -1517,8 +1517,11 @@ Inflation (increase of prices is equivalent to decrease of stockpiled money).
 \bparag Countries with negative \RT still lose money from Inflation (as the
 debt owner adjust their requests).
 
-\aparag Inflation increases quickly as the gold and silver flow from
-\continentAmerica becomes high and regular.
+\begin{designnote}
+  Inflation increases quickly as the gold and silver flow from
+  \continentAmerica becomes high and regular. Do not hope to go back to the
+  good old days of low inflation\ldots
+\end{designnote}
 
 \subsection{Increase of Inflation}
 \aparag Inflation varies between 5\% and 33\%. The Inflation counter is placed
@@ -1553,6 +1556,22 @@ percentage written on the box on the left of the marker (between 5\% and 25\%,
 also use 5\% when the marker is on the leftmost box).
 \bparag Exception: \TUR before some reform use Inflation as if it exploited
 gold in the \ROTW (\ref{chSpecific:Turkey:Cost Pashas}).
+\bparag Countries that exploit gold in the \ROTW out of \continentAmerica
+(\emph{i.e.} \RUS in \continentSiberia) do not suffer from higher
+Inflation. Only gold from \continentAmerica counts.
+
+\begin{designnote}[Gold flow]
+  The Russian gold flow was way smaller than the Spanish Silver flow from
+  America. Moreover, higher Inflation for \RUS causes some non-historical
+  gamey tactics.
+\end{designnote}
+
+\begin{playtip}[Spanish World]
+  Due to the increased Inflation, exploiting only one mine in
+  \continentAmerica is probably not worth the effort. That is, if you start
+  going for gold, go and grab as much as possible. Usually, only \HIS manage
+  this due to its early arrival in the New World.
+\end{playtip}
 
 \aparag[Minimal inflation]
 \bparag Each country has a \terme{Minimal inflation} which is equal to its
@@ -1563,14 +1582,81 @@ and \SUE (during periods \period{III}-\period{V}) % and \DAN always
 have a \terme{Minimal inflation} equal to half their \terme{Inflation value}
 (round up).
 
+\aparag[Computed Inflation, Actual Inflation]
+\bparag Each country has a \terme{Computed Inflation} which is its Inflation
+value (percentage) applied to the absolute value of its \RT (drop the minus
+sign if any).
+\bparag Each country has a \terme{Actual Inflation} which is the maximum
+between its Minimal inflation and its computed inflation.
+
 \aparag[Inflation]
-\bparag Each country loses a amount of money which is the maximum between:
-\begin{modlist}
-\item Its Minimal inflation
-\item[AND] its Inflation value applied to the absolute value of its \RT (drop
-  the minus sign if any).
-\end{modlist}
+\bparag Each country loses an amount of money equal to its Actual Inflation.
 \bparag This loss is written in \lignebudget{Inflation}.
+
+\begin{designnote}
+  In practice, if your \RT is between -100\ducats and 100\ducats (or between
+  -50\ducats and 50\ducats for ``poor'' countries), your Actual Inflation is
+  equal to your Inflation value (no need to compute). Otherwise, it's equal to
+  your Computed Inflation.
+\end{designnote}
+
+\begin{exemple}[Inflation value]
+  If the Inflation markers is in the seventh box (leftmost 20\%), then
+  countries that exploit gold in \continentAmerica (usually, only \HIS, plus
+  \TUR because of its special rule) have an Inflation value of 20\% while all
+  other countries have an Inflation value of 10\% (the box on the left of the
+  marker).
+
+  If the marker is in the eighth box, then all countries have an inflation
+  value of 20\%.
+\end{exemple}
+
+\begin{exemple}[Computed and Actual Inflation]
+  In all this example, assume that the Inflation value is 25\% for the
+  concerned countries.
+
+  \FRA has thus a Minimal Inflation of 25\ducats. If its \RT is 60\ducats,
+  then its Computed Inflation is 15\ducats (25\% of 15\ducats) and its Actual
+  Inflation is 25\ducats (maximum between the Minimal Inflation of 25\ducats
+  and the percentage of 15\ducats).
+  
+  If its \RT is 160\ducats, the Computed Inflation is 40\ducats and thus the
+  Actual Inflation is also 40\ducats.
+
+  If its \RT is -60\ducats (debts), the Computed Inflation is still 15\ducats
+  (computed on the absolute value) and the Actual Inflation is 25\ducats. If
+  the \RT is -160\ducats the Computed Inflation is 40\ducats and so is the
+  Actual Inflation.
+\end{exemple}
+
+\begin{exemple}[Poor countries]
+  In all this example, assume that the Inflation value is 25\% for the
+  concerned countries.
+
+  \POL has thus a Minimal Inflation of 13\ducats. If its \RT is 40\ducats, the
+  Computed Inflation is 10\ducats and the Actual Inflation is 13\ducats. If
+  its \RT is -60\ducats, the Computed Inflation is 15\ducats and so is the
+  Actual Inflation.
+\end{exemple}
+
+\begin{playtip}[Happy budget]
+  Keeping your \RT after peace between -100\ducats and 100\ducats is the key
+  to avoid too many loses due to Inflation. In most cases, this is relatively
+  easy because you can always take more or less loans to adjust your \RT. Note
+  that since loans interest is only 10\%, it is usually more interesting to
+  get loans than a highly negative \RT. Loans, however, have other
+  disadvantages. Because of peaces indemnities (or the Spanish Gold flow), it
+  is sometimes tricky to achieve this.
+
+  Each turn, you will need to pay for your Inflation, that is most of the time
+  25\ducats (or 13\ducats for poor countries). This means that each turn you
+  must manage to get a budget positive by 25\ducats. Or you'll start getting
+  into negative \RT which is not a good idea. Getting this positive each turn
+  is not as easy at it seems and will require clever use of National
+  loans\ldots Obviously, during big wars you may not manage it and start
+  getting into debt. Hopefully you'll stay at peace long enough to stabilise
+  your budget before the next war. 
+\end{playtip}
 
 \section{Test for crusade}\label{chPeace:Crusade}
 \aparag During periods \period{I}-\period{III}, each turn \TUR annexes a
