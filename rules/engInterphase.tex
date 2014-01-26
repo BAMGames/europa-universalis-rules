@@ -1,7 +1,7 @@
 \definechapterbackground{Inter-turns Phase}{interphase}
 \chapter{Inter-turns Phase}\label{chapter:Inter}
 
-\InterPhase
+%\InterPhase
 
 % RaW: [21, 51]
 
@@ -18,79 +18,181 @@ military assets and giving some \VPs to players.
 \aparag[Sequence.]
 \InterDetails
 
+\section{Removal and Placement of leaders}\label{chInter:Leaders}
+\begin{designnote}
+  Note that removal of leaders must physically occur before placement of new
+  ones because it is possible that the same \anonyme counter is immediately
+  reused (at the same place or elsewhere). However, they are considered to
+  happen simultaneously, especially for the replacement of \LeaderC/\LeaderE
+  in the \ROTW.
+\end{designnote}
 
+\subsection{Ransoms}
+\aparag[Return of the kings] Captured Monarchs return to their countries.
+\bparag Major monarch can use their value again.
+\bparag The military counter (whether Major or Minor) is placed together with
+the new leaders arriving next turn.
 
-\section{Stability adjustment}\label{chInter:Stability}
-\aparag[Effects of ongoing wars]
-During a war, at the end of each turn, the \STAB of each participating player
-is reduced 1 cumulative level each turn (i.e.. the player loses 1 level on the
-first turn, 2 others on the second, 3 on the third and so
-on... etc.). However, after 4 consecutive war turns, the loss is limited to -4
-levels per turn, and this until the peace is made.
-\aparag[Effects of Overseas Wars]
-The same reduction of \STAB is applied in Overseas Wars excepted that the loss
-is limited to -2 levels per turn.
-\aparag[Multiple Wars] If a power is involved in more than one war, only the
-hardest lost is applied.
-\aparag[Continuing Limited Intervention]
-A limited intervention in a war may be continued from one turn to another, but
-this costs -1 level in \STAB for the intervening power.
+\subsection{Removal of leaders}
+\aparag[Death]
+Each named leader who reached its last turn of activity is removed from the
+game.
+\bparag For leaders with turns on the counter, it happens if this turn is the
+same as the second turn written on the counter.
+\bparag For leaders with event on the counter, or other special conditions,
+check the description of the event to known how long the leader lasts.
+\bparag Named major monarchs are removed during the Monarch Survival phase
+(\ref{chEvents:Survival}) at the time where the Monarch dies.
+\bparag Note that leaders may be removed earlier due to death in battles.
 
-\aparag[Turkey and the Knights]
-If \TUR is neither at war, nor Anti-Prosperous, it loses -1 level in \STAB if
-the pirate of The \pays{chevaliers} managed to inflict losses on Turkish
-commercial fleets.
+\begin{designnote}
+  Turns of ``life'' may either represent the actual life of historical people
+  or their period of military activity. ``Death'' of a leader (whether
+  scheduled or during battle) may be either actual death, retirement of old
+  age or after a severe wound, change of career (often to become minister),
+  fall in disgrace, \ldots
+\end{designnote}
 
-\aparag[\villeVienne]
-If \TUR controls \villeVienne, \HAB (\SPA or \AUS) loses 1 additional level of
-\STAB.
+\begin{exemple}[Removing named leaders]s
+  It is Inter-turns phase of turn 46. \leaderwithdata{Marlborough} is
+  scheduled to live for turns 43-46. Since this is his last turn of activity
+  his counter is removed from the game.
 
-\section{Placement of leaders}\label{chInter:Leaders}
+  \smallskip
 
-\aparag[Ransom of Leaders]
-Captured Monarchs are given back at this time.
-\bparag For Major Powers, it costs them 2 \STAB and they give 200\ducats to
-the ransoming power (this is mandatory).
-\bparag For Minor Powers, their Monarch is ransomed against 50\ducats.
-\bparag Alternativeley, a ransome Monarch of a minor power can be used at the
-Peace Segment, to increases the modifier for Peace by a +2.
+  At the beginning of turn 26, \ref{pIV:Bohemian Revolt} occurs. As per Event
+  description, \paysBaviere receives \leaderwithdata{Tilly} for 4 turns. Thus,
+  he is considered as having turns 26-30 on his counter. At the end of turn
+  30, if he is still alive, \leaderTilly is removed from game (historically,
+  he died facing \leader{Gustav-Adolf} at the battle of Rain in 1632, during
+  turn 29).
+\end{exemple}
 
-\begin{todo}
-  DEPLACER la majorité de ça !!!!
-\end{todo}
-\aparag Generals and Admirals to be received (those stated as available from
-the start of the following turn) are placed normally.
-\bparag[Dates on Military Leader counters]
-The date of arrival (turn number) is the figure located on the upper left-hand
-side of the leader silhouette.  The date of departure (turn number) figure is
-located on the lower left-hand side of the leader silhouette.
-\bparag Placement of Newly arrived Leaders These leaders are placed on
-military stacks of their owner, located in friendly unbesieged cities or
-friendly province.
-\bparag Leaders Removal from Game Leaders are removed from the game if their
-date of departure corresponds to the turn just played (i.e. they leave the
-game at the end of their scheduled turn of departure).
-\bparag Remove all un-named leaders of Major Powers; leave those of Minor
-Powers at war or those on Revolts (but keep all military forces of Minor
-powers in play, even if at peace, for usage on next turn if they are again
-involved in a war).
+\aparag[Anonymous]
+\bparag All \anonyme leaders of major countries return to their respective
+pool.
+\bparag Exception: besieged leaders stay on the map.
+\bparag All mercenaries leaders return to the pool of mercenaries.
+\bparag \anonyme leaders of minors countries fully at peace return to their
+respective pool.
+\bparag \anonyme leaders of minors at war stay on the map.
 
-\aparag[Conquistadors and Explorers]
-The Conquistadors and Explorers may either be placed in a national province of
-the player, or on the \ROTW map, in a \COL/\TP of the player or a province
-were a players' leader of the same type was at the end of the turn.
-\bparag Explorers may use their full values when traveling from the European
-map to the \ROTW map but cannot stay on the European map at the end of a
-round, unless as the result of an interception.
+\aparag[Free redeployment]
+Each player may choose to redeploy any of its named leader still alive. The
+counter is removed from the map and will be replaced immediately as a new
+leader arriving this turn.
+\bparag Exception: besieged leaders must stay on the map.
+\bparag Exception: Leaders in the \ROTW with unknown discoveries must stay in
+place (hint: you should have redeploy them to an establishment during
+voluntary redeployment).
 
-\aparag[Governors, Overseas Generals and Admirals]
-Generals and Admirals with \$ or @ symbol, or Governors, may only be placed in
-existing \COL or \TP of the power. If there is none, they are delayed until
-they can be placed.
-\bparag Leaders bearing a symbol \$ may only be place in \continent{America}.
-\bparag Leaders bearing a symbol @ may only be place in \continent{Asia}.
+\begin{playtip}
+  In other words, named leaders have a free ``teleportation'' movement at the
+  end of turn. Use this either to change your frontlines or to ensure
+  hierarchy is respected for the next turn. This is also the occasion to
+  redeploy \LeaderGov to other Areas.
+\end{playtip}
 
+\subsection{Placement of leaders}
+\aparag[New leaders]
+Each leader who is schedule to be active starting with the next turn is placed
+on the map by its controller.
+\bparag Each leader that was removed due to free redeployment is also placed.
+\bparag Leaders that were wounded but did not recover during the turn are also
+placed.
 
+\begin{exemple}[New leader]
+  This is the inter-turn phase of turn 42. \leaderwithdata{Marlborough} is
+  active starting with turn 43, thus he is placed on the map now.
+\end{exemple}
+
+\aparag[Anonymous] Major countries check their minimum leader limit.
+\bparag For each category of leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC,
+\LeaderGov) were a country as less leader than its minimum (for the next
+turn), draw as many leaders as necessary to reach the minimal value.
+\bparag If a country has more leaders than its minimal value, none is
+received.
+\bparag Beware that you are preparing next turn, hence must check the minimal
+leaders value for next turn (this does change at the end of periods).
+
+\begin{exemple}[Minimum leaders]
+  At the end of turn 1, \RUS has one \LeaderG (\leaderwithdata{Shchenya},
+  provided he did not died during turn 1) but at turn 2 (for period
+  \period{I}, \RUS has a minimum limit of 2\LeaderG. So, \RUS gets one
+  \anonyme\LeaderG at the inter-turns phase of turn 1 (to be used during turn
+  2).
+
+  \smallskip
+
+  At the end of turn 3, suppose \leaderShchenya is still alive. \RUS receives
+  \leaderwithdata{I Vorotynsky} as he is scheduled for turn 4. Thus, \RUS now
+  has 2 \LeaderG, equal to its minimum limit, and does not receive any
+  \anonyme\LeaderG.
+\end{exemple}
+
+\aparag[Missionaries] Some countries receive \LeaderMis. Check the specific
+rules of the country to know when.
+
+\aparag[Placement] All leaders deemed to be placed at a given turn are placed
+simultaneously. That is, one first draws all its \anonyme leaders before
+placing any.
+
+\aparag[Where to place?]
+\bparag \LeaderMis must be place in an owned, controlled and unbesieged
+province of the European map.
+\bparag \LeaderGov must be place in an owned, controlled and unbesieged
+establishment (\COL, \TP or fort) in the \ROTW, possibly in a \COL of level 6.
+\bparag Other leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC) may be placed
+either with any unbesieged troop of the same country or in any owned,
+controlled and unbesieged province.
+\bparag Additionally, \LeaderE and \LeaderC may be placed in any province or
+seazone where another leader of the same category was just removed, even if
+there are no more counter of the country here and even if the discovery of
+this province or seazone has still not been brought back home (the expedition
+is too small to be represented, there are still some members to take the lead
+once the initial leader is dead).
+\bparag Note that \LeaderE or \LeaderC may be placed in Europe.
+
+\begin{exemple}[Replacing a \LeaderC]
+  At the end of turn 3, \HIS decides to let the lone \leaderwithdata{Colon} in
+  \granderegionCuba. At the end of turn 3, \leaderColon dies and the counter
+  is removed from game. The province is now empty. However,
+  \leaderwithdata{Solis} is scheduled to arrive at turn 4, hence he is placed
+  now. Since both are \LeaderE, \leaderSolis may be placed exactly where
+  \leaderColon was. Thus, a \COL attempt may be performed here on turn 4 with
+  the bonus for the presence of a \LeaderE.
+
+  \smallskip
+
+  \ANG leaves a lone \anonyme\LeaderC on the cost of \continentAmerica. Since
+  this is an \anonyme leader, it must be removed at the end of turn. However,
+  \ANG receives another \anonyme \LeaderC for the next turn and may chooses to
+  place him at the same place.
+\end{exemple}
+
+\aparag[Geographic restrictions] Some leaders have Geographic restrictions as
+where to be placed (America, Asia or Mediterranean).
+\bparag In addition to other rules, these leaders must be placed in a province
+or seazone where they are allowed.
+\bparag That is, \emph{e.g.}, a \LeaderG with a \$ (America) restriction must
+be place with a stack or establishment in \continentAmerica and may not be
+placed in Europe or Asia.
+\bparag Note that leaders without capacity to go in the \ROTW are \emph{de
+  facto} restricted to Europe and thus must be placed on the European map.
+
+\aparag[Hierarchy]
+After placement of leaders, hierarchy must be respected.
+\bparag If not, you should probably have use free redeployment to solve the
+problem.
+
+\aparag[\Pashas]
+\TUR receives new \Pashas each turn as
+per~\ref{chSpecific:Turkey:Pashas}. They are placed now.
+\bparag The correct procedure of placement is (i) decide a province where a
+\Pasha will be placed ; (ii) draw a random \Pasha and place it here ; (iii)
+repeat until all new \Pashas are place.
+\bparag That is, \TUR may not wait to see the actual values of a new \Pasha
+before deciding where to place him.
 
 \section{Trade centres}\label{chInter:Trade Centres}
 
