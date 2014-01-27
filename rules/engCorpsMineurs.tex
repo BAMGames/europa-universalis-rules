@@ -15,35 +15,29 @@
 \minorreligion{mamelouks}{chiite}
 \minordiplo{mamelouks}{12}{20}{1}{1}{1}{8}{15}
 \minorpref{mamelouks}{\TUR, \VEN, \POL, \SPA, \AUS, \ENG, \POR, \FRA,
-\SUE, \RUS, \HOL, \PRU}
-\minorfid{mamelouks}{8}
-\minorprovince{mamelouks}{Tobrouk}0
-\minorprovince{mamelouks}{Nil}6
-\minorprovince{mamelouks}{Delta}3
-\minorprovince{mamelouks}{Nubie}1
-\minorcapital{mamelouks}{Egypte}9
-\minorprovince{mamelouks}{Sinai}0
+\SUE, \RUS, \HOL, \PRU} \minorfid{mamelouks}{8}
+\minorprovince{mamelouks}{Tobrouk}0 \minorprovince{mamelouks}{Nil}6
+\minorprovince{mamelouks}{Delta}3 \minorprovince{mamelouks}{Nubie}1
+\minorcapital{mamelouks}{Egypte}9 \minorprovince{mamelouks}{Sinai}0
 \minorprovince{mamelouks}{Cataractes}2
 \minorfixedincome{mamelouks}0{Commercial center}{70}
 \minorspecial{mamelouks}{If not at war,\VEN\ earns the income of the
 commercial center.}
-\minorbasicforces{mamelouks}{\ARMY\facemoins, \LD, \leader{Caliph}}
+\minorbasicforces{mamelouks}{2\ARMY\faceplus, \leader{Caliph}}
 \minorbasicrenforts{mamelouks}{1 \LDND, 1 \LD}
 \minorarmyclass{mamelouks}{Islam}{II}
 \minorforces{mamelouks}{2 \ARMY, \FLEET, 2 \LDND, 2 \LDENDE}
-\minorspecial{mamelouks}{Before \subeventref{pI:WRS:War Indian Sea}, cannot use
-its \FLEET. Afterwards, 1 \ARMY\ is lost and basic forces switch to
-\FLEET\facemoins, \LD\ until destruction by \TUR.}
+\minorspecial{mamelouks}{Before \subeventref{pI:WRS:War Indian Sea}, cannot use its \FLEET. Afterwards, 1 \ARMY\ is lost and basic forces switch to \FLEET\facemoins, \ARMY\facemoins, \LD\ until destruction by \TUR.}
 \minorspecial{mamelouks}{Knows \seazone{Rouge} at the beginning of the
-game.}
-\minorspecial{mamelouks}{Has a mandatory defensive alliance with
-\pays{damas}. May go in \pays{damas} even if reinforcement where taken
-in defensive attitude.}
+game.}  \minorspecial{mamelouks}{Has a mandatory defensive alliance with
+\pays{damas} and answers it with limited intervention. May go in
+\pays{damas} even if reinforcement where taken in defensive attitude.}
 \minorspecial{mamelouks}{May be entirely destroyed by \TUR\ if all its
 armies are destroyed and the capital is taken.}
 \minorspecial{mamelouks}{[BLP] If destroyed by \TUR, \leader{Selman Reis} becomes a Turkish \LeaderE.}
 \minorspecial{mamelouks}{May be recreated by
 \eventref{pVII:Mameluks Revolt}.}
+
 
 %\minorcountry{algerie}{Barbary regency of Algeria}{Algeria}
 \minorreligion{algerie}{sunnite}
@@ -181,6 +175,7 @@ become 3\ARMY\ and 5\LD.}
 \minorfid{brunswick}{14}
 \minorcapital{brunswick}{Braunschweig}{11}
 \minorbasicforces{brunswick}{\ARMY\facemoins}
+\minorbasicrenforts{brunswick}{\LD}
 \minorarmyclass{brunswick}{Latin}{III}
 \minorHRE{brunswick}
 \minorforces{brunswick}{\ARMY, \LD}
@@ -220,6 +215,7 @@ become 3\ARMY\ and 5\LD.}
 \minorcapital{kazan}{Kazan}5
 \minorprovince{kazan}{Bolgars}4
 \minorbasicforces{kazan}{\ARMY\faceplus}
+\minorbasicrenforts{kazan}{\LD}
 \minorarmyclass{kazan}{Islam}{I}
 \minorforces{kazan}{\ARMY, \LD}
 
@@ -326,10 +322,12 @@ protector by \eventref{pVI:Kurland}.}
 \minorprovince{danemark}{Jylland}5
 \minorfixedincome{danemark}0{\TradeFLEET\ lv. 3 in \stz{Baltique}}7
 \minorfixedincome{danemark}1{\TradeFLEET\ lv. 2 in \stz{Nord}}5
-\minorbasicforces{danemark}{\ARMY\faceplus, \FLEET\facemoins, 1 \fortress, 2 \LD, 1 \LeaderG\EUminorremark{\ (either King or unnamed)}{}}
+\minorbasicforces{danemark}{\ARMY\faceplus, \FLEET\facemoins, 1 \fortress, 1 \fortress in \region{Norvege}, 2 \LD, 1 \LeaderG\EUminorremark{\ (either King or unnamed)}{}}
+\minorbasicrenforts{danemark}{\LD or \ND}
 \minorarmyclass{danemark}{Latin}{III}
-\minorforces{danemark}{2 \ARMY, \FLEET, 4 \LDND, 2 \NDE, \NTD}
-\minorspecial{danemark}{May use the second \ARMY\ counter only if it has the rights over the Sund; may lose this \ARMY\ counter at the end of \eventref{pIV:TYW}.}
+\minorforces{danemark}{2 \ARMY, 1 Norwegian \ARMY, \FLEET, 4 \LDND, 2 \NDE, \NTD}
+\minorspecial{danemark}{May use the second \ARMY\ counter only if it has the rights over the Sund or if attacked; may lose this \ARMY\ counter at the end of \eventref{pIV:TYW}.}
+\minorspecial{danemark}{May use the \ARMY counter of \pays{Norvege} but only in \region{Norvege}.}
 \minorspecial{danemark}{Add 1\LD\ of reinforcement if fully at war and has the right over the Sund.}
 \minorspecial{danemark}{\paysmajeur{Suede} may not do diplomatic
 action on \pays{Danemark} before \pays{Danemark} forfeits its claims
@@ -346,6 +344,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorprovince{cosaquesdon}{Don}6 %8 dans annexes PB
 \minorprovince{cosaquesdon}{Dikoe Pole}6
 \minorbasicforces{cosaquesdon}{\ARMY\faceplus}
+\minorbasicrenforts{cosaquesdon}{\LD}
 \minorarmyclass{cosaquesdon}{Islam}{I}
 \minorforces{cosaquesdon}{\ARMY, \LD}
 
@@ -410,7 +409,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorfixedincome{genes}1{\TradeFLEET\ lv. 2 in \stz{Ionienne}}4
 \minorfixedincome{genes}2{\TradeFLEET\ lv. 2 in \ctz{Espagne}}6
 \minorbasicforces{genes}{\FLEET\facemoins, \LD, 1 \LeaderA, 1 \fortress\EUminorremark{ in each province}{/prov.}}
-\minorbasicrenforts{genes}{1 \NGD\ or 1 \NDE}
+\minorbasicrenforts{genes}{1 \NGD\ or 1 \NDE or 1\NTD}
 \minorarmyclass{genes}{Latin}{III}
 \minorforces{genes}{\FLEET, 2 \LDND, 2 \NDE, \NTD}
 \minorspecial{genes}{No diplomacy allowed by \VEN.}
@@ -458,13 +457,14 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 %\minorfixedincome{habsbourg}1{Salt manufactures}{}
 \minorbasicforces{habsbourg}{\ARMY\faceplus,\ARMY\facemoins, \LD, 2
   \LeaderG, 2 \fortress}
+\minorbasicrenforts{habsbourg}{\ARMY\facemoins}
 \minorarmyclass{habsbourg}{Latin}{III}
 \minorspecial{habsbourg}{Armies becomes class IV after dissociation with
   \SPA\ or \eventref{pV:Montecuccoli to Eugen}.}
 \minorHRE[Elector]{habsbourg}
 \minorforces{habsbourg}{4 \ARMY, 8 \LD}
-\minorspecial{habsbourg}{Base force increase by \ARMY\facemoins\ after
-  \eventref{pI:Habsburg Hungary} or \ARMY\faceplus, \LD\ after
+\minorspecial{habsbourg}{Base force increase by \ARMY\faceplus, \LD\ after
+  \eventref{pI:Habsburg Hungary} or \ARMY\facemoins\ after
   \eventref{pI:Fall Hungary} unless \pays{Hongrie} has been activated as
   an independant state.}
 \minorspecial{habsbourg}{Counters of \pays{Hongrie} are considered as
@@ -490,6 +490,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorprovince{hanovre}{Osnabruck}7
 \minorcapital{hanovre}{Hannover}{11}
 \minorbasicforces{hanovre}{\ARMY\facemoins, \LD, 1 \LeaderG}
+\minorbasicrenforts{hanovre}{\LD}
 \minorarmyclass{hanovre}{Latin}{III}
 \minorHRE{hanovre}
 \minorforces{hanovre}{\ARMY, 2 \LD}
@@ -507,6 +508,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorspecial{hanse}{Annexes \province{West Pommern} and \province{Ost
 Pommern} during \eventref{pI:Fall Teutonic}.}
 \minorbasicforces{hanse}{\ND, \LDND}
+\minorbasicrenforts{hanse}{\LD or \ND}
 \minorarmyclass{hanse}{Latin}{III}
 \minorHRE{hanse}
 \minorforces{hanse}{3 \LDND, 2 \NDE, \NTD}
@@ -521,6 +523,7 @@ Pommern} during \eventref{pI:Fall Teutonic}.}
 \minorcapital{hesse}{Hessen}6
 \minorprovince{hesse}{Nassau}4
 \minorbasicforces{hesse}{\ARMY \facemoins, \LD}
+\minorbasicrenforts{hesse}{\LD}
 \minorarmyclass{hesse}{Latin}{III}
 \minorHRE{hesse}
 \minorforces{hesse}{\ARMY, 2 \LD}
@@ -528,12 +531,13 @@ Pommern} during \eventref{pI:Fall Teutonic}.}
 %\minorcountry{suisse}{Helvetic confederation}{Helvetia}
 \minorreligion{suisse}{cathoprote}
 \minordiplo{suisse}{2}{50}{7}{10}{*}{*}{*}
-\minorpref{suisse}{\SUE, \ENG, \HOL, \POL, \PRU, \RUS, \FRA, \SPA,
+\minorpref{suisse}{\ANG, \SUE, \HOL, \POL, \PRU, \RUS, \FRA, \SPA,
 \AUS, \POR, \TUR, \VEN}
 \minorfid{suisse}{9}
 \minorprovince{suisse}{Graubunden}3
 \minorcapital{suisse}{Suisse}5
 \minorbasicforces{suisse}{\ARMY\faceplus}
+\minorbasicrenforts{suisse}{\LD}
 \minorarmyclass{suisse}{Latin}{III}
 \minorforces{suisse}{\ARMY, 2 \LD}
 \minorspecial{suisse}{Reinforcments are always veterans.}
@@ -591,7 +595,7 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \minorfid{milan}{10}
 \minorcapital{milan}{Lombardia}{12}
 \minorbasicforces{milan}{\LD, 1 \fortress\EUminorremark{ in periods
-\period{II} and followings}{ (pII)}}
+\period{II} and followings}{ (pII--pVII)}}
 \minorarmyclass{milan}{Latin}{III}
 \minorforces{milan}{\ARMY, 2 \LD}
 \minorspecial{milan}{May be annexed by \FRA\ during
@@ -641,6 +645,7 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \minorforces{maroc}{\ARMY, 2 \LD, \LDND, 2 \NDE, \corsaire}
 \minorbonusrenforts{maroc}{+1 \EUminorremark{during periods \period{I} and \period{II}.}{(pI/pII)}}
 \minorspecial{maroc}{Fidelity reduced to 10 due to event \eventref{pIV:Morocco}}
+\minorspecial{maroc}{Add \corsaire\facemoins to basic force and to reinforcement evey other turn after~\ref{pII:Alignment of Barbaresques}.}
 
 %\minorcountry{mazovie}{Duchy of Mazovia}{Mazovia}
 \minorreligion{mazovie}{catholique}
@@ -780,6 +785,7 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \minorfixedincome{perse}0{Gold mine}{20}
 \minorbasicforces{perse}{\ARMY\faceplus, \ARMY\facemoins, \LD,
 \leader{Shah}}
+\minorbasicrenforts{perse}{\ARMY\facemoins,\LD}
 \minorarmyclass{perse}{Islam}{II}
 \minorspecial{perse}{After \eventref{pIII:Persian Safavids} or
 \eventref{pIV:Persian Safavids}  armies are of class \CAI.}
@@ -846,8 +852,7 @@ Safavids}, has a third \ARMY and its technological level is the same as
 \minorforces{papaute}{\ARMY, \LD, 2 \LDND, 2 \NDE, \NTD}
 \minorspecial{papaute}{No diplomacy allowed by \TUR.}
 \minorspecial{papaute}{Controlling a province of \pays{papaute} gives
-a \CB\ to its diplomatic patron and \terme{the sole defensor of the
-Catholic faith}.}
+a \CB\ to its diplomatic patron and the \SDCF.}
 \minorrule{papaute}{chSpecific:Venice:Pope Venice}
 
 %\minorcountry{saxe}{Electorate of Sachsen}{Saxonia}
@@ -863,7 +868,7 @@ Catholic faith}.}
 \minorarmyclass{saxe}{Latin}{IIIM}
 \minorHRE[Elector]{saxe}
 \minorforces{saxe}{\ARMY, 2 \LD}
-\minorbonusrenforts{saxe}{+2 \EUminorremark{during periods \period{I} to \period{IV}.}{(pI--pIV)}}
+\minorbonusrenforts{saxe}{+1 \EUminorremark{during periods \period{I} to \period{IV}.}{(pI--pIV)}}
 \minorspecial{saxe}{Electorate of the \HRE.}
 \minorspecial{saxe}{May become a special vassal of \POL\ after
 \eventref{pV:Saxon King Poland}.}
@@ -883,6 +888,7 @@ Catholic faith}.}
 \minorprovince{ecosse}{Galloway}4
 \minorfixedincome{ecosse}0{\TradeFLEET\ lv. 3 in \stz{Nord}}6
 \minorbasicforces{ecosse}{\ARMY \faceplus}
+\minorbasicrenforts{ecosse}{\LD}
 \minorarmyclass{ecosse}{Latin}{III}
 \minorforces{ecosse}{\ARMY, \LD, 2 \LDND, 2 \NDE, \NTD}
 \minorspecial{ecosse}{May be annexed by \ENG\ by \eventref{pVI:Act Union}.}
@@ -905,6 +911,7 @@ Catholic faith}.}
 \minorbasicforces{naples}{\ARMY\faceplus, \FLEET\facemoins} %?
 \minorarmyclass{naples}{Latin}{III}
 \minorforces{naples}{\ARMY, \FLEET, \LD, 2 \LDND, 2 \NDE, \NTD}
+\minorbasicrenforts{naples}{\LD or 2\NGD}
 \minorspecial{naples}{May be annexed by \SPA\ by
   \dynasticaction{A}{3}. May be recreated afterwards as a
   semi-independant Habsbourg state.}
@@ -928,6 +935,7 @@ Catholic faith}.}
 \minorfixedincome{suede}1{\TradeFLEET\ lv. 3 in \stz{Baltique}}{7}
 \minorbasicforces{suede}{\ARMY\facemoins, \LD, \FLEET\facemoins, 1
   \LeaderG\ (king)}
+\minorbasicrenforts{suede}{\LD, \LD or \ND}
 \minorarmyclass{suede}{Latin}{IIIM}
 \minorforces{suede}{3 \ARMY, \FLEET, 5 \LD, 10 \LDND, 6 \NDE, 2 \NTD, \EUminorremark{a special }{}transport \FLEET}
 \minorspecial{suede}{As a member of Kalmar's union, is unified to
@@ -953,7 +961,7 @@ the commercial center is gained by \TUR.}
 \minorarmyclass{damas}{Islam}{II}
 \minorforces{damas}{\ARMY, 2 \LD}
 \minorspecial{damas}{Has a mandatory defensive alliance with
-\pays{mamelouks}.}
+\pays{mamelouks} and answers it with limited intervention.}
 \minorspecial{damas}{May be entirely destroyed by \TUR\ if all its
 armies are destroyed and the capital is taken.}
 
@@ -973,7 +981,7 @@ armies are destroyed and the capital is taken.}
 \minorforces{steppes}{\ARMY, 2 \LD}
 \minorspecial{steppes}{Before \eventref{pI:End Golden Horde}, has an
   automatic defensive alliance with the khanates (\pays{kazan},
-  \pays{astrakhan} and \pays{cosaquesdon}).}
+  \pays{astrakhan}, \paysCrimee and \pays{cosaquesdon}).}
 \minorspecial{steppes}{Loses its \ARMY\ and its basic reinforcement after
   \eventref{pI:End Golden Horde}.}
 
@@ -999,7 +1007,7 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 
 %\minorcountry{toscane}{Republic of Firenze}{Toscana}
 \minorreligion{toscane}{catholique}
-\minordiplo{toscane}{6}{50}{1}{3}{3}{6}{6}
+\minordiplo{toscane}{6}{50}{1}{3}{3}{6}{10}
 \minorpref{toscane}{\FRA, \SPA, \VEN, \AUS, \POL, \ENG, \HOL, \POR,
 \PRU, \SUE, \RUS, \TUR}
 \minorfid{toscane}{14}
@@ -1096,6 +1104,7 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 \minorprovince{ukraine}{Podolie}3
 \minorprovince{ukraine}{Zaporozhye}4
 \minorbasicforces{ukraine}{\ARMY\facemoins, \LD, 1 \LeaderG}
+\minorbasicrenforts{ukraine}{\LD}
 \minorarmyclass{ukraine}{Orthodoxe}{I}
 \minorforces{ukraine}{\ARMY, 2 \LD}
 \minorspecial{ukraine}{Can be created by \eventref{pIV:Revolt Cossacks} as a
@@ -1119,6 +1128,7 @@ special vassal of its protector.}
 \minorbasicforces{usa}{\ARMY\faceplus, 2 \LD, \ND, 1 \LeaderG}
 \minorarmyclass{usa}{Latin}{IV}
 \minorforces{usa}{\ARMY, 2 \LD, \LDND, 4 \LDENDE, \NTD}
+\minorbasicrenforts{usa}{\ARMY\facemoins, \LD}
 \minorspecial{usa}{Created by \eventref{pVII:Independence War}. Region under its
 control are considered as european provinces (normal movement cost,
 fortress of level 1 in each province, no native).}
@@ -1656,6 +1666,7 @@ is fought there.}
 \minorfixedincome{japon}0{Provinces of \granderegion{Japon}}{100}
 \minorfixedincome{japon}1{\TradeFLEET\ lv. 3 in \stz{Formose}}{7}
 \minorbasicforces{japon}{2 \ARMY\faceplus}
+\minorbasicrenforts{japon}{\ARMY\faceplus}
 \minorarmyclass{japon}{ROTW}{A}
 \minorforces{japon}{2 \ARMY, 4 \LD, 4 \LDE}
 \minorspecial{japon}{Activation is automatic in \province{Kyoto}.}
@@ -1684,14 +1695,14 @@ is fought there.}
 \ENG, \RUS, \HOL, \POR}
 \minorfixedincome{mogol}0{Various provinces (arbitrarily)}{50}
 \minorbasicforces{mogol}{2 \ARMY\faceplus}
-\minorbasicrenforts{mogol}{\ARMY\facemoins}
+\minorbasicrenforts{mogol}{\ARMY\faceplus}
 \minorarmyclass{mogol}{Islam}{A}
 \minorforces{mogol}{2 \ARMY, 2 \LD, 2 \LDE}
 \minorspecial{mogol}{Extends though \continent{India} and gain commercial
 fleet by various events.}
 \minorspecial{mogol}{Activation is automatic in \province{Delhi}.}
 \minorspecial{mogol}{Activation becomes 3 after some events, and basic forces
-reduced to \ARMY\faceplus.}
+reduced to \ARMY\faceplus and basic reinforcement to \ARMY\facemoins.}
 
 %\minorcountryrotw{mysore}{Kingdom of Mysore}{Mysuria}
 \minorreligion{mysore}{autrereligion} %Hindouiste
@@ -1785,7 +1796,7 @@ is fought there.}
 \minorprovince{Hboheme}{Silesie}6
 \minorprovince{Hboheme}{Morava}5
 \minorprovince{Hboheme}{Lausitz}4
-\minorbasicforces{Hboheme}{\ARMY\facemoins, \fortress may be
+\minorbasicforces{Hboheme}{\ARMY\facemoins, \fortress\ may be
 maintened in \ville{Prague}}
 \minorarmyclass{Hboheme}{Latin}{III}
 \minorHRE{Hboheme}

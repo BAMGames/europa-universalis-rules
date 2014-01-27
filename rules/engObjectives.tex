@@ -348,7 +348,7 @@
   provinces)}%
 %
 \EUobjective2M{\pays{German Empire}}{}%
-{}{50}{Creation of \pays{German Empire}}%
+{}{50}{Creation of \pays{German Empire} (half if South HRE alliance)}%
 %
 \EUobjective3{}{\paysmajeurAutriche}{prov\EUAbbr{ince}-11}%
 {10}{30}{Each province above 11 in \AUSaus}%
@@ -518,7 +518,7 @@
   provinces)}%
 %
 \EUobjective2M{\pays{German Empire}}{}%
-{}{50}{Creation of \pays{German Empire}}%
+{}{50}{Creation of \pays{German Empire} (half if South HRE alliance)}%
 %
 \EUobjective3{}{\paysmajeurAutriche}{prov\EUAbbr{ince}-11}%
 {10}{30}{Each province above 11 in \paysmajeurAutriche}%
@@ -948,15 +948,18 @@
 {20}{40}{No provinces of the Polish or Lithuanian national territory lost:
   full sucess, half-success if 1, else failure}%
 %
-\EUobjective3M{\villeVienne never fell to \TUR}{}%
-{}{50}{\provinceOsterreich/\ville{Vienne} never captured by
-  \paysmajeur{Turquie}}%
+% \EUobjective3M{\villeVienne never fell to \TUR}{}%
+% {}{50}{\provinceOsterreich/\ville{Vienne} never captured by
+%   \paysmajeur{Turquie}}%
+\EUobjective3{}{Absolutism}{}%
+{}{40}{Absolutism established}%
 %
 \EUobjective4{}{\RUS not adjacent to \regionBaltique}{}%
 {}{40}{}%
 %
 \EUobjective5M{\TUR in \payshongrie}{prov\EUAbbr{ince}}%
-{50-10}{50}{50 \VPs minus 10 \VPs per Turkish province in \payshongrie}%
+{50-10}{50}{50 \VPs minus 10 \VPs per Turkish province in \payshongrie plus
+  20\VPs if \villeVienne never fell to \TUR}%
 %
 \EUcurrentcountry{Turquie} \EUcurrentperiod{I}
 %

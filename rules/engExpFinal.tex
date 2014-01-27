@@ -1,0 +1,253 @@
+% -*- mode: LaTeX; -*-
+
+\section{Administrative expenses}
+\aparag Write in \lignebudget{Adm. total} the sum of \lignebudget{Loan
+  interests}, \lignebudget{Mandatory loan refund} and all lines between
+\lignebudget{Optional loan refunds} and \lignebudget{Other expenses}
+included.
+
+\section{Exotic resources price variation, Trade centres and convoys}
+\label{chExpenses:Variation}
+
+
+
+\subsection{Price of exotic resources}
+\label{chExpenses:ExoticResourcesPrices}
+
+\subsubsection{Exploitation level}
+\aparag[Exploited quantities.] The ``exploited quantities'' markers must
+always be adjusted to their correct values (in practice, it is usually
+sufficient to do it at the end of each administrative and peace phases).
+\bparag The following things may require an adjustment of the counters: new
+colonies or trading posts, competition, burned trading posts, peace conditions
+implying the assignment of resources exploitation to other trading-posts,
+events that may have changed the number and level of trading-posts or
+colonies, and any other event that may change the exploitation of exotic
+resources.
+\bparag Minor \ROTW countries do exploit resources where they have a \TP or a
+\COL. They do not exploit in other provinces (typically in provinces they own
+but without an establishment).
+% (Jym) ???
+% \bparag The production of Silk, Products of Orient and Spices is always
+% considered to be at least 1/10\th of the income of the \emph{Great Orient}
+% trade centre; this is for the exotic resources prices variations roll only,
+% not for any other consideration.
+\bparag Even if they do not appear at the same time, the \RES{Sugar} in
+\continent{Bresil} and elsewhere is still considered to be the same
+resource. Same thing goes for the \RES{Cotton} in \continent{America} and
+\continent{Asia}.
+
+\aparag[Bookkeeping quantities.] Each resource has an \terme{exploited
+  quantity} marker to denote on the Exotic resource tracks the amount which is
+exploited.
+\bparag There are 3 Exotic resource tracks, depending on whether the maximum
+exploitable quantity is 20 (\RES{Product of America}, \RES{Cotton}, \RES{Salt}
+or \RES{Silk}), 30 (\RES{Fish}) or 40 (\RES{Products of Orient}, \RES{Spice},
+\RES{Fur}, \RES{Sugar} or \RES{Slaves}). There are reminders near them to
+recall which track to use for which resource.
+\bparag There is also an \terme{Exotic resources sheet} with one box per
+exploitable resource. This is a global sheet and whenever a player exploits
+(or stops to exploit) a resource, he should note it on this sheet. This allows
+for easier counting of the exploited quantities and avoid some errors where
+players accidentally exploit the same resource twice.
+
+\aparag Depending on the amount of resource exploited and the maximum amount
+exploitable for this resource (20, 30 or 40), each resource has an
+exploitation level which is either \terme{rare} (green), \terme{low} (blue),
+\terme{medium} (white), \terme{large} (purple), \terme{high} (yellow) or
+\terme{excess} (red).
+\bparag These levels are colour-coded on the tracks for easy reference.
+\bparag The colour of the box in which each \terme{exploited quantity} marker
+is indicates the exploitation level for this resource.
+
+
+\subsubsection{Variation of price}
+%\label{chExpenses:Variation}
+%\GTtable{ecopiracypiracy}
+
+\aparag[Economic situation.]
+\bparag The economic situation die roll gives an \terme{economic situation}
+on~\ref{table:Random Piracy and Economy Roll}. The economic situation can be
+one of \terme{Crisis}, \terme{Normal} or \terme{Boom}.
+\bparag Remember that this roll is done during the Event phase as it also
+controls apparition of piracy. See~\ref{chEvents:Economic situation}. The
+situation is recorded on the \ROTW map.
+% \bparag \label{chIncomes:EconomicInflation} If the roll is a 1 or a 10, then
+% the ``inflation'' marker is moved 1 box to the right (unless it is already at
+% its maximum) (this should also already be handled during Event phase).
+% \bparag This also determine seas targeted by
+% piracy. See~\ref{chEvents:Piracy}.
+\bparag Crossing the economic situation with the production level of each
+resource gives a basic variation of the prices, from -2 to +2 boxes (see
+\tableref{table:Exotic resources variations}).
+\bparag \tableref{table:Exotic resources variations} is recalled on the \ROTW
+map, near the exotic resources tracks, using the same colour-code as them for
+exploitation levels.
+
+\GTtable{ecopiracyprices}
+
+\aparag On each price marker of each resource, there are two numbers: left is
+for the low price threshold, right is for high price threshold.
+
+\aparag[Market variation.] Roll a die for each resource, and add it to the
+current price of the resource. If the result is less or equal to the low
+threshold, then the market variation will be +1. If the result is greater or
+equal to the high threshold, the market variation will be -1. Otherwise, the
+market variation is 0.
+\bparag The combination of the basic variation and of the market variation
+gives the number of boxes the price marker will move to the right (positive
+value) or to the left (negative value).
+\bparag The price variation cannot exceed 2 boxes to the left or to the
+right. If the two variations sum up to +3 or -3, use +2 or -2 instead.
+
+\aparag There is a minimal value and maximal value for all resources. Under no
+circumstances shall the price marker go out of those bounds.
+\bparag The price marker stops when reaching the maximum or minimum value.
+\bparag These values are written in the exotic resources prices track, on the
+top line for the minimal price and on the bottom line for the maximum price.
+
+\aparag[Speculation]\label{chExpenses:Speculation}
+A \MAJ may speculate on a product to have a better chance of increase of the
+price of this product. He must announce it before the price adjustment, and he
+will gain only half of his normal income for this resource.
+\bparag Speculation on price must be announced during the Diplomatic phase, as
+a diplomatic announcement.
+\bparag If he has either a total or partial monopoly
+(see~\ref{chThePowers:MonopolyExoticResources}), he puts the production
+counter upside-down. The resource is considered to have a \terme{rare}
+production level (green) for the computation of its basic variation.
+\bparag If he has no monopoly but at least 4,6 or 8 units exploited (according
+to the maximal production of the product that could be 20,30 or 40), the
+counter is put left-to-right to show that a \bonus{-1} will be added to the
+roll for market regulation of this resource.
+
+\aparag Price for all resources is computed independently, but there is only
+one economic situation roll, common to all resources.
+\bparag Price variation comes from the global market dynamism, and individual
+adjustments depending on threshold prices.
+
+\begin{exemple}[Prices of exotic resources]
+  The production of \RES{Spice} is 32, current price is 7, and the production
+  of \RES{Salt} is 3, current price is 6 (rightmost box). The die-roll of
+  economic situation gives a 10: a Boom. First thing, the inflation marker is
+  moved one box to the right. The thresholds for \RES{Spice} are 8 and 16, the
+  thresholds for \RES{Salt} are 7 and 15.
+
+  The basic variation of the \RES{Spice} price is +1 (since there already is
+  high production). A dice is rolled for a result of 9. Adding the price (7)
+  to it yields a total of 16, larger than the high threshold, thus giving a
+  market variation of -1. Therefore, the price variation of \RES{Spice} is
+  +1-1=0, the price does not change at all.
+
+  The basic variation of the \RES{Salt} price is +2, because there is only a
+  rare production. Adding a die-roll of 1 to the price (6) yields a result of
+  7, smaller than the low threshold, thus giving a market variation of +1.
+  The total variation is thus +3, which is capped at +2. The price marker
+  should be moved 2 boxes to the right. However, the maximum price for
+  \RES{Salt} is the leftmost 7 box, so the marker stops there.
+\end{exemple}
+
+
+
+\subsection{Attribution of centres of trade and convoys [to move in Interphase]}
+
+\aparag Convoys represent heavy trade of specific resources (usually
+gold). They are given to the country dominating trade in this resource
+(usually exploiting most of it). They do not bring income per se but must be
+brought back to Europe where the gold they carry can be unloaded. However, the
+journey can be dangerous and convoys can be attacked and seized by pirates,
+privateers or enemy fleet.
+
+\aparag There are four possible convoys: the \terme{Levant} fleet of
+\bazar{Izmir}, the \terme{East Indies} convoy, the \terme{Flota de Oro}, and
+the \terme{Flota del Per\'u}.
+
+
+\subsubsection{The convoys}\label{chIncomes:Convoys}
+\aparag The convoys are represented as a special \ND, and may be moved during
+the military phase (see \ruleref{chMilitary:Convoys})
+\bparag They represent a certain number of \NTD, each carrying 15\ducats that
+is credited only upon arrival in a port during the military or redeployment
+phases, to the owner of the port (or its Patron, if it is a minor vassal).
+\bparag The sum is reported in \lignebudget{Gold from ROTW and Convoys}.
+%, but does not count for
+% \ruleref{chInter:Inflation Gold ROTW} and \ruleref{chPeace:InflationGold} in
+% the case of the \terme{Levant} convoy and the \terme{East Indies} convoy.
+\bparag They can be attacked by either enemy fleets, pirates or privateers
+(see \ruleref{chMilitary:Convoys}).
+
+\aparag[Levant Convoy]\label{chIncomes:Levant Convoy} This
+convoy contains 2 to 4 \NTD, each carrying an income of 15\ducats.  It appears
+every turn in \province{Izmir}, at the administrative phase, if the \CCs{Grand
+  Orient} is owned by \TUR.
+% TODO: variable number of \NTD (2 to 4) ??
+\bparag If \province{Izmir} does no more belong to \TUR, any Turkish port on
+\region{Mediterranee} will do instead.
+\bparag The actual content of the Convoy depends on the current income of the
+\CCs{Grand Orient}: 4\NTD if 100\ducats or more, 3 \NTD if 50\ducats or more
+and 2 \NTD if less than 50\ducats.
+\bparag The convoy is attributed by \TUR to any other player of his choice,
+provided that this player either has a port in \region{Mediterranee} (owned or
+vassal) or controls the \CCs{Mediterranee}, and it accepts the convoy. This
+attribution is done as a diplomatic announcement (and thus can be part of a
+larger agreement such as ``buying'' the convoy).
+\bparag If \TUR attributes the convoy to another player, it receives 20\ducats
+as soon as the convoy reaches the other player (in \lignebudget{Gold from ROTW
+  and Convoys}).
+\bparag The Turkish player may refuse to grant the convoy or possibly no one
+accepts it. In such a case, \TUR immediately loses 20\ducats from its \RT and
+1 \STAB.
+\bparag If the convoy is not attributed to the player that controls the
+\CCs{Mediterranee}, this player receives an immediate and temporary \CB
+against \TUR (overseas or normal) at this turn only.
+\bparag The convoy can be escorted by \TUR or by the receiving \MAJ. \TUR
+decides when the convoy leaves the port (and thence, who escorts it).
+\bparag Income of the convoy is credited in the player's treasury immediately
+upon arrival in any home port or vassal port of that player in Europe,
+i.e. during the Military or Redeployment phase (and not the Logistics
+sub-phase).
+\bparag Any player at war with either \TUR or the receiver of the convoy
+(except \TUR and the receiver) may try to intercept the convoy. The escorting
+force may always participate in the defence of the convoy, whatever the status
+of war between the interceptor and the escort
+(see~\ruleref{chMilitary:Convoys}).
+\bparag If the convoy never arrives at its final destination (in a port of the
+designed \MAJ), the penalty for not attributing the convoy is applied
+immediately to \TUR.
+
+\aparag[East Indies convoy] It is attributed to the player that does exploit
+the most of the following resources: Silk, Products of Orient, Spices, and at
+least 10 of them.
+\bparag In case of ties, the convoy is attributed, among the tied countries,
+in the first one in the following order: the country controlling
+the \emph{Atlantic} Trade Centre ; \HOL (before 1700, turn 42); \ANG (after
+1700, turn 43). If the tie cannot be broken that way, the convoy is not
+attributed.
+\bparag The East Indies convoy must start from a \COL\faceplus or a
+\TP\faceplus in \continent{Asia}, and must reach a port of its owner on the
+Europe map. It is worth 4 \NTD carrying 15\ducats each.
+\bparag The gold obtained when reaching a port on the Europe map with a convoy
+is accounted for in \lignebudget{Gold from ROTW and Convoys} of the receiving
+player (either the original owner or someone else seizing it during the trip).
+
+\aparag[Spanish convoys]\label{chIncomes:SpanishConvoys} The Spanish gold
+fleet can only transport gold stored in Spanish ports. The \terme{Flota de
+  Oro} and the \terme{Flota del Per\'u} are each equivalent to 5 \NTD.
+\bparag The \terme{Flota de Oro} appears in a port on the Atlantic coast, the
+\terme{Flota del Per\'u} appears in a port on the Pacific coast.
+\bparag Spanish convoys can load and unload gold in ports, thus transporting
+gold from port to port, and finally to Europe (see
+\ruleref{chMilitary:FlotaDeOroMovement}). They are initially empty, as opposed
+to the other convoys.
+
+
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: Carrack Tercios Galleass Boyars

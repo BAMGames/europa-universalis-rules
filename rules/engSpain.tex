@@ -17,22 +17,27 @@
 do a Habsburg diplomatic action. Each action has a difficulty, and a
 score of at least this difficulty must be reached with 2d10 to have a
 success.
+
 \aparag The cost of the Habsburg diplomatic action is the one of a usual
 diplomatic action
 \bparag The usual modifiers due to investment (0, +2, +5) do apply to
 the dice.
 \bparag No other modifiers is possible, and no diplomatic support may
 take place.
+
 \aparag The actions are split in three classes (A, B and C). All the
 actions of class A must have been successful to try an action of class
 B. All the actions of class B must have been successful to try an action
 of class C.
+
 \aparag It is not possible to attempt a Dynastic Action at the turn
 following a successful one (be it because of events or of diplomatic
 action). Exception: there is no limit to attempt a diplomatic annexion
 of a province of \pays{provincesne}.
+
 \aparag It is no more possible to do diplomatic actions if the Habsburg
 of Austria and Spain are dissociated (as per \eventref{pV:WoSS}).
+
 \aparag Some events have as a consequence the success of a Habsburg
 dynastic action. These actions do not cost anything to \SPA and are
 always successful.
@@ -301,6 +306,11 @@ operations, that is different from its \FTI (see
 \bparag This \FTI is also used for Portuguese \COL operations while
 \pays{Portugal} is in annexation.
 
+\subsubsection{New Spain}
+\aparag \HIS may annex all establishments (\COL and \TP) of its enemies
+in an Area in the El dorado (as defined above).
+\bparag This count as 1 peace condition, plus 1 per establishment not
+controlled by \SPA in the Area at the time of the peace.
 
 \subsubsection{Spanish Missionaries}
 \aparag See \ruleref{chSpecific:Missions} for the general rules.
@@ -368,17 +378,19 @@ at random among the Spanish ones).
 \aparag See also \ruleref{chSpecific:Belgium} for the state of Holland before
 annexation by \SPA, and \ruleref{chSpecific:Holland:First Revolt} for what
 happens after \eventref{pIII:Dutch Revolt}.
-\aparag[The Spanish Tax] \label{chSpecific:Spain:Dutch Tax} The Spanish Holland
-is the set of all provinces belonging to \SPA in the limits of the
-national territory of \paysmajeur{Hollande}
+
+\aparag[The Spanish Tax] \label{chSpecific:Spain:Dutch Tax} The Spanish
+Holland is the set of all provinces belonging to \SPA in the limits of
+the national territory of \paysmajeur{Hollande}
 (\theminorprovincesshort{hollande}). \SPA does not raise directly income
 from these provinces, but may choose to tax those after
 \eventref{pI:Habsburg Alliance}.
 \bparag The income is of 40\ducats, plus 10\ducats per province owned,
 for a maximum of 100\ducats, to be added in \lignebudget{Special
   income}.
-\bparag These provinces are counted as foreign for \ruleref{chIncomes:Trade
-  Income}.
+\bparag These provinces are counted as foreign for
+\ruleref{chIncomes:Trade Income}.
+
 \aparag[Trade implantation] See rule \ruleref{chSpecific:Holland:Dutch Trading
   Fleets}.
 \bparag The Dutch \TradeFLEET are counted as Spanish for
@@ -386,12 +398,18 @@ for a maximum of 100\ducats, to be added in \lignebudget{Special
 \eventref{pI:Burgundy Inheritance} have been both played. The Atlantic
 \terme{Trade Centre} is initially set in \province{Vlaanderen} (and
 counts for \pays{provincesne} and \pays{bourgogne}).
-\bparag However, when \SPA has the Atlantic \terme{Trade Centre} because
-of this rule, this does not gives an Overseas \CB.
+% (Jym, 06/2013) : to who ? against whom ?
+% plus, this disagree with the tables where the \OCB of SPA is valid
+% only before the revolt of HOL...
+% Removing.
+%
+% \bparag However, when \SPA has the Atlantic \terme{Trade Centre} because
+% of this rule, this does not gives an Overseas \CB.
+
 \aparag All the preceding rules do not apply any more if
 \pays{Vhollande} comes into existence (through
-\ruleref{chPeace:Peace:Independence Revolt}). This may lead to applying the
-effects of \eventref{pIII:Dutch Revolt} before period III.
+\ruleref{chPeace:Peace:Independence Revolt}). This may lead to applying
+the effects of \eventref{pIII:Dutch Revolt} before period III.
 
 
 \subsubsection{The Flanders Factories}\label{chSpecific:Spain:Cloth}
@@ -407,6 +425,7 @@ be re-built in provinces of Flanders and Holland.
 
 
 \subsubsection{Expulsion of the Jews and the Moriscos}
+\label{chSpecific:Spain:Expulsion}
 \begin{histoire}
   The Alhambra Decree was issued in 1492 by the Monarchs of Spain,
   following the final triumph over the Moors after the fall of
@@ -440,21 +459,20 @@ c- bonus +1 aux tests de banqueroute \\
 2) Revenir sur la politique d'expulsions : annule tous les effets, \\
 coûte 25 PVs ou gratuit lors de IV-2 (1) Olivares \\
 
---- SUITE A ENLEVER SI COMPTABILITE v2 ---
+% --- SUITE A ENLEVER SI COMPTABILITE v2 ---
 
-\aparag At the beginning of any diplomatic phase, during periods I to
-III, \SPA may proclaim the expulsion of the Jews and the Moriscos.
-\bparag \SPA automatically receives 500\ducats in its royal
-treasury. All the national loans running can be cancelled without any
-penalty.
-\bparag However, the \FTI (non-\COL part) and \DTI of \SPA remain
-limited to 2 until the end of period V or \eventref{pIV:Olivares} is
-active.
-\bparag If Spain is the \terme{Sole defender of the Catholic Faith} and
-has not proceeded to the expulsion by the end of period III, it loses
-75\VP.
-\\
---- FIN: SUITE A ENLEVER SI COMPTABILITE v2 ---
+% \aparag At the beginning of any diplomatic phase, during periods I to
+% III, \SPA may proclaim the expulsion of the Jews and the Moriscos.
+% \bparag \SPA automatically receives 500\ducats in its royal
+% treasury. All the national loans running can be cancelled without any
+% penalty.
+% \bparag However, the \FTI (non-\COL part) and \DTI of \SPA remain
+% limited to 2 until the end of period V or \eventref{pIV:Olivares} is
+% active.
+% \bparag If Spain is the \SDCF and has not proceeded to the expulsion by
+% the end of period III, it loses 75\VP.
+% \\
+% --- FIN: SUITE A ENLEVER SI COMPTABILITE v2 ---
 
 \bparag This effect is cancelled if \SPA chooses to be conciliatory.
 

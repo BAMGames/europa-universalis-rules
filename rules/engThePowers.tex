@@ -53,8 +53,42 @@ down while any loss is rounded up.
 least''. If a country should gain 1.9\ducats, it has not gain 2\ducats, thus
 the sum must be rounded down; conversely, if a country has to pay 1.1\ducats,
 it has to pay more than 1\ducats and the debt must be rounded up.
+\bparag Note that if country A decides to give 1.5\ducats to country B, then
+country A has to pay more than 1\ducats, hence 2\ducats (round loss up) but
+country B has gained less than 2\ducats, hence only 1\ducats (round gain
+down). Free hint: don't plan do to this if you don't want money to
+disappear\ldots
 
+\subsection{Order of resolution}
+\aparag Often, several similar actions should theoretically be resolved
+simultaneously but may require decisions of players and are thus resolved one
+by one (\emph{e.g.} sieges, attacks of natives, automatic competition \ldots)
+\bparag In case of disagreement in the order of resolution, each player, in
+decreasing order of initiative, chooses one of the action to resolve.
+\bparag All players get their ``turn'' to choose, even those not implied in
+the actions. And each player may choose an action in which he is not implied.
 
+\subsection{The letter and the spirit}
+\aparag As much as possible, we try to write precise and unambiguous rules. We
+also try to explain the ``spirit'' of the rules and to make our intention
+clear.
+\bparag In some cases, the rules are very technical, almost ``algorithmic'',
+and you may not understand the whys immediately. In those cases, apply them
+without thinking.
+
+\aparag In a couple of cases, the precise description of the rule is too
+complicated to write (as this is not a mathematics book\ldots) and we may
+explain only the spirit without formalising completely the letter. Those cases
+will always be explicitly mentioned in the rules.
+\bparag In those cases, use good sense to interpret the rules. In case of
+disagreement, use discussions and votes (among players not implied) and create
+home rules as needed.
+
+\aparag If any rule seems strange, allows some non-historical behaviour, or is
+abused by tricky players, you are welcome to create home rules to circumvent
+the problem. After all, this whole rule book is mostly home rules and
+clarification on the original \emph{Europa Universalis} game by Philippe
+Thibault.
 
 
 \section{Countries}
@@ -121,7 +155,7 @@ the country.
 \bparag Minors countries usually have no standings, unless explicitly stated.
 \bparag The precise standing inside a religion is noted as
 ``Religion/Standing'' such as ``\CATHCR''. Sometimes, only the standing is
-specified (eg ``Counter-Reform'' means ``\CATHCR'').
+specified (\emph{e.g.} ``Counter-Reform'' means ``\CATHCR'').
 \bparag If no standing is precised, then the effect apply to all countries of
 the given religion, whether they have a standing or not.
 \bparag Majors countries have no standing at the beginning of the game and
@@ -180,7 +214,7 @@ its ``Military doctrine'' in the Appendix.
 % "Protestant (not Anglican)" -> "Protestant/Puritan" (or "Puritan").
 \aparag There are four Protestant standings: \terme{Anglican} and
 \terme{Puritan} (available only for \ANG) ; \terme{Strictly protestant} (or
-\terme{Rigorous} and \terme{Tolerant} (available only for \SUE).
+\terme{Rigorous}) and \terme{Tolerant} (available only for \SUE).
 \bparag Protestant minors, as well as other Protestant majors, have no
 standing.
 
@@ -499,13 +533,8 @@ and Muslims.
 
 
 \section{The passing of time}
-
 % RaW: [24]
-
-
-
 \subsection{Periods}
-
 A period represents a number of game turns, historically homogeneous, with a
 duration of approximately 30 to 50 years (more or less). The 62 game turns are
 distributed in seven periods to simulate the different epochs of the era
@@ -520,7 +549,6 @@ exceeded, except for a very few specific cases.
 
 
 \subsection{List of periods}
-
 The seven periods (with corresponding length in game turns and main historical
 features) covered by the game are the following:
 % Jym: the colour of the period on the turn track corresponds to the main
@@ -541,18 +569,17 @@ features) covered by the game are the following:
 \item Period \period{VI}, 1700-1749: 10 turns (Russian and Prussian rise to
   power)% brown -> RUS
 \item Period \period{VII}, 1750-1800: 10 turns (English domination, from the
-  Seven Years War to the American revolution)% red -> ANG
+  Seven Years War to the American Revolution)% red -> ANG
 \end{itemize}
 
 
 
 \subsection{Limits by period}
-
 \label{chThePowers:Limits}
-\aparag Within each of the above periods, countries represented by the
-different players have a certain number of structural limits for their
-different actions and purchases as well as for the number of available
-counters (whether military or commercial) and the content of these counters.
+\aparag Within each of the above periods, countries played by the different
+players have a certain number of structural limits for their different actions
+and purchases as well as for the number of available counters (whether
+military or commercial) and the content of these counters.
 % There are limits as well as for the number of units, strength points
 % contents and number of counters (especially Manufactures, Colonies and
 % Trading Posts).
@@ -614,7 +641,7 @@ actual value of the \FTI. If the case arise, increase the value of the special
 \aparag[Manufactures] The country has a limit of \MNU (Manufacture) counters
 (triangle shaped) that it may have in play, on the map of Europe, during a
 given period.
-\bparag This is a limit in terms of counters. Every counter has two sides
+\bparag This is a limit in terms of counters. Each counter has two sides
 representing an increasing capability of the \MNU.
 \bparag This limit may be exceeded by 2 counters, at the risk of economical
 losses. See~\ruleref{chThePowers:Exceeding Limits}.
@@ -622,7 +649,7 @@ losses. See~\ruleref{chThePowers:Exceeding Limits}.
 \aparag[Colonial establishments] The country has a limit of \COL (Colonies)
 and \TP (Trading Post) counters that may be placed on the map, outside of
 Europe, for the whole length of a period.
-\bparag This is a limit in terms of counters. Every counter has two sides with
+\bparag This is a limit in terms of counters. Each counter has two sides with
 up to 6 levels representing an increasing development of the establishment.
 \bparag This limit may never be exceeded. If at any moment a country has more
 \COL or \TP on map than counters available for the period, %
@@ -699,9 +726,9 @@ counters, with the restriction that the absolute limit is the number of such
 counters provided in the game.  However, this puts the economical stability at
 risk.
 
-\aparag If a revolt occurs in such a power, and if the result of the modified
-die-roll serving to determine the strength of the revolt is even, then the
-power immediately suffers economical losses.
+\aparag If a revolt occurs in such a power, and if the result of the die-roll
+serving to determine the strength of the revolt is even, then the power
+immediately suffers economical losses.
 \bparag \textit{Exception}: If it has created its Stock Exchange \HOL
 (event \eventref{pIII:Amsterdam Stock Exchange}) and \ENG
 (\eventref{pIV:London Stock Exchange}), suffer from losses only if the die
@@ -714,8 +741,8 @@ is %
 check for economical losses.
 
 \aparag If the power is at \STAB {\bf -1}, {\bf -2} or {\bf -3} at the
-beginning of a turn, it has 1 chance over 2 to suffer economical losses in
-addition.
+beginning of a turn (before rolling for monarch survival), it has 50\% chance
+to suffer economical losses in addition.
 \bparag \textit{Exception}: If it has created its Stock Exchange \HOL and \ENG
 may suffer losses only if \STAB is {\bf -2} or {\bf -3} at the beginning of a
 turn.
@@ -959,6 +986,11 @@ improvement operation (see~\ruleref{chExpenses:Technology Improvement}). It
 also serves to determine combat values (maneuver, fire, shock) of the monarch
 when serving as a General.
 
+\aparag[No monarch] If a country has no monarch for any reason (usually
+because he was captured and not yet ransomed, or killed and the new monarch
+will only be rolled at the next monarch segment), it is considered to have a
+3/3/3 monarch.
+\bparag Ministers may still be used.
 
 \subsubsection{The survival test}
 \aparag Each monarch has to make a survival test at the beginning of each
@@ -972,7 +1004,8 @@ scheduled reign length, the player has to roll for a new monarch.
 \subsubsection{Initiative}
 \aparag The initiative of each player is the sum of their respective monarchs
 values.
-\bparag Ties must be solved by unmodified competitive die-rolls.
+\bparag Ties must be solved by unmodified competitive die-rolls, once per
+turn, the first time initiative is needed.
 
 \aparag The initiative is used during the military phase, to determine the
 order of play for the turn between the different players.
@@ -990,68 +1023,9 @@ best between the one of the monarch and the one of a minister.
 
 \aparag List of named excellent ministers (arriving through political events
 or special rules):\\
-\ministrePitt, \ministreRichelieu, \ministreMazarin, \ministreColbert,
-\ministrePatkul, \ministrePotemkine, \ministreOxenstierna, \ministreKoprulu,
-\ministreOlivares, %\ministreAlberoni,
-\ministre{de Witt}, \ministreHeinsius, \ministreKaunitz.
-
-% \subsection{The Royal Treasury}
-
-% % RaW: 25+26
-% \begin{todo}
-%   Rewrite for compta v2.
-% \end{todo}
-
-% \subsubsection{Bankruptcy and Treasury
-% Collapse}\label{chThePowers:Bankruptcy}
-
-% --- SUITE A ENLEVER si COMPTABILITY v2 ---
-
-% \aparag A power suffers from Bankruptcy at the instant when his royal
-% treasury reaches 0 \ducats (or less), with consequences on its \STAB and
-% economy.  Moreover, if its Royal Treasury goes underneath -200\ducats at any
-% time or the Royal Treasury is negative after adding incomes (\terme{Net
-% Income}, \lignebudget{29}, see~\ruleref{chapter:Incomes}), the power suffers
-% Treasury Collapse.  The consequences are more serious for the Stability,
-% income and investments of the concerned player.
-
-% \aparag[Bankruptcy] A power suffers from bankruptcy at the instant when his
-% royal treasury reaches 0 \ducats (or less).  The following effects are
-% immediately applied:
-% \bparag 1 \MNU (counter, not level) is eliminated (chosen at random)
-% \bparag 1 level of \TradeFLEET are lost, chosen by the bankrupted player;
-% \bparag the \STAB decreases by 1 level;
-% \bparag[Exception] \FRA, \SPA loses 2 \STAB.  If it has created its Stock
-% Exchange \HOL (event \eventref{pIII:Amsterdam Stock Exchange}) and \ENG
-% (\eventref{pIV:London Stock Exchange}), loses also 2 levels.
-% \bparag For \TUR, one \Pasha becomes corrupted.
-% \bparag A Bankruptcy has also an unfavorable and permanent effect for the
-% player when he rolls on the Loans table during each remaining turns of the
-% current period.
-
-% \aparag[Treasury Collapse]
-% If the Royal Treasury of a power goes underneath -200\ducats at any time or
-% the Royal Treasury is negative after adding incomes (\terme{Net Income},
-% \lignebudget{29}, see ~\ruleref{chapter:Incomes}), the power suffers
-% Treasury Collapse.  The following effects are immediately applied:
-% \bparag 2 \MNU are eliminated (chosen at random)
-% \bparag 4 levels of \TradeFLEET are lost, chosen by the bankrupted player;
-% \bparag the \STAB decreases by 4 levels;
-% \bparag the \DTI is decreased by 1;
-% \bparag 15 \PV are lost.
-% \bparag A Treasury Collapse has the same effect as a Bankruptcy when rolling
-% on the Loans table during each remaining turns of the current period.
-
-% \aparag[Bankruptcy and Peace]
-% \bparag Bankruptcy or Treasury Collapse forces the bankrupted player to sign
-% a peace with all of his enemies if bankruptcy brings his Stability to the -3
-% level.  This peace will be determined and resolved during the immediately
-% following Peace step.
-% \\
-
-% --- FIN: ENLEVER dans COMPTABILITY v2 --
-
-
+\ministreColbert, \ministreHeinsius, \ministreKaunitz, \ministreKoprulu,
+\ministreMazarin, \ministreOlivares, \ministreOxenstierna, \ministrePatkul,
+\ministrePitt, \ministrePotemkine, \ministreRichelieu, \ministre{de Witt}.
 
 \subsection{Stability}
 
@@ -1079,29 +1053,9 @@ will be reminded to the players when the need arises.
 going on in a existing war). \STAB may also be lost because of revolts,
 bankruptcy and some other events.
 \bparag The main way to gain \STAB is by paying the \STAB improvement
-operation at the end of turn (see~\ruleref{chPeace:Stability
+operation at the end of turn (see~\ruleref{chBudget:Stability
   Improvement}). \STAB may also be gained by ending war and a handful of
 events.
-
-% Removed compta v2.  27.2 STABILITY AND INCOME
-%
-% The Stability affects the income as follows:
-%
-% +10% to Income with a +3 Stability.
-%
-% From -10% up to -50% for a negative or null Stability.
-%
-% These values are indicated at the bottom of each box on the Stability track
-
-% 27.3 STABILITY IMPROVEMENT The player may improve his Stability, by
-% attempting a Stability Improvement Operation (see 50.2).
-
-% Stability may also improve during the Redeployment phase when prosperity
-% increases (see rule 49.1).
-
-% \subsection{Economy}
-
-
 
 \subsection{Technology}\label{chThepowers:Technology}
 
@@ -1142,11 +1096,12 @@ increase.
 
 
 \subsubsection{Technological goals}
-\aparag[Mobile markers] There are several counters on the technology track
-that may move and represent the spread of the various technologies
-(technological goal) that a country can achieve. There is no counter for the
-technologies known to everybody in 1492 (\TMED for Land technology, \TCAR and
-\TGA for Naval technology).
+\aparag[Mobile markers] Mobile markers are used to record the level of the
+different technological goals and thus show which country possess the
+corresponding technology.
+\bparag There is no counter for the technologies known to everybody in 1492
+(\TMED for Land technology, \TCAR and \TGA for Naval technology). Their level
+is always 0.
 \bparag There is also a marker for the \TTER technology (that can be taken
 only by \SPA) and for the \TVGA technology (that can be taken only by \VEN).
 \bparag Each of the mobile markers has a turn (and the corresponding year)
@@ -1172,21 +1127,22 @@ reached.
 \end{exemple}
 
 \aparag[Stacking of counters.] Two technological goals counters (of the same
-kind: Land or Sea) may never be stacked on the same box and must always have
-at least one free box between them. If a goal should move to the same box as
-another, or to the box immediately above, it stops two boxes ahead.
-\bparag The technology marker of a country (or group) may never be exactly in
-the same box as a technological goal (of the same kind). If it stop on it, it
-gains a one box bonus. Conversely, if a goal drops, it stops one level before
-any marker of the same kind.
+kind: Land or Sea) may never be at the same level (or in the same box of the
+track) and must always have at least one free level between them. If a goal
+should move to the same level as another, or to the level immediately above,
+it stops two levels ahead.
+\bparag The technology marker of a country (or group) may never be exactly at
+the same level as a technological goal (of the same kind). If it stop on it,
+it gains a one level bonus. Conversely, if a goal drops, it stops one level
+before any marker of the same kind.
 \bparag Exception: Ignore the \TTER and \TVGA for everybody (including \SPA
 and \VEN).
 
 \begin{exemple}
   At turn 11, the Land technology of \FRA is at level 20, just before \TARQ at
   level 21. \TARQ becomes available and \FRA tries to raise its Land
-  technology and manage to gain 1 level. This should put its marker in box 21
-  on top of the \TARQ marker. Since stacking of a marker and a goal is
+  technology and manage to gain 1 level. This should put its marker at level
+  21 on top of the \TARQ marker. Since stacking of a marker and a goal is
   forbidden, \FRA gets a bonus level of Land technology and goes directly to
   22.
 
@@ -1216,41 +1172,26 @@ occurrence of the technology (typically, \SUE gets \TBAR in the 1630's and
   \hline
   \TMED & & 1 && At start.\\
   \TREN & 1492 & 1 & \FRA, \TUR & Generalisation of field artillery.\\
-  \TTER & 1520 & 7 & \SPA & \SPA only.\\
+  \TTER & 1520 & 7 & \SPA & \SPA only. Mix of guns and pikes.\\
   \TARQ & 1540 & 11 & \FRA & ``\emph{Trace italienne}''.\\
-  \TMUS & 1590 & 21 & \HOL &\\
+  \TMUS & 1590 & 21 & \HOL & Better infantry firepower.\\
   \TBAR & 1650 & 33 & \SUE, \ENG & \emph{L\"{a}derkanonen}, New Model Army.\\
   \TMAN & 1685 & 40 & \FRA, \AUS & Vauban fortification system.\\
-  \TL & 1770 & 57 & \PRU & Oblique order.\\
+  \TL & 1770 & 57 & \PRU & ``\emph{War in lace}'', oblique order.\\
   \hline
 \end{tabular}
-
-% \aparag[Land Technology] Current state
-% \begin{verbatim}
-%             Year  P-T    \#box Moral First(s)       Fortress
-%             %             Medieval 0 1
-%             %             Renaissance 1492 I-1 10 1/2 FRA, TUR f3*2
-%             %             Tercio ~1520 II-7 16 3 SPA
-%             %             Arquebus 1540 II-11 21 2 FRA (Trace italienne) -1
-%             %             Ass.,f3*1
-%             %             Musket 1590 III-21 30 3 HOL/21
-%             %             Baroque 1650 IV-33 40 3 SWE/29,ENG/31 f4*2,t40:
-%             %             f4*1
-%             %             Manoeuvre 1685 V-40 51 3 FRA,AUT t40 Vauban: f5
-%             %             Lace War 1770 VII-57 67 3 PRU/54
-% \end{verbatim}
 
 \bparag List of Naval technologies:\par
 \begin{tabular}{|l|cc||c|l|}
   \hline
   Name & Year & Turn & First & Remark\\
   \hline
-  \TGA & & 1 & & At start.\\
-  \TCAR & & 1 & & At start.\\
-  \TGLN & 1492 & 1 & \POR, \SPA & Caravels, Nefs, Great ships, \ldots\\
+  \TGA & & 1 & & At start. Mediterranean and Baltic seas only.\\
+  \TCAR & & 1 & & At start. Caravels, Nefs, Great ships, \ldots\\
+  \TGLN & 1492 & 1 & \POR, \SPA & Portuguese Nao, Spanish Galleons.\\
   \TGF & 1560 & 15 & \HOL, \ANG & Dutch Fluyt, British race-built
   galleons. Smaller and faster.\\
-  \TVGA & 1560 & 15 & \VEN & \VEN only.\\
+  \TVGA & 1560 & 15 & \VEN & \VEN only. Galleys with cannons.\\
   \TBAT & 1590 & 21 & \HOL, \ANG &\\
   \TVE & 1645 & 33 & \ANG, \HOL & Ship-of-the-line, primitive battle line.\\
   \TTD & 1690 & 41 & \ANG & British standardisation, early professionalisation
@@ -1259,40 +1200,9 @@ occurrence of the technology (typically, \SUE gets \TBAR in the 1630's and
   \hline
 \end{tabular}
 
-% \aparag[Naval Technology] Current state
-% \begin{verbatim}
-%               Year  P-T   \#box Moral   First(s)
-%               %               Carrack 0 1 1
-%               %               Nao-Galeon 1492 I-1 11 2 POR SPA
-%               %               Galleon-Fluyt 1560 II-15 24 2 HOL ENG
-%               %               Galleass 1560 III-15 26 VEN only
-%               %               Battery 1590 III-21 34 3 HOL, ENG
-%               %               Vessels 1645 IV-33 44 3 ENG, HOL
-%               %               Three-Decker 1690 V-41 58 3/4 ENG, FRA
-%               %               74s 1735 VI-50 68 3/4 FRA/50,ENG
-% \end{verbatim}
-
-% \begin{designnote}
-%   Carrack: also includes Caravels, Nefs, Great Ships,...\\
-%   Nao-Galeon: Nau portugais, Galleon espagnol\\
-%   Galleon-Fluyt: British Galleon, Dutch Fluyt,... [ex Lateen Sail] {Gallion
-%   anglais affiné et petits
-%   bateaux hollandais}\\
-%   Battery: Galleass available for all\\
-%   Vessels: Galleys worthless against this, Ship-of-the-line et ligne de bataille primitive\\
-%   Three-Deckers: HOL: can not built anymore from TF action, (standardisation anglaise effective, route vers un peu de professionnalisation)\\
-%   74s: Ships 74's guns (navires de 2nde ligne plus agiles, blocus renforcé)
-% \end{designnote}
-
-
-
 
 \section{Troubles at land and sea}
-
-
-
 \subsection{Revolts}
-
 % RaW: 30
 A revolt is determined randomly, concerning where and when it occurs. A revolt
 usually brings a drop in the \STAB level of the victim country. This country
@@ -1305,8 +1215,8 @@ location of the revolt, according to the period in play. The revolt tables are
 located at the start of the Events handbook.
 
 One table is used to determine the victim country. Another group of tables
-(one per country) helps determine the revolting province. Finally a table
-gives the virulence (i.e. the strength) of the revolt.
+(one per country) helps determining the revolting province. Finally a table
+gives the strength of the revolt.
 
 \aparag[Resolving Revolts] Revolts are rolled for when required per the
 political events. See~\ruleref{chEvents:Revolts} for full details on the
@@ -1355,6 +1265,8 @@ see~\ruleref{chRedep:Extension Revolts}.
 
 \aparag[Revolt stacking] Each province may contain up to two revolt counters
 (any side) in addition to other military units (with usual stacking).
+\bparag Two \REVOLT\Facemoins in the same province are immediately exchanged
+for one \REVOLT\Faceplus, before stacking limit is enforced.
 \bparag If a third counter had to be created in a given province, simply
 ignore it but apply all the other effects of this revolt (eg taking the
 fortress, adding troops, \ldots)
@@ -1363,7 +1275,7 @@ fortress, adding troops, \ldots)
 separate but very negative effect on a country.
 \bparag If half the national provinces of a country are revolted at end of
 turn, then its tyrant is overthrown (executed or exiled) and replaced by a new
-benevolent monarch, see~\ruleref{chRedep:ExecutionMonarchByRevolts}.
+benevolent monarch, see~\ruleref{chRedep:Execution Monarch by Revolts}.
 \bparag If some specific provinces of a given group (eg Ireland) are revolted,
 the owner may choose to give independence to the revolted principality rather
 than trying to crush it now. See~\ruleref{chSpecific:Peace:Independence
@@ -1405,7 +1317,7 @@ coexist in a \STZ/\CTZ, without limit.
 \corsaire) attack the commercial fleet of other countries.
 \bparag They may be fought during the military phase by navies.
 \bparag At the end of turn, they can cause loss of levels on \TradeFLEET.
-\bparag See~\ruleref{chRedep:CorsairAttack}.
+\bparag See~\ref{chRedep:Corsair Attack}
 
 
 
@@ -1426,21 +1338,24 @@ lose their value because of inflation).
 
 \subsection{Economic Record Sheets}
 
-\aparag Each player has two sheet, separated in three actual \EcoRS.
+\aparag Each player has two sheets, separated in three actual \EcoRS.
 \bparag \EcoRS A keeps track of the \terme{Royal Treasure} (\RT) of a
 country. This represents the amount of gold stockpiled in the King's
 chests\ldots or the amount of debts he has. The final value of the \RT is
 carried over from one turn to the other.
 \bparag \EcoRS B is used to compute the income and expenses during each
-turn. The values are useless after the end of the turn.
+turn. The values are useless after the end of the turn. However, since income
+does not change that often, it is usually efficient to copy almost all of the
+column of the previous turn.
 \bparag \EcoRS C (below \EcoRS A) is used to record loans. This information
 carries over from one turn to the following one.
 
 \aparag Each column of the \EcoRS is used for one turn only. Information for
 the following turn should be written in the next column.
 
-\aparag The lines of the \EcoRS are organised in turn order. They should be
-filled from top to bottom.
+\aparag The lines of the \EcoRS are organised in turn order. They are usually
+filled from top to bottom. However, sometimes it is easier to plan expenses in
+advance and fill the corresponding lines as a reminder.
 \bparag The turn starts on top of \EcoRS A, there is a ``break'' after line
 \ERSshort{RT after Diplomacy} for computation of incomes and expenses on
 \EcoRS B.
@@ -1450,14 +1365,24 @@ extra trouble (as long as the amount of the debt is not ``too big'').
 
 
 
-\subsection{A Three stage process}
+\subsection{A Three stage process}\label{chThePowers:Exchequer}
+\begin{designnote}
+  We explain here the spirit of the economical system. For the technical
+  explanation on how to really get it working (and the precise rules),
+  see~\ref{chBudget:Exchequer test}.
+
+  The rules here try to explain the whys of the system while the more
+  technical rules there explain the hows.
+\end{designnote}
 
 \aparag The bulk of the economical system works in a three stage process
 during each turn.
-\bparag First, the \emph{gross income} is computed.
-\bparag Then, the \emph{expenses} are computed.
+\bparag First, the \emph{gross income} is computed (Administrative phase).
+\bparag Then, the \emph{expenses} are computed (Administrative and Military
+phases).
 \bparag Lastly, the \emph{Exchequer test} tells how well the taxes were
-collected and the monarchs try to find money to fill the gaps.
+collected and the monarchs try to find money to fill the gaps (Exchequer test
+segment during the Budget and Peace phase).
 
 \NPincludeA4{accounting-rt}{Economic Record sheet A and
   C}{economic-record-sheet-rt} \NPincludeA4{accounting-income}{Economic Record
@@ -1503,7 +1428,7 @@ administrative phase.
 \subsubsection{The Exchequer test}
 \aparag The gross income computed during the administrative phase is only a
 rough approximation of what will be available if taxes go well.
-\bparag At the end of the turn, each country perform the Exchequer test to
+\bparag At the end of the turn, each country performs the Exchequer test to
 discover how well the taxes went and how much money really made it to the
 palace.
 \bparag Low stability and wars tend to make taxes go wrong.
@@ -1526,7 +1451,7 @@ building palaces or churches, organising receptions, \ldots
 \bparag Prestige expenses provide \VPs at the end of each period.
 
 \aparag[The national loan] income is the maximum amount of money that can be
-borrowed from national nobles and burgers.
+borrowed from national nobles and burghers.
 \bparag National loans are never mandatory and each country always choose how
 much to borrow (within the limit of this income).
 \bparag Money from national loans can be used to pay for expenses or can be
@@ -1630,7 +1555,7 @@ into its \RT each turn.
 
   The regular income covers a small part of the expenses and the prestige
   income is also quickly swallowed to pay for some troops rather than
-  receptions\ldots 450\Ducats still need to be found. The burgers reluctantly
+  receptions\ldots 450\Ducats still need to be found. The burghers reluctantly
   loan 200\Ducats still leaving a 250\Ducats large ``hole''in the budget.
 
   Rather than going badly into debt (usually a bad idea), the country choose
@@ -1804,7 +1729,8 @@ occupant during the redeployment phase.
 
 \aparag It is possible to do concurrence action on \TP. Each successful
 concurrence action reduce the level of the \TP by 1.
-\bparag When the \TP reach level 0, remove it from the game.
+\bparag When the \TP reach level 0, remove it from the game. The counter may
+be reused by its owner.
 
 % Jym: removed, now fort (f0) for all levels.  A Trading Post of level 6
 % possesses an intrinsic level fortification 1. No fortress marker is then
@@ -1993,14 +1919,14 @@ veteran militia (Latin, class \CAIII).
 \bparag A Minor establishment \Faceplus is a fort with 2\LDE of veteran
 militia (Latin, class \CAIII).
 \bparag The militia fights out of the fort if and only if enemies are landing
-in the province (it stays inside if the enemy comes by Land). It and can only
+in the province (it stays inside if the enemy comes by Land). It can only
 retreat in the fort.
 \bparag Minor establishments never trigger native reaction or declaration of
 war by \ROTW minors.
 
 \aparag[Destruction] Any country may attack a Minor establishment during any
 round.
-\bparag Each establishment attacked during the turn costs 1\STAB (declaration
+\bparag Each establishment attacked during the turn costs 1 \STAB (declaration
 of oversea war against an unspecified country).
 \bparag A Minor establishment is immediately destroyed if a country controls
 it.

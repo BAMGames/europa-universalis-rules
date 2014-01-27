@@ -9,14 +9,14 @@
   \bparag \xnameref{chEvents:Technology} % adjustment
 }
 \newcommand{\EventsPhase}{%
-  \aparag \xnameref{chapter:Events}
+  \aparag {\bf \xnameref{chapter:Events}}
   \EventsDetails
 }
 
 \newcommand{\DiploDetails}{%
+  \bparag Declarations of Wars caused by events, and induced Reactions
   \bparag Negotiations between Players
   \bparag Announcements of Alliances
-  \bparag Declarations of Wars caused by events, and induced Reactions
   \bparag Other Announcements: Agreements, Trade Refusal,...
   \bparag Declarations of War, and Reactions
   \bparag Diplomacy on Minor Countries
@@ -25,13 +25,13 @@
   \bparag Activation of \ROTW minors, and reactions
 }
 \newcommand{\DiploPhase}{%
-  \aparag Diplomatic phase
+  \aparag {\bf \xnameref{chapter:Diplo}}
   \DiploDetails
 }
 
 \newcommand{\AdminDetails}{%
   \bparag \xnameref{chIncomes:Summary}
-  \bparag \xnameref{chExpenses:Mandatory}
+  \bparag \xnameref{chExpenses:Mandatory} % loan refund, ...
   \bparag \xnameref{chExpenses:Choice of actions}
   \bparag \xnameref{chExpenses:Maintenance}
   \bparag \xnameref{chExpenses:Recruitment}
@@ -42,7 +42,8 @@
   \bparag Technology adjustment (\xref{chExpenses:Technology})
 }
 \newcommand{\AdminPhase}{%
-  \aparag \xnameref{chapter:Incomes} and \xnameref{chapter:Expenses}
+  \aparag {\bf \xnameref{chapter:Incomes}} and {\bf
+    \xnameref{chapter:Expenses}}
   \AdminDetails
 }
 
@@ -62,55 +63,70 @@
   \bparag End of round
 }
 \newcommand{\MilitaryPhase}{%
-  \aparag Military phase (for each military round)
+  \aparag {\bf \xnameref{chapter:Military}} (for each military round)
   \MilitaryDetails
 }
 
 
 \newcommand{\RedepDetails}{%
-  \bparag Attacks by Natives
-  \bparag Attacks of Pirates \& Privateers
-  \bparag Military Looting
-  \bparag Extension of Revolts
-  \bparag Mandatory Retreat in Sieges, \Presidios
-  \bparag Return to port or Attrition of Fleets at sea
-  \bparag Collection of all Gold Repatriated
+  \bparag \xnameref{chRedep:Native Attack} 
+  \bparag \xnameref{chRedep:Corsair Attack} 
+  \bparag \xnameref{chRedep:Revolts} % Extension of Revolts
+  \bparag \xnameref{chRedep:Looting} % Military Looting
+  \bparag \xnameref{chRedep:Redeployment}
+  % Mandatory Redeployment in Sieges
+  \bparag \xnameref{chRedep:Return port} 
+  % Return to port or Attrition of Fleets at sea
+  \bparag \xnameref{chRedep:Presidios}
 }
 \newcommand{\RedepPhase}{%
-  \aparag Redeployment phase
+  \aparag {\bf \xnameref{chapter:Redep}}
   \RedepDetails
 }
 
+\newcommand{\ExchequerDetails}{%
+  \bparag \xnameref{chRedep:Gold Repatriation} 
+  \bparag \xnameref{chBudget:Exceptional taxes}
+  \bparag \xnameref{chBudget:Exchequer test} % including Loans
+  \bparag \xnameref{chBudget:Budget} % including wealth
+  \bparag \xnameref{chBudget:Stability Improvement}
+}
+\newcommand{\ExchequerPhase}{%
+  \aparag {\bf \xnameref{chapter:Budget}}
+  \ExchequerDetails
+}
+
 \newcommand{\PeaceDetails}{%
-  \bparag Exceptional Taxes
-  \bparag Exchequer test (including National Loans)
-  \bparag International Loans
-  \bparag Stability improvement
-  \bparag Peace offers and discussions
-  \bparag Test for Crusade
+  \bparag \xnameref{chPeace:Ransoms}
+  \bparag \xnameref{chPeace:Peace offers}
+  \bparag \xnameref{chPeace:Stability} % losses for wars & such
+  \bparag \xnameref{chPeace:Inflation} 
+  \bparag \xnameref{chPeace:Crusade} % Test for Crusade
 }
 \newcommand{\PeacePhase}{%
-  \aparag Peace phase
+  \aparag {\bf \xnameref{chapter:Peace}}
   \PeaceDetails
 }
 
 \newcommand{\InterDetails}{%
-  \bparag Placement \& Death of Military Leaders
-  \bparag Inflation
-  \bparag Moving the Trade Centres and Convoys
-  \bparag Calculation of end of turn \VP.
+  \bparag \xnameref{chInter:Leaders} % Placement \& Death of Military Leaders
+  \bparag \xnameref{chInter:Trade Centres}
+  % Moving the Trade Centres and Convoys
+  \bparag \xnameref{chInter:Natives, Militias, Fortresses}
+  \bparag \xnameref{chVictories:Turn VP} % Calculation of end of turn \VP.
 }
 \newcommand{\InterPhase}{%
-  \aparag Interphase
+  \aparag {\bf \xnameref{chapter:Inter}}
   \InterDetails
 }
 
 \newcommand{\GameSequence}{%
-  \EventsPhase
-  \DiploPhase
-  \AdminPhase
-  \MilitaryPhase
-  \RedepPhase
-  \PeacePhase
-  \InterPhase
+  \EventsPhase %
+  \DiploPhase %
+  \AdminPhase %
+  \MilitaryPhase %
+  \RedepPhase %
+  \ExchequerPhase %
+  \PeacePhase %
+  \InterPhase %
 }

@@ -412,7 +412,7 @@ country.
 \emph{Indian}.
 \bparag Position of the Trade Centres change during the Interphase (at
 the end of turn). However, we remind here how they are attributed.
-See~\ruleref{chInter:TradeCentres} for details.
+See~\ruleref{chInter:Trade Centres} for details.
 
 \aparag The initial positions are \provinceNil for the \emph{Great
   Orient} centre, \provinceVeneto for the \emph{Mediterranean} centre,
@@ -503,15 +503,6 @@ otherwise.
 \paysDamas is either conquered or not at war and on the turkish
 diplomatic track.
 
-%\bparag \VEN (or \pays{venise}) gains 50\% of the \emph{Great Orient}
-%income %as long as \pays{egypte} was not conquered by \TUR and
-%if \pays{egypte} is not at war.
-%\bparag \pays{egypte} gains 50\% of its income when at war.
-%%\bparag \TUR gains 50\% of this value if \pays{Damas} is on its
-%diplomatic track and not at war or if \paysDamas was conquered by \TUR.
-%\bparag \pays{damas} gains 50\% of this value when at war.
-%%\aparag See~\ruleref{chInter:TradeCentres} for the displacement of the
-%%centre.
 \aparag The Great Orient centre moves to \TUR when \paysEgypte is
 conquered.
 
@@ -523,7 +514,7 @@ of 50\ducats.
 %TBD: or 30\ducats if the \emph{Great Orient} centre has income 100\ducats or higher.
 \bparag They are given to the country having the most levels of
 \TradeFLEET in the corresponding \STZ and \CTZ.
-See~\ruleref{chInter:TradeCentres} for details.
+See~\ruleref{chInter:Trade Centres} for details.
 \bparag This income is registered in \lignebudget{Trade centres
   income}.
 
@@ -537,7 +528,7 @@ a Trade centre (including the owner himself) causes permanent losses on
 an enemy \TradeFLEET in a \STZ or \CTZ belonging to this centre, then
 the income of the centre is decreased by 10\ducats per permanent loss
 caused for the next turn.
-\bparag See~\ref{chRedep:CorsairAttack} for details.
+\bparag See~\ref{chRedep:Corsair Attack} for details.
 
 \aparag This loss is recorded (in negative) in \lignebudget{Trade centre
   losses}.
@@ -605,7 +596,7 @@ as the income value of the \Area (first number, see
 \bparag A \COL\faceplus brings 1\ducats per level, and twice the income
 value of the Area.
 \bparag However, \COL exploiting gold do not provide income. See
-\ruleref{chIncomes:GoldColonies}.
+\ruleref{chIncomes:Gold Colonies}.
 
 \aparag Each \TP brings an income registered in \lignebudget{Trading
   posts}:
@@ -688,7 +679,7 @@ unit.
 \RES{Salt}, \RES{Silk}, \RES{Slaves}, \RES{Spices}), one level of \COL or of
 \TP exploits up to 1 unit of the resource.
 
-\aparag[Gold.] See \ruleref{chIncomes:GoldColonies} if there is a gold mine in
+\aparag[Gold.] See \ruleref{chIncomes:Gold Colonies} if there is a gold mine in
 the province where a \COL is.
 
 \aparag[Wood.] \RES{Wood} does not bring income as other resources, but
@@ -830,16 +821,16 @@ jewels, \ldots) each turn, except for the mine in \villeTenochtitlan
 (\granderegionAzteca), producing 40\ducats, and the mine in
 \bazarPotosi (\granderegionInca East), producing 50\ducats. Both
 these incomes are recalled on the map.
-\bparag\label{chIncomes:GoldColonies} A \COL exploiting a mine produces no
+\bparag\label{chIncomes:Gold Colonies} A \COL exploiting a mine produces no
 other income, nor does it exploit Exotic Resources. The gold produced is
 reported on the \terme{Colonial Record Sheet}.
 \bparag No slaves are needed to exploit a gold mine.
 \bparag Gold has a major influence on the variation of inflation,
-see~\ruleref{chInter:InflationGoldROTW}.
+see~\ruleref{chInter:Inflation Gold ROTW}.
 
-\aparag \label{chIncomes:GoldProduction} Gold can be transported by earth
-during the income phase or during the redeployment phase (see
-\ruleref{chRedep:GoldRepatriation}) (or both).
+\aparag \label{chIncomes:Gold Production} Gold can be transported by
+earth during the income phase or during the redeployment phase (see
+\ruleref{chRedep:Gold Repatriation}) (or both).
 \bparag During the income phase, Gold can be stored in any port \COL in
 the \Area where it was produced or an adjacent one.
 \bparag From the ports, the gold has to be repatriated to Europe using
@@ -959,7 +950,7 @@ Foreign Trade and Trade Centres (but not Convoys).
 \ruleref{chIncomes:ColonialIncome}, i.e. Colonies \& Trading-Posts income and
 Exotic Resources exploitation, but not \ROTW gold.
 \bparag[Stability] The Gross Income has an effect on \STAB at the end of
-the turn (see \ruleref{chPeace:Prosperity}).
+the turn (see \ruleref{chBudget:Prosperity}).
 
 \begin{exemple}
   Thus, for \POR at turn 1 (with a \REVOLT in \provinceBeira and a war

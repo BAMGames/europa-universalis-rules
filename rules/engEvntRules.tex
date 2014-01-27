@@ -34,7 +34,8 @@ turn roll for monarch survival.
 the first few turns of their reign. Check the specific rules of each
 country for details. If such a monarch is currently ruling a country,
 the corresponding player does not roll for monarch survival.
-\aparag Some events give a modifier for survival tests.
+\aparag Some events give a modifier for survival tests. These modifiers
+are cumulative.
 \bparag Countries with negative stability have a \bonus{+1} modifier for
 survival tests.
 \bparag Monarch with \terme{fragile health} have a \bonus{+1} modifier
@@ -119,7 +120,7 @@ monarchs are always rolled on the base column of the country.
 monarch can also be used as a general (or admiral for \VEN) and lead
 troops in battle. However, the exact values of monarchs as military
 leaders are not known precisely before they actually fight a
-battle. Instead, only a ``military average'' is known which give a
+battle. Instead, only a ``military average'' is known which gives a
 global indication whether the monarch will be a good or bad leader, but
 surprises may arise.
 \bparag Once the characteristic of a monarch are known, roll 1d10 and
@@ -229,15 +230,25 @@ event only affects the player rolling it.
 
 
 \section{Economic situation}
-
 \label{chEvents:Economic situation}
-\aparag A die is rolled for both the global economic situation and raise
-of piracy.
+
+\aparag[Economic Situation] A die is rolled for both the global economic
+situation and raise of piracy.
 \bparag Combined with the \ref{eco:Piracy}, it is now possible to place
 \emph{Piracy} on the map.
-\bparag The result of the die is kept. It will be used during the
+\bparag Place the \terme{Economic situation} marker on the track on the
+\ROTW map to remember the result of the roll. It will be used during the
 Administrative phase to handle the variation of prices of exotic
 resources. See~\ref{chExpenses:ExoticResourcesPrices}.
+
+\aparag[Inflation] \label{chEvents:Inflation}
+\bparag If ``Inflation'' is obtained (1 or 10), increase the level of
+inflation by 1, that is move the marker one box to the right (without
+exceeding the maximum level). This is the same effect as
+\ref{eco:Inflation} except that it can happen the same turn as another
+\ref{eco:Inflation} or \ref{eco:Deflation}.
+% Jym : not sure about the cumulativeness of this with the eco events...
+
 
 \begin{designnote}
   The die roll for economic situation must be made during the event
@@ -255,7 +266,7 @@ resources. See~\ref{chExpenses:ExoticResourcesPrices}.
 
 \GTtable{ecopiracypiracy}
 
-\subsection{Raise of the Piracy}
+\subsection{Raise of Piracy}
 
 \aparag The roll for economic situation, read in \tableref{table:Random
   Piracy and Economy Roll}, may cause the apparition of some \PIRATE
@@ -264,11 +275,6 @@ named pirate in play at this turn, see~\ref{chEvents:Named Pirates}.
 \bparag A \PIRATE \corsaire\facemoins or \PIRATE \corsaire\faceplus is
 placed in the target \STZ according to the table, unless a result of 1
 or 10 was obtained, in which case the procedure below is used.
-\bparag If ``Inflation'' is obtained, increase the level of inflation by
-1 (without exceeding the maximum level). This is the same effect as
-\ref{eco:Inflation} except that it can happen the same turn as another
-\ref{eco:Inflation} or \ref{eco:Deflation}.
-% Jym : not sure about the cumulativeness of this with the eco events...
 
 \aparag If the economical situation roll was 1 or 10 (or 3 or 6 and a
 named \pays{pirates} \LeaderA is alive) or if~\ref{eco:Piracy} was
@@ -282,8 +288,9 @@ target is indicated in the table.
 the target is rolled at random: 1--5: America ; 6--10: Asia.
 
 \aparag For each \STZ in the target, in the order indicated below (this
-is relevant for named pirates), roll on die. If the die is higher than
-the appearance threshold of the \STZ, place a \PIRATE\facemoins there.
+is relevant for named pirates), roll on die. If the die is greater or
+equal than the appearance threshold of the \STZ, place a
+\PIRATE\facemoins there.
 \bparag In a \STZ with several \PIRATE\faceplus, or with a named pirate,
 check whether they stay at see or try and loot an establishment.
 
@@ -296,6 +303,7 @@ indicated, in order.
 \stz{Recife}, \stz{Patagonie}, \stz{Tempetes}, \stz{Canarias}.
 \bparag Asia: \stz{Indien}, \stz{Oman}, \stz{Perou}, \stz{Formose},
 \stz{Canarias}.
+% It's not a bug, it's a feature.
 \bparag Yes, \stz{Canarias} is both for piracy in America and in
 Asia. Yes \stz{Guinee} and \stz{Tempetes} are only for America. Yes,
 \stz{Perou} is for Asia.
@@ -303,10 +311,10 @@ Asia. Yes \stz{Guinee} and \stz{Tempetes} are only for America. Yes,
 \aparag[Appearance threshold]\label{chEvents:Piracy Level}
 The appearance threshold for \PIRATE for each \ROTW \STZ is written on
 the right-hand-side of the \STZ symbol.
-\bparag Some \STZ have several thresholds. Use the higher one if only
+\bparag Some \STZ have several thresholds. Use the largest one if only
 one country has \COL/\TP bordering the \STZ; use the second number if
-two countries have \COL/\TP bordering the \STZ and use the lowest number
-if three or more countries have \COL/\TP bordering the \STZ.
+two countries have \COL/\TP bordering the \STZ and use the smallest
+number if three or more countries have \COL/\TP bordering the \STZ.
 \bparag Remember that the \STZ contains the seazone where the symbol is
 located as well as all adjacent seazones. Thus, an establishment borders
 the \STZ if it is coastal and touch any of these zones.
@@ -604,12 +612,12 @@ province] \label{chEvents:diplomacy:uprising} If a result of 1, 4 or 7
 was obtained for the first die (troubled religion), check for the
 autonomous uprising of a province of a Minor country that would be owned
 by another power.
-\bparag The group affected is chosen by first rolling for a group of
-countries in \ref{table:diplomatic event}. Then, in order of the
-group(s) obtained, find the first (still existing) minor country that
-does not own all its National territory or that has a \Presidio in its
-territory. A group is defined by a name in bold (2 groups are sometimes
-obtained on a given result).
+\bparag The group affected is chosen by first rolling for one or two
+groups of countries in \ref{table:diplomatic event}. Then, in order of
+the group(s) obtained, find the first (still existing) minor country
+that does not own all its National territory or that has a \Presidio in
+its territory. A group is defined by a name in bold (2 groups are
+sometimes obtained on a given result leading to 2 possible uprisings).
 % (Jym). Seem to be easier that way. Could be uprising of natives in an
 % area previously owned.
 \bparag \ROTW countries are never subject of uprising.% [TDB?].
@@ -625,6 +633,8 @@ existing war, the diplomatic patron of a minor involved can choose to
 % again.
 enter the war (with a \CB) or stay out (with no penalty)) and there can
 be no generalisation of war this turn if this is an overseas war.
+\bparag The \MAJ victim of the uprising may sign an immediate white
+peace with the uprising minor, forfeiting the province or \Presidio.
 
 \aparag[Minor declares a war] If a result of 10 was obtained for the
 first die, a random minor declares war to a random neighbour.
@@ -740,14 +750,22 @@ well as \ARMY or \LD in play.
 \bparag Unless specified otherwise, use counters labelled ``Rebellion''
 when they come from a political event and counters labelled ``Revolt''
 in all other cases (\RD, \TUR survival roll, \ldots)
-\bparag ``Revolt'' and ``Rebellion'' counters are not considered
+
+\aparag ``Revolt'' and ``Rebellion'' counters are not considered
 friendly to one another. That is, if a \RD occurs during a civil war, it
 is considered to be a peasants revolting against any and all factions at
 war.
+\bparag As a general rule, ``Revolt'' counters (either troops or
+\REVOLT) are friendly to nobody (including other ``Revolt'' counters
+from another province) while all ``Rebellion'' counters within the same
+country or entity are friendly one to another and they may be friendly
+to other powers.
 
 \aparag Apart from this, \REVOLT and \REBELLION work in the same
 way. Especially for rolling dice to determine where it occurs and at
 which strength.
+\bparag Unless otherwise specified, rules applying to \REVOLT also apply
+to \REBELLION.
 
 \section{Technology adjustment}\label{chEvents:Technology}
 

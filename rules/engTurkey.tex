@@ -17,6 +17,10 @@ or to an existing \COL, or through \seazone{Caspienne}.
 of~\ref{chExpenses:Pioneering}.
 \bparag \TUR has no such restrictions regarding \TP placements.
 
+\aparag If \TUR has a \TP in the \ROTW or an \dipAT with a minor
+having a \TP and it has no \LeaderA allowed to go in Asia ('R' or '@'),
+then its lowest ranking \LeaderA which is not restricted to the
+Mediterranean gain the ability to go in Asia ('@').
 \subsubsection{Turkish Military system}
 % Jym, 05/2011
 % Removed. The yearly campaigns now have another simulation (attrition
@@ -120,7 +124,7 @@ provinces, except that one at most can be placed directly in former
 provinces of \pays{damas} or \pays{irak}, and one can be placed in
 \region{Balkans} or former provinces of \pays{Hongrie}.
 
-\aparag[Corruption Cost of \Pashas.]
+\aparag[Corruption Cost of \Pashas.]\label{chSpecific:Turkey:Cost Pashas}
 %\bparag \TUR always uses the maximal inflation (even if it exploits no
 %Gold in \ROTW).
 \bparag \TUR always uses the inflation as if it was exploiting gold in
@@ -146,14 +150,14 @@ following situations occur:
 % (\subeventref{eco:Fiscal:Pashas Corruption}) or of failed attempts at
 % Reform.
 \bparag The newly corrupted \Pashas are chosen randomly among those that
-are not. The \terme{Sole Defender of the Catholic Faith} places each of
-them in the province it is in, or any adjacent province where there is
-no \Pasha; or, if the \Pasha is not in a Turkish owned province, it has
-to be placed in any Turkish owned province where there is no \Pasha in,
-and which is not adjacent to another \Pasha unit. Once placed, a
-corrupted \Pasha can be moved in only two instances: the \Pasha is
-dismissed, or the ownership of the province is lost by \TUR (in which
-case the corrupted \Pasha is replaced as above).
+are not. The \SDCF places each of them in the province it is in, or any
+adjacent province where there is no \Pasha; or, if the \Pasha is not in
+a Turkish owned province, it has to be placed in any Turkish owned
+province where there is no \Pasha in, and which is not adjacent to
+another \Pasha unit. Once placed, a corrupted \Pasha can be moved in
+only two instances: the \Pasha is dismissed, or the ownership of the
+province is lost by \TUR (in which case the corrupted \Pasha is replaced
+as above).
 
 \aparag[Death of a \Pasha] [BLP] This effect occurs on a modified roll
 of 5 or 7 at the survival test.
@@ -219,7 +223,10 @@ whole reign.
 \bparag No reformation attempt can be made before the death of
 \monarque{Suleyman}. That is, the first sultan allowed to attempt a
 reform is the heir of \monarque{Suleyman}.
-\bparag A test is made on \tableref{table:Administrative Actions},
+\bparag A its last scheduled turn of life, no Sultan may attempt an
+Administrative Reform.
+
+\aparag A test is made on \tableref{table:Administrative Actions},
 using the column (\MIL or \ADM)+\DTI-9, with the following die
 modifiers:
 \begin{modlist}
@@ -326,40 +333,53 @@ of a black one.
 \subsubsection{Diplomacy}
 \aparag \TUR has a \CB against all Christian countries, and against
 \pays{Perse}, in period I to V.
+
 \aparag \TUR is prohibited to make offensive alliances in period I to V.
-\aparag[Turkish Conquests.]
-The Turkish player can annex the capital province of a conquered
-country. This is valid only if the conquered province is adjacent to a
-Turkish province and connex to its National Territory, or it is an island,
-and the province is occupied by a Turkish military
-unit (and not by a Turkish minor ally or vassal). This may destroy the
-country.
+
+\aparag[Turkish Conquests.] The Turkish player can annex the capital
+province of a conquered country. This is valid only if the conquered
+province is an island or if it is adjacent to a Turkish province
+% (Jym, 06/2013) removing to allow conquest of Italy from the
+% South. Especilly, conquest of Napoli should not require going through
+% Venise but must be allowed from the South.
+%
+% This version prevent annexion of Napoli on the first war. First, a
+% foothold must be established and at the second war, it can be
+% annexed.
+%
+% and connex by land to its National Territory
+and the province is occupied by a Turkish military unit (and not by a
+Turkish minor ally or vassal). This may destroy the country.
+
 \aparag[Relations with the Knights.]
 The \pays{Chevaliers} are in permanent semi-Overseas war against
 \TUR. The reverse is true. This war allow for naval battles, and attack
 by and against Privateers. It does not cause automatic \STAB loss at the
 end of turn.
+
 \bparag Each turn that the pirate of The Knights inflicts losses on
 Turkish commercial fleets, \TUR loses 1 \STAB level if at peace.
+
 \aparag See also \ruleref{chSpecific:Islam}.
-\aparag[Crusades and Turkish occupation of Vienna]
-See rules \ruleref{chSpecific:Crusades and Vienna}.
+
+\aparag[Crusades and Turkish occupation of Vienna] See rules
+\ruleref{chSpecific:Crusades and Vienna}.
 
 
-\subsubsection{Relations with the \terme{Barbaresques}}
+\subsubsection{Relations with the Barbaresque countries}
 \aparag Depending on several events, \TUR may have geopolitical malus to
-all diplomacy attempts against all \terme{Barbaresque} countries.
+all diplomacy attempts against all \Barbaresques.
 \bparag Initially (before event \eventrefname{pII:Alignment of
   Barbaresques}), \TUR has a {\bf -3} malus to all diplomacy attempts
-against all \terme{Barbaresque} countries.
+against all \Barbaresques.
 \bparag This malus is cancelled when \eventrefname{pII:Alignment of
   Barbaresques} occurs of at the death of \leader{Barbaros} if
 \eventrefname{pII:Algeria Vassalisation} occurred.
 \bparag Event \eventref{pIV:Morocco} puts back a {\bf -3} malus to all
 diplomacy attempts against \pays{Maroc}.
 \bparag Event \eventref{pVI:Barbaresques} sets a uniform {\bf -3} malus
-to all diplomacy attempts against all \terme{Barbaresque} countries
-(including \pays{Maroc}).
+to all diplomacy attempts against all \Barbaresques (including
+\pays{Maroc}).
 \\
 PB 07/2008: MORE TO DO
 \begin{designnote}
@@ -405,26 +425,6 @@ The Venetian player is immune to this malus, as well as the following
 minors: \pays{Hongrie}, \pays{damas}, \pays{Egypte}, \pays{Genes} and
 \pays{Chevaliers}, \pays{Perse}.
 
-%\aparag[The \Presidio at Istanbul]\label{chSpecific:Turkey:Dardanelles} The
-%\province{Trakya} province, as long as it belongs to \TUR, can be used
-%as a \Presidio of level 2 on any fleet that tries to enter or exit
-%\seazone{Noire W} for \seazone{Marmara}.
-
-% (Jym)
-% Devrait maintenant être dans l'event...
-%\subsubsection{Modification event \sectionministre{Koprulu}}
-%\aparag Event shall be put as early as period IV.
-% toujours en pV.
-
-%\aparag Event may not take place if reforms of a level higher than 1
-%were successful.
-%\aparag The dynasty of viziers lasts automatically 8 turns (may be
-%dismissed before) [1656-1691].
-%\aparag Reforms are impossible during the duration of the event.
-%\aparag \leaderwithdata{Koprulu} is bound to \eventref{pV:Koprulu}
-%naming a member of this dynasty to the distinction of Grand Vizier.
-% le reste est OK.
-
 \subsection{\sectionpaysmajeur{Turquie} in play}
 %\aparag TODO : mettre Raguse dans le territoire controle par \TUR en 1492
 %ou plutôt le mettre Neutre avec Présidio Venitien.
@@ -458,6 +458,7 @@ maintenance of one \ARMY\faceplus \Janissaire during his reign. He is
 also a general \leaderdata{Suleyman}.
 \bparag Note that the absence of survival test automatically prevents the
 specific Turkish \REVOLT of~\ref{chEvents:Survival:TUR revolt}.
+
 \aparag[Istanbul rebellions (\emph{İstanbul İsyanları}).] If the Turkish
 Monarch has not at least 7 in Military value, add {\bf +1} to the
 die-roll testing survival.
@@ -518,4 +519,4 @@ counters.
 
 
 
-% LocalWords: Turquie Mediterranee malus feudality Trakya
+% LocalWords: Turquie Mediterranee malus feudality Trakya Barbaresque

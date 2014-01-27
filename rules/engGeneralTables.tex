@@ -170,8 +170,9 @@
     \GTitem{Permanent \CB against any country that is in \terme{Trade Refusal} against him;}
     \GTitem{\VEN vs. \TUR (both ways) as long as the \region{Balkans} are troubled;}
     \GTitem{\SPA (before \xeventref{pIII:Dutch Revolt}{III-1 (1)}), \HOL, \FRA, \ENG have a permanent \CB against owner of \CCs{Atlantic};}
-    \GTitem{\SPA against powers having \TP or \COL in \continent{South America} (free) or in \continent{Brazil} and \continent{Caraibes};\tablelarge{ (recall that \continent{South America} does not include \continent{Brazil} and the islands)}}
-    \GTitem{Any Protestant country against \SPA and \POR (or \pays{Portugal}) during periods I to V;}
+    \GTitem{\SPA against powers having \TP or \COL in \continent{South
+        America} (free) or in \continent{Caraibes};\tablelarge{ (recall that \continent{South America} does not include \continent{Brazil} and the islands)}}
+    \GTitem{Any Protestant country against \SPA and \POR (or \pays{Portugal}) during periods I to IV;}
     \GTitem{\HOL against catholics having \COL/\TP in Asia in period III and IV after creation of the VOC;}
     \GTitem{All Christian countries have a permanent \CB against the \terme{Barbaresques} countries;}
     \GTitem{All \MAJ have a permanent \CB against minor countries from the \ROTW (excepted \pays{Ormus});}
@@ -216,7 +217,12 @@
     \item[+1] \RM or \SUB box (controlling player only)
     \item[+2] \MA or \EC box (controlling player only)
     \item[+3] \EW, \VASSAL or \ANNEXION box (controlling player only)
-    \item[+1] same religion (exact religion/schism)
+    \item[+1] same religion %(exact religion/schism)
+      % (Jym) Catho/CR and Catho/Conc should get the bonus. And same,
+      % especially for Prot/Rig and Prot, since no minor is ever Prot/*,
+      % that would deeply screw SUE/ANG...
+      % 
+      % So it is clearly same religion, not same standing.
     \item[-4] different religion (until the end of {Religious
         Enmities})
     \item[-2] between Islam and Christianity (after the end of
@@ -2272,14 +2278,14 @@
 }
 
 \newcommand{\crusade}{
-  \GT{crusade}{Call to Crusade}
+  \GT{crusade}{Call for Crusade}
   \GTtextcontent[eastpoint]{
     Before 1615 only,\tablealternate{}{\\} max. mod. +5\\
     Success: natural 10/1d10+mod.>9\\
     \begin{modlist}
-    \item[+N] Christian prov. annexed by \TUR this period
-    \item[+5] If \ville{Vienne} militarily captured by \TUR this turn
-    \item[-2] Per catholic \MAJ at war vs country not \TUR
+    \item[+N] Christian prov. annexed by \TUR in the last 5 turns
+    \item[+5] If \villeVienne or \villeRoma controlled by \TUR
+    \item[-2] Per catholic \MAJ at war vs Christian country
     \item[-3] If \longxeventref{pI:Reformation}{I-8 (1) (Reformation)} has already happened
     \end{modlist}
   }
@@ -2381,7 +2387,8 @@
   \GT{peaceconditionsminor}{Specific conditions for peace with Minors}
   \GTtextcontent[eastpoint]{
     \tablenarrow{\vspace*{2ex}\\}
-    \GTitem{Minor monarch ransom is 50\ducats \textbf{or} bonus to peace proposal.}
+    \GTitem{Minor monarch ransom is 50\ducats \textbf{or} bonus to peace
+      proposal \textbf{or} allowing separate peace.}
     \GTitem{1 proposal per alliance, plus separate peace to minors either at war by event or with at least 1 province occupied (by or on the minor).}
     \GTitem{No separate peace against \VASSAL or \ANNEXION unless either Capital occupied or monarch captured (instead of ransom).}
     \GTitem{Minors always accept global white peace in \terme{Overseas wars}.}
@@ -2422,7 +2429,7 @@
     \GTitem{Always: \terme{Peace level} = \terme{Peace differential}}
     \GTitem{If \terme{differential} $\leq 2$: \terme{Peace level} $-1, 0$ or $1$ is allowed.}
     \GTitem{If capital and half national provinces are conquered: Unconditional peace is allowed (also as separate peace).}
-    \GTitem{\terme{Mandatory peace} if two consecutive turns at $-3$ \STAB (\textbf{after} \STAB improvement); \textbf{must propose} a white or losing peace based on differential (another peace may be signed, if allowed). If this is a separate peace, not \CB to former allies.}
+    \GTitem{\terme{Mandatory peace} if two consecutive turns at $-3$ \STAB (\textbf{after} \STAB improvement); \textbf{must propose} a white or losing peace based on differential (another peace may be signed, if allowed). If this is a separate peace, no \CB to former allies.}
   }
   \GTtextdecorate
 }

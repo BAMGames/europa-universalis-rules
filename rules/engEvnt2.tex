@@ -71,7 +71,8 @@
 % \condition{Takes only place if the event \ref{pI:Reformation2} has already
 % occurred. Otherwise re-roll and do not mark off.}
 
-\condition{Takes place when rolled for, or when \monarque{Henry VIII} dies.}
+\condition{Takes place when rolled for, or when \monarque{Henry VIII}
+  dies. May not happen before \monarque{Henri VIII}.}
 
 \phevnt
 \aparag[] [BLP] \ANG may not place occupations in France anymore. If \ANG and
@@ -81,18 +82,21 @@ control. If they are at peace, remove these.
 \aparag \ENG has to choose its Heir, in accordance with its current religion.
 \bparag[Catholic/No Reform] Mary I Tudor, or Edward VI
 \bparag[\CATHCR] Mary I Tudor, or Edward VI
-\bparag[\CATHCO] Edward VI, Jane Grey
-\bparag[Protestantism] Jane Grey
+\bparag[\CATHCO] Edward VI or Jane Grey
+\bparag[\PROTPUR] Jane Grey
+
+\aparag When the chosen heir ascend throne, apply the following effects,
+depending on the heir.
 
 \aparag[Marie I Tudor] \ENG is forced to be \CATHCR.  If it has changed, both
 general and particular effects of \ref{pI:Reformation2} are applied
 immediately.
-\bparag It has a mandatory Dynastic (Defensive and Offensive) Alliance with
+\bparag \ANG has a mandatory Dynastic (Defensive and Offensive) Alliance with
 \SPA for 3 turns.  If at war, \SPA and \ENG make an immediate white peace.
 \bparag Roll for 2 \REVOLT in \ENG in the table, using 1d10-2 for
 localisation.
 
-\aparag[Lady Jane Grey] \ENG is forced to be Protestant.  If it has changed,
+\aparag[Lady Jane Grey] \ENG is forced to be \PROTPUR.  If it has changed,
 both general and particular effects of \ref{pI:Reformation2} are applied
 immediately.
 \bparag Alliance between \ENG and \SPA are forbidden for 3 turns.
@@ -328,7 +332,6 @@ duration of this war.
 % is alive.
 
 
-
 \event{pII:War Poland Turkey}{II-7}{War between Poland and Turkey}{1}{PB}
 
 \history{1526-1535 -- it was not a formal war}
@@ -383,11 +386,10 @@ if there is one.
 
 \phdipl
 \aparag The Emperor has a permanent \CB against the League. This \CB is free
-if the Emperor is The Sole Defender of Catholic Faith (free \CB also if the
-\HAB are Emperors for the Austrian branch and Defender of the Catholic Faith
-for the Spanish branch). A war against any country of the League is called a
-war against the League; it is a \terme{war of Religion} (so external
-intervention is constrained).
+if the Emperor is the \SDCF (free \CB also if the \HAB are Emperors for the
+Austrian branch and \SDCF for the Spanish branch). A war against any country
+of the League is called a war against the League; it is a \terme{war of
+  Religion} (so external intervention is constrained).
 \bparag \SPA may ask for limited or full intervention of the \HAB in this war.
 \aparag The Emperor may grant the \terme{Truce of Augsburg} regarding the
 liberty of belief in the \HRE. Such a decision costs {\bf 1} \STAB and 20 \VP.
@@ -408,7 +410,8 @@ an ally of the League.
 and the Emperor. This test is modified by {\bf +4}. See \ref{pIV:TYW} for the
 result of the test and the possibility of this Religious War. If no such war
 occurs, peace can be made on the following conditions.
-\aparag Each minor country obeys to the usual rules for peace. As they are
+\aparag Each minor country obeys to the usual rules for peace (except that it
+is not possible to annex provinces of minors during this war). As they are
 allied, a peace against only one country is a separate peace.
 \aparag A minor country forced to sign an unconditional surrender breaks from
 the League for ever. This replace all the peace conditions.
@@ -453,6 +456,9 @@ different countries).
 \phdipl
 \aparag \TUR has an overseas \CB against \POR at this turn. \TUR gains the
 discoveries of \seazone{Mascate} and \seazone{Indus}
+
+\phadm
+\POR does not get the incomes (exotic resources) from the revolted countries.
 
 \phmil
 \aparag The Natives of the region \granderegionOman or \granderegionAden are
@@ -869,7 +875,10 @@ destroyed immediately. It may reappear later due to new events.
 
 
 
-\event{pII:Crusade}{II-B}{Call to Crusade}{*}{JymMod}
+\event{pII:Crusade}{II-B}{Call for Crusade}{*}{JymMod}
+% google battle:
+% "call to crusade" -> 9,320,00
+% "call for crusade" -> 19,200,000    WINNER!
 
 \history{Did not happen}
 \dure{Until the end of the war.}
@@ -879,9 +888,8 @@ destroyed immediately. It may reappear later due to new events.
 \phevnt
 \aparag[Call to crusade] Each Catholic country has a mandatory free \CB
 against \TUR to be used immediately.
-\bparag As an exception, the \terme{Sole Defender of the Catholic Faith} must
-decide first to use it or not. Then, these \CB are resolved in initiative
-order.
+\bparag As an exception, the \SDCF must decide first to use it or not. Then,
+these \CB are resolved in initiative order.
 \bparag All countries that use this \CB are call crusaders and are
 automatically allied against \TUR.
 
@@ -898,8 +906,7 @@ is at war is not an excuse for avoiding the Crusade.
 \aparag[Refusing to participate] Any Catholic country that either refused to
 participate or rejected the mediation of the Pope suffers from the following
 effects:
-\bparag Loss of 1\STAB (2\STAB for the \terme{Sole Defender of the Catholic
-  Faith}).
+\bparag Loss of 1\STAB (2\STAB for the \SDCF).
 \bparag Loss of the diplomatic control of \paysPapaute.
 \bparag All other Catholic majors have a normal \CB against this country this
 turn.
@@ -915,9 +922,9 @@ a Crusade.
 \bparag If they are on the diplomatic track of a crusader, they are
 immediately raised in \EW (if not already higher).
 \bparag Otherwise, they are temporarily put in \EW of the first crusader (the
-first country that declared war on \TUR, either the \terme{Sole Defender of
-  the Catholic Faith} or the one with higher initiative). They will return
-back to the \Neutral box at the end of the crusade.
+first country that declared war on \TUR, either the \SDCF or the one with
+higher initiative). They will return back to the \Neutral box at the end of
+the crusade.
 
 \aparag Other Catholic minors may participate if controlled by the crusader,
 using the normal rules.
@@ -1034,7 +1041,7 @@ by \TUR (the most recent conquest first) ; \provinceMoreas , \provinceHellas,
 \bparag Only provinces controlled by crusaders may be chosen.
 \bparag These provinces are given back to their 1492 owner (if Christian),
 even if he did not participate in the Crusade and recreating it if it was
-destroyed. Provinces initially belonging to an non-Christian country are given
+destroyed. Provinces initially belonging to a non-Christian country are given
 to \paysChevaliers.
 % Jym: let's avoid creating a "Latin states of Orient" minor...
 \bparag Provinces of the \regionBalkans that are automatically annexed by
