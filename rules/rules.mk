@@ -56,6 +56,7 @@ TEXFIGFILES = $(addprefix $(FIGDIR)/,\
  catholique.pdf\
  chess.jpg\
  chiite.pdf\
+ default.jpg\
  diplomacy.jpg\
  economicalevents.jpg\
  etoile.pdf\
@@ -218,10 +219,12 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  EUevents.sty\
  EUtheme.sty\
  barlist.sty\
+ engAdministration.tex\
  engAlpha.tex\
  engAnnexe.tex\
  engAustria.tex\
  engBasic.tex\
+ engBudget.tex\
  engCommandes.tex\
  engCopyleft.tex\
  engCorpsMineurs.tex\
@@ -247,9 +250,7 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engEvntGen.tex\
  engEvntRules.tex\
  engEvntTYW.tex\
- engExpAdmin.tex\
- engExpLogistic.tex\
- engExpenses.tex\
+ engExpFinal.tex\
  engFrance.tex\
  engGameSequence.tex\
  engGeneralTables.tex\
@@ -259,6 +260,7 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engInterphase.tex\
  engIntroduction.tex\
  engLeaders.tex\
+ engLogistic.tex\
  engMilitary.tex\
  engMilitaryFrench.tex\
  engMinorCountries.tex\
