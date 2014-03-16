@@ -10,195 +10,8 @@ consists in some cleanup of the past turn and preparation for the next one:
 Handling old and new military leaders, moving Trade centres, rebuilding some
 military assets and giving some \VPs to players.
 
-
-\begin{todo}
-  + replenish natives and Militia in \ROTW.
-\end{todo}
-
 \aparag[Sequence.]
 \InterDetails
-
-\section{Removal and Placement of leaders}\label{chInter:Leaders}
-\begin{designnote}
-  Note that removal of leaders must physically occur before placement of new
-  ones because it is possible that the same \anonyme counter is immediately
-  reused (at the same place or elsewhere). However, they are considered to
-  happen simultaneously, especially for the replacement of \LeaderC/\LeaderE
-  in the \ROTW.
-\end{designnote}
-
-\subsection{Ransoms}
-\aparag[Return of the kings] Captured Monarchs return to their countries.
-\bparag Major monarch can use their value again.
-\bparag The military counter (whether Major or Minor) is placed together with
-the new leaders arriving next turn.
-
-\subsection{Removal of leaders}
-\aparag[Death]
-Each named leader who reached its last turn of activity is removed from the
-game.
-\bparag For leaders with turns on the counter, it happens if this turn is the
-same as the second turn written on the counter.
-\bparag For leaders with event on the counter, or other special conditions,
-check the description of the event to known how long the leader lasts.
-\bparag Named major monarchs are removed during the Monarch Survival phase
-(\ref{chEvents:Survival}) at the time where the Monarch dies.
-\bparag Note that leaders may be removed earlier due to death in battles.
-
-\begin{designnote}
-  Turns of ``life'' may either represent the actual life of historical people
-  or their period of military activity. ``Death'' of a leader (whether
-  scheduled or during battle) may be either actual death, retirement of old
-  age or after a severe wound, change of career (often to become minister),
-  fall in disgrace, \ldots
-\end{designnote}
-
-\begin{exemple}[Removing named leaders]
-  It is Inter-turns phase of turn 46. \leaderwithdata{Marlborough} is
-  scheduled to live for turns 43-46. Since this is his last turn of activity
-  his counter is removed from the game (historically, he died in 1722, in the
-  middle of turn 47).
-
-  \smallskip
-
-  At the beginning of turn 26, \ref{pIV:Bohemian Revolt} occurs. As per Event
-  description, \paysBaviere receives \leaderwithdata{Tilly} for 4 turns. Thus,
-  he is considered as having turns 26-30 on his counter. At the end of turn
-  30, if he is still alive, \leaderTilly is removed from game (historically,
-  he died facing \leader{Gustav-Adolf} at the battle of Rain in 1632, during
-  turn 29).
-\end{exemple}
-
-\aparag[Anonymous]
-\bparag All \anonyme leaders of major countries return to their respective
-pool.
-\bparag Exception: besieged leaders stay on the map.
-\bparag All mercenaries leaders return to the pool of mercenaries.
-\bparag \anonyme leaders of minors countries fully at peace return to their
-respective pool.
-\bparag \anonyme leaders of minors at war stay on the map.
-
-\aparag[Free redeployment]
-Each player may choose to redeploy any of its named leader still alive. The
-counter is removed from the map and will be replaced immediately as a new
-leader arriving this turn.
-\bparag Exception: besieged leaders must stay on the map.
-\bparag Exception: Leaders in the \ROTW with unknown discoveries must stay in
-place (hint: you should have redeploy them to an establishment during
-voluntary redeployment).
-
-\begin{playtip}
-  In other words, named leaders have a free ``teleportation'' movement at the
-  end of turn. Use this either to change your frontlines or to ensure
-  hierarchy is respected for the next turn. This is also the occasion to
-  redeploy \LeaderGov to other Areas.
-\end{playtip}
-
-\subsection{Placement of leaders}
-\aparag[New leaders]
-Each leader who is schedule to be active starting with the next turn is placed
-on the map by its controller.
-\bparag Each leader that was removed due to free redeployment is also placed.
-\bparag Leaders that were wounded but did not recover during the turn are also
-placed.
-
-\begin{exemple}[New leader]
-  This is the inter-turn phase of turn 42. \leaderwithdata{Marlborough} is
-  active starting with turn 43, thus he is placed on the map now. \ANG chooses
-  where to place him (see some restriction below).
-\end{exemple}
-
-\aparag[Anonymous] Major countries check their minimum leader limit.
-\bparag For each category of leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC,
-\LeaderGov) where a country as less leader than its minimum (for the next
-turn), draw as many leaders as necessary to reach the minimal value.
-\bparag If a country has more leaders than its minimal value, none is
-received.
-\bparag Beware that you are preparing next turn, hence must check the minimal
-leaders value for next turn (this does change at the end of periods).
-
-\begin{exemple}[Minimum leaders]
-  At the end of turn 1, \RUS has one \LeaderG (\leaderwithdata{Shchenya},
-  provided he did not die during turn 1) but at turn 2 (for period
-  \period{I}), \RUS has a minimum limit of 2\LeaderG. So, \RUS gets one
-  \anonyme\LeaderG at the inter-turns phase of turn 1 (to be used during turn
-  2).
-
-  \smallskip
-
-  At the end of turn 3, suppose \leaderShchenya is still alive. \RUS receives
-  \leaderwithdata{I Vorotynsky} as he is scheduled for turn 4. Thus, \RUS now
-  has 2 \LeaderG, equal to its minimum limit, and does not receive any
-  \anonyme\LeaderG.
-\end{exemple}
-
-\aparag[Missionaries] Some countries receive \LeaderMis. Check the specific
-rules of the country to know when.
-\bparag If this is the case, new \LeaderMis are placed now.
-
-\aparag[Placement] All leaders deemed to be placed at a given turn are placed
-simultaneously. That is, one first draws all its \anonyme leaders before
-placing any.
-
-\aparag[Where to place?]
-\bparag \LeaderMis must be place in an owned, controlled and unbesieged
-province of the European map.
-\bparag \LeaderGov must be place in an owned, controlled and unbesieged
-establishment (\COL, \TP or fort) in the \ROTW, possibly in a \COL of level 6.
-\bparag Other leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC) may be placed
-either with any unbesieged troop of the same country or in any owned,
-controlled and unbesieged province.
-\bparag Additionally, \LeaderE and \LeaderC may be placed in any province or
-seazone where another leader of the same category was just removed, even if
-there are no more counter of the country here and even if the discovery of
-this province or seazone has still not been brought back home (the expedition
-is too small to be represented, but there are still some members to take the
-lead once the initial leader is dead).
-\bparag Note that \LeaderE or \LeaderC may be placed in Europe.
-
-\begin{exemple}[Replacing a \LeaderC]
-  At the end of turn 3, \HIS decides to let the lone \leaderwithdata{Colon} in
-  \granderegionCuba. At the end of turn 3, \leaderColon dies and the counter
-  is removed from game. The province is now empty. However,
-  \leaderwithdata{Solis} is scheduled to arrive at turn 4, hence he is placed
-  now. Since both are \LeaderE, \leaderSolis may be placed exactly where
-  \leaderColon was. Thus, a \COL attempt may be performed here on turn 4 with
-  the bonus for the presence of a \LeaderE.
-
-  \smallskip
-
-  \ANG leaves a lone \anonyme\LeaderC on the cost of \continentAmerica. Since
-  this is an \anonyme leader, it must be removed at the end of turn. However,
-  \ANG receives another \anonyme \LeaderC for the next turn and may choose to
-  place him at the same place. Note that since \ANG has only 3
-  \anonyme\LeaderC, there is 33\% chance that the new one is the same as the
-  old one.
-\end{exemple}
-
-\aparag[Geographic restrictions] Some leaders have Geographic restrictions as
-where to be placed (America, Asia or Mediterranean).
-\bparag In addition to other rules, these leaders must be placed in a province
-or seazone where they are allowed.
-\bparag That is, \emph{e.g.}, a \LeaderG with a \$ (America) restriction must
-be place with a stack or establishment in \continentAmerica and may not be
-placed in Europe or Asia.
-\bparag Note that leaders without capacity to go in the \ROTW are \emph{de
-  facto} restricted to Europe and thus must be placed on the European map.
-
-\aparag[Hierarchy]
-After placement of leaders, hierarchy must be respected.
-\bparag If not, you should probably have use free redeployment to solve the
-problem.
-
-\aparag[\Pashas]
-\TUR receives new \Pashas each turn as
-per~\ref{chSpecific:Turkey:Pashas}. They are placed now.
-\bparag The correct procedure of placement is (i) decide a province where a
-\Pasha will be placed ; (ii) draw a random \Pasha and place it here ; (iii)
-repeat until all new \Pashas are place.
-\bparag That is, \TUR may not wait to see the actual values of a new \Pasha
-before deciding where to place him.
-\bparag Placement of \Pashas may break hierarchy.
 
 \section{Trade centres}\label{chInter:Trade Centres}
 
@@ -246,7 +59,7 @@ number of \TradeFLEET levels in \stz{Tempetes}, \stz{Oman}, \stz{Indien} and
 \aparag[Atlantic] The \CCs{Atlantic} is attributed to the country with the
 largest number of \TradeFLEET levels in all other \STZ and \CTZ.
 
-\section{Natives, Militias and Fortresses}
+\section{Monarchs, Natives, Militias and Fortresses}
 \label{chInter:Natives, Militias, Fortresses}
 
 \aparag[Natives] In each \ROTW province, the number of natives is replenished
@@ -267,6 +80,17 @@ replenished
 
 \aparag[Fortresses] Remove all white level 1 fortress counter in provinces of
 countries that are not at war (either at peace or in intervention).
+\bparag Exception: Do not remove the counters in the \ROTW on \COL of level
+6.
+
+\aparag[Return of the kings] Captured Monarchs return to their countries.
+\bparag Major monarch can use their value again.
+\bparag The military counter (whether Major or Minor) is placed together with
+the new leaders arriving next turn.
+
+\aparag[No lasting wounds] Leaders that were wounded but did not have time to
+recover during the turn are healed.
+\bparag They are placed together with the new leaders arriving next turn.
 
 \section{\VPs}
 \aparag Some \VPs are earned each turn and are tallied at the end of turn.
