@@ -1,0 +1,166 @@
+* Discipline/Doctrine
+On introduit une nouvelle ressource (ou plutôt 2, une terrestre et une
+navale) : la "discipline" (ou "doctrine").
+
+Chacun évolue entre 0 et 30. On peut les noter avec des pions sur la
+piste de technologie.
+
+** En paix (incl interventions), la discipline diminue lentement vers une
+  valeur stable, par exemple à 5. On peut avoir l'évolution d'autant
+  plus brutale qu'on est loin du seuil, genre :
+ 0- 3 => +1
+ 4- 6 => rien
+ 7-10 => -1
+11-20 => -2
+21-25 => -3
+26-30 => -4
+
+** En guerre, on gagne MIL points de discipline à répartir entre les
+   deux. 
+
+** Toujours, on peut faire une action à 10-100D$ qui rapporte
+   1d10-5+mise/10 points (à répartir entre les deux). Donc 1d10+5 en
+   misant 100D$. (après la perte en paix)
+
+** Les pays à conscriptions (SUE/PRU/FRA révolutionnaire ?) peuvent
+   avoir des bonus, genre leur évolution en paix est comme si ils
+   avaient 5 de moins (donc stabilisation vers 10).
+
+** En cas de bataille majeure, +1/-1 discipline pour vainqueur/vaincu
+   (en plus des autres effets). Sans pénalité si le perdant était déjà à
+   0.
+
+** Les mineurs dans une alliance peuvent utiliser la discipline de leur
+   allié (notamment pour payer les manquements de hiérarchie). Les
+   mineurs isolés n'ont pas de discipline (ce qui autorise sans pénalité
+   à casser la hiérarchie pour les gros mineurs à plusieurs chefs, par
+   exemple pour la Perse. Je pense que ça devrait être suffisamment
+   marginal pour que ça ne pose pas de problème).
+
+* Initiative
+La discipline terrestre sert pour déterminer l'initiative. Comme il ne
+faut pas que ça change entre 2 rounds (pour éviter les coups doubles),
+il faut regarder en début de phase militaire et fixer l'ordre
+d'initiative à ce moment. Comme toujours, on prend la plus basse init
+des alliés en cas d'alliance.
+
+L'init hors de la phase militaire (annonces diplos, certaines
+résolutions de conflits) est toujours ADM+DIP+MIL.
+
+* Hiérarchie
+À la fin de son mouvement (avant de résoudre les combats de son
+alliance), chaque joueur regarde sa hiérarchie. Tout manquement à la
+hiérarchie fait perdre des points de discipline. Pour faire simple, je
+pense qu'on peut faire une seule perte (pour ne pas avoir à compter les
+manquements, mais rester sur un état binaire "OK/KO") du coup assez
+importante, genre 5 points de discipline (terrestre ou navale selon la
+hiérarchie incriminée).
+
+À priori, on a relativement peu de "Catinat" (surtout, peu à la fois),
+donc ça devrait être rare d'avoir plusieurs manquements d'un coup et ça
+doit pas être trop grave de constater un état binaire qui est plus
+simple que de compter le nombres d'inversions.
+
+** La hiérarchie à vérifier ici est purement locale (12MP) pour avoir
+   une notion de front. Je ne pense pas souhaitable d'avoir une petite
+   pénalité pour manquement lointain et une grosse pour manquement
+   proche, KISS.
+
+** Le check est fait à la fin de son mouvement, donc on a le temps de
+   rétablir la hiérarchie. Mais la pénalité est immédiate, donc une
+   interception peut casser la hiérarchie et faire une pénalité
+   immédiatement. Fallait prévoir. La pénalité étant pas dramatique, ça
+   devrait aller.
+
+** Si on n'a pas assez de discipline, on perd tout. Si on est à 0 (avant
+   la perte due au manquement), grosse pénalité (genre -1 STAB).
+
+** À voir au test si on veut une pénalité graduelle pour laisser la
+   possibilité de dérapages en permanence. Genre "0-3" est une zone
+   morte où on ne peut pas dépenser de discipline (juste en perdre pour
+   manquement/bataille), mais où le manquement ne coûte que 1 de
+   discipline. Du coup, à chaque tour on peut toujours tanker 2-3
+   manquements sans soucis, ce qui évite de tripatouiller le système
+   avec plein d'interceptions à la con juste dans l'espoir de casser la
+   hiérarchie adverse. Mais il faut que la zone morte soit suffisamment
+   grande pour éviter des techniques anti-jeu et suffisamment petite
+   pour que les manquements à la hiérarchie soient quand même graves.
+
+** Dans le même genre plus simplement, on peut essayer de dire que le
+   manquement coûte moins cher si il est nouveau que si il était déjà là
+   avant le mouvement. Mais on tombe vite soit dans des cas de "un tour
+   sur deux, le manquement est gratuit". Ou "le manquement est gratuit si
+   involontaire mais on ne peut pas décider ce qui est volontaire". Ou
+   "je me suis fais intercepter et j'ai gagné, mais maintenant mes
+   manquements sont gratuits". Donc bof.
+
+* Autres usages
+On peut dépenser de la discipline pour plein d'autres trucs qui vont
+donner des petits bonus militaires. C'est là qu'il faut faire gaffe. Il
+faut éviter que les bonus soient trop gros (et game breaking) mais il
+faut aussi éviter que les bonus soient trop petits (et négligeables, ie
+on se fout de la discipline donc des manquements de hiérarchie).
+
+Il faut aussi éviter trop de micro management et trop d'effets "si tu en
+utilises, j'en utilises aussi". En particulier, ça veut dire un ordre
+d'utilisation de la discipline avant les combats, et en règle générale
+seul le joueur qui lance le dé peut en utiliser (et donc lancer le dé
+équivaut à ne pas en utiliser). En particulier, lors d'une tentative
+d'interception, seul l'intercepteur doit pouvoir en utiliser sinon ça va
+être l'horreur.
+
+** Quelques idées, pas forcément chiffrées, d'usage. En gros, c'est tous
+les jets de dés de la phase militaire. Faut faire le tri.
+À chaque fois, les bonus sont pensé comme des "one shot", c'est-à-dire
+que si 3 PD font -2 à l'attrition, on ne peut pas faire -4 pour 6 PD.
+
+Souvent, c'est une utilisation terre/mer au choix, donc on dépense la
+discipline associée.
+
+*** On peut acheter les mercenaires avec de la discipline au lieu du
+    fric. Comme en pratique 1 PD ~ 10D$, ça revient un peu au même tout
+    en permettant aux "militaires pauvres" d'en profiter.
+*** On peut aussi l'utiliser pour payer sa limoite en cas de levées
+    exceptionelles. Actuellement, diviser la limite par 2 est brutal,
+    surtout pour les gens à 3LD/tour. Les riches s'en sortent toujours
+    mais les pauvres rament (notamment, SUE a du mal à recruter en
+    milieu de tour). On peut imaginer que la limite n'est pas divisée
+    mais que chaque LD recruté en milieu de tour coûte 2PD (en plus des
+    coûts usuels). L'Espagne des Gaaaa paye pour avoir de la discipline,
+    SUE/PRU en a naturellement avec ses bons rois.
+*** Acheter une augmentation de ses limites de chefs (et donc un ? en
+    plus pour le tour). (5 pour 1 chef ?)
+*** Bonus à l'attrition. (2 pour -2 ?)
+*** Bonus à l'exploration. (2 pour -1 ?)
+*** Bonus à l'interception (3 pour +1 ?) (ça forcera Nico/Boka/... à
+    calculer leur modificateur d'interception avant de lancer le dé)
+*** Bonus à l'avantage du vent (2 pour +1 ?)
+*** Bonus au combat (3 pour +1/0/+1/0 ou 0/+1/0/+1 ?) L'attaquant doit
+    décider d'abord, et il faut sans doute que ces bonus s'annulent pour
+    éviter un trop gros charclage si les deux le font.
+*** Retraite automatique en milieu de combat (5-moral pour fuir sans
+    soucis ?) ou avant combat (5, ça doit être cher).
+*** Bonus à la poursuite (bof sur mer à cause des capture)
+*** Bonus au siège (avant ou après le check d'attrition de siège ?)
+*** Table des Conquistadors.
+*** Assaut.
+*** Révolte. Bonus au dé. Voire 1+1/face+1/MAN pour réussir
+    automatiquement son jet (à condition d'avoir autant de LD sur place
+    que de faces).
+*** Idem pirates/corsaires.
+[du coup, un P+ avec Barberousse, ça fait 1+2+5=8 pour réussir le
+    premier jet et 1+1+5=7 pour le deuxième, soit 15 PD alors que tout
+    seul, le P+ se mate pour 5PD, donc c'est beaucoup plus envisageable]
+[le matage automatique évite trop de drames dits "de la guerre civile de
+    Rémi". Des révoltes non commandées, c'est 2/5/9/14 PD pour mater
+    (selon le nombre de faces) et en paix on peut décider de claquer sa
+    thune pour acheter de la discipline et sprotcher de la révolte]
+[pareil avec de multiples autres cas patologiques de révoltes qu'on a
+    eu, on peut rajouter la condition que ce n'est possible en ROTW que
+    si on coule autant de ND qu'on dépense de discipline, il y a
+    jurisprudence.]
+
+J'aime bien avoir des utilisations pour succès automatique (à décider
+avant de lancer le dé, bien sûr), comme les cubes de commerce d'EotAW
+(dans la variante). Je trouve ça plus incitatif à la dépense que des
+bonus.
