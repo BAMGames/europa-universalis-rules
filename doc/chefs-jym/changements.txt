@@ -1,0 +1,529 @@
+Résumé des changements.
+
+* DONE Flottes en blocus
+** DONE En siège, on compte la valeur de siège d'un chef par camp, soit un général
+  assiégeant/assiégé, soit un amiral bloquant/bloqué.
+** DONE Ça compte aussi en bonus/malus pour les attritions "de siège" des troupes
+  ou pour les attritions des flottes en blocus.
+** DONE Une flotte qui commence le round en blocus a un malus d'attrition de
+  1/2 le niveau de la forteresse, arrondi au sup.
+** DONE Cf amiraux.txt (et liste de chefs ci-dessous) pour les amiraux qui reçoivent
+  du siège.
+
+* DONE Fleet in being
+** DONE Changer les limites minimum d'amiraux en pV/VI/VII comme suit :
+   ANG : 3/4/5 (au lieu de 2/2/2)
+   FRA : 2/3/4 (au lieu de 2/2/2)
+   HOL : 1/2/2 [+1 si parlement] (au lieu de 1/1/1 [+1])
+   HIS : 2/2/3 (au lieu de 2/1/1)
+** DONE Ajouter *en pV+** les amiraux non-nommés suivants
+[pV+ pour limiter la variabilité quand il y en a peu. Les amiraux sont
+sur les modèles "noble arrogant incompétent" / "capitaine compétent" /
+"noble OK" / "corsaire"]
+ANG : D212 / L433 / E332, R / N412, PR
+FRA : E211 / L423, R / E233 / M411, PR
+HIS : E211 / L333 / F323, R / O211, PR
+HOL : D212 / L433 / E332, R / N412, PR
+*** DONE : mettre "V-VII" sur les pions en question.
+
+* DONE Taille des flottes
+** Virer le +3/6 pour 2/3 F.
+** Changer
+  +1/4 mers si 0 ou 1 F.
+  +2/2 mers si 2F.
+  +4/2 mers si 3F.
+  -1 si 2/3F et mouvement arsenal à arsenal.
+
+* DONE Amiraux FRA
+Ajouter à FRA 1A de base en pI-III.
+
+* DONE Chefs double-face
+On a :
+** étoilé => compte dans la catégorie à étoile, peut changer de face à
+chaque round (en segment de choix de campagne).
+*** Exc.: POR triche et change de face quand il veut.
+** non-étoilé => peut changer de face à chaque à chaque tour (en segment
+de placement des nouveaux chefs) et compte pour la face qu'il a.
+
+* DONE Blake & Monck
+Suppression de la règle spéciale qui est du coup la règle normale de
+chefs non-étoilés.
+
+* DONE Chefs immortels (fait)
+Marquer les chefs "immortels" :
+** soit ceux qui n'ont pas le -1 à cause de leur 6 (caracs en couleur
+  différente)
+** soit ceux qui survivent d'une manière ou d'une autre à leur 1ère mort
+  (cœur)
+
+** Pas de -1 : Malborough, Frédéric II
+** 1 point de vie : Frédéric II, Charles XII, Barberousse, A. Doria, Drake.
+
+* DONE licenses (fait)
+Marquer les corsaires FRA à licence (7 nommés + 3 anonymes), avec
+l'icône en rouge.
+
+* DONE Vices-rois, Sea hounds, VOC (fait)
+Changer le pointage des pouvoirs de chefs spécifiques à un pays (vs ceux
+utilisables par tous les pays : PR$@m*) d'une lettre à la couleur du
+symbole.
+Fait pour : Viceroy POR, Seahound ANG, Corsaires FRA, Coen++ HOL (table
+conquistador en Indonesie), Vizirs, Corsaires TUR.
+
+* DONE E et C mercenaires
+** DONE Si un E mercenaire nommé est en vie, il est ajouté au pool de
+mercenaires pour le tour (donc c'est lui que si il est tiré au hasard).
+** DONE J. Cabot devient mercenaire.
+** DONE S. Cabot devient mercenaire et est étendu aux T5-13.
+** DONE On ajoute les mercenaires suivants :
+LEADERANONYMOUS;?7;mercenaires;ER;B 2.3.3;2
+LEADERANONYMOUS;?8;mercenaires;ER;B 3.1.2;2
+LEADERANONYMOUS;?9;mercenaires;CR;B 4.2.3;3 ## ancien ?7
+LEADERANONYMOUS;?10;mercenaires;CR;B 2.4.3;3
+LEADERANONYMOUS;?12;mercenaires;CR;B 2.1.2;3
+
+* DONE Chefs revolutionnaires
+Un poil cosmétique, mais on n'est pas à 12 pions près...
+
+(!) Bonaparte : "france" => "revolutionnaires"
+Bonaparte : rang E => B.
+** new ! (se comportent comme des anonymes)
+LEADER;Dumouriez;Charles-François;Dumouriez;;;VII;5;revolutionnaires;G;B 2.3.2;;;Commanded on the Rhine and in Flandres. Kept sympathies with Louis XVI and was thus considered traitor and forced into exile in England
+LEADER;Jourdan;Jean-Baptiste;Jourdan;;;VII;5;revolutionnaires;G;B 4.2.3 -1;;;Victorious at Fleurus. General in Belgium and in Germany
+LEADER;Marceau;François Séverin;Marceau;;;VII;5;revolutionnaires;G;F 5.2.6;;;Fought against the Chouans. Killed in Germany at the Battle of Altenkirchen
+LEADER;Kleber;Jean-Baptiste;Kléber;;;VII;5;revolutionnaires;G;C 6.2.2;;;Fought against the Chouans. He stayed in Egypt after Napoleon left for France and was murdered in Cairo
+LEADER;Kellermann;François Christophe;Kellermann;;;VII;5;revolutionnaires;G;B 3.5.3;;;Stopped the allies at Valmy. Imprisonned during the Terror. Later general of the Empire
+LEADER;Hoche;Lazare;Hoche;;;VII;5;revolutionnaires;G;A 4.4.4;;;Defended Dunkirk against an English invasion. Successful general on the Rhine. Imprisonned during the Terror. Fought against the Chouans. Died in illness.
+LEADER;Massena;André;Masséna;;;VII;5;revolutionnaires;G;C 3.4.3 -1;;;General in Italy and on the Danube. Saved France from the russian and austrian invasion at Zurich
+LEADER;Joubert;Barthélemy Catherine;Joubert;;;VII;5;revolutionnaires;G;C 3.3.3;;;Brillantly seconded Bonaparte in Italy. General in Holland, Germany and Italy. Died loosing at Novi
+LEADER;Pichegru;Jean-Charles;Pichegru;;;VII;5;revolutionnaires;G;D 4.4.4 -1;;;Brillant general in Flandres who charged and captured a Dutch fleet frozen in Den Helder
+##Special: may attack fleet
+LEADER;Moreau;Jean Victor Marie;Moreau;;;VII;5;revolutionnaires;G;B 4.4.3;;;Very successful on the Rhine and in Belgium. Succeded Bonaparte in Italy. Victor at Hohenlinden
+
+LEADER;Brueys;François Paul de Brueys d'Aigalliers;Brueys;;François Paul de Brueys d'Aigalliers;VII;5;revolutionnaires;A;B 2.2.3;;;Died losing the Battle of the Nile
+LEADER;Villeneuve;Pierre Charles Silvestre de;Villeneuve;;;VII;5;revolutionnaires;AR;B 4.2.2;;;Looser at Trafalgar. Killed himself afterwards
+es
+* DONE Flotte de l'or
+Donner à HIS en pII-VI un amiral non-nommé (dans ses chefs minimum) autorisé
+uniquement à commander la pile de la flotte de l'or.
+
+* Nous irons au bois
+Heu, non, rien.
+
+* DONE Blocage commercial
+Si une COL/TP est reliée à l'Europe uniquement au travers d'une Strait
+fortification fermée, elle ne rapporte rien. La fermeture de la fortification
+donne un CB commercial à la victime.
+
+* DONE Malahayati
+Apparaît par II-22(2) pour 9 tours.
+Pendant sa vie, Aceh reçoit une F+ additionnelle en force de base et si
+il reste au moins une F-, Aceh bloque le détroit de Malacca à quiconque
+n'a pas d'AT avec lui (même si il ne possède pas Malacca).
+
+* COL Russe
+Mettre un malus à l'explo/COL russe avant ??? (bof)
+Par exemple : +2 à l'explo tant que Sibir existe.
+
+* DONE Révolte d'Orlov/pVII:War Crimea
+(fait) Cosmétique : x2, dates : 1768-1774 et 1787-1792
+(todo) Ajouter 1 révolte/tour en Turquie pendant la durée de pVII:War
+Crimea ?  Retravailler un peu cet event !
+
+* DONE Yermak
+Autoriser Yermak à utiliser la table des conquistadors en Sibérie.
+
+* DONE Les guerres nordiques
+Quand SUE/POL/RUS sont en guerre 2v1, au début de la phase d'event l'un
+des alliés au hasard doit changer de camp (sans malus d'alliance
+cassée).
+Bon, OK, véto.
+
+Plus sérieusement, on peut se restreindre à :
+Si 2 parmi RUS/SUE/POL sont en guerre l'un contre l'autre (inclus les
+cas 2v1), le 3ème a un CB gratuit pour entrer en guerre dans le camp
+qu'il veut (ou contre les deux à la fois).
+
+* DONE Conquêtes TUR
+** DONE TUR passe à 1G de base, sauf en pIII où il en a 2 (actuellement, 4).
+** DONE Les pachas ne peuvent pas commander de grosse pile.
+** DONE La réforme M-2 ajoute 2G à la limite de TUR.
+** DONE effet "mort d'un pacha" :
+   « Le seul défenseur de la foi catholique peut choisir 1 pacha
+   (corrompu ou non) qui est immédiatement remplacé par 1 autre tiré au
+   hasard (non corrompu). Si il le fait, TUR peut le faire aussi, et
+   ainsi de suite en alternant ».
+
+   Cet effet se déclenche sur un résultat de survie du sultan (modifié)
+   de 5 ou 7.
+** DONE Supprimer la corruption de pachas sur E-7 et la mettre sur 6 au jet
+   de survie TUR.
+
+* DONE Pachas
+afficher le siège des pachas sur les pions.
+* Vizirs, version chefs anonymes
+#Type;Country;NameA;NameB;NameC;Stats
+VIZIER;turquie;Sadrazam1;Grand Vizier;Sadrazam ?1;A 2.1.2 -1
+VIZIER;turquie;Sadrazam2;Grand Vizier;Sadrazam ?2;A 4.4.4
+VIZIER;turquie;Sadrazam3;Grand Vizier;Sadrazam ?3;A 2.3.2
+VIZIER;turquie;Sadrazam4;Grand Vizier;Sadrazam ?4;A 1.3.3
+VIZIER;turquie;Sadrazam5;Grand Vizier;Sadrazam ?5;A 2.2.4 -1
+VIZIER;turquie;Sadrazam6;Grand Vizier;Sadrazam ?6;A 1.2.2
+
+* DONE Vizirs, version chefs de remplacement
+ Pions générique "vizir" sans caracs. On tire dans la table de chefs
+  de remplacement à chaque fois que nécessaire (incl attrition et
+  siège).  2.1.2 -1/4.4.4/2.3.3/2.2.4 -1/3.2.2 -1/5.3.3/4.1.5
+  -1/1.2.2/2.3.2 -1/4.3.4
+
+* DONE Sélim
+Ajouter une "santé fragile" à Bayezid.
+
+* DONE Suprématie maritime TUR
+Les galères TUR peuvent devenir vétéran (et avoir 3 de moral).
+
+* DONE Prise d'Alger
+** DONE Les renforts de l'Algérie ne sont boostés que si il n'y a pas de présidio à Alger.
+** DONE HIS commence avec un présidio niveau 1 à Alger.
+** DONE Remplacer I-9, (I-16 et II-6) par :
+*** DONE Si Oruc-Reis est en vie, TUR peut choisir d'appliquer "Barbaros Brothers"
+*** DONE Si Barbaros est en vie, TUR peut choisir d'appliquer "Vassalisation d'Alger".
+*** DONE Si pII+ TUR peut choisir d'appliquer "Alignement des barbaresques".
+*** DONE TUR peut choisir d'appliquer "Pressions diplo".
+
+*** DONE "Barbaros brothers" (*1)
+=> 1 présidio en Algérie est cassé, Alg devient neutre si pas sur
+   piste TUR, le P passe +.
+*** DONE "Vassalisation" (*1)
+=> Effet actuel (Alg VA spécial, Barberousse utilisable en amiral
+   TUR).
+*** DONE "Alignement" (*1)
+=> Effet actuel (annulation du malus diplo + Tun VA si Dragut est en
+   vie + Dragut amiral TUR).
+*** DONE "Pression diplo" (illimité)
+=> effet actuel (+3 diplo sur 1 musulman).
+
+** Changer I-16 en I-9 dans la table. Changer II-6 en "appliquer I-9".
+
+* DONE Corsaire turco-barbaresques
+Les chefs corsaires TUR (AP/P) peuvent diriger les pions corsaires des
+mineurs TUR (ie des barbaresques), mais comptent toujours dans la limite
+de chefs TUR. Choix à faire pour le tour avant de tirer les events.
+(on peut metter leur icone en rouge pour faire comme les copains et
+rappeler le pouvoir spécial)
+
+* DONE Auto liste chefs "fralicence" (et autres) dans les règles.
+* DONE Corsaires anonymes
+Remplacer tous les P anonymes par des AP pour pas pourrir un tour en ne
+pouvant pas commander de flotte (FRA, HIS, HOL, POR, RUS, VEN).
+
+* DONE Barbaresques
+Tripoli et Maroc commencent sans leur P qui arrivera donc en renfort au T2.
+
+* Hongrie, version subtile
+** Lors de la chute de la Hongrie, le morceau HAB reste un mineur qui est
+  Vassal/annexé par HAB selon que la chute est causée par TUR/HAB.
+** Ce qui reste de Hongrie est annexé par AUS au moment de V-z (Great
+  Kuruc uprising).
+** Suppression de l'entretien "hongrois" de AUS qui devient celui du
+  mineur (normal ou état autonome).
+** Lors de TYW, les 2A+ de protection des marches turques n'empêchent pas
+  la guerre mais empêchent TUR d'entrer dans le territoire national AUS
+  ou provinces adjacentes.
+
+* Hongrie, version facile
+À la chute :
+** Banat va à TUR.
+** Erdely/Mures à Transylvanie.
+** Slovaquie à HAB.
+** Le reste à qui contrôle (TUR/HAB/POL), par défaut celui qui n'a pas
+  fait chuter (TUR/HAB).
+
+La chute est provoquée aussi si 3 (4 ?) provinces sont contrôllées.
+
+* Hongrie, version triviale
+** TUR peut faire chuter sans limite de temps.
+** Mettre TUR en tête des controlleurs de la Hongrie.
+* DONE Hongrie
+** DONE TUR peut faire chuter en pI-III.
+** DONE HAB ne peut plus faire chuter.
+** DONE HAB peut annexer diplomatiquement la Hongrie, et ça fait une vraie annexion (comme HIS sur Naples).
+** DONE À V-z (Great Kuruc uprising), ce qui reste de Hongrie est annexé par HAB.
+** DONE TUR passe 1er sur la liste de préférence de la Hongrie.
+
+* DONE Chute
+Les condtions de chute (Buda/n provinces/bataille majeure) font que (i)
+les autre (POL/HAB/TUR) peuvent intervenir de suite, (ii) pas de paix
+avec la Hongrie à ce tour et (iii) le premier event du prochain tour
+sera la chute.
+
+* DONE Transylvanie
+Faire de la Transylvanie un vassal spécial (no diplo) de son protecteur,
+attribuée automatiquement au possesseur de Buda.
+
+* DONE Blasons
+** DONE blasons effacés AUS/TUR/Transylvanie dans les provinces du partage hongrois.
+** DONE blasons commerciaux pour les règles "commerciales" :
+*** DONE Raguse (VEN/TUR)
+*** DONE Caraïbes (HIS/ANG)
+*** DONE Galion de Manille (Chine/HIS)
+** DONE blasons chinois effacé dans les zones de Nerschinsk.
+** DONE blason effacé RUS dans les provinces Saint-Petersburgables ?
+** DONE blason effacé Savoie en Dauphiné.
+** DONE blasons des mineurs ROTW
+* DONE Occupations
+** DONE ajout de pions "occupation" en nombre limité.
+  (VEN/PRU : 0, POL : 1, RUS/HOL/POR/SUE : 2, FRA/ANG : 3, TUR/AUS/HIS : 4,
+  Savoie : 1) (VEN : éventuellement 2)
+** DONE effet du pion : contrôle + toucher les revenus + free CB (overseas en
+  ROTW) de l'occupé vs l'occupant. Pour les PV et objectifs, la
+  province appartient toujours à l'occupé.
+** DONE coût du pion : l'occupant doit laisser une garnison de 1LD dans la
+  province. Éventuellement, coût en STAB pour l'occupant comme pour
+  l'occupé.
+** DONE On les met au lieu de mettre des contrôles sous certaines conditions.
+** DONE Ils restent à la paix et peuvent sauter par une déclaration
+  diplomatique.
+** DONE Et on supprime les règles d'occupation militaire d'un mineur.
+
+* DONE Placement des occupations
+** DONE Caraïbes : en remplacement des contrôles. Remplace la règle actuelle.
+  Pas de coût en STAB.
+** DONE Oman/Aden : par POR aux conditions actuelles. Remplace la règle actuelle.
+  Pas de coût en STAB.
+** DONE RUS : en remplacement des contrôles adjacent à son territoire nationnal.
+  Pas de coût en STAB. (pas de garnison ?)
+** DONE HIS/HOL : en remplacement des contrôles pendant III-1. Pas de coût en STAB.
+** DONE Hongrie : Par TUR/HAB/POL à la place d'un contrôle. Coût de 1STAB/tour si
+  pas d'autre perte de STAB pour l'occupant comme pour l'occupé.
+** DONE VEN : En Italie si "Itali e San Marco" est déclaré ?
+** DONE ANG : En territoires de guerre de 100 ans (Guyenne, Quercy, Poitou,
+        Picardie) avant l'acte de Suprématie + changement PV de pI ?
+** DONE FRA : Provinces du HRE adjacente à une province possédée.
+        [ie : Lorraine (hist depuis guerres d'Italie), Alsace après
+        annexion de Franche-Comté (semi-hist), puis Baden/Pfalz
+        (non-hist mais tolérable de lapin)]
+
+** DONE Savoie : en début de jeu en Dauphiné + à la place d'un contrôle dans une province avec intérêts.
+* DONE Little War, Long War
+Entre la chute et un traité de paix TUR/AUS ou V-z, la Hongrie est
+semie balkanisée :
+** DONE POL/HAB/(TUR+Crimée) peuvent chacun envoyer 1 pile en territoire non
+  contrôlé. Coût de 1 point de STAB à la fin du tour si pas de perte par
+  ailleurs.
+** DONE Pendant TYW, faut reformuler un peu l'intervention pour que les Garnisons
+  TUR soient autorisées (actuellement, intervention limitée, donc 1 seule
+  pile). En gros, TYW réactive le point précédent pour TUR (uniquement) si
+  il a été stabilisé + autorise à aller en Autriche avec la même règle.
+
+* DONE Arabie et Soudan
+Passer Soudan à diff 5, revenu 2 et Nedj à diff 6 revenu 1.
+
+* DONE Guerre de Morée (pas sûr)
+=> fait dans master en placeholder d'après notes de Pierre.
+** Ajouter un event guerre VEN-TUR en pV (similaire à celui de pVI) ?
+** Ajouter des PV au contrôleur de VEN en cas de victoire (~10) ou
+  annexion (~30) par le mineur lors de ces events ?
+
+* DONE Itali e San Marco/Ligue de Cambrai
+** DONE Baisser en pI la limite de G VEN de 2 à 1.
+** DONE Ajouter 1G à la limite VEN en pI-II si /Itali e San Marco/ est déclaré.
+** Lier un ou des chefs nommés à cette politique ? (Pitigliano) (Bof)
+* DONE Maximilien II
+Pour toute la durée de WoSS l'héritier, si il n'est pas empereur, a un
+bonus de +5 à la diplo sur un électorat choisi en début de guerre. Par
+exception, il peut diplomatiser même si le pays est en guerre.
+
+* DONE Mercy
+Clarifier son apparition (à la mort de Tilly/tout de suite si pas de
+IV-1) et sa durée de vie (4 tours) dans IV-A.
+
+* DONE Tilly
+Donner à sa pile soit "être toujours vétéran", soit "être tercios".
+
+* DONE Chefs
+  (!) (méta-)cosmétique déjà fait.
+** DONE Angleterre
+*** DONE Royal marines => supprimé.
+*** DONE Rupert : G* C434 / A C344 => G  C434 (Roy) / A C344 (ANG)
+*** DONE Kirke : E* F423, R (Roy) / A F223 (Roy) => E F423 (ANG)
+*** DONE Blake : G A334, R / A A444, R => G A223-1 / A A444, R
+*** DONE (!) Herbert (Arthur) => Torrington (Arthur Herbert, Earl of)
+*** DONE Benbow : APR => AR
+*** DONE Rooke : AR, A343 => A, A343-1
+*** DONE Boscawen : E543 => E543-1.
+*** DONE Saunders => supprimé.
+(éventuellement remplacé par Jervis avec carac similaires).
+*** DONE (new) LEADER;Hughes;Edward;Hughes;;;57;61;angleterre;A@;C 3.3.4;;;Admiral in India who fought many battles against Suffren avoiding disaster each time
+** DONE France
+*** DONE Sourdis : T30-33 A B433 R => T30-31 A B233
+*** DONE Maillé-Brézé : T30-33 A => T30-34
+*** DONE Duquesne : A A444 => C333, m
+*** DONE d'Estrées : T40-46, A C223, PR => Cœuvres, B233
+*** DONE (new) LEADER;Estrees;Jean 2;d’Estrées;;;36;40;fralicence;APR;C 2.2.3;;;Privateer in America
+*** DONE Tourville : T39-43 A => T39-42
+*** DONE (!) Renault => Châteaurenault
+*** DONE Châteaurenault : T38-45, D334 => T38-43, C445.
+*** DONE La Bourdonnais : T51-52, A G343, @ => T50-52, A G343-1, @ / g G533, @
+*** DONE (!) Gallissonière => La Galissonnière
+*** DONE La Galissonière : T51-54 A I523 => T51-53, A I523 / g I423, $
+*** DONE d'Estaing : AR, A133, T58-61  => P@, E433, T55-61 (licence) / AR, A133, T55-61
+*** DONE La Pérouse : 511 => 311
+*** DONE d'Esnambuc T41-44, PR, E533 => T23-27, PR, E333 (sans licence)
+*** DONE Forbin : T42-48 => T40-44.
+*** DONE Dugay-Trouin : T43-49 => T41-49.
+*** DONE Suffren : fralicence, APR => france, A@.
+*** DONE d'Annebault : 222 => 233.
+*** DONE Foix : T1-4, A324 => T5-9, A323-1
+*** DONE Bayard : T2-7 => T3-8
+*** DONE (new) LEADER;Tremoille;Louis II de;La Trémoille;;;1;7;france;G;A 4.3.3;;;General during the wars in Brittany and in Italy. Victorious at Fornovo and Agnadello. Died at the battle of Pavia
+*** DONE F. Guise : T8-15 => T12-15
+*** DONE Montmorency : T14-18 => T9-16
+*** DONE Frontenac : T38-43 => T38-42
+*** DONE d'Iberville : T40-44 => T40-43
+*** DONE Bienville : T43-50 => T43-51 (sans conviction)
+*** Vaudreuil : T52-56 => T51-56 (sans conviction, soit Bienville, soit Vaudreuil mais pas les deux).
+*** DONE Villars : T40-48 => T40-49
+*** DONE Vendôme : 233 => 433
+*** DONE Luxembourg : T35-43, 233 => T35-41, 234
+*** DONE Catinat : T42-44, 122 => T41-44, 233
+*** DONE Berwick : T43-45 => T43-49
+*** DONE Lally : T51-56 => T51-54
+** DONE Espagne
+*** DONE Valdez => supprimé, remplacé par :
+*** DONE (new) LEADER;Bertendona;Don Martín de;Bertendona;;;19;23;espagne;A;F 2.2.3;;;Defended Atlantic during the Portuguese succession. One of the commander of the Armada. Kept command in the Atlantic and focused on the construction of new ships
+*** DONE F Spinola => supprimé, remplacé par :
+*** DONE (new) LEADER;Oquendo;Antonio de;Oquendo;;;24;30;espagne;AR;E 3.3.2;;;Admiral of the treasure fleet. Victorious at Albrolhos but sevearly beaten at The Downs
+*** DONE A Spinola => Spinola
+*** DONE (new) LEADER;Blas de Lezo;Blas de Lezo y Olavarrieta;Blas de Lezo;;Blas de Lezo y Olavarrieta;45;50;espagne;AR;B 5.3.3 -1;;;Succesfull convoy commander during the War of Spanish Succession. Fought pirates off the Coast of Peru. Victorious at Carthagena. Lost many body parts in various battles
+*** DONE (!) Fadrique => Don Fadrique
+*** DONE Benavides => supprimé.
+*** DONE Virrey => supprimé, remplacé par
+*** DONE (new) LEADER;Montiano;Manuel de;Montiano;;;49;54;espagne;G$;D 1.2.3;;;Defended Florida and launched a failed invasion of Georgia during the War of Jenkin's ear
+** DONE Autriche
+*** DONE Matthias => supprimé.
+*** DONE Montecuccoli : T30-38, rang B => T32-38, rang A.
+*** DONE Lorraine : rang A => rang B.
+*** OU à la place des 2 précédents : Lorraine : rang A => rang C.
+
+*** DONE Commercy : T39-45 => T40-45.
+*** DONE (!) Wallenstein => habmercenaire
+** DONE Hollande
+*** DONE Houtman : T21-23, 664 => T21-26 334
+*** DONE Tasman : 662 => 622
+*** DONE Banckert => supprimé
+*** DONE C Tromp => supprimé
+*** DONE M Tromp => ajouter 1 point de vie.
+*** DONE de Ruyter => ajouter 1 point de vie.
+*** DONE Heemskerk : Amiral => Explo.
+*** DONE (new) LEADER;Prince Waldek;Karl August, Prince of Waldeck and Pyrmont;Prince Waldek;;Karl August, Prince of Waldeck and Pyrmont;49;54;hollande;G;B 2.3.3;;;Commander of the Dutch forces during the War of Austrian Succession
+*** DONE (new) LEADER;van Zuylen van Nijevelt;Philip Julius;van Zuylen van Nijevelt;;;VII;3;hollande;G;C 3.2.2;;;Commander during the Batavian Revolution
+*** DONE (new) LEADER;van Bylandt;Lodewijk;van Bylandt;;;58;62;hollande;AR;B 3.1.3;;;Lead a succesfull expedition against Morocco. Commander during the American and French Revolutions. Twice accused of cowardice but acquitted. Wrote about naval tactics and restored discipline in the Dutch Navy
+** DONE Pologne
+*** DONE Zolkiewski : T24-27, A 423 => T22-27, B 526-1.
+** DONE Portugal
+*** DONE Brito Explo => gouv.
+** DONE Russie
+*** DONE Hetman => Supprimé.
+*** DONE Hetman2 => Supprimé.
+*** DONE Apraksin : T43-48 => T41-48, -1 en siège.
+*** DONE Lefort : perd son -1 en siège.
+*** DONE Orlov => supprimé.
+*** DONE Jones => supprimé.
+*** DONE Spiridov : T55-57, B433 => T54-57, B433-1.
+*** DONE Ushakov A323 => A443.
+*** DONE Khabarov T39-41 => T32-35.
+*** DONE (!) Kurbskii => Kurbsky.
+*** DONE Kurbsky => perd son -1 en siège.
+*** DONE Romanov T33-39 => T32-37
+*** DONE Menshikov T41-45, rang B => T43-45, rang C.
+*** DONE Sheremetev : rang C => rang B.
+*** DONE M Galitzine : rang A => rang C, supprimer l'amiral.
+*** DONE P Lacy : T46-51 => T47-52.
+*** DONE Bibikov : T53-59 => T55-59.
+*** DONE Chernyshyov => Supprimé.
+*** DONE (new) LEADER;Kutuzov;Mikhail Illarionovich - князь Михаи́л Илларио́нович Голени́щев-Куту́зов;Golenishchev-Kutuzov;Kutuzov;Mikhail Illarionovich Golenishchev-Kutuzov (князь Михаи́л Илларио́нович Голени́щев-Куту́зов);60;62;russie;G;D 5.3.3;;;Disciple of Suvarov. Later great opponent of Napoleon
+** DONE Suède
+*** DONE (!) Pontus => P. de La Gardie
+*** DONE (!) Magnus => M. De la Gardie
+*** DONE P. de La Gardie => -1 en siège
+*** DONE (new) LEADER;J De la Gardie;Jacob Pontusson;J. De la Gardie;;Jacob Pontusson De la Gardie;24;28;suede;G;B 5.3.2;;;Lead the Swedes during the Times of Trouble. Reached Moscow, lost at Klushino
+*** DONE H. Wrangel : T27-29 => T27-30.
+*** DONE G. Horn : T27-33 => T28-33.
+*** DONE Banér : T30-34 => IV-A, en remplacement de GA à sa mort pour 3 tours.
+*** DONE Banér : rang C => B.
+*** DONE Buchau => Printz (Johan Björnsson)
+*** DONE Dahlbergh : T34-40 => T34-42.
+*** DONE AB Horn => supprimé.
+*** DONE Klingspor => supprimé, remplacé par :
+*** DONE (new) LEADER;Dobeln;Georg Carl;von Döbeln;;;59;62;suede;G;C 5.2.1;;;Wounded at the head during the 1788-1790 war. Later lead the retreat from Finland and stopped the Russian invasion during the Finnish war
+** DONE Turquie
+*** DONE Iskander => supprimé
+*** DONE Ali Bey => supprimé
+*** DONE Abdul Karim => supprimé.
+*** DONE beyerbeli 1, 2, 3 => supprimés
+*** DONE (new) LEADER;Selim;Yavuz Sultân Selim Khan, Hâdim-ül Haramain-ish Sharifain;I.Selim;;Yavuz Sultân Selim Khan, Hâdim-ül Haramain-ish Sharifain;;;turquie;K;A 3.4.3;;;Father of Suleiman. Gained control of Eastern Anatolia after repulsing Persia at Chaldiran. Conquered the Mameluks states
+*** DONE (!) Mustafa => Lala Mustafa
+*** DONE Lala Mustafa : T16-23 => T14-18.
+*** DONE Sinan : K*/C => K/C.
+*** DONE (new) LEADER;Borovinic;Hadım Ali Paşa and Hadım Sinan Paşa;Boroviniç;;;1;6;turquie;K;A 3.2.3;;;Two Viziers from the same Bosniac family. Hadım Ali failed at invading the mameluks and died crushing the Şahkulu Rebellion. Hadım Sinan illustratred himself against the mameluk at Khan Yaunis and Ridaniya (where he died)
+*** DONE (new) LEADER;Ibrahim;Pargalı İbrahim Paşa;İbrahim;;Pargalı İbrahim Paşa;7;10;turquie;K;A 2.2.4;;;Personal friend and first vizir of Suleiman. Skilled diplomat who sealed many deals with Europeans. During a successful expedition to Persia, he gave himself a too high title and was executed on Suleiman's order afterwards.
+*** DONE (new) LEADER;Ozdemir;Özdemir Paşa;Özdemir;;Özdemir Paşa;11;14;turquie;CR;D 4.2.2;;;Took part in the failed siege of Diu, governor of Yemen, invaded Ethiopia
+*** DONE (new) LEADERDOUBLE;Osman;Özdemiroğlu;Osman Paşa;;;15;19;turquie;G;A 3.4.4;gR;I 5.3.3;Able governor of Yemen and Ethiopia. Good general in Persia, secured Caucasus at the battle of Torches. Dethroned a reluctant Crimean Khan. Later briefly Grand Vizier
+*** DONE (new) LEADERDOUBLE;Yusuf Sinan;Cığalazade Yusuf Sinan Paşa;Yusuf Sinan;;Cığalazade Yusuf Sinan Paşa;18;23;turquie;G;C 3.1.3;A;C 3.2.2;Lead the fleet to capture Tunis and apointed two times Kapudan pasha. Lead several campaigns in Persia and Hungary with mitigated success. Briefly Grand Vizier
+*** DONE Kapudan Pacha 1, 2, 3 => supprimés.
+*** DONE Piyale Pasha : T13-16 => T13-17.
+*** DONE Sokollu : T13-16 => T13-18.
+*** DONE Oruc : T6-12 APm TUR => T1-5 dPm Alg.
+*** DONE (!) Uluj Ali => Uluj Ali;Kılıç Ali Paşa;Uluç Ali;;Kılıç Ali Paşa
+*** DONE Uluj Ali : dPm Alg => APm TUR, rang B
+*** DONE Piri Reis => -1 en siège.
+*** DONE Murat Reis T13-18 E423 => T16-30 (???) E412
+*** DONE (new) LEADER;Salih Reis;;;;;9;15;turcorsaire;Pm;E 4.2.3;;;Close friend of Dragut and long time raider of the Mediterranean. Took part in most naval battles of that time
+*** DONE Selman Reis : TUR, T6-9 422 => Égypte, T4-9 433, utilisable par TUR après la chute.
+*** DONE (new) LEADER;Ali Pasha;Müezzinzade Ali Paşa;Ali Paşa;;Müezzinzade Ali Paşa;13;18;turquie;Am;A 3.2.2;;;Loser at Lepanto
+*** DONE (!) Kurtoglu => Kurtoğlu H.
+*** DONE (new) LEADER;Kurtoglu M;Kurtoğlu Muslihiddin Reis;Kurtoğlu M.;;Kurtoğlu Muslihiddin Reis;5;10;turcorsaire;APm;B 4.1.2;;;Turkish corsair based in Tunisia who sacked Central and Eastern Meditteranean for years
+*** DONE (new) LEADER;Husain Pasha;Gazi Deli Hüseyin Paşa;Hüseyin Paşa;;Gazi Deli Hüseyin Paşa;29;34;turquie;A;A 4.2.3 -1;;;Escaped the blocaded Dardanelles and laid siege to Heraklion in Creta
+*** DONE (new) LEADER;Mezzomorto;Hacı Hüseyin Mezzomorto;Mezzomorto;;Hacı Hüseyin Mezzomorto;39;42;turcorsaire;AP;C 3.2.4;;;Algerian privateer. Fought Dusquenne at Algiers. Later Kapudan Pacha in the Agean, retook Chios from Venise. Wrote a treaty on naval reforms. Gain his nickname after being left for dead during a battle
+*** DONE A?3 423 => 413
+** DONE Venise
+*** DONE (!) Grimano => Grimani
+*** DONE Mocenigo : T33-36 => T31-34
+*** DONE Morosini : A/G => A 455-2
+** DONE mineurs
+*** DONE (new) LEADER;Malahayati;;Malahayati;;;III;22(2);aceh;A@;A 6.4.5;;;First woman in the World to became admiral. Brilliant defender of Aceh during its golden age
+*** DONE (new) LEADER;Juel;Niels;;;;34;42;danemark;A;B 4.2.3;;;Learned seamanship under Tromp and de Ruyter in the Anglo-dutch wars. Then succesful amiral of the Scanian War and reformer of the Danish navy
+*** DONE (!) Gabor => Bethlen
+
+*** DONE Caliph => supprimé, remplacé par
+*** DONE (new) LEADERDOUBLE;Burji;المماليك البرجية;Burji dynasty;Burji;Al-Ashraf Qansuh Al-Ghawri (قانصوہ الغوری لأشرف) and Al-Ashraf Tuman Bay II (طومان بای لأشرف);;;mamelouks;K;A 5.1.4;K;A 3.1.4;Ruling mameluk dynasty since 1382. Its last two Sultans died loosing at Marj Dabiq and Ridaniya during the Turkish conquest
+*** DONE (!) MA Colonna => Colonna
+*** DONE Johann Frederick : T13-17 => T9-16
+*** DONE Johann Georg II, T27-31 => supprimé, remplacé par
+*** DONE LEADER;Johann Georg I;;Johann Georg I.;;;25;33;saxe;K;A 1.2.2;;;Elector of Saxony during the Thirty Years War. First supporter of the emperor, he joined the Swedes after being invaded by Tilly and went back to the emperor after the death of Gustavus Adolphus. Fleed at Breitenfeld and severly beaten at Wittstock
+*** DONE JG3, T32-40, 122 => supprimé, remplacé par
+*** DONE LEADER;Johann Georg III;Johann Georg II. and III.;Johann Georg III;;Johann Georg II. and III.;34;40;saxe;K;A 2.2.3;;;Electors of Saxony. Johann Georg II. reconstructed his state ravaged by the Thirty Years War. Johann Georg III. fought at Vienna, during the Great Turkish War and lately joined the league of Augburg
+** DONE Spéciaux
+*** DONE Brouwer => E/C T23-31 (sans règle spéciale sur les tours)
+*** DONE Johan-Maurits => C/G T29-37 (sans règle spéciale pour les tours)
+*** DONE Poniatowski : T43-46 => T42-50
+*** DONE (!) Beniowski => séparé en 2 chefs indépendants (1 FRA, 1 POL).
+*** DONE (!) Saxe-Weimar : SUE/FRA => SUE/framercenaires
+*** DONE (!) Ferdinand : PRU/HRE => PRU/prumercenaires, PRU choisit de le donner à un allié mineur ou majeur pour le tour.
+*** DONE Ferdinand => F. Brunswick (bof ?)
+** DONE Prusse
+*** DONE (!) Brunswick => K. Brunswick
+*** DONE K. Brunswick => PRU/prumercenaires (???)
+
+** IGNORER   Turquie old style    IGNORER
+*** Iskander => supprimé, remplacé par :
+*** (mod) LEADER;Skender Pasa;Mihajlovic;Skender Paşa;;Skender Paşa Mihajlovic;1;5;turquie;G;A 3.2.3;;;Took part in Venetian wars and captured parts of Dalmatia
+
+*** Ali Bey : supprimé, remplacé par, au choix :
+*** (mod) LEADER;Ali Bey;Gazı Alauddin Ali Bey Mihaloğlu;Ali Bey;;Gazı Alauddin Ali Bey Mihaloğlu;1;4;turquie;G;B 4.4.3;;;Conquered parts of Bosnia. Failed at invading Hungary but lead a campaign in Transylvania
+*** (mod) LEADER;Ali Bey;Şehsüvaroğlu Ali Bey, Prince of Dulkadir;Ali Bey;;Şehsüvaroğlu Ali Bey, Prince of Dulkadir;1;6;turquie;G;B 4.4.3;;;Took part in the conquest of the Mameluks and crushed revolts on the Persian border.
+
+*** (new) LEADER;Husrev-beg;Gazi;Husrev-beg;;;6;10;turquie;G;B 2.3.3 -1;Conqueror of Bosnia and Montenegro
+*** (new) LEADER;Murat-beg;Murat-beg Tardić;Murat-beg;;Murat-beg Tardić;7;11;turquie;G;C 2.3.3;;;Conqueror and governor of Klis
+*** (new) LEADER;Predojevic;Gazi Hasan-Paşa;Predojević;;;20;24;turquie;G;D 2.1.2;;;Governor of Bosnia. Tried to invade Croatia and was killed loosing at Sisak
