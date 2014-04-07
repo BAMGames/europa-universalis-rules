@@ -7,18 +7,68 @@
 
 % RaW: [22,52]
 
+\begin{designnote}
+  Even if the spirit of the game is mainly to simulate the whole modern
+  history, a complete victory points (\VPs) system is explain here. It allow
+  to designate a winner of the campaign, and also to know who is doing well
+  and who isn't.
 
+  The \VPs system is currently unbalanced. It will only be balanced once
+  sufficiently many test games with stable rules will have been played. Thus,
+  it should not be taken too seriously. A 1 \VP difference at the end of the
+  game hardly qualifies as a ``Victory''. It is not only within the error of
+  margin of the system but also between the margin of counting error during
+  the game.
 
+  Thus, \VPs should be more considered as a guideline at what actions should
+  be attempted even if they seem silly. Many monarchs of the period took
+  decisions that in retrospective are considered stupid and no gamer would
+  make the same error of spending that many efforts toward a useless
+  goal. \VPs are an incentive to pursue some of those goals. This is
+  especially true for some of the 'Mandatory' objectives that are often
+  extremely hard to achieve but nonetheless were the main concern of
+  historical monarchs.
+
+  So, any action that is rewarded (or punished) by 50\VPs should be considered
+  as something extremely important and a huge goal to achieve for the
+  players. A 10\VPs bonus is more of a secondary objective, or a penalty that
+  may be payed once or twice.
+\end{designnote}
+
+\begin{designnote}
+  All in all, players are expected to gain around 2000-2500\VPs along the
+  game. The end of period check should be around 100\VPs, more for countries
+  in their period of Glory, less for decaying countries. The period objectives
+  should be around 100-200 \VPs depending on your success on the field.
+\end{designnote}
+
+\begin{playtip}
+  Some period objectives, as well as the end of game objectives, must be
+  prepared in advance. Often, if one start trying a period objective only at
+  the period it brings \VPs, it is too late. The ``Mediterranean Trade
+  Center'' Mandatory objective for \FRA is notorious for this. Thus, you
+  should probably look your objectives in advance, as part of a long term
+  strategy.
+\end{playtip}
+
+\begin{playtip}
+  Get one player in charge of counting the \VPs. Other players won't need to
+  know the \VPs per turn as well. That player should get a notebook and tally
+  \VPs along the game. Since there are \VPs every turn, there is a lot of
+  things to note.
+
+  End of period (and end of game) \VPs are best checked with two players. One
+  is reading the objectives and end of period checks while the \VPs accountant
+  note the result. Others players should be around ready to answer questions
+  (typically for computing wealth).
+\end{playtip}
 
 \section{How to win the game ?}
 
-\aparag Even if the spirit of the game is mainly to simulate the whole modern
-history, a complete victory points (\VPs) system is explain here. It allow to
-designate a winner of the campaign, and also to know who is doing well and who
-isn't. This \VP system is composed of 4 parts.
+\aparag The \VP system is composed of 4 parts.
 \bparag {\VPs per turn: }
-Those \VPs are earned by player performing special actions and discoveries. It
-corresponds approximately to the quarter of the final \VPs.
+Those \VPs are earned by players performing special actions and
+discoveries. It corresponds approximately to the quarter of the final \VPs.
 \bparag{End of period \VPs: }
 At the end of each period, players earn \VPs corresponding to their situations
 and to the objectives they chose at the beginning of the period. It
@@ -27,70 +77,118 @@ corresponds approximately to the half of the final \VPs.  They receive also
 \bparag{End of game \VPs: }
 At the end of the game, after counting \VPs of the end of seventh period, a
 check-up of the the situation of each player is made, and \VPs are earned
-according to.
+according to it.
 
 
 
 
 \section{VPs per turn}\label{chVictories:Turn VP}
+\aparag Players earn or lose \VPs each turn for regular or particular
+situations, and also for particular discoveries.
+\bparag Even if these \VPs are earned at different moments of the turn, it is
+often easier to count them all together at the end of the turn.
 
-Players earn or lose \VPs each turn for regular or particular situations, and
-also for particular discoveries.
-\aparag[During the interphase]~\\
+\aparag Note that some other actions (\emph{e.g.} Bankruptcy, some events,
+\ldots) may also give or take \VPs during turn and are not all recalled
+here.
+
+\aparag[During the Diplomacy phase:]~\\
+\begin{modlist}
+\item[-10] for each declaration of war without CB;
+\item[+?] the income value of annexed provinces (Dowries);
+\item[-?] twice the income value of lost provinces (Dowries).
+\end{modlist}
+
+\aparag[During the Military phase:]~\\
+\begin{modlist}
+\item[+5] per major battle won.
+\end{modlist}
+
+\aparag[During the Peace phase:]~\\
+\begin{modlist}
+\item[+?] the income value of annexed provinces;
+\item[-?] the income value of lost provinces;
+  % \item[$\pm$?] half the income of occupied provinces (divided by 2
+  %   for \TP/\COL, including Resources)
+\item[+2] per peace level of a war won against at least one major power;
+\item[+1] per peace level of a war won against only minor powers;
+\item[-2] per peace level of a lost war;
+\item[-20] for a forced religious conversion (unless stated otherwise);
+\end{modlist}
+
+\aparag[\VPs of minor powers]
+The players also earn (or lose) half of the \VPs earned (or lost) by a minor
+country which they control.
+\bparag This is both for allied minors and for Neutral minors controlled by
+the player (in order to avoid the players to voluntarily play poorly).
+
+\aparag[During the Interphase:]~\\
 \begin{modlist}
   % \item[\textpm S] the \STAB
 \item[+1] per partial \terme{monopoly} of Exotic Resource
 \item[+3] per total \terme{monopoly} of Exotic Resource
 \end{modlist}
-\aparag[During the peace phase]~\\
-\begin{modlist}
-\item[+?] the income value of the annexed provinces
-\item[-?] the income value of the lost provinces (double if ceded by Dowries)
-  % \item[$\pm$?] half the income of occupied provinces (divided by 2
-  %   for \TP/\COL, including Resources)
-\item[+5] per major battle won
-\item[+2] per peace level of a war won against a major power
-\item[+1] per peace level of a war won against a minor power
-\item[-2] per peace level of a lost war
-\item[-10] for a declaration of war without CB this turn
-\item[-20] for a forced religious conversion (unless stated otherwise)
-\end{modlist}
+
+\aparag[Definitions of \terme{monopolies}]
+\terme{Monopolies} are defined for exploitation of each exotics resources
+% \bparag \STZ/\CTZ : a player has a partial \terme{monopoly} in a \CTZ or a
+% \STZ when he is the only possesser of a face \Faceplus fleet counter in this
+% zone. He has a total \terme{monopoly} when he has a 6 levels fleet, and there
+% is no other fleet in the zone.
+\bparag \label{chVictories:MonopolyExoticResources} For each resource, a
+country has a partial \terme{monopoly} if it produces at least 6 units and
+half of the world production of this resource. It has a total \terme{monopoly}
+if it produces all units but 2 of this resource.
+
 
 \aparag[Discoveries]~\\
 % TBD??? Keep all of them or not ???? JC, Jym ???  PB: seems to have been done
 \begin{modlist}
-\item[+50] the 1st round-the-world trip (if it is completed in a single turn)
-\item[+20] the 1st round-the-world trip (if it is completed in 2 turns)
-\item[+20] the 2nd round-the-world trip
-\item[+3] the \granderegion{Quebec} area
+\item[+50] the 1st round-the-World trip (if it is completed in a single turn)
+\item[+20] the 1st round-the-World trip (if it is completed in 2 turns)
+\item[+20] the 2nd round-the-World trip
+\item[+3] the \granderegionQuebec area
 \item[+2] the \granderegion{Grands Lacs} area
-\item[+3] the \granderegion{Rocheuses} area
-\item[+10] the \seazone{Horn}
-\item[+10] the \seazone{Tempetes}
-\item[+3] the \seazone{Hudson}
-\item[+3] the \granderegion{Alaska} area
-\item[+5] the \granderegion{Alaska} area via \continent{Asia}
-\item[+5] the \granderegion{Panama} area by the west
-\item[+5] the \granderegion{Kamchatka} area by land from Europa
-\item[+1] per province of the \granderegion{Amazonia} area
+\item[+3] the \granderegionRocheuses area
+\item[+10] the \seazoneHorn
+\item[+10] the \seazoneTempetes
+\item[+3] the \seazoneHudson
+\item[+3] the \granderegionAlaska area
+\item[+5] the \granderegionAlaska area via \continentAsia
+\item[+5] the \granderegionPanama area by the West
+\item[+5] the \granderegionKamchatka area by land from Europa
+\item[+1] per province of the \granderegionAmazonia area
 \item[+1] per province bording Mississippi river
 \end{modlist}
 
-\aparag[\VPs of minor powers]
-The players also earn (or lose) half of the \VPs earned (or lost) by a minor
-country which entered war at their side.
+\aparag[Discoveries] 
+\bparag Discoveries \VPs or \Areas are given to the first country who
+discovers at least one province in the \Area.
+\bparag Discoveries \VPs of provinces and sea zones are given to the first
+country who discovers it. Each province of \granderegionAmazonia as well as
+each province bordering the Mississippi river is worth 1\VP individually.
+\bparag Discovery of \granderegionPanama by the West is landing one stack in
+\granderegionPanama from the Pacific Ocean. Both the land stack and the naval
+stack carrying it must have cross Cape Horn.
+\bparag Discovery of \granderegionKamchatka by land is done using the special
+movement of~\ref{chBasics:Secret Passage:Bering}. The stack doing it may not
+have used naval transport since it left the European map.
+\bparag Discovery of \granderegionAlaska via \continentAsia is done by landing
+a stack in \granderegionAlaska, the naval stack carrying it must have left
+from a port in \continentAsia.
 
-\aparag[Definitions of \terme{monopolies}]
-\terme{Monopolies} are defined for each \STZ/\CTZ and for exploitation of each
-exotics resources
-\bparag \STZ/\CTZ : a player has a partial \terme{monopoly} in a \CTZ or a
-\STZ when he is the only possesser of a face \Faceplus fleet counter in this
-zone. He has a total \terme{monopoly} when he has a 6 levels fleet, and there
-is no other fleet in the zone.
-\bparag \label{chVictories:MonopolyExoticResources} Exploitation of exotic
-resources : for each resource, a player has a partial \terme{monopoly} when he
-produce at least 6 units and half of the world production of this resource. He
-has a total \terme{monopoly} when he produce all units but 2 of this resource.
+% \aparag[Circumnavigation] (precision for the insanes)
+% \bparag Round-the-World trips are completed when at least 1 \LDE or leader
+% goes back to a port it already went in after going an odd number of time in
+% each of the following zones: \seazone{Bonne-Esperance}, \seazoneTempetes,
+% \seazonePacifique and \seazoneChili.
+
+% (Jym)
+% Can't define circumnavigation properly :-(
+% "At least once in each" is no good because one could do BE/Horn/Pac/Horn and
+% skip Indian ocean.
+% "Odd number" is no good because one could do BE/Horn/Pac/BE and
+% circumnavigate with 2 BE.
 
 
 
