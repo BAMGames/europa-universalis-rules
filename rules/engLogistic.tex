@@ -32,14 +32,15 @@ game, you may use whatever you wish to represent them.
 
 \subsubsection{Troops}\label{chLogistic:Troops definition}
 \aparag[Troops] are represented by three different kinds of counters
-corresponding to various size of land forces: \terme{Land Detachment} (\LD),
-\terme{Army} (\ARMY) and \terme{Land Detachment of Exploration} (\LDE).
+corresponding to various size of land forces: \terme{Army} (\ARMY),
+\terme{Land Detachment} (\LD) and \terme{Land Detachment of Exploration}
+(\LDE).
 \bparag The basic count unit is one \LD.
 
 \aparag[Detachments.] One \LD represent some infantry and cavalry. The precise
 number of them depends on the country and the period. \LD are abstract
-representation of small field forces and consists roughly in 1000 to 5000
-soldiers.
+representation of small field forces and consists roughly in 1000 to 10000
+soldiers, depending on the country and the period.
 
 \aparag[Armies.] \ARMY counters have two sides. An \ARMY\facemoins is two \LD
 plus some field and siege artillery. An \ARMY\faceplus is four \LD plus more
@@ -50,6 +51,8 @@ number of \LD (2 or 4) of the same country at any time in the game. Note that
 artillery is lost in the process.
 \bparag Similarly, an \ARMY\faceplus can be turn into one \ARMY\facemoins and
 two \LD at any time.
+\bparag However, an \ARMY\faceplus may not be broken into two
+\ARMY\facemoins as this would create an \ARMY counter (see below).
 \bparag Especially, \ARMY can be broken during movement or to satisfy losses
 (whether combat or attrition). If one \ARMY\faceplus suffers a 1 \LD loss,
 there is one \ARMY\facemoins and 1 \LD remaining.
@@ -61,7 +64,7 @@ entire \ARMY\facemoins is annihilated.
 \aparag[Creating and reinforcing armies.] The only way to create a new \ARMY
 counter is to buy it during the Administrative phase (logistic segment).
 \bparag Especially, it is never possible to ``merge'' two \LD into an
-\ARMY\facemoins.
+\ARMY\facemoins nor to break an \ARMY\faceplus into two \ARMY\facemoins.
 \bparag On the other hand, it is possible to reinforce an \ARMY\facemoins with
 two \LD (in one stack) and turn it into an \ARMY\faceplus. This can be done at
 any time in the game.
@@ -73,6 +76,8 @@ act as containers. Each may contain up to 4\LD of some nationality and can be
 created at any point during the turn. The precise contents of these armies
 must be written done in order to give back the \LD to their owners when the
 army is broken.
+\bparag As an exception to normal rules, these \ARMY can be created during the
+military rounds.
 
 \aparag[Detachments of Exploration.] One \LDE represents roughly one third of
 a \LD.
@@ -80,8 +85,8 @@ a \LD.
 the \ROTW map). As soon as one \LDE enters the European map, it is immediately
 destroyed.
 \bparag One \LD can be split in 3 \LDE at any time (especially to satisfy
-losses in the \ROTW). 3 \LDE stacked together can be turned into 1\LD at any
-time.
+losses in the \ROTW). 3 \LDE stacked together must be turned into 1\LD after
+movement.
 \bparag For maintenance and purchase, 1\LDE costs as much as half a \LD.
 \bparag \LDE are never counted in stacking and supply limits.
 
@@ -164,8 +169,8 @@ otherwise, add \bonus{+1} if there is another \ARMY with 1 artillery.
 \subsection{The Navy}
 
 \aparag[Naval forces] are represented by three different kinds of counters
-corresponding to various sizes of naval forces: \terme{Naval Detachment}
-(\ND), \terme{Fleet} (\FLEET) and \terme{Naval Detachment of Exploration}
+corresponding to various sizes of naval forces: \terme{Fleet} (\FLEET),
+\terme{Naval Detachment} (\ND) and \terme{Naval Detachment of Exploration}
 (\NDE).
 \bparag The basic count unit is one \ND. However, there are several kind of
 \ND corresponding to various type of ships.
@@ -173,8 +178,9 @@ corresponding to various sizes of naval forces: \terme{Naval Detachment}
 \aparag[Warships and Galleys.] \ND can represent different kinds of
 ships. Mostly warships, galleys or transports.
 \bparag Thus, there are several kind of \ND: \terme{Naval Warship Detachment}
-(\NWD), \terme{Naval Galley Detachment} (\NGD) (also the Venetian
-\terme{Galleass}, written \VGD) and \terme{Naval Transport Detachment} (\NTD).
+(\NWD), \terme{Naval Galley Detachment} (\NGD) (also the \terme{Galleass},
+written \VGD because they are first used by \VEN) and \terme{Naval Transport
+  Detachment} (\NTD).
 \bparag All those naval detachments are treated differently, but some rules
 apply to all. In this case, the generic term \ND will be used.
 \bparag \VGD are considered \NGD when the case apply (\emph{i.e.} whenever
@@ -195,8 +201,12 @@ number of \NWD (or \NGD) plus some \NTD.
 countries and period (representing evolution of the naval doctrines).
 \bparag The (maximal) content of the fleets is detailed in the
 \tableref{table:Countenance of Fleets}. It can contain a number of \NWD (a
-\NGD counts for half a \NWD) and a number of \NTD. This number depends of the
+\NGD counts for half a \NWD) and a number of \NTD. This number depends on the
 period and the country involved.
+\bparag There is one line per country (or class) and one column per
+period. Each box contains four numbers as ``$x/y:x'/y'$''. The first two
+($x/y$) are the maximum number of \NWD/\NTD in a \FLEET\facemoins and the last
+two ($x'/y'$) are the maximum number of \NWD/\NTD in a \FLEET\faceplus.
 \bparag A \FLEET is put on the side \Faceplus only if there is not enough room
 in a \FLEET\facemoins to accommodate all the \ND. The counter is turned as
 necessary.
@@ -219,7 +229,8 @@ stacking limits).
 warships (one third of a \NWD).
 \bparag \NDE can exists both on the \ROTW and European maps.
 \bparag One \NWD (only) can be split in 3 \NDE at any time (especially to
-satisfy losses). 3 \NDE stacked together can be turned into 1\NWD at any time.
+satisfy losses). 3 \NDE stacked together must be turned into 1\NWD after
+movement.
 \bparag For maintenance and purchase, 1\NDE costs as much as half a \NWD.
 \bparag \NDE are never counted in stacking and supply limits.
 
@@ -257,6 +268,7 @@ represent the whole defence system of the province thus including several
 actual fortresses, citadels, fortified towns, \ldots
 \bparag Fortifications are also supply sources for both land and naval troops.
 
+\subsubsection{Fortification counters}
 \aparag[Fortresses] have a level between 1 and 5.
 \bparag Each European province, as well as some \ROTW provinces, has a basic
 fortress of level either 1 or 2 drawn of the map.
@@ -277,7 +289,8 @@ automatically have a fort.
 \bparag Other forts may be built during the military phase by land forces.
 \bparag A \COL of level 6 is considered to be an European province. Thus, it
 gains for free a basic fortress of level 1. Use white level 1 counters to
-denote it.
+denote it. Since this is a basic fortress, there is no need to pay for its
+maintenance.
 
 \aparag[\Presidios] are small fortifications built in enemy territory to try
 and control access to the sea rather than the land itself.
@@ -292,13 +305,14 @@ on them. These are \terme{arsenals}.
 \construction{Gibraltar}, \construction{Sebastopol} and
 \construction{Saint-Petersbourg}).
 
+\subsubsection{Fortifications as Supply sources}
 \aparag[Land Supply.]
 \bparag Forts may only supply detachments (\LD or \LDE).
 \bparag Other fortresses can supply any number of land troops, whatever the
 level of the fortress.
 \bparag \COL and \TP, although they only have a fort, are supply sources for
 any number of land troops (that is, the establishment has more supply capacity
-that its fortification level).
+that its intrinsic fort).
 
 \aparag[Naval Supply.]
 \bparag Forts may only supply detachments (\ND or \NDE).
@@ -309,7 +323,7 @@ fortress.
 \bparag \COL and \TP, although they only have a fort, are supply sources as
 regular ports: each can supply any number of naval stacks containing at most
 one \FLEET counter (that is, the establishment has more supply capacity that
-its fortification level).
+its intrinsic fort).
 
 \begin{designnote}
   Note that supply limits are cumulative. That is, a single fortress may
@@ -317,7 +331,7 @@ its fortification level).
   each of them individually. There is no ``using up'' of the supply capacity.
 
   The ``extra supply capacity'' of \COL or \TP (with respect to their
-  fortification level) is reminded is the size of the counter: they use big
+  fortification level) is reminded in the size of the counter: they use big
   counters because they have a lot of food.
 \end{designnote}
 
@@ -327,7 +341,7 @@ its fortification level).
 
 \aparag[Veterans and Conscripts.] All land forces can be either
 \terme{Veteran} or \terme{Conscripts}. A \terme{Veteran} army has seen more
-battles than conscripts, are better trained, and less likely to flee in the
+battles than conscripts, is better trained, and less likely to flee in the
 presence of the enemy. A \terme{Conscript} army is formed of newer soldier and
 paid less.
 \bparag \terme{Veteran} have a bonus in battle (better moral). However, their
@@ -360,14 +374,14 @@ or \terme{Conscript}. Newly recruited units are \terme{Conscripts}.
   as a whole will be \terme{Veteran}.
 \end{exemple}
 
-\begin{designnote}
+\begin{playtip}
   Think twice before upkeeping troops as \terme{Conscripts}. The extra moral
-  will make a huge difference in battles.
-\end{designnote}
+  will make a huge difference in battles and is usually worth your money.
+\end{playtip}
 
 \aparag[Navy] Naval forces are \terme{Veterans} if they are maintained from a
 previous turn, or \terme{Conscripts} if there are newly recruited this turn.
-\bparag The only difference will be for Navy of technology \terme{Vessel} or
+\bparag The difference only occurs for Naval technologies \terme{Vessel} and
 \terme{Three-decker}.% \terme{Veteran} naval forces have morale 4 instead of 3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -384,24 +398,24 @@ disbanded. Maintaining troops costs money.
 
 \subsection{Basic forces}
 
-\aparag Depending on the period, each country is entitled to some \terme{basic
-  forces}. These forces are maintained for free. \terme{Basic forces} can be
-found in the player's aids.
+\aparag Depending on the period, each major country is entitled to some
+\terme{basic forces}. These forces are maintained for free. \terme{Basic
+  forces} can be found in the player's aids.
 \bparag The units maintained as part of the \terme{basic forces} are
 maintained as \terme{Veteran}.
 
 \aparag The basic forces comes in three kinds: specific land forces (such as
 \ARMY\faceplus, \ARMY\facemoins, 3\LD), specific naval forces (such as
-\FLEET\faceplus, etc.) or generic detachments (\GD) that can either serve as
-\LD or \ND.
+\FLEET\faceplus, 1\ND, etc.) or generic detachments (\GD) that can either
+serve as \LD or \ND.
 \bparag In some cases (see below), it is possible to convert basic forces from
 one denomination to another. For these conversions (only), use the
 equivalences: 1\ARMY\Facemoins=2\LD, 1\ARMY\Faceplus=2\ARMY\Facemoins=4\LD ;
 1\FLEET\Facemoins=2\ND, 1\FLEET\Faceplus=2\FLEET\Facemoins=4\ND. Note that for
 naval forces this can be sensibly different from the actual content of \FLEET.
 
-\aparag If possible, the \terme{basic forces} must be used to maintain
-counters that are the same size or larger than them.
+\aparag If possible, the \terme{basic forces} must be used to maintain (fully
+or partially) counters that are the same size or larger than them.
 % (by combination), using 2\LD=\ARMY\facemoins and
 % 2\ARMY\facemoins=\ARMY\faceplus.
 
@@ -432,7 +446,7 @@ of basic force).
 \aparag All the units that are not maintained by \terme{basic forces} must be
 payed for in order to be kept.
 \bparag If a unit is partially maintained, the part which is not maintained is
-destroyed.
+disbanded (destroyed).
 \bparag Maintenance costs depends both on the technology and the country. They
 can be found in the player's aids.
 
@@ -488,10 +502,10 @@ maintained. They can, however, be recruited anew.
   (7\ducats) or Conscript (4\ducats) while the \FLEET\Faceplus costs 80\ducats
   to maintain.
 
-  The less expensive solution is to use the 3\GD to partially maintain the
-  \FLEET. Since, for maintenance purpose, 1\FLEET\Faceplus is considered to be
-  4\ND, this leaves only 1\ND to maintain (17\ducats) and the 4\LD must also
-  be maintained (for 4 or 7 \ducats each, depending on their status).
+  The less expensive solution however is to use the 3\GD to partially maintain
+  the \FLEET. Since, for maintenance purpose, 1\FLEET\Faceplus is considered
+  to be 4\ND, this leaves only 1\ND to maintain (17\ducats) and the 4\LD must
+  also be maintained (for 4 or 7 \ducats each, depending on their status).
 
   It is also possible to use 2\GD to maintain \FLEET\Facemoins and the third
   to maintain one \LD. This leave 3\LD and \FLEET\Facemoins to maintain.
@@ -507,9 +521,9 @@ maintained. They can, however, be recruited anew.
 
   If \SPA only has 2\ARMY\Faceplus and 3 \ARMY\Facemoins (and no naval
   forces), then the 2\ARMY\Faceplus of basic forces must be used to maintain
-  the 2\ARMY\Faceplus of actual troops. The, the 3\ARMY\Facemoins will use the
-  3\GD. However, since at most 1 land counter may be partially maintained by
-  basic forces, it is not possible to use each \GD to partially maintain
+  the 2\ARMY\Faceplus of actual troops. Then, the 3\ARMY\Facemoins will use
+  the 3\GD. However, since at most 1 land counter may be partially maintained
+  by basic forces, it is not possible to use each \GD to partially maintain
   1\ARMY\Facemoins (leaving 3\LD to pay). Thus, \SPA must use 2\GD to maintain
   1\ARMY\Facemoins, then 1\GD to partially maintain the second
   \ARMY\Facemoins. This leaves 1\LD (7\ducats, since it is a partially
@@ -543,7 +557,7 @@ during the Wars in Italy).
 (representing the spreading of the ideas of \leader{Vauban}).
 \bparag The free forts given by \TP or \COL do not need any maintenance. The
 ones given by missions do, even if the local fort/fortress is of a higher
-level. The free level 1 fortress of a level 6 \COL remains free also.
+level. The free level 1 fortress of a level 6 \COL also remains free.
 \bparag The level of a fortress can be lowered by its owner if he controls
 it. A lowered fort is destroyed.
 
@@ -563,7 +577,8 @@ the same level.
 forces (troops, navy, fortifications) are destroyed.
 % \bparag If a \MIN is at peace during one full turn, its \terme{basic forces}
 % are automatically recruited to their maximum.
-\bparag Exception: a \MAJ may pay to maintain fortresses of a \VASSAL.
+\bparag Exception: a \MAJ may pay to maintain fortresses of a \VASSAL. [TBD:
+remove]
 \bparag Exception: former \MAJ (\paysPortugal, \paysVenise and \paysPologne)
 maintain all their fortresses for free (unless otherwise specified, typically
 for non-absolutist \paysPologne).
@@ -574,9 +589,9 @@ any or all forces above the \terme{basic forces} of the \MIN, up to its
 counter allowance.
 \bparag The costs are the same as those of the \MAJ for the Technology of the
 \MIN.
-\bparag A \MAJ may pay to maintain fortresses of a \VASSAL.
+\bparag A \MAJ may pay to maintain fortresses of a \VASSAL. [TBD: remove]
 \bparag Other minors (non \VASSAL) at war maintains all their fortifications
-in addition to their \terme{basic forces}.
+in addition to their \terme{basic forces}. [TBD: remove]
 \bparag Minors fully at war without \MAJ allies maintain all the forces they
 have.
 
@@ -633,7 +648,7 @@ varying with its current technology.
 (exception: \RUS).
 \bparag In order to buy an \ARMY\Faceplus, a country usually buys
 1\ARMY\Facemoins and 2\LD and immediately (during the administrative phase)
-turn them into 1\ARMY\Faceplus. It is also possible to do so by buying
+merge them into 1\ARMY\Faceplus. It is also possible to do so by buying
 2\ARMY\Facemoins but it is usually more expensive and requires two \ARMY
 counters instead of one.
 
@@ -917,7 +932,7 @@ phase.
 
 \aparag[Wasteland]\label{chLogistic:Fortresses Wasteland} In the Wasteland (see
 \ruleref{chBasics:Wasteland}), until 1615 (periods \period{I}--\period{III}),
-fortresses may not be more than 1 level higher than the basic level one map
+fortresses may not be more than 1 level higher than the basic level on map
 (\emph{i.e.} the maximum level is 2 on provinces with a basic level of 1 and 3
 in provinces with a basic level of 2).
 \bparag After 1615 (periods \period{IV}--\period{VII}) and until the
@@ -925,7 +940,7 @@ construction of \ville{Saint-Petersbourg}, the limit becomes 2 levels higher
 than the one on the map.
 \bparag After the construction of \ville{Saint-Petersbourg}, all limits are
 removed.
-\bparag This does not preclude other conditions on fortresses level (such as
+\bparag This does not remove other conditions on fortresses level (such as
 Land Technology level).
 
 \aparag[\Presidios] are built only according to rule \ref{chRedep:Presidios},
@@ -1135,11 +1150,11 @@ costs.
 % TODO -- Check one more time...  PB 07/2008: seems ok...
 
 \aparag[Declaring Exceptional Levies]
-\bparag A country which is fully at war may declare \terme{Exceptional levies}
-at the end of any round during which it suffered a major defeat in a land
-battle. This is possible only during regular full wars (\emph{i.e.} not during
-civil, religious or overseas wars and not during limited or foreign
-interventions).
+\bparag Once per turn, a country which is fully at war may declare
+\terme{Exceptional levies} at the end of any round during which it suffered a
+major defeat in a land battle. This is possible only during regular full wars
+(\emph{i.e.} not during civil, religious or overseas wars and not during
+limited or foreign interventions).
 \bparag The country immediately loses 1 \STAB. Levies may be declared by a
 country already at -3 \STAB, at no additional cost.
 \bparag Once declared, levies are available for the rest of the turn. It is
@@ -1173,7 +1188,7 @@ Levies.
   the already long war. Its technology is \TBAR.
   
   Alas! At Rocroy, the Spaniards are hopelessly crushed by \leader{Grand
-    Conde}, a major defeat. \HIS loses 1\STAB because of the defeat (thus
+    Conde}, a major defeat. \HIS loses 1 \STAB because of the defeat (thus
   going to -1) and then decides that there are way too many blue counters on
   the map and that adding some yellow ones is required. Thus, it declares
   exceptional levies. This brings the \STAB down to -2.
@@ -1234,18 +1249,58 @@ Levies.
 
 \subsection{Recruitment of Minor Powers}
 \label{chLogistic:Recruitment of minors}
+\subsubsection{Going to war}
+\aparag When a minor country enter wars, immediately (during the Diplomacy
+phase) put all its basic force in play. Especially the ``one more fortress
+level per turn'' rule do not apply for basic forces (only for
+reinforcements).
+\bparag Former majors may have some fortress already in play (maintained from
+previous turns). These levels are subtracted from any level of fortress they
+have in basic forces. That is, basic forces is the minimum the country has
+upon entering war, not the amount it gains.
+\bparag Basic forces are only received if the country was at peace and enters
+war. No basic forces are received in the middle of a war, even if the basic
+forces of the country change (due to some events, usually).
+
+\aparag Next, during the Administrative phase, minor receive reinforcement as
+described below.
+
+\begin{exemple}
+  \paysVenise has a basic force of 4 \fortress. If there already are 5 extra
+  levels of fortress on the map when war occurs, \paysVenise do not receive
+  any more. If there are 3 extra levels on the map, then \paysVenise would
+  only receive 1 level as basic force (to reach the total to 4).
+
+  Before~\ref{pIV:Great Elector}, the basic forces of \paysBrandebourg are
+  \ARMY\facemoins, \LD. After, they switch to \ARMY\faceplus, \LD. If this
+  event occurs while \paysBrandebourg is at war and only as \ARMY\faceplus in
+  play (more than the old basic force, but less than the new one),
+  \paysBrandebourg do not gain any new forces (it will roll for reinforcement
+  as usual). That is, the country needs one turn of peace to recruit its troop
+  up to its basic forces.
+\end{exemple}
+
 \subsubsection{Minors fully at peace}
-\aparag A minor which is fully at peace (no war, overseas war or Limited
-intervention) recruits up to its basic forces.
-\bparag In addition, during periods \period{V}-\period{VII}, each minor
-country with an \terme{Income} of 16 or more gets one extra level of fortress
-in its basic forces.
+\aparag[Troops and Navies] A minor which is fully at peace (no war, overseas
+war or Limited intervention) recruits up to its basic forces.
 \bparag Remember that troops in excess of the basic forces are disbanded
 (except some fortresses), see~\ref{chLogistic:Maintenance of minors}.
 \bparag Thus, it is not necessarily to put these counters on map. Once a minor
 is at peace during the Administrative phase, all its counters (except some
 fortresses) may be removed from the map. The next time the minor goes to war,
 it will receive its basic forces.
+
+\aparag[Fortresses] 
+{\bparag} [TBD] A minor country with Land Technology \TBAR or higher has an
+extra basic force of one level of fortress for every two provinces it owns.
+{\bparag} [TBD] A minor country with Land Technology \TMAN or higher has an
+extra basic force of one level of fortress for every province it owns.
+{\bparag} [TBD] These levels do not need to be evenly spread over the
+provinces and may be grouped into the same province.
+\bparag In addition, during periods \period{V}-\period{VII}, each minor
+country with an \terme{Income} of 16 or more gets one extra level of fortress
+in its basic forces.
+
 
 \subsubsection{Minors in Limited Intervention or Overseas wars}
 \aparag[Maximum recruitment]
