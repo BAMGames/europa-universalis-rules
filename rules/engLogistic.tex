@@ -1258,9 +1258,9 @@ reinforcements).
 previous turns). These levels are subtracted from any level of fortress they
 have in basic forces. That is, basic forces is the minimum the country has
 upon entering war, not the amount it gains.
-\bparag Basic forces are only received if the country was at peace and enters
-war. No basic forces are received in the middle of a war, even if the basic
-forces of the country change (due to some events, usually).
+\bparag Basic forces are only received if the country was fully at peace and
+enters war. No basic forces are received in the middle of a war, even if the
+basic forces of the country change (due to some events, usually).
 
 \aparag Next, during the Administrative phase, minor receive reinforcement as
 described below.
@@ -1291,16 +1291,40 @@ fortresses) may be removed from the map. The next time the minor goes to war,
 it will receive its basic forces.
 
 \aparag[Fortresses] 
-{\bparag} [TBD] A minor country with Land Technology \TBAR or higher has an
+\bparag [[TBD]] A minor country with Land Technology \TBAR or higher has an
 extra basic force of one level of fortress for every two provinces it owns.
-{\bparag} [TBD] A minor country with Land Technology \TMAN or higher has an
+\bparag [[TBD]] A minor country with Land Technology \TMAN or higher has an
 extra basic force of one level of fortress for every province it owns.
-{\bparag} [TBD] These levels do not need to be evenly spread over the
+\bparag [[TBD]] These levels do not need to be evenly spread over the
 provinces and may be grouped into the same province.
 \bparag In addition, during periods \period{V}-\period{VII}, each minor
 country with an \terme{Income} of 16 or more gets one extra level of fortress
 in its basic forces.
+\bparag Before \TARQ, a fortress of level 3 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 2.
+\bparag Before turn 40, a fortress of level 4 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 3.
 
+\begin{exemple}[Fortresses]
+  \paysAlgerie normally owns 6 provinces and has an Income of 17. If its
+  technology is \TBAR, in period \period{IV}, it receives 3 levels of
+  \fortress as \terme{Basic forces} and may choose to put 2 of them in
+  \provinceAlgerie (thus reaching level 3) and 1 in \provinceOran (going to
+  level 2). Note that it is not possible to put a level 4 fortress in
+  \provinceAlgerie as the fourth level (above a level 3) itself costs two
+  levels before turn 40.
+
+  In period \period{V}, \paysAlgerie gains a fourth level of fortress as
+  \terme{Basic force} due to its high Income. It may now put a level 4
+  fortress in \provinceAlgerie (if allowed by technology). However, before
+  turn 40, that would cost the four levels as going from level 3 to level 4
+  cost two levels.
+
+  If \paysAlgerie reaches technology \TMAN, it now has a total of 7 level of
+  fortress when going to war (1 per province plus 1 for high Income) and may
+  choose to barricade the cost with level 3 fortresses in \provinceOran and
+  \provinceAnnabah, and a level 4 in \provinceAlgerie.
+\end{exemple}
 
 \subsubsection{Minors in Limited Intervention or Overseas wars}
 \aparag[Maximum recruitment]
@@ -1331,7 +1355,7 @@ to raise troops up to the basic forces of the country.
 minor.
 \bparag These troops are not counted toward the recruitment limit of the
 major.
-\bparag The maximal reinforcements so raised are the \terme{basic
+\bparag The maximal reinforcements raised this way are the \terme{basic
   reinforcements}, plus 2 detachments (\LD or \ND).
 
 \aparag[Moral]
@@ -1445,9 +1469,9 @@ down).
 \aparag[Fortresses.] Some levels of fortresses are obtained by the
 Reinforcement Roll. The new levels must be placed in controlled provinces that
 are neither besieged nor revolted.
-\bparag In addition, during periods \period{V}-\period{VII}, each minor
-country with an \terme{Income} of 16 or more gets one extra level of fortress
-in its \terme{Basic Forces}.
+% \bparag In addition, during periods \period{V}-\period{VII}, each minor
+% country with an \terme{Income} of 16 or more gets one extra level of fortress
+% in its \terme{Basic Forces}.
 \bparag A given fortress can not be improved by Reinforcements by more than
 one level at a given turn. This rule does not constrain the fortresses that
 are in the \terme{Basic Forces}.
@@ -1460,7 +1484,8 @@ countries at the cost of 2 levels of fortress on top of an existing level 3.
 \bparag Each minor fully at war gets 1 active campaign each round.
 \bparag In addition, it may receive multiple campaigns (MC) per reinforcement
 roll.
-\bparag The diplomatic patron may pay for more campaigns.
+\bparag The diplomatic patron may pay for more campaigns (paying the
+difference between the chosen campaign and the active one).
 
 \aparag[Military Leaders of Minors: basic forces]
 \bparag If there is a living named leader of the country, he automatically
@@ -1470,9 +1495,9 @@ there are not enough named leaders to reach this limit, the minor receive
 \anonyme\ leaders. If possible, take these among the minor country pool,
 otherwise among the generic grey leaders (of ``country'' \textsc{Quidam}).
 \bparag Contrary to major countries, \anonyme\ leaders of minors are not
-changed each turn. They are only removed when the country is at peace. If, due
-to death, the country falls below its basic forces (in number of leaders), it
-immediately receive a new one.
+changed each turn. They are only removed when the country is fully at
+peace. If, due to death, the country falls below its basic forces (in number
+of leaders), it immediately receive a new one.
 
 \aparag[Military Leaders of Minors: reinforcements]
 \bparag By cross-referencing the (modified) reinforcement roll with the last
@@ -1509,7 +1534,7 @@ either at a given turn or following certain rules or event.
 is not available and may not enter game (even through reinforcements).
 \bparag List of concerned leaders (and countries): \leader{La Valette}
 replaces \leader{Grand Maitre} (\paysChevaliers), \leader{Abbas Shah} and
-\leader{Nadir Shah} replace \leader{Shah} (\paysPerse) and \leader{Akbar}
+\leader{Nadir Shah} both replace \leader{Shah} (\paysPerse) and \leader{Akbar}
 replaces \leader{Great Mughal} (\paysMogol).
 \bparag Note that the \anonyme\LeaderG of \paysDanemark and \paysUSA are not
 concerned. They are always available for these countries as reinforcement
@@ -1519,10 +1544,8 @@ leaders even if there are some named leaders alive.
   At turn 10, \paysAlgerie is at peace. Thus, whatever it had left on previous
   turn, it rebuilds and keeps only its basic forces of \ARMY\facemoins and
   \FLEET\facemoins (the \corsaire is left out of this example). There is no
-  need to keep these counters on map. Since it is a \VASSAL of \TUR, \TUR also
-  chooses to pay for maintaining a fortress of level 2 in
-  \provinceAlgerie. This counter has to be put on map as a reminder of the
-  existence of this fortress. The technology of \paysAlgerie is \TREN.
+  need to keep these counters on map. The technology of \paysAlgerie is \TREN
+  and \paysAlgerie is a \VASSAL of \TUR.
 
   At turn 11, \ref{pIII:Revolt Grenade} occurs (earlier than historically) and
   \TUR decides to go to war, together with its ally \paysAlgerie.
@@ -1546,15 +1569,12 @@ leaders even if there are some named leaders alive.
   die for the leader and gets a 2, smaller than the leader value, thus
   \paysAlgerie gets an extra leader for the duration of the war. Since it
   already has an \LeaderA (\leader{Barbaros2}), \TUR chooses to take a
-  \LeaderG for \paysAlgerie (among the grey \anonyme\LeaderG). \TUR cannot
-  raise the fortress of \provinceAlgerie to level 3, indeed at \TREN this
-  would cost 2 levels of fortresses and \paysAlgerie received only one. Since
-  it it not possible either to ``keep'' the level for a further turn, \TUR
-  rather chooses to put it in \provinceOran (and place a grey level 2 fortress
-  there). As for the troops, \TUR chooses to take 2\NGD instead of 1\ND and
-  put them directly in the \FLEET (and note on its record sheet the exact
-  content of the Algerian \FLEET). The \LD is put in \provinceAlgerie, waiting
-  to board for an invasion of Spain\ldots
+  \LeaderG for \paysAlgerie (among the grey \anonyme\LeaderG). Then, \TUR
+  raise the fortress of \provinceAlgerie to level 2. As for the troops, \TUR
+  chooses to take 2\NGD instead of 1\ND and put them directly in the \FLEET
+  (and note on its record sheet the exact content of the Algerian \FLEET). The
+  \LD is put in \provinceAlgerie, waiting to board for an invasion of
+  Spain\ldots
 \end{exemple}
 
 \section{Removal and Placement of leaders}
@@ -1584,7 +1604,17 @@ check the description of the event to known how long the leader lasts.
   or their period of military activity. ``Death'' of a leader (whether
   scheduled or during battle) may be either actual death, retirement of old
   age or after a severe wound, change of career (often to become minister),
-  fall in disgrace, \ldots
+  fall in disgrace, \ldots 
+
+  Turns of life are sometimes longer than the actual life of the historical
+  leader. This may happen for several reasons, mostly because the actual
+  historical character died early (in battle) and the counter allows for a
+  ``what if he didn't die'' or for game balance reasons. A leader may last one
+  or two turns more than its historical counterpart to ensure that a given
+  country has a good enough leader at a crucial period. Typically, leaders
+  active in one war are often given ``extended'' lifetime over the following
+  peace as the in-game wars and peace won't match the historical ones and
+  there are no great historical generals during peaces\ldots
 \end{designnote}
 
 \begin{exemple}[Removing named leaders]
