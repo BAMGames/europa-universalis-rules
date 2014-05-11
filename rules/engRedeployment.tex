@@ -478,8 +478,10 @@ Centre containing the \STZ/\CTZ they are located.
 \bparag For each \textetoile obtained by a \corsaire allied with the country
 owning the Trade Centre of the sea zone (at the moment of the attack),
 decrease the income of the Centre by 10\ducats for the next turn (only).
-\bparag Exception: The \corsaire of \pays{Chevaliers} never decreases the
-income of the Mediterranean Centre.
+\bparag Exception: The \corsaire of \pays{Chevaliers} does not decrease the
+income of the Mediterranean Centre if it is owned by a Christian country.
+\bparag Exception: The \corsaire of \Barbaresques do not decrease the income
+of the Mediterranean Centre if it is owned by \TUR.
 
 \begin{designnote}
   Trade and piracy don't go well together. Even your own merchants will become
@@ -851,7 +853,7 @@ take place, money is gained from looting.
 of the looted province.
 \bparag In the \ROTW, only the regular income is taken, not income from exotic
 resources.
-\bparag In the \ROTW, if there was strictly less than 2\LD, gain only half the
+\bparag In the \ROTW, if there was no \ARMY counter, gain only half the
 income.
 \bparag The sum of these incomes is recorded in \lignebudget{Pillages,
   privateers}.
@@ -903,7 +905,43 @@ establishment.
   for your merchants\ldots
 \end{exemple}
 
-\section{Mandatory Redeployment of Sieges}\label{chRedep:Redeployment}
+\sectionJ{Building \Presidios}{\includegraphics[width=12bp]{anchor4.png}~\includegraphics[width=12bp]{anchor5.png}}\label{chRedep:Presidios}
+\aparag[Where to build?]
+\bparag \Presidios may only be built in provinces with a port or arsenal
+depicted with a circled anchor on the map.
+\bparag \Presidios may only be built in non-owned provinces.
+
+\aparag[How to build?]
+\bparag To build a \Presidio, a country must either control the province or
+besiege it and not be forced to redeploy (that is, either \USURE\Faceplus,
+Breach or HW obtained during the turn).
+\bparag It is possible to build \Presidio even if deciding to voluntary
+redeploy from the siege.
+\bparag \Presidios are never build during administrative phase. Similarly,
+raising a \Presidio can only happen at the same conditions than building it.
+
+\aparag[Cost]
+\bparag \Presidios are fortresses and cost the same price (construction and
+maintenance). They have the same restrictions on levels and technology.
+\bparag \Presidios may never be of level more than 3.
+\bparag Contrary to fortresses, \Presidios may be built at any level
+directly. The cost is then the sum of costs for each level.
+\bparag This cost is recorded in \lignebudget{Presidios build}.
+
+\aparag[\Presidios in play]
+\bparag \Presidios are represented by fortresses of the owning power. Thus,
+they do count toward the counters limit of that power.
+\bparag At most one country may have a \Presidio in any given province.
+\bparag Because of \Presidios, up to two fortresses of different countries may
+exist in the same province. Put the regular fortress on top of the fortress
+icon on the map, and the \Presidio on top of the anchor.
+\bparag If a country ever gains ownership of a province where it has a
+\Presidio, it may either dismantle the \Presidio or keep it and replace the
+regular fortress of the province with it (remove any existing regular fortress
+counter and move the \Presidio counter on top of the fortress icon to depict
+the new fortress).
+
+\section{Redeployment of land troops}\label{chRedep:Redeployment}
 %\subsection{Mandatory and voluntary redeployments}
 \aparag[Mandatory redeployment]
 \bparag A stack without LOS must redeploy.
@@ -933,9 +971,13 @@ bring back discoveries.
 \aparag[Where to redeploy?]
 \bparag Stacks must redeploy into the closest (in \MP) friendly controlled
 territory. In case of equality, the controller of the stack chooses.
-\bparag Redeploying stacks may not enter provinces with non-redeploying enemy
-troops (troops that have finished their redeployment are still ``redeploying''
-until the end of the segment and thus do not hamper other redeployments).
+\bparag Exception: Redeployment by naval move is never forced if there is a
+possibility to redeploy by land, even if it is further (in \MP).
+\bparag Redeploying stacks may not enter provinces with non-redeploying
+unbesieged enemy troops (troops that have finished their redeployment are
+still ``redeploying'' until the end of the segment and thus do not hamper
+other redeployments). Enemy fortresses, even unbesieged, do not hamper
+redeployment.
 \bparag Redeploying troops may use naval move if there is a large enough naval
 stack adjacent to the redeploying stack at the beginning of the
 redeployment. Redeployment is then done together with return to port of the
@@ -963,7 +1005,7 @@ to this test.
 \bparag Besieging troops which obtained either a \USURE\Faceplus, a Breach or
 a HW during the turn may continue the siege for next turn.
 \bparag In this case, remove all \USURE and keep only a \USURE\Facemoins.
-\bparag Continuing siege do not cause attrition.
+\bparag Continuing siege does not cause attrition.
 
 \begin{exemple}[Simple redeployment]
   A Turkish stack is besieging \provinceBanat and got a \USURE\Faceplus and a
@@ -1047,8 +1089,10 @@ a HW during the turn may continue the siege for next turn.
   \smallskip
 
   If \SUE is besieging \provinceDanzig and owns \provinceHinterpommern, then
-  its redeployment priority is by sea (3\MP) if there is a naval stack
-  adjacent and then to \provinceHinterpommern (4\MP due to swamp and river).
+  its closest redeployment possibility is by sea (3\MP) and then to
+  \provinceHinterpommern (4\MP due to swamp and river). Redeployment by sea,
+  however, does not takes precedence over redeployment by land and \SUE can
+  freely choose any of the possibility (but may not split its stack).
 \end{exemple}
 
 \section{Return to Port}\label{chRedep:Return port}
@@ -1073,42 +1117,6 @@ active next turn.
 \bparag No interception, including by \Presidios or \StraitFort, may occur
 during this move.
 
-\sectionJ{Building \Presidios}{\includegraphics[width=12bp]{anchor4.png}~\includegraphics[width=12bp]{anchor5.png}}\label{chRedep:Presidios}
-\aparag[Where to build?]
-\bparag \Presidios may only be built in provinces with a port or arsenal
-depicted with a circled anchor on the map.
-\bparag \Presidios may only be built in non-owned provinces.
-
-\aparag[How to build?]
-\bparag To build a \Presidio, a country must either control the province or
-besiege it and not be forced to redeploy (that is, either \USURE\Faceplus,
-Breach or HW obtained during the turn).
-\bparag It is possible to build \Presidio even if deciding to voluntary
-redeploy from the siege.
-\bparag \Presidios are never build during administrative phase. Similarly,
-raising a \Presidio can only happen at the same conditions than building it.
-
-\aparag[Cost]
-\bparag \Presidios are fortresses and cost the same price (construction and
-maintenance). They have the same restrictions on levels and technology.
-\bparag \Presidios may never be of level more than 3.
-\bparag Contrary to fortresses, \Presidios may be built at any level
-directly. The cost is then the sum of costs for each level.
-\bparag This cost is recorded in \lignebudget{Presidios build}.
-
-\aparag[\Presidios in play]
-\bparag \Presidios are represented by fortresses of the owning power. Thus,
-they do count toward the counters limit of that power.
-\bparag At most one country may have a \Presidio in any given province.
-\bparag Because of \Presidios, up to two fortresses of different countries may
-exist in the same province. Put the regular fortress on top of the fortress
-icon on the map, and the \Presidio on top of the anchor.
-\bparag If a country ever gains ownership of a province where it has a
-\Presidio, it may either dismantle the \Presidio or keep it and replace the
-regular fortress of the province with it (remove any existing regular fortress
-counter and move the \Presidio counter on top of the fortress icon to depict
-the new fortress).
-
 \section{Gold repatriation}\label{chRedep:Gold Repatriation}
 
 \aparag[Before redeployment]
@@ -1127,24 +1135,6 @@ tallied in \lignebudget{Gold from ROTW and Convoys}.
 \bparag Note that \COL of level 6, as well as \provinceAcores or
 \province{Islas Canarias}, are European provinces but not on the European map
 and are thus not sufficient to bring gold back home.
-
-\aparag[Gold transportation]\label{chRedep:Gold Transportation}
-\bparag During the Redeployment phase, gold gain a free land movement (only).
-\bparag Exception: Gold in any establishment bordering the \seazoneCaspienne
-at the beginning of this segment may cross it and reach any other province
-bordering that sea.
-\bparag It may thus moves any distance along a chain of friendly
-establishments (\COL, \TP or fort).
-\bparag Each establishment along the chain must be 12\MP or less from the
-previous one (counting the cost as for \LD).
-\bparag The path may not cross a province with a non-besieged enemy stack or
-fortress.
-\bparag Gold can thus be repatriated for any distance as long as each ``leg''
-of the movement is 12\MP or less.
-\bparag If Gold reaches an owned and controlled province on the European map,
-it is immediately emptied and tallied in \lignebudget{Gold from ROTW and
-  Convoys}.
-\bparag This movement of Gold may not be intercepted in any way.
 
 % Local Variables:
 % fill-column: 78
