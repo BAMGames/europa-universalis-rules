@@ -17,9 +17,10 @@
   sufficiently many test games with stable rules will have been played. Thus,
   it should not be taken too seriously. A 1 \VP difference at the end of the
   game hardly qualifies as a ``Victory''. It is not only within the error of
-  margin of the system but also between the margin of counting error during
+  margin of the system but also within the margin of counting errors during
   the game (are you sure you did not forget a 1 \VP discovery at some point in
-  the game?)
+  the game?) Of course, if you're playing an EU championship, a 1 \VP
+  difference is all it takes to be champion rather than vice-champion\ldots
 
   Thus, \VPs should be more considered as a guideline at what actions should
   be attempted even if they seem silly. Many monarchs of the period took
@@ -204,7 +205,7 @@ going all the way around the World (use common sense).
 % \seazonePacifique and \seazoneChili.
 
 % (Jym)
-% Can't define circumnavigation properly :-(
+% Can't define circumnavigation properly
 % "At least once in each" is no good because one could do BE/Horn/Pac/Horn and
 % skip Indian ocean.
 % "Odd number" is no good because one could do BE/Horn/Pac/BE and
@@ -214,105 +215,140 @@ going all the way around the World (use common sense).
 
 
 \section{End of period \VPs}
-
 \aparag The end of period \VPs are decomposed in 3 parts: Wealth and Prestige
-Expenses \VPs, a check up of the situation of each country and the
-verification of the objectives chosen at the beginning of the period.
+\VPs, a check up of the situation of each country and the verification of the
+objectives chosen at the beginning of the period.
 
-\aparag[Wealth and Prestige Expenses]
-\VPs are accorder by taking the mean of Wealth (Gross Income + Prestige
-Expenses) on the turns of the past period. This sum is multiplied by the
-modifier given afterwards (depending on country and period), here expressed in
-\%.
-\bparag At the end of the game, or in case of transferal, add to the sum of
-Wealth the Royal Treasury, else, if negative, remoce twice this RT.  Remove
-also twice the amount of Loans not refunded.
-\bparag All in all, one can expect to gain 100\VPs in average each period
-(with modulations depending on the fastest periods of each power).
+\subsection{Prestige}
+\aparag[Wealth and Prestige \VPs] for each country are a certain percentage of
+the average wealth of the period. It is computed as follow.
+\bparag The base Wealth is \lignebudgetlong{Period wealth}.
+\bparag In case of transfer or end of game computation, modify the base Wealth
+as follow:
+\begin{modlist}
+\item add the \RT if positive (\lignebudgetlong{RT at end});
+\item remove twice the \RT if negative (\lignebudget{RT at end});
+\item remove twice the amount of ongoing loans (\lignebudgetlong{National
+    loans at end} plus the amount of national loan not yet refunded).
+\end{modlist}
+\bparag Divide this result by the number of turns in the period. In case of
+transfer or end of game computation, only count the number of turns actually
+played.
+\bparag Multiply this average Wealth by the percentage indicated in the table
+below. This is the amount of Wealth and Prestige \VPs gain by the country.
 
-\bparag Period percentage: \par
+\aparag Period percentage: \par
 
-\hspace*{-2mm} {\scriptsize
+\begin{center}
   \begin{tabular}{|*{10}{c|}}\hline
-    \multicolumn{10}{|c|}{Multipliers for Wealth and Prestige VPs} \\
+    \multicolumn{10}{|c|}{Percentages for Wealth and Prestige VPs} \\
     \hline
-    & \ANG & \FRA	& \POL & \POR & \RUS & \HIS & \TUR & \VEN & \HOL \\
-    & & & +\PRU & +\SUE & & & & +\AUS & \\
+% Do not auto format!
+                 &\ANG&\FRA& \POL& \POR&\RUS&\HIS&\TUR& \VEN&\HOL\\
+                 &    &    &+\PRU&+\SUE&    &    &    &+\AUS& \\
     \hline
-    p\period{I} & 25 & 25 & 100 & 40 & 100 & 25 & 30 & 25 & na \\
-    p\period{II} & 20 & 25 & 75 & 20 & 75 & 20 & 25 & 25 & na \\
-    p\period{III} & 20 & 20 & 60 & 60 & 60 & 20 & 20 & 20 & 20 \\
-    p\period{IV} & 15 & 20 & 50 & 50 & 40 & 15 & 10 & 50 & 15 \\
-    p\period{V} & 10 & 15 & 50 & 30 & 40 & 10 & 10 & 40 & 10 \\
-    p\period{VI} & 10 & 10 & 50 & 20 & 30 & 10 & 10 & 30 & 10 \\
-    p\period{VII} & 10 & 10 & 50 & 20 & 30 & 10 & 10 & 30 & 15 \\
+    p\period{I}  & 25 & 25 & 100 & 40  &100 & 25 & 30 & 25  & na \\
+    p\period{II} & 20 & 25 &  75 & 20  & 75 & 20 & 25 & 25  & na \\
+    p\period{III}& 20 & 20 &  60 & 60  & 60 & 20 & 20 & 25  & 20 \\
+    p\period{IV} & 15 & 20 &  50 & 50  & 40 & 15 & 15 & 50  & 15 \\
+    p\period{V}  & 10 & 15 &  50 & 30  & 40 & 10 & 15 & 40  & 10 \\
+    p\period{VI} & 10 & 10 &  50 & 25  & 30 & 10 & 15 & 25  & 10 \\
+    p\period{VII}& 10 & 10 &  50 & 25  & 30 & 10 & 15 & 25  & 15 \\
     \hline
   \end{tabular}
-}
-% Note pour JC ou Jym : ce code latex est surement moche... Mais je n'avais
-% pas le temps de faire rentrer dans la page.
+\end{center}
 
-%% TUR: 10 -> 15 (*4)
-%% RUS pIII: 60
-%% VEN pIII: 25
-%% HOL pIII: 20
-%% AUS pVI: 25
-%% SUE pVI: 25
+\subsection{End of period check up}
+\aparag Each country earns \VPs at the end of each period according to their
+overall situation (colonial, territorial and diplomatic).
+\bparag Not all countries gain \VPs this way and some countries have special
+modifiers representing the historical policies that were pursued.
 
-\aparag[End of period check up]
-Each player earn \VPs at the end of each period according to their situation
-and to the this chart :
-
-\aparag [5 \VPs for each \COL or \TP] in the specified area (and/or
+\aparag[Colonial situation.] The countries indicated below (and only these
+countries) gain 5 \VPs for each \COL or \TP in the specified areas (and
 periods)
-\bparag \ENG : \continent{India} in periods \period{IV} to \period{VII};
-\granderegion{Oceania} in period \period{VII}
-\bparag \FRA : \continent{America}; \continent{India} in periods \period{VI},
-\period{VII}; \granderegion{Oceania} in period \period{VII}
-\bparag \POR : \continent{America} if there is 3 or more \POR \COL in
-\continent{America}; \COL\faceplus count as 2
-\bparag \RUS : \pays{chine}, \continent{America}; \COL\faceplus count as 2
-\bparag \SUE : \continent{America}
-% \bparag \HOL : Neither in \continent{Asia} nor in \continent{Brazil} : /3.
+\bparag \ENG: \continentIndia in periods \period{IV} to \period{VII};
+\granderegionOceania in period \period{VII}.
+\bparag \FRA: \continentAmerica always; \continentIndia in periods
+\period{VI}, \period{VII}; \granderegionOceania in period \period{VII}.
+\bparag \POR: \continentAmerica only if there is 3 or more \POR \COL counters
+(whatever their side) in \continentAmerica; in this case, each \COL\faceplus
+counts as 2 \COL (and earns 10\VPs).
+\bparag \RUS: \paysChine, \continentAmerica; each \COL\faceplus counts as 2
+\COL (and earns 10\VPs).
+\bparag \SUE: \continentAmerica.
 
-\aparag[Income value of each province annexed during the period]
-with following modifiers
-\bparag \FRA : former provinces of \pays{bourgogne} *0 during periods
-\period{I} and \period{II}, *2 during periods \period{V} to \period{VII} ;
-\region{Italie}*2 in periods \period{I} to \period{III}
-\bparag \SPA : \region{Italie} *2 in periods \period{I} to \period{III}
-\bparag \ENG : \shortprovince{Gibraltar} *10 ; \shortprovince{Baleares}*5 ;
-Continental provinces *2
-\bparag \TUR : \pays{perse} *2 ; provinces lost against \pays{perse} count
-negative ; Mediterranean coastal provinces (including islands) *2
-\bparag \SUE : provinces bordering \seazone{Baltique} *3
-\bparag \RUS : \pays{pologne} *2 ; provinces lost against \pays{pologne} count
-negative
-\bparag \POL : \paysmajeur{Russie} *2 ; \pays{suede}*2
-\bparag \AUT : \pays{hongrie} *3 ; \pays{moldavie}*3 ;
-\shortprovince{Serbia}*3
-\bparag \PRU : \HRE *2 ; \pays{pologne}*2
-\bparag \VEN : lost Mediterranean island count negatives
+\aparag[Territorial gains.] Each country gain \VPs equal to the income value
+of each province annexed during the period with following modifiers. Note that
+these are in addition to the \VPs gained when annexing the province.
+\bparag \FRA: former provinces of \paysBourgogne \textmultiply0 during periods
+\period{I} and \period{II}, \textmultiply2 during periods \period{V} to
+\period{VII}; \regionItalie \textmultiply2 in periods \period{I} to
+\period{III}.
+\bparag \SPA: \regionItalie \textmultiply2 in periods \period{I} to
+\period{III}.
+\bparag \ENG: provinces bordering \regionMediterranee \textmultiply5;
+other continental provinces \textmultiply2.
+% \shortprovince{Gibraltar} \textmultiply10 ;
+% \shortprovince{Baleares}\textmultiply5 ; Continental provinces \textmultiply2
+\bparag \TUR: \paysPerse \textmultiply2; provinces lost against \paysPerse
+count negative; provinces bordering \regionMediterranee \textmultiply2.
+\bparag \SUE: provinces bordering \regionBaltique \textmultiply3.
+\bparag \RUS: \POL or \paysPologne \textmultiply2 ; provinces lost against
+\POL or \paysPologne count negatively.
+\bparag \POL: \RUS \textmultiply2 ; \SUE or \paysSuede\textmultiply2.
+\bparag \AUT: former provinces of \paysHongrie or \paysMoldavie,
+\provinceSerbia \textmultiply3.
+\bparag \PRU: \HRE or \paysPologne \textmultiply2.
+\bparag \VEN: lost islands in \regionMediterranee count negatively.
 
-\aparag[6 \VPs] for each minor countrie in {\bf \VASSAL or \ANNEXION} (or
-\dipAT for Minors in the \ROTW), and {\bf 3 \VPs} for other controled
-countries, with following modifiers:
-\bparag \SPA \region{Italie} *2; \pays{chevaliers}*2 (not before they move to
-\shortprovince{Malta}); special associated kingdoms don't count.
-\bparag \TUR : Muslims: only 4 \VPs for \VASSAL or \ANNEXION, 2\VPs else;
-Non-Muslims don't count
-\bparag \FRA : \region{Italie}*2 during periods \period{I} to \period{III} ;
-\HRE*2 in periods \period{IV} to \period{VII}
+\aparag[Diplomatic situation]
+\bparag Each country earns {\bf 6 \VPs} for each minor country in {\bf
+  \VASSAL, \ANNEXION or \dipAT} and {\bf 3 \VPs} for each other controlled
+country, with following modifiers:
+\bparag \HIS: \regionItalie \textmultiply2; \paysChevaliers\textmultiply2
+; do not count autonomous Habsbourg states.
+\bparag \TUR: Muslims: only 4 \VPs for \VASSAL, \ANNEXION or \dipAT, 2\VPs for
+other status; do not count Non-Muslims minors.
+\bparag \FRA: \regionItalie\textmultiply2 during periods \period{I} to
+\period{III} ; \HRE\textmultiply2 in periods \period{IV} to \period{VII}
 
-\aparag[Period's objectives]
-\bparag At the beginning of each period, each player has a choice of 5
-objectives in the lists detailed below, and he must secretly pick up 3 of
-them. One of those 3 must be marked as the prioritary one, the 2 other would
-be the non-prioritary ones.
-\bparag At the end of the period, objectives are checked, and players earn
-\VPs according to this. A \VP value is indicated in the tables for each
-objectives. If a player choose an objective and complete it, he earn its \VP
-value, if it is the prioritary one, he earn twice this value.
+\aparag[Special]
+\bparag If \paysChevaliers is still in \provinceRhodos (whatever its
+diplomatic status), \HIS gains 20\VPs.
+% Avoid \HIS wanting the knights out of Rhodes to start earning VPs for them.
+% (© MKL pouitage)
+
+\subsection{Period's objectives}
+\aparag Each player chooses global orientations for its country by selecting 3
+out of 5 possible objectives for each period.
+\bparag Once the period ends, objectives that were successfully achieved earn
+\VPs.
+\bparag The list of all objectives, per country, is given
+in~\ref{chVictories:objectives}. A comprehensive table is also provided as a
+player's aid. Note that in case of ambiguity, the long list in the rules is
+correct and the table is wrong.
+\bparag Each objective is associated with a \VPs value. Sometimes it is a
+yes/no objective with a single value (\emph{e.g.} ownership of a specific
+province) and sometimes it is a ``for each'' objective with a value for each
+item and a maximum value for the objective (\emph{e.g.} some \VPs for each
+\TradeFLEET counter of the country in play).
+
+\aparag[Choosing objectives]
+\bparag At the beginning of each period (before the first turn of the period),
+each player has must secretly pick 3 of the possible 5 objectives for its
+country.
+\bparag One of the 3 must be marked as \textbf{main objective}.
+\bparag Each player should write the 3 objectives on some paper, and then all
+these papers should be put together, \emph{e.g.} in an envelop (sealed if you
+don't trust your fellow players\ldots)
+
+\aparag[Scoring objectives]
+\bparag At the end of each period (after the last turn of the period),
+objectives are checked, and players earn \VPs according to this. A \VP value
+is indicated in the tables for each objectives. If a player choose an
+objective and complete it, he earn its \VP value, if it is the prioritary one,
+he earn twice this value.
 \bparag Some objectives are marked on the tables with {\bf M}, they are
 objectives with malus, if a players don't pick up this one, and don't complete
 it, he loses the \VP value of this one.
@@ -1437,6 +1473,7 @@ is complete
 
 
 \section{Period objectives per country}
+\label{chVictories:objectives}
 
 \EUobjectives{Angleterre} \EUobjectives{France} \EUobjectives{Espagne}
 \EUobjectives{Hollande} \EUobjectives{Autriche} \EUobjectives{Prusse}
