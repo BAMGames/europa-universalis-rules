@@ -16,13 +16,13 @@
   The \VPs system is currently unbalanced. It will only be balanced once
   sufficiently many test games with stable rules will have been played. Thus,
   it should not be taken too seriously. A 1 \VP difference at the end of the
-  game hardly qualifies as a ``Victory''. It is not only within the error of
-  margin of the system but also within the margin of counting errors during
-  the game (are you sure you did not forget a 1 \VP discovery at some point in
-  the game?) Of course, if you're playing an EU championship, a 1 \VP
-  difference is all it takes to be champion rather than vice-champion\ldots
+  game hardly qualifies as a ``Victory''. It is not only within the margin of
+  error of the system but also within the margin of counting errors during the
+  game (are you sure you did not forget a 1 \VP discovery at some point in the
+  game?) Of course, if you're playing an EU championship, a 1 \VP difference
+  is all it takes to be champion rather than vice-champion\ldots
 
-  Thus, \VPs should be more considered as a guideline at what actions should
+  Thus, \VPs should be considered more as a guideline at what actions should
   be attempted even if they seem silly. Many monarchs of the period took
   decisions that in retrospective are considered stupid and no gamer would
   make the same error of spending that many efforts toward a useless
@@ -64,7 +64,7 @@
   End of period (and end of game) \VPs are best checked with two players. One
   is reading the objectives and end of period checks while the \VPs accountant
   note the result. Others players should be around ready to answer questions
-  (typically for computing wealth).
+  (typically for computing Wealth).
 \end{playtip}
 
 \section{How to win the game ?}
@@ -72,17 +72,18 @@
 \aparag The \VP system is composed of 3 parts.
 \bparag[\VPs per turn:]
 Those \VPs are earned by players performing special actions and
-discoveries. It corresponds approximately to the quarter of the final \VPs.
+discoveries. This corresponds approximately to one quarter of the final \VPs.
 \bparag[End of period \VPs:]
-At the end of each period, players earn \VPs corresponding to their situations
-and to the objectives they chose at the beginning of the period. It
-corresponds approximately to the half of the final \VPs.  They receive also
-\VPs according to their Wealth and Prestige Expenses during the past turns.
+At the end of each period, players earn \VPs corresponding to their Wealth and
+Prestige Expenses during the past turns and to the objectives they chose at
+the beginning of the period. This corresponds approximately to one half of the
+final \VPs.
 \bparag[End of game \VPs:]
 At the end of the game, after counting \VPs of the end of seventh period, a
 check-up of the the situation of each player is made, and \VPs are earned
-according to it. For player who change country mid-game, a Transfer check is
-also computed.
+according to it. For players who change country mid-game, a Transfer check is
+also computed. This corresponds approximately to one quarter of the final
+\VPs.
 
 
 
@@ -105,9 +106,9 @@ also give or take \VPs during turn and are not all recalled here.
 
 \aparag[During the Administrative phase:]~\\
 \begin{modlist}
-\item[-5] for a Small bankruptcy;
-\item[-15] for a Major bankruptcy;
-\item[-30] for a Complete bankruptcy.
+\item[-5/15/30] for a Small/Major/Complete bankruptcy.
+% \item[-15] for a Major bankruptcy;
+% \item[-30] for a Complete bankruptcy.
 \end{modlist}
 
 \aparag[During the Military phase:]~\\
@@ -149,7 +150,8 @@ the player (in order to avoid the players to voluntarily play poorly).
 \bparag \label{chVictories:MonopolyExoticResources} For each resource, a
 country has a partial \terme{monopoly} if it produces at least 6 units and
 half of the world production of this resource. It has a total \terme{monopoly}
-if it produces all units but 2 of this resource.
+if it produces all units but 2 of this resource (and it produces at least 6
+units).
 
 
 \aparag[Discoveries]~\\
@@ -183,6 +185,8 @@ each province bordering the Mississippi river is worth 1\VP individually.
 \bparag List of provinces bordering the Mississippi: all provinces of
 \granderegionMississippi, the two central provinces of \granderegionIllinois
 and the two Eastern provinces of \granderegionKansas.
+
+\aparag[The way is more important than the destination.]
 \bparag Discovery of \granderegionPanama by the West is landing one stack in
 \granderegionPanama from the Pacific Ocean. Both the land stack and the naval
 stack carrying it must have cross Cape Horn (or used the special movement
@@ -193,6 +197,17 @@ have used naval transport since it left the European map.
 \bparag Discovery of \granderegionAlaska via \continentAsia is done by landing
 a stack in \granderegionAlaska, the naval stack carrying it must have left
 from a port in \continentAsia.
+\bparag For these three discoveries, the \VPs are earned once the condition on
+the way is met, even if the province is already known (including by the power
+doing the discovery). 
+
+\begin{exemple}
+  \HIS first discovers \granderegionPanama from the East (Caribbean sea) and
+  build a \COL there. Later \HIS goes round America and lands in the same,
+  already colonised province. It still gets the ``\granderegionPanama by
+  West'' \VPs (unless another country already grabbed these \VPs, of course).
+\end{exemple}
+
 
 \aparag[Circumnavigation] Round-the-World trip are completed when one naval
 stack (possibly a single leader) goes back to a previously visited port after
@@ -216,12 +231,12 @@ going all the way around the World (use common sense).
 
 \section{End of period \VPs}
 \aparag The end of period \VPs are decomposed in 3 parts: Wealth and Prestige
-\VPs, a check up of the situation of each country and the verification of the
+\VPs; a check up of the situation of each country; and the verification of the
 objectives chosen at the beginning of the period.
 
 \subsection{Prestige}
 \aparag[Wealth and Prestige \VPs] for each country are a certain percentage of
-the average wealth of the period. It is computed as follow.
+the average Wealth of the period. It is computed as follow.
 \bparag The base Wealth is \lignebudgetlong{Period wealth}.
 \bparag In case of transfer or end of game computation, modify the base Wealth
 as follow:
@@ -229,7 +244,7 @@ as follow:
 \item add the \RT if positive (\lignebudgetlong{RT at end});
 \item remove twice the \RT if negative (\lignebudget{RT at end});
 \item remove twice the amount of ongoing loans (\lignebudgetlong{National
-    loans at end} plus the amount of national loan not yet refunded).
+    loans at end} plus the amount of international loan not yet refunded).
 \end{modlist}
 \bparag Divide this result by the number of turns in the period. In case of
 transfer or end of game computation, only count the number of turns actually
@@ -326,8 +341,8 @@ out of 5 possible objectives for each period.
 \VPs.
 \bparag The list of all objectives, per country, is given
 in~\ref{chVictories:objectives}. A comprehensive table is also provided as a
-player's aid. Note that in case of ambiguity, the long list in the rules is
-correct and the table is wrong.
+player's aid. Note that in case of ambiguity or contradiction, the long list
+in the rules is correct and the table is wrong.
 \bparag Each objective is associated with a \VPs value. Sometimes it is a
 yes/no objective with a single value (\emph{e.g.} ownership of a specific
 province) and sometimes it is a ``for each'' objective with a value for each
@@ -336,8 +351,7 @@ item and a maximum value for the objective (\emph{e.g.} some \VPs for each
 
 \aparag[Choosing objectives]
 \bparag At the beginning of each period (before the first turn of the period),
-each player has must secretly pick 3 of the possible 5 objectives for its
-country.
+each player must secretly pick 3 of the possible 5 objectives for its country.
 \bparag One of the 3 must be marked as \textbf{main objective}.
 \bparag Each player should write the 3 objectives on some paper, and then all
 these papers should be put together, \emph{e.g.} in an envelop (sealed if you
@@ -345,13 +359,13 @@ don't trust your fellow players\ldots)
 
 \aparag[Scoring objectives]
 \bparag At the end of each period (after the last turn of the period),
-objectives are checked, and players earn \VPs according to this. A \VP value
-is indicated in the tables for each objectives. If a player choose an
-objective and complete it, he earn its \VP value, if it is the prioritary one,
-he earn twice this value.
+objectives are revealed and checked, and players earn \VPs according to
+this. A \VP value is indicated in the tables for each objectives. If a player
+choose an objective and complete it, he earn its \VP value, if it is the
+\textbf{main objective}, he earn twice this value.
 \bparag Some objectives are marked on the tables with {\bf M}, they are
-objectives with malus, if a players don't pick up this one, and don't complete
-it, he loses the \VP value of this one.
+objectives with malus, if a player both don't pick up this objective, and
+don't complete it, he loses the associated \VPs.
 \bparag Some objectives are marked on the tables with {\bf E}. They are
 objectives which depend on the occurence of an event. If the corresponding
 event has not occurred when the period ends, the check for the success of the
