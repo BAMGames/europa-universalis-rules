@@ -40,9 +40,9 @@
 
 \begin{designnote}
   All in all, players are expected to gain around 2000-2500 \VPs along the
-  game. The end of period check should be around 100 \VPs per period, more for
-  countries in their period of Glory, less for decaying countries. The period
-  objectives should be around 100-200 \VPs per period depending on your
+  game. The end of period check should be around 100-150 \VPs per period, more
+  for countries in their period of Glory, less for decaying countries. The
+  period objectives should be around 100-200 \VPs per period depending on your
   success on the field.
 \end{designnote}
 
@@ -59,7 +59,7 @@
   Get one player in charge of counting the \VPs. Other players won't need to
   know the \VPs per turn as well. That player should get a notebook and tally
   \VPs along the game. Since there are \VPs every turn, there is a lot of
-  things to note.
+  things to write.
 
   End of period (and end of game) \VPs are best checked with two players. One
   is reading the objectives and end of period checks while the \VPs accountant
@@ -72,18 +72,19 @@
 \aparag The \VP system is composed of 3 parts.
 \bparag[\VPs per turn:]
 Those \VPs are earned by players performing special actions and
-discoveries. This corresponds approximately to one quarter of the final \VPs.
+discoveries. This corresponds approximately to one sixth to one quarter of the
+final \VPs.
 \bparag[End of period \VPs:]
 At the end of each period, players earn \VPs corresponding to their Wealth and
 Prestige Expenses during the past turns and to the objectives they chose at
-the beginning of the period. This corresponds approximately to one half of the
-final \VPs.
+the beginning of the period. This corresponds approximately to one half to two
+third of the final \VPs.
 \bparag[End of game \VPs:]
 At the end of the game, after counting \VPs of the end of seventh period, a
 check-up of the the situation of each player is made, and \VPs are earned
 according to it. For players who change country mid-game, a Transfer check is
-also computed. This corresponds approximately to one quarter of the final
-\VPs.
+also computed. This corresponds approximately to one sixth to one quarter of
+the final \VPs.
 
 
 
@@ -141,17 +142,17 @@ the player (in order to avoid the players to voluntarily play poorly).
 \item[+3] per total \terme{monopoly} of Exotic Resource
 \end{modlist}
 
-\aparag[Definitions of \terme{monopolies}]
-\terme{Monopolies} are defined for exploitation of each exotics resources
+\aparag[Definitions of \terme{monopolies}] for exploitation of each exotics
+resources
 % \bparag \STZ/\CTZ : a player has a partial \terme{monopoly} in a \CTZ or a
 % \STZ when he is the only possesser of a face \Faceplus fleet counter in this
 % zone. He has a total \terme{monopoly} when he has a 6 levels fleet, and there
 % is no other fleet in the zone.
 \bparag \label{chVictories:MonopolyExoticResources} For each resource, a
-country has a partial \terme{monopoly} if it produces at least 6 units and
-half of the world production of this resource. It has a total \terme{monopoly}
-if it produces all units but 2 of this resource (and it produces at least 6
-units).
+country has a partial \terme{monopoly} if it produces at least 6 units and at
+least half of the world production of this resource. It has a total
+\terme{monopoly} if it produces all units but 2 of this resource and it
+produces at least 6 units.
 
 
 \aparag[Discoveries]~\\
@@ -250,13 +251,14 @@ as follow:
 transfer or end of game computation, only count the number of turns actually
 played.
 \bparag Multiply this average Wealth by the percentage indicated in the table
-below. This is the amount of Wealth and Prestige \VPs gain by the country.
+below and round down. This is the amount of Wealth and Prestige \VPs gain by
+the country.
 
 \aparag Period percentage: \par
 
 \begin{center}
   \begin{tabular}{|*{10}{c|}}\hline
-    \multicolumn{10}{|c|}{Percentages for Wealth and Prestige VPs} \\
+    \multicolumn{10}{|c|}{Percentages for Wealth and Prestige \VPs} \\
     \hline
 % Do not auto format!
                  &\ANG&\FRA& \POL& \POR&\RUS&\HIS&\TUR& \VEN&\HOL\\
@@ -273,6 +275,20 @@ below. This is the amount of Wealth and Prestige \VPs gain by the country.
   \end{tabular}
 \end{center}
 
+\begin{exemple}
+  At the end of period \period{III}, \TUR managed to have a total Wealth of
+  4978\ducats (\lignebudget{Period wealth} at turn 25). Period \period{III}
+  is 11 turns long and \TUR percentage is 20\% in this period. Hence \TUR
+  scores $4978 / 11 \times 0.20 = 90.5$ rounded down to 90 Wealth and Prestige
+  \VPs.
+
+  At the same time, \VEN has 6012\ducats of Wealth, with 26\ducats in \RT but
+  an ongoing national loan of 148\ducats. \VEN percentage is 25\% and this is
+  a transfer computation as \VEN switch to \AUS in period \period{IV}. Thus,
+  its Prestige and Wealth \VPs are $(6012 + 26 - 2 \times 148) / 11 \times
+  0.25 = 130.5$ rounded down to 130\VPs.
+\end{exemple}
+
 \subsection{End of period check up}
 \aparag Each country earns \VPs at the end of each period according to their
 overall situation (colonial, territorial and diplomatic).
@@ -287,18 +303,45 @@ periods)
 \bparag \FRA: \continentAmerica always; \continentIndia in periods
 \period{VI}, \period{VII}; \granderegionOceania in period \period{VII}.
 \bparag \POR: \continentAmerica only if there is 3 or more \POR \COL counters
-(whatever their side) in \continentAmerica; in this case, each \COL\faceplus
+(whatever their side) in \continentBrazil; in this case, each \COL\faceplus
 counts as 2 \COL (and earns 10\VPs).
 \bparag \RUS: \paysChine, \continentAmerica; each \COL\faceplus counts as 2
 \COL (and earns 10\VPs).
 \bparag \SUE: \continentAmerica.
 
+\begin{designnote}
+  If \ANG or \FRA has \COL in \granderegionOceania in \period{V}, they do not
+  earn any \VPs for these. They will only bring \VPs in period
+  \period{VII}. This represent the fact that most of this area was discovered
+  by the expeditions of \leaderCook, \leaderBougainville or \leader{La
+    perouse} and thus were only known to European in the very late game and
+  colonised in the 19th Century.
+
+  Similarly, French \COL in \continentIndia only earns \VPs in the end game
+  while English \COL there start earning \VPs in period n\period{IV}. This
+  represent the different colonial policies (and power) of these countries and
+  the early start of \ANG in \continentIndia (with the East India Company)
+  while \FRA focused its efforts toward colonising Canada (especially during
+  the reigns of Louis XIII and Louis XIV).
+\end{designnote}
+
+\begin{exemple}
+  At the end of period \period{I}, \POR as a \COL\faceplus in
+  \granderegionRecife W., a \COL \facemoins in \granderegionBelem E. and a
+  \COL \facemoins in \granderegionAmazonia SE. Since that's only 2 \COL
+  counters in \continentBrazil, it does not earn \VPs for Colonial situation.
+
+  Suppose now that the third \COL is in \granderegionRio S. instead of
+  \granderegionAmazonia. Now that's 3 counters in \continentBrazil and since
+  the \COL\faceplus counts as 2, that's a total of 4 \COL and 20\VPs.
+\end{exemple}
+
 \aparag[Territorial gains.] Each country gain \VPs equal to the income value
 of each province annexed during the period with following modifiers. Note that
 these are in addition to the \VPs gained when annexing the province.
-\bparag \FRA: former provinces of \paysBourgogne \textmultiply0 during periods
-\period{I} and \period{II}, \textmultiply2 during periods \period{V} to
-\period{VII}; \regionItalie \textmultiply2 in periods \period{I} to
+\bparag \FRA: former provinces of \paysBourgogne \textmultiply 0 during
+periods \period{I} and \period{II}, \textmultiply2 during periods \period{V}
+to \period{VII}; \regionItalie \textmultiply2 in periods \period{I} to
 \period{III}.
 \bparag \SPA: \regionItalie \textmultiply2 in periods \period{I} to
 \period{III}.
@@ -316,6 +359,14 @@ count negative; provinces bordering \regionMediterranee \textmultiply2.
 \provinceSerbia \textmultiply3.
 \bparag \PRU: \HRE or \paysPologne \textmultiply2.
 \bparag \VEN: lost islands in \regionMediterranee count negatively.
+
+\begin{designnote}
+  Here also, the variations along the game represent different policies of
+  countries. For example, \FRA focused its effort in Italy in the early game
+  and only tried to grab part of the Burgundian legacy after its Wars of
+  Religion, with the policies of Richelieu and Louis XIV, the ``pré carré'' of
+  Vauban and such.
+\end{designnote}
 
 \aparag[Diplomatic situation]
 \bparag Each country earns {\bf 6 \VPs} for each minor country in {\bf
