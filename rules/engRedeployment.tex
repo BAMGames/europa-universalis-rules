@@ -415,11 +415,11 @@ countries give no income (even if \VASSAL).
 equally divided between the powers (including minor ones), dropping any
 fraction.
 
-\begin{exemple}[Resolving the attack]
-  During period \period{II}, \leaderwithdata{Barbaros2} sails out of
-  \villeAlger with a \corsaire\faceplus into \seazone{Lion} where he is joined
-  by a \corsaire\facemoins of \paysTunisie. During the turn, \leaderwithdata{A
-    Doria} leads a Genoese \FLEET\facemoins at see and manage to hunt down the
+\begin{exemple}[Resolving the attack] During period \period{II},
+  \leaderwithdata{Barbaros2} sails out of \villeAlger with a
+  \corsaire\faceplus into \seazone{Lion} where he is joined by a
+  \corsaire\facemoins of \paysTunisie. During the turn, \leaderwithdata{A
+  Doria} leads a Genoese \FLEET\facemoins at sea and manage to hunt down the
   Tunisian \corsaire. At the end of the turn, the situation is as follows:
   \corsaire\faceplus of \paysAlgerie lead by \leader{Barbaros2},
   \FLEET\facemoins of \paysGenes lead by \leader{A Doria},
@@ -742,7 +742,8 @@ conditions.
 the country is overthrown. The tyrant is executed and a new benevolent monarch
 accedes the throne.
 
-\aparag[Consequences]
+\aparag[Consequences] Unless specified by an event, execution of the
+Monarch has the following effects:
 \bparag All revolts present in the country are removed: all \REVOLT and
 \REBELLION counters and troops are removed, and fortresses they control are
 given back to their legitimate owner.
@@ -791,10 +792,10 @@ description of the event.
 % if the player does not in control the fortress of the province, Colony or
 % Trading Post.
 
-\aparag[Adjustment of Already Existing \PILLAGE Markers]
-\bparag Remove all \PILLAGE\Facemoins.
-\bparag Then, in each province where no \PILLAGE\Facemoins was removed, flip
-one \PILLAGE\Faceplus to its \Facemoins side.
+\aparag[Adjustment of Already Existing \PILLAGE Markers] In each
+province where there is at least one \PILLAGE:
+\bparag Remove one \PILLAGE\Facemoins if there is one.
+\bparag Otherwise, flip one \PILLAGE\Faceplus to its \Facemoins side.
 \bparag Exception: \PILLAGE markers put this turn due to land raids of
 \corsaire are not touched. They will only be reduced next turn.
 
@@ -1088,11 +1089,12 @@ a HW during the turn may continue the siege for next turn.
 
   \smallskip
 
-  If \SUE is besieging \provinceDanzig and owns \provinceHinterpommern, then
-  its closest redeployment possibility is by sea (3\MP) and then to
-  \provinceHinterpommern (4\MP due to swamp and river). Redeployment by sea,
-  however, does not takes precedence over redeployment by land and \SUE can
-  freely choose any of the possibility (but may not split its stack).
+  If \SUE is besieging \provinceDanzig and owns \provinceHinterpommern,
+  then its closest redeployment possibilities are first by sea (3\MP)
+  and then to \provinceHinterpommern (4\MP due to swamp and
+  river). Redeployment by sea, however, does not takes precedence over
+  redeployment by land and \SUE can freely choose any of the
+  possibilities (but may not split its stack).
 \end{exemple}
 
 \section{Return to Port}\label{chRedep:Return port}
@@ -1135,6 +1137,24 @@ tallied in \lignebudget{Gold from ROTW and Convoys}.
 \bparag Note that \COL of level 6, as well as \provinceAcores or
 \province{Islas Canarias}, are European provinces but not on the European map
 and are thus not sufficient to bring gold back home.
+
+\aparag[Gold transportation]\label{chBudget:Gold Transportation}
+\bparag During the Redeployment phase, gold gain a free land movement (only).
+\bparag Exception: Gold in any establishment bordering the \seazoneCaspienne
+at the beginning of this segment may cross it and reach any other province
+bordering that sea.
+\bparag It may thus moves any distance along a chain of friendly
+establishments (\COL, \TP or fort).
+\bparag Each establishment along the chain must be 12\MP or less from the
+previous one (counting the cost as for \LD).
+\bparag The path may not cross a province with a non-besieged enemy stack or
+fortress.
+\bparag Gold can thus be repatriated for any distance as long as each ``leg''
+of the movement is 12\MP or less.
+\bparag If Gold reaches an owned and controlled province on the European map,
+it is immediately emptied and tallied in \lignebudget{Gold from ROTW and
+  Convoys}.
+\bparag This movement of Gold may not be intercepted in any way.
 
 % Local Variables:
 % fill-column: 78
