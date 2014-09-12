@@ -1,115 +1,124 @@
 % -*- mode: LaTeX; -*-
 
+%  \EUobjective{M/E}{short name (table)}
+%    {XXX}{VP per XXX/half success}{max VP/total VP}
+%    {long name (rules)}
+
 \EUcurrentcountry{Angleterre} \EUcurrentperiod{I}
 %
 \EUobjective1{}{\paysecosse Vassal}{turn}%
 {10}{30}{Each turn \paysEcosse is \VASSAL of \ANG}%
 %
-\EUobjective2{}{\Presidio in \provincePicardie}{}%
+\EUobjective2{}{Calais}{}%
 {}{45}{\ANG owns a \Presidio in \provincePicardie}%
 %
 \EUobjective3{}{Industrial development}{}%
-{}{25}{\MNU limits attained and monopoly in \ctz{Angleterre}}%
+{}{25}{\ANG has as many \MNU\faceplus as its limit, and commercial monopoly in
+  \ctz{Angleterre}}%
 %
-\EUobjective4M{Reconquest of \provinceGuyenne}{}%
-{}{50}{\provinceGuyenne owned by \paysmajeurAngleterre}%
+\EUobjective4M{Hundred years war}{}%
+{25}{50}{\provinceGuyenne owned by \paysmajeurAngleterre, half success if only
+  controlled}%
 %
 \EUobjective5{}{Pacified Ireland}{turn}%
 {10}{40}{Each turn without any \REVOLT in \regionIrlande}%
 %
 \EUcurrentperiod{II}
 %
-\EUobjective1{}{Vassal \paysecosse}{turn}%
-{10}{40}{}%
+\EUobjective1{}{\paysecosse Vassal}{turn}%
+{10}{40}{Each turn \paysEcosse is \VASSAL of \ANG}%
 %
-\EUobjective2M{\Presidio in \provincePicardie}{}%
+\EUobjective2M{Calais}{}%
 {}{50}{\ANG owns a \Presidio in \provincePicardie}%
 %
 \EUobjective3{}{\COL in \continentAmerica}{}%
-{}{30}{At least one \COL}%
+{}{30}{\ANG has at least one \COL in \continentAmerica}%
 %
 \EUobjective4{}{Victory against \paysmajeurFrance}{}%
-{}{40}{Peace level \geq 2}%
+{}{40}{\ANG has signed at least one peace of level \geq 2 against \FRA}%
 %
 \EUobjective5{}{Pacified Ireland}{turn}%
 {7}{35}{Each turn without any \REVOLT in \regionIrlande}
 %
 \EUcurrentperiod{III}
 %
-\EUobjective1{}{Vassal \paysecosse}{turn}%
-{5}{30}{}%
+\EUobjective1{}{\paysecosse Vassal}{turn}%
+{5}{30}{Each turn \paysEcosse is \VASSAL of \ANG}%
 %
 \EUobjective2M{No forced conversion}{}%
-{}{45}{\ANG is not forced to change its religion}%
+{}{45}{\ANG was not forced to change its religion}%
 %
 \EUobjective3{}{Industrial development}{}%
-{}{30}{\MNU limits attained and monopoly in \ctz{Angleterre}}%
+{}{30}{\ANG has as many \MNU\faceplus as its limit, and commercial monopoly in
+  \ctz{Angleterre}}%
 %
 %
 \EUobjective4{}{\paysmajeurHollande not converted}{}%
-{}{35}{???}%
+{}{35}{\HOL was not forced to change its religion}%
 %
 \EUobjective5{}{Trade Monopoly}{zone}%
-{5/10}{30}{Each Commercial \terme{Monopoly} in \CTZ/\STZ}
+{5/10}{30}{Each partial (5)/total (10) Commercial \terme{Monopoly} in
+  \CTZ/\STZ}
 %
 \EUcurrentperiod{IV}
 %
-\EUobjective1{}{Vassal \paysecosse}{turn}%
-{5}{30}{}%
+\EUobjective1{}{\paysecosse Vassal}{turn}%
+{5}{30}{Each turn \paysEcosse is \VASSAL of \ANG}%
 %
 \EUobjective2M{No forced conversion}{}%
-{}{40}{\ANG is not forced to change its religion}%
+{}{40}{\ANG was not forced to change its religion}%
 %
 \EUobjective3{}{Commercial Centre}{}%
-{}{50}{Having one \terme{Commercial Centre}}%
+{}{50}{\ANG owns at least one \terme{Commercial Centre}}%
 %
 \EUobjective4{}{English Civil War}{}%
 {20}{40}{Duration of \ref{pIV:English Civil War} is four turns or less: full
   success, five turns or no event: half-success, six or more: failure}%
 %
 \EUobjective5{}{Monopoly}{zone}%
-{5/10}{30}{Each Commercial \terme{Monopoly} in \CTZ/\STZ}
+{5/10}{30}{Each partial (5)/total (10) Commercial \terme{Monopoly} in
+  \CTZ/\STZ}
 %
 \EUcurrentperiod{V}
 %
 \EUobjective1{}{\continentCaraibes}{island}%
-{7/15}{45}{7/15 \VPs per \TP or \COL controlled/owned in \continentCaraibes}%
+{7/15}{45}{Each \TP or \COL controlled (7)/owned (15) in \continentCaraibes}%
 %
 \EUobjective2{}{No forced conversion}{}%
-{}{40}{\ANG is not forced to change its religion}%
+{}{40}{\ANG was not forced to change its religion}%
 %
 \EUobjective3M{\CCs{Atlantic}}{}%
-{}{40}{Having the \CCs{Atlantic}}%
+{}{40}{\ANG owns the \CCs{Atlantic}}%
 %
 \EUobjective4{}{Independent Portugal}{}%
-{}{30}{\HIS must have renounced the conditions of \eventref{pIII:Portuguese
-    Annexation}, and not reconquered it}%
-%
-% (jcd) Probably this should be dependent on events. Should it depend on
-% either pV:WoSS or pIV:Portuguese Revolt.
+{15}{30}{\HIS must have renounced to the conditions of \eventref{pIII:Portuguese
+    Annexation}, and not reconquered it. Half success if neither
+  \ref{pIV:Portuguese Revolt} nor \ref{pV:WoSS} occured}%
 %
 \EUobjective5{}{\RES{Fish} monopoly}{turn}%
-{5}{40}{per turn of \RES{Fish} monopoly}%
+{5}{40}{Each turn \ANG has \RES{Fish} monopoly}%
 %
 \EUcurrentperiod{VI}
 %
 \EUobjective1{}{\continentCaraibes}{island}%
-{5/10}{50}{5/10 \VPs per \TP or \COL controlled/owned in \continentCaraibes}%
+{5/10}{50}{Each \TP or \COL controlled (5)/owned (10) in \continentCaraibes}%
 %
 \EUobjective2{}{Jacobite rebellion}{}%
 {15}{30}{\ANG wins the \ref{pVI:Jacobite Rebellion} (half-success if none
-  occur, or if loses one and wins the second)}%
+  occur, or if loses one and wins the other)}%
 % (jcd) I added the second condition. Original was unclear.
 %
 \EUobjective3M{\CCs{Atlantic}}{}%
-{}{40}{Having the \CCs{Atlantic}}%
+{}{40}{\ANG owns the \CCs{Atlantic}}%
 %
 \EUobjective4{}{Spanish Succession}{}%
-{25}{50}{\ANG is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
+{25}{50}{\ANG is victorious in \ref{pV:WoSS}, or no war and \ANG received part
+  of the inheritance. Half-success if it does not occur. Failure if no war and
+  \ANG received no part of the inheritance}%
 %
-\EUobjective5{}{\emph{East Indies}}{convoy}%
-{4}{40}{per turn of bringing back the \emph{East Indies} convoy}%
+\EUobjective5{}{\emph{East Indies}}{turn}%
+{4}{40}{Each turn \ANG owns the \emph{East Indies} convoy and sails
+  successfully at least 1\NTD of it to Europe}%
 %
 \EUcurrentperiod{VII}
 %
