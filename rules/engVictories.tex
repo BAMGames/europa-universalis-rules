@@ -501,14 +501,12 @@ failing it.
 \aparag[Commercial Domination in \stz{Baltique}.] Each turn, one country
 may have Commercial Domination in \stz{Baltique}. Commercial Domination
 is attributed, in decreasing order of precedence, to the \MAJ who
-\begin{modlist}
-\item levy Sund taxes (\ref{chSpecific:Sund Levies});
-\item has diplomatic control of the minor with right to levy Sund taxes
-  (whether there are taxes or free trade).
-\item has Commercial Monopoly in \stz{Baltique}
-  (\ref{chIncomes:Commercial Monopoly}) and nobody is levying the Sund
-  taxes.
-\end{modlist}
+\bparag levy Sund taxes (\ref{chSpecific:Sund Levies});
+\bparag has diplomatic control of the minor with right to levy Sund
+taxes (whether there are taxes or free trade).
+\bparag has Commercial Monopoly in \stz{Baltique}
+(\ref{chIncomes:Commercial Monopoly}) and nobody is levying the Sund
+taxes.
 
 \begin{designnote}
   Note that if the minor with right on the Sund is not Neutral, then the
@@ -590,6 +588,37 @@ in the same \CTZ/\STZ for objective purposes.
   \HOL and \VEN are considered as having a partial monopoly in
   \stz{Ionienne}.
 \end{exemple}
+
+\aparag[No province lost] objectives mean that the country did not loose
+ownership of any province it owned at the beginning of the period.
+\bparag If the country annexes new province during the period and looses
+them later during the same period, the objective is still
+successful. Only provinces that were owned at the beginning of the
+period are checked against this objective.
+
+\aparag[Commercial monopoly.] When objectives ask for Monopoly in \STZ
+or \CTZ or in production of resource without precision, any monopoly
+(partial or total) counts toward fulfilling the objective.
+
+\aparag[Independence wars.] \ref{pVII:Independence War} may occur
+several time, resulting in several rebellions. The associated objective
+is checked as follows, in decreasing order of precedence:
+\bparag If at least one rebellion war occured in the country's colonies
+and all independence wars in the country's colonies were crushed, full
+success.
+\bparag If at least one rebellion war occured in the country's colonies
+and was successful, the objective is failed.
+\bparag If no rebellion war occured, half-success.
+\bparag If at least one rebellion war occured in another country's
+colonies, and the major helped the rebels in all rebellion wars, and the
+rebels were successful every time, full success.
+\bparag If at least one rebellion war occured in another country's
+colonies and the major helped at least one successful rebellion,
+half-success.
+\bparag Otherwise, failure.
+\bparag Note that most of the time, the war occurs only once, thus the
+objective is simply to take part in the war and win it.
+
 
 \aparag[Duration.] Objectives for actions only concern what happens
 during the period just ended.

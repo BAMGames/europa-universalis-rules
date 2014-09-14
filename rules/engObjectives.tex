@@ -4,29 +4,53 @@
 %    {XXX}{VP per XXX/half success}{max VP/total VP}
 %    {long name (rules)}
 
+% Macros for repeated explanations
+%% Generic ones
+\newcommand{\EUobjIndustrial}[2]{#1 has as many \MNU\faceplus as its limit,
+  and Commercial Monopoly in  \ctz{#2}}%
+\newcommand{\EUobjWoSS}[1]{#1 is victorious in \ref{pV:WoSS}, or no war and
+  #1 received part of the inheritance. Half-success if it does not
+  occur. Failure if no war and #1 received no part of the inheritance}%
+\newcommand{\EUobjNoConversion}[1]{#1 was not forced to change its religion}%
+\newcommand{\EUobjMonopolyZone}{Each Commercial \terme{Monopoly} in any
+  \STZ/\CTZ}
+\newcommand{\EUobjMonopolyRES}[2]{Each turn #1 has \RES{#2} Monopoly}%
+\newcommand{\EUobjFranceContained}{\paysmajeurFrance does not reach its
+  ``natural frontier'' during the Revolution (cannot be the main objective)
+  (\ref{pVII:Revolution:Natural Frontiers}); half-success if the event does
+  not occur}
+\newcommand{\EUobjIndependanceWars}{Victory in \ref{pVII:Independence War}}
+
+%% Country specific
+%%% ANG
+\newcommand{\EUobjEcosseVassal}{Each turn \paysEcosse is \VASSAL of \ANG}
+\newcommand{\EUobjIrelandPacified}{Each turn without any \REVOLT in
+  \regionIrlande}
+\newcommand{\EUobjMonopolyZoneANG}[2]{Each Commercial \terme{Monopoly} in any
+  \STZ (#1)/\CTZ (#2)}
+
 \EUcurrentcountry{Angleterre} \EUcurrentperiod{I}
 %
 \EUobjective1{}{\paysecosse Vassal}{turn}%
-{10}{30}{Each turn \paysEcosse is \VASSAL of \ANG}%
+{10}{30}{\EUobjEcosseVassal}%
 %
 \EUobjective2{}{Calais}{}%
 {}{45}{\ANG owns a \Presidio in \provincePicardie}%
 %
 \EUobjective3{}{Industrial development}{}%
-{}{25}{\ANG has as many \MNU\faceplus as its limit, and commercial monopoly in
-  \ctz{Angleterre}}%
+{}{25}{\EUobjIndustrial{\ANG}{Angleterre}}%
 %
 \EUobjective4M{Hundred years war}{}%
 {25}{50}{\provinceGuyenne owned by \paysmajeurAngleterre, half success if only
   controlled}%
 %
 \EUobjective5{}{Pacified Ireland}{turn}%
-{10}{40}{Each turn without any \REVOLT in \regionIrlande}%
+{10}{40}{\EUobjIrelandPacified}%
 %
 \EUcurrentperiod{II}
 %
 \EUobjective1{}{\paysecosse Vassal}{turn}%
-{10}{40}{Each turn \paysEcosse is \VASSAL of \ANG}%
+{10}{40}{\EUobjEcosseVassal}%
 %
 \EUobjective2M{Calais}{}%
 {}{50}{\ANG owns a \Presidio in \provincePicardie}%
@@ -38,35 +62,33 @@
 {}{40}{\ANG has signed at least one peace of level \geq 2 against \FRA}%
 %
 \EUobjective5{}{Pacified Ireland}{turn}%
-{7}{35}{Each turn without any \REVOLT in \regionIrlande}
+{7}{35}{\EUobjIrelandPacified}%
 %
 \EUcurrentperiod{III}
 %
 \EUobjective1{}{\paysecosse Vassal}{turn}%
-{5}{30}{Each turn \paysEcosse is \VASSAL of \ANG}%
+{5}{30}{\EUobjEcosseVassal}%
 %
 \EUobjective2M{No forced conversion}{}%
-{}{45}{\ANG was not forced to change its religion}%
+{}{45}{\EUobjNoConversion{\ANG}}%
 %
 \EUobjective3{}{Industrial development}{}%
-{}{30}{\ANG has as many \MNU\faceplus as its limit, and commercial monopoly in
-  \ctz{Angleterre}}%
+{}{30}{\EUobjIndustrial{\ANG}{Angleterre}}%
 %
 %
 \EUobjective4{}{\paysmajeurHollande not converted}{}%
-{}{35}{\HOL was not forced to change its religion}%
+{}{35}{\EUobjNoConversion{\HOL}}% yes, \HOL this is not an error
 %
 \EUobjective5{}{Trade Monopoly}{zone}%
-{5/10}{30}{Each partial (5)/total (10) Commercial \terme{Monopoly} in
-  \CTZ/\STZ}
+{5/10}{30}{\EUobjMonopolyZoneANG{5}{10}}%
 %
 \EUcurrentperiod{IV}
 %
 \EUobjective1{}{\paysecosse Vassal}{turn}%
-{5}{30}{Each turn \paysEcosse is \VASSAL of \ANG}%
+{5}{30}{\EUobjEcosseVassal}%
 %
 \EUobjective2M{No forced conversion}{}%
-{}{40}{\ANG was not forced to change its religion}%
+{}{40}{\EUobjNoConversion{\ANG}}%
 %
 \EUobjective3{}{Commercial Centre}{}%
 {}{50}{\ANG owns at least one \terme{Commercial Centre}}%
@@ -76,8 +98,7 @@
   success, five turns or no event: half-success, six or more: failure}%
 %
 \EUobjective5{}{Monopoly}{zone}%
-{5/10}{30}{Each partial (5)/total (10) Commercial \terme{Monopoly} in
-  \CTZ/\STZ}
+{5/10}{30}{\EUobjMonopolyZoneANG{5}{10}}%
 %
 \EUcurrentperiod{V}
 %
@@ -85,7 +106,7 @@
 {7/15}{45}{Each \TP or \COL controlled (7)/owned (15) in \continentCaraibes}%
 %
 \EUobjective2{}{No forced conversion}{}%
-{}{40}{\ANG was not forced to change its religion}%
+{}{40}{\EUobjNoConversion{\ANG}}%
 %
 \EUobjective3M{\CCs{Atlantic}}{}%
 {}{40}{\ANG owns the \CCs{Atlantic}}%
@@ -95,8 +116,8 @@
     Annexation}, and not reconquered it. Half success if neither
   \ref{pIV:Portuguese Revolt} nor \ref{pV:WoSS} occured}%
 %
-\EUobjective5{}{\RES{Fish} monopoly}{turn}%
-{5}{40}{Each turn \ANG has \RES{Fish} monopoly}%
+\EUobjective5{}{\RES{Fish} Monopoly}{turn}%
+{5}{40}{\EUobjMonopolyRES{\ANG}{Fish}}%
 %
 \EUcurrentperiod{VI}
 %
@@ -112,9 +133,7 @@
 {}{40}{\ANG owns the \CCs{Atlantic}}%
 %
 \EUobjective4{}{Spanish Succession}{}%
-{25}{50}{\ANG is victorious in \ref{pV:WoSS}, or no war and \ANG received part
-  of the inheritance. Half-success if it does not occur. Failure if no war and
-  \ANG received no part of the inheritance}%
+{25}{50}{\EUobjWoSS{\ANG}}%
 %
 \EUobjective5{}{\emph{East Indies}}{turn}%
 {4}{40}{Each turn \ANG owns the \emph{East Indies} convoy and sails
@@ -123,13 +142,10 @@
 \EUcurrentperiod{VII}
 %
 \EUobjective1M{Independence Wars}{rebellion}%
-{25/50}{60}{50 \VPs if a rebellion occurs in English colonies and is
-  crushed. 25\VPs per successful rebellion in another country's
-  colonies. 25\VPs if no rebellion occurs}
+{25}{50}{\EUobjIndependanceWars}%
 %
 \EUobjective2{}{\paysmajeurFrance contained}{}%
-{}{30}{\paysmajeurFrance does not reach its ``natural frontier'' during the
-  Revolution (cannot be the main objective)}%
+{15}{30}{\EUobjFranceContained}%
 %
 \EUobjective3{}{Each \CC}{CC}%
 {15}{45}{Each \terme{Commercial Centre} owned by \ANG}%
@@ -145,42 +161,42 @@
 %
 \EUcurrentcountry{France} \EUcurrentperiod{I}
 %
-\EUobjective1{}{No \Presidio in \provincePicardie}{}%
-{}{40}{\provincePicardie is free of any \Presidio}%
+\EUobjective1{}{Calais}{}%
+{}{40}{There is no \Presidio in \provincePicardie}%
 %
 %
 \EUobjective2{}{French \provinceArtois}{}%
-{}{30}{}%
+{}{30}{\provinceArtois is owned by \FRA}%
 %
 \EUobjective3{}{SD of Catholic Faith}{}%
 {}{40}{\FRA is Sole Defender of Catholic Faith}%
 %
 \EUobjective4{}{Industrial development}{}%
-{}{25}{\MNU limits attained and monopoly in \ctz{France}}%
+{}{25}{\EUobjIndustrial{\FRA}{France}}%
 %
 %
 \EUobjective5M{War in Italy}{}%
-{25}{50}{Victory in at least one War in Italy (peace level \geq
-  2). Half-success if none occur}%
+{25}{50}{\FRA signed a peace of level \geq 2 in at least one War in
+  Italy. Half-success if none occur}%
 %
 \EUcurrentperiod{II}
 %
-\EUobjective1M{No \Presidio in \provincePicardie}{}%
-{}{50}{\provincePicardie is free of any \Presidio}%
+\EUobjective1M{Calais}{}%
+{}{50}{There is no \Presidio in \provincePicardie}%
 %
 \EUobjective2{}{French \provinceArtois}{}%
-{}{30}{}%
+{}{30}{\provinceArtois is owned by \FRA}%
 %
 \EUobjective3{}{French King Emperor}{}%
-{25}{50}{French King was elected to the Imperial Throne. Half-success if no
-  election is held}%
+{25}{50}{French King was elected to the Imperial Throne at least once since
+  the beginning of the game. Half-success if no election is held}%
 %
 \EUobjective4{}{Industrial development}{}%
-{}{40}{\MNU limits attained and monopoly in \ctz{France}}%
+{}{40}{\EUobjIndustrial{\FRA}{France}}%
 %
 \EUobjective5{}{\provinceLombardia or \provinceCampania}{}%
-{}{30}{One of these provinces is French. Half-success if no War in Italy
-  occurred since turn 1}%
+{}{30}{One of these provinces is owned by \FRA. Half-success if no War in
+  Italy occurred since the beginning of the game}%
 %
 \EUcurrentperiod{III}
 %
@@ -188,17 +204,18 @@
 {}{30}{}%
 %
 %
-\EUobjective2{}{Specific annexations}{prov\EUAbbr{ince}*}%
+\EUobjective2{}{Specific possessions}{prov\EUAbbr{ince}*}%
 {10}{40}{Each province of \provinceArtois, \provinceBresse,
-  \province{Franche-Comte}, \provinceRoussillon}%
+  \province{Franche-Comte}, \provinceRoussillon owned by \FRA}%
 %
 %
 \EUobjective3{}{No change of religion}{}%
-{}{50}{except due to the use of \ref{pIII:FWR:Hospital}}%
+{}{50}{\FRA did not change religion, except due to the use of
+  \ref{pIII:FWR:Hospital}}%
 %
 %
 \EUobjective4{}{\geq 3 \COL/\TP}{}%
-{}{30}{}%
+{}{30}{\FRA owns at least 3 \COL or \TP}%
 %
 %
 \EUobjective5M{\leq 2 unfavourable truces}{}%
@@ -207,52 +224,56 @@
 %
 \EUcurrentperiod{IV}
 %
-\EUobjective1{}{\ctz{France} monopoly}{}%
-{}{30}{}%
+\EUobjective1{}{\ctz{France} Monopoly}{}%
+{}{30}{\FRA has a Commercial Monopoly in its \ctz{France}}%
 %
 %
 \EUobjective2{}{Trade Monopoly}{zone}%
-{15/20}{40}{Count the monopolies in \STZ/\CTZ, \ctz{France} does not count
-  here; 15 is for partial monopolies, 20 for total monopolies}%
+{15/20}{40}{Each partial (15)/total (20) Commercial Monopoly in any \STZ/\CTZ
+  except \ctz{France}}%
 %
 %
 \EUobjective3M{No \GE/Southern \HRE}{}%
-{}{50}{}%
+{25}{50}{Neither \GE nor the Southern \HRE alliance exist. Success if one was
+  created but is now destroyed. Half-success if \ref{pIV:TYW} did not occur}%
 %
 \EUobjective4{}{Each \COL}{}%
 {5}{30}{}%
 %
 \EUobjective5{}{No Northern \HRE}{}%
-{}{40}{}%
+{20}{40}{There is no Northern \HRE alliance. Success if it was created but is
+  now destroyed. Half-success if \ref{pIV:TYW} did not occur}%
 %
 \EUcurrentperiod{V}
 %
 \EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurFrance controls the \CCs{Mediterranee}}%
+{}{40}{\paysmajeurFrance owns the \CCs{Mediterranee}}%
 %
 \EUobjective2M{Adjacent to \paysmajeurHollande}{}%
-{}{40}{\paysmajeurFrance adjacent to \paysmajeurHollande national territory}%
+{}{40}{\paysmajeurFrance owns at least one province adjacent to
+  \paysmajeurHollande national territory (even if not owned by \HOL)}%
 %
 \EUobjective3{}{Glorious Revolution}{}%
-{20}{40}{This probably means that \paysmajeurFrance has to control the Rebels
-  in \ref{pV:Glorious Revolution} and win; half-success if not possible}%
+{20}{40}{\paysmajeurFrance either controls the Rebels or makes an intervention
+  in \ref{pV:Glorious Revolution} and wins; half-success if the event does not
+  occur ; failure if \FRA neither controls the Rebels nor intervene}%
 %
-\EUobjective4{}{\RES{Fish} monopoly}{turn}%
-{5}{30}{per turn of \RES{Fish} monopoly}%
+\EUobjective4{}{\RES{Fish} Monopoly}{turn}%
+{5}{30}{\EUobjMonopolyRES{\FRA}{Fish}}%
 %
 \EUobjective5{}{Louis XIV's wars}{war}%
-{20}{40}{For each won war in \ref{pV:Devolution War}, \ref{pV:Chamber of
-    Reunion} and \ref{pV:League Augsburg}. If none of these events occur,
-  half-success}%
+{20}{40}{For each victory in either \ref{pV:Devolution War}, \ref{pV:Chamber
+    of Reunion} or \ref{pV:League Augsburg}. If none of these events occur,
+  half-success (20\VPs) ; Refusing the war after the event is rolled counts as
+  a defeat}%
 %
 \EUcurrentperiod{VI}
 %
 \EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurFrance controls the \CCs{Mediterranee}}%
+{}{40}{\paysmajeurFrance owns the \CCs{Mediterranee}}%
 %
 \EUobjective2{}{Spanish Succession}{}%
-{25}{50}{\FRA is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
+{25}{50}{\EUobjWoSS{\FRA}}%
 %
 \EUobjective3{}{Austrian Succession}{}%
 {20}{40}{\FRA is victorious in \ref{pVI:WoAS} without any territorial
@@ -273,11 +294,8 @@
 \EUobjective2{}{Each \CC}{CC}%
 {20}{40}{For each \terme{Commercial Centre}}%
 %
-\EUobjective3{}{Independence Wars}{}%
-{22}{45}{\FRA is victorious in all the \ref{pVII:Independence War} (which
-  means the rebels don't succeed against \FRA, but succeed against all other
-  \MAJ). Half-success if the event never occurs, or it occurs multiple times
-  and \FRA is victorious only as the \MAJ being rebelled against }%
+\EUobjective3{}{Independence Wars}{rebellion}%
+{22}{45}{\EUobjIndependanceWars}%
 %
 \EUobjective4{}{Colonial expansion}{}%
 {}{40}{\paysmajeur{France} has more \TP plus \COL than any other country in
@@ -362,7 +380,7 @@
 {}{50}{\paysportugal in \ANNEXION status}%
 %
 \EUobjective5{}{Trade monopolies*}{monop\EUAbbr{oly}}%
-{8}{40}{Each \CTZ/\STZ monopoly; \ctz{Espagne} counts double}%
+{8}{40}{\EUobjMonopolyZone; \ctz{Espagne} counts double}%
 %
 \EUcurrentperiod{V}
 %
@@ -381,7 +399,7 @@
 {}{40}{\paysportugal in \ANNEXION status}%
 %
 \EUobjective5{}{Trade monopolies}{monop\EUAbbr{oly}}%
-{8}{40}{Each \CTZ/\STZ monopoly}%
+{8}{40}{\EUobjMonopolyZone}%
 %
 \EUcurrentperiod{VI}
 %
@@ -399,9 +417,11 @@
 \EUobjective4{}{Barbary Coast}{\Presidio}%
 {10}{50}{Each \Presidio in the \terme{Barbaresques}}%
 % (jcd) What about annexations of provinces? Vassals?
+% (jym) they're not presidios... We don't want HIS to go full berserk against
+% Algeria.
 %
 \EUobjective5{}{Trade monopolies}{monop\EUAbbr{oly}}%
-{8}{40}{Each \CTZ/\STZ monopoly}%
+{8}{40}{\EUobjMonopolyZone}%
 %
 \EUcurrentperiod{VII}
 %
@@ -417,13 +437,10 @@
   with \continent{Caraibes} and \continent{Brazil} excepted}%
 %
 \EUobjective4{}{Industrial development}{}%
-{}{25}{\MNU limits attained and monopoly in \ctz{Espagne}}%
+{}{25}{\EUobjIndustrial{\HIS}{Espagne}}%
 %
 \EUobjective5{}{Independence Wars}{}%
-{15}{30}{\SPA is victorious in all the \ref{pVII:Independence War} (which
-  means the rebels don't succeed against \SPA, but succeed against all other
-  \MAJ). Half-success if the event never occurs, or it occurs multiple times
-  and \SPA is victorious only as the \MAJ being rebelled against }%
+{15}{30}{\EUobjIndependanceWars}%
 %
 \EUcurrentcountry{Hollande} \EUcurrentperiod{III}
 %
@@ -477,7 +494,7 @@
 {25}{50}{half-success if the event does not occur}%
 %
 \EUobjective5{}{\RES{Spices} monopoly}{turn}%
-{5}{40}{Each turn of \RES{Spices} monopoly}%
+{5}{40}{\EUobjMonopolyRES{\HOL}{Spices}}%
 %
 \EUcurrentperiod{VI}
 %
@@ -485,8 +502,7 @@
 {25}{50}{For each \terme{Commercial Centre}}%
 %
 \EUobjective2{}{Spanish Succession}{}%
-{25}{50}{\HOL is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
+{25}{50}{\EUobjWoSS{\HOL}}%
 %
 \EUobjective3{}{East of \granderegionMalacca}{\TP}%
 {40-10}{40}{Remove 10 \VPs for each Christian non-Dutch \TP east of
@@ -501,14 +517,13 @@
 \EUcurrentperiod{VII}
 %
 \EUobjective1{}{Trade monopolies}{}%
-{5}{30}{Each \CTZ/\STZ monopoly}%
+{5}{30}{\EUobjMonopolyZone}%
 %
 \EUobjective2M{Batavian Revolution}{}%
 {}{40}{Victory in \ref{pVII:Batavian Revolution}}%
 %
 \EUobjective3{}{\paysmajeurFrance contained}{}%
-{}{35}{\paysmajeur{France} does not reach its ``natural frontier'' during the
-  Révolution (may be the prioritary objective)}%
+{}{35}{\EUobjFranceContained}%
 %
 \EUobjective4{}{\continentAmerica}{\COL}%
 {15}{45}{Each \COL in \continent{America} (excepted \continent{Bresil})}%
@@ -562,8 +577,7 @@
 {50-20}{50}{50 \VPs minus 20 \VPs per Turkish province in \payshongrie}%
 %
 \EUobjective2{}{Spanish Succession}{}%
-{25}{50}{\AUS is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
+{25}{50}{\EUobjWoSS{\AUS}}%
 %
 \EUobjective3{}{Austrian Succession}{}%
 {20}{40}{\AUS is victorious in \ref{pVI:WoAS}. Half-success if it does not
@@ -588,8 +602,7 @@
 {5}{30}{Each turn in military alliance to a \MAJ}%
 %
 \EUobjective4{}{\paysmajeurFrance contained}{}%
-{}{30}{\paysmajeurFrance does not reach its ``natural frontier'' during the
-  Révolution (cannot be the prioritary objective)}%
+{}{30}{\EUobjFranceContained}%
 %
 \EUobjective5{}{Silesia and Lausitz}{}%
 {}{50}{\provinceSilesie and \provinceLausitz Austrian province}%
@@ -623,8 +636,7 @@
 {20}{40}{\PRU victorious in \ref{pVII:Seven Years War}}%
 %
 \EUobjective4{}{\paysmajeurFrance contained}{}%
-{}{30}{\paysmajeurFrance does not reach its ``natural frontier'' during the
-  Révolution (cannot be the prioritary objective)}%
+{}{30}{\EUobjFranceContained}%
 %
 \EUobjective5M{Silesia and Lausitz}{}%
 {}{50}{\provinceSilesie and \provinceLausitz Prussian province}%
@@ -764,9 +776,11 @@
 \EUcurrentperiod{III}
 %
 \EUobjective1{}{\RES{Furs} monopoly}{turn}%
-{10}{50}{Each turn of total \RES{Furs} monopoly}%
+{10}{50}{\EUobjMonopolyRES{\RUS}{Furs}}%
 %
 % (jcd) I added _total_ monopoly
+% (jym) Removed. total is almost impossible due to the North American
+% furs. Partial is already not completely trivial.
 %
 \EUobjective2{}{Polish Annexations}{prov\EUAbbr{ince}*}%
 {10}{40}{Each province taken in \paysmajeurPologne, \paysmajeurLithuanie,
@@ -784,7 +798,7 @@
 \EUcurrentperiod{IV}
 %
 \EUobjective1{}{\RES{Furs} monopoly}{turn}%
-{5}{45}{Each turn of total \RES{Furs} monopoly}%
+{5}{45}{\EUobjMonopolyRES{\RUS}{Furs}}%
 %
 \EUobjective2{}{National integrity}{}%
 {15}{30}{Number of national provinces not Russian: success (0 or 1),
@@ -807,7 +821,7 @@
 \EUcurrentperiod{V}
 %
 \EUobjective1{}{\RES{Furs} monopoly}{turn}%
-{5}{35}{Each turn of total \RES{Furs} monopoly}%
+{5}{35}{\EUobjMonopolyRES{\RUS}{Furs}}%
 %
 \EUobjective2{}{Destruction of \paysastrakhan}{}%
 {}{40}{}%
@@ -1038,7 +1052,7 @@
   \provinceKreta, \provinceMalta, \provinceChypre}%
 %
 \EUobjective5{}{Trade Monopoly}{zone}%
-{15}{45}{Each Commercial \terme{Monopoly} in \CTZ/\STZ}
+{15}{45}{\EUobjMonopolyZone}%
 %
 \EUcurrentperiod{V}
 %
