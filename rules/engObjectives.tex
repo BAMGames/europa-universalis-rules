@@ -6,24 +6,37 @@
 
 % Macros for repeated explanations
 %% Generic ones
-\newcommand{\EUobjIndustrial}[2]{#1 has as many \MNU\faceplus as its limit,
-  and Commercial Monopoly in  \ctz{#2}}%
-\newcommand{\EUobjWoSS}[1]{#1 is victorious in \ref{pV:WoSS}, or no war and
-  #1 received part of the inheritance. Half-success if it does not
-  occur. Failure if no war and #1 received no part of the inheritance}%
-\newcommand{\EUobjNoConversion}[1]{#1 was not forced to change its religion}%
+\newcommand{\EUobjIndustrial}[1]{\csname paysmajeur#1\endcsname has as many
+  \MNU\faceplus as its limit, and Commercial Monopoly in \ctz{#1}}%
 \newcommand{\EUobjMonopolyZone}{Each Commercial \terme{Monopoly} in any
   \STZ/\CTZ}
 \newcommand{\EUobjMonopolyRES}[2]{Each turn #1 has \RES{#2} Monopoly}%
+\newcommand{\EUobjEastIndiesConvoy}[1]{Each turn #1 owns the \emph{East
+    Indies} convoy and sails successfully at least 1\NTD of it to Europe}%
+\newcommand{\EUobjTradeCentre}[2]{\csname paysmajeur#1\endcsname owns the
+  \CCs{#2}}%
+
+\newcommand{\EUobjNoConversion}[1]{#1 was not forced to change its religion}%
+\newcommand{\EUobjSDCF}[1]{\csname paysmajeur#1\endcsname is \SDCF}%
+
+\newcommand{\EUobjWoSS}[1]{#1 is victorious in \ref{pV:WoSS}, or no war and #1
+  received part of the inheritance. Half-success if the event does not
+  occur. Failure if no war and #1 received no part of the inheritance or if #1
+  was on the loosing side of the war}%
+\newcommand{\EUobjPOLVictory}[1]{\csname  paysmajeur#1\endcsname is protector
+  of \paysPologne (permanent \EW); half-success if \ref{pVIWoPS} never
+  occured}%
 \newcommand{\EUobjFranceContained}{\paysmajeurFrance does not reach its
   ``natural frontier'' during the Revolution (cannot be the main objective)
   (\ref{pVII:Revolution:Natural Frontiers}); half-success if the event does
   not occur}
 \newcommand{\EUobjIndependanceWars}{Victory in \ref{pVII:Independence War}}
 
+
 %% Country specific
 %%% ANG
-\newcommand{\EUobjEcosseVassal}{Each turn \paysEcosse is \VASSAL of \ANG}
+\newcommand{\EUobjEcosseVassal}{Each turn \paysEcosse is \VASSAL of
+  \paysmajeurAngleterre}
 \newcommand{\EUobjIrelandPacified}{Each turn without any \REVOLT in
   \regionIrlande}
 \newcommand{\EUobjMonopolyZoneANG}[2]{Each Commercial \terme{Monopoly} in any
@@ -35,10 +48,10 @@
 {10}{30}{\EUobjEcosseVassal}%
 %
 \EUobjective2{}{Calais}{}%
-{}{45}{\ANG owns a \Presidio in \provincePicardie}%
+{}{45}{\paysmajeurAngleterre owns a \Presidio in \provincePicardie}%
 %
 \EUobjective3{}{Industrial development}{}%
-{}{25}{\EUobjIndustrial{\ANG}{Angleterre}}%
+{}{25}{\EUobjIndustrial{Angleterre}}%
 %
 \EUobjective4M{Hundred years war}{}%
 {25}{50}{\provinceGuyenne owned by \paysmajeurAngleterre, half success if only
@@ -53,13 +66,13 @@
 {10}{40}{\EUobjEcosseVassal}%
 %
 \EUobjective2M{Calais}{}%
-{}{50}{\ANG owns a \Presidio in \provincePicardie}%
+{}{50}{\paysmajeurAngleterre owns a \Presidio in \provincePicardie}%
 %
 \EUobjective3{}{\COL in \continentAmerica}{}%
-{}{30}{\ANG has at least one \COL in \continentAmerica}%
+{}{30}{\paysmajeurAngleterre has at least one \COL in \continentAmerica}%
 %
 \EUobjective4{}{Victory against \paysmajeurFrance}{}%
-{}{40}{\ANG has signed at least one peace of level \geq 2 against \FRA}%
+{}{40}{\paysmajeurAngleterre has signed at least one peace of level \geq 2 against \paysmajeurFrance}%
 %
 \EUobjective5{}{Pacified Ireland}{turn}%
 {7}{35}{\EUobjIrelandPacified}%
@@ -70,10 +83,10 @@
 {5}{30}{\EUobjEcosseVassal}%
 %
 \EUobjective2M{No forced conversion}{}%
-{}{45}{\EUobjNoConversion{\ANG}}%
+{}{45}{\EUobjNoConversion{\paysmajeurAngleterre}}%
 %
 \EUobjective3{}{Industrial development}{}%
-{}{30}{\EUobjIndustrial{\ANG}{Angleterre}}%
+{}{30}{\EUobjIndustrial{Angleterre}}%
 %
 %
 \EUobjective4{}{\paysmajeurHollande not converted}{}%
@@ -88,10 +101,10 @@
 {5}{30}{\EUobjEcosseVassal}%
 %
 \EUobjective2M{No forced conversion}{}%
-{}{40}{\EUobjNoConversion{\ANG}}%
+{}{40}{\EUobjNoConversion{\paysmajeurAngleterre}}%
 %
 \EUobjective3{}{Commercial Centre}{}%
-{}{50}{\ANG owns at least one \terme{Commercial Centre}}%
+{}{50}{\paysmajeurAngleterre owns at least one \terme{Commercial Centre}}%
 %
 \EUobjective4{}{English Civil War}{}%
 {20}{40}{Duration of \ref{pIV:English Civil War} is four turns or less: full
@@ -106,10 +119,10 @@
 {7/15}{45}{Each \TP or \COL controlled (7)/owned (15) in \continentCaraibes}%
 %
 \EUobjective2{}{No forced conversion}{}%
-{}{40}{\EUobjNoConversion{\ANG}}%
+{}{40}{\EUobjNoConversion{\paysmajeurAngleterre}}%
 %
 \EUobjective3M{\CCs{Atlantic}}{}%
-{}{40}{\ANG owns the \CCs{Atlantic}}%
+{}{40}{\EUobjTradeCentre{Angleterre}{Atlantic}}%
 %
 \EUobjective4{}{Independent Portugal}{}%
 {15}{30}{\HIS must have renounced to the conditions of \eventref{pIII:Portuguese
@@ -117,7 +130,7 @@
   \ref{pIV:Portuguese Revolt} nor \ref{pV:WoSS} occured}%
 %
 \EUobjective5{}{\RES{Fish} Monopoly}{turn}%
-{5}{40}{\EUobjMonopolyRES{\ANG}{Fish}}%
+{5}{40}{\EUobjMonopolyRES{\paysmajeurAngleterre}{Fish}}%
 %
 \EUcurrentperiod{VI}
 %
@@ -125,37 +138,35 @@
 {5/10}{50}{Each \TP or \COL controlled (5)/owned (10) in \continentCaraibes}%
 %
 \EUobjective2{}{Jacobite rebellion}{}%
-{15}{30}{\ANG wins both \ref{pVI:Jacobite Rebellion} (half-success if none
+{15}{30}{\paysmajeurAngleterre wins both \ref{pVI:Jacobite Rebellion} (half-success if none
   occur, or if one victory and one defeat)}%
 % (jcd) I added the second condition. Original was unclear.
 %
 \EUobjective3M{\CCs{Atlantic}}{}%
-{}{40}{\ANG owns the \CCs{Atlantic}}%
+{}{40}{\EUobjTradeCentre{Angleterre}{Atlantic}}%
 %
 \EUobjective4{}{Spanish Succession}{}%
-{25}{50}{\EUobjWoSS{\ANG}}%
+{25}{50}{\EUobjWoSS{\paysmajeurAngleterre}}%
 %
 \EUobjective5{}{\emph{East Indies}}{turn}%
-{4}{40}{Each turn \ANG owns the \emph{East Indies} convoy and sails
-  successfully at least 1\NTD of it to Europe}%
+{4}{40}{\EUobjEastIndiesConvoy{\paysmajeurAngleterre}}%
 %
 \EUcurrentperiod{VII}
 %
-\EUobjective1M{Independence Wars}{rebellion}%
+\EUobjective1M{Independence Wars}{}%
 {25}{50}{\EUobjIndependanceWars}%
 %
 \EUobjective2{}{\paysmajeurFrance contained}{}%
 {15}{30}{\EUobjFranceContained}%
 %
 \EUobjective3{}{Each \CC}{CC}%
-{15}{45}{Each \terme{Commercial Centre} owned by \ANG}%
+{15}{45}{Each \terme{Commercial Centre} owned by \paysmajeurAngleterre}%
 %
 \EUobjective4{}{Seven Years War}{}%
-{15}{30}{\ANG victorious in \ref{pVII:Seven Years War}}%
+{15}{30}{\paysmajeurAngleterre victorious in \ref{pVII:Seven Years War}}%
 %
 \EUobjective5{}{\emph{East Indies}}{convoy}%
-{4}{40}{Each turn \ANG owns the \emph{East Indies} convoy and sails
-  successfully at least 1\NTD of it to Europe}%
+{4}{40}{\EUobjEastIndiesConvoy{\paysmajeurAngleterre}}%
 %
 %
 %
@@ -166,17 +177,17 @@
 %
 %
 \EUobjective2{}{French \provinceArtois}{}%
-{}{30}{\provinceArtois is owned by \FRA}%
+{}{30}{\provinceArtois is owned by \paysmajeurFrance}%
 %
 \EUobjective3{}{SD of Catholic Faith}{}%
-{}{40}{\FRA is Sole Defender of Catholic Faith}%
+{}{40}{\EUobjSDCF{France}}%
 %
 \EUobjective4{}{Industrial development}{}%
-{}{25}{\EUobjIndustrial{\FRA}{France}}%
+{}{25}{\EUobjIndustrial{France}}%
 %
 %
 \EUobjective5M{War in Italy}{}%
-{25}{50}{\FRA signed a peace of level \geq 2 in at least one War in
+{25}{50}{\paysmajeurFrance signed a peace of level \geq 2 in at least one War in
   Italy. Half-success if none occur}%
 %
 \EUcurrentperiod{II}
@@ -185,17 +196,17 @@
 {}{50}{There is no \Presidio in \provincePicardie}%
 %
 \EUobjective2{}{French \provinceArtois}{}%
-{}{30}{\provinceArtois is owned by \FRA}%
+{}{30}{\provinceArtois is owned by \paysmajeurFrance}%
 %
 \EUobjective3{}{French King Emperor}{}%
 {25}{50}{French King was elected to the Imperial Throne at least once since
   the beginning of the game. Half-success if no election is held}%
 %
 \EUobjective4{}{Industrial development}{}%
-{}{40}{\EUobjIndustrial{\FRA}{France}}%
+{}{40}{\EUobjIndustrial{France}}%
 %
 \EUobjective5{}{\provinceLombardia or \provinceCampania}{}%
-{}{30}{One of these provinces is owned by \FRA. Half-success if no War in
+{}{30}{One of these provinces is owned by \paysmajeurFrance. Half-success if no War in
   Italy occurred since the beginning of the game}%
 %
 \EUcurrentperiod{III}
@@ -206,26 +217,26 @@
 %
 \EUobjective2{}{Specific possessions}{prov\EUAbbr{ince}*}%
 {10}{40}{Each province of \provinceArtois, \provinceBresse,
-  \province{Franche-Comte}, \provinceRoussillon owned by \FRA}%
+  \province{Franche-Comte}, \provinceRoussillon owned by \paysmajeurFrance}%
 %
 %
 \EUobjective3{}{No change of religion}{}%
-{}{50}{\FRA did not change religion, except due to the use of
+{}{50}{\paysmajeurFrance did not change religion, except due to the use of
   \ref{pIII:FWR:Hospital}}%
 %
 %
 \EUobjective4{}{\geq 3 \COL/\TP}{}%
-{}{30}{\FRA owns at least 3 \COL or \TP}%
+{}{30}{\paysmajeurFrance owns at least 3 \COL or \TP}%
 %
 %
 \EUobjective5M{\leq 2 unfavourable truces}{}%
-{}{40}{\paysmajeurFrance does not sign more than 2 unfavorable truce during
+{}{40}{\paysmajeurFrance does not sign more than 2 unfavourable truces during
   \ref{pIII:FWR}}%
 %
 \EUcurrentperiod{IV}
 %
 \EUobjective1{}{\ctz{France} Monopoly}{}%
-{}{30}{\FRA has a Commercial Monopoly in its \ctz{France}}%
+{}{30}{\paysmajeurFrance has a Commercial Monopoly in \ctz{France}}%
 %
 %
 \EUobjective2{}{Trade Monopoly}{zone}%
@@ -235,19 +246,19 @@
 %
 \EUobjective3M{No \GE/Southern \HRE}{}%
 {25}{50}{Neither \GE nor the Southern \HRE alliance exist. Success if one was
-  created but is now destroyed. Half-success if \ref{pIV:TYW} did not occur}%
+  created but is now destroyed. Half-success if \ref{pIV:TYW} never occured}%
 %
-\EUobjective4{}{Each \COL}{}%
+\EUobjective4{}{Each \COL}{\COL}%
 {5}{30}{}%
 %
 \EUobjective5{}{No Northern \HRE}{}%
 {20}{40}{There is no Northern \HRE alliance. Success if it was created but is
-  now destroyed. Half-success if \ref{pIV:TYW} did not occur}%
+  now destroyed. Half-success if \ref{pIV:TYW} never occured}%
 %
 \EUcurrentperiod{V}
 %
 \EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurFrance owns the \CCs{Mediterranee}}%
+{}{40}{\EUobjTradeCentre{France}{Mediterranee}}%
 %
 \EUobjective2M{Adjacent to \paysmajeurHollande}{}%
 {}{40}{\paysmajeurFrance owns at least one province adjacent to
@@ -256,10 +267,10 @@
 \EUobjective3{}{Glorious Revolution}{}%
 {20}{40}{\paysmajeurFrance either controls the Rebels or makes an intervention
   in \ref{pV:Glorious Revolution} and wins; half-success if the event does not
-  occur ; failure if \FRA neither controls the Rebels nor intervene}%
+  occur ; failure if \paysmajeurFrance neither controls the Rebels nor intervene}%
 %
 \EUobjective4{}{\RES{Fish} Monopoly}{turn}%
-{5}{30}{\EUobjMonopolyRES{\FRA}{Fish}}%
+{5}{30}{\EUobjMonopolyRES{\paysmajeurFrance}{Fish}}%
 %
 \EUobjective5{}{Louis XIV's wars}{war}%
 {20}{40}{For each victory in either \ref{pV:Devolution War}, \ref{pV:Chamber
@@ -270,21 +281,21 @@
 \EUcurrentperiod{VI}
 %
 \EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurFrance owns the \CCs{Mediterranee}}%
+{}{40}{\EUobjTradeCentre{France}{Mediterranee}}%
 %
 \EUobjective2{}{Spanish Succession}{}%
-{25}{50}{\EUobjWoSS{\FRA}}%
+{25}{50}{\EUobjWoSS{\paysmajeurFrance}}%
 %
 \EUobjective3{}{Austrian Succession}{}%
-{20}{40}{\FRA is victorious in \ref{pVI:WoAS} without any territorial
-  gain. Half-success if it does not occur}%
+{20}{40}{\paysmajeurFrance is victorious in \ref{pVI:WoAS} without any
+  territorial gain. Half-success if the event does not occur}%
 %
 \EUobjective4M{\CCs{Atlantic}}{}%
-{}{50}{\paysmajeurFrance controls the \CCs{Atlantic}}%
+{}{50}{\EUobjTradeCentre{France}{Atlantic}}%
 %
 \EUobjective5{}{Polish Succession+\FRA}{}%
-{25}{50}{Polish King is supported by \FRA in \ref{pVI:WoPS}; half-success if
-  this is not possible or if the event does not occur}%
+{25}{50}{\EUobjPOLVictory{France}; half-success if \paysmajeurSuede is
+  protector of \paysPologne}%
 %
 \EUcurrentperiod{VII}
 %
@@ -294,7 +305,7 @@
 \EUobjective2{}{Each \CC}{CC}%
 {20}{40}{For each \terme{Commercial Centre}}%
 %
-\EUobjective3{}{Independence Wars}{rebellion}%
+\EUobjective3{}{Independence Wars}{}%
 {22}{45}{\EUobjIndependanceWars}%
 %
 \EUobjective4{}{Colonial expansion}{}%
@@ -316,7 +327,7 @@
 {}{40}{\paysmajeurFrance has no provinces in \regionItalie}%
 %
 \EUobjective3{}{SD of Catholic Faith}{}%
-{}{25}{\HIS is Sole Defender of Catholic Faith}%
+{}{25}{\EUobjSDCF{Espagne}}%
 %
 \EUobjective4M{Barbary Coast}{\Presidio}%
 {15}{50}{Each \Presidio on the Barbary coast}%
@@ -326,10 +337,10 @@
 %
 \EUcurrentperiod{II}
 %
-\EUobjective1{}{No \FRA \VASSAL in \regionItalie}{}%
+\EUobjective1{}{No \paysmajeurFrance \VASSAL in \regionItalie}{}%
 {}{40}{No vassal of \paysmajeurFrance is in \regionItalie}%
 %
-\EUobjective2{}{\FRA not in \regionItalie}{}%
+\EUobjective2{}{\paysmajeurFrance not in \regionItalie}{}%
 {}{30}{\paysmajeurFrance has no provinces in \regionItalie}%
 %
 \EUobjective3{}{Spanish Emperor}{}%
@@ -437,7 +448,7 @@
   with \continent{Caraibes} and \continent{Brazil} excepted}%
 %
 \EUobjective4{}{Industrial development}{}%
-{}{25}{\EUobjIndustrial{\HIS}{Espagne}}%
+{}{25}{\EUobjIndustrial{Espagne}}%
 %
 \EUobjective5{}{Independence Wars}{}%
 {15}{30}{\EUobjIndependanceWars}%
@@ -445,24 +456,24 @@
 \EUcurrentcountry{Hollande} \EUcurrentperiod{III}
 %
 \EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurHollande controls the \CCs{Mediterranee}}%
+{}{40}{\EUobjTradeCentre{Hollande}{Mediterranee}}%
 %
 \EUobjective2{}{Recognition of Independence}{}%
 {}{50}{Dutch Independence recognised by Spain}%
 %
-\EUobjective3{}{Protestant \FRA}{}%
+\EUobjective3{}{Protestant \paysmajeurFrance}{}%
 {}{35}{Protestant won the French wars of religions}%
 %
-\EUobjective4{}{\ANG not Catholic}{}%
+\EUobjective4{}{\paysmajeurAngleterre not Catholic}{}%
 {}{40}{\paysmajeurAngleterre Protestant or \PROTANG and not converted}%
 %
 \EUobjective5M{\emph{East Indies}}{convoy}%
-{10}{40}{per turn of bringing back the \emph{East Indies} convoy}%
+{10}{40}{\EUobjEastIndiesConvoy{\HOL}}%
 %
 \EUcurrentperiod{IV}
 %
 \EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurHollande controls the \CCs{Mediterranee}}%
+{}{40}{\EUobjTradeCentre{Hollande}{Mediterranee}}%
 %
 \EUobjective2{}{\seazone{Baltique} Domination}{turn}%
 {5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
@@ -480,7 +491,7 @@
 \EUcurrentperiod{V}
 %
 \EUobjective1M{\CCs{Atlantic}}{}%
-{}{40}{\paysmajeurHollande controls the \CCs{Atlantic}}%
+{}{40}{\EUobjTradeCentre{Hollande}{Atlantic}}%
 %
 \EUobjective2{}{Safe from \paysmajeurFrance}{}%
 {}{50}{\paysmajeurFrance not adjacent to \paysmajeurHollande national
@@ -512,7 +523,7 @@
 {15}{45}{Each \COL in \continent{America} (excepted \continent{Bresil})}%
 %
 \EUobjective5{}{\emph{East Indies}}{convoy}%
-{4}{40}{per turn of bringing back the \emph{East Indies} convoy}%
+{4}{40}{\EUobjEastIndiesConvoy{\HOL}}%
 %
 \EUcurrentperiod{VII}
 %
@@ -718,9 +729,7 @@
   \paysbrandebourg or \paysdanemark}%
 %
 \EUobjective5{}{Polish Succession+\SUE-\FRA}{}%
-{25}{50}{During \ref{pVI:WoPS}, \SUE must either support the Polish King and
-  win (50 \VPs), or prevent a winning \FRA supporting the Polish King (25
-  \VPs). Half-success if the event does not occur}%
+{25}{50}{\EUobjPOLVictory{Suede}; failure if \paysmajeurFrance is protector of \paysPologne}%
 %
 \EUcurrentperiod{VII}
 %
@@ -842,7 +851,7 @@
   \granderegionAfghanistan, \granderegionPerse, \continentIndia}%
 %
 \EUobjective2{}{Polish Succession-\FRA-\SUE}{}%
-{}{30}{Polish defeat in \ref{pVI:WoPS}}%
+{}{30}{\paysPologne has no protector}%
 %
 \EUobjective3{}{Ports of \regionBaltique}{port}%
 {15}{40}{Each port of the \regionBaltique}%
@@ -1154,7 +1163,7 @@
 \EUcurrentperiod{III}
 %
 \EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurVenise controls the \CCs{Mediterranee}}%
+{}{40}{\EUobjTradeCentre{Venise}{Mediterranee}}%
 %
 \EUobjective2{}{\regionBalkans/Barbary}{\Presidio}%
 {10}{30}{Each Venetian \Presidio (in \terme{Barbaresques}), or \regionBalkans
