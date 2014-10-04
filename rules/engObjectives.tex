@@ -19,6 +19,9 @@
 \newcommand{\EU@objEastIndiesConvoy}{Each turn \EUcurrmaj owns the \emph{East
     Indies} convoy and sails successfully at least 1\NTD of it to Europe}%
 \newcommand{\EU@objTradeCentre}[1]{\EUcurrmaj owns the \CCs{#1}}%
+\newcommand{\EU@objEachCC}{Each \terme{Commercial Centre} owned by \EUcurrmaj}%
+\newcommand{\EU@objBaltiqueTrade}{Each turn of Commercial Domination in the
+  \regionBaltique}%
 
 %%% Religious
 % Must keep country as arg because of cross objectives ANG/HOL.
@@ -26,9 +29,11 @@
   its religion}%
 \newcommand{\EU@objSDCF}{\EUcurrmaj is \SDCF}%
 
-%%% Political
+%%% Political + Territorial
 \newcommand{\EU@objEmperor}[1]{#1 King was elected to the Imperial
   Throne. Half-success if no election is held}%
+\newcommand{\EU@objOuterProvinces}{Each non-national province owned by
+  \EUcurrmaj}%
 
 %%% Wars
 \newcommand{\EU@objWoSS}{\EUcurrmaj is victorious in \ref{pV:WoSS}, or no war
@@ -36,24 +41,29 @@
   does not occur. Failure if no war and \EUcurrmaj received no part of the
   inheritance or if \EUcurrmaj was on the loosing side of the war}%
 \newcommand{\EU@objPOLVictory}{\EUcurrmaj is protector of \paysPologne
-  (permanent \EW); half-success if \ref{pVIWoPS} never occured}%
+  (permanent \EW); half-success if \ref{pVI:WoPS} never occured}%
 \newcommand{\EU@objFranceContained}{\paysmajeurFrance does not reach its
   ``natural frontier'' during the Revolution (cannot be the main objective)
   (\ref{pVII:Revolution:Natural Frontiers}); half-success if the event does
   not occur}
-\newcommand{\EU@objIndependanceWars}{Victory in \ref{pVII:Independence War}}
+\newcommand{\EU@objIndependanceWars}{Victory in \ref{pVII:Independence War}
+  (see~\ref{chVictories:Explanation:Independence})}
+\newcommand{\EU@objSYW}{\EUcurrmaj victorious in \ref{pVII:Seven Years War}
+  (signs a peace of level \geq 1)}%
 
 
 %% Country specific
 %%% ANG
 \newcommand{\EU@objEcosseVassal}{Each turn \paysEcosse is \VASSAL of
   \paysmajeurAngleterre}
-\newcommand{\EU@objIrelandPacified}{Each turn without any \REVOLT in
-  \regionIrlande}
+\newcommand{\EU@objIrelandPacified}{Each turn without any \REVOLT in provinces
+  owned by \paysmajeurAngleterre in \regionIrlande}
 \newcommand{\EU@objMonopolyZoneANG}[2]{Each Commercial \terme{Monopoly} in any
   \STZ (#1)/\CTZ (#2)}
 \newcommand{\EU@objCalaisANG}{\paysmajeurAngleterre owns \provincePicardie or
   a \Presidio in it}
+\newcommand{\EU@objCaraibesANG}[2]{Each \TP or \COL controlled (#1)/owned (#2)
+  in \continentCaraibes}%
 
 %%% FRA
 \newcommand{\EU@objCalaisFRA}{\paysmajeurFrance owns \provincePicardie and
@@ -73,6 +83,9 @@
   \regionItalie}%
 \newcommand{\EU@objPresidiosHIS}{Each Christian \Presidio in provinces owned
   by \Barbaresques}%
+\newcommand{\EU@objSpanishWorld}{No non-Spanish \COL in \continent{South
+    America}, \granderegionFlorida and \continentCaraibes; half-success if no
+  non-Spanish \COL in \continent{South America} and \granderegionFlorida}
 
 %%% TUR
 \newcommand{\EU@objPresidiosTUR}[1]{#1\VPs, minus 10 \VPs for each Christian
@@ -153,7 +166,7 @@
 \EUcurrentperiod{V}
 %
 \EUobjective1{}{\continentCaraibes}{island}%
-{7/15}{45}{Each \TP or \COL controlled (7)/owned (15) in \continentCaraibes}%
+{7/15}{45}{\EU@objCaraibesANG{7}{15}}%
 %
 \EUobjective2{}{No forced conversion}{}%
 {}{40}{\EU@objNoConversion{Angleterre}}%
@@ -172,7 +185,7 @@
 \EUcurrentperiod{VI}
 %
 \EUobjective1{}{\continentCaraibes}{island}%
-{5/10}{50}{Each \TP or \COL controlled (5)/owned (10) in \continentCaraibes}%
+{5/10}{50}{\EU@objCaraibesANG{5}{10}}%
 %
 \EUobjective2{}{Jacobite rebellion}{}%
 {15}{30}{\paysmajeurAngleterre wins both \ref{pVI:Jacobite Rebellion}
@@ -183,7 +196,7 @@
 {}{40}{\EU@objTradeCentre{Atlantic}}%
 %
 \EUobjective4{}{Spanish Succession}{}%
-{25}{50}{\EU@objWoSS{\paysmajeurAngleterre}}%
+{25}{50}{\EU@objWoSS}%
 %
 \EUobjective5{}{\emph{East Indies}}{turn}%
 {4}{40}{\EU@objEastIndiesConvoy}%
@@ -197,10 +210,10 @@
 {15}{30}{\EU@objFranceContained}%
 %
 \EUobjective3{}{Each \CC}{CC}%
-{15}{45}{Each \terme{Commercial Centre} owned by \paysmajeurAngleterre}%
+{15}{45}{\EU@objEachCC}%
 %
 \EUobjective4{}{Seven Years War}{}%
-{15}{30}{\paysmajeurAngleterre victorious in \ref{pVII:Seven Years War}}%
+{15}{30}{\EU@objSYW}
 %
 \EUobjective5{}{\emph{East Indies}}{convoy}%
 {4}{40}{\EU@objEastIndiesConvoy}%
@@ -340,7 +353,7 @@
 {}{50}{}%
 %
 \EUobjective2{}{Each \CC}{CC}%
-{20}{40}{For each \terme{Commercial Centre}}%
+{20}{40}{\EU@objEachCC}%
 %
 \EUobjective3{}{Independence Wars}{}%
 {22}{45}{\EU@objIndependanceWars}%
@@ -388,12 +401,11 @@
 {15}{50}{\EU@objPresidiosHIS}%
 %
 \EUobjective5{}{Religious calm in \HRE}{}%
-{25}{50}{Check this objective immediately at the end of period \period{II},
-  without waiting for the events to become impossible. Full success if either
-  \ref{pI:Reformation2} did not occur; or \ref{pII:Schmalkaldic League}
-  Schmalkaldic league destroyed without religious liberty and \ref{pIV:TYW}
-  hasn't occured yet; or \eventref{pIV:TYW} won. Half success if
-  \ref{pII:Schmalkaldic League} did not occur}%
+{25}{50}{Full success if either \ref{pI:Reformation2} did not occur; or
+  \ref{pII:Schmalkaldic League} Schmalkaldic league destroyed without
+  religious liberty and \ref{pIV:TYW} hasn't occured yet; or
+  \eventref{pIV:TYW} won (dominant position at the final peace). Half success
+  if \ref{pII:Schmalkaldic League} did not occur}%
 %
 \EUcurrentperiod{III}
 %
@@ -423,7 +435,7 @@
 {}{50}{Creation of \pays{German Empire} (half if South HRE alliance)}%
 %
 \EUobjective3{}{\paysmajeurAutriche}{prov\EUAbbr{ince}-11}%
-{10}{30}{Each province above 11 in \AUSaus}%
+{10}{30}{Each province above 11 owned by \AUSaus}%
 %
 \EUobjective4{}{Annexed \paysportugal}{}%
 {}{50}{\paysportugal in \ANNEXION status}%
@@ -437,12 +449,10 @@
 {40-10}{40}{\EU@objNoTURHungary{40}{10}}%
 %
 \EUobjective2{}{Low Countries}{prov\EUAbbr{ince}}%
-{10}{50}{Each province in Spanish Netherlands (\regionBelgique)}%
+{10}{50}{Each province owned by \paysmajeurEspagne in \regionBelgique}%
 %
 \EUobjective3{}{Exclusive below \granderegion{Florida}}{}%
-{20}{40}{No non-spanish \COL south of \granderegion{Florida}
-  (\continent{Caraibes} included; \continent{Brazil} excepted); half-success
-  with \continent{Caraibes} and \continent{Brazil} excepted}%
+{20}{40}{\EU@objSpanishWorld}%
 %
 \EUobjective4{}{Annexed \paysportugal}{}%
 {}{40}{\paysportugal in \ANNEXION status}%
@@ -453,15 +463,14 @@
 \EUcurrentperiod{VI}
 %
 \EUobjective1M{Spanish Succession}{}%
-{}{50}{Victory of \SPA in \ref{pV:WoSS}}%
+{}{50}{Victory of \SPA in \ref{pV:WoSS}; full success if the event occurs but
+  there is no war}%
 %
 \EUobjective2{}{Outer provinces}{prov\EUAbbr{ince}}%
-{10}{40}{}%
+{10}{40}{\EU@objOuterProvinces}%
 %
 \EUobjective3{}{Exclusive below \granderegion{Florida}}{}%
-{20}{45}{No non-spanish \COL south of \granderegion{Florida}
-  (\continent{Caraibes} included; \continent{Brazil} excepted); half-success
-  with \continent{Caraibes} and \continent{Brazil} excepted}%
+{20}{45}{\EU@objSpanishWorld}%
 %
 \EUobjective4{}{Barbary Coast}{\Presidio}%
 {10}{50}{\EU@objPresidiosHIS}%
@@ -475,15 +484,14 @@
 \EUcurrentperiod{VII}
 %
 \EUobjective1{}{Spanish Asiento}{}%
-{}{35}{}%
+{}{35}{\paysmajeurEspagne has a commercial policy of Exclusive
+  Asiento~\ref{chSpecific:Spain:Asiento}}%
 %
-\EUobjective2{}{Outer provinces}{prov\EUAbbr{ince}-4}%
-{10}{40}{Each non national provinces above 3}%
+\EUobjective2{}{Outer provinces}{prov\EUAbbr{ince}-3}%
+{10}{40}{\EU@objOuterProvinces (above 3)}%
 %
 \EUobjective3M{Exclusive below \granderegion{Florida}}{}%
-{20}{50}{No non-spanish \COL south of \granderegion{Florida}
-  (\continent{Caraibes} included; \continent{Brazil} excepted); half-success
-  with \continent{Caraibes} and \continent{Brazil} excepted}%
+{20}{50}{\EU@objSpanishWorld}%
 %
 \EUobjective4{}{Industrial development}{}%
 {}{25}{\EU@objIndustrial}%
@@ -500,10 +508,10 @@
 {}{50}{Dutch Independence recognised by Spain}%
 %
 \EUobjective3{}{Protestant \paysmajeurFrance}{}%
-{}{35}{Protestant won the French wars of religions}%
+{}{35}{\paysmajeurFrance is Protestant}%
 %
-\EUobjective4{}{\paysmajeurAngleterre not Catholic}{}%
-{}{40}{\paysmajeurAngleterre Protestant or \PROTANG and not converted}%
+\EUobjective4{}{Protestant \paysmajeurAngleterre}{}%
+{}{40}{\paysmajeurAngleterre is Protestant (either \PROTANG or \PROTPUR)}%
 %
 \EUobjective5M{\emph{East Indies}}{convoy}%
 {10}{40}{\EU@objEastIndiesConvoy}%
@@ -513,15 +521,16 @@
 \EUobjective1{}{\CCs{Mediterranee}}{}%
 {}{40}{\EU@objTradeCentre{Mediterranee}}%
 %
-\EUobjective2{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
+\EUobjective2{}{\region{Baltique} Trade}{turn}%
+{5}{30}{\EU@objBaltiqueTrade}%
 %
 \EUobjective3{}{\payshanse/Northern \HRE}{}%
-{}{40}{Northern \HRE alliance if \ref{pIV:TYW} occurred, else \payshanse still
-  exists and is a \VASSAL}%
+{}{40}{Either \ref{pIV:TYW} occured and there is a Northern \HRE alliance; or
+  \payshanse still exists and is \VASSAL of \paysmajeurHollande}%
 %
 \EUobjective4M{Abolition Act of Navigation}{}%
-{20}{40}{half-success if the event does not occur}%
+{20}{40}{Act of Navigation (\ref{pIV:Act Navigation}) is not in effect;
+  half-success if the event did not occur}%
 %
 \EUobjective5{}{\continentBrazil}{\COL}%
 {10}{40}{Each Dutch \COL in \continentBrazil}%
@@ -532,12 +541,14 @@
 {}{40}{\EU@objTradeCentre{Atlantic}}%
 %
 \EUobjective2{}{Safe from \paysmajeurFrance}{}%
-{}{50}{\paysmajeurFrance not adjacent to \paysmajeurHollande national
-  territory}%
+{}{50}{\paysmajeurFrance does not own any province adjacent to
+  \paysmajeurHollande national territory}%
 %
 \EUobjective3{}{East of \granderegionMalacca}{}%
-{}{40}{No Christian non-dutch \TP east of \granderegionMalacca (included,
-  \continentSiberia excepted)}%
+{}{40}{No Christian non-dutch \TP east of \granderegionMalacca (included),
+  \continentSiberia excepted (includes \continent{Extreme Orient},
+  \continentIndonesia, \granderegionPhilippines and part of
+  \continentIndochina, excludes \granderegionOceania)}%
 %
 \EUobjective4{}{Abolition Act of Navigation}{}%
 {25}{50}{half-success if the event does not occur}%
@@ -548,7 +559,7 @@
 \EUcurrentperiod{VI}
 %
 \EUobjective1M{Each \CC}{CC}%
-{25}{50}{For each \terme{Commercial Centre}}%
+{25}{50}{\EU@objEachCC}%
 %
 \EUobjective2{}{Spanish Succession}{}%
 {25}{50}{\EU@objWoSS}%
@@ -681,7 +692,7 @@
 {5}{40}{Each turn in military alliance to a \MAJ}%
 %
 \EUobjective3{}{Seven Years War}{}%
-{20}{40}{\PRU victorious in \ref{pVII:Seven Years War}}%
+{20}{40}{\EU@objSYW}
 %
 \EUobjective4{}{\paysmajeurFrance contained}{}%
 {}{30}{\EU@objFranceContained}%
@@ -691,8 +702,8 @@
 %
 \EUcurrentcountry{Suede} \EUcurrentperiod{III}
 %
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
+\EUobjective1{}{\region{Baltique} Trade}{turn}%
+{5}{30}{\EU@objBaltiqueTrade}%
 %
 % (jcd) Should be M ?
 %
@@ -714,8 +725,8 @@
 %
 \EUcurrentperiod{IV}
 %
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
+\EUobjective1{}{\region{Baltique} Trade}{turn}%
+{5}{30}{\EU@objBaltiqueTrade}%
 %
 \EUobjective2M{No \pays{German Empire}}{}%
 {}{40}{}%
@@ -734,8 +745,8 @@
 %
 \EUcurrentperiod{V}
 %
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
+\EUobjective1{}{\region{Baltique} Trade}{turn}%
+{5}{30}{\EU@objBaltiqueTrade}%
 %
 \EUobjective2{}{Colonisation}{\COL/\TP}%
 {5}{40}{Each \COL/\TP}%
@@ -752,8 +763,8 @@
 %
 \EUcurrentperiod{VI}
 %
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{40}{Each turn of Commercial Domination on the \stz{Baltique}}%
+\EUobjective1{}{\region{Baltique} Trade}{turn}%
+{5}{40}{\EU@objBaltiqueTrade}%
 %
 \EUobjective2{}{Colonisation}{\COL/\TP}%
 {7}{40}{Each \COL/\TP}%
@@ -771,8 +782,8 @@
 %
 \EUcurrentperiod{VII}
 %
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{40}{Each turn of Commercial Domination on the \stz{Baltique}}%
+\EUobjective1{}{\region{Baltique} Trade}{turn}%
+{5}{40}{\EU@objBaltiqueTrade}%
 %
 \EUobjective2{}{Colonisation}{\COL/\TP}%
 {10}{40}{Each \COL/\TP}%

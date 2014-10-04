@@ -428,14 +428,31 @@ does not complete it, he loses the associated \VPs.
 required element is enough to avoid the penalty. However, having none of them
 result in a penalty equal to the maximum potential value of the objective.
 
+
+% (jym) most 'E' events seem to make much more sense if checked
+% immediately rather than waiting for the next period to finish.
 \aparag[Event objectives]
 \bparag Some objectives depend on the occurence of an event.
-\bparag If the corresponding event has not finished or occurred when the
-period ends, the check for the success of the objective is postponed until the
-event occurs and terminates.
-\bparag If the event can not happen anymore (due to being 2 periods before),
-then the objective is considered as being half realised, entitling the player
+\bparag If the corresponding event has not finished %or occurred
+when the period ends, the check for the success of the objective is
+postponed until the event %occurs and
+terminates.
+% \bparag If the event can not happen anymore (due to being 2 periods before),
+% then the objective is considered as being half realised, entitling the player
+% to gain half the \VPs value.
+\bparag If the event did not occur yet, even if it may occur later, then
+the objective is considered as being half realised, entitling the player
 to gain half the \VPs value.
+
+\begin{designnote}
+  The event may occur later (in the next period) without changing the
+  \VPs gained by the objective, whatever its outcome.
+
+  In some case, it is also possible that the event occured one period
+  early and is already resolved when the choice of objective has to be
+  made, resulting in a ``free'' objective that is already fulfilled and
+  is guaranteed to bring \VPs. Enjoy!
+\end{designnote}
 
 \begin{designnote}
   {\bf M} objectives are usually hard goals that historical monarchs pursued
@@ -490,17 +507,21 @@ to gain half the \VPs value.
 
 \subsection{Explanation of some objectives}
 
-\aparag[MNU.] Some objectives are explained as \MNU: those objectives
-consist in having at the end of the period a number of Manufacture units
-strictly superior to the period limit.
-\bparag In order to achieve it, one either has to build extra \MNU in
-advance, and take associated risks (\ref{chThePowers:Exceeding Limits}),
-or to make a last attempt in the last turn of the period, and risk
-failing it.
+% (jym) apparently, no more "MNU" obj. Probably replaced by the
+% "Industrial development" one.
 
-\aparag[Commercial Domination in \stz{Baltique}.] Each turn, one country
-may have Commercial Domination in \stz{Baltique}. Commercial Domination
-is attributed, in decreasing order of precedence, to the \MAJ who
+% \aparag[MNU.] Some objectives are explained as \MNU: those objectives
+% consist in having at the end of the period a number of Manufacture units
+% strictly superior to the period limit.
+% \bparag In order to achieve it, one either has to build extra \MNU in
+% advance, and take associated risks (\ref{chThePowers:Exceeding Limits}),
+% or to make a last attempt in the last turn of the period, and risk
+% failing it.
+
+\aparag[Commercial Domination in the \region{Baltique}.] Each turn, one
+country may have Commercial Domination in the
+\region{Baltique}. Commercial Domination is attributed, in decreasing
+order of precedence, to the \MAJ who
 \begin{itemize}
 \item levy Sund taxes (\ref{chSpecific:Sund Levies});
 \item has diplomatic control of the minor with right to levy Sund taxes
@@ -602,9 +623,10 @@ period are checked against this objective.
 or \CTZ or in production of resource without precision, any monopoly
 (partial or total) counts toward fulfilling the objective.
 
-\aparag[Independence wars.] \ref{pVII:Independence War} may occur
-several time, resulting in several rebellions. The associated objective
-is checked as follows, in decreasing order of precedence:
+\aparag[Independence wars.] \label{chVictories:Explanation:Independence}
+\ref{pVII:Independence War} may occur several time, resulting in several
+rebellions. The associated objective is checked as follows, in
+decreasing order of precedence:
 \begin{itemize}
 \item If at least one rebellion war occured in the country's colonies
   and all independence wars in the country's colonies were crushed, full
