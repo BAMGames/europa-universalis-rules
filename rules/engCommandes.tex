@@ -396,10 +396,10 @@
 \def\Veteran{\emph{Veterans}\xspace}
 \def\Conscripts{\emph{Conscsripts}\xspace}
 
-% Jym, août 2012
 % short commande for blason inclusion in section titles
-\newcommand{\blasonJ}[1]{\includegraphics[width=12bp]{shield_#1}}
+\newcommand{\blason}[1]{\includegraphics[width=12bp]{shield_#1}}
+\usepackage{calc} % \heightof
+\newcommand{\blasonsmall}[1]{\includegraphics[height=\heightof{A}]{shield_#1}}
 
-% Jym, août 2013
 \newcommand{\SDCF}{\xnameref{chSpecific:Catholic Faith}\xspace}
 \newcommand{\Barbaresques}{\xnameref{chSpecific:Barbaresques}\xspace}
