@@ -1131,44 +1131,73 @@ are meant to be used.
 
 
 \subsection{Continents in the \ROTW}
+\begin{designnote}
+  For game purposes, continents are composed of a given set of \Areas and
+  provinces. In several cases, this significantly differs from the actual
+  geographical continent baring the same name (\emph{e.g.} \continent{South
+    America} does not include \continentBrazil, or \continentAsia does not
+  include \continentSiberia). In game, continents are usually areas of
+  influences of some power and thus include only the geographical zone where
+  that power actually tried to impose an exclusive power (\emph{e.g.}
+  \paysmajeurEspagne tried to impose a Spanish exclusive in \continent{South
+    America} without bothering about the Portuguese in \continentBrazil (as a
+  result of the Treaty of Tordesillas), thus in game we have set
+  \continent{South America} to correspond to the Spanish World only and
+  \continentBrazil is excluded from it).
+
+  In short: beware that in game ``continents'' are not always exactly the same
+  as geographical continents.
+\end{designnote}
 
 \begin{deflist}
-\item[\anchorcontinent{Africa}] The whole continent of Africa, including the
-  islands of \granderegion{Sainte-Helene}, \granderegion{Cabo Verde},
+\item[\anchorcontinent{Africa}] is the whole continent of Africa, inland from
+  \granderegionMauritanie to \granderegionSoudan and including the islands of
+  \granderegion{Sainte-Helene}, \granderegion{Cabo Verde},
   \granderegion{Madagascar}, \granderegion{Mascareignes} and
-  \granderegion{Seychelles}, but excluding the places of \continent{Middle
-    East}.
-\item[\anchorcontinent{America}] All the new continent, including
+  \granderegion{Seychelles}.
+\item[\anchorcontinent{America}] is all the New World, including
   \granderegion{Malouines}, \continent{Caraibes} and \continent{Brazil}.
-\item[\anchorcontinent{Brazil}] It comprises the following areas:
-  \granderegion{Belem}, \granderegion{Recife}, \granderegion{Rio}.
-\item[\anchorcontinent{South America}] It contains all the inland areas of
+\item[\anchorcontinent{Brazil}] Is the following \Areas: \granderegion{Belem},
+  \granderegion{Recife}, \granderegion{Rio}.
+\item[\anchorcontinent{South America}] contains all the inland areas of
   \continent{America} that lie to the south of \granderegion{Chichimeca}
   (included), excluding \continent{Brazil}.
-\item[\anchorcontinent{North America}] It contains all the inland areas of
+\item[\anchorcontinent{North America}] contains all the inland areas of
   \continent{America} that lie to the north of \granderegion{Chichimeca}
   (excluded).
-\item[\anchorcontinent{Caraibes}] It is composed of \granderegion{Haiti},
-  \granderegion{Cuba}, \granderegion{Antilles} and \granderegion{Florida}.
-\item[\anchorcontinent{Extreme Orient}] It is the union of the following
-  areas: \granderegion{Japan}, \granderegion{Formose},
+\item[\anchorcontinent{Caraibes}] is composed of \granderegion{Haiti},
+  \granderegion{Cuba}, \granderegion{Antilles} and
+  \granderegion{Florida}. Note that \granderegionFlorida is both part of
+  \continent{North America} and \continentCaraibes.
+\item[\anchorcontinent{Extreme Orient}] is the union of the following areas:
+  \granderegion{Japan}, \granderegion{Formose}, \granderegionCoree,
   \granderegion{Mandchourie}, \granderegion{Pekin}, \granderegion{Nankin},
   \granderegion{Canton}.
-\item[\anchorcontinent{India}] It is the Indian sub-continent, magnified on
-  the map, and includes \granderegion{Ceylan}.
-\item[\anchorcontinent{Indonesia}] Is the archipelago South-East of
+% (jym) +Coree. +Philippines ?
+\item[\anchorcontinent{India}] is the part of the Indian sub-continent
+  magnified on the map. Namely: \granderegionDelhi, \granderegionAoudh,
+  \granderegionBengale, \granderegionGujarat, \granderegionPendjab,
+  \granderegionIndus, \granderegionOrissa, \granderegionGondwana,
+  \granderegionMumbai, \granderegionHyderabad, \granderegionMalabar,
+  \granderegionKarnatika and \granderegion{Ceylan}.
+\item[\anchorcontinent{Indonesia}] is the archipelago South-East of
   \continent{Asia}, namely \granderegion{Sumatra}, \granderegion{Java},
   \granderegion{Borneo}, \granderegion{Celebes}, \granderegion{Sonde} and
   \granderegion{Epices}.
-\item[\anchorcontinent{Middle East}] It is the arabic peninsula, plus
+\item[\anchorcontinent{Indochina}] contains \granderegionBirmanie,
+  \granderegionMalacca, \granderegionAyutthaya and \granderegion{Dai Viet}.
+\item[\anchorcontinent{Middle East}] is the arabic peninsula
+  (\granderegionNedj, \granderegionOman and \granderegionAden, including the
+  island of \provinceSocotra), plus \provinceOrmus,
   \granderegion{Afghanistan}, \granderegion{Balouchistan} and
   \granderegion{Aral}.
-\item[\anchorcontinent{Siberia}] It is the union of all northern territories
-  from \granderegion{Siberie} to \granderegion{Amour} and
-  \granderegion{Kamchatka}.
-\item[\anchorcontinent{Asia}] It is composed of Indochina, Oceania,
-  \continent{India}, \continent{Middle East} and \continent{Extreme Orient}
-  (thus excluding \continentSiberia).
+% (jym) +Ormus
+\item[\anchorcontinent{Siberia}] is the union of all northern territories from
+  \granderegion{Siberie} to \granderegion{Amour} and \granderegion{Kamchatka}.
+\item[\anchorcontinent{Asia}] is composed of \continent{Middle East},
+  \continentIndia, \continentIndochina, \granderegionOceania, and
+  \continent{Extreme Orient} (thus excluding \continentSiberia).  (jym)
+  -Oceania? +Philippines? +Indonesia?
 \end{deflist}
 
 
