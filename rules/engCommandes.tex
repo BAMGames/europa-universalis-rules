@@ -1,10 +1,10 @@
 % Structure generale :
 % \chapter{Titre}		I	saut page
 % \section{Titre}		I.1	parfois saut page
-% \subsection{Titre}		I.1.1	titre separe	
+% \subsection{Titre}		I.1.1	titre separe
 % \subsubsection[Titre]		I.1.1.1	titre sur la ligne
 % \aparag[Titre]		A.	nouveau parag si titre,meme par sinon
-% \bparag			A.1	
+% \bparag			A.1
 
 % Sauf pour les evenements :
 % \chapter{Evenements}
@@ -32,7 +32,7 @@
 % \defsubevent{Something} resets the phase counter (and all subhierarchical
 %        ones, puts a \bfintercale{Something}. 1st style subevent.
 %        Changes \thephase to {\thesubevent\thephase}
-% \begin{setsevent} \  Defines a set of subevents, second style. If used as 
+% \begin{setsevent} \  Defines a set of subevents, second style. If used as
 % \end{setsevent}   /  as \begin{setother}[Something], puts a \bfintercale.
 % \defsubeventbis{Something} Defines a subevent. PHASE is kept, where as
 %        EVPARA and SUBEVPARA are saved, reset, and restored at end.
@@ -78,7 +78,7 @@
 % Pour un majeur, liste est une variation sur le nom du pays
 %\leaderdef(Cle)[Tours](liste)(Type)(Caracs){Commentaires}
 
-%Tableau grise: 
+%Tableau grise:
 %{\graytabular \begin{tabular}...\endtabular}
 
 %Graphiques
@@ -318,7 +318,7 @@
 % POR VEN ...
 % => displayed as POR VEN ... and are MAJ
 % MAJHAB
-% => displayed as [AUS/SPA] and designates the controller of \pays{autriche} 
+% => displayed as [AUS/SPA] and designates the controller of \pays{autriche}
 % hab = AUSmin, HABmin=AUSmin, HABMin=AUSMin
 
 \newcommand{\PORmin}{minor \pays{portugal}\xspace}
@@ -397,7 +397,7 @@
 \def\Conscripts{\emph{Conscsripts}\xspace}
 
 % short commande for blason inclusion in section titles
-\newcommand{\blason}[1]{\includegraphics[width=12bp]{shield_#1}}
+\newcommand{\blason}[1]{\includegraphics[width=12bp]{shield_#1.png}}
 \usepackage{calc} % \heightof
 \newcommand{\blasonsmall}[1]{\includegraphics[height=\totalheightof{Ap}]{shield_#1}}
 
