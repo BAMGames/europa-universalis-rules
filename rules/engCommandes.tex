@@ -405,12 +405,21 @@
 \newcommand{\Barbaresques}{\xnameref{chSpecific:Barbaresques}\xspace}
 
 % Jym
-\def\Xamiral{\includegraphics[height=0.8em]{amiral.pdf}}%
-\def\Xconquistador{\includegraphics[height=0.8em]{conquistador.pdf}}%
-\def\Xcorsaire{\includegraphics[height=0.8em]{corsaire.pdf}}%
-\def\Xdoge{\includegraphics[height=0.8em]{doge.pdf}}%
-\def\Xexplorateur{\includegraphics[height=0.8em]{explorateur.pdf}}%
-\def\Xgeneral{\includegraphics[height=0.8em]{general.pdf}}%
-\def\Xgouverneur{\includegraphics[height=0.8em]{gouverneur.pdf}}%
-\def\Xingenieur{\includegraphics[height=0.8em]{ingenieur.pdf}}%
-\def\Xmonarque{\includegraphics[height=0.8em]{monarque.pdf}}%
+\makeatletter
+\usepackage{etoolbox} % \csdef
+\newcommand{\leader@icon}[1]{%
+        \csdef{X#1}{\includegraphics[height=0.8em]{#1.pdf}}%
+        % \csdef{Y#1}[##1]{%
+        % \textcolor{##1}{\includegraphics[height=0.8em]{#1.pdf}}} %
+}%
+\leader@icon{amiral}
+\leader@icon{conquistador}
+\leader@icon{corsaire}
+\leader@icon{doge}
+\leader@icon{explorateur}
+\leader@icon{general}
+\leader@icon{gouverneur}
+\leader@icon{ingenieur}
+\leader@icon{monarque}
+\makeatother
+

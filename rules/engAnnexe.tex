@@ -110,7 +110,8 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 
 \makeatletter
 \newcommand{\list@currentcountry}{}
-\newcommand{\set@currentcountry}[1]{\renewcommand{\list@currentcountry}{#1}}
+\newcommand{\set@currentcountry}[1]{%
+  \renewcommand{\list@currentcountry}{#1}}
 
 \newcommand{\list@land}[1]{% many cases
   \subsectionJ{List of all land leaders}{#1}
@@ -129,83 +130,77 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 \newcommand{\list@sea}{%
   \subsectionJ{List of all naval leaders}{\Xamiral\ \Xexplorateur}
   \listleader{leaders\list@currentcountry N}}
+\newcommand{\list@seafull}{% with privateers (ie FRA)
+  \subsectionJ{List of all naval leaders}{\Xamiral\
+    \Xexplorateur\ \Xcorsaire}
+  \listleader{leaders\list@currentcountry N}}
 
 \newcommand{\list@anonyme}{%
   \subsectionJ{List of all anonymous leaders}{\anonyme}
   \csname listanonyme\list@currentcountry\endcsname}
 
-\newcommand{\list@special}[3]{%
-  \subsectionJ{List of all #1}{#2}
-  \listleader{leaders#3}}
+\newcommand{\list@special}[4]{%
+  \subsectionJ{List of all #1}{\textcolor{#2}{#3}}
+  \listleader{leaders#4}}
 
-\section{\paysmajeurAngleterre}
+\sectionJ{\paysmajeurAngleterre}{\blasonJ{angleterre}}
 \set@currentcountry{angleterre}
 \list@land{\Xgeneral\ \Xconquistador\ \Xgouverneur}
 \list@sea
-\list@special{sea hounds}{\Xamiral\ \Xexplorateur}{angseahound}
+\list@special{sea hounds}{yellow}{\Xamiral\ \Xexplorateur}{angseahound}
 \list@anonyme
 
-\section{\paysmajeurAutriche}
+\sectionJ{\paysmajeurAutriche}{\blasonJ{habsbourg}}
 \set@currentcountry{habsbourgM}
 % There are none.
 % \subsection{List of all minor named leaders}
 % \listleadernolink{leadershabsbourg}
-\subsection{List of all named leaders}
+\subsectionJ{List of all named leaders}{\Xgeneral}
 \listleader{leadershabsbourgM}
-% \subsection{List of all anonymous leaders}
-% \listanonymehabsbourgM
 \list@anonyme
 
-\section{\paysmajeurFrance}
+\sectionJ{\paysmajeurFrance}{\blasonJ{france}}
 \set@currentcountry{france}
-% \subsection{List of all land leaders}
-% \listleader{leadersfranceT}
 \list@landfull
-% \subsection{List of all naval leaders}
-% \listleader{leadersfranceN}
-\list@sea
-\subsection{List of all licensed privateers}
-\listleader{leadersfralicense}
-\subsection{List of all revolutionary leaders}
-\listleader{leadersrevolutionnaires}
-% \subsection{List of all anonymous leaders}
-% \listanonymefrance
+\list@seafull
+\list@special{licensed privateers}{red}{\Xcorsaire\ \Xamiral}{fralicense}
+\list@special{revolutionary leaders}{black}{\blasonJ{revolutionnaires}}%
+{revolutionnaires}
 \list@anonyme
 
-\section{\paysmajeurEspagne}
+\sectionJ{\paysmajeurEspagne}{\blasonJ{espagne}}
 \set@currentcountry{espagne}
-\subsection{List of all land leaders}
-\listleader{leadersespagneT}
-\subsection{List of all naval leaders}
-\listleader{leadersespagneN}
-% \subsection{List of all anonymous leaders}
-% \listanonymeespagne
+\list@landfull
+\list@sea
 \list@anonyme
 
-\section{\paysmajeurHollande}
+\sectionJ{\paysmajeurHollande}{\blasonJ{hollande}}
 \set@currentcountry{hollande}
-\subsection{List of all land leaders}
-\listleader{leadershollandeT}
-\subsection{List of all VOC conquistadors}
-\listleader{leadersholvoc}
-\subsection{List of all naval leaders}
-\listleader{leadershollandeN}
-\subsection{List of all anonymous leaders}
-\aparag These leaders can still be used when \paysHollande is a \MIN.
-\listanonymehollande
+\list@landfull
+\list@special{VOC conquistadors}{red}{\Xconquistador}{holvoc}
+\list@sea
+\list@anonyme
 
-\section{\paysmajeurPologne}
-\set@currentcountry{pologneM}
+\sectionJ{\paysmajeurPologne}{\blasonJ{pologne}\ \blasonJ{lithuanie}}
+% Too many special cases.
+%\set@currentcountry{pologneM}
 \subsection{List of all polish leaders}
 \listleader{leaderspologneM}
-\subsection{List of all minor polish leaders}
-\aparag Remark that if they come and \paysPologne is still \MAJ, they can be
-used by \POL.
-\listleadernolink{leaderspologne}
+% \list@landKG % major POL
+\listleadernolink{leaderspologne} % minor Poland
+%\subsectionJ{List of all minor polish leaders}{\anonyme}
+% \aparag Remark that if they come and \paysPologne is still \MAJ, they can be
+% used by \POL.
 \subsection{List of all Lithuanian leaders}
 \listleader{leaderslithuanie}
-\subsection{List of all other named leaders}
-\listleader{leaderspollit}
+% \set@currentcountry{lithuanie}
+% \list@land{\Xgeneral}
+% (jym)
+% Bathory is already here as Polish leader. Mazeppa is normally not here with
+% Polish Ukrainia.
+% Removing:
+% \subsection{List of all other named leaders}
+% \listleader{leaderspollit}
 \subsection{List of all Polish anonymous leaders}
 \listanonymepologne
 \subsection{List of all Lithuanian anonymous leaders}
@@ -213,69 +208,47 @@ used by \POL.
 \subsection{List of all Polish-Lithuanian anonymous leaders}
 \listanonymepollit
 
-\section{\paysmajeurPrusse}
+\sectionJ{\paysmajeurPrusse}{\blasonJ{prusse}}
 \set@currentcountry{prusseM}
-\subsection{List of all minor named leaders}
-\listleader{leadersprusse}
-\subsection{List of all named leaders}
-\listleader{leadersprusseM}
-% \subsection{List of all anonymous leaders}
-% \listanonymeprusseM
+\subsectionJ{List of all named leaders}{\Xmonarque\ \Xgeneral}
+\listleader{leadersprusse} % minor
+\listleader{leadersprusseM} % major
 \list@anonyme
 
-\section{\paysmajeurPortugal}
-\set@currentcountry{portugalM}
-\subsection{List of all named leaders}
-\listleader{leadersportugalM}
-\subsection{List of all Viceroys}
-\listleader{leadersporviceroy}
-\subsection{List of all anonymous leaders}
-\aparag These leaders can still be used when \paysPortugal is a \MIN.
-\listanonymeportugal
+\sectionJ{\paysmajeurPortugal}{\blasonJ{portugal}}
+\set@currentcountry{portugal}
+\list@special{named leaders}{black}{\Xexplorateur\ \Xconquistador\
+  \Xgouverneur}{portugalM}
+\list@special{Viceroys}{red}{\Xconquistador\ \Xexplorateur\
+  \Xamiral}{porviceroy}
+\list@anonyme
 
-\section{\paysmajeurRussie}
+\sectionJ{\paysmajeurRussie}{\blasonJ{russie}}
 \set@currentcountry{russie}
-\subsection{List of all land leaders}
-\listleader{leadersrussieT}
-\subsection{List of all naval leaders}
-\listleader{leadersrussieN}
-% \subsection{List of all anonymous leaders}
-% \listanonymerussie
+\list@landKGIC
+\list@sea
 \list@anonyme
 
-\section{\paysmajeurSuede}
+\sectionJ{\paysmajeurSuede}{\blasonJ{suede}}
 \set@currentcountry{suedeM}
-\subsection{List of all named leaders}
-\listleader{leaderssuedeM}
-% \subsection{List of all anonymous leaders}
-% \listanonymesuedeM
+\list@special{named leaders}{black}{\Xmonarque\ \Xgeneral\ \Xingenieur\
+  \Xconquistador\ \Xamiral\ \Xexplorateur}{suedeM}
 \list@anonyme
 
-\section{\paysmajeurTurquie}
+\sectionJ{\paysmajeurTurquie}{\blasonJ{turquie}}
 \set@currentcountry{turquie}
-\subsection{List of all land leaders}
-\listleader{leadersturquieT}
-\subsection{List of all Viziers}
-\listleader{leadersturvizir}
-\subsection{List of all naval leaders}
-\listleader{leadersturquieN}
-\subsection{List of all Barbary Coast privateers}
-\listleader{leadersturcorsaire}
-% \subsection{List of all anonymous leaders}
-% \listanonymeturquie
+\list@land{\Xmonarque\ \Xgeneral\ \Xconquistador}
+\list@special{Viziers}{yellow}{\Xmonarque}{turvizir}
+\list@sea
+\list@special{Barbary Coast privateers}{red}{\Xcorsaire\
+  \Xamiral}{turcorsaire}
 \list@anonyme
 
-\section{\paysmajeurVenise}
-\set@currentcountry{veniseM}
-\subsection{List of all Venetian leaders}
-\listleader{leadersveniseM}
-\subsection{List of all minor Venetian leaders}
-\aparag Remark that if they come and \paysVenise is still \MAJ, they can be
-used by \VEN.
+\sectionJ{\paysmajeurVenise}{\blasonJ{venise}}
+\set@currentcountry{venise}
+\list@special{named leaders}{black}{\Xamiral\ \Xgeneral\ \Xingenieur}{veniseM}
 \listleadernolink{leadersvenise}
-\subsection{List of all Venetian anonymous leaders}
-\aparag These leaders can still be used when \paysVenise is a \MIN.
-\listanonymevenise
+\list@anonyme
 
 \makeatother
 
