@@ -1251,6 +1251,28 @@ def
     (img:mission) 23 5 0.35 putimage
     endpion
 } def
+/dessineMISSIONNAIREanonyme {
+    /caracs exch def
+    /remarque () def
+    /typeX (M) def
+    /lastturn () def
+    /firstturn () def
+    /nameX exch def
+    /pays exch def
+    /nompion mark(Missionnaire )countryname( <)nameX(:)caracs 9 1 getinterval
+    firstturn length 0 ne{(:)firstturn(:)lastturn}if(>)
+    concatall def
+    /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
+    nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
+    lastturn length 0 ne {(-) lastturn}if concatall def
+    2 beginpion
+    communchef
+    autreface
+    blasonsmallright
+    (Mission) communnomchef
+    (img:mission) 23 5 0.35 putimage
+    endpion
+} def
 
 /dessineMISSIONspecial {
     /nameX exch def
