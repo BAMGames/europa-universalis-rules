@@ -669,14 +669,18 @@ situation, no matter when it was settled.
 \period{IV}.
 
 \aparag[Minor provinces.] When an objective refers to the provinces of a
-minor country (\paysGeorgie, \paysHanse, \paysHongrie, \paysPerse,
-\paysprovincesne), it consists in all the provinces barring the
-corresponding solid or blurred shield, and owned by the country in 1492,
-whatever their current owner (especially if the country was destroyed).
+minor country (\paysCrimee, \paysGeorgie, \paysHanse, \paysHongrie,
+\paysMoldavie, \paysPerse, \paysprovincesne), it consists in all the
+provinces barring the corresponding solid or blurred shield, and owned
+by the country at some point in the game, whatever their current owner
+(especially if the country was destroyed).
 \bparag However, when an objective refers to provinces ``taken from''
 a specific country, then the province must have been owned by that
 country just before it was transferred (either by peace treaty,
 diplomacy, \ldots)
+\bparag List of Crimean provinces (\blasonsmall{crimee}):
+\provinceKhadzhibei, \provinceZaporozhye, \provinceCrimee,
+\provinceAzov, and possibly \provinceCaffa, \provinceKuban.
 \bparag List of Georgian provinces (\blasonsmall{georgie}):
 \provinceGeorgie, \provinceKuban.
 \bparag List of Hanseatic provinces (\blasonsmall{hanse}):
@@ -687,6 +691,8 @@ diplomacy, \ldots)
 \provinceSzlovakia, \provinceBalaton, \provinceCarniola,
 \provinceKapela, \provinceCroatie, \provincePecs, \provinceMagyarorszag,
 \provinceBanat.
+\bparag List of Moldavian provinces (\blasonsmall{moldavie}):
+\provinceMoldova, \provinceBasarabia.
 \bparag List of Persian provinces (\blasonsmall{perse}): \provincePars,
 \provinceMeshhed, \provinceBam, \provinceIsfahan, \provinceKermanshah,
 \provinceAzarbayadjan, \provinceKordistan, \provinceVan,
@@ -694,6 +700,8 @@ diplomacy, \ldots)
 \bparag List of provinces of the North-East (\blasonsmall{hollande}):
 \provinceFriesland, \provinceGelderland, \provinceHolland,
 \provinceOverijssel, \provinceUtrecht, \provinceZeeland. 
+\bparag Note that \provinceKuban may count both as a Georgian and
+Crimean province and thus bring \VPs for both reasons.
 % (jym) Adding Zeeland to it makes way more sense.
 % Note that \provinceZeeland is
 % \textbf{not} part of it.
@@ -710,6 +718,22 @@ diplomacy, \ldots)
   a \blasonsmall{georgie} or \blasonsmall{perse} shield counts, even if
   it was annexed from, typically, \TUR.
 \end{exemple}
+
+\aparag[Ownership and Control]
+\bparag Most objectives requiring ownership of several province don't
+care about who is the controller of the province. That is, if a war is
+going on when objective are checked, only the rightful owner of the
+province may claim it for these objectives.
+\bparag On the other hand, most objectives requiring ownership of a
+single province require both ownership and control when the objective is
+checked and only provide half success if owner and controller are
+different. Thus, a war may quickly change some \VPs.
+
+\begin{designnote}
+  This lessens an end-of-period effect where players tend to stay in
+  lost war one more turn to score the full \VPs value of a specific
+  province as an objective before signing peace on the very next turn.
+\end{designnote}
 
 \begin{todo}
   The English objectives of \paysEcosse Vassal are incompatible with the
