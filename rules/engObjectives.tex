@@ -1,6 +1,6 @@
 % -*- mode: LaTeX; -*-
 
-%  \EUobjective{M/E}{short name (table)}
+%  \EUobjective{M?}{short name (table)}
 %    {XXX}{VP per XXX/half success}{max VP/total VP}
 %    {long name (rules)}
 
@@ -12,12 +12,10 @@
 % texts are exactly the same.
 %% Generic ones
 %%% Commercial
-\newcommand{\EU@objIndustrial}{\EUcurrmaj has at least as many \MNU\faceplus
-  as its limit, and Commercial Monopoly in \ctz{\EUcurrcoun}}%
-% \def\EU@objIndustrialtest#1#2#3{%
-%   \EUobjective#1#2{Industrial development}{}{}{#3}{\EUcurrmaj has at least as
-%     many \MNU\faceplus as its limit, and Commercial Monopoly in
-%     \ctz{\EUcurrcoun}}}%
+\newcommand{\EU@objIndustrial}[2][]{% M? VPs.
+  \EUobjective{#1}{Industrial development}{}{}{#2}{\EUcurrmaj has at least as
+    many \MNU\faceplus as its limit, and Commercial Monopoly in
+    \ctz{\EUcurrcoun}}}%
 \newcommand{\EU@objMonopolyZone}{Each Commercial \terme{Monopoly} in any
   \STZ/\CTZ}
 \newcommand{\EU@objMonopolyRES}[1]{Each turn \EUcurrmaj has \RES{#1}
@@ -60,9 +58,10 @@
 \newcommand{\EU@objNoRUSBaltique}{\paysmajeurRussie does not own any province
   bordering the \regionBaltique; only half-success if \paysmajeurRussie
   controls a province bordering the \regionBaltique}%
-\newcommand{\EU@objSpecificProvince}[1]{\province{#1} is owned and controlled
+\newcommand{\EU@objSpecificProvince}[5][]{% M? prov half VP short
+  \EUobjective{#1}{#5}{}{#3}{#4}{\province{#2} is owned and controlled
   by \EUcurrmaj; half-success if only controlled or if owned but not
-  controlled}%
+  controlled}}%
 \newcommand{\EU@objCountryDestroyed}[1]{\pays{#1} does not exist any more}%
 
 %%% Specific Wars
@@ -89,14 +88,17 @@
 
 %% Country specific
 %%% ANG
-\newcommand{\EU@objEcosseVassal}{Each turn \paysEcosse is \VASSAL of
-  \paysmajeurAngleterre}
-\newcommand{\EU@objIrelandPacified}{Each turn without any \REVOLT in provinces
-  owned by \paysmajeurAngleterre in \regionIrlande}
+\newcommand{\EU@objEcosseVassal}[3][]{% M? per_turn max
+  \EUobjective{#1}{\paysecosse Vassal}{turn}{#2}{#3}{Each turn \paysEcosse is
+    \VASSAL of \paysmajeurAngleterre}}%
+\newcommand{\EU@objIrelandPacified}[3][]{% M? per_turn max
+  \EUobjective{#1}{Pacified Ireland}{turn}{#2}{#3}{Each turn without any
+    \REVOLT in provinces owned by \paysmajeurAngleterre in \regionIrlande}}%
 \newcommand{\EU@objMonopolyZoneANG}[2]{Each Commercial \terme{Monopoly} in any
   \STZ (#1)/\CTZ (#2)}
-\newcommand{\EU@objCalaisANG}{\paysmajeurAngleterre owns \provincePicardie or
-  a \Presidio in it}
+\newcommand{\EU@objCalaisANG}[2][]{% M? VPs
+  \EUobjective{#1}{Calais}{}{}{#2}{\paysmajeurAngleterre owns
+    \provincePicardie or a \Presidio in it}}%
 \newcommand{\EU@objCaraibesANG}[2]{Each \TP or \COL controlled (#1)/owned (#2)
   in \continentCaraibes}%
 
@@ -155,28 +157,21 @@
 
 \EUcurrentcountry{Angleterre} \EUcurrentperiod{I}
 %
-\EUobjective{}{\paysecosse Vassal}{turn}{10}{30}{\EU@objEcosseVassal}%
+\EU@objEcosseVassal{10}{30}%
 %
-\EUobjective{}{Calais}{}{}{45}{\EU@objCalaisANG}%
+\EU@objCalaisANG{45}%
 %
-\newcommand{\EU@objIndustrialtest}[2]{%
-  \EUobjective{#1}{Industrial development}{}{}{#2}{\EU@objIndustrial}}%
-%\EUobjective{}{Industrial development}{}{}{25}{\EU@objIndustrial}%
-\EU@objIndustrialtest{}{25} %
+\EU@objIndustrial{25}%
 %
-\EUobjective{M}{Hundred years war}{}%
-{25}{50}{\EU@objSpecificProvince{Guyenne}}%
+\EU@objSpecificProvince[M]{Guyenne}{25}{50}{Hundred years war}%
 %
-\EUobjective{}{Pacified Ireland}{turn}%
-{10}{40}{\EU@objIrelandPacified}%
+\EU@objIrelandPacified{10}{40}%
 %
 \EUcurrentperiod{II}
 %
-\EUobjective{}{\paysecosse Vassal}{turn}%
-{10}{40}{\EU@objEcosseVassal}%
+\EU@objEcosseVassal{10}{40}%
 %
-\EUobjective{M}{Calais}{}%
-{}{50}{\EU@objCalaisANG}%
+\EU@objCalaisANG[M]{45}%
 %
 \EUobjective{}{\COL in \continentAmerica}{}%
 {}{30}{\paysmajeurAngleterre has at least one \COL in \continentAmerica}%
@@ -185,20 +180,16 @@
 {}{40}{\paysmajeurAngleterre has signed at least one peace of level \geq 2
   against \paysmajeurFrance}%
 %
-\EUobjective{}{Pacified Ireland}{turn}%
-{7}{35}{\EU@objIrelandPacified}%
+\EU@objIrelandPacified{7}{35}%
 %
 \EUcurrentperiod{III}
 %
-\EUobjective{}{\paysecosse Vassal}{turn}%
-{5}{30}{\EU@objEcosseVassal}%
+\EU@objEcosseVassal{5}{30}%
 %
 \EUobjective{M}{No forced conversion}{}%
 {}{45}{\EU@objNoConversion{Angleterre}}%
 %
-\EUobjective{}{Industrial development}{}%
-{}{30}{\EU@objIndustrial}%
-%
+\EU@objIndustrial{30}%
 %
 \EUobjective{}{\HOL not converted}{}%
 {}{35}{\EU@objNoConversion{Hollande}}% yes, \HOL this is not an error
@@ -208,8 +199,7 @@
 %
 \EUcurrentperiod{IV}
 %
-\EUobjective{}{\paysecosse Vassal}{turn}%
-{5}{30}{\EU@objEcosseVassal}%
+\EU@objEcosseVassal{5}{30}%
 %
 \EUobjective{M}{No forced conversion}{}%
 {}{40}{\EU@objNoConversion{Angleterre}}%
@@ -289,15 +279,12 @@
 {}{40}{\EU@objCalaisFRA}%
 %
 %
-\EUobjective{}{French \provinceArtois}{}%
-{15}{30}{\EU@objSpecificProvince{Artois}}%
+\EU@objSpecificProvince{Artois}{15}{30}{French \provinceArtois}%
 %
 \EUobjective{}{SD of Catholic Faith}{}%
 {}{40}{\EU@objSDCF}%
 %
-\EUobjective{}{Industrial development}{}%
-{}{25}{\EU@objIndustrial}%
-%
+\EU@objIndustrial{25}%
 %
 \EUobjective{M}{War in Italy}{}%
 {25}{50}{\paysmajeurFrance signed a peace of level \geq 2 in at least one War
@@ -308,14 +295,12 @@
 \EUobjective{M}{Calais}{}%
 {}{50}{\EU@objCalaisFRA}%
 %
-\EUobjective{}{French \provinceArtois}{}%
-{15}{30}{\EU@objSpecificProvince{Artois}}%
+\EU@objSpecificProvince{Artois}{15}{30}{French \provinceArtois}%
 %
 \EUobjective{}{French King Emperor}{}%
 {25}{50}{\EU@objEmperor{French}}%
 %
-\EUobjective{}{Industrial development}{}%
-{}{40}{\EU@objIndustrial}%
+\EU@objIndustrial{40}%
 %
 \EUobjective{}{\provinceLombardia or \provinceCampania}{}%
 {}{30}{One of these provinces is owned by \paysmajeurFrance. Half-success if
@@ -552,8 +537,7 @@
 \EUobjective{M}{Spanish World}{}%
 {20}{50}{\EU@objSpanishWorld}%
 %
-\EUobjective{}{Industrial development}{}%
-{}{25}{\EU@objIndustrial}%
+\EU@objIndustrial{25}%
 %
 \EUobjective{}{Independence Wars}{}%
 {15}{30}{\EU@objIndependanceWars}%
@@ -862,8 +846,7 @@ happen or \ref{pIV:Polish Civil War} was won by the Absolutists)}%
 \EUobjective{}{\payspskov/\paysryazan}{prov\EUAbbr{ince}}%
 {20}{40}{Per principality conquered (\payspskov or \paysryazan)}%
 %
-\EUobjective{M}{Russian \provinceSmolenska}{}%
-{}{50}{\EU@objSpecificProvince{Smolenska}}%
+\EU@objSpecificProvince[M]{Smolenska}{25}{50}{Russian \provinceSmolenska}%
 %
 \EUobjective{}{No provinces lost}{}%
 {}{25}{}%
@@ -1005,8 +988,7 @@ happen or \ref{pIV:Polish Civil War} was won by the Absolutists)}%
 % ##
 \EUcurrentcountry{Pologne} \EUcurrentperiod{I}
 %
-\EUobjective{}{Polish \provinceSmolenska}{}%
-{}{40}{\EU@objSpecificProvince{Smolenska}}%
+\EU@objSpecificProvince{Smolenska}{20}{40}{Polish \provinceSmolenska}%
 %
 \EUobjective{M}{At most \provinceSmolenska lost}{}%
 {}{40}{}%
@@ -1022,8 +1004,7 @@ happen or \ref{pIV:Polish Civil War} was won by the Absolutists)}%
 %
 \EUcurrentperiod{II}
 %
-\EUobjective{M}{Polish \provinceSmolenska}{}%
-{}{50}{\EU@objSpecificProvince{Smolenska}}%
+\EU@objSpecificProvince[M]{Smolenska}{25}{50}{Polish \provinceSmolenska}%
 %
 \EUobjective{}{No provinces lost}{}%
 {}{40}{}%
