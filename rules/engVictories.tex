@@ -22,15 +22,16 @@
   game?) Of course, if you're playing an EU championship, a 1 \VP difference
   is all it takes to be champion rather than vice-champion\ldots
 
-  Thus, \VPs should be considered more as a guideline at what actions should
-  be attempted even if they seem silly. Many monarchs of the period took
-  decisions that in retrospective are considered stupid and no gamer would
-  make the same error of spending that many efforts toward a useless
-  goal. \VPs are an incentive to pursue some of those goals. This is
-  especially true for some of the 'Mandatory' objectives that are often
-  extremely hard to achieve but nonetheless were the main concern of
-  historical monarchs (the Spanish ``Conversion of a Protestant major'' is a
-  famous example of such a waste of efforts) .
+  Thus, \VPs should be considered more as a guideline at what actions
+  should be attempted even if they seem silly. Many monarchs of the
+  period took decisions that in retrospective are considered stupid and
+  no gamer would make the same error of spending that many efforts
+  toward a useless goal. \VPs are an incentive to pursue some of those
+  goals. This is especially true for some of the 'Mandatory' objectives
+  that are often extremely hard to achieve but nonetheless were the main
+  concern of historical monarchs (the Spanish ``Conversion of a
+  Protestant major'' objective is a famous example of such a waste of
+  efforts) .
 
   So, any action that is rewarded (or punished) by 50 \VPs should be
   considered as something extremely important and a huge goal to achieve for
@@ -98,6 +99,7 @@ often easier to count them all together at the end of the turn.
 \aparag Note that some other actions (\emph{e.g.} some events, \ldots) may
 also give or take \VPs during turn and are not all recalled here.
 
+\subsection{\VPs earned during each phase}
 \aparag[During the Diplomacy phase:]~\\
 \begin{modlist}
 \item[-10] for each declaration of war without CB;
@@ -108,8 +110,6 @@ also give or take \VPs during turn and are not all recalled here.
 \aparag[During the Administrative phase:]~\\
 \begin{modlist}
 \item[-5/15/30] for a Small/Major/Complete bankruptcy.
-% \item[-15] for a Major bankruptcy;
-% \item[-30] for a Complete bankruptcy.
 \end{modlist}
 
 \aparag[During the Military phase:]~\\
@@ -120,20 +120,15 @@ also give or take \VPs during turn and are not all recalled here.
 \aparag[During the Peace phase:]~\\
 \begin{modlist}
 \item[+?] the income value of annexed provinces;
-\item[-?] the income value of lost provinces;
+\item[-?] twice the income value of lost provinces;
   % \item[$\pm$?] half the income of occupied provinces (divided by 2
   %   for \TP/\COL, including Resources)
 \item[+2] per peace level of a war won against at least one major power;
 \item[+1] per peace level of a war won against only minor powers;
 \item[-2] per peace level of a lost war;
-\item[-20] for a forced religious conversion (unless stated otherwise);
+\item[-20] for a forced religious conversion (unless another \VPs
+  penalty is already stated);
 \end{modlist}
-
-\aparag[\VPs of minor powers]
-The players also earn (or lose) half of the \VPs earned (or lost) by a minor
-country which they control.
-\bparag This is both for allied minors and for Neutral minors controlled by
-the player (in order to avoid the players to voluntarily play poorly).
 
 \aparag[During the Interphase:]~\\
 \begin{modlist}
@@ -142,31 +137,45 @@ the player (in order to avoid the players to voluntarily play poorly).
 \item[+3] per total \terme{monopoly} of Exotic Resource
 \end{modlist}
 
-\aparag[Definitions of \terme{monopolies}] for exploitation of each exotics
-resources
+\aparag[Definitions of \terme{monopolies}] 
+\label{chVictories:MonopolyExoticResources} for exploitation of each
+exotics resources
 % \bparag \STZ/\CTZ : a player has a partial \terme{monopoly} in a \CTZ or a
 % \STZ when he is the only possesser of a face \Faceplus fleet counter in this
 % zone. He has a total \terme{monopoly} when he has a 6 levels fleet, and there
 % is no other fleet in the zone.
-\bparag \label{chVictories:MonopolyExoticResources} For each resource, a
-country has a partial \terme{monopoly} if it produces at least 6 units and at
-least half of the world production of this resource. It has a total
-\terme{monopoly} if it produces all units but 2 of this resource and it
-produces at least 6 units.
+\bparag For each resource, a country has a partial \terme{monopoly} if
+it produces at least 6 units and at least half of the world production
+of this resource. Note that two countries may have a partial monopoly of
+the same resource in the rare case where both produce exactly one half
+of the total.
+\bparag A country has a total \terme{monopoly} of a given resource if it
+produces at least 6 units of that resource, and if no more than 2 units
+of that resource are produces by other countries.
+\bparag Resources produced by minor countries are counted as usual when
+computing monopolies. If a \ROTW minor country happen to have a monopoly
+in one resource, no \VPs are gained (because \ROTW minors do not have
+diplomatic patron).
 
+\aparag[\VPs of minor powers]
+The players also earn (or lose) half of the \VPs earned (or lost) by a minor
+country which they control.
+\bparag This is both for allied minors and for Neutral minors controlled by
+the player (in order to avoid the players to voluntarily play poorly).
 
+\subsection{\VPs earned for discovering the World}
 \aparag[Discoveries]~\\
 % TBD??? Keep all of them or not ???? JC, Jym ???  PB: seems to have been done
 \begin{modlist}
 \item[+50] the 1st round-the-World trip (if it is completed in a single turn)
 \item[+20] the 1st round-the-World trip (if it is completed in 2 turns)
 \item[+20] the 2nd round-the-World trip
+\item[+10] the \seazoneHorn sea zone
+\item[+10] the \seazoneTempetes sea zone
+\item[+3] the \seazoneHudson sea zone
 \item[+3] the \granderegionQuebec area
 \item[+2] the \granderegion{Grands Lacs} area
 \item[+3] the \granderegionRocheuses area
-\item[+10] the \seazoneHorn
-\item[+10] the \seazoneTempetes
-\item[+3] the \seazoneHudson
 \item[+3] the \granderegionAlaska area
 \item[+5] the \granderegionAlaska area via \continentAsia
 \item[+5] the \granderegionPanama area by the West
@@ -175,9 +184,14 @@ produces at least 6 units.
 \item[+1] per province bording Mississippi river
 \end{modlist}
 
-\aparag[Discoveries] \VPs are earned when the discovery is made, even if the
-stack is later destroyed before bringing it back home (that is, some rumours
-about it reach the home country and Europe anyway).
+\aparag[Discoveries] \VPs are earned when the discovery is made
+(successful exploration roll), even if the stack is later destroyed
+before bringing it back home (that is, some rumours about it reach the
+home country and Europe anyway).
+\bparag If several countries are able to claim \VPs for the same
+discovery during the same round, they are considered as moving in order
+of initiative: the first country to do the discovery, and actually gain
+the \VPs, is the one with the higher initiative.
 \bparag Discoveries \VPs of \Areas are given to the first country who
 discovers at least one province in the \Area.
 \bparag Discoveries \VPs of provinces and sea zones are given to the first
@@ -227,8 +241,6 @@ going all the way around the World (use common sense).
 % skip Indian ocean.
 % "Odd number" is no good because one could do BE/Horn/Pac/BE and
 % circumnavigate with 2 BE.
-
-
 
 
 \section{End of period \VPs}
@@ -348,18 +360,25 @@ to \period{VII}; \regionItalie \textmultiply2 in periods \period{I} to
 \period{III}.
 \bparag \ENG: provinces bordering \regionMediterranee \textmultiply5;
 other continental provinces \textmultiply2.
-% \shortprovince{Gibraltar} \textmultiply10 ;
-% \shortprovince{Baleares}\textmultiply5 ; Continental provinces \textmultiply2
 \bparag \TUR: \paysPerse \textmultiply2; provinces lost against \paysPerse
 count negative; provinces bordering \regionMediterranee \textmultiply2.
 \bparag \SUE: provinces bordering \regionBaltique \textmultiply3.
 \bparag \RUS: \POL or \paysPologne \textmultiply2 ; provinces lost against
 \POL or \paysPologne count negatively.
 \bparag \POL: \RUS \textmultiply2 ; \SUE or \paysSuede\textmultiply2.
-\bparag \AUT: former provinces of \paysHongrie or \paysMoldavie,
+\bparag \AUS: former provinces of \paysHongrie or \paysMoldavie,
 \provinceSerbia \textmultiply3.
 \bparag \PRU: \HRE or \paysPologne \textmultiply2.
 \bparag \VEN: lost islands in \regionMediterranee count negatively.
+
+\aparag Some countries have special modifiers for provinces taken from
+(or lost to) a specific country (\emph{e.g.} \RUS versus \POL). For this
+modifier to apply, the province must be owned by the specified country
+just before being owned by the other.
+\bparag Thus, If \RUS annexes a former Polish province which is
+currently owned by \SUE, it does not trigger its special modifier.
+\bparag Other countries have special modifiers for specific provinces,
+whoever owned them prior to the annexation.
 
 \begin{designnote}
   Here also, the variations along the game represent different policies of
@@ -371,8 +390,9 @@ count negative; provinces bordering \regionMediterranee \textmultiply2.
 
 \aparag[Diplomatic situation]
 \bparag Each country earns {\bf 6 \VPs} for each minor country in {\bf
-  \VASSAL, \ANNEXION} or {\bf \dipAT} and {\bf 3 \VPs} for each other
-controlled minor country, with following modifiers:
+  \VASSAL, \ANNEXION} or {\bf \dipAT}, as well as special \EW, and {\bf 3
+  \VPs} for each other controlled minor country, with following
+modifiers:
 \bparag \HIS: \regionItalie \textmultiply2; \paysChevaliers \textmultiply2 ;
 do not count autonomous Habsbourg states ; do not count \paysChevaliers if
 they are still in \provinceRhodos.
@@ -538,7 +558,7 @@ order of precedence, to the \MAJ who
   the taxes. On the other hand, if it is Neutral, and does not levy the
   taxes, then having Commercial Monopoly is enough.
 
-  Similarly, if the right on the Sund is owned by a \MAJ and its not
+  Similarly, if the right on the Sund is owned by a \MAJ and it's not
   levying taxes, then Commercial Domination is awarded to the country
   with Commercial Monopoly.
 \end{designnote}
@@ -546,8 +566,8 @@ order of precedence, to the \MAJ who
 \begin{histoire}
   The taxes where initially in the hand of \paysDanemark but the Swedish
   independence and conquest of \provinceSkane switched this important
-  source of income to other hands. \HOL having a important trade
-  activity in \stz{Baltique} wasn't happy with foreign taxes and
+  source of income to other hands. \HOL, having a important trade
+  activity in \stz{Baltique}, wasn't happy with foreign taxes and
   preferred free trade. This resulted in several Dutch implications in
   the Northern wars, often using its fleet to reinforce the Danish one.
 \end{histoire}
@@ -558,7 +578,7 @@ bordering the \region{Baltique} are owned by either \SUE,
 
 \begin{histoire}
   This represents the Swedish expansion towards the Southern shores of
-  the see. Including the frequent struggles with \POL, the will to
+  the sea. Including the frequent struggles with \POL, the will to
   destroy \paysHanse and the ongoing conflict with \RUS around
   \provinceIngria.
 \end{histoire}
@@ -714,9 +734,10 @@ count once for each objective.
   On the other hand, in period \period{VII}, \RUS has an objective for
   provinces of \paysGeorgie or \paysPerse. Now, any province with either
   a \blasonsmall{georgie} or \blasonsmall{perse} shield counts, even if
-  it was annexed from, typically, \TUR. Since it is a single objective,
-  \provinceKuban only counts as one province, even if it is both a
-  (former) Georgian and Crimean province.
+  it was annexed from, typically, \TUR. 
+  % Since it is a single objective, \provinceKuban only counts as one
+  % province, even if it is both a (former) Georgian and Crimean
+  % province.
 \end{exemple}
 
 \aparag[Ownership and Control]
