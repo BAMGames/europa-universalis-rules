@@ -1243,12 +1243,13 @@ def
     /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
     nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
     lastturn length 0 ne {(-) lastturn}if concatall def
-    2 beginpion
+%    2 beginpion
+    5 beginpion
     communchef
-    autreface
-    blasonsmallright
-    (Mission) communnomchef
-    (img:mission) 23 5 0.35 putimage
+%    autreface
+%    blasonsmallright
+%    (Mission) communnomchef
+%    (img:mission) 23 5 0.35 putimage
     endpion
 } def
 /dessineMISSIONNAIREanonyme {
@@ -1265,16 +1266,17 @@ def
     /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
     nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
     lastturn length 0 ne {(-) lastturn}if concatall def
-    2 beginpion
+%    2 beginpion
+    5 beginpion
     communchef
-    autreface
-    blasonsmallright
-    (Mission) communnomchef
-    (img:mission) 23 5 0.35 putimage
+%    autreface
+%    blasonsmallright
+%    (Mission) communnomchef
+%    (img:mission) 23 5 0.35 putimage
     endpion
 } def
 
-/dessineMISSIONspecial {
+/dessineMISSION {
     /nameX exch def
     /pays exch def
     /nompion mark(Mission )countryname( <)nameX(>)concatall def

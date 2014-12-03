@@ -566,17 +566,13 @@ foreach $k (@infoLEADERANONYMOUSDOUBLE) {
 }
 delete $info{"LEADERANONYMOUSDOUBLE"};
 foreach $k (@infoMISSIONNAIRE) {
-    $count=$k->{"Count"};
-    $count=~ s/^x//;
-    foreach $i (1..$count) {
-	$command=str($k->{"Country"});
-	$command.=str($k->{"NameA"});
-	$command.=str($k->{"First turn"});
-	$command.=str($k->{"Last turn"});
-	$command.=str("@ 3.0.0 +".$k->{"bonus"});
-	$command.=" dessineMISSIONNAIRE\n";
-	sendit($k,$command);
-    }
+    $command=str($k->{"Country"});
+    $command.=str($k->{"NameA"});
+    $command.=str($k->{"First turn"});
+    $command.=str($k->{"Last turn"});
+    $command.=str("@ ".$k->{"carac"}." +".$k->{"bonus"});
+    $command.=" dessineMISSIONNAIRE\n";
+    sendit($k,$command);
 }
 delete $info{"MISSIONNAIRE"};
 foreach $k (@infoMISSIONNAIREanonyme) {
@@ -585,23 +581,23 @@ foreach $k (@infoMISSIONNAIREanonyme) {
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
 	$command.=str($k->{"Name"});
-	$command.=str("@ 3.0.0 +".$k->{"bonus"});
+	$command.=str("@ 2.0.0 +".$k->{"bonus"});
 	$command.=" dessineMISSIONNAIREanonyme\n";
 	sendit($k,$command);
     }
 }
 delete $info{"MISSIONNAIREanonyme"};
-foreach $k (@infoMISSIONspecial) {
+foreach $k (@infoMISSION) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
 	$command.=str($k->{"Name"});
-	$command.=" dessineMISSIONspecial\n";
+	$command.=" dessineMISSION\n";
 	sendit($k,$command);
     }
 }
-delete $info{"MISSIONspecial"};
+delete $info{"MISSION"};
 foreach $k (@infoRaw) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -630,6 +626,6 @@ dropit();
 print $footer;
 
 foreach $k (sort keys %info) {
-    print STDERR "%$k was not treated\n";
+    print STDERR "%$k was not treated\n\n";
 }
 
