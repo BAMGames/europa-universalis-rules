@@ -576,15 +576,11 @@ foreach $k (@infoMISSIONNAIRE) {
 }
 delete $info{"MISSIONNAIRE"};
 foreach $k (@infoMISSIONNAIREanonyme) {
-    $count=$k->{"Count"};
-    $count=~ s/^x//;
-    foreach $i (1..$count) {
-	$command=str($k->{"Country"});
-	$command.=str($k->{"Name"});
-	$command.=str("@ 2.0.0 +".$k->{"bonus"});
-	$command.=" dessineMISSIONNAIREanonyme\n";
-	sendit($k,$command);
-    }
+    $command=str($k->{"Country"});
+    $command.=str($k->{"Name"});
+    $command.=str("@ 2.0.0 +".$k->{"bonus"});
+    $command.=" dessineMISSIONNAIREanonyme\n";
+    sendit($k,$command);
 }
 delete $info{"MISSIONNAIREanonyme"};
 foreach $k (@infoMISSION) {
