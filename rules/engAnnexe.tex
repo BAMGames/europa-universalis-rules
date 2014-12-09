@@ -135,6 +135,10 @@ created by \HAB: \FEforeachlist{listofminorshab}%
     \Xexplorateur\ \Xcorsaire}
   \listleader{leaders\list@currentcountry N}}
 
+\newcommand{\list@missionaries}[1]{%
+  \subsectionJ{List of all missionaries}{#1}
+  \listleader{leaders\list@currentcountry Mis}}
+
 \newcommand{\list@anonyme}{%
   \subsectionJ{List of all anonymous leaders}{\anonyme}
   \csname listanonyme\list@currentcountry\endcsname}
@@ -148,6 +152,7 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 \list@land{\Xgeneral\ \Xconquistador\ \Xgouverneur}
 \list@sea
 \list@special{sea hounds}{yellow}{\Xamiral\ \Xexplorateur}{angseahound}
+\list@missionaries{\Xprotestant\ /\ \Xcatholique}
 \list@anonyme
 
 \sectionJ{\paysmajeurAutriche}{\blasonJ{habsbourg}}
@@ -166,12 +171,15 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 \list@special{licensed privateers}{red}{\Xcorsaire\ \Xamiral}{fralicense}
 \list@special{revolutionary leaders}{black}{\blasonJ{revolutionnaires}}%
 {revolutionnaires}
+\list@missionaries{}%\Xcatholique}%\ /\ \Xprotestant}
+\listleader{leadersfrahuguenotsMis}
 \list@anonyme
 
 \sectionJ{\paysmajeurEspagne}{\blasonJ{espagne}}
 \set@currentcountry{espagne}
 \list@landfull
 \list@sea
+\list@missionaries{\Xcatholique}
 \list@anonyme
 
 \sectionJ{\paysmajeurHollande}{\blasonJ{hollande}}
@@ -221,6 +229,7 @@ created by \HAB: \FEforeachlist{listofminorshab}%
   \Xgouverneur}{portugalM}
 \list@special{Viceroys}{red}{\Xconquistador\ \Xexplorateur\
   \Xamiral}{porviceroy}
+\list@missionaries{\Xcatholique}
 \list@anonyme
 
 \sectionJ{\paysmajeurRussie}{\blasonJ{russie}}

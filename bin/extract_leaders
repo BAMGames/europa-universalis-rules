@@ -51,7 +51,7 @@ $definitions="";
 foreach ("france","angleterre","turquie","hollande","espagne","russie") {
     $NTcountries{$_}++;
 }
-foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","fralicense","revolutionnaires","angnomalus","angseahound","porviceroy","prunomalus","holvoc","habmercenaires","framercenaires","prumercenaires","turcorsaire","turvizir") {
+foreach ("venise","portugal","pologne","prusse","suede","ukraine","habsbourg","fralicense","revolutionnaires","frahuguenots","angnomalus","angseahound","porviceroy","prunomalus","holvoc","habmercenaires","framercenaires","prumercenaires","turcorsaire","turvizir") {
     $Scountries{$_}++;
 }
 %conversion=(
@@ -107,42 +107,18 @@ sub realcountry {
     if ($pays eq "habsbourg" and $periode > 3) {
 	return $pays."M";
     }
-#    if ($pays eq "fralicense") {
-#	return "franceN";
-#    }
-#    if ($pays eq "revolutionnaires") {
-#	return "france".terrestrenaval($_[1]);
-#    }
     if ($pays eq "angnomalus") { # Marlborough
 	return "angleterreT";
     }
-#    if ($pays eq "angseahound") {
-#	return "angleterreN";
-#    }
-#    if ($pays eq "porviceroy") {
-#	return "portugalM";
-#    }
     if ($pays eq "prunomalus") { # Frederic II
 	return "prusseM";
     }
-#    if ($pays eq "holvoc") {
-#	return "hollandeM";
-#    }
     if ($pays eq "habmercenaires") { # Wallenstein
 	return "habsbourgM";
     }
     if ($pays eq "framercenaires") { # Saxe-Weimar
 	return "franceT";
     }
-#    if ($pays eq "prumercenaires") { # Ferdinand et Karl de Brunswick
-#	return "prusseM";
-#    }
-#    if ($pays eq "turcorsaire") {
-#	return "turquieN";
-#    }
-#    if ($pays eq "turvizir") {
-#	return "turquieT";
-#    }
     return $pays;
 }
 
@@ -167,6 +143,7 @@ sub sortkeytime {
     return sprintf("%03d", $number);
 }
 
+# Store a leader translation/definition in the global list.
 sub sendit {
     $_[1]=~s/\$/\\textdollar/g;
     $sortkey=$_[3];
@@ -177,6 +154,7 @@ sub sendit {
     $translations{$_[2]}{$sortkey}=$_[0]."\n" if ($_[0]);
     $definitions{$_[2]}{$sortkey}=$_[1]."\n" if ($_[1]);
 }
+# Print the current list of leaders into appropriate files.
 sub dropit {
     foreach $k (sort keys %definitions) {
 #	print "->$k\n";
@@ -280,6 +258,27 @@ foreach $k (@infoLEADERPAIRE) {
     sendit($translation,$definition,$rcc,$k->{"NameA 2"},$prekeyb);
 }
 delete $info{"LEADERPAIRE"};
+
+foreach $k (@infoMISSIONNAIRE) {
+    $prekey=sortkeytime($k->{"First turn"});
+    $translation="leader:".$k->{"NameA"};
+    $translation.=":".($k->{"NameB"}) if ($k->{"NameB"});
+    $translation.=":".($k->{"NameC"}) if ($k->{"NameC"});
+    $rc=$k->{"Country"};
+    $rc.="Mis";
+    $definition='\leaderdef('.$k->{"NameA"}.")[";
+    $definition.=$k->{"First turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=";";
+    $definition.=$k->{"First turn"}.'-'.$k->{"Last turn"} if ($k->{"First turn"} =~ /[IV]/);
+    $definition.=$k->{"Last turn"} if ($k->{"First turn"} =~ /[0-9]/);
+    $definition.=']('.$rc;
+    $definition.=")(M";
+    $definition.=")(".$k->{"carac"};
+    $definition.=" +".$k->{"bonus"};
+    $definition.="){".$k->{"Comment"}."}";
+    sendit($translation,$definition,$rc,$k->{"NameA"},$prekey);
+}
+delete $info{"MISSIONNAIRE"};
 dropit();
 
 
@@ -325,9 +324,10 @@ foreach $k (sort keys %newdef) {
 delete $info{"LEADERANONYMOUS"};
 delete $info{"LEADERANONYMOUSDOUBLE"};
 delete $info{"PACHA"};
+delete $info{"MISSIONNAIREanonyme"};
 
 foreach $k (sort keys %info) {
-    print STDERR "%$k was not treated\n";
+    print STDERR "%$k was not treated\n\n";
 }
 
 close(TEXL);
