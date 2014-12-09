@@ -25,6 +25,7 @@ Rules Class File, (c) JCD 2003-2010]
 %%%% Packages used
 
 %%% Encoding
+\usepackage[encapsulated]{CJK} % chinese, japanese, korean
 \usepackage[nocombine]{ucs}
 \usepackage[utf8x]{inputenc}
 \usepackage[LUC,T1]{fontenc}
