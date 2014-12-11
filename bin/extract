@@ -456,11 +456,13 @@ foreach $k (@infoESTABLISHMENT) {
     }
 }
 delete $info{"ESTABLISHMENT"};
+$pacha_number=1;
 foreach $k (@infoPACHA) {
     $command=str($k->{"Country"});
     $command.=str($k->{"NameB"});
     $command.=str($k->{"LD"});
-    $command.=str($k->{"Number"});
+    $command.=str($pacha_number);
+    $pacha_number+=1;
     $command.=str($k->{"Stats"});
     $command.=" dessinePACHA\n";
     sendit($k,$command);
