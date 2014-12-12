@@ -258,7 +258,6 @@ foreach $k (@infoLEADERPAIRE) {
     sendit($translation,$definition,$rcc,$k->{"NameA 2"},$prekeyb);
 }
 delete $info{"LEADERPAIRE"};
-
 foreach $k (@infoMISSIONNAIRE) {
     $prekey=sortkeytime($k->{"First turn"});
     $translation="leader:".$k->{"NameA"};
@@ -279,6 +278,33 @@ foreach $k (@infoMISSIONNAIRE) {
     sendit($translation,$definition,$rc,$k->{"NameA"},$prekey);
 }
 delete $info{"MISSIONNAIRE"};
+foreach $k (@infoMISSIONNAIREanonyme) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    $rc=$k->{"Country"}."Mis";
+    $translation="leader:".$k->{"Name"};
+    $definition="\\leaderpseudoanonymepar(".$k->{"Name"};
+    $definition.=")[]($rc)(M)(2.0.0 +";
+    $definition.=$k->{"bonus"};
+    $definition.=")(";
+    $definition.=$k->{"Comment"};
+    $definition.=" -- $count counters)";
+    sendit($translation,$definition,$rc,$k->{"Name"},$prekey);
+}
+delete $info{"MISSIONNAIREanonyme"};
+foreach $k (@infoPACHA) {
+    $rc="turquiePac"; # Only TUR has pacha
+    $translation="leader:".$k->{"NameA"}.':';
+    $translation.=$k->{"NameC"}.":" if $k->{"NameC"};
+    $translation.=$k->{"NameB"};
+    $definition='\leaderpseudoanonyme('.$k->{"NameA"}.")[](";
+    $definition.=$rc;
+    $definition.=")(z)("; # type is 'z' 'cause they're all rang Z.
+    $definition.=$k->{"Stats"};
+    $definition.=")(".$k->{"LD"}."\\LD)";
+    sendit($translation,$definition,$rc,$k->{"NameA"},$prekey);
+}
+delete $info{"PACHA"};
 dropit();
 
 
@@ -292,6 +318,7 @@ foreach $k (@infoLEADERANONYMOUS) {
     $newdef{$rc}{$k->{"Class"}}{${k}->{"Number"}}=$definition;
     $newcount{$rc}{$k->{"Class"}}++;
 }
+delete $info{"LEADERANONYMOUS"};
 foreach $k (@infoLEADERANONYMOUSDOUBLE) {
     if ($k->{"Country"} eq 'pologne' and $k->{"Country 2"} eq 'lithuanie') {
 	$rc="pollit";
@@ -303,6 +330,7 @@ foreach $k (@infoLEADERANONYMOUSDOUBLE) {
     $newdef{$rc}{$k->{"Class"}}{${k}->{"Number"}}=$definition;
     $newcount{$rc}{$k->{"Class"}}++;
 }
+delete $info{"LEADERANONYMOUSDOUBLE"};
 foreach $k (sort keys %newdef) {
     $i=0;
     foreach $kk (sort keys %{$newdef{$k}}) {
@@ -321,11 +349,6 @@ foreach $k (sort keys %newdef) {
 	}
     }
 }
-delete $info{"LEADERANONYMOUS"};
-delete $info{"LEADERANONYMOUSDOUBLE"};
-delete $info{"PACHA"};
-delete $info{"MISSIONNAIREanonyme"};
-
 foreach $k (sort keys %info) {
     print STDERR "%$k was not treated\n\n";
 }

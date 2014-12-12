@@ -459,7 +459,9 @@ delete $info{"ESTABLISHMENT"};
 $pacha_number=1;
 foreach $k (@infoPACHA) {
     $command=str($k->{"Country"});
-    $command.=str($k->{"NameB"});
+    $command.="(".$k->{"NameB"};
+    $command.=" (".$k->{"NameC"}.")" if $k->{"NameC"};
+    $command.=")";
     $command.=str($k->{"LD"});
     $command.=str($pacha_number);
     $pacha_number+=1;
@@ -578,11 +580,15 @@ foreach $k (@infoMISSIONNAIRE) {
 }
 delete $info{"MISSIONNAIRE"};
 foreach $k (@infoMISSIONNAIREanonyme) {
-    $command=str($k->{"Country"});
-    $command.=str($k->{"Name"});
-    $command.=str("@ 2.0.0 +".$k->{"bonus"});
-    $command.=" dessineMISSIONNAIREanonyme\n";
-    sendit($k,$command);
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+        $command=str($k->{"Country"});
+        $command.=str($k->{"Name"});
+        $command.=str("@ 2.0.0 +".$k->{"bonus"});
+        $command.=" dessineMISSIONNAIREanonyme\n";
+        sendit($k,$command);
+    }
 }
 delete $info{"MISSIONNAIREanonyme"};
 foreach $k (@infoMISSION) {
