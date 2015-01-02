@@ -23,7 +23,7 @@
 %%% Commercial
 \newcommand{\EU@objIndustrial}[2][]{% M? VPs.
   \EUobjective{#1}{Industrial development}{}{}{#2}{\EUcurrmaj has at least as
-    many \MNU\faceplus as its limit, and Commercial Monopoly in
+    many \MNU\faceplus as its period xlimit, and Commercial Monopoly in
     \ctz{\EUcurrcoun}}}%
 \newcommand{\EU@objMonopolyZoneFull}[4][]{% M? each max precision
   \EUobjective{#1}{Trade monopolies*}{monop\EUAbbr{oly}}{#2}{#3}{%
@@ -60,10 +60,6 @@
 
 
 %%% Religious
-% Must keep country as arg because of cross objectives ANG/HOL.
-\newcommand{\EU@objNoConversion}[3][]{% M? country VPs
-  \EUobjective{#1}{No forced conversion}{}{}{#3}{\paysmajeur{#2} was not
-    forced to change its religion}}%
 \newcommand{\EU@objSDCF}[2][]{% M? VPs
   \EUobjective{#1}{SD of Catholic Faith}{}{}{#2}{\EUcurrmaj is \SDCF}}%
 
@@ -178,15 +174,24 @@
     \REVOLT in provinces owned by \paysmajeurAngleterre in \regionIrlande}}%
 % always used with the same values:
 \newcommand{\EU@objMonopolyZoneANGfull}[4][]{% M? STZ CTZ max
-  \EUobjective{#1}{Trade Monopoly}{zone}{#2/#3}{#4}{Each Commercial
+  \EUobjective{#1}{Trade Monopoly}{zone}{#2/#3}{#4}{Each English Commercial
     \terme{Monopoly} in any \STZ (#2)/\CTZ (#3)}}%
 \newcommand{\EU@objMonopolyZoneANG}{\EU@objMonopolyZoneANGfull{5}{10}{30}}
 \newcommand{\EU@objCalaisANG}[2][]{% M? VPs
   \EUobjective{#1}{Calais}{}{}{#2}{\paysmajeurAngleterre owns
     \provincePicardie or a \Presidio in it}}%
+\newcommand{\EU@objNoConversionText}[1]{\paysmajeur{#1} was not forced to
+  change its religion}%
+\newcommand{\EU@objNoConversion}[2][]{% M? VPs
+  \EUobjective{#1}{No forced conversion}{}{}{#2}{%
+    \EU@objNoConversionText{\EUcurrcoun}}}
+% Must keep country as arg because of cross objectives ANG/HOL.
+\newcommand{\EU@objNoConversionOther}[4][]{% M? VPs country nationality
+  \EUobjective{#1}{No forced #4 conversion}{}{}{#2}{%
+    \EU@objNoConversionText{#3}}}
 \newcommand{\EU@objCaraibesANG}[4][]{% M? ctrl own max
   \EUobjective{#1}{\continentCaraibes}{island}{#2/#3}{#4}{Each \TP or \COL
-    controlled (#2)/owned (#3) in \continentCaraibes}}%
+    controlled (#2)/owned and controlled (#3) in \continentCaraibes}}%
 
 %%% FRA
 \newcommand{\EU@objCalaisFRA}[2][]{% M? VP
@@ -357,24 +362,24 @@
 %
 \EUcurrentperiod{III}%
 \EU@objEcosseVassal{5}{30}%
-\EU@objNoConversion[M]{Angleterre}{45}%
+\EU@objNoConversion[M]{45}%
 \EU@objIndustrial{30}%
-\EU@objNoConversion{Hollande}{35}% yes, \HOL this is not an error
+\EU@objNoConversionOther{35}{Hollande}{Dutch}% yes, \HOL this is not an error
 \EU@objMonopolyZoneANG%
 %
 \EUcurrentperiod{IV}%
 \EU@objEcosseVassal{5}{30}%
-\EU@objNoConversion[M]{Angleterre}{40}%
+\EU@objNoConversion[M]{40}%
 \EUobjective{}{Commercial Centre}{}{}{50}{%
   \paysmajeurAngleterre owns at least one \terme{Commercial Centre}}%
 \EUobjective{}{English Civil War}{}{20}{40}{%
-  Duration of \ref{pIV:English Civil War} is four turns or less: full success,
-  five turns or no event: half-success, six or more: failure}%
+  Duration of \ref{pIV:English Civil War}; four turns or less: full success;
+  five turns or no event: half-success; six turns or more: failure}%
 \EU@objMonopolyZoneANG%
 %
 \EUcurrentperiod{V}%
 \EU@objCaraibesANG{7}{15}{45}%
-\EU@objNoConversion{Angleterre}{40}%
+\EU@objNoConversion{40}%
 \EU@objTradeCentre[M]{Atlantic}{40}%
 \EUobjective{}{Independent Portugal}{}{15}{30}{%
   \paysPortugal in not in \ANNEXION of \paysmajeurEspagne; half success if
@@ -383,9 +388,8 @@
 %
 \EUcurrentperiod{VI}%
 \EU@objCaraibesANG{5}{10}{50}%
-\EUobjective{}{Jacobite rebellion}{}{15}{30}{%
-  \paysmajeurAngleterre wins both \ref{pVI:Jacobite Rebellion} (half-success
-  if none occur, or if one victory and one defeat)}%
+\EUobjective{}{Jacobite rebellion}{war}{15}{30}{%
+  Each victory in \ref{pVI:Jacobite Rebellion} (15\VPs if none occur)}%
 % (jcd) I added the second condition. Original was unclear.
 \EU@objTradeCentre[M]{Atlantic}{40}%
 \EU@objWoSS%

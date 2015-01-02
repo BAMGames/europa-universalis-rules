@@ -9,9 +9,9 @@
 
 \begin{designnote}
   Even if the spirit of the game is mainly to simulate the whole modern
-  history, a complete victory points (\VPs) system is explain here. It allow
-  to designate a winner of the campaign, and also to know who is doing well
-  and who isn't.
+  history, a complete victory points (\VPs) system is explained here. It
+  allows to designate a winner of the campaign, and also to know who is
+  doing well and who isn't.
 
   The \VPs system is currently unbalanced. It will only be balanced once
   sufficiently many test games with stable rules will have been played. Thus,
@@ -151,9 +151,12 @@ the same resource in the rare case where both produce exactly one half
 of the total.
 \bparag A country has a total \terme{monopoly} of a given resource if it
 produces at least 6 units of that resource, and if no more than 2 units
-of that resource are produces by other countries.
+of that resource are produced by other countries.
 \bparag Resources produced by minor countries are counted as usual when
-computing monopolies. If a \ROTW minor country happen to have a monopoly
+computing monopolies. Especially, resources exploited by a minor in
+\dipAT are counted as if exploited by the major gaining the
+corresponding income.
+\bparag If a \ROTW minor country happen to have a monopoly
 in one resource, no \VPs are gained (because \ROTW minors do not have
 diplomatic patron).
 
@@ -171,15 +174,17 @@ the player (in order to avoid the players to voluntarily play poorly).
 \item[+20] the 1st round-the-World trip (if it is completed in 2 turns)
 \item[+20] the 2nd round-the-World trip
 \item[+10] the \seazoneHorn sea zone
-\item[+10] the \seazoneTempetes sea zone
+% (jym) removing, POR should do it at T1 and HIS should go to America:
+% \item[+10] the \seazoneTempetes sea zone
 \item[+3] the \seazoneHudson sea zone
 \item[+3] the \granderegionQuebec area
 \item[+2] the \granderegion{Grands Lacs} area
 \item[+3] the \granderegionRocheuses area
 \item[+3] the \granderegionAlaska area
-\item[+5] the \granderegionAlaska area via \continentAsia
 \item[+5] the \granderegionPanama area by the West
-\item[+5] the \granderegionKamchatka area by land from Europa
+% (jym) removing, RUS already has incentive for doing it:
+% \item[+5] the \granderegionKamchatka area by land from Europa
+% \item[+5] the \granderegionAlaska area via \continentAsia
 \item[+1] per province of the \granderegionAmazonia area
 \item[+1] per province bording Mississippi river
 \end{modlist}
@@ -206,28 +211,32 @@ and the two Eastern provinces of \granderegionKansas.
 \granderegionPanama from the Pacific Ocean. Both the land stack and the naval
 stack carrying it must have cross Cape Horn (or used the special movement
 of~\ref{chMilitary:Movement:Port Multiple Coasts} to avoid it).
-\bparag Discovery of \granderegionKamchatka by land is done using the special
-movement of~\ref{chBasics:Secret Passage:Bering}. The stack doing it may not
-have used naval transport since it left the European map.
-\bparag Discovery of \granderegionAlaska via \continentAsia is done by landing
-a stack in \granderegionAlaska, the naval stack carrying it must have left
-from a port in \continentAsia or \continentSiberia.
-\bparag For these three discoveries, the \VPs are earned once the condition on
-the way is met, even if the province is already known (including by the power
-doing the discovery). 
+% \bparag Discovery of \granderegionKamchatka by land is done using the special
+% movement of~\ref{chBasics:Secret Passage:Bering}. The stack doing it may not
+% have used naval transport since it left the European map.
+% \bparag Discovery of \granderegionAlaska via \continentAsia is done by landing
+% a stack in \granderegionAlaska, the naval stack carrying it must have left
+% from a port in \continentAsia or \continentSiberia.
+\bparag For this discovery, the \VPs are earned once the condition on
+the way is met, even if the province is already known (including by the
+power doing the discovery).
 
 \begin{exemple}
   \HIS first discovers \granderegionPanama from the East
   (\seazoneMexique) and build a \COL there. Later \HIS goes round
   America and lands in the same, already colonised province from
-  \seazonePanama. It still gets the ``\granderegionPanama by West'' \VPs
-  (unless another country already grabbed these \VPs, of course).
+  \seazonePanama. Since \HIS already knows the province, no discovery
+  roll is needed. \HIS still gets the ``\granderegionPanama by West''
+  \VPs (unless another country already grabbed these \VPs, of course).
 \end{exemple}
 
 
-\aparag[Circumnavigation] Round-the-World trip are completed when one naval
-stack (possibly a single leader) goes back to a previously visited port after
-going all the way around the World (use common sense).
+\aparag[Circumnavigation] Round-the-World trip are completed when one
+naval stack (possibly a single leader) goes from a port on the European
+map, back to a port on the European map (possibly the same) after going
+all the way around the World (use common sense).
+\bparag Seriously, use common sense. Don't make me write the rules for
+this.
 
 % \aparag[Circumnavigation] (precision for the insanes)
 % \bparag Round-the-World trips are completed when at least 1 \LDE or leader
@@ -263,9 +272,9 @@ as follow:
 \bparag Divide this result by the number of turns in the period (do not round
 yet). In case of transfer or end of game computation, only count the number of
 turns actually played.
-\bparag Multiply this average Wealth by the percentage indicated in the table
-below and round down. This is the amount of Wealth and Prestige \VPs gain by
-the country.
+\bparag Multiply this average Wealth by the percentage indicated in the
+table below and round down. This is the amount of Wealth and Prestige
+\VPs gained by the country.
 
 \aparag Period percentage: \par
 
@@ -308,9 +317,9 @@ overall situation (colonial, territorial and diplomatic).
 \bparag Not all countries gain \VPs this way and some countries have special
 modifiers representing the historical policies that were pursued.
 
-\aparag[Colonial situation.] The countries indicated below (and only these
-countries) gain 5 \VPs for each \COL or \TP in the specified continents and
-periods.
+\aparag[Colonial situation.] The countries indicated below (and only
+these countries) gain 5 \VPs for each \COL or \TP in the specified
+continents (or country) and periods (any time if no period specified).
 \bparag \ANG: \continentIndia in periods \period{IV} to \period{VII};
 \granderegionOceania in period \period{VII}.
 \bparag \FRA: \continentAmerica always; \continentIndia in periods
@@ -353,30 +362,34 @@ counts as 2 \COL (and earns 10\VPs).
 of each province annexed during the period with following modifiers. Note that
 these are in addition to the \VPs gained when annexing the province.
 \bparag \FRA: former provinces of \paysBourgogne \textmultiply 0 during
-periods \period{I} and \period{II}, \textmultiply2 during periods \period{V}
-to \period{VII}; \regionItalie \textmultiply2 in periods \period{I} to
-\period{III}.
-\bparag \SPA: \regionItalie \textmultiply2 in periods \period{I} to
-\period{III}.
+periods \period{I} and \period{II}, \textmultiply2 during periods
+\period{V} to \period{VII}; provinces in \regionItalie \textmultiply2
+in periods \period{I} to \period{III}.
+\bparag \SPA: provinces in \regionItalie \textmultiply2 in periods
+\period{I} to \period{III}.
 \bparag \ENG: provinces bordering \regionMediterranee \textmultiply5;
 other continental provinces \textmultiply2.
-\bparag \TUR: \paysPerse \textmultiply2; provinces lost against \paysPerse
-count negative; provinces bordering \regionMediterranee \textmultiply2.
+\bparag \TUR: provinces taken from \paysPerse \textmultiply2; provinces
+lost against \paysPerse count negative; provinces bordering
+\regionMediterranee \textmultiply2.
 \bparag \SUE: provinces bordering \regionBaltique \textmultiply3.
-\bparag \RUS: \POL or \paysPologne \textmultiply2 ; provinces lost against
-\POL or \paysPologne count negatively.
-\bparag \POL: \RUS \textmultiply2 ; \SUE or \paysSuede\textmultiply2.
+\bparag \RUS: provinces taken from \POL or \paysPologne \textmultiply2 ;
+provinces lost against \POL or \paysPologne count negatively.
+\bparag \POL: provinces taken from \RUS, \SUE or
+\paysSuede\textmultiply2.
 \bparag \AUS: former provinces of \paysHongrie or \paysMoldavie,
 \provinceSerbia \textmultiply3.
-\bparag \PRU: \HRE or \paysPologne \textmultiply2.
+\bparag \PRU: provinces of the \HRE or provinces take from \paysPologne
+\textmultiply2.
 \bparag \VEN: lost islands in \regionMediterranee count negatively.
 
 \aparag Some countries have special modifiers for provinces taken from
 (or lost to) a specific country (\emph{e.g.} \RUS versus \POL). For this
 modifier to apply, the province must be owned by the specified country
 just before being owned by the other.
-\bparag Thus, If \RUS annexes a former Polish province which is
-currently owned by \SUE, it does not trigger its special modifier.
+\bparag Thus, \emph{e.g.}, if \RUS annexes a former Polish province
+which is currently owned by \SUE, it does not trigger its special
+modifier.
 \bparag Other countries have special modifiers for specific provinces,
 whoever owned them prior to the annexation.
 
@@ -390,16 +403,17 @@ whoever owned them prior to the annexation.
 
 \aparag[Diplomatic situation]
 \bparag Each country earns {\bf 6 \VPs} for each minor country in {\bf
-  \VASSAL, \ANNEXION} or {\bf \dipAT}, as well as special \EW, and {\bf 3
-  \VPs} for each other controlled minor country, with following
-modifiers:
-\bparag \HIS: \regionItalie \textmultiply2; \paysChevaliers \textmultiply2 ;
-do not count autonomous Habsbourg states ; do not count \paysChevaliers if
-they are still in \provinceRhodos.
+  \VASSAL, \ANNEXION} or {\bf \dipAT}, as well as special \EW (those
+with no diplomacy allowed), and {\bf 3 \VPs} for each other controlled
+minor country, with following modifiers:
+\bparag \HIS: minors in \regionItalie \textmultiply2; \paysChevaliers
+\textmultiply2 ; do not count autonomous Habsbourg states ; do not count
+\paysChevaliers if they are still in \provinceRhodos.
 \bparag \TUR: Muslims: only 4 \VPs for \VASSAL, \ANNEXION or \dipAT, 2\VPs for
-other status; do not count Non-Muslims minors.
-\bparag \FRA: \regionItalie\textmultiply2 during periods \period{I} to
-\period{III} ; \HRE\textmultiply2 in periods \period{IV} to \period{VII}
+other status; do not count Non-Muslims minors except \paysTransylvanie.
+\bparag \FRA: minors in \regionItalie \textmultiply2 during periods
+\period{I} to \period{III} ; minors of the \HRE \textmultiply2 in periods
+\period{IV} to \period{VII}
 
 \aparag[Special]
 \bparag If \paysChevaliers is still in \provinceRhodos (whatever its
@@ -424,21 +438,21 @@ item and a maximum value for the objective (\emph{e.g.} some \VPs for each
 \TradeFLEET counter of the country in play).
 
 \aparag[Choosing objectives]
-\bparag At the beginning of each period (before the first turn of the period,
-during the Inter-period), each player must secretly pick 3 of the possible 5
-objectives for its country.
+\bparag At the beginning of each period (before the first turn of the
+period), each player must secretly pick 3 of the possible 5 objectives
+for its country.
 \bparag One of the 3 must be marked as \textbf{main objective}.
 \bparag Each player should write the 3 objectives on some paper, and then all
 these papers should be put together, \emph{e.g.} in an envelop (sealed if you
 don't trust your fellow players\ldots)
 
 \aparag[Scoring objectives]
-\bparag At the end of each period (after the last turn of the period, during
-the Inter-period), objectives are revealed and checked, and players earn \VPs
-according to this.
-\bparag A \VP value is indicated for each objective. If a player chooses
-an objective and completes it, he earn its \VP value, if it is the
-\textbf{main objective}, he earn twice this value instead.
+\bparag At the end of each period (during the end-of-period \VPs check),
+objectives are revealed and checked, and players earn \VPs according to
+this.
+\bparag A \VPs value is indicated for each objective. If a player
+chooses an objective and completes it, he earn its \VPs value, if this
+is the \textbf{main objective}, he earns twice this value instead.
 
 \aparag[Mandatory objectives]
 \bparag Some objectives are marked on the tables with {\bf M} ('M'alus, or
@@ -446,8 +460,9 @@ an objective and completes it, he earn its \VP value, if it is the
 \bparag If a player \textbf{both} does not choose this objective, \textbf{and}
 does not complete it, he loses the associated \VPs.
 \bparag If this is a ``for each'' objective, having a single one of the
-required element is enough to avoid the penalty. However, having none of them
-result in a penalty equal to the maximum potential value of the objective.
+required elements is enough to avoid the penalty. However, having none
+of them result in a penalty equal to the maximum potential value of the
+objective.
 
 
 % (jym) most 'E' events seem to make much more sense if checked
@@ -476,17 +491,18 @@ to gain half the \VPs value.
 \end{designnote}
 
 \begin{designnote}
-  {\bf M} objectives are usually hard goals that historical monarchs pursued
-  with a lot of efforts but often did not succeeded and resulted in a loss of
-  these efforts. In retrospective, wargamers would like to ignore these and
-  focus their efforts on goals more likely to succeed. The system forces the
-  player to not completely ignore these. If they choose not to pick the {\bf
-    M} objective and ignore it, they will loose \VPs. If they pick up the
-  objective, since only three objectives can be picked, ignoring it is
-  equivalent to picking only the two others thus forfeiting potential \VPs for
-  a third one\ldots Since {\bf M} objectives are usually among the ones with
-  highest \VPs value, it is normally best to choose it. Of course, the
-  question of choosing it as \textbf{main objective} or not remains open.
+  {\bf M} objectives are usually hard goals that historical monarchs
+  pursued with a lot of efforts but often did not succeeded and resulted
+  in a loss of these efforts. In retrospective, wargamers would like to
+  ignore these and focus their efforts on goals more likely to
+  succeed. The system forces the players to not completely ignore
+  these. If they choose not to pick the {\bf M} objective and ignore it,
+  they will loose \VPs. If they pick up the objective, since only three
+  objectives can be picked, ignoring it is equivalent to picking only
+  the two others thus forfeiting potential \VPs for a third one\ldots
+  Since {\bf M} objectives are usually among the ones with highest \VPs
+  value, it is normally best to choose it. Of course, the question of
+  choosing it as \textbf{main objective} or not remains open.
 \end{designnote}
 
 \begin{exemple}
@@ -566,10 +582,10 @@ order of precedence, to the \MAJ who
 \begin{histoire}
   The taxes where initially in the hand of \paysDanemark but the Swedish
   independence and conquest of \provinceSkane switched this important
-  source of income to other hands. \HOL, having a important trade
-  activity in \stz{Baltique}, wasn't happy with foreign taxes and
-  preferred free trade. This resulted in several Dutch implications in
-  the Northern wars, often using its fleet to reinforce the Danish one.
+  source of income to other hands. \HOL, having a large trade activity
+  in \stz{Baltique}, wasn't happy with foreign taxes and preferred free
+  trade. This resulted in several Dutch implications in the Northern
+  wars, often using the Dutch fleet to reinforce the Danish one.
 \end{histoire}
 
 \aparag[Dominium Marii Baltici.] \SUE has the DMB if all provinces
@@ -587,8 +603,9 @@ bordering the \region{Baltique} are owned by either \SUE,
 \terme{Orient Income}. Orient Income is computed over each period and is
 the sum of all income from any of the following source:
 \bparag \CCs{Grand Orient} or \CCs{Tempete}; 
-\bparag convoy of \bazar{Izmir};
-\bparag \dipAT with \paysaden, \paysoman or \paysgujarat; 
+\bparag convoy of \bazar{Izmir} or \terme{East Indies} convoy;
+\bparag resources exploited through an \dipAT with \paysaden, \paysoman
+or \paysgujarat;
 \bparag total income of each \COL/\TP producing at least one unit of
 \RES{PO}, \RES{Spice} or \RES{Silk};
 \bparag \TradeFLEET in any \CTZ of the \CCs{Tempete}.
@@ -661,7 +678,7 @@ period are checked against this objective.
 or \CTZ or in production of resource without precision, any monopoly
 (partial or total) counts toward fulfilling the objective.
 
-\aparag[Independence wars.] \label{chVictories:Explanation:Independence}
+\aparag[Independence wars:] \label{chVictories:Explanation:Independence}
 \ref{pVII:Independence War} may occur several times, resulting in several
 rebellions. The associated objective is checked as follows, in
 decreasing order of precedence:
@@ -669,8 +686,8 @@ decreasing order of precedence:
 \item If at least one rebellion war occured in the country's colonies
   and all independence wars in the country's colonies were crushed, full
   success.
-\item If at least one rebellion war occured in the country's colonies
-  and was successful, the objective is failed.
+\item If at least one successful rebellion war occured in the country's
+  colonies, the objective is failed.
 \item If no rebellion war occured at all, half-success.
 \item If at least one rebellion war occured in another country's
   colonies, and the major helped the rebels in all rebellion wars, and
@@ -700,7 +717,8 @@ situation, no matter when it was settled.
 
 \aparag[Minor provinces.] When an objective refers to the provinces of a
 minor country (\paysCrimee, \paysGeorgie, \paysHanse, \paysHongrie,
-\paysMoldavie, \paysNaples, \paysPerse, \paysprovincesne,
+\paysMoldavie, \paysPerse, \paysNaples, xb
+\paysprovincesne,
 \paysValachie), it consists in all the provinces barring the
 corresponding solid or blurred shield, and owned by the country at some
 point in the game, whatever their current owner (especially if the
@@ -735,7 +753,7 @@ diplomacy, \ldots)
 \bparag List of provinces of the North-East (\blasonsmall{hollande}):
 \provinceFriesland, \provinceGelderland, \provinceHolland,
 \provinceOverijssel, \provinceUtrecht, \provinceZeeland.
-\bparag List of Valachian provinces (\blasonsmall{valachie}):
+\bparag List of Walachian provinces (\blasonsmall{valachie}):
 \provinceValahia.
 \bparag Note that \provinceKuban may be both a Georgian and Crimean
 province and thus bring \VPs for both reasons. It may, however, only
