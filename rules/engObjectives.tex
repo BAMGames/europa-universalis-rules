@@ -102,8 +102,8 @@
     destroyed and later recreated}}%
 
 \newcommand{\EU@objNoRUSBaltic}[2][]{% M? full
-  \EUobjective{#1}{\paysmajeurRussie not adjacent to
-    \regionBaltique}{}{\EU@objhalf{#2}}{#2}{\paysmajeurRussie does not own any
+  \EUobjective{#1}{\paysmajeurRussie
+    contained}{}{\EU@objhalf{#2}}{#2}{\paysmajeurRussie does not own any
     province bordering the \regionBaltique; only half-success if
     \paysmajeurRussie controls a province bordering the \regionBaltique}}%
 \newcommand{\EU@objSpecificProvince}[4][]{% M? prov VP short
@@ -608,7 +608,7 @@
 %
 \EUcurrentperiod{VII}%
 \EU@objMonopolyZone{5}{30}%
-\EUobjective{M}{Batavian Revolution}{revolution}{20}{40}{%
+\EUobjective{M}{Batavian Revolution}{rev\EUAbbr{olution}}{20}{40}{% 
   Per victory in \ref{pVII:Batavian Revolution}; half-success if the even
   never occur}%
 \EU@objFranceRoyalist{35}%
@@ -980,7 +980,7 @@
 \EU@objOrientIncome{250}{30}%
 %
 \EUcurrentperiod{III}%
-\EU@objTradeCentre[M]{Mediterranee}{40}%
+\EU@objTradeCentre{Mediterranee}{40}%
 \EUobjective{}{\regionBalkans/Barbary}{\Presidio}{10}{30}{%
   Each Venetian \Presidio in \Barbaresques, or \regionBalkans}%
 \EU@objBalkansVEN{15}{45}{}%

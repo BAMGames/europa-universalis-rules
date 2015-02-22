@@ -859,17 +859,24 @@ different. Thus, a war may quickly change some \VPs.
 
 \section{End of game \VPs}\label{chVictories:End Game}
 
-\aparag Those \VPs consist of a check up of the situation of each players at
-the end of the game. A check up of the same kind, which is also explained here
-is done each time a player change of played country.
+\aparag At the end of the game, a global check-up of each country is
+done.
+\bparag Additionally, the same check-up is performed for countries that
+cease to be played (\POR, \HOL, \VEN, \POL) at the time of the transfer.
 
-\aparag If a provinces is listed in a ``$x$ times the income of'' objective
-for a country, it does not count for the ``all non-national province''
-objective.
-\bparag The provinces of \VASSAL minor count for specific objectives but not
-for ``all non-national province'' objectives.
-\bparag Occupied provinces count for 2/3 of their value for the owner, and 1/3
-for the controller.
+\aparag[Provinces] \VPs are awarded for ownership and control of some
+provinces. These \VPs depend on the income of the province.
+\bparag If a province is only owned and not controlled, it it worth only
+\td of the listed \VPs.
+\bparag If a province is only controlled and not owned, it it worth only
+\tu of the listed \VPs.
+\bparag Round the \VPs total down once all the computation are done.
+\bparag Each province may only count once for each country. Namely, a
+province listed in a ``X times the income of'' objective does not count
+for the ``each non-national province'' objective.
+\bparag Provinces owned by \VASSAL count toward objective that
+specifically list them. They do not count toward the ``each non-national
+province'' objective.
 
 \aparag Neither Exotic resources nor gold count for \COL and \TP income.
 
@@ -884,13 +891,13 @@ beginning of the last turn and not at the end and are counted respectivly in
 \bparag -2 time the income value of lost national provinces.
 
 \aparag[\sectionpaysmajeur{Portugal}]
-\bparag 1 times the income value of \shortprovince{Tanger},
+\bparag 1 time the income value of \shortprovince{Tanger},
 \shortprovince{JebelTubqal}, \shortprovince{SidiIfni}, \shortprovince{Rif},
 and \shortprovince{Magrib}.
 \bparag 1 \VP per level of commercial fleet.
 \bparag 1 \VP per level of \COL or \TP.
 \bparag 20 \VPs: \COL in a coastal city in \continent{India}.%\ville{Goa}.
-\bparag 20 \VPs: total monoply in \STZ{Inde}.
+\bparag 20 \VPs: total monoply in \stz{Inde}.
 \bparag 10 \VPs: partial monoply in \STZ{Inde}.
 
 \aparag[\sectionpaysmajeur{Venise}]
