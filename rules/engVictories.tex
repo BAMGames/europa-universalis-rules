@@ -858,11 +858,17 @@ different. Thus, a war may quickly change some \VPs.
 
 
 \section{End of game \VPs}\label{chVictories:End Game}
-
 \aparag At the end of the game, a global check-up of each country is
 done.
 \bparag Additionally, the same check-up is performed for countries that
 cease to be played (\POR, \HOL, \VEN, \POL) at the time of the transfer.
+
+\aparag During this check-up, each country earns \VPs for fulfilling
+objectives. All the objectives listed here are checked. There is no
+choice among them (contrary to the end-of-period objectives).
+
+\aparag Additionally, each country loses twice the income value of each
+national province it does not own (whoever controls them).
 
 \aparag[Provinces] \VPs are awarded for ownership and control of some
 provinces. These \VPs depend on the income of the province.
@@ -887,71 +893,99 @@ beginning of the last turn and not at the end and are counted respectivly in
 % TODO : réduite ou supprimer ces \PV ??
 \aparag Alliances are also checked a the beginning of the last turn
 
-\aparag[All powers]
-\bparag -2 time the income value of lost national provinces.
+\subsection{All powers}
+\aparag -2 times the income value of each lost national province.
 
-\aparag[\sectionpaysmajeur{Portugal}]
+\subsection{\sectionpaysmajeur{Portugal}}
+\aparag[Territory.]
 \bparag 1 time the income value of \shortprovince{Tanger},
 \shortprovince{JebelTubqal}, \shortprovince{SidiIfni}, \shortprovince{Rif},
 and \shortprovince{Magrib}.
+
+\aparag[Trade.]
 \bparag 1 \VP per level of commercial fleet.
-\bparag 1 \VP per level of \COL or \TP.
-\bparag 20 \VPs: \COL in a coastal city in \continent{India}.%\ville{Goa}.
 \bparag 20 \VPs: total monoply in \stz{Inde}.
 \bparag 10 \VPs: partial monoply in \STZ{Inde}.
 
-\aparag[\sectionpaysmajeur{Venise}]
-\bparag 1 times the income value of all non national provinces.
+\aparag[Colonisation.]
+\bparag 1 \VP per level of \COL or \TP.
+\bparag 20 \VPs: \COL in a coastal city in \continent{India}.%\ville{Goa}.
+
+\subsection{\sectionpaysmajeur{Venise}}
+\aparag[Territory.]
+\bparag 1 times the income value of each non national province.
+
+\aparag[Trade.]
 \bparag 1 \VP per level of commercial fleet.
 \bparag 30 \VPs: Mediterranean \terme{Commercial Center}.
+
+\aparag[Military.]
 \bparag 10 \VPs: military alliance with \paysmajeur{Espagne}.
 
-\aparag[\sectionpaysmajeur{Pologne}]
-\bparag ({\it Provinces of \region{Duche de Prusse} that \paysmajeur{Pologne}
-  voluntarily gave to \pays{brandebourg} are counted as if
-  \paysmajeur{Pologne} still control them})
-\bparag 4 times the income value of all non-national provinces (Ukrainyan
+\subsection{\sectionpaysmajeur{Pologne}}
+\aparag[\region{Duche de Prusse}.] {\it Provinces of \region{Duche de
+    Prusse} that \paysmajeur{Pologne} voluntarily gave to
+  \pays{brandebourg} are counted as if \paysmajeur{Pologne} still
+  control them.}
+
+\aparag[Territory.]
+\bparag 4 times the income value of each non-national province (Ukrainyan
 provinces are considered as non-national).
-\bparag -2 times the income value of all lost national provinces, not
-including Ukrainian provinces.
+% \bparag -2 times the income value of all lost national provinces, not
+% including Ukrainian provinces.
+
+\aparag[Industry.]
 \bparag 20 \VPs: at least 10 levels of manufactures.
+
+\aparag[Military.] Only count the best case among the three.
 \bparag 30 \VPs: military alliance with \paysmajeur{France}, or
 \bparag 20 \VPs: military alliance with \paysmajeur{Autriche}, or
 \bparag 10 \VPs: military alliance with \paysmajeur{Suede}.
 
-\aparag[\sectionpaysmajeur{Hollande}]
-\bparag ({\it divide total by 2 if it is a Transfer check})
+\subsection{\sectionpaysmajeur{Hollande}}
+%\bparag ({\it divide total by 2 if it is a Transfer check})
+\aparag[Territory.]
 \bparag 2 times the income value of \shortprovince{Hainaut},
 \shortprovince{Flandre}, \shortprovince{Vlaandern}, \shortprovince{Luxemburg},
 \shortprovince{Brabant}, \shortprovince{Limburg}
 \bparag 3 times the income value of \shortprovince{Oldenburg},
 \shortprovince{Artois}, \shortprovince{Picardie}, \shortprovince{Bremen}.
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without exotic resources).
-\bparag 1 \VP per level of \terme{commercial fleet}.
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without exotic resources).
 \bparag 50 \VPs: \FRA not adjacent to national territory.
+
+\aparag[Trade.]
+\bparag 1 \VP per level of \terme{commercial fleet}.
 \bparag 50 \VPs: Atlantic \terme{Commercial Center}.
-\bparag 30 \VPs: First or second biggest fleet.
+
+\aparag[Military.]
+\bparag 30 \VPs: First or second largest fleet.
 \bparag 15 \VPs: At least 15 \NWD (not compatible with the precedent).
 
-\aparag[\sectionpaysmajeur{Angleterre}]
+\subsection{\sectionpaysmajeur{Angleterre}}
+\aparag[Territory]
 \bparag 2 times the income value of \pays{ecosse} provinces.
 \bparag 3 times the income value of \shortprovince{Picardie},
 \shortprovince{Baleares}, \shortprovince{Corfu}, \shortprovince{Malta},
 \shortprovince{Bremen}, \shortprovince{Hannover}, \shortprovince{Osnabruck},
 and \shortprovince{Oldenburg}.
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
 \bparag 50 \VPs: \shortprovince{Gibraltar}
+
+\aparag[Trade.]
 \bparag 1 \VP per level of commercial fleet.
-\bparag 30 \VPs: the biggest fleet.
-\bparag 10 \VPs: the biggest army.
-\bparag 50 \VPs: having 4 adjacent level 6 \COL in \continent{America}
-unrevolted.
 \bparag 30 \VPs: Atlantic \terme{Commercial center}.
 \bparag 30 \VPs: Mediterranean \terme{Commercial center}.
 
-\aparag[\sectionpaysmajeur{France}]
+\aparag[Military.]
+\bparag 30 \VPs: the largest fleet.
+\bparag 10 \VPs: the largest army.
+\bparag 50 \VPs: having 4 adjacent unrevolted level 6 \COL in
+\continent{America}.
+
+\subsection{\sectionpaysmajeur{France}}
+\aparag[Territory.]
 \bparag 3 times the income value of \shortprovince{Hainaut},
 \shortprovince{Vlaandern}, \shortprovince{Brabant}, \shortprovince{Luxemburg},
 \shortprovince{Catalunya}, \shortprovince{Lombardia}, \shortprovince{Nice}.
@@ -960,15 +994,20 @@ unrevolted.
 \shortprovince{Picardie}, \shortprovince{Bresse},
 \shortprovince{Franche-Comte}, \shortprovince{Rosselo},
 \shortprovince{Corsica}.
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
+
+\aparag[Trade.]
 \bparag 1 \VP per level of commercial fleet.
-\bparag 30 \VPs: the biggest fleet.
-\bparag 10 \VPs: the biggest army.
 \bparag 50 \VPs: Atlantic \terme{Commercial Center}.
 \bparag 30 \VPs: Mediterranean \terme{Commercial Center}.
 
-\aparag[\sectionpaysmajeur{Espagne}]
+\aparag[Military.]
+\bparag 30 \VPs: the largest fleet.
+\bparag 10 \VPs: the largest army.
+
+\subsection{\sectionpaysmajeur{Espagne}}
+\aparag[Territory.]
 \bparag 3 times the income value of
 \shortprovince{Friesland},\shortprovince{Overijssel},
 \shortprovince{Gelderland}, \shortprovince{Utrecht}, \shortprovince{Zeeland},
@@ -980,19 +1019,28 @@ unrevolted.
 \shortprovince{Rosselo}, \shortprovince{Calabria}, \shortprovince{Basilicata},
 \shortprovince{Puglia}, \shortprovince{Abruzzo}, \shortprovince{Oran},
 \shortprovince{Algerie},\shortprovince{Annabah}, \shortprovince{Tunisie}
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
+\bparag {\bf -30} \VPs: loss of \shortprovince{Gibraltar}
+
+\aparag[Military.]
+\bparag 30 \VPs: the largest fleet.
+\bparag 15 \VPs: the second largest fleet.
+\bparag 20 \VPs: the largest army.
+
+\aparag[Trade.]
 \bparag 1 \VP per level of commercial fleet.
-\bparag 30 \VPs: the biggest fleet.
-\bparag 15 \VPs: the second biggest fleet.
-\bparag 20 \VPs: the bigest army.
+
+\aparag[Diplomacy.]
 \bparag 20 \VPs: having \pays{venise} in \AM or more.
+
+\aparag[Colonisation.]
 \bparag 50 \VPs: no non-Spanish non-portuguese \COL in \continent{America},
 reduce to 20 \VP if the condition is valid only in Central and South
 \continent{America} (except \continent{Caraibes})
-\bparag {\bf -30} \VPs: loss of \shortprovince{Gibraltar}
 
-\aparag[\sectionpaysmajeur{Autriche}]
+\subsection{\sectionpaysmajeur{Autriche}}
+\aparag[Territory.]
 \bparag 2 times the income value of \shortprovince{Magyarorszag},
 \shortprovince{Pecs}, \shortprovince{Erdely}, \shortprovince{Karpatok},
 \shortprovince{Mures}, \shortprovince{Banat}, \shortprovince{Croatie},
@@ -1011,11 +1059,14 @@ reduce to 20 \VP if the condition is valid only in Central and South
 \shortprovince{Hainaut}, \shortprovince{Vlaandern}, \shortprovince{Luxemburg},
 \shortprovince{Brabant}, \shortprovince{Limburg} and 2 times the income value
 of \shortprovince{Artois}, \shortprovince{Flandre}
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
+
+\aparag[Diplomacy.]
 \bparag 20 \VPs: having \pays{venise} in \AM or more.
 
-\aparag[\sectionpaysmajeur{Russie}]
+\subsection{\sectionpaysmajeur{Russie}}
+\aparag[Territory.]
 \bparag 3 times the income value of \shortprovince{Finland},
 \shortprovince{Nyland}, \shortprovince{Georgie}, \shortprovince{Armenie},
 \shortprovince{Mazowia}, \shortprovince{Wielkopolska}
@@ -1032,14 +1083,21 @@ of \shortprovince{Artois}, \shortprovince{Flandre}
 (\paysSteppes, \paysKazan, \paysCosaquesdon, \paysAstrakhan, \paysCrimee).
 \bparag 50 \VPs: ownership of \provinceNeva, \provinceLietuva,
 \provinceEstland and all of \regionFinlande.
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
-\bparag 20 \VPs: the biggest army.
-\bparag 15 \VPs: the first or 2nd biggest fleet.
-\bparag 30 \VPs: at least 12 levels of manufactures.
-\bparag 30 \VPs: fondation of \ville{Saint-Petersbourg}.
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
 
-\aparag[\sectionpaysmajeur{Turquie}]
+\aparag[Military.]
+\bparag 20 \VPs: the largest army.
+\bparag 15 \VPs: the first or 2nd largest fleet.
+
+\aparag[Industry.]
+\bparag 30 \VPs: at least 12 levels of manufactures.
+
+\aparag[Development.]
+\bparag 30 \VPs: construction of \ville{Saint-Petersbourg}.
+
+\subsection{\sectionpaysmajeur{Turquie}}
+\aparag[Territory.]
 \bparag 5 times the income value of \shortprovince{Malta},
 \shortprovince{Sicilia}, \shortprovince{Corfu}, \shortprovince{Rhodos},
 \shortprovince{Kreta}, \shortprovince{Chypre},
@@ -1055,33 +1113,47 @@ of \shortprovince{Artois}, \shortprovince{Flandre}
 \shortprovince{Zaporozhye}, \shortprovince{Crimee}, \shortprovince{Azov},
 \shortprovince{Kuban}, \shortprovince{Arabie}, \shortprovince{Egypte}
 \shortprovince{Nil}, \shortprovince{Tanger}.
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
-\bparag 15 \VPs: the first or 2nd biggest fleet.
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
+
+\aparag[Military.]
+\bparag 15 \VPs: the first or 2nd largest fleet.
+
+\aparag[Industry.]
 \bparag 30 \VPs: at least 12 levels of manufactures.
+
+\aparag[Trade.]
 \bparag 50 \VPs: Mediterranean \terme{Commercial Center}.
+
+\aparag[Reforms.]
 \bparag 15 \VPs per reform.
 
-\aparag[\sectionpaysmajeur{Prusse}]
+\subsection{\sectionpaysmajeur{Prusse}}
+\aparag[Territory.]
 \bparag 5 times the income value of \shortprovince{Silesie},
 \shortprovince{Lausitz}, \shortprovince{Wielkopolska},
 \shortprovince{Mazowia}, \shortprovince{Danzig}
 \bparag 3 times the income value of \shortprovince{Berg},
 \shortprovince{Anhalt}, \shortprovince{Holstein}, \shortprovince{Lubeck},
 \shortprovince{West Preussen}
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
+
+\aparag[Military.]
 \bparag 30 \VPs: the biggest army.
 
-\aparag[\sectionpaysmajeur{Suede}]
-\bparag ({\it divide total by 2 if it is a Transfer check})
+\subsection{\sectionpaysmajeur{Suede}}
+%\bparag ({\it divide total by 2 if it is a Transfer check})
+\aparag[Territory.]
 \bparag 5 times the income value of all baltic coastal provinces, except
 \shortprovince{Sjaelland}, plus 50 \VPs if the \terme{Dominium Mari Balticii}
 is complete
 \bparag 3 times the income value of \shortprovince{Savo},
 \shortprovince{Tavastland}
-\bparag 1 time the income value of non-national provinces, and of all \COL and
-\TP (without the resources).
+\bparag 1 time the income value of each non-national province, and of
+all \COL and \TP (without the resources).
+
+\aparag[Trade.]
 \bparag 1 \VP per level of commercial fleet.
 
 % Local Variables:
