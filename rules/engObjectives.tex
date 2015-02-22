@@ -139,11 +139,11 @@
 
 % always used with the same values (HIS has a special one):
 \newcommand{\EU@objWoSSfull}[2][]{% M? VP
-  \EUobjective{#1}{Spanish Succession}{}{\EU@objhalf{#2}}{#2}{\EUcurrmaj is
-    victorious in \ref{pV:WoSS}, or no war and \EUcurrmaj received part of the
-    inheritance. Half-success if the event does not occur. Failure if no war
-    and \EUcurrmaj received no part of the inheritance or if \EUcurrmaj was on
-    the loosing side of the war}}%
+  \EUobjective{#1}{Spanish Succession}{}{\EU@objhalf{#2}}{#2}{Either
+    \EUcurrmaj is victorious in \ref{pV:WoSS}, or there is no war and
+    \EUcurrmaj received part of the inheritance. Half-success if the event
+    does not occur. Failure if there is no war and \EUcurrmaj received no part
+    of the inheritance or if \EUcurrmaj was on the loosing side of the war}}%
 \newcommand{\EU@objWoSS}{\EU@objWoSSfull{50}}%
 \newcommand{\EU@objPOLVictoryText}{\EUcurrmaj is protector of \paysPologne
   (permanent \EW); half-success if \ref{pVI:WoPS} never occured}%
@@ -156,11 +156,15 @@
   \EUobjective{#1}{Independence Wars}{}{\EU@objhalf{#2}}{#2}{Victory in
     \ref{pVII:Independence War}
     (see~\ref{chVictories:Explanation:Independence})}}%
-\newcommand{\EU@objFranceContained}[2][]{% M? VP
-  \EUobjective{#1}{\FRA contained}{}{\EU@objhalf{#2}}{#2}{\paysmajeurFrance
-    does not reach its ``natural frontiers'' during the Revolution (cannot be
-    the main objective) (\ref{pVII:Revolution:Natural Frontiers});
-    half-success if the event does not occur}}%
+\newcommand{\EU@objFranceRoyalist}[2][]{% M? VP
+  \EUobjective{#1}{\FRA Royalist}{}{\EU@objhalf{#2}}{#2}{French Revolution is
+    crushed and the King is back on the throne. Half success if
+    \ref{pVII:French Revolution} does not occur}}%
+% Was:
+% {\paysmajeurFrance
+%     does not own all its ``natural frontiers'' during the Revolution
+%     (\ref{pVII:Revolution:Natural Frontiers}); half-success if the event does
+%     not occur. Cannot be the main objective.}}%
 
 
 %% Country specific
@@ -235,9 +239,8 @@
     in a province owned by \Barbaresques}}%
 \newcommand{\EU@objSpanishWorld}[2][]{% M? full
   \EUobjective{#1}{Spanish World}{}{\EU@objhalf{#2}}{#2}{No non-Spanish \COL
-    in \continent{South America}, \granderegionFlorida and \continentCaraibes;
-    half-success if no non-Spanish \COL in \continent{South America} and
-    \granderegionFlorida}}%
+    in \continent{South America} and \continentCaraibes; half-success if no
+    non-Spanish \COL in \continent{South America} and \granderegionFlorida}}%
 \newcommand{\EU@objPortugalAnnexed}[2][]{% M? VPs
   \EUobjective{#1}{Annexed \paysportugal}{}{}{#2}{\paysportugal in \ANNEXION
     status}}%
@@ -300,7 +303,7 @@
     \paysmajeurTurquie}}%
 \newcommand{\EU@objValMol}[2][]{% M? both
   \EUobjective{#1}{\paysValachie/\paysMoldavie}{}{\EU@objhalf{#2}}{#2}{%
-    Both \paysValachie and \paysMoldavie are either \VASSAL of \EUcurrmaj or
+    Each of \paysValachie and \paysMoldavie is either \VASSAL of \EUcurrmaj or
     conquered (all of its provinces are owned by \EUcurrmaj, whoever controls
     them). Half-success if only one of the two is \VASSAL or conquered}}%
 \newcommand{\EU@objCrimeaTURFull}[8][]{% M? VPa VPb VPc a+ b c d-
@@ -398,7 +401,7 @@
 %
 \EUcurrentperiod{VII}%
 \EU@objIndependanceWars[M]{50}%
-\EU@objFranceContained{30}%
+\EU@objFranceRoyalist{30}%
 \EU@objEachCC{15}{45}%
 \EU@objSYW{30}%
 \EU@objEastIndiesConvoy{4}{40}%
@@ -459,10 +462,10 @@
   \paysmajeurFrance owns at least one province adjacent to \paysmajeurHollande
   national territory}%
 \EUobjective{}{Glorious Revolution}{}{20}{40}{%
-  \paysmajeurFrance either controls the Rebels or makes an intervention in
-  \ref{pV:Glorious Revolution} and wins; half-success if the event does not
-  occur ; failure if \paysmajeurFrance neither controls the Rebels nor
-  intervene}%
+  During \ref{pV:Glorious Revolution}, \paysmajeurFrance wins after either
+  controlling the Rebels or making an intervention; half-success if the event
+  does not occur ; failure if \paysmajeurFrance neither controls the Rebels
+  nor intervene}%
 \EU@objMonopolyRES{Fish}{5}{30}%
 \EU@objLouisXIV{20}{40}%
 %
@@ -485,9 +488,9 @@
   \paysmajeurFrance has more \TP plus \COL than any other country in one of
   \continent{India}, \continent{North America}, or \continent{Caraibes}}%
 \EUobjective{}{Natural frontiers}{}{15}{30}{%
-  \paysmajeurFrance reaches its ``natural frontier'' during the Révolution
-  (cannot be the main objective) (\ref{pVII:Revolution:Natural Frontiers});
-  half-success if the event does not occur}%
+  \paysmajeurFrance owns all its ``natural frontier'' during the Revolution
+  (\ref{pVII:Revolution:Natural Frontiers}); half-success if the event does
+  not occur}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \EUcurrentcountry{Espagne}
@@ -518,8 +521,8 @@
 \EUobjective{M}{Forced conversion}{\MAJ}{50}{--}{%
   Each time a Protestant Major Country is converted due to a war in which
   \paysmajeurEspagne was fighting against it. Not possible if
-  \paysmajeurEspagne is \CATHCO; Religious and Civil wars count; No maximum
-  \VPs value}%
+  \paysmajeurEspagne is \CATHCO; Religious and Civil wars count; Limited and
+  foreign interventions of \SPA count. No maximum \VPs value}%
 \EUobjective{}{\TUR stopped in Ionian}{}{}{40}{%
   No Turkish possesions nor \VASSAL west of \seazoneIonienne (\provinceTripoli
   excluded, \provinceMalta or any province in \regionItalie included)}%
@@ -533,7 +536,7 @@
 \EU@objGermanEmpire[M]{50}%
 \EU@objBigAustria{10}{30}%
 \EU@objPortugalAnnexed{50}%
-\EU@objMonopolyZoneFull{8}{40}{; \ctz{Espagne} counts double}%
+\EU@objMonopolyZoneFull{8}{40}{; \ctz{Espagne} counts as two}%
 %
 \EUcurrentperiod{V}%
 \EU@objNoTURHungary[M]{40}{10}%
@@ -574,7 +577,7 @@
 \EUobjective{}{Protestant \paysmajeurFrance}{}{}{35}{%
   \paysmajeurFrance is Protestant}%
 \EUobjective{}{Protestant \paysmajeurAngleterre}{}{}{40}{%
-  \paysmajeurAngleterre is Protestant (either \PROTANG or \PROTPUR)}%
+  \paysmajeurAngleterre is Protestant}%
 \EU@objEastIndiesConvoy{10}{40}%
 %
 \EUcurrentperiod{IV}%
@@ -582,7 +585,8 @@
 \EU@objBalticTrade{5}{30}%
 \EUobjective{}{\payshanse/Northern \HRE}{}{}{40}{%
   Either \ref{pIV:TYW} occured and there is a Northern \HRE alliance; or
-  \payshanse still exists and is \VASSAL of \paysmajeurHollande}%
+  \payshanse still exists and is \VASSAL of \paysmajeurHollande (including
+  after \ref{pIV:TYW})}%
 \EU@objNoActNavigation[M]{40}%
 \EU@objEachCOL[in \continentBrazil]{\continentBrazil}{10}{40}%
 %
@@ -607,7 +611,7 @@
 \EUobjective{M}{Batavian Revolution}{revolution}{20}{40}{%
   Per victory in \ref{pVII:Batavian Revolution}; half-success if the even
   never occur}%
-\EU@objFranceContained{35}%
+\EU@objFranceRoyalist{35}%
 \EU@objAmericaHOL{15}{45}%
 \EU@objEachCOLTP[in \continentIndia]{\continentIndia}{15}{50}%
 %
@@ -652,7 +656,7 @@
   provinces counts as one item (20\VPs)}%
 \EU@objEachProvinceAbove[M]{3}{\paysNaples}{10}{50}{\paysNaples}%
 \EU@objAllianceAny{5}{30}%
-\EU@objFranceContained{30}%
+\EU@objFranceRoyalist{30}%
 \EU@objSilesie{50}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -674,7 +678,7 @@
 {15}{50}{15 \VPs per province annexed during the period}%
 \EU@objAllianceAny{5}{40}%
 \EU@objSYW{40}%
-\EU@objFranceContained{30}%
+\EU@objFranceRoyalist{30}%
 \EU@objSilesie[M]{50}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -808,7 +812,7 @@
 % (jcd) Does this mean at least 5 _new_ provinces or at least 5 _owned_
 % provinces?
 % (jym) only _owned_ makes some sense. There are 8 such provinces total.
-\EU@objEachCOL[in \granderegionAlaska]{}{10}{30}%
+\EU@objEachCOL[\granderegionAlaska]{}{10}{30}%
 %
 \EUcurrentperiod{VII}%
 \EU@objEachOwned{\paysGeorgie/\paysPerse}{10}{40}{either \paysGeorgie or
@@ -915,7 +919,8 @@
 %
 \EUcurrentperiod{IV}%
 \EUobjective{}{Peace in \payshongrie}{}{}{35}{%
-  No more than two turns of war between \AUSaus and \TUR}%
+  No more than two turns of war between \AUSaus and \TUR ; interventions do
+  not count}%
 \EU@objPresidiosTUR{40}{10}%
 \EU@objCrimeaTUR{6}%
 \EU@objEachProvinceList{\provinceCorfou, \provinceKreta, \provinceMalta and
