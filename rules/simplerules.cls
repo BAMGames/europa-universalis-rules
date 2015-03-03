@@ -28,7 +28,7 @@ Rules Class File, (c) JCD 2003-2010]
 \usepackage[encapsulated]{CJK} % chinese, japanese, korean
 \usepackage[nocombine]{ucs}
 \usepackage[utf8x]{inputenc}
-\usepackage[LUC,T1]{fontenc}
+\usepackage[LUC,T1,T5]{fontenc} %T5 for Vietnamese
 
 %%% Fonts
 \usepackage{ttf-courier,ttf-isabella,ttf-arialnarrow}
