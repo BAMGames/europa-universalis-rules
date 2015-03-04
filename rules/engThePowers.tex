@@ -160,21 +160,22 @@ specified (\emph{e.g.} ``Counter-Reform'' means ``\CATHCR'').
 the given religion, whether they have a standing or not.
 \bparag Majors countries have no standing at the beginning of the game and
 have to choose one when~\ref{pI:Reformation} happens or when they change
-religion as well in a few other circumstances.
+religion as well in a few other circumstances. Some Majors may stay without
+standing.
 
 
 
 \subsection{Cultural groups}
 
-\aparag Each country (major or minor) belongs to one cultural groups (except
+\aparag Each country (major or minor) belongs to one cultural group (except
 \POL and \RUS who belong to two groups).
 \bparag These groups are used to determine the technological level of minor
-countries and the way they progress. Check~\ref{chExpenses:Technology} for
-details on technology.
+countries and the way they progress. Check~\ref{chAdministration:Technology}
+for details on technology.
 
 \aparag Cultural groups usually contains all countries of one or more
-religion. Thus, we use the same names (and symbols) to depict them. But these
-should not be confused.
+religion. Thus, we may use the same names (and symbols) to depict them. But
+these should not be confused.
 
 \aparag The cultural groups in which a minor country belongs is indicated as
 its ``Military doctrine'' in the Appendix.
@@ -267,8 +268,8 @@ countries of these two religions and \ROTW minor Muslim countries.
 \bparag European Muslim countries are either Sunni or Shi'ite. \ROTW Muslim
 countries do not have this distinction.
 \bparag \ROTW Muslim countries are the one with a \Xsunnite symbol on the
-\ROTW diplomacy track: \paysAden, \paysOman, \paysSoudan, \paysGujerat and
-\pays{aceh}. Other \ROTW countries are considered as having no religion for
+\ROTW diplomacy track: \pays{aceh}, \paysAden, \paysOman, \paysSoudan and
+\paysGujerat. Other \ROTW countries are considered as having no religion for
 game purposes.
 
 \subsubsectionJ{Islam}{\techislam}
@@ -278,7 +279,15 @@ some \ROTW countries.
 the same things. eg: \paysGujerat is Muslim but not in the Islam group while
 \paysMogol is within the Islam group but not Muslim (for game purposes).
 
-\subsubsectionJ{Other religion}{\Xautrereligion}
+\begin{designnote}
+  The effect of being Muslim is to give Diplomatic bonus to \TUR on the
+  minor. Since \paysMogol was a large independent country, \TUR should not
+  easily ally with it (and only smaller \ROTW countries are Muslim). The
+  effect of being in the Islam group is a faster technological advance. Thus,
+  only larger \ROTW countries are in the Islam group.
+\end{designnote}
+
+\subsubsectionJ{Other religions}{\Xautrereligion}
 \aparag The \terme{Other} ``religion'' groups all religions that are not
 already specified.
 \bparag It mostly includes Hinduism, Buddhism, Shinto and various Paganism.
@@ -644,7 +653,7 @@ given period.
 \bparag This is a limit in terms of counters. Each counter has two sides
 representing an increasing capability of the \MNU.
 \bparag This limit may be exceeded by 2 counters, at the risk of economical
-losses. See~\ruleref{chThePowers:Exceeding Limits}.
+losses. See~\ref{chThePowers:Exceeding Limits}.
 
 \aparag[Colonial establishments] The country has a limit of \COL (Colonies)
 and \TP (Trading Post) counters that may be placed on the map, outside of
@@ -839,7 +848,7 @@ maximum number of forces, (either \LD or \ND), that the country may buy in
 each Purchase phase.
 \bparag \NGD count only for half a \ND in the purchase limit.
 \bparag Exploitation of wood and fisheries increase the limit of \ND,
-see~\ruleref{chExpenses:Naval Purchase}.
+see~\ruleref{chLogistic:Naval Purchase}.
 \bparag The \ND limit may not be exceeded.
 \bparag the \LD limit may be exceeded. Every \LD recruited below the limit is
 payed at normal cost, then every \LD below twice the limit is payed at double
@@ -869,6 +878,9 @@ order to reach the limit again.
   1 Trade Fleet Implementation, 1 \COL, 2 \TP and 2 concurrence actions. None
   of them is mandatory. Any action performed must be paid for and is not
   guaranteed to succeed.
+
+  In period \period{I}, \POR maintains for free one \FLEET\facemoins and
+  3\GD. The \GD may be used either for \LD or \ND.
 
   In period \period{I}, \POR may not buy more than 4\ND each turn. It may buy
   up to 2\LD at normal cost, plus 2 more at double cost and again 2 more at
@@ -975,16 +987,17 @@ a new monarch ascends the throne (after the death of the precedent).
 
 \aparag[Administrative Value] \ADM is the main modifier for most
 administrative operations, either for the choice of the column, or for
-die-roll modifications (see~\ruleref{chExpenses:Administrative Actions}).
+die-roll modifications (see~\ruleref{chAdministration:Administrative
+  Actions}).
 
 \aparag[Diplomatic Value] \DIP is the main die-roll modifier for diplomatic
 actions, such as the attempt to get control of a minor country
 (see~\ruleref{chDiplo:Diplomatic Actions}).
 
 \aparag[Military Value] \MIL is the main modifier of the technology
-improvement operation (see~\ruleref{chExpenses:Technology Improvement}). It
-also serves to determine combat values (maneuver, fire, shock) of the monarch
-when serving as a General.
+improvement operation (see~\ruleref{chAdministration:Technology
+  Improvement}). It also serves to determine combat values (maneuver, fire,
+shock) of the monarch when serving as a General.
 
 \aparag[No monarch] If a country has no monarch for any reason (usually
 because he was captured and not yet ransomed, or killed and the new monarch
@@ -1148,9 +1161,9 @@ and \VEN).
 
   At turn 21, after technological improvement, no one managed to get \TMUS and
   the higher level of Land technology is 29. As per goals adjustment
-  (see~\ref{chExpenses:Technology}), \TMUS should loss 1 level from 30 to
-  29. However, that would put it on top of a marker, which is forbidden, thus
-  it stays at 30 instead.
+  (see~\ref{chAdministration:Technology}), \TMUS should loss 1 level from 30
+  to 29. However, that would put it on top of a marker, which is forbidden,
+  thus it stays at 30 instead.
 \end{exemple}
 
 
@@ -1764,7 +1777,7 @@ colonial establishments (and \MNU).
 \bparag Prices change each turn, partly because of the global economic
 situation (one die roll) and partly because of a specific market situation
 (one die roll per resource, depending on the exploited
-quantity). See~\ref{chExpenses:Variation} for details.
+quantity). See~\ref{chAdministration:Variation} for details.
 \bparag Exotic resources bring to each country an income equal to the product
 of the price of the resource and the quantity exploited by that country.
 
@@ -1858,8 +1871,8 @@ full potential of the \Area is reached (3 \RES{Products of Orient}, 3
 
 \aparag[Fishing and naval construction] The owner of many fisheries get some
 reward from the great numbers of fishers in his country related to the
-construction of military naval units (see \ruleref{chExpenses:Effect of Fish
-  Monopoly Purchase} and \ruleref{chExpenses:Effect of Fish Purchase}):
+construction of military naval units (see \ruleref{chLogistic:Effect of Fish
+  Monopoly Purchase} and \ruleref{chLogistic:Effect of Fish Purchase}):
 
 
 
@@ -1898,8 +1911,8 @@ in the buyer's \CTZ.
 their \CTZ, and \POR uses \ctz{Espagne}.
 
 \aparag[Use of wood] Wood raises the naval construction limits and the free
-maintenance (see~\ruleref{chExpenses:Effect of Wood Maintenance}
-and~\ruleref{chExpenses:Effect of Wood Purchase}).
+maintenance (see~\ruleref{chLogistic:Effect of Wood Maintenance}
+and~\ruleref{chLogistic:Effect of Wood Purchase}).
 
 
 
@@ -1977,6 +1990,16 @@ actions).
 \bparag Even the military phase can be de-synchronised when several distinct
 wars are ongoing, but this require a bit more adaptation to deal with the
 end-of-phase test.
+
+\aparag[Between period]
+\bparag Before the start of the game, between each period and after the end of
+the game, the is an \terme{Inter-period} phase.
+\bparag During this phase, \VPs for the elapsed period (if any) are counted,
+as well as \VPs for transfer and end of game when the case arise.
+\bparag Next, objectives for the next period are chosen.
+\bparag Before choosing objectives, players may discuss between them and make
+agreement. This is however not a Diplomatic phase, hence no change of game
+state may arise and agreements at this point are purely verbal.
 
 \begin{designnote}
   The following chapters of the rulebook describe each of the phases and

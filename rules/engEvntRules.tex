@@ -3,7 +3,7 @@
 \definechapterbackground{Events}{events}
 \chapter{Events}\label{chapter:Events}
 
-% \section{The events phase}\label{chEvents:Events:Events Phase}
+\section{The events phase}\label{chEvents:Events:Events Phase}
 
 \aparag[Overview.] During the event phase, all players simultaneously
 check for monarch survival. If the previous monarch is dead (either
@@ -232,6 +232,11 @@ event only affects the player rolling it.
 \section{Economic situation}
 \label{chEvents:Economic situation}
 
+\begin{todo}
+  [TBD] Moves to the end of the Diplomatic phase if Economical Event
+  Pirates is removed.
+\end{todo}
+
 \aparag[Economic Situation] A die is rolled for both the global economic
 situation and raise of piracy.
 \bparag Combined with the \ref{eco:Piracy}, it is now possible to place
@@ -239,7 +244,7 @@ situation and raise of piracy.
 \bparag Place the \terme{Economic situation} marker on the track on the
 \ROTW map to remember the result of the roll. It will be used during the
 Administrative phase to handle the variation of prices of exotic
-resources. See~\ref{chExpenses:ExoticResourcesPrices}.
+resources. See~\ref{chAdministration:ExoticResourcesPrices}.
 
 \aparag[Inflation] \label{chEvents:Inflation}
 \bparag If ``Inflation'' is obtained (1 or 10), increase the level of
@@ -263,6 +268,17 @@ exceeding the maximum level). This is the same effect as
 
 
 \section{Piracy}\label{chEvents:Piracy}
+
+\begin{todo}
+  [TBD] Moves to the end of the Diplomatic phase if Economical Event
+  Pirates is removed.
+\end{todo}
+
+\begin{todo}
+  [TBD] Make Piracy appear more frequently if Economical Event Pirates
+  is removed. For example, for line 3 and 6, keep the Piracy whether
+  there is a named Pirate or not.
+\end{todo}
 
 \GTtable{ecopiracypiracy}
 
@@ -767,11 +783,14 @@ which strength.
 \bparag Unless otherwise specified, rules applying to \REVOLT also apply
 to \REBELLION.
 
-\section{Technology adjustment}\label{chEvents:Technology}
 
-\aparag If the technology levels of some major or cultural group were
-moved during the event phase:
-\bparag Adjust the cultural groups markers
-per~\ref{chExpenses:Technology:Cultural Adjustment} ;
-\bparag adjust the goal markers per~\ref{chExpenses:Technology:Goals
-  Adjustment}.
+% Jym, 03/2014.
+% Hum, why? Let's keep only one adjustment per turn.
+% \section{Technology adjustment}\label{chEvents:Technology}
+
+% \aparag If the technology levels of some major or cultural group were
+% moved during the event phase:
+% \bparag Adjust the cultural groups markers
+% per~\ref{chAdministration:Technology:Cultural Adjustment} ;
+% \bparag adjust the goal markers per~\ref{chAdministration:Technology:Goals
+%   Adjustment}.

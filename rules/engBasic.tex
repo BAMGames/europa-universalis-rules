@@ -377,31 +377,11 @@ indicate the Tordesillas belonging of the area
 bordered with a yellowish line. They represent the initial territories of
 Khanates, Cossacks and Russian principalities, as well as some Lithuanian and
 Ukrainian territories.
-% \aparag The movement cost is doubled in this area
-% (see~\ruleref{chMilitary:Movement:Wasteland}), the building of fortresses is
-% restricted (see~\ruleref{chExpenses:Fortresses Wasteland}).
-% \bparag Units of the waste-native countries: \RUS, \pays{pskov},
-% \pays{ryazan}, \pays{cosaquesdon}, \pays{Kazan}, \pays{Astrakhan},
-% \pays{Steppes}, \pays{crimee}, \pays{ukraine}, \pays{Lithuanie} (only if
-% \POL chose an orthodox attitude, see \ruleref{chSpecific:Poland:Orthodoxy})
-% are not subject to the movement penalty.
-% \bparag\label{chBasics:End Wasteland} Both restrictions end with the
-% finishing of the funation of \ville{Saint-Petersbourg}, or at the end
-% of \eventref{pVI:Great Northern War}, whichever is first.
 
 
 \subsubsection{Cold Area}\label{chBasics:Cold Area}
-\aparag[in Europe]% All of the Swedish peninsula except \province{Skane} and
-% the territories north of \province{Livonija}, \province{Neva},
-% \province{Novgorod}, \province{Moskva}, \province{Vyatka} and
-% \province{Ural}
-All provinces within a whitish line on the North of the map form the European
-cold area.
-% This is the cold area of Europe, and the movement is doubled there for the
-% purpose of supply only.
-% \bparag The cost is not doubled in the national territory, plus the
-% provinces of \region{Norvege} for \pays{danemark} and the provinces of
-% \region{Finlande} for \pays{suede} (or \SUE).
+\aparag[in Europe] All provinces within a whitish line on the North of the map
+form the European cold area.
 \aparag[in the \ROTW] Areas with a snowflake ``exotic resource'' are all part
 of the \ROTW cold area. This corresponds to northern America and Siberia.
 
@@ -1156,44 +1136,80 @@ are meant to be used.
 
 
 \subsection{Continents in the \ROTW}
+\begin{designnote}
+  For game purposes, continents are composed of a given set of \Areas and
+  provinces. In several cases, this significantly differs from the actual
+  geographical continent baring the same name (\emph{e.g.} \continent{South
+    America} does not include \continentBrazil, or \continentAsia does not
+  include \continentSiberia). In game, continents are usually areas of
+  influences of some power and thus include only the geographical zone where
+  that power actually tried to impose an exclusive power (\emph{e.g.}
+  \paysmajeurEspagne tried to impose a Spanish exclusive in \continent{South
+    America} without bothering about the Portuguese in \continentBrazil (as a
+  result of the Treaty of Tordesillas), thus in game we have set
+  \continent{South America} to correspond to the Spanish World only and
+  \continentBrazil is excluded from it).
+
+  In short: beware that in game ``continents'' are not always exactly the same
+  as geographical continents.
+\end{designnote}
 
 \begin{deflist}
-\item[\anchorcontinent{Africa}] The whole continent of Africa, including the
-  islands of \granderegion{Sainte-Helene}, \granderegion{Cabo Verde},
+\item[\anchorcontinent{Africa}] is the whole continent of Africa, inland from
+  \granderegionMauritanie to \granderegionSoudan and including the islands of
+  \granderegion{Sainte-Helene}, \granderegion{Cabo Verde},
   \granderegion{Madagascar}, \granderegion{Mascareignes} and
-  \granderegion{Seychelles}, but excluding the places of \continent{Middle
-    East}.
-\item[\anchorcontinent{America}] All the new continent, including
+  \granderegion{Seychelles}.
+\item[\anchorcontinent{America}] is all the New World, including
   \granderegion{Malouines}, \continent{Caraibes} and \continent{Brazil}.
-\item[\anchorcontinent{Brazil}] It comprises the following areas:
-  \granderegion{Belem}, \granderegion{Recife}, \granderegion{Rio}.
-\item[\anchorcontinent{South America}] It contains all the inland areas of
-  \continent{America} that lie to the south of \granderegion{Chichimeca}
-  (included), excluding \continent{Brazil}.
-\item[\anchorcontinent{North America}] It contains all the inland areas of
-  \continent{America} that lie to the north of \granderegion{Chichimeca}
-  (excluded).
-\item[\anchorcontinent{Caraibes}] It is composed of \granderegion{Haiti},
-  \granderegion{Cuba}, \granderegion{Antilles} and \granderegion{Florida}.
-\item[\anchorcontinent{Extreme Orient}] It is the union of the following
-  areas: \granderegion{Japan}, \granderegion{Formose},
+\item[\anchorcontinent{Brazil}] is the following \Areas: \granderegion{Belem},
+  \granderegion{Recife}, \granderegion{Rio}. Note that this is exactly the
+  American \Areas with a \blasonsmall{portugal} shield (Tordesillas reminder).
+\item[\anchorcontinent{South America}] contains all the inland areas of
+  \continent{America} South of \granderegion{Chichimeca} (included), excluding
+  \continent{Brazil}.
+\item[\anchorcontinent{North America}] contains all the inland areas of
+  \continent{America} North of \granderegion{Chichimeca} (excluded).
+\item[\anchorcontinent{Caraibes}] is composed of \granderegion{Haiti},
+  \granderegion{Cuba}, \granderegion{Antilles} and
+  \granderegion{Florida}. Note that \granderegionFlorida is both part of
+  \continent{North America} and \continentCaraibes.
+% (jym) Florida is the only case of two continents being neither included nor
+% disjoint.
+\item[\anchorcontinent{Extreme Orient}] is the union of the following areas:
+  \granderegion{Japan}, \granderegion{Formose}, \granderegionCoree,
   \granderegion{Mandchourie}, \granderegion{Pekin}, \granderegion{Nankin},
-  \granderegion{Canton}.
-\item[\anchorcontinent{India}] It is the Indian sub-continent, magnified on
-  the map, and includes \granderegion{Ceylan}.
-\item[\anchorcontinent{Indonesia}] Is the archipelago South-East of
-  \continent{Asia}, namely \granderegion{Sumatra}, \granderegion{Java},
-  \granderegion{Borneo}, \granderegion{Celebes}, \granderegion{Sonde} and
-  \granderegion{Epices}.
-\item[\anchorcontinent{Middle East}] It is the arabic peninsula, plus
+  \granderegion{Canton}, \granderegionPhilippines. Note that this is exactly
+  the Asiatic \Areas with a \blasonsmall{tordesillas} shield (Tordesillas
+  reminder).
+% (jym) +Coree. +Philippines
+% (jym) only used as shared zone of Tordesillas. Coree was obviously missing,
+% Philippines is explicitely in the shared zone.
+\item[\anchorcontinent{India}] is the part of the Indian sub-continent
+  magnified on the map. Namely: \granderegionDelhi, \granderegionAoudh,
+  \granderegionBengale, \granderegionGujarat, \granderegionPendjab,
+  \granderegionIndus, \granderegionOrissa, \granderegionGondwana,
+  \granderegionMumbai, \granderegionHyderabad, \granderegionMalabar,
+  \granderegionKarnatika and \granderegion{Ceylan}.
+\item[\anchorcontinent{Indonesia}] is the archipelago South-East of Asia,
+  namely \granderegion{Sumatra}, \granderegion{Java}, \granderegion{Borneo},
+  \granderegion{Celebes}, \granderegion{Sonde} and \granderegion{Epices}.
+\item[\anchorcontinent{Indochina}] contains \granderegionBirmanie,
+  \granderegionMalacca, \granderegionAyutthaya and \granderegion{Dai Viet}.
+\item[\anchorcontinent{Middle East}] is the arabic peninsula
+  (\granderegionNedj, \granderegionOman and \granderegionAden, including the
+  island of \provinceSocotra), plus \provinceOrmus,
   \granderegion{Afghanistan}, \granderegion{Balouchistan} and
   \granderegion{Aral}.
-\item[\anchorcontinent{Siberia}] It is the union of all northern territories
-  from \granderegion{Siberie} to \granderegion{Amour} and
-  \granderegion{Kamchatka}.
-\item[\anchorcontinent{Asia}] It is composed of Indochina, Oceania,
-  \continent{India}, \continent{Middle East} and \continent{Extreme Orient}
-  (thus excluding \continentSiberia).
+% (jym) +Ormus
+% (jym) only used for Tordesillas
+\item[\anchorcontinent{Siberia}] is the union of all northern territories from
+  \granderegion{Siberie} to \granderegion{Amour} and \granderegion{Kamchatka}.
+\item[\anchorcontinent{Asia}] is composed of \continent{Middle East},
+  \continentIndia, \continentIndochina, \continent{Extreme Orient},
+  \continentIndonesia and \granderegionOceania (thus excluding
+  \continentSiberia).
+% (jym)  -Oceania? +Philippines +Indonesia
 \end{deflist}
 
 
@@ -1201,42 +1217,44 @@ are meant to be used.
 \subsection{Land and Sea regions in Europe}
 
 \begin{deflist}
-\item[\anchorregion{Autriche}] It contains all the national provinces of
-  \paysmajeur{Autriche}, namely \province{Tirol}, \province{Salzburg},
-  \province{Osterreich}, \province{Steiermark}, \province{Karnten},
-  \province{Slovenija}.
-\item[\anchorregion{Balkans}] It contains the following provinces:
-  \province{Alabania}, \province{Hellas}, \province{Moreas},
-  \province{Dalmacija}, \province{Montenegro}, \province{Corfu},
-  \province{Bosna} and \province{Serbia}. These provinces are in a special
-  state in 1492 and are subject to special rules (see
-  \ruleref{chSpecific:Balkans}).
-\item[\anchorregion{Baltique}] It contains the sea zones \seazone{Baltique},
+\item[\anchorregion{Balkans}] contains the provinces marked with a
+  \blasonsmall{balkans} shield, namely: \province{Alabania},
+  \province{Hellas}, \province{Moreas}, \province{Dalmacija},
+  \province{Montenegro}, \province{Corfu}, \province{Bosna} and
+  \province{Serbia}. These provinces are subject to
+  rule~\ref{chSpecific:Balkans}).
+\item[\anchorregion{Baltique}] contains the sea zones \seazone{Baltique},
   \seazone{Botnie}. Galleys may navigate it.
-\item[\anchorregion{Noire}] It contains the two sea zones of the Black sea
-  (\seazone{Noire W} and \seazone{Noire E}).
-\item[\anchorregion{Belgique}] It contains the provinces of the Burgundian
-  legacy that are not national provinces of \paysmajeur{Hollande}, namely
+\item[\anchorregion{Noire}] contains the sea zones \seazone{Noire W} and
+  \seazone{Noire E}.
+\item[\anchorregion{Belgique}] contains the provinces of the Burgundian legacy
+  that are marked with a solid \blasonsmall{bourgogne} shield, namely:
   \province{Vlaandern}, \province{Flandre}, \province{Hainaut},
   \province{Brabant}, \province{Limburg}, \province{Luxemburg},
   \province{Artois}. %
   % , \province{Zeeland}.  => National province of HOL.
   Note that \province{Franche-Comte} is part of the legacy but not part of
-  \regionBelgique.
-\item[\anchorregion{Denmark}] It contains all the initial provinces of
+  \regionBelgique (it is marked with a blurred shield). Note that
+  \provinceLiege is not part of the inheritance and thus not part of
+  \regionBelgique either.
+\item[\anchorregion{Denmark}] contains all the initial provinces of
   \pays{Danemark} that are neither in \region{Norvege} nor in \region{Suede},
   namely \province{Slesvig}, \province{Sjaelland}, \province{Jylland}.
-\item[\anchorregion{Duche de Kurland}] It is initially empty and may contain
+\item[\anchorregion{Duche de Kurland}] is initially empty and may contain the
+  provinces marked with a blurred \blasonsmall{courlande} shield, namely:
   \province{Kurland} and \province{Livonija}.
-\item[\anchorregion{Duche de Prusse}] It contains \province{Memel},
+\item[\anchorregion{Duche de Prusse}] contains the provinces marked with a
+  blurred \blasonsmall{prusse} shield, namely: \province{Memel},
   \province{Preussen}, \province{Ost Pommern}.
-\item[\anchorregion{Finlande}] It contains all the provinces of the would-be
-  \pays{Vfinlande}, namely \province{Finland}, \province{Tavastland},
-  \province{Nyland}, \province{Karelen} and \province{Savo}.
-\item[\anchorregion{Irlande}] It contains all the provinces of the would-be
-  \pays{VIrlande}, namely \province{Mumhan}, \province{Laighean},
-  \province{Connacht}, \province{Brega}, \province{Uladh}.
-\item[\anchorregion{Italie}] It contains all the provinces of the italian
+\item[\anchorregion{Finlande}] contains the provinces marked with a blurred
+  \blasonsmall{finlande} shield, namely: \province{Finland},
+  \province{Tavastland}, \province{Nyland}, \province{Karelen} and
+  \province{Savo}. 
+\item[\anchorregion{Irlande}] contains the provinces marked with a blurred
+  \blasonsmall{irlande} shield, namely: \province{Mumhan},
+  \province{Laighean}, \province{Connacht}, \province{Brega},
+  \province{Uladh}.
+\item[\anchorregion{Italie}] contains all the provinces of the italian
   peninsula within the blue thick line, plus the Italian islands, namely
   \province{Savoia}, \province{Nice}, \province{Monferrato},
   \province{Liguria}, \province{Lombardia}, \province{Trentino},
@@ -1247,27 +1265,28 @@ are meant to be used.
   \province{Basilicata}, \province{Calabria}, \province{Sicilia},
   \province{Palermo}, \province{Saldigna}.
   % \region{Khanats}
-\item[\anchorregion{Mediterranee}] It contains all the sea zones of the
+\item[\anchorregion{Mediterranee}] contains all the sea zones of the
   Mediterranean and Black seas (\seazone{Noire W}, \seazone{Noire E},
   \seazone{Marmara}, \seazone{Egee}, \seazone{Mediterranee E},
   \seazone{Adriatique}, \seazone{Ionienne}, \seazone{Thyrrenienne},
   \seazone{Syrte}, \seazone{Lion}, \seazone{Mediterranee W}). Galleys may
   navigate it.
-\item[\anchorregion{Norvege}] It contains all the provinces of the would-be
-  \pays{Vnorvege}, namely \province{Trondelag}, \province{Vestfold},
-  \province{Ostlandet}.
-\item[\anchorregion{Perse}] It contains the four easternmost European
-  provinces of \pays{perse}, outlined in black. Namely, \province{Pars},
-  \province{Isfahan}, \province{Bam}, \province{Meshhed}.
-\item[\anchorregion{Suede}] It contains all the national provinces of
-  \paysmajeur{Suede} that are not part of \region{Finlande}, namely
+\item[\anchorregion{Norvege}] contains the provinces marked with a blurred
+  \blasonsmall{norvege} shield, namely: \province{Trondelag},
+  \province{Vestfold}, \province{Ostlandet}.
+\item[\anchorregion{Perse}] contains the four easternmost European provinces
+  of \pays{perse}, outlined in black and barring a solid \blasonsmall{perse}
+  shield, namely: \province{Pars}, \province{Isfahan}, \province{Bam},
+  \province{Meshhed}.
+\item[\anchorregion{Suede}] contains all the national provinces of
+  \paysmajeur{Suede} that are not part of \region{Finlande}, namely:
   \province{Smaland}, \province{Jamtland}, \province{Gastrikland},
   \province{Bergslagen}, \province{Svealand}, \province{Vastergotland},
   \province{Gotland}, \province{Skane}.
-\item[\anchorregion{Ukraine}] It contains all the provinces that can possibly
-  belongs to \pays{ukraine}, namely \province{Podolie}, \province{Ukraine},
-  \province{Poltava}, \province{Zaporozhye}, \province{Donets} and
-  \province{Don}.
+\item[\anchorregion{Ukraine}] contains the provinces marked with either a
+  solid or blurred \blasonsmall{ukraine} shield, namely: \province{Podolie},
+  \province{Ukraine}, \province{Poltava}, \province{Zaporozhye},
+  \province{Donets} and \province{Don}.
 \end{deflist}
 
 % Local Variables:

@@ -127,7 +127,7 @@
 \TUabbrevdef{NWD}{NW\bbold{D}}   % Naval Warships Detachment
 \TUabbrevdef{NGD}{NG\bbold{D}}   % Naval Galley Detachment
 \TUabbrevdef{NTD}{NT\bbold{D}}   % Naval Transport Detachment
-\TUabbrevdef[VGD]{Venetian GD}{Venetian G\bbold{D}} % Venetian Galeasses Detachments
+\TUabbrevdef{VGD}{VG\bbold{D}} % Venetian Galeasses Detachments
 \TUabbrevdef[LDND]{LD/ND}{L\bbold{D}/N\bbold{D}}
 \TUabbrevdef[LDENDE]{LDE/NDE}{L\bbold{D}E/N\bbold{D}E}
 
@@ -397,11 +397,11 @@
 \def\Veteran{\emph{Veterans}\xspace}
 \def\Conscripts{\emph{Conscsripts}\xspace}
 
-% Jym, août 2012
 % short commande for blason inclusion in section titles
-\newcommand{\blasonJ}[1]{\includegraphics[width=12bp]{shield_#1}}
+\newcommand{\blason}[1]{\includegraphics[width=12bp]{shield_#1.png}}
+\usepackage{calc} % \heightof
+\newcommand{\blasonsmall}[1]{\includegraphics[height=\totalheightof{Ap}]{shield_#1}}
 
-% Jym, août 2013
 \newcommand{\SDCF}{\xnameref{chSpecific:Catholic Faith}\xspace}
 \newcommand{\Barbaresques}{\xnameref{chSpecific:Barbaresques}\xspace}
 

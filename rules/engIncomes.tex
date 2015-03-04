@@ -1,6 +1,6 @@
 \definechapterbackground{Incomes}{incomes}
 \chapter{Incomes}\label{chapter:Incomes}
-%\begin{designnote}[Incomes]
+\section{Incomes}
 \aparag[Overview]
 The Income segment of the administrative phase is detailed here. It is
 played mostly independently (the only information that one may need from
@@ -359,23 +359,19 @@ brings an income of 2\ducats, as if it were a \CTZ.
   line \ERSshort{STZ+CTZ level income}.
 \end{exemple}
 
-\subsubsection{Monopolies}
+\subsubsection{Monopolies}\label{chIncomes:Commercial Monopoly}
 \aparag If in any \CTZ or \STZ, a country has a \TradeFLEET of level 6,
 it has a \terme{total monopoly} and can register the sum inscribed in
 large print in the \CTZ or \STZ symbol in \lignebudget{STZ+CTZ monopoly
   income}.
 \bparag Note that in this case, no other country may have a \TradeFLEET
-in this \CTZ or \STZ. See~\ref{chExpenses:Competition}.
+in this \CTZ or \STZ. See~\ref{chAdministration:Competition}.
 \aparag Otherwise, if it has a \TradeFLEET\faceplus, it has a
 \terme{partial monopoly} and can register half the sum inscribed in
 large print in the \CTZ or \STZ symbol in \lignebudget{STZ+CTZ monopoly
   income} (round down).
 \bparag Only one country may have a \TradeFLEET\faceplus in a given \CTZ
-or \STZ. See~\ref{chExpenses:Competition}.
-%\aparag Only one country can have a \Faceplus commercial fleet in each
-%\STZ, and if a country has a commercial fleet of level 6, then no other
-%player may have a commercial fleet in the \STZ, because of automatic
-%competition (\ruleref{chExpenses:Trade Competition Mandatory}).
+or \STZ. See~\ref{chAdministration:Competition}.
 \aparag For each \CTZ or \STZ where a country has a
 \TradeFLEET\facemoins, it can register the sum inscribed in small print
 in the \CTZ or \STZ symbol in \lignebudget{STZ+CTZ monopoly income}.
@@ -632,12 +628,10 @@ this turn. Neither regular income or resource income.
 limited number of exotic resources.
 \bparag The income of the exotic resources is the product of the number
 of exploited resources of each kind, multiplied by the price of each
-resource (computed as per~\ref{chExpenses:ExoticResourcesPrices})
+resource (computed as per~\ref{chAdministration:ExoticResourcesPrices})
 \bparag This is recorded in \lignebudget{Exotic resources}.
 \bparag Players exploiting sufficiently many resource can speculate to
-try and increase the price. See~\ref{chExpenses:Speculation}.
-%\bparag The number of exploited levels comes from administrative actions
-%(see~\ruleref{chThePowers:ResourcesExploitation}).
+try and increase the price. See~\ref{chAdministration:Speculation}.
 
 \begin{exemple}
   At turn 1, the \TP in \construction{Elmina} can exploit 3 \RES{Slaves}
@@ -685,8 +679,8 @@ the province where a \COL is.
 \aparag[Wood.] \RES{Wood} does not bring income as other resources, but
 it brings advantages in naval constructions and can be sold to other
 countries. See~\ref{chIncomes:Wood} for exploiting and selling
-\RES{Wood} and~\ref{chExpenses:Effect of Wood Maintenance}
-and~\ref{chExpenses:Effect of Wood Purchase} for the effects of
+\RES{Wood} and~\ref{chLogistic:Effect of Wood Maintenance}
+and~\ref{chLogistic:Effect of Wood Purchase} for the effects of
 \RES{Wood}.
 
 \aparag A \ROTW minor country will exploit resources if and only if it has \TP
@@ -696,10 +690,10 @@ or \COL to exploit them, following the same rules as major countries.
 \ruleref{chBasics:ROTW Areas}).; if there is only two resources of Spices in
 an \Area, two outposts in different provinces of the same \Area will have to
 share the exploitation.
-\bparag If there is disagreement for the exploitation of resources, this is
-settled through the \terme{competition mechanism}
-(\ruleref{chExpenses:Competition}), that eliminates levels until there can no
-more be disagreement.
+\bparag If there is disagreement for the exploitation of resources, this
+is settled through the \terme{competition mechanism}
+(\ruleref{chAdministration:Competition}), that eliminates levels until
+there can no more be disagreement.
 
 \aparag[New exploitation] There are only a few cases where there might be a
 disagreement for the exploitation of a resource: a new resource appeared
@@ -711,11 +705,12 @@ of the administrative phase, a \terme{competition} will take place until there
 are enough resources (or no more enough levels) for everybody to be satisfied
 with the current attribution of resources.
 
-\bparag If the whole market in an \Area is already attributed, there is no
-\terme{automatic competition}. The players have to spend \terme{competition
-  actions} (see \ruleref{chExpenses:Competition}) to change the market
-repartition, or do it through the use of diplomacy (exotic resources
-exploitation can change in the Diplomatic phase by a simple announce).
+\bparag If the whole market in an \Area is already attributed, there is
+no \terme{automatic competition}. The players have to spend
+\terme{competition actions} (see \ruleref{chAdministration:Competition})
+to change the market repartition, or do it through the use of diplomacy
+(exotic resources exploitation can change in the Diplomatic phase by a
+simple announce).
 
 \aparag[Slaves and plantations]\label{chIncomes:NeedSlaves}
 Some resources require \RES{Slaves} to be exploited in its plantations
@@ -826,7 +821,7 @@ other income, nor does it exploit Exotic Resources. The gold produced is
 reported on the \terme{Colonial Record Sheet}.
 \bparag No slaves are needed to exploit a gold mine.
 \bparag Gold has a major influence on the variation of inflation,
-see~\ruleref{chInter:Inflation Gold ROTW}.
+see~\ref{chPeace:Increase Inflation}.
 
 \aparag \label{chIncomes:Gold Production} Gold can be transported by
 earth during the income phase or during the redeployment phase (see
@@ -916,7 +911,7 @@ since it brings money, the computation is recalled here.
 \bparag Exceptional taxes being a domestic action, it cannot be
 performed at the same time as another domestic action, and it might be
 forbidden by bankruptcy.
-\bparag Check~\ref{chExpenses:Exceptional Taxes} for details.
+\bparag Check~\ref{chAdministration:Exceptional Taxes} for details.
 
 \aparag Exceptional taxes may be raised only if at war and if \STAB is
 not -3.
@@ -988,4 +983,3 @@ the turn (see \ruleref{chBudget:Prosperity}).
 
 % LocalWords:  addtolist compte pdf inexploitable AgriculturalCrisis ROTW
 % LocalWords:  MineDepletion interphase
-
