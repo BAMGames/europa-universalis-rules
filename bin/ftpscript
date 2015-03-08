@@ -1,10 +1,10 @@
 #!/bin/sh
 echo 'set net:max-retries 5'
 echo 'set net:connection-limit 1'
-echo "open -u bamgames${FTPPASSWORD} ftpperso.free.fr"
-${BINDIR}/displaybranch "mkdir Europa/EU8/dev" "mkdir Europa/EU8/dev/%s"
+echo "open -u bamgames${FTPPASSWORD} ftp.bamgames.org"
+${BINDIR}/displaybranch "mkdir www/old/Europa/EU8/dev" "mkdir www/old/Europa/EU8/dev/%s"
 printf "\n"
-${BINDIR}/displaybranch "cd Europa/EU8/dev" "cd Europa/EU8/dev/%s"
+${BINDIR}/displaybranch "cd www/old/Europa/EU8/dev" "cd www/old/Europa/EU8/dev/%s"
 printf "\n"
 path=$(pwd)
 xpath=@@@

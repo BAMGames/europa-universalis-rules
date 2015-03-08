@@ -6,7 +6,7 @@
   \bparag \xnameref{chEvents:political-events}
   \bparag \xnameref{chEvents:diplomacy}
   \bparag \xnameref{chEvents:Revolts}
-  \bparag \xnameref{chEvents:Technology} % adjustment
+%  \bparag \xnameref{chEvents:Technology} % adjustment
 }
 \newcommand{\EventsPhase}{%
   \aparag {\bf \xnameref{chapter:Events}}
@@ -31,21 +31,23 @@
 
 \newcommand{\AdminDetails}{%
   \bparag \xnameref{chIncomes:Summary}
-  \bparag \xnameref{chExpenses:Mandatory} % loan refund, ...
-  \bparag \xnameref{chExpenses:Choice of actions}
-  \bparag \xnameref{chExpenses:Maintenance}
-  \bparag \xnameref{chExpenses:Recruitment}
-  \bparag \xnameref{chExpenses:Resolution of actions}
-  \bparag \xnameref{chExpenses:Administration Minor}
-  \bparag \xnameref{chExpenses:Automatic Competition}
-  \bparag \xnameref{chExpenses:Variation}
-  \bparag Technology adjustment (\xref{chExpenses:Technology})
+  \bparag \xnameref{chAdministration:Mandatory} % loan refund, ...
+  \bparag \xnameref{chAdministration:Choice of actions}
+  \bparag \xnameref{chLogistic:Maintenance}
+  \bparag \xnameref{chLogistic:Recruitment}
+  \bparag \xnameref{chAdministration:Resolution of actions}
+  \bparag \xnameref{chAdministration:Administration Minor}
+  \bparag \xnameref{chLogistic:Leaders} 
+  % Placement \& Death of Military Leaders
+  \bparag \xnameref{chAdministration:Automatic Competition}
+  \bparag \xnameref{chAdministration:Variation}
+  \bparag Technology adjustment (\xref{chAdministration:Technology})
 }
 \newcommand{\AdminPhase}{%
-  \aparag {\bf \xnameref{chapter:Incomes}} and {\bf
-    \xnameref{chapter:Expenses}}
-  \AdminDetails
-}
+  \aparag {\bf \xnameref{chapter:Incomes}}, {\bf
+    \xnameref{chapter:Administration}} and {\bf
+    \xnameref{chapter:Logistic}}
+  \AdminDetails }
 
 
 \newcommand{\MilitaryDetails}{%
@@ -73,11 +75,12 @@
   \bparag \xnameref{chRedep:Corsair Attack} 
   \bparag \xnameref{chRedep:Revolts} % Extension of Revolts
   \bparag \xnameref{chRedep:Looting} % Military Looting
+  \bparag \xnameref{chRedep:Presidios}
   \bparag \xnameref{chRedep:Redeployment}
   % Mandatory Redeployment in Sieges
   \bparag \xnameref{chRedep:Return port} 
   % Return to port or Attrition of Fleets at sea
-  \bparag \xnameref{chRedep:Presidios}
+  \bparag \xnameref{chRedep:Gold Repatriation} 
 }
 \newcommand{\RedepPhase}{%
   \aparag {\bf \xnameref{chapter:Redep}}
@@ -85,7 +88,6 @@
 }
 
 \newcommand{\ExchequerDetails}{%
-  \bparag \xnameref{chRedep:Gold Repatriation} 
   \bparag \xnameref{chBudget:Exceptional taxes}
   \bparag \xnameref{chBudget:Exchequer test} % including Loans
   \bparag \xnameref{chBudget:Budget} % including wealth
@@ -109,7 +111,6 @@
 }
 
 \newcommand{\InterDetails}{%
-  \bparag \xnameref{chInter:Leaders} % Placement \& Death of Military Leaders
   \bparag \xnameref{chInter:Trade Centres}
   % Moving the Trade Centres and Convoys
   \bparag \xnameref{chInter:Natives, Militias, Fortresses}

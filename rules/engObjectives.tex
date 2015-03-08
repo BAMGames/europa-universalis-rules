@@ -1,1194 +1,1026 @@
 % -*- mode: LaTeX; -*-
 
-\EUcurrentcountry{Angleterre} \EUcurrentperiod{I}
+%  \EUobjective{M?}{short name (table)}
+%    {XXX}{VP per XXX/half success}{max VP/total VP}
+%    {long name (rules)}
+
+\makeatletter
+\newcommand{\EUcurrmaj}{\paysmajeur{\EUcurrcoun}\xspace}
+\newcommand{\testempty}[3]{% arg empty not-empty
+  \ifx#1\relax\relax#2\xspace\else#3\xspace\fi}
+\newcommand{\ifnotempty}[2]{\testempty{#1}{}{#2}}
+
+\newcounter{EU@objhalving}
+\newcommand{\EU@objhalf}[1]{%
+  \setcounter{EU@objhalving}{#1/2}%
+  \theEU@objhalving}
+
+
+% Macros for repeated explanations. As much as possible, if an objective is
+% present at least twice it deserves a specific macro to ensure that all the
+% texts are exactly the same.
+%% Generic ones
+%%% Commercial
+\newcommand{\EU@objIndustrial}[2][]{% M? VPs.
+  \EUobjective{#1}{Industrial development}{}{}{#2}{\EUcurrmaj has at least as
+    many \MNU\faceplus as its period limit, and Commercial Monopoly in
+    \ctz{\EUcurrcoun}}}%
+\newcommand{\EU@objMonopolyZoneFull}[4][]{% M? each max precision
+  \EUobjective{#1}{Trade monopolies}{monop\EUAbbr{oly}}{#2}{#3}{%
+    Each Commercial \terme{Monopoly} in any \STZ/\CTZ#4}}
+\newcommand{\EU@objMonopolyZone}[3][]{% M? each max
+  \EU@objMonopolyZoneFull[#1]{#2}{#3}{}}
+\newcommand{\EU@objMonopolyRES}[4][]{% M? RES per_turn max
+  \EUobjective{#1}{\RES{#2} Monopoly}{turn}{#3}{#4}{Each turn \EUcurrmaj has
+    \RES{#2} Monopoly}}%
+\newcommand{\EU@objEastIndiesConvoy}[3][]{% M? per_turn max
+  \EUobjective{#1}{\emph{East Indies}}{turn}{#2}{#3}{Each turn \EUcurrmaj owns
+    the \emph{East Indies} convoy and sails successfully at least 1\NTD of it
+    to Europe}}%
+\newcommand{\EU@objTradeCentre}[3][]{% M? CC VPs
+  \EUobjective{#1}{\CCs{#2}}{}{}{#3}{\EUcurrmaj owns the \CCs{#2}}}%
+\newcommand{\EU@objEachCC}[3][]{% M? per_CC max
+  \EUobjective{#1}{Each \CC}{CC}{#2}{#3}{Each \terme{Commercial Centre} owned
+    by \EUcurrmaj}}%
+\newcommand{\EU@objBalticTrade}[3][]{% M? turn max
+  \EUobjective{#1}{\region{Baltique} Trade}{turn}{#2}{#3}{Each turn of
+    Commercial Domination in the \regionBaltique}}%
+\newcommand{\EU@objEachItemText}[2][]{Each #2 of \EUcurrmaj%
+  \ifnotempty{#1}{#1}}%
+\newcommand{\EU@objEachItem}[6][]{% M? complement? item short? per max
+  \testempty{#4}{%
+    \testempty{#2}{%
+      \EUobjective{#1}{Each #3}{#3}{#5}{#6}{\EU@objEachItemText[#2]{#3}}}{%
+      \EUobjective{#1}{#2}{#3}{#5}{#6}{\EU@objEachItemText[#2]{#3}}}}{%
+    \EUobjective{#1}{#4}{#3}{#5}{#6}{\EU@objEachItemText[#2]{#3}}}}
+\newcommand{\EU@objEachCOL}[4][]{% complement? short? per max
+  \EU@objEachItem[]{#1}{\COL}{#2}{#3}{#4}}
+\newcommand{\EU@objEachCOLTP}[4][]{% complement? short? per max
+  \EU@objEachItem[]{#1}{\COL or \TP}{#2}{#3}{#4}}
+
+
+%%% Religious
+\newcommand{\EU@objSDCF}[2][]{% M? VPs
+  \EUobjective{#1}{SD of Catholic Faith}{}{}{#2}{\EUcurrmaj is \SDCF}}%
+
+%%% Political + Territorial
+\newcommand{\EU@objEmperor}[3][]{% M? nationality VPs
+  \EUobjective{#1}{#2 King Emperor}{}{\EU@objhalf{#3}}{#3}{#2 King was elected
+    to the Imperial Throne at least once since the beginning of the
+    game. Half-success if no election was held}}%
+\newcommand{\EU@objOuterProvincesText}{Each non-national province owned by
+    \EUcurrmaj, no matter who controls them\xspace}%
+\newcommand{\EU@objOuterProvinces}[3][]{% M? per max
+  \EUobjective{#1}{Outer provinces}{prov\EUAbbr{ince}}%
+  {#2}{#3}{\EU@objOuterProvincesText}}%
+\newcommand{\EU@objOuterProvincesAbove}[4][]{% M? per max above
+  \EUobjective{#1}{Outer provinces}{prov\EUAbbr{ince}-#4}%
+  {#2}{#3}{\EU@objOuterProvincesText (above 3)}}%
+\newcommand{\EU@objSilesie}[2][]{% M? VP
+  \EUobjective{#1}{Silesia and Lausitz}{}{}{#2}{\provinceSilesie and
+    \provinceLausitz are both owned by \EUcurrmaj, no matter who currently
+    controls them}}%
+\newcommand{\EU@objAlliance}[6][]{% M? turn max alliance? ally short
+  \EUobjective{#1}{#6}{turn}{#2}{#3}{Each turn in #4 alliance with #5}}%
+\newcommand{\EU@objAllianceAny}[3][]{% M? turn max
+  \EU@objAlliance[#1]{#2}{#3}{military}{any \MAJ}{Alliance with \MAJ}}
+\newcommand{\EU@objEachProvinceOtherText}[2][]{Each province owned by #2
+  \ifnotempty{#1}{among #1}, no matter who controls them\xspace}%
+\newcommand{\EU@objEachProvinceText}[1][]{%
+  \EU@objEachProvinceOtherText[#1]{\EUcurrmaj}}%
+\newcommand{\EU@objEachProvinceListAbove}[6][]{% M? list per max short above?
+  \EUobjective{#1}{#5}{prov\EUAbbr{ince}*\ifnotempty{#6}{-#6}}{#3}{#4}{%
+    \EU@objEachProvinceText[#2]\ifnotempty{#6}{ above #6}}}%
+\newcommand{\EU@objEachProvinceList}[5][]{% M? list per max short
+    \EU@objEachProvinceListAbove[#1]{#2}{#3}{#4}{#5}{}}
+\newcommand{\EU@objEachProvinceAbove}[6][]{% M? above country per max short
+  \EUobjective{#1}{#6}{prov\EUAbbr{ince}-#2}{#4}{#5}{%
+    \EU@objEachProvinceOtherText{#3}, above #2}}%
+\newcommand{\EU@objCountryExists}[3][]{% M? country VPs
+  \EUobjective{#1}{\pays{#2} exists}{}{}{#3}{%
+    \pays{#2} exists and owns at least one province; full success if it was
+    destroyed and later recreated}}%
+
+\newcommand{\EU@objNoRUSBaltic}[2][]{% M? full
+  \EUobjective{#1}{\paysmajeurRussie
+    contained}{}{\EU@objhalf{#2}}{#2}{\paysmajeurRussie does not own any
+    province bordering the \regionBaltique; only half-success if
+    \paysmajeurRussie controls a province bordering the \regionBaltique}}%
+\newcommand{\EU@objSpecificProvince}[4][]{% M? prov VP short
+  \EUobjective{#1}{#4}{}{\EU@objhalf{#3}}{#3}{\province{#2} is owned and
+    controlled by \EUcurrmaj; half-success if only controlled or if owned but
+    not controlled}}%
+\newcommand{\EU@objCountryDestroyed}[4][]{% M? country VPs short?
+  \EUobjective{#1}{#4 of \pays{#2}}{}{}{#3}{\pays{#2} does not exist any more
+    ; failure if it was destroyed and recreated later}}%
+\newcommand{\EU@objCountryConquest}[3][]{% M? country VPs
+  \EU@objCountryDestroyed[#1]{#2}{#3}{Conquest}}
+\newcommand{\EU@objNoProvincesLost}[2][]{% M? VPs
+  \EUobjective{#1}{No provinces lost}{}{}{#2}{}}%
+\newcommand{\EU@objSwedenContainedFull}[2][]{% M? full
+% Seem to be always with the same number of provinces...
+  \EUobjective{#1}{\paysmajeurSuede contained}{}{\EU@objhalf{#2}}{#2}{%
+    Number of provinces owned by \paysmajeurSuede adjacent to the
+    \regionBaltique (\regionSuede and \regionFinlande excepted); 3 or less:
+    success; 4: half-success; 5 or more: failure}}%
+% (jcd) Probably remove \regionNorvege too?
+% (jym) Nope. \regionNorvege is not adjacent to the \regionBaltic...
+\newcommand{\EU@objSwedenContained}{
+% Actually, seem to be always with no malus and the same VPs...
+  \EU@objSwedenContainedFull{40}}
+
+%%% Specific Wars
+\newcommand{\EU@objLouisXIV}[3][]{% M? half full
+  \EUobjective{}{Louis XIV's wars}{war}{#2}{#3}{For each victory
+    in either \ref{pV:Devolution War}, \ref{pV:Chamber of Reunion} or
+    \ref{pV:League Augsburg}. If none of these events occur, half-success
+    (#2 \VPs) ; If \FRA refuses the war after the event is rolled, it counts as
+    a defeat for \FRA and a victory for all others}}%
+
+% always used with the same values (HIS has a special one):
+\newcommand{\EU@objWoSSfull}[2][]{% M? VP
+  \EUobjective{#1}{Spanish Succession}{}{\EU@objhalf{#2}}{#2}{Either
+    \EUcurrmaj is victorious in \ref{pV:WoSS}, or there is no war and
+    \EUcurrmaj received part of the inheritance. Half-success if the event
+    does not occur. Failure if there is no war and \EUcurrmaj received no part
+    of the inheritance or if \EUcurrmaj was on the loosing side of the war}}%
+\newcommand{\EU@objWoSS}{\EU@objWoSSfull{50}}%
+\newcommand{\EU@objPOLVictoryText}{\EUcurrmaj is protector of \paysPologne
+  (permanent \EW); half-success if \ref{pVI:WoPS} never occured}%
+\newcommand{\EU@objSYW}[2][]{% M? VP
+  \EUobjective{#1}{Seven Years War}{}{\EU@objhalf{#2}}{#2}{\EUcurrmaj
+    victorious in \ref{pVII:Seven Years War} (signs a peace of level \geq
+    1). Half-success if the event does not occur, failure if the event occur
+    but \EUcurrmaj is not part of the war}}%
+\newcommand{\EU@objIndependanceWars}[2][]{% M? VP
+  \EUobjective{#1}{Independence Wars}{}{\EU@objhalf{#2}}{#2}{Victory in
+    \ref{pVII:Independence War}
+    (see~\ref{chVictories:Explanation:Independence})}}%
+\newcommand{\EU@objFranceRoyalist}[2][]{% M? VP
+  \EUobjective{#1}{\FRA Royalist}{}{\EU@objhalf{#2}}{#2}{French Revolution is
+    crushed and the King is back on the throne. Half success if
+    \ref{pVII:French Revolution} does not occur}}%
+% Was:
+% {\paysmajeurFrance
+%     does not own all its ``natural frontiers'' during the Revolution
+%     (\ref{pVII:Revolution:Natural Frontiers}); half-success if the event does
+%     not occur. Cannot be the main objective.}}%
+
+
+%% Country specific
+%%% ANG
+\newcommand{\EU@objEcosseVassal}[3][]{% M? per_turn max
+  \EUobjective{#1}{\paysEcosse Vassal}{turn}{#2}{#3}{Each turn \paysEcosse is
+    \VASSAL of \paysmajeurAngleterre}}%
+\newcommand{\EU@objIrelandPacified}[3][]{% M? per_turn max
+  \EUobjective{#1}{Pacified Ireland}{turn}{#2}{#3}{Each turn without any
+    \REVOLT in provinces owned by \paysmajeurAngleterre in \regionIrlande}}%
+% always used with the same values:
+\newcommand{\EU@objMonopolyZoneANGfull}[4][]{% M? STZ CTZ max
+  \EUobjective{#1}{Trade Monopoly}{zone}{#2/#3}{#4}{Each English Commercial
+    \terme{Monopoly} in any \STZ (#2)/\CTZ (#3)}}%
+\newcommand{\EU@objMonopolyZoneANG}{\EU@objMonopolyZoneANGfull{5}{10}{30}}
+\newcommand{\EU@objCalaisANG}[2][]{% M? VPs
+  \EUobjective{#1}{Calais}{}{}{#2}{\paysmajeurAngleterre owns
+    \provincePicardie or a \Presidio in it}}%
+\newcommand{\EU@objNoConversionText}[1]{\paysmajeur{#1} was not forced to
+  change its religion}%
+\newcommand{\EU@objNoConversion}[2][]{% M? VPs
+  \EUobjective{#1}{No forced conversion}{}{}{#2}{%
+    \EU@objNoConversionText{\EUcurrcoun}}}
+% Must keep country as arg because of cross objectives ANG/HOL.
+\newcommand{\EU@objNoConversionOther}[4][]{% M? VPs country nationality
+  \EUobjective{#1}{No forced #4 conversion}{}{}{#2}{%
+    \EU@objNoConversionText{#3}}}
+\newcommand{\EU@objCaraibesANG}[4][]{% M? ctrl own max
+  \EUobjective{#1}{\continentCaraibes}{island}{#2/#3}{#4}{Each \TP or \COL
+    controlled (#2)/owned and controlled (#3) in \continentCaraibes}}%
+
+%%% FRA
+\newcommand{\EU@objCalaisFRA}[2][]{% M? VP
+  \EUobjective{#1}{Calais}{}{}{#2}{\paysmajeurFrance owns \provincePicardie
+    and there is no \Presidio in it}}%
+\newcommand{\EU@objArtoisFRA}[1][]{% M?
+  \EU@objSpecificProvince[#1]{Artois}{30}{French \provinceArtois}}%
+
+
+%%% HAB
+\newcommand{\EU@objHalfHungary}[2][]{% M? VPs
+  \EUobjective{#1}{Half of \payshongrie}{}{}{#2}{At least half of the provinces
+    of \paysHongrie are owned by either \payshongrie or \AUSaus (\geq 6
+    provinces)}}%
+\newcommand{\EU@objNoTURHungaryFull}[4][]{% M? max minus compl
+  \EUobjective{#1}{\payshongrie}{\TUR prov\EUAbbr{ince}}{#2-#3}{#2}{#2 \VPs
+    minus #3 \VPs per province of \paysHongrie owned by a non-Christian
+    country or a Turkish minor ally#4}}%
+\newcommand{\EU@objNoTURHungary}[3][]{% M? max minus
+  \EU@objNoTURHungaryFull[#1]{#2}{#3}{}}
+% includes Christian Transylvanie as TUR Vassal, and Neutral Crimea.
+\newcommand{\EU@objGermanEmpire}[2][]{% M? full
+  \EUobjective{#1}{\pays{German Empire}}{}{\EU@objhalf{#2}}{#2}{Creation of
+    \pays{German Empire}; if it was created and destroyed later, still counts
+    as a success. Half-success if \ref{pIV:TYW} did not occur}}%
+\newcommand{\EU@objBigAustria}[3][]{% M? per max
+  \EU@objEachProvinceAbove[#1]{11}{\paysmajeurAutriche}%
+  {#2}{#3}{\paysmajeurAutriche}}%
+\newcommand{\EU@objSpanishNetherlands}[3][]{% M? per max
+  \EUobjective{#1}{Low Countries}{prov\EUAbbr{ince}}{#2}{#3}{
+  \EU@objEachProvinceOtherText{\paysmajeurEspagne}, in \regionBelgique}}%
+
+%%% HIS
+\newcommand{\EU@objNoFrenchVassal}[2][]{% M? VPs
+  \EUobjective{#1}{No \FRA \VASSAL in \regionItalie}{}{}{#2}{No minor of
+    \regionItalie is \VASSAL of \paysmajeurFrance}}%
+\newcommand{\EU@objNoFrenchItaly}[2][]{% M? VPs
+  \EUobjective{#1}{\FRA not in \regionItalie}{}{}{#2}{\paysmajeurFrance owns no
+    provinces in \regionItalie}}%
+\newcommand{\EU@objPresidiosHIS}[3][]{% M? per max
+  \EUobjective{#1}{Barbary Coast}{\Presidio}{#2}{#3}{Each Christian \Presidio
+    in a province owned by \Barbaresques}}%
+\newcommand{\EU@objSpanishWorld}[2][]{% M? full
+  \EUobjective{#1}{Spanish World}{}{\EU@objhalf{#2}}{#2}{No non-Spanish \COL
+    in \continent{South America} and \continentCaraibes; half-success if no
+    non-Spanish \COL in \continent{South America} and \granderegionFlorida}}%
+\newcommand{\EU@objPortugalAnnexed}[2][]{% M? VPs
+  \EUobjective{#1}{Annexed \paysportugal}{}{}{#2}{\paysportugal in \ANNEXION
+    status}}%
+
+%%% HOL
+\newcommand{\EU@objNoActNavigation}[2][]{% M? full
+  \EUobjective{#1}{Abolition Act of Navigation}{}{\EU@objhalf{#2}}{#2}{Act of
+    Navigation (\ref{pIV:Act Navigation}) is not in effect; half-success if
+    the event did not occur}}%
+\newcommand{\EU@objEastMalaccaText}{Christian non-Dutch \TP east of
+  \granderegionMalacca (\continent{Extreme Orient}, \continentIndonesia,
+  \granderegionMalacca, \granderegionAyutthaya and \granderegion{Dai Viet})}
+\newcommand{\EU@objEastMalacca}[4][]{% M? per full compl
+  \testempty{#2}{%
+    \EUobjective{#1}{East of \granderegionMalacca}{}
+    {#2}{#3}{#4 \EU@objEastMalaccaText}}{%
+    \EUobjective{#1}{East of \granderegionMalacca}{\TP}
+    {#2}{#3}{#4 \EU@objEastMalaccaText}}}%
+\newcommand{\EU@objAmericaHOL}[2]{% per max
+  \EU@objEachCOL[in \continentAmerica (\continentBrazil
+  excepted)]{\continentAmerica}{#1}{#2}}
+
+%%% POL
+\newcommand{\EU@objCountryExistsNoTUR}[3][]{% M? country VPs
+  \EUobjective{#1}{\pays{#2} exists}{}{}{#3}{%
+    \pays{#2} exists, owns at least one province and is not a \VASSAL of
+    \paysmajeurTurquie; full success if it was destroyed and later
+    recreated}}%
+
+%%% RUS
+\newcommand{\EU@objPorts}[4][]{% M? per max region
+  \EUobjective{#1}{Ports on \region{#4}}{port}{#2}{#3}{Each port bordering the
+    \region{#4} owned by \EUcurrmaj}}%
+\newcommand{\EU@objEachAnnexed}[6][]{% M? short per max from compl?
+  \EUobjective{#1}{#2 Annexations}{prov\EUAbbr{ince}*}{#3}{#4}{%
+  Each province taken from #5\ifnotempty{#6}{#6}}}%
+\newcommand{\EU@objEachOwned}[6][]{% M? short per max from above?
+  \EUobjective{#1}{#2}{prov\EUAbbr{ince}\ifnotempty{#6}{-#6}}{#3}{#4}{%
+    Each province of #5 owned by \EUcurrmaj\ifnotempty{#6}{ above #6}}}%
+
+
+%%% SUE
+\newcommand{\EU@objDMB}[2][]{% M? VPs
+  \EUobjective{#1}{DMB}{}{}{#2}{\paysmajeurSuede has the \terme{Dominium Marii
+      Baltici}}}%
+
+%%% TUR
+\newcommand{\EU@objPresidiosTUR}[3][]{% M? max penalty
+  \EUobjective{#1}{Barbary Coast}{\Presidio}{#2-#3}{#2}{#2\VPs, minus #3 \VPs
+    for each Christian \Presidio in any provinces with the shield of any
+    \Barbaresques}}%
+\newcommand{\EU@objSpiceTUR}[3][]{% M? per max
+  \EU@objEachItem[#1]{producing \POSPICE; establishments of minors in \dipAT
+  providing their resources count}{\COL or \TP}{\POSPICE}{#2}{#3}}
+\newcommand{\EU@objRhodos}[2][]{% M? VPs
+  \EU@objSpecificProvince[#1]{Rhodos}{#2}{\provinceRhodos}}%
+\newcommand{\EU@objViennaFallen}[2][]{% M? VPs
+  \EUobjective{#1}{\villeVienne fallen}{}{}{#2}{%
+    \provinceOsterreich/\villeVienne was captured during this period by
+    \paysmajeurTurquie}}%
+\newcommand{\EU@objValMol}[2][]{% M? both
+  \EUobjective{#1}{\paysValachie/\paysMoldavie}{}{\EU@objhalf{#2}}{#2}{%
+    Each of \paysValachie and \paysMoldavie is either \VASSAL of \EUcurrmaj or
+    conquered (all of its provinces are owned by \EUcurrmaj, whoever controls
+    them). Half-success if only one of the two is \VASSAL or conquered}}%
+\newcommand{\EU@objCrimeaTURFull}[8][]{% M? VPa VPb VPc a+ b c d-
+  \EUobjective{#1}{Defence of \payscrimee}{}{#4/#3}{#2}{Number of provinces
+    owned by \payscrimee; #5 or more: success; #6: #3\VPs; #7: #4\VPs; #8 or
+    less: failure}}%
+% always same VPs and decreasing number of provinces
+\newcommand{\EU@objCrimeaTUR}[2][]{% M? a+
+  \EU@objCrimeaTURFull[#1]{40}{30}{20}{#2}{\the\numexpr#2-1\relax}{\the\numexpr#2-2\relax}{\the\numexpr#2-3\relax}}
+\newcommand{\EU@objBalkansTUR}[4][]{% M? per max above?
+  \EUobjective{#1}{\regionBalkans}{prov\EUAbbr{ince}\ifnotempty{#4}{-#4}}
+  {#2}{#3}{Each province of \regionBalkans owned by \paysmajeurTurquie
+    \ifnotempty{#4}{ above #4}, whoever controls it}}%
+
+%%% VEN
+\newcommand{\EU@objItaliSanMarco}[3][]{% M? per max
+  \EUobjective{#1}{Italia e San Marco}{\MIN}{#2}{#3}{%
+    Each Italian minor in \EG or better (2 provinces of \pays{naples} owned
+    count as 1 minor for this purpose)}}%
+\newcommand{\EU@objBalkansVEN}[4][]{% M? per max except?
+  \EUobjective{#1}{Balkans}{prov\EUAbbr{ince}}{#2}{#3}{%
+    Each province in \regionBalkans \ifnotempty{#4}{(except #4)} owned by
+    \paysmajeurVenise, whoever controls it}}%
+\newcommand{\EU@objOrientIncome}[3][]{% M? income VPs    
+  \EUobjective{#1}{Orient income\geq #2\ducats}{}{}{#3}{%
+    Total Orient Income of the period is #2\ducats or more}}%
+
+%%% POR
+\newcommand{\EU@objMarocVassal}[3][]{% M? per_turn max
+  \EUobjective{#1}{\paysMaroc Vassal}{turn}{#2}{#3}{Each turn \paysMaroc is
+    \VASSAL of \paysmajeurPortugal}}%
+\newcommand{\EU@objMarocAnnexion}[2][]{% M? VPs
+  \EUobjective{#1}{Annexation in \paysmaroc}{}{}{#2}{At least one province
+    annexed from \paysMaroc during the period}}%
+\newcommand{\EU@objMonopolyPOR}[3][]{% M? min VPs
+  \EUobjective{#1}{Trade monopolies\geq #2}{}{}{#3}{At least #2 \CTZ/\STZ
+    monopolies}}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Angleterre}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\EUobjective1{}{Vassal \paysecosse}{turn}%
-{10}{30}{}%
+\EUcurrentperiod{I}%
+\EU@objEcosseVassal{10}{30}%
+\EU@objCalaisANG{45}%
+\EU@objIndustrial{25}%
+\EU@objSpecificProvince[M]{Guyenne}{50}{Hundred years war}%
+\EU@objIrelandPacified{10}{40}%
 %
-\EUobjective2{}{\Presidio in \provincePicardie}{}%
-{}{45}{\ANG owns a \Presidio in \provincePicardie}%
+\EUcurrentperiod{II}%
+\EU@objEcosseVassal{10}{40}%
+\EU@objCalaisANG[M]{45}%
+\EUobjective{}{\COL in \continentAmerica}{}{}{30}{%
+  \paysmajeurAngleterre has at least one \COL in \continentAmerica}%
+\EUobjective{}{Victory against \FRA}{}{}{40}{%
+  \paysmajeurAngleterre has signed at least one peace of level \geq 2 against
+  \paysmajeurFrance this period}%
+\EU@objIrelandPacified{7}{35}%
 %
-\EUobjective3{}{Industrial development}{}%
-{}{25}{\MNU limits attained and monopoly in \ctz{Angleterre}}%
+\EUcurrentperiod{III}%
+\EU@objEcosseVassal{5}{30}%
+\EU@objNoConversion[M]{45}%
+\EU@objIndustrial{30}%
+\EU@objNoConversionOther{35}{Hollande}{Dutch}% yes, \HOL this is not an error
+\EU@objMonopolyZoneANG%
 %
-\EUobjective4M{Reconquest of \provinceGuyenne}{}%
-{}{50}{\provinceGuyenne owned by \paysmajeurAngleterre}%
+\EUcurrentperiod{IV}%
+\EU@objEcosseVassal{5}{30}%
+\EU@objNoConversion[M]{40}%
+\EUobjective{}{Commercial Centre}{}{}{50}{%
+  \paysmajeurAngleterre owns at least one \terme{Commercial Centre}}%
+\EUobjective{}{English Civil War}{}{20}{40}{%
+  Duration of \ref{pIV:English Civil War}; four turns or less: full success;
+  five turns or no event: half-success; six turns or more: failure}%
+\EU@objMonopolyZoneANG%
 %
-\EUobjective5{}{Pacified Ireland}{turn}%
-{10}{40}{Each turn without any \REVOLT in \regionIrlande}%
+\EUcurrentperiod{V}%
+\EU@objCaraibesANG{7}{15}{45}%
+\EU@objNoConversion{40}%
+\EU@objTradeCentre[M]{Atlantic}{40}%
+\EUobjective{}{Independent Portugal}{}{15}{30}{%
+  \paysPortugal in not in \ANNEXION of \paysmajeurEspagne; half success if
+  neither \ref{pIV:Portuguese Revolt} nor \ref{pV:WoSS} occured}%
+\EU@objMonopolyRES{Fish}{5}{40}%
 %
-\EUcurrentperiod{II}
-%
-\EUobjective1{}{Vassal \paysecosse}{turn}%
-{10}{40}{}%
-%
-\EUobjective2M{\Presidio in \provincePicardie}{}%
-{}{50}{\ANG owns a \Presidio in \provincePicardie}%
-%
-\EUobjective3{}{\COL in \continentAmerica}{}%
-{}{30}{At least one \COL}%
-%
-\EUobjective4{}{Victory against \paysmajeurFrance}{}%
-{}{40}{Peace level \geq 2}%
-%
-\EUobjective5{}{Pacified Ireland}{turn}%
-{7}{35}{Each turn without any \REVOLT in \regionIrlande}
-%
-\EUcurrentperiod{III}
-%
-\EUobjective1{}{Vassal \paysecosse}{turn}%
-{5}{30}{}%
-%
-\EUobjective2M{No forced conversion}{}%
-{}{45}{\ANG is not forced to change its religion}%
-%
-\EUobjective3{}{Industrial development}{}%
-{}{30}{\MNU limits attained and monopoly in \ctz{Angleterre}}%
-%
-%
-\EUobjective4{}{\paysmajeurHollande not converted}{}%
-{}{35}{???}%
-%
-\EUobjective5{}{Trade Monopoly}{zone}%
-{5/10}{30}{Each Commercial \terme{Monopoly} in \CTZ/\STZ}
-%
-\EUcurrentperiod{IV}
-%
-\EUobjective1{}{Vassal \paysecosse}{turn}%
-{5}{30}{}%
-%
-\EUobjective2M{No forced conversion}{}%
-{}{40}{\ANG is not forced to change its religion}%
-%
-\EUobjective3{}{Commercial Centre}{}%
-{}{50}{Having one \terme{Commercial Centre}}%
-%
-\EUobjective4{}{English Civil War}{}%
-{20}{40}{Duration of \ref{pIV:English Civil War} is four turns or less: full
-  success, five turns or no event: half-success, six or more: failure}%
-%
-\EUobjective5{}{Monopoly}{zone}%
-{5/10}{30}{Each Commercial \terme{Monopoly} in \CTZ/\STZ}
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1{}{\continentCaraibes}{island}%
-{7/15}{45}{7/15 \VPs per \TP or \COL controlled/owned in \continentCaraibes}%
-%
-\EUobjective2{}{No forced conversion}{}%
-{}{40}{\ANG is not forced to change its religion}%
-%
-\EUobjective3M{\CCs{Atlantic}}{}%
-{}{40}{Having the \CCs{Atlantic}}%
-%
-\EUobjective4{}{Independent Portugal}{}%
-{}{30}{\HIS must have renounced the conditions of \eventref{pIII:Portuguese
-    Annexation}, and not reconquered it}%
-%
-% (jcd) Probably this should be dependent on events. Should it depend on
-% either pV:WoSS or pIV:Portuguese Revolt.
-%
-\EUobjective5{}{\RES{Fish} monopoly}{turn}%
-{5}{40}{per turn of \RES{Fish} monopoly}%
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1{}{\continentCaraibes}{island}%
-{5/10}{50}{5/10 \VPs per \TP or \COL controlled/owned in \continentCaraibes}%
-%
-\EUobjective2{}{Jacobite rebellion}{}%
-{15}{30}{\ANG wins the \ref{pVI:Jacobite Rebellion} (half-success if none
-  occur, or if loses one and wins the second)}%
+\EUcurrentperiod{VI}%
+\EU@objCaraibesANG{5}{10}{50}%
+\EUobjective{}{Jacobite rebellion}{war}{15}{30}{%
+  Each victory in \ref{pVI:Jacobite Rebellion} (15 \VPs if none occur)}%
 % (jcd) I added the second condition. Original was unclear.
+\EU@objTradeCentre[M]{Atlantic}{40}%
+\EU@objWoSS%
+\EU@objEastIndiesConvoy{4}{40}%
 %
-\EUobjective3M{\CCs{Atlantic}}{}%
-{}{40}{Having the \CCs{Atlantic}}%
+\EUcurrentperiod{VII}%
+\EU@objIndependanceWars[M]{50}%
+\EU@objFranceRoyalist{30}%
+\EU@objEachCC{15}{45}%
+\EU@objSYW{30}%
+\EU@objEastIndiesConvoy{4}{40}%
 %
-\EUobjective4{}{Spanish Succession}{}%
-{25}{50}{\ANG is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{France}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\EUobjective5{}{\emph{East Indies}}{convoy}%
-{4}{40}{per turn of bringing back the \emph{East Indies} convoy}%
+\EUcurrentperiod{I}%
+\EU@objCalaisFRA{40}%
+\EU@objArtoisFRA%
+\EU@objSDCF{40}%
+\EU@objIndustrial{25}%
+\EUobjective{M}{War in Italy}{}{25}{50}{%
+  \paysmajeurFrance signed a peace of level \geq 2 in at least one War in
+  Italy. Half-success if none occur}%
 %
-\EUcurrentperiod{VII}
+\EUcurrentperiod{II}%
+\EU@objCalaisFRA[M]{50}%
+\EU@objArtoisFRA%
+\EU@objEmperor{French}{50}%
+\EU@objIndustrial{40}%
+\EUobjective{}{\provinceLombardia or \provinceCampania}{}{15}{30}{%
+  One of these provinces is owned by \paysmajeurFrance. Half-success if no War
+  in Italy occurred since the beginning of the game}%
 %
-\EUobjective1M{Independence Wars}{}%
-{25}{50}{\ANG is victorious in all the \ref{pVII:Independence War} (which
-  means the rebels don't succeed against \ANG, but succeed against all other
-  \MAJ). Half-success if the event never occurs, or it occurs multiple times
-  and \ANG is victorious only as the \MAJ being rebelled against }%
-%
-\EUobjective2{}{\paysmajeurFrance contained}{}%
-{}{30}{\paysmajeurFrance does not reach its ``natural frontier'' during the
-  Révolution (cannot be the prioritary objective)}%
-%
-\EUobjective3{}{Each \CC}{CC}%
-{15}{45}{For each \terme{Commercial Centre}}%
-%
-\EUobjective4{}{Seven Years War}{}%
-{15}{30}{\ANG victorious in \ref{pVII:Seven Years War}}%
-%
-\EUobjective5{}{\emph{East Indies}}{convoy}%
-{4}{40}{per turn of bringing back the \emph{East Indies} convoy}%
-%
-%
-%
-\EUcurrentcountry{France} \EUcurrentperiod{I}
-%
-\EUobjective1{}{No \Presidio in \provincePicardie}{}%
-{}{40}{\provincePicardie is free of any \Presidio}%
-%
-%
-\EUobjective2{}{French \provinceArtois}{}%
-{}{30}{}%
-%
-\EUobjective3{}{SD of Catholic Faith}{}%
-{}{40}{\FRA is Sole Defender of Catholic Faith}%
-%
-\EUobjective4{}{Industrial development}{}%
-{}{25}{\MNU limits attained and monopoly in \ctz{France}}%
-%
-%
-\EUobjective5M{War in Italy}{}%
-{25}{50}{Victory in at least one War in Italy (peace level \geq
-  2). Half-success if none occur}%
-%
-\EUcurrentperiod{II}
-%
-\EUobjective1M{No \Presidio in \provincePicardie}{}%
-{}{50}{\provincePicardie is free of any \Presidio}%
-%
-\EUobjective2{}{French \provinceArtois}{}%
-{}{30}{}%
-%
-\EUobjective3{}{French King Emperor}{}%
-{25}{50}{French King was elected to the Imperial Throne. Half-success if no
-  election is held}%
-%
-\EUobjective4{}{Industrial development}{}%
-{}{40}{\MNU limits attained and monopoly in \ctz{France}}%
-%
-\EUobjective5{}{\provinceLombardia or \provinceCampania}{}%
-{}{30}{One of these provinces is French. Half-success if no War in Italy
-  occurred since turn 1}%
-%
-\EUcurrentperiod{III}
-%
-\EUobjective1{}{No provinces lost}{}%
-{}{30}{}%
-%
-%
-\EUobjective2{}{Specific annexations}{prov\EUAbbr{ince}*}%
-{10}{40}{Each province of \provinceArtois, \provinceBresse,
-  \province{Franche-Comte}, \provinceRoussillon}%
-%
-%
-\EUobjective3{}{No change of religion}{}%
-{}{50}{except due to the use of \ref{pIII:FWR:Hospital}}%
-%
-%
-\EUobjective4{}{\geq 3 \COL/\TP}{}%
-{}{30}{}%
-%
-%
-\EUobjective5M{\leq 2 unfavourable truces}{}%
-{}{40}{\paysmajeurFrance does not sign more than 2 unfavorable truce during
+\EUcurrentperiod{III}%
+\EU@objNoProvincesLost{30}%
+\EU@objEachProvinceList{\provinceArtois, \provinceBresse,
+  \province{Franche-Comte} and \provinceRoussillon}{10}{40}{Specific
+  possessions}%
+\EUobjective{}{No change of religion}{}{}{50}{%
+  \paysmajeurFrance did not change religion, except due to the use of
+  \ref{pIII:FWR:Hospital}}%
+\EUobjective{}{\geq 3 \COL/\TP}{}{}{30}{%
+  \paysmajeurFrance owns at least 3 \COL or \TP}%
+\EUobjective{M}{\leq 2 unfavourable truces}{}{}{40}{%
+  \paysmajeurFrance does not sign more than 2 unfavourable truces during
   \ref{pIII:FWR}}%
 %
-\EUcurrentperiod{IV}
+\EUcurrentperiod{IV}%
+\EUobjective{}{\ctz{France} Monopoly}{}{}{30}{%
+  \paysmajeurFrance has a Commercial Monopoly in \ctz{France}}%
+\EUobjective{}{Trade Monopoly}{zone}{15/20}{40}{%
+  Each partial (15)/total (20) Commercial Monopoly in any \STZ/\CTZ except
+  \ctz{France}}%
+\EUobjective{M}{No \GE/Southern \HRE}{}{25}{50}{%
+  Neither \GE nor the Southern \HRE alliance exists. Success if one was
+  created but is now destroyed. Half-success if \ref{pIV:TYW} never occured}%
+\EU@objEachCOL{}{5}{30}%
+\EUobjective{}{No Northern \HRE}{}{20}{40}{%
+  There is no Northern \HRE alliance. Success if it was created but is now
+  destroyed. Half-success if \ref{pIV:TYW} never occured}%
 %
-\EUobjective1{}{\ctz{France} monopoly}{}%
-{}{30}{}%
+\EUcurrentperiod{V}%
+\EU@objTradeCentre{Mediterranee}{40}%
+\EUobjective{M}{Adjacent to \HOL}{}{}{40}{%
+  \paysmajeurFrance owns at least one province adjacent to \paysmajeurHollande
+  national territory}%
+\EUobjective{}{Glorious Revolution}{}{20}{40}{%
+  During \ref{pV:Glorious Revolution}, \paysmajeurFrance wins after either
+  controlling the Rebels or making an intervention; half-success if the event
+  does not occur ; failure if \paysmajeurFrance neither controls the Rebels
+  nor intervene}%
+\EU@objMonopolyRES{Fish}{5}{30}%
+\EU@objLouisXIV{20}{40}%
 %
+\EUcurrentperiod{VI}%
+\EU@objTradeCentre{Mediterranee}{40}%
+\EU@objWoSS%
+\EUobjective{}{Austrian Succession}{}{20}{40}{%
+  \paysmajeurFrance is victorious in \ref{pVI:WoAS} without any territorial
+  gain. Half-success if the event does not occur}%
+\EU@objTradeCentre[M]{Atlantic}{50}%
+\EUobjective{}{Polish Succession+\FRA}{}{25}{50}{%
+  \EU@objPOLVictoryText; half-success if \paysmajeurSuede is protector of
+  \paysPologne}%
 %
-\EUobjective2{}{Trade Monopoly}{zone}%
-{15/20}{40}{Count the monopolies in \STZ/\CTZ, \ctz{France} does not count
-  here; 15 is for partial monopolies, 20 for total monopolies}%
+\EUcurrentperiod{VII}%
+\EU@objCountryExists[M]{Pologne}{50}%
+\EU@objEachCC{20}{40}%
+\EU@objIndependanceWars{45}%
+\EUobjective{}{Colonial expansion}{}{}{40}{%
+  \paysmajeurFrance has more \TP plus \COL than any other country in one of
+  \continent{India}, \continent{North America}, or \continent{Caraibes}}%
+\EUobjective{}{Natural frontiers}{}{15}{30}{%
+  \paysmajeurFrance owns all its ``natural frontier'' during the Revolution
+  (\ref{pVII:Revolution:Natural Frontiers}); half-success if the event does
+  not occur}%
 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Espagne}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\EUobjective3M{No \GE/Southern \HRE}{}%
-{}{50}{}%
+\EUcurrentperiod{I}%
+\EU@objNoFrenchVassal{50}%
+\EU@objNoFrenchItaly{40}%
+\EU@objSDCF{25}%
+\EU@objPresidiosHIS[M]{15}{50}%
+\EUobjective{}{\paysprovincesne annexed}{}{}{25}{%
+  All provinces of \paysprovincesne are owned by \paysmajeurEspagne}%
 %
-\EUobjective4{}{Each \COL}{}%
-{5}{30}{}%
+\EUcurrentperiod{II}%
+\EU@objNoFrenchVassal{40}%
+\EU@objNoFrenchItaly{30}%
+\EU@objEmperor{Spanish}{50}%
+\EU@objPresidiosHIS[M]{15}{50}%
+\EUobjective{}{Religious calm in \HRE}{}{25}{50}{%
+  Full success if either \ref{pI:Reformation2} did not occur; or Schmalkaldic
+  league destroyed without religious liberty (\ref{pII:Schmalkaldic League})
+  and \ref{pIV:TYW} hasn't occured yet; or \ref{pIV:TYW} won (dominant
+  position at the final peace). Half success if \ref{pII:Schmalkaldic League}
+  did not occur}%
 %
-\EUobjective5{}{No Northern \HRE}{}%
-{}{40}{}%
+\EUcurrentperiod{III}%
+\EU@objHalfHungary{50}%
+\EUobjective{M}{Forced conversion}{\MAJ}{50}{--}{%
+  Each time a Protestant Major Country is converted due to a war in which
+  \paysmajeurEspagne was fighting against it. Not possible if
+  \paysmajeurEspagne is \CATHCO; Religious and Civil wars count; Limited and
+  foreign interventions of \SPA count. No maximum \VPs value}%
+\EUobjective{}{\TUR stopped in Ionian}{}{}{40}{%
+  No Turkish possesions nor \VASSAL west of \seazoneIonienne (\provinceTripoli
+  excluded, \provinceMalta or any province in \regionItalie included)}%
+\EUobjective{}{Habsburg-Sultan peace}{}{}{30}{%
+  No more than one turn of war between \paysHabsbourg and \paysmajeurTurquie}%
+\EUobjective{}{Trade expansion}{}{}{30}{%
+  Monopoly in \ctz{Espagne} and in at least 2 other \CTZ/\STZ}%
 %
-\EUcurrentperiod{V}
+\EUcurrentperiod{IV}%
+\EU@objHalfHungary{40}%
+\EU@objGermanEmpire[M]{50}%
+\EU@objBigAustria{10}{30}%
+\EU@objPortugalAnnexed{50}%
+\EU@objMonopolyZoneFull{8}{40}{; \ctz{Espagne} counts as two}%
 %
-\EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurFrance controls the \CCs{Mediterranee}}%
+\EUcurrentperiod{V}%
+\EU@objNoTURHungary[M]{40}{10}%
+\EU@objSpanishNetherlands{10}{50}%
+\EU@objSpanishWorld{40}%
+\EU@objPortugalAnnexed{40}%
+\EU@objMonopolyZone{8}{40}%
 %
-\EUobjective2M{Adjacent to \paysmajeurHollande}{}%
-{}{40}{\paysmajeurFrance adjacent to \paysmajeurHollande national territory}%
-%
-\EUobjective3{}{Glorious Revolution}{}%
-{20}{40}{This probably means that \paysmajeurFrance has to control the Rebels
-  in \ref{pV:Glorious Revolution} and win; half-success if not possible}%
-%
-\EUobjective4{}{\RES{Fish} monopoly}{turn}%
-{5}{30}{per turn of \RES{Fish} monopoly}%
-%
-\EUobjective5{}{Louis XIV's wars}{war}%
-{20}{40}{For each won war in \ref{pV:Devolution War}, \ref{pV:Chamber of
-    Reunion} and \ref{pV:League Augsburg}. If none of these events occur,
-  half-success}%
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurFrance controls the \CCs{Mediterranee}}%
-%
-\EUobjective2{}{Spanish Succession}{}%
-{25}{50}{\FRA is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
-%
-\EUobjective3{}{Austrian Succession}{}%
-{20}{40}{\FRA is victorious in \ref{pVI:WoAS} without any territorial
-  gain. Half-success if it does not occur}%
-%
-\EUobjective4M{\CCs{Atlantic}}{}%
-{}{50}{\paysmajeurFrance controls the \CCs{Atlantic}}%
-%
-\EUobjective5{}{Polish Succession+\FRA}{}%
-{25}{50}{Polish King is supported by \FRA in \ref{pVI:WoPS}; half-success if
-  this is not possible or if the event does not occur}%
-%
-\EUcurrentperiod{VII}
-%
-\EUobjective1M{\payspologne still exists}{}%
-{}{50}{}%
-%
-\EUobjective2{}{Each \CC}{CC}%
-{20}{40}{For each \terme{Commercial Centre}}%
-%
-\EUobjective3{}{Independence Wars}{}%
-{22}{45}{\FRA is victorious in all the \ref{pVII:Independence War} (which
-  means the rebels don't succeed against \FRA, but succeed against all other
-  \MAJ). Half-success if the event never occurs, or it occurs multiple times
-  and \FRA is victorious only as the \MAJ being rebelled against }%
-%
-\EUobjective4{}{Colonial expansion}{}%
-{}{40}{\paysmajeur{France} has more \TP plus \COL than any other country in
-  one of \continent{India}, \continent{North America}, or
-  \continent{Caraibes}}%
-%
-%
-\EUobjective5{}{Natural frontiers}{}%
-{}{30}{\paysmajeur{France} reaches its ``natural frontier'' during the
-  Révolution (cannot be the prioritary objective)}%
-%
-\EUcurrentcountry{Espagne} \EUcurrentperiod{I}
-%
-\EUobjective1{}{No \FRA \VASSAL in \regionItalie}{}%
-{}{50}{No vassal of \paysmajeurFrance is in \regionItalie}%
-%
-\EUobjective2{}{\FRA not in \regionItalie}{}%
-{}{40}{\paysmajeurFrance has no provinces in \regionItalie}%
-%
-\EUobjective3{}{SD of Catholic Faith}{}%
-{}{25}{\HIS is Sole Defender of Catholic Faith}%
-%
-\EUobjective4M{Barbary Coast}{\Presidio}%
-{15}{50}{Each \Presidio on the Barbary coast}%
-%
-\EUobjective5{}{\paysprovincesne annexed}{}%
-{}{25}{All provinces of \paysprovincesne have been annexed}%
-%
-\EUcurrentperiod{II}
-%
-\EUobjective1{}{No \FRA \VASSAL in \regionItalie}{}%
-{}{40}{No vassal of \paysmajeurFrance is in \regionItalie}%
-%
-\EUobjective2{}{\FRA not in \regionItalie}{}%
-{}{30}{\paysmajeurFrance has no provinces in \regionItalie}%
-%
-\EUobjective3{}{Spanish Emperor}{}%
-{25}{50}{Spanish King was elected to the Imperial Throne. Half-success if no
-  election is held}%
-%
-\EUobjective4M{Barbary Coast}{\Presidio}%
-{15}{50}{Each \Presidio on the Barbary coast}%
-%
-\EUobjective5{}{Religious calm in \HRE}{}%
-{}{50}{Either \ref{pI:Reformation2} did not occur, or Schmalkaldic league
-  destroyed without religious liberty (\ref{pII:Schmalkaldic League}),
-  or \eventref{pIV:TYW} won}%
-%
-\EUcurrentperiod{III}
-%
-\EUobjective1{}{Half of \payshongrie}{}%
-{}{50}{Possession of at least half of the \payshongrie by \AUSaus (\geq 6
-  provinces)}%
-%
-\EUobjective2M{Forced conversion}{\MAJ}%
-{50}{--}{Each Protestant Major Countries converted (not possible if \CATHCO)}%
-%
-\EUobjective3{}{\TUR stopped in Ionian}{}%
-{}{40}{No Turkish possesions nor \VASSAL west of Ionian Sea
-  (\shortprovince{Malta} included, \paystripoli excluded)}%
-%
-\EUobjective4{}{Habsburg-Sultan peace}{}%
-{}{30}{No more than one turn of war between \pays{habsbourg} and
-  \paysmajeur{Turquie}}%
-%
-\EUobjective5{}{Trade expansion}{}%
-{}{30}{Monopoly in \ctz{Espagne} and in at least 2 other \CTZ/\STZ}%
-%
-\EUcurrentperiod{IV}
-%
-\EUobjective1{}{Half of \payshongrie}{}%
-{}{40}{Possession of at least half of the \payshongrie by \AUSaus (\geq 6
-  provinces)}%
-%
-\EUobjective2M{\pays{German Empire}}{}%
-{}{50}{Creation of \pays{German Empire} (half if South HRE alliance)}%
-%
-\EUobjective3{}{\paysmajeurAutriche}{prov\EUAbbr{ince}-11}%
-{10}{30}{Each province above 11 in \AUSaus}%
-%
-\EUobjective4{}{Annexed \paysportugal}{}%
-{}{50}{\paysportugal in \ANNEXION status}%
-%
-\EUobjective5{}{Trade monopolies*}{monop\EUAbbr{oly}}%
-{8}{40}{Each \CTZ/\STZ monopoly; \ctz{Espagne} counts double}%
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1M{\payshongrie}{\TUR prov\EUAbbr{ince}}%
-{40-10}{40}{40 \VPs minus 10 \VPs per Turkish province in \payshongrie}%
-%
-\EUobjective2{}{Low Countries}{prov\EUAbbr{ince}}%
-{10}{50}{Each province in Spanish Netherlands (\regionBelgique)}%
-%
-\EUobjective3{}{Exclusive below \granderegion{Florida}}{}%
-{20}{40}{No non-spanish \COL south of \granderegion{Florida}
-  (\continent{Caraibes} included; \continent{Brazil} excepted); half-success
-  with \continent{Caraibes} and \continent{Brazil} excepted}%
-%
-\EUobjective4{}{Annexed \paysportugal}{}%
-{}{40}{\paysportugal in \ANNEXION status}%
-%
-\EUobjective5{}{Trade monopolies}{monop\EUAbbr{oly}}%
-{8}{40}{Each \CTZ/\STZ monopoly}%
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1M{Spanish Succession}{}%
-{}{50}{Victory of \SPA in \ref{pV:WoSS}}%
-%
-\EUobjective2{}{Outer provinces}{prov\EUAbbr{ince}}%
-{10}{40}{}%
-%
-\EUobjective3{}{Exclusive below \granderegion{Florida}}{}%
-{20}{45}{No non-spanish \COL south of \granderegion{Florida}
-  (\continent{Caraibes} included; \continent{Brazil} excepted); half-success
-  with \continent{Caraibes} and \continent{Brazil} excepted}%
-%
-\EUobjective4{}{Barbary Coast}{\Presidio}%
-{10}{50}{Each \Presidio in the \terme{Barbaresques}}%
+\EUcurrentperiod{VI}%
+\EUobjective{M}{Spanish Succession}{}{}{50}{%
+  Victory of \paysmajeurEspagne in \ref{pV:WoSS}; full success if the event
+  occurs but there is no war}%
+\EU@objOuterProvinces{10}{40}%
+\EU@objSpanishWorld{45}%
+\EU@objPresidiosHIS{10}{50}%
 % (jcd) What about annexations of provinces? Vassals?
-%
-\EUobjective5{}{Trade monopolies}{monop\EUAbbr{oly}}%
-{8}{40}{Each \CTZ/\STZ monopoly}%
-%
-\EUcurrentperiod{VII}
-%
-\EUobjective1{}{Spanish Asiento}{}%
-{}{35}{}%
-%
-\EUobjective2{}{Outer provinces}{prov\EUAbbr{ince}-4}%
-{10}{40}{Each non national provinces above 3}%
-%
-\EUobjective3M{Exclusive below \granderegion{Florida}}{}%
-{20}{50}{No non-spanish \COL south of \granderegion{Florida}
-  (\continent{Caraibes} included; \continent{Brazil} excepted); half-success
-  with \continent{Caraibes} and \continent{Brazil} excepted}%
-%
-\EUobjective4{}{Industrial development}{}%
-{}{25}{\MNU limits attained and monopoly in \ctz{Espagne}}%
-%
-\EUobjective5{}{Independence Wars}{}%
-{15}{30}{\SPA is victorious in all the \ref{pVII:Independence War} (which
-  means the rebels don't succeed against \SPA, but succeed against all other
-  \MAJ). Half-success if the event never occurs, or it occurs multiple times
-  and \SPA is victorious only as the \MAJ being rebelled against }%
-%
-\EUcurrentcountry{Hollande} \EUcurrentperiod{III}
-%
-\EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurHollande controls the \CCs{Mediterranee}}%
-%
-\EUobjective2{}{Recognition of Independence}{}%
-{}{50}{Dutch Independence recognised by Spain}%
-%
-\EUobjective3{}{Protestant \FRA}{}%
-{}{35}{Protestant won the French wars of religions}%
-%
-\EUobjective4{}{\ANG not Catholic}{}%
-{}{40}{\paysmajeurAngleterre Protestant or \PROTANG and not converted}%
-%
-\EUobjective5M{\emph{East Indies}}{convoy}%
-{10}{40}{per turn of bringing back the \emph{East Indies} convoy}%
-%
-\EUcurrentperiod{IV}
-%
-\EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurHollande controls the \CCs{Mediterranee}}%
-%
-\EUobjective2{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
-%
-\EUobjective3{}{\payshanse/Northern \HRE}{}%
-{}{40}{Northern \HRE alliance if \ref{pIV:TYW} occurred, else \payshanse still
-  exists and is a \VASSAL}%
-%
-\EUobjective4M{Abolition Act of Navigation}{}%
-{20}{40}{half-success if the event does not occur}%
-%
-\EUobjective5{}{\continentBrazil}{\COL}%
-{10}{40}{Each Dutch \COL in \continentBrazil}%
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1M{\CCs{Atlantic}}{}%
-{}{40}{\paysmajeurHollande controls the \CCs{Atlantic}}%
-%
-\EUobjective2{}{Safe from \paysmajeurFrance}{}%
-{}{50}{\paysmajeurFrance not adjacent to \paysmajeurHollande national
-  territory}%
-%
-\EUobjective3{}{East of \granderegionMalacca}{}%
-{}{40}{No Christian non-dutch \TP east of \granderegionMalacca (included,
-  \continentSiberia excepted)}%
-%
-\EUobjective4{}{Abolition Act of Navigation}{}%
-{25}{50}{half-success if the event does not occur}%
-%
-\EUobjective5{}{\RES{Spices} monopoly}{turn}%
-{5}{40}{Each turn of \RES{Spices} monopoly}%
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1M{Each \CC}{CC}%
-{25}{50}{For each \terme{Commercial Centre}}%
-%
-\EUobjective2{}{Spanish Succession}{}%
-{25}{50}{\HOL is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
-%
-\EUobjective3{}{East of \granderegionMalacca}{\TP}%
-{40-10}{40}{Remove 10 \VPs for each Christian non-Dutch \TP east of
-  \granderegion{Malacca} (included, \continentSiberia excluded)}%
-%
-\EUobjective4{}{\continentAmerica}{\COL}%
-{15}{45}{Each \COL in \continent{America} (excepted \continent{Bresil})}%
-%
-\EUobjective5{}{\emph{East Indies}}{convoy}%
-{4}{40}{per turn of bringing back the \emph{East Indies} convoy}%
-%
-\EUcurrentperiod{VII}
-%
-\EUobjective1{}{Trade monopolies}{}%
-{5}{30}{Each \CTZ/\STZ monopoly}%
-%
-\EUobjective2M{Batavian Revolution}{}%
-{}{40}{Victory in \ref{pVII:Batavian Revolution}}%
-%
-\EUobjective3{}{\paysmajeurFrance contained}{}%
-{}{35}{\paysmajeur{France} does not reach its ``natural frontier'' during the
-  Révolution (may be the prioritary objective)}%
-%
-\EUobjective4{}{\continentAmerica}{\COL}%
-{15}{45}{Each \COL in \continent{America} (excepted \continent{Bresil})}%
-%
-\EUobjective5{}{\continentIndia}{\TP/\COL}%
-{15}{50}{Each \COL or \TP in \continent{India}}%
-%
-\EUcurrentcountry{Autriche} \EUcurrentperiod{IV}
-%
-\EUobjective1{}{Half of \payshongrie}{}%
-{}{40}{Possession of at least half of the \payshongrie by \AUSaus (\geq 6
-  provinces)}%
-%
-\EUobjective2M{\pays{German Empire}}{}%
-{}{50}{Creation of \pays{German Empire} (half if South HRE alliance)}%
-%
-\EUobjective3{}{\paysmajeurAutriche}{prov\EUAbbr{ince}-11}%
-{10}{30}{Each province above 11 in \paysmajeurAutriche}%
-%
-\EUobjective4{}{To the \seazoneBaltique}{}%
-{15}{45}{Each turn of control of a port on the \seazoneBaltique or in
-  \payshanse}%
-%
-\EUobjective5{}{Southern \HRE}{}%
-{15}{30}{Southern \HRE alliance exists; half-success if the event does not
-  occur}%
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1{}{\payshongrie}{\TUR prov\EUAbbr{ince}}%
-{50-10}{50}{50 \VPs minus 10 \VPs per Turkish province in \payshongrie}%
-%
-\EUobjective2M{Low Countries}{prov\EUAbbr{ince}}%
-{10}{40}{Each province in Spanish Netherlands (\regionBelgique)}%
-%
-\EUobjective3{}{Defending \paysvenise}{prov\EUAbbr{ince}*-2}%
-{20}{50}{Possessions of \pays{Venise}: Each Mediterranean island, or province
-  in \region{Balkans} above 2}%
-%
-\EUobjective4{}{Louis XIV's wars}{war}%
-{20}{40}{For each won war in \ref{pV:Devolution War}, \ref{pV:Chamber of
-    Reunion} and \ref{pV:League Augsburg}. If none of these events occur,
-  half-success}%
-%
-\EUobjective5{}{Absolutist \paysmajeurPologne}{}%
-{}{25}{}%
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1{}{\payshongrie}{\TUR prov\EUAbbr{ince}}%
-{50-20}{50}{50 \VPs minus 20 \VPs per Turkish province in \payshongrie}%
-%
-\EUobjective2{}{Spanish Succession}{}%
-{25}{50}{\AUS is victorious in \ref{pV:WoSS}. Half-success if it does not
-  occur}%
-%
-\EUobjective3{}{Austrian Succession}{}%
-{20}{40}{\AUS is victorious in \ref{pVI:WoAS}. Half-success if it does not
-  occur}%
-%
-\EUobjective4{}{No Royal \paysmajeurPrusse}{}%
-{}{30}{\paysmajeurPrusse has not received the Royal Dignity}%
-%
-\EUobjective5M{Silesia and Lausitz}{}%
-{}{50}{\provinceSilesie and \provinceLausitz Austrian province}%
-%
-\EUcurrentperiod{VII}
-%
-\EUobjective1{}{H\EUAbbr{ungaria}/\provinceBosna/\provinceSerbia}{prov\EUAbbr{ince}*}%
-{20}{50}{Ownership of \payshongrie (no Turkish
-  province),\provinceBosna,\provinceSerbia}%
-%
-\EUobjective2M{\paysnaples}{prov\EUAbbr{ince}-3}%
-{10}{50}{Each provinces of \paysnaples above 3}%
-%
-\EUobjective3{}{Alliances with \MAJ}{}%
-{5}{30}{Each turn in military alliance to a \MAJ}%
-%
-\EUobjective4{}{\paysmajeurFrance contained}{}%
-{}{30}{\paysmajeurFrance does not reach its ``natural frontier'' during the
-  Révolution (cannot be the prioritary objective)}%
-%
-\EUobjective5{}{Silesia and Lausitz}{}%
-{}{50}{\provinceSilesie and \provinceLausitz Austrian province}%
-%
-\EUcurrentcountry{Prusse} \EUcurrentperiod{VI}
-%
-\EUobjective1{}{Expansion}{prov\EUAbbr{ince}-9}%
-{10}{40}{10 \VPs per Prussian province above 9}%
-%
-\EUobjective2{}{Alliances with \MAJ}{}%
-{5}{40}{Each turn in military alliance to a \MAJ}%
-%
-\EUobjective3{}{Royal \paysmajeurPrusse}{}%
+% (jym) they're not presidios... We don't want HIS to go full berserk against
+% Algeria.
+\EU@objMonopolyZone{8}{40}%
+%
+\EUcurrentperiod{VII}%
+\EUobjective{}{Spanish Asiento}{}{}{35}{%
+  \paysmajeurEspagne has a commercial policy of Exclusive
+  Asiento (\ref{chSpecific:Spain:Asiento})}%
+\EU@objOuterProvincesAbove{10}{40}{3}%
+\EU@objSpanishWorld[M]{50}%
+\EU@objIndustrial{25}%
+\EU@objIndependanceWars{30}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Hollande}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\EUcurrentperiod{III}%
+\EU@objTradeCentre{Mediterranee}{40}%
+\EUobjective{}{Recognition of Independence}{}{}{50}{%
+  Dutch Independence recognised by Spain}%
+\EUobjective{}{Protestant \paysmajeurFrance}{}{}{35}{%
+  \paysmajeurFrance is Protestant}%
+\EUobjective{}{Protestant \paysmajeurAngleterre}{}{}{40}{%
+  \paysmajeurAngleterre is Protestant}%
+\EU@objEastIndiesConvoy{10}{40}%
+%
+\EUcurrentperiod{IV}%
+\EU@objTradeCentre{Mediterranee}{40}%
+\EU@objBalticTrade{5}{30}%
+\EUobjective{}{\payshanse/Northern \HRE}{}{}{40}{%
+  Either \ref{pIV:TYW} occured and there is a Northern \HRE alliance; or
+  \payshanse still exists and is \VASSAL of \paysmajeurHollande (including
+  after \ref{pIV:TYW})}%
+\EU@objNoActNavigation[M]{40}%
+\EU@objEachCOL[in \continentBrazil]{\continentBrazil}{10}{40}%
+%
+\EUcurrentperiod{V}%
+\EU@objTradeCentre[M]{Atlantic}{40}%
+\EUobjective{}{Safe from \paysmajeurFrance}{}{}{50}{%
+  \paysmajeurFrance does not own any province adjacent to \paysmajeurHollande
+  national territory}%
+\EU@objEastMalacca{}{40}{No}% Nobody
+\EU@objNoActNavigation{50}%
+\EU@objMonopolyRES{Spices}{5}{40}%
+%
+\EUcurrentperiod{VI}%
+\EU@objEachCC[M]{25}{50}%
+\EU@objWoSS%
+\EU@objEastMalacca{40-10}{40}{Remove 10 \VPs for each}%
+\EU@objAmericaHOL{15}{45}%
+\EU@objEastIndiesConvoy{4}{40}%
+%
+\EUcurrentperiod{VII}%
+\EU@objMonopolyZone{5}{30}%
+\EUobjective{M}{Batavian Revolution}{rev\EUAbbr{olution}}{20}{40}{% 
+  Per victory in \ref{pVII:Batavian Revolution}; half-success if the even
+  never occur}%
+\EU@objFranceRoyalist{35}%
+\EU@objAmericaHOL{15}{45}%
+\EU@objEachCOLTP[in \continentIndia]{\continentIndia}{15}{50}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Autriche}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\EUcurrentperiod{IV}%
+\EU@objHalfHungary{40}%
+\EU@objGermanEmpire[M]{50}%
+\EU@objBigAustria{10}{30}%
+\EUobjective{}{To the \regionBaltique}{turn}{15}{45}{%
+  Each turn where a port on the \regionBaltique or in \payshanse is controlled
+  during the Inter-phase}%
+\EUobjective{}{Southern \HRE}{}{15}{30}{%
+  Southern \HRE alliance exists; half-success if~\ref{pIV:TYW} did not occur}%
+%
+\EUcurrentperiod{V}%
+\EU@objNoTURHungary{50}{10}%
+\EU@objSpanishNetherlands[M]{10}{40}%
+\EUobjective{}{Defending \paysvenise}{prov\EUAbbr{ince}*-2}{20}{50}{%
+  Possessions of \pays{Venise}: Each Mediterranean island or province in
+  \region{Balkans}, above 2}%
+\EU@objLouisXIV{20}{40}%
+\EUobjective{}{Absolutist \paysmajeurPologne}{}{}{25}{%
+  \paysmajeurPologne is absolutist (either \ref{pIV:Liberum Veto} did not
+  happen or \ref{pIV:Polish Civil War} was won by the Absolutists)}%
+%
+\EUcurrentperiod{VI}%
+\EU@objNoTURHungary{50}{20}%
+\EU@objWoSS%
+\EUobjective{}{Austrian Succession}{}{20}{40}{%
+  \AUS is victorious in \ref{pVI:WoAS}. Half-success if it did not occur}%
+\EUobjective{}{No Royal \paysmajeurPrusse}{}{}{30}{%
+  \paysmajeurPrusse has not received the Royal Dignity}%
+\EU@objSilesie[M]{50}%
+%
+\EUcurrentperiod{VII}%
+\EUobjective{}{H\EUAbbr{ungaria}/\provinceBosna/\provinceSerbia}{%
+  prov\EUAbbr{ince}*}{20}{50}{No Turkish provinces in \payshongrie,
+  \provinceBosna and \provinceSerbia; each of \payshongrie and the two
+  provinces counts as one item (20\VPs)}%
+\EU@objEachProvinceAbove[M]{3}{\paysNaples}{10}{50}{\paysNaples}%
+\EU@objAllianceAny{5}{30}%
+\EU@objFranceRoyalist{30}%
+\EU@objSilesie{50}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Prusse}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\EUcurrentperiod{VI}%
+\EU@objEachProvinceAbove{9}{\EUcurrmaj}{10}{40}{Expansion}%
+\EU@objAllianceAny{5}{40}%
+\EUobjective{}{Royal \paysmajeurPrusse}{}%
 {}{30}{\paysmajeurPrusse has received the Royal Dignity}%
+\EUobjective{}{No Austrian Emperor}{}%
+{20}{40}{\paysmajeurAutriche has lost the imperial throne; half-success if
+  \ref{pVI:WoAS} did not occur}%
+\EU@objSilesie[M]{50}%
 %
-\EUobjective4{}{No Austrian Emperor}{}%
-{20}{40}{\AUS has lost the imperial throne}%
-%
-\EUobjective5M{Silesia and Lausitz}{}%
-{}{50}{\provinceSilesie and \provinceLausitz Prussian province}%
-%
-\EUcurrentperiod{VII}
-%
-\EUobjective1{}{Further expansion}{prov\EUAbbr{ince}}%
+\EUcurrentperiod{VII}%
+\EUobjective{}{Further expansion}{prov\EUAbbr{ince}}%
 {15}{50}{15 \VPs per province annexed during the period}%
+\EU@objAllianceAny{5}{40}%
+\EU@objSYW{40}%
+\EU@objFranceRoyalist{30}%
+\EU@objSilesie[M]{50}%
 %
-\EUobjective2{}{Alliances with \MAJ}{}%
-{5}{40}{Each turn in military alliance to a \MAJ}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Suede}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\EUobjective3{}{Seven Years War}{}%
-{20}{40}{\PRU victorious in \ref{pVII:Seven Years War}}%
-%
-\EUobjective4{}{\paysmajeurFrance contained}{}%
-{}{30}{\paysmajeurFrance does not reach its ``natural frontier'' during the
-  Révolution (cannot be the prioritary objective)}%
-%
-\EUobjective5M{Silesia and Lausitz}{}%
-{}{50}{\provinceSilesie and \provinceLausitz Prussian province}%
-%
-\EUcurrentcountry{Suede} \EUcurrentperiod{III}
-%
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
-%
+\EUcurrentperiod{III}%
+\EU@objBalticTrade{5}{30}%
 % (jcd) Should be M ?
+% (jym) Probably not.
+\EU@objEachCOLTP[in \continentAmerica]{\continentAmerica}{10}{30}%
+\EU@objEachProvinceList{\provinceNeva, \provinceLivonija and
+  \provinceEstland}{20}{50}{Livonian Annexations}%
+\EU@objEachProvinceList{\provinceSkane, \provinceVastergotland,
+  \provinceGotland or any of \regionNorvege}{10}{40}{Swedish Annexations}%
+\EUobjective{}{No Polish Claim}{}{25}{50}{%
+  \paysmajeurPologne has renounced to its claim to the throne of Sweden (given
+  by \ref{pIII:Union Poland Sweden}); half-success if the event did not
+  occur. If \paysmajeurPologne is protestant or Supporter of the Orthodoxy,
+  this objective cannot be chosen}%
 %
-\EUobjective2{}{\continentAmerica}{\COL/\TP}%
-{10}{30}{Each \COL/\TP in \continent{America}}%
+\EUcurrentperiod{IV}%
+\EU@objBalticTrade{5}{30}%
+\EUobjective{M}{No \pays{German Empire}}{}{20}{40}{%
+  \GE does not exist; success if it was created and is now
+  destroyed. Half-success if \ref{pIV:TYW} did not occur}%
+\EU@objCountryDestroyed{Hanse}{30}{Dissolution}%
+\EU@objDMB{50}%
+\EUobjective{}{No Polish King}{}{20}{40}{%
+  King of \paysmajeur{Pologne} never was on the Swedish throne; half-success
+  if \ref{pIII:Union Poland Sweden} did not occur. If \paysmajeurPologne is
+  protestant or Supporter of the Orthodoxy, this objective cannot be chosen}%
 %
-\EUobjective3{}{Livonian Annexations}{prov\EUAbbr{ince}*}%
-{20}{50}{Each province \provinceNeva, \provinceLivonija, \provinceEstland}%
+\EUcurrentperiod{V}%
+\EU@objBalticTrade{5}{30}%
+\EU@objEachCOLTP{Colonisation}{5}{40}%
+\EU@objNoRUSBaltic{30}%
+\EU@objDMB[M]{50}%
+\EUobjective{}{No Polish Absolutism}{}{}{30}{%
+  \paysmajeurPologne is not absolutist (\ref{pIV:Liberum Veto} occured and
+  there has been no absolutist victory in \ref{pIV:Polish Civil War})}%
+% 
+\EUcurrentperiod{VI}%
+\EU@objBalticTrade{5}{40}%
+\EU@objEachCOLTP{Colonisation}{7}{40}%
+\EUobjective{M}{Only \ville{Saint-Petersbourg} lost}{}{}{40}{%
+  No province bordering the \regionBaltique lost during the period, except the
+  one where \ville{Saint-Petersbourg} is built}%
+\EU@objDMB{40}%
+\EUobjective{}{Polish Succession+\SUE-\FRA}{}{25}{50}{%
+  \EU@objPOLVictoryText; failure if \paysmajeurFrance is protector of
+  \paysPologne}%
 %
-\EUobjective4{}{Swedish Annexations}{prov\EUAbbr{ince}*}%
-{10}{45}{Each province \provinceSkane, \provinceVastergotland,
-  \provinceGotland or any of \regionNorvege}%
+\EUcurrentperiod{VII}%
+\EU@objBalticTrade{5}{40}%
+\EU@objEachCOLTP{Colonisation}{10}{40}%
+\EU@objNoProvincesLost{40}%
+\EUobjective{}{Out of Scandinavia}{prov\EUAbbr{ince}}{15}{50}{%
+  Per province not in \regionNorvege, \regionDanemark, \regionFinlande or
+  \regionSuede owned by \paysmajeurSuede}%
+\EU@objCountryExists{Pologne}{40}%
 %
-\EUobjective5{}{No Polish Claim}{}%
-{}{50}{\POL has renounced to its claim to the throne of Sweden (given by
-  \ref{pIII:Union Poland Sweden}); half-success if the event does not
-  occur. If \POL is protestant or Supporter of the Orthodoxy, this cannot be
-  chosen}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Russie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\EUcurrentperiod{IV}
+\EUcurrentperiod{I}%
+\EUobjective{}{\payspskov/\paysryazan}{prov\EUAbbr{ince}}{20}{40}{%
+  Per principality conquered (\payspskov or \paysryazan)}%
+\EU@objSpecificProvince[M]{Smolenska}{50}{Russian \provinceSmolenska}%
+\EU@objNoProvincesLost{25}%
+\EUobjective{}{Conquest of one \terme{Khanate}}{}{}{50}{%
+  At least one \terme{Khanate} (other than \paysSteppes) has been destroyed as a
+  result of a war against \paysmajeurRussie; \terme{Khanates} are: \paysKazan,
+  \paysAstrakhan, \paysCrimee and \paysCosaquesdon}%
+\EU@objCountryConquest{Steppes}{35}%
 %
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
+\EUcurrentperiod{II}%
+\EUobjective{}{Control of Orthodoxy}{\MIN}{10}{50}{%
+  Each diplomatic control (or annexation) of orthodox \MIN. Destroyed
+  countries with all provinces no owned by \RUS count toward this objective}%
+\EUobjective{}{Nat\EUAbbr{ional}\ Territory and \provinceSmolenska}{}{}{40}{%
+  \paysmajeurRussie owns all its national provinces and \provinceSmolenska}%
+\EUobjective{M}{Forward to the \regionBaltique}{}{25}{50}{%
+  \paysmajeurRussie owns and controls a port bordering the \regionBaltique;
+  half-success if a port is only controlled or only owned}%
+\EU@objCountryConquest{Kazan}{35}%
+\EU@objCountryConquest{Astrakhan}{50}%
 %
-\EUobjective2M{No \pays{German Empire}}{}%
-{}{40}{}%
-%
-\EUobjective3{}{Dissolution of \payshanse}{}%
-{}{30}{\payshanse does not exist any more}%
-%
-\EUobjective4{}{Dominum Marii Baltici}{}%
-{}{50}{All provinces touching \regionBaltique belong either to \SUE,
-  \paysbrandebourg or \paysdanemark}%
-%
-\EUobjective5{}{No Polish King}{}%
-{20}{40}{King of \paysmajeur{Pologne} never on the Swedish throne;
-  half-success if \ref{pIII:Union Poland Sweden} does not occur. If \POL is
-  protestant or Supporter of the Orthodoxy, this cannot be chosen}%
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{30}{Each turn of Commercial Domination on the \stz{Baltique}}%
-%
-\EUobjective2{}{Colonisation}{\COL/\TP}%
-{5}{40}{Each \COL/\TP}%
-%
-\EUobjective3{}{\RUS not adjacent to \regionBaltique}{}%
-{}{30}{}%
-%
-\EUobjective4M{Dominum Marii Baltici}{}%
-{}{50}{All provinces touching \regionBaltique belong either to \SUE,
-  \paysbrandebourg or \paysdanemark}%
-%
-\EUobjective5{}{No Polish Absolutism}{}%
-{}{30}{}%
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{40}{Each turn of Commercial Domination on the \stz{Baltique}}%
-%
-\EUobjective2{}{Colonisation}{\COL/\TP}%
-{7}{40}{Each \COL/\TP}%
-%
-\EUobjective3M{Only \provinceNeva lost}{}%
-{}{40}{}%
-%
-\EUobjective4{}{Dominum Marii Baltici}{}%
-{}{40}{All provinces touching \regionBaltique belong either to \SUE,
-  \paysbrandebourg or \paysdanemark}%
-%
-\EUobjective5{}{Polish Succession+\SUE-\FRA}{}%
-{25}{50}{During \ref{pVI:WoPS}, \SUE must either support the Polish King and
-  win (50 \VPs), or prevent a winning \FRA supporting the Polish King (25
-  \VPs). Half-success if the event does not occur}%
-%
-\EUcurrentperiod{VII}
-%
-\EUobjective1{}{\seazone{Baltique} Domination}{turn}%
-{5}{40}{Each turn of Commercial Domination on the \stz{Baltique}}%
-%
-\EUobjective2{}{Colonisation}{\COL/\TP}%
-{10}{40}{Each \COL/\TP}%
-%
-\EUobjective3{}{No provinces lost}{}%
-{}{40}{}%
-%
-\EUobjective4{}{Out of Scandinavia}{prov\EUAbbr{ince}} {15}{50}{Any province
-  not in \regionNorvege, \regionDanemark, \regionFinlande or \regionSuede}%
-%
-\EUobjective5{}{\payspologne still exists}{}%
-{}{40}{}%
-%
-\EUcurrentcountry{Russie} \EUcurrentperiod{I}
-%
-\EUobjective1{}{\payspskov/\paysryazan}{prov\EUAbbr{ince}}%
-{20}{40}{Conquest of \payspskov or \paysryazan}%
-%
-\EUobjective2M{Russian \provinceSmolenska}{}%
-{}{50}{}%
-%
-\EUobjective3{}{No provinces lost}{}%
-{}{25}{}%
-%
-\EUobjective4{}{Conquest of one \terme{Khanate}}{}%
-{}{50}{}%
-%
-\EUobjective5{}{Conquest of \payssteppes}{}%
-{}{35}{}%
-%
-\EUcurrentperiod{II}
-%
-\EUobjective1{}{Control of Orthodoxy}{\MIN}%
-{10}{50}{Each diplomatic control (or annexation) of orthodox \MIN}%
-%
-\EUobjective2{}{Nat\EUAbbr{ional}\ Territory and \provinceSmolenska}{}%
-{}{40}{Possession of all national provinces and \provinceSmolenska}%
-%
-\EUobjective3M{Forward to the \regionBaltique}{}%
-{}{50}{\paysmajeurRussie has a port bordering \regionBaltique}%
-%
-\EUobjective4{}{Conquest of \payskazan}{}%
-{}{35}{}%
-%
-\EUobjective5{}{Conquest of \paysastrakhan}{}%
-{}{50}{}%
-%
-\EUcurrentperiod{III}
-%
-\EUobjective1{}{\RES{Furs} monopoly}{turn}%
-{10}{50}{Each turn of total \RES{Furs} monopoly}%
-%
+\EUcurrentperiod{III}%
+\EU@objMonopolyRES{Furs}{10}{50}%
 % (jcd) I added _total_ monopoly
+% (jym) Removed. total is almost impossible due to the North American
+% furs. Partial is already not completely trivial.
+\EU@objEachAnnexed{Polish}{10}{40}{either \paysmajeurPologne,
+  \paysmajeurLithuanie or \paysUkraine}{}%
+\EU@objEachProvinceList{\provinceNeva, \provinceLivonija and
+  \provinceEstland}{15}{45}{Livonian Annexations}%
+\EU@objEachAnnexed[M]{Crimean}{20}{40}{\paysCrimee}{}%
+\EU@objCountryConquest{Siberie}{35}%
 %
-\EUobjective2{}{Polish Annexations}{prov\EUAbbr{ince}*}%
-{10}{40}{Each province taken in \paysmajeurPologne, \paysmajeurLithuanie,
-  \paysukraine}%
+\EUcurrentperiod{IV}%
+\EU@objMonopolyRES{Furs}{5}{45}%
+\EUobjective{}{National integrity}{}{15}{30}{%
+  Number of Russian national provinces not owned by \paysmajeurRussie; 0 or 1:
+  success; 2: half-success; 3 or more: failure}%
+\EU@objSwedenContained
+\EU@objPorts[M]{20}{50}{Noire}%
+\EUobjective{}{Time of Troubles}{}{15}{30}{%
+  \RUS victorious in \ref{pIV:Times of Troubles}; half-success if the event
+  does not occur}%
 %
-\EUobjective3{}{Livonian Annexations}{prov\EUAbbr{ince}*}%
-{15}{45}{Each province \provinceNeva, \provinceLivonija, \provinceEstland}%
+\EUcurrentperiod{V}%
+\EU@objMonopolyRES{Furs}{5}{35}%
+\EU@objCountryConquest{Astrakhan}{40}%
+\EUobjective{}{Building \ville{Saint-Petersbourg}}{}{}{50}{%
+  Construction of \ville{Saint-Petersbourg} completed}%
+\EU@objPorts{20}{50}{Noire}%
+\EU@objEachCOLTP[in \granderegionAmour or \granderegionBaikal]{%
+  \granderegionAmour/\granderegionBaikal}{10}{30}
 %
-\EUobjective4M{Crimean Annexations}{prov\EUAbbr{ince}}%
-{20}{40}{Each province taken to \payscrimee}%
-%
-\EUobjective5{}{Conquest of \payssiberie}{}%
-{}{35}{}%
-%
-\EUcurrentperiod{IV}
-%
-\EUobjective1{}{\RES{Furs} monopoly}{turn}%
-{5}{45}{Each turn of total \RES{Furs} monopoly}%
-%
-\EUobjective2{}{National integrity}{}%
-{15}{30}{Number of national provinces not Russian: success (0 or 1),
-  half-success (2) else failure}%
-%
-\EUobjective3{}{Sweden contained}{}%
-{20}{40}{Number of Swedish provinces adjacent to \regionBaltique (\regionSuede
-  and \regionFinlande excepted): full success (\leq 3 prov\EUAbbr{inces});
-  half-success (4 prov\EUAbbr{inces}) else failure}%
-%
-% (jcd) Probably remove \regionNorvege too?
-%
-\EUobjective4M{Ports of \region{Noire}}{port}%
-{20}{50}{Each Russian port on \region{Noire}}%
-%
-\EUobjective5{}{Time of Troubles}{}%
-{15}{30}{\RUS victorious in \ref{pIV:Times of Troubles}; half-success if the
-  event does not occur}%
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1{}{\RES{Furs} monopoly}{turn}%
-{5}{35}{Each turn of total \RES{Furs} monopoly}%
-%
-\EUobjective2{}{Destruction of \paysastrakhan}{}%
-{}{40}{}%
-%
-\EUobjective3{}{Building \ville{Saint-Petersbourg}}{}%
-{}{50}{Contruction of \ville{Saint-Petersbourg} completed}%
-%
-\EUobjective4{}{Ports of \region{Noire}}{port}%
-{20}{50}{Each Russian port on \region{Noire}}%
-%
-\EUobjective5{}{\granderegionAmour/\granderegionBaikal}{\COL/\TP}%
-{10}{30}{Each \COL or \TP in \granderegion{Amour} or \granderegion{Baikal}}%
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1{}{\emph{Silk Road}}{\COL/\TP}%
-{10}{40}{Each \COL/\TP in \granderegionAmour, \granderegionBaikal,
-  \granderegionAfghanistan, \granderegionPerse, \continentIndia}%
-%
-\EUobjective2{}{Polish Succession-\FRA-\SUE}{}%
-{}{30}{Polish defeat in \ref{pVI:WoPS}}%
-%
-\EUobjective3{}{Ports of \regionBaltique}{port}%
-{15}{40}{Each port of the \regionBaltique}%
-%
-\EUobjective4M{\payscrimee/\paysmoldavie}{prov\EUAbbr{ince}-4}%
-{15}{50}{Each conquered province of \pays{Crimee} and \pays{Moldavie} above
-  4}%
-%
+\EUcurrentperiod{VI}%
+\EU@objEachCOLTP[in \granderegionAmour, \granderegionBaikal,
+    \granderegionAfghanistan, \granderegionPerse, or
+    \continentIndia]{\emph{Silk Road}}{10}{40}%
+\EUobjective{}{Polish Succession-\FRA-\SUE}{}{}{30}{%
+  \paysPologne has no protector}%
+\EU@objPorts{15}{40}{Baltique}%
+\EU@objEachOwned[M]{\paysCrimee/\paysMoldavie}{15}{50}{either \paysCrimee or
+  \paysMoldavie}{4}%
 % (jcd) Does this mean at least 5 _new_ provinces or at least 5 _owned_
 % provinces?
+% (jym) only _owned_ makes some sense. There are 8 such provinces total.
+\EU@objEachCOL[\granderegionAlaska]{}{10}{30}%
 %
-\EUobjective5{}{\granderegionAlaska}{\COL}%
-{10}{30}{Each \COL in \granderegionAlaska}%
+\EUcurrentperiod{VII}%
+\EU@objEachOwned{\paysGeorgie/\paysPerse}{10}{40}{either \paysGeorgie or
+  \paysPerse}{}%
+\EU@objCountryConquest{Pologne}{50}%
+\EU@objPorts{10}{40}{Baltique}%
+\EU@objCountryConquest[M]{Crimee}{40}%
+\EU@objEachAnnexed{Turkish}{15}{45}{\paysmajeurTurquie}{(excepted former
+  provinces of \paysgeorgie or \paysperse)}%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Pologne}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\EUcurrentperiod{VII}
+\EUcurrentperiod{I}%
+\EU@objSpecificProvince{Smolenska}{40}{Polish \provinceSmolenska}%
+\EUobjective{M}{At most \provinceSmolenska lost}{}{}{40}{%
+  No province other than \provinceSmolenska lost}%
+\EU@objCountryExists{Hongrie}{50}%
+\EU@objCountryExistsNoTUR{Moldavie}{35}%
+\EU@objCountryExistsNoTUR{Valachie}{35}%
 %
-\EUobjective1{}{\paysgeorgie/\paysperse}{prov\EUAbbr{ince}}%
-{10}{40}{Each province of national territory of \paysgeorgie or \paysperse}%
+\EUcurrentperiod{II}%
+\EU@objSpecificProvince[M]{Smolenska}{50}{Polish \provinceSmolenska}%
+\EU@objNoProvincesLost{40}%
+\EU@objCountryExists{Hongrie}{50}%
+\EU@objNoRUSBaltic{40}%
+\EUobjective{}{Eastern expansion}{prov\EUAbbr{ince}-2}{20}{50}{%
+  If \Xcatholique, each province above 2 in Polish Ukraynia is 20\VPs, max 50;
+  if \Xorthodoxe, one \COL in \continentSiberia is a full success}%
 %
-\EUobjective2{}{\payspologne destroyed}{}%
-{}{50}{}%
+\EUcurrentperiod{III}%
+\EU@objEachProvinceList{\provinceKurland, \provinceMemel and
+  \provincePreussen}{20}{50}{Baltic Annexations}%
+\EU@objNoProvincesLost{40}%
+\EUobjective{}{Union of Lublin}{}{15}{30}{%
+  Union of Lublin is in effect; half-success if \ref{pIII:Union Lublin} did
+  not occur}%
+\EU@objNoRUSBaltic{40}%
+\EUobjective{}{Polish Claim to \paysmajeurSuede}{}{20}{40}{%
+  \POL has still its claim to the throne of Sweden (given by \ref{pIII:Union
+    Poland Sweden}); half-success if the event did not occur}%
 %
-\EUobjective3{}{Ports of \regionBaltique}{port}%
-{10}{40}{Each port of the \regionBaltique}%
+\EUcurrentperiod{IV}%
+\EU@objSwedenContained
+\EUobjective{M}{No non-Ukrainian provinces lost}{}{}{40}{%
+  Provinces of \paysUkraine may be lost without hampering the objective}%
+\EUobjective{}{\villeVienne never fell to \TUR}{}{}{40}{%
+  \provinceOsterreich/\ville{Vienne} was never captured by
+  \paysmajeurTurquie since the beginning of the game}%
+\EU@objNoRUSBaltic{40}%
+\EUobjective{}{Union with \paysmajeurSuede}{}{}{50}{%
+  Union between \paysmajeurPologne and \paysmajeurSuede was active at least
+  once since the beginning of the game. This may not be the main objective if
+  it is already fulfilled at the beginning of the period (the Union was or is
+  active)}%
 %
-\EUobjective4M{\payscrimee destroyed}{}%
-{}{40}{}%
-%
-\EUobjective5{}{Turkish provinces}{prov\EUAbbr{ince}*}%
-{15}{45}{Each province taken from \paysmajeurTurquie (excepted national
-  territory of \paysgeorgie or \paysperse)}%
-%
-\EUcurrentcountry{Pologne} \EUcurrentperiod{I}
-%
-\EUobjective1{}{Polish \provinceSmolenska}{}%
-{}{40}{}%
-%
-\EUobjective2M{At most \provinceSmolenska lost}{}%
-{}{40}{}%
-%
-\EUobjective3{}{\payshongrie still exists}{}%
-{}{50}{}%
-%
-\EUobjective4{}{\paysmoldavie exists, not \TUR \VASSAL}{}%
-{}{35}{}%
-%
-\EUobjective5{}{\paysvalachie exists, not \TUR \VASSAL}{}%
-{}{35}{}%
-%
-\EUcurrentperiod{II}
-%
-\EUobjective1M{Polish \provinceSmolenska}{}%
-{}{50}{}%
-%
-\EUobjective2{}{No provinces lost}{}%
-{}{40}{}%
-%
-\EUobjective3{}{\payshongrie still exists}{}%
-{}{50}{}%
-%
-\EUobjective4{}{\RUS not adjacent to \regionBaltique}{}%
-{}{40}{}%
-%
-\EUobjective5{}{Eastern expansion}{prov\EUAbbr{ince}-2}%
-{20}{50}{If not supporter of Orthodoxy, each province above 2 in Polish
-  Ukraynia is 20\VPs; if \Xorthodoxe, one \COL in \continentSiberia is a full
-  success}%
-%
-\EUcurrentperiod{III}
-%
-\EUobjective1{}{Baltic annexations}{prov\EUAbbr{ince}*}%
-{20}{50}{Each of \provinceKurland, \provinceMemel, \provincePreussen owned by
-  \paysmajeurPologne brings 20\VPs}%
-%
-\EUobjective2{}{No provinces lost}{}%
-{}{40}{}%
-%
-\EUobjective3{}{Union of Lublin}{}%
-{15}{30}{\ref{pIII:Union Lublin} is in effect; half-success if it does not
-  occur}%
-%
-\EUobjective4{}{\RUS not adjacent to \regionBaltique}{}%
-{}{40}{}%
-%
-\EUobjective5{}{Polish Claim to \paysmajeurSuede}{}%
-{20}{40}{\POL has still its claim to the throne of Sweden (given by
-  \ref{pIII:Union Poland Sweden}); half-success if the event does not occur}%
-%
-\EUcurrentperiod{IV}
-%
-\EUobjective1{}{Sweden contained}{}%
-{20}{40}{Number of Swedish provinces adjacent to \regionBaltique (\regionSuede
-  and \regionFinlande excepted): full success (\leq 3 prov\EUAbbr{ince});
-  half-success (4 prov\EUAbbr{inces}) else failure}%
-%
-\EUobjective2M{No non-Ukrainian provinces lost}{}%
-{}{40}{}%
-%
-\EUobjective3{}{\villeVienne never fell to \TUR}{}%
-{}{40}{\provinceOsterreich/\ville{Vienne} never captured by
-  \paysmajeur{Turquie}}%
-%
-\EUobjective4{}{\RUS not adjacent to \regionBaltique}{}%
-{}{40}{}%
-%
-% (jcd) this objective was the 6th one!  \EUobjective4{}{Industrial
-% development}{}%
-% {}{35}{\FTI, \DTI, and \MNU at maximum level}%
-%
-\EUobjective5{}{Union with \paysmajeurSuede}{}%
-{}{50}{Union between these two countries has taken place during the period;
-  not a main objective if already effective at the beginning of the period}%
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1{}{Sweden contained}{}%
-{20}{40}{Number of Swedish provinces adjacent to \regionBaltique (\regionSuede
-  and \regionFinlande excepted): full success (\leq 3 prov\EUAbbr{ince});
-  half-success (4 prov\EUAbbr{inces}) else failure}%
-%
-\EUobjective2{}{Few nat\EUAbbr{ional} prov\EUAbbr{inces} lost}{}%
-{20}{40}{No provinces of the Polish or Lithuanian national territory lost:
-  full sucess, half-success if 1, else failure}%
-%
+\EUcurrentperiod{V}%
+\EU@objSwedenContained
+\EUobjective{}{Few nat\EUAbbr{ional} prov\EUAbbr{inces} lost}{}{20}{40}{%
+  Number of provinces of the Polish or Lithuanian national territory lost;
+  0: full sucess; 1: half-success;2 or more: failure. Only check provinces
+  owned at the beginning of the period, not provinces annexed (and then lost
+  again) during the period}%
 % \EUobjective3M{\villeVienne never fell to \TUR}{}%
 % {}{50}{\provinceOsterreich/\ville{Vienne} never captured by
 %   \paysmajeur{Turquie}}%
-\EUobjective3{}{Absolutism}{}%
-{}{40}{Absolutism established}%
-%
-\EUobjective4{}{\RUS not adjacent to \regionBaltique}{}%
-{}{40}{}%
-%
-\EUobjective5M{\TUR in \payshongrie}{prov\EUAbbr{ince}}%
-{50-10}{50}{50 \VPs minus 10 \VPs per Turkish province in \payshongrie plus
-  20\VPs if \villeVienne never fell to \TUR}%
-%
-\EUcurrentcountry{Turquie} \EUcurrentperiod{I}
-%
-\EUobjective1{}{\paysdamas/\paysegypte conquered}{}%
-{}{35}{Both countries must be conquered}%
-%
-\EUobjective2{}{Monopoly in \ctz{Turquie}}{}%
-{}{30}{}%
-%
-\EUobjective3{}{French alliance}{turn}%
-{10}{30}{Each turn of \emph{defensive} alliance with \paysmajeurFrance}%
-%
-\EUobjective4{}{\provinceRhodos conquered}{}%
-{}{30}{}%
-%
-\EUobjective5{}{\paysvalachie/\paysmoldavie}{}%
-{}{25}{\paysvalachie and \paysmoldavie are either \VASSAL of \TUR or
-  conquered}%
-%
-\EUcurrentperiod{II}
-%
-\EUobjective1{}{\payshongrie destroyed}{}%
-{}{40}{}%
-%
-\EUobjective2{}{\villeVienne fallen}{}%
-{}{50}{\provinceOsterreich/\villeVienne was captured this period by \TUR}%
-%
-\EUobjective3{}{\paysastrakhan exists}{}%
-{}{35}{}%
-%
-\EUobjective4{}{\provinceRhodos conquered}{}%
-{}{35}{}%
-%
-\EUobjective5M{\RES{P\EUAbbr{roducts of} Orient} or \RES{Spices}}{\COL/\TP}%
-{10}{40}{Each \COL or \TP producing \POSPICE}%
-%
-\EUcurrentperiod{III}
-%
-\EUobjective1M{War or Peace in \payshongrie}{}%
-{}{35}{Either there is no more than one turn of war between \AUSaus and \TUR,
-  or at least 9 provinces of \payshongrie are Turkish}%
-%
-\EUobjective2{}{\villeVienne fallen}{}%
-{}{40}{\provinceOsterreich/\villeVienne was captured this period by \TUR}%
-%
-\EUobjective3{}{\paysastrakhan exists}{}%
-{}{35}{}%
-%
-\EUobjective4{}{Med\EUAbbr{iterranean} Islands}{prov\EUAbbr{ince}*}%
-{20}{50}{Each following province owned by \TUR is 20\VPs: \provinceCyclades
-  (10\VPs only), \provinceKreta, \provinceMalta, \provinceChypre}%
-%
-\EUobjective5{}{\paysvalachie/\paysmoldavie}{}%
-{}{25}{\paysvalachie and \paysmoldavie are either \VASSAL of \TUR or
-  conquered}%
-%
-\EUcurrentperiod{IV}
-%
-\EUobjective1{}{Peace in \payshongrie}{}%
-{}{35}{No more than two turns of war between \AUSaus and \TUR}%
-%
-\EUobjective2{}{Barbary Coast}{\Presidio}%
-{40-10}{40}{Remove 10 \VPs for each \Presidio on the Barbary coast}%
-%
-\EUobjective3{}{\payscrimee intact}{}%
-{20/30}{40}{If the number of provinces in \payscrimee is 6, success; for 5, 30
-  \VPs, for 4, 20 \VPs; 3 or less is a failure}%
-%
-\EUobjective4{}{Med\EUAbbr{iterranean} Islands}{prov\EUAbbr{ince}*}%
-{10}{40}{Each following province owned by \TUR is 10\VPs: \provinceCorfou,
-  \provinceKreta, \provinceMalta, \provinceChypre}%
-%
-\EUobjective5{}{Trade Monopoly}{zone}%
-{15}{45}{Each Commercial \terme{Monopoly} in \CTZ/\STZ}
-%
-\EUcurrentperiod{V}
-%
-\EUobjective1{}{\payshongrie}{prov\EUAbbr{ince}}%
-{8}{50}{Each Turkish province in \payshongrie}%
-%
-\EUobjective2M{\villeVienne fallen}{}%
-{}{50}{\provinceOsterreich/\villeVienne was captured this period by \TUR}%
-%
-\EUobjective3{}{\payscrimee intact*}{}%
-{20/30}{40}{If the number of provinces in \payscrimee is 5 or 6, success; for
-  4, 30 \VPs, for 3, 20 \VPs; 2 or less is a failure}%
-%
-\EUobjective4{}{\paysastrakhan exists}{}%
-{}{30}{}%
-%
-\EUobjective5{}{\RES{P\EUAbbr{roducts of} Orient} or \RES{Spices}}{\COL/\TP}%
-{6}{30}{Each \COL or \TP producing \POSPICE}%
-%
-% (jcd) was only TP. I readded \COL
-%
-\EUcurrentperiod{VI}
-%
-\EUobjective1{}{\payshongrie or \paystransylvanie}{}%
-{}{40}{If no more Turkish provinces in \payshongrie, \paystransylvanie must
-  exist}%
-%
-% (jcd) and must be on TUR track ?
-%
-\EUobjective2{}{Barbary Coast}{\Presidio}%
-{50-10}{50}{Remove 10 \VPs for each \Presidio on the Barbary coast}%
-%
-\EUobjective3M{\payscrimee intact*}{}%
-{20/30}{40}{If the number of provinces in \payscrimee is \geq 4, success; for
-  3, 30 \VPs, for 2, 20 \VPs; less is a failure}%
-%
-\EUobjective4{}{\regionBalkans}{prov\EUAbbr{ince}}%
-{10}{45}{}%
-%
-\EUobjective5{}{\RES{P\EUAbbr{roducts of} Orient} or \RES{Spices}}{\COL/\TP}%
-{10}{30}{Each \COL or \TP producing \POSPICE}%
-%
-\EUcurrentperiod{VII}
-%
-\EUobjective1{}{\paysmamelouks \VASSAL or annexed}{}%
-{}{30}{}%
-%
-\EUobjective2{}{Turkish Reforms}{reform}%
-{5}{50}{Each Success in Reforms since the beginning}%
-%
-\EUobjective3M{\payscrimee exists}{}%
-{}{50}{}%
-%
-\EUobjective4{}{\regionBalkans}{prov\EUAbbr{ince}-4}%
-{15}{45}{}%
-%
-\EUobjective5{}{\paysgeorgie/\paysperse}{prov\EUAbbr{ince}-3}%
-{15}{---}{Each province of national territory of \pays{Georgie} or
-  \pays{Perse} above 3}%
-%
-\EUcurrentcountry{Venise} \EUcurrentperiod{I}
-%
-\EUobjective1{}{Italia e San Marco}{\MIN}%
-{15}{50}{Each minor in \EG or better (2 \pays{naples}'s provinces=1 minor)}%
-%
-\EUobjective2{}{\provinceHellas/\provinceMoreas}{prov\EUAbbr{ince}}%
-{20}{40}{}%
-%
-\EUobjective3{}{Balkans}{prov\EUAbbr{ince}}%
-{10}{30}{Per Venetian province in \regionBalkans (except
-  \provinceHellas/\provinceMoreas)}%
-%
-\EUobjective4M{\paysmamelouks not conquered}{}%
-{}{50}{}%
-%
-\EUobjective5{}{Orient income\geq 200\ducats}{}%
-{}{40}{Orient income is from \CCs{Grand Orient}, convoy of \villeIzmir,
-  alliance with \paysaden, \paysoman or \paysgujarat}%
-%
-\EUcurrentperiod{II}
-%
-\EUobjective1{}{Italia e San Marco}{\MIN}%
-{10}{50}{Each minor in \EG or better (2 \pays{naples}'s provinces=1 minor)}%
-%
-\EUobjective2{}{\provinceMoreas}{}%
-{}{40}{}%
-%
-\EUobjective3{}{Balkans}{prov\EUAbbr{ince}}%
-{10}{30}{Per Venetian province in \regionBalkans (except
-  \provinceHellas/\provinceMoreas)}%
-%
-\EUobjective4M{No \TUR islands}{}%
-{}{50}{\provinceRhodos does not count for this objective}%
-%
-\EUobjective5{}{Orient income\geq 250\ducats}{}%
-{}{30}{Orient income is from \CCs{Grand Orient}, convoy of \villeIzmir,
-  alliance with \paysaden, \paysoman or \paysgujarat}%
-%
-\EUcurrentperiod{III}
-%
-\EUobjective1{}{\CCs{Mediterranee}}{}%
-{}{40}{\paysmajeurVenise controls the \CCs{Mediterranee}}%
-%
-\EUobjective2{}{\regionBalkans/Barbary}{\Presidio}%
-{10}{30}{Each Venetian \Presidio (in \terme{Barbaresques}), or \regionBalkans
-  (not in owned province)}%
-%
-\EUobjective3{}{Balkans}{prov\EUAbbr{ince}}%
-{15}{45}{Per Venetian province in \regionBalkans}%
-%
-\EUobjective4M{Non-\TUR islands}{prov\EUAbbr{ince}-2*}%
-{20}{50}{\provinceChypre, \provinceKreta, \provinceCyclades, \provinceCorfu,
-  \provinceMalta, \provinceRhodos}%
-%
+\EUobjective{}{Absolutism}{}{}{40}{Absolutism established}%
+\EU@objNoRUSBaltic{40}%
+\EU@objNoTURHungaryFull[M]{50}{10}{ plus 20\VPs if \villeVienne was never
+  controlled by \paysmajeurTurquie since the beginning of the game}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Turquie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\EUcurrentperiod{I}%
+\EUobjective{}{Mamluk Conquest}{}{}{35}{%
+  Both \paysDamas and \paysEgypte have been destroyed}%
+\EUobjective{}{Monopoly in \ctz{Turquie}}{}{}{30}{}%
+\EU@objAlliance{10}{30}{defensive}{\paysmajeurFrance}{French alliance}%
+\EU@objRhodos{30}%
+\EU@objValMol{25}%
+%
+\EUcurrentperiod{II}%
+\EU@objCountryDestroyed{Hongrie}{40}{Collapse}%
+\EU@objViennaFallen{50}%
+\EU@objCountryExists{Astrakhan}{35}%
+\EU@objRhodos{35}%
+\EU@objSpiceTUR[M]{10}{40}%
+%
+\EUcurrentperiod{III}%
+\EUobjective{M}{War or Peace in \payshongrie}{}{}{35}{%
+  Either there is no more than one turn of war between \AUSaus and
+  \paysmajeurTurquie, or at least 9 provinces of \payshongrie are owned by
+  \paysmajeurTurquie (whoever controls them)}%
+\EU@objViennaFallen{40}%
+\EU@objCountryExists{Astrakhan}{35}%
+\EUobjective{}{Med\EUAbbr{iterranean} Islands}{prov\EUAbbr{ince}*}{20}{50}{%
+  \EU@objEachProvinceText[\provinceKreta, \provinceMalta, and
+  \provinceChypre]; plus 10\VPs if \provinceCyclades is owned by
+  \paysmajeurTurquie}%
+\EU@objValMol{25}%
+%
+\EUcurrentperiod{IV}%
+\EUobjective{}{Peace in \payshongrie}{}{}{35}{%
+  No more than two turns of war between \AUSaus and \TUR ; interventions do
+  not count}%
+\EU@objPresidiosTUR{40}{10}%
+\EU@objCrimeaTUR{6}%
+\EU@objEachProvinceList{\provinceCorfou, \provinceKreta, \provinceMalta and
+  \provinceChypre}{10}{40}{Med\EUAbbr{iterranean} Islands}%
+\EU@objMonopolyZone{15}{45}%
+%
+\EUcurrentperiod{V}%
+\EUobjective{}{\paysHongrie}{prov\EUAbbr{ince}}{8}{50}{%
+  Each province of \paysHongrie owned by \paysmajeurTurquie, whoever controls
+  it}%
+\EU@objViennaFallen[M]{50}%
+\EU@objCrimeaTUR{5}%
+\EU@objCountryExists{Astrakhan}{30}%
+\EU@objSpiceTUR{6}{30}%
+%
+\EUcurrentperiod{VI}%
+\EUobjective{}{\paysHongrie or \paysTransylvanie}{}{}{40}{%
+  Either \paysmajeurTurquie owns at least one province of \paysHongrie; or
+  \paysTransylvanie exists and is on the Turkish Diplomatic track}%
+\EU@objPresidiosTUR{50}{10}%
+\EU@objCrimeaTUR[M]{4}%
+\EU@objBalkansTUR{10}{45}{}%
+\EU@objSpiceTUR{10}{30}%
+%
+\EUcurrentperiod{VII}%
+\EUobjective{}{\paysMamelouks \VASSAL or annexed}{}{}{30}{%
+  \paysMamelouks either does not exists (including if \ref{pVII:Mameluks
+    Revolt} did not happen); or is \VASSAL of \paysmajeurTurquie}%
+\EUobjective{}{Turkish Reforms}{reform}{5}{50}{%
+  Each successful Reform since the beginning of the game
+  (\ref{chSpecific:Turkey:Reform})}%
+\EU@objCountryExists[M]{Crimee}{50}%
+\EU@objBalkansTUR{15}{45}{4}%
+\EUobjective{}{\paysgeorgie/\paysperse}{prov\EUAbbr{ince}-3}{15}{50}{%
+  Each province of either \pays{Georgie} or \pays{Perse} owned by
+  \paysmajeurTurquie above 3, whoever controls it}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Venise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\EUcurrentperiod{I}%
+\EU@objItaliSanMarco{15}{50}%
+\EU@objEachProvinceList{\provinceHellas and
+  \provinceMoreas}{20}{40}{\provinceHellas/\provinceMoreas}%
+\EU@objBalkansVEN{10}{30}{\provinceHellas/\provinceMoreas}%
+\EU@objCountryExists[M]{Mamelouks}{50}%
+\EU@objOrientIncome{200}{40}%
+%
+\EUcurrentperiod{II}%
+\EU@objItaliSanMarco{10}{50}%
+\EU@objSpecificProvince{Moreas}{40}{\provinceMoreas}%
+\EU@objBalkansVEN{10}{30}{\provinceMoreas}%
+\EUobjective{M}{No \TUR islands}{}{}{50}{%
+  No Mediterranean Island is owned by \paysmajeurTurquie (except
+  \provinceRhodos)}%
+\EU@objOrientIncome{250}{30}%
+%
+\EUcurrentperiod{III}%
+\EU@objTradeCentre{Mediterranee}{40}%
+\EUobjective{}{\regionBalkans/Barbary}{\Presidio}{10}{30}{%
+  Each Venetian \Presidio in \Barbaresques, or \regionBalkans}%
+\EU@objBalkansVEN{15}{45}{}%
+\EU@objEachProvinceListAbove[M]{\provinceChypre, \provinceKreta,
+  \provinceCyclades, \provinceCorfu, \provinceMalta,
+  \provinceRhodos}{20}{50}{Islands}{2}
 % (jcd) I added Rhodos here. Won't hurt.
+\EU@objOrientIncome{300}{30}%
 %
-\EUobjective5{}{Orient income\geq 300\ducats}{}%
-{}{30}{Orient income is from \CCs{Grand Orient}, convoy of \villeIzmir,
-  alliance with \paysaden, \paysoman or \paysgujarat}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EUcurrentcountry{Portugal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\EUcurrentcountry{Portugal} \EUcurrentperiod{I}
-%
-\EUobjective1{}{Indian city}{}%
-{20}{40}{\COL on a city of the coast of \continentIndia; half-success for
-  \granderegionCeylan}%
-%
-\EUobjective2{}{\paysmaroc \VASSAL}{turn}%
-{10}{40}{}%
-%
-\EUobjective3{}{Annexation in \paysmaroc}{}%
-{}{30}{}%
-%
-\EUobjective4{}{Trade monopolies\geq 2}{}%
-{}{30}{Any \CTZ/\STZ monopoly}%
-%
-\EUobjective5M{Colonisation}{}%
-{}{50}{No more than 2 \COL/\TP in \continentAsia (producing \POSPICE) of
-  country without treaty and at least one \COL in \continentBrazil}%
-%
+\EUcurrentperiod{I}%
+\EUobjective{}{Indian city}{}{20}{40}{%
+  \paysmajeurPortugal owns a \COL on a city of the coast of \continentIndia;
+  half-success if it is in \granderegionCeylan}%
+\EU@objMarocVassal{10}{40}%
+\EU@objMarocAnnexion{30}%
+\EU@objMonopolyPOR{2}{30}%
+\EUobjective{M}{Colonisation}{}{}{50}{%
+  \paysmajeurPortugal has at least one \COL in \continentBrazil; \textbf{and}
+  there is no more than 2 \COL/\TP producing \POSPICE owned by countries not
+  in \dipAT with \paysmajeurPortugal (this includes \COL/\TP of other \MAJ)}
 % (jcd) Should be split in two (objectives about Morocco can be merged)
+% (jym) No. For Morocco, there is a choice between diplo and military. For
+% colonisation, there is no choice between America and India.
 %
-\EUcurrentperiod{II}
-%
-\EUobjective1M{\TP in \payschine and \paysjapon}{}%
-{}{50}{}%
-%
-\EUobjective2{}{\paysmaroc \VASSAL}{turn}%
-{10}{40}{}%
-%
-\EUobjective3{}{Annexation in \paysmaroc}{}%
-{}{30}{}%
-%
-\EUobjective4{}{Trade monopolies\geq 3}{}%
-{}{30}{Any \CTZ/\STZ monopoly}%
-%
-\EUobjective5{}{Colonisation}{}%
-{}{50}{No non-portuguese \TP (or with \dipAT) in Asia (producing \POSPICE),
-  excepted in \granderegion{Philippines}, and excepted Chinese and Japanese
-  \TP}%
+\EUcurrentperiod{II}%
+\EUobjective{M}{\TP in \paysChine and \paysJapon}{}{}{50}{%
+  \paysmajeurPortugal has a \TP both in \paysChine and in \paysJapon}%
+\EU@objMarocVassal{10}{40}%
+\EU@objMarocAnnexion{30}%
+\EU@objMonopolyPOR{3}{30}%
+\EUobjective{}{Orient Trade}{}{}{50}{%
+  There is no non-portuguese \COL/\TP in Asia (producing \POSPICE); excepted
+  in \granderegion{Philippines}, and excepted establishments belonging to
+  countries in \dipAT with \paysmajeurPortugal, \paysChine or \paysJapon}%
+
+\makeatother
 
 % Local Variables:
 % fill-column: 78

@@ -1143,6 +1143,34 @@
     \GTitem{Each turn, roll 1d10\textrightarrow number of \HOL \TradeFLEET to be placed by\\ \VEN [TBD?].}
     \GTitem{1-2 none ; 3-5 one ; 6-8 two; 9-10 three (1 in Mediterranean Sea).}
   }
+  \helpBox{orientincome}{Orient Income}{
+    \GTcontent[eastpoint]{
+      \newlength{\OIboxlength}\setlength{\OIboxlength}{1cm}
+      % 1cm is miraculously correct! It should actually depend on
+      % \linewidth or something similar.
+      % 
+      % I don't know why the table background isn't white.
+      % Or how to put pII/pIII halfway between both their lines.
+      \begin{tabular}{c||p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}}
+        p\period{I} & T1: & T2: & T3: & T4: & T5: & T6: \\
+        \hline
+        p\period{II} & T7: & T8: & T9: & T10: & \multicolumn{2}{l}{Total
+          p\period{I}:} \\
+        \hline
+        & T11: & T12: & T13: & T14: & \multicolumn{2}{l}{Total
+          p\period{II}:}\\
+        \hline
+        p\period{III} & T15: & T16: & T17: & T18: & T19: & T20:\\
+        \hline
+        & T21: & T22: & T23: & T24: & T25: & Tot:\\
+      \end{tabular}
+    }
+    \GTlegend{\CCs{Grand Orient}, \CCs{Tempete}, convoys of \bazar{Izmir}
+      or \terme{East Indies}, resources exploited with \dipAT, \COL/\TP
+      producing \RES{PO}, \RES{Spice} or \RES{Silk}, \TradeFLEET in
+      \CCs{Tempete}.}
+    \GTdecorate
+  }
   \simpleMarkerBox[period]{doctrine}{Italia e San Marco}{5cm}\null
 }
 

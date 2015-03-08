@@ -679,25 +679,47 @@
 
 %%%% Objectives
 %%% Setters
+\newcounter{EU@obj@num}
 \def\EUcurrentcountry#1{\gdef\EUcurrcoun{#1}}
-\def\EUcurrentperiod#1{\gdef\EUcurrper{#1}}
-\def\EUobjective#1#2#3#4#5#6#7{% Num letters short score letters desc
+\def\EUcurrentperiod#1{\gdef\EUcurrper{#1}\setcounter{EU@obj@num}{0}}
+% \def\EUobjective#1#2#3#4#5#6#7{% Num letters short per score max desc
+%   \ifx\relax#2\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@letters}{#2}%
+%   \fi%
+%   \ifx\relax#3\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@short}{#3}%
+%   \fi%
+%   \ifx\relax#4\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@per}{#4}%
+%   \fi%
+%   \ifx\relax#5\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@score}{#5}%
+%   \fi%
+%   \ifx\relax#6\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@max}{#6}%
+%   \fi%
+%   \ifx\relax#7\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@desc}{#7}%
+%   \fi%
+% }
+\def\EUobjective#1#2#3#4#5#6{% letters short per score max desc
+  \stepcounter{EU@obj@num}%
+  \ifx\relax#1\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @letters}{#1}%
+  \fi%
   \ifx\relax#2\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@letters}{#2}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @short}{#2}%
   \fi%
   \ifx\relax#3\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@short}{#3}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @per}{#3}%
   \fi%
   \ifx\relax#4\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@per}{#4}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @score}{#4}%
   \fi%
   \ifx\relax#5\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@score}{#5}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @max}{#5}%
   \fi%
   \ifx\relax#6\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@max}{#6}%
-  \fi%
-  \ifx\relax#7\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@desc}{#7}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @desc}{#6}%
   \fi%
 }
