@@ -343,14 +343,14 @@ CURRENTDIR(/ressource.eps)! include
 resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse}forall
 
 % tordesillas reminder: shared areas
-(img:tordesillas) (amazonia)  tordesillas
-(img:tordesillas) (minasgerais)  tordesillas
+% America
+(img:tordesillas) (amazonia)  tordesillasdown
+(img:tordesillas) (minasgerais)  tordesillasdown
+(img:tordesillas) (guyana)  tordesillasdown
+% Asia
 (img:tordesillas) (philippines)  tordesillasdown
-(img:chineespagne) (philippines)  tordesillasup
-%(img:tordesillas) (philippines)  tordesillas
 (img:tordesillas) (kamchatka)  tordesillas
 (img:tordesillas) (formose)  tordesillas
-(img:tordesillas) (guyana)  tordesillas
 % China
 (img:tordesillas) (mandchourie)  tordesillasdown
 (img:tordesillas) (pekin)  tordesillasdown
@@ -365,9 +365,28 @@ resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse
 (img:portugal) (recife)  tordesillas
 (img:portugal) (rio)  tordesillas
 
+% Manilla Galleon reminder
+(img:chineespagne) (philippines)  tordesillasup
+
 % Nerchinsk reminder
 (img:protochine) (amour) tordesillas
 (img:protochine) (baikal) tordesillas
+
+% Spanish World reminder
+(img:protoespagne) (chichimeca) tordesillas
+(img:protoespagne) (azteca) tordesillasup
+(img:protoespagne) (yucatan) tordesillas
+(img:protoespagne) (panama) tordesillas
+(img:protoespagne) (venezuela) tordesillas
+(img:protoespagne) (ecuador) tordesillas
+(img:protoespagne) (guyana) tordesillasup
+(img:protoespagne) (amazonia) tordesillasup
+(img:protoespagne) (inca) 10 tordesillasoffset
+(img:protoespagne) (minasgerais) tordesillasup
+(img:protoespagne) (paraguay) tordesillas
+(img:protoespagne) (chili) tordesillas
+(img:protoespagne) (plata) tordesillas
+(img:protoespagne) (patagonia) tordesillas
 
 % --- [BLP] ---
 % Caraibes reminder.
@@ -375,7 +394,6 @@ resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse
 (img:caraibes) (cuba) tordesillas
 (img:caraibes) (haiti) tordesillas
 (img:caraibes) (floride) tordesillas
-
 
 % ROTW minor ownership/interest. Often may use the natives in the area.
 % ownership if valid for all game.
@@ -385,7 +403,7 @@ resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse
 % Zanzibar in noms.utf
 (img:aden) (aden) tordesillas % Aden has a COL in Aden
 (img:protoaceh) (sumatra) tordesillas % Aceh may be anywhere in Sumatra
-(img:protoazteque) (azteca) tordesillas
+(img:protoazteque) (azteca) tordesillasdown
 % China
 (img:chine) (pekin) tordesillasup
 (img:chine) (shangai) tordesillasup
