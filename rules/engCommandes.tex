@@ -465,3 +465,13 @@
  \fontencoding{T1}\selectfont%
 }
 % A-Lịch-Sơn Đắc-Lộ
+
+% diagonal strike adapted from
+% http://tex.stackexchange.com/questions/20643/diagonal-strikeout-starting-too-low-and-ending-too-high
+\newcommand{\hcancel}[2][black]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#2};
+        \draw[#1] (tocancel.south west) -- (tocancel.north east);
+    }%
+}%
+

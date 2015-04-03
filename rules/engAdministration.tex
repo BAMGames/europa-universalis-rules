@@ -516,25 +516,85 @@ the same total amount, distributed as wanted among all the following turns.
 amount of that loan, for all the turns between the current one (excluded) and
 the last turn of the loan (included).
 
-\begin{exemple}[Simple loan]
-  At turn 1, \FRA contracts an International Loan of 100\ducats. Thus, it
-  writes 100\ducats in \lignebudget{New International loan} of turn 1 (new
-  money), 100\ducats in \lignebudget{International loans refunds} of turn 4
-  (refund in 3 turns) and 10\ducats in \lignebudget{International loans
-    interests} of turns 2, 3 and 4.
+\begin{exemple}[Simple loan: contracting the loan]
+  At turn 1 (during the Budget phase), \FRA contracts an International Loan of
+  100\ducats. As per \ref{chBudget:Budget:I. Loans}, it writes 100\ducats in
+  \lignebudget{New International loan} of turn 1 (new money), 100\ducats in
+  \lignebudget{International loans refunds} of turn 4 (refund in 3 turns) and
+  10\ducats in \lignebudget{International loans interests} of turns 2, 3 and
+  4. The loan \EcoRS of \FRA is:\\
+  \begin{tabular}{|l||r|r|r|r|r|}
+    \hline
+    Turn & 1 & 2 & 3 & 4 & 5\\
+    \hline
+    C1 (new) & 100 & & & &\\
+    \hline
+    C2 (interest) & & 10 & 10 & 10 &\\
+    \hline
+    C3 (refund) & & & & 100 &\\
+    \hline
+  \end{tabular}
+\end{exemple}
 
-  At turn 2, \FRA decides to refund 40\ducats of this loan. Thus, it write 40
-  in \lignebudget{International loans refunds} of turn 2 and decrease
-  \lignebudget{International loans refunds} of turn 4 by the same amount
-  (leaving 60). Since the loan is still ongoing, the interest are not changed.
+\begin{exemple}[Simple loan (cont.): partial refund]
+  At turn 2 (during the Administrative phase), \FRA decides to refund
+  40\ducats of this loan. Thus, it write 40 in \lignebudget{International
+    loans refunds} of turn 2 and decrease \lignebudget{International loans
+    refunds} of turn 4 by the same amount (leaving 60). Since the loan is
+  still ongoing, the interest are not changed. The loan \EcoRS is now (with
+  changes in red):\\
+  \begin{tabular}{|l||r|r|r|r|r|}
+    \hline
+    Turn & 1 & 2 & 3 & 4 & 5\\
+    \hline
+    C1 (new) & 100 & & & &\\
+    \hline
+    C2 (interest) & & 10 & 10 & 10 &\\
+    \hline
+    C3 (refund) & & \color{red}{40} & & \hcancel[red]{100}\color{red}{60}&\\
+    \hline
+  \end{tabular}\\
+  Note that the interests do not decrease if the capital does not reach 0.
+\end{exemple}
 
-  At turn 3, \FRA decides to refund the last 60\ducats of the loan. Thus, it
-  writes 60 in \lignebudget{International loans refunds} of turn 3 and
-  decrease \lignebudget{International loans refunds} of turn 4 by the same
-  amount. Since this amount reaches 0\ducats, the loan has been entirely
-  refunded and no more interests shall be payed. Thus, \FRA erases
+\begin{exemple}[Simple loan (cont.): term]
+  Suppose that \FRA does not refund its loan at turn 3. Then, at turn 4 its
+  loan \EcoRS is still:\\
+  \begin{tabular}{|l||r|r|r|r|r|}
+    \hline
+    Turn & 1 & 2 & 3 & 4 & 5\\
+    \hline
+    C1 (new) & 100 & & & &\\
+    \hline
+    C2 (interest) & & 10 & 10 & 10 &\\
+    \hline
+    C3 (refund) & & 40 & & \hcancel{100}60 &\\
+    \hline
+  \end{tabular}\\
+  Thus, \FRA has no choice and must refund now the 60\ducats of capital still
+  due (in addition to the 10\ducats of interests).
+\end{exemple}
+
+\begin{exemple}[Simple loan (cont.): complete refund]
+  Suppose now that at turn 3, \FRA decides to refund the last 60\ducats of the
+  loan. Thus, it writes 60 in \lignebudget{International loans refunds} of
+  turn 3 and decrease \lignebudget{International loans refunds} of turn 4 by
+  the same amount. Since this amount reaches 0\ducats, the loan has been
+  entirely refunded and no more interests shall be payed. Thus, \FRA erases
   \lignebudget{International loans interests} for turn 4 only (all the turns
-  between 3 excluded and 4 included).
+  between 3 excluded and 4 included). The loan \EcoRS looks like:\\
+  \begin{tabular}{|l||r|r|r|r|r|}
+    \hline
+    Turn & 1 & 2 & 3 & 4 & 5\\
+    \hline
+    C1 (new) & 100 & & & &\\
+    \hline
+    C2 (interest) & & 10 & 10 & \hcancel[red]{10}\color{red}{0} &\\
+    \hline
+    C3 (refund) & & 40 & \color{red}{60} &
+    \hcancel{100}\hcancel[red]{60}\color{red}{0} &\\
+    \hline
+  \end{tabular}\\
 
   Note that interest must be payed on the turn where the capital is
   refunded. Note also that if \FRA did not remember the initial amount of the
@@ -544,36 +604,79 @@ the last turn of the loan (included).
 \end{exemple}
 
 \begin{designnote}
-  Most practical cases fall in the previous example. The following example is
+  Most practical cases fall in the previous examples. The following example is
   an extreme case that almost never happens.
 \end{designnote}
 
-\begin{exemple}[Double loan]
+\begin{exemple}[Double loan: contracting the loans]
   At turn 1, \POL contracts a 50\ducats International Loan and at turn 2
   another 60\ducats one. Thus, it's loan \EcoRS is as follows:\\
-  \begin{itemize}
-  \item \lignebudget{International loans refunds}: 50\ducats at turn 4 and
-    60\ducats at turn 5 (mandatory refunds of the two loans).
-  \item \lignebudget{International loans interests}: 5\ducats at turn 2
-    (interest of first loan), 11\ducats at turn 3 and 4 (both loans are
-    ongoing) and 6\ducats at turn 5 (interests of the second loan).
-  \end{itemize}
+  \begin{tabular}{|l||r|r|r|r|r|}
+    \hline
+    Turn & 1 & 2 & 3 & 4 & 5\\
+    \hline
+    C1 (new) & 50 & 60 & & &\\
+    \hline
+    C2 (interest) & & 5 & \hcancel{5}11 & \hcancel{5}11 & 6\\
+    \hline
+    C3 (refund) & & & & 50 & 60\\
+    \hline
+  \end{tabular}
+\end{exemple}
+
+\begin{exemple}[Double loan (cont.): partial refund]
   At turn 3, \POL decides to refund 60\ducats of international loans. Thus, it
   writes 60 in \lignebudget{International loans refunds} of turn 3. \POL now
   has to decrease the amount of ongoing loans (that is,
   \lignebudget{International loans refunds} of future turns) by 60. It may
   choose to either refund the first loan and part of the second, or refund the
-  second, or refund part of both (probably not the best solution).
-
-  \POL choose to refund the second loan. This will remove more interests (two
+  second, or refund part of both (probably not the best solution). \POL
+  chooses to refund the second loan. This will remove more interests (two
   turns), but also means that the first loan will have to be refunded at turn
   4.
-  
-  Thus, \POL set \lignebudget{International loans refunds} of turn 5 to
+
+  Thus, \POL sets \lignebudget{International loans refunds} of turn 5 to
   0. This is a 60\ducats decrease, hence no other action is needed on that
   line. Since a loan has be entirely refunded (set to 0), its interests also
-  have to be removed. Thus, \POL remove 6 from \lignebudget{International
-    loans interests} of turns 4 and 5 (between now and the term of the loan).
+  have to be removed. Thus, \POL removes 6 from \lignebudget{International
+    loans interests} of turns 4 and 5 (between now and the term of the
+  loan). The loan \EcoRS is:\\
+  \begin{tabular}{|l||r|r|r|r|r|}
+    \hline
+    Turn & 1 & 2 & 3 & 4 & 5\\
+    \hline
+    C1 (new) & 50 & 60 & & &\\
+    \hline
+    C2 (interest) & & 5 & \hcancel{5}11 &
+    \hcancel{5}\hcancel[red]{11}\color{red}{5} & \hcancel[red]{6}\\
+    \hline
+    C3 (refund) & & & \color{red}{60} & 50 & \hcancel[red]{60}\\
+    \hline
+  \end{tabular}
+\end{exemple}
+
+\begin{exemple}[Double loan (cont.): partial refund]
+  Suppose that instead of refunding the second loan, \POL chooses to refund
+  the first one completely as well as 10\ducats of the second one. Since the
+  second loan is still ongoing, its interests have to be paid in full and the
+  loan \EcoRS is:
+  \begin{tabular}{|l||r|r|r|r|r|}
+    \hline
+    Turn & 1 & 2 & 3 & 4 & 5\\
+    \hline
+    C1 (new) & 50 & 60 & & &\\
+    \hline
+    C2 (interest) & & 5 & \hcancel{5}11 &
+    \hcancel{5}\hcancel[red]{11}\color{red}{6} & 6\\
+    \hline
+    C3 (refund) & & & \color{red}{60} & \hcancel[red]{50} &
+    \hcancel[red]{60}\color{red}{50} \\
+    \hline
+  \end{tabular}\\
+  There are more interests to pay, but the final refund is later. Thus, it is
+  not clear which solution is the best, and it may depend on the situation.
+  Typically, if \POL is planning to be at war at turn 4, it may be best not to
+  have a refund scheduled at the same time.
 \end{exemple}
 
 \section{Domestic operations}\label{chAdministration:Domestic}

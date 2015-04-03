@@ -200,7 +200,8 @@ number smaller than \lignebudget{Max. national loan}.
   interest for them and maybe even refund your people someday.
 \end{designnote}
 
-\aparag[National Loans] Write in \lignebudget{from I. loan} any
+\aparag[International Loans]\label{chBudget:Budget:I. Loans}
+ Write in \lignebudget{from I. loan} any
 non-negative number smaller than \lignebudget{Max. international loan}.
 \bparag Copy this number in \lignebudget{New International loan}.
 \bparag Copy this number in \lignebudget{International loans refunds},
@@ -217,19 +218,22 @@ one refund (for the same turn as the last interest).
 \end{playtip}
 
 \begin{exemple}
-  A correctly filled new international loan (of 100\ducats, at turn $n$) over
-  an existing one (of 200\ducats, from turn $n-2$):
-  \begin{tabular}{|c|l|r|r|r|r|r|}
+  A correctly filled new international loan (of 100\ducats, at turn $n$, in
+  red) over an existing one (of 200\ducats, from turn $n-2$, in black):\\
+  \begin{tabular}{|c|l|r|r|r|r|r|r|}
     \hline
-    & Turn & $n-1$ & $n$ & $n+1$ & $n+2$ & $n+3$\\
+    & Turn & $n-2$ & $n-1$ & $n$ & $n+1$ & $n+2$ & $n+3$\\
     \hline
-    1 & New International loan & & 100 & & &\\
+    1 & New International loan & 200 & & \color{red}{100} & & &\\
     \hline
-    2 & I. loan interest & 20 & 20 & 30 & 10 & 10\\
+    2 & I. loan interest & & 20 & 20 & \hcancel[red]{20}\color{red}{30} &
+    \color{red}{10} & \color{red}{10}\\
     \hline
-    3 & I. loan refunds & & & 200 & & 100\\
+    3 & I. loan refunds & & & & 200 & & \color{red}{100}\\
     \hline
-  \end{tabular}
+  \end{tabular}\\
+  See also \ref{chAdministration:Refund} for more detailed examples on how to
+  fill the loan management record.
 \end{exemple}
 
 \aparag[New \RT]
@@ -265,7 +269,7 @@ one refund (for the same turn as the last interest).
   troops or waging war).
 
   Here are some guidelines in preparing your budget:
-  
+
   First, check in the administrative actions table what are the possible and
   plausible results with respect to your current (and expected) \STAB. You may
   discard very unlikely results (with only 10\% chance of happening) but you
