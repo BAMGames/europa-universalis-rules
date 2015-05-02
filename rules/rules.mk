@@ -67,7 +67,6 @@ TEXFIGFILES = $(addprefix $(FIGDIR)/,\
  military.jpg\
  mine.png\
  orthodoxe.pdf\
- politicalevents.jpg\
  powers.jpg\
  protestant.pdf\
  redeployment.jpg\
@@ -203,6 +202,7 @@ TEXBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
  shield_teutoniques1.png\
  shield_teutoniques2.png\
  shield_thuringe.png\
+ shield_tordesillas.png\
  shield_toscane.png\
  shield_transylvanie.png\
  shield_treves.png\
@@ -245,6 +245,7 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engEvnt5.tex\
  engEvnt6.tex\
  engEvnt7.tex\
+ engEvntDiploRev.tex\
  engEvntEco.tex\
  engEvntFWR.tex\
  engEvntGen.tex\
@@ -262,7 +263,9 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engLeaders.tex\
  engLogistic.tex\
  engMilitary.tex\
+ engMilitaryConcepts.tex\
  engMilitaryFrench.tex\
+ engMilitaryNew.tex\
  engMinorCountries.tex\
  engObjectives.tex\
  engPeace.tex\

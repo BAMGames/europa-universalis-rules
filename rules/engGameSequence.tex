@@ -69,26 +69,40 @@
   \MilitaryDetailsOld
 }
 
+\makeatletter
+\newenvironment{jymlist}[2]{\ifhmode\par\else\fi%
+  \newcounter{#2}
+    \begin{list}{#1{#2}}{%
+        \usecounter{#2}
+        \labelsep.3em\labelwidth.7em\squeezedlist
+        \advance\leftmargin1pt%
+        \def\makelabel{\hskip 1pt\@mklab}
+      }}{%
+    \end{list}}
+\makeatother
+\newcommand{\outeritem}[1]{\arabic{#1}.}
+\newcommand{\inneritem}[1]{(\alph{#1})}
+
 \newcommand{\MilitaryImpulseNew}{%
 \item Choice of campaign (for each country)
 \item Movements, discoveries, interceptions
 \item Battles
 }
-\newcommand{\MiltaryRoundNew}{%
-\item Continuation roll
-\item Wintering (if needed)
-\item For each alliance:
-  \begin{enumerate}
+\newcommand{\MilitaryRoundNew}{%
+  \item Continuation roll
+  \item Wintering (if needed)
+  \item For each alliance:
+  \begin{jymlist}{\inneritem}{militaryround}
     \MilitaryImpulseNew
-  \end{enumerate}
-\item Sieges, piracy, revolts
+  \end{jymlist}
+  \item Sieges, piracy, revolts
 }
 \newcommand{\MilitaryDetailsNew}{%
   \bparag Military setup (starting round, initiative)
   \bparag For each round:
-  \begin{enumerate}
+  \begin{jymlist}{\outeritem}{militarydetails}
     \MilitaryRoundNew
-  \end{enumerate}
+  \end{jymlist}
   \bparag Military cleanup (???)
 }
 \newcommand{\MilitaryPhaseNew}{%
