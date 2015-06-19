@@ -155,17 +155,18 @@
 %Nouveaux acronymes a ajouter ici
 \TUabbrevdef[fortress]{f}{\bbold{f}}
 
-\TUabbrevdef[LeaderA]{A}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{A}}}
-\TUabbrevdef[LeaderC]{C}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{C}}}
-\TUabbrevdef[LeaderG]{G}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G}}}
-\TUabbrevdef[LeaderE]{E}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E}}}
-\TUabbrevdef[LeaderMis]{Mis}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{M\kern -0.1em i\kern -0.1em s}}}
-\TUabbrevdef[LeaderGov]{Gov}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G\kern -0.1em o\kern -0.1em v}}}
-\TUabbrevdef[Leaderd]{D}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{D}}}
-\TUabbrevdef[LeaderI]{Eng}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E\fontfamily{eur}\selectfont\kern -0.1em n\kern -0.1em g}}}
-\TUabbrevdef[LeaderK]{K}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{K}}}
-\TUabbrevdef[LeaderP]{P}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{P}}}
-\let\Leaderg\LeaderGov
+% Moved.
+% \TUabbrevdef[LeaderA]{A}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{A}}}
+% \TUabbrevdef[LeaderC]{C}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{C}}}
+% \TUabbrevdef[LeaderG]{G}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G}}}
+% \TUabbrevdef[LeaderE]{E}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E}}}
+% \TUabbrevdef[LeaderMis]{Mis}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{M\kern -0.1em i\kern -0.1em s}}}
+% \TUabbrevdef[LeaderGov]{Gov}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G\kern -0.1em o\kern -0.1em v}}}
+% \TUabbrevdef[Leaderd]{D}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{D}}}
+% \TUabbrevdef[LeaderI]{Eng}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E\fontfamily{eur}\selectfont\kern -0.1em n\kern -0.1em g}}}
+% \TUabbrevdef[LeaderK]{K}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{K}}}
+% \TUabbrevdef[LeaderP]{P}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{P}}}
+% \let\Leaderg\LeaderGov
 
 %Abreviations simples
 \def\Man{Manoeuvre\xspace}
@@ -404,6 +405,67 @@
 \newcommand{\SDCF}{\xnameref{chSpecific:Catholic Faith}\xspace}
 \newcommand{\Barbaresques}{\xnameref{chSpecific:Barbaresques}\xspace}
 
+% Jym
+\makeatletter
+\usepackage{etoolbox} % \csdef
+\newcommand{\leader@icon}[1]{%
+        \csdef{X#1}{\includegraphics[height=0.8em]{#1.pdf}}%
+        \csdef{Y#1}[##1]{%
+        \textcolor{##1}{\includegraphics[height=0.8em]{#1.pdf}}} %
+}%
+\leader@icon{amiral}
+\leader@icon{conquistador}
+\leader@icon{corsaire}
+\leader@icon{doge}
+\leader@icon{explorateur}
+\leader@icon{general}
+\leader@icon{gouverneur}
+\leader@icon{ingenieur}
+\leader@icon{monarque}
+\leader@icon{pacha}
+\makeatother
+
+
+
+% \TUabbrevdef[LeaderA]{A}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{A}}}
+\TUabbrevdef[LeaderA]{A}{\Xamiral}
+% \TUabbrevdef[LeaderC]{C}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{C}}}
+\TUabbrevdef[LeaderC]{C}{\Xconquistador}
+% \TUabbrevdef[LeaderG]{G}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G}}}
+\TUabbrevdef[LeaderG]{G}{\Xgeneral}
+% \TUabbrevdef[LeaderE]{E}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E}}}
+\TUabbrevdef[LeaderE]{E}{\Xexplorateur}
+\TUabbrevdef[LeaderMis]{Mis}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{M\kern -0.1em i\kern -0.1em s}}}
+%\TUabbrevdef[Leader]{}{\X}
+% \TUabbrevdef[LeaderGov]{Gov}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G\kern -0.1em o\kern -0.1em v}}}
+\TUabbrevdef[LeaderGov]{Gov}{\Xgouverneur}
+% \TUabbrevdef[Leaderd]{D}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{D}}}
+\TUabbrevdef[Leaderd]{D}{\Xdoge}
+% \TUabbrevdef[LeaderI]{Eng}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E\fontfamily{eur}\selectfont\kern -0.1em n\kern -0.1em g}}}
+\TUabbrevdef[LeaderI]{Eng}{\Xingenieur}
+% \TUabbrevdef[LeaderK]{K}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{K}}}
+\TUabbrevdef[LeaderK]{K}{\Xmonarque}
+% \TUabbrevdef[LeaderP]{P}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{P}}}
+\TUabbrevdef[LeaderP]{P}{\Xcorsaire}
+\TUabbrevdef[LeaderPac]{Pac}{\Xpacha}
+%% aliases for handling 1 letter code from pions/leaders.txt
+\let\Leaderg\LeaderGov
+\let\LeaderM\LeaderMis
+\let\Leaderz\LeaderPac
+
+% Chinese text
+% use one of bsmi(trad Chinese), gbsn(simp Chinese), min(Japanese), mj(Korean);
+\newcommand{\cntext}[1]{\begin{CJK}{UTF8}{bsmi}#1\end{CJK}}
+\newcommand{\cnamiot}{\cntext{錢德明}}
+
+% Different font but I don't know how to do it correctly.
+\newcommand{\vnrhodes}{%
+ \fontencoding{T5}\selectfont%
+ A-Lịch-Sơn Đắc-Lộ\xspace%
+ \fontencoding{T1}\selectfont%
+}
+% A-Lịch-Sơn Đắc-Lộ
+
 % diagonal strike adapted from
 % http://tex.stackexchange.com/questions/20643/diagonal-strikeout-starting-too-low-and-ending-too-high
 \newcommand{\hcancel}[2][black]{%
@@ -412,3 +474,4 @@
         \draw[#1] (tocancel.south west) -- (tocancel.north east);
     }%
 }%
+

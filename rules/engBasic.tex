@@ -720,15 +720,20 @@ using a different colour for the symbol depicting category.
 that define the leaders in this rulebook is as follows:
 \bparag For the main category: \LeaderA (admiral), \LeaderC (conquistador),
 \LeaderE (explorer), \LeaderG (general), \LeaderI (engineer), \LeaderK (king),
-\Leaderd (admiral-king), \LeaderP (privateer), \LeaderGov (governor)
+\Leaderd (admiral-king), \LeaderP (privateer), \LeaderGov (governor),
+\LeaderMis (missionary).
 \bparag For the optional marks: R (allowed in the \ROTW), \textdollar{}
 (allowed only in \continentAmerica), * (main side of the counter), @ (allowed
 only in \continentAsia), P (is also a privateer), m (allowed only in the
 \regionMediterranee), $\heartsuit$ (does not die at the first failed survival
 test in battle).
-\bparag The country-specific powers are: Portuguese Viceroy (red category),
-English Sea hound (yellow category), French Licensed privateers (red category)
-and Dutch Indonesian Conquistadors (red category).
+\bparag The country-specific powers are marked with a main category of
+different colour: Dutch Indonesian Conquistadors (\Yconquistador[red]),
+English Sea hound (\Yamiral[yellow], \Yexplorateur[yellow]), French Licensed
+privateers (\Ycorsaire[red], \Yamiral[red]), Portuguese Viceroy
+(\Yconquistador[red], \Yexplorateur[red], \Yamiral[red]), Turkish Barbary
+Coast privateers (\Ycorsaire[red], \Yamiral[red]) and Turkish Viziers
+(\Ymonarque[yellow]).
 \bparag Two leaders (\leader{Marlborough} and \leader{Friedrich II}) have
 their name and values written in a different colour (white instead of black or
 yellow). They have a bonus (actually, an absence of malus) to their survival
@@ -1134,16 +1139,13 @@ are meant to be used.
 \begin{designnote}
   For game purposes, continents are composed of a given set of \Areas and
   provinces. In several cases, this significantly differs from the actual
-  geographical continent baring the same name (\emph{e.g.} \continent{South
-    America} does not include \continentBrazil, or \continentAsia does not
-  include \continentSiberia). In game, continents are usually areas of
+  geographical continent baring the same name (\emph{e.g.} \continentAsia does
+  not include \continentSiberia). In game, continents are usually areas of
   influences of some power and thus include only the geographical zone where
   that power actually tried to impose an exclusive power (\emph{e.g.}
   \paysmajeurEspagne tried to impose a Spanish exclusive in \continent{South
     America} without bothering about the Portuguese in \continentBrazil (as a
-  result of the Treaty of Tordesillas), thus in game we have set
-  \continent{South America} to correspond to the Spanish World only and
-  \continentBrazil is excluded from it).
+  result of the Treaty of Tordesillas)).
 
   In short: beware that in game ``continents'' are not always exactly the same
   as geographical continents.
@@ -1160,15 +1162,21 @@ are meant to be used.
 \item[\anchorcontinent{Brazil}] is the following \Areas: \granderegion{Belem},
   \granderegion{Recife}, \granderegion{Rio}. Note that this is exactly the
   American \Areas with a \blasonsmall{portugal} shield (Tordesillas reminder).
-\item[\anchorcontinent{South America}] contains all the inland areas of
+\item[\anchorcontinent{Spanish World}] contains all the inland areas of
   \continent{America} South of \granderegion{Chichimeca} (included), excluding
-  \continent{Brazil}.
+  \continent{Brazil}. Note that this is exactly the \Areas with a blurred
+  \blasonsmall{espagne} shield. Note that the island of \provinceTrinidad is
+  part of \granderegionGuyana, hence of \continent{South America} even if it
+  is an island.
 \item[\anchorcontinent{North America}] contains all the inland areas of
   \continent{America} North of \granderegion{Chichimeca} (excluded).
 \item[\anchorcontinent{Caraibes}] is composed of \granderegion{Haiti},
   \granderegion{Cuba}, \granderegion{Antilles} and
-  \granderegion{Florida}. Note that \granderegionFlorida is both part of
-  \continent{North America} and \continentCaraibes.
+  \granderegion{Florida}. This is exactly the \Areas with a
+  \blasonsmall{caraibes} shield (commercial reminder). Note that
+  \granderegionFlorida is both part of \continent{North America} and
+  \continentCaraibes. Note that the island of \provinceTrinidad is part of
+  \granderegionGuyana hence not of \continent{Caraibes}.
 % (jym) Florida is the only case of two continents being neither included nor
 % disjoint.
 \item[\anchorcontinent{Extreme Orient}] is the union of the following areas:
@@ -1244,7 +1252,7 @@ are meant to be used.
 \item[\anchorregion{Finlande}] contains the provinces marked with a blurred
   \blasonsmall{finlande} shield, namely: \province{Finland},
   \province{Tavastland}, \province{Nyland}, \province{Karelen} and
-  \province{Savo}. 
+  \province{Savo}.
 \item[\anchorregion{Irlande}] contains the provinces marked with a blurred
   \blasonsmall{irlande} shield, namely: \province{Mumhan},
   \province{Laighean}, \province{Connacht}, \province{Brega},

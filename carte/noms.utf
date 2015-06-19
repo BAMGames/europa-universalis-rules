@@ -500,7 +500,7 @@ IMG 1524 3426 anchor
 ; ------------------------------------------------------------
 NOM dU "Paris" N _
 CITE 1782 3290 capitale1
-PROV 1861 3247 "Île-de-" N 
+PROV 1861 3247 "Île-de-" N
 ALTPROV B "France" N
 VALUE H 18 B
 ECU AHG france
@@ -583,6 +583,8 @@ CITE 2132 2652 ville2
 PROV 2105 2563 "Dauphiné" N
 ECU BG france
 ECU DD protohuguenots
+; --- [BLP] ---
+ECU X 2200 2560 protosavoie
 VALUE X 2072 2663 10 B
 ; ------------------------------------------------------------
 NOM g "Lyon" N
@@ -1434,6 +1436,8 @@ ALTPROV B "(Karelen)" N
 VALUE H 2 B
 ECU BBG suede
 ECU DD protofinlande
+; --- [BLP] ---
+ECU DD protorussie
 ; ------------------------------------------------------------
 NOM d "Käkisalmi" N
 ALTNOM dB "(Kexholm)" N
@@ -1527,19 +1531,27 @@ NOM g "Győr" N
 CITE 3519 3036 ville2
 PROV 3486 2940 "Balaton" N
 VALUE B 2 B
-ECU H hongrie
+; --- [BLP] ---
+; ECU H hongrie
+ECU HG hongrie
+ECU DD protohabsbourg
 ; ------------------------------------------------------------
 NOM h "Celje" N
 CITE 3254 2790 ville2
 PROVCURVEX 3270 2756 170 -59 -26 55 "Kranj (Carniola)" N
 VALUE X 3222 2815 5 B
-ECU X 3209 2770 hongrie
+; --- [BLP] ---
+; ECU X 3209 2770 hongrie
+ECU X 3209 2775 hongrie
+ECU X 3225 2730 protohabsbourg
 ; ------------------------------------------------------------
 NOM dooo "Fiume" N
 CITE 3171 2642 ville1
 PROV 3247 2589 "Kapela" N
 VALUE B 2 B
 ECU VB hongrie
+; --- [BLP] ---
+ECU DD protohabsbourg
 IMG 3165 2541 anchor4
 ; ------------------------------------------------------------
 NOM h "Zagreb" N
@@ -1564,7 +1576,10 @@ ALTNOM gD "(Temesvár)" N
 CITE 3944 2711 ville2
 PROV 4004 2618 "Banat" N
 VALUE B 3 B
-ECU H hongrie
+; --- [BLP] ---
+; ECU H hongrie
+ECU HG hongrie
+ECU DD prototurquie
 ; ------------------------------------------------------------
 NOM b "Cluj" N
 ALTNOM bB "(Kolozsvár)" N
@@ -1572,7 +1587,10 @@ CITE 4201 2878 ville1
 PROV 4347 2835 "Marosz" N
 ALTPROV B "(Mureș)" N
 VALUE BB 3 B
-ECU H hongrie
+; --- [BLP] ---
+; ECU H hongrie
+ECU HG hongrie
+ECU DD prototransylvanie
 ; ------------------------------------------------------------
 NOM hH "Debrecen" N
 ALTNOM h "(Debrețin)" N
@@ -1580,7 +1598,10 @@ CITE 3993 3007 ville1
 PROV 3962 2966 "Erdély" N
 ;ALTPROV B "(Transylvanie)/" N
 VALUE BB 5 B
-ECU BVB hongrie
+; --- [BLP] ---
+; ECU BVB hongrie
+ECU X 4150 3000 hongrie
+ECU X 4200 3000 prototransylvanie
 ; ------------------------------------------------------------
 NOM d "Buda" N _
 CITE 3699 3003 capitale1
@@ -1593,7 +1614,10 @@ ALTNOM dD "(Pressburg)" N
 CITE 3471 3111 ville2
 PROV 3582 3174 "Szlovákia" N
 VALUE BD 3 B
-ECU HD hongrie
+; --- [BLP] ---
+;ECU HD hongrie
+ECU H hongrie
+ECU DD protohabsbourg
 ; ------------------------------------------------------------
 NOM b "Poprad" N
 CITE 3834 3271 ville1
@@ -1622,6 +1646,7 @@ PROVCURVEX 3667 2080 450 225 8 -16 "Montenegro" J
 VALUE X 3743 2124 2 B
 IMG 3497 2191 anchor4
 ECU X 3616 2167 balkans
+ECU X 3680 2135 prototurquievenise
 ; ------------------------------------------------------------
 NOM dB "Zara" N
 CITE 3266 2439 ville2
@@ -1634,13 +1659,19 @@ NOM g "Sarajevo" N
 CITE 3610 2403 ville1
 PROV 3583 2485 "Bosna" N
 VALUE B 3 B
-ECU H balkans
+; --- [BLP] ---
+;ECU H balkans
+ECU HG balkans
+ECU DD prototurquie
 ; ------------------------------------------------------------
 NOM bD "Beograd" N
 CITE 3850 2543 ville2
 PROV 3830 2348 "Serbia" N
 VALUE B 5 B
-ECU H balkans
+; --- [BLP] ---
+;ECU H balkans
+ECU HG balkans
+ECU DD prototurquie
 ; ------------------------------------------------------------
 NOM h "București" N _
 CITE 4512 2498 capitale1
@@ -1856,6 +1887,8 @@ ALTPROV B "(Estland)" N
 ;ALTPROV BB "(Estonie)/" N
 VALUE BB 4 B
 ECU H teutoniques1
+; --- [BLP] ---
+ECU DD protorussie
 IMG 4225 5199 anchor
 ; ------------------------------------------------------------
 NOM d "Rīga" N _
@@ -1865,6 +1898,8 @@ PROV 4370 4871 "Livonija" N
 VALUE H 5 B
 ECU BBG teutoniques1
 ECU DD protocourlande
+; --- [BLP] ---
+ECU DD protorussie
 IMG 4274 4883 anchor2
 ; ------------------------------------------------------------
 NOM dU "Libau" N
@@ -1875,6 +1910,8 @@ ALTPROV B "(Kurzeme)" N
 VALUE H 6 B
 ECU BBG teutoniques1
 ECU DD protocourlande
+; --- [BLP] ---
+ECU DD protorussie
 IMG 3986 4840 anchor
 ; ------------------------------------------------------------
 NOM dU "Memel" N

@@ -22,7 +22,7 @@ HOMEDIR(/library/common.eps)! include
     STDOUT (]\n) writestring STDOUT flushfile
 } bind def
 /initlogWRITE { /SUFFIX (/)
-objects 100000 add 6 string cvs 1 5 getinterval ! def 
+objects 100000 add 6 string cvs 1 5 getinterval ! def
     /writecount 0 def
     /phase (pdf:) def
 } def
@@ -97,9 +97,9 @@ counteralone {
     Xmin taillepions 1 add Xmin taillepions 1 add nbpions mul 1 sub add
     { dup display space Ymin display( m )out display space
     Ymin taillepions 1 add add display ( l\n)out} for
-    (S\n) out 
+    (S\n) out
     doubleface {
-	cparray format 1 add get loadpage 
+	cparray format 1 add get loadpage
 	/comptepions nbpions def /rangeefinie false def
 	Xmin display space Ymin display space nbpions taillepions 1 add mul
 	display space taillepions 1 add display ( re B\n) out
@@ -195,7 +195,7 @@ def
     /filepion () def
     /pions 0 def
     /style 0 def
-    /cparray [0 0 0 0 0 0] def 
+    /cparray [0 0 0 0 0 0] def
 %    true true true beginpage
 %    true true false beginpage
 %    true false true beginpage
@@ -247,9 +247,9 @@ def
 	/voffset 0 bottom 0 eq{1 add}if height bottom add 100 eq{1 sub}if def
 	texte width 2 div left add
 	bottom voffset 0 gt {voffset add }if
-	width 0.9 mul height voffset abs sub 
+	width 0.9 mul height voffset abs sub
 	% texte xm y0 widthmax height
-	texte length 
+	texte length
 	height width bottom left
     end
     bg 4 { display space } repeat (re f\n) out 0 eq {5{pop}repeat}
@@ -268,6 +268,7 @@ def
 /shadow { bga_dict pays get {510 div display space}forall /bbg 4 def fc} def
 /black {(0 0 0 )out}def
 /white {(1 1 1 )out}def
+/red {(1 0 1 )out}def
 /roman { fg (FontArialNarrow) centertext} def
 /romana { fga (FontArialNarrow) centertext} def
 /italic { fg (FontArialNarrow-Italic) centertext} def
@@ -340,7 +341,7 @@ def
 	      get exch pop
 	    }{
 	      pop pop
-	    }ifelse	
+	    }ifelse
     }if
     /symbol exch def
     /symbolscale symbol(etoile5) eq {0.2}{0.8}ifelse def
@@ -351,7 +352,7 @@ def
 	      get exch pop
 	    }{
 	      pop pop
-	    }ifelse	
+	    }ifelse
     }if
     /symbol exch def
     /symbolscale symbol(etoile5) eq {0.2}{0.8}ifelse def
@@ -370,7 +371,7 @@ def
     typeX findtech
     0 beginpion
     countryname 0 80 100 20 cadredefondit
-    () 75 0 25 20 cadredefondrm  
+    () 75 0 25 20 cadredefondrm
     armyname 0 0 80 20 cadredefondrm
     armeesdict typeX dictelement {aload pop putimage}forall
     blasonleft drawtech
@@ -378,7 +379,7 @@ def
     fg_ sc (faceplus) xobject
     autreface
     countryname 0 80 100 20 cadredefondit
-    () 70 0 30 20 cadredefondrm  
+    () 70 0 30 20 cadredefondrm
     armyname 0 0 80 20 cadredefondrm
     armeesreduceddict typeX dictelement {aload pop putimage}forall
     blasonleft drawtech
@@ -387,21 +388,21 @@ def
     endpion
 }def
 /dessineFLEET {
-    /typeX exch def /armyname exch def /pays exch def 
+    /typeX exch def /armyname exch def /pays exch def
     /filepion mark (Fleet_)pays(_)armyname(Fleet )search
     {pop pop}if concatall def
     /nompion mark (Fleet )countryname( <)armyname(>)concatall def
     typeX findfleettech
     0 beginpion
     countryname 0 80 100 20 cadredefondit
-    () 75 0 25 20 cadredefondrm  
+    () 75 0 25 20 cadredefondrm
     armyname 0 0 80 20 cadredefondrm
     flottedict typeX dictelement {aload pop putimage}forall
     blasonleft drawtech
     fg_ sc (faceplus) xobject
     autreface
     countryname 0 80 100 20 cadredefondit
-    () 70 0 30 20 cadredefondrm  
+    () 70 0 30 20 cadredefondrm
     armyname 0 0 80 20 cadredefondrm
     flottereduceddict typeX dictelement {aload pop putimage}forall
     blasonleft drawtech
@@ -591,7 +592,7 @@ def
     endpion
 }def
 /dessineARSENAL {
-    /niveau exch def /typeX exch def /pays exch def 
+    /niveau exch def /typeX exch def /pays exch def
     /nompion mark
 	(Arsenal )countryname( )niveau 1 string cvs(/)niveau 1 sub 1 string cvs
 	( <)typeX(>)
@@ -708,7 +709,7 @@ def
     /filepion mark (Ownership_)pays typeX length 0 ne
     {(_)typeX( )search{exch pop exch !}if}if
     concatall def
-    5 beginpion 
+    5 beginpion
     countryname 0 80 100 20 cadredefondit
     (Owned) 0 0 100 20 cadredefondrm
     blasoncentre
@@ -731,7 +732,7 @@ def
     /filepion mark (AreaControl_)pays(_)
     doublesided not{(Region)}{typeX ( )search{exch pop exch !}if}ifelse
     concatall def
-    doublesided{0}{4}ifelse beginpion 
+    doublesided{0}{4}ifelse beginpion
     countryname 0 80 100 20 cadredefondit
     (Area) 0 0 100 20 cadredefondrm
     blasoncentre
@@ -754,7 +755,7 @@ def
     /pays exch def
     /nompion (Control )countryname ! def
     /filepion (Control_)pays ! def
-    5 beginpion 
+    5 beginpion
     countryname 0 80 100 20 cadredefondit
     blasoncentre
     0.85 beginalpha
@@ -764,6 +765,22 @@ def
     endalpha
     black fc
     (Control) 50 41 100 18 (FontArialNarrow-Bold) centertext
+    endpion
+}def
+/dessineOCCUPATION {
+    /pays exch def
+    /nompion (Occupation )countryname ! def
+    /filepion (Occupationr_)pays ! def
+    5 beginpion
+    countryname 0 80 100 20 cadredefondit
+    blasoncentre
+    0.85 beginalpha
+    red fc black sc
+    ( 0 40 100 20 re )
+    dup out(f )out out (S )out
+    endalpha
+    black fc
+    (Occupation) 50 41 100 18 (FontArialNarrow-Bold) centertext
     endpion
 }def
 
@@ -827,7 +844,7 @@ def
 /communcoloniecomptoir {
     /facecourante exch def /colonietype exch def
     nameX 0 80 100 20 cadredefondrm
-    () 70 0 30 20 cadredefondrm  
+    () 70 0 30 20 cadredefondrm
     blasonright
 %    coloniesdict colonie{(Colony)}{(Trading-Post)}ifelse
     coloniesdict colonietype
@@ -1150,7 +1167,7 @@ def
     {	fg_ sc newpath
 	/seax Textorig /sear [[0 (?)]] stringwidth 2 div def sear add def
 	seax 8 add 89.5 moveto
-	seax 89.5 8 0 360 
+	seax 89.5 8 0 360
 	arc closepath (h S\n) exporttopdf( S )out
     }if
 }def
@@ -1173,8 +1190,9 @@ def
     /nompion mark(Timar <)nameX(:)dts(:)caracs(:)numeroX(>)concatall def
     2 beginpion
     communpacha
-    dts 80 0 20 30 cadredefondbf
+    dts 80 25 20 30 cadredefondbf
     caracs 0 1 getinterval 0 0 20 30 cadredefondbf
+    caracs length 8 gt {caracs 8 2 getinterval 85 0 20 25 bolda}if
     (cimeterre) .83 25 30 begints fga_ sc fga_ fc xobject endts
     autreface
     /caracs(A 0 0 0)def
@@ -1225,17 +1243,30 @@ def
     /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
     nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
     lastturn length 0 ne {(-) lastturn}if concatall def
-    2 beginpion
+    5 beginpion
     communchef
-    autreface
-    blasonsmallright
-    (Mission) communnomchef
-    (img:mission) 23 5 0.35 putimage
+    endpion
+} def
+/dessineMISSIONNAIREanonyme {
+    /caracs exch def
+    /remarque () def
+    /typeX (M) def
+    /lastturn () def
+    /firstturn () def
+    /nameX exch def
+    /pays exch def
+    /nompion mark(Missionnaire )countryname( <)nameX(:)caracs 9 1 getinterval
+    firstturn length 0 ne{(:)firstturn(:)lastturn}if(>)
+    concatall def
+    /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
+    nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
+    lastturn length 0 ne {(-) lastturn}if concatall def
+    5 beginpion
+    communchef
     endpion
 } def
 
-% Jym, trying... Mission existing in 1492.
-/dessineMISSIONspecial {
+/dessineMISSION {
     /nameX exch def
     /pays exch def
     /nompion mark(Mission )countryname( <)nameX(>)concatall def
@@ -1243,7 +1274,7 @@ def
     5 beginpion
     blasonsmallright
     nameX communnomchef
-    (img:mission) 23 5 0.35 
+    (img:mission) 23 5 0.35
     pays (turquie) eq { pop (img:mecca) 23 5 0.35 }if
     putimage
     endpion
@@ -1545,7 +1576,7 @@ def
 	typeX 1 2 getinterval 98 36 20 20 fga (FontArialNarrow-Bold) righttext
 	typeX 3 2 getinterval 98 18 20 20 fga (FontArialNarrow-Bold) righttext
     }if
-    
+
     caracs length 8 gt {caracs 8 2 getinterval}{()}ifelse
     ( · · ) dup 0 caracs 2 get put dup 3 caracs 4 get put
     dup 6 caracs 6 get put
@@ -1722,7 +1753,7 @@ def
     (img:pillage) 15 3 1 putimage black sc (faceplus) xobject
     black fc nameX 50 70 100 30 (FontArialNarrow-Bold) centertext
     [1 1 1][1 .75 .75] autreface
-    (img:pillage) 15 3 1 putimage black sc (facemoins) xobject    
+    (img:pillage) 15 3 1 putimage black sc (facemoins) xobject
     black fc nameX 50 70 100 30 (FontArialNarrow-Bold) centertext
     endpion
 }def
@@ -1818,7 +1849,7 @@ produits {/pays exch def
     4 beginpion
     fga_ fc (Price) 50 2 60 18 (FontArialNarrow-Italic) centertext
     (prixressources) xobject
-    nameX 0 80 100 20 cadredefondrm 
+    nameX 0 80 100 20 cadredefondrm
     25 add exch 25 add exch 1 putimage
     (≤) caracs 0 get 2 string cvs ! 0 0 30 20 cadredefondrm
     (≥) caracs 1 get 2 string cvs ! 70 0 30 20 cadredefondrm
@@ -1871,7 +1902,7 @@ produits {/pays exch def
     4 beginpion
     black fc black sc
     nameX 50 70 96 28 (FontArialNarrow-Bold) centertext
-    (Box ) case 2 string cvs ! 
+    (Box ) case 2 string cvs !
     mark(Turn )niveau 2 string cvs
     ( \050)year 4 string cvs(\051)concatall
     50 2 96 18 (FontArialNarrow-Bold) centertext
@@ -1965,7 +1996,7 @@ produits {/pays exch def
     %‰ [(name1)(name2)(name3)(name4)]: label: name1, long form: name3 (name2)
     %%                                  short form: name3, on counter: name4
     % This functions defines ascii_nom_chef ; translation_string ; nom_chef (to be used on counters)
-    
+
     dup type /arraytype eq {
 	dup length 2 le {
 	    dup length 2 eq {%2 args
@@ -1977,7 +2008,7 @@ produits {/pays exch def
 		aload pop
 		/nom_chef exch def
 		/ascii_nom_chef nom_chef def
-		/translation_string (leader:) nom_chef ! def		
+		/translation_string (leader:) nom_chef ! def
 	    }ifelse
 	}{
 	    dup length 4 eq {
