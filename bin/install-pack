@@ -119,7 +119,7 @@ fi
 say "downloading"
 xlog "I found your personal TEXMF tree at $TEXMF"
 rm -f "/tmp/$PACKAGE.tgz"
-curl -s -o "/tmp/$PACKAGE.tgz" "http://old-lipn.univ-paris13.fr/%7Edubacq/packages/${PACKAGE}.tgz" 
+curl -s -o "/tmp/$PACKAGE.tgz" "http://old-lipn.univ-paris13.fr/%7Edubacq/packages/${PACKAGE}.tgz"
 a=$(file "/tmp/$PACKAGE.tgz" | grep "gzip compressed data" | wc -l)
 if [ "$a" -lt "1" ]; then
     xlog "I could not fetch $PACKAGE.tgz. Maybe server is down <http://old-lipn.univ-paris13.fr/%7Ejcdubacq/packages/${PACKAGE}.tgz>"
