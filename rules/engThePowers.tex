@@ -63,10 +63,15 @@ disappear\ldots
 \aparag Often, several similar actions should theoretically be resolved
 simultaneously but may require decisions of players and are thus resolved one
 by one (\emph{e.g.} sieges, attacks of natives, automatic competition \ldots)
-\bparag In case of disagreement in the order of resolution, each player, in
-decreasing order of initiative, chooses one of the action to resolve.
-\bparag All players get their ``turn'' to choose, even those not implied in
-the actions. And each player may choose an action in which he is not implied.
+Normally, it is explicit in the rules how to do the resolution in case of
+disagreement. If not, use the following guidelines.
+\bparag If a single player has a decision to make before each roll
+(\emph{e.g.} for sieges: assault or proper siege), then each alliance, in
+decreasing order of initiative, resolve its action in the order of its choice
+(in case of disagreement inside the alliance, in a random order).
+\bparag If several players have a decision to make before each roll
+(\emph{e.g.} for automatic concurrence), then the actions are resolved in a
+random order.
 
 \subsection{The letter and the spirit}
 \aparag As much as possible, we try to write precise and unambiguous rules. We
@@ -111,8 +116,8 @@ because they were quickly destroyed by their powerful neighbour
 (e.g. \paysDamas) , or because their influence was very local and only
 influenced a couple of other nations (e.g. \paysPerse or \paysEcosse).
 \bparag This does not mean that minors countries did not shape History, but
-merely that they lack the World-wide or Europe-wide influence that England or
-Austria had and that playing them would be less interesting.
+merely that they lack the World-wide or Europe-wide influence that, say,
+England or Austria had and that playing them would be less interesting.
 
 \aparag See~\ref{chapter:Basics:Majors} for a list of majors countries
 and~\ref{chapter:Minors:List} for a list of minors countries.
@@ -977,7 +982,7 @@ test.
 \bparag \DIP: Diplomacy
 \bparag \MIL: Military
 
-\aparag These value usually varies between 3 and 9. Very few exceptions can
+\aparag These values usually vary between 3 and 9. Very few exceptions can
 drop these values below 3 in which cases the new limit will be explicitly
 stated.
 
@@ -1681,9 +1686,11 @@ increase its level by 1.
 
 \aparag[Establishments and port] Each \COL/\TP located in a coastal province
 is considered to be also a port.
-\bparag In case of provinces with multiple coasts (eg \granderegion{Panama}),
-the principal coast, where the port is located, must be chosen upon creation
-of the \COL/\TP.
+\bparag In case of provinces with multiple coasts (\emph{e.g.}
+\granderegion{Panama}), the principal coast, where the port is located, must
+be chosen upon creation of the \COL/\TP. At least one sea zone on which the
+establishment is a port must be known (\emph{e.g.} one may not build a \COL on
+the Pacific coast of \granderegionPanama if only the Atlantic coast is known).
 
 \aparag[Fortifications] \COL/\TP may be fortified. A \fortress marker can be
 built in a \COL/\TP provided the owning country has the required technology.
@@ -1704,7 +1711,9 @@ limit.
 \aparag[Colony of Level 6] A \COL of level 6 is considered to be a European
 province for all military purpose.
 \bparag It has an intrinsic \fortress level of 1 even if no \fortress was
-built.
+built. Use a white level 1 fortress counter as reminder, possibly freeing any
+existing country-specific level 1 fortress here. Since this is an permanent
+fortress, it does not require upkeep and may not be voluntarily destroyed.
 \bparag \fortress of any level may be built in \COL of level 6. They cost the
 normal (European) price both to build and to maintain.
 \bparag It becomes known to every country without need to discover the
@@ -1858,8 +1867,8 @@ may change the flux of goods towards south India and Bengal.
 can exploit only 1 \RES{Products of Orient} and 1 \RES{Spice} in
 \granderegion{Karnatika}. A marker is used to show that the resources are
 limited.
-\bparag After the fall, one can exploit fully the 2 \RES{Products of Orient},
-2 \RES{Spices} and 2 \RES{Cotton} (the later only after 1700).
+\bparag After the fall, one can exploit fully the 2 \RES{Products of Orient}
+and 2 \RES{Spices}.
 \bparag Before \eventref{pIII:Mughal Akbar}, \granderegion{Bengale} is limited
 to 1 resource of each type. Use a marker as reminder.
 \bparag After \eventref{pIII:Mughal Akbar}, \granderegion{Bengale} can now
@@ -1896,7 +1905,11 @@ only one unit of \RES{Wood} can be produced per player per area.
 diplomatic announcement) and can only be stopped by the loss of the
 establishment.
 \bparag A minor country wood factory does provide the wood to its Patron (in
-the case of \pays{portugal}).
+the case of \pays{portugal}). However, it is not possible to turn an
+establishment of a minor into a wood factory (that is, if \POR creates a wood
+factory, it stays so and will provide wood for the patron of \paysPortugal,
+but the patron of \paysPortugal may not decide to turn a Portuguese
+establishment into a wood factory).
 
 \aparag[European Wood] A \RES{Wood} \MNU of level 1 produces 1 unit of Wood
 that can only be used by the producer. A \RES{Wood} \MNU of level 2 produces
@@ -1933,7 +1946,8 @@ veteran militia (Latin, class \CAIII).
 militia (Latin, class \CAIII).
 \bparag The militia fights out of the fort if and only if enemies are landing
 in the province (it stays inside if the enemy comes by Land). It can only
-retreat in the fort.
+retreat in the fort and will never attempt retreat at the end of first day of
+battle.
 \bparag Minor establishments never trigger native reaction or declaration of
 war by \ROTW minors.
 
@@ -1943,7 +1957,7 @@ round.
 of oversea war against an unspecified country).
 \bparag A Minor establishment is immediately destroyed if a country controls
 it.
-\bparag Minor establishment are never subject to competition, including
+\bparag Minor establishment cannot be target of competition, and always win
 automatic competition.
 
 
@@ -1957,7 +1971,8 @@ of conscript militia (Latin, class \CAIII).
 conscript militia (Latin, class \CAIII).
 \bparag The militia fights out of the fortress if and only if enemies are
 landing in the province (it stays inside if the enemy comes by Land). It can
-only retreat in the fortress.
+only retreat in the fortress and will never attempt retreat at the end of
+first day of battle.
 \bparag Pirate haven never trigger native reaction or declaration of war by
 \ROTW minors.
 
