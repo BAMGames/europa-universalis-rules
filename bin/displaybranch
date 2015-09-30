@@ -1,15 +1,15 @@
 #!/bin/sh
-disp=${1:-"%s"}    
+disp=${1:-"%s"}
 
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"     # detached HEAD
 
 branch_name=${branch_name##refs/heads/}
 
-if [ "${branch_name}" != "master" ]; then
+#if [ "${branch_name}" != "master" ]; then
     c="$branch_name"
     disp="${2:-%s}"
-else
-    c=''
-fi
+#else
+#    c=''
+#fi
 printf "$disp" "$c"
 exit 0
