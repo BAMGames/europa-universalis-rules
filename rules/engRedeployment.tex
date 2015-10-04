@@ -1,3 +1,5 @@
+% -*- mode: LaTeX; -*-
+
 \definechapterbackground{Redeployment}{redeployment}
 \chapter{Redeployment}\label{chapter:Redep}
 
@@ -42,7 +44,8 @@ commanding the attack. If there are two or more leaders, use normal rules to
 determine who is leading the attack.
 \bparag In case of a combined attack with minor troops and natives, the
 controller of the minor may choose to attack with the minor troops only
-(typically, in order to avoid malus if the natives were defeated this turn).
+(typically, in order to avoid malus if the natives were defeated this
+turn). This is the only case where activated natives may skip their attack.
 
 \aparag[Forces attacking]
 \bparag In each province, sum up the number of \LD participating in the
@@ -54,6 +57,10 @@ of natives in other provinces of the \Area.
 40\LD in each of the four provinces of the \Area. Even if 30\LD have been
 killed in \provinceEdo during a given turn, there are still 40\LD in
 \provinceKyoto this turn.
+
+\aparag All attacks are resolved simultaneously, that is all players decide
+simultaneously which troops attack (when there is a choice) before any attack
+is resolved.
 
 \aparag[Resolving the attack]
 \bparag Each attack is resolved by rolling one
@@ -267,8 +274,9 @@ Colony/province in the same turn. Privateers/Pirates looting a province or
 \aparag[Naval actions of Pirates and Privateers] In each \STZ/\CTZ where
 \corsaire are active, an attack on \TradeFLEET occurs.
 \bparag First, \pays{pirates} \corsaire attack all \TradeFLEET in the zone.
-\bparag Then, each alliance resolve the attacks of its privateers, in order of
-initiative.
+\bparag Then, each alliance resolve the attacks of its privateers, in
+decreasing order of initiative. In case of disagreement within the alliance,
+attacks of this alliance are resolved in a random order.
 \bparag \corsaire of different alliances that have the exact same targets
 (same \TradeFLEET in a given \STZ/\CTZ) attack together as if they were
 allied.
@@ -286,7 +294,7 @@ they are.
 \bparag Note that some seas may belong to several \STZ or \CTZ (especially in
 Europe). However, \corsaire of \pays{pirates} are specifically created in one
 of them (\emph{e.g.} \ref{eco:Looting and insecurity} creates them in the \CTZ
-of the country rolling it).
+of the country rolling it). They target this zone.
 \bparag \corsaire of \Barbaresques attack all christian \TradeFLEET in the
 \STZ/\CTZ they are. \TUR must declare when moving them which \STZ/\CTZ they'll
 attack
@@ -328,7 +336,7 @@ against which they are at war (including overseas wars) in their
 \item[+1] if a naval battle occurred in the sea where the \corsaire is located
   during this turn. %(not for land raids)
 \item[-2] if the \corsaire of \pays{chevaliers} is in the attack and there is
-  a Christian port on \seazone{Egee} or \seazone{Mediterranee E}.
+  a Christian port on \seazone{Egee} or \seazoneLevantin.
 \end{modlist}
 
 \aparag[Years at sea]
@@ -384,9 +392,9 @@ level). Apply these \textetoile one by one. In case of equality, the
 controller of the \corsaire chooses, at random if its neutral (\emph{e.g.}
 \pays{pirates}) or in case of disagreement (allied \corsaire).
 % Avoid gamey tactic with Pirates in Asia:
-\bparag Exception: In the \ROTW, \textetoile are always applied to \TradeFLEET
-of major countries or of countries at war (minors at peace and close to their
-base manage to repulse local piracy).
+\bparag Exception: In the \ROTW, \textetoile may only be applied to
+\TradeFLEET of major countries or of countries at war (minors at peace and
+close to their base manage to repulse local piracy).
 \bparag This decrease of the maximal level cannot be transformed into lost
 \ND. It does not decrease the current level unless the maximal level becomes
 higher than the current (in other words, result ``5 \textetoile\textetoile''
@@ -547,8 +555,8 @@ commercial fleet of a minor country.  If the result is 8 or higher, one
 \aparag[Land actions of Pirates and Privateers] In each province where
 \corsaire are active, an attack occurs.
 \bparag First, resolve \pays{pirates} \corsaire attacks.
-\bparag Then, each alliance resolve the attacks of its privateers, in order of
-initiative.
+\bparag Then, each alliance resolve the attacks of its privateers, in
+decreasing order of initiative.
 
 \aparag[Resolving the attack]
 \bparag Each attack is resolved by rolling one die on \ref{table:Pirates
@@ -579,7 +587,8 @@ price).
 \PILLAGE\facemoins. The \corsaire owner receives half the total income of
 the province/settlement (including income of exploited resources at their
 current price).
-\bparag \pays{pirates} receives no income for looting.
+\bparag Income received by a minor country (including \pays{pirates}) is
+lost.
 \bparag This income is recorded in \lignebudget{Pillages, privateers}.
 \bparag Note that existing \PILLAGE marker neither prevent new one nor prevent
 the \corsaire from getting money.
@@ -741,10 +750,16 @@ conditions.
 
 \subsection{Execution of the Monarch}\label{chRedep:Execution Monarch by
   Revolts}
-\aparag If half of all owned national provinces (rounded up) are in revolt
-(either a \REVOLT or \REBELLION counter or control of the city), the regime of
-the country is overthrown. The tyrant is executed and a new benevolent monarch
-accedes the throne.
+\aparag If at least half of all owned national provinces (rounded up) are in
+revolt (either a \REVOLT or \REBELLION counter or control of the city), the
+regime of the country is overthrown. The tyrant is executed and a new
+benevolent monarch accedes the throne.
+\bparag At least 3 national provinces must be revolted for this to apply.
+
+\begin{designnote}
+  The last point avoids a ``one revolt extends, you're dead'' effect for \PRU
+  and \VEN with very few national provinces.
+\end{designnote}
 
 \aparag[Consequences] Unless specified by an event, execution of the
 Monarch has the following effects:
@@ -889,8 +904,8 @@ establishment.
   would hamper a future attempt of Dutch reconquest\ldots The presence of an
   existing \PILLAGE here does not prevent looting: there are always more
   villages to burn and peasants to kill. A new \PILLAGE\Faceplus is put in
-  \provinceUtrecht, but since another one was present, no income is gained for
-  \SPA.
+  \provinceUtrecht, but since another \PILLAGE is present, no income is gained
+  for \SPA.
 
   Note that \SPA could have chosen to loot also \provinceZeeland. This would
   be especially useful if it did not intend to continue the siege as the
@@ -915,6 +930,7 @@ establishment.
 \bparag \Presidios may only be built in provinces with a port or arsenal
 depicted with a circled anchor on the map.
 \bparag \Presidios may only be built in non-owned provinces.
+\bparag Only one \Presidio may be built in each province.
 
 \aparag[How to build?]
 \bparag To build a \Presidio, a country must either control the province or
@@ -959,8 +975,9 @@ there was neither Breach nor HW obtained during this turn.
 \aparag[Voluntary redeployments]
 \bparag Other besieging forces may choose to redeploy. The controller of each
 stack decides what to do with it.
-\bparag Decisions to redeploy are taken in order of initiative. Redeployments
-are resolved once all decisions have been taken.
+\bparag Decisions to redeploy are taken in decreasing order of
+initiative. Redeployments are resolved once all decisions have been taken,
+thus the decision it self does not reopen LOS or similar effect.
 \bparag Stacks may not partially redeploy. Either the whole stack redeploys or
 the whole stack stays.
 \bparag If the redeployment of a stack would cause another stack to be out of
@@ -1009,7 +1026,8 @@ to this test.
 \aparag[Continuing siege]
 \bparag Besieging troops which obtained either a \USURE\Faceplus, a Breach or
 a HW during the turn may continue the siege for next turn.
-\bparag In this case, remove all \USURE and keep only a \USURE\Facemoins.
+\bparag In this case, remove all \USURE and put a \USURE\Facemoins (even if
+there was no \USURE previously).
 \bparag Continuing siege does not cause attrition.
 
 \begin{exemple}[Simple redeployment]
@@ -1023,7 +1041,8 @@ a HW during the turn may continue the siege for next turn.
   (voluntary redeployment) -MAN (+2 if this is a large stack as this is an
   extra cause of attrition). If there was only a \USURE\Facemoins in
   \provinceBanat, then redeployment is mandatory and the bonus of \bonus{-2}
-  to attrition not here.
+  to attrition is lost. Since the stack still has a LOS, there is no specific
+  malus for the roll.
 \end{exemple}
 
 \begin{exemple}[Double redeployment]
@@ -1039,11 +1058,7 @@ a HW during the turn may continue the siege for next turn.
   from \provinceBanat and \provinceMagyarorszag, thus resulting in an
   overstacking and destruction of exceeding troops. So, voluntarily
   redeploying both stacks might be a bad idea\ldots This is not always the
-  case due to rivers and mountain pass. For example, if there was no river
-  between \provinceMagyarorszag and \provinceCroatie, then \provinceSerbia
-  would be 4\MP from \provinceMagyarorszag, same as \provinceValahia, and \TUR
-  could redeploy the \provinceBanat stack to \provinceValahia and the
-  \provinceMagyarorszag stack to \provinceSerbia.
+  case due to rivers and mountain pass.
 \end{exemple}
 
 \begin{exemple}[Mandatory redeployment]
