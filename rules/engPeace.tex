@@ -80,6 +80,10 @@ per~\ref{chDiplo:Alliance:Defensive Alliance}).
 \bparag If several members of the same alliance want to sign a separate peace
 with the same enemy alliance at a given turn, they must sign one single
 separate peace.
+\bparag Note that this also prevent signing a separate peace with one member
+of the alliance and, at the same turn, a global peace with the rest of the
+alliance. All members of the alliance who want to sign peace (in this case,
+everybody) must do so together.
 
 \aparag[Minor allies] usually sign peace when their diplomatic patron does.
 \bparag However, the diplomatic patron may choose to do a separate peace
@@ -103,6 +107,13 @@ the separate peace and the diplomatic control of the minors staying at war.
   Any minor allies of \VEN or \POL (signing the peace) is also included in the
   peace. Minors allies of \TUR are also part of the peace.
 \end{exemple}
+
+\begin{designnote}
+  It is not possible to sign several separate peace (in one war) in a single
+  turn, and it is not possible to sign both separate and global peace on the
+  same turn, in order to limit the number of peace conditions that may be
+  exchanged each turn.
+\end{designnote}
 
 \aparag[Proposing separate peace with minor]\label{chPeace:Separate peace minor}
 An alliance may propose separate peace with minor allies of an opposing
@@ -153,7 +164,7 @@ as the global peace.
   \paysAlgerie because it is a \VASSAL and even if it controls one province,
   it does not controls the capital. It may, in addition, propose peace to
   \paysTripoli as each alliance is always entitled to one separate peace with
-  one enemy minor at no condition. 
+  one enemy minor at no condition.
 
   Thus, \HIS may propose up to three separate peaces with minors. If it does,
   each of these peaces is resolved separately.
@@ -163,7 +174,7 @@ as the global peace.
 \aparag[Mandatory peaces between majors] It is usually not mandatory to sign a
 peace, however:
 \bparag If a country is at -3 \STAB for two consecutive turns at the beginning
-of the peace phase, it must \textbf{propose} a peace to each alliance
+of the peace offer segment, it must \textbf{propose} a peace to each alliance
 (containing at least one major) against which it was at war during these two
 turns. Note that the check happens \textbf{after} \STAB improvement, thus
 mandatory peace usually occur because of a failed improvement (or a ransom).
@@ -184,6 +195,9 @@ surrender, and in some cases it is even possible to be forced to proposed a
 winning peace\ldots
 
 \aparag[Mandatory peace and alliances]
+\bparag Since this condition is checked for each country (and not for each
+alliance), it may be a separate peace proposal (with only some members of the
+alliance forced to propose peace).
 \bparag If several members of the same alliance must propose a mandatory
 peace, they must propose it together (as usual with separate peaces).
 \bparag If a power is forced to propose a peace and that peace is accepted,
@@ -207,7 +221,8 @@ peace only.
 have protected it).
 \bparag If an alliance of minors is at war with no major ally, it
 automatically accepts an unconditional surrender (peace of level 5) in its
-favour if any enemy proposes it.
+favour if any enemy proposes it. See~\ref{chPeace:automatic peace minor} for
+more on this.
 
 \subsubsection{Other specific cases}
 \aparag[Tri-partite wars]
@@ -237,7 +252,7 @@ decisions alone and is in no way forced to listen to his allies (however, do
 not complain that nobody wants you as an ally if you keep ignoring them).
 \bparag Only countries that are fully at war are considered. That is,
 countries in limited or foreign intervention may not impose their will to
-their allies and have a purely consultative say in the peace discussion. 
+their allies and have a purely consultative say in the peace discussion.
 
 \begin{exemple}[Disagreements]
   \FRA and \SPA are at war against \HOL and \ANG. \FRA and  \HOL both have
@@ -264,13 +279,13 @@ signed''). Remember that in case of disagreement, the countries stay at war
 and that's all.
 \bparag Precise peace timing:
 \begin{enumerate}
-\item Global peace proposals and discussions between majors. All proposal and
+\item Global peace proposals and discussions between majors. All proposals and
   agreement are simultaneous and it is not possible to wait for a peace before
   signing another.
 \item Separate peace proposals and discussions between majors, including
-  mandatory separate peaces. All proposal and agreements are simultaneous.
+  mandatory separate peaces. All proposals and agreements are simultaneous.
 \item Peace with minors, including separate peaces with minor allies. All
-  proposal are simultaneous before any die is rolled.
+  proposals are simultaneous before any die is rolled.
 \end{enumerate}
 
 \begin{exemple}[Continued]
@@ -292,11 +307,11 @@ and that's all.
 \bparag Peace agreements may include promises for future actions or agreements
 on future Diplomatic phases.
 \bparag It is, however, not possible to immediately sign any agreement (loan,
-dynastic alliance with exchange of provinces, military alliance, \ldots)
-Hence, it is always possible to ``forget'' about these between the signature
-of the peace and the next Diplomatic phase. Again, do not complain that nobody
-loves you if you keep forgetting your agreements (Europa Universalis is a long
-term game and treason is often a bad strategy).
+dynastic alliance, military alliance, \ldots) Hence, it is always possible to
+``forget'' about these between the signature of the peace and the next
+Diplomatic phase. Again, do not complain that nobody loves you if you keep
+forgetting your agreements (Europa Universalis is a long term game and treason
+is often a bad strategy).
 \bparag Such promises do not have to be publicly announced and may be kept
 secret between players (even from allies). Thus, they are often jokingly
 referred as ``cultural agreements'' as they have no in-game effect (only a
@@ -309,9 +324,10 @@ cultural agreements''\ldots
   including many countries. It is advised to try and minimise the time
   involved for peace discussions and keep the negotiations for the Diplomatic
   phase. However, evaluation of the new situation is required and some complex
-  transactions are not uncommon. Discussions should be kept focused on the
-  current peace and not diverge toward long term agreements (these are best
-  suited for the Diplomatic phase).
+  transactions are not uncommon (nor unrealistic given what historically
+  happened during the time frame of the game). Discussions should be kept
+  focused on the current peace and not diverge toward long term agreements
+  (these are best suited for the Diplomatic phase).
 
   Players may isolate themselves from other players in order to discuss
   peaces. Either allies wanting to prepare a common proposal or enemies
@@ -340,13 +356,13 @@ cultural agreements''\ldots
 % \bparag This type of peace can not be concluded with a minor.
 
 \subsection{Interventions}
-\aparag Countries in limited or foreign intervention may choose to either
-continue the intervention or withdraw.
+\aparag Countries in limited or foreign intervention in a war that goes on may
+choose to either continue the intervention or withdraw.
 \bparag The choice is made for each intervention separately. In case of
 disagreement, each country in decreasing order of initiative indicates for
 each intervention whether it stays or withdraws.
-\bparag The choice is made by each player. Not by the leader of the alliance
-as for signing global peaces.
+\bparag The choice is made by the country doing the intervention. Not by the
+leader of the alliance as for signing global peaces.
 
 \aparag Continuing a limited intervention will cost some \STAB. Continuing a
 foreign intervention costs nothing but prevent reinforcing the
@@ -428,14 +444,14 @@ reduced to current level 0 or 1 counts as 1 province (2 in the country own
 remembering who caused the losses.
 
 \begin{designnote}[Privateer effect]
-  Privateer effect is triggered even if the losses were caused by
-  \pays{pirates} or a third party \corsaire (typically, one of
-  \Barbaresques), which may seem illogical. However, \corsaire are only a
-  partial and abstract representation of the actual privateer activity. It is
-  assumed that the real activity is more widespread, including in zones where
-  no counter was send. Moreover, the target country probably doesn't know for
-  sure who attacked each of its merchants. Or doesn't make a real difference
-  between pirates and enemy privateers\ldots
+  is triggered even if the losses were caused by \pays{pirates} or a third
+  party \corsaire (typically, one of \Barbaresques), which may seem
+  illogical. However, \corsaire are only a partial and abstract representation
+  of the actual privateer activity. It is assumed that the real activity is
+  more widespread, including in zones where no counter was send. Moreover, the
+  target country probably doesn't know for sure who attacked each of its
+  merchants. Or doesn't make a real difference between pirates and enemy
+  privateers\ldots
 \end{designnote}
 
 \begin{exemple}[Privateer effect]
@@ -464,7 +480,7 @@ sufficient to compute the PD from the point of view of one of the alliances.
   1, while the \STAB of \POL and \TUR is 0. No side controls enemy
   provinces. Thus, the basic (and the modified) PD is 1 - (1+0+0)/3 = \td\ in
   favour of \RUS, rounded to +1 in favour of \RUS.
-  
+
   \smallskip
 
   \SUE and \TUR are at war against \RUS. The \STAB of \RUS is 0, the \STAB of
@@ -598,20 +614,37 @@ it is still the first territorial concession.
   indemnities (they could have been split in any way between the
   losers). Being the only Major, \FRA chooses who receive the money. Even if
   it could have given some to \paysPortugal, it prefers to keep all of
-  it\ldots Even if the first territorial concession is the second condition,
-  it is the first territorial one, hence chosen by the winning alliance (for a
+  it\ldots (note that as part of the discussion, it could have been agreed
+  that this money goes to \paysPortugal (and is lost) but this would have been
+  only a verbal non binding agreement and in the end \FRA decides who gets the
+  money). Even if the first territorial concession is the second condition, it
+  is the first territorial one, hence chosen by the winning alliance (for a
   peace of level 4). \FRA chooses to annex a Spanish province. Lastly, the
   second territorial concession is implemented. It is chosen by the losing
   alliance. Since \HOL already has its turn in choosing a condition (for the
   indemnities) and \HIS did not has its, \HIS chooses and decides to give a
   Dutch \COL to \paysPortugal.
+\end{exemple}
 
+\begin{playtip}
   Note that letting an unwilling ally support all the weight of the peace is
   probably not a good long term strategy if you still need allies for future
   wars. Usually, the precise implementation of the peace conditions is agreed
   upon between players before signing the peace. The precise order of choice
   is rarely needed.
-\end{exemple}
+
+  A lot of rules are written to handle disagreements because that's the
+  special cases where we need how to resolve the situation for the rare cases
+  where players really have divergent opinions. In most of the cases, the
+  players go out of the negotiation room already knowing all the details of
+  the peace, and the high \DIP country discuss with its allies rather than
+  imposing a peace.
+
+  Especially, \emph{Europa Universalis} is a (very) long term
+  game. Backstabbing people during peace negotiation is probably not a good
+  long term strategy. You may do it sometime when you really have a huge gain
+  or a big opposing goal with someone, but be careful.
+\end{playtip}
 
 \aparag[Disagreement] Any power in the winning alliance who is currently
 controlling at least one province of the losing alliance and does not receive
@@ -622,11 +655,10 @@ least one full peace condition immediately break their alliance with all the
 powers denouncing the peace.
 \bparag As usual, powers breaking alliance lose 2 \STAB and give a \CB to
 their former allies.
-\bparag Powers breaking alliance that way stay allied together. Power
+\bparag Powers breaking alliance that way stay allied together. Powers
 denouncing the peace stay allied together.
-\bparag Power that neither denounce the peace nor received a full peace
-condition must immediately chose either to denounce the peace or to accept
-it.
+\bparag Powers that neither denounce the peace nor received a full peace
+condition must immediately chose either to denounce the peace or to accept it.
 \bparag If they accept the peace, they are breaking their alliance with the
 power denouncing it (and stay allied with the others), at usual cost.
 \bparag If they denounce the peace, they stay allied with the other powers
@@ -637,6 +669,9 @@ the peace. That is, the powers denouncing the peace have been wronged and ask
 their former allies for compensations, and it is the refusal of giving such
 compensations (unrepresented in game) which causes the breaking of the
 alliance.
+\bparag Note also that denouncing the peace does not automatically create a
+war between the former allies. It only breaks the alliance and give a \CB to
+some of them.
 
 \subsubsection{Description of peace levels}
 \aparag[Peace of level 0 (White peace)] No conditions are given or taken.
@@ -661,7 +696,7 @@ the winning alliance.
 \aparag[Peace of level 2] The winning alliance receives one peace
 condition.
 \bparag[Territorial concession] The province is selected by the winning
-alliance. 
+alliance.
 \bparag[Indemnities] The losing alliance gives 75 \ducats of war indemnities
 to the winning alliance.
 \bparag[European Diplomatic concession] One country (any status, excepted if
@@ -729,7 +764,7 @@ for three peace conditions.
 \bparag[\ROTW Diplomatic concession] One \ROTW country breaks status with one
 member of the losing alliance and signs \dipFR with one member of the winning
 alliance. If the losing alliance is composed solely of \MIN, then one of them
-is forced to sign a \dipFR with one member of the winning alliance, or a
+is forced to sign a \dipFR with one member of the winning alliance, or an
 \dipAT for two conditions.
 
 \aparag[Indemnities] Note that the amount given for indemnities is the amount
@@ -748,6 +783,7 @@ peace may not be signed under these terms. That is, some other conditions must
 be chosen rather than territorial ones.
 
 \aparag[Choice of Provinces] The provinces that may be annexed are:
+\bparag Capitals may never be annexed unless explicitly specified elsewhere.
 \bparag Any power may annex provinces it controls at the time of the peace.
 \bparag Any power may annex any of its national provinces, whoever controls it
 (even if still controlled by the enemy alliance).
@@ -755,8 +791,6 @@ be chosen rather than territorial ones.
 whoever controls it (even if still controlled by the enemy alliance).
 \bparag Any power may annex any province with its blurred shield in it,
 whoever controls it (even if still controlled by the enemy alliance).
-\bparag Exception: capitals may never be annexed unless explicitly specified
-elsewhere.
 \bparag Any power may annex a \TP or \COL (including of level 6) if it was
 controlled during some point of the war by any member of its alliance.
 \bparag Any power may annex a \TP or \COL (including of level 6) if it owned
@@ -959,7 +993,7 @@ nationality modifiers of all the minors in the alliance.
 they happen and are reseted at each turn.
 \begin{modlist}
 \item[+2] per major battle won by the proposing alliance;
-\item[-2] per major battle won by the target alliance;  
+\item[-2] per major battle won by the target alliance;
 \item[+1] per battle won by the proposing alliance;
 \item[-1] per battle won by the target alliance;
 \item[+1] per military leader of the target alliance (including Monarchs)
@@ -976,7 +1010,7 @@ they happen and are reseted at each turn.
 \begin{modlist}
 \item[-2] if it is an attempt to negotiate a separate peace;
 \item[$\pm$?] the peace differential of the proposing alliance versus the
-  alliance of the minor (maximum, \bonus{-3}/\bonus{+3}). 
+  alliance of the minor (maximum, \bonus{-3}/\bonus{+3}).
 \end{modlist}
 
 \aparag[Automatic peaces]\label{chPeace:automatic peace minor}
@@ -1033,8 +1067,7 @@ concessions.
   make if you have doubts.
 
   Minors who have a Diplomatic patron are another matter. They are basically
-  part of one country's empire and more or less obey the orders. Thus, you may
-  play them however you want.
+  part of one country's empire and more or less obey the orders\ldots
 \end{designnote}
 
 \aparag[Multiple and Separate Peace]
@@ -1205,7 +1238,7 @@ ownership. Replace the counter by a counter of the same nature of the new
 owner. Level and exploited resources stay the same, update the corresponding
 record sheets. Any fortress or arsenal may be replaced by a counter of the
 same nature and same or lower level of the new owner (a fortress may also
-replace an arsenal), or destroyed.
+replace an arsenal, an arsenal may not replace a fortress), or destroyed.
 \bparag If the new owner does not have available counters, it may immediately
 destroy (or reduce levels of) existing ones as needed.
 \bparag If not enough fortress, \COL or \TP counters are available (\COL and
@@ -1245,8 +1278,9 @@ that were not part of the war.
 \bparag Evacuating units may move by sea, even if there is no fleet to
 transport them.
 \bparag Evacuating units have unlimited movement capacity (\emph{i.e.} they
-are not limited to 12\MP), however, they may not move more than 12\MP if they
-can evacuate in 12\MP or less.
+are not limited to 12\MP). Evacuation is not necessarily done toward the
+closest province, however, evacuating units may not move more than 12\MP if
+they can evacuate in 12\MP or less.
 \bparag Evacuating units may not be intercepted.
 \bparag Evacuating units roll for attrition as usual, with a \bonus{-2} to the
 roll, and considering all provinces as friendly. Ignore any bad weather. Each
@@ -1266,7 +1300,7 @@ may either evacuate to any owned and controlled port or stay at sea.
 
   When, evacuating, you must also evacuate from your ally, except if your are
   still together fighting in another war.
-  
+
   If ending an intervention, you must also evacuate any unit that was part of
   the intervention.
 
@@ -1332,7 +1366,7 @@ overlook an obvious special case].
   nor Dutch provinces with Spanish control or siege (military presence of an
   ongoing enemy).
 
-  If, on the other hand, \FRA sign peace with both \HIS and \HOL, then its
+  If, on the other hand, \FRA signs peace with both \HIS and \HOL, then its
   troops evacuating from Dutch territory may move through Spanish units
   (ignore any non-enemy unit). Even if \FRA was not at war against \HIS (but
   only against \HOL), its evacuating troops may move through Dutch province
@@ -1392,9 +1426,8 @@ have been used.
 Any major country that both
 \begin{modlist}
 \item was fully at war against at least another major country or was victim of
-  a declaration of war by a minor (either by political event or \RD, the major
-  must be the first victim of the war, not dragged in by alliances) during one
-  of the previous turns ;
+  a declaration of war by a minor (either by political event or \RD) during
+  one of the previous turns ;
 \item[AND] is now completely at peace (no intervention either) for the first
   time since these wars ;
 \end{modlist}
@@ -1422,7 +1455,7 @@ many peaces are signed.
   At turn 5, \TUR attacks \paysDamas. At turn 6, \ref{pII:War Persia Turkey}
   happens early and \paysPerse attacks \TUR. At the end of turn 6, \TUR manage
   to sign peace with \paysPerse. Since it was victim of a declaration of war
-  by event, it should gain \STAB. However, it is still at war against
+  by a minor, it should gain \STAB. However, it is still at war against
   \paysDamas and may not gain it, but the fact that it got out of a ``big''
   war is remembered. At turn 7, \TUR signs peace with \paysDamas. Since it is
   now completely at peace, it gains 1 \STAB.
@@ -1432,8 +1465,8 @@ many peaces are signed.
   At turn 10, \TUR is at war against allied \HIS and \VEN. It signs a separate
   peace with \VEN. Since it is a major country, it should gain 1 \STAB but is
   prevented to do so by still being at war against \HIS. \VEN, however, is now
-  fully at peace (supposing there is no other war) and gain 1 \STAB (thus
-  mitigating the 2 \STAB loss of breaking an alliance for separate peace). 
+  fully at peace and gain 1 \STAB (thus mitigating the 2 \STAB loss of
+  breaking an alliance for separate peace).
 
   At turn 8, \TUR and \HIS sign peace. \TUR is now fully at peace and has two
   reasons to gain \STAB: the former treaty with \VEN and the current with
@@ -1537,7 +1570,7 @@ allows to reinforce the stack.
 \subsection{Other cases}
 \aparag Some other rules or events cause lose of \STAB at this point.
 \bparag Sometime, the loss is cumulative with others losses, sometimes it's
-not. 
+not.
 
 \aparag[Turkey and the Knights]
 \bparag If the \corsaire of \paysChevaliers caused the loss of at least one
@@ -1668,7 +1701,7 @@ between its Minimal inflation and its computed inflation.
   then its Computed Inflation is 15\ducats (25\% of 60\ducats) and its Actual
   Inflation is 25\ducats (maximum between the Minimal Inflation of 25\ducats
   and the Computed Inflation of 15\ducats).
-  
+
   If its \RT is 160\ducats, the Computed Inflation is 40\ducats and thus the
   Actual Inflation is also 40\ducats.
 
@@ -1692,9 +1725,11 @@ between its Minimal inflation and its computed inflation.
   to avoid too many loses due to Inflation. In most cases, this is relatively
   easy because you can always take more or less loans to adjust your \RT. Note
   that since loans interest is only 10\%, it is usually more interesting to
-  get loans than a highly negative \RT. Loans, however, have other
-  disadvantages. Because of peaces indemnities (or the Spanish Gold flow), it
-  is sometimes tricky to achieve this.
+  get loans than a highly negative \RT (once the Spanish silver starts
+  flowing, inflation will likely be stuck on the 25\%/33\% box with only a
+  handful of turns in the 20\%/25\% box). Loans, however, have other
+  disadvantages. Because of peaces indemnities, the Spanish Gold flow or too
+  many military expenses, it is sometimes tricky to achieve this.
 
   Each turn, you will need to pay for your Inflation, that is most of the time
   25\ducats (or 13\ducats for poor countries). This means that each turn you
@@ -1703,7 +1738,7 @@ between its Minimal inflation and its computed inflation.
   is not as easy at it seems and will require clever use of National
   loans\ldots Obviously, during big wars you may not manage it and start
   getting into debt. Hopefully you'll stay at peace long enough to stabilise
-  your budget before the next war. 
+  your budget before the next war.
 \end{playtip}
 
 \section{Test for crusade}\label{chPeace:Crusade}
