@@ -350,7 +350,7 @@ province:Cabo Verde
 province:Delhi::Dellī
 province:Diu
 province:Edo:江戸:Edo
-province:Fernado Po
+province:Fernando Po
 province:Guadeloupe
 province:Goa
 province:Herat:ﺙﺍﺮﻫ:Herât
@@ -625,35 +625,24 @@ seazone:Noire W:Mer Noire occidentale
 seazone:Marmara
 seazone:Egee:Mer Égée
 seazone:Levantin:Bassin Levantin
-%Mediterrane E=[seazone]=>Levantin
-%seazone:Mediterranee E:Méditerranée orientale
-% => Bassin Levantin
+%seazone:Mediterranee E:Méditerranée orientale => Bassin Levantin
 seazone:Adriatique
 seazone:Ionienne:Mer Ionienne
 seazone:Thyrrenienne:Mer Tyrrhénienne
 seazone:Gabes:Golfe de Gabès
-%Syrte=[seazone]=>Gabes
-%seazone:Syrte:Golfe de Syrte
-% => Golfe de Gabès
+%seazone:Syrte:Golfe de Syrte => Golfe de Gabès
 seazone:Lion:Golfe du Lion
 seazone:Alger:Baie d’Alger
 seazone:Alboran:Mer d'Alboran
-%Mediterrane W=[seazone]=>Alboran
-%seazone:Mediterranee W:Méditerranée occidentale
-% => Mer d'Alboran
+%seazone:Mediterranee W:Méditerranée occidentale => Mer d'Alboran
 seazone:Cadix:Golfe de Cadix
 seazone:Gascogne:Golfe de Gascogne
 seazone:Celtique:Mer Celtique
-%seazone:Irlande:Mer d’Irlande
-% => Mer celtique
+%seazone:Irlande:Mer d’Irlande => Mer celtique
 seazone:Rockall:Bassin de Rockall
-%Western Approaches=[seazone]=>Rockall
-%seazone:Western Approaches
-% => Bassin de Rockall
+%seazone:Western Approaches => Bassin de Rockall
 seazone:Irlande:Mer d’Irlande
-%Man=[seazone]=>Irlande
-%seazone:Man:Île de Man
-% => Mer d'Irlande
+%seazone:Man:Île de Man => Mer d'Irlande
 seazone:Manche
 seazone:Nord:Mer du Nord
 seazone:Norvege:Mer de Norvège
@@ -669,28 +658,29 @@ seazone:Plata:Rio de la Plata
 seazone:Bahia:Mer de Bahia
 seazone:Recife:Mer de Recife
 seazone:Amazonie:Golfe d'Amazonie
-seazone:Sous-le-vent:Îles sous-le-vent
-% => Petites Antilles ?
+seazone:Petites Antilles
+% seazone:Sous-le-vent:Îles sous-le-vent => Petites Antilles
 seazone:Caraibes:Caraïbes
 seazone:Mexique:Golfe du Mexique
-seazone:Cuba
-% => Bancs des Bahamas ?
-seazone:Puerto Rico
-% => Sargasses ?
+seazone:Bahamas:Bancs des Bahamas
+% seazone:Cuba => Bahamas
+seazone:Sargasses:Mer des Sargasses
+% seazone:Puerto Rico => Sargasses
 seazone:Bermudes:Triangle des Bermudes
 seazone:Floride:Détroit de Floride
-seazone:Atlantique W:Atlantique Ouest
-% => America ? Baie de Chesapeake ?
+seazone:Amerique:Amérique
+%seazone:Atlantique W:Atlantique Ouest => Amerique
 seazone:Fundy:Baie de Fundy
-seazone:Atlantique NW:Atlantique Nord-Ouest
-% => Grands Bancs (de Terre-Neuve)
+seazone:Grand Bancs:Grands Bancs de Terre-Neuve
+Terre-Neuve=[seazone]=>Grands Bancs
+%seazone:Atlantique NW:Atlantique Nord-Ouest => Grands Bancs (de Terre-Neuve)
 % (appelation attestée au 17ème)
 seazone:Saint-Laurent
 seazone:Labrador:Mer du Labrador
 seazone:Hudson:Baie d’Hudson
 %%%Europe
-seazone:Groenland:Grœnland
-% => Mer d'Irminger (nom 19ème)
+seazone:Irminger:Mer d'Irminger
+% seazone:Groenland:Grœnland => Mer d'Irminger (nom 19ème)
 seazone:Acores:Mer des Açores
 seazone:Canarias:Mer des Canaries
 %%%Africa
@@ -700,10 +690,10 @@ seazone:Guinee:Golfe de Guinée
 seazone:Angola:Côte d’Angola
 seazone:Bonne-Esperance:Cap de Bonne-Espérance
 %%%Middle
+seazone:Bonnet flamand
+%seazone:Atlantique N:Atlantique Nord => Bonnet flamand
 seazone:Atlantique N:Atlantique Nord
-% => Bonnet flamand ?
-seazone:Atlantique
-% => Atlantique N.
+%seazone:Atlantique => Atlantique N.
 seazone:Atlantique S:Atlantique Sud
 seazone:Atlantique SW:Atlantique Sud-Ouest
 seazone:Atlantique SE:Atlantique Sud-Est
@@ -925,7 +915,7 @@ ministre:Oxenstierna:Axel:Oxenstierna
 ministre:Pitt:William, 1st Earl of Chatham:Pitt
 ministre:Potemkine:Григо́рий Алекса́ндрович Потёмкин-Таври́ческий:Potemkin
 ministre:Richelieu:Armand Jean du Plessis de:Richelieu
-ministre:Sadri Azam:Grand Vizier:Sadr-i Âzam
+ministre:Sadrazam:Grand Vizier:Sadrazam
 ministre:Patkul:Jan Reinhold von:Patkul
 
 % Leaders (the non-automatic things)
