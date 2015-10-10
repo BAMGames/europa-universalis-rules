@@ -35,13 +35,14 @@ describes a lot of military concepts.
   known at the end of the turn, after the Exchequer test\ldots
 
   The most efficient way to plan and resolve actions is to write everything on
-  the record sheet: nature of the actions, investment, column and bonus. Thus,
-  resolving the action is very fast: simply announce column and bonus and roll
-  one die with the other player checking the result in the table. Writing down
-  the result of your actions (success, failure, or amount of progression
-  gained) will allow to quickly resolve all the actions in a row. Then, you
-  can ``release'' the other player and actually implement the results obtained
-  (which can require finding the right counter and similar things).
+  the monarch record sheet: nature of the actions, investment, column and
+  bonus. Thus, resolving the action is very fast: simply announce column and
+  bonus and roll one die with the other player checking the result in the
+  table. Writing down the result of your actions (success, failure, or amount
+  of progression gained) will allow to quickly resolve all the actions in a
+  row. Then, you can ``release'' the other player and actually implement the
+  results obtained (which can require finding the right counter and similar
+  things).
 \end{playtip}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,8 +93,8 @@ player is entitled to a certain number of actions:
 % \bparag Domestic operations cannot be done if \terme{Exceptional taxes} were
 % levied this turn or during Military Phase of the previous one.  Only one
 % such operation can be done per turn.
-\bparag Domestic operations are mutually exclusive. Each country can only
-attempt one each turn.
+\bparag Domestic operations are mutually exclusive. Each country can attempt
+at most one each turn.
 \bparag The limitations for the external operations and (normal) competition
 are given in the player-specific tables. They form an upper bound on the
 number of operations and a player can choose to do less external operations
@@ -107,7 +108,8 @@ combination).
 \begin{exemple}
   With 2 actions of Colonisation per turn in period \period{VI} (1700-1759),
   the English player can make 2 attempts on the same Colony or 1 attempt each
-  on 2 different Colonies, in the same turn.
+  on 2 different Colonies, in the same turn\ldots or no attempt at all since
+  the actions are not mandatory.
 \end{exemple}
 \bparag Some players are entitled to actions with specific restrictions
 (e.g. \SPA may have actions restricted to \POR administration while
@@ -175,7 +177,8 @@ results. They may differ from the general case explained here. Especially,
 \aparag The number of \COL, \TP, \MNU and \TradeFLEET counters that a country
 may have in play at a given time is limited.
 \bparag This is a limit on the number of counters, each of them may have any
-number of level in it.
+number of level in it (within the allowed values for this counter: 1 or 2 for
+\MNU, between 1 and 6 for the others).
 \bparag The limit of \MNU (only) may be exceeded as
 per~\ref{chThePowers:Exceeding Limits}.
 \bparag The limit of \TradeFLEET is usually the number of counters provided by
@@ -186,6 +189,8 @@ game goes and can be found in the country tables (see~\ref{chThePowers:Period
 \aparag If, for some reason, a country has more counters of one type that
 allowed, it must immediately remove the exceeding ones (at controlling
 player's choice).
+\bparag Counters lost that way are simply removed from the map. The levels in
+them are lost and nothing is gained in exchange of this loss.
 
 \aparag A country may not attempt an action that would create a counter of a
 kind whose limit is reached. For example, a country having reached its maximum
@@ -516,6 +521,11 @@ the same total amount, distributed as wanted among all the following turns.
 amount of that loan, for all the turns between the current one (excluded) and
 the last turn of the loan (included).
 
+\aparag Write in \lignebudget{Optional loan refunds} the sum of
+\lignebudget{International loans refunds} (the part that was not taken into
+account in \lignebudget{Mandatory loan refund}) and \lignebudget{National
+  loans refunds}.
+
 \begin{exemple}[Simple loan: contracting the loan]
   At turn 1 (during the Budget phase), \FRA contracts an International Loan of
   100\ducats. As per \ref{chBudget:Budget:I. Loans}, it writes 100\ducats in
@@ -659,7 +669,7 @@ the last turn of the loan (included).
   Suppose that instead of refunding the second loan, \POL chooses to refund
   the first one completely as well as 10\ducats of the second one. Since the
   second loan is still ongoing, its interests have to be paid in full and the
-  loan \EcoRS is:
+  loan \EcoRS is:\\
   \begin{tabular}{|l||r|r|r|r|r|}
     \hline
     Turn & 1 & 2 & 3 & 4 & 5\\
@@ -878,7 +888,7 @@ the regular \FTI does not change it.
 \aparag[Condition] In order to raise \terme{Exceptional taxes}, a country must
 both:
 \bparag be at war (including civil or religious wars but excluding overseas
-wars) and
+wars and mere interventions) and
 \bparag be able to pay the eventual cost in \STAB (see below). That is, a
 country at -3 \STAB may not raise exceptional taxes unless these don't cost a
 loss of \STAB.
@@ -886,7 +896,7 @@ loss of \STAB.
 \aparag[Loss of \STAB] A country raising exceptional taxes immediately loses 1
 \STAB unless both of the following conditions occur:
 \bparag The country is involved in at least one regular war (ie neither civil
-nor religious nor overseas) and
+nor religious nor overseas, interventions don't count) and
 \bparag At least one national province is either controlled or besieged by an
 enemy in this war.
 
@@ -957,7 +967,7 @@ this amount and must spend money according to this estimation.
 \begin{exemple}[Bad taxes]
   During the French wars of religion, the French monarchy is desperately
   looking for money to fund its campaign against the Huguenots and repeatedly
-  summons the \emph{États généraux} in successive attempts to increase taxes.
+  summons the \emph{États Généraux} in successive attempts to increase taxes.
 
   French king, \monarque{Henri III} has an \ADM of 6. and \FRA has a \STAB of
   -2 due to the already long turmoil. Since it can loss 1 \STAB, \FRA is
@@ -967,7 +977,7 @@ this amount and must spend money according to this estimation.
   At the end of the turn, the exact amount of taxes is computed. Rolling 1d10
   gives only 2, for a final amount of 10$\times$(2-3) = -10\ducats\ldots \FRA
   actually has to pay some money as result of this operation (representing
-  cost for gathering members of the \emph{États généraux} and to send tax
+  cost for gathering members of the \emph{États Généraux} and to send tax
   collectors without a large success). Note that it is not possible to
   renounce this ``tax'' once the result is known, so better check the
   modifier before deciding and estimate risks cautiously.
@@ -982,9 +992,10 @@ this amount and must spend money according to this estimation.
 
   \FRA would like to risk exceptional taxes again. However, its \STAB is
   already at -3 so it cannot pay for it. \villeParis is enemy-controlled but
-  this does not provides ``cost-free'' taxes during religious wars. So,
-  exceptional taxes are not possible until \FRA somehow manage to raise its
-  \STAB.
+  this does not provides ``cost-free'' taxes during religious wars (many
+  people supported the late Duke of Guise and are rather reluctant to help
+  fund the war against his followers\ldots) So, exceptional taxes are not
+  possible until \FRA somehow manage to raise its \STAB.
 \end{exemple}
 
 
@@ -1058,7 +1069,8 @@ treat as ``F''.
 
 \subsubsection{Normal procedure}
 \aparag[Colonisation] The operation of \terme{Colonisation} targets a province
-in the \ROTW that does not already contains a foreign \COL. Then use column
+in the \ROTW that does not already contains a foreign \COL, a \terme{Minor
+  establishment} or a \terme{Pirate haven}. Then use column
 \FTI-Difficulty+Investment (where Difficulty is the Difficulty value for the
 \Area).
 \bparag See the access limitations in \ref{chAdministration:Pioneering},
@@ -1255,7 +1267,7 @@ computation and to resolve \undemi.
 \bparag The following modifiers to the die-roll are used:
 \begin{modlist}
 \item[-1]Per \TP of another country in the \Area.
-\item[-1]If target already enemy occupied (fort, forces).
+\item[-1]If target already enemy occupied (fort, forces, \TP).
 \item[+2]If the province has been pacified (all natives killed).
 \item[-1]If at least one battle occured in the \Area during the preceding
   turn.
@@ -1283,7 +1295,7 @@ immediately activated and will attack during the redeployment phase
 
 \aparag[Special cases]
 \bparag If per chance several players choose the same province for a first
-\COL and a first \TP implantation, the \TP is eliminated.
+\COL and a first \TP implantation, and both succeed, the \TP is eliminated.
 \bparag If the target province contains several \TP at the end of the round,
 there will be an automatic competition between the \TP of the province.
 \bparag If the province was occupied at the beginning of the administrative
@@ -1329,8 +1341,8 @@ their establishments. See specific rules for details.
 
 \subsubsection{Trade fleet}\label{chAdministration:Limited Access}
 \aparag[Caspian sea] In order to target the \stz{Caspienne} for \TFI, one must
-either own a province adjacent to the sea (even without port), the \CCs{Grand
-  Orient} or the \CCs{Mediterrannee}.
+either own a province (or have a \COL or \TP) adjacent to the sea (even
+without port), the \CCs{Grand Orient} or the \CCs{Mediterrannee}.
 
 \aparag[\ROTW \STZ] In order to target a \ROTW \STZ for \TFI, at least one sea
 zone must have been discovered in the \STZ, and at least one condition among
@@ -1341,8 +1353,8 @@ trade rights given by somebody that has a \COL/\TP bordering the \STZ (a minor
 country that is at least in \MA will give the rights). Once given, the trade
 rights are removed by \terme{trade refusal}, or as soon as the minor country
 is no more in \MA.
-\bparag The \STZ is either \stz{Canarias}, \stz{Guinee}, \stz{Oman},
-\stz{Indien} or \stz{Formose} and the country has discovered all the sea zones
+\bparag The \STZ is either \stz{Canarias}, \stz{Guinee}, \stz{Arabie},
+\stz{Indien} or \stz{Chine} and the country has discovered all the sea zones
 of the \STZ (i.e. the sea zone in which is the symbol, plus all neighboring
 ones).
 %% [TBD: Tempetes exclu car pas de civilisation construite et commercante ici]
@@ -1508,9 +1520,8 @@ segment).
 \bparag Progression through administrative operations (majors, administrative
 phase);
 \bparag Minor countries progression (cultural groups, administrative phase);
-\bparag Cultural groups adjustment (cultural groups, event and administrative
-phases);
-\bparag Goals adjustment (goals, event and administrative phases);
+\bparag Cultural groups adjustment (cultural groups, administrative phases);
+\bparag Goals adjustment (goals, administrative phases);
 \bparag Goals time adjustment (goals, administrative phase).
 
 \aparag[Progression] When a country or cultural group gains technological
@@ -1562,10 +1573,9 @@ the Latin group ; \POL is \textbf{both} in the Latin and Orthodox groups ;
 
 \aparag[Goals adjustment]
 \label{chAdministration:Technology:Goals Adjustment}
-At the end of the event and administrative phases, each goal that was reached
-during the current phase is moved down until it is in a box preceding a
-country or group technology counter or two boxes above another goal of the
-same kind.
+At the end of the administrative phase, each goal that was reached during the
+current phase is moved down until it is in a box preceding a country or group
+technology counter or two boxes above another goal of the same kind.
 
 \begin{exemple}[Blocked by a marker]
   At turn, 11, suppose that we have the following positions of markers and
@@ -1640,16 +1650,15 @@ down by one level.
   \begin{itemize}
   \item Cultural group adjustment occurs after scheduled progression of
     groups.
-  \item Goals adjustment occurs only once per phase (Event or Administrative)
-    and not each time someone reaches a goal. So, a country 3 levels behind a
-    goal may not hope for someone else to reach the goal and make it drop
-    before raising its technology on the same turn (however, this can be done
-    in 2 turns).
+  \item Goals adjustment occurs only once per turn (during the Administrative
+    phase) and not each time someone reaches a goal. So, a country 3 levels
+    behind a goal may not hope for someone else to reach the goal and make it
+    drop before raising its technology on the same turn (however, this can be
+    done in 2 turns).
   \end{itemize}
 
-  To do it properly: at the end of the administrative phase (technology
-  progression is rare during events), one player should do the Cultural groups
-  progression followed by all the adjustments in order.
+  To do it properly: at the end of the administrative phase, one player should
+  do the Cultural groups progression followed by all the adjustments in order.
 \end{designnote}
 
 
@@ -1696,7 +1705,8 @@ technology is gained.
 \FTI);
 \bparag If the next Technology goal is not available, Result ``S\textetoile''
 adds 2 levels, Results ``S'' adds 1 level, Result ``\undemi'' is treated as
-normal: roll 1d10, if less or equal than \FTI treat as ``S'', otherwise, treat
+normal: roll 1d10, if less or equal than \FTI treat as ``S'' (never as
+``S\textetoile'', even if this was a ``\undemi\textetoile''), otherwise, treat
 as ``F''.
 
 \bparag Count \TTER and \TVGA as a ``next Technology'' (that can be available)
@@ -1754,19 +1764,12 @@ must pay a cost of conversion to this new technology.
 \bparag This cost of conversion has to be paid immediately for the totality of
 armies, fleets or detachments of the concerned country (except vassals) that
 are currently on the map.
-% If not, the progression of the concerned technological marker is canceled
-% and the player's marker returned to its original position on the track.
 \bparag The cost is 10\ducats per \ARMY\faceplus or \FLEET\faceplus counter,
 5\ducats per \ARMY\facemoins or \FLEET\facemoins, 1\ducats per detachment (any
 kind).
-% \bparag The cost is doubled if there are two or more technological
-% breakthroughs are obtained at the same turn.
-\bparag Naval forces composed only of \NGD do not pay for technological
-conversion.
-% \bparag Exceptionally, if the player does not have enough treasure to pay
-% for the conversion, he may immediately get the right to obtain an
-% exceptional loan (National or International) but at double the interest rate
-% compared to the figure obtained on \tableref{table:Loans}.
+\bparag Naval forces composed only of \NGD do pay for technological
+conversion even if they usually do not benefit from it (there is still some
+minor changes done on the galleys over time).
 \bparag Minor countries never have to pay conversion costs, whatever their
 diplomatic status.
 \bparag Write this amount in \lignebudget{Other expenses}, even if the new
@@ -1782,8 +1785,8 @@ construction of troops) but conversion cost must be payed for them. Follow the
 turn order, as well as the order of the lines on the ERS closely.
 
 \aparag[Technology advantage] Beyond the fact that countries with different
-technologies do not use the same tables for combat, technology has the
-following effects:
+technologies do not use the same columns on the combat result table,
+technology has the following effects:
 \bparag There is a +1 DRM to the die-roll for interception in land combat if
 the Land technology counter of the intercepting country is 6 boxes or more in
 advance related to the intercepted force.
@@ -1858,19 +1861,27 @@ on the track;
 one of the two effects below may happen each turn for each country:
 \bparag[Catching up] If the country does not already have the newest
 technological goal that can be obtained, it gains it and its marker goes to
-the box immediately after it.
+the box immediately after it. It may gain several technologies in one turn (if
+it was really lagging behind) in which case it pay the conversion cost that
+many time.
 \bparag[Breakthrough] If the country has the highest technology goal
 available, and the next one will become available during the current period,
 the country obtains this goal, and its marker is placed \textbf{two} boxes
 ahead of the goal marker which is not moved ; the goal will not undergo Goals
 adjustment nor Time adjustment before the turn written on the counter. The
 country may not increase its technology further before the goal is regularly
-available for everybody.
+available for everybody. The country has to pay the conversion cost for
+reaching a new technology as usual.
+
+\aparag Note that military revolutions are free and replace the technology
+advancement action on the turns where they occur.
 
 \aparag[Spreading breakthrough] If a country participate in a battle including
 at least one of its \ARMY and one \ARMY of a country that has a technology
 which is not yet available, it gains the right to reach this technology on
 following turns.
+\aparag The two \ARMY involved may be either allies or enemies in said battle,
+that is one may learn both from it allies and it enemies.
 \bparag The countries that do not directly benefit from the breakthrough must
 still increase their technology as usual in order to reach the goal.
 \bparag The goal is still considered as not available when resolving the
@@ -1906,7 +1917,7 @@ until the technology is available for everybody.
   (\period{IV}). So \SUE benefits from a breakthrough. It immediately gets
   \TBAR and is placed 2 levels above (hence level 42). It may not move before
   \TBAR is available (turn 33). \SUE still need to pay for conversion costs on
-  this turn.
+  this turn (and is usually happy to do so).
 
   During turn 30, a battle takes pace at Brettenfeld involving 1\ARMY of \SUE
   (plus Saxons allies) against 1\ARMY of \AUS (plus Bavarian allies). The
@@ -2043,10 +2054,11 @@ of further equality).
   on the \TP, each with Medium investment (60\ducats total).
 
   The minor country automatically reacts with Medium Investment and a \FTI of
-  2 (as explained in ~\ref{chAdministration:Administration Minor}). Thus, the column
-  is 5 (\FTI of \POR) + 1 (Investment of \POR) - 2 (\FTI of \paysGujerat) - 1
-  (Investment of \paysGujerat) = 3. There is a \bonus{-1} DRM as battles (in
-  this case sieges) occured in the \Area on turn 2 for the capture of the \TP.
+  2 (as explained in ~\ref{chAdministration:Administration Minor}). Thus, the
+  column is 5 (Special \FTI of \POR) + 1 (Investment of \POR) - 2 (\FTI of
+  \paysGujerat) - 1 (Investment of \paysGujerat) = 3. There is a \bonus{-1}
+  DRM as battles (in this case sieges) occured in the \Area on turn 2 for the
+  capture of the \TP.
 
   For the first action, \POR rolls 7 for a result of 6. It's a success and the
   \TP of \paysGujerat losses a level. For the second action, \POR rolls 3 for
@@ -2070,7 +2082,8 @@ arise after resolving administrative actions. Namely:
 \bparag A \STZ or \CTZ contains one level 6 \TradeFLEET and one or more other
 \TradeFLEET.
 \bparag Players disagree on the repartition of exploited resources in a given
-\Area.
+\Area (and there has been a change of situation in this \Area: new resource,
+new levels of \COL/\TP, successful competition freeing some resource, \ldots)
 \bparag There are two \COL or two \TP in the same province (note that this may
 only happen if both were created this turn).
 
@@ -2079,7 +2092,7 @@ country involved in an automatic competition rolls one die and checks the
 result in \tableref{table:Administrative Actions}.
 \bparag The column is usually (\FTI country) - (Highest \FTI of
 opponent). There is no investment.
-\bparag Treat \undemi as usual by a roll under \FTI.
+\bparag Treat \undemi\ as usual by a roll under \FTI.
 \bparag A ``F'' implies the loss of one level for the field of competition.
 \bparag The procedure is reiterated again until the conditions of automatic
 competition do not apply any more.
@@ -2088,6 +2101,9 @@ for the turn.
 \bparag Resolve automatic competition in each \STZ, \CTZ or \Area
 separately. That is, if a country competes against two different opponents in
 two different \STZ, each one will use a different \FTI of enemy.
+
+\aparag If there is a disagreement concerning the order in which automatic
+competitions should be resolved, they are resolved in a random order.
 
 \aparag[Fleets]\label{chAdministration:Trade Competition Mandatory}
 % When a commercial fleet reaches the level 6, there is a mandatory
@@ -2170,8 +2186,8 @@ the Administrative phase.
 resources, competition is done for each resource in an order chosen by the
 involved country with the better initiative.
 
-\aparag[Order of competitions] Each country involved in a competition, in
-order of initiative, designate one \Area where competition is resolved.
+\aparag[Order of competitions] If the player disagree on the order in which
+the competitions should be resolved, do it in a random order.
 \bparag Players may renounce to their rights of exploitation at any time
 during the process. Typically, after a successful automatic competition in one
 \Area, a player may magnanimously decide to leave the resources to someone
@@ -2239,7 +2255,7 @@ of exploitation for the turn. A \TP reaching level 0 is destroyed.
   \RES{Spice} and loses the possibility to exploit the second one this
   turn. The competition goes on between \FRA and \HOL.
 
-  At the next roll, both \ANG and \FRA are unsuccessful and thus lose the
+  At the next roll, both \HOL and \FRA are unsuccessful and thus lose the
   possibility to exploit the new \RES{Spice} this turn. Since \HOL had a \TP
   in this competition, it losses a level. The French \COL does not loss any
   level but is simply prohibited from exploiting one resource this turn.
@@ -2400,8 +2416,8 @@ own \TFI for the benefits of a vassal.
 \bparag Non-vassal minors have 1 \TFI each turn if and only if there is at
 least 1 \CTZ/\STZ where their \terme{maximum level} is strictly less than
 their \terme{reference level}.
-\bparag If performed, this action must target one \CTZ/\STZ where the
-\terme{maximum level} is strictly less than the \terme{reference level}.
+\bparag This action must target one \CTZ/\STZ where the \terme{maximum level}
+is strictly less than the \terme{reference level}.
 
 \subsection{Logistic of minors}
 \aparag Like major countries, minors have to maintain and recruit

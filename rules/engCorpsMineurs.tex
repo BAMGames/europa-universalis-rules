@@ -1035,9 +1035,15 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 \minorbasicforces{transylvanie}{\LD}
 \minorarmyclass{transylvanie}{Orthodoxe}{IIM}
 \minorforces{transylvanie}{2 \LD}
+<<<<<<< HEAD
 \minorspecial{transylvanie}{Created has a vassal of \TUR\
   by \eventref{pI:Fall Hungary}.}
 \minorspecial{transylvanie}{It is always a permanent special \VASSAL of the owner of \provinceHongrie who is not allowed to declare war on it.}
+=======
+\minorspecial{transylvanie}{Created has a vassal of either \HAB\ or \TUR\
+  by \eventref{pI:Fall Hungary}. It has no capital but it can not be
+  destroyed by \TUR\ if it was responsible for its creation.}
+>>>>>>> master
 
 %\minorcountry{treves}{Archbishopric of Trier}{Trevorum}
 \minorreligion{treves}{catholique}
@@ -1209,9 +1215,10 @@ colonies and trading posts left by the player. The provinces given
 \minorspecial{hollande}{Reference levels for commercial fleets are:
   \ctz{Hollande} 6, \ctz{Espagne} 2, \ctz{Angleterre} 4, \ctz{France} 4
   \stz{Nord} 4, \stz{Baltique} 4, \stz{Irlande} 4 \stz{Ionienne} 3,
-  \stz{Lion} 3, \stz{Guinee} 3,  \stz{Tempetes} 4, \stz{Oman} 4, \stz{Indien} 4, \stz{Tempetes} 3,
-  \stz{Formose} 4 (or the level \HOL was when major if higher).}
-%Muf ? Pas nÃ©cessaire, il a des actions de toutes faÃ§ons ?
+  \stz{Lion} 3, \stz{Guinee} 3,  \stz{Tempetes} 4, \stz{Arabie} 4,
+  \stz{Indien} 4, \stz{Tempetes} 3,  \stz{Chine} 4 (or the level \HOL
+  was when major if higher).}
+%Muf ? Pas nécessaire, il a des actions de toutes façons ?
 %PB: par conservatisme, je garde -- ça pourrait être utile.
 %Muf ? Tempetes ? % PB: ajouté.
 \minorspecial{hollande}{Between III-1 and  pV: 2 \TFI/1 \COL/1\TPaction/2 \CONC.}
@@ -1259,9 +1266,16 @@ colonies and trading posts left by the player.}
 \minorarmyclass{portugal}{Latin}{III}
 \minorforces{portugal}{\ARMY, \FLEET, 3 \LD, 7 \LDND, 8 \LDENDE, 4 \NTD}
 \minorspecial{portugal}{Reference levels for commercial fleets are:
+<<<<<<< HEAD
 \stz{Canarias} 3, \stz{Guinee} 3, \stz{Tempetes} 3, \stz{Oman} 4,
 \stz{Indien} 4, \stz{Tempetes} 1, \stz{Formose} 3 (or the level \POR was when major if higher)}
 %Muf ? Pas nÃ©cessaire, il a ses actions de toutes faÃ§ons.
+=======
+\stz{Canarias} 3, \stz{Guinee} 3, \stz{Tempetes} 3, \stz{Arabie} 4,
+\stz{Indien} 4, \stz{Tempetes} 1, \stz{Chine} 3 (or the level \POR was
+when major if higher)}
+%Muf ? Pas nécessaire, il a ses actions de toutes façons.
+>>>>>>> master
 %PB: par conservatisme, je garde -- ça pourrait être utile.
 %Tempetes ?
 %\minorbonusrenforts{portugal}{+1 before \eventref{pIII:Portuguese Disaster}.}
@@ -1293,7 +1307,7 @@ trading posts left by the player.}
 \minorarmyclass{venise}{Latin}{III}
 \minorforces{venise}{2 \ARMY, 2 \FLEET, 4 \LD, 6 \LDND, 4 \LDENDE, 2 \NTD}
 \minorspecial{venise}{Reference levels for commercial fleets are:
-\stz{Noire} 3, \ctz{Turquie} 3, \ctz{Venise} 6, \stz{Ionienne} 4, \stz{Lion} 2
+\stz{Noire W} 3, \ctz{Turquie} 3, \ctz{Venise} 6, \stz{Ionienne} 4, \stz{Lion} 2
 (or the level \VEN was when major if higher)}
 \minorspecial{venise}{May become minor after
 \eventref{pIII:Dutch Revolt}.}
@@ -1532,7 +1546,7 @@ area.}
 \minorfixedincome{oman}1{\province{Oman E} \COL lv. 4 (\construction{Oman}, 1
   \RES{Spices})}{6}
 \minorfixedincome{oman}2{\province{Zanzibar} \TP lv. 2 (\construction{Zanzibar}, 1 \RES{Spices}, 1\RES{Slaves})}{1}
-\minorfixedincome{oman}3{\TradeFLEET\ lv. 2 in \stz{Oman}}6
+\minorfixedincome{oman}3{\TradeFLEET\ lv. 2 in \stz{Arabie}}6
 \minorfixedincome{oman}4{2 \RES{Spices}}0
 \minorfixedincome{oman}5{1 \RES{Slaves}}0
 \minorarmyclass{oman}{Islam}{II}
@@ -1578,8 +1592,13 @@ area.}
 and 11 after \subeventref{pIII:CCA:Closure China}}
 \minorpref{chine}{\TUR, \VEN, \SUE, \FRA, \POL, \PRU, \AUS, \SPA,
 \ENG, \RUS, \HOL, \POR}
+<<<<<<< HEAD
 \minorfixedincome{chine}0{Provinces of \granderegionMandchourie, \granderegionPekin, \granderegionNankin and \granderegionCanton (arbitrarily)}{100}
 \minorfixedincome{chine}1{\TradeFLEET\ lv. 3 in \stz{Formose}}{7}
+=======
+\minorfixedincome{chine}0{Provinces of China (arbitrarily)}{100}
+\minorfixedincome{chine}1{\TradeFLEET\ lv. 3 in \stz{Chine}}{7}
+>>>>>>> master
 \minorbasicforces{chine}{2 \ARMY\faceplus}
 \minorbasicrenforts{chine}{\ARMY\faceplus}
 \minorforces{chine}{2 \ARMY, 4 \LD, 6 \LDE}
@@ -1623,7 +1642,7 @@ areas.}
 \minorfixedincome{gujarat}c{5 \RES{Spices}}0
 \minorfixedincome{gujarat}d{9 \RES{PO}}0
 \minorfixedincome{gujarat}e{1 \RES{Slaves}}0
-\minorfixedincome{gujarat}f{\TradeFLEET\ lv. 4 in \stz{Oman}}{14}
+\minorfixedincome{gujarat}f{\TradeFLEET\ lv. 4 in \stz{Arabie}}{14}
 \minorfixedincome{gujarat}g{\TradeFLEET\ lv. 2 in \stz{Indien}}{8}
 %Tempetes ?
 \minorarmyclass{gujarat}{ROTW}{A} %?
@@ -1667,7 +1686,7 @@ is fought there.}
 \minorpref{japon}{\TUR, \VEN, \SUE, \FRA, \POL, \PRU, \AUS, \SPA,
 \ENG, \RUS, \HOL, \POR}
 \minorfixedincome{japon}0{Provinces of \granderegion{Japon}}{100}
-\minorfixedincome{japon}1{\TradeFLEET\ lv. 3 in \stz{Formose}}{7}
+\minorfixedincome{japon}1{\TradeFLEET\ lv. 3 in \stz{Chine}}{7}
 \minorbasicforces{japon}{2 \ARMY\faceplus}
 \minorbasicrenforts{japon}{\ARMY\faceplus}
 \minorarmyclass{japon}{ROTW}{A}

@@ -15,13 +15,15 @@
 \begin{designnote}
   This Chapter describes in details the components of the game, mostly the
   maps and counters.
+
+  Most of the concepts explained here are common with other strategy games.
 \end{designnote}
 
 \aparag \emph{Europa Universalis} is composed of:
 \bparag Two maps. One depicting Europa and the other depicting the whole
 World.
-\bparag 3000 (?) counters.
-\bparag This 550 (?) pages long book of rules.
+\bparag 3300 (?) counters.
+\bparag This 650 (?) pages long book of rules.
 
 \aparag In order to play, you will also need:
 \bparag Separate printed version of the Players aids and the various record
@@ -96,11 +98,9 @@ provinces are in fact several pieces of land, e.g., the provinces
 \provinceCanakkale (in Turkey). They are always treated as one province only.
 \aparag[Multiple coasts]\label{chBasics:Multiple Coasts} Some provinces
 have two coasts that are not connected together (by sea). This is the case of
-\provinceSlesvig (in Denmark) and \provinceHellas (in Greece) in Europe, and
-some others in the \ROTW. These provinces are subject to limitations when
-entering and exiting provinces through different sea zones (see
-\ruleref{chMilitary:Movement:Port Multiple Coasts}), and for blockading (see
-\ruleref{chMilitary:Movement:Blockading Multiple Coasts}).
+\provinceSlesvig (in Denmark), \provinceIfriqiya (in Tunisia) and
+\provinceHellas (in Greece) in Europe, and some others in the
+\ROTW. See~\ref{chMilitary:Movement:Special Movements} for the effects.
 % (Jym) Only keeping descriptions here. Rules to be moved in the corresponding
 % rule chapter. Removing:
 % \bparag One of the coasts is the main coast. This is the coast used for
@@ -129,8 +129,8 @@ magnified area. It is advised to use the magnified area for all military
 counters and to keep economic counters out of the way on the un-magnified map.
 \bparag Sea zones going around the magnified areas have all their contacts
 shown. Especially, there is no contact between \seazoneMaldives and
-\seazone{Indien S}, or \seazoneQuarantiemes and \seazoneIndien, but there is
-between \seazoneQuarantiemes and \seazone{Indien S}.
+\seazoneQuarantiemes, or \seazoneCinquantiemes and \seazoneIndien, but there is
+between \seazoneCinquantiemes and \seazoneQuarantiemes.
 
 \aparag[Frontiers] Adjacent provinces can be connected by river (blue),
 mountain pass (pale), regular frontier (black) or straits (double-arrows).
@@ -165,16 +165,17 @@ It takes one full campaign round to make this move (12\MP).
 % several times).
 \aparag[Small provinces] Some islands and similar places are too small and are
 thus represented by a large square instead.
-\bparag When the corners of the square are cut off, it means the island is on
-rough terrain (usually forest). Similarly, the flag in the island is white for
-plains and has a black cross for non-plain terrain.
-\bparag The island of \province{Cap Breton} in \granderegionAcadie is
+\bparag When the corners of the square are cut off, it means the island is not
+plain (usually forest, except \province{Sulawesi S} which is
+swamp). Similarly, the flag in the island is white for plains and has a black
+cross otherwise.
+\bparag The province of \province{Cap Breton} in \granderegionAcadie is
 connected with its neighbouring province with a river.
 \bparag\label{chBasics:Provinces:Ormus} \null\provinceOrmus is an
 island in \seazonePersique. It is connected with a strait to \provinceBam and
-\province{Oman E}. It can be seen on the European map, but all counters have
-to be put on the \ROTW map. A fortress in \provinceOrmus is also a \Presidio
-for \provinceBam.
+\province{Oman E}. The province is a \ROTW province, located on the \ROTW map
+and all counters have to be put on the \ROTW map. A fortress in \provinceOrmus
+is also a \Presidio for \provinceBam.
 \begin{exemple}[Frontiers and islands]
   \provinceNormandie and \provinceCaux are adjacent provinces by river,
   whereas \provinceNormandie and \provinceMaine are adjacent by frontier.
@@ -316,8 +317,9 @@ zones are reminders of
 % \provinceBrabant, \province{Vlaanderen}, \province{Sjaelland},
 % \province{Skane} and \province{Vastergotland}, as well as several see zones
 % are used as reminder of
-the commercial specificities of the Scheldt and the Sund
-(see~\ruleref{chSpecific:Scheldt} and~\ruleref{chSpecific:Sund Levies}).
+commercial specificities (see~\ref{chSpecific:Commercial specificities}).
+% of the Scheldt and the Sund
+% (see~\ruleref{chSpecific:Scheldt} and~\ruleref{chSpecific:Sund Levies}).
 \bparag[Tordesillas reminders] On the \ROTW map, some shields on areas
 indicate the Tordesillas belonging of the area
 (see~\eventref{pI:Tordesillas}).
@@ -367,11 +369,9 @@ indicate the Tordesillas belonging of the area
 \subsubsection{Wasteland area}\label{chBasics:Wasteland}
 \begin{histoire}
   This area represents the great size and the low density of population in
-  those regions. This applies to movement and supply. This particularity will
-  not extend to newly conquered areas, nor will the provinces lose their
-  specificity if conquered by some country other than Khanates, Cossacks and
-  Russia. The armies of the local countries had sufficient cavalry to
-  compensate for those very large sullen areas.
+  those regions. This particularity will not extend to newly conquered areas,
+  nor will the provinces lose their specificity if conquered by some country
+  other than Khanates, Cossacks and Russia.
 \end{histoire}
 \aparag[Geographical limits] The north-eastern provinces of the map are
 bordered with a yellowish line. They represent the initial territories of
@@ -391,8 +391,8 @@ of the \ROTW cold area. This corresponds to northern America and Siberia.
 line.% Specifics rules apply for the countries within this limit.
 \aparag The provinces of Italy are bordered by a blue line.% Specific rules
 % apply for the countries and provinces within this limit.
-\aparag The provinces of the \terme{Persian core}, the heart of Persia, are
-bordered by a black line.
+\aparag The provinces of the \terme{Persian core} are bordered by a black
+line.
 
 
 
@@ -433,7 +433,7 @@ different from their owner.
 \bparag Control of a province occurs by taking and holding the city of the
 province.
 \aparag It is possible and common for a given province to be owned by a
-country, but controlled another country.
+country, but controlled by another country.
 % \aparag A province is controlled for the sake of movement if the main land
 % (not the city, mission, colony, trading post) is occupied only by one's own
 % units.
@@ -639,8 +639,8 @@ sometimes be broken into three naval detachments of exploration (\NDE).
 
 \aparag The image and number on \FLEET and \ND counters are here for
 identification purpose only.
-\bparag The identification number can be used to keep track of the content of
-each \FLEET on the corresponding record sheet.
+\bparag The identification number is used to keep track of the content of each
+\FLEET on the corresponding record sheet.
 
 
 \subsubsection{Fortresses}
@@ -663,7 +663,8 @@ built in the \ROTW.
 
 \aparag[Level 1] fortresses also exists as generic (white) counters. These are
 in unlimited amount (make more if needed) and are used \textbf{only} to depict
-temporally diminished fortresses during wars.
+temporally diminished fortresses during wars and to depict the permanent
+fortress of level 6 \COL in the \ROTW.
 \bparag Each country has its own set of level 1 fortresses in case it needs a
 permanent level 1 fortress (usually, in the \ROTW).
 
@@ -1128,7 +1129,8 @@ are meant to be used.
     Fleets Sheet and a counter in their \STZ/\CTZ of activity}
   \listingabbrev{TFI}{Trade Fleet Implantation, an administrative operation
     that may increase the level of a \TradeFLEET}
-  \listingabbrev{VGD}{Galeasses Detachment, large galleys used by Venice}
+  \listingabbrev{VGD}{Galeasses Detachment, large galleys firstly used by
+    Venice}
   \listingabbrev{VP}{Victory Points (accumulated through the game by each
     player). Also \anchorabbrev{VPs} (plural)}
 \end{deflist}
@@ -1270,9 +1272,9 @@ are meant to be used.
   % \region{Khanats}
 \item[\anchorregion{Mediterranee}] contains all the sea zones of the
   Mediterranean and Black seas (\seazone{Noire W}, \seazone{Noire E},
-  \seazone{Marmara}, \seazone{Egee}, \seazone{Mediterranee E},
+  \seazone{Marmara}, \seazone{Egee}, \seazoneLevantin,
   \seazone{Adriatique}, \seazone{Ionienne}, \seazone{Thyrrenienne},
-  \seazone{Syrte}, \seazone{Lion}, \seazone{Mediterranee W}). Galleys may
+  \seazoneGabes, \seazone{Lion}, \seazoneAlboran). Galleys may
   navigate it.
 \item[\anchorregion{Norvege}] contains the provinces marked with a blurred
   \blasonsmall{norvege} shield, namely: \province{Trondelag},

@@ -40,7 +40,7 @@ corresponding to various size of land forces: \terme{Army} (\ARMY),
 \aparag[Detachments.] One \LD represent some infantry and cavalry. The precise
 number of them depends on the country and the period. \LD are abstract
 representation of small field forces and consists roughly in 1000 to 10000
-soldiers, depending on the country and the period.
+soldiers.
 
 \aparag[Armies.] \ARMY counters have two sides. An \ARMY\facemoins is two \LD
 plus some field and siege artillery. An \ARMY\faceplus is four \LD plus more
@@ -109,6 +109,9 @@ special cases for artillery and cavalry.
   Classes}. There is one line per class with its number and name on the left
 and the list of countries belonging to it on the right.
 \bparag Most minor countries are grouped according to their cultural groups.
+\bparag The army class of minor countries can also be found in their
+description in the appendices under the name ``Military doctrine''. It is also
+written on each counter.
 
 \GTtable{armyclasses}
 
@@ -534,9 +537,9 @@ maintained. They can, however, be recruited anew.
 \begin{designnote}
   Since all administrative actions must be planned (and payed) before any is
   resolved, troops are always maintained using the cost for the technology
-  that the country had at the beginning of the turn. Indeed, maintenance is
-  planned and payed at the same time as administrative actions, thus it is not
-  known whether the new technology will be reached or not.
+  that the country had at the beginning of the Administrative phase. Indeed,
+  maintenance is planned and payed at the same time as administrative actions,
+  thus it is not known whether a new technology will be reached or not.
 \end{designnote}
 
 
@@ -548,8 +551,8 @@ in activity (including \Presidios). The cost of maintaining a fortress is
 indicated in the last column of~\ref{table:Cost of Fortresses}.
 \bparag The maintenance cost of a fortress is payed by its controller.
 \bparag The maintenance cost of a fortress in Europe is its level.
-\bparag Maintenance is doubled in the \ROTW. A fort requires a maintenance of
-1\ducats.
+\bparag Maintenance is doubled in the \ROTW. A fort or Mission requires a
+maintenance of 1\ducats.
 \bparag Maintenance is doubled for fortresses of level 3 before obtaining the
 technology \TARQ (representing the spreading of the ``\emph{trace italienne}''
 during the Wars in Italy).
@@ -1064,7 +1067,7 @@ physically putting the \ND counter on the map.
   \RES{Wood} increases its limit by 1\ND to a total of 6\ND. Thus, \SUE may
   now recruit 2\FLEET\Facemoins on the same turn (but still not a full
   \FLEET\Faceplus).
-  
+
   If \SUE exploits \RES{Wood} in the \ROTW and has the possibility to buy
   another \RES{Wood} from \POL, that would make a total of 4 \RES{Wood}
   available. However, the limit may only be increased by 3\ND. That is, the
@@ -1077,7 +1080,7 @@ physically putting the \ND counter on the map.
   \NGD count as half, so \TUR may recruit up to 18\NGD per turn! Its
   \FLEET\Faceplus can hold up to 5\ND and 1\NTD, that is 10\NGD and
   1\NTD. Thus, \TUR can largely buy 1\FLEET\Faceplus and 1\FLEET\Facemoins
-  each turn\ldots 
+  each turn\ldots
 
   This is, typically, what happened after Lepanto where the Turkish navy was
   crushed but rebuilt in a couple of years. Given the high cost of both
@@ -1186,7 +1189,7 @@ Levies.
   addition to the Protestants! Thus, it decides to recruit 6\LD (one at double
   cost) during the administrative phase. \HIS has a \STAB of only 0, due to
   the already long war. Its technology is \TBAR.
-  
+
   Alas! At Rocroy, the Spaniards are hopelessly crushed by \leader{Grand
     Conde}, a major defeat. \HIS loses 1 \STAB because of the defeat (thus
   going to -1) and then decides that there are way too many blue counters on
@@ -1196,7 +1199,7 @@ Levies.
   Now, \HIS may recruit troops anew. The limit is halved (to 3\LD), but the
   number of troops recruited so far is reseted. \HIS decides to recruit an
   \ARMY\Faceplus, that is 4\LD. Since the limit is 3\LD, the fourth is doubled
-  for a cost of 50 + 25 + 2 \textmultiply 25 = 125\ducats. 
+  for a cost of 50 + 25 + 2 \textmultiply 25 = 125\ducats.
 
   \smallskip
 
@@ -1290,7 +1293,7 @@ is at peace during the Administrative phase, all its counters (except some
 fortresses) may be removed from the map. The next time the minor goes to war,
 it will receive its basic forces.
 
-\aparag[Fortresses] 
+\aparag[Fortresses]
 \bparag [[TBD]] A minor country with Land Technology \TBAR or higher has an
 extra basic force of one level of fortress for every two provinces it owns.
 \bparag [[TBD]] A minor country with Land Technology \TMAN or higher has an
@@ -1444,7 +1447,14 @@ of the country. This modifier is used for all minors and is cumulative with
 the Political modifier. It is based on the income of the provinces that are
 owned and controlled by the minor, and neither besieged, revolted or pillaged
 at the time the roll is made (\emph{i.e.} the provinces that would count in
-the \terme{Land income} if this was a major country).
+the \terme{Land income} if this was a major country). Industrial income
+(gold), Commercial income (\TradeFLEET, Monopolies) and \ROTW income (exotic
+resources, \COL, \TP) also count toward this total for the few minors
+concerned.
+\bparag The initial income of each minor is written in the appendices. The
+actual figure has to be recomputed each time it is needed, the figure in the
+appendices is only the initial income of the country and typically varies if
+it loses or gain provinces.
 
 \aparag[Troops]
 \bparag The reinforcement roll can give some \LD and \ND to the minor. The new
@@ -1506,10 +1516,10 @@ column in~\ref{table:Minor Reinforcements}, one gets a \terme{Leader value}.
 leader for the duration of the war. This does not change its basic forces
 (that is, no replacement if the leader is killed).
 \bparag If the attitude of the minor is \terme{Naval}, then it receives either
-a \anonyme\LeaderA or a \anonyme\LeaderG. Otherwise, it receives a
-\anonyme\LeaderG.
-\bparag This leader is taken among those of the minor, if some exist and among
-the generic grey ones otherwise.
+a \anonyme\LeaderA or a \anonyme\LeaderG (controller's choice). Otherwise, it
+receives a \anonyme\LeaderG.
+\bparag This leader is taken at random among those of the minor, if some exist
+and among the generic grey ones otherwise.
 \bparag Like other \anonyme\ leaders of minor, the leader will be available
 for this minor until it is fully at peace.
 
@@ -1569,12 +1579,12 @@ leaders even if there are some named leaders alive.
   die for the leader and gets a 2, smaller than the leader value, thus
   \paysAlgerie gets an extra leader for the duration of the war. Since it
   already has an \LeaderA (\leader{Barbaros2}), \TUR chooses to take a
-  \LeaderG for \paysAlgerie (among the grey \anonyme\LeaderG). Then, \TUR
-  raise the fortress of \provinceAlgerie to level 2. As for the troops, \TUR
-  chooses to take 2\NGD instead of 1\ND and put them directly in the \FLEET
-  (and note on its record sheet the exact content of the Algerian \FLEET). The
-  \LD is put in \provinceAlgerie, waiting to board for an invasion of
-  Spain\ldots
+  \LeaderG for \paysAlgerie (at random among the grey \anonyme\LeaderG). Then,
+  \TUR raise the fortress of \provinceAlgerie to level 2. As for the troops,
+  \TUR chooses to take 2\NGD instead of 1\ND and put them directly in the
+  \FLEET (and note on its record sheet the exact content of the Algerian
+  \FLEET). The \LD is put in \provinceAlgerie, waiting to board for an
+  invasion of Spain\ldots
 \end{exemple}
 
 \section{Removal and Placement of leaders}
@@ -1604,7 +1614,7 @@ check the description of the event to known how long the leader lasts.
   or their period of military activity. ``Death'' of a leader (whether
   scheduled or during battle) may be either actual death, retirement of old
   age or after a severe wound, change of career (often to become minister),
-  fall in disgrace, \ldots 
+  fall in disgrace, \ldots
 
   Turns of life are sometimes longer than the actual life of the historical
   leader. This may happen for several reasons, mostly because the actual
@@ -1674,9 +1684,12 @@ are also placed.
 \aparag[Anonymous] Major countries check their minimum leader limit.
 \bparag For each category of leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC,
 \LeaderGov) where a country as less leaders than its minimum, draw as many
-leaders as necessary to reach the minimal value.
+\anonyme leaders as necessary to reach the minimal value (among those of the
+country).
 \bparag If a country has more leaders than its minimal value, none is
 received but none is lost either.
+\bparag Note that \anonyme leaders that are besieged and thus stay on map are
+counted toward the limit.
 
 \begin{exemple}[Minimum leaders]
   At turn 2, \RUS has one \LeaderG (\leaderwithdata{Shchenya}, provided he did
@@ -1704,7 +1717,8 @@ placing any.
 \bparag \LeaderMis must be place in an owned, controlled and unbesieged
 province of the European map.
 \bparag \LeaderGov must be place in an owned, controlled and unbesieged
-establishment (\COL, \TP or fort) in the \ROTW, possibly in a \COL of level 6.
+establishment (\COL, \TP or fort) in the \ROTW, possibly in a \COL of level
+6. The \Area in which they are placed will restrict their possible movement.
 \bparag Other leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC) may be placed
 either with any unbesieged troop of the same country or in any owned,
 controlled and unbesieged province. Note that they may be placed with troops
