@@ -69,7 +69,7 @@ test.
 \begin{modlist}
 \item[+2] If completely at Peace (no war (including civil or overseas wars),
   no intervention (limited or foreign)).
-\item[-1 ] per 100\ducats of National Loan.
+\item[-1 ] per full 100\ducats of National Loan (drop smaller amounts).
 \item[-1] per ongoing International Loan (whatever the amount, including the
   ones that are partially refunded).
 \item[-1 ] per bankruptcy in the last 5 turns.
@@ -92,7 +92,7 @@ columns of~\ref{table:Exchequer test}, countries obtain three percentages for
 \bparag Add 10 to the ``National Loan'' of countries that are not completely
 at peace.
 \bparag Add 10 (cumulative) to the ``National Loan'' of \HIS if it has
-declared a politic of expulsions (see~\ref{chSpecific:Spain:Expulsion}).
+declared a policy of expulsions (see~\ref{chSpecific:Spain:Expulsion}).
 \bparag It is possible and intended that these percentages sum up to more or
 less than 100\%.
 
@@ -318,6 +318,16 @@ one refund (for the same turn as the last interest).
   you need several turns of bad luck, bad management, or bad wars. Thus, don't
   be afraid of making too big errors with the economical system. You should
   get the hand of it before catastrophic results occur\ldots
+
+  \smallskip
+
+  Note also that the malus to the Exchequer test if for loans still going on
+  during the test. Thus, if you have 299\ducats of national loan at the start
+  of the turn, and refund 100\ducats of them during the administrative phase,
+  you're left with 199\ducats of loan before the test, thus only a \bonus{-1}
+  malus (because that's not two ``full 100\ducats''). Sometimes, it is better
+  to refund a bit more that what you'd naturally do because avoiding a
+  \bonus{-1} DRM can be an extremely good idea.
 \end{playtip}
 
 \begin{exemple}
@@ -404,9 +414,9 @@ be negative and cannot be forfeited once the die has been rolled.
 action this turn.
 
 \aparag[Investment] Each player wanting to improve the Stability of his
-country first chooses an investment and writes it in \lignebudget{Stability
-  improvement}. As for administrative actions, higher investments give bonuses
-to the roll.
+country first chooses an investment and writes its cost in
+\lignebudget{Stability improvement}. As for administrative actions, higher
+investments give bonuses to the roll.
 \bparag The investment are:
 \begin{modlist}
   \item Basic Investment: 30 \ducats
@@ -468,7 +478,7 @@ Gross income (as recorded in \lignebudget{Gross income A}). A regular increase
 of the Gross income will make people happy and ease Stability improvement, a
 regular decrease will make people unhappy.
 \bparag[Prosperous Power] A country is \terme{Prosperous} if its Gross income
-has not decreased during the last 2 consecutive turns and progressed during at
+has not decreased during the last 2 consecutive turns and increased during at
 least one of those turns.
 \bparag[Anti-Prosperous Power:] A country is \terme{Anti-Prosperous} if its
 Gross Income has decreased 2 consecutive turns.

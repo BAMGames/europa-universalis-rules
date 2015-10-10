@@ -10,7 +10,7 @@
 \global\let\CELL\pgfmatrixnextcell
 \global\let\ROW\pgfmatrixendrow
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Game tables
 
 \newif\ifGTdebug
@@ -106,7 +106,8 @@
 }
 
 \newcommand{\GTtable}[2][\textwidth]{
-  \begin{table}[Hhtbp]%
+%  \begin{table}[Hhtbp]%
+  \begin{table}[htbp]%
     \GTinlinemode%
     \hfill\begin{minipage}{#1}\hfill
       \begin{tikzpicture}[remember picture]
@@ -270,7 +271,7 @@
 \newcommand{\NGTcontent}[2][]{
   \GTanchorify
   \xdef\gtauto{\gtauto (\gtid main)}
-  \node (\gtid main) [anchor=\gtanchor,#1] at 
+  \node (\gtid main) [anchor=\gtanchor,#1] at
   ($ (\gtid mainanchorter)+(0pt,-4ex) $) {#2};
   \GTtitle
 }
@@ -326,7 +327,7 @@
 \newcommand{\NGTtextcontent}[2][]{
   \GTanchorify
   \xdef\gtauto{\gtauto (\gtid main)(\gtid mainanchorter)}
-  \node (\gtid main) [anchor=\gtanchor,xsize offset=-4pt,#1] at 
+  \node (\gtid main) [anchor=\gtanchor,xsize offset=-4pt,#1] at
   (\gtid mainanchorter) {#2};
 }
 \newcommand{\NGTtextdecorate}[1][]{
@@ -375,7 +376,7 @@
 
 \newcommand{\NGTmorecontent}[5]{
   \xdef\gtauto{\gtauto (\gtid #1)}
-  \node (\gtid #1) [inner sep=0pt,anchor=#2] at 
+  \node (\gtid #1) [inner sep=0pt,anchor=#2] at
   ($ (#3)+(#4) $) {#5};
 }
 \newcommand{\NGTmoretitle}[2]{\node(\gtid #1title)[inner sep=2pt,outer sep=0pt,anchor=south] at (\gtid #1.north) {\rule[-1ex]{0pt}{3ex}\textbf{#2}};\xdef\gtauto{\gtauto (\gtid #1title)}

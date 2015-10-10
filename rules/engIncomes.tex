@@ -44,8 +44,8 @@ for a complete definition of these incomes.
   \lignebudget{Vassal provinces income};
 \item In negative, all the provinces (either his of his vassals') that
   are inexploitable (due to revolts, military occupation, looting, enemy
-  control, or corrupted pashas) are recorded in \lignebudget{Pillages,
-    Revolts, Pashas}.
+  control, or corrupted pashas) are recorded in
+  \lignebudget{Occupation, Pillages, Revolts}.
 % or \lignebudget{10},
 %  according to the affected provinces.
 \item Some random events (e.g.~\eventref{eco:Agricultural Crisis}) mark their
@@ -104,13 +104,13 @@ player (triangular-shaped counters).
 %to represent 1 level of manufacture of the given type, the back
 %indicates that there are 2 levels of the same type.
 \aparag The manufactures all have a \terme{fixed income}.
-\bparag The sum of all the \terme{fixed incomes} of the manufactures
-goes in \lignebudget{Manufactures val.}
+\bparag The sum of all the incomes of the manufactures goes in
+\lignebudget{Manufactures val.}
 \bparag The income of resources exploited by various manufactures
 (fishing, salt) is not recorded here.
 \bparag A \MNU brings no income if the province it is located also
-brings no income (due to revolt, pillage, corrupted pashas or military
-occupation).
+brings no income (due to military occupation, revolt, pillage,
+corrupted pashas, \ldots)
 
 \aparag All manufactures bring other advantages than their incomes.
 \bparag If there is a \textetoile on the counter (\RES{Metal},
@@ -128,12 +128,12 @@ the income from domestic trade ; \RES{Salt}, \RES{Fish} and \RES{Wood}
 
 \begin{exemple}
   At turn 1, \POR has two \MNU. The \RES{Instruments} \MNU in
-  \provinceTejo has a fixed income of 7\ducats while the \RES{Wine} \MNU
-  in \province{Tras-os-Montes} has a fixed income of 4\ducats.
+  \provinceTejo has an income of 7\ducats while the \RES{Wine} \MNU in
+  \province{Tras-os-Montes} has an of 4\ducats.
 
   Since none of them are in the revolted province of \provinceBeira,
-  both provide their income. Thus, the \terme{Fixed income} is
-  7+4=11\ducats (written in line \ERSshort{Manufactures val.}).
+  both provide their income. Thus, the income is 7+4=11\ducats
+  (written in line \ERSshort{Manufactures val.}).
 \end{exemple}
 
 \subsection{European Gold}
@@ -141,15 +141,16 @@ the income from domestic trade ; \RES{Salt}, \RES{Fish} and \RES{Wood}
 that mine is not depleted (this may happen following~\eventref{eco:Mine
   Depletion}). The European mine income is registered on
 \lignebudget{European mines}.
-\bparag Mines located in a looted province or out of the control of a
-player (by military occupation, revolt, etc.) bring no income.
+\bparag A mine brings no income if the province it is located also
+brings no income (due to military occupation, revolt, pillage,
+corrupted pashas, \ldots)
 \aparag The income of mines located outside of Europe is processed
 separately, because it has to be repatriated to Europe before it can be
 credited to the player's treasury.
-\bparag[Exception: Elmina] If \POR is a major country and owns a \TP in
-\granderegion{Cotedor}, it exploits two gold mines as European mines
-(for a total of 40\ducats). Destruction or loss of ownership of this \TP
-definitely cancels this effect.
+\bparag[Exception: \construction{Elmina}.] If \POR is a major country
+and owns a \TP in \granderegion{Cotedor}, it exploits two gold mines
+as European mines (for a total of 40\ducats). Destruction or loss of
+ownership of this \TP definitely cancels this effect.
 
 \begin{exemple}
   As per Specific rules, \POR can exploit two gold mines in
@@ -216,9 +217,10 @@ its Domestic market), expressed below~\ref{table:Foreign Trade
   Income}.
 \bparag For some countries, this is fixed and for some other it depends
 on the provinces owned.
-\bparag Note: \POR has a \terme{Basic blocked trade} of 0\ducats. \RUS
-also has a \terme{Basic blocked trade} of 0\ducats before it fulfils the
-condition indicated in the table.
+\bparag Note: countries not mentioned (\POL, \POR, \PRU, \VEN) have a
+\terme{Basic blocked trade} of 0\ducats. \RUS also has a \terme{Basic
+  blocked trade} of 0\ducats before it fulfils the condition indicated
+in the table.
 
 \aparag Each country has an \terme{Extra blocked trade} which is the sum
 of its vassals income, trade refusal (including due to wars) and some
@@ -226,14 +228,18 @@ other events.
 \bparag The \terme{Extra blocked trade} \textbf{only} is reduced by
 50\ducats for each side of \RES{Wine} or \RES{Cloth} \MNU owned by the
 country (thus 100\ducats for a level 2 \MNU).
-\bparag Note that the \terme{Basic blocked trade} is never reduced.
+\bparag The \terme{Extra blocked trade} can never be reduced below 0.
 
 \aparag The sum of the \terme{Basic blocked trade} and the \terme{Extra
   blocked trade} is the \terme{Blocked trade}.
+\bparag Note that the \terme{Basic blocked trade} is never
+reduced. Thus, the \terme{Blocked trade} will always be at least equal
+to the \terme{Basic blocked trade}.
 \bparag Locate the line corresponding to the \terme{Blocked trade}
 in~\ref{table:Foreign Trade Income}.
-\bparag If \pays{usa} exists and is at peace use the line immediately
-above, otherwise, use this line.
+\bparag For each \pays{usa} that exists and is at peace, go up one
+line in the table (several \pays{usa} may be created as result of
+revolts in the colonies of other countries than \ANG).
 \bparag Cross-referencing the line for the \terme{Blocked trade} with
 the column corresponding to the \FTI of the country gives the
 \terme{Foreign trade income}, to be put in \lignebudget{Foreign trade
@@ -419,8 +425,8 @@ the \emph{Indian} centre.
 militarily occupied, the trade centre does not bring any income this
 turn.
 % (Jym), added to avoid too harsh situations
-\bparag Revolts, pashas or pillages do not impact the Trade Centres
-income.
+\bparag Revolts, pashas, pillages or other hazards do not impact the
+Trade Centres income.
 
 \subsubsection{The Great Orient centre}
 \aparag The \emph{Great Orient} centre is initially located in
@@ -447,7 +453,7 @@ by (i) a major (other than \VEN) having a \dipAT with a country with a
 empty.
 % (control is: having a \TP or \COL or \dipAT of a power owning it).
 \bparag 10\ducats are subtracted per Christian \TradeFLEET counter (any
-side)in \stz{Oman} and \stz{Indien}, with maximum of -50\ducats.
+side)in \stz{Arabie} and \stz{Indien}, with maximum of -50\ducats.
 \bparag 50\ducats are subtracted if \TUR and \pays{perse} are at war.
 \bparag It can never be negative. At worse, it becomes 0\ducats.
 \bparag Therefore, the income at turn 1 of the \emph{Great Orient}
@@ -694,6 +700,10 @@ share the exploitation.
 is settled through the \terme{competition mechanism}
 (\ruleref{chAdministration:Competition}), that eliminates levels until
 there can no more be disagreement.
+\bparag Note, however, that the right to exploit a resource may change
+only if there is a change of situation in the \Area (new level of
+establishment, a country announce that it stop its exploitation,
+\ldots)
 
 \aparag[New exploitation] There are only a few cases where there might be a
 disagreement for the exploitation of a resource: a new resource appeared
@@ -713,13 +723,13 @@ to change the market repartition, or do it through the use of diplomacy
 simple announce).
 
 \aparag[Slaves and plantations]\label{chIncomes:NeedSlaves}
-Some resources require \RES{Slaves} to be exploited in its plantations
-in \continent{America} (the square ones: \RES{Sugar}, \RES{Products of
+Some resources require \RES{Slaves} to be exploited in plantations in
+\continent{America} (the square ones: \RES{Sugar}, \RES{Products of
   America} and \RES{Cotton}). At least 1 unit of exploited Slaves is
 required for each unit of exploited resource requiring slavery.
 \bparag[Triangular trade] These units of \RES{Slaves} can come either
 from the same country exploiting it (and gaining income both for the
-\RES{slave} and the other resource), from another major selling its
+\RES{Slave} and the other resource), from another major selling its
 \RES{Slaves}, from minors allies or from contraband.
 \bparag[Reselling of slaves] If a major country wants too sell part of
 its \RES{Slaves} production, it is free to do so at any price. He must
@@ -727,10 +737,11 @@ perceive the sum during the diplomatic phase (written in
 \lignebudget{Wood and Slaves}). However, the sold \RES{Slave} units
 cannot be used in his own plantations (obviously).
 \bparag[Contraband of slaves] If a country has at least one level of
-\TradeFLEET in \stz{Oman} or \stz{Guinee}, or if another \MAJ in this
-position gives him this right, he can use the contraband of \RES{Slaves}
-for his colonies. He receives only half the usual income (round down)
-for the exotic resources exploited with contraband \RES{Slaves}.
+\TradeFLEET in \stz{Arabie} or \stz{Guinee}, or if another \MAJ in this
+position gives him this right, he can use the contraband of
+\RES{Slaves} for his colonies. He receives only half the usual income
+(round down for each unit of the resource) for the exotic resources
+exploited with contraband \RES{Slaves}.
 %[TBD : Rajouter Tempetes en zone de contrebande d'esclaves ? Jym: bof,
 %pas vraiment dans les ``regions productrices'' historiques.]
 % PB: Non
@@ -743,6 +754,9 @@ exploitation).
 \bparag[Slaves of allies] Minor countries can sell for free the
 \RES{Slaves} they exploit to their Diplomatic patron
 (e.g. \pays{portugal} during \eventref{pIII:Portuguese Annexation}).
+\bparag Note that \RES{Slaves} always bring income to the country that
+produce them. The sale of \RES{Slaves} happens independently of this
+income and does not change it.
 
 \aparag Players also register the \textbf{number} of partial and total
 monopolies they have in Trade Zones as these bring \VPs. This is
@@ -804,9 +818,9 @@ recorded in \lignebudget{Partial/Total monopolies (resources)}.
   gold takes place during the Military phase.
 \end{note}
 \aparag To exploit a gold mine, a \COL (with any number of levels) has
-to be in the province containing the mine symbol. If a player wishes to
-exploit it, he simply has to announce it during the Diplomatic phase.
-\bparag The player is not obliged to exploit a mine even if he has a
+to be in the province containing the mine symbol. If a country wishes to
+exploit gold, it simply has to announce it during the Diplomatic phase.
+\bparag A country is never obliged to exploit a mine even if it has a
 Colony in that province.
 \bparag Once announced, the exploitation is definitive until depletion
 of the mine (by \eventref{eco:Mine Depletion}) and cannot be voluntarily
@@ -918,7 +932,7 @@ not -3.
 
 \aparag[Summary.] To compute the exceptional taxes modifier:
 \bparag First, lower \STAB by 1 (except if an enemy stack besiege or
-occupy a province during a non-civil war)?
+occupy a province during a non-civil war).
 \bparag Then, add 3 times the \STAB to the \ADM of the monarch.
 
 \aparag The modifier is written in \lignebudget{Exceptional taxes
@@ -932,7 +946,8 @@ negative number) by the taxes.
 \subsection{Gross income}
 \aparag The \terme{Gross income} is the sum of the \terme{Land Income},
 \terme{Industrial Income}, \terme{Trade Income} and \terme{Colonial
-  Income}.
+  Income}. It is written in \lignebudget{Gross income B} and copied in
+\lignebudget{Gross income A}.
 \bparag The \terme{Land Income} was defined in
 \ruleref{chIncomes:LandIncome} and is the income of owned provinces.
 \bparag The \terme{Industrial Income} is the sum of the various incomes

@@ -81,11 +81,11 @@ Prestige Expenses during the past turns and to the objectives they chose at
 the beginning of the period. This corresponds approximately to one half to two
 third of the final \VPs.
 \bparag[End of game \VPs:]
-At the end of the game, after counting \VPs of the end of seventh period, a
-check-up of the the situation of each player is made, and \VPs are earned
-according to it. For players who change country mid-game, a Transfer check is
-also computed. This corresponds approximately to one sixth to one quarter of
-the final \VPs.
+At the end of the game, after counting \VPs of the end of seventh
+period, a check-up of the the situation of each country is made, and
+\VPs are earned according to it. For players who change country
+mid-game, a Transfer check is also computed. This corresponds
+approximately to one sixth to one quarter of the final \VPs.
 
 
 
@@ -207,9 +207,10 @@ each province bordering the Mississippi river is worth 1\VP individually.
 and the two Eastern provinces of \granderegionKansas.
 
 \aparag[The way is more important than the destination.]
-\bparag Discovery of \granderegionPanama by the West is landing one stack in
-\granderegionPanama from the Pacific Ocean. Both the land stack and the naval
-stack carrying it must have cross Cape Horn (or used the special movement
+\bparag Discovery of \granderegionPanama by the West is landing one
+stack in \granderegionPanama from the Pacific Ocean. Both the land
+stack and the naval stack carrying it must have cross the \seazoneHorn
+sea zone (or used the special movement
 of~\ref{chMilitary:Movement:Port Multiple Coasts} to avoid it).
 % \bparag Discovery of \granderegionKamchatka by land is done using the special
 % movement of~\ref{chBasics:Secret Passage:Bering}. The stack doing it may not
@@ -233,23 +234,11 @@ power doing the discovery).
 
 \aparag[Circumnavigation] Round-the-World trip are completed when one
 naval stack (possibly a single leader) goes from a port on the European
-map, back to a port on the European map (possibly the same) after going
-all the way around the World (use common sense).
-\bparag Seriously, use common sense. Don't make me write the rules for
-this.
-
-% \aparag[Circumnavigation] (precision for the insanes)
-% \bparag Round-the-World trips are completed when at least 1 \LDE or leader
-% goes back to a port it already went in after going an odd number of time in
-% each of the following zones: \seazone{Bonne-Esperance}, \seazoneTempetes,
-% \seazonePacifique and \seazoneChili.
-
-% (Jym)
-% Can't define circumnavigation properly
-% "At least once in each" is no good because one could do BE/Horn/Pac/Horn and
-% skip Indian ocean.
-% "Odd number" is no good because one could do BE/Horn/Pac/BE and
-% circumnavigate with 2 BE.
+map, back to a port on the European map (possibly the same) after
+going all the way around the World.
+\bparag If you're not sure about a circumnavigation, it is done by
+using an odd number of time the adjacency between the East and West
+edges of the \ROTW map.
 
 
 \section{End of period \VPs}
@@ -315,8 +304,8 @@ table below and round down. This is the amount of Wealth and Prestige
 \end{exemple}
 
 \subsection{End of period check up}
-\aparag Each country earns \VPs at the end of each period according to their
-overall situation (colonial, territorial and diplomatic).
+\aparag Some countries earn \VPs at the end of each period according
+to their overall situation (colonial, territorial and diplomatic).
 \bparag Not all countries gain \VPs this way and some countries have special
 modifiers representing the historical policies that were pursued.
 
@@ -525,10 +514,10 @@ to gain half the \VPs value.
   revolt. Thus, the objective VPs for \ANG are: 2 \textmultiply 45 + 40 =
   130\VPs.
 
-  Note that if \ANG had chosen the Scottish objective instead of the Hundred
-  Years War one, then it would have failed a {\bf M} objective and lost the
-  associated \VPs, resulting in a total of 2  \textmultiply 45 + 40 + 20 - 50
-  = 100 \VPs only.
+  Note that if \ANG had chosen the Scottish objective instead of the
+  Hundred Years War one, then it would have failed a not chosen {\bf
+    M} objective and lost the associated \VPs, resulting in a total of
+  2 \textmultiply 45 + 40 + 20 - 50 = 100 \VPs only.
 
   If Ireland was the \textbf{main objective}, then the maximum is computed
   before doubling, that is it would result in 2 \textmultiply 40 = 80 \VPs.
@@ -605,13 +594,13 @@ bordering the \region{Baltique} are owned by either \SUE,
 \aparag[Orient Income] \VEN has objectives depending on its
 \terme{Orient Income}. Orient Income is computed over each period and is
 the sum of all income from any of the following source:
-\bparag \CCs{Grand Orient} or \CCs{Tempete};
+\bparag \CCs{Grand Orient} or \CCs{Indian};
 \bparag convoy of \bazar{Izmir} or \terme{East Indies} convoy;
 \bparag resources exploited through an \dipAT with \paysaden, \paysoman
 or \paysgujarat;
 \bparag total income of each \COL/\TP producing at least one unit of
 \RES{PO}, \RES{Spice} or \RES{Silk};
-\bparag \TradeFLEET in any \STZ of the \CCs{Tempete}.
+\bparag \TradeFLEET in any \STZ of the \CCs{Indian}.
 
 \aparag[\TradeFLEET and Trade Centres.]
 For period objectives only, consider that the Trade Centres are given
@@ -648,7 +637,7 @@ monopolies, triggering automatic competition or placing Trade Centres.
   \item \stz{Ionienne}: \HOL(4/5), \VEN (0/4).
   \item \ctz{Venise}: \VEN (6).
   \item \ctz{Turquie}: \TUR (5), \VEN (3), \HOL (3).
-  \item \stz{Noire}: \HOL (5), \VEN (3), \TUR (2), \FRA (3)
+  \item \stz{Noire W}: \HOL (5), \VEN (3), \TUR (2), \FRA (3)
   \item \stz{Caspienne}: \VEN (3), \HOL (4).
   \end{itemize}
   Thus, \HOL as a total of 19 current levels and 20 maximum levels while
@@ -950,6 +939,9 @@ control them.
 \subsectionJ{\sectionpaysmajeur{Hollande}}{\blason{hollande}}
 %\bparag ({\it divide total by 2 if it is a Transfer check})
 \aparag[Territory.]
+\bparag If \HOL is Patriotic, any province occupied by revolutionary
+\FRA counts at full value for \HOL (as if owned and controlled). This
+does not diminished the \VPs of \FRA.
 \bparag 2 times the income value of \shortprovince{Hainaut},
 \shortprovince{Flandre}, \shortprovince{Vlaandern}, \shortprovince{Luxemburg},
 \shortprovince{Brabant}, \shortprovince{Limburg}
@@ -991,6 +983,9 @@ all \COL and \TP (without the resources).
 
 \subsectionJ{\sectionpaysmajeur{France}}{\blason{france}}
 \aparag[Territory.]
+\bparag If \FRA is revolutionary, provinces within the ``Natural
+Frontier'' that are controlled count as if they were owned. They still
+provide \VPs for the regular owner as usual.
 \bparag 3 times the income value of \shortprovince{Hainaut},
 \shortprovince{Vlaandern}, \shortprovince{Brabant}, \shortprovince{Luxemburg},
 \shortprovince{Catalunya}, \shortprovince{Lombardia}, \shortprovince{Nice}.
