@@ -6,32 +6,149 @@
 \begin{designnote}
   This Chapter focuses on the description of the Military phase in
   Segment order. The main concepts and common rules used during it are
-  described in the previous Chapter.
+  described in the next Chapter. Most of these concepts do not need to be
+  perfectly defined in order to understand he flow of the Military phase,
+  which is why precise description is postponed. You should refer to the next
+  Chapter whenever a point in these rules requires clarification.
 \end{designnote}
+
+\begin{todo}
+  This Chapter is under heavy work. The absence of detailed numbering of rules
+  reflects this.
+\end{todo}
 
 \section{Overview}
 \aparag[Sequence]
 \MilitaryDetailsNew
 
-\section{Setup}
+\subsection{Military setup}
+Setup for the military phase.
+
+\subsection{For each round}
+\subsubsection{Continuation roll}
+Determine the new round to be played.
+
+\subsubsection{Wintering}
+Stacks may suffer from attrition, leaders may be redeployed.
+
+\subsubsection{Impulses}
+Each alliance, in decreasing order of initiative, plays an impulse. Each
+impulse consists in four steps: supply, choice of campaign, movements and
+battles.
+
+\subsubsection{Sieges}
+Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
+
+\subsection{New round}
+A new round begin with the \terme{Continuation Roll} segment.
+
+\subsection{Military cleanup}
+???
+
+Normally nothing to do here.
+
+
+\section{Military setup}
 \subsection{Initiative}
 Determine the alliances in effect this turn and the order of initiative
 between them. Alliances are transitive (the ally of my ally is my ally) for
 this purpose (but not for stacking purpose and such). Each alliance plays at
 the lower initiative of one of its member, resolve any tie at random.
 
-\subsubsection{Starting round}
+Stacks in interventions (whether limited or foreign) act at the same
+initiative than the alliance for which they intervene.
+
+Minors at war alone act at the initiative of the country controlling them.
+
+\subsection{Starting round}
 Roll one die to determine the starting round (read the result in the boxes of
 the rounds display). This die roll is never modified. The weather for this
-round is determined as usual. It is possible for the Sund to be frozen during
-the first round.
+round is determined as usual.
 
-\section{Rounds (general stuff)}
-\subsection{Continuation roll}
+It is possible for the Sund to be frozen during the first round if the die was
+'1' and \ref{eco:Poor weather} happened this turn.
+
+\subsection{Rounds}
+During each round, perform the following segments. The action segment is
+repeated for each alliance in decreasing order of initiative.
+
+Each round is labelled by a letter indicating the \terme{season} ('S'ummer or
+'W'inter) and a number (between '0' and '5') indicating the \terme{year}.
+
+\begin{designnote}
+  Do not take the seasons and years too seriously when interpreting what
+  happens during a turn. This is more a modelisation artefact that gives good
+  macro results than a real attempt to simulate military actions on a lower
+  scale.
+\end{designnote}
+
+\section{Continuation roll}
 Do not perform this segment at the first round of a turn.
 
-Roll a die, modified by poor weather and pVI+. Follow the arrows on the rounds
-display to determine the new round. Determine weather as indicated.
+Roll a die, modified by \bonus{+2} in case of \ref{eco:Poor weather} and
+\bonus{-1} if this is period \period{VI} or \period{VII}. Follow the arrows on
+the rounds display to determine the new round.
+
+If the new round is the 'End' box, then the rounds stop immediately. Proceed
+with \terme{Wintering} then \terme{Military cleanup}.
+
+If the followed arrow is red (modified roll of 1-5 after a Summer round), then
+the new round is played with an extended campaign. See choice of campaign for
+the implications.
+
+If there is an extended campaign after a (unmodified) continuation roll of
+'1', '3' or '5', then the round is played with \terme{Bad weather}.
+
+If \ref{eco:Poor weather} happened this turn, then each Winter round is played
+with \terme{Bad weather}, no matter what was rolled.
+
+\begin{playtip}
+  End of the Military phase may happen somewhat brutally. You should always
+  check the probabilities before planning long term actions (sieges) in years
+  4 or 5.
+
+  Given the shape of the rounds tracks, at least one round in each column must
+  happen. Thus, the minimum number of rounds left to play is the number of
+  columns and the maximum is twice that number. Moreover, long Military phase
+  implies lot of extended campaigns. Take that into account when planning both
+  long term actions (sieges) and expenses for the rest of the phase.
+\end{playtip}
+
+\section{Wintering}
+If the current year is different than the year of the previous round, then a
+\terme{Wintering} segment occurs. Otherwise, skip to the \terme{Actions}
+segment.
+
+There is a \terme{Wintering} segment when the 'End' box is reached, that is,
+it is considered as being 'S6'.
+
+\subsection{Cold area}
+Any stack in a non-controlled, non-national province rolls for attrition.
+
+\subsection{Pashas}
+Any stack containing \Timar out of \TUR national territory rolls for
+attrition.
+
+\subsection{Hierarchy}
+Leaders may be redeployed.
+
+\section{Impulses}
+Each alliance, in decreasing order of initiative, plays an impulse. Each
+impulse consists in four steps: supply, choice of campaign, movements and
+battles.
+
+See below for a further description of these steps.
+
+\section{Sieges}
+Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
+
+\section{New round}
+A new round begin with the \terme{Continuation Roll} segment.
+
+\section{Military cleanup}
+???
+
+Normally nothing to do here.
 
 % Local Variables:
 % fill-column: 78

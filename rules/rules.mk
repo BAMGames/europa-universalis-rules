@@ -6,7 +6,17 @@ endif
 
 # Automatic section
 TEXTFIGFILES = $(addprefix $(FIGDIR)/,\
-)
+ amiral.pdf\
+ autrereligion.pdf\
+ catholique.pdf\
+ conquistador.pdf\
+ etoile.pdf\
+ explorateur.pdf\
+ general.pdf\
+ gouverneur.pdf\
+ monarque.pdf\
+ orthodoxe.pdf\
+ protestant.pdf)
 TEXTRECORDSFILES = $(addprefix $(RECORDSDIR)/,\
 )
 TEXTCOUNTERBITMAPFILES = $(addprefix $(COUNTERBITMAPDIR)/,\
@@ -16,21 +26,310 @@ TEXTMAPBITMAPFILES = $(addprefix $(MAPBITMAPDIR)/,\
 TEXTBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
 )
 TEXTSRCFILES = $(addprefix $(RULESDIR)/,\
-)
+ barlist.sty\
+ engCommandes.tex\
+ engCorpsMineurs.tex\
+ engCountryTables.tex\
+ engEntetesMineurs.tex\
+ engGeneralTables.tex\
+ engLeaders.tex\
+ engTables.tex\
+ euTables.tex\
+ europa.sty\
+ foreach.sty\
+ gametables.sty\
+ graytab.sty\
+ pageprefix.sty\
+ release.sty\
+ simplerules.cls\
+ tikzlibraryxsize.code.tex\
+ translations.tex\
+ unicodetricks.sty\
+ xnameref.sty)
 TEXFIGFILES = $(addprefix $(FIGDIR)/,\
-)
+ amiral.pdf\
+ anchor.png\
+ anchor2.png\
+ anchor3.png\
+ anchor4.png\
+ anchor5.png\
+ ancrefluviale.pdf\
+ appendix.jpg\
+ appendixmajor.jpg\
+ autrereligion.pdf\
+ basics.jpg\
+ bateau.png\
+ blocus.png\
+ catholique.pdf\
+ chess.jpg\
+ chiite.pdf\
+ conquistador.pdf\
+ corsaire.pdf\
+ default.jpg\
+ diplomacy.jpg\
+ doge.pdf\
+ economicalevents.jpg\
+ etoile.pdf\
+ events.jpg\
+ expenses.jpg\
+ explorateur.pdf\
+ general.pdf\
+ gouverneur.pdf\
+ incomes.jpg\
+ ingenieur.pdf\
+ interphase.jpg\
+ military.jpg\
+ mine.png\
+ monarque.pdf\
+ orthodoxe.pdf\
+ pacha.pdf\
+ powers.jpg\
+ protestant.pdf\
+ redeployment.jpg\
+ scenarios.jpg\
+ sel.png\
+ specificrules.jpg\
+ strategy.jpg\
+ sunnite.pdf\
+ victories.jpg\
+ ville1.png\
+ ville2.png\
+ villechine1.png\
+ villechine2.png\
+ villeinde1.png\
+ villeinde2.png\
+ winning.jpg)
 TEXRECORDSFILES = $(addprefix $(RECORDSDIR)/,\
-)
+ accounting-income.pdf\
+ accounting-rt.pdf)
 TEXCOUNTERBITMAPFILES = $(addprefix $(COUNTERBITMAPDIR)/,\
-)
+ counter_7/King_russie.png\
+ counter_7/King_venise_doge.png\
+ counter_7/LeaderDouble_porviceroy_Albuquerque_recto.png\
+ counter_7/LeaderDouble_porviceroy_Albuquerque_verso.png\
+ counter_7/Leader_angseahound_Drake.png\
+ counter_7/Leader_espagne_Toledo.png\
+ counter_7/Leader_france_Vauban.png\
+ counter_7/Leader_mogol_Akbar.png\
+ counter_7/Leader_turquie_Sirocco.png\
+ counter_7/Leader_usa_Arnold.png\
+ counter_7/Pacha_timar_Amar_recto.png\
+ counter_7/Pacha_timar_Amar_verso.png)
 TEXMAPBITMAPFILES = $(addprefix $(MAPBITMAPDIR)/,\
 )
 TEXBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
-)
+ shield_aceh.png\
+ shield_aden.png\
+ shield_afghans.png\
+ shield_algerie.png\
+ shield_alsace.png\
+ shield_angleterre.png\
+ shield_arabie.png\
+ shield_astrakhan.png\
+ shield_azteque.png\
+ shield_bade.png\
+ shield_balkans.png\
+ shield_baviere.png\
+ shield_belgique.png\
+ shield_berg.png\
+ shield_boheme.png\
+ shield_bourgogne.png\
+ shield_brandebourg.png\
+ shield_brunswick.png\
+ shield_caraibes.png\
+ shield_catalogne.png\
+ shield_chevaliers.png\
+ shield_chine.png\
+ shield_chineespagne.png\
+ shield_cologne.png\
+ shield_corse.png\
+ shield_cosaquesdon.png\
+ shield_courlande.png\
+ shield_crimee.png\
+ shield_cyrenaique.png\
+ shield_damas.png\
+ shield_danemark.png\
+ shield_eastprussia.png\
+ shield_ecosse.png\
+ shield_espagne.png\
+ shield_finlande.png\
+ shield_flandrebrabant.png\
+ shield_france.png\
+ shield_genes.png\
+ shield_georgie.png\
+ shield_grenade.png\
+ shield_gujarat.png\
+ shield_habsbourg.png\
+ shield_hanovre.png\
+ shield_hanse.png\
+ shield_hesse.png\
+ shield_hollande.png\
+ shield_hongrie.png\
+ shield_huguenots.png\
+ shield_hyderabad.png\
+ shield_inca.png\
+ shield_irak.png\
+ shield_irlande.png\
+ shield_iroquois.png\
+ shield_japon.png\
+ shield_kazan.png\
+ shield_liege.png\
+ shield_liflandie.png\
+ shield_lithuanie.png\
+ shield_lorraine.png\
+ shield_lucca.png\
+ shield_mamelouks.png\
+ shield_maroc.png\
+ shield_mayence.png\
+ shield_mazovie.png\
+ shield_milan.png\
+ shield_modene.png\
+ shield_mogol.png\
+ shield_moldavie.png\
+ shield_montferrat.png\
+ shield_mysore.png\
+ shield_naples.png\
+ shield_natives.png\
+ shield_norvege.png\
+ shield_oldenburg.png\
+ shield_oman.png\
+ shield_oresund.png\
+ shield_palatinat.png\
+ shield_papaute.png\
+ shield_parme.png\
+ shield_perse.png\
+ shield_pirates.png\
+ shield_pologne.png\
+ shield_pommeranie.png\
+ shield_portugal.png\
+ shield_prusse.png\
+ shield_pskov.png\
+ shield_rebelles.png\
+ shield_revolutionnaires.png\
+ shield_royalistes.png\
+ shield_russie.png\
+ shield_ryazan.png\
+ shield_saint-empire.png\
+ shield_sainte-ligue.png\
+ shield_savoie.png\
+ shield_saxe.png\
+ shield_siberie.png\
+ shield_soudan.png\
+ shield_steppes.png\
+ shield_suede.png\
+ shield_suisse.png\
+ shield_teutoniques1.png\
+ shield_teutoniques2.png\
+ shield_thuringe.png\
+ shield_tordesillas.png\
+ shield_toscane.png\
+ shield_transylvanie.png\
+ shield_treves.png\
+ shield_tripoli.png\
+ shield_tunisie.png\
+ shield_turquie.png\
+ shield_turquievenise.png\
+ shield_ukraine.png\
+ shield_usa.png\
+ shield_valachie.png\
+ shield_venise.png\
+ shield_vijayanagar.png\
+ shield_wurtemberg.png)
 TEXSRCFILES = $(addprefix $(RULESDIR)/,\
-)
+ EUevents.sty\
+ EUtheme.sty\
+ barlist.sty\
+ engAdministration.tex\
+ engAlpha.tex\
+ engAnnexe.tex\
+ engAustria.tex\
+ engBasic.tex\
+ engBudget.tex\
+ engCommandes.tex\
+ engCopyleft.tex\
+ engCorpsMineurs.tex\
+ engCountryTables.tex\
+ engDiplomacy.tex\
+ engDiplomacyAlliance.tex\
+ engDiplomacyMinor.tex\
+ engDiplomacyROTW.tex\
+ engDiplomacyWar.tex\
+ engDiplomacyWarROTW.tex\
+ engERS.tex\
+ engEngland.tex\
+ engEntetesMineurs.tex\
+ engEvnt1.tex\
+ engEvnt2.tex\
+ engEvnt3.tex\
+ engEvnt4.tex\
+ engEvnt5.tex\
+ engEvnt6.tex\
+ engEvnt7.tex\
+ engEvntDiploRev.tex\
+ engEvntEco.tex\
+ engEvntFWR.tex\
+ engEvntGen.tex\
+ engEvntRules.tex\
+ engEvntTYW.tex\
+ engExpFinal.tex\
+ engFrance.tex\
+ engGameSequence.tex\
+ engGeneralTables.tex\
+ engGreatCampaign.tex\
+ engHolland.tex\
+ engIncomes.tex\
+ engInterphase.tex\
+ engIntroduction.tex\
+ engLeaders.tex\
+ engLogistic.tex\
+ engMilitary.tex\
+ engMilitaryConcepts.tex\
+ engMilitaryFrench.tex\
+ engMilitaryRules.tex\
+ engMinorCountries.tex\
+ engObjectives.tex\
+ engPeace.tex\
+ engPlaying.tex\
+ engPoland.tex\
+ engPoliticalRules.tex\
+ engPortugal.tex\
+ engPrussia.tex\
+ engRedeployment.tex\
+ engRussia.tex\
+ engScenarios.tex\
+ engSpain.tex\
+ engSpecificRules.tex\
+ engStrategy.tex\
+ engSweden.tex\
+ engTables.tex\
+ engThePowers.tex\
+ engTurkey.tex\
+ engVenice.tex\
+ engVictories.tex\
+ europa.sty\
+ foreach.sty\
+ gametables.sty\
+ graytab.sty\
+ newpaper.sty\
+ pageprefix.sty\
+ release.sty\
+ simplerules.cls\
+ tikzlibraryxsize.code.tex\
+ translations.tex\
+ unicodetricks.sty\
+ xnameref.sty)
 TEXHFIGFILES = $(addprefix $(FIGDIR)/,\
-)
+ amiral.pdf\
+ autrereligion.pdf\
+ catholique.pdf\
+ chiite.pdf\
+ conquistador.pdf\
+ etoile.pdf\
+ explorateur.pdf\
+ general.pdf\
+ orthodoxe.pdf\
+ protestant.pdf\
+ sunnite.pdf)
 TEXHRECORDSFILES = $(addprefix $(RECORDSDIR)/,\
 )
 TEXHCOUNTERBITMAPFILES = $(addprefix $(COUNTERBITMAPDIR)/,\
@@ -40,7 +339,23 @@ TEXHMAPBITMAPFILES = $(addprefix $(MAPBITMAPDIR)/,\
 TEXHBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
 )
 TEXHSRCFILES = $(addprefix $(RULESDIR)/,\
-)
+ barlist.sty\
+ engCommandes.tex\
+ engCorpsMineurs.tex\
+ engEntetesMineurs.tex\
+ engLeaders.tex\
+ euMinors.tex\
+ europa.sty\
+ foreach.sty\
+ gametables.sty\
+ graytab.sty\
+ pageprefix.sty\
+ release.sty\
+ simplerules.cls\
+ tikzlibraryxsize.code.tex\
+ translations.tex\
+ unicodetricks.sty\
+ xnameref.sty)
 TEXOFIGFILES = $(addprefix $(FIGDIR)/,\
 )
 TEXORECORDSFILES = $(addprefix $(RECORDSDIR)/,\
@@ -52,7 +367,22 @@ TEXOMAPBITMAPFILES = $(addprefix $(MAPBITMAPDIR)/,\
 TEXOBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
 )
 TEXOSRCFILES = $(addprefix $(RULESDIR)/,\
-)
+ barlist.sty\
+ engCommandes.tex\
+ engEntetesMineurs.tex\
+ engObjectives.tex\
+ euObjectives.tex\
+ europa.sty\
+ foreach.sty\
+ gametables.sty\
+ graytab.sty\
+ pageprefix.sty\
+ release.sty\
+ simplerules.cls\
+ tikzlibraryxsize.code.tex\
+ translations.tex\
+ unicodetricks.sty\
+ xnameref.sty)
 # End automatic
 
 TEXRULESDEP=$(TEXSRCFILES) $(TEXFIGFILES) $(TEXRECORDSFILES) $(TEXBLASONSFILES) $(TEXCOUNTERBITMAPFILES) $(TEXMAPBITMAPFILES) $(FONTSDIR)/stamp-texfonts
