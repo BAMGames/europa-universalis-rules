@@ -24,7 +24,13 @@
 \subsection{Military setup}
 Setup for the military phase.
 
-\subsection{For each round}
+\subsection{Rounds}
+The military phase is split in a certain number of \terme{rounds} (between 3
+and 11). During each round, each alliance, in decreasing order of initiative,
+as an \terme{impulse} where it can moves its troop and fight. Some matters are
+resolved before any alliance has its impulse (continuation, wintering) and
+some after each had its one (siege, piracy, revolt). After that, a new round
+begins.
 \subsubsection{Continuation roll}
 Determine the new round to be played.
 
@@ -47,13 +53,14 @@ A new round begin with the \terme{Continuation Roll} segment.
 
 Normally nothing to do here.
 
+The real cleanup is done during Redeployment.
 
 \section{Military setup}
 \subsection{Initiative}
 Determine the alliances in effect this turn and the order of initiative
 between them. Alliances are transitive (the ally of my ally is my ally) for
 this purpose (but not for stacking purpose and such). Each alliance plays at
-the lower initiative of one of its member, resolve any tie at random.
+the lowest initiative of one of its member, resolve any tie at random.
 
 Stacks in interventions (whether limited or foreign) act at the same
 initiative than the alliance for which they intervene.
@@ -69,8 +76,8 @@ It is possible for the Sund to be frozen during the first round if the die was
 '1' and \ref{eco:Poor weather} happened this turn.
 
 \subsection{Rounds}
-During each round, perform the following segments. The action segment is
-repeated for each alliance in decreasing order of initiative.
+During each round, perform the segments detailed below. The Impulses segment
+is repeated for each alliance in decreasing order of initiative.
 
 Each round is labelled by a letter indicating the \terme{season} ('S'ummer or
 'W'inter) and a number (between '0' and '5') indicating the \terme{year}.
@@ -107,7 +114,7 @@ with \terme{Bad weather}, no matter what was rolled.
   check the probabilities before planning long term actions (sieges) in years
   4 or 5.
 
-  Given the shape of the rounds tracks, at least one round in each column must
+  Given the shape of the rounds track, at least one round in each column must
   happen. Thus, the minimum number of rounds left to play is the number of
   columns and the maximum is twice that number. Moreover, long Military phase
   implies lot of extended campaigns. Take that into account when planning both
@@ -123,21 +130,83 @@ There is a \terme{Wintering} segment when the 'End' box is reached, that is,
 it is considered as being 'S6'.
 
 \subsection{Cold area}
-Any stack in a non-controlled, non-national province rolls for attrition.
+Any stack in a non-controlled, non-national province rolls for
+attrition. Resolve this as a Supply attrition (see below). It is, however, a
+different roll.
 
 \subsection{Pashas}
 Any stack containing \Timar out of \TUR national territory rolls for
-attrition.
+attrition. Check specific Turkish rules for details.
 
 \subsection{Hierarchy}
 Leaders may be redeployed.
 
 \section{Impulses}
 Each alliance, in decreasing order of initiative, plays an impulse. Each
-impulse consists in four steps: supply, choice of campaign, movements and
-battles.
+impulse consists in five steps: supply, choice of campaign, movements,
+exploration and battles.
 
-See below for a further description of these steps.
+The alliance taking its impulse is called the \terme{phasing} alliance. All
+other are non-phasing.
+
+\begin{playtip}[Simultaneity]
+  Most of the time, there are separate wars that cannot affect each other
+  (typically, with different antagonists in each), or even separate actions
+  for a given alliance (typically action in the \ROTW and in Europe). In this
+  case, the resolution of the impulses do not need to be as strictly
+  sequential as explained in the rules. The military phase is long enough and,
+  typically, a FRA-HIS war and a RUS-POL war can be played simultaneously in
+  order to make things a little faster.
+
+  It is normally recommended to synchronise all players for the continuation
+  roll (because it is a point where a lot of crucial new information is
+  gained). Sometimes, it is however possible for two players to quickly
+  completely play a small war (noting the results of the continuation roll in
+  secret to communicate it later) while other players are still struggling in
+  the first round of a big war. Sometimes even while other are still planning
+  and resolving their administration\ldots This typically allows to ``free''
+  those players to go and buy food for everybody\ldots
+\end{playtip}
+
+\subsection{Supply}
+Each phasing stack which has no supply for two consecutive rounds is
+immediately destroyed.
+
+Each phasing stack which has no supply or is in weak supply must roll for
+attrition.
+
+
+\subsection{Choice of campaign}
+Each country of the phasing alliance choose its campaign for the current
+round.
+
+\section{Movements}
+Each country of the phasing alliance may move its stacks, according to the
+campaign it paid for the round. Each movement must be completed before the
+next one start. The phasing alliance choose in which order it moves its stacks
+(at random in case of disagreement).
+
+Each non-phasing stack may attempt interception. Resolve battle caused by
+interception immediately.
+
+Each phasing stack (moving or not) may have to roll for attrition.
+
+\section{Exploration}
+Each phasing naval stack not engaged in battle may attempt to explore an
+adjacent unknown seazone. In case of success, the stack automatically moves
+into the explored zone.
+
+Next, each phasing land stack not engaged in battle may attempt to explore an
+adjacent unknown province. In case of success, the stack automatically moves
+into the explored province.
+
+Note that a naval stack embarking troops may explore a new seazone from which
+the troop may then disembark to explore a new province.
+
+\section{Battles}
+Resolve all non-interception battles caused by the movement, in order of
+choice of the phasing alliance (at random in case of disagreement). Each
+battle must be fully resolve before the next one starts.
 
 \section{Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
