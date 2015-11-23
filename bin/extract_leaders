@@ -299,7 +299,7 @@ foreach $k (@infoPACHA) {
     $translation.=$k->{"NameB"};
     $definition='\leaderpseudoanonyme('.$k->{"NameA"}.")[](";
     $definition.=$rc;
-    $definition.=")(z)("; # type is 'z' 'cause they're all rang Z.
+    $definition.=")(z)("; # type is 'z' 'cause they're all rank Z.
     $definition.=$k->{"Stats"};
     $definition.=")(".$k->{"LD"}."\\LD)";
     sendit($translation,$definition,$rc,$k->{"NameA"},$prekey);
