@@ -27,8 +27,8 @@ Setup for the military phase.
 \subsection{Rounds}
 The military phase is split in a certain number of \terme{rounds} (between 3
 and 11). During each round, each alliance, in decreasing order of initiative,
-as an \terme{impulse} where it can moves its troop and fight. Some matters are
-resolved before any alliance has its impulse (continuation, wintering) and
+has an \terme{impulse} where it can moves its troop and fight. Some matters
+are resolved before any alliance has its impulse (continuation, wintering) and
 some after each had its one (siege, piracy, revolt). After that, a new round
 begins.
 \subsubsection{Continuation roll}
@@ -39,8 +39,8 @@ Stacks may suffer from attrition, leaders may be redeployed.
 
 \subsubsection{Impulses}
 Each alliance, in decreasing order of initiative, plays an impulse. Each
-impulse consists in four steps: supply, choice of campaign, movements and
-battles.
+impulse consists in five steps: supply, choice of campaign, movements (and
+interceptions), exploration, and battles.
 
 \subsubsection{Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
@@ -70,7 +70,7 @@ Minors at war alone act at the initiative of the country controlling them.
 \subsection{Starting round}
 Roll one die to determine the starting round (read the result in the boxes of
 the rounds display). This die roll is never modified. The weather for this
-round is determined as usual.
+round is determined as usual (see below).
 
 It is possible for the Sund to be frozen during the first round if the die was
 '1' and \ref{eco:Poor weather} happened this turn.
@@ -86,7 +86,8 @@ Each round is labelled by a letter indicating the \terme{season} ('S'ummer or
   Do not take the seasons and years too seriously when interpreting what
   happens during a turn. This is more a modelisation artefact that gives good
   macro results than a real attempt to simulate military actions on a lower
-  scale.
+  scale (especially, the 'S' and 'W' rounds happen simultaneously in the North
+  and South hemispheres\ldots)
 \end{designnote}
 
 \section{Continuation roll}
@@ -123,16 +124,17 @@ with \terme{Bad weather}, no matter what was rolled.
 
 \section{Wintering}
 If the current year is different than the year of the previous round, then a
-\terme{Wintering} segment occurs. Otherwise, skip to the \terme{Actions}
+\terme{Wintering} segment occurs. Otherwise, skip to the \terme{Impulses}
 segment.
 
 There is a \terme{Wintering} segment when the 'End' box is reached, that is,
 it is considered as being 'S6'.
 
 \subsection{Cold area}
-Any stack in a non-controlled, non-national province rolls for
-attrition. Resolve this as a Supply attrition (see below). It is, however, a
-different roll.
+Any stack in a non-controlled, non-national province within the \terme{Cold
+  area} rolls for attrition. Resolve this as a Supply attrition (see
+below). It is, however, a different roll. In the \ROTW, each ``snow flakes''
+resource in the \Area gives a malus to this roll.
 
 \subsection{Pashas}
 Any stack containing \Timar out of \TUR national territory rolls for
@@ -143,8 +145,8 @@ Leaders may be redeployed.
 
 \section{Impulses}
 Each alliance, in decreasing order of initiative, plays an impulse. Each
-impulse consists in five steps: supply, choice of campaign, movements,
-exploration and battles.
+impulse consists in five steps: supply, choice of campaign, movements (and
+interceptions), exploration, and battles.
 
 The alliance taking its impulse is called the \terme{phasing} alliance. All
 other are non-phasing.
@@ -166,6 +168,15 @@ other are non-phasing.
   the first round of a big war. Sometimes even while other are still planning
   and resolving their administration\ldots This typically allows to ``free''
   those players to go and buy food for everybody\ldots
+
+  \smallskip
+
+  Similarly, the rules describe a strict order for the resolution of actions
+  in the military phase but in practice it doesn't often need to be respected
+  that strictly. Typically, two battles can be resolved simultaneously if they
+  don't have the same participants, or sieges can be resolved in any order
+  (rather than on a per alliance basis) if players agree that this has no
+  importance.
 \end{playtip}
 
 \subsection{Supply}
@@ -177,8 +188,13 @@ attrition.
 
 
 \subsection{Choice of campaign}
-Each country of the phasing alliance choose its campaign for the current
-round.
+Each country of the phasing alliance chooses its campaign for the current
+round. Make a tick in the correct line of the ERS to count how many campaigns
+of each type you've done so you can pay for them.
+
+More expensive campaigns allow for more actions. In case of extended campaign,
+there is a single campaign that spans over two rounds and that can be upgraded
+at this point.
 
 \section{Movements}
 Each country of the phasing alliance may move its stacks, according to the
@@ -186,22 +202,22 @@ campaign it paid for the round. Each movement must be completed before the
 next one start. The phasing alliance choose in which order it moves its stacks
 (at random in case of disagreement).
 
-Each non-phasing stack may attempt interception. Resolve battle caused by
+Each non-phasing stack may attempt interception. Resolve battles caused by
 interception immediately.
 
 Each phasing stack (moving or not) may have to roll for attrition.
 
 \section{Exploration}
-Each phasing naval stack not engaged in battle may attempt to explore an
-adjacent unknown seazone. In case of success, the stack automatically moves
-into the explored zone.
+Each phasing naval stack not engaged in battle (including interception) may
+attempt to explore an adjacent unknown seazone. In case of success, the stack
+automatically moves into the explored zone.
 
-Next, each phasing land stack not engaged in battle may attempt to explore an
-adjacent unknown province. In case of success, the stack automatically moves
-into the explored province.
+Next, each phasing land stack not engaged in battle (including interception)
+may attempt to explore an adjacent unknown province. In case of success, the
+stack automatically moves into the explored province.
 
 Note that a naval stack embarking troops may explore a new seazone from which
-the troop may then disembark to explore a new province.
+the troops may then disembark to explore a new province.
 
 \section{Battles}
 Resolve all non-interception battles caused by the movement, in order of
@@ -210,6 +226,9 @@ battle must be fully resolve before the next one starts.
 
 \section{Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
+
+Each alliance, in decreasing order of initiative, resolves all of its actions
+in an order of its choice (at random in case of disagreement).
 
 \section{New round}
 A new round begin with the \terme{Continuation Roll} segment.
