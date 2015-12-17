@@ -42,6 +42,9 @@ Each alliance, in decreasing order of initiative, plays an impulse. Each
 impulse consists in five steps: supply, choice of campaign, movements (and
 interceptions), exploration, and battles.
 
+The alliance taking its impulse is called the \terme{phasing} alliance. All
+other are non-phasing.
+
 \subsubsection{Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
@@ -54,6 +57,34 @@ A new round begin with the \terme{Continuation Roll} segment.
 Normally nothing to do here.
 
 The real cleanup is done during Redeployment.
+
+\begin{playtip}[Simultaneity]
+  Most of the time, there are separate wars that cannot affect each other
+  (typically, with different antagonists in each), or even separate actions
+  for a given alliance (typically action in the \ROTW and in Europe). In this
+  case, the resolution of the impulses do not need to be as strictly
+  sequential as explained in the rules. The military phase is long enough and,
+  typically, a FRA-HIS war and a RUS-POL war can be played simultaneously in
+  order to make things a little faster.
+
+  It is normally recommended to synchronise all players for the continuation
+  roll (because it is a point where a lot of crucial new information is
+  gained). Sometimes, it is however possible for two players to quickly
+  completely play a small war (noting the results of the continuation roll in
+  secret to communicate it later) while other players are still struggling in
+  the first round of a big war. Sometimes even while other are still planning
+  and resolving their administration\ldots This typically allows to ``free''
+  those players to go and buy food for everybody\ldots
+
+  \smallskip
+
+  Similarly, the rules describe a strict order for the resolution of actions
+  in the military phase but in practice it doesn't often need to be respected
+  that strictly. Typically, two battles can be resolved simultaneously if they
+  don't have the same participants, or sieges can be resolved in any order
+  (rather than on a per alliance basis) if players agree that this has no
+  importance.
+\end{playtip}
 
 \section{Military setup}
 \subsection{Initiative}
@@ -75,7 +106,7 @@ round is determined as usual (see below).
 It is possible for the Sund to be frozen during the first round if the die was
 '1' and \ref{eco:Poor weather} happened this turn.
 
-\subsection{Rounds}
+\section{Rounds}
 During each round, perform the segments detailed below. The Impulses segment
 is repeated for each alliance in decreasing order of initiative.
 
@@ -90,7 +121,7 @@ Each round is labelled by a letter indicating the \terme{season} ('S'ummer or
   and South hemispheres\ldots)
 \end{designnote}
 
-\section{Continuation roll}
+\subsection{Continuation roll}
 Do not perform this segment at the first round of a turn.
 
 Roll a die, modified by \bonus{+2} in case of \ref{eco:Poor weather} and
@@ -122,7 +153,7 @@ with \terme{Bad weather}, no matter what was rolled.
   long term actions (sieges) and expenses for the rest of the phase.
 \end{playtip}
 
-\section{Wintering}
+\subsection{Wintering}
 If the current year is different than the year of the previous round, then a
 \terme{Wintering} segment occurs. Otherwise, skip to the \terme{Impulses}
 segment.
@@ -130,20 +161,20 @@ segment.
 There is a \terme{Wintering} segment when the 'End' box is reached, that is,
 it is considered as being 'S6'.
 
-\subsection{Cold area}
+\subsubsection{Cold area}
 Any stack in a non-controlled, non-national province within the \terme{Cold
   area} rolls for attrition. Resolve this as a Supply attrition (see
 below). It is, however, a different roll. In the \ROTW, each ``snow flakes''
 resource in the \Area gives a malus to this roll.
 
-\subsection{Pashas}
+\subsubsection{Pashas}
 Any stack containing \Timar out of \TUR national territory rolls for
 attrition. Check specific Turkish rules for details.
 
-\subsection{Hierarchy}
+\subsubsection{Hierarchy}
 Leaders may be redeployed.
 
-\section{Impulses}
+\subsection{Impulses}
 Each alliance, in decreasing order of initiative, plays an impulse. Each
 impulse consists in five steps: supply, choice of campaign, movements (and
 interceptions), exploration, and battles.
@@ -151,43 +182,50 @@ interceptions), exploration, and battles.
 The alliance taking its impulse is called the \terme{phasing} alliance. All
 other are non-phasing.
 
-\begin{playtip}[Simultaneity]
-  Most of the time, there are separate wars that cannot affect each other
-  (typically, with different antagonists in each), or even separate actions
-  for a given alliance (typically action in the \ROTW and in Europe). In this
-  case, the resolution of the impulses do not need to be as strictly
-  sequential as explained in the rules. The military phase is long enough and,
-  typically, a FRA-HIS war and a RUS-POL war can be played simultaneously in
-  order to make things a little faster.
 
-  It is normally recommended to synchronise all players for the continuation
-  roll (because it is a point where a lot of crucial new information is
-  gained). Sometimes, it is however possible for two players to quickly
-  completely play a small war (noting the results of the continuation roll in
-  secret to communicate it later) while other players are still struggling in
-  the first round of a big war. Sometimes even while other are still planning
-  and resolving their administration\ldots This typically allows to ``free''
-  those players to go and buy food for everybody\ldots
-
-  \smallskip
-
-  Similarly, the rules describe a strict order for the resolution of actions
-  in the military phase but in practice it doesn't often need to be respected
-  that strictly. Typically, two battles can be resolved simultaneously if they
-  don't have the same participants, or sieges can be resolved in any order
-  (rather than on a per alliance basis) if players agree that this has no
-  importance.
-\end{playtip}
-
-\subsection{Supply}
-Each phasing stack which has no supply for two consecutive rounds is
+\section{Supply}
+Each phasing land stack which has no supply for two consecutive rounds is
 immediately destroyed.
 
-Each phasing stack which has no supply or is in weak supply must roll for
-attrition.
+Each phasing land stack which has no supply or is in weak supply must roll for
+\terme{supply attrition}. Additionally, each phasing besieged land stack must
+roll for \terme{siege attrition}.
 
+Naval stacks never roll for attrition during the supply segment. Beware that
+besieged stacks roll for \textbf{siege} attrition during this segment, which
+has a similar procedure as supply attrition but slightly different modifiers.
 
-\subsection{Choice of campaign}
+If a besieged stack is also in weak supply, it does not roll for supply
+attrition. The siege attrition replace this roll.
+
+A Source of Supply (SoS) is either a controlled city, \TP, \COL or fort, or a
+large enough naval stack in an adjacent seazone. A Source of Supply may supply
+as many stacks as wanted.
+
+The Line of Supply (LoS) goes from a Source of Supply to the stack.
+
+A stack is in weak supply if at least one of the following condition is true:
+\begin{itemize}
+\item its Line of Supply is as least 6\MP long (exception: in the \ROTW, \LD
+  do not check this condition);
+\item its Line off Supply goes through desert;
+\item its Source of Supply is not owned by the same alliance;
+\item it is supplied by a naval stack that is not adjacent to a port or
+  arsenal able to supply it.
+\end{itemize}
+
+It is possible to take its supply from a further SoS to avoid weak supply
+(typically, to have an owned SoS, or to circumvent a desert).
+
+Attrition is obtained by rolling one die, modified as follows, and
+cross-reference the modified result in table~\ref{table:Discoveries and
+  Attrition} in the ``Loss in Europe'' column that corresponds to the size of
+the stack. Note that a result of 10 or less has no effect.
+
+%\GTtable{discoveriesattrition}
+\GTtable{causesattrition}
+
+\section{Choice of campaign}
 Each country of the phasing alliance chooses its campaign for the current
 round. Make a tick in the correct line of the ERS to count how many campaigns
 of each type you've done so you can pay for them.
