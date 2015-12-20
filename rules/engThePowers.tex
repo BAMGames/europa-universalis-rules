@@ -22,8 +22,8 @@
 
 \subsection{Fair play}
 \aparag Due to the nature of the game, it is extremely easy to cheat by
-``accidentally'' making errors while computing incomes, expenses or DRM, by
-putting the wrong number of counters on maps, \ldots
+``accidentally'' making errors while computing incomes, expenses or modifiers,
+by putting the wrong number of counters on maps, \ldots
 \bparag In case of genuine errors, correct them as best as you can. Often, it
 is possible to correct a wrong computation of income or expense by simply
 reporting it to the current turn (if it did not happen too long
@@ -103,7 +103,7 @@ home rules as needed.
 \aparag If any rule seems strange, allows some non-historical behaviour, or is
 abused by tricky players, you are welcome to create home rules to circumvent
 the problem. After all, this whole rule book is mostly home rules and
-clarification on the original \emph{Europa Universalis} game by Philippe
+clarifications on the original \emph{Europa Universalis} game by Philippe
 Thibault.
 
 
@@ -171,7 +171,7 @@ the country.
 \bparag Minors countries usually have no standings, unless explicitly stated.
 \bparag The precise standing inside a religion is noted as
 ``Religion/Standing'' such as ``\CATHCR''. Sometimes, only the standing is
-specified (\emph{e.g.} ``Counter-Reform'' means ``\CATHCR'').
+specified (\emph{e.g.} ``Counter-Reformation'' means ``\CATHCR'').
 \bparag If no standing is precised, then the effect apply to all countries of
 the given religion, whether they have a standing or not.
 \bparag Majors countries have no standing at the beginning of the game and
@@ -211,7 +211,7 @@ its ``Military doctrine'' in the Appendix.
 \subsubsectionJ{Catholic}{\Xcatholique}
 \aparag Before~\ref{pI:Reformation}, this religion has no standings
 \bparag After, there are two Catholic standings: \terme{Conciliatory} and
-\terme{Counter-Reform} (also called \terme{Counter-Reformation}).
+\terme{Counter-Reformation} (also called \terme{Counter-Reform}).
 
 \bparag If needed and not specified, consider Catholic minors as begin
 \CATHCR.
@@ -253,12 +253,11 @@ no standing
 \POL.
 \bparag Notice that \POL belongs to both the Latin and Orthodox groups,
 whatever its religion but that \paysPologne (once it becomes minor) belongs
-only to the Latin group.
+only to the Latin group and is always Catholic whatever the religion of \POL.
 % Jym : \RUS also stay Orthodox after reform. That means it will still raise
 % the technology of Orthodox minors. There shouldn't be too many of them at
 % this point, so it is OK. Moreover, I am too lazy to find a correct
 % expression to get \RUS out of the Orthodox group...
-
 
 \subsubsection{Christian}
 \aparag Christian countries are either Catholic, Protestant or Orthodox.
@@ -1194,7 +1193,7 @@ earlier than the indicated turn, thus the dates here may be later than the
 historical occurrence of the technology (typically, \SUE gets \TBAR in the
 1630's and \ENG gets it in the 1640's).
 
-\bparag List of Land technologies:\par
+\aparag List of Land technologies:\par
 \begin{tabular}{|l|cc||c|l|}
   \hline
   Name & Year & Turn & First & Remark\\
@@ -1210,7 +1209,7 @@ historical occurrence of the technology (typically, \SUE gets \TBAR in the
   \hline
 \end{tabular}
 
-\bparag List of Naval technologies:\par
+\aparag List of Naval technologies:\par
 \begin{tabular}{|l|cc||c|l|}
   \hline
   Name & Year & Turn & First & Remark\\
@@ -1354,7 +1353,7 @@ coexist in a \STZ/\CTZ, without limit.
 \section{The economical system}
 
 \aparag The economical system in \emph{Europa Universalis} tries to reproduce
-the constant need to (short term) loans that countries of the epoch endured,
+the constant need of (short term) loans that countries of the epoch endured,
 as well as the heavy strain caused by wars, bringing even large and rich
 superpowers to bankruptcy and the brink of ruin. Inflation is usually very
 high (due to the massive amount of gold and silver coming from America) thus
@@ -1489,7 +1488,8 @@ stockpiled into the \RT.
 until the loan is refunded.
 \bparag Refunding of national loans is never mandatory. A country may choose
 to continue paying interests each turns rather than refunding its
-citizens\ldots
+citizens\ldots (which rather represents refunding old loans and simultaneously
+contracting new ones).
 \bparag However, having too many loans tends to hamper further Exchequer
 tests.
 
@@ -1521,6 +1521,7 @@ inflation. Going into debts is not a good way to get ride of inflation.
 \bparag Because of inflation, each country needs to get at least some money
 into its \RT each turn.
 
+\subsubsection{Examples}
 \begin{exemple}[Exchequer test]
   Country A has a gross income of 300\Ducats. It has a total expenses of
   200\Ducats (includes administration, loans interest and refund and military)
@@ -1612,7 +1613,7 @@ exploration, they may invest in order to build trading post and increase their
 hold on the spice and sugar trade or they may try to colonise the New World to
 either exploit gold or populate it.
 
-\aparag[Exploration] During the military phase, countries may send stack in
+\aparag[Exploration] During the military phase, countries may send stacks in
 the \ROTW to try and discover new seas and new lands.
 \bparag The presence of an explorer (on sea) or a conquistador (on land)
 greatly increases the chance of success of the voyage.
@@ -1968,8 +1969,9 @@ round.
 of oversea war against an unspecified country).
 \bparag A Minor establishment is immediately destroyed if a country controls
 it.
-\bparag Minor establishment cannot be target of competition, and always win
-automatic competition.
+
+\aparag[Competition] Minor establishment cannot be target of competition, and
+always win automatic competition.
 
 
 \subsubsection{Pirate haven}

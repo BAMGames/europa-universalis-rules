@@ -908,9 +908,9 @@ enemy in this war.
   \item Religious or civil wars allow to raise taxes but this always causes
     turmoil (loss of \STAB) because there is always an opposite faction within
     the country to disagree with the need.
-  \item ``Normal'' wars allow to raise for taxes and if a province is occupied
-    the people even see that the nation is in danger and everybody gladly
-    gives money for war effort without second thought.
+  \item ``Normal'' wars allow to raise taxes and if a province is occupied the
+    people even see that the nation is in danger and everybody gladly gives
+    money for war effort without second thought.
   \item If you're not able to pay for the \STAB cost, that means that the
     country is so wary of the war that people can't and won't do more
     efforts\ldots except in case of great danger (where you don't need to loss
@@ -969,8 +969,8 @@ this amount and must spend money according to this estimation.
   looking for money to fund its campaign against the Huguenots and repeatedly
   summons the \emph{États Généraux} in successive attempts to increase taxes.
 
-  French king, \monarque{Henri III} has an \ADM of 6. and \FRA has a \STAB of
-  -2 due to the already long turmoil. Since it can loss 1 \STAB, \FRA is
+  The French king, \monarque{Henri III} has an \ADM of 6. and \FRA has a \STAB
+  of -2 due to the already long turmoil. Since it can loss 1 \STAB, \FRA is
   allowed to raise exceptional taxes. Then compute the modifier of 6 (ADM) + 3
   $\times$ -3 (\STAB) = 6 - 9 = -3. Write this on the \EcoRS.
 
@@ -1333,7 +1333,7 @@ must take the city. This may require being at war against two minor countries
 \aparag Trade and colonisation in the \ROTW must progress slowly through
 unknown areas. Thus, it is not possible to colonise any province nor to
 attempt trade (with \TradeFLEET) before having strong contacts with natives or
-colons.
+colonists.
 
 \aparag Some countries have other specific restrictions on where they may put
 their establishments. See specific rules for details.
@@ -1341,8 +1341,8 @@ their establishments. See specific rules for details.
 
 \subsubsection{Trade fleet}\label{chAdministration:Limited Access}
 \aparag[Caspian sea] In order to target the \stz{Caspienne} for \TFI, one must
-either own a province (or have a \COL or \TP) adjacent to the sea (even
-without port), the \CCs{Grand Orient} or the \CCs{Mediterrannee}.
+own either the \CCs{Grand Orient}, the \CCs{Mediterrannee}, or a province (or
+a \COL or \TP) adjacent to the sea (even without port).
 
 \aparag[\ROTW \STZ] In order to target a \ROTW \STZ for \TFI, at least one sea
 zone must have been discovered in the \STZ, and at least one condition among
@@ -1370,8 +1370,8 @@ already exists.
 \begin{designnote}
   At least one sea must be known in order to known where to send
   traders. Then, the other conditions represent who will trade with you:
-  either your own colons and merchants, or those of a country giving you trade
-  rights or those of natives in organised areas once you know the sea
+  either your own colonists and merchants, or those of a country giving you
+  trade rights or those of natives in organised areas once you know the sea
   sufficiently well.
 \end{designnote}
 
@@ -1381,7 +1381,9 @@ already exists.
   sufficient to increase its trade there. A \COL/\TP (such as \construction{La
     Praya}) must be here. Specifically, at turn 1, \ANG, \FRA, \HIS and \POR
   all have a \TradeFLEET in \stz{Canarias} but only \POR is allowed to
-  increase it. Other may do it after exploring all the seas of the \STZ.
+  increase it. Other may do it after exploring all the seas of the
+  \STZ. Because they have a \TradeFLEET there, \ANG, \FRA and \HIS may do
+  competition targeting any other \TradeFLEET in \stz{Canarias}.
 \end{exemple}
 
 
@@ -1403,21 +1405,22 @@ already exists.
 % level.
 
 \aparag During periods \period{I}-\period{V}, a province with a \COL of level
-2 or 3 may not be the target of colonisation attempts.
-\bparag Exception: provinces with gold mines always ignore this restriction.
-\bparag Exception: provinces with missions always ignore this restriction.
-\bparag Exception: provinces with arsenals always ignore this restriction.
-\bparag Exception: If a country benefits from an \ref{eco:Rush Colonists}, an
+2 or 3 may not be the target of colonisation attempts unless one of the
+following conditions is verified.
+\bparag Provinces with gold mines always ignore this restriction.
+\bparag Provinces with missions always ignore this restriction.
+\bparag Provinces with arsenals always ignore this restriction.
+\bparag If a country benefits from an \ref{eco:Rush Colonists}, an
 \ref{eco:Refugees}, or a \terme{Colonial Dynamism} political event (as well as
 a few other events), it may ignore this restriction for the turn.
-\bparag Exception: \TUR ignores this restriction in \Area belonging to Muslim
-minors (\granderegionAden, \granderegionOman, \granderegionSoudan and, if they
-still belong to \paysGujerat, \granderegionGujarat and \granderegionMalacca).
+\bparag \TUR ignores this restriction in \Area belonging to Muslim minors
+(\granderegionAden, \granderegionOman, \granderegionSoudan and, if they still
+belong to \paysGujerat, \granderegionGujarat and \granderegionMalacca).
 % Jym: otherwise, the Turkish colonial expansion is impossible...
-\bparag Exception: \SUE ignores this restriction if it has a policy of
-\terme{Overseas expansion}.
-\bparag Exception: \HOL may ignore this restriction after~\ref{pIII:VOC} on
-turns it choose to destroy another \COL.
+\bparag \SUE ignores this restriction if it has a policy of \terme{Overseas
+  expansion}.
+\bparag \HOL may ignore this restriction after~\ref{pIII:VOC} on turns it
+chooses to destroy another \COL.
 % \begin{designnote}
 %   This is both a bit more strict (no exception for \RES{Wood} or free \COL)
 %   and a bit more loose (as two attempts on a level 1 \COL may raise it to
@@ -1862,7 +1865,7 @@ one of the two effects below may happen each turn for each country:
 \bparag[Catching up] If the country does not already have the newest
 technological goal that can be obtained, it gains it and its marker goes to
 the box immediately after it. It may gain several technologies in one turn (if
-it was really lagging behind) in which case it pay the conversion cost that
+it was really lagging behind) in which case it pays the conversion cost that
 many time.
 \bparag[Breakthrough] If the country has the highest technology goal
 available, and the next one will become available during the current period,
