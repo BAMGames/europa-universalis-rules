@@ -665,19 +665,20 @@
   % \GTitem{All actions are made with medium investments}
   \GTtextcontent[eastpoint]{
     \tablenarrow{\vspace*{2ex}\\}
-    \GTitem{Actions are at medium investment. \FTI of minors (periods I-III/periods IV-VII):}
+    \GTitem{Actions are at medium investment. \DTI and \FTI of minors
+      (\period{I}-\period{III}/\period{IV}-\period{VII}):}
     \begin{modlist}
-    \item[2/3] \ROTW countries, \paysHanse, \paysEcosse and \paysPologne
+    \item[3/4] \paysVenise, \paysPortugal, \paysGenes, \paysDanemark,
+      \paysSuede.
+    \item[2/3] Others %\ROTW, \paysHanse, \paysEcosse and \paysPologne
 % removing almost useless non-major HOL...
     % \item[3/4] \pays{venise}, \pays{hollande}, \pays{portugal}, \pays{genes},
     %   \pays{danemark}, \pays{suede}.
-    \item[3/4] \paysVenise, \paysPortugal, \paysGenes, \paysDanemark,
-      \paysSuede.
     \end{modlist}
 % removing almost useless non-major HOL...
 %    \GTitem{\pays{hollande} \DTI: 5 (4 before \xeventref{pIII:Dutch Revolt}{III-1 (1)})}
-    \GTitem{\paysHollande \DTI: 4}
-    \GTitem{\DTI: same as \FTI for others.}
+    % \GTitem{\paysHollande \DTI: 4}
+    % \GTitem{\DTI: same as \FTI for others.}
     \GTheader{\pays{portugal} (unless \HIS vassal)}
     \GTitem{Before \xeventref{pIII:Portuguese Disaster}{III-6}, 1 \TFI,
       1 \COL, and 1 \TP}
@@ -1026,33 +1027,33 @@
 \newcommand{\causesattrition}{
   \GT{causesattrition}{Causes for attrition}
   \GTtextcontent[text width=55mm,font=\small]{
+    \GTheader{Wintering segment}
+    \GTitem{\Timar (special)}
+    \GTitem{Cold Area (not controlled/national)}
+    % \GTitem{Not controlled Cold Area after Winter}
+    % \GTitem{\Timar after Winter (Special)}
     \GTheader{Supply segment}
-    \GTitem{Weak  land supply:}
-    \GTitemitem{6\MP\leq\LoS\leq12\MP except \LD in \ROTW}
-    \GTitemitem{\LoS through/in Desert}
-    \GTitemitem{SoS not owned, nor allied (exc. Desert)}
-    \GTitemitem{By a fleet not adjacent to port/arsenal}
-    \GTitem{No Supply or Besieged force}
-    % \GTitem{\ROTW: no supply attrition for \LD}
-    % Jym, remis pour conformite avec regles et pratique...
-    % [TBD : remove]
-    \GTitem{Not controlled Cold Area after Winter}
-    % [TBD : remove]
-    \GTitem{\Timar after Winter (Special)}
+    \GTitem{Besieged (\textbf{siege} attrition)}
+    \GTitem{No supply}
+%    \GTitem{Weak  land supply:}
+    \GTitem{6\MP\leq\LoS\leq12\MP except \LD in \ROTW}
+    \GTitem{\LoS through Desert}
+    \GTitem{\SoS not owned, nor allied}
+    \GTitem{By a fleet not adjacent to port/arsenal}
     \GTheader{Movement segment}
     \GTitem{Massed force (\geq6\LD, no logistics: \geq3\LD)}
     \GTitem{Movement \geq3\MP if \terme{bad weather}}
     \GTitem{Movement\geq6\MP}
     \GTitem{Embarking/Landing without port/arsenal}
     \GTitem{\FLEET at sea (moving or staying at sea)}
-    % \GTitem{Siege (if \terme{poor weather})}
-    \GTheader{Siege Attrition}
-    \GTitem{If impossible or Attrition result}
-    % \GTheader{Double cause: \terme{poor weather}, \terme{massed force}\null}
-    \GTheader{Retreats. End of round or turn}
-    \GTitem{Fleet retreating (battle or end of turn)}
-    \GTitem{Fleet staying at sea at end of turn}
-    \GTitem{Redeployment (if no \LoS, siege, peace)}
+    \GTheader{Siege segment}
+    \GTitem{If siege impossible or Attrition result}
+    \GTheader{End of turn}
+    % \GTitem{Fleet retreating (battle or end of turn)}
+    % \GTitem{Fleet staying at sea at end of turn}
+    % \GTitem{Redeployment (if no \LoS, siege, peace)}
+    \GTitem{Redeployment, Return to port}
+    \GTitem{Peace evacuation}
   }
   \GTtextdecorate
 }
@@ -1093,28 +1094,29 @@
     \item[P]
       \begin{modlisti}
       \item[Med--Arq] 1\LD and \PILLAGE\facemoins
-      \item[Mus--Man] 1\LD or \PILLAGE\facemoins\\ and \terme{foraging}
+      \item[Mus--Man] 1\LD or\\ \PILLAGE\facemoins and \terme{foraging}
       \item[Lace] 1\LD or \PILLAGE\facemoins
       \end{modlisti}
-    \item[1/2] 1 or 2 \LD lost
+    \item[1/2/3] \LD lost
     \end{modlist}
   }
 
   \GTlegend[caption=captionb,south west,xsize offset=-2pt,xsize scale=0.5,xsize=(\gtid main.west)(\gtid caption.east)]{
-    \textbf{All:} -M Leader \Man (except during sieges)\\
+%    \textbf{All:} -M Leader \Man (except during sieges)\\
     \GTheader{Land Attrition (supply/mvt/siege/redeployment)}
     \begin{modlist}
     \item[+8] if entering or in at least one enemy province
     \item[+6] if entering or in friendly provinces only
     \item[+2] if no \LoS
-    \item[-2] Peace redeployment
     \item[+1/+2] per \PILLAGE \facemoins/\faceplus\GTnb{a}
-    \item[+1/+2] per unfriendly Revolt \facemoins/\faceplus\GTnb{b}
-    \item[+?] \ROTW Cold malus
+    \item[+1/+2] per unfriendly \REVOLT \facemoins/\faceplus\GTnb{b}
+    \item[+?] \ROTW Cold malus (not controlled)
+    \item[-2] Voluntarily redeployment, Peace evacuation
     \end{modlist}
     \GTheader{Siege modifiers only}
     \begin{modlist}
-    \item[-?] Siege of one leader ([BLP] land or naval)
+    \item[-?] Siege of one allied leader
+    \item[+?] Siege of one enemy leader
     \item[-3] if besieged in port and no blockade
     \item[+1/+3] if besieged, per Siegeworks \facemoins/\faceplus
     \item[-2] for besieger,
@@ -1129,11 +1131,12 @@
     \item[+2/4] per 2 sea zones (2/3\FLEET) [BLP]
     \item[-1] if 2 or 3\FLEET, arsenal to arsenal [BLP]
     \item[+3/+6/+9] if \FLEET begins at 1/2/5+ zones from SoS
-    \item[+2] to stay at sea at the end of turn
+%    \item[+?] LoS crossing \StraitFort
+    \item[+2] \terme{Bad weather}
     \item[+2] retreating after rout
-    \item[+?] LoS crossing \StraitFort
     \item[-S] Siege of blockading \LeaderA/\LeaderE [BLP]
     \item[+?] half level of blockaded \fortress (round up) [BLP]
+    \item[+2] to stay at sea at the end of turn
     \end{modlist}
     \GTheader{Exploration only}
     \begin{modlist}
@@ -1145,18 +1148,18 @@
   \GTlegend[caption=captiona,south west,anywhere=\gtid westpoint,xoffset=2pt,margins=4pt,xsize=(\gtid westpoint)(\gtid main.west)]{
     \GTheader{All Attritions}
     \begin{modlist}
-    \item[+2] Per extra cause %(Movement, \terme{poor
-%        weather}, \terme{massed force} or Embarking/Landing)
+    \item[+2] Per extra cause
+    \item[-M] MAN of Leader (except for sieges)
+    \item[+?] LoS crossing \StraitFort
     \end{modlist}
     \GTheader{At sea (Exploration or Attrition)}
     \begin{modlist}
     \item[+X] For sea zones with malus
-% [BLP] removed
-%    \item[+3/+6] if   2\FLEET / 3\FLEET
     \item[+1] \terme{Carrack} (not \NGD)
-    \item[-1] \terme{Battery}
-    \item[-2] \terme{Vessel} or \terme{Three-decker}
-    \item[-3] \terme{74s} technology
+    % \item[-1] \terme{Battery}
+    % \item[-2] \terme{Vessel} or \terme{Three-decker}
+    % \item[-3] \terme{74s} technology
+    \item[-1/-2/-3] \terme{Battery} / \terme{Vessel}, \terme{TD} / \terme{74s}
     \item[+1/+2] Per unfriendly \corsaire \facemoins/\faceplus [TBD]
     \end{modlist}
   }
