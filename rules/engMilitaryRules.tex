@@ -164,8 +164,8 @@ it is considered as being 'S6'.
 \subsubsection{Cold area}
 Any stack in a non-controlled, non-national province within the \terme{Cold
   area} rolls for attrition. Resolve this as a Supply attrition (see
-below). It is, however, a different roll. In the \ROTW, each ``snow flakes''
-resource in the \Area gives a malus to this roll.
+below). It is, however, a different roll and a stack may have to roll for
+attrition both during the Wintering and Supply segment in some cases.
 
 \subsubsection{Pashas}
 Any stack containing \Timar out of \TUR national territory rolls for
@@ -209,11 +209,12 @@ attrition but slightly different modifiers.
 If a besieged stack is also in weak supply, it does not roll for supply
 attrition. The siege attrition replace this roll.
 
-A Source of Supply (SoS) is either a controlled city, \TP, \COL or fort, or a
+\subsection{\SoS, \LoS, weak supply}
+A Source of Supply (\SoS) is either a controlled city, \TP, \COL or fort, or a
 large enough naval stack in an adjacent seazone. A Source of Supply may supply
 as many stacks as wanted.
 
-The Line of Supply (LoS) goes from a Source of Supply to the stack. The \MP
+The Line of Supply (\LoS) goes from a Source of Supply to the stack. The \MP
 cost is counted as if the stack itself was doing this movement (typically, \LD
 in the \ROTW compute the length of their LoS using the special \MP costs for
 \LD).
@@ -228,24 +229,88 @@ A stack is in weak supply if at least one of the following condition is true:
   arsenal able to supply it.
 \end{itemize}
 
-It is possible to take its supply from a further SoS to avoid weak supply
-(typically, to have an owned SoS, or to circumvent a desert).
+It is possible to take its supply from a further \SoS to avoid weak supply
+(typically, to have an owned \SoS, or to circumvent a desert).
 
-Attrition is obtained by rolling one die, modified as follows, and
+\subsection{Attrition roll}
+Attrition (in Europe) is obtained by rolling one die, modified as follows, and
 cross-reference the modified result in table~\ref{table:Discoveries and
   Attrition} in the ``Loss in Europe'' column that corresponds to the size of
-the stack. Note that a result of 10 or less has no effect.
+the stack. In the \ROTW, the result is read in the ``\ROTW Losses''
+column. Note that a result of 11 or less has no effect.
 
 \begin{todo}
   The Attrition table does not want to be included here. I suspect too much
   dependence with adjacent table in the TikZ code\ldots
 \end{todo}
+
 %\GTtable{discoveriesattrition}
 
-For Supply attrition:
+Modifiers for Supply attrition:
 \begin{modlist}
-\item
+\item[+2] per cause of attrition above the first
+\item[+2] if the stack contains more than 5\LD and 1\Pasha
+\item[-M] MAN of the commander of the stack
+\item[+2] if the stack has no \LoS
+\item[+?] if the stack is supplied by a naval stack, and path from this naval
+  stack to its port/arsenal goes through one or more \StraitFort, add the DRM
+  of all the \StraitFort along this path (2 in Europe, level/2 in the \ROTW)
+\item[+8] if the fortress of the province is controlled by the enemy
+\item[+6] if the fortress of the province is controlled by allies or if there
+  is no fortress in the province (in the \ROTW)
+\item[+1] per \PILLAGE, \REVOLT or unfriendly \REBELLION \facemoins in the
+  province
+\item[+2] per \PILLAGE, \REVOLT or unfriendly \REBELLION \faceplus in the
+  province
+\item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
+  (+0 to +2 depending on the \Area)
 \end{modlist}
+
+Modifiers for Siege attrition (besieged):
+\begin{modlist}
+\item[+6] always (friendly fortress)
+\item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
+  (+0 to +2 depending on the \Area)
+\item[-S] siege value of one besieged leader
+\item[+S] siege value of one besieger or blockading leader
+\item[-3] if besieged in an unblocked port
+\item[+1] per \USURE\facemoins
+\item[+3] per \USURE\faceplus
+\end{modlist}
+
+\subsection{Result of attrition}
+In Europe, the result of attrition is either nothing (---), a number
+(between 1 and 3), a 'P' or both a number and a 'P'.
+
+The number indicates how many \LD are lost immediately. The controller of the
+stack chooses which.
+
+A 'P' is interpreted differently according to the technology of the stack.
+\begin{itemize}
+\item If the technology is \TMED or \TARQ, then 1 more \LD is lost and a
+  \PILLAGE\facemoins is placed into the province (and immediately merged int a
+  \PILLAGE\faceplus if there was already another one here).
+\item If the technology is \TMUS or better, then the controller chooses to
+  either loss one more \LD or place a \PILLAGE\facemoins.
+\end{itemize}
+
+Besieged troops cannot place \PILLAGE and thus must loss one \LD in case of
+'P'. There is no extra effect for the lost \PILLAGE with low technology.
+
+Note that since \PILLAGE will make further attritions harder, it is sometimes
+wise to loss \LD rather than let the troops plunders. Note also that since
+\PILLAGE\facemoins will be removed at the end of the turn, small troops with a
+not too bad technology don't suffer a lot from attrition.
+
+\smallskip
+
+In the \ROTW, cross reference the percentage obtained with the size of the
+stack in table~\ref{table:attritionlosses}. The resulting number indicates the
+number of \LD still alive after attrition while the 'd' indicates one or two
+\LDE still alive. If there is a \textetoile, then there is 50\% chance to
+lose an extra \LDE.
+
+\GTtable{attritionlosses}
 
 \section{Choice of campaign}
 Each country of the phasing alliance chooses its campaign for the current
