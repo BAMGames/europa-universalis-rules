@@ -4,12 +4,13 @@
 \chapter{Military Rules}\label{chapter:MilitaryRules}
 
 \begin{designnote}
-  This Chapter focuses on the description of the Military phase in
-  Segment order. The main concepts and common rules used during it are
-  described in the next Chapter. Most of these concepts do not need to be
-  perfectly defined in order to understand he flow of the Military phase,
-  which is why precise description is postponed. You should refer to the next
-  Chapter whenever a point in these rules requires clarification.
+  This Chapter focuses on the description of the Military phase in Segment
+  order. The main concepts and common rules used during it are described in
+  the next Chapter. Most of these concepts are common with many other wargames
+  and do not need to be perfectly defined in order to understand he flow of
+  the Military phase, which is why precise description is postponed. You
+  should refer to the next Chapter whenever a point in these rules requires
+  clarification.
 \end{designnote}
 
 \begin{todo}
@@ -83,7 +84,8 @@ The real cleanup is done during Redeployment.
   that strictly. Typically, two battles can be resolved simultaneously if they
   don't have the same participants, or sieges can be resolved in any order
   (rather than on a per alliance basis) if players agree that this has no
-  importance.
+  importance. The rules, however, must provide a strict order to be able to
+  solve any disagreement in the order of resolution of actions.
 \end{playtip}
 
 \section{Military setup}
@@ -249,19 +251,20 @@ column. Note that a result of 11 or less has no effect.
 Modifiers for Supply attrition:
 \begin{modlist}
 \item[+2] per cause of attrition above the first
-\item[+2] if the stack contains more than 5\LD and 1\Pasha
-\item[-M] MAN of the commander of the stack
+\item[+2] in case of \terme{massed forces} (the stack contains more than 5\LD
+  and 1\Pasha)
 \item[+2] if the stack has no \LoS
-\item[+?] if the stack is supplied by a naval stack, and path from this naval
-  stack to its port/arsenal goes through one or more \StraitFort, add the DRM
-  of all the \StraitFort along this path (2 in Europe, level/2 in the \ROTW)
+\item[-M] MAN of the commander of the stack
+\item[+?] if the stack is supplied by a naval stack, and the \LoS of this
+  naval stack goes through one or more \StraitFort, add the DRM of all the
+  \StraitFort along this path (2 in Europe, level/2 in the \ROTW)
 \item[+8] if the fortress of the province is controlled by the enemy
 \item[+6] if the fortress of the province is controlled by allies or if there
   is no fortress in the province (in the \ROTW)
-\item[+1] per \PILLAGE, \REVOLT or unfriendly \REBELLION \facemoins in the
-  province
-\item[+2] per \PILLAGE, \REVOLT or unfriendly \REBELLION \faceplus in the
-  province
+\item[+1] per \PILLAGE\facemoins, \REVOLT\facemoins or unfriendly
+  \REBELLION\facemoins in the province
+\item[+2] per \PILLAGE\faceplus, \REVOLT\faceplus or unfriendly
+  \REBELLION\faceplus in the province
 \item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
   (+0 to +2 depending on the \Area)
 \end{modlist}
@@ -288,14 +291,17 @@ stack chooses which.
 A 'P' is interpreted differently according to the technology of the stack.
 \begin{itemize}
 \item If the technology is \TMED or \TARQ, then 1 more \LD is lost and a
-  \PILLAGE\facemoins is placed into the province (and immediately merged int a
-  \PILLAGE\faceplus if there was already another one here).
+  \PILLAGE\facemoins is placed into the province (and immediately merged into
+  a \PILLAGE\faceplus if there was already another one here).
 \item If the technology is \TMUS or better, then the controller chooses to
   either loss one more \LD or place a \PILLAGE\facemoins.
 \end{itemize}
 
 Besieged troops cannot place \PILLAGE and thus must loss one \LD in case of
-'P'. There is no extra effect for the lost \PILLAGE with low technology.
+'P'. There is no extra effect for the lost \PILLAGE with low
+technology. Similarly, if there are already two \PILLAGE\faceplus in the
+province, it is not possible to add more and any 'P' must be resolved by
+loosing one \LD.
 
 Note that since \PILLAGE will make further attritions harder, it is sometimes
 wiser to loss \LD rather than let the troops plunders. Note also that since
