@@ -11,8 +11,8 @@ logistics. Administration and Logistic are conducted independently and
 simultaneously by all players while automatic actions resolve the conflicts
 that arise from the new state (incompatible placements of new colonies,
 monopolies, etc.) Most of the parameters of administrative operations were
-explained in~\ref{chapter:ThePowers}, and serve mostly
-in~\ref{chapter:Incomes} and theses chapters. The nature of military troops is
+explained in \ref{chapter:ThePowers}, and serve mostly
+in \ref{chapter:Incomes} and theses chapters. The nature of military troops is
 also explained before the logistics details.
 
 Even if the Incomes and Logistic are parts of the Administrative phase (and,
@@ -56,7 +56,7 @@ describes a lot of military concepts.
 
 \subsection{General mechanism and list of actions}
 
-\aparag[Mechanism] All administrative actions are solved according to the
+\aparag[Mechanism] Most administrative actions are solved according to the
 following scheme: all administrative actions are written down (including all
 details); a column and die-roll modifier is determined for each administrative
 action; the column mostly depends on the \terme{investment}, that is the
@@ -65,15 +65,25 @@ amount of money put into the action, and the characteristics of the monarch
 rolled for each action in \tableref{table:Administrative Actions}; the result
 qualifies the success or failure of the action.
 \bparag The Technological roll reads the table in a slightly different way
-(see \ruleref{chAdministration:Technology Improvement}).
+(see \ref{chAdministration:Technology Improvement}).
+\bparag Exceptional taxes and Bankruptcies are resolved in a different way and
+don't use the table (see \ref{chAdministration:bankruptcy}
+and \ref{chAdministration:Exceptional Taxes}).
 \bparag If an action has become impossible, the cost is still to be paid. This
 is especially the case for competition (because the target of the competition
 can be eliminated by somebody else), or any operation that would raise the
 level of a \COL, a \TP or a commercial fleet beyond 6 (such as two identical
 actions on a level 5 \COL to diminish the chances of failure).
 
+\aparag The general motto here is that ``every thing is paid before anything
+is actually resolved''.
+\bparag Thus, the flow of the administrative phase is to first write down all
+your actions and logistic, then compute the final price, and lastly roll to
+resolve as needed.
+
 \aparag[Administrative operations]\label{chAdministration:Administrative Actions}
 The following operations are available:
+\bparag[Bankruptcies.]
 \bparag[Domestic operations:] \terme{Creation of \MNU}, \terme{\FTI
   improvement}, \terme{\DTI improvement}, \terme{Exceptional taxes}.
 \bparag[External operations:] \terme{Commercial fleet implantation},
@@ -117,8 +127,8 @@ combination).
 \bparag Bankruptcies may change the limits of a country on the turn they
 occur.
 
-\aparag[Investment] All administrative actions have a general mechanism called
-investment: each action can be made with a \terme{Basic investment}, a
+\aparag[Investment] Most administrative actions have a general mechanism
+called investment: each action can be made with a \terme{Basic investment}, a
 \terme{Medium investment} or a \terme{Strong investment}.
 \bparag The values of the investments are 10\ducats, 30\ducats and 50\ducats
 for the following operations: \terme{Commercial Fleet Implantation},
@@ -137,7 +147,7 @@ done with different investments during the same turn.
 \bparag The sum of all investments goes in \lignebudget{Administrative
   actions}.
 
-\aparag Each action (except Exceptional taxes) is resolved
+\aparag Each action (except Exceptional taxes and Bankrupcy) is resolved
 using~\ref{table:Administrative Actions}.
 \bparag In each case, a column of the table is determined as explained for
 each action.
@@ -224,8 +234,6 @@ repaired.
 \bparag Both these levels are between 0 and 6.
 \bparag The current level may never be larger than the maximum level. If this
 somehow happens, decrease the current level to the value of the maximum level.
-\bparag A commercial fleet is destroyed when its \terme{maximum level} reaches
-0, not its \terme{current level}.
 
 \aparag[Current level] Unless specified, when the level of a \TradeFLEET is
 mentioned in the rules, use the \terme{current level}.
@@ -238,8 +246,9 @@ elsewhere and the \TradeFLEET is considered as present for all effects where
 presence only (ie whatever the level) affects game (eg as modifier for \TFI or
 concurrence done by other countries).
 
-\aparag[Maximum level] The maximum level is used only to determine monopolies
-for end-of-period \VPs.
+\aparag[Maximum level] The maximum level is used mainly to determine
+objectives and monopolies for end-of-period \VPs (in order to limit the ``end
+of period'' effect of a last turn attack).
 % \bparag Any loss or gain of the \terme{maximum level} is also a loss or gain
 % of the \terme{current level}
 
@@ -279,7 +288,7 @@ loans.
 was partly refunded. Note that once the loan is totally refunded (even before
 term), it is no more ongoing and does not require paying interests anymore.
 \bparag For national loans, it is 10\% of the current amount (round up).
-\bparag Interests must be payed the turn the loan is refunded (ie refunding
+\bparag Interests must be paid the turn the loan is refunded (ie refunding
 loans happens after paying interests in turn order). This prevents one turn
 interest-free loans.
 
@@ -318,7 +327,7 @@ empty, an international loan ends this turn. Write in \lignebudget{Mandatory
   83\ducats. At turn 3, it has 54-30+83=107\ducats of ongoing national loans
   and must thus pay 11\ducats of interests. These loans do not need to be
   refunded and may well last for the whole game if the player wishes so (but
-  interests must be payed each turn, actually this represent refunding old
+  interests must be paid each turn, actually this represent refunding old
   obligations and contracting new ones).
 \end{exemple}
 
@@ -341,8 +350,9 @@ Complete bankruptcy (see above).
 \bparag Bankruptcies must be declared and resolved before planning
 administrative actions as their result can prevent some of them.
 \bparag Bankruptcies are declared and resolved immediately.
-\bparag Notice that bankruptcies are declared and resolved after interests are
-payed and after mandatory refund of international loans.
+\bparag Notice that bankruptcies are declared and resolved after interests and
+mandatory refund of international loans are computed, thus one still has to
+pay those on the turn a bankruptcy is made.
 
 \aparag[Complete bankruptcy] In case of Complete Bankruptcy, do all the
 following, in order:
@@ -393,11 +403,18 @@ in order:
 and 200\ducats. This amount may not be larger than the current amount of
 national loans (\lignebudget{National loans at start}). Write this amount in
 \lignebudget{National loans bankruptcy}.
-\bparag Determine effects: roll 1d10, add the \ADM of the monarch and the
-\STAB of the country (may be negative), plus any modifier listed
-below~\ref{table:Bankruptcy Roll}. Find the result in the first column
-of~\ref{table:Bankruptcy Roll} to determine the line in which effects are
-read.
+\bparag Determine effects: roll 1d10 and add the following modifiers:
+\begin{modlist}
+\item[+\ADM] \ADM of the monarch;
+\item[+STAB] \STAB of the country (may be negative);
+\item[+1] if the country has a Stock Exchange (\HOL after \ref{pIII:Amsterdam
+    Stock Exchange} or \ANG after \ref{pIV:London Stock Exchange});
+\item[-3] if attempting to cancel strictly more than 100\ducats of loan;
+\item[-1] per \MNU counter above the limit;
+\item[\textplusminus?] per event or other special rules.
+\end{modlist}
+Find the result in the first column of~\ref{table:Bankruptcy Roll} to
+determine the line in which effects are read. All effects are applied.
 \bparag Loss \STAB: According to the effect, a certain amount of \STAB may be
 lost.
 \bparag Loss \TradeFLEET: According to the effect a certain number of
@@ -412,7 +429,7 @@ no \TradeFLEET and the result is 11 or more), then nothing is lost.
 \bparag Loss actions: According to the effect, a certain number of \TFI are
 lost for this turn only (if this is more than the allowed number of actions in
 a given turn, no \TFI are allowed this turn but there is no ``carry over'' of
-lost action to the next turn). If the result is 14 or less, in addition, the
+lost actions to the next turn). If the result is 14 or less, in addition, the
 country may not do any domestic operation this turn (\DTI or \FTI improvement,
 \MNU creation or Exceptional taxes).
 \bparag Loss 5\VPs.
@@ -590,7 +607,7 @@ account in \lignebudget{Mandatory loan refund}) and \lignebudget{National
   loan. Thus, it writes 60 in \lignebudget{International loans refunds} of
   turn 3 and decrease \lignebudget{International loans refunds} of turn 4 by
   the same amount. Since this amount reaches 0\ducats, the loan has been
-  entirely refunded and no more interests shall be payed. Thus, \FRA erases
+  entirely refunded and no more interests shall be paid. Thus, \FRA erases
   \lignebudget{International loans interests} for turn 4 only (all the turns
   between 3 excluded and 4 included). The loan \EcoRS looks like:\\
   \begin{tabular}{|l||r|r|r|r|r|}
@@ -606,7 +623,7 @@ account in \lignebudget{Mandatory loan refund}) and \lignebudget{National
     \hline
   \end{tabular}\\
 
-  Note that interest must be payed on the turn where the capital is
+  Note that interest must be paid on the turn where the capital is
   refunded. Note also that if \FRA did not remember the initial amount of the
   loan (typically because another loan is ongoing), it can always find it by
   looking back at \lignebudget{New International loan} 3 turns before the
@@ -1025,9 +1042,10 @@ targeting a \STZ in the \ROTW, both for column computation and to resolve
 \bparag The following modifiers to the die-roll are used:
 \begin{modlist}
 \item[+1]If attempting country's \TradeFLEET is already \Faceplus.
-\item[-1]If at least one pirate is present in the \STZ/\CTZ.%
-\item[-1]If there was at least one battle, pirate or privateer during the
-  previous turn in the targeted \STZ/\CTZ.
+\item[-1]If at least one \pays{pirates} \corsaire is present in the \STZ/\CTZ.
+\item[-1]If there was at least one battle or \corsaire (from any country,
+  including the one attempting the action) during the previous turn in the
+  targeted \STZ/\CTZ.
 \item[\textplusminus?]By event.
 \end{modlist}
 
@@ -1131,14 +1149,9 @@ implantation gives an Overseas \CB to this country (even in case of
 failure). By exception, this \CB is used at the end of the administrative
 phase. Minors never use this \CB.
 \bparag If a \COL is successfully created and survives automatic competition,
-enemy Forces in the province are repatriated to the nearest \TP or \COL, an
+enemy Forces in the province are immediately repatriated to the nearest \TP or
+\COL using the peace evacuation procedure (see \ref{chPeace:Evacuation}), an
 enemy fort or \TP in the province is destroyed.
-% \bparag To create a \COL in a province where there is an already-existing
-% city, the country must have taken the military control of the city (in an
-% Overseas war), and still hold it during the administrative phase (meaning
-% that the war still is in effect). Note that since the war The \MAJ can
-% attempt to put the \COL, but it does not say anything about keeping it
-% during the military phase.
 \bparag There is a rule to transform a \TP in a \COL if a city is present in
 the province. See below.
 
@@ -1257,11 +1270,9 @@ trigger reaction of \paysMogol as per~\ref{chDiplo:Diplo-mogol}.
 targets a province in the \ROTW that does not already contains a foreign
 \COL. Then use column \FTI-Tolerance+Investment (where Tolerance is the
 Tolerance value for the \Area, use Difficulty if the \Area has no Tolerance).
-\bparag See the access limitations in \ref{chAdministration:Inland advance} and
-\ref{chAdministration:Native empires} for restriction on the provinces that may be
-targeted.
-% \bparag See the access limitations in \ruleref{chAdministration:Limited Access}.
-% for restriction on the provinces that may be targeted.
+\bparag See the access limitations in \ref{chAdministration:Inland advance}
+and \ref{chAdministration:Native empires} for restriction on the provinces
+that may be targeted.
 \bparag Countries with a special \FTI (except \HIS) use it, both for column
 computation and to resolve \undemi.
 \bparag The following modifiers to the die-roll are used:
@@ -1288,8 +1299,8 @@ counter on its \Faceplus side. A \TP may never have more than 6 levels.
 equal than \FTI (use special \FTI if allowed), treat as ``S'', otherwise,
 treat as ``F''.
 
-\aparag[Critical failure]\label{chAdministration:TP:Critical failure} A result of
-``F\textetoile'' means that in addition to the failure, the natives are
+\aparag[Critical failure]\label{chAdministration:TP:Critical failure} A result
+of ``F\textetoile'' means that in addition to the failure, the natives are
 immediately activated and will attack during the redeployment phase
 (\ruleref{chRedep:Native Attack}). A result of ``F'' means a simple failure.
 
@@ -1304,8 +1315,9 @@ implantation gives an Overseas \CB to this country (even in case of failure of
 if the automatic competition allows the former \TP to stay in place). By
 exception, this \CB is used at the end of the administrative phase.
 \bparag If a \TP is successfully created and survives automatic competition,
-enemy Forces in the province are repatriated to the nearest \TP or \COL, an
-enemy fort in the province is destroyed.
+enemy Forces in the province are immediately repatriated to the nearest \TP or
+\COL using the peace evacuation procedure (see \ref{chPeace:Evacuation}), an
+enemy fort or \TP in the province is destroyed.
 
 \aparag[Trading-posts, forts and cities] A European fort or \TP is considered
 as a separate place as the city in the same province. Sieges are made against
@@ -1533,10 +1545,6 @@ box.
 \bparag A marker can never stack with a goal of the same kind (Land or
 Naval). If a technology marker exactly reaches the box where a goal is, then
 it gains one extra level for free and is put just after the goal.
-% \bparag When \SPA reaches the Tercios marker, \SPA gains the Tercios
-% technology.  When \VEN reaches the Galleass marker, \VEN gains this
-% technology.  However, no extra box is gained for reaching one of these two
-% markers.
 
 \begin{exemple}
   At turn 11, the Land technology of \FRA is at level 20 and the goal \TARQ at
@@ -1781,10 +1789,10 @@ expense that must be done this turn).
 
 \aparag Remark that from now on, the price of the various forces is changed
 (according to the new technology).
-\bparag Since all administrative actions (including logistic) must be payed
+\bparag Since all administrative actions (including logistic) must be paid
 before any is resolved, troop raised the turn a new technology is reached are
 recruited at the old cost (the new technology is not reached when planning the
-construction of troops) but conversion cost must be payed for them. Follow the
+construction of troops) but conversion cost must be paid for them. Follow the
 turn order, as well as the order of the lines on the ERS closely.
 
 \aparag[Technology advantage] Beyond the fact that countries with different
@@ -1815,7 +1823,8 @@ of these technologies.
 
 \aparag The markers for the special goals never block the progression of other
 technology markers.
-\bparag Neither do these goal prevent stacking of markers on their box.
+\bparag Neither do these goal prevent stacking of markers on their box (no
+free box when reaching them).
 \bparag For example, any country (including \HIS) may have its Land technology
 higher than the \TTER counter, or even on it, at any point.
 
@@ -1860,14 +1869,15 @@ on the track;
 
 
 \subsubsection{Military Revolutions}\label{chAdministration:Military Revolutions}
-\aparag Some events/leaders give the possibility of Military Revolution. Only
-one of the two effects below may happen each turn for each country:
-\bparag[Catching up] If the country does not already have the newest
+\aparag Some events/leaders give the possibility of Military Revolution. One
+(and only one) of the two effects below may happen each turn for each
+concerned country:
+\bparag[Catching up] If the country does not already have the newest land
 technological goal that can be obtained, it gains it and its marker goes to
 the box immediately after it. It may gain several technologies in one turn (if
 it was really lagging behind) in which case it pays the conversion cost that
 many time.
-\bparag[Breakthrough] If the country has the highest technology goal
+\bparag[Breakthrough] If the country has the highest land technology goal
 available, and the next one will become available during the current period,
 the country obtains this goal, and its marker is placed \textbf{two} boxes
 ahead of the goal marker which is not moved ; the goal will not undergo Goals
@@ -1884,7 +1894,8 @@ at least one of its \ARMY and one \ARMY of a country that has a technology
 which is not yet available, it gains the right to reach this technology on
 following turns.
 \aparag The two \ARMY involved may be either allies or enemies in said battle,
-that is one may learn both from it allies and it enemies.
+that is one may learn both the easy way (by looking ones allies) or the hard
+way (by being crushed with new weapons).
 \bparag The countries that do not directly benefit from the breakthrough must
 still increase their technology as usual in order to reach the goal.
 \bparag The goal is still considered as not available when resolving the
@@ -2370,7 +2381,7 @@ period. They do not have actions and this is abstractly represented by
 concurrence).
 \bparag Only \paysPortugal has \COL, \TP and concurrence actions. \paysVenise
 also has a specific limit of \TFI.
-\bparag These actions are free (payed by the minor) and always made at medium
+\bparag These actions are free (paid by the minor) and always made at medium
 investment.
 \bparag These actions are never mandatory.
 \bparag They are planned (and resolved) by the diplomatic patron of the
