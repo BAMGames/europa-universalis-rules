@@ -20,21 +20,506 @@
 \end{designnote}
 
 \begin{todo}
-  This Chapter is under heavy work. The absence of detailed numbering of rules
-  reflects this.
-
-  It is currently mostly reminders of what I need to write here.
+  This Chapter is under heavy work. The random presence of detailed numbering
+  of rules reflects this.
 \end{todo}
+
+\section{Description of Military forces}
+
+We describe here the different kinds of military forces: troops, navies and
+fortifications. Troops and navies work in similar ways, especially with the
+notion of \terme{detachment}, but with small differences.
+
+All these forces are in limited amount. The number of counters provided in the
+game is an absolute limit on what is usable. Different countries have
+different number of counters of each kind.
+
+Exception: \pays{pirates} \corsaire, \pays{natives} troops, neutral fortresses
+and revolted troops are not limited. If you need more than provided by the
+game, you may use whatever you wish to represent them.
+
+
+
+\subsection{Land forces}
+
+
+\subsubsection{Troops}\label{chLogistic:Troops definition}
+\aparag[Troops] are represented by three different kinds of counters
+corresponding to various size of land forces: \terme{Army} (\ARMY),
+\terme{Land Detachment} (\LD) and \terme{Land Detachment of Exploration}
+(\LDE).
+\bparag The basic count unit is one \LD.
+
+\aparag[Detachments.] One \LD represent some infantry and cavalry. The precise
+number of them depends on the country and the period. \LD are abstract
+representation of small field forces and consists roughly in 1000 to 10000
+soldiers.
+
+\aparag[Armies.] \ARMY counters have two sides. An \ARMY\facemoins is two \LD
+plus some field and siege artillery. An \ARMY\faceplus is four \LD plus more
+artillery.
+
+\aparag[Breaking armies.] An \ARMY counter can be broken into an equivalent
+number of \LD (2 or 4) of the same country at any time in the game. Note that
+artillery is lost in the process.
+\bparag Similarly, an \ARMY\faceplus can be turn into one \ARMY\facemoins and
+two \LD at any time.
+\bparag However, an \ARMY\faceplus may not be broken into two
+\ARMY\facemoins as this would create an \ARMY counter (see below).
+\bparag Especially, \ARMY can be broken during movement or to satisfy losses
+(whether combat or attrition). If one \ARMY\faceplus suffers a 1 \LD loss,
+there is one \ARMY\facemoins and 1 \LD remaining.
+\bparag However, if there are not enough \LD counters to satisfy the loss,
+heavier loss are suffered. If one \ARMY\facemoins suffers a 1 \LD loss but
+there are no more unused \LD of the same nationality available, then the
+entire \ARMY\facemoins is annihilated.
+
+\aparag[Creating and reinforcing armies.] The only way to create a new \ARMY
+counter is to buy it during the Administrative phase (logistic segment).
+\bparag Especially, it is never possible to ``merge'' two \LD into an
+\ARMY\facemoins nor to break an \ARMY\faceplus into two \ARMY\facemoins.
+\bparag On the other hand, it is possible to reinforce an \ARMY\facemoins with
+two \LD (in one stack) and turn it into an \ARMY\faceplus. This can be done at
+any time in the game.
+\bparag It is also possible to merge two \ARMY\facemoins into one
+\ARMY\faceplus.
+
+\aparag[Special armies.] The armies of \pays{saint-empire} and \pays{croises}
+act as containers. Each may contain up to 4\LD of some nationality and can be
+created at any point during the turn. The precise contents of these armies
+must be written done in order to give back the \LD to their owners when the
+army is broken.
+\bparag As an exception to normal rules, these \ARMY can be created during the
+military rounds.
+
+\aparag[Detachments of Exploration.] One \LDE represents roughly one third of
+a \LD.
+\bparag \LDE can only exists on the \ROTW map (including European provinces on
+the \ROTW map). As soon as one \LDE enters the European map, it is immediately
+destroyed.
+\bparag One \LD can be split in 3 \LDE at any time (especially to satisfy
+losses in the \ROTW). 3 \LDE stacked together must be turned into 1\LD after
+movement.
+\bparag For maintenance and purchase, 1\LDE costs as much as half a \LD.
+\bparag \LDE are never counted in stacking and supply limits.
+
+\aparag[Natives.] Each \ROTW \Area holds a certain number of natives per
+province. They are written on the \ROTW map in number of \LD.
+\bparag Counters are provided to remember losses of natives in each
+province. You may use \ARMY\faceplus/\facemoins to represent 4/2 \LD of
+natives but this is for convenience only: they are not considered as \ARMY for
+game purposes. These counters are in unlimited quantity.
+
+
+\subsubsection{Military doctrine}
+\aparag Each country has an \terme{Army Class} written in roman numerals on
+its counters.
+\bparag The class of a country determines three factors: its \terme{Size}, its
+\terme{Cavalry} and its \terme{Artillery}.
+\bparag Some countries (mostly majors) belong to one army class but have
+special cases for artillery and cavalry.
+\bparag The army class of each country can be read in~\ref{table:Army
+  Classes}. There is one line per class with its number and name on the left
+and the list of countries belonging to it on the right.
+\bparag Most minor countries are grouped according to their cultural groups.
+\bparag The army class of minor countries can also be found in their
+description in the appendices under the name ``Military doctrine''. It is also
+written on each counter.
+
+\GTtable{armyclasses}
+
+\aparag[Size.] The army size of each country, per period, can be read
+in~\ref{table:Army Classes} by cross-referencing the army class of the country
+(or its name) with the current period.
+\bparag The result is a number between 0 and 7 representing an abstract
+measure of the typical size of forces fielded by this country during that
+period.
+\bparag A larger size means that the country usually fielded more men in
+battles. However, this is an abstract measure and there is no direct
+correspondence between the size and an actual number of soldiers. Moreover,
+these numbers are relative (to other countries). A decreasing size does not
+mean that the country had smaller armies, but rather than its neighbours
+started having larger ones.
+\bparag Countries with larger size do more damage in battle when facing
+countries with smaller size.
+
+\aparag[Cavalry] is abstractly represented by giving a small bonus in battle
+to certain classes of armies during certain periods of the game.
+
+\aparag[Artillery.] Each \ARMY\facemoins and \ARMY\faceplus contains a certain
+number of artillery. This number is an abstract representation (rather than an
+actual number of guns and howitzers) of the amount and efficiency of field and
+siege artillery.
+\bparag The number of artillery per \ARMY\faceplus can be read
+in~\ref{table:Artillery Per Army} by cross-referencing the country (or class)
+with the current period.
+\bparag An \ARMY\facemoins always contains half the number of artillery of an
+\ARMY\faceplus (rounded down).
+
+\GTtable{artilleryvalue}
+
+\aparag[Artillery of stacks.] When two (or more) \ARMY are stacked together,
+their artillery numbers do not simply add. Instead, use the following
+computation:
+\bparag Take the artillery value of one \ARMY in the stack (the larger the
+better); add \bonus{+2} if there is another \ARMY with 2 or more artillery
+otherwise, add \bonus{+1} if there is another \ARMY with 1 artillery.
+
+\begin{exemple}
+  \FRA is of class \CAIV (``majors''). In periods \period{I} to \period{IV},
+  it has a size of 2, then 3 in period \period{V} and 4 afterwards.
+
+  In period \period{II}, \FRA has 3 artillery per \ARMY\faceplus. Thus, it has
+  only 1 artillery per \ARMY\facemoins (3/2, rounded down). A stack with
+  2\ARMY\faceplus of \FRA is thus considered to have 3 (first \ARMY) + 2
+  (second \ARMY with 2 or more artillery) = 5 artillery for all game purposes
+  (battles and sieges). A stack of \ARMY\faceplus \ARMY\facemoins has 3 + 1
+  (second \ARMY with only 1 artillery) = 4 artillery. Lastly, a stack of 3
+  \ARMY\facemoins of \FRA only has 1 (first \ARMY) + 1 (second \ARMY with 1
+  artillery) = 2 artillery (\emph{i.e.} the third \ARMY counter does not add
+  any artillery to the stack).
+\end{exemple}
+
+
+
+\subsection{The Navy}
+
+\aparag[Naval forces] are represented by three different kinds of counters
+corresponding to various sizes of naval forces: \terme{Fleet} (\FLEET),
+\terme{Naval Detachment} (\ND) and \terme{Naval Detachment of Exploration}
+(\NDE).
+\bparag The basic count unit is one \ND. However, there are several kind of
+\ND corresponding to various type of ships.
+
+\aparag[Warships and Galleys.] \ND can represent different kinds of
+ships. Mostly warships, galleys or transports.
+\bparag Thus, there are several kind of \ND: \terme{Naval Warship Detachment}
+(\NWD), \terme{Naval Galley Detachment} (\NGD) (also the \terme{Galleass},
+written \VGD because they are first used by \VEN) and \terme{Naval Transport
+  Detachment} (\NTD).
+\bparag All those naval detachments are treated differently, but some rules
+apply to all. In this case, the generic term \ND will be used.
+\bparag \VGD are considered \NGD when the case apply (\emph{i.e.} whenever
+there are rules for \NGD without special cases for \VGD, these rules apply).
+\bparag \NGD can only exists in the \regionMediterrannee and the
+\regionBaltique.
+
+\aparag[Detachments.] One \ND represents roughly 2 to 6 first category ships
+(galleys, galleons, man-o-war, \ldots) plus various second category ships. The
+precise number depends on the country, the period and the kind of ships
+involved.
+\bparag \NTD only contains transport ships. They do not participate in battles
+but can be used to transport troops or gold.
+
+\aparag[Fleets.] \FLEET counters are containers. They may hold a certain
+number of \NWD (or \NGD) plus some \NTD.
+\bparag Unlike \ARMY, the exact content of a \FLEET counter depends both on
+countries and period (representing evolution of the naval doctrines).
+\bparag The (maximal) content of the fleets is detailed in the
+\tableref{table:Countenance of Fleets}. It can contain a number of \NWD (a
+\NGD counts for half a \NWD) and a number of \NTD. This number depends on the
+period and the country involved.
+\bparag There is one line per country (or class) and one column per
+period. Each box contains four numbers as ``$x/y:x'/y'$''. The first two
+($x/y$) are the maximum number of \NWD/\NTD in a \FLEET\facemoins and the last
+two ($x'/y'$) are the maximum number of \NWD/\NTD in a \FLEET\faceplus.
+\bparag A \FLEET is put on the side \Faceplus only if there is not enough room
+in a \FLEET\facemoins to accommodate all the \ND. The counter is turned as
+necessary.
+\bparag Since the exact content of \FLEET counters is not fixed, it must be
+written down. There is space for this on the colonial record sheet of each
+country.
+
+\GTtable{fleetsize}
+
+\aparag[Creating and breaking fleets.] A \FLEET may be broken into several \ND
+(depending of its content) at any time.
+\bparag Similarly, several \ND can be merged into a \FLEET (or incorporated
+into an existing one) at any time. \FLEET counters may be created this way.
+\bparag Even if it does not provides a direct military advantage (such as the
+artillery for \ARMY), using \FLEET rather than \ND usually decrease
+maintenance cost and allows for more concentration of forces (because of
+stacking limits).
+
+\aparag[Detachments of Exploration.] One \NDE represents roughly one or two
+warships (one third of a \NWD).
+\bparag \NDE can exists both on the \ROTW and European maps.
+\bparag One \NWD (only) can be split in 3 \NDE at any time (especially to
+satisfy losses). 3 \NDE stacked together must be turned into 1\NWD after
+movement.
+\bparag For maintenance and purchase, 1\NDE costs as much as half a \NWD.
+\bparag \NDE are never counted in stacking and supply limits.
+
+\aparag[Pirates.] The last naval forces are pirates and privateers. They
+represent independent sailors that attack trade fleets. Privateers (\corsaire)
+work for one country; pirates are represented by the (abstract) minor country
+\pays{pirates} (who mostly has \corsaire units). \corsaire have to be
+maintained or bought.
+
+\aparag[Trade fleets] (\TradeFLEET) are not naval forces. They only represent
+trade activity (not specific ships), do not move and can only be attacked by
+pirates and privateers.
+
+\begin{exemple}
+  In period \period{III}, the size of English fleets is ``2/1:5/1''. Thus, a
+  \FLEET\Facemoins of \ANG may contain up to 2\NWD and 1\NTD while a
+  \FLEET\Faceplus may contain up to 5\NWD and 1\NTD.
+
+  If \ANG wishes to group together 3\NWD (and no \NTD), it must use a
+  \FLEET\Faceplus (and pay the maintenance cost for one) because this cannot
+  fit within one \FLEET\Facemoins.
+
+  In period \period{III}, \TUR has also a fleet size of ``2/1:5/1''. However,
+  since \NGD only count as half a \ND in fleet countenance, one
+  \FLEET\Faceplus of \TUR may hold up to 10\NGD and 1\NTD.
+\end{exemple}
+
+
+
+\subsection{Fortifications}
+
+\aparag Fortifications are immobile forces used to defend provinces. There are
+two kinds of fortifications: fortresses and forts. In Europe, fortifications
+represent the whole defence system of the province thus including several
+actual fortresses, citadels, fortified towns, \ldots
+\bparag Fortifications are also supply sources for both land and naval troops.
+
+\subsubsection{Fortification counters}
+\aparag[Fortresses] have a level between 1 and 5.
+\bparag Each European province, as well as some \ROTW provinces, has a basic
+fortress of level either 1 or 2 drawn of the map.
+\bparag Fortresses of higher level may be built provided the country has a
+sufficiently high technology.
+\bparag Fortresses may lose levels due to sieges. If this puts the fortress
+below its basic level, use the white level 1 counters to denote it. In no case
+can the fortress of an European province go below 1.
+\bparag Note that fortresses counters are double-sided. Thus, building a
+fortress prevents a country from building the one on the back of the
+counter. It is always possible to switch one fortress counter for another (of
+the same level (and country)) if the need arise.
+
+\aparag[Forts] are sometimes referred to as ``level 0 fortresses''. They may
+only exist in the \ROTW.
+\bparag All colonial establishments (\COL and \TP), as well as missions
+automatically have a fort.
+\bparag Other forts may be built during the military phase by land forces.
+\bparag A \COL of level 6 is considered to be an European province. Thus, it
+gains for free a basic fortress of level 1. Use white level 1 counters to
+denote it. Since this is a basic fortress, there is no need to pay for its
+maintenance.
+
+\aparag[\Presidios] are small fortifications built in enemy territory to try
+and control access to the sea rather than the land itself.
+\bparag In European provinces where there is a circled anchor (whatever its
+colour), a foreign country may build a
+\Presidio. See~\ref{chRedep:Presidios} for building it
+and~\ref{chMilitary:Presidios} for its effects.
+
+\aparag[Arsenals.] Some countries have fortresses counters with a gold anchor
+on them. These are \terme{arsenals}.
+\bparag Arsenals can only be built in the \ROTW (exception:
+\construction{Gibraltar}, \construction{Sebastopol} and
+\construction{Saint-Petersbourg}).
+
+\subsubsection{Fortifications as Supply sources}
+\aparag[Land Supply.]
+\bparag Forts may only supply detachments (\LD or \LDE).
+\bparag Other fortresses can supply any number of land troops, whatever the
+level of the fortress.
+\bparag \COL and \TP, although they only have a fort, are supply sources for
+any number of land troops (that is, the establishment has more supply capacity
+that its intrinsic fort).
+
+\aparag[Naval Supply.]
+\bparag Forts may only supply detachments (\ND or \NDE).
+\bparag Regular (non-arsenal) ports can supply any number of naval stacks
+containing at most one \FLEET counter (each), whatever the level of the
+fortress.
+\bparag Arsenal can supply any number of naval forces of any size.
+\bparag \COL and \TP, although they only have a fort, are supply sources as
+regular ports: each can supply any number of naval stacks containing at most
+one \FLEET counter (that is, the establishment has more supply capacity that
+its intrinsic fort).
+
+\begin{designnote}
+  Note that supply limits are cumulative. That is, a single fortress may
+  supply as many stacks (land or naval) as wanted, as long as it can supply
+  each of them individually. There is no ``using up'' of the supply capacity.
+
+  The ``extra supply capacity'' of \COL or \TP (with respect to their
+  fortification level) is reminded in the size of the counter: they use big
+  counters because they have a lot of food.
+\end{designnote}
+
+
+
+\subsection{Veteran and Conscripts}
+
+\aparag[Veterans and Conscripts.] All land forces can be either
+\terme{Veteran} or \terme{Conscripts}. A \terme{Veteran} army has seen more
+battles than conscripts, is better trained, and less likely to flee in the
+presence of the enemy. A \terme{Conscript} army is formed of newer soldier and
+paid less.
+\bparag \terme{Veteran} have a bonus in battle (better moral). However, their
+maintenance cost is also higher.
+% forces have a morale higher by 1 point compared to
+% \terme{Conscripts}. However, the maintenance cost of \terme{Conscripts}
+% units is lesser than the \terme{Veteran} ones.
+
+\aparag[Who is Veteran?] If the country is at peace (being only engaged in
+\terme{Overseas Wars} (see \ref{chDiplo:Overseas Wars}) and limited
+interventions (see \ref{chDiplo:InterventionLimitee}) counts as being at
+peace), all land forces are maintained as \terme{Veteran} forces, using the
+\terme{Peace maintenance} price.
+\bparag If the country is at war, then all land forces already existing at the
+beginning of turn can be maintained (unit by unit) as either \terme{Veteran}
+or \terme{Conscript}. Newly recruited units are \terme{Conscripts}.
+
+\aparag[Mixed stacks.] A force formed by stacking or merging several units is
+\terme{Veteran} only if more than half of the \LD composing the units are
+\terme{Veteran}.
+\begin{exemple}
+  An \ARMY\faceplus composed by the merging of 1 \terme{Veteran} \LD and 1
+  \terme{Veteran} \ARMY\facemoins and 1 \terme{Conscript} \LD is considered to
+  be a \terme{Veteran} unit. But if this \ARMY\faceplus is stacked with an
+  \ARMY\facemoins of \terme{Conscripts}, this stack is considered
+  \terme{Conscripts} (since there are as many \terme{Conscripts} as there are
+  \terme{Veteran}). However, if one \LD of this stack is destroyed (due to
+  battle or attrition), one \LD of \terme{Conscripts} will be removed (leaving
+  either 2\ARMY\facemoins and 1\LD or 1\ARMY\faceplus and 1\LD), and the stack
+  as a whole will be \terme{Veteran}.
+\end{exemple}
+
+\begin{playtip}
+  Think twice before upkeeping troops as \terme{Conscripts}. The extra moral
+  will make a huge difference in battles and is usually worth your money.
+\end{playtip}
+
+\aparag[Navy] Naval forces are \terme{Veterans} if they are maintained from a
+previous turn, or \terme{Conscripts} if there are newly recruited this turn.
+\bparag The difference only occurs for Naval technologies \terme{Vessel} and
+\terme{Three-decker}.% \terme{Veteran} naval forces have morale 4 instead of 3.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Initiative}
 Initiative of a country both in intervention and at war.
 
 Initiative of a minor alone controlled by a country otherwise at war.
 
-\section{Stacking}
+\section{Stacking}\label{chMilitary:Stacking}
+\aparag[Empilement]
+\bparag sur terre, [3 pions et 8 DT] + 2 pachas
+\bparag  sur mer [3 pions] + 2 Tr
+\bparag de et dc ne sont pas comptés, mais au plus 2 dans une pile.
+\bparag[Arsenaux et ports] Ports réguliers ne peuvent contenir plus d'un pion
+\FLEET.  Seuls les arsenaux (en Europe: indiqués sur la carte; \ROTW (et cas
+particuliers) : indiqué sur le pion forteresse) peuvent accueillir 2 ou 3
+\FLEET.  Les forts ne peuvent accueillir que des \DN ou \NDE.
+
 
 \section{Command}
 Leading multi-national stacks.
+
+\subsection{Leadership}\label{chMilitary:Leadership}
+% Put here by JC, to be moved where deemed necessary, mainly for the
+% label
+\subsubsection{Double-sided Leaders}\label{chMilitary:Double Sided Leaders}
+\aparag Some leaders have two different sides for the same country and the
+same turns but with two different roles, and can be used as either one or the
+other of their roles.
+\bparag The counter has a {\textetoile} written on one of the sides,
+indicating in which limit the counter counts (independently of the role
+for which it is used).
+\bparag Kings that can also be something else do not count in the limits
+as soon as they are kings.
+\bparag For most countries, the role has to be determined at the
+beginning of the round, effective for the whole round. \POR is an
+exception (see \ruleref{chSpecific:Portugal:Explorers}).
+
+\aparag Some leaders have two sides but no {\textetoile}.
+\bparag The side they're used (and the category they're considered) has
+to be determined at the beginning of each turn and is effective for the
+whole turn.
+\bparag In most cases, the choice is restricted because each side
+denotes a change of state of the leader (e.g. change of nationality,
+crowning, \ldots) and thus only one of them is available at a given
+time.
+\bparag Especially, generic monarchs of minor countries
+(e.g. \leaderShah) are chosen at random when the country goes at war and
+cannot be changed before total peace.
+
+\aparag Beware! Some double-sided leaders do not have the same turns of
+activity on each side. Thus during certain turns only one side will be
+usable.
+
+\subsubsection{Leaders of Multi-national stacks}\label{chMilitary:multi national}
+\aparag[On land]
+\bparag If there is a Leader with a monarch symbol (Monarch, Turkish Vizier or
+heir allowed to lead troops) in the stack, he must takes command.
+\bparag Otherwise, the leader with the most troop of its country (or troops he
+is allowed to command) takes command (this may be a replacement leader if the
+country with the most troops has no leader in the stack).
+\bparag In case of tie, highest ranking tied leader takes command.
+\bparag If tied again, players choice (at random in case of disagreement).
+\bparag The country of the commanding leader pays for campaigns and win/loss
+\STAB in case of Major Battle.
+
+\aparag[At sea]
+\bparag If there is a Monarch, he take command.
+\bparag Otherwise, the highest ranking leader among those which can command at
+least one \FLEET counter takes command.
+\bparag Otherwise, highest ranking leader takes command.
+\bparag In case of tie, players choice (at random in case of disagreement).
+\bparag The country of the commanding leader pays for campaigns and win/loss
+\STAB in case of Major Battle.
+
+\subsubsection{Deployment of leaders}
+\aparag[Replacement of unammed leaders]
+\bparag If, during military rounds, one player falls below the minimum limit
+of leaders for one category (due to death or injury) he gets as many random
+\anonyme\ as necessary to reach the limit again.
+\bparag The new leader arrive at the beginning of next round, in the same
+place (\LeaderE and \LeaderC may also be placed in Europe or in any
+\COL/\TP).
+\bparag This may break the hierarchy in which case the player must try to
+restore it.
+\bparag When a wounded leader comes back, the lowest ranking \anonyme\ leader
+of the same category is removed and the wounded may take command of any stack
+without breaking the hierarchy.
+
+\begin{exemple}
+  At the beginning of turn 1, \FRA has two \LeaderG : \leader{Foix} (rank A)
+  and \anonyme 2 (rank F). During the military campaign in Italy \leader{Foix}
+  get ambushed by perfidious Spaniards near Napoli. He barely escaped with
+  several sword wounds and must rest for many months.
+
+  Since \FRA has now only one \LeaderG, he pick at random a \anonyme\LeaderG
+  and gets \anonyme 1 (rank E).
+
+  A few rounds later, \leader{Foix} comes back and can take command of any
+  stack. Since \anonyme 2 has the lowest rank (F), he is relieved from command
+  and removed from the game.
+
+  \smallskip
+
+  During turn 2, \POR has two \LeaderE (\leader{Dias}, if not dead during turn
+  1, and \leader{Cabral}). \leader{Dias} boldly tries to circumnavigate
+  America but dies, his ship crushed in the ice at Cape Horn. Since \POR still
+  has 1 \LeaderE, which is larger or equal to his limit for period I, he does
+  not get any \anonyme\LeaderE in replacement.
+\end{exemple}
+
+\aparag[Admirals in the \ROTW]
+An admiral temporary gets the possibility to go in the \ROTW if both the
+following conditions are fulfilled:
+\bparag The country has no naval leader allowed in the \ROTW (either \LeaderE
+or a \LeaderA with the \ROTW capacity).
+\bparag It is period V or later, or the country as at least 3 \COL/\TP in
+\continent{America}.
+\bparag The \LeaderA allowed to go in the \ROTW (for this turn) is the lowest
+ranking \LeaderA. He may not go in seazones with a malus. If he arrives this
+turn, he must be placed in Europe.
 
 \section{Hierarchy}
 Fear this!
@@ -42,8 +527,390 @@ Fear this!
 \section{Supply}
 Source of Supply, Line of Supply, Supply by naval stacks, ports, arsenals.
 
+\subsubsection{Sources of Supply, Lines of Supply}
+
+\aparag[Source of Supply - Land]
+\bparag Source of Supply on Land: any controled city; \TP or \COL.  Exception:
+neither owned nor allied: gives weak supply.  Fortresses in desert: gives full
+supply in the province, only weak supply further.
+\bparag Forts: are Sources of Supply on Land for \LD or \LDE only.
+\bparag \Presidios are Sources of Supply only for forces inside the fortress.
+
+\aparag[Supply by naval forces]
+Naval forces may provide SoS to Land forces in coastal provinces.
+\bparag \de only: can supply up to 1\LD (and 2\LDE) and blocade only fort.
+\bparag \ND counters: supply up to 3\LD (without \ARMY) and blocade up to
+\fortress level 1.
+\bparag One \FLEET counter and at least 2 \ND in the stack: may supply up to
+5\LD (including \ARMY) and blocade up to \fortress 3.
+\bparag \FLEET\faceplus with at least 3\ND in the stack: may supply any stack
+and blocade any \fortress.
+\bparag Convoys and are never taken into account for supply and blocade.
+
+\aparag[Source of Supply - Sea]
+Arsenals are SoS for all naval forces; other ports of city, \COL or \TP are
+SoS for stacks with at most one \FLEET;
+\bparag Forts (not of \TP) are SoS only for stack with at most one \ND
+(and possibly \NDE).
+\bparag \Presidios are SoS for naval forces without \FLEET;
+however, a naval force containing up to one \FLEET may enter a
+\Presidio to supply it (if besieged) or bring forces.
+\bparag[Stacking:] Arsenals contain any size of force;
+Normal ports can have at most one \FLEET inside;
+forts may contain only \ND, \NDE (no \FLEET).
+
+\aparag[Line of Supply - Land] LoS goes from SoS to troops.
+\bparag In Wasteland, any non Wasteland native country double the cost in \MP
+for LoS until construction of \ville{Saint-Petersbourg} or \eventref{pVI:Great
+  Northern War} (whichever occurs first). TODO: not via fleet
+\bparag In non-nationnal desert, double the cost in \MP for LoS.
+\bparag {\bf When supplied by naval forces} Length of LoS is 3\MP (6\MP in
+Wasteland or Desert) plus 1 per sea crossed from a SoS able to supply the
+naval stack.
+\bparag Note that the seazone with the fleet is \textbf{not} crossed by the
+LoS (only entered to turn the fleet into a SoS for the troops), hence troops
+supplied by ships adjacent to a port have a LoS of length 3\MP only.
+\bparag Note also that only the 3\MP of ``supply by sea'' is doubled if
+required, not the extra \MP for extra seas.
+
+\aparag[Ravitaillement des flottes et ports d'attache]
+Arsenals are SoS for all naval forces; other ports of city, \COL or \TP: for
+stacks with at most one \FLEET; forts: only for stack with at most one \ND
+(and possibliy \NDE).
+
+\aparag[Taille des forces navales] pour le ravitaillement terrestre, des
+forteresses et le blocus.
+\bparag \de seuls : ravitaille jusqu'à 1\DT (+ \LDE) et blocus ou ravitaillement de fort (f0) seulement
+\bparag pions \DN : ravitaille jusqu'à 3\DT (sans \ARMY) et blocus ou ravitaillement de f0 ou f1
+\bparag un pion \FLEET et au moins 2 \ND ravitaille jusqu'à 5\DT (avec \ARMY possible) et blocus ou ravitaillement jusqu'à f3
+\bparag un pion \FLEET\faceplus et au moins 3 \ND (Convoy ne comptent pas): ravitaille pile
+de taille quelconque et blocus ou ravitaillement jusqu'à f5
+\bparag Les pions Convoys ne comptent pas.
+
 \section{Campaigns}
 Especially, detailled stuff about the extended campaigns\ldots
+
+\section{Attrition}
+\subsubsection{When does Attrition occur?}
+\aparag[Supply Segment] (Before movement). Land stacks (only) roll for
+attrition if at least one of the following case occurs. If several cases
+occur, each above the first gives a \textbf{+2} malus to the roll (``Double
+cause'').
+\bparag No LoS ;
+\bparag weak Supply, namely:
+\begin{modlist}
+\item LoS of 6 or more \MP (except \LD/\LDE in \ROTW)
+\item LoS through non-national desert (including last province)
+\item SoS not owned by alliance (only controlled)
+\item Supplied by a fleet not adjacent to its own SoS (except for
+  \LD/\LDE in the \ROTW).
+\item Besieged (siege attition)
+\end{modlist}
+\bparag Force in \terme{Cold area} in an uncontrolled province after Winter
+round (including in case of Summer/Summer transition and end of turn) (in the
+\ROTW, add the malus of the area) ;
+\bparag \Timar after Winter round (as above) (Special,
+see~\ruleref{chSpecific:Turkey:Yearly Campaigning})
+
+\aparag[Movement Segment, land] Land stacks roll for attrition at the end of
+movement (before battle) if at least one of the following case occurs. If
+several cases occur, each above the first gives a \textbf{+2} malus to the
+roll (``Double cause'').
+\bparag Large stack ($>$ 5 \LD + 1 \Pasha, or $\geq$ 3\LD if no logistic) ;
+\bparag moving 6\MP or more ;
+\bparag moving 3\MP or more during \terme{bad weather} ;
+\bparag if embarking \textbf{or} disembarking not in friendly port.
+
+\aparag[Attrition at sea] Naval stacks always roll for attrition except when
+staying at port the whole round.
+
+\aparag[Siege Attrition] (during Supply or Siege Segment)
+\bparag Besieged during Supply Segment.
+\bparag Besieger if the siege is impossible (not enough troops or no LoS) or
+if requested by the siege roll.
+
+\aparag[After battle]
+\bparag On land, any non-winning troop (use specific table).
+\bparag At sea, any moving stack (retreat or following to port).
+
+\aparag[End of round (or turn)/Redeployement] In the following cases, a stack
+must move and roll for attrition at the end of round or turn. Usual causes of
+attrition for movement occur and cause maluses.
+\bparag If no LoS during Supply Segment and still no LoS at end of round:
+forced redeployement (and attrition). If no way out (naval not allowed), the
+stack is destroyed.
+\bparag Siege not maintained at end of turn (no Siegework\faceplus).
+\bparag Fleet staying at sea at end of turn.
+\bparag Fleet going to port at end of turn.
+\bparag Peace evacuation
+
+\subsubsection{Attrition results}
+\aparag The effect of the result \textbf{P} in the attrition table depends on
+the technology of the stack. In case of mixed stacks, take the worst technology.
+\bparag Until \TARQ: 1\LD lost during movement \textbf{and} one side of
+\PILLAGE in any non-neutral province entered or left.
+\bparag \TMUS, \TBAR, \TMAN: either 1\LD lost during movement or both
+\terme{foraging} (-1drm during 1st day of battle) and one side of \PILLAGE in
+any non-neutral province entered or left.
+\bparag \TL: either 1\LD lost during movement or one side of \PILLAGE in any
+non-neutral province entered or left.
+\bparag Besieged troops cannot pillage and thus must lose 1\LD.
+
+\section{Movements}
+\subsection{Special Movements}\label{chMilitary:Movement:Special Movements}
+\aparag[Provinces with several coasts]\label{chMilitary:Movement:Port Multiple
+  Coasts} Movements that imply entering a port and going out of a port
+may allow a naval stack to go out through a different sea zone than the
+one used to enter.
+\bparag It is not possible if this means to go through land (if the
+province has multiple coasts as defined in \ruleref{chBasics:Multiple
+  Coasts}).
+\bparag This is possible only if the naval stack owns the port. A \COL
+or \TP is required for a \FLEET, a fort is sufficient otherwise
+(including convoys).
+\bparag[Portugal] It is possible for \SPA to go through \province{Cabo
+  Verde} (or any other portuguese settlement) if it has \pays{Portugal}
+as a special vassal.
+\bparag[Cape Horn] As a special exception, it is not possible to go out
+through a different sea zone if it avoids \seazone{Horn}, unless the
+naval stack ends its movement there (and goes out at the next round).
+
+\begin{exemple}It is possible, with a \TP placed in \ville{Kyoto}, to
+  enter in the same move with 1\NWD coming from \seazone{Japon} and
+  going out from \seazone{Philippines}, without going through
+  \seazone{Jaune} nor \seazone{Pacifique NW}. However, it is not
+  possible with a \FLEET, nor if the \TP is not owned by the naval
+  stack.
+\end{exemple}
+
+\aparag[Blockading with several coasts]\label{chMilitary:Movement:Blockading
+  Multiple Coasts} A naval stack may blockade a port from any sea zone
+adjacent to the port, unless there are multiple coasts as defined in
+\ruleref{chBasics:Multiple Coasts}.
+\bparag In this special case, there is a \terme{main coast} which is the
+one that must be blockaded (usually where the anchor is drawn).
+%\bparag Galleys cannot blockade ports that are adjacent to sea zones
+%that they cannot reach (\province{Gibraltar}, \province{Tanger},
+%\province{Jylland}, \province{Ostlandet}).
+
+\aparag[Wasteland]\label{chMilitary:Movement:Wasteland} Movement in the
+Wasteland area (see~\ruleref{chBasics:Wasteland}) (for all purposes,
+including \LoS length computation) is doubled until the end of the
+Wasteland (see~\ruleref{chSpecific:End Wasteland}).
+
+\section{Unsorted rules}
+\begin{designnote}
+  This Section consists in a bunch of unrelated rules relevant to the Military
+  Phase. These rules should be properly grouped and dispatched in the correct
+  place of this Chapter. This will be done when the military rules will be
+  written (aka in a long time\ldots)
+
+  Rules presented here are sometimes barely more than a summary rather than a
+  proper rule written in a proper way.
+\end{designnote}
+
+\subsection{Effet d'un presidio}\label{chMilitary:Presidios}
+
+\aparag[Presidios and Blockade]
+\bparag The port is considered as blockaded by this fortress, even if the
+country that thus exerts the blockade is not at war with the owner of
+the blockaded port.
+
+\bparag Any exit from or entry into this port by units (privateers, Dn
+or F) may trigger an reaction by the fortress. This reaction is decided
+by the owner of the Presidio. This a declaration of war (with the usual
+CB cost) if the interception is against any unit except privateers.
+
+\bparag The reaction is resolved as a fire by the Presidio on the following table:
+\interceptionb
+
+\aparag[As Source of Supply]
+\bparag \Presidios are Sources of Supply only for forces inside the fortress.
+\bparag \Presidios are SoS Sources of Supply for naval forces without \FLEET;
+however, a naval force containing up to one \FLEET may enter temporarily a
+\Presidio to supply it (if besieged) or bring forces.
+
+%%% détroits fortifiés par Jym. Modifiez à volonté.
+\aparag[Strait fortifications]\label{chMilitary:Strait Fortifications}Certain
+straits are marked with a red naval frontier and a tower symbol near
+the province controlling them. These are the strait between Italy and
+Sicily (controlled by \ville{Messine}), the entrance to
+\seazone{Adriatique} (controlled by \province{Corfou}), the
+Dardanelles (\province{Dardanelles}) and the Bosporus
+(\province{Trakya}) in Europe; and the entrance to Saint-Laurent river
+(Louisbourg, on Cape Breton Island), entrance to \seazone{Rouge}
+(\province{Socotra}), entrance to \seazone{Persique} (\province{Ormus}),
+the Malacca strait (\ville{Malacca}) and the Sunda strait
+(\ville{Jakarta}) in the \ROTW.
+\bparag In Europe, they act as a \Presidio of level 2 against any fleet
+trying to cross the red lines. Using them against any unit but \corsaire
+gives a free \CB to the owner of the intercepted stack for the next
+turn.
+\bparag If a power has a \Presidio on the \province{Dardanelles}, it
+negates the effect of the Strait Fortifications for this power.
+\bparag In the \ROTW, they act as a \Presidio of level half the level of
+the fortress in the province (rounded down). Using them against any unit
+but \corsaire give a free \CB (normal or oversea, offended player's
+choice)) to the owner of the intercepted stack.
+\bparag For the Sunda strait, the city of \ville{Jakarta} must also by
+owned, usually by placing a \COL there.
+\bparag Minor countries (usually \pays{venise} in Europe and
+\pays{Gujerat} for Malacca (sometimes \pays{Chine})) will always use
+them against power at war with them. If they are at peace, their
+controller chose whether to use it or not. If they are neutral, they
+will always use them against \corsaire and never against other naval
+units.
+
+\subsection{Terrains}
+
+\aparag[Effet du terrain sur mouvement et combats]
+\bparag Plaine: 1 PM si ami, 2 PM sinon (2 et 4 si hors-Europe) ;
+\bparag Accidenté en Europe : 2 PM, sauf 3 PM en Montagne ennemi ;
+\bparag Accident en ROTW: 4 PM si ou mvt de forces d'un pays mineur de
+ROTW ; 6 pm si ennemi ;
+\bparag Rivière, passe, détroit, arrivée ou départ en marais: +1 PM (et
++2 PM HE)
+\bparag Déplacement naval: 3 PM (indépendamment du terrain de départ ou
+d'arrivée, y compris marais), sauf si de port ami à port ami 2 PM. 6/3
+PM en rotw.
+
+\aparag[Les différentes zones de forêts]
+\bparag  forêts nordiques : suède+Finlande+côte baltique actuellement orientale
+\bparag forêts orientales : celles actuelles (sauf dessus) et Prussia et
+adjacent, Lovonie, Podolie.
+
+
+\aparag[Effet sur le combat]\label{chMilitary:Battle:Forests} REVOIR : tables à jour
+\bparag  Modificateurs feu et choc \\
+	en marais, forêt ou désert -1 \\
+	en montagne pour l'attaquant (sauf s'il a intercepté) -1 \\
+	force traversant un fleuve ou une passe de montagne -1 \\
+		(1er round, et sauf si il a intercepté)
+\bparag Modificateurs feu \\
+	force débarque ou traverse un détroit -2 [1er round]
+\bparag Modificateurs choc \\
+	force débarque ou traverse un détroit -3 [1er round]
+\bparag Modificateurs poursuite\\
+	en marais, forêt, désert ou montagne -1 \\
+	vainqueur a traversé fleuve, passe, ou détroit ou débarque -1 \\
+	retraite du perdant à travers passe, fleuve, détroit ou réembarquement +1
+
+\aparag Si plusieurs piles se rejoignent dans une même province pour
+une bataille (2 forces qui convergent ou interception), on prend le plus
+défavorable effet de terrain de frontière.
+
+\aparag[Finlande-Suède] Un mouvement de retraite (après bataille ou
+redéploiment forcé) est autorisé entre les provinces au
+nord de ces deux zones. Le mouvement prend toute la capacité de mouvement
+restante (donc il faut faire un test d'attrition car les 12 MP sont dépensés).
+C'est la seule forme de mouvement autorisée par ce chemin.
+
+\subsection{Occupations [BLP]}
+\aparag Occupation markers are in limited amount.
+
+\subsubsection{Placement of occupations}
+\aparag Occupations markers may be placed instead of Controls in any
+of the following cases.
+\bparag Any country may place occupations in \continentCaraibes.
+\bparag[] [TBD] Any country may place occupation on \TP of a major or
+former major country.
+\bparag \POR may place occupations on \paysOman and \paysAden.
+\bparag \RUS may place occupations on any province adjacent to its
+national territory.
+\bparag \HIS may place occupations on Dutch provinces
+during~\ref{pIII:Dutch Revolt}. Similarly, \HOL may place occupation
+on Spanish provinces that were part of \paysBourgogne during the same
+Event.
+\bparag \TUR, \AUS and \POL may place occupations in any province that
+was part of \paysHongrie, after~\ref{pI:Fall Hungary}.
+\bparag[] [TBD] \VEN may place occupations in \regionItalie if
+\emph{Itali e San Marco} has been declared.
+\bparag[] [TBD] Before~\ref{pII:Act Supremacy}, \ANG may place
+occupations in former territory of the 100 years war:
+\provinceGuyenne, \provinceQuercy, \provincePoitou, \provincePicardie.
+\bparag \FRA may place occupations in provinces of the HRE that are
+adjacent to owned territory.
+\bparag \paysSavoie may place occupation in any province with its
+shield (blurred or not).
+
+\aparag Contrary to Controls, occupations are not removed when peace
+is signed and may stay in place.
+\bparag However, the peace treaty may include removal of certain
+occupation. This does not change the rest of the peace (\emph{i.e.} it
+is purely an agreement between players and do not change the level of
+the peace or the number of conditions exchanged).
+
+\aparag Occupations may be voluntarily removed by a diplomatic
+declaration. In that case, the control of the province is immediately
+given back to its owner.
+
+\aparag If a country annex an occupied province, the occupation is
+removed.
+
+\aparag As control markers, if an occupied province is besieged and
+taken by another power, the occupation is removed.
+
+\aparag In order to maintain occupation, a country must keep at least
+1\LD in each occupied province. If, at any moment, this garrison is
+not present, immediately remove the occupation marker and
+\bparag If the occupant and the owner are at peace, return
+control of the province to its rightful owner;
+\bparag If they are at war, replace the occupation by a control of the
+same country.
+
+\subsubsection{Effect of occupation}
+\aparag In addition to giving control of the province or
+establishment, occupations also give income (including exploited
+resources) to the occupant rather than the owner.
+
+\aparag Each country with an occupied owned province has a free \CB
+(\OCB if this is a \COL or \TP) against the occupant.
+
+\aparag The province is still owned by the rightful owner for all \VPs
+purpose (especially for period objectives).
+
+\aparag The occupant must maintain a garrison of at least 1\LD.
+\bparag If there are less troops and the occupant and occupied are not
+at war (interventions do not count), remove the occupation and control
+of the province is immediately returned to its owner. Any remaining
+occupant troops (\de in the \ROTW) are immediately destroyed.
+\bparag If there are less troops and the two countries are at war,
+immediately replace the occupation by a control.
+
+\aparag The Portuguese occupations also enforce an \dipAT with
+\paysOman or \paysAden.
+
+\subsection{En ROTW}
+
+\aparag[Indigènes et combat]
+Ils attaquent des forces à chaque round normalement ; en cas
+de défaite avec déroute, ils n'attaquent pas ce joueur au
+round suivant, seulement celui d'après. En cas de victoire
+ou de défaite normale, ils attaquent dès le round suivant.
+Ils font le siège des forts/forteresses, mais jamais d'assaut
+[l'assaut est représenté en fin de round par l'attaque des indigènes]
+
+\aparag Une ville dans une région qui n'est à aucun pays mineur peut
+être attaquée sans déclaration préalable de guerre. La déclaration
+doit se faire à la phase des combats, les indigènes de la zone
+forment l'armée qui défend la ville et le pays européen peut
+ensuite, si il les défait, mettre le siège ou faire l'assaut.
+On ne peut installer une COL dans une telle zone qu'en ayant
+pris la ville au tour d'avant.
+
+\aparag Un TP établi ou une Mission a un fort. En revanche, une présence militaire
+autre qu'une forteresse peut causer l'activation des indigènes.
+
+\aparag Une COL n'a pas cet avantage (mais on peut en construire) ;
+cependant dans une COL établie, la présence de forces armées
+n'entraine plus de réaction des indigènes, mais
+seulement d'un pays mineur ayant la région, ou lors des
+résultats E* à une colonisation.
+
+\aparag[Pillages]
+\bparag Sans A, les pillages en \ROTW sont au plus \Facemoins.
+\bparag L'or à terre est capturé à moitié si pillage \Facemoins et en
+entier si pillage \Faceplus.
 
 % Local Variables:
 % fill-column: 78
