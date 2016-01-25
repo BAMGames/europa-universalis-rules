@@ -60,7 +60,7 @@
 % Taken from report.cls around line 339
 % Change pagestyle
 \newcommand\THMchapter{\if@openright\cleardoublepage\else\clearpage\fi
-  \pagestyle{rules}% 
+  \pagestyle{rules}%
   \global\@topnum\z@
   \@afterindentfalse
   \secdef\@chapter\@schapter}
@@ -316,9 +316,9 @@
 \newenvironment{todo}[1][\relax]
 {\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\textbf{TODO: #1}}
     {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{black}{todo}{\usebox{\fmbox}}\smallskip}
-\newenvironment{oldcompta}[1][\relax]
-{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla} \textbf{Accounting v1:\ifx\relax#1\else#1\fi}\par}%
-    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{histoire}{histoire}{\usebox{\fmbox}}\smallskip}
+% \newenvironment{oldcompta}[1][\relax]
+% {\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla} \textbf{Accounting v1:\ifx\relax#1\else#1\fi}\par}%
+%     {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{histoire}{histoire}{\usebox{\fmbox}}\smallskip}
 
 
 
@@ -343,7 +343,7 @@
 \renewcommand\subitem{\@idxitem \hspace*{10\p@}}
 \renewcommand\subsubitem{\@idxitem \hspace*{20\p@}}
 
-% To get all decorations 
+% To get all decorations
 % grep '^.def\\.*decoration#1{' *cls *sty|cut -f1 -d\#|cut -f3 -d\\|sort -u
 % The decorations should take one arg, and display it in a box size linewidth
 % For sections etc. the counter is already included
