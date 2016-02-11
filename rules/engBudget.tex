@@ -179,7 +179,10 @@ income is larger than the total expenses.
 
 \aparag[Prestige income] Write in \lignebudget{from Prestige} any non-negative
 number smaller than both \lignebudget{Prestige income} and
-\lignebudget{Remaining expenses}.
+\lignebudget{Remaining expenses} (if positive).
+\bparag This must be 0 in case \lignebudget{Remaining expenses} is 0 or less
+(\emph{i.e.} if there is nothing more to pay, you must spend as much as
+possible in prestige).
 \bparag Small value means that more money is spent for prestige \VPs and less
 for day-to-day expenses. Those will be covered by loans or debt.
 
@@ -264,8 +267,8 @@ one refund (for the same turn as the last interest).
 
 \begin{playtip}
   When planning expenses, it is obviously a good idea to keep an eye on the
-  possible income\ldots Too many expenses result in bankruptcy while too few
-  result in money ``wasted'' for prestige (instead of being use for buying
+  possible income\ldots Too many expenses results in bankruptcy while too few
+  results in money ``wasted'' for prestige (instead of being use for buying
   troops or waging war).
 
   Here are some guidelines in preparing your budget:
