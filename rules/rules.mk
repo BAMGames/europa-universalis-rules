@@ -282,9 +282,7 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engIntroduction.tex\
  engLeaders.tex\
  engLogistic.tex\
- engMilitary.tex\
  engMilitaryConcepts.tex\
- engMilitaryFrench.tex\
  engMilitaryRules.tex\
  engMinorCountries.tex\
  engObjectives.tex\
