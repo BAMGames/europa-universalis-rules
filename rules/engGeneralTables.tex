@@ -1039,7 +1039,7 @@
     \GTitem{6\MP\leq\LoS\leq12\MP except \LD in \ROTW}
     \GTitem{\LoS through Desert}
     \GTitem{\SoS not owned, nor allied}
-    \GTitem{By a fleet not adjacent to port/arsenal}
+    \GTitem{By a fleet not adjacent to its \SoS}
     \GTheader{Movement segment}
     \GTitem{Massed force (\geq6\LD, no logistics: \geq3\LD)}
     \GTitem{Movement \geq3\MP if \terme{bad weather}}
@@ -1061,20 +1061,20 @@
 \newcommand{\discoveriesattrition}{
   \GT{discoveriesattrition}{Discoveries and Attrition}
   \GTcontent{
-    \graytabular\begin{tabular}{c|cc|c|cccc}
-      \multicolumn{1}{c|}{1d10}&\multicolumn{2}{c|}{Discovery\global\countcol=2} & \ROTW&\multicolumn{4}{c}{Loss in Europe (fct. of \#\LD)}\\\ghline\noalign{\global\countrow=0}
-      +?& Sea         & Land & Losses & 1\LD & 2\LD & 3--5\LD & \geq6\LD\\\ghline\hline
-      \leq11&S            &S            &0\% &---&---&---&---\\\ghline
-      12 &S            &S            &10\%&---& P & P &1+P\\\ghline
-      13 &S\textetoilex&S            &20\%&---& P & P &1+P\\\ghline
-      14 &S\textetoilex&S            &30\%&---& P & P &1+P\\\ghline
-      15 &\undemi      &\undemi      &40\%& P & P &1+P&2+P\\\ghline
-      16 &\undemi      &\undemi      &50\%& P & P &1+P&2+P\\\ghline
-      17 &F            &F\textetoilex&60\%& P & 1 &1+P&2+P\\\ghline
-      18 &F            &F\textetoilex&70\%& P & 1 &1+P&2+P\\\ghline
-      19 &F\textetoilex&F\textetoilex&80\%& P & 1 &1+P&2+P\\\ghline
-      20 &F\textetoilex&F\textetoilex&90\%& P & 1 &1+P&2+P\\\ghline
-      \geq21&F\textetoilex&F\textetoilex&100\%&1+P&1+P &2+P&3+P\\\ghline
+    \graytabular\begin{tabular}{r||cc||c|cccc}
+      \multicolumn{1}{c||}{1d10}&\multicolumn{2}{c||}{Discovery\global\countcol=2} & \ROTW&\multicolumn{4}{c}{Land, Europe (fct. of \#\LD)}\\\ghline\noalign{\global\countrow=0}
+      \multicolumn{1}{c||}{+?}& Sea         & Land & or Sea & 1\LD & 2\LD & 3--5\LD & \geq6\LD\\\ghline\hline
+      \leq 5&S  &S &0\% &---&---&---&---\\\ghline
+      6 &S            &S            &10\%&---& P & P &1+P\\\ghline
+      7 &S\textetoilex&S            &20\%&---& P & P &1+P\\\ghline
+      8 &S\textetoilex&S            &30\%&---& P & P &1+P\\\ghline
+      9 &\undemi      &\undemi      &40\%& P & P &1+P&2+P\\\ghline
+      10 &\undemi      &\undemi      &50\%& P & P &1+P&2+P\\\ghline
+      11 &F            &F\textetoilex&60\%& P & 1 &1+P&2+P\\\ghline
+      12 &F            &F\textetoilex&70\%& P & 1 &1+P&2+P\\\ghline
+      13 &F\textetoilex&F\textetoilex&80\%& P & 1 &1+P&2+P\\\ghline
+      14 &F\textetoilex&F\textetoilex&90\%& P & 1 &1+P&2+P\\\ghline
+      \geq 15&F\textetoilex&F\textetoilex&100\%&1+P&1+P &2+P&3+P\\\ghline
     \end{tabular}%
   }
   \GTlegend[east south,to eastpoint]{
@@ -1105,8 +1105,8 @@
 %    \textbf{All:} -M Leader \Man (except during sieges)\\
     \GTheader{Land Attrition (supply/mvt/siege/redeployment)}
     \begin{modlist}
-    \item[+8] if entering or in at least one enemy province
-    \item[+6] if entering or in friendly provinces only
+    \item[+2] if entering or in at least one enemy province
+%    \item[+6] if entering or in friendly provinces only
     \item[+2] if no \LoS
     \item[+1/+2] per \PILLAGE \facemoins/\faceplus\GTnb{a}
     \item[+1/+2] per unfriendly \REVOLT \facemoins/\faceplus\GTnb{b}
@@ -1141,7 +1141,7 @@
     \GTheader{Exploration only}
     \begin{modlist}
     \item[-2] if sea zone already known (by anyone) in pIV+
-    \item[+10] For all explorations (land or sea)
+    \item[+4] For all explorations (land or sea)
     \end{modlist}
   }
   % Alas, we cannot do simply a west south=captionb, text is too tall. Using westpoint as reference.

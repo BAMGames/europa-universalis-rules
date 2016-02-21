@@ -1,5 +1,9 @@
 % -*- mode: LaTeX; -*-
 
+\newcommand{\iamhere}{\begin{todo} The following is copy of older stuff and de
+    facto cease to be relevant before I reread and rewrite it.
+\end{todo}}
+
 \definechapterbackground{Military Rules}{military}
 \chapter{Military Rules}\label{chapter:MilitaryRules}
 
@@ -250,13 +254,13 @@ Modifiers for Supply attrition:
 \item[+2] in case of \terme{massed forces} (the stack contains more than 5\LD
   and 1\Pasha)
 \item[+2] if the stack has no \LoS
+\item[+2] if the fortress of the province is controlled by the enemy
 \item[-M] MAN of the commander of the stack
 \item[+?] if the stack is supplied by a naval stack, and the \LoS of this
   naval stack goes through one or more \StraitFort, add the DRM of all the
   \StraitFort along this path (2 in Europe, level/2 in the \ROTW)
-\item[+8] if the fortress of the province is controlled by the enemy
-\item[+6] if the fortress of the province is controlled by allies or if there
-  is no fortress in the province (in the \ROTW)
+% \item[+6] if the fortress of the province is controlled by allies or if there
+%   is no fortress in the province (in the \ROTW)
 \item[+1] per \PILLAGE\facemoins, \REVOLT\facemoins or unfriendly
   \REBELLION\facemoins in the province
 \item[+2] per \PILLAGE\faceplus, \REVOLT\faceplus or unfriendly
@@ -265,9 +269,18 @@ Modifiers for Supply attrition:
   (+0 to +2 depending on the \Area)
 \end{modlist}
 
+\begin{designnote}
+  Note that a \terme{massed force} is \textbf{not} a cause of supply attrition
+  by itself (contrarily to movement attrition) but \textbf{if} the stack
+  suffers attrition, it is still an aggravating factor. For the sake of space,
+  this is not repeated in the tables and considered to be part of the ``per
+  extra cause'' modifier, even if it's not an extra cause \emph{stricto
+    sensu}.
+\end{designnote}
+
 Modifiers for Siege attrition (besieged):
 \begin{modlist}
-\item[+6] always (friendly fortress)
+%\item[+6] always (friendly fortress)
 \item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
   (+0 to +2 depending on the \Area)
 \item[-S] siege value of one besieged leader
@@ -315,11 +328,6 @@ is 50\% chance to lose an extra \LDE.
 \GTtable{attritionlosses}
 
 \section{Choice of campaign}
-\begin{todo}
-  The following is copy of older stuff and de facto cease to be relevant
-  before I reread and rewrite it.
-\end{todo}
-
 Each country of the phasing alliance chooses its campaign for the current
 round. Make a tick in the correct line of the ERS to count how many campaigns
 of each type you've done so you can pay for them.
@@ -331,6 +339,8 @@ at this point.
 Each country must pay for campaign in order to move its troops, however
 multinational stacks are moved as part of the campaign of the commander of the
 stack.
+
+\iamhere
 
 \aparag[Campaigns for \MIN]
 \bparag limited intervention: 1 simple campaign each turn. 1 passive campaign
