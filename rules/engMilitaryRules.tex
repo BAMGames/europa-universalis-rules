@@ -346,25 +346,56 @@ Each country must pay for campaign in order to move its troops, however
 multinational stacks are moved as part of the campaign of the commander of the
 stack.
 
-\iamhere
-
 \aparag[Campaigns for \MIN]
-\bparag limited intervention: 1 simple campaign each turn. 1 passive campaign
-each round. More can be paid by the \MAJ (pay only the difference in cost of
-campaign, not the full campaign).
-\bparag full intervention: 1 simple campaign each round. Multiple campaigns
-may be obtaind by reinforcement. More can be paid by the \MAJ (as above).
+\bparag Minors in limited intervention have 1 simple campaign each turn and 1
+passive campaign each round. The controlling \MAJ may upgrade to any kind of
+campaign by paying the difference.
+\bparag Minors fully at war (including oversea wars) have 1 simple campaign
+each round. They may receive multiple campaigns through reinforcement. The
+controlling major may upgrade to an kind of campaign by paying the
+difference.
 
-
-\subsection{Military campaigns}
-\aparag Interception is allowed according to the last campaign paid.
+\aparag[Campaigns and interception.] Interception is allowed according to the
+last campaign paid.
 \bparag For player without initiative, this is the campaign of the previous
 round.
 \bparag During first round, players without initiative may intercept (before
 their first move) as if they had done a passive campaign.
 
+\subsection{List of campaigns}
+\aparag[None] 0\ducats: No action, no movement, no exploration, no siege,
+\ldots allowed (troops may retreat before battle and will fight back if
+attacked). No interception allowed.
+
+\aparag[Passive] 10\ducats:
+\bparag Interception allowed only in friendly provinces.
+\bparag On land: Moving in friendly provinces ; maintaining sieges and fights
+against revolts ; exploration ; moving \LeaderG (and \LeaderC) alone.
+\bparag At sea: Moving stacks of 1\FLEET maximum. No attack.
+\bparag Naval actions: friendly-to-friendly transport, maintain fight against
+\corsaire, exploration, maintain blocus.
+
+\aparag[Active (aka Simple)] 20\ducats: All allowed by Passive plus
+\bparag Any interception.
+\bparag On land: one stack of $\leq$ 5 \LD + 1 \Pasha without restriction
+\bparag At sea: one stack with at most 1\FLEET counter without restriction.
+
+\aparag[Active/No Logistic] 10\ducats: Same as Active but
+\bparag At sea: one stack \textbf{without} \FLEET without restriction.
+\bparag On land: all stacks $\geq$ 3\LD roll for attrition (even if not
+moving).
+
+\aparag[Major] 50\ducats: All allowed by passive plus
+\bparag On land: either one stack without restriction (neither size nor acton)
+or all stacks $\leq$ 5 \LD + 1 \Pasha without restriction
+\bparag At sea: either one stack without restriction (neither size nor acton)
+or all stacks with at most 1\FLEET counter without restriction.
+
+\aparag[Multiple] 100\ducats: all stacks may act without restriction.
+
 \aparag When moving both at sea and on land, the cost of both campaigns is
 computed separately and only the maximum cost is paid.
+
 \begin{exemple}
   A Major campaign allows to both:
   \begin{itemize}
@@ -383,56 +414,7 @@ computed separately and only the maximum cost is paid.
   \end{itemize}
 \end{exemple}
 
-\aparag[None] 0\ducats: No action, no movement, no exploration, no siege,
-\ldots allowed (troops may retreat before battle and will fight back if
-attacked). No interception allowed.
-
-\aparag[Passive] 10\ducats:
-\bparag Interception allowed only in friendly provinces.
-\bparag On land: Moving in friendly provinces ; maintaining sieges and fights
-against revolts ; moving \LeaderG (and \LeaderC) to retablish hierarchy.
-% Jym :
-% "reorganiser stacking", j'imagine que c'est que les chefs, sinon je sens la
-% faille format San Andreas...
-%       \bparag terre: mvt dans ami seulement; continuer sièges; réorganiser
-%      stacking
-\bparag At sea: Moving stacks of 1\FLEET maximum. No attack.
-\bparag Naval actions: friendly-to-friendly transport, maintain fight against
-\corsaire, exploration, maintain blocus.
-
-\aparag[Active (aka Simple)] 20\ducats: All allowed by Passive plus
-\bparag Any interception.
-\bparag On land: one stack of $\leq$ 5 \LD + 1 \Pasha without restriction
-[TBD: or +2 pashas ?]
-% Jym :
-% 2 Pashas garantient presque 3LD, donc +1 au choc. Ca me semble trop
-% bourrin. Avec 1 pasha, il n'a en a qu'un a 3LD.
-\bparag At sea: one stack with at most 1\FLEET counter without restriction.
-
-% Jym :
-% Meme si c'ast plus en cout croissant, ca me semble plus logique de le mettre
-% apres pour pouvoir dire "/me too".
-\aparag[Active/No Logistic] 10\ducats: Same as Active but
-% Jym :
-% Diffenrece suivante subtile et prompte a l'erreur (je l'ignorais avant de
-% traduire)
-% Est-elle vraiment necessaire ? Je ne vois pas trop le genre d'abus faisable
-% sans elle...
-\bparag At sea: one stack \textbf{without} \FLEET without restriction.
-\bparag On land: all stacks $\geq$ 3\LD roll for attrition (even if not moving).
-
-\aparag[Major] 50\ducats: All allowed by passive plus
-\bparag On land: either one stack without restriction (neither size nor acton)
-or all stacks $\leq$ 5 \LD + 1 \Pasha without restriction  [TBD: or +2 pashas]
-% Jym :
-% cf simple.
-\bparag At sea: either one stack without restriction (neither size nor acton)
-or all stacks with at most 1\FLEET counter without restriction.
-% Jym :
-% Si pas en faveur, je commente...
-%            [TBD: ne pas autoriser 2\FLEET sauf \NGD ??? Pas en faveur de ça actuellement]
-
-\aparag[Multiple] 100\ducats: all stacks may act without restriction.
+\iamhere
 
 \section{Movements}
 Each country of the phasing alliance may move its stacks, according to the
@@ -444,6 +426,56 @@ Each non-phasing stack may attempt interception. Resolve battles caused by
 interception immediately.
 
 Each phasing stack (moving or not) may have to roll for attrition.
+
+All rules here apply to all movements and may be further restricted by choice
+of campaign. That is, the ``no restriction'' in campaigns descriptions should
+be understood as ``no \textbf{further} restriction''.
+
+\subsection{Generalities}
+The moving stack may pick up and drop units along its movement, however all
+these units are considered as having moved and may not move again. Since each
+movement has to be completed before starting the next, this \emph{de facto}
+prevents two stacks from rendezvousing, merging, and continue movement
+together. Moreover, the distance moved is the total (even if no single unit
+did its totality) and in case of attrition the size of the stack is considered
+to be the total number of all troops that took part in the movement (and they
+may all suffer from attrition).
+
+\subsubsection{Land}
+When moving, land stacks expend \MP depending both on the terrain of each
+province they enter and the frontier by which they entered it. The cost of
+each terrain differ in Europe and in the \ROTW and are indicated in
+table~\ref{table:Movement points costs}.
+
+\GTtable{movecost}
+
+
+Each unit may move a maximum of 12\MP. Stacking limits may be ignored during
+movement, but at the end of movement of each stack, units over the stacking
+limit must be destroyed (chosen by the controller of the stack).
+
+A land stack may be carried over water by a sea stack. The land stack must
+start its movement in the province where it embark but may move after
+disembarking. The land stack may embark or disembark from a non-controlled
+port (evacuation or landing), but at least one of the endpoint must be a
+controlled port/arsenal large enough to contain the naval stack.
+
+A stack must roll for attrition if at least one of the following case is true:
+\begin{itemize}
+\item the stack contains at least 6\LD (not counting those in \Pasha) or at
+  least 2 \Pasha;
+\item the stack moved at least 6\MP;
+\item the stack moved at least 3\MP and this is a campaign without logistic;
+\item the stack used ships to make a naval move and at least one of the
+  endpoint is not a controlled port/arsenal large enough to hold the
+  transporting navy.
+\end{itemize}
+
+\subsubsection{Sea}
+
+\subsection{Attrition}
+\subsubsection{Land}
+\subsection{Sea}
 
 \aparag[Conquistador table]
 The Conquistador table may be used only:
