@@ -212,6 +212,7 @@ If a besieged stack is also in weak supply, it does not roll for supply
 attrition. The siege attrition replaces this roll.
 
 \subsection{\SoS, \LoS, weak supply}
+\subsubsection{At land}
 A Source of Supply (\SoS) is either a controlled city, \TP, \COL or fort, or a
 large enough naval stack in an adjacent seazone. A Source of Supply may supply
 as many stacks as wanted.
@@ -225,7 +226,7 @@ A stack is in weak supply if at least one of the following condition is true:
 \begin{itemize}
 \item its Line of Supply is as least 6\MP long (exception: in the \ROTW, \LD
   do not check this condition);
-\item its Line off Supply goes through desert;
+\item its Line of Supply goes through desert;
 \item its Source of Supply is not owned by the same alliance;
 \item it is supplied by a naval stack that is not adjacent to a port or
   arsenal able to supply it.
@@ -233,6 +234,39 @@ A stack is in weak supply if at least one of the following condition is true:
 
 It is possible to take its supply from a further \SoS to avoid weak supply
 (typically, to have an owned \SoS, or to circumvent a desert).
+
+A naval stack can act as a \SoS for an adjacent land stack if it is large
+enough:
+\begin{itemize}
+\item A stack containing only \NDE may supply stacks of at most 1\LD;
+\item A stack containing only \ND may supply stacks of at most 3\LD and no
+  \ARMY counter;
+\item A stack with a \FLEET\facemoins (but no \FLEET\faceplus) counter may
+  supply any small land stack (up to 5\LD and 1\Pasha);
+\item A stack containing a \FLEET\faceplus counter may supply any land stack.
+\end{itemize}
+This information is summed up in the last two columns of
+table~\ref{table:Naval Supply}: find the size of the naval stack (or smaller)
+in the ``Naval Size'' column and read in the same line in the ``Land
+supplied'' column the size of land stacks that can be supplied.
+
+\GTtable{supplysize}
+
+In the \ROTW, forts (including missions) can only supply \LD. \TP and \COL can
+supply any stack.
+
+Supply is never used up. Thus a \SoS can supply several stacks if it can
+supply each of them individually.
+
+\subsubsection{At sea}
+A naval \SoS is a controlled port or arsenal large enough ot hold the naval
+stack. Fort and mission can only supply \ND; \TP, \COL and regular ports can
+supply stacks with at most 1\FLEET counter; arsenals can supply any naval
+stack.
+
+A naval \LoS goes from the \SoS to the stack. Its length is the number of sea
+zones \emph{crossed} (both entered and exited). Thus, a naval stack adjacent
+to a port has a \LoS of length 0.
 
 \subsection{Attrition roll}
 Attrition (in Europe) is obtained by rolling one die, modified as follows, and
