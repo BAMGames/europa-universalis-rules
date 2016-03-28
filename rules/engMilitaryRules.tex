@@ -343,7 +343,8 @@ A 'P' is interpreted differently according to the technology of the stack.
   \PILLAGE\facemoins is placed into the province (and immediately merged into
   a \PILLAGE\faceplus if there was already another one here).
 \item If the technology is \TMUS or better, then the controller chooses to
-  either loss one more \LD or place a \PILLAGE\facemoins.
+  either loss one more \LD or place a \PILLAGE\facemoins (note that
+  \terme{foraging} has no effect during siege or supply attritions).
 \end{itemize}
 
 Besieged troops cannot place \PILLAGE and thus must loss one \LD in case of
@@ -448,9 +449,8 @@ computed separately and only the maximum cost is paid.
   \end{itemize}
 \end{exemple}
 
-\iamhere
-
 \section{Movements}
+\subsection{Generalities}
 Each country of the phasing alliance may move its stacks, according to the
 campaign it paid for the round. Each movement must be completed before the
 next one start. The phasing alliance choose in which order it moves its stacks
@@ -465,7 +465,6 @@ All rules here apply to all movements and may be further restricted by choice
 of campaign. That is, the ``no restriction'' in campaigns descriptions should
 be understood as ``no \textbf{further} restriction''.
 
-\subsection{Generalities}
 The moving stack may pick up and drop units along its movement, however all
 these units are considered as having moved and may not move again. Since each
 movement has to be completed before starting the next, this \emph{de facto}
@@ -475,6 +474,14 @@ did its totality) and in case of attrition the size of the stack is considered
 to be the total number of all troops that took part in the movement (and they
 may all suffer from attrition).
 
+Combined land and sea movement is possible and it is the only case where two
+stacks (one naval and one land) move at the same time. The land stack must
+start in a coastal province and embark immediately but may continue moving
+after disembarking. The naval stack, however, can move before picking up the
+land stack but is constrained in what it does after. If a naval stack
+transporting troops suffer loses, troops inside suffer them in proportion of
+the transport capacity lost.
+
 \subsubsection{Land}
 When moving, land stacks expend \MP depending both on the terrain of each
 province they enter and the frontier by which they entered it. The cost of
@@ -482,7 +489,6 @@ each terrain differ in Europe and in the \ROTW and are indicated in
 table~\ref{table:Movement points costs}.
 
 \GTtable{movecost}
-
 
 Each unit may move a maximum of 12\MP. Stacking limits may be ignored during
 movement, but at the end of movement of each stack, units over the stacking
@@ -497,7 +503,8 @@ controlled port/arsenal large enough to contain the naval stack.
 A stack must roll for attrition if at least one of the following case is true:
 \begin{itemize}
 \item the stack contains at least 6\LD (not counting those in \Pasha) or at
-  least 2 \Pasha;
+  least 2 \Pasha, such large stacks roll for attrition even if they don't
+  move;
 \item the stack moved at least 6\MP;
 \item the stack moved at least 3\MP and this is a campaign without logistic;
 \item the stack used ships to make a naval move and at least one of the
@@ -505,11 +512,82 @@ A stack must roll for attrition if at least one of the following case is true:
   transporting navy.
 \end{itemize}
 
+Note that large stacks must roll for attrition even if they don't move. Thus,
+it is usually better to have half of the stack doing a back and forth move so
+that none of the part has to test attrition. While this is harmless at home,
+doing this on the frontline can increase the cost of campaign (because coming
+back on a siege is an aggressive move) or offer opportunities for interception
+to your opponents (and thus opportunities to crush your stack half by half),
+so use this trick wisely.
+
+In case of interceptions, the conditions for attrition are checked for each
+part of the movement (between the beginning and the first interception;
+between each interception; between the last interception and the end). If one
+part of the movement triggers attrition, it is resolved immediately before the
+interception battle occurs and its results (especially \terme{foraging}) are
+applied and effective for the next battle only. If none of the parts trigger
+interception but the whole movement does, then one and only one final
+attrition is resolved at the end of the movement (thus, possibly after a lost
+interception battle).
+
+\begin{exemple}
+  A small stack moves 6\MP and is intercepted. Since 6\MP is a cause of
+  attrition, it resolves it immediately. If the stack wins the battle, it may
+  move on. It moves 6 more \MP (for a total of 12) and thus rolls for
+  attrition again. If it has a regular battle at the end of the movement, then
+  any \terme{foraging} result obtained during the first interception is
+  ``used'' by the first battle and no more effective.
+
+  \smallskip
+
+  A small stack moves 4\MP, get intercepted and wins, move 4\MP, get
+  intercepted and wins and moves a final 4\MP. None of the ``legs'' of
+  movement were enough to trigger attrition, but the total movement of 12\MP
+  is. Hence the stack makes a final attrition test at the end of its
+  movement. Note that even if the first two ``legs'' represent 8\MP and thus
+  would trigger attrition, it is not done before the battle as only the last
+  ``leg'' is checked at this point. However, if the stack loses its second
+  battle, then it must stop movement and hass moved 8\MP, thus it must resolve
+  an attrition test now (after the battle).
+
+  \smallskip
+
+  A small stack moves 6\MP and get intercepted. It resolves its attrition and
+  then wins the battle. It moves 5 more MP before ending its moves. The last
+  leg is not enough to trigger attrition. The whole movement is enough to
+  trigger attrition but since an attrition test already happened (before the
+  battle), it is considered done and no extra test occur.
+\end{exemple}
+
+Any movement that enters a province with unfriendly forces (land stack,
+\REVOLT/\REBELLION, fortress (even if besieged), \ldots) is considered
+``aggressive'' and cannot occur as part as a passive move. Passive campaign
+allow only passive moves while other campaigns allow one or more aggressive
+moves.
+
+Movement of leaders alone is allowed. A leader moving alone has a move
+capacity of 20\MP. It never rolls for attrition. It can use naval transport
+even if it does not start adjacent to sea, and it does not need a naval stack
+to be carried (the leader sails on some non represented ships). On sea, a
+leader alone cannot enter sea zones with malus and has (for the land leaders)
+a \Man of 0. A leader alone dies immediately if he enters a province with
+unbesieged enemy forces (and no friendly force) or if he is
+intercepted. Moving leaders alone can help enforce hierarchy or quickly change
+your frontline. It is considered a passive moves even if the leader enters a
+province with enemy force (typically to take command of a stack). Note that
+hierarchy rules strictly constraint moving leaders alone and such change of
+command is normally done during the wintering segment.
+
+
 \subsubsection{Sea}
+
+\subsubsection{Combined move}
 
 \subsection{Attrition}
 \subsubsection{Land}
-\subsection{Sea}
+\subsubsection{Sea}
+
+\iamhere
 
 \aparag[Conquistador table]
 The Conquistador table may be used only:
