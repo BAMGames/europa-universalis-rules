@@ -327,7 +327,7 @@
   \EUobjective{#1}{Balkans}{prov\EUAbbr{ince}}{#2}{#3}{%
     Each province in \regionBalkans \ifnotempty{#4}{(except #4)} owned by
     \paysmajeurVenise, whoever controls it}}%
-\newcommand{\EU@objOrientIncome}[3][]{% M? income VPs    
+\newcommand{\EU@objOrientIncome}[3][]{% M? income VPs
   \EUobjective{#1}{Orient income\geq #2\ducats}{}{}{#3}{%
     Total Orient Income of the period is #2\ducats or more}}%
 
@@ -608,9 +608,10 @@
 %
 \EUcurrentperiod{VII}%
 \EU@objMonopolyZone{5}{30}%
-\EUobjective{M}{Batavian Revolution}{rev\EUAbbr{olution}}{20}{40}{% 
+\EUobjective{M}{Batavian Revolution}{rev\EUAbbr{olution}}{20}{40}{%
   Per victory in \ref{pVII:Batavian Revolution}; half-success if the even
   never occur}%
+% 40 si une seule arrive et victoire
 \EU@objFranceRoyalist{35}%
 \EU@objAmericaHOL{15}{45}%
 \EU@objEachCOLTP[in \continentIndia]{\continentIndia}{15}{50}%
@@ -720,7 +721,7 @@
 \EUobjective{}{No Polish Absolutism}{}{}{30}{%
   \paysmajeurPologne is not absolutist (\ref{pIV:Liberum Veto} occured and
   there has been no absolutist victory in \ref{pIV:Polish Civil War})}%
-% 
+%
 \EUcurrentperiod{VI}%
 \EU@objBalticTrade{5}{40}%
 \EU@objEachCOLTP{Colonisation}{7}{40}%
@@ -822,7 +823,7 @@
 \EU@objCountryConquest[M]{Crimee}{40}%
 \EU@objEachAnnexed{Turkish}{15}{45}{\paysmajeurTurquie}{(excepted former
   provinces of \paysgeorgie or \paysperse)}%
-% 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \EUcurrentcountry{Pologne}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
