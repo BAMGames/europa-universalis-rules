@@ -240,7 +240,8 @@ endalpha
 (15) 3 3672 1502 [8 7] zm %Guinée
 (20) 4 5352 1801 [6] zm %Oman
 (30) 6 5745 1634 [5] zm %Indien
-(20) 4 6549 1936 [4] zm %Chine
+% Bottom-left corner is on the border with Mer de Chine Sud.
+(20) 4 6549 1936 [4] (img:chineespagne) zmshieldup %Chine
 (10) 2 4656 0260 [9 7] zm %Tempêtes
 (20) 4 3078 2421 [9] zm %Canaries
 (10) 2 2998 1438 [9 8 7] zm %Recife
@@ -269,7 +270,8 @@ CURRENTDIR(/ressource.eps)! include
     (ienissei)		[5710 2977 true (Ienisseï (Енисей))]
     (lena)		[6103 2991 true (Lena (Лена))]
     (yakoutie)		[7333 3508 true (Yakoutie (Якутия))]
-    (baikal)		[6532 3187 true (Baïkal (Байкал))]
+%    (baikal)		[6532 3187 true (Baïkal (Байкал))]
+    (baikal)		[6560 3200 true (Baïkal (Байкал))]
     (amour)		[7263 3243 true (Amour (Амур))]
     (japon)		[7345 2730 true (Japon (日本))]
     (kamchatka)		[7874 3322 false(Kamchatka\n(Камчатска))]
@@ -282,7 +284,7 @@ CURRENTDIR(/ressource.eps)! include
     (vietnam)		[5816 2550 true (Đại Việt) {1 6354 2238 link}]
     (thailande)		[5716 2460 true (Ayutthaya (อยุธยา)){1 6296 2262 link}]
     (birmanie)		[5796 2330 true (Birmanie (ဗမာ))]
-    (malaisie)		[5840 2080 true (Malacca){1.5 6243 1872 link}]
+    (malaisie)		[5865 2070 true (Malacca){1.5 6243 1872 link}]
     (aral)		[5445 2986 false(Aral)]
     (cuba)		[1700 2430 true (Cuba){0.5 1880 2242 link}]
     (haiti)		[2001 2542 true (Haïti){0.5 2103 2170 link}]
@@ -309,7 +311,7 @@ CURRENTDIR(/ressource.eps)! include
     (soudan)		[4340 2186 true (Soudan (ﻥﺍﺩﻮّﺴﻟا))]
     (nedj)		[4729 2485 false(Nedj\n(ﺪﺟﺎﻧ))]
     (aden)		[4420 2066 true (Aden (ﻥﺪﻋ)){1.5 4896 2022 link}]
-    (oman)		[4930 2221 true (Oman (ﻥﺎﻤﻋ))]
+    (oman)		[4940 2221 true (Oman (ﻥﺎﻤﻋ))]
     (afghan)		[5720 2747 false(Afghanistan)]
     (balouchie)		[5506 2402 false(Balouchistan)]
     (chichimeca)	[0845 2324 true (Chichimeca)]
@@ -366,22 +368,71 @@ CURRENTDIR(/ressource.eps)! include
 
 resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse}forall
 
+% tordesillas reminder: shared areas
 (img:tordesillas) (amazonia)  tordesillas
 (img:tordesillas) (minasgerais)  tordesillas
-(img:tordesillas) (philippines)  tordesillas
-(img:tordesillas) (philippines)  tordesillas
-(img:tordesillas) (japon)  tordesillas
+(img:tordesillas) (philippines)  tordesillasdown
+(img:chineespagne) (philippines)  tordesillasup
+%(img:tordesillas) (philippines)  tordesillas
 (img:tordesillas) (kamchatka)  tordesillas
-(img:tordesillas) (mandchourie)  tordesillas
-(img:tordesillas) (coree)  tordesillas
-(img:tordesillas) (pekin)  tordesillas
-(img:tordesillas) (shangai)  tordesillas
-(img:tordesillas) (canton)  tordesillas
 (img:tordesillas) (formose)  tordesillas
 (img:tordesillas) (guyana)  tordesillas
+% China
+(img:tordesillas) (mandchourie)  tordesillasdown
+(img:tordesillas) (pekin)  tordesillasdown
+(img:tordesillas) (shangai)  tordesillasdown
+(img:tordesillas) (canton)  tordesillasdown
+(img:tordesillas) (coree)  tordesillasdown
+% Japan
+(img:tordesillas) (japon)  tordesillasdown
+
+% tordesillas reminder: Portuguese areas in America
 (img:portugal) (belem)  tordesillas
 (img:portugal) (recife)  tordesillas
 (img:portugal) (rio)  tordesillas
+
+% Nerchinsk reminder
+(img:protochine) (amour) tordesillas
+(img:protochine) (baikal) tordesillas
+
+% --- [BLP] ---
+% Caraibes reminder.
+(img:caraibes) (antilles) tordesillas
+(img:caraibes) (cuba) tordesillas
+(img:caraibes) (haiti) tordesillas
+(img:caraibes) (floride) tordesillas
+
+
+% ROTW minor ownership/interest. Often may use the natives in the area.
+% ownership if valid for all game.
+% Interest if valid for part of the game
+% Vijayanar/Moghol not here because there are counters.
+(img:oman) (oman) tordesillas % Oman has a COL in Oman
+% Zanzibar in noms.utf
+(img:aden) (aden) tordesillas % Aden has a COL in Aden
+(img:protoaceh) (sumatra) tordesillas % Aceh may be anywhere in Sumatra
+(img:protoazteque) (azteca) tordesillas
+% China
+(img:chine) (pekin) tordesillasup
+(img:chine) (shangai) tordesillasup
+(img:chine) (canton) tordesillasup
+(img:chine) (mandchourie) tordesillasup
+(img:protochine) (coree) tordesillasup
+(img:protoafghans) (afghan) tordesillasup % Afghanistan is created late
+(img:protogujarat) (gujarat) tordesillas % Exists in 1492
+(img:protogujarat) (malaisie) tordesillas % Exists in 1492
+(img:protohyderabad) (hyderabad) tordesillas % Created late
+% Mysore only owns one province. See noms.utf
+(img:japon) (japon) tordesillasup
+%(img:protojapon) (coree) tordesillasup % Expedition in pIII
+(img:protoinca) (inca) tordesillas % Exists in 1492
+(img:iroquois) (iroquois) tordesillas % Always here
+(img:perse) (perse) tordesillas % Persia owns Ormus
+(img:protoperse) (afghan) tordesillasdown % May be annexed
+(img:protosiberie) (siberie) tordesillas % Exists in 1492
+(img:soudan) (soudan) tordesillas % Always here
+
+
 
 begindetroit
 [7061 2478 0 7173 2530 225 2] detroit
@@ -632,7 +683,7 @@ zeng zeng2 xstart ystart 10 size{52 yearcount}yshade
             i get xsize 0.5 mul xsize 0 mul xsize xsize 0.2 mul
             (FontArialNarrow) centertext
     }hshade
-    (Great Orient Income) 6110 2860 330 xsize 0.5 mul (FontArialNarrow-Bold) lefttext
+    (Great Orient Income) 6100 2860 330 xsize 0.5 mul (FontArialNarrow-Bold) lefttext
 }def
 asiaincome
 

@@ -132,6 +132,9 @@ valachie\
 venise\
 vijayanagar\
 wurtemberg\
+chineespagne\
+turquievenise\
+caraibes\
 # End automatic
 
 

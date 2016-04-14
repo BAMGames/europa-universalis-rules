@@ -141,9 +141,10 @@ refusal of 150\ducats.
     \begin{tabular}{l|l|c|p{.5\textwidth}}
       Country & Side & Mod. & Forces \\\hline
       \paysBaviere & \ligue & Auto. & \ARMY\faceplus, \LD, \fortress and at
-      least 1 General (if none available, use \leader{Mercy} that will stay
-      until his death or when this war ends); has a minimum of 1\LeaderG for
-      the duration of the war; may use 2 \ARMY counters for all
+      least 1 General (see below);
+      % if none available, use \leader{Mercy} that will stay
+      % until his death or when this war ends
+      may use 2 \ARMY counters for all
       the duration of the war; starting forces are Veterans.\\
       \paysCologne & \ligue & & \LD, 1 \fortress\\
       \paysLiege & \ligue & & \fortress\\
@@ -170,6 +171,14 @@ refusal of 150\ducats.
     \caption{Extension of the Alliances during the Thirty Years' War}%
     \label{table:TYW:Extension table}
   \end{table}
+
+  \aparag[Mercy] If there is no named \LeaderG of \paysBaviere in play, it
+  receives \leaderMercy.
+  \bparag If there is one, as soon as he dies (wound is not enough),
+  \paysBaviere immediately receives \leaderMercy.
+  \bparag \leaderMercy stays in play for 4 turns. If he arrives in the middle
+  of a turn (due to death of his predecessor), this turn fully counts as his
+  first turn of activity.
 
   \aparag The forces written may be inferior to the basic forces of the
   country (representing the confused situation).  They are only used when the
@@ -242,10 +251,16 @@ separate peace from the German alliance is required.
   restriction.
   \aparag If \TUR takes \villeVienne, the \ligue will concede a winning peace
   to the \alliance at the end of the turn. A Crusade might then happen.
-  \aparag Once during the war, \TUR is entitled to make a Foreign Intervention
-  (costs 1 \STAB) against the \ligue in this war if otherwise at peace and
-  \paysTransylvanie is \VASSAL or annexed.
+  % \aparag \TUR is entitled to make a Foreign Intervention against the \ligue
+  % in this war if otherwise at peace and \paysTransylvanie is \VASSAL or
+  % annexed.
 
+  \aparag[] [BLP] \ref{chSpecific:Little war} is reactivated for \TUR only,
+  and only with a small stack (up to 5\LD plus one \Pasha).
+  \bparag That is, \TUR (not \paysCrimee) may send one (small) stack in non
+  controlled former provinces of \paysHongrie and loses \STAB accordingly.
+  \bparag Additionally, \TUR may also send this stack in national provinces of
+  \AUS.
 
   \digression[pIV:TYW:German Reinforcements]{German reinforcements}
 
@@ -415,6 +430,9 @@ turns as a Monarch (but a death in battle).
 \leaderwithdata{Gustav-Adolf}. As long as the war goes on for \SUE, it
 benefits from a Military Revolution (see \ref{chAdministration:Military
   Revolutions})
+\bparag[] [BLP] The moment \leader{Gustav-Adolf} dies (even in the middle
+of a round), \SUE receives \leaderBaner for 3 turns. \leaderBaner replaced the
+deceased king (replace one counter by the other).
 \bparag[\leader{Sachsen-Weimar}]\label{pIV:TYW:Saxe-Weimar}
 \leaderwithdata{Sachsen-Weimar} joins \SUE for 7 turns also.
 \bparag If \monarque{Gustave Adolphe} dies, \FRA (if allied to \SUE) may hire
@@ -426,11 +444,14 @@ the \alliance when he goes to \FRA; at each following turns, \FRA can take
 half (round down) of the reinforcements of the \alliance (up to 4\LD) to be
 placed with \leader{Saxe-Weimar}.  If he dies the forces go back to normal
 status in the \alliance.
+
 \aparag \FRA, if Protestant, can begin a limited intervention in the war on
 the side of the \alliance.
+
 \aparag Any \MAJ that was doing a limited intervention during the previous
 turn (as defined in the original war) can continue this limited intervention
 to help the same side.
+
 \aparag \xnameref{pIV:TYW:Turkish Frontier} is in effect this turn.
 
 \phadm
@@ -560,7 +581,7 @@ loses no battle in the \HRE, the alliance it helps gains {\bf 1} in \STAB
 
   \digression[pIV:TYW:Peace Prague]{Peace of Prague}
   \aparag If the \ligue is favoured by the Peace:
-  \bparag The \xnameref{pIV:TYW:Southern HRE Alliance} is created 
+  \bparag The \xnameref{pIV:TYW:Southern HRE Alliance} is created
   \bparag \paysBaviere gains permanently its second \ARMY and \paysPalatinat
   loses its own; \paysBaviere is now an Electorate.  It also gains a permanent
   \bonus{+1} to its reinforcement rolls.
@@ -771,7 +792,7 @@ loses no battle in the \HRE, the alliance it helps gains {\bf 1} in \STAB
   treaties between \paysOldenburg, \paysHanovre, \paysHesse, \paysHanse and
   \paysBerg.
   \bparag These countries are put in \AM of \HOL.
-  
+
   \aparag \HOL has a permanent bonus of \bonus{+2} in Diplomacy on these
   countries.
   \aparag \HOL gains also a income of 10\ducats for each coastal city in

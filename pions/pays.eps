@@ -1,4 +1,3 @@
-
 /color_dict <<
     color_dict {}forall
 % (pays) [ coul_fond coul_bandeau coul_symbole coul_caracs]
@@ -17,7 +16,7 @@
     (boheme)		[[.4  0   .4 ] [.4  1   .4 ] cwhite cblack]
     (bourgogne)		[[1   1   0  ] [0   0   0  ] cblack cwhite]
     (brandebourg)	[[.75 1   .75] [.25 .25 1  ] cblack cyello]
-    (bretagne)		[[.25 .25 0  ] [.25 .75 1  ] cwhite cblack]
+%    (bretagne)		[[.25 .25 0  ] [.25 .75 1  ] cwhite cblack]
     (blanc)		[[1   1   1  ] [1   1   1  ] cblack cblack]
     (brunswick)		[[0   .95 .5 ] [0   .5  0  ] cblack cyello]
     (chevaliers)	[[1   .5  0  ] [1   1   .75] cblack cblack]
@@ -115,13 +114,19 @@
 % Special cases for some majors leaders.
     (angnomalus)	[[1   .1  .6 ] [1   0   0  ] cblack cwhite]
     (angseahound)	[[1   .1  .6 ] [1   0   0  ] cyello cblack]
-    (fralicence)	[[.1  .1  .6 ] [.1  .6  .6 ] cred cwhite]
+    (fralicense)	[[.1  .1  .6 ] [.1  .6  .6 ] cred cwhite]
+    (frahuguenots)	[[.1  .1  .6 ] [.1  .6  .6 ] cyello cwhite]
+%    (fraligue)  	[[.1  .1  .6 ] [.1  .6  .6 ] cyello cwhite]
     (porviceroy)	[[.9  1   .75] [.75 .95 .5 ] cred cblack]
     (prunomalus)	[[.75 .75 .75] [.25 .25 .25] cblack cwhite]
     (holvoc)		[[.5  .5  .9 ] [.8  .8  .2 ] cred cblack]
     (habmercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
     (framercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
     (prumercenaires)	[[.5  .5  .5 ] [.65 .65 .65] cyello cblack]
+    (turcorsaire)	[[.5  .6  .5 ] [0   .6  0  ] cred cwhite]
+    (turvizir)		[[.5  .6  .5 ] [0   .6  0  ] cyello cwhite]
+% Special cases for some majors counters.
+    (turquievenise)	[[.5  .6  .5 ] [0   .6  0  ] cblack cwhite]
 >> def
 %pays {/i exch def pays {/j exch def i j eq not {color_dict i get 0 get color_dict j get 0 get comparethree color_dict i get 1 get color_dict j get 1 get comparethree add 20 string cvs ( )! i 50 string cvs(-)! j 50 string cvs !(\n)! ! display}if}forall}forall
 %/comparethree {/a exch def /b exch def 0 0 1 2 {/c exch def a c get b c get sub dup mul add}for}def
@@ -159,17 +164,23 @@
     (suede)		(Suecia)
     (turquie)		(Turcia)
     (venise)		(Venetia)
-% Special cases far some majors leaders.
+% Special cases for some majors leaders.
     (angnomalus)	(Anglia)
     (angseahound)	(Anglia)
-    (fralicence)	(Francia)
+    (fralicense)	(Francia)
+    (frahuguenots)	(Francia)
+%    (fraligue)  	(Francia)
     (porviceroy)	(Portugallia)
     (prunomalus)	(Prussia)
     (holvoc)		(Hollande)
     (habmercenaires)	(Habsburgum)
     (framercenaires)	(Francia)
     (prumercenaires)	(Prussia)
-% Ici, on met les mineurs 
+    (turcorsaire)	(Turcia)
+    (turvizir)		(Turcia)
+% Special cases for some majors counters.
+    (turquievenise)		(Turcia)
+% Ici, on met les mineurs
     (alliance)		(Protestant Alliance)
     (blanc)		( )
     (ligue)		(Catholic League)
@@ -295,7 +306,9 @@
     (timar) (turquie)
     (angnomalus)	(angleterre)
     (angseahound)	(angleterre)
-    (fralicence)	(france)
+    (fralicense)	(france)
+    (frahuguenots)	(huguenots)
+%    (fraligue)  	(sainte-ligue)
     (porviceroy)	(portugal)
     (prunomalus)	(prusse)
     (holvoc)		(hollande)
@@ -303,6 +316,8 @@
     (habmercenaires)	(habsbourg)
     (framercenaires)	(france)
     (prumercenaires)	(prusse)
+    (turcorsaire)	(turquie)
+    (turvizir)		(turquie)
 >> def
 /majeurslist [
     (angleterre)

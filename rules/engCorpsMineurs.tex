@@ -22,21 +22,22 @@
 \minorprovince{mamelouks}{Cataractes}2
 \minorfixedincome{mamelouks}0{Commercial center}{70}
 \minorspecial{mamelouks}{If not at war,\VEN\ earns the income of the
-commercial center.}  \minorbasicforces{mamelouks}{2\ARMY\faceplus,
-\leader{Caliph}} \minorbasicrenforts{mamelouks}{1 \LDND, 1 \LD}
-\minorarmyclass{mamelouks}{Islam}{II} \minorforces{mamelouks}{2 \ARMY,
-\FLEET, 2 \LDND, 2 \LDENDE} \minorspecial{mamelouks}{Before
-\subeventref{pI:WRS:War Indian Sea}, cannot use its \FLEET. Afterwards,
-1 \ARMY\ is lost and basic forces switch to \FLEET\facemoins,
-\ARMY\facemoins, \LD\ until destruction by \TUR.}
+commercial center.}
+\minorbasicforces{mamelouks}{2\ARMY\faceplus, \leader{Caliph}}
+\minorbasicrenforts{mamelouks}{1 \LDND, 1 \LD}
+\minorarmyclass{mamelouks}{Islam}{II}
+\minorforces{mamelouks}{2 \ARMY, \FLEET, 2 \LDND, 2 \LDENDE}
+\minorspecial{mamelouks}{Before \subeventref{pI:WRS:War Indian Sea}, cannot use its \FLEET. Afterwards, 1 \ARMY\ is lost and basic forces switch to \FLEET\facemoins, \ARMY\facemoins, \LD\ until destruction by \TUR.}
 \minorspecial{mamelouks}{Knows \seazone{Rouge} at the beginning of the
 game.}  \minorspecial{mamelouks}{Has a mandatory defensive alliance with
 \pays{damas} and answers it with limited intervention. May go in
 \pays{damas} even if reinforcement where taken in defensive attitude.}
 \minorspecial{mamelouks}{May be entirely destroyed by \TUR\ if all its
 armies are destroyed and the capital is taken.}
-\minorspecial{mamelouks}{May be recreated by \eventref{pVII:Mameluks
-Revolt}.}
+\minorspecial{mamelouks}{[BLP] If destroyed by \TUR, \leader{Selman Reis} becomes a Turkish \LeaderE.}
+\minorspecial{mamelouks}{May be recreated by
+\eventref{pVII:Mameluks Revolt}.}
+
 
 %\minorcountry{algerie}{Barbary regency of Algeria}{Algeria}
 \minorreligion{algerie}{sunnite}
@@ -52,10 +53,10 @@ Revolt}.}
 \minorarmyclass{algerie}{Islam}{II}
 \minorbasicforces{algerie}{\ARMY\facemoins, \FLEET\facemoins,
 \corsaire\faceplus}
-\minorbasicrenforts{algerie}{1 \LDND, 1 \corsaire\facemoins}
+\minorbasicrenforts{algerie}{1 \LDND, 1 \corsaire\facemoins ([BLP] if there is no \Presidio in \provinceAlgerie)}
 \minorbonusrenforts{algerie}{+1\EUminorremark{during periods \period{I} and \period{II}.}{(pI/pII)}}
 \minorspecial{algerie}{If turkish vassal while \leader{Barbaros} is in
-  play, this admiral becomes ottoman.}
+  play, this admiral may become ottoman.}
 \minorpref{algerie}{\TUR, \FRA, \SPA, \SUE, \AUS, \POR, \PRU, \POL,
   \RUS, \ENG, \HOL, \VEN}
 \minorarmyclass{algerie}{Islam}{II}
@@ -468,10 +469,11 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
   \eventref{pI:Fall Hungary} unless \pays{Hongrie} has been activated as
   an independant state.}
 \minorspecial{habsbourg}{Counters of \pays{Hongrie} are considered as
-  counters of \pays{Habsbourg} after \eventref{pI:Habsburg Hungary} or
-  \eventref{pI:Fall Hungary} if it owns at least 7 provinces of
-  \pays{Hongrie} -- unless \pays{Hongrie} has been activated as an
-  independant state. \paysHabsbourg may still use half of them if it owns only 4 to 6 provinces of \paysHongrie.}
+  counters of \pays{Habsbourg} after \eventref{pI:Habsburg Hungary} if
+  owns at least 5 provinces of \pays{Hongrie}, or after
+  \eventref{pI:Fall Hungary} if it owns at least 7 provinces of \pays{Hongrie}
+  -- unless \pays{Hongrie} has been activated as
+  an independant state.}
 \minorspecial{habsbourg}{Base force increase by \ARMY\faceplus\ and 2
   \fortress after dissociation with \SPA\ due to
   \eventref{pV:WoSS}.}
@@ -638,8 +640,8 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \minorprovince{maroc}{Rif}1
 \minorcapital{maroc}{JebelTubqal}4
 \minorprovince{maroc}{SidiIfni}1
-\minorbasicforces{maroc}{\ARMY\faceplus}
-\minorbasicrenforts{maroc}{\LD}
+\minorbasicforces{maroc}{\ARMY\faceplus, \corsaire\facemoins}
+\minorbasicrenforts{maroc}{\corsaire\facemoins\EUminorremark{ every other turn}{/2 turns}}
 \minorarmyclass{maroc}{Islam}{II}
 \minorforces{maroc}{\ARMY, 2 \LD, \LDND, 2 \NDE, \corsaire}
 \minorbonusrenforts{maroc}{+1 \EUminorremark{during periods \period{I} and \period{II}.}{(pI/pII)}}
@@ -1021,19 +1023,21 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 
 %\minorcountry{transylvanie}{Voivodat of Transylvanie}{Transilvania}
 \minorreligion{transylvanie}{catholique}
-\minordiplo{transylvanie}{14}{50}{1}{1}{2}{5}{*}
-\minorpref{transylvanie}{\TUR, \AUS, \SPA, \POL, \HOL, \VEN, \SUE,
+% [BLP]
+%\minordiplo{transylvanie}{14}{50}{1}{1}{2}{5}{*}
+\minordiplospecial{transylvanie}{Impossible}
+\minorpref{transylvanie}{\TUR, \POL, \AUS, \SPA, \HOL, \VEN, \SUE,
 \RUS, \POR, \FRA, \ENG}
-\minorfid{transylvanie}{12}
-\minorgeo{transylvanie}{\TUR +2}
+%\minorfid{transylvanie}{12}
+%\minorgeo{transylvanie}{\TUR +2}
 \minorprovince{transylvanie}{Erdely}{5}
 \minorprovince{transylvanie}{Mures}3
 \minorbasicforces{transylvanie}{\LD}
 \minorarmyclass{transylvanie}{Orthodoxe}{IIM}
 \minorforces{transylvanie}{2 \LD}
-\minorspecial{transylvanie}{Created has a vassal of either \HAB\ or \TUR\
-  by \eventref{pI:Fall Hungary}. It has no capital but it can not be
-  destroyed by \TUR\ if it was responsible for its creation.}
+\minorspecial{transylvanie}{Created has a vassal of \TUR\
+  by \eventref{pI:Fall Hungary}.}
+\minorspecial{transylvanie}{It is always a permanent special \VASSAL of the owner of \provinceHongrie who is not allowed to declare war on it.}
 
 %\minorcountry{treves}{Archbishopric of Trier}{Trevorum}
 \minorreligion{treves}{catholique}
@@ -1261,7 +1265,6 @@ colonies and trading posts left by the player.}
 when major if higher)}
 %Muf ? Pas nécessaire, il a ses actions de toutes façons.
 %PB: par conservatisme, je garde -- ça pourrait être utile.
-%Tempetes ?
 %\minorbonusrenforts{portugal}{+1 before \eventref{pIII:Portuguese Disaster}.}
 \minorspecial{portugal}{May be annexed by \SPA\ by
 \eventref{pIII:Portuguese Annexation}.}
@@ -1496,6 +1499,7 @@ trading posts left by the player.}
 \minorforces{aceh}{2 \LDND, \NTD, 2 \LDENDE}
 \minorspecial{aceh}{Uses the natives when fighting a battle in its area.}
 \minorspecial{aceh}{Has one strong \TP action per turn as long as \TP is not level 3.}
+\minorspecial{aceh}{Has long as \leaderMalahayati is alive, add \FLEET\faceplus to basic forces. As long as \FLEET\facemoins in play, close the strait to country without \dipAT.}
 
 
 %\minorcountryrotw{aden}{Kingdom of \bazar{Aden}}{Aden}
@@ -1575,12 +1579,14 @@ area.}
 and 11 after \subeventref{pIII:CCA:Closure China}}
 \minorpref{chine}{\TUR, \VEN, \SUE, \FRA, \POL, \PRU, \AUS, \SPA,
 \ENG, \RUS, \HOL, \POR}
-\minorfixedincome{chine}0{Provinces of China (arbitrarily)}{100}
-\minorfixedincome{chine}1{\TradeFLEET\ lv. 3 in \stz{Chine}}{7}
+\minorfixedincome{chine}0{Provinces of \granderegionMandchourie, \granderegionPekin, \granderegionNankin and \granderegionCanton (arbitrarily)}{100}
+\minorfixedincome{chine}1{\TradeFLEET\ lv. 3 in \stz{Formose}}{7}
 \minorbasicforces{chine}{2 \ARMY\faceplus}
 \minorbasicrenforts{chine}{\ARMY\faceplus}
 \minorforces{chine}{2 \ARMY, 4 \LD, 6 \LDE}
 \minorspecial{chine}{Activation is automatic in \province{Pekin}.}
+\minorspecial{chine}{Uses the natives when fighting a battle in its
+areas.}
 \minorspecial{chine}{May gain fleets and \TP\ by various events.}
 \minorevent{chine}{pII:Chinese Expansion}
 \minorevent{chine}{pIII:China Colonial Attitude}
@@ -1961,7 +1967,6 @@ become ally either.}
 become ally either.}
 \minorspecial{sainte-ligue}{\FRA\ must pay for its upkeep or building new troops.}
 \minorspecial{sainte-ligue}{\FRA, or its controller, may use its troops for foreign intervention in religious wars.}
-
 
 
 \minorreligion{saint-empire}{catholique}

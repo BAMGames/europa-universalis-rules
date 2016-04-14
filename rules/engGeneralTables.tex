@@ -10,9 +10,9 @@
       2      &      &     &---   &     & 4T \\\ghline
       3      &      &     &---   &     & 5T \\\ghline
       4      &      &     &---   &     & 6T \\\ghline
-      5      &      &     &---   &     & 7T \\\ghline
-      6      &      &     &---   &     & 8T \\\ghline
-      7      &      &     &---   &     & 9T \\\ghline
+      5      &      & \Pasha    &---   &     & 7T \\\ghline
+      6      &      & \Pasha    &---   &     & 8T \\\ghline
+      7      &      & \Pasha    &---   &     & 9T \\\ghline
       8      &      &     &---   &teen &10T \\\ghline
       9      &      & R   &---   &child&11T \\\ghline
       10     &dead  & R   &\it Fragile&baby&12T  \\\ghline
@@ -1114,7 +1114,7 @@
     \end{modlist}
     \GTheader{Siege modifiers only}
     \begin{modlist}
-    \item[-?] Siege value of one leader (only)
+    \item[-?] Siege of one leader ([BLP] land or naval)
     \item[-3] if besieged in port and no blockade
     \item[+1/+3] if besieged, per Siegeworks \facemoins/\faceplus
     \item[-2] for besieger,
@@ -1125,34 +1125,38 @@
     \GTheader{Sea Attrition only}
     \begin{modlist}
     \item[+?] Greatest sea difficulty (or difficulty-2 if port)
-    \item[+1] per 4 sea zones entered (fractions ignored)
-    \item[+3/+6/+9] if 1/2/5+ sea zones to an arsenal/port SoS
-      {\bf if  \FLEET begins round at sea} [TBD]
+    \item[+1] per 4 sea zones entered (1\FLEET or less) [BLP]
+    \item[+2/4] per 2 sea zones (2/3\FLEET) [BLP]
+    \item[-1] if 2 or 3\FLEET, arsenal to arsenal [BLP]
+    \item[+3/+6/+9] if \FLEET begins at 1/2/5+ zones from SoS
     \item[+2] to stay at sea at the end of turn
     \item[+2] retreating after rout
     \item[+?] LoS crossing \StraitFort
+    \item[-S] Siege of blockading \LeaderA/\LeaderE [BLP]
+    \item[+?] half level of blockaded \fortress (round up) [BLP]
     \end{modlist}
     \GTheader{Exploration only}
     \begin{modlist}
     \item[-2] if sea zone already known (by anyone) in pIV+
     \item[+10] For all explorations (land or sea)
     \end{modlist}
-    \GTheader{For Attrition Tests}
-    \begin{modlist}
-    \item[+2] Double cause (Movement, \terme{poor
-        weather}, \terme{massed force} or Embarking/Landing)
-    \end{modlist}
   }
   % Alas, we cannot do simply a west south=captionb, text is too tall. Using westpoint as reference.
   \GTlegend[caption=captiona,south west,anywhere=\gtid westpoint,xoffset=2pt,margins=4pt,xsize=(\gtid westpoint)(\gtid main.west)]{
+    \GTheader{All Attritions}
+    \begin{modlist}
+    \item[+2] Per extra cause %(Movement, \terme{poor
+%        weather}, \terme{massed force} or Embarking/Landing)
+    \end{modlist}
     \GTheader{At sea (Exploration or Attrition)}
     \begin{modlist}
     \item[+X] For sea zones with malus
-    \item[+3/+6] if   2\FLEET / 3\FLEET
-    \item[+1] With \terme{Carrack} technology (not \NGD)
-    \item[-1] With \terme{Battery} technology
-    \item[-2] With \terme{Vessel} and \terme{Three-decker} technology
-    \item[-3] With \terme{74s} technology
+% [BLP] removed
+%    \item[+3/+6] if   2\FLEET / 3\FLEET
+    \item[+1] \terme{Carrack} (not \NGD)
+    \item[-1] \terme{Battery}
+    \item[-2] \terme{Vessel} or \terme{Three-decker}
+    \item[-3] \terme{74s} technology
     \item[+1/+2] Per unfriendly \corsaire \facemoins/\faceplus [TBD]
     \end{modlist}
   }
@@ -1423,18 +1427,21 @@
       \FRA   &333&322&312&412&322&111&132&223&211&124\\\ghline
       \HAB   &111&213&222&321&122&412&231&322&211&323\\\ghline
       \HOL   &323&222&223&313&222&211&232&321&112&333\\  \ghline
-      \POL\textup{\dag}  &412&511&322&213&512&311&221&323&321&314\\\ghline
-      \PRU\textup{\ddag} &111&232&122&241&221&222&212&133&321&242\\\ghline
+      \POL\xxa  &412&511&322&213&512&311&221&323&321&314\\\ghline
+      \PRU\xxb &111&232&122&241&221&222&212&133&321&242\\\ghline
       \POR   &222&111&212&333&323&211&232&221&113&332\\\ghline
       \RUS   &212&411&322&313&422&222&223&311&231&314\\\ghline
       \SUE   &222&232&231&132&432&113&211&113&223&333\\\ghline
       \TUR   &323&422&512&421&312&111&212&223&113&314\\\ghline
+      % [BLP]
+      Vizier\xxc &212&444&224&233&322&533&415&122&232&434\\\ghline
       \VEN   &312&221&122&213&313&111&331&422&222&413\\\ghline
       Natives&104&405&322&412&114&513&214&313&404&433\\\ghline
     \end{tabular}
   }
   \GTlegend{
-    For Admirals: \textup{\dag}\POL: -1 \Man\quad\textup{\ddag}\PRU: -1 Fire
+    \xxa \POL \LeaderA: -1 \Man \hspace*{.5cm} \xxb \PRU \LeaderA: -1 Fire
+    \hspace*{.5cm} \xxc Vizier: odd die=1 siege
   }
   \GTdecorate
 }
@@ -1470,7 +1477,7 @@
     \graytabular\begin{tabular}{l|*{8}{c}|c}
       \textdownarrow Naval     & \multicolumn{8}{c|}{Opponent's technology\global\countcol=0} & Morale\\\ghline\noalign{\global\countrow=0}
       technology               &   GA  &  CAR  &  Nao  &  GAL   &  BAT  &  VE   &  TD & 74s  &   \\ \ghline\hline
-      \technologie{Galley}  \textetoile   &\bf E/A&  E/A  &  E/B  &  E/B  &  E/B  & E/C & E/D & E/E  & 2 \\ \ghline
+      \technologie{Galley}  \textetoile   &\bf E/A&  E/A  &  E/B  &  E/B  &  E/B  & E/C & E/D & E/E  & 2/3\textdag \\ \ghline
       \technologie{Carrack}    &  E/E  &\bf D/C&  D/C  &  E/C  &  E/D  &  E/E  & E/E & --/E & 1 \\ \ghline
       \technologie{Nao-Galeon}    &  C/C  &  C/C  &\bf D/B&  C/C  &  C/C  &  D/C  &  E/D  & E/D & 2 \\ \ghline
       \technologie{Galleon-Fluyt}&  B/B  &  B/B  &  B/C  &\bf C/C &  C/C  &  D/D  &  E/D  & E/D & 2 \\ \ghline
@@ -1481,7 +1488,7 @@
     \end{tabular}
   }
   \GTlegend{
-    \textetoile \TBAT: all \NGD contains Galleasses; \hfill \textdag: Morale 4 if \terme{Veteran}
+    \textetoile \TBAT: all \NGD contains Galleasses; \hfill \textdag: Morale +1 if \terme{Veteran}
   }
   \GTdecorate
 }
@@ -1977,8 +1984,8 @@
     \item[Exc.:] fort= terrain or port: -1 only
     \item[+2] \terme{Breach} during this turn
     \item[+1/+3] Per \terme{Siegeworks}\facemoins/\faceplus
-    \item[-S] Siege value of the besieged
-    \item[+S] Siege value of the besieger
+    \item[-S] Siege value of one besieged leader ([BLP] land or naval)
+    \item[+S] Siege value of one besieger leader ([BLP] land or naval)
     \item[+1/+3] If at least one \LD/\ARMY in the fortress
     \item[+?] Artillery bonus against fortress
       % \item[+1] If \#Artillery>Fortress level

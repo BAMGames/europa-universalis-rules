@@ -351,7 +351,10 @@
 \EU@objEcosseVassal{10}{30}%
 \EU@objCalaisANG{45}%
 \EU@objIndustrial{25}%
-\EU@objSpecificProvince[M]{Guyenne}{50}{Hundred years war}%
+%\EU@objSpecificProvince[M]{Guyenne}{50}{Hundred years war}%
+\EUobjective{M}{Hundred years war}{occupation}{25}{50}{[BLP] Each occupation
+  marker in French national provinces ; or full success if \provinceGuyenne is
+  owned, no matter who controls it}
 \EU@objIrelandPacified{10}{40}%
 %
 \EUcurrentperiod{II}%
@@ -526,8 +529,11 @@
 \EUobjective{}{\TUR stopped in Ionian}{}{}{40}{%
   No Turkish possesions nor \VASSAL west of \seazoneIonienne (\provinceTripoli
   excluded, \provinceMalta or any province in \regionItalie included)}%
+%\EUobjective{}{Habsburg-Sultan peace}{}{}{30}{%
+%  No more than one turn of war between \paysHabsbourg and \paysmajeurTurquie}%
 \EUobjective{}{Habsburg-Sultan peace}{}{}{30}{%
-  No more than one turn of war between \paysHabsbourg and \paysmajeurTurquie}%
+  [BLP] 40 -5/turn where \ref{chSpecific:Little war} is active (max 30); or
+  full success (30\VPs) if no \TUR Occupation in \paysHongrie}%
 \EUobjective{}{Trade expansion}{}{}{30}{%
   Monopoly in \ctz{Espagne} and in at least 2 other \CTZ/\STZ}%
 %
@@ -878,9 +884,6 @@
   0: full sucess; 1: half-success;2 or more: failure. Only check provinces
   owned at the beginning of the period, not provinces annexed (and then lost
   again) during the period}%
-% \EUobjective3M{\villeVienne never fell to \TUR}{}%
-% {}{50}{\provinceOsterreich/\ville{Vienne} never captured by
-%   \paysmajeur{Turquie}}%
 \EUobjective{}{Absolutism}{}{}{40}{Absolutism established}%
 \EU@objNoRUSBaltic{40}%
 \EU@objNoTURHungaryFull[M]{50}{10}{ plus 20\VPs if \villeVienne was never
@@ -906,10 +909,14 @@
 \EU@objSpiceTUR[M]{10}{40}%
 %
 \EUcurrentperiod{III}%
+% \EUobjective{M}{War or Peace in \payshongrie}{}{}{35}{%
+%   Either there is no more than one turn of war between \AUSaus and
+%   \paysmajeurTurquie, or at least 9 provinces of \payshongrie are owned by
+%   \paysmajeurTurquie (whoever controls them)}%
 \EUobjective{M}{War or Peace in \payshongrie}{}{}{35}{%
-  Either there is no more than one turn of war between \AUSaus and
-  \paysmajeurTurquie, or at least 9 provinces of \payshongrie are owned by
-  \paysmajeurTurquie (whoever controls them)}%
+  [BLP] Either there is no more than one turn of formal war between \AUSaus
+  and \paysmajeurTurquie, or at least 9 provinces of \payshongrie are owned or
+  occupied by \paysmajeurTurquie}%
 \EU@objViennaFallen{40}%
 \EU@objCountryExists{Astrakhan}{35}%
 \EUobjective{}{Med\EUAbbr{iterranean} Islands}{prov\EUAbbr{ince}*}{20}{50}{%

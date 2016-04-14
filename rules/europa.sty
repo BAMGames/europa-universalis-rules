@@ -604,6 +604,9 @@
 \def\listleader#1{\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}}
 \def\listleadernolink#1{\bgroup\let\anchorleader\strongleader\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}\egroup}
 
+\def\listleadershort#1{\FEforeachlist{#1}{\leader{\loopitem}}{, }}
+
+
 %%% Display leader
 %% Leader data
 \def\leaderdata#1{\expandafter\ifx\csname leaders@#1@carac\endcsname\relax\emph{[stats of #1]}\else\displayleadercaracs{#1}\fi}
@@ -651,7 +654,11 @@
 %%% Turns management
 
 \def\EUaffecteturns#1#2#3{\expandafter\gdef\csname leaders@#1@turns\expandafter\endcsname\expandafter{\EUaffecteturnshelper{#2};{#3}\endbogoturns}}
-\def\EUaffecteturnshelper#1;#2\endbogoturns{\ifx\relax#2\relax[]\else\ifx\relax#1\relax[Event #2]\else[T#1--T#2]\fi\fi}
+% (jym) :
+% Leaders with no turns are pseudo-anonymous (Shah, ...), Carl XII and
+% La Valette. I prefer to remove the empty [] from the text.
+%\def\EUaffecteturnshelper#1;#2\endbogoturns{\ifx\relax#2\relax[]\else\ifx\relax#1\relax[Event #2]\else[T#1--T#2]\fi\fi}
+\def\EUaffecteturnshelper#1;#2\endbogoturns{\ifx\relax#2\relax\else\ifx\relax#1\relax[Event #2]\else[T#1--T#2]\fi\fi}
 % \def\displaysecondturn#1 #2 {[T#1--T#2]}
 % \def\displayeventturn(#1)#2\endbogo{[Event #1-#2]}
 
@@ -676,6 +683,24 @@
   \expandafter\g@addto@macro\csname listanonyme#2\endcsname{\smallskip\par}%
   \fi%
   \expandafter\g@addto@macro\csname listanonyme#2\endcsname{\displayanonyme{#1}{#3}{#4}}}
+
+%%% Pseudo-Anonymous leaders management (pachas, HIS missionaries)
+% name, type, stats, comment
+\def\displaypseudoanonyme#1#2#3#4{\strongleader{#1}\space\ifx#2M\else\displaytype{#2}\fi\space#3\space#4}
+%% Pachas. name, country, type, stats, comments
+\def\leaderpseudoanonyme(#1)[](#2)(#3)(#4)(#5){%
+  \expandafter\ifx\csname listpseudoanonyme#2\endcsname\relax%
+  \expandafter\gdef\csname listpseudoanonyme#2\endcsname{\par}\else%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{,\quad }%
+  \fi%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{\displaypseudoanonyme{#1}{#3}{#4}{#5}}}
+%% Missionaries. name, country, type, stats, comments
+\def\leaderpseudoanonymepar(#1)[](#2)(#3)(#4)(#5){%
+  \expandafter\ifx\csname listpseudoanonyme#2\endcsname\relax%
+  \expandafter\gdef\csname listpseudoanonyme#2\endcsname{\par}\else%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{\par}%
+  \fi%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{\displaypseudoanonyme{#1}{#3}{#4}{#5}}}
 
 %%%% Objectives
 %%% Setters

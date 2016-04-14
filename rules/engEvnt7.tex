@@ -893,13 +893,28 @@ been crushed.
   destroyed or disbanded.
   \bparag \FRA may not have more than 6 \ARMY counters in play at the same
   time.
+  \bparag Both the royal counters (of \FRA) and the new revolutionary counters
+  (labelled ``Révolutionnaires'') belong to the same country for all purpose
+  of leadership.
+
   \aparag Recruitment and upkeep cost of Revolutionary \ARMY is halved (upkeep
   of royal \ARMY is unchanged).
+
   \aparag Land recruitment limit is doubled.
+
   \aparag Naval recruitment cost is doubled.
+
   \aparag \FRA may not used Licensed privateers as described in
   \ruleref{chSpecific:France:Privateers}.
 
+  \aparag[Revolutionary leaders] [BLP]
+  \bparag All leaders of \FRA are dismissed. \FRA now uses the revolutionary
+  leaders (excluding \leaderBonaparte).
+  \bparag The leaders limits for \FRA is now 3\LeaderG/1\LeaderA.
+  % En pVII : 3G, 4A, 1C@
+  \bparag The revolutionary leaders are treated as \anonyme leaders rather
+  than named ones. That is, \FRA draws them at random in order to reach
+  its limits and they change every turn.
 
   \digression[pVII:Revolution:Levee Masse]{``La Patrie en danger''}
   All the effects of \xnameref{pVII:Revolution:Armies} are applied. In
@@ -907,10 +922,21 @@ been crushed.
 
   \phdipl
   \aparag All French \ARMY are immediately replaced by Revolutionary \ARMY.
+
   \aparag \FRA may have up to 8 \ARMY counters in play.
-  \aparag Remove all named leaders of \FRA. \FRA gets 5 unnamed generals and 1
-  unnamed admiral (who can go in the \ROTW) (these are the new limits for
-  \FRA).
+
+  % \aparag Remove all named leaders of \FRA. \FRA gets 5 unnamed generals and 1
+  % unnamed admiral (who can go in the \ROTW) (these are the new limits for
+  % \FRA).
+  \aparag[Revolutionary leaders] [BLP]
+  \bparag All leaders of \FRA are dismissed. \FRA now uses the revolutionary
+  leaders.
+  \bparag The leaders limits for \FRA is now 5\LeaderG/1\LeaderA.
+  % En pVII : 3G, 4A, 1C@
+  \bparag The revolutionary leaders are treated as \anonyme leaders rather
+  than named ones. That is, \FRA draws them at random in order to reach
+  its limits and they change every turn.
+
   \aparag General \leaderwithdata{Bonaparte} is available for \FRA during the
   first turn of \monarqueTerror, starting with the first round after
   W2. % (Jym) : S3 or later
@@ -1411,7 +1437,11 @@ of \bonus{+1} to all attempts to suppress \REVOLT .
 
 
 \event{pVII:War Crimea}{VII-15}{War in Crimea}{2}{PBnew}
-
+\begin{todo}
+  Add something about Orlov's revolt in the first occurrence of the
+  event. Plus probably something to allow \RUS to go out of Black sea and help
+  the Greek revolt.
+\end{todo}
 \history{1768-1774, 1787-1792}
 % (Jym) one occurrence only? Present twice in the table.
 
