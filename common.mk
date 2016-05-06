@@ -169,7 +169,7 @@ $$($(1)DIR)/ignore:
 $$($(1)DIR)/ignorelist:
 	@cat $$($(1)DIR)/.gitignore|sed -e '/^$$$$/ d'
 $$($(1)DIR)/depends:
-$$($(1)DIR)/ftp: $(WEBDIR)/ftpaction
+$$($(1)DIR)/ftp: $(WEBDIR)/oldftpaction
 endef
 
 $(foreach dir,$(NAMES),$(eval $(call DIR_template,$(dir))))
