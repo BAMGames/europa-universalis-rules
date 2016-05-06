@@ -35,8 +35,8 @@ game is an absolute limit on what is usable. Different countries have
 different number of counters of each kind.
 
 Exception: \pays{pirates} \corsaire, \pays{natives} troops, neutral fortresses
-and revolted troops are not limited. If you need more than provided by the
-game, you may use whatever you wish to represent them.
+and revolted/rebelled troops are not limited. If you need more than provided
+by the game, you may use whatever you wish to represent them.
 
 
 
@@ -104,11 +104,12 @@ movement.
 \bparag \LDE are never counted in stacking and supply limits.
 
 \aparag[Natives.] Each \ROTW \Area holds a certain number of natives per
-province. They are written on the \ROTW map in number of \LD.
-\bparag Counters are provided to remember losses of natives in each
-province. You may use \ARMY\faceplus/\facemoins to represent 4/2 \LD of
-natives but this is for convenience only: they are not considered as \ARMY for
-game purposes. These counters are in unlimited quantity.
+province. They are written on the \ROTW map in number of \LD or \LDE.
+\bparag Counters (from the \pays{natives} ``country'') are provided to
+remember losses of natives in each province. You may use
+\ARMY\faceplus/\facemoins to represent 4/2 \LD of natives but this is for
+convenience only: they are not considered as \ARMY for game purposes. These
+counters are in unlimited quantity.
 
 
 \subsubsection{Military doctrine}
@@ -123,8 +124,9 @@ special cases for artillery and cavalry.
 and the list of countries belonging to it on the right.
 \bparag Most minor countries are grouped according to their cultural groups.
 \bparag The army class of minor countries can also be found in their
-description in the appendices under the name ``Military doctrine''. It is also
-written on each counter.
+description in the appendices under the name ``Military doctrine''.
+\bparag Note that when these values change (with a new period), each existing
+land counter is automatically updated to the new values.
 
 \GTtable{armyclasses}
 
@@ -229,6 +231,11 @@ necessary.
 \bparag Since the exact content of \FLEET counters is not fixed, it must be
 written down. There is space for this on the colonial record sheet of each
 country.
+\bparag Note that when the capacity change (with a new period), existing
+\FLEET counters are not automatically ``topped up'' to their new
+capacity. They keep the same number of \ND and nez ones must be brought. It is
+however possible that the content of a not full \FLEET\Faceplus suddenly fits
+into a new size \FLEET\Facemoins\ldots
 
 \GTtable{fleetsize}
 
@@ -253,12 +260,11 @@ movement.
 \aparag[Pirates.] The last naval forces are pirates and privateers. They
 represent independent sailors that attack trade fleets. Privateers (\corsaire)
 work for one country; pirates are represented by the (abstract) minor country
-\pays{pirates} (who mostly has \corsaire units). \corsaire have to be
-maintained or bought.
+\pays{pirates} (who mostly has \corsaire units).
 
 \aparag[Trade fleets] (\TradeFLEET) are not naval forces. They only represent
 trade activity (not specific ships), do not move and can only be attacked by
-pirates and privateers.
+\corsaire.
 
 \begin{exemple}
   In period \period{III}, the size of English fleets is ``2/1:5/1''. Thus, a
@@ -292,7 +298,7 @@ fortress of level either 1 or 2 drawn of the map.
 sufficiently high technology.
 \bparag Fortresses may lose levels due to sieges. If this puts the fortress
 below its basic level, use the white level 1 counters to denote it. In no case
-can the fortress of an European province go below 1.
+can the fortress of a province with a basic fortress go below 1.
 \bparag Note that fortresses counters are double-sided. Thus, building a
 fortress prevents a country from building the one on the back of the
 counter. It is always possible to switch one fortress counter for another (of
@@ -358,8 +364,8 @@ its intrinsic fort).
 \aparag[Veterans and Conscripts.] All land forces can be either
 \terme{Veteran} or \terme{Conscripts}. A \terme{Veteran} army has seen more
 battles than conscripts, is better trained, and less likely to flee in the
-presence of the enemy. A \terme{Conscript} army is formed of newer soldier and
-paid less.
+presence of the enemy. A \terme{Conscript} army is formed of newer soldiers
+and paid less.
 \bparag \terme{Veteran} have a bonus in battle (better moral). However, their
 maintenance cost is also higher.
 % forces have a morale higher by 1 point compared to

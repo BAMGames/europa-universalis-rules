@@ -153,7 +153,7 @@ did had a large influence and territorial base such as \paysChine or
 
 \subsection{Religions and standings}
 
-\aparag Each country, major or minor, has a \terme{religion}.
+\aparag[Religions] Each country, major or minor, has a \terme{religion}.
 \bparag Several actions or events in the game depend on the religion of a
 given country.
 \bparag Several countries (both major and minor) may (or must) change religion
@@ -165,9 +165,9 @@ indicated in scenario description.
 the main (non-blurred) shield in each province depends on the religion of the
 province (which is usually the religion of the country).
 
-\aparag Several religions are further subdivided into \terme{standings}. Some
-actions depend not only on the religion but also on the precise standing of
-the country.
+\aparag[Standings] Several religions are further subdivided into
+\terme{standings}. Some actions depend not only on the religion but also on
+the precise standing of the country.
 \bparag Minors countries usually have no standings, unless explicitly stated.
 \bparag The precise standing inside a religion is noted as
 ``Religion/Standing'' such as ``\CATHCR''. Sometimes, only the standing is
@@ -190,7 +190,7 @@ countries and the way they progress. Check~\ref{chAdministration:Technology}
 for details on technology.
 
 \aparag Cultural groups usually contains all countries of one or more
-religion. Thus, we may use the same names (and symbols) to depict them. But
+religion. Thus, we may use the same names (or symbols) to depict them. But
 these should not be confused.
 
 \aparag The cultural groups in which a minor country belongs is indicated as
@@ -199,22 +199,14 @@ its ``Military doctrine'' in the Appendix.
 
 
 \subsection{List of religions and cultural groups}
-
 \label{chThePowers:List of religions}
-\aparag We give here a list of all religions, standings and cultural groups.
-
-% \begin{todo}
-%   Add religious symbols. The \verb+\Xcatholique+ and similar commands do not
-%   appear to work within section titles.
-% \end{todo}
 
 \subsubsectionJ{Catholic}{\Xcatholique}
 \aparag Before~\ref{pI:Reformation}, this religion has no standings
 \bparag After, there are two Catholic standings: \terme{Conciliatory} and
 \terme{Counter-Reformation} (also called \terme{Counter-Reform}).
 
-\bparag If needed and not specified, consider Catholic minors as begin
-\CATHCR.
+\bparag Unless specified otherwise, consider Catholic minors as being \CATHCR.
 
 \aparag Catholic provinces have a golden shield border.
 
@@ -230,8 +222,8 @@ its ``Military doctrine'' in the Appendix.
 % "Protestant (or Anglican)" (sometimes "Protestant") -> Protestant
 % "Protestant (not Anglican)" -> "Protestant/Puritan" (or "Puritan").
 \aparag There are four Protestant standings: \terme{Anglican} and
-\terme{Puritan} (available only for \ANG) ; \terme{Strictly protestant} (or
-\terme{Rigorous}) and \terme{Tolerant} (available only for \SUE).
+\terme{Puritan} (available only for \ANG) ; \terme{Rigorous} (or
+\terme{Strictly protestant}) and \terme{Tolerant} (available only for \SUE).
 \bparag Protestant minors, as well as other Protestant majors, have no
 standing.
 
@@ -329,11 +321,19 @@ require special rules within the game.
 in the Islam group nor in the Medieval one.
 \bparag Natives in continents and areas not listed as Medieval are considered
 to be part of this group.
-\bparag Beware that some \ROTW countries are of Muslim religion but belong to
-this cultural group.
-
 
 \subsubsection{Special cases}
+\aparag Beware of the Islam (cultural group) Muslim (religion) distinction in
+the \ROTW (they do contain the exact same European countries).
+\bparag Some \ROTW countries are of Muslim religion but belong to the \ROTW
+cultural group.
+\bparag Some \ROTW countries are of ``Other'' religion but belong to the Islam
+cultural group.
+\bparag In short: always check the precise religion and cultural group of
+\ROTW minors when needed\ldots
+
+
+
 \aparag \paysSuisse is both Catholic and Protestant.
 \bparag Whenever a major attempts an action on it, considered its religion to
 be the worst possible case between them.
@@ -360,209 +360,12 @@ last until the end of \ref{pIV:TYW}.
 Protestants harder, but they also hamper a bit relations between Christians
 and Muslims.
 
-% \section{Modification sur les revenus, juillet 2008}
-
-% \subsection{Attendus}
-
-% \begin{itemize}
-% \item empêcher constitution d'un confortable matelas d'argent pour les pays
-%   riches
-% \item faire une partie des PVs par prélèvement sur richesse du pays
-% \item rendre plus historque le recours incessant à l'emprunt
-% \end{itemize}
-
-% \subsection{Survol du principe}
-
-% \begin{itemize}
-% \item Le 'Gross Income' est la richesse du pays sur laquelle on prévoit les
-%   dépenses usuelles.  Selon le résultat d'un test dit « États au vrai », une
-%   part de cette richesse devient un revenu qui couvre les dépenses, une part
-%   en dépenses de prestige (sauf si cet argent est utilisé pour les dépenses
-%   du tour) et donne des PVs, et une part est empruntable en emprunt
-%   national. On peut aussi emprunter internationalement.
-% \item le Trésor Royal est différent : ce qui vient dans le trésor est ce qui
-%   reste dans l'opération précédente. Il reçoit aussi l'or, les revenus des
-%   pillages, des corsaires,...
-
-%   Cet argent sert à la diplomatie (majeurs, mineurs, paix,...), à la mise
-%   pour augmenter la stabilité, et à équilibrer si les dépenses sont plus
-%   grandes que les recettes.
-% \end{itemize}
-
-% \subsection{Détails}
-
-% Chaque pays mène une double comptabilité :
-% \begin{itemize}
-% \item Trésor Royal qui se continue d'un tour à l'autre,
-% \item Richesse du pays sur laquelle les dépenses des phase administratives,
-%   logistiques et militaires sont prises, qui est équilibré (par le test dit
-%   d'«États au vrai «) en fin de tour (phase VII ) et qui peut alimenter le T
-%   résor Royal si il reste alors des ducats.
-% \item A cela s'ajoute les emprunts (nationaux ou internationaux) qui se
-%   poursuivent d'un tour à l'autre tant qu'ils ne sont pas remboursés ou
-%   annulés (par des Banqueroutes).
-% \end{itemize}
-
-% \subsubsection{Le Trésor Royal (TR)}
-% \aparag Ce qui entre et sort du TR :
-% \begin{itemize}
-% \item Phase I (Event) et II (Diplo) : événements, diplomatie (dont
-%   subventions), dons,...
-% \item Phase VI : pillages, or, corsaires
-% \item Phase VII : on résout dans l'ordre
-%   \begin{enumerate}
-%   \item Impôts exceptionnels (ajouter le résultat directement dans le TR)
-%   \item « États au vrai » : test d10 pour Revenu/Prestige/Emprunt National
-%   \item Emprunt international éventuel
-%   \item Mise sur la stabilité
-%   \item Paix (et indemnités)
-%   \end{enumerate}
-% \item Phase VIII : Inflation : le \% perdu est pris sur la valeur absolue du
-%   TR, avec minimum = le \% en ducats ou la moitié du \% en ducats pour les
-%   pays majeurs suivants : POL, SUE en pIII et IV, RUS en pI à pIV, AUS en
-%   pIII à pIV.
-% \end{itemize}
-% \aparag le TR peut passer en négatif (mais attention à la Faillite en Phase
-% III)
-
-% \subsubsection{Richesse et dépenses du pays pendant un tour}
-% \aparag En Phase III, tout le revenu = Richesse du pays.
-% \bparag IMPORTANT : on ne compte pas de malus/bonus de stabilité ici.
-% \aparag Faillite = 2 possibilités
-% \begin{enumerate}
-% \item après le calcul du revenu (Phase II), faillite obligatoire si le TR +
-%   Richesse - (Intérêts+Remboursements obligés à ce tour) est négatif
-%   \textrightarrow oblige à opérer une Banqueroute immédiate pour corriger
-%   cela
-% \item à tout instant, si la TR+Richesse est négatif \textrightarrow oblige à
-%   opérer une Banqueroute immédiate de remise à zéro
-% \end{enumerate}
-% \aparag En Phases IV, V et VI, on ajoute toutes les dépenses ensemble
-% (Actions administratives, Logistique, Intérêts et Remboursement des
-% emprunts, Campagnes, Recrutements exceptionnels,...) = Dépenses du tour
-% \aparag Phase VII, Impôts exceptionnels (ajouter le résultat directement
-% dans le TR)
-% \bparag NOTE : pour les impôts exceptionnels, ils sont décidés en phase IV
-% (action Adm), le point de stabilité est perdu tout de suite et le
-% modificateur est noté. Cependant, le d10 n'est lancé qu'en Phase VII et les
-% ducats résultats vont directement dans le TR
-% \aparag Phase VII, « États au vrai »
-% \bparag En fin de tour, avant la mise pour augmenter la stabilité, on teste
-% l'État au vrai des dépenses et du Trésor Royal
-% (see~\tableref{table:Exchequer test}).  \GTtable{etatsauvrai}
-% \bparag Résultat à lecture directe : \% en revenu normal, \% en revenu
-% Prestige, \% capacité d'emprunt national (la colonne "emprunt international"
-% n'est pas utilisée pour ce test)
-% \begin{designnote}
-%   À noter : colonne +1 à +4 : 3 1/2* ; colonne 0 et -1 : 2 1/2* ; colonne -2
-%   à -4 : un seul 1/2*
-
-%   Je vous donne les statistiques moyennes d'auto-finacement sans emprunt
-%   (sachant que l'emprunt national vient redresser les faibles valeurs : on
-%   peut tjs compter sur 70\% au minimum de disponible, voire 80\% si on peut
-%   pas faire de F*, par exemple STAB à +2 ou +3, ou 0 et +1 et en paix sans
-%   emprunts en cours) :
-%   \begin{quote}\ttfamily\selectfont\obeylines \obeyspaces
-%     STAB -3 -2 -1 0 +1 +2 +3 à +2: 64 72 78 81 86 87 91 à +1: 58 65 71 75 80
-%     82 86 à 0: 52 58 64 68 73 76 80 à -1: 46 51 57 61 67 70 74 à -2: 40 45
-%     51 56 61 64 68 [ comparaison effet STAB avant : 50 66 75 90 100 100 110
-%     ]
-%   \end{quote}
-% \end{designnote}
-
-% \bparag[SOLUTION ALTERNATIVE] paix complète donne +1, on augmente emprunt
-% national de base de 10\% mais on met le bonus en emprunt national à 10\% de
-% + si pas en paix
-
-% \bparag[Equilibre des dépenses]
-% Les dépenses du tount d'abord prises sur Revenu régulier
-% \begin{itemize}
-% \item revenu régulier ; ce qui reste => TR
-% \item revenu de Prestige ; ce qui reste => PVs
-% \item l'Emprunt National : revenu optionnel ce qui reste => TR
-% \item si manque pour couvrir les dépenses : prendre dans TR
-% \end{itemize}
-
-% \bparag[Emprunts Nationaux]
-% \begin{itemize}
-% \item Une portion de la Richesse d'un pays n'est récupérable pour les
-%   dépenses que via des emprunts nationaux, décidés à cette phase.
-% \item On tient le compte des emprunts nationaux en ajoutant les sommes
-%   empurntées, cumulées d'un tour sur l'autre jusqu'à leur rembousement.
-% \item Chaque tranche complète de 100d compte comme un emprunt pour le test
-%   d'États au vrai.
-% \item Lors de la phase administrative (dépenses, Phase IV), le pays doit
-%   payer 10\% des emprunts nationaux en cours (intérêts des emprunts). Les
-%   remboursements d'emprunts ne se font qu'après avoir payé les intérêts, à
-%   cette même Phase des dépenses.
-% \end{itemize}
-
-% \aparag Phase VII, Emprunts Internationaux
-% \begin{itemize}
-% \item Si l'argent disponible ne lui apparaît pas suffisant, un pays peut
-%   tenter de recourir aux emprunts internationaux après avoir résolu les «
-%   États au vrai ».
-% \item Pour cela, un test est fait sur la table des « États au vrai », en
-%   lisant la colonne "Emprunt International", avec les mêmes modificateurs,
-%   et +1 au dé si contrôle d'un Stock Exchange
-% \item Résultat: \% de la capacité financière internationale que l'on peut
-%   emprunter (c'est un max., on peut prendre moins) ; ce qui est emprunté ira
-%   dans le TR (ou dans les dépenses du tour)
-% \item Capacité financière internationale = 50d + 50d par place financière
-%   existante : HRE, Gènes, Amsterdam Stock Exchange, London Stock
-%   Exchange. Doubler si la place financière est contrôlée par le pays (HRE:
-%   Empereur, Gènes: patron diplo.) (see~\tableref{table:Exchequer test}).
-% \item Chaque emprunt international est un emprunt individuel (qq soit la
-%   somme).
-% \item Intérêts : 10\% de l'emprunt à chaque tour (dans les dépenses)
-% \item Remboursement : 3 tours pour le faire ; à mettre dans les dépenses (en
-%   plus des intérêts du tour).
-% \item On ne peut pas faire défaut au remboursement d'un emprunt
-%   international, sauf à déclarer une Grande Banqueroute.
-% \end{itemize}
-% \aparag[Phase IV, Déclaration de Banqueroute] Les Banqueroutes se déclarent
-% au moment des dépenses, avant d'avoir payé les intérêts des emprunts en
-% cours. Elles sont optionnelles, sauf à voire le TR menacé de Faillite (en
-% quel cas une Banqueroute d'un type permettant d'échapper à la Faillite est
-% obligatoire) (see~\tableref{table:Bankruptcy Roll}).  \GTtable{bankruptcy}
-% \bparag Note: destruction de TF/MNU : il faut détruire qq chose, sauf si
-% plus aucun niveau de l'un et de l'autre
-% \bparag[Petite Banqueroute]
-% \begin{itemize}
-% \item permet d'annuler jusqu'à 200d d'emprunt national
-% \item effets négatifs : [perte de 5 PVs - TBD ?] et test de Banqueroute
-% \end{itemize}
-% \bparag[Grande Banqueroute]
-% \begin{itemize}
-% \item permet d'annuler jusqu'à 200d d'emprunt international, ou tous les
-%   emprunts nationaux
-% \item effets négatifs : perte de 15 PVs ; appliquer le résultat 1- de
-%   Banqueroute
-% \end{itemize}
-% \bparag[Banqueroute complète (RAZ)]
-% \begin{itemize}
-% \item annule tous les emprunts en cours, remet le TR à 0 ducats
-% \item effets négatifs : perte de 30 PVs ; appliquer le résultat 1- de
-%   Banqueroute et réduire le DTI de 1
-% \item compte comme double banqueroute (donc -2 au test d'États au vrai)
-% \end{itemize}
-% \bparag Effet sur les paix : si un pays fait Banqueroute et se retrouve à -3
-% en stabilité, il doit immédiatement proposer une armistice pour le tour, et
-% devra accepter toute paix faite sur la base du Différentiel de Paix à la fin
-% du tour.
-% \bparag TUR : Petite Banqueroute corrompt un pasha, Grande Banqueroute ou
-% Remise à zéro corrompt 2 pashas.
-
-
-
-
 \section{The passing of time}
 % RaW: [24]
 \subsection{Periods}
 A period represents a number of game turns, historically homogeneous, with a
-duration of approximately 30 to 50 years (more or less). The 62 game turns are
-distributed in seven periods to simulate the different epochs of the era
-covered by the game.
+duration of approximately 30 to 50 years. The 62 game turns are distributed in
+seven periods to simulate the different epochs of the era covered by the game.
 
 These periods give the rhythm of the campaign game, especially the 1492-1792
 Grand Campaign. Each player possesses for his country, a series of strucutral
@@ -1362,8 +1165,6 @@ lose their value because of inflation).
 
 \aparag The count unit is the \terme{ducat}, written \Ducats.
 
-
-
 \subsection{Economic Record Sheets}
 
 \aparag Each player has two sheets, separated in three actual \EcoRS.
@@ -1391,8 +1192,6 @@ advance and fill the corresponding lines as a reminder.
 \aparag The \RT can well be negative (representing debts). This does not cause
 extra trouble (as long as the amount of the debt is not ``too big'').
 
-
-
 \subsection{A Three stage process}\label{chThePowers:Exchequer}
 \begin{designnote}
   We explain here the spirit of the economical system. For the technical
@@ -1412,9 +1211,9 @@ phases).
 collected and the monarchs try to find money to fill the gaps (Exchequer test
 segment during the Budget and Peace phase).
 
-\NPincludeA4{accounting-rt}{Economic Record sheet A and
-  C}{economic-record-sheet-rt} \NPincludeA4{accounting-income}{Economic Record
-  sheet B}{economic-record-sheet-income}
+% \NPincludeA4{accounting-rt}{Economic Record sheet A and
+%   C}{economic-record-sheet-rt} \NPincludeA4{accounting-income}{Economic Record
+%   sheet B}{economic-record-sheet-income}
 
 
 \subsubsection{Incomes}

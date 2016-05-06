@@ -103,6 +103,10 @@ may also be applied to fortifications (loosing 1 level of fortress or 1 fort
 instead of 1\LD). The controller chooses whether to loose troops or
 fortifications, but as many loses as possible must be satisfied. Exceeding
 loses are ignored.
+\bparag Losses can be applied to militia or the basic fortress of a level 6
+\COL, both of them will come back during the Inter-phase.
+\bparag In a besieged province, half of the loss (rounded up) are applied to
+the besieger and the other half (rounded down) to the besieged.
 
 \aparag[Exploited resources]
 \bparag If an establishment loses levels and is still able to exploit all its
@@ -331,8 +335,8 @@ against which they are at war (including overseas wars) in their
 \item[+M] \Man of one defending \LeaderA (see below, count only one defending
   \LeaderA per attack).
 \item[-1] per year in the sea zone (max. \bonus{-3}) (see below).
-\item[-M] \Man of one \corsaire \LeaderA (count only one attacking \LeaderA
-  per attack). %(\textonehalf for land raids in Europe)
+\item[-M] \Man of one \corsaire \LeaderA/\LeaderP (count only one attacking
+  \LeaderA/\LeaderP per attack). %(\textonehalf for land raids in Europe)
 \item[+1] if a naval battle occurred in the sea where the \corsaire is located
   during this turn. %(not for land raids)
 \item[-2] if the \corsaire of \pays{chevaliers} is in the attack and there is
@@ -424,8 +428,7 @@ countries give no income (even if \VASSAL).
 \bparag This ``privateers income'' is recorded in \lignebudget{Pillages,
   privateers}.
 \bparag In case of stacks with \corsaire from several powers, this income is
-equally divided between the powers (including minor ones), dropping any
-fraction.
+equally divided between the powers (including minor ones), rounded down.
 
 \begin{exemple}[Resolving the attack] During period \period{II},
   \leaderwithdata{Barbaros2} sails out of \villeAlger with a
@@ -661,9 +664,9 @@ not generate \REBELLION.
 \bparag When extending, \REVOLT only create \REVOLT and \REBELLION only create
 \REBELLION.
 \bparag When a \REVOLT/\REBELLION\Faceplus extends, the new counter is placed
-in the same or adjacent province. If there are two \REVOLT\Faceplus in the
-same province, the two new \REVOLT\Facemoins may appear in separate
-provinces.
+in the same or adjacent province. If there are two \REVOLT/\REBELLION\Faceplus
+in the same province, the two new \REVOLT/\REBELLION\Facemoins may appear in
+separate provinces.
 \bparag This province must belong to the victim country in case of \REVOLT.
 \bparag This province must belong to the region allowed by the event in case
 of \REBELLION (the victim country if no region is specified).
@@ -863,8 +866,7 @@ counter, only place a \PILLAGE\Facemoins (if another already exists here,
 immediately merge both into a \PILLAGE\Faceplus).
 \bparag If there are more than two \PILLAGE markers in any province, remove
 the smallest one in each of these provinces (this can happen when looting a
-province which has already a \PILLAGE\Faceplus and a \PILLAGE\Facemoins, or
-two \PILLAGE\Faceplus).
+province which has already a \PILLAGE\Faceplus and a \PILLAGE\Facemoins).
 
 \aparag[Looting Income]
 \bparag If there was no \PILLAGE marker in the province before the looting
@@ -874,7 +876,7 @@ of the looted province.
 \bparag In the \ROTW, only the regular income is taken, not income from exotic
 resources.
 \bparag In the \ROTW, if there was no \ARMY counter, gain only half the
-income.
+income (round down).
 \bparag The sum of these incomes is recorded in \lignebudget{Pillages,
   privateers}.
 \bparag Nobody gets money for provinces looted by minors country (including
@@ -965,7 +967,7 @@ the new fortress).
 \section{Redeployment of land troops}\label{chRedep:Redeployment}
 %\subsection{Mandatory and voluntary redeployments}
 \aparag[Mandatory redeployment]
-\bparag A stack without LOS must redeploy.
+\bparag A land stack without LOS must redeploy.
 \bparag A besieging stack must redeploy if it is too small to maintain the
 siege (less than 1\LD per level of the fortress). This typically occurs in
 case of siege attrition during the last round.
@@ -977,7 +979,7 @@ there was neither Breach nor HW obtained during this turn.
 stack decides what to do with it.
 \bparag Decisions to redeploy are taken in decreasing order of
 initiative. Redeployments are resolved once all decisions have been taken,
-thus the decision it self does not reopen LOS or similar effect.
+thus the decision itself does not reopen LOS or similar effect.
 \bparag Stacks may not partially redeploy. Either the whole stack redeploys or
 the whole stack stays.
 \bparag If the redeployment of a stack would cause another stack to be out of
@@ -985,8 +987,8 @@ supply, then the would-be OOS stack must also redeploy. This is, however,
 considered as voluntary redeployment.
 
 \aparag[Redeployment in the \ROTW]
-\bparag Any stack in the \ROTW not in a controlled province may be redeployed
-as per voluntary redeployment procedure.
+\bparag Any land stack in the \ROTW not in a controlled province may be
+redeployed as per voluntary redeployment procedure.
 \bparag This include stacks with unknown discoveries and this is a way to
 bring back discoveries.
 
@@ -1004,7 +1006,8 @@ redeployment.
 stack adjacent to the redeploying stack at the beginning of the
 redeployment. Redeployment is then done together with return to port of the
 naval stack (see below). Note that combined land/sea movement is not possible
-during redeployment.
+during redeployment (the land stack may not move further after being
+transported, the naval stack may not move before picking up the land stack).
 \bparag Redeploying stacks may not split nor pick up more troops. All the
 stack redeploys at the same place.
 \bparag Redeploying stacks may enter or cross provinces with friendly troops
@@ -1104,7 +1107,9 @@ there was no \USURE previously).
   extra causes for attrition, each giving a \bonus{+2} to the roll.
 
   If there was no naval stack adjacent to \provinceMalta, then redeployment
-  would have been impossible and the Turkish army is destroyed.
+  would have been impossible (a naval stack returning to port can only ``pick
+  up'' land troop at the beginning of its movement, not in the middle of it)
+  and the Turkish army is destroyed.
 
   \smallskip
 

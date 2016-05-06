@@ -69,9 +69,10 @@
   \MilitaryDetailsOld
 }
 
+\newcounter{militaryround}
+\newcounter{militarydetails}
 \makeatletter
 \newenvironment{jymlist}[2]{\ifhmode\par\else\fi%
-  \newcounter{#2}
     \begin{list}{#1{#2}}{%
         \usecounter{#2}
         \labelsep.3em\labelwidth.7em\squeezedlist
@@ -108,12 +109,12 @@
   \bparag Military cleanup
 }
 \newcommand{\MilitaryPhaseNew}{%
-  \aparag {\bf \xnameref{chapter:Military}}
+  \aparag {\bf \xnameref{chapter:MilitaryRules}}
   \MilitaryDetailsNew
 }
 
-\let\MilitaryDetails\MilitaryDetailsOld
-\let\MilitaryPhase\MilitaryPhaseOld
+\let\MilitaryDetails\MilitaryDetailsNew
+\let\MilitaryPhase\MilitaryPhaseNew
 
 \newcommand{\RedepDetails}{%
   \bparag \xnameref{chRedep:Native Attack}
@@ -170,7 +171,7 @@
   \EventsPhase %
   \DiploPhase %
   \AdminPhase %
-  \MilitaryPhase %
+  \MilitaryPhaseNew %
   \RedepPhase %
   \ExchequerPhase %
   \PeacePhase %
