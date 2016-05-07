@@ -62,7 +62,7 @@ of an agreement between players. However, the Stability of the countries and
 the military situation creates a \terme{Peace Differential} and strongly
 constrains the peace. This represents the overall opinion of the countries
 toward the current war and prevents players from signing unrealistic
-peaces. Peaces when one side only consist in minor countries (most of the
+peaces. Peaces when one side consists only of minor countries (most of the
 time, a single one) are resolved by a die roll depending mostly on the
 military situation.
 
@@ -236,7 +236,7 @@ with regard to peace, including:
 \bparag Specific way to end a war, that is, specific conditions enforcing
 mandatory peaces.
 \bparag Specific peace conditions that may be taken, in addition to the
-regular one (described below).
+regular ones.
 \bparag Specific peace proposal that will automatically be accepted by some
 minor countries.
 
@@ -358,16 +358,17 @@ cultural agreements''\ldots
 \subsection{Interventions}
 \aparag Countries in limited or foreign intervention in a war that goes on may
 choose to either continue the intervention or withdraw.
-\bparag The choice is made for each intervention separately. In case of
-disagreement, each country in decreasing order of initiative indicates for
-each intervention whether it stays or withdraws.
-\bparag The choice is made by the country doing the intervention. Not by the
-leader of the alliance as for signing global peaces.
+\bparag The choice is made for each intervention separately (each country in
+decreasing order of initiative indicates for each intervention whether it
+stays or withdraws).
+\bparag The choice is made by the country doing the intervention. The
+initiative taken into account forthe order being the one of the country (not
+the one of the alliance).
 
 \aparag Continuing a limited intervention will cost some \STAB. Continuing a
 foreign intervention costs nothing but prevent reinforcing the
 stack. See~\ref{chPeace:Stability}.
-\bparag Withdrawing require evacuation of the intervening units as
+\bparag Withdrawing requires evacuation of the intervening units as
 per~\ref{chPeace:Evacuation}.
 
 \subsection{Peace differential}
@@ -382,8 +383,8 @@ peace.
 
 \aparag[The basic Peace Differential] is the difference between the \STAB of
 the enemies.
-\bparag In case of alliance, take the mean \STAB of all members of the
-alliance. Do not round numbers at this point.
+\bparag In case of alliance, take the average \STAB of all members of the
+alliance. \textbf{Do not round} numbers at this point.
 \bparag Note that the basic PD is symmetrical, that is if an alliance has a
 basic PD of +1.5 versus another alliance, then the second alliance has a basic
 PD of -1.5 versus the first.
@@ -516,7 +517,7 @@ allowed. % The maximum level is 5, even if the Peace
 \bparag If the \terme{Peace Differential} is at most +2 in favour of one
 alliance, a \terme{Negotiated Peace} of level 0 (White Peace) or 1 is
 permitted in favour of any alliance (even the one with the lowest modified PD,
-that is the apparent loser).
+that is, the apparent loser).
 \bparag Exception: if a power if forced to proposed a Mandatory peace (as
 in~\ref{chPeace:Mandatory peaces}), it must propose a Conditional Peace and
 may not propose a Negotiated one.
@@ -609,7 +610,7 @@ it is still the first territorial concession.
   \HOL, however, if \HOL wanted to stay at war, \HIS could have signed a
   separate peace.
 
-  Since \HOL has the higher \DIP, he choose how to implement the losing side
+  Since \HOL has the higher \DIP, it chooses how to implement the losing side
   of the first condition and decides that \HIS is going to pay all the
   indemnities (they could have been split in any way between the
   losers). Being the only Major, \FRA chooses who receive the money. Even if
@@ -631,7 +632,11 @@ it is still the first territorial concession.
   probably not a good long term strategy if you still need allies for future
   wars. Usually, the precise implementation of the peace conditions is agreed
   upon between players before signing the peace. The precise order of choice
-  is rarely needed.
+  is rarely needed (but sometimes when two countries fight over a single
+  province, the difference between a level 1 and level 2 peace can be pretty
+  big).
+
+  \smallskip
 
   A lot of rules are written to handle disagreements because that's the
   special cases where we need how to resolve the situation for the rare cases
@@ -648,8 +653,9 @@ it is still the first territorial concession.
 
 \aparag[Disagreement] Any power in the winning alliance who is currently
 controlling at least one province of the losing alliance and does not receive
-a full peace condition may denounce the peace (receiving part of some
-indemnities is not enough to prevent a country from denouncing the peace).
+a full peace condition may denounce the peace (receiving some money but less
+than the value of indemnities for the peace level is the same as receiving
+nothing from this point of view: it is not a full peace condition).
 \bparag In this case, all the majors of the winning alliance that received at
 least one full peace condition immediately break their alliance with all the
 powers denouncing the peace.
@@ -731,7 +737,7 @@ is forced to sign a \dipFR with one member of the winning alliance, or a
 \aparag[Peace of level 4] The winning alliance receives three peace
 conditions.
 \bparag[Territorial concession] The first and third territorial concessions
-are chosen by the winning alliance. The second one is chosen by the losing,
+are chosen by the winning alliance. The second one is chosen by the losing
 alliance.
 \bparag[Indemnities] The losing alliance gives 100 \ducats of war indemnities
 to the winning alliance.
@@ -782,7 +788,8 @@ provinces to annex in order to fulfil all the territorial concessions, the
 peace may not be signed under these terms. That is, some other conditions must
 be chosen rather than territorial ones.
 
-\aparag[Choice of Provinces] The provinces that may be annexed are:
+\aparag[Choice of Provinces] The provinces that may (or may not) be annexed
+are:
 \bparag Capitals may never be annexed unless explicitly specified elsewhere.
 \bparag Any power may annex provinces it controls at the time of the peace.
 \bparag Any power may annex any of its national provinces, whoever controls it
@@ -931,7 +938,7 @@ has the higher \DIP.
 peace favouring the target alliance) (that is, the level of the peace is seen
 from the minor's perspective) as well as the nature of the conditions.
 \bparag Unless this is a special case of automatic peace
-(see~\ref{chPeace:automatic peace minor}), the proposing alliance roll a die,
+(see~\ref{chPeace:automatic peace minor}), the proposing alliance rolls a die,
 modified as in~\ref{chPeace:peace minors modifiers}.
 \bparag If the result is 6 or more, the peace is signed.
 \bparag If the result is less than 6, the peace is not signed and the
@@ -941,7 +948,7 @@ situation, however, plays a huge role in the DRM.
 
 
 \aparag[Peace modifiers]\label{chPeace:peace minors modifiers}
-The DRM to the peace roll are all cumulative.
+The DRMs to the peace roll are all cumulative.
 \bparag[Nature of the Peace] These modifiers take into account the level of
 the peace as well as the nature of the conditions given or taken.
 \begin{modlist}
@@ -959,6 +966,7 @@ the peace as well as the nature of the conditions given or taken.
 \item[0] per diplomatic condition;
 \item[$\pm$ ?] per specific condition (\bonus{0} if not specified).
 \end{modlist}
+See example below for details on these modifiers.
 \bparag[Nationality Modifier] is applied when signing peace with specific
 minors. In case of peace with an alliance of minors, apply the sum of the
 nationality modifiers of all the minors in the alliance.
@@ -1029,9 +1037,6 @@ War. Note that the major may choose not to propose the peace and stay at war,
 or roll to try and get a winning peace.
 
 \aparag[Consequences of Peace]
-% If the peace is signed, no Stability level is gained (exception: if this minor
-% declared war to the player by an event). The player that controlled the minor
-% does not earn anything.
 \bparag The conditions of Peace are the same as for a Peace between Major
 powers.
 \bparag A Minor country will at most pay indemnities up to 4 times its income
@@ -1074,26 +1079,6 @@ concessions.
 If one or more major sign a separate peace with a minor country (and stay at
 war against the controlling country); this minor may not be again involved in
 a war against these majors next turn (unless by an event).
-% \bparag A minor country at war by event may only make a separate peace.
-
-% \aparag[Unconditional Peace]
-% A Minor country will sign a mandatory Unconditional Peace if all of its
-% provinces are controlled by the ennemy. This peace is one global peace against
-% all the powers controlling its provinces (so it can lose only 3 provinces).
-% \bparag If a minor country loses and signs an unconditional peace its
-% political marker is moved automatically to the box \Neutral.
-
-% \aparag[Automatic Peace]
-% An alliance that proposes a victorious Unconditional Peace to a Minor power,
-% and that Minor power was the attacking one (caused by event), or is not allied
-% to an alliance (so this is not a Separate Peace), the Peace is automatically
-% accepted by the Minor power.
-
-% \aparag[Failure of Peace negotiations]
-% If the die-roll is inferior or equal to 5 the war with the minor continues
-% normally for the following turn. Another peace attempt with that minor will be
-% allowed during the peace phase of next turn.
-
 
 \begin{exemple}[Nature of the peace]
   Proposing to a minor a peace of level -1 (the minor loses) with territorial
@@ -1254,8 +1239,8 @@ future bankrupt.
 \bparag Other specific conditions are also implemented immediately, marking
 any changes as possible.
 
-\aparag[Returning control] Remove any control markers of country signing peace
-that is located inside a country signing peace with it. Control of these
+\aparag[Returning control] Remove any control markers of countries signing
+peace that is located inside a country signing peace with it. Control of these
 provinces is returned to their rightful owner.
 \bparag Any fortress of a country signing peace located in a province owned by
 another country signing peace with it may be immediately replaced by a counter
@@ -1286,7 +1271,7 @@ they can evacuate in 12\MP or less.
 \bparag Evacuating units may not be intercepted.
 \bparag Evacuating units roll for attrition as usual, with a \bonus{-2} to the
 roll, and considering all provinces as friendly. Ignore any bad weather. Each
-set of 6\MP expanded is one cause of attrition.
+full set of 6\MP expanded is one extra cause of attrition.
 
 \aparag[Evacuation at sea] Naval units of a country signing at least one peace
 may either evacuate to any owned and controlled port or stay at sea.
@@ -1329,7 +1314,7 @@ where it starts its evacuation).
 \item[OR] In the \ROTW, in a province without any establishment.
 \end{modlist}
 \bparag Any other land unit must either have redeploy or evacuate [or I did
-overlook an obvious special case].
+overlook a tricky special case].
 
 \begin{exemple}[Returning control and Evacuation]
   \FRA and \HIS sign peace and are now fully at peace. After any change in
@@ -1351,8 +1336,8 @@ overlook an obvious special case].
 
   \FRA is involved in two separate wars, one with \HIS and the other with
   \HOL. Both end the same turn. Now French unit evacuating Dutch territory may
-  cross Spanish provinces (it would be too complicated and no that much
-  realistic to try and track which troop was in which war).
+  cross Spanish provinces (it would be too complicated and not that much
+  realistic to try and track which troops were in which war).
 \end{exemple}
 
 \begin{exemple}[Neutral and enemy troops]
@@ -1599,7 +1584,8 @@ this turn or a previous one), the \SDCF loses 1 \STAB.
 \aparag Each turn, the \RT of each country is decreased as a way to represent
 Inflation (increase of prices is equivalent to decrease of stockpiled money).
 \bparag Countries with negative \RT still lose money from Inflation (as the
-debt owner adjust their requests).
+debt owners adjust their requests and old obligations are refunded while new
+ones are ĉontracted, even if not represented in game).
 
 \begin{designnote}
   Inflation increases quickly as the gold and silver flow from
@@ -1758,7 +1744,7 @@ another power, diplomatic annexation, special \regionBalkans annexation
 % "call for crusade" -> 19,200,000    WINNER!
 \aparag[Call for Crusade]
 \bparag Roll 1d10, modified as follows.
-\bparag[Modifiers] (up to a maximum of +5):
+\bparag[Modifiers] (cumulative, up to a maximum of +5):
 \begin{modlist}
 \item[+1] for each province belonging to a Christian country annexed by \TUR
   (whatever the mean (count provinces from \regionBalkans annexed from a
