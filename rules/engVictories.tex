@@ -156,7 +156,7 @@ of that resource are produced by other countries.
 computing monopolies. Especially, resources exploited by a minor in
 \dipAT are counted as if exploited by the major gaining the
 corresponding income.
-\bparag If a \ROTW minor country happen to have a monopoly
+\bparag If a \ROTW minor country happens to have a monopoly
 in one resource, no \VPs are gained (because \ROTW minors do not have
 diplomatic patron).
 
@@ -170,8 +170,10 @@ the player (in order to avoid the players to voluntarily play poorly).
 \aparag[Discoveries]~\\
 % TBD??? Keep all of them or not ???? JC, Jym ???  PB: seems to have been done
 \begin{modlist}
-\item[+50] the 1st round-the-World trip (if it is completed in a single turn)
-\item[+20] the 1st round-the-World trip (if it is completed in 2 turns)
+\item[+50] the 1st round-the-World trip (if it is completed in a
+  single turn)
+\item[+20] the 1st round-the-World trip (if it is completed in several
+  turns)
 \item[+20] the 2nd round-the-World trip
 \item[+10] the \seazoneHorn sea zone
 % (jym) removing, POR should do it at T1 and HIS should go to America:
@@ -232,7 +234,7 @@ power doing the discovery).
 \end{exemple}
 
 
-\aparag[Circumnavigation] Round-the-World trip are completed when one
+\aparag[Circumnavigation] Round-the-World trips are completed when one
 naval stack (possibly a single leader) goes from a port on the European
 map, back to a port on the European map (possibly the same) after
 going all the way around the World.
@@ -256,7 +258,7 @@ as follow:
 \item add the \RT if positive (\lignebudgetlong{RT at end});
 \item remove twice the \RT if negative (\lignebudget{RT at end});
 \item remove twice the amount of ongoing loans (\lignebudgetlong{National
-    loans at end} plus the amount of international loan not yet refunded).
+    loans at end}) plus the amount of international loan not yet refunded).
 \end{modlist}
 \bparag Divide this result by the number of turns in the period (do not round
 yet). In case of transfer or end of game computation, only count the number of
@@ -371,7 +373,7 @@ provinces lost against \POL or \paysPologne count negatively.
 \paysSuede\textmultiply2.
 \bparag \AUS: former provinces of \paysHongrie or \paysMoldavie,
 \provinceSerbia \textmultiply3.
-\bparag \PRU: provinces of the \HRE or provinces take from \paysPologne
+\bparag \PRU: provinces of the \HRE or provinces taken from \paysPologne
 \textmultiply2.
 \bparag \VEN: lost islands in \regionMediterranee count negatively.
 
@@ -386,11 +388,11 @@ modifier.
 whoever owned them prior to the annexation.
 
 \begin{designnote}
-  Here also, the variations along the game represent different policies of
-  countries. For example, \FRA focused its effort in Italy in the early game
-  and only tried to grab parts of the Burgundian legacy after its Wars of
-  Religion, with the policies of Richelieu and Louis XIV, or the ``\emph{pré
-    carré}'' of Vauban.
+  Here also, the variations along the game represent different
+  policies of countries. For example, \FRA focused its effort in Italy
+  in the early game and only tried to grab parts of the Burgundian
+  legacy after its Wars of Religion, with the policies of Richelieu
+  and Louis XIV, or the ``\emph{pré carré}'' of Vauban.
 \end{designnote}
 
 \aparag[Diplomatic situation]
@@ -402,15 +404,16 @@ minor country, with following modifiers:
 \textmultiply2 ; do not count autonomous Habsbourg states ; do not count
 \paysChevaliers if they are still in \provinceRhodos.
 \bparag \TUR: Muslims: only 4 \VPs for \VASSAL, \ANNEXION or \dipAT, 2\VPs for
-other status; do not count Non-Muslims minors except \paysTransylvanie.
+other status; only count Muslims minors and \paysTransylvanie.
 \bparag \FRA: minors in \regionItalie \textmultiply2 during periods
 \period{I} to \period{III} ; minors of the \HRE \textmultiply2 in periods
 \period{IV} to \period{VII}
 
 \aparag[Special]
 \bparag If \paysChevaliers is still in \provinceRhodos (whatever its
-diplomatic status), \HIS gains 20\VPs.
-% Avoid \HIS wanting the knights out of Rhodes to start earning VPs for them.
+diplomatic status), \HIS gains 15\VPs.
+% Avoid \HIS wanting the knights out of Rhodes to start earning VPs
+% for them without doing diplomacy on them first.
 % (© MKL pouitage)
 
 \subsection{Period's objectives}
@@ -437,6 +440,10 @@ for its country.
 \bparag Each player should write the 3 objectives on some paper, and then all
 these papers should be put together, \emph{e.g.} in an envelop (sealed if you
 don't trust your fellow players\ldots)
+\bparag Objectives are kept secret and are only revealed at the end of
+the period. A player is always allowed to check the objectives he
+chose for his country (so sealing that envelop was maybe not such a
+great idea).
 
 \aparag[Scoring objectives]
 \bparag At the end of each period (during the end-of-period \VPs check),
@@ -520,7 +527,8 @@ to gain half the \VPs value.
   2 \textmultiply 45 + 40 + 20 - 50 = 100 \VPs only.
 
   If Ireland was the \textbf{main objective}, then the maximum is computed
-  before doubling, that is it would result in 2 \textmultiply 40 = 80 \VPs.
+  before doubling, that is, it would result in 2 \textmultiply 40 = 80
+  \VPs (plus the other objectives).
 \end{exemple}
 
 \begin{exemple}
@@ -612,11 +620,11 @@ Centres for any other purposes.
 owned by a country (and their side), consider that the counters are here
 according to their \emph{maximum level}, not to their \emph{current
   level}. This does not change any \TradeFLEET level or counter.
-\bparag When counting Commercial Monopolies (\ref{chIncomes:Commercial
-  Monopoly}) consider any \TradeFLEET of \emph{maximum level} 6 as a
-total monopoly and any \TradeFLEET of \emph{maximum level} 4 or 5 as a
-partial monopoly. This may result in several countries having monopoly
-in the same \CTZ/\STZ for objective purposes.
+\bparag When counting Commercial Monopolies consider any \TradeFLEET
+of \emph{maximum level} 6 as a total monopoly and any \TradeFLEET of
+\emph{maximum level} 4 or 5 as a partial monopoly. This may result in
+several countries having monopoly in the same \CTZ/\STZ for objective
+purposes.
 \bparag All this \textbf{only} applies for period objectives. At any
 other times, use the \emph{current level} for placing counters, counting
 monopolies, triggering automatic competition or placing Trade Centres.
@@ -655,6 +663,10 @@ monopolies, triggering automatic competition or placing Trade Centres.
   \stz{Ionienne}.
 \end{exemple}
 
+\aparag[Commercial monopolies.] When objectives ask for Monopoly in \STZ
+or \CTZ or in production of resource without precision, any monopoly
+(partial or total) counts toward fulfilling the objective.
+
 \aparag[No province lost] objectives mean that the country did not loose
 ownership of any province it owned at the beginning of the period.
 \bparag If the country annexes new provinces during the period and
@@ -668,10 +680,6 @@ period are checked against this objective.
   that can be relinquished later without penalty rather than one more
   province to defend at any cost.
 \end{designnote}
-
-\aparag[Commercial monopolies.] When objectives ask for Monopoly in \STZ
-or \CTZ or in production of resource without precision, any monopoly
-(partial or total) counts toward fulfilling the objective.
 
 \aparag[Independence wars] \label{chVictories:Explanation:Independence}
 \ref{pVII:Independence War} may occur several times, resulting in several
@@ -798,14 +806,19 @@ different. Thus, a war may quickly change some \VPs.
 \input{engObjectives}
 
 % JC magic
-\def\EUobjectives#1{%
+% #2 is almost always #1 with first letter in lowercase. Should be done
+% automatically.
+\def\EUobjectives#1#2{%
   \EUcurrentcountry{#1} \csname subsection\endcsname {Objectives of
-    \paysmajeur{#1}} \EUobjectivesa{I} \EUobjectivesa{II} \EUobjectivesa{III}
-  \EUobjectivesa{IV} \EUobjectivesa{V} \EUobjectivesa{VI} \EUobjectivesa{VII}
-} \def\EUobjectivesa#1{ \EUcurrentperiod{#1}
+    \paysmajeur{#1}} \EUobjectivesa{I}{#2}
+  \EUobjectivesa{II}{#2} \EUobjectivesa{III}{#2}
+  \EUobjectivesa{IV}{#2} \EUobjectivesa{V}{#2}
+  \EUobjectivesa{VI}{#2} \EUobjectivesa{VII}{#2}}
+\def\EUobjectivesa#1#2{ \EUcurrentperiod{#1}
   \EUcasevalue{objective@\EUcurrcoun @\EUcurrper @1@short}{}{ \csname
-    subsubsection\endcsname {Period \period{#1}} \EUobjectivesb{1}
-    \EUobjectivesb{2} \EUobjectivesb{3} \EUobjectivesb{4} \EUobjectivesb{5} }}
+    subsubsectionJ\endcsname {Period \period{#1}}{\blason{#2}}
+    \EUobjectivesb{1} \EUobjectivesb{2} \EUobjectivesb{3}
+    \EUobjectivesb{4} \EUobjectivesb{5} }}
 \def\EUobjectivesb#1{ \EUcasevalue{objective@\EUcurrcoun @\EUcurrper
     @#1@short}{}{ \def\RES##1{##1}%
     \def\EUAbbr##1{##1}
@@ -834,19 +847,19 @@ different. Thus, a war may quickly change some \VPs.
   } }
 % end JC magic
 
-\EUobjectives{Angleterre} % ANG
+\EUobjectives{Angleterre}{angleterre} % ANG
 % DAN + move HOL here.
-\EUobjectives{France} % FRA
-\EUobjectives{Espagne} % HIS
-\EUobjectives{Hollande} % HOL
-\EUobjectives{Pologne} % POL-(PRU)
-\EUobjectives{Prusse} % (POL)-PRU
-\EUobjectives{Portugal} % POR-(SUE)
-\EUobjectives{Suede} % (POR)-SUE
-\EUobjectives{Russie} % RUS
-\EUobjectives{Turquie} % TUR
-\EUobjectives{Venise} % VEN-(AUS)
-\EUobjectives{Autriche} % (VEN)-AUS
+\EUobjectives{France}{france} % FRA
+\EUobjectives{Espagne}{espagne} % HIS
+\EUobjectives{Hollande}{hollande} % HOL
+\EUobjectives{Pologne}{pologne} % POL-(PRU)
+\EUobjectives{Prusse}{prusse} % (POL)-PRU
+\EUobjectives{Portugal}{portugal} % POR-(SUE)
+\EUobjectives{Suede}{suede} % (POR)-SUE
+\EUobjectives{Russie}{russie} % RUS
+\EUobjectives{Turquie}{turquie} % TUR
+\EUobjectives{Venise}{venise} % VEN-(AUS)
+\EUobjectives{Autriche}{habsbourg} % (VEN)-AUS
 
 
 \section{End of game \VPs}\label{chVictories:End Game}
@@ -907,7 +920,7 @@ and \shortprovince{Magrib}.
 
 \subsectionJ{\sectionpaysmajeur{Venise}}{\blason{venise}}
 \aparag[Territory.]
-\bparag 1 times the income value of each non national province.
+\bparag 1 time the income value of each non national province.
 
 \aparag[Trade.]
 \bparag 1 \VP per level of commercial fleet.

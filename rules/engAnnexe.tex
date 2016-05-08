@@ -110,11 +110,20 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 
 \makeatletter
 \newcommand{\list@currentcountry}{}
-\newcommand{\set@currentcountry}[1]{%
-  \renewcommand{\list@currentcountry}{#1}}
+\newcommand{\list@currentblason}{}
+\newcommand{\set@currentcountry}[2][]{%
+  \renewcommand{\list@currentcountry}{#2}%
+  \ifx#1\relax\relax%
+  \renewcommand{\list@currentblason}{#2}%
+  \else%
+  \renewcommand{\list@currentblason}{#1}%
+  \fi}
+\newcommand{\set@currentblason}[1]{% rarely used
+  \renewcommand{\list@currentblason}{#1}}
 
 \newcommand{\list@land}[1]{% many cases
-  \subsectionJ{List of all land leaders}{#1}
+  \subsectionJ{List of all land leaders}{\blason{\list@currentblason} \quad
+    #1}
   \listleader{leaders\list@currentcountry T}}
 \newcommand{\list@landfull}{% FRA, HIS, HOL
   \list@land{\Xmonarque\ \Xgeneral\ \Xingenieur\ \Xconquistador\
@@ -125,29 +134,34 @@ created by \HAB: \FEforeachlist{listofminorshab}%
   \list@land{\Xmonarque\ \Xgeneral\ \Xingenieur\ \Xconquistador}}
 
 \newcommand{\list@amiral}{% for countries without Explo
-  \subsectionJ{List of all naval leaders}{\Xamiral}
+  \subsectionJ{List of all naval leaders}{\blason{\list@currentblason} \quad
+    \Xamiral}
   \listleader{leaders\list@currentcountry N}}
 \newcommand{\list@sea}{%
-  \subsectionJ{List of all naval leaders}{\Xamiral\ \Xexplorateur}
+  \subsectionJ{List of all naval leaders}{\blason{\list@currentblason} \quad
+    \Xamiral\ \Xexplorateur}
   \listleader{leaders\list@currentcountry N}}
 \newcommand{\list@seafull}{% with privateers (ie FRA)
-  \subsectionJ{List of all naval leaders}{\Xamiral\
-    \Xexplorateur\ \Xcorsaire}
+  \subsectionJ{List of all naval leaders}{\blason{\list@currentblason} \quad
+    \Xamiral\ \Xexplorateur\ \Xcorsaire}
   \listleader{leaders\list@currentcountry N}}
 
 \newcommand{\list@missionaries}[1]{%
-  \subsectionJ{List of all missionaries}{#1}
+  \subsectionJ{List of all missionaries}{\blason{\list@currentblason} \quad
+    #1}
   \listleader{leaders\list@currentcountry Mis}}
 
 \newcommand{\list@anonyme}{%
-  \subsectionJ{List of all anonymous leaders}{\anonyme}
+  \subsectionJ{List of all anonymous leaders}{\blason{\list@currentblason}
+    \quad \anonyme}
   \csname listanonyme\list@currentcountry\endcsname}
 
 \newcommand{\list@special}[4]{%
-  \subsectionJ{List of all #1}{\textcolor{#2}{#3}}
+  \subsectionJ{List of all #1}{\blason{\list@currentblason} \quad
+    \textcolor{#2}{#3}}
   \listleader{leaders#4}}
 
-\sectionJ{\paysmajeurAngleterre}{\blason{angleterre}}
+\section{\paysmajeurAngleterre}%{\blason{angleterre}}
 \set@currentcountry{angleterre}
 \list@land{\Xgeneral\ \Xconquistador\ \Xgouverneur}
 \list@sea
@@ -155,27 +169,31 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 \list@missionaries{\Xprotestant\ /\ \Xcatholique}
 \list@anonyme
 
-\sectionJ{\paysmajeurAutriche}{\blason{habsbourg}}
-\set@currentcountry{habsbourgM}
+\section{\paysmajeurAutriche}%{\blason{habsbourg}}
+\set@currentcountry[habsbourg]{habsbourgM}
 % There are none.
 % \subsection{List of all minor named leaders}
 % \listleadernolink{leadershabsbourg}
-\subsectionJ{List of all named leaders}{\Xgeneral\ \Xingenieur}
+\subsectionJ{List of all named leaders}{\blason{habsbourg} \quad \Xgeneral\
+  \Xingenieur}
 \listleader{leadershabsbourgM}
 \list@anonyme
 
-\sectionJ{\paysmajeurFrance}{\blason{france}}
+\section{\paysmajeurFrance}%{\blason{france}}
 \set@currentcountry{france}
 \list@landfull
 \list@seafull
 \list@special{licensed privateers}{red}{\Xcorsaire\ \Xamiral}{fralicense}
-\list@special{revolutionary leaders}{black}{\blason{revolutionnaires}}%
-{revolutionnaires}
+% \list@special{revolutionary leaders}{black}{\blason{revolutionnaires}}%
+% {revolutionnaires}
+\subsectionJ{List of all revolutionary leaders}{\blason{revolutionnaires}
+  \quad \Xgeneral \Xamiral}
+\listleader{leadersrevolutionnaires}
 \list@missionaries{\Xcatholique\ /\ \Xprotestant}
 \listleader{leadersfrahuguenotsMis}
 \list@anonyme
 
-\sectionJ{\paysmajeurEspagne}{\blason{espagne}}
+\section{\paysmajeurEspagne}%{\blason{espagne}}
 \set@currentcountry{espagne}
 \list@landfull
 \list@sea
@@ -183,49 +201,49 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 \listpseudoanonymeespagneMis
 \list@anonyme
 
-\sectionJ{\paysmajeurHollande}{\blason{hollande}}
+\section{\paysmajeurHollande}%{\blason{hollande}}
 \set@currentcountry{hollande}
 \list@landfull
 \list@special{VOC conquistadors}{red}{\Xconquistador}{holvoc}
 \list@sea
 \list@anonyme
 
-\sectionJ{\paysmajeurPologne}{\blason{pologne}\ \blason{lithuanie}}
+\section{\paysmajeurPologne}%{\blason{pologne}\ \blason{lithuanie}}
 % Too many special cases.
-%\set@currentcountry{pologneM}
-\subsection{List of all Polish leaders}
+\set@currentcountry[pologne]{pologneM}
+\subsectionJ{List of all Polish leaders}{\blason{pologne} \quad \Xmonarque
+  \Xgeneral}
 \listleader{leaderspologneM}
-% \list@landKG % major POL
 \listleadernolink{leaderspologne} % minor Poland
-%\subsectionJ{List of all minor polish leaders}{\anonyme}
-% \aparag Remark that if they come and \paysPologne is still \MAJ, they can be
-% used by \POL.
-\subsection{List of all Lithuanian leaders}
+\subsectionJ{List of all Lithuanian leaders}{\blason{lithuanie} \quad
+  \Xgeneral}
 \listleader{leaderslithuanie}
-% \set@currentcountry{lithuanie}
-% \list@land{\Xgeneral}
 % (jym)
 % Bathory is already here as Polish leader. Mazeppa is normally not here with
 % Polish Ukrainia.
 % Removing:
 % \subsection{List of all other named leaders}
 % \listleader{leaderspollit}
-\subsectionJ{List of all anonymous leaders}{\anonyme}
-\subsubsection{List of all Polish anonymous leaders}
+\subsection{List of all anonymous leaders}%{\anonyme}
+\subsubsectionJ{List of all Polish anonymous leaders}{\blason{pologne} \quad
+  \anonyme}
 \listanonymepologne
-\subsubsection{List of all Lithuanian anonymous leaders}
+\subsubsectionJ{List of all Lithuanian anonymous leaders}{\blason{lithuanie}
+  \quad \anonyme}
 \listanonymelithuanie
-\subsubsection{List of all Polish-Lithuanian anonymous leaders}
+\subsubsectionJ{List of all Polish-Lithuanian anonymous
+  leaders}{\blason{pologne} \blason{lithuanie} \quad \anonyme}
 \listanonymepollit
 
-\sectionJ{\paysmajeurPrusse}{\blason{prusse}}
-\set@currentcountry{prusseM}
-\subsectionJ{List of all named leaders}{\Xmonarque\ \Xgeneral}
+\section{\paysmajeurPrusse}%{\blason{prusse}}
+\set@currentcountry[prusse]{prusseM}
+\subsectionJ{List of all named leaders}{\blason{prusse} \quad \Xmonarque\
+  \Xgeneral}
 \listleader{leadersprusse} % minor
 \listleader{leadersprusseM} % major
 \list@anonyme
 
-\sectionJ{\paysmajeurPortugal}{\blason{portugal}}
+\section{\paysmajeurPortugal}%{\blason{portugal}}
 \set@currentcountry{portugal}
 \list@special{named leaders}{black}{\Xexplorateur\ \Xconquistador\
   \Xgouverneur}{portugalM}
@@ -234,30 +252,30 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 \list@missionaries{\Xcatholique}
 \list@anonyme
 
-\sectionJ{\paysmajeurRussie}{\blason{russie}}
+\section{\paysmajeurRussie}%{\blason{russie}}
 \set@currentcountry{russie}
 \list@landKGIC
 \list@sea
 \list@anonyme
 
-\sectionJ{\paysmajeurSuede}{\blason{suede}}
-\set@currentcountry{suedeM}
+\section{\paysmajeurSuede}%{\blason{suede}}
+\set@currentcountry[suede]{suedeM}
 \list@special{named leaders}{black}{\Xmonarque\ \Xgeneral\ \Xingenieur\
   \Xconquistador\ \Xamiral\ \Xexplorateur}{suedeM}
 \list@anonyme
 
-\sectionJ{\paysmajeurTurquie}{\blason{turquie}}
+\section{\paysmajeurTurquie}%{\blason{turquie}}
 \set@currentcountry{turquie}
 \list@land{\Xmonarque\ \Xgeneral\ \Xconquistador}
 \list@special{Viziers}{yellow}{\Xmonarque}{turvizir}
 \list@sea
 \list@special{Barbary Coast privateers}{red}{\Xcorsaire\
   \Xamiral}{turcorsaire}
-\subsectionJ{List of all \Pashas}{\Xpacha}
+\subsectionJ{List of all \Pashas}{\blason{turquie} \quad \Xpacha}
 \listpseudoanonymeturquiePac
 \list@anonyme
 
-\sectionJ{\paysmajeurVenise}{\blason{venise}}
+\section{\paysmajeurVenise}%{\blason{venise}}
 \set@currentcountry{venise}
 \list@special{named leaders}{black}{\Xamiral\ \Xgeneral\ \Xingenieur}{veniseM}
 \listleadernolink{leadersvenise}
