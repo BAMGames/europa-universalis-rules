@@ -471,6 +471,12 @@ count will be applied.
   the size of its column, thus events at the top of the following column
   become more probable.
 
+  Moreover, once an event is marked off, say, in the first column then
+  the one on top of the second column can be reached in two different
+  ways: either by rolling in the second column (and '1' for second
+  die) or by rolling in the first column and '9' for second die. Thus
+  it becomes really more likely.
+
   Hence, in a given period, events of the first columns are likely to
   occur early in the period while events in the last columns are
   unlikely to occur early but become more and more likely to occur as
@@ -486,7 +492,8 @@ corresponding result in the table. Check the precise event description
 for details.
 \bparag Most events can only happen a given number of time (usually,
 only once). If an event is drawn after already occurring its maximum
-number of time, mark off the result in the table but play \RD instead.
+number of time, mark off the result in the table but play \RD instead
+(see below).
 \bparag Some events share the same number in the events list for the
 period, such as~\ref{pI:End Golden Horde} and~\ref{pI:Pskov Ryazan}. If
 this number is obtained in the table, apply these events in order. It is
@@ -497,13 +504,13 @@ if this number is rolled several time in the table.
 % causes \RD.  Events causing revolts (civil wars, ...) cause \REVOLT,
 % not \RD, hence don't prevent further \RD.
 
-\aparag[Revolts] If the result if 'R' followed by a number, a \RD
+\aparag[Revolts] If the result is 'R' followed by a number, a \RD
 (\REVOLT/Diplomacy event) may occur.
 \bparag If no \RD occurred this turn (either by another 'R' result or
 because a specific event description told to apply a \RD event), then a
 \REVOLT/Diplomacy event (\RD) happens as per~\ruleref{chEvents:Revolts}
 and~\ruleref{chEvents:diplomacy}. Mark off the box.
-\bparag If one or more revolts already occurred this turn, then the
+\bparag If one or more \RD already occurred this turn, then the
 event given by the number may occur. Consider that the box only
 contains the number and proceed as described above.
 \bparag Events creating revolts or rebellions without explicitly
@@ -516,11 +523,11 @@ as a \RD and thus do not prevent further 'R' result to be treated as a
 
 \begin{exemple}[Rolling for events]
   It is the first turn of the first period. Political events are thus
-  rolled on \ref{events:pI}. The first die roll is 9. The second is
-  6. In the column 9 of the event table for period I, we look at the
-  sixth non marked off number. It is ``R6''. Since no revolt has been
-  rolled this turn, the first event will be \RD and this box of the
-  table is marked off.
+  rolled on the Table of \ref{events:pI}. The first die roll is 9. The
+  second is 6. In the column 9 of the event table for period I, we
+  look at the sixth non marked off number. It is ``R6''. Since no
+  revolt has been rolled this turn, the first event will be \RD and
+  this box of the table is marked off.
 
   Then, for the second event, the rolls are 10 and 1. This indicates
   that there will be 5 events this turn.
@@ -565,7 +572,7 @@ as a \RD and thus do not prevent further 'R' result to be treated as a
   marked off and \xref{pII:War Poland Turkey} will happen.
 
   So, to sum up, there will be 5 events this turn (instead of 4) and
-  these will be:\par
+  these will be, in order:\par
   R/D, \ref{pI:War Italy Napoli}, \ref{pI:End Golden Horde},
   \ref{pI:Hungarian Freedom}, \ref{pII:War Poland Turkey}.
 
@@ -614,15 +621,18 @@ test for \TUR may require to roll for a \REVOLT in \paysmajeurTurquie).
 \aparag If the \REVOLT was rolled as an event (\RD), a Diplomacy event
 also happens as per~\ruleref{chEvents:diplomacy}.
 \aparag For each \REVOLT , dies are rolled in order to determine:
-\bparag The country where the \REVOLT occurs (unless already specified
-elsewhere).
+\bparag The country where the \REVOLT occurs.
 \bparag The province where the \REVOLT happens.
-\bparag The strength of the \REVOLT .
+\bparag The strength of the \REVOLT.
+\bparag Some times, some of these dice are not needed as per
+description of the effect thatcauses the \REVOLT (\emph{e.g.} \REVOLT
+caused by the survival roll of TUR always happen in \paysmajeurTurquie
+and there is no need to roll for the country where it occurs\ldots)
 
-\aparag Roll 2d10 and read the revolted country in the column of the
-current period on \ref{table:alt-revolt-global}. The target country may
-be a \MIN or other abstract entity in which case a pseudo-stability is
-provided in brackets.
+\aparag[Country] Roll 2d10 and read the revolted country in the column
+of the current period on \ref{table:alt-revolt-global}. The target
+country may be a \MIN or other abstract entity in which case a
+pseudo-stability is provided in brackets.
 \bparag Decrease this pseudo-stability of minors in the table by
 \bonus{-1} if:
 \begin{itemize}
@@ -635,7 +645,7 @@ provided in brackets.
 always use the column of the current period for determining the target
 country or area.
 
-\aparag Roll 1d10+the \STAB of the target (or modified
+\aparag[Location] Roll 1d10+the \STAB of the target (or modified
 pseudo-stability) on the target country's table and read the result in
 the column corresponding to the current period (for some countries,
 there is only one column to use for all periods).
@@ -661,7 +671,7 @@ the minor stays inactive for one full turn. Otherwise, they do expand as
 usual and hamper supply or income as well as \STAB of the diplomatic
 patron.
 
-\aparag Lastly, roll 2d10 in the last column of
+\aparag[Strength] Lastly, roll 2d10 in the last column of
 \ref{table:alt-revolt-global} to find the strength of the revolt.
 \bparag There may be any of the following: \REVOLT counter (either\
 \facemoins or \Faceplus), troops (\LD or \ARMY\facemoins), \LeaderG and
@@ -703,10 +713,11 @@ friendly to one another. That is, if a \RD occurs during a civil war, it
 is considered to be a peasants revolting against any and all factions at
 war.
 \bparag As a general rule, ``Revolt'' counters (either troops or
-\REVOLT) are friendly to nobody (including other ``Revolt'' counters
-from another province) while all ``Rebellion'' counters within the same
-country or entity are friendly one to another and they may be friendly
-to other powers.
+\REVOLT) are friendly only with other ``Revolt'' counters in the same
+province (but typically not with ``Revolt'' counters from another
+province) while all ``Rebellion'' counters within the same country or
+entity are friendly one to another and they may be friendly to other
+powers.
 
 \aparag Apart from this, \REVOLT and \REBELLION work in the same
 way. Especially for rolling dice to determine where it occurs and at
@@ -731,25 +742,27 @@ specific event description or special rule. Only the \RD event (result
 \bparag In some conditions an event cannot be played (\emph{e.g.}
 because it was already played) and is resolved as a \RD result
 instead. Hence there may be several Diplomacy events in a given turn.
-\aparag If Diplomacy event occurs, a first die is rolled to know which
-religion suffers from troubles.
+
+\aparag[Troubled religion] When a Diplomacy event occurs, a first die
+is rolled to know which religion suffers from troubles.
 \bparag Even if several Diplomacy events occur, only one religion will
 suffer from troubles.
 \bparag The troubled religion is rolled in \ref{table:diplomatic event
   religion}.
 \bparag On some results, an additional check for
 \ref{chEvents:diplomacy:uprising} will be made.
-\aparag Then, for each Diplomacy event, roll for a group of minors to
-test in \ref{table:diplomatic event}.
+
+\aparag[Troubled minors] Then, for each Diplomacy event, roll for a
+group of minors to test in \ref{table:diplomatic event}.
 \bparag For each minor country in the group, roll 2d10 (+3 if the
 minor is of the troubled religion).
 \bparag If the result is higher than the fidelity of the minor, the
 diplomatic status of the minor is lowered by one for each extra point
 (the marker goes one box to the left toward \Neutral).
-\bparag For \ROTW minors, if the roll is 2 or more than the fidelity,
-then all \dipFR are broken to \dipNR while \dipAT go to \dipFR ; if the
-result is 5 or more than the fidelity, all \dipAT and \dipFR are broken
-to \dipNR.
+\bparag For \ROTW minors, if the roll is 2 more than the fidelity,
+then all \dipFR are broken to \dipNR while \dipAT go to \dipFR ; if
+the result is 5 more than the fidelity, all \dipAT and \dipFR are
+broken to \dipNR.
 \bparag If the fidelity of the minor is higher than the result, nothing
 happens.
 \bparag Countries that either do not exist (yet or any more) or are
@@ -762,47 +775,74 @@ was obtained for the first die (troubled religion), check for the
 autonomous uprising of a province of a Minor country that would be owned
 by another power.
 \bparag The group or groups affected is obtained by rolling 1d10 in
-\ref{table:diplomatic event}. Then, in each group, in the order
-written, find the first (still existing) minor country that does not
-own all its National territory or that has a \Presidio in its
-territory. A group is defined by a name in bold (2 groups are
-sometimes obtained on a given result leading to 2 possible uprisings).
-% (Jym). Seem to be easier that way. Could be uprising of natives in an
-% area previously owned.
-\bparag \ROTW countries are never subject of uprising.% [TDB?].
-\bparag This minor immediately takes back the ownership of one of these
-territories, or destroy a \Presidio (chosen at random) and a state of
-war is considered to exist between this Minor and the previous owner of
-the province (or a state of overseas war if a \Presidio was destroyed
-this way). This is not a declaration of wars \emph{per se} (more like a
-revolt) so there is no proper Call to allies (only as if continuing an
-existing war, the diplomatic patron of a minor involved can choose to
-% (Jym). Don't leave small minors (especially barbaresques) alone
-% without a chance to get major help or they likely end up crushed
-% again.
-enter the war (with a \CB) or stay out (with no penalty)) and there can
-be no generalisation of war this turn if this is an overseas war.
-\bparag The \MAJ victim of the uprising may sign an immediate white
-peace with the uprising minor, forfeiting the province or \Presidio.
+\ref{table:diplomatic event}. A group is defined by a name in bold (2
+groups are sometimes obtained on a given result leading to 2 possible
+uprisings).
+\bparag Then, in each group, in the order written, find the first
+(still existing) minor country that either (i) does not own all its
+National territory (non-blurred shield) or (ii) has a \Presidio in a
+province it owns or (iii) has an \dipAT with somebody.
+\bparag There is no priority between the conditions above. The first
+minor in the group that meets one of them is affected, whatever the
+condition met or the situation of other minors in the group.
+\bparag Note that only one minor is affected in each group, even if
+several fulfil the conditions. And they are always checked in the
+order written.
+
+\aparag[Effect of the uprising]
+\bparag An uprising minor immediately takes control and ownership of
+one of its national province (non-blurred shield) it currently does
+not owns. If it owns all its national provinces, a \Presidio on its
+territory is immediately destroyed. If its a \ROTW minor, it breaks
+one (and only one) \dipAT to \dipNR.
+\bparag Troops in a province that changes ownership that way may
+retreat immediately, using the peace evacuation procedure of
+\ref{chPeace:Evacuation}; they may also decide to stay in the
+province.
+\bparag The province, \Presidio or \dipAT is chosen at random if
+needed.
+\bparag This creates an immediate state of war (oversea if a \Presidio
+or \dipAT was destroyed) between the minor and the former owner of the
+province (or \Presidio, or \dipAT).
+\bparag This is not a declaration of war \emph{per se} and no effects
+of declaration of wars are applied.
+\bparag Diplomatic announcements concerning this war are allowed as if
+it was continued from previous turn, except that an oversea war cannot
+be generalised this turn.
+\bparag The major victim of the uprising may decide to sign
+immediately a white peace with the minor, thus forfeiting the uprising
+province. This cancels the rest of the effect.
+
+\aparag[Uprising and allies]
+\bparag A neutral uprising minor will not call for allies.
+\bparag If a non-neutral minor uprises, its patron has a \CB (or \OCB)
+to enter the war, to be used immediately. There is no penalty in non
+using it.
+\bparag If the uprising of a minor is against its diplomatic patron,
+then the patron choose to either sign an immediate white peace
+(forfeiting the province but keeping the minor ally) or to fight back
+(in which case the minor immediately becomes neutral).
 
 \aparag[Minor declares a war] If a result of 10 was obtained for the
 first die, a random minor declares war to a random neighbour.
-\bparag The minor is chosen by rolling 1d10 for a group of countries
-in the table above and then randomly choosing one existing minor of
-this group. For this purpose, consider each result as a single group
-even if there are two names in bold.
+\bparag The minor is chosen by first rolling 1d10 for a set of
+countries in the \ref{table:diplomatic event} and then randomly
+choosing one existing minor of this set. For this purpose, consider
+each result as a single set even if there are two names in bold (two
+groups).
 \bparag The chosen minor declares war to one of its neighbours, chosen
 randomly.
-\bparag Usual calls for allies happen during Diplomacy phase, for all
-countries involved in this war.
 \bparag If the minor is a \ROTW country, its neighbours are other minors
 countries owning areas adjacent to its own areas, as well as countries
 having a \TP or \COL in its areas or adjacent ones.
 \bparag If the minor is a \ROTW country, the war is an overseas war.
+\bparag Usual calls for allies happen during Diplomacy phase, for all
+countries involved in this war.
 \bparag In case of \paysPerse/\paysOrmus, it is considered as a single
 country with neighbours both in Europa and in the \ROTW but will only
 declare war (regular or overseas) to one of its neighbours.
-
+\bparag If the war is waged only between minors, it will end in a
+white peace at the end of the turn.
 
 % Jym, 03/2014.
 % Hum, why? Let's keep only one adjustment per turn.
