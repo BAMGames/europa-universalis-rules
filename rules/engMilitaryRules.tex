@@ -209,8 +209,11 @@ enough to avoid this destruction.
 
 Each phasing land stack which has no supply or is in weak supply must roll for
 \terme{supply attrition}. Additionally, each phasing besieged land stack must
-roll for \terme{siege attrition}. Naval stacks never roll for attrition during
-the supply segment. Beware that besieged stacks roll for \textbf{siege}
+roll for \terme{siege attrition} (exception: if the fortress was supplied
+during the previous round (see naval movement), the besieged stack does not
+roll for attrition and is considered in full supply (even if it should
+normally be only in weak supply) . Naval stacks never roll for attrition
+during the supply segment. Beware that besieged stacks roll for \textbf{siege}
 attrition during this segment, which has a similar procedure as supply
 attrition but with slightly different modifiers.
 
@@ -587,15 +590,15 @@ command is normally done during the wintering segment.
 
 
 \subsubsection{Sea}
-Sea stack have an unlimited movement capacity. A naval stack that does not
-stay in a port always roll for attrition (even if it does not move and simply
-sstays at sea). The attrition roll is modified by the distance moved, hence
-the farther a naval stack move, the more attrition it suffers (especially for
+Sea stacks have an unlimited movement capacity. A naval stack that does not
+stay in a port always rolls for attrition (even if it does not move and simply
+stays at sea). The attrition roll is modified by the distance moved, hence the
+farther a naval stack moves, the more attrition it suffers (especially for
 large stacks).
 
 Each new sea or port entered during the movement is counted as a ``zone'' for
 the distance. Entering ports is usually done at the end of movement, to avoid
-certain dangerous sea zone, or to pick up troops for combined move.
+certain dangerous sea zones, or to pick up troops for combined move.
 
 At the end of its movement, a naval stack is allowed to do one naval action
 (some actions are actually composed of several others). This is never
@@ -608,45 +611,97 @@ campaign. Some are passive and can be done as part as any campaign. Note that
 many passive actions are simply ``continuing the active action from previous
 round without moving.''
 
-Actions are normally announced when the naval stack enter the sea zone where
+Actions are normally announced when the naval stack enters the sea zone where
 the action will occur. Announcing a naval action ends the movement of the
-stack and attrition is rolled immediately before any interception is declared
-and before actually resolving the action.
+stack and attrition (for the whole movement) is rolled immediately before any
+interception (in the last zone) is declared and before actually resolving the
+action.
+
+Naval stacks may be intercepted. In case of interception (during movement), do
+not roll for attrition before the interception battle. Attrition is only
+resolved once at the end of movement. The attrition takes into account the
+whole movement of the stack, whatever the number of interception battles that
+may have occurred during it. If a naval stack is intercepted and looses
+battle, roll for attrition only once (for both movement and retreat), taking
+into account the whole movement (\emph{e.g.} the distance moved is the total
+of what was moved before the battle and during the retreat).
+
+Each time it tries to enter or exit a blockaded port, a stack must roll to
+escape blockade. Roll 1d10 modified as follows:
+\begin{modlist}
+\item[+M] \Man differential between the moving leader and the blockading
+  one. Only count if it is positive (\emph{i.e.} if the moving leader has more
+  \Man).
+\item[+1] if the blockading stack is smaller (in number of \ND).
+\item[+1] if the blockading stack is composed of \NWD and does not have
+  technology \TSF.
+\end{modlist}
+
+If the result of the modified roll is 8 or more, the stack managed to escape
+the blockade and may pursue its movement as wanted.
+
+If the result is 6 or 7, the stack did not manage to escape blockade. If it
+was trying to exit a port, it must stays in (and its movement ends). If it was
+trying to enter it, it may either stop moving or return to the closest
+friendly port/arsenal (at choice, if any), in both cases it may not do any
+action.
+
+If the result is 5 or less, the stack did not manage to escape blockade (as
+above). Additionally, the blockading stack may choose to immediately engage
+the moving stack. This is treated as an interception battle (\emph{i.e.} the
+blockading stack automatically succeeds any interception attempt against the
+moving stack).
 
 \GTtable{navyblockade}
 
 \aparag[List of active naval actions.]
+\bparag[Battle.] The moving stack declares that it attempts battle. It must
+successfully intercept its target (exception: if the target stack is
+blockading, this interception automatically succeeds). The battle will be
+resolved during the Battle Segment of the impulse. A non-phasing stack that is
+engaged in battle may not intercept any more.
 \bparag[Blockading an enemy port/arsenal.] The naval stack must have
 sufficient size according to \ref{table:Naval Size for Blockade}, depending on
 the size of the fortress. Note that to blockade a level 2 or 3 fortress, one
 must have have at least a \FLEET\Facemoins counter \textbf{and} 2\ND in the
 stack similarly blockading a level 4/5 fortress requires a \FLEET\Faceplus
 counter \textbf{and} 3\ND in the stack. Put the stack close to the blocked
-port/arsenal.
+port/arsenal. Blockade makes siege easier.
 \bparag[Supplying troops.] The naval stack must have sufficient size for
-supplying the troops.
+supplying the troops as indicated in \ref{table:Naval Supply}. Note that a
+naval stack is allowed to supply several adjacent land stacks since it acts as
+a \SoS and supply is never ``used up''.
 \bparag[Blockade + Supply.] A stack may both blockade a port/arsenal and
-supply land troops. However, in this case it can only supply land stack in the
-province of the port/arsenal it is blockading.
-\bparag[Supplying a besieged port.] The stack must have entered a non-blocked
-friendly port during its movement and enter the besieged port. Moreover, it
-must be a stack large enough to blockade the supply port. This will remove the
-``blockade'' situation of the port for the siege segment of this round
-(only). Note that this is only useful if the port is blockaded and thus
-require escaping it\ldots
-\bparag[Battle.]
-\bparag[Fight \corsaire.]
+supply land troops. However, in this case it can only supply the land stack in
+the province of the port/arsenal it is blockading.
+\bparag[Supplying a besieged port.] The stack must have exited a non-blocked
+friendly port (either starting from it or moving in and out) during its
+movement and entered the besieged port. Moreover, it must be a stack large
+enough to blockade the supplied port. This will remove the ``blockade''
+situation of the port for the siege segment of this round (only) and remove
+the Supply attrition roll of any troops inside for the next supply step
+(only). Note that this is mostly useful if the port is blockaded and thus
+require escaping it\ldots Moreover, the stack will end its movement in the
+supplied port as actions end movement. It is possible to decline the
+possibility to supply in order to continue moving (for example to embark
+besieged troops and retreat them before the fortress falls).
+\bparag[Fight \corsaire.] The stack can initiate fight against \corsaire from
+the sea zone it is in. The \corsaire counter (or counters) targeted by the
+stack must be in the same sea zone.
 \bparag[Naval transport.] See details below. Can be combined with blockade
 and/or supply of the invaded province (or reinforced fortress) only.
 \bparag[Naval transport in the \ROTW.] In the \ROTW, when either the naval
 stack contains a \LeaderE or the land stack contains a \LeaderC, then the
 transport itself is not an action. The naval stack may continue moving and may
-do an action. Note that if the land stack tries to disembark in an unknown
-province and fails its exploration, it will be destroyed if the naval stack is
-not here anymore\ldots
+do an action, it may also end the transport after doing its action. Doing this
+is still considered as active for campaign purpose (\emph{i.e.} a naval stack
+may continue moving after a \ROTW invasion of an enemy province, and this
+stack may do another active action later; but even if it does not do any
+active action later, the invasion is still considered ``active'' for campaign
+cost purposes).
 
 \aparag[List of passive naval actions.]
-\bparag[Exploration.] Exploration is resolved during next step.
+\bparag[Exploration.] Resolved during next step.
 \bparag[Continuing blockade and/or supply.] The naval stack may not move and
 must have already been blockading the same port (or supplying from the same
 sea) on the previous round (including on previous turn if this is the first
@@ -658,6 +713,11 @@ round.
 \bparag[Friendly naval transport.] If both endpoints of the naval transport
 are friendly (include unknown or unoccupied provinces in the \ROTW), the
 transport is a passive action.
+\bparag[Friendly naval transport in the \ROTW.] As for active transport, a
+passive transport is not an action in the \ROTW if the combined stack contains
+a \LeaderE or \LeaderC. Note that if the land stack tries to disembark in an
+unknown province and fails its exploration, it will be destroyed if the naval
+stack is not here anymore\ldots
 
 
 \subsubsection{Combined move}
@@ -673,17 +733,8 @@ transport is a passive action.
 éventuel blocus de la province d'arrivée) : achève le mouvement naval. \\
 Le joueur doit anoncer en entrant dans la mer son intention de débarquer
 des forces et dans quelle province. \\
-Exception: une pile qui débarque avec un C - ou un E - ne compte pas comme une action. \\
 Noter : après bataille navale, interdiction de débuter une transport naval (ou invasion) au
 même round (on peut seulement finir celui-ci, si victorieux)
-
-\aparag Actions passives
-\bparag Mouvements
-\bparag Interception : une flotte d'un joueur inactif (pas en phase)
-peut tenter d'intercepter chaque pile qui bouge dans sa mer ou une mer
-adjacente (autant de tentatives que d'opportunités, mais un pays/une
-alliance ne peut faire qu'une seule tentative par mer).
-Si au port : dans une des mer adjacente.
 
 \aparag[Conquistador table]
 The Conquistador table may be used only:
@@ -768,6 +819,13 @@ pouvant continuer le mouvement.
 
 
 \subsection{Interception}
+\aparag Actions passives
+\bparag Interception : une flotte d'un joueur inactif (pas en phase)
+peut tenter d'intercepter chaque pile qui bouge dans sa mer ou une mer
+adjacente (autant de tentatives que d'opportunités, mais un pays/une
+alliance ne peut faire qu'une seule tentative par mer).
+Si au port : dans une des mer adjacente.
+
 \aparag Interception is allowed according to the last campaign paid.
 \bparag For player without initiative, this is the campaign of the previous
 round.
