@@ -212,13 +212,17 @@ Each phasing land stack which has no supply or is in weak supply must roll for
 roll for \terme{siege attrition} (exception: if the fortress was supplied
 during the previous round (see naval movement), the besieged stack does not
 roll for attrition and is considered in full supply (even if it should
-normally be only in weak supply) . Naval stacks never roll for attrition
+normally be only in weak supply)). Naval stacks never roll for attrition
 during the supply segment. Beware that besieged stacks roll for \textbf{siege}
 attrition during this segment, which has a similar procedure as supply
 attrition but with slightly different modifiers.
 
 If a besieged stack is also in weak supply, it does not roll for supply
 attrition. The siege attrition replaces this roll.
+
+\begin{todo}
+  Supply markers for besieged fortresses?
+\end{todo}
 
 \subsection{\SoS, \LoS, weak supply}
 \subsubsection{At land}
@@ -413,27 +417,30 @@ attacked). No interception allowed.
 
 \aparag[Passive] 10\ducats:
 \bparag Interception allowed only in friendly provinces.
-\bparag On land: Moving in friendly provinces ; maintaining sieges and fights
-against revolts ; exploration ; moving \LeaderG (and \LeaderC) alone.
-\bparag At sea: Moving stacks of 1\FLEET maximum. No attack.
-\bparag Naval actions: friendly-to-friendly transport, maintain fight against
-\corsaire, exploration, maintain blocus.
+\bparag On land: only passive moves.
+% (Moving in friendly provinces ; maintaining sieges and fights against
+% revolts ; exploration ; moving \LeaderG (and \LeaderC) alone).
+\bparag At sea: Moving stacks of 1\FLEET maximum. No active action.
+% \bparag Naval actions: friendly-to-friendly transport, maintain fight against
+% \corsaire, exploration, maintain blocus.
 
 \aparag[Active (aka Simple)] 20\ducats: All allowed by Passive plus
 \bparag Any interception.
-\bparag On land: one stack of $\leq$ 5 \LD + 1 \Pasha without restriction
-\bparag At sea: one stack with at most 1\FLEET counter without restriction.
+\bparag On land: one stack of $\leq$ 5 \LD + 1 \Pasha may do an active move.
+\bparag At sea: any stack may move; one stack with at most 1\FLEET counter
+may do an active action, other stacks may only do passive actions.
 
 \aparag[Active/No Logistic] 10\ducats: Same as Active but
-\bparag At sea: one stack \textbf{without} \FLEET without restriction.
+\bparag At sea: one stack \textbf{without} \FLEET counter may do an active
+action.
 \bparag On land: all stacks $\geq$ 3\LD roll for attrition (even if not
 moving).
 
 \aparag[Major] 50\ducats: All allowed by passive plus
-\bparag On land: either one stack without restriction (neither size nor acton)
-or all stacks $\leq$ 5 \LD + 1 \Pasha without restriction
+\bparag On land: either one stack of any size may do an active move;
+or all stacks $\leq$ 5 \LD + 1 \Pasha may do active moves.
 \bparag At sea: either one stack without restriction (neither size nor acton)
-or all stacks with at most 1\FLEET counter without restriction.
+or all stacks with at most 1\FLEET counter may do active actions.
 
 \aparag[Multiple] 100\ducats: all stacks may act without restriction.
 
@@ -445,21 +452,23 @@ computed separately and only the maximum cost is paid.
   \begin{itemize}
   \item attack with one naval stack of 3\FLEET ;
   \item move without attacking (exploration possible) with as many naval
-    stacks as wanted (non-aggressive movement is not restricted) ;
-  \item maintain as many blocus and fight against \corsaire as wanted (only
-    movement is restricted) ;
+    stacks as wanted (passive actions are not restricted) ;
+  \item maintain as many blockades and fight against \corsaire as wanted
+    (maintaining blockades and fight against \corsaire are passive actions,
+    only initiating them is active).
   \item attack with as many small ($\leq$ 5\LD) land stacks as wanted (the
     reason for which the campaign is Major needs not to be the same at sea and
     on land) ;
   \item move without attacking as many large land stacks as wanted
-    (non-aggressive movement is not restricted) ;
+    (non-active movement is not restricted) ;
   \item maintain as many sieges and fights against revolts with large stacks as
     wanted (only movement is restricted).
   \end{itemize}
 \end{exemple}
 
 \section{Movements}
-\subsection{Generalities}
+\subsection{Movement}
+\subsubsection{Generalities}
 Each country of the phasing alliance may move its stacks, according to the
 campaign it paid for the round. Each movement must be completed before the
 next one start. The phasing alliance choose in which order it moves its stacks
@@ -570,10 +579,15 @@ interception battle).
 \end{exemple}
 
 Any movement that enters a province with unfriendly forces (land stack,
-\REVOLT/\REBELLION, fortress (even if besieged), \ldots) is considered
-``aggressive'' and cannot occur as part as a passive move. Passive campaign
-allow only passive moves while other campaigns allow one or more aggressive
-moves.
+\REVOLT/\REBELLION, fortress (even if besieged), \ldots) is \terme{active} and
+cannot occur as part as a passive move. Passive campaign allow only passive
+moves while other campaigns allow one or more active moves. Note that not
+moving, or exiting an unfriendly province can be done as a passive move.
+
+When exiting a province whose fortress is not controlled, a stack must either
+empty the province (removing the siege) to go back to a friendly province (no
+enemy (even besieged), no \REVOLT/\REBELLION, \ldots) or leave enough troop to
+maintain siege (1\LD per level of the fortress).
 
 Movement of leaders alone is allowed. A leader moving alone has a move
 capacity of 20\MP. It never rolls for attrition. It can use naval transport
@@ -590,15 +604,15 @@ command is normally done during the wintering segment.
 
 
 \subsubsection{Sea}
-Sea stacks have an unlimited movement capacity. A naval stack that does not
+Naval stacks have an unlimited movement capacity. A naval stack that does not
 stay in a port always rolls for attrition (even if it does not move and simply
 stays at sea). The attrition roll is modified by the distance moved, hence the
 farther a naval stack moves, the more attrition it suffers (especially for
 large stacks).
 
-Each new sea or port entered during the movement is counted as a ``zone'' for
-the distance. Entering ports is usually done at the end of movement, to avoid
-certain dangerous sea zones, or to pick up troops for combined move.
+Each new sea zone or port entered during the movement is counted as a ``zone''
+for the distance. Entering ports is usually done at the end of movement, to
+avoid certain dangerous sea zones, or to pick up troops for combined move.
 
 At the end of its movement, a naval stack is allowed to do one naval action
 (some actions are actually composed of several others). This is never
@@ -611,9 +625,9 @@ campaign. Some are passive and can be done as part as any campaign. Note that
 many passive actions are simply ``continuing the active action from previous
 round without moving.''
 
-Actions are normally announced when the naval stack enters the sea zone where
-the action will occur. Announcing a naval action ends the movement of the
-stack and attrition (for the whole movement) is rolled immediately before any
+Actions are announced when the naval stack enters the sea zone where the
+action will occur. Announcing a naval action ends the movement of the stack
+and attrition (for the whole movement) is rolled immediately before any
 interception (in the last zone) is declared and before actually resolving the
 action.
 
@@ -630,8 +644,8 @@ Each time it tries to enter or exit a blockaded port, a stack must roll to
 escape blockade. Roll 1d10 modified as follows:
 \begin{modlist}
 \item[+M] \Man differential between the moving leader and the blockading
-  one. Only count if it is positive (\emph{i.e.} if the moving leader has more
-  \Man).
+  one. Only count it if it is positive (\emph{i.e.} if the moving leader has
+  more \Man).
 \item[+1] if the blockading stack is smaller (in number of \ND).
 \item[+1] if the blockading stack is composed of \NWD and does not have
   technology \TSF.
@@ -679,7 +693,7 @@ friendly port (either starting from it or moving in and out) during its
 movement and entered the besieged port. Moreover, it must be a stack large
 enough to blockade the supplied port. This will remove the ``blockade''
 situation of the port for the siege segment of this round (only) and remove
-the Supply attrition roll of any troops inside for the next supply step
+the Siege attrition roll of any troops inside for the next supply step
 (only). Note that this is mostly useful if the port is blockaded and thus
 require escaping it\ldots Moreover, the stack will end its movement in the
 supplied port as actions end movement. It is possible to decline the
@@ -711,40 +725,58 @@ enforced.
 must have already fighting \corsaire from the same sea zone on previous
 round.
 \bparag[Friendly naval transport.] If both endpoints of the naval transport
-are friendly (include unknown or unoccupied provinces in the \ROTW), the
+are friendly (including unknown or unoccupied provinces in the \ROTW), the
 transport is a passive action.
 \bparag[Friendly naval transport in the \ROTW.] As for active transport, a
 passive transport is not an action in the \ROTW if the combined stack contains
 a \LeaderE or \LeaderC. Note that if the land stack tries to disembark in an
-unknown province and fails its exploration, it will be destroyed if the naval
-stack is not here anymore\ldots
-
-
-\subsubsection{Combined move}
-
-\subsection{Attrition}
-\subsubsection{Land}
-\subsubsection{Sea}
+unknown province and fails its exploration, it must reembark and thus will be
+destroyed if the naval stack is not here anymore\ldots
 
 \iamhere
 
+\subsubsection{Clarification sur les mouvements (sur mer)}
+-- NE PAS PRENDRE EN COMPTE --
+
+Une pile navale dispose d'un potentiel de mouvement illimité
+pendant un round et peut ramasser ou laisser des détachements en
+route librement. Des forces laissées ou ramassées ne peuvent faire ou avoir
+fait d'autres mouvements du round. Une pile est restreinte de deux
+manières durant la phase militaire. Premièrement elle ne peut faire
+que l'une des activités suivantes par round : transport naval
+(c'est-à-dire débarquement de troupes, accompagné
+d'un blocus de la province de débarquement et
+du soutien de ravitaillement des forces débarquées -- on peut
+embarquer librement des troupes pour les transporter et faire une
+des actions décrites ici librement si on ne les décharge pas ;
+voir plus bas l'exception des conquistadors), mise en
+blocus d'un port (qui peut ne s'annoncer qu'à la phase des
+sièges, avant tout test de siège), lutte contre les pirates d'une zone commerciale,
+exploration d'une nouvelle mer, attaque d'une pile navale ennemie en mer.
+
+Deuxièment elle doit faire un test d'attrition à la fin de son mouvement
+ainsi qu'à chaque combat ou au moment de débarquer des troupes,
+ce qui cesse même temporairement son mouvement. La flotte
+peut donc être conduite à faire plusieurs attritions dans un même tour
+et le nombre de provinces traversées est celui entre deux de ces tests
+d'attrition.
+
+L'empilement est limitée dans chaque pile navale à deux pions plus un DE,
+et non dans chaque mer. Cependant seule une pile navale d'un camp est
+autorisée à faire une action donnée dans une mer (c'est-à-dire lutter contre
+pirates et corsaires, ou attaquer une pile ennemie spécifique, ou encore
+mettre le blocus à un port précisé). Deux piles maritimes peuvent tout
+de même mettre un blocus de manière indépendante à deux ports sur la
+même zone.
+
+\subsubsection{Combined move}
 \bparag[Transport naval ou invasion navale]
 (c'est-à-dire embarquement, débarquement, y compris ravitaillement et
 éventuel blocus de la province d'arrivée) : achève le mouvement naval. \\
 Le joueur doit anoncer en entrant dans la mer son intention de débarquer
 des forces et dans quelle province. \\
-Noter : après bataille navale, interdiction de débuter une transport naval (ou invasion) au
-même round (on peut seulement finir celui-ci, si victorieux)
-
-\aparag[Conquistador table]
-The Conquistador table may be used only:
-\bparag in \continent{America} and \continent{Africa}, by any \LeaderC and
-\LeaderE (half values) ;
-\bparag in \continent{Indonesia} by \leader{Coen}, \leader{van Diemen} and
-\leader{Maetsuycker} only ;
-\bparag in \continent{India} by all \LeaderC restricted to \continent{Asia}
-(@). Namely, \leader{Clive}, \leader{Dupleix}, \leader{Bussy} and the minimum
-\LeaderC@ of \FRA and \ANG in period VII.
+Noter : après bataille navale, interdiction de débuter une transport naval (ou
+invasion) au même round (on peut seulement finir celui-ci, si victorieux)
 
 \aparag[Transport maritime]
 \bparag Considéré comme l'action de la flotte.
@@ -752,9 +784,9 @@ The Conquistador table may be used only:
 soit d'un port/arsenal pouvant contenir la pile navale. A destination
 nécessairement d'un port/arsenal ami (contrôlé, allié,...) pouvant
 contenir la pile navale. La force navale doit stopper son mouvement là.
-\bparag Les forces terrestres ont dépensé 2 MP si de port ami à port ami
-(3 en \ROTW), 3 MP sinon (6 MP en \ROTW), et peuvent rester dans la
-forteresse  ou continuer le mouvement comme province si la forteresse n'est pas assiégée.
+\bparag Les forces terrestres ont dépensé 2 MP si de port ami à port ami (3 en
+\ROTW), 3 MP sinon (6 MP en \ROTW), et peuvent rester dans la forteresse ou
+continuer le mouvement comme province si la forteresse n'est pas assiégée.
 Elles peuvent être intercepté dans la province si ils sortent et ont alors le
 malus débarquement pour la bataille [TBD ?].
 \bparag Jet d'attrition de mouvement pour force terrestre si a embarqué
@@ -773,6 +805,49 @@ ailleurs que dans un port/arsenal.
 
 \aparag[combiner mvt terre/mer]
 Une force terrestre doit commencer dans la province côtière.
+
+\subsubsection{Transport maritime}
+-- NE PAS PRENDRE EN COMPTE --
+
+La \textbf{table de transport maritime}
+indique le nombre de points de transport nécessaires pour embarquer un DT
+(il en faut 2) ou une A- (de 3 à 6 selon la classe d'armée). Une A+
+compte comme deux A-. Les DN (DNav, DGa ou DGal)  transportent 1 point
+chacun et les DTr transportent 3 points (c'est même
+leur unique fonction !). Les DE transportent
+seulement 1/2 points. Les DC (conquistadors) ne demandent eux que 1/2 point
+de transport.
+
+Autre limite, un pion naval ne peut en général transporter qu'un seul pion
+terrestre. Pour être plus précis, un pion F de navires peut transporter jusqu'à une A+
+(soit l'équivalent de 4 DT, éventuellement en 2 pions, mais pas 3) ;
+si le transport est assuré par des DGa et des DTr dans F, la limite
+passe à 2A+ en 3 pions. Un détachement
+naval (de toute nature : DTr, DN, DE) ne peut contenir plus
+d'un pion (donc DC, DT ou A- pour les armées les plus petites).
+
+Une force navale doit faire un test d'attrition au moment où elle débarque des
+forces. Si elle obtient des pertes par attrition, le même pourcentage de perte
+est appliqué aux DT ou armées transportées en consultant la table des forces
+restantes après attrition. En combat maritime, les pertes n'affectent les
+armées que quand il n'y a plus assez de navires intacts pour transporter les
+troupes (les forces terrestres en trop sont détruites tout de suite).
+
+\subsection{Attrition}
+\subsubsection{Land}
+\subsubsection{Sea}
+
+\subsection{Old junk}
+
+\aparag[Conquistador table]
+The Conquistador table may be used only:
+\bparag in \continent{America} and \continent{Africa}, by any \LeaderC and
+\LeaderE (half values) ;
+\bparag in \continent{Indonesia} by \leader{Coen}, \leader{van Diemen} and
+\leader{Maetsuycker} only ;
+\bparag in \continent{India} by all \LeaderC restricted to \continent{Asia}
+(@). Namely, \leader{Clive}, \leader{Dupleix}, \leader{Bussy} and the minimum
+\LeaderC@ of \FRA and \ANG in period VII.
 
 \aparag[Mouvement le long d'un rivière en \ROTW]
 se qualifie si un même fleuve ou lac est adjacent
@@ -794,15 +869,6 @@ automatiquement sans combat (et son chef ne fait pas de test de perte).
 \bparag Dans les 2 cas, le défenseur peut dire qu'il se retire dans la forteresse
 de la province avant le combat d'écrasement.
 
-\aparag[Rappel des mod. d'interception] VOIR TABLE
-\interceptiona
-\bparag Pour les flottes faisant Invasion/Naval Transport : le bonus +2 remplace
-le malus de -3 au port ou le bonus de +1(même mer) si intention de
-débarquée a été indiquée. Pour une flotte en mer: +2 si c'est dans la
-même zone; flotte dans arsenal : +2 dans les mers qui bordent l'arsenal;
-flotte dans port: +2 si c'est dans la province du port.
-
-
 \paragraph{f. Passer outre l'ennemi.}
 Une force de 2 A+ entrant dans une province ne contenant qu'un détachement
 peut déclarer un combat d'écrasement. Le combat est immédiatement
@@ -815,8 +881,6 @@ Une force entrant dans une province contenant une forteresse hostile
 non assiégée doit s'y arrêter sauf si elle laisse une force suffisante
 pour mettre le siège (1 DT par niveau de la forteresse), le restant
 pouvant continuer le mouvement.
-
-
 
 \subsection{Interception}
 \aparag Actions passives
@@ -831,6 +895,14 @@ Si au port : dans une des mer adjacente.
 round.
 \bparag During first round, players without initiative may intercept (before
 their first move) as if they had done a passive campaign.
+
+\aparag[Rappel des mod. d'interception] VOIR TABLE
+\interceptiona
+\bparag Pour les flottes faisant Invasion/Naval Transport : le bonus +2 remplace
+le malus de -3 au port ou le bonus de +1(même mer) si intention de
+débarquée a été indiquée. Pour une flotte en mer: +2 si c'est dans la
+même zone; flotte dans arsenal : +2 dans les mers qui bordent l'arsenal;
+flotte dans port: +2 si c'est dans la province du port.
 
 \aparag[Pour l'interception]
 \bparag Noter que c'est l'intercepteur qui attaque toujours.
@@ -876,41 +948,6 @@ Après le combat, si la force interceptée a gagné le combat, elle peut
 poursuivre son mouvement (mais n'aura plus à tester l'attrition si
 elle a déjà dû le faire).
 
-
-\subsubsection{Clarification sur les mouvements (sur mer)}
--- NE PAS PRENDRE EN COMPTE --
-
-Une pile navale dispose d'un potentiel de mouvement illimité
-pendant un round et peut ramasser ou laisser des détachements en
-route librement. Des forces laissées ou ramassées ne peuvent faire ou avoir
-fait d'autres mouvements du round. Une pile est restreinte de deux
-manières durant la phase militaire. Premièrement elle ne peut faire
-que l'une des activités suivantes par round : transport naval
-(c'est-à-dire débarquement de troupes, accompagné
-d'un blocus de la province de débarquement et
-du soutien de ravitaillement des forces débarquées -- on peut
-embarquer librement des troupes pour les transporter et faire une
-des actions décrites ici librement si on ne les décharge pas ;
-voir plus bas l'exception des conquistadors), mise en
-blocus d'un port (qui peut ne s'annoncer qu'à la phase des
-sièges, avant tout test de siège), lutte contre les pirates d'une zone commerciale,
-exploration d'une nouvelle mer, attaque d'une pile navale ennemie en mer.
-
-Deuxièment elle doit faire un test d'attrition à la fin de son mouvement
-ainsi qu'à chaque combat ou au moment de débarquer des troupes,
-ce qui cesse même temporairement son mouvement. La flotte
-peut donc être conduite à faire plusieurs attritions dans un même tour
-et le nombre de provinces traversées est celui entre deux de ces tests
-d'attrition.
-
-L'empilement est limitée dans chaque pile navale à deux pions plus un DE,
-et non dans chaque mer. Cependant seule une pile navale d'un camp est
-autorisée à faire une action donnée dans une mer (c'est-à-dire lutter contre
-pirates et corsaires, ou attaquer une pile ennemie spécifique, ou encore
-mettre le blocus à un port précisé). Deux piles maritimes peuvent tout
-de même mettre un blocus de manière indépendante à deux ports sur la
-même zone.
-
 \paragraph{Interception.}
 Durant les mouvements, les flottes ennemies peuvent tenter d'intercepter dans
 leur mer ou la mer adjacente la pile maritime qui bouge, sans limite du
@@ -930,78 +967,33 @@ le combat devient possible et automatique contre une force maritime
 dans la même mer après les déplacements (mais ceci compte alors comme
 l'action de la force navale pour le round).
 
-\subsubsection{Transport maritime}
--- NE PAS PRENDRE EN COMPTE --
-
-La \textbf{table de transport maritime}
-indique le nombre de points de transport nécessaires pour embarquer un DT
-(il en faut 2) ou une A- (de 3 à 6 selon la classe d'armée). Une A+
-compte comme deux A-. Les DN (DNav, DGa ou DGal)  transportent 1 point
-chacun et les DTr transportent 3 points (c'est même
-leur unique fonction !). Les DE transportent
-seulement 1/2 points. Les DC (conquistadors) ne demandent eux que 1/2 point
-de transport.
-
-Autre limite, un pion naval ne peut en général transporter qu'un seul pion
-terrestre. Pour être plus précis, un pion F de navires peut transporter jusqu'à une A+
-(soit l'équivalent de 4 DT, éventuellement en 2 pions, mais pas 3) ;
-si le transport est assuré par des DGa et des DTr dans F, la limite
-passe à 2A+ en 3 pions. Un détachement
-naval (de toute nature : DTr, DN, DE) ne peut contenir plus
-d'un pion (donc DC, DT ou A- pour les armées les plus petites).
-
-Une force navale doit faire un test d'attrition au moment où elle débarque
-des forces. Si elle obtient des pertes par attrition, le
-même pourcentage de perte est appliqué aux DT ou armées transportées
-en consultant la table des forces restantes après attrition. En combat maritime,
-les pertes n'affectent les armées que quand il n'y a plus assez de navires
-intacts pour transporter les troupes (les forces terrestres en trop sont détruites
-tout de suite).
-
-%\transportflottes
-
 \subsubsection{Attrition en mer}
 -- NE PAS PRENDRE EN COMPTE --
 
 Les flottes qui se déplacent ou restent en mer encourent un risque d'attrition.
 La procédure est peu changée par rapport à la règle normale.
 
-Le test d'attrition consiste à lancer 1d10 auquel on ajoute la valeur
-de risque la plus haute des mers pénétrées par la force navale.
-Les valeurs de risque sont diminuées de 2 si un port ami est
-sur la zone. On ajoute de plus la valeur des modifcateurs de
-toutes les mers difficiles traversées (valeur en bleu), un malus
-de +1 par groupe (plein) de 4 zones de mouvement (on ignore les
-fractions), et
-un malus éventuel d'un événement (+2 si mauvais
-temps). On soustrait d'un autre côté
-la man\oe uvre d'un amiral (ou un explorateur si le mouvement
-commence ou se termine hors Europe). Le résultat est comparé à 11 :
-chaque point du résultat au-delà de 11 induit 10\%
-d'attrition. Ce résultat peut être lu sur la table d'exploration et attrition hors-Europe.
+Le test d'attrition consiste à lancer 1d10 auquel on ajoute la valeur de
+risque la plus haute des mers pénétrées par la force navale.  Les valeurs de
+risque sont diminuées de 2 si un port ami est sur la zone. On ajoute de plus
+la valeur des modifcateurs de toutes les mers difficiles traversées (valeur en
+bleu), un malus de +1 par groupe (plein) de 4 zones de mouvement (on ignore
+les fractions), et un malus éventuel d'un événement (+2 si mauvais temps). On
+soustrait d'un autre côté la man\oe uvre d'un amiral (ou un explorateur si le
+mouvement commence ou se termine hors Europe). Le résultat est comparé à 11 :
+chaque point du résultat au-delà de 11 induit 10\% d'attrition. Ce résultat
+peut être lu sur la table d'exploration et attrition hors-Europe.
 
-%
-%on fait un test sous la valeur de risque la plus haute de celles
-%des mers (ou entrées). Les valeurs de risque sont \textbf{diminuées de 2
-%si un port ami} est sur la mer.  Le dé est modifié de +1 si les navires
-%traversent 2 ou plus région ayant cette valeur de risque, et des
-%modificateurs en bleu pour certaines mers au passage difficile. La
-%man\oe uvre d'un amiral (ou si le mouvement commence ou fini hors-europe
-%d'un explorateur) est soustraite du dé.
-
-Ensuite, le pourcentage obtenu est converti en pertes à l'aide de
-la \textbf{table des attritions pour l'exploration et le mouvement maritime}.
-Ce tableau indique, selon la perte et le nombre de détachements présents,
-ce qu'il reste dans la pile après les pertes d'attrition. Un résultat * (dans la table
-d'attrition ou le tableau de ce qui reste) indique une chance sur deux de perdre un DE
-(sur mer) ou DC (sur terre).
+Ensuite, le pourcentage obtenu est converti en pertes à l'aide de la
+\textbf{table des attritions pour l'exploration et le mouvement maritime}.  Ce
+tableau indique, selon la perte et le nombre de détachements présents, ce
+qu'il reste dans la pile après les pertes d'attrition. Un résultat * (dans la
+table d'attrition ou le tableau de ce qui reste) indique une chance sur deux
+de perdre un DE (sur mer) ou DC (sur terre).
 
 Les transports ne disposent pas de pions fractionnaires DE comme les DN.
 Si un détachement de transports doit prendre au moins DE de perte,
 il est détruit en entier.
-
-
-
 
 \subsection{Convoys}\label{chMilitary:Convoys}
 Do not use if using the experimental system for Revolts, \corsaire and Natives.
@@ -1022,9 +1014,9 @@ attack is resolved before regular naval interceptions.
 one attack per \corsaire is allowed per move.
 
 \aparag[Attack Procedure]
-\bparag Roll for naval interception. Pirates with no leader use 2
-as Manoeuvre.  If successful, reduce the \corsaire to \Facemoins and proceed with the attack,
-else test for the next interception.
+\bparag Roll for naval interception. Pirates with no leader use 2 as
+Manoeuvre.  If successful, reduce the \corsaire to \Facemoins and proceed with
+the attack, else test for the next interception.
 \bparag Before the attack, an accompanying fleet may try to disperse and
 reduce the pirates or privateers by making a roll on the corresponding
 table.  If successful, the \corsaire is not reduced but the attack is aborted.
@@ -1041,7 +1033,7 @@ not in \region{Mediterranee}.
 \terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
 reappears in a Spanish port on the Atlantic coast.
 
-\section{Exploration}
+\section{Exploration}\label{chMilitary:Discoveries}
 Each phasing naval stack not engaged in battle (including interception) may
 attempt to explore an adjacent unknown seazone. In case of success, the stack
 automatically moves into the explored zone.
@@ -1053,7 +1045,7 @@ stack automatically moves into the explored province.
 Note that a naval stack embarking troops may explore a new seazone from which
 the troops may then disembark to explore a new province.
 
-\section{On discoveries [58]}\label{chMilitary:Discoveries}
+\subsection{On discoveries [58]}
 \aparag As long as the forces doingthe discoveries have not came back to an
 establishment existing at the beginning of the military phase, the discovery
 are not yet usable by other forces.  Neither is 'rendez-vous' authorized
