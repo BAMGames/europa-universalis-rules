@@ -57,7 +57,7 @@ $(ROTWDIR)/ressource.eps: $(ROTWCOMMON) $(BINDIR)/createressources.pl $(RULESDIR
 $(ROTWDIR)/activation.eps: $(ROTWCOMMON) $(RULESDIR)/engCorpsMineurs.tex
 	@$(DISP) "$(ROTWCLASS)" "activations"
 	@echo '/activationdict <<' > $@
-	@grep ^.minoractivation $^|perl -pe 's/^.*minoractivation{([a-z]*)}{?([0-9]*)}?%? ?(.*)$$/\/\1 (\2\3)/g;s/ormus/perse/g;' >>$@
+	@grep ^.minoractivation $^|perl -pe 's+^.*minoractivation\{([a-z]*)\}\{?([0-9/]*)\}?%? ?(.*)$$+/\1 (\2\3)+g;s/ormus/perse/g;' >>$@
 	@echo '>> def' >>$@
 
 $(ROTWDIR)/clipped.pdf: $(ROTWCOMMON) $(GSCOLORMAPCOMMON) $(addprefix $(ROTWDIR)/,source.eps activation.eps carres.eps fonddecarte.clp clip1.clp clip2.clp clip3.clp images.eps portsandmines.eps ressource.eps text.eps) $(ROTWCOLORMAPEXTFILES)
