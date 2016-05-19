@@ -675,6 +675,9 @@ Explanation of the results:
 \item Ryy: apply Table~\ref{table:Attrition ROTW Remainders} with yy\% on the
   number of natives in the province. The result is the number of native \LD
   that resist and fight.
+\item All natives that neither resist nor desert are eliminated from the
+  province (they will come back at the end of the turn following normal
+  rules).
 \end{itemize}
 
 Next, a battle occurs between the resisting native and the stack (including
@@ -690,10 +693,12 @@ table and cannot use naval transport. They are automatically disbanded if the
   If there are 6\LD of natives in the province and the result is 'R30/D80' the
   by cross-referencing 80\% with 6\LD we see that there is 1\LD of natives
   joining the \LeaderC and by cross-referencing 30\% with 6\LD, we see that
-  there are 4\LD that resist and fight.
+  there are 4\LD that resist and fight. The last \LD of natives is
+  killed. That is the province now only contain 4\LD (those that resist) which
+  are activated and fight following usual rules.
 
   Note that due to the way the table is read, 'R30/D80' actually means that
-  there is 100-80=20\% of the stack that desert and 100-30=70\% that resist.
+  there is 100-80=20\% of the natives that desert and 100-30=70\% that resist.
 \end{exemple}
 
 \subsubsection{Sea}
@@ -838,74 +843,112 @@ considered as a friendly port (not arsenal).
 % and thus will be destroyed if the naval stack is not here anymore\ldots
 
 \subsubsection{Combined move}
-\iamhere
+A combined move, or naval transport happens when a naval stack carries a land
+stack and they move together. The land stack may not move before embarking but
+may move after. On the other hand, the naval stack may move before embarking
+troops but disembarking troops is a naval action and ends its movement. Hence,
+there is always only one stack moving, first it is solely naval, then it is
+a combined land and naval stack and finally it is solely land. A naval stack
+may not embark troops if it has already been engaged in a battle this round
+(\emph{i.e.} after winning an interception battle).
 
-\bparag[Transport naval ou invasion navale]
-(c'est-à-dire embarquement, débarquement, y compris ravitaillement et
-éventuel blocus de la province d'arrivée) : achève le mouvement naval. \\
-Le joueur doit anoncer en entrant dans la mer son intention de débarquer
-des forces et dans quelle province. \\
-Noter : après bataille navale, interdiction de débuter une transport naval (ou
-invasion) au même round (on peut seulement finir celui-ci, si victorieux)
+The naval stack must be large enough to hold the land stack, as indicated in
+Table~\ref{table:Sea Transport for Armies}. Each \ARMY\Faceplus, depending on
+its \terme{army class} and the period, needs a certain number of
+\terme{transport points} as indicated in the table. An \ARMY\Facemoins
+requires half that number, a \LD requires 2 points and a \LDE half a
+point. Conversely, each \NWD or \NGD provides 1 point, each \NTD 3 points and
+each \NDE half a point. The sum of the transport capacity of the naval stack
+must be at least equal to the sum of the transport points required for the
+land stack.
 
-\aparag[Transport maritime]
-\bparag Considéré comme l'action de la flotte.
-\bparag Les forces terrestres doivent partir soit d'une côté quelconque,
-soit d'un port/arsenal pouvant contenir la pile navale. A destination
-nécessairement d'un port/arsenal ami (contrôlé, allié,...) pouvant
-contenir la pile navale. La force navale doit stopper son mouvement là.
-\bparag Les forces terrestres ont dépensé 2 MP si de port ami à port ami (3 en
-\ROTW), 3 MP sinon (6 MP en \ROTW), et peuvent rester dans la forteresse ou
-continuer le mouvement comme province si la forteresse n'est pas assiégée.
-Elles peuvent être intercepté dans la province si ils sortent et ont alors le
-malus débarquement pour la bataille [TBD ?].
-\bparag Jet d'attrition de mouvement pour force terrestre si a embarqué
-ailleurs qua dans un port/arsenal.
-\bparag Exception avec C ou Gouv ou Expl dans la pile (combinée),
-l'embarquement et débarquement en \ROTW est tjs considéré dans un port
-ami si il n'est pas opposé (pas de ville, \COL, \TP ou forces d'un
-ennemi en guerre contre soi).
+\GTtable{fleettransport}
 
-\aparag[Invasion navale] Force terrestre : part d'un port ou arsenal
-contrôlé.  La flotte doit pouvoir entrer dans le port.
-\bparag Il coûte 3 MP à la force terrestre pour être laissé sur une côte
-sans port contrôlé (6 MP en \ROTW).
-\bparag Jet d'attrition de mouvement pour force terrestre si a débarqué
-ailleurs que dans un port/arsenal.
+Either the start (evacuation) or end (invasion) of the naval transport may be
+uncontrolled but not both. That is, at least one of the endpoint must be a
+controlled port or arsenal large enough to contain the naval stack. Since the
+transport is an action of the naval stack, when disembarking in a controlled
+port, the naval stack ends its movement in that port, not in the adjacent sea
+zone. It is possible to choose to disembark out of the port to keep the naval
+stack at sea but this obviously removes any advantage of disembarking in the
+port (it becomes an active action, cannot be done after an evacuation, costs
+more \MP for the land stack and is a cause of attrition for it).
 
-\aparag[combiner mvt terre/mer]
-Une force terrestre doit commencer dans la province côtière.
+Even if the transport is an action for the naval stack it may be followed by a
+blockade+supply of the landing province or city (only). That is, the action is
+transport + blockade + supply (invasion) or transport + supply (reinforcing a
+besieged fortress).
 
-\subsubsection{Transport maritime}
--- NE PAS PRENDRE EN COMPTE --
+As any action, the landing must be announced when the naval stack enters the
+zone, before any interception are declared or resolved. Announcing a landing
+gives bonus to interception. As for any action, it is resolved after any
+interception and resulting battle.
 
-La \textbf{table de transport maritime}
-indique le nombre de points de transport nécessaires pour embarquer un DT
-(il en faut 2) ou une A- (de 3 à 6 selon la classe d'armée). Une A+
-compte comme deux A-. Les DN (DNav, DGa ou DGal)  transportent 1 point
-chacun et les DTr transportent 3 points (c'est même
-leur unique fonction !). Les DE transportent
-seulement 1/2 points. Les DC (conquistadors) ne demandent eux que 1/2 point
-de transport.
+If both endpoints contains a large enough controlled port or arsenal, then the
+transport is a passive action. Otherwise, it is an active action. If the
+combined stack contains a \LeaderE, \LeaderC or \LeaderGov, then any province
+with no enemy presence (activated natives, enemy troops, enemy city or
+establishment (even besieged), \ldots) is considered to contain a controlled
+port (not arsenal) (both for embarking and disembarking).
 
-Autre limite, un pion naval ne peut en général transporter qu'un seul pion
-terrestre. Pour être plus précis, un pion F de navires peut transporter jusqu'à une A+
-(soit l'équivalent de 4 DT, éventuellement en 2 pions, mais pas 3) ;
-si le transport est assuré par des DGa et des DTr dans F, la limite
-passe à 2A+ en 3 pions. Un détachement
-naval (de toute nature : DTr, DN, DE) ne peut contenir plus
-d'un pion (donc DC, DT ou A- pour les armées les plus petites).
+Note that disembarking troops in a besieged fortress is actually a passive
+action since the port is controlled. However, if the fortress is resupplied as
+part of the same move, then it becomes an active action as supplying a
+fortress is an active action.
 
-Une force navale doit faire un test d'attrition au moment où elle débarque des
-forces. Si elle obtient des pertes par attrition, le même pourcentage de perte
-est appliqué aux DT ou armées transportées en consultant la table des forces
-restantes après attrition. En combat maritime, les pertes n'affectent les
-armées que quand il n'y a plus assez de navires intacts pour transporter les
-troupes (les forces terrestres en trop sont détruites tout de suite).
+A land stack may not stay in the ships. That is, both embarking and
+disembarking must occur as part of a single move. Especially, if the naval
+stack is intercepted and looses the battle, it retreats to port (as per normal
+rules) and the land stack is automatically disembarked. As usual, the land
+stack may continue its move after such an automatic landing (it did not loose
+an interception battle, only the naval stack did).
+
+As an exception, in the \ROTW, a land stack that do not contain any \ARMY
+counter may stay inside ships at the end of movement and even from one impulse
+to the next. If it starts the round in the naval stack, it is considered to
+have embarked in a controlled port for all purposes.
+
+If the naval stack suffers attrition or losses during exploration, then the
+land stack suffers the exact same percentage of loses (one cannot choose which
+ships are sunk in a storm\ldots) This does include the attrition done for the
+movement of the naval stack as it is resolved before the landing itself
+(attrition of naval stacks is always resolved before their action). However,
+if the naval stack suffers loses from battle, the land stack does not suffer
+any damage (it is assumed that the loaded ships were better protected and the
+exposed empty ships took the damage).
+
+If the transport capacity of the naval stack falls below the requirement to
+carry the land stack (due to loss during attrition, exploration or battle),
+then the land stack immediately suffers enough loss to be small enough to be
+carried by the resulting naval stack.
+
+For the land stack, embarking or disembarking out of a controlled port is a
+cause for attrition. It also costs more \MP than if both endpoints are
+controlled ports.
+
+If the land stack fights in the province where it lands, whatever the cause
+(previous enemy presence or interception), it will suffer from the
+disembarking malus on the 1st day of battle. This includes both the case where
+the land stack disembarks in a besieged controlled fortress and immediately
+attempts a sortie against the besieger and the case where a landing is
+intercepted in a previously completely friendly province.
+
+% Autre limite, un pion naval ne peut en général transporter qu'un seul pion
+% terrestre. Pour être plus précis, un pion F de navires peut transporter
+% jusqu'à une A+ (soit l'équivalent de 4 DT, éventuellement en 2 pions, mais pas
+% 3) ; si le transport est assuré par des DGa et des DTr dans F, la limite passe
+% à 2A+ en 3 pions. Un détachement naval (de toute nature : DTr, DN, DE) ne peut
+% contenir plus d'un pion (donc DC, DT ou A- pour les armées les plus petites).
+
+% (Jym) : bof, ça me semble bien trop compliqué à gérer pour ce que ça
+% apporte.
 
 \subsection{Attrition}
 \subsubsection{Land}
 \subsubsection{Sea}
+
+\iamhere
+
 \subsubsection{Attrition en mer}
 -- NE PAS PRENDRE EN COMPTE --
 
