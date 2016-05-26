@@ -242,14 +242,17 @@ A stack is in weak supply if at least one of the following condition is true:
 \item its Line of Supply goes through desert;
 \item its Source of Supply is not owned by the same alliance;
 \item it is supplied by a naval stack that is not adjacent to a port or
-  arsenal able to supply it.
+  arsenal able to supply it (exception: in the \ROTW, \LD do not check this
+  condition).
 \end{itemize}
 
 It is possible to take its supply from a further \SoS to avoid weak supply
 (typically, to have an owned \SoS, or to circumvent a desert).
 
 A naval stack can act as a \SoS for an adjacent land stack if it is large
-enough:
+enough. Supplying is a naval action (see below) and thus must be declared
+during the naval stack movement. It is valid until the next impulse of the
+naval stack (which may be during the next turn).
 \begin{itemize}
 \item A stack containing only \NDE may supply stacks of at most 1\LD;
 \item A stack containing only \ND may supply stacks of at most 3\LD and no
@@ -284,8 +287,8 @@ to a port has a \LoS of length 0.
 \subsection{Supply Attrition}
 Attrition (in Europe) is obtained by rolling one die, modified as follows, and
 cross-reference the modified result in table~\ref{table:Discoveries and
-  Attrition} in the ``Loss in Europe'' column that corresponds to the size of
-the stack. In the \ROTW, the result is read in the ``\ROTW Losses''
+  Attrition} in the ``Land, Europe'' column that corresponds to the size of
+the stack. In the \ROTW, the result is read in the ``\ROTW and Sea''
 column. Note that a result of 5 or less has no effect.
 
 \begin{todo}
@@ -352,9 +355,9 @@ stack chooses which.
 
 A 'P' is interpreted differently according to the technology of the stack.
 \begin{itemize}
-\item If the technology is \TMED or \TARQ, then 1 more \LD is lost and a
-  \PILLAGE\facemoins is placed into the province (and immediately merged into
-  a \PILLAGE\faceplus if there was already another one here).
+\item If the technology is \TMED, \TREN or \TARQ, then 1 more \LD is lost and
+  a \PILLAGE\facemoins is placed into the province (and immediately merged
+  into a \PILLAGE\faceplus if there was already another one here).
 \item If the technology is \TMUS or better, then the controller chooses to
   either loss one more \LD or place a \PILLAGE\facemoins (note that
   \terme{foraging} has no effect during siege or supply attritions).
@@ -378,6 +381,8 @@ stack in table~\ref{table:Attrition ROTW Remainders}. The resulting number
 indicates the number of \LD still alive after attrition while the 'd'
 indicates one or two \LDE still alive. If there is a \textetoile, then there
 is 50\% chance to lose an extra \LDE.
+
+Stacks in \COL of level 6 use the Attrition in Europe procedure.
 
 \GTtable{attritionlosses}
 
@@ -614,6 +619,11 @@ if nothing happened. If the phasing stack contains at least 4 times as many
 attrition if needed, the phasing stack may continue movement if it wins), the
 phasing stack is still the attacker.
 
+Phasing stacks may not enter provinces with presence (even besieged) of
+neutral countries (that are neither at war with (allied) nor against (enemy)
+the phasing alliance). In the \ROTW, provinces that do not explicitly belong to
+minors are not concerned by this restriction.
+
 In the \ROTW, each time a land stack enters a province whose natives are not
 yet activated, it must test for activation. Exception: leaders alone never
 test for activation, natives in some \ROTW countries are not tested if the
@@ -729,6 +739,10 @@ and attrition (for the whole movement) is rolled immediately before any
 interception (in the last zone) is declared and before actually resolving the
 action.
 
+Naval stacks may only enter port/arsenal that are \emph{large enough}, that is
+that are \SoS for it. Especially, it is never possible to enter a port/arsenal
+controlled by another alliance.
+
 Naval stacks may be intercepted. In case of interception (during movement), do
 not roll for attrition before the interception battle. Attrition is only
 resolved once at the end of movement. The attrition takes into account the
@@ -781,11 +795,14 @@ must have have at least a \FLEET\Facemoins counter \textbf{and} 2\ND in the
 stack similarly blockading a level 4/5 fortress requires a \FLEET\Faceplus
 counter \textbf{and} 3\ND in the stack. Put the stack close to the blocked
 port/arsenal. Blockade makes siege easier. Only one stack may blockade each
-port.
+port (if several stacks want to blockade the same port, they are automatically
+merged). Blockade last until the next movement of the naval stack, including
+possibly in the next turn.
 \bparag[Supplying troops.] The naval stack must have sufficient size for
 supplying the troops as indicated in \ref{table:Naval Supply}. Note that a
 naval stack is allowed to supply several adjacent land stacks since it acts as
-a \SoS and supply is never ``used up''.
+a \SoS and supply is never ``used up''. Supply last until the next movement of
+the naval stack, including possibly in the next turn.
 \bparag[Blockade + Supply.] A stack may both blockade a port/arsenal and
 supply land troops. However, in this case it can only supply the land stack in
 the province of the port/arsenal it is blockading.
@@ -794,12 +811,12 @@ friendly port (either starting from it or moving in and out) during its
 movement and entered the besieged port. Moreover, it must be a stack large
 enough to blockade the supplied port. This will remove the ``blockade''
 situation of the port for the siege segment of this round (only) and remove
-the Siege attrition roll of any troops inside for the next supply step
-(only). Note that this is mostly useful if the port is blockaded and thus
-require escaping it\ldots Moreover, the stack will end its movement in the
-supplied port as actions end movement. It is possible to decline the
-possibility to supply in order to continue moving (for example to embark
-besieged troops and retreat them before the fortress falls).
+any attrition roll for troops inside for the next supply step (only). Note
+that this is mostly useful if the port is blockaded and thus require escaping
+it\ldots Moreover, the stack will end its movement in the supplied port as
+actions end movement. It is possible to decline the possibility to supply in
+order to continue moving (for example to embark besieged troops and retreat
+them before the fortress falls).
 \bparag[Fight \corsaire.] The stack can initiate fight against \corsaire from
 the sea zone it is in. The \corsaire counter (or counters) targeted by the
 stack must be in the same sea zone. Only one stack per alliance may fight
@@ -849,7 +866,7 @@ may move after. On the other hand, the naval stack may move before embarking
 troops but disembarking troops is a naval action and ends its movement. Hence,
 there is always only one stack moving, first it is solely naval, then it is a
 combined land and naval stack and finally it is solely land. A naval stack may
-not embark troops if it has already been engaged in a battle this round
+not embark troops if it has already been engaged in a battle this impulse
 (\emph{i.e.} after winning an interception battle).
 
 The naval stack must be large enough to hold the land stack, as indicated in
@@ -895,7 +912,7 @@ Note that disembarking troops in a besieged fortress is actually a passive
 action since the port is controlled. However, if the fortress is resupplied as
 part of the same move, then it becomes an active action as supplying a
 fortress is an active action. It is possible to decline the possibility to
-re-supply the fortress in order to keep the transport as a friendly action.
+re-supply the fortress in order to keep the transport as a passive action.
 
 A land stack may not stay in the ships. That is, both embarking and
 disembarking must occur as part of a single move. Especially, if the naval
@@ -945,40 +962,157 @@ intercepted in a previously completely friendly province.
 % apporte.
 
 \subsection{Attrition}
+\subsubsection{Generalities}
+Moving stacks may have to roll for attrition. The procedure is similar on land
+and at sea but with different modifiers and a different way to read the
+table. Attrition is always resolved by cross-referencing a modified die roll
+and the correct column in Table~\ref{table:Discoveries and Attrition}.
+
+Beware that even if the procedure is very similar to supply or siege
+attrition, the modifiers and the way to implement the results are different.
+
 \subsubsection{Land}
+Check the movement rules to determine when a moving land stack has to roll for
+attrition. The modifiers are:
+\begin{modlist}
+\item[+2] per cause of attrition above the first
+\item[-M] MAN of the commanding leader
+\item[+2] if the stack had no \LoS at the beginning of its move
+\item[+?] if, at the beginning of its movement, the stack is supplied by a
+  naval stack, and the \LoS of this naval stack goes through one or more
+  \StraitFort, add the DRM of all the \StraitFort along this path (2 in
+  Europe, level/2 in the \ROTW)
+\item[+2] if the stack \emph{enters} at least one enemy province during its
+  movement (\emph{i.e.}  not when exiting enemy territory)
+\item[+1/+2] per \PILLAGE\Facemoins/\Faceplus in each province exited or
+  entered during the move (\emph{i.e.} count all the \PILLAGE along the path,
+  including in the start and end provinces)
+\item[+1/+2] per \REVOLT\Facemoins/\Faceplus (or unfriendly
+  \REBELLION\Facemoins/\Faceplus) in each province exited or entered during
+  the move (same remark)
+\item[+?] for each uncontrolled province of the \ROTW cold area, add the
+  number of Snowflakes ``resource'' (+0 to +2 depending on the \Area)
+\end{modlist}
+
+In Europe, cross-reference the result with the ``Land, Europe'' column of the
+Table that corresponds to the size of the stack. The result of attrition is
+either nothing (---), a number (between 1 and 3), a 'P' or both a number and a
+'P'.
+
+The number indicates how many \LD are lost immediately. The controller of the
+stack chooses which.
+
+A 'P' is interpreted differently according to the technology of the stack.
+\begin{itemize}
+\item If the technology is \TMED, \TREN or \TARQ, then 1 more \LD is lost and
+  a \PILLAGE\facemoins is placed into one of the provinces of the movement
+  (possibly the start or end of the move).
+\item If the technology is \TMUS, \TBAR or \TMAN, then the controller chooses
+  to either loss one more \LD; or to both place a \PILLAGE\facemoins in one
+  province of the movement and to \terme{forage} during the next battle of
+  this impulse (only).
+\item If the technology is \TL then the controller chooses
+  to either loss one more \LD; or to place a \PILLAGE\facemoins in one
+  province of the movement.
+\end{itemize}
+As usual, two \PILLAGE\Facemoins are immediately merged into a
+\PILLAGE\Faceplus. It is not possible to add a \PILLAGE in a province that
+already contains two \PILLAGE\Faceplus.
+
+Note that \terme{foraging} only affects one battle (interception or regular,
+whichever occurs first) and necessarily during this impulse. Hence, a stack
+that does not fight immediately will not suffer from \terme{foraging},
+typically, if the opposing alliance attacks it during the next impulse.
+
+\smallskip
+
+In the \ROTW, the result is read in the ``\ROTW or Sea'' column. Cross
+reference the percentage obtained with the size of the stack in
+table~\ref{table:Attrition ROTW Remainders}. The resulting number indicates
+the number of \LD still alive after attrition while the 'd' indicates one or
+two \LDE still alive. If there is a \textetoile, then there is 50\% chance to
+lose an extra \LDE.
+
+If all the provinces of the movement (including start and end) are European
+(including \COL of level 6), use the Attrition in Europe procedure. If at
+least one is a \ROTW province, use the Attrition in the \ROTW province.
+
 \subsubsection{Sea}
+Naval stacks at sea always roll for movement attrition, even if they are not
+actually moving. Naval stacks that stay in a port do not roll for attrition.
 
-\iamhere
+When computing Attrition modifiers for naval stacks, it is important to know
+the \emph{greatest sea difficulty}. First, consider all the sea zones of the
+movement (including start and end) and look at their difficulties; next reduce
+the difficulty of any sea zone with a \SoS for the stack (\emph{i.e.} friendly
+large enough port) by 2; lastly take the greatest of these modified values.
 
-\subsubsection{Attrition en mer}
--- NE PAS PRENDRE EN COMPTE --
+\begin{exemple}
+  If a naval stack moves from a sea zone of difficulty 5 with a port into a
+  sea zone of difficulty 4 without port, then its greatest sea difficulty is
+  4.
+\end{exemple}
 
-Les flottes qui se déplacent ou restent en mer encourent un risque d'attrition.
-La procédure est peu changée par rapport à la règle normale.
+When computing both distance moved and distance to port, remember that only
+the number of zones (either ports or sea zones) \emph{entered} counts. Thus a
+naval stack adjacent to its port has a \LoS length of 0 and a naval stack that
+simply moves from a port to the adjacent sea zone has a move length of 1.
 
-Le test d'attrition consiste à lancer 1d10 auquel on ajoute la valeur de
-risque la plus haute des mers pénétrées par la force navale.  Les valeurs de
-risque sont diminuées de 2 si un port ami est sur la zone. On ajoute de plus
-la valeur des modifcateurs de toutes les mers difficiles traversées (valeur en
-bleu), un malus de +1 par groupe (plein) de 4 zones de mouvement (on ignore
-les fractions), et un malus éventuel d'un événement (+2 si mauvais temps). On
-soustrait d'un autre côté la man\oe uvre d'un amiral (ou un explorateur si le
-mouvement commence ou se termine hors Europe). Le résultat est comparé à 11 :
-chaque point du résultat au-delà de 11 induit 10\% d'attrition. Ce résultat
-peut être lu sur la table d'exploration et attrition hors-Europe.
+List of naval attrition modifiers:
+\begin{modlist}
+\item[-6] Always
+\item[-M] MAN of the commanding leader
+\item[+?] if, at the beginning of its movement, the \LoS of the stack goes
+  through one or more \StraitFort, add the DRM of all the \StraitFort along
+  this path (2 in Europe, level/2 in the \ROTW)
+\item[+X] add the malus of each sea zone with malus \emph{entered} during the
+  move
+\item[+1] for \NWD in \TCAR technology
+\item[-1] for any stack in \TBAT technology
+\item[-2] for any stack in \TVE or \TTD technology
+\item[-3] for any stack in \TSF technology
+\item[+2] if there is \terme{Bad weather} this round
+\item[+?] Greatest sea difficulty (as explained above)
+\item[+1] per 4 zones entered (round down), if the stack contains 0 or 1
+  \FLEET counter [BLP]
+\item[+2] per 2 zones entered (round down), if the stack contains 2 \FLEET
+  counters [BLP]
+\item[+4] per 2 zones entered (round down), if the stack contains 3 \FLEET
+  counters [BLP]
+\item[-1] if the stack contains several \FLEET counters and moves from an
+  arsenal to another arsenal
+\item[+3] if the stack starts its movement 1 sea zone away from its port
+  (\emph{ie} not adjacent to port)
+\item[+6] if the stack starts its movement 2, 3 or 4 sea zones away from its
+  port
+\item[+9] if the stack starts its movement 5 or more sea zones away from its
+  port
+\item[+1/+2] per unfriendly \corsaire\Facemoins/\Faceplus in each sea zone
+  exited or entered during the move (\emph{i.e.} count all the \corsaire along
+  the path, including in the start and end zones) [BLP]
+\item[-S] siege of one \LeaderA or \LeaderE in the stack if it is blockading a
+  port a the start of its move [BLP]
+\item[+?] half the level (round up) of fortress blockaded at the start of the
+  move [BLP]
+\end{modlist}
+Note that the distance moved modifier (for large stacks) is ``+2 (or 4)/2
+zones'' and \textbf{not} ``+1 (or 2)/1 zone''. Thus, a large stack that only
+moves one zone does not have this malus.
 
-Ensuite, le pourcentage obtenu est converti en pertes à l'aide de la
-\textbf{table des attritions pour l'exploration et le mouvement maritime}.  Ce
-tableau indique, selon la perte et le nombre de détachements présents, ce
-qu'il reste dans la pile après les pertes d'attrition. Un résultat * (dans la
-table d'attrition ou le tableau de ce qui reste) indique une chance sur deux
-de perdre un DE (sur mer) ou DC (sur terre).
+The result is read in the ``\ROTW or Sea'' column. Cross reference the
+percentage obtained with the size of the stack in table~\ref{table:Attrition
+  ROTW Remainders}. The resulting number indicates the number of \ND still
+alive after attrition while the 'd' indicates one or two \NDE still alive. If
+there is a \textetoile, then there is 50\% chance to lose an extra \NDE. If
+the stack contains more than 10\ND, apply this procedure for each set of 10\ND
+and for the remaining \ND separately. The controller of the stack chooses
+which \ND are sunk.
 
-Les transports ne disposent pas de pions fractionnaires DE comme les DN.
-Si un détachement de transports doit prendre au moins DE de perte,
-il est détruit en entier.
+Any \NTD that must suffer at least 1\NDE of loss is entirely destroyed.
 
 \subsection{Interception}
+\iamhere
+
 \aparag Actions passives
 \bparag Interception : une flotte d'un joueur inactif (pas en phase)
 peut tenter d'intercepter chaque pile qui bouge dans sa mer ou une mer
