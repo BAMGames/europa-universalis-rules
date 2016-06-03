@@ -586,8 +586,9 @@ Any movement that enters a province with unfriendly forces (land stack,
 \REVOLT/\REBELLION, fortress (even if besieged), \ldots) is \terme{active} and
 cannot occur as part as a passive move. Passive campaign allow only passive
 moves while other campaigns allow one or more active moves. Note that not
-moving, or exiting an unfriendly province can be done as a passive
-move.
+moving from, or exiting an unfriendly province can be done as a passive move.
+
+Land stacks may not enter provinces that contains neutral unbesieged forces.
 
 When exiting a province whose fortress is not controlled, a stack must either
 empty the province (removing the siege) to go back to a friendly province (no
@@ -899,7 +900,7 @@ besieged fortress).
 As any action, the landing must be announced when the naval stack enters the
 zone, before any interception are declared or resolved. Announcing a landing
 gives bonus to interception. As for any action, it is resolved after any
-interception and resulting battle.
+interception and resulting battle (and thus only if victorious).
 
 If both endpoints contains a large enough controlled port or arsenal, then the
 transport is a passive action. Otherwise, it is an active action. If the
@@ -951,6 +952,17 @@ the land stack disembarks in a besieged controlled fortress and immediately
 attempts a sortie against the besieger and the case where a landing is
 intercepted in a previously completely friendly province.
 
+Gold can be carried as land forces. It requires 1 transport point for every
+5\ducats. Gold can only be embarked in a controlled port and is immediately
+disembarked when it reaches a friendly port on the European map (and added to
+\lignebudgetlong{Gold from ROTW and Convoys}). Gold may stay inside ships from
+one round to another. It does suffer attritions and exploration loses in the
+same proportion than the carrying stack. During battle (especially during the
+retreat), gold can be specifically targeted by the enemy. The \terme{Flota del
+  Oro} and \terme{Flota del Per\'u} convoys may also be used to carry gold (it
+is tere only purpose). On the other hand, the others convoys are already
+created full of gold and cannot be used to carry more.
+
 % Autre limite, un pion naval ne peut en général transporter qu'un seul pion
 % terrestre. Pour être plus précis, un pion F de navires peut transporter
 % jusqu'à une A+ (soit l'équivalent de 4 DT, éventuellement en 2 pions, mais pas
@@ -966,7 +978,9 @@ intercepted in a previously completely friendly province.
 Moving stacks may have to roll for attrition. The procedure is similar on land
 and at sea but with different modifiers and a different way to read the
 table. Attrition is always resolved by cross-referencing a modified die roll
-and the correct column in Table~\ref{table:Discoveries and Attrition}.
+and the correct column in Table~\ref{table:Discoveries and Attrition}. On sea
+or in the \ROTW, a further read in Table~\ref{table:Attrition ROTW Remainders}
+is required.
 
 Beware that even if the procedure is very similar to supply or siege
 attrition, the modifiers and the way to implement the results are different.
@@ -980,18 +994,17 @@ attrition. The modifiers are:
 \item[+2] if the stack had no \LoS at the beginning of its move
 \item[+?] if, at the beginning of its movement, the stack is supplied by a
   naval stack, and the \LoS of this naval stack goes through one or more
-  \StraitFort, add the DRM of all the \StraitFort along this path (2 in
+  \StraitFort, add the DRM of all the closed \StraitFort along this \LoS (2 in
   Europe, level/2 in the \ROTW)
 \item[+2] if the stack \emph{enters} at least one enemy province during its
   movement (\emph{i.e.}  not when exiting enemy territory)
-\item[+1/+2] per \PILLAGE\Facemoins/\Faceplus in each province exited or
-  entered during the move (\emph{i.e.} count all the \PILLAGE along the path,
-  including in the start and end provinces)
-\item[+1/+2] per \REVOLT\Facemoins/\Faceplus (or unfriendly
-  \REBELLION\Facemoins/\Faceplus) in each province exited or entered during
-  the move (same remark)
-\item[+?] for each uncontrolled province of the \ROTW cold area, add the
-  number of Snowflakes ``resource'' (+0 to +2 depending on the \Area)
+\item[+1/+2] per \PILLAGE\Facemoins/\Faceplus, \REVOLT\Facemoins/\Faceplus and
+  unfriendly \REBELLION\Facemoins/\Faceplus in each province exited or entered
+  during the move (\emph{i.e.} count all the \PILLAGE, \REVOLT and unfriendly
+  \REBELLION along the path, including in the start and end provinces)
+\item[+?] for each uncontrolled province of the \ROTW cold area exited or
+  entered during the move, add the number of Snowflakes ``resource'' (+0 to +2
+  depending on the \Area)
 \end{modlist}
 
 In Europe, cross-reference the result with the ``Land, Europe'' column of the
@@ -1028,14 +1041,18 @@ typically, if the opposing alliance attacks it during the next impulse.
 
 In the \ROTW, the result is read in the ``\ROTW or Sea'' column. Cross
 reference the percentage obtained with the size of the stack in
-table~\ref{table:Attrition ROTW Remainders}. The resulting number indicates
+Table~\ref{table:Attrition ROTW Remainders}. The resulting number indicates
 the number of \LD still alive after attrition while the 'd' indicates one or
 two \LDE still alive. If there is a \textetoile, then there is 50\% chance to
-lose an extra \LDE.
+lose an extra \LDE. Repeat this procedure for every set of 10\LD in the stack,
+and for the remainder.
 
 If all the provinces of the movement (including start and end) are European
 (including \COL of level 6), use the Attrition in Europe procedure. If at
-least one is a \ROTW province, use the Attrition in the \ROTW province.
+least one is a \ROTW province, use the Attrition in the \ROTW province. Note
+that only the land provinces are considered for this. Sea zones crossed during
+a naval transport play no role in deciding whether to use attrition in EUrope
+or in the \ROTW.
 
 \subsubsection{Sea}
 Naval stacks at sea always roll for movement attrition, even if they are not
@@ -1063,8 +1080,8 @@ List of naval attrition modifiers:
 \item[-6] Always
 \item[-M] MAN of the commanding leader
 \item[+?] if, at the beginning of its movement, the \LoS of the stack goes
-  through one or more \StraitFort, add the DRM of all the \StraitFort along
-  this path (2 in Europe, level/2 in the \ROTW)
+  through one or more \StraitFort, add the DRM of all the closed \StraitFort
+  along this \LoS (2 in Europe, level/2 in the \ROTW)
 \item[+X] add the malus of each sea zone with malus \emph{entered} during the
   move
 \item[+1] for \NWD in \TCAR technology
