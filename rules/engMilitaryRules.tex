@@ -1176,7 +1176,7 @@ Interceptions are resolved by a modified die roll. These rolls are similar on
 land and at sea but with different modifiers. \Man plays a huge role in these.
 
 \subsubsection{Land}
-Non-phasing stack of countries who made no campaign at all during their
+Non-phasing stacks of countries who made no campaign at all during their
 previous impulse (except during the first round if they had no impulse yet)
 may not intercept at all. Non-phasing stacks commanded by countries who paid
 only a passive campaign during their previous impulse (including, during the
@@ -1260,16 +1260,16 @@ If the unmodified die is 10, or if the modified roll is 8 or more, then the
 interception is successful.
 
 \subsubsection{Sea}
-Non-phasing stack of countries who made no campaign at all during their
+Non-phasing stacks of countries who made no campaign at all during their
 previous impulse (except during the first round if they had no impulse yet)
-may not intercept at all. Non-phasing stacks commanded by countries who paid
-only a passive campaign during their previous impulse (including, during the
-first round of each turn, stacks that had no impulse yet) can only intercept
-with stacks containing at most 1 \FLEET counter.
+may not intercept at all. Countries who paid only a passive campaign during
+their previous impulse (including, during the first round of each turn, stacks
+that had no impulse yet) may only intercept with stacks containing at most 1
+\FLEET counter.
 
-Phasing stacks may intercept non-phasing stack as their action, this is
+Phasing stacks may intercept a non-phasing stack as their action, this is
 resolved as a regular interception (exception: if the non-phasing stack is
-blockading, this interception automatically succeed). As with any action,
+blockading, this interception automatically succeeds). As with any action,
 attrition of the moving stack must be resolved first. If successful, both
 stacks are locked into battle (to be resolved later). Especially the
 non-phasing stack may not intercept anymore but is still considered to be
@@ -1287,18 +1287,19 @@ The correct timing for moving and intercepting is:
 \begin{enumerate}
 \item moving stack enters a zone;
 \item moving stack either declares an action in the zone or decline to do one;
+\item if the moving stack declared an action, it rolls immediately for
+  attrition;
 \item non-phasing stacks declare interceptions;
 \item interceptions are resolved;
 \item interception battle is resolved, if any;
 \item
   \begin{itemize}
-  \item if the moving stack is victorious, it may either roll for attrition
-    and do its action (if it declared any) or continue moving (if it declared
-    no action);
-  \item if the moving stack is defeated, it must retreat and roll for
-    attrition with a distance of the whole movement + the whole retreat (and
-    without the \Man of its admiral if it has no moral left, as usual with
-    retreats).
+  \item if the moving stack is victorious, it may either do its action (if it
+    declared any) or continue moving (if it declared no action);
+  \item if the moving stack is defeated, it must retreat; additionally, if it
+    did not roll for attrition (because it declared no action), the distance
+    of the whole movement is added to the distance of the whole retreat for
+    the attrition of the retreat.
   \end{itemize}
 \end{enumerate}
 
@@ -1307,12 +1308,12 @@ declared it will also attempt a battle. In this case (if both stacks want to
 intercept each other), interception is automatic (no roll). Other non-phasing
 stacks may still attempt to join the battle by rolling for interception. In
 this case, even if this is resolved as an interception battle, this still
-count as the action for the moving stack.
+counts as the action for the moving stack.
 
 Several non-phasing stacks may attempt interception. As on land, only one
 alliance may actually succeed. As on land, the stacking limit is only enforced
-after the battle and an optional retreat of exceeding forces but exceeding
-forces to not take part in the battle.
+after the battle and an optional retreat of exceeding forces, but exceeding
+forces do not take part in the battle.
 
 As on land, interception occurs as soon as the stack enters the sea zone,
 hence before it can merge with other forces here.
@@ -1348,7 +1349,7 @@ actions must be declared upon entering zone (and before
 interceptions). Landing close to an intercepting stack can provide huge bonus
 to interception (it is assumed that the battle actually occurs while the
 moving stack is closing the cost and beginning the preparation for landing,
-hence it is much easier to find.
+hence it is much easier to find).
 
 If the modified roll is 8 or more, or if the unmodified roll is 10, the
 interception succeeds.
