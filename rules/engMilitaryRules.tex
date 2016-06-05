@@ -1129,10 +1129,11 @@ Any \NTD that must suffer at least 1\NDE of loss is entirely destroyed.
 
 \subsection{Interception}
 \subsubsection{Generalities}
-Non-phasing stack may attempt to intercept a enemy moving stack under certain
+Non-phasing stacks may attempt to intercept a moving enemy stack under certain
 conditions. Interceptions are declared whenever a moving stack enters a new
-zone (sea zone or province) and resolved immediately. All interceptions are
-announced before any is resolved.
+zone (sea zone or province) and resolved immediately. Interceptions can be
+attempted by stacks in the same or adjacent zone (sea zone, port or province)
+All interceptions are announced before any is resolved.
 
 A non-phasing stack may decide to split before intercepting, that is intercept
 with only part of the stack (typically to maintain a siege or blockade with
@@ -1141,26 +1142,25 @@ stacks must be respected in such a case.
 
 If an interception is successful, the intercepting stack is moved into the
 zone of the interception (note that this does allow free moves that are not
-counted as part as any campaign and may allow, typically to lay new
+counted as part as any campaign and may allow, typically, to lay new
 sieges). Once all interceptions are resolved, a battle occurs immediately
 between the moving stack and all the successful interceptors.
 
 If stacks of different alliances attempt to intercept the same stack in the
-same zone, then interception are announced and resolved in decreasing order of
-initiative. Once one alliance successfully intercepted one stack in a zone,
-other alliances may not attempt to intercept anymore (to avoid three-sided
-battles). It is however possible to intercept in another zone if the moving
-stack wins and goes on.
+same zone, then interceptions are announced and resolved in decreasing order
+of initiative. Once one alliance successfully intercepted one stack in a zone,
+other alliances may not attempt to intercept the same stack in the same zone
+anymore (to avoid three-sided battles). It is however possible to intercept in
+another zone if the moving stack wins and goes on.
 
 After an interception battle, if the moving stack won it may continue moving,
-if it didn't it must stop movement. For campaign costs purposes, check onl the
-part of the movement that was effectively done, not the intention (\emph{i.e.}
-if a naval stack declares a landing (an active action) but is defeated in an
-interception battle before it actually occurs, then it has done no action and
-does not count toward an active campaign, similarly, a land stack that is
-defeated before it could enter enemy territory only did a passive move).
-
-Non-phasing stacks may intercept in the zone they are or in any adjacent zone.
+if it didn't it must stop movement. For campaign costs purposes, check only
+the part of the movement that was effectively done, not the intention
+(\emph{i.e.}  if a naval stack declares a landing (an active action) but is
+defeated in an interception battle before it actually occurs, then it has done
+no action and does not count toward an active campaign, similarly, a land
+stack that is defeated before it could enter enemy territory only did a
+passive move).
 
 A stack that already lost a battle this impulse (\emph{i.e.} a previous
 interception) may not attempt to intercept. A stack that is already engaged in
@@ -1168,19 +1168,19 @@ battle (to be resolved after all moves) may not attempt interception.
 
 Each non-phasing stack may attempt to intercept each moving stack only once
 during the whole move (not once per zone). If a moving stack drops and picks
-up units, it is considered as a single moving stack even if all the unit
+up units, it is considered as a single moving stack even if all the units
 actually composing it changed.
 
 Interceptions are resolved by a modified die roll. These rolls are similar on
-land and at sea but with different modifiers.
+land and at sea but with different modifiers. \Man plays a huge role in these.
 
 \subsubsection{Land}
-Non-phasing stacks commanded by countries who did not paid an active campaign
-during their previous impulse (including, during the first round of each turn,
-stacks that had no impulse yet) can only intercept in a friendly province (no
-enemy presence, even besieged). Non-phasing stack of countries who made no
-campaign at all during their previous impulse (except during the first round
-if they had no impulse yet) may not intercept at all.
+Non-phasing stack of countries who made no campaign at all during their
+previous impulse (except during the first round if they had no impulse yet)
+may not intercept at all. Non-phasing stacks commanded by countries who paid
+only a passive campaign during their previous impulse (including, during the
+first round of each turn, stacks that had no impulse yet) can only intercept
+in a friendly province (no enemy presence, even besieged).
 
 A non-phasing stack which is in the same province as a non-besieged,
 non-moving phasing stack is engaged into battle and cannot intercept. Thus,
@@ -1209,7 +1209,7 @@ not roll for attrition.
 The interception battle normally occurs between all the successful
 interceptors versus the moving stack and all the successful
 counter-interception. If one side contains troops of an European country and
-more than 8\LD+2\Pashas, exceeding troops do not fight (but stays in
+more than 8\LD+2 \Pashas, exceeding troops do not fight (but stays in
 place). After the battle, if there is still too many troops in the province
 (more than the stacking limit), any intercepting or counter-intercepting troop
 may choose (controller's choice) to retreat in the province where it was
@@ -1217,6 +1217,21 @@ before intercepting. This retreat does not trigger attrition and does not
 counted toward any campaign cost. Any exceeding troops after that are
 destroyed. Such an overstacking typically occurs when many unlikely
 interceptions are declared and they all succeed\ldots
+
+Note that if a stack moves into a province where there is another friendly
+stack (typically in order to merge stacks) and get intercepted, the
+interception battle occurs immediately after entering the province, hence
+\textbf{before} the two phasing stacks actually have a chance to
+meet. Especially, the immobile phasing stack does not participate in battle
+(it may attempt to counter-intercept in order to join the battle). In such a
+case, the intercepting stack must retreat after battle (in the province where
+it came from) even if victorious (this retreat does not trigger attrition and
+does not count toward campaign cost).
+
+\begin{designnote}
+  Fighting separate enemies before they could merge was one of Napoleon's
+  favourite move\ldots
+\end{designnote}
 
 To resolve an interception, roll a die modified as follows (all modifiers are
 cumulative):
@@ -1237,7 +1252,7 @@ cumulative):
 \item[-2] If the interception occurs across a river or mountain pass.
 \item[-2] If the target province contains an unbesieged enemy force other than
   the intercepted one.
-\item[-1] If the interceptor is besieging a fortress.
+\item[-1] If the interceptor is besieging.
 \end{modlist}
 
 If the unmodified die is 10, or if the modified roll is 8 or more, then the
