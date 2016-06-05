@@ -1,3 +1,4 @@
+
 % -*- mode: LaTeX; -*-
 
 \newcommand{\iamhere}{\begin{todo} The following is copy of older stuff and de
@@ -1259,6 +1260,99 @@ If the unmodified die is 10, or if the modified roll is 8 or more, then the
 interception is successful.
 
 \subsubsection{Sea}
+Non-phasing stack of countries who made no campaign at all during their
+previous impulse (except during the first round if they had no impulse yet)
+may not intercept at all. Non-phasing stacks commanded by countries who paid
+only a passive campaign during their previous impulse (including, during the
+first round of each turn, stacks that had no impulse yet) can only intercept
+with stacks containing at most 1 \FLEET counter.
+
+Phasing stacks may intercept non-phasing stack as their action, this is
+resolved as a regular interception (exception: if the non-phasing stack is
+blockading, this interception automatically succeed). As with any action,
+attrition of the moving stack must be resolved first. If successful, both
+stacks are locked into battle (to be resolved later). Especially the
+non-phasing stack may not intercept anymore but is still considered to be
+doing its (previous) action until battle is resolved (\emph{e.g.} blockade is
+maintained). Each non-phasing stack may be successfully intercepted only once
+per impulse (\emph{i.e.} you should merge before attempting a large battle
+while on land it is possible to bring troops to battle little by little).
+
+Non-phasing stacks engaged into battle may not intercept. It is not possible
+to intercept in a port/arsenal (only in a sea zone). It is not possible to
+counter-intercept. Non-phasing stacks that already lost a battle this impulse
+(\emph{i.e.} losing an interception battle) may not intercept anymore.
+
+The correct timing for moving and intercepting is:
+\begin{enumerate}
+\item moving stack enters a zone;
+\item moving stack either declares an action in the zone or decline to do one;
+\item non-phasing stacks declare interceptions;
+\item interceptions are resolved;
+\item interception battle is resolved, if any;
+\item
+  \begin{itemize}
+  \item if the moving stack is victorious, it may either roll for attrition
+    and do its action (if it declared any) or continue moving (if it declared
+    no action);
+  \item if the moving stack is defeated, it must retreat and roll for
+    attrition with a distance of the whole movement + the whole retreat (and
+    without the \Man of its admiral if it has no moral left, as usual with
+    retreats).
+  \end{itemize}
+\end{enumerate}
+
+Note that it is possible to try and intercept a moving stack that just
+declared it will also attempt a battle. In this case (if both stacks want to
+intercept each other), interception is automatic (no roll). Other non-phasing
+stacks may still attempt to join the battle by rolling for interception. In
+this case, even if this is resolved as an interception battle, this still
+count as the action for the moving stack.
+
+Several non-phasing stacks may attempt interception. As on land, only one
+alliance may actually succeed. As on land, the stacking limit is only enforced
+after the battle and an optional retreat of exceeding forces but exceeding
+forces to not take part in the battle.
+
+As on land, interception occurs as soon as the stack enters the sea zone,
+hence before it can merge with other forces here.
+
+If the moving stack attempts to avoid a blockade and roll 5 or less (``Forced
+battle''), then the blockading stack may declare an interception which
+automatically succeed. It must still be allowed to intercept (\emph{i.e.} not
+already engaged into battle), this simply remove the need for rolling.
+
+Unless in case of automatic success, interception is resolved by a die roll
+modified as follows. Cumulative modifiers:
+\begin{modlist}
+\item[\textplusminus?] \Man differential between the commanding leaders
+  (intercepting stack-intercepted stack).
+\item[+1] If the intercepting stack has a technology which is at least 6
+  levels above the technology of the intercepted stack.
+\item[-2] If there is \terme{Bad weather}.
+\item[-1] If the interceptor is besieging.
+\end{modlist}
+Non-cumulative modifiers:
+\begin{modlist}
+\item[+1] If the intercepting stack has technology \TTD.
+\item[+1] If intercepting in the same sea zone.
+\item[+2] If the moving stack announced a landing either (i) from the same sea
+  zone as the one where the intercepting stack is; or (ii) in the province
+  where the intercepting stack is stationed at port; or (iii) from a sea zone
+  adjacent to the arsenal where the intercepting stack is stationed.
+\item[-3] If the interceptor is in a port (not arsenal).
+\end{modlist}
+
+Note that the \bonus{+2} in the non-cumulative list is the very reason why
+actions must be declared upon entering zone (and before
+interceptions). Landing close to an intercepting stack can provide huge bonus
+to interception (it is assumed that the battle actually occurs while the
+moving stack is closing the cost and beginning the preparation for landing,
+hence it is much easier to find.
+
+If the modified roll is 8 or more, or if the unmodified roll is 10, the
+interception succeeds.
+
 \subsubsection{\Presidios}
 \subsubsection{Convoys}
 \iamhere
