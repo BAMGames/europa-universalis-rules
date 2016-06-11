@@ -528,7 +528,7 @@ true:
 \begin{itemize}
 \item the stack contains at least 6\LD (not counting those in \Pasha) or at
   least 2 \Pashas, such large stacks roll for attrition even if they don't
-  move;
+  move, ignore this cause between interceptions (see below);
 \item the stack moved at least 6\MP;
 \item the stack moved at least 3\MP and this is a campaign without logistic;
 \item the stack used ships to make a naval move and at least one of the
@@ -549,10 +549,15 @@ part of the movement (between the beginning and the first interception;
 between each interception; between the last interception and the end). If one
 part of the movement triggers attrition, it is resolved immediately before the
 interception battle occurs and its results (especially \terme{foraging}) are
-applied and effective for the next battle only. If none of the parts trigger
-interception but the whole movement does, then one and only one final
-attrition is resolved at the end of the movement (thus, possibly after a lost
-interception battle).
+applied and effective for the next battle only. Exception: being a large stack
+is not enough to trigger attrition between interceptions, only at the end of
+movement. It is, however, still considered an extra cause of attrition with
+the corresponding malus.
+
+If none of the parts trigger interception but the whole movement does, then
+one and only one final attrition is resolved at the end of the movement (thus,
+possibly after a lost interception battle). For this final check, being a
+large stack is a cause for attrition as usual.
 
 \begin{exemple}
   A small stack moves 6\MP and is intercepted. Since 6\MP is a cause of
@@ -581,6 +586,18 @@ interception battle).
   leg is not enough to trigger attrition. The whole movement is enough to
   trigger attrition but since an attrition test already happened (before the
   battle), it is considered done and no extra test occur.
+
+  \smallskip
+
+  A large stack moves 5\MP and is intercepted. The movement is not enough to
+  cause attrition and stack size is ignored at this point. If the stack loses,
+  at the end of movement it has been a large stack moving, a cause for
+  attrition, and thus must resolve it.
+
+  A large stack moves 6\MP and is intercepted. The movement is enough to
+  trigger attrition and the ``large stack'' will count as an extra causes and
+  gives \bonus{+2} to the roll. If it loses the battle, since it already
+  rolled for attrition during its move, it does need to do so again.
 \end{exemple}
 
 Any movement that enters a province with unfriendly forces (land stack,
@@ -1307,8 +1324,9 @@ Note that it is possible to try and intercept a moving stack that just
 declared it will also attempt a battle. In this case (if both stacks want to
 intercept each other), interception is automatic (no roll). Other non-phasing
 stacks may still attempt to join the battle by rolling for interception. In
-this case, even if this is resolved as an interception battle, this still
-counts as the action for the moving stack.
+this case, the battle is resolved as a regular battle (\emph{i.e.} after all
+moves) even if it does include non-phasing intercepting stacks. This also
+counts as the (active) action of the moving stack.
 
 Several non-phasing stacks may attempt interception. As on land, only one
 alliance may actually succeed. As on land, the stacking limit is only enforced
@@ -1331,11 +1349,11 @@ modified as follows. Cumulative modifiers:
 \item[+1] If the intercepting stack has a technology which is at least 6
   levels above the technology of the intercepted stack.
 \item[-2] If there is \terme{Bad weather}.
-\item[-1] If the interceptor is besieging.
+\item[-1] If the interceptor is blockading.
 \end{modlist}
 Non-cumulative modifiers:
 \begin{modlist}
-\item[+1] If the intercepting stack has technology \TTD.
+\item[+1] If the intercepting stack has technology \TTD or better.
 \item[+1] If intercepting in the same sea zone.
 \item[+2] If the moving stack announced a landing either (i) from the same sea
   zone as the one where the intercepting stack is; or (ii) in the province
@@ -1353,6 +1371,57 @@ hence it is much easier to find).
 
 If the modified roll is 8 or more, or if the unmodified roll is 10, the
 interception succeeds.
+
+\begin{exemple}
+  A naval stack at port in \provinceCornwall may intercept in either
+  \seazoneIrlande, \seazoneCeltique or \seazoneManche, all adjacent to the
+  province. It will, however suffer a malus of \bonus{-3} to the roll
+  representing the time it take to actually get out of port (or ports) and
+  regroup for battle. As long as it is at port, it is also protected from
+  enemy attacks (they may not enter the port to fight) but is likely to be
+  blockaded.
+
+  If an enemy stack declares a landing on \provinceCornwall, where the stack
+  is located, interception becomes much easier since the enemy stack is
+  basically staying very close to the actual costs of the province and cannot
+  really try to avoid contact while still attempting to disembark troops\ldots
+  Not only the \bonus{-3} disappears, but it is replaced by a \bonus{+2}.
+
+  \smallskip
+
+  The naval stack may decide to cruise in \seazoneCeltique rather than stay at
+  port in \provinceCornwall. In this case it will have to roll for attrition
+  every round (for staying at sea) and is likely to be attacked by an enemy
+  naval stack. However, it will not only be allowed to intercept in
+  \seazoneIrlande, \seazoneCeltique and \seazoneManche but also in
+  \seazoneGascogne and \seazoneRockall. Moreover, its interceptions no longer
+  have the \bonus{-3} malus for being at port, and may even get a \bonus{+1}
+  for the same sea zone if intercepting in \seazoneCeltique.
+
+  If an enemy stack attempts a landing on \provinceCornwall (or another) from
+  \seazoneCeltique, this \bonus{+1} is replaced by \bonus{+2}, not only the
+  stacks are closed but the enemy is landing. However, if the enemy attempts a
+  landing on \provinceCornwall from \seazoneManche the \bonus{+1} is lost (not
+  the same sea zone) for good (it is assumed that the stack more or less
+  patrols and the enemy has more possibilities to snick in unnoticed).
+
+  \smallskip
+
+  If a stack is stationed in the \villePortsmouth arsenal in
+  \province{Wessex}, it can only intercept in \seazoneManche. However, it has
+  no malus for interception as arsenal are assumed to be designed as military
+  ports built for quick reaction with small unrepresented flotillas running
+  around. Even better, if an enemy attempt to disembark \emph{anywhere} from
+  \seazoneManche (\emph{e.g.} \provinceWessex, \provinceNormandie,
+  \provincePicardie or \provinceKent from a naval stack located in
+  \seazoneManche), then the stack in \villePortsmouth gets the \bonus{+2}
+  bonus for interception. The arsenal is designed to allow any fleet in it
+  extend its control into the neighbouring waters.
+
+  \smallskip
+
+  Now, you should be able to build a ``\emph{Fleet in being}'' strategy.
+\end{exemple}
 
 \subsubsection{\Presidios}
 \subsubsection{Convoys}
