@@ -1180,9 +1180,10 @@ no action and does not count toward an active campaign, similarly, a land
 stack that is defeated before it could enter enemy territory only did a
 passive move).
 
-A stack that already lost a battle this impulse (\emph{i.e.} a previous
-interception) may not attempt to intercept. A stack that is already engaged in
-battle (to be resolved after all moves) may not attempt interception.
+A stack that already fought a battle without winning this impulse (\emph{i.e.}
+a previous interception, lost or tied) may not attempt to intercept. A stack
+that is already engaged in battle (to be resolved after all moves) may not
+attempt interception.
 
 Each non-phasing stack may attempt to intercept each moving stack only once
 during the whole move (not once per zone). If a moving stack drops and picks
@@ -1250,6 +1251,18 @@ does not count toward campaign cost).
   Fighting separate enemies before they could merge was one of Napoleon's
   favourite move\ldots
 \end{designnote}
+
+On the other hand, if a moving stack enters a province already containing
+enemy troops, it may be intercepted both by the same enemy alliance and a
+third party alliance. In the later case, the interception battle occurs only
+between the moving and intercepting stacks and the intercepting (third party)
+stack must retreat after it (even in case of victory) while the moving stack,
+if winning, engage battle with the non-moving one (to be resolved as a regular
+battle). In the former case (interception by the same alliance, the
+interceptor may chose to either resolve this as an interception battle
+(including only the troops who successfully intercepted) or as a regular
+battle (including all the troops now in the province, to be resolved later
+thus ``locking'' everything until battle segment).
 
 To resolve an interception, roll a die modified as follows (all modifiers are
 cumulative):
@@ -1427,89 +1440,57 @@ interception succeeds.
 \subsubsection{Convoys}
 \iamhere
 
-\aparag Actions passives
-\bparag Interception : une flotte d'un joueur inactif (pas en phase)
-peut tenter d'intercepter chaque pile qui bouge dans sa mer ou une mer
-adjacente (autant de tentatives que d'opportunités, mais un pays/une
-alliance ne peut faire qu'une seule tentative par mer).
-Si au port : dans une des mer adjacente.
+\subsection{Effet d'un presidio}\label{chMilitary:Presidios}
 
-\aparag Interception is allowed according to the last campaign paid.
-\bparag For player without initiative, this is the campaign of the previous
-round.
-\bparag During first round, players without initiative may intercept (before
-their first move) as if they had done a passive campaign.
+\aparag[Presidios and Blockade]
+\bparag The port is considered as blockaded by this fortress, even if the
+country that thus exerts the blockade is not at war with the owner of
+the blockaded port.
 
-\aparag[Rappel des mod. d'interception] VOIR TABLE
-\interceptiona
-\bparag Pour les flottes faisant Invasion/Naval Transport : le bonus +2 remplace
-le malus de -3 au port ou le bonus de +1(même mer) si intention de
-débarquée a été indiquée. Pour une flotte en mer: +2 si c'est dans la
-même zone; flotte dans arsenal : +2 dans les mers qui bordent l'arsenal;
-flotte dans port: +2 si c'est dans la province du port.
+\bparag Any exit from or entry into this port by units (privateers, Dn
+or F) may trigger an reaction by the fortress. This reaction is decided
+by the owner of the Presidio. This a declaration of war (with the usual
+CB cost) if the interception is against any unit except privateers.
 
-\aparag[Pour l'interception]
-\bparag Noter que c'est l'intercepteur qui attaque toujours.
-et que la bataille est résolue tout de suite entre la pile qui intercepte et la force interceptée.
-Il peut choisir de regrouper dans sa pile les forces immobiles amies dans la province.
-\bparag un intercepteur peut être intercepté à son tour [les forces qui
-interceptent viennent en renfort de la pile qui a été la 1e interceptée] ;
-c'est tout de même le joueur qui n'est pas en phase qui est l'attaquant.
-\bparag Si une force intercepte dans une zone où il y a déjà une force ennemie,
-cette for peut intercepter comme par la paragraphe précédent pour se joindre à
-la défense [remarque : il peut alors y avoir plus de 8 DT, les forces supplémentaire
-n'ont simplement aucun effet sur le combat].
-\bparag  Si un combat d'interception a lieu dans une province avec des forces non impliquée
-dans le combat, ces forces suivent la retraite éventuelle de la pile allée engagée en
-bataille (mais sans perte). [TBD]
-\bparag une pile qui a combattu pendant une phase de mouvement et n'a
-pas gagné (perdu ou ex-aequo) ne peut plus bouger ni intercepter.
-\bparag malus aux interceptions : \\
-	intercepter à travers passe de montagne -2 \\
-	intercepter depuis ou vers un marais -1 \\
-	intercepter à travers détroit : impossible \\
+\bparag The reaction is resolved as a fire by the Presidio on the following table:
+\interceptionb
 
-\paragraph{e. Interception}
-Une pile ne peut tenter d'intercepter qu'une seule fois pendant
-le mouvement d'une pile ennemie. Une même pile peut
-cependant être victime de plusieurs tentatives d'interception
-par différentes piles ennemies durant son mouvement,
+\aparag[As Source of Supply]
+\bparag \Presidios are Sources of Supply only for forces inside the fortress.
+\bparag \Presidios are SoS Sources of Supply for naval forces without \FLEET;
+however, a naval force containing up to one \FLEET may enter temporarily a
+\Presidio to supply it (if besieged) or bring forces.
 
-Lors d'une interception, la pile interceptante peut laisser des forces
-en arrière et se réorganiser après le mouvement avec une force déjà
-sur place (pour respecter la limite de pions dans la région). Cette
-pile du camp en réaction est l'attaquant lors du combat qui est
-immédiatement résolu (avant tout autre mouvement) ; si l'interception
-est dans une province contenant des forces terrestres amies de
-l'intercepteur, c'est la force en mouvement qui est l'attaquant.
-
-La force interceptante doit faire un jet d'attrition si elle entre dans
-une province ennemie non occupée par des troupes amies (qui
-feraient le siège). Celle interceptée teste l'attrition si elle a déjà
-bougé d'au moins 6 PM.
-
-Après le combat, si la force interceptée a gagné le combat, elle peut
-poursuivre son mouvement (mais n'aura plus à tester l'attrition si
-elle a déjà dû le faire).
-
-\paragraph{Interception.}
-Durant les mouvements, les flottes ennemies peuvent tenter d'intercepter dans
-leur mer ou la mer adjacente la pile maritime qui bouge, sans limite du
-nombre de tentative. La force en mouvement peut tenter d'intercepter
-une fois (et une seule) toute pile maritime en mer en étant dans sa zone, afin de
-forcer le combat tout de suite. On résout d'abord les interceptions
-de forces inactives avant de tenter celles de la pile active.
-En cas de réussite, on fait immédiatement les tests
-d'attrition des flottes (celle active, et celle inactive si c'est elle
-qui intercepte). La flotte active pourra continuer son mouvement
-après interception si elle gagne la bataille. Une flotte défaite ne
-peut plus intercepter pendant jusqu'à début de sa prochaine phase de
-mouvement.
-
-De toute façon, et sans test d'interception,
-le combat devient possible et automatique contre une force maritime
-dans la même mer après les déplacements (mais ceci compte alors comme
-l'action de la force navale pour le round).
+%%% détroits fortifiés par Jym. Modifiez à volonté.
+\aparag[Strait fortifications]\label{chMilitary:Strait Fortifications}Certain
+straits are marked with a red naval frontier and a tower symbol near
+the province controlling them. These are the strait between Italy and
+Sicily (controlled by \ville{Messine}), the entrance to
+\seazone{Adriatique} (controlled by \province{Corfou}), the
+Dardanelles (\province{Dardanelles}) and the Bosporus
+(\province{Trakya}) in Europe; and the entrance to Saint-Laurent river
+(Louisbourg, on Cape Breton Island), entrance to \seazone{Rouge}
+(\province{Socotra}), entrance to \seazone{Persique} (\province{Ormus}),
+the Malacca strait (\ville{Malacca}) and the Sunda strait
+(\ville{Jakarta}) in the \ROTW.
+\bparag In Europe, they act as a \Presidio of level 2 against any fleet
+trying to cross the red lines. Using them against any unit but \corsaire
+gives a free \CB to the owner of the intercepted stack for the next
+turn.
+\bparag If a power has a \Presidio on the \province{Dardanelles}, it
+negates the effect of the Strait Fortifications for this power.
+\bparag In the \ROTW, they act as a \Presidio of level half the level of
+the fortress in the province (rounded down). Using them against any unit
+but \corsaire give a free \CB (normal or oversea, offended player's
+choice)) to the owner of the intercepted stack.
+\bparag For the Sunda strait, the city of \ville{Jakarta} must also by
+owned, usually by placing a \COL there.
+\bparag Minor countries (usually \pays{venise} in Europe and
+\pays{Gujerat} for Malacca (sometimes \pays{Chine})) will always use
+them against power at war with them. If they are at peace, their
+controller chose whether to use it or not. If they are neutral, they
+will always use them against \corsaire and never against other naval
+units.
 
 \subsection{Convoys}\label{chMilitary:Convoys}
 Do not use if using the experimental system for Revolts, \corsaire and Natives.
