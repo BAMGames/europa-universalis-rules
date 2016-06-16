@@ -878,6 +878,10 @@ considered as a friendly port (not arsenal).
 % disembark in an unknown province and fails its exploration, it must reembark
 % and thus will be destroyed if the naval stack is not here anymore\ldots
 
+\aparag[Flota de Oro] \label{chMilitary:FlotaDeOroMovement} As soon as the
+\terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
+reappears in a Spanish port on the Atlantic coast.
+
 \subsubsection{Combined move}
 A combined move, or naval transport, happens when a naval stack carries a land
 stack and they move together. The land stack may not move before embarking but
@@ -1436,99 +1440,82 @@ interception succeeds.
   Now, you should be able to build a ``\emph{Fleet in being}'' strategy.
 \end{exemple}
 
-\subsubsection{\Presidios}
+\subsubsection{\Presidios and Strait fortifications}
+A \Presidio or Strait fortification can intercept a naval stack. Strait
+fortifications can intercept stacks moving through it. \Presidios can
+intercept stack entering or exiting the port. The interception is decided by
+the controller of the fortress.
+
+Although it it an interception, it is resolved differently than usual ones and
+does not result in battle. It may, however, stop the moving stack and cause
+some automatic loses on it.
+
+The interception is resolved by rolling 1d10 modified by
+\begin{modlist}
+\item[+?] level of the \Presidio;
+\item[+2] strait fortification on the European map;
+\item[+?] half the level (round down) of the fortress controlling the Strait
+  fortification on the \ROTW map;
+\item[+1] if the moving stack contains at least one \FLEET counter.
+\end{modlist}
+
+If the result is 9 or more, then the moving stack must stop moving immediately
+(before crossing the Strait or \Presidio) and roll for attrition as usual. It
+may not attempt any action this round.
+
+Additionally, if the result is 11 or more, the stack loses 1\ND (or 1 side of
+\corsaire) and if the result is 13 or more, the stack loses 1 more \ND (or
+side of \corsaire) (for a total of 2).
+
 \subsubsection{Convoys}
-\iamhere
+[Do not use if using the experimental system for Revolts, \corsaire and
+Natives.]
 
-\subsection{Effet d'un presidio}\label{chMilitary:Presidios}
+Naval stacks carrying gold, most notably convoys, may be intercepted and
+attacked by \corsaire when they enter a sea zone of the \STZ or \CTZ in which
+the \corsaire is acting. Note that this does allows interception by a
+\corsaire which is \textbf{not} adjacent to the entered sea zone (\emph{e.g.}
+a \corsaire in \seazone{Petites Antilles}, acting in \stz{Caraibes}, may
+attack a convoy entering \seazoneMexique; it is assumed that the \corsaire
+acts in the whole \STZ and its location represents its main ports rather than
+its actual zone of activity). These attacks never stop the movement of the
+stack.
 
-\aparag[Presidios and Blockade]
-\bparag The port is considered as blockaded by this fortress, even if the
-country that thus exerts the blockade is not at war with the owner of
-the blockaded port.
-
-\bparag Any exit from or entry into this port by units (privateers, Dn
-or F) may trigger an reaction by the fortress. This reaction is decided
-by the owner of the Presidio. This a declaration of war (with the usual
-CB cost) if the interception is against any unit except privateers.
-
-\bparag The reaction is resolved as a fire by the Presidio on the following table:
-\interceptionb
-
-\aparag[As Source of Supply]
-\bparag \Presidios are Sources of Supply only for forces inside the fortress.
-\bparag \Presidios are SoS Sources of Supply for naval forces without \FLEET;
-however, a naval force containing up to one \FLEET may enter temporarily a
-\Presidio to supply it (if besieged) or bring forces.
-
-%%% détroits fortifiés par Jym. Modifiez à volonté.
-\aparag[Strait fortifications]\label{chMilitary:Strait Fortifications}Certain
-straits are marked with a red naval frontier and a tower symbol near
-the province controlling them. These are the strait between Italy and
-Sicily (controlled by \ville{Messine}), the entrance to
-\seazone{Adriatique} (controlled by \province{Corfou}), the
-Dardanelles (\province{Dardanelles}) and the Bosporus
-(\province{Trakya}) in Europe; and the entrance to Saint-Laurent river
-(Louisbourg, on Cape Breton Island), entrance to \seazone{Rouge}
-(\province{Socotra}), entrance to \seazone{Persique} (\province{Ormus}),
-the Malacca strait (\ville{Malacca}) and the Sunda strait
-(\ville{Jakarta}) in the \ROTW.
-\bparag In Europe, they act as a \Presidio of level 2 against any fleet
-trying to cross the red lines. Using them against any unit but \corsaire
-gives a free \CB to the owner of the intercepted stack for the next
-turn.
-\bparag If a power has a \Presidio on the \province{Dardanelles}, it
-negates the effect of the Strait Fortifications for this power.
-\bparag In the \ROTW, they act as a \Presidio of level half the level of
-the fortress in the province (rounded down). Using them against any unit
-but \corsaire give a free \CB (normal or oversea, offended player's
-choice)) to the owner of the intercepted stack.
-\bparag For the Sunda strait, the city of \ville{Jakarta} must also by
-owned, usually by placing a \COL there.
-\bparag Minor countries (usually \pays{venise} in Europe and
-\pays{Gujerat} for Malacca (sometimes \pays{Chine})) will always use
-them against power at war with them. If they are at peace, their
-controller chose whether to use it or not. If they are neutral, they
-will always use them against \corsaire and never against other naval
-units.
-
-\subsection{Convoys}\label{chMilitary:Convoys}
-Do not use if using the experimental system for Revolts, \corsaire and Natives.
-
-\aparag[Convoy movements and Pirates/Privateers]
-A convoy (or a naval stack carrying Gold)
-entering a sea zone of \STZ or \CTZ is attacked on
-\tableref{table:Pirates Natives Raids} by the pirates, and each
-privateer allowed to attack the owner of the convoy present in the \STZ
-(even if not in the right sea zone) if it has the right to attack the
-power (see \ref{chRedep:Corsair Attack}).
-\bparag Only \corsaire\faceplus may attack (be they pirates or
-privateers).
-\bparag The pirates attack first (one only, with leading
-named Pirate if any), then the privateers in order of initiative. The
-attack is resolved before regular naval interceptions.
-\bparag Only one attack for all the pirates in a given \STZ or \CTZ; and
-one attack per \corsaire is allowed per move.
+In order to attack the \corsaire must be allowed to attack the owner of the
+convoy and must be \Faceplus. \corsaire of \Barbaresques may only attack this
+way stacks that are in the \region{Mediterranee}. Several \corsaire may attack
+the same convoy in the same zone, but only one per alliance. These attacks are
+resolved after the moving stack declared an action (or declined to do one) but
+before regular interceptions are declared. \pays{pirates} \corsaire always
+attack (if \Faceplus) and their attacks are always resolved first, then any
+other in decreasing order of initiative; each attack being resolved before the
+next is declared. If several \corsaire of \pays{pirates} may attack, only the
+one commanded by the highest ranking \LeaderA does (at random in case of
+ties). If several \corsaire of an alliance may attack but their controller do
+not reach an agreement on who should do the attack, none does. \corsaire of
+Neutral minor countries are considered as controlled by the first country in
+their list of controller.
 
 \aparag[Attack Procedure]
-\bparag Roll for naval interception. Pirates with no leader use 2 as
-Manoeuvre.  If successful, reduce the \corsaire to \Facemoins and proceed with
-the attack, else test for the next interception.
-\bparag Before the attack, an accompanying fleet may try to disperse and
-reduce the pirates or privateers by making a roll on the corresponding
-table.  If successful, the \corsaire is not reduced but the attack is aborted.
-\bparag If not aborted, resolve the attack on the  Pirate/Privater raid table.
-\bparag Each level in the column \TradeFLEET\faceplus corresponds to one \NTD
-captured (with 15\ducats).
-\bparag Afterwards, \corsaire goes at port and are finished for the
-turn. However Pirates stay in the \CTZ or \STZ and will attack normally Trade
-Fleets .
-\bparag The \terme{Barbaresque} corsairs cannot attack a Convoy if it is
-not in \region{Mediterranee}.
-
-\aparag[Flota de Oro] \label{chMilitary:FlotaDeOroMovement} As soon as the
-\terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
-reappears in a Spanish port on the Atlantic coast.
+\bparag Roll for naval interception by the \corsaire. \corsaire of
+\pays{pirates} with no \LeaderA use 2 as \Man.
+\bparag If the interception fails, the attack stops immediately; if it is
+successful, reduce the \corsaire to \Facemoins and proceed further.
+\bparag The attacked stack may roll on \ref{Table:Reduce Revolt or Piracy}
+(see \ref{chMilitary:Revolt} for details); if successful, do not reduce
+further the \corsaire but stop the attack immediately; if it fails, proceed
+further.
+\bparag Resolve the attack by rolling on \ref{Table:Pirates Natives Raids}
+(see \ref{chRedep:Corsair Attack} for details); read the result in column
+``\TradeFLEET\faceplus'', the number corresponds to the number of \NTD
+captured (each with 15\ducats).
+\bparag Gold captured by \corsaire of minor countries is lost; gold captured by
+\corsaire of major countries is immediately added to
+\lignebudgetlong{Pillages, privateers} of the controller (\emph{i.e.} the gold
+is ``teleported'' in the \RT and may not be intercepted again).
+\bparag After the attack, \corsaire of \pays{pirates} stay in the sea zone and
+may act again. Any other \corsaire must return to port immediately (as if they
+lost an interception battle) and may not act again this turn.
 
 \section{Exploration}\label{chMilitary:Discoveries}
 Each phasing naval stack not engaged in battle (including interception) may
@@ -1541,6 +1528,8 @@ stack automatically moves into the explored province.
 
 Note that a naval stack embarking troops may explore a new seazone from which
 the troops may then disembark to explore a new province.
+
+\iamhere
 
 \subsection{On discoveries [58]}
 \aparag As long as the forces doingthe discoveries have not came back to an
