@@ -1,4 +1,3 @@
-
 % -*- mode: LaTeX; -*-
 
 \newcommand{\iamhere}{\begin{todo} The following is copy of older stuff and de
@@ -287,7 +286,7 @@ to a port has a \LoS of length 0.
 
 \subsection{Supply Attrition}
 Attrition (in Europe) is obtained by rolling one die, modified as follows, and
-cross-reference the modified result in table~\ref{table:Discoveries and
+cross-reference the modified result in Table~\ref{table:Discoveries and
   Attrition} in the ``Land, Europe'' column that corresponds to the size of
 the stack. In the \ROTW, the result is read in the ``\ROTW and Sea''
 column. Note that a result of 5 or less has no effect.
@@ -1520,32 +1519,152 @@ lost an interception battle) and may not act again this turn.
 \section{Exploration}\label{chMilitary:Discoveries}
 Each phasing naval stack not engaged in battle (including interception) may
 attempt to explore an adjacent unknown seazone. In case of success, the stack
-automatically moves into the explored zone.
+automatically moves into the explored zone. Exploration is the action of the
+naval stack.
 
 Next, each phasing land stack not engaged in battle (including interception)
+and not carried by a naval stack engaged in battle (including interception)
 may attempt to explore an adjacent unknown province. In case of success, the
 stack automatically moves into the explored province.
 
 Note that a naval stack embarking troops may explore a new seazone from which
 the troops may then disembark to explore a new province.
 
-\iamhere
+Any stack may attempt an exploration, but the presence of a \LeaderE (at sea)
+or a \LeaderC/\LeaderGov (on land) will greatly reduce the risks
+encountered. A leader alone may also explore but the presence of troops
+greatly remove the risks of death during the exploration.
 
-\subsection{On discoveries [58]}
-\aparag As long as the forces doingthe discoveries have not came back to an
-establishment existing at the beginning of the military phase, the discovery
-are not yet usable by other forces.  Neither is 'rendez-vous' authorized
-between stacks having made independent discoveries (no stacking).
+Exploration is not a movement and thus may not be intercepted and is never
+subject to attrition (but severe loses are usually suffered in the
+process). Notably, a landing during an exploration is never a cause for
+attrition.
+
+Exploration is resolved by rolling on table \ref{table:Discoveries and
+  Attrition}, the result is read \textbf{both} in the ``Discovery'' column
+corresponding to the type of exploration (land or sea) \textbf{and} the
+``\ROTW or sea'' column. The roll is modified by:
+\begin{modlist}
+\item[+4] for all explorations;
+\item[-M] \Man of the commanding \LeaderE, \LeaderC or \LeaderGov
+  \textbf{only}; or \Man of a \LeaderMis in the stack (see below).
+\end{modlist}
+
+For exploration at sea, the roll is further modified by:
+\begin{modlist}
+\item[+X] when exploring a sea zone with malus, add the malus;
+\item[+1] if the exploring stack has technology \TCAR;
+\item[-1] if the exploring stack has technology \TBAT;
+\item[-2] if the exploring stack has technology \TVE or \TTD;
+\item[-3] if the exploring stack has technology \TSF;
+\item[+2] if there is \terme{Bad weather};
+\item[-2] if this is period \period{IV} or later and the sea zone is already
+  known by at least one other country (including minor countries).
+\end{modlist}
+
+Note that \LeaderG or \LeaderA do not use their \Man during exploration. On
+the other hand, if a \LeaderMis is present in the stack (even if not
+commanding) its \Man may be used instead of the one of the commanding leader.
+
+\LeaderE may explore coastal province (with or without troops) and stay in the
+province afterwards; they may never go further inland. In this case, their
+\Man is halved (round down).
+
+The result of the exploration is read \textbf{both} in the ``Discovery''
+column \textbf{and} the ``\ROTW or Sea'' column. The later gives a percentage
+of loses that is applied to the stack as if it suffered it from
+attrition. Additionally, if there are no troops in the stack (leader alone),
+if this percentage is 30\% or higher, consider that a \textetoile was obtained
+on the ``Discovery'' column (max. 1 \textetoile per exploration).
+
+The ``Discovery'' column contains either a 'S', a 'F' or a '\undemi'; plus
+sometimes a \textetoile.
+\begin{itemize}
+\item 'S' means Success. The exploration succeed. The stack is moved in the
+  newly explored province or sea zone. Exception: if the explored province
+  contains an establishment of a neutral country, the stack stays in
+  place. The discovery is noted on the discovery sheet of the player but
+  cannot be used until being ``brought back home'' (see below).
+\item 'F' means Failure. The stack does not move and the zone is still
+  unknown.
+\item '\undemi' are resolved by rolling an unmodified die on the small table
+  on the right. Treat results of '1--3' as F\textetoile; '4--5' as F; '6--8'
+  as S\textetoile; and '9--10' as S.
+\item If there is a '\textetoile' (including 30\% loses or more and no troops)
+  then the leader (whose \Man was used) must test his death. Roll 1d10, if
+  this is strictly more than the \Man (halved for \LeaderE on land as usual),
+  the leader is dead (remove him from the game); otherwise, he survives.
+\end{itemize}
+
+If a leader die during exploration and the country falls below its limit of
+\LeaderC or \LeaderE, the new one may be put in the same place as the old one
+only if some counters are still present. Otherwise, it is assumed that the
+whole expedition has been whipped out and the discoveries it may had are
+lost\ldots
+
+\smallskip
+
+When a discovery is successful, only the stack that made it knows about it (in
+case of a multi-national stack, only the commanding country (and its units)
+carry this knowledge). This means that other stacks of the same country still
+consider that the zone is unknown for all purposes. Typically, they must
+explore again if they want to enter that zone. Even if two stacks know the
+zone (but the country doesn't), they may not merge in it.
+
+As soon as a stack carrying discoveries reaches an establishment (fort, \TP,
+\COL or European province) that was existing at the beginning of the military
+phase, the countries immediately and definitely gains knowledge of the
+discoveries. Any stack of that country also gets that knowledge as soon as it
+is not in a zone whose discovery has not been brought back yet.
+
+A stack carrying discoveries may ``meet'' another stack if this happen in a
+zone whose discovery has been brought back. In that case, if both stacks are
+of the same country (not alliance), they share their discoveries: they may
+both use the zone discovered by the other and any of them is able to bring all
+these back home. Discoveries are never shared that way with another country.
+
+If a stack carrying discoveries is entirely destroyed, its discoveries are
+lost (unless they've already been shared with another stack).
+
+Discoveries carried by stack must be noted and remembered. Once a discovery is
+brought back home, shade out the corresponding zone on the mini-map of the
+player to remember this.
+
+Note that bringing the discoveries home is not a naval action and happens
+automatically as soon as the stack enters an establishment. Thus, typically,
+when exploring seas around one of your \COL, it is possible to move in the
+port of the \COL (bringing discovery of previous round), move out and a bit
+further and then as an action explore an adjacent sea. This makes the move a
+bit longer (thus increasing attrition risk) but greatly reduce the risk of the
+stack being sunk with many discoveries (something you definitely do not want
+to happen).
+
+If two stacks (allied, enemy or neutral) are in the same zone and both of them
+are carrying the discovery without it being brought back home yet, they may
+not interact (fight, merge, \ldots) If one of the stack is from a country who
+already knows of this zone, then this stack may initiate any interaction
+(battle, interception, \ldots) following regular rules.
 
 \aparag[Diffusion of discoveries]
-\bparag[On sea] At the beginning of period IV, all discovered sea zones of
-Atlantique Ocean are known to everyone else at the beginning of the military
-phase of the turn following the discovery. Other discovered sea zones have a
-bonus of {\bf -2} for discoveries by other players.
-\bparag [On land] At the beginning of period IV, all provinces containing a
-\COL or \TP are known to everyone else at the beginning of the military phase
-of the turn following the discovery.
+\bparag From period \period{IV} onward, discoveries spread among all players.
+\bparag[Atlantic] At the beginning off turn 25 (period \period{IV}), all sea
+zones without malus in the Atlantic Ocean that are known by at least one
+country (including minor) are immediately known by everybody; from now on, any
+newly explored sea zone without malus from the Atlantic Ocean is known by
+everybody at the beginning of the turn following its discovery by anybody.
+\bparag[On sea] If this is period \period{IV} or later, any sea zone that is
+known by at least one country (including minor) has a bonus of {\bf -2} for
+discoveries by other countries
+\bparag [On land] At the beginning of period \period{IV}, all provinces
+containing a \COL or \TP become known by everybody.
+\bparag [On land] If this is period \period{IV} or later, any province
+containing a \COL or \TP become known by everybody at the beginning of the
+turn following the one were the establishment was created.
+\bparag[Level 6] \COL of level 6 are European provinces and thus known by
+everybody. As soon as a \COL reach level 6 (even during period \period{I}),
+its province becomes immediately known by everybody.
 
+\iamhere
 
 \section{Battles}
 Resolve all non-interception battles caused by the movement, in order of
