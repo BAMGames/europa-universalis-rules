@@ -970,7 +970,7 @@
 %    4 & \stz{Atlantique W}&\\\ghline
     4 & \stz{Amerique}&\\\ghline
     5 & \stz{Recife}\\\ghline
-    \gris{6} & \stz{Patagonie} \& \seazone{Tempetes} or \terme{Piracy} everywhere if leader & Normal\\\ghline
+    \gris{6} & \stz{Patagonie} \& \seazone{Aiguilles} or \terme{Piracy} everywhere if leader & Normal\\\ghline
     7 & \stz{Arabie}&\\\hline\ghline
     8 & \stz{Chine} \faceplus\relax &\\\ghline
     9 & \stz{Indien} \faceplus\relax & Boom\\\ghline
@@ -1000,7 +1000,7 @@
   }
   \GTmoretitle{tableb}{Exotic resources variations}
   \GTlegend[caption=captiona,east south=tableb,to eastpoint=tableb]{
-    \GTitem{\stz{Tempetes}: America, \stz{Perou}: Asia, \stz{Canarias}: Asia \& America.}
+    \GTitem{\stz{Aiguilles}: America, \stz{Perou}: Asia, \stz{Canarias}: Asia \& America.}
   }
   \GTlegend[south west=tableb,xsize=(\gtid tableb)(\gtid captiona)]{%
     \GTitem{Accumulate \terme{Piracy} from Random piracy and Economical events \emph{before} rolling}
@@ -1066,15 +1066,15 @@
       \multicolumn{1}{c||}{+?}& Sea         & Land & or Sea & 1\LD & 2\LD & 3--5\LD & \geq6\LD\\\ghline\hline
       \leq 5&S  &S &0\% &---&---&---&---\\\ghline
       6 &S            &S            &10\%&---& P & P &1+P\\\ghline
-      7 &S\textetoilex&S            &20\%&---& P & P &1+P\\\ghline
-      8 &S\textetoilex&S            &30\%&---& P & P &1+P\\\ghline
+      7 &S\xxa&S            &20\%&---& P & P &1+P\\\ghline
+      8 &S\xxa&S\xxc        &30\%&---& P & P &1+P\\\ghline
       9 &\undemi      &\undemi      &40\%& P & P &1+P&2+P\\\ghline
       10 &\undemi      &\undemi      &50\%& P & P &1+P&2+P\\\ghline
-      11 &F            &F\textetoilex&60\%& P & 1 &1+P&2+P\\\ghline
-      12 &F            &F\textetoilex&70\%& P & 1 &1+P&2+P\\\ghline
-      13 &F\textetoilex&F\textetoilex&80\%& P & 1 &1+P&2+P\\\ghline
-      14 &F\textetoilex&F\textetoilex&90\%& P & 1 &1+P&2+P\\\ghline
-      \geq 15&F\textetoilex&F\textetoilex&100\%&1+P&1+P &2+P&3+P\\\ghline
+      11 &F\xxc            &F\xxa&60\%& P & 1 &1+P&2+P\\\ghline
+      12 &F\xxc            &F\xxa&70\%& P & 1 &1+P&2+P\\\ghline
+      13 &F\xxa&F\xxa&80\%& P & 1 &1+P&2+P\\\ghline
+      14 &F\xxa&F\xxa&90\%& P & 1 &1+P&2+P\\\ghline
+      \geq 15&F\xxa&F\xxa&100\%&1+P&1+P &2+P&3+P\\\ghline
     \end{tabular}%
   }
   \GTlegend[east south,to eastpoint]{
@@ -1084,13 +1084,12 @@
     \item[F] Failure
     \item[\undemi]
       \begin{modlisti}
-      \item[1--3]: F\textetoilex
-      \item[4--5]: F
-      \item[6--8]: S\textetoilex
-      \item[9--10]: S
+      \item[1--3]: F\xxa
+      \item[4--5]: F\xxc
+      \item[6--8]: S\xxa
+      \item[9--10]: S\xxc
       \end{modlisti}
-    \item[\textetoile] 1d10>MAN \textarrow death
-%Test of death for leader: 1d10>\Man \textarrow death
+    \item[\xxa (\xxc)] 1d10>MAN \textarrow death
     \item[?\%] See lost troops below
     \item[P]
       \begin{modlisti}
@@ -1718,9 +1717,9 @@
     \end{tabular} }
   \GTlegend[east south,to eastpoint,font=\small]{
     \textbf{Cap losses after mod.:}\\
-    Land: to size of enemy\\
-    Sea: to 2\textmultiply size of
-    enemy (1\ND if only \NDE). If routed, min. losses 1\ND.
+    Land: to size\\
+    Sea: to 2\textmultiply size (1\ND if only \NDE). If routed,
+    min. losses 1\ND.
   }
   \GTmorecontent{size}{north west}%
   {\gtid main.south west}{0pt,-5ex}{%
@@ -1736,7 +1735,7 @@
   % Push 8pt to the left instead of usual 2pt, because of title shape
   \GTlegend[caption=captionsize,east south=sizetitle,xsize offset=-8pt,xoffset=8pt,xsize=(\gtid sizetitle.east)(\gtid caption.east)]{
     % Lookup loss in line 0\textrightarrow line obtained by \emph{Size comparison}.
-    Reduce independently the \tu{} or \td{} and the full \GD.
+    Modify \textbf{both} the \tu{} or \td{} and the full \GD.
   }
   \GTmorecontent{retreat}{north east}%
   {\gtid captionsize.south east}{0pt,-4ex-2pt}{%

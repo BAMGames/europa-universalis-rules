@@ -593,10 +593,10 @@ large stack is a cause for attrition as usual.
   at the end of movement it has been a large stack moving, a cause for
   attrition, and thus must resolve it.
 
-  A large stack moves 6\MP and is intercepted. The movement is enough to
-  trigger attrition and the ``large stack'' will count as an extra causes and
-  gives \bonus{+2} to the roll. If it loses the battle, since it already
-  rolled for attrition during its move, it does need to do so again.
+  A large stack lands in enemy territory and is intercepted. The movement is
+  enough to trigger attrition and the ``large stack'' will count as an extra
+  causes and gives \bonus{+2} to the roll. If it loses the battle, since it
+  already rolled for attrition during its move, it does need to do so again.
 \end{exemple}
 
 Any movement that enters a province with unfriendly forces (land stack,
@@ -634,8 +634,16 @@ after a regular battle where all the troops are destroyed; the phasing stack
 does not roll for attrition before the overrun and may then continue moving as
 if nothing happened. If the phasing stack contains at least 4 times as many
 \LD, then the battle occurs immediately, as an interception battle (roll for
-attrition if needed, the phasing stack may continue movement if it wins), the
-phasing stack is still the attacker.
+attrition if needed, the phasing stack may continue movement if it wins). It
+is possible to overrun forces that just intercepted the moving stack
+(typically when several interceptions are attempted but only one succeed).
+
+Similarly, if a moving stack enters a province with 4 or 8 times as many enemy
+\LD, the non-phasing stack may declare an overrun. In that case, there is no
+need for interception (it is automatic). If the province already contains
+forces friendly to the moving one (including besieged forces), the overrun is
+only possible if the non-phasing forces contains at least four time as many
+\LD as the moving one.
 
 Phasing stacks may not enter provinces with presence (even besieged) of
 neutral countries (that are neither at war with (allied) nor against (enemy)
@@ -669,7 +677,7 @@ activation test and will automatically activate the natives.
 \aparag[Conquistador table]
 The Conquistador table may be used only:
 \bparag in \continent{America} and \continent{Africa}, by any \LeaderC and
-\LeaderE (half values) ;
+\LeaderE (half sum of values, round down) ;
 \bparag in \continent{Indonesia} by \leader{Coen}, \leader{van Diemen} and
 \leader{Maetsuycker} only ;
 \bparag in \continent{India} by all \LeaderC restricted to \continent{Asia}
@@ -1530,10 +1538,10 @@ stack automatically moves into the explored province.
 Note that a naval stack embarking troops may explore a new seazone from which
 the troops may then disembark to explore a new province.
 
-Any stack may attempt an exploration, but the presence of a \LeaderE (at sea)
-or a \LeaderC/\LeaderGov (on land) will greatly reduce the risks
-encountered. A leader alone may also explore but the presence of troops
-greatly remove the risks of death during the exploration.
+Any stack may attempt an exploration, but the presence of a \LeaderE, \LeaderC
+or \LeaderGov will greatly reduce the risks encountered. A leader alone may
+also explore but the presence of troops greatly remove the risks of death
+during the exploration.
 
 Exploration is not a movement and thus may not be intercepted and is never
 subject to attrition (but severe loses are usually suffered in the
@@ -1562,23 +1570,28 @@ For exploration at sea, the roll is further modified by:
   known by at least one other country (including minor countries).
 \end{modlist}
 
-Note that \LeaderG or \LeaderA do not use their \Man during exploration. On
-the other hand, if a \LeaderMis is present in the stack (even if not
-commanding) its \Man may be used instead of the one of the commanding leader.
+% dirty trick
+\newcommand{\myxxa}{\phantom{a}\xxa\xspace}
+\newcommand{\myxxc}{\phantom{a}\xxc\xspace}
 
-\LeaderE may explore coastal province (with or without troops) and stay in the
-province afterwards; they may never go further inland. In this case, their
-\Man is halved (round down).
+Note that \LeaderG or \LeaderA do not use their \Man during exploration (nor
+during a possible further test in case of\myxxa or\myxxc). On the
+other hand, if a \LeaderMis is present in the stack (even if not commanding)
+its \Man may be used instead of the one of the commanding leader.
+
+\LeaderE may explore coastal provinces (with or without troops) and stay in
+the province afterwards; they may never go further inland but may explore a
+coastal province from an adjacent coastal province (they don't need to
+reembark, this represents moves along the coast with smaller ships). On land,
+all their values (especially \Man) are halved (round down).
 
 The result of the exploration is read \textbf{both} in the ``Discovery''
 column \textbf{and} the ``\ROTW or Sea'' column. The later gives a percentage
 of loses that is applied to the stack as if it suffered it from
-attrition. Additionally, if there are no troops in the stack (leader alone),
-if this percentage is 30\% or higher, consider that a \textetoile was obtained
-on the ``Discovery'' column (max. 1 \textetoile per exploration).
+attrition.
 
 The ``Discovery'' column contains either a 'S', a 'F' or a '\undemi'; plus
-sometimes a \textetoile.
+sometimes a\myxxa or\myxxc.
 \begin{itemize}
 \item 'S' means Success. The exploration succeed. The stack is moved in the
   newly explored province or sea zone. Exception: if the explored province
@@ -1588,19 +1601,23 @@ sometimes a \textetoile.
 \item 'F' means Failure. The stack does not move and the zone is still
   unknown.
 \item '\undemi' are resolved by rolling an unmodified die on the small table
-  on the right. Treat results of '1--3' as F\textetoile; '4--5' as F; '6--8'
-  as S\textetoile; and '9--10' as S.
-\item If there is a '\textetoile' (including 30\% loses or more and no troops)
-  then the leader (whose \Man was used) must test his death. Roll 1d10, if
-  this is strictly more than the \Man (halved for \LeaderE on land as usual),
-  the leader is dead (remove him from the game); otherwise, he survives.
+  on the right. Treat results of '1--3' as F\xxa; '4--5' as F\xxc; '6--8'
+  as S\xxa; and '9--10' as S\xxc.
+\item If there is a '\xxa', or if there is a '\xxc' and the exploration is
+  done by a leader alone; then the leader (whose \Man was used (either the
+  commanding one or a \LeaderMis in the stack)) must test his death. Roll
+  1d10, if this is strictly more than the \Man (halved for \LeaderE on land as
+  usual), the leader is dead (remove him from the game); otherwise, he
+  survives. Note that \LeaderA or \LeaderG having a \Man of 0 for exploration,
+  they automatically fail this test (and die) if they explore\ldots
 \end{itemize}
 
 If a leader die during exploration and the country falls below its limit of
 \LeaderC or \LeaderE, the new one may be put in the same place as the old one
-only if some counters are still present. Otherwise, it is assumed that the
-whole expedition has been whipped out and the discoveries it may had are
-lost\ldots
+only if some counters are still present (a replacement \LeaderA, \LeaderG or
+\LeaderGov must be placed following usual rules). Otherwise, it is assumed
+that the whole expedition has been whipped out and the discoveries it may had
+are lost\ldots
 
 \smallskip
 
@@ -1615,13 +1632,16 @@ As soon as a stack carrying discoveries reaches an establishment (fort, \TP,
 \COL or European province) that was existing at the beginning of the military
 phase, the countries immediately and definitely gains knowledge of the
 discoveries. Any stack of that country also gets that knowledge as soon as it
-is not in a zone whose discovery has not been brought back yet.
+is not itself carrying unknown discoveries (\emph{i.e.} either it is wandering
+in known land, possibly enemy or empty, or it has finished its own
+explorations and reached home again).
 
 A stack carrying discoveries may ``meet'' another stack if this happen in a
-zone whose discovery has been brought back. In that case, if both stacks are
-of the same country (not alliance), they share their discoveries: they may
-both use the zone discovered by the other and any of them is able to bring all
-these back home. Discoveries are never shared that way with another country.
+zone whose discovery has been brought back \textbf{and} both stacks have
+knowledge of this zone. In that case, if both stacks are of the same country
+(not alliance), they share their discoveries: they may both use the zones
+discovered by the other and any of them is able to bring all these back
+home. Discoveries are never shared that way with another country.
 
 If a stack carrying discoveries is entirely destroyed, its discoveries are
 lost (unless they've already been shared with another stack).
@@ -1648,9 +1668,9 @@ already knows of this zone, then this stack may initiate any interaction
 \aparag[Diffusion of discoveries]
 \bparag From period \period{IV} onward, discoveries spread among all players.
 \bparag[Atlantic] At the beginning off turn 25 (period \period{IV}), all sea
-zones without malus in the Atlantic Ocean that are known by at least one
+zones without malus in the \region{Atlantic} that are known by at least one
 country (including minor) are immediately known by everybody; from now on, any
-newly explored sea zone without malus from the Atlantic Ocean is known by
+newly explored sea zone without malus from the \region{Atlantic} is known by
 everybody at the beginning of the turn following its discovery by anybody.
 \bparag[On sea] If this is period \period{IV} or later, any sea zone that is
 known by at least one country (including minor) has a bonus of {\bf -2} for
