@@ -24,7 +24,7 @@
 
 \section{Overview}
 \aparag[Sequence]
-\MilitaryDetailsNew
+\MilitaryDetails
 
 \subsection{Military setup}
 Setup for the military phase.
@@ -91,6 +91,7 @@ Compute the final cost of all campaigns paid this turn.
 \end{playtip}
 
 \section{Military setup}
+\label{chMilitary:Military setup}
 \subsection{Initiative}
 Determine the alliances in effect this turn and the order of initiative
 between them. Alliances are transitive (the ally of my ally is my ally) for
@@ -111,6 +112,7 @@ It is possible for the Sund to be frozen during the first round if the die was
 '1' and \ref{eco:Poor weather} happened this turn.
 
 \section{Rounds}
+\label{chMilitary:Rounds}
 During each round, perform the segments detailed below. The Impulses segment
 is repeated for each alliance in decreasing order of initiative.
 
@@ -126,6 +128,7 @@ Each round is labelled by a letter indicating the \terme{season} ('S'ummer or
 \end{designnote}
 
 \subsection{Continuation roll}
+\label{chMilitary:Rounds:Continuation roll}
 Do not perform this segment at the first round of a turn.
 
 Roll a die, modified by \bonus{+2} in case of \ref{eco:Poor weather} and
@@ -161,6 +164,7 @@ after an unmodified roll of '1', the Sund is frozen (see \ref{eco:Poor
 \end{playtip}
 
 \subsection{Wintering}
+\label{chMilitary:Rounds:Wintering}
 If the current year is different than the year of the previous round, then a
 \terme{Wintering} segment occurs. Otherwise, skip to the \terme{Impulses}
 segment.
@@ -203,6 +207,7 @@ others are non-phasing.
 
 
 \section{Supply}
+\label{chMilitary:Supply}
 Each phasing land stack which has no supply for two consecutive rounds is
 immediately destroyed. Getting back supply temporarily during the round is
 enough to avoid this destruction.
@@ -387,6 +392,7 @@ Stacks in \COL of level 6 use the Attrition in Europe procedure.
 \GTtable{attritionlosses}
 
 \section{Choice of campaign}
+\label{chMilitary:Choice of campaign}
 Each country of the phasing alliance chooses its campaign for the current
 round. Make a tick in the correct line of the ERS to count how many campaigns
 of each type you've done so you can pay for them.
@@ -472,8 +478,8 @@ computed separately and only the maximum cost is paid.
 \end{exemple}
 
 \section{Movements}
-\subsection{Movement}
-\subsubsection{Generalities}
+\label{chMilitary:Movements}
+\subsection{Generalities}
 Each country of the phasing alliance may move its stacks, according to the
 campaign it paid for the round. Each movement must be completed before the
 next one start. The phasing alliance choose in which order it moves its stacks
@@ -504,7 +510,7 @@ after disembarking. The naval stack, however, can move before picking up the
 land stack but is constrained in what it does after. If a naval stack
 transporting troops suffer loses, troops inside may also suffer some loses.
 
-\subsubsection{Land}
+\subsection{Land}
 When moving, land stacks expend \MP depending both on the terrain of each
 province they enter and the frontier by which they entered it. The cost of
 each terrain differ in Europe and in the \ROTW and are indicated in
@@ -737,7 +743,7 @@ table and cannot use naval transport. They are automatically disbanded if the
   there is 100-80=20\% of the natives that desert and 100-30=70\% that resist.
 \end{exemple}
 
-\subsubsection{Sea}
+\subsection{Sea}
 Naval stacks have an unlimited movement capacity. A naval stack that does not
 stay in a port always rolls for attrition (even if it does not move and simply
 stays at sea). The attrition roll is modified by the distance moved, hence the
@@ -889,7 +895,7 @@ considered as a friendly port (not arsenal).
 \terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
 reappears in a Spanish port on the Atlantic coast.
 
-\subsubsection{Combined move}
+\subsection{Combined move}
 A combined move, or naval transport, happens when a naval stack carries a land
 stack and they move together. The land stack may not move before embarking but
 may move after. On the other hand, the naval stack may move before embarking
@@ -1002,8 +1008,9 @@ created full of gold and cannot be used to carry more.
 % (Jym) : bof, ça me semble bien trop compliqué à gérer pour ce que ça
 % apporte.
 
-\subsection{Attrition}
-\subsubsection{Generalities}
+\section{Attrition}
+\label{chMilitary:Attrition}
+\subsection{Generalities}
 Moving stacks may have to roll for attrition. The procedure is similar on land
 and at sea but with different modifiers and a different way to read the
 table. Attrition is always resolved by cross-referencing a modified die roll
@@ -1014,7 +1021,7 @@ is required.
 Beware that even if the procedure is very similar to supply or siege
 attrition, the modifiers and the way to implement the results are different.
 
-\subsubsection{Land}
+\subsection{Land}
 Check the movement rules to determine when a moving land stack has to roll for
 attrition. The modifiers are:
 \begin{modlist}
@@ -1083,7 +1090,7 @@ that only the land provinces are considered for this. Sea zones crossed during
 a naval transport play no role in deciding whether to use attrition in EUrope
 or in the \ROTW.
 
-\subsubsection{Sea}
+\subsection{Sea}
 Naval stacks at sea always roll for movement attrition, even if they are not
 actually moving. Naval stacks that stay in a port do not roll for attrition.
 
@@ -1156,8 +1163,9 @@ which \ND are sunk.
 
 Any \NTD that must suffer at least 1\NDE of loss is entirely destroyed.
 
-\subsection{Interception}
-\subsubsection{Generalities}
+\section{Interceptions}
+\label{chMilitary:interceptions}
+\subsection{Generalities}
 Non-phasing stacks may attempt to intercept a moving enemy stack under certain
 conditions. Interceptions are declared whenever a moving stack enters a new
 zone (sea zone or province) and resolved immediately. Interceptions can be
@@ -1204,7 +1212,7 @@ actually composing it changed.
 Interceptions are resolved by a modified die roll. These rolls are similar on
 land and at sea but with different modifiers. \Man plays a huge role in these.
 
-\subsubsection{Land}
+\subsection{Land}
 Non-phasing stacks of countries who made no campaign at all during their
 previous impulse (except during the first round if they had no impulse yet)
 may not intercept at all. Non-phasing stacks commanded by countries who paid
@@ -1300,7 +1308,7 @@ cumulative):
 If the unmodified die is 10, or if the modified roll is 8 or more, then the
 interception is successful.
 
-\subsubsection{Sea}
+\subsection{Sea}
 Non-phasing stacks of countries who made no campaign at all during their
 previous impulse (except during the first round if they had no impulse yet)
 may not intercept at all. Countries who paid only a passive campaign during
@@ -1447,7 +1455,7 @@ interception succeeds.
   Now, you should be able to build a ``\emph{Fleet in being}'' strategy.
 \end{exemple}
 
-\subsubsection{\Presidios and Strait fortifications}
+\subsection{\Presidios and Strait fortifications}
 A \Presidio or Strait fortification can intercept a naval stack. Strait
 fortifications can intercept stacks moving through it. \Presidios can
 intercept stack entering or exiting the port. The interception is decided by
@@ -1474,9 +1482,11 @@ Additionally, if the result is 11 or more, the stack loses 1\ND (or 1 side of
 \corsaire) and if the result is 13 or more, the stack loses 1 more \ND (or
 side of \corsaire) (for a total of 2).
 
-\subsubsection{Convoys}
-[Do not use if using the experimental system for Revolts, \corsaire and
-Natives.]
+\subsection{Convoys}
+\begin{designnote}
+  Do not use if using the experimental system for Revolts, \corsaire and
+  Natives.
+\end{designnote}
 
 Naval stacks carrying gold, most notably convoys, may be intercepted and
 attacked by \corsaire when they enter a sea zone of the \STZ or \CTZ in which
@@ -1524,7 +1534,8 @@ is ``teleported'' in the \RT and may not be intercepted again).
 may act again. Any other \corsaire must return to port immediately (as if they
 lost an interception battle) and may not act again this turn.
 
-\section{Exploration}\label{chMilitary:Discoveries}
+\section{Explorations}\label{chMilitary:Discoveries}
+\label{chMilitary:Exploration}
 Each phasing naval stack not engaged in battle (including interception) may
 attempt to explore an adjacent unknown seazone. In case of success, the stack
 automatically moves into the explored zone. Exploration is the action of the
@@ -1684,12 +1695,69 @@ turn following the one were the establishment was created.
 everybody. As soon as a \COL reach level 6 (even during period \period{I}),
 its province becomes immediately known by everybody.
 
-\iamhere
-
 \section{Battles}
+\label{chMilitary:Battles}
+\subsection{Generalities}
 Resolve all non-interception battles caused by the movement, in order of
 choice of the phasing alliance (at random in case of disagreement). Each
 battle must be fully resolve before the next one starts.
+
+Battles caused by interceptions are resolved immediately but follow the same
+procedure as this one.
+
+Land and sea battles follow the same sequence with slight modifications.
+
+Battles are always only fought between two stacks of belligerent
+alliances. There cannot be a three-sided battle. If, for some reason, several
+stacks of the same alliance participate in a battle, they are automatically
+considered merged for the duration of the battle (notably to find the
+commander of the stack).
+
+\textbf{Attacker and defender.} The tables use the terms \terme{attacker} and
+\terme{defender} to design the sides. They are determined as follows: if this
+is an interception battle, then the attacker is the non-phasing alliance and
+the defender is the phasing alliance. If this is not an interception battle,
+then the attacker is the phasing alliance and the defender is the non-phasing
+alliance. Attacker and defender mostly play a role for terrain modifiers. We
+try to avoid these terms in the rules.
+\begin{todo}
+  And to remove them from the table\ldots
+\end{todo}
+
+
+\subsubsection{Battle sequence}
+\aparag Each battle follows this sequence of steps:
+\bparag \xnameref{chMilitary:Battle:Evasion}: non-phasing, non-intercepting
+  stacks may attempt to avoid the battle and retreat before it starts.
+\bparag \xnameref{chMilitary:Battle:Parameters}: determine battle parameters,
+  notably the column of the CRT and DRM to use.
+\bparag \xnameref{chMilitary:Battle:Fight}: each battle can last up to 2
+  \terme{days}. Each day is further split in a \terme{fire} and a
+  \terme{shock} (or \terme{boarding} at sea) roll.
+\bparag \xnameref{chMilitary:Battle:Pursuit}: the winner pursue the loser.
+\bparag \xnameref{chMilitary:Battle:Loss modifications}: actual losses are
+  computed from the battle result.
+\bparag \xnameref{chMilitary:Battle:Retreat}: any non-winning stack retreat.
+\bparag \xnameref{chMilitary:Battle:Cleanup}: determine major victory, test
+  death of leaders, \ldots
+
+\subsection{Evasion test}
+\label{chMilitary:Battle:Evasion}
+\subsection{Battle parameters}
+\label{chMilitary:Battle:Parameters}
+\subsection{2 days of battle}
+\label{chMilitary:Battle:Fight}
+\subsection{Pursuit}
+\label{chMilitary:Battle:Pursuit}
+\subsection{Loss modifications}
+\label{chMilitary:Battle:Loss modifications}
+\subsection{Retreat}
+\label{chMilitary:Battle:Retreat}
+\subsection{Battle cleanup}
+\label{chMilitary:Battle:Cleanup}
+
+
+\iamhere
 
 \subsection{Les batailles}
 \aparag[Victoire majeure]
@@ -2074,6 +2142,7 @@ après le feu quel que soit le résultat adverse et ne font pas de pertes (même
 navires de guerre sont en retrait).
 
 \section{Sieges}
+\label{chMilitary:Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
 Each alliance, in decreasing order of initiative, resolves all of its actions
@@ -2218,6 +2287,7 @@ provenir de la séparation d'un pion armée).
 A new round begin with the \terme{Continuation Roll} segment.
 
 \section{Military cleanup}
+\label{chMilitary:cleanup}
 ???
 
 Normally nothing to do here.
