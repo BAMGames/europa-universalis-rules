@@ -1019,16 +1019,14 @@ this amount and must spend money according to this estimation.
 
 \section{External Operations}
 
-
-
 \subsection{Trade fleet Implantation}
 
 \aparag[Commercial Fleets] The operation of \terme{Trade fleet implantation}
 targets a \STZ/\CTZ. Then, use base column
 \FTI-\#\emph{Fleets}+Investment.%, with the
 % following modifiers:
-\bparag See the access limitations in \ruleref{chAdministration:Limited Access} for
-restriction on the seas that may be targeted.
+\bparag See the access limitations in \ruleref{chAdministration:Limited
+  Access} for restriction on the seas that may be targeted.
 \bparag \#\emph{Fleets} is the number of foreign commercial fleets in the
 targeted \STZ/\CTZ, whatever their side.
 \bparag When targeting its \CTZ, a country adds its \DTI to the initial
@@ -1054,8 +1052,9 @@ counters is a restriction on the number of \TradeFLEET a country may have, and
 some countries have other limits). If the \TradeFLEET reaches level 4, turn
 the counter on its \Faceplus side. A \TradeFLEET may never have more than 6
 levels.
-\bparag See \ruleref{chAdministration:Trade Competition Mandatory} if two fleets are
-\Faceplus in the same \STZ/\CTZ or when one \TradeFLEET reaches level 6.
+\bparag See \ruleref{chAdministration:Trade Competition Mandatory} if two
+fleets are \Faceplus in the same \STZ/\CTZ or when one \TradeFLEET reaches
+level 6.
 \bparag A result of ``F'' is a failure: nothing happens but the money is lost.
 \bparag A result of ``\undemi'' is treated as normal: roll 1d10, if less or
 equal than \FTI (use special \FTI if allowed), treat as ``S'', otherwise,
@@ -1091,8 +1090,8 @@ in the \ROTW that does not already contains a foreign \COL, a \terme{Minor
 \FTI-Difficulty+Investment (where Difficulty is the Difficulty value for the
 \Area).
 \bparag See the access limitations in \ref{chAdministration:Pioneering},
-\ref{chAdministration:Inland advance} and \ref{chAdministration:Native empires} for
-restriction on the provinces that may be targeted.
+\ref{chAdministration:Inland advance} and \ref{chAdministration:Native
+  empires} for restriction on the provinces that may be targeted.
 \bparag Countries with a special \FTI use it, both for column computation and
 to resolve \undemi.
 \bparag The following modifiers to the die-roll are used:
@@ -1128,11 +1127,11 @@ the counter on its \Faceplus side. A \COL may never have more than 6 levels.
 equal than \FTI (use special \FTI if allowed), treat as ``S'', otherwise,
 treat as ``F''.
 
-\aparag\label{chAdministration:Colony:Critical failure} An unmodified result of 1 or
-2 (even if the action is a success) requires a second roll of 1d10: if it is
-\emph{strictly less} than the Tolerance value for the \Area, the natives are
-immediately activated and will attack during the redeployment phase (as per
-\ruleref{chRedep:Native Attack}).
+\aparag\label{chAdministration:Colony:Critical failure} An unmodified result
+of 1 or 2 (even if the action is a success) requires a second roll of 1d10: if
+it is \emph{strictly less} than the Tolerance value for the \Area, the natives
+are immediately activated and will attack during the redeployment phase (as
+per \ruleref{chRedep:Native Attack}).
 \bparag Note that \Area with no Tolerance (eg in \continent{America}) are not
 subject to this critical failure.
 
@@ -1368,7 +1367,7 @@ is no more in \MA.
 \stz{Indien} or \stz{Chine} and the country has discovered all the sea zones
 of the \STZ (i.e. the sea zone in which is the symbol, plus all neighboring
 ones).
-%% [TBD: Tempetes exclu car pas de civilisation construite et commercante ici]
+%% [TBD: Aiguilles exclu car pas de civilisation construite et commercante ici]
 
 \aparag If the condition allowing a new implementation disappears, the
 \TradeFLEET can no more increase in level through administrative actions, but
@@ -1449,9 +1448,12 @@ province on the European map by a continuous path of known sea zones and
 provinces (even if enemy-occupied or through closed straits fortifications),
 and at least one of the following conditions is true:
 \begin{modlist}
-\item The province is coastal.
+\item The province is coastal and linked by a continuous path of known sea
+  zone to a \COL, \TP or European province owned by the country.
 \item[OR] The province is within supply distance (12\MP) by land only of a
-  \COL, \TP or European province owned by the country.
+  \COL, \TP or European province owned by the country; this path may not go
+  through provinces belonging to a minor, or with any kind of establishment
+  not belonging to the country (troops do not hamper it)
 \end{modlist}
 % \bparag The \Area contains a \COL or \TP of the same country and the
 % targeted province is within supply distance (12\MP) of it.

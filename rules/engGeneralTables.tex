@@ -970,7 +970,7 @@
 %    4 & \stz{Atlantique W}&\\\ghline
     4 & \stz{Amerique}&\\\ghline
     5 & \stz{Recife}\\\ghline
-    \gris{6} & \stz{Patagonie} \& \seazone{Tempetes} or \terme{Piracy} everywhere if leader & Normal\\\ghline
+    \gris{6} & \stz{Patagonie} \& \seazone{Aiguilles} or \terme{Piracy} everywhere if leader & Normal\\\ghline
     7 & \stz{Arabie}&\\\hline\ghline
     8 & \stz{Chine} \faceplus\relax &\\\ghline
     9 & \stz{Indien} \faceplus\relax & Boom\\\ghline
@@ -1000,7 +1000,7 @@
   }
   \GTmoretitle{tableb}{Exotic resources variations}
   \GTlegend[caption=captiona,east south=tableb,to eastpoint=tableb]{
-    \GTitem{\stz{Tempetes}: America, \stz{Perou}: Asia, \stz{Canarias}: Asia \& America.}
+    \GTitem{\stz{Aiguilles}: America, \stz{Perou}: Asia, \stz{Canarias}: Asia \& America.}
   }
   \GTlegend[south west=tableb,xsize=(\gtid tableb)(\gtid captiona)]{%
     \GTitem{Accumulate \terme{Piracy} from Random piracy and Economical events \emph{before} rolling}
@@ -1036,10 +1036,10 @@
     \GTitem{Besieged (\textbf{siege} attrition)}
     \GTitem{No supply}
 %    \GTitem{Weak  land supply:}
-    \GTitem{6\MP\leq\LoS\leq12\MP except \LD in \ROTW}
     \GTitem{\LoS through Desert}
     \GTitem{\SoS not owned, nor allied}
-    \GTitem{By a fleet not adjacent to its \SoS}
+    \GTitem{6\MP\leq\LoS\leq12\MP \quad (\emph{except \LD in \ROTW})}
+    \GTitem{By a fleet not adjacent to its \SoS \quad (\emph{idem})}
     \GTheader{Movement segment}
     \GTitem{Massed force (\geq6\LD, no logistics: \geq3\LD)}
     \GTitem{Movement \geq3\MP if \terme{bad weather}}
@@ -1066,15 +1066,15 @@
       \multicolumn{1}{c||}{+?}& Sea         & Land & or Sea & 1\LD & 2\LD & 3--5\LD & \geq6\LD\\\ghline\hline
       \leq 5&S  &S &0\% &---&---&---&---\\\ghline
       6 &S            &S            &10\%&---& P & P &1+P\\\ghline
-      7 &S\textetoilex&S            &20\%&---& P & P &1+P\\\ghline
-      8 &S\textetoilex&S            &30\%&---& P & P &1+P\\\ghline
+      7 &S\xxa&S            &20\%&---& P & P &1+P\\\ghline
+      8 &S\xxa&S\xxc        &30\%&---& P & P &1+P\\\ghline
       9 &\undemi      &\undemi      &40\%& P & P &1+P&2+P\\\ghline
       10 &\undemi      &\undemi      &50\%& P & P &1+P&2+P\\\ghline
-      11 &F            &F\textetoilex&60\%& P & 1 &1+P&2+P\\\ghline
-      12 &F            &F\textetoilex&70\%& P & 1 &1+P&2+P\\\ghline
-      13 &F\textetoilex&F\textetoilex&80\%& P & 1 &1+P&2+P\\\ghline
-      14 &F\textetoilex&F\textetoilex&90\%& P & 1 &1+P&2+P\\\ghline
-      \geq 15&F\textetoilex&F\textetoilex&100\%&1+P&1+P &2+P&3+P\\\ghline
+      11 &F\xxc            &F\xxa&60\%& P & 1 &1+P&2+P\\\ghline
+      12 &F\xxc            &F\xxa&70\%& P & 1 &1+P&2+P\\\ghline
+      13 &F\xxa&F\xxa&80\%& P & 1 &1+P&2+P\\\ghline
+      14 &F\xxa&F\xxa&90\%& P & 1 &1+P&2+P\\\ghline
+      \geq 15&F\xxa&F\xxa&100\%&1+P&1+P &2+P&3+P\\\ghline
     \end{tabular}%
   }
   \GTlegend[east south,to eastpoint]{
@@ -1084,13 +1084,12 @@
     \item[F] Failure
     \item[\undemi]
       \begin{modlisti}
-      \item[1--3]: F\textetoilex
-      \item[4--5]: F
-      \item[6--8]: S\textetoilex
-      \item[9--10]: S
+      \item[1--3]: F\xxa
+      \item[4--5]: F\xxc
+      \item[6--8]: S\xxa
+      \item[9--10]: S\xxc
       \end{modlisti}
-    \item[\textetoile] 1d10>MAN \textarrow death
-%Test of death for leader: 1d10>\Man \textarrow death
+    \item[\xxa (\xxc)] 1d10>MAN \textarrow death
     \item[?\%] See lost troops below
     \item[P]
       \begin{modlisti}
@@ -1142,6 +1141,7 @@
     \GTheader{Exploration \hspace{28mm} (Always at +4)}
     \begin{modlist}
     \item[-2] if sea zone already known (by anyone) in pIV+
+    \item[-M] MAN of \LeaderE/\LeaderC/\LeaderGov
 %    \item[+4] For all explorations (land or sea)
     \end{modlist}
   }
@@ -1356,12 +1356,13 @@
   \GTheader{Interception: success on \geq8 or natural 10}
   \begin{modlist}
   \item[\textplusminus?] \Man differential  % [TBD : only if positive ?]
-  \item[+1] if technology counter has an advance of 6 cases or higher
+  \item[+1] if interceptor has a technological advance of 6 levels or more
   \item[+1] If the target province contains a friendly force/city
   \item[-1] From or to swamps (-2 if both) or from Flooded province
-  \item[-2] Through mountain pass, river or \terme{bad weather}
+  \item[-2] Through mountain pass, river or \terme{bad weather} (-4 if both)
   \item[-2] If the target province contains an enemy force
-  \item[-1] If interceptor was besieging or blockading at current or previous round
+  \item[-1] If interceptor is besieging or blockading
+    % at current or previous round
   \item[+1] If intercepting in the same province/sea zone or with \terme{Three-decker}
   \item[or +2] if intercepted Fleet will make a Debarkment in same sea zone,
   \item[]  or same province as port,  or adjacent sea zone from arsenal
@@ -1716,9 +1717,9 @@
     \end{tabular} }
   \GTlegend[east south,to eastpoint,font=\small]{
     \textbf{Cap losses after mod.:}\\
-    Land: to size of enemy\\
-    Sea: to 2\textmultiply size of
-    enemy (1\ND if only \NDE). If routed, min. losses 1\ND.
+    Land: to size\\
+    Sea: to 2\textmultiply size (1\ND if only \NDE). If routed,
+    min. losses 1\ND.
   }
   \GTmorecontent{size}{north west}%
   {\gtid main.south west}{0pt,-5ex}{%
@@ -1734,7 +1735,7 @@
   % Push 8pt to the left instead of usual 2pt, because of title shape
   \GTlegend[caption=captionsize,east south=sizetitle,xsize offset=-8pt,xoffset=8pt,xsize=(\gtid sizetitle.east)(\gtid caption.east)]{
     % Lookup loss in line 0\textrightarrow line obtained by \emph{Size comparison}.
-    Reduce independently the \tu{} or \td{} and the full \GD.
+    Modify \textbf{both} the \tu{} or \td{} and the full \GD.
   }
   \GTmorecontent{retreat}{north east}%
   {\gtid captionsize.south east}{0pt,-4ex-2pt}{%
@@ -2393,14 +2394,22 @@
     \tablenarrow{\vspace*{2ex}\\}
     \GTitem{Minor monarch ransom is 50\ducats \textbf{or} bonus to peace
       proposal \textbf{or} allowing separate peace.}
-    \GTitem{1 proposal per alliance, plus separate peace to minors either at war by event or with at least 1 province occupied (by or on the minor).}
-    \GTitem{No separate peace against \VASSAL or \ANNEXION unless either Capital occupied or monarch captured (instead of ransom).}
-    \GTitem{Minors always accept global white peace in \terme{Overseas wars}.}
+    \GTitem{1 proposal per alliance, plus separate peace to minors
+      either at war by event or with at least 1 province occupied (by
+      or on the minor).}
+    \GTitem{No separate peace against \VASSAL or \ANNEXION unless
+      either Capital occupied or monarch captured (instead of
+      ransom).}
+    \GTitem{Minors always accept global white peace in \terme{Overseas
+        wars}.}
     \GTitem{Maximum indemnity is 4 times total provinces income.}
     \GTitem{Forced diplomacy: 1 cond. for \RM, 2 for \MA and 3 for \VASSAL.}
-    \GTitem{Minor always accept unconditional victory if either attacking by event or global peace.}
-    \GTitem{If all provinces are occupied, mandatory unconditional surrender against \textbf{all} opponents.}
-    \GTitem{Goes to \Neutral after unconditional surrender (only).}
+    \GTitem{Minor always accept unconditional victory if either
+      attacking by event or global peace.}
+    \GTitem{If all provinces are occupied, mandatory unconditional
+      surrender against \textbf{all} opponents simultaneously.}
+    \GTitem{Goes to \Neutral after unconditional surrender or if
+      allies \textbf{choses} to give minor territory.}
   }
   \GTtextdecorate
 }
@@ -2431,12 +2440,18 @@
   \GTtextcontent[eastpoint]{
     \tablenarrow{\vspace*{2ex}\\}
     \GTitem{Always: \terme{Peace level} = \terme{Peace differential}}
-    \GTitem{If \terme{differential} $\leq 2$: \terme{Peace level} $-1, 0$ or $1$ is allowed.}
-    \GTitem{If capital and half national provinces are conquered: Unconditional peace is allowed (also as separate peace).}
-    \GTitem{\terme{Mandatory peace} if two consecutive turns at $-3$ \STAB (\textbf{after} \STAB improvement); \textbf{must propose} a white or losing peace based on differential (another peace may be signed, if allowed). If this is a separate peace, no \CB to former allies.}
-  }
-  \GTtextdecorate
-}
+    \GTitem{If \terme{differential} $\leq 2$: \terme{Peace level} $-1,
+      0$ or $1$ is allowed.}
+    \GTitem{If capital and half national provinces are conquered:
+      Unconditional peace is allowed (also as separate peace).}
+
+    \GTitem{\terme{Mandatory peace} if two consecutive turns at $-3$
+      \STAB (\textbf{after} \STAB improvement); \textbf{must propose}
+      a peace based on differential (another peace may be signed, if
+      allowed). If this is a separate peace, no \CB to former
+      allies. If this is a loosing peace of level 4 or 5, it must be
+      accepted.}
+  } \GTtextdecorate }
 
 
 

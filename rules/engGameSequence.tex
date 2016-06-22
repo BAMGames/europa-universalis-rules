@@ -47,27 +47,8 @@
   \aparag {\bf \xnameref{chapter:Incomes}}, {\bf
     \xnameref{chapter:Administration}} and {\bf
     \xnameref{chapter:Logistic}}
-  \AdminDetails }
+  \Admin Details }
 
-
-\newcommand{\MilitaryDetailsOld}{% soon to be deprecated
-  \bparag Phase end test
-  \bparag Movement and battle, for each alliance:
-  \begin{enumerate}
-  \item Hierarchy adjustment
-  \item Choice of campaign
-  \item Movement \& Discovery
-  \item Attrition
-  \item Battles
-  \end{enumerate}
-  \bparag Sieges
-  \bparag Fights against Piracy and Natives
-  \bparag End of round
-}
-\newcommand{\MilitaryPhaseOld}{% soon to be deprecated
-  \aparag {\bf \xnameref{chapter:Military}} (for each military round)
-  \MilitaryDetailsOld
-}
 
 \newcounter{militaryround}
 \newcounter{militarydetails}
@@ -84,37 +65,35 @@
 \newcommand{\outeritem}[1]{\arabic{#1}.}
 \newcommand{\inneritem}[1]{(\alph{#1})}
 
-\newcommand{\MilitaryImpulseNew}{%
-\item Supply
-\item Choice of campaign (for each country)
-\item Movements, interceptions
-\item Exploration
-\item Battles
-}
-\newcommand{\MilitaryRoundNew}{%
-  \item Continuation roll
-  \item Wintering (if new year)
-  \item Impulse (per alliance):
-  \begin{jymlist}{\inneritem}{militaryround}
-    \MilitaryImpulseNew
-  \end{jymlist}
-  \item Sieges, revolts, piracy, levies, \ldots
-}
-\newcommand{\MilitaryDetailsNew}{%
-  \bparag Military setup (initiative, starting round)
-  \bparag For each round:
-  \begin{jymlist}{\outeritem}{militarydetails}
-    \MilitaryRoundNew
-  \end{jymlist}
-  \bparag Military cleanup
-}
-\newcommand{\MilitaryPhaseNew}{%
-  \aparag {\bf \xnameref{chapter:MilitaryRules}}
-  \MilitaryDetailsNew
+\newcommand{\MilitaryImpulse}{%
+\item \xnameref{chMilitary:Supply}
+\item \xnameref{chMilitary:Choice of campaign}
+\item \xnameref{chMilitary:Movements}, \xnameref{chMilitary:interceptions}
+\item \xnameref{chMilitary:Exploration}
+\item \xnameref{chMilitary:Battles}
 }
 
-\let\MilitaryDetails\MilitaryDetailsNew
-\let\MilitaryPhase\MilitaryPhaseNew
+\newcommand{\MilitaryRound}{%
+  \item \xnameref{chMilitary:Rounds:Continuation roll} and
+    \xnameref{chMilitary:Rounds:Wintering}
+  \item Impulse (per alliance):
+  \begin{jymlist}{\inneritem}{militaryround}
+    \MilitaryImpulse
+  \end{jymlist}
+  \item \xnameref{chMilitary:Sieges} % + revolts, piracy, levies, \ldots
+}
+\newcommand{\MilitaryDetails}{%
+  \bparag \xnameref{chMilitary:Military setup} % initiative, starting round
+  \bparag For each round:
+  \begin{jymlist}{\outeritem}{militarydetails}
+    \MilitaryRound
+  \end{jymlist}
+  \bparag \xnameref{chMilitary:cleanup}
+}
+\newcommand{\MilitaryPhase}{%
+  \aparag {\bf \xnameref{chapter:MilitaryRules}}
+  \MilitaryDetails
+}
 
 \newcommand{\RedepDetails}{%
   \bparag \xnameref{chRedep:Native Attack}

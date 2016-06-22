@@ -24,7 +24,7 @@
 
 \section{Overview}
 \aparag[Sequence]
-\MilitaryDetailsNew
+\MilitaryDetails
 
 \subsection{Military setup}
 Setup for the military phase.
@@ -91,6 +91,7 @@ Compute the final cost of all campaigns paid this turn.
 \end{playtip}
 
 \section{Military setup}
+\label{chMilitary:Military setup}
 \subsection{Initiative}
 Determine the alliances in effect this turn and the order of initiative
 between them. Alliances are transitive (the ally of my ally is my ally) for
@@ -111,6 +112,7 @@ It is possible for the Sund to be frozen during the first round if the die was
 '1' and \ref{eco:Poor weather} happened this turn.
 
 \section{Rounds}
+\label{chMilitary:Rounds}
 During each round, perform the segments detailed below. The Impulses segment
 is repeated for each alliance in decreasing order of initiative.
 
@@ -126,6 +128,7 @@ Each round is labelled by a letter indicating the \terme{season} ('S'ummer or
 \end{designnote}
 
 \subsection{Continuation roll}
+\label{chMilitary:Rounds:Continuation roll}
 Do not perform this segment at the first round of a turn.
 
 Roll a die, modified by \bonus{+2} in case of \ref{eco:Poor weather} and
@@ -161,6 +164,7 @@ after an unmodified roll of '1', the Sund is frozen (see \ref{eco:Poor
 \end{playtip}
 
 \subsection{Wintering}
+\label{chMilitary:Rounds:Wintering}
 If the current year is different than the year of the previous round, then a
 \terme{Wintering} segment occurs. Otherwise, skip to the \terme{Impulses}
 segment.
@@ -203,6 +207,7 @@ others are non-phasing.
 
 
 \section{Supply}
+\label{chMilitary:Supply}
 Each phasing land stack which has no supply for two consecutive rounds is
 immediately destroyed. Getting back supply temporarily during the round is
 enough to avoid this destruction.
@@ -242,14 +247,17 @@ A stack is in weak supply if at least one of the following condition is true:
 \item its Line of Supply goes through desert;
 \item its Source of Supply is not owned by the same alliance;
 \item it is supplied by a naval stack that is not adjacent to a port or
-  arsenal able to supply it.
+  arsenal able to supply it (exception: in the \ROTW, \LD do not check this
+  condition).
 \end{itemize}
 
 It is possible to take its supply from a further \SoS to avoid weak supply
 (typically, to have an owned \SoS, or to circumvent a desert).
 
 A naval stack can act as a \SoS for an adjacent land stack if it is large
-enough:
+enough. Supplying is a naval action (see below) and thus must be declared
+during the naval stack movement. It is valid until the next impulse of the
+naval stack (which may be during the next turn).
 \begin{itemize}
 \item A stack containing only \NDE may supply stacks of at most 1\LD;
 \item A stack containing only \ND may supply stacks of at most 3\LD and no
@@ -283,9 +291,9 @@ to a port has a \LoS of length 0.
 
 \subsection{Supply Attrition}
 Attrition (in Europe) is obtained by rolling one die, modified as follows, and
-cross-reference the modified result in table~\ref{table:Discoveries and
-  Attrition} in the ``Loss in Europe'' column that corresponds to the size of
-the stack. In the \ROTW, the result is read in the ``\ROTW Losses''
+cross-reference the modified result in Table~\ref{table:Discoveries and
+  Attrition} in the ``Land, Europe'' column that corresponds to the size of
+the stack. In the \ROTW, the result is read in the ``\ROTW and Sea''
 column. Note that a result of 5 or less has no effect.
 
 \begin{todo}
@@ -352,9 +360,9 @@ stack chooses which.
 
 A 'P' is interpreted differently according to the technology of the stack.
 \begin{itemize}
-\item If the technology is \TMED or \TARQ, then 1 more \LD is lost and a
-  \PILLAGE\facemoins is placed into the province (and immediately merged into
-  a \PILLAGE\faceplus if there was already another one here).
+\item If the technology is \TMED, \TREN or \TARQ, then 1 more \LD is lost and
+  a \PILLAGE\facemoins is placed into the province (and immediately merged
+  into a \PILLAGE\faceplus if there was already another one here).
 \item If the technology is \TMUS or better, then the controller chooses to
   either loss one more \LD or place a \PILLAGE\facemoins (note that
   \terme{foraging} has no effect during siege or supply attritions).
@@ -379,9 +387,12 @@ indicates the number of \LD still alive after attrition while the 'd'
 indicates one or two \LDE still alive. If there is a \textetoile, then there
 is 50\% chance to lose an extra \LDE.
 
+Stacks in \COL of level 6 use the Attrition in Europe procedure.
+
 \GTtable{attritionlosses}
 
 \section{Choice of campaign}
+\label{chMilitary:Choice of campaign}
 Each country of the phasing alliance chooses its campaign for the current
 round. Make a tick in the correct line of the ERS to count how many campaigns
 of each type you've done so you can pay for them.
@@ -467,8 +478,8 @@ computed separately and only the maximum cost is paid.
 \end{exemple}
 
 \section{Movements}
-\subsection{Movement}
-\subsubsection{Generalities}
+\label{chMilitary:Movements}
+\subsection{Generalities}
 Each country of the phasing alliance may move its stacks, according to the
 campaign it paid for the round. Each movement must be completed before the
 next one start. The phasing alliance choose in which order it moves its stacks
@@ -499,7 +510,7 @@ after disembarking. The naval stack, however, can move before picking up the
 land stack but is constrained in what it does after. If a naval stack
 transporting troops suffer loses, troops inside may also suffer some loses.
 
-\subsubsection{Land}
+\subsection{Land}
 When moving, land stacks expend \MP depending both on the terrain of each
 province they enter and the frontier by which they entered it. The cost of
 each terrain differ in Europe and in the \ROTW and are indicated in
@@ -521,8 +532,8 @@ A land stack must roll for attrition if at least one of the following cases is
 true:
 \begin{itemize}
 \item the stack contains at least 6\LD (not counting those in \Pasha) or at
-  least 2 \Pasha, such large stacks roll for attrition even if they don't
-  move;
+  least 2 \Pashas, such large stacks roll for attrition even if they don't
+  move, ignore this cause between interceptions (see below);
 \item the stack moved at least 6\MP;
 \item the stack moved at least 3\MP and this is a campaign without logistic;
 \item the stack used ships to make a naval move and at least one of the
@@ -543,10 +554,15 @@ part of the movement (between the beginning and the first interception;
 between each interception; between the last interception and the end). If one
 part of the movement triggers attrition, it is resolved immediately before the
 interception battle occurs and its results (especially \terme{foraging}) are
-applied and effective for the next battle only. If none of the parts trigger
-interception but the whole movement does, then one and only one final
-attrition is resolved at the end of the movement (thus, possibly after a lost
-interception battle).
+applied and effective for the next battle only. Exception: being a large stack
+is not enough to trigger attrition between interceptions, only at the end of
+movement. It is, however, still considered an extra cause of attrition with
+the corresponding malus.
+
+If none of the parts trigger interception but the whole movement does, then
+one and only one final attrition is resolved at the end of the movement (thus,
+possibly after a lost interception battle). For this final check, being a
+large stack is a cause for attrition as usual.
 
 \begin{exemple}
   A small stack moves 6\MP and is intercepted. Since 6\MP is a cause of
@@ -575,14 +591,27 @@ interception battle).
   leg is not enough to trigger attrition. The whole movement is enough to
   trigger attrition but since an attrition test already happened (before the
   battle), it is considered done and no extra test occur.
+
+  \smallskip
+
+  A large stack moves 5\MP and is intercepted. The movement is not enough to
+  cause attrition and stack size is ignored at this point. If the stack loses,
+  at the end of movement it has been a large stack moving, a cause for
+  attrition, and thus must resolve it.
+
+  A large stack lands in enemy territory and is intercepted. The movement is
+  enough to trigger attrition and the ``large stack'' will count as an extra
+  causes and gives \bonus{+2} to the roll. If it loses the battle, since it
+  already rolled for attrition during its move, it does need to do so again.
 \end{exemple}
 
 Any movement that enters a province with unfriendly forces (land stack,
 \REVOLT/\REBELLION, fortress (even if besieged), \ldots) is \terme{active} and
 cannot occur as part as a passive move. Passive campaign allow only passive
 moves while other campaigns allow one or more active moves. Note that not
-moving, or exiting an unfriendly province can be done as a passive
-move.
+moving from, or exiting an unfriendly province can be done as a passive move.
+
+Land stacks may not enter provinces that contains neutral unbesieged forces.
 
 When exiting a province whose fortress is not controlled, a stack must either
 empty the province (removing the siege) to go back to a friendly province (no
@@ -611,8 +640,21 @@ after a regular battle where all the troops are destroyed; the phasing stack
 does not roll for attrition before the overrun and may then continue moving as
 if nothing happened. If the phasing stack contains at least 4 times as many
 \LD, then the battle occurs immediately, as an interception battle (roll for
-attrition if needed, the phasing stack may continue movement if it wins), the
-phasing stack is still the attacker.
+attrition if needed, the phasing stack may continue movement if it wins). It
+is possible to overrun forces that just intercepted the moving stack
+(typically when several interceptions are attempted but only one succeed).
+
+Similarly, if a moving stack enters a province with 4 or 8 times as many enemy
+\LD, the non-phasing stack may declare an overrun. In that case, there is no
+need for interception (it is automatic). If the province already contains
+forces friendly to the moving one (including besieged forces), the overrun is
+only possible if the non-phasing forces contains at least four time as many
+\LD as the moving one.
+
+Phasing stacks may not enter provinces with presence (even besieged) of
+neutral countries (that are neither at war with (allied) nor against (enemy)
+the phasing alliance). In the \ROTW, provinces that do not explicitly belong to
+minors are not concerned by this restriction.
 
 In the \ROTW, each time a land stack enters a province whose natives are not
 yet activated, it must test for activation. Exception: leaders alone never
@@ -641,7 +683,7 @@ activation test and will automatically activate the natives.
 \aparag[Conquistador table]
 The Conquistador table may be used only:
 \bparag in \continent{America} and \continent{Africa}, by any \LeaderC and
-\LeaderE (half values) ;
+\LeaderE (half sum of values, round down) ;
 \bparag in \continent{Indonesia} by \leader{Coen}, \leader{van Diemen} and
 \leader{Maetsuycker} only ;
 \bparag in \continent{India} by all \LeaderC restricted to \continent{Asia}
@@ -701,7 +743,7 @@ table and cannot use naval transport. They are automatically disbanded if the
   there is 100-80=20\% of the natives that desert and 100-30=70\% that resist.
 \end{exemple}
 
-\subsubsection{Sea}
+\subsection{Sea}
 Naval stacks have an unlimited movement capacity. A naval stack that does not
 stay in a port always rolls for attrition (even if it does not move and simply
 stays at sea). The attrition roll is modified by the distance moved, hence the
@@ -728,6 +770,10 @@ action will occur. Announcing a naval action ends the movement of the stack
 and attrition (for the whole movement) is rolled immediately before any
 interception (in the last zone) is declared and before actually resolving the
 action.
+
+Naval stacks may only enter port/arsenal that are \emph{large enough}, that is
+that are \SoS for it. Especially, it is never possible to enter a port/arsenal
+controlled by another alliance.
 
 Naval stacks may be intercepted. In case of interception (during movement), do
 not roll for attrition before the interception battle. Attrition is only
@@ -781,11 +827,14 @@ must have have at least a \FLEET\Facemoins counter \textbf{and} 2\ND in the
 stack similarly blockading a level 4/5 fortress requires a \FLEET\Faceplus
 counter \textbf{and} 3\ND in the stack. Put the stack close to the blocked
 port/arsenal. Blockade makes siege easier. Only one stack may blockade each
-port.
+port (if several stacks want to blockade the same port, they are automatically
+merged). Blockade last until the next movement of the naval stack, including
+possibly in the next turn.
 \bparag[Supplying troops.] The naval stack must have sufficient size for
 supplying the troops as indicated in \ref{table:Naval Supply}. Note that a
 naval stack is allowed to supply several adjacent land stacks since it acts as
-a \SoS and supply is never ``used up''.
+a \SoS and supply is never ``used up''. Supply last until the next movement of
+the naval stack, including possibly in the next turn.
 \bparag[Blockade + Supply.] A stack may both blockade a port/arsenal and
 supply land troops. However, in this case it can only supply the land stack in
 the province of the port/arsenal it is blockading.
@@ -794,12 +843,12 @@ friendly port (either starting from it or moving in and out) during its
 movement and entered the besieged port. Moreover, it must be a stack large
 enough to blockade the supplied port. This will remove the ``blockade''
 situation of the port for the siege segment of this round (only) and remove
-the Siege attrition roll of any troops inside for the next supply step
-(only). Note that this is mostly useful if the port is blockaded and thus
-require escaping it\ldots Moreover, the stack will end its movement in the
-supplied port as actions end movement. It is possible to decline the
-possibility to supply in order to continue moving (for example to embark
-besieged troops and retreat them before the fortress falls).
+any attrition roll for troops inside for the next supply step (only). Note
+that this is mostly useful if the port is blockaded and thus require escaping
+it\ldots Moreover, the stack will end its movement in the supplied port as
+actions end movement. It is possible to decline the possibility to supply in
+order to continue moving (for example to embark besieged troops and retreat
+them before the fortress falls).
 \bparag[Fight \corsaire.] The stack can initiate fight against \corsaire from
 the sea zone it is in. The \corsaire counter (or counters) targeted by the
 stack must be in the same sea zone. Only one stack per alliance may fight
@@ -842,14 +891,18 @@ considered as a friendly port (not arsenal).
 % disembark in an unknown province and fails its exploration, it must reembark
 % and thus will be destroyed if the naval stack is not here anymore\ldots
 
-\subsubsection{Combined move}
-A combined move, or naval transport happens when a naval stack carries a land
+\aparag[Flota de Oro] \label{chMilitary:FlotaDeOroMovement} As soon as the
+\terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
+reappears in a Spanish port on the Atlantic coast.
+
+\subsection{Combined move}
+A combined move, or naval transport, happens when a naval stack carries a land
 stack and they move together. The land stack may not move before embarking but
 may move after. On the other hand, the naval stack may move before embarking
 troops but disembarking troops is a naval action and ends its movement. Hence,
-there is always only one stack moving, first it is solely naval, then it is
-a combined land and naval stack and finally it is solely land. A naval stack
-may not embark troops if it has already been engaged in a battle this round
+there is always only one stack moving, first it is solely naval, then it is a
+combined land and naval stack and finally it is solely land. A naval stack may
+not embark troops if it has already been engaged in a battle this impulse
 (\emph{i.e.} after winning an interception battle).
 
 The naval stack must be large enough to hold the land stack, as indicated in
@@ -882,7 +935,7 @@ besieged fortress).
 As any action, the landing must be announced when the naval stack enters the
 zone, before any interception are declared or resolved. Announcing a landing
 gives bonus to interception. As for any action, it is resolved after any
-interception and resulting battle.
+interception and resulting battle (and thus only if victorious).
 
 If both endpoints contains a large enough controlled port or arsenal, then the
 transport is a passive action. Otherwise, it is an active action. If the
@@ -894,7 +947,8 @@ port (not arsenal) (both for embarking and disembarking).
 Note that disembarking troops in a besieged fortress is actually a passive
 action since the port is controlled. However, if the fortress is resupplied as
 part of the same move, then it becomes an active action as supplying a
-fortress is an active action.
+fortress is an active action. It is possible to decline the possibility to
+re-supply the fortress in order to keep the transport as a passive action.
 
 A land stack may not stay in the ships. That is, both embarking and
 disembarking must occur as part of a single move. Especially, if the naval
@@ -904,7 +958,7 @@ stack may continue its move after such an automatic landing (it did not loose
 an interception battle, only the naval stack did).
 
 As an exception, in the \ROTW, a land stack that do not contain any \ARMY
-counter may stay inside ships at the end of movement and even from one impulse
+counter may stay inside ships at the end of movement and even from one round
 to the next. If it starts the round in the naval stack, it is considered to
 have embarked in a controlled port for all purposes.
 
@@ -933,6 +987,17 @@ the land stack disembarks in a besieged controlled fortress and immediately
 attempts a sortie against the besieger and the case where a landing is
 intercepted in a previously completely friendly province.
 
+Gold can be carried as land forces. It requires 1 transport point for every
+5\ducats. Gold can only be embarked in a controlled port and is immediately
+disembarked when it reaches a friendly port on the European map (and added to
+\lignebudgetlong{Gold from ROTW and Convoys}). Gold may stay inside ships from
+one round to another. It does suffer attritions and exploration loses in the
+same proportion than the carrying stack. During battle (especially during the
+retreat), gold can be specifically targeted by the enemy. The \terme{Flota del
+  Oro} and \terme{Flota del Per\'u} convoys may also be used to carry gold (it
+is tere only purpose). On the other hand, the others convoys are already
+created full of gold and cannot be used to carry more.
+
 % Autre limite, un pion naval ne peut en général transporter qu'un seul pion
 % terrestre. Pour être plus précis, un pion F de navires peut transporter
 % jusqu'à une A+ (soit l'équivalent de 4 DT, éventuellement en 2 pions, mais pas
@@ -943,195 +1008,756 @@ intercepted in a previously completely friendly province.
 % (Jym) : bof, ça me semble bien trop compliqué à gérer pour ce que ça
 % apporte.
 
-\subsection{Attrition}
-\subsubsection{Land}
-\subsubsection{Sea}
+\section{Attrition}
+\label{chMilitary:Attrition}
+\subsection{Generalities}
+Moving stacks may have to roll for attrition. The procedure is similar on land
+and at sea but with different modifiers and a different way to read the
+table. Attrition is always resolved by cross-referencing a modified die roll
+and the correct column in Table~\ref{table:Discoveries and Attrition}. On sea
+or in the \ROTW, a further read in Table~\ref{table:Attrition ROTW Remainders}
+is required.
 
-\iamhere
+Beware that even if the procedure is very similar to supply or siege
+attrition, the modifiers and the way to implement the results are different.
 
-\subsubsection{Attrition en mer}
--- NE PAS PRENDRE EN COMPTE --
+\subsection{Land}
+Check the movement rules to determine when a moving land stack has to roll for
+attrition. The modifiers are:
+\begin{modlist}
+\item[+2] per cause of attrition above the first
+\item[-M] MAN of the commanding leader
+\item[+2] if the stack had no \LoS at the beginning of its move
+\item[+?] if, at the beginning of its movement, the stack is supplied by a
+  naval stack, and the \LoS of this naval stack goes through one or more
+  \StraitFort, add the DRM of all the closed \StraitFort along this \LoS (2 in
+  Europe, level/2 in the \ROTW)
+\item[+2] if the stack \emph{enters} at least one enemy province during its
+  movement (\emph{i.e.}  not when exiting enemy territory)
+\item[+1/+2] per \PILLAGE\Facemoins/\Faceplus, \REVOLT\Facemoins/\Faceplus and
+  unfriendly \REBELLION\Facemoins/\Faceplus in each province exited or entered
+  during the move (\emph{i.e.} count all the \PILLAGE, \REVOLT and unfriendly
+  \REBELLION along the path, including in the start and end provinces)
+\item[+?] for each uncontrolled province of the \ROTW cold area exited or
+  entered during the move, add the number of Snowflakes ``resource'' (+0 to +2
+  depending on the \Area)
+\end{modlist}
 
-Les flottes qui se déplacent ou restent en mer encourent un risque d'attrition.
-La procédure est peu changée par rapport à la règle normale.
+In Europe, cross-reference the result with the ``Land, Europe'' column of the
+Table that corresponds to the size of the stack. The result of attrition is
+either nothing (---), a number (between 1 and 3), a 'P' or both a number and a
+'P'.
 
-Le test d'attrition consiste à lancer 1d10 auquel on ajoute la valeur de
-risque la plus haute des mers pénétrées par la force navale.  Les valeurs de
-risque sont diminuées de 2 si un port ami est sur la zone. On ajoute de plus
-la valeur des modifcateurs de toutes les mers difficiles traversées (valeur en
-bleu), un malus de +1 par groupe (plein) de 4 zones de mouvement (on ignore
-les fractions), et un malus éventuel d'un événement (+2 si mauvais temps). On
-soustrait d'un autre côté la man\oe uvre d'un amiral (ou un explorateur si le
-mouvement commence ou se termine hors Europe). Le résultat est comparé à 11 :
-chaque point du résultat au-delà de 11 induit 10\% d'attrition. Ce résultat
-peut être lu sur la table d'exploration et attrition hors-Europe.
+The number indicates how many \LD are lost immediately. The controller of the
+stack chooses which.
 
-Ensuite, le pourcentage obtenu est converti en pertes à l'aide de la
-\textbf{table des attritions pour l'exploration et le mouvement maritime}.  Ce
-tableau indique, selon la perte et le nombre de détachements présents, ce
-qu'il reste dans la pile après les pertes d'attrition. Un résultat * (dans la
-table d'attrition ou le tableau de ce qui reste) indique une chance sur deux
-de perdre un DE (sur mer) ou DC (sur terre).
+A 'P' is interpreted differently according to the technology of the stack.
+\begin{itemize}
+\item If the technology is \TMED, \TREN or \TARQ, then 1 more \LD is lost and
+  a \PILLAGE\facemoins is placed into one of the provinces of the movement
+  (possibly the start or end of the move).
+\item If the technology is \TMUS, \TBAR or \TMAN, then the controller chooses
+  to either loss one more \LD; or to both place a \PILLAGE\facemoins in one
+  province of the movement and to \terme{forage} during the next battle of
+  this impulse (only).
+\item If the technology is \TL then the controller chooses
+  to either loss one more \LD; or to place a \PILLAGE\facemoins in one
+  province of the movement.
+\end{itemize}
+As usual, two \PILLAGE\Facemoins are immediately merged into a
+\PILLAGE\Faceplus. It is not possible to add a \PILLAGE in a province that
+already contains two \PILLAGE\Faceplus.
 
-Les transports ne disposent pas de pions fractionnaires DE comme les DN.
-Si un détachement de transports doit prendre au moins DE de perte,
-il est détruit en entier.
+Note that \terme{foraging} only affects one battle (interception or regular,
+whichever occurs first) and necessarily during this impulse. Hence, a stack
+that does not fight immediately will not suffer from \terme{foraging},
+typically, if the opposing alliance attacks it during the next impulse.
 
-\subsection{Interception}
-\aparag Actions passives
-\bparag Interception : une flotte d'un joueur inactif (pas en phase)
-peut tenter d'intercepter chaque pile qui bouge dans sa mer ou une mer
-adjacente (autant de tentatives que d'opportunités, mais un pays/une
-alliance ne peut faire qu'une seule tentative par mer).
-Si au port : dans une des mer adjacente.
+\smallskip
 
-\aparag Interception is allowed according to the last campaign paid.
-\bparag For player without initiative, this is the campaign of the previous
-round.
-\bparag During first round, players without initiative may intercept (before
-their first move) as if they had done a passive campaign.
+In the \ROTW, the result is read in the ``\ROTW or Sea'' column. Cross
+reference the percentage obtained with the size of the stack in
+Table~\ref{table:Attrition ROTW Remainders}. The resulting number indicates
+the number of \LD still alive after attrition while the 'd' indicates one or
+two \LDE still alive. If there is a \textetoile, then there is 50\% chance to
+lose an extra \LDE. Repeat this procedure for every set of 10\LD in the stack,
+and for the remainder.
 
-\aparag[Rappel des mod. d'interception] VOIR TABLE
-\interceptiona
-\bparag Pour les flottes faisant Invasion/Naval Transport : le bonus +2 remplace
-le malus de -3 au port ou le bonus de +1(même mer) si intention de
-débarquée a été indiquée. Pour une flotte en mer: +2 si c'est dans la
-même zone; flotte dans arsenal : +2 dans les mers qui bordent l'arsenal;
-flotte dans port: +2 si c'est dans la province du port.
+If all the provinces of the movement (including start and end) are European
+(including \COL of level 6), use the Attrition in Europe procedure. If at
+least one is a \ROTW province, use the Attrition in the \ROTW province. Note
+that only the land provinces are considered for this. Sea zones crossed during
+a naval transport play no role in deciding whether to use attrition in EUrope
+or in the \ROTW.
 
-\aparag[Pour l'interception]
-\bparag Noter que c'est l'intercepteur qui attaque toujours.
-et que la bataille est résolue tout de suite entre la pile qui intercepte et la force interceptée.
-Il peut choisir de regrouper dans sa pile les forces immobiles amies dans la province.
-\bparag un intercepteur peut être intercepté à son tour [les forces qui
-interceptent viennent en renfort de la pile qui a été la 1e interceptée] ;
-c'est tout de même le joueur qui n'est pas en phase qui est l'attaquant.
-\bparag Si une force intercepte dans une zone où il y a déjà une force ennemie,
-cette for peut intercepter comme par la paragraphe précédent pour se joindre à
-la défense [remarque : il peut alors y avoir plus de 8 DT, les forces supplémentaire
-n'ont simplement aucun effet sur le combat].
-\bparag  Si un combat d'interception a lieu dans une province avec des forces non impliquée
-dans le combat, ces forces suivent la retraite éventuelle de la pile allée engagée en
-bataille (mais sans perte). [TBD]
-\bparag une pile qui a combattu pendant une phase de mouvement et n'a
-pas gagné (perdu ou ex-aequo) ne peut plus bouger ni intercepter.
-\bparag malus aux interceptions : \\
-	intercepter à travers passe de montagne -2 \\
-	intercepter depuis ou vers un marais -1 \\
-	intercepter à travers détroit : impossible \\
+\subsection{Sea}
+Naval stacks at sea always roll for movement attrition, even if they are not
+actually moving. Naval stacks that stay in a port do not roll for attrition.
 
-\paragraph{e. Interception}
-Une pile ne peut tenter d'intercepter qu'une seule fois pendant
-le mouvement d'une pile ennemie. Une même pile peut
-cependant être victime de plusieurs tentatives d'interception
-par différentes piles ennemies durant son mouvement,
+When computing Attrition modifiers for naval stacks, it is important to know
+the \emph{greatest sea difficulty}. First, consider all the sea zones of the
+movement (including start and end) and look at their difficulties; next reduce
+the difficulty of any sea zone with a \SoS for the stack (\emph{i.e.} friendly
+large enough port) by 2; lastly take the greatest of these modified values.
 
-Lors d'une interception, la pile interceptante peut laisser des forces
-en arrière et se réorganiser après le mouvement avec une force déjà
-sur place (pour respecter la limite de pions dans la région). Cette
-pile du camp en réaction est l'attaquant lors du combat qui est
-immédiatement résolu (avant tout autre mouvement) ; si l'interception
-est dans une province contenant des forces terrestres amies de
-l'intercepteur, c'est la force en mouvement qui est l'attaquant.
+\begin{exemple}
+  If a naval stack moves from a sea zone of difficulty 5 with a port into a
+  sea zone of difficulty 4 without port, then its greatest sea difficulty is
+  4.
+\end{exemple}
 
-La force interceptante doit faire un jet d'attrition si elle entre dans
-une province ennemie non occupée par des troupes amies (qui
-feraient le siège). Celle interceptée teste l'attrition si elle a déjà
-bougé d'au moins 6 PM.
+When computing both distance moved and distance to port, remember that only
+the number of zones (either ports or sea zones) \emph{entered} counts. Thus a
+naval stack adjacent to its port has a \LoS length of 0 and a naval stack that
+simply moves from a port to the adjacent sea zone has a move length of 1.
 
-Après le combat, si la force interceptée a gagné le combat, elle peut
-poursuivre son mouvement (mais n'aura plus à tester l'attrition si
-elle a déjà dû le faire).
+List of naval attrition modifiers:
+\begin{modlist}
+\item[-6] Always
+\item[-M] MAN of the commanding leader
+\item[+?] if, at the beginning of its movement, the \LoS of the stack goes
+  through one or more \StraitFort, add the DRM of all the closed \StraitFort
+  along this \LoS (2 in Europe, level/2 in the \ROTW)
+\item[+X] add the malus of each sea zone with malus \emph{entered} during the
+  move
+\item[+1] for \NWD in \TCAR technology
+\item[-1] for any stack in \TBAT technology
+\item[-2] for any stack in \TVE or \TTD technology
+\item[-3] for any stack in \TSF technology
+\item[+2] if there is \terme{Bad weather} this round
+\item[+?] Greatest sea difficulty (as explained above)
+\item[+1] per 4 zones entered (round down), if the stack contains 0 or 1
+  \FLEET counter [BLP]
+\item[+2] per 2 zones entered (round down), if the stack contains 2 \FLEET
+  counters [BLP]
+\item[+4] per 2 zones entered (round down), if the stack contains 3 \FLEET
+  counters [BLP]
+\item[-1] if the stack contains several \FLEET counters and moves from an
+  arsenal to another arsenal
+\item[+3] if the stack starts its movement 1 sea zone away from its port
+  (\emph{ie} not adjacent to port)
+\item[+6] if the stack starts its movement 2, 3 or 4 sea zones away from its
+  port
+\item[+9] if the stack starts its movement 5 or more sea zones away from its
+  port
+\item[+1/+2] per unfriendly \corsaire\Facemoins/\Faceplus in each sea zone
+  exited or entered during the move (\emph{i.e.} count all the \corsaire along
+  the path, including in the start and end zones) [BLP]
+\item[-S] siege of one \LeaderA or \LeaderE in the stack if it is blockading a
+  port a the start of its move [BLP]
+\item[+?] half the level (round up) of fortress blockaded at the start of the
+  move [BLP]
+\end{modlist}
+Note that the distance moved modifier (for large stacks) is ``+2 (or 4)/2
+zones'' and \textbf{not} ``+1 (or 2)/1 zone''. Thus, a large stack that only
+moves one zone does not have this malus.
 
-\paragraph{Interception.}
-Durant les mouvements, les flottes ennemies peuvent tenter d'intercepter dans
-leur mer ou la mer adjacente la pile maritime qui bouge, sans limite du
-nombre de tentative. La force en mouvement peut tenter d'intercepter
-une fois (et une seule) toute pile maritime en mer en étant dans sa zone, afin de
-forcer le combat tout de suite. On résout d'abord les interceptions
-de forces inactives avant de tenter celles de la pile active.
-En cas de réussite, on fait immédiatement les tests
-d'attrition des flottes (celle active, et celle inactive si c'est elle
-qui intercepte). La flotte active pourra continuer son mouvement
-après interception si elle gagne la bataille. Une flotte défaite ne
-peut plus intercepter pendant jusqu'à début de sa prochaine phase de
-mouvement.
+The result is read in the ``\ROTW or Sea'' column. Cross reference the
+percentage obtained with the size of the stack in table~\ref{table:Attrition
+  ROTW Remainders}. The resulting number indicates the number of \ND still
+alive after attrition while the 'd' indicates one or two \NDE still alive. If
+there is a \textetoile, then there is 50\% chance to lose an extra \NDE. If
+the stack contains more than 10\ND, apply this procedure for each set of 10\ND
+and for the remaining \ND separately. The controller of the stack chooses
+which \ND are sunk.
 
-De toute façon, et sans test d'interception,
-le combat devient possible et automatique contre une force maritime
-dans la même mer après les déplacements (mais ceci compte alors comme
-l'action de la force navale pour le round).
+Any \NTD that must suffer at least 1\NDE of loss is entirely destroyed.
 
-\subsection{Convoys}\label{chMilitary:Convoys}
-Do not use if using the experimental system for Revolts, \corsaire and Natives.
+\section{Interceptions}
+\label{chMilitary:interceptions}
+\subsection{Generalities}
+Non-phasing stacks may attempt to intercept a moving enemy stack under certain
+conditions. Interceptions are declared whenever a moving stack enters a new
+zone (sea zone or province) and resolved immediately. Interceptions can be
+attempted by stacks in the same or adjacent zone (sea zone, port or province)
+All interceptions are announced before any is resolved.
 
-\aparag[Convoy movements and Pirates/Privateers]
-A convoy (or a naval stack carrying Gold)
-entering a sea zone of \STZ or \CTZ is attacked on
-\tableref{table:Pirates Natives Raids} by the pirates, and each
-privateer allowed to attack the owner of the convoy present in the \STZ
-(even if not in the right sea zone) if it has the right to attack the
-power (see \ref{chRedep:Corsair Attack}).
-\bparag Only \corsaire\faceplus may attack (be they pirates or
-privateers).
-\bparag The pirates attack first (one only, with leading
-named Pirate if any), then the privateers in order of initiative. The
-attack is resolved before regular naval interceptions.
-\bparag Only one attack for all the pirates in a given \STZ or \CTZ; and
-one attack per \corsaire is allowed per move.
+A non-phasing stack may decide to split before intercepting, that is intercept
+with only part of the stack (typically to maintain a siege or blockade with
+the other part). Hierarchy and other usual rules for movement and splitting
+stacks must be respected in such a case.
+
+If an interception is successful, the intercepting stack is moved into the
+zone of the interception (note that this does allow free moves that are not
+counted as part as any campaign and may allow, typically, to lay new
+sieges). Once all interceptions are resolved, a battle occurs immediately
+between the moving stack and all the successful interceptors.
+
+If stacks of different alliances attempt to intercept the same stack in the
+same zone, then interceptions are announced and resolved in decreasing order
+of initiative. Once one alliance successfully intercepted one stack in a zone,
+other alliances may not attempt to intercept the same stack in the same zone
+anymore (to avoid three-sided battles). It is however possible to intercept in
+another zone if the moving stack wins and goes on.
+
+After an interception battle, if the moving stack won it may continue moving,
+if it didn't it must stop movement. For campaign costs purposes, check only
+the part of the movement that was effectively done, not the intention
+(\emph{i.e.}  if a naval stack declares a landing (an active action) but is
+defeated in an interception battle before it actually occurs, then it has done
+no action and does not count toward an active campaign, similarly, a land
+stack that is defeated before it could enter enemy territory only did a
+passive move).
+
+A stack that already fought a battle without winning this impulse (\emph{i.e.}
+a previous interception, lost or tied) may not attempt to intercept. A stack
+that is already engaged in battle (to be resolved after all moves) may not
+attempt interception.
+
+Each non-phasing stack may attempt to intercept each moving stack only once
+during the whole move (not once per zone). If a moving stack drops and picks
+up units, it is considered as a single moving stack even if all the units
+actually composing it changed.
+
+Interceptions are resolved by a modified die roll. These rolls are similar on
+land and at sea but with different modifiers. \Man plays a huge role in these.
+
+\subsection{Land}
+Non-phasing stacks of countries who made no campaign at all during their
+previous impulse (except during the first round if they had no impulse yet)
+may not intercept at all. Non-phasing stacks commanded by countries who paid
+only a passive campaign during their previous impulse (including, during the
+first round of each turn, stacks that had no impulse yet) can only intercept
+in a friendly province (no enemy presence, even besieged).
+
+A non-phasing stack which is in the same province as a non-besieged,
+non-moving phasing stack is engaged into battle and cannot intercept. Thus,
+whenever a moving stack enters a province, any non-phasing stack here may (i)
+attempt to intercept and fight immediately, in case of victory it will be able
+to intercept again this impulse but in case of defeat the moving stack may
+continue its move; or (ii) do nothing, this \emph{de facto} locks both the
+moving and non-phasing stack in a battle (to be resolve later) but prevent
+further interception from that stack, moreover, the phasing alliance may now
+move more troops in the province before the battle occurs.
+
+After one or more successful interceptions, before the interception battle is
+resolved, phasing stacks may attempt to counter-intercept. Stacks already
+``locked'' in battle may not counter-intercept. Counter-interception is
+resolved in the same way as interception. It is not possible to
+counter-counter-intercept. That is, first non-phasing players declare and
+resolve all interceptions, next phasing players declare and resolve all
+counter-interceptions and finally the battle is resolved. As any interception,
+counter-interceptions are free (they do not count toward campaign cost).
+
+Before resolving the interception battle, check if attrition of the moving
+stack is triggered and resolve it if any. Any \terme{foraging} result apply
+for the interception battle. Intercepting and counter-intercepting stacks do
+not roll for attrition.
+
+The interception battle normally occurs between all the successful
+interceptors versus the moving stack and all the successful
+counter-interception. If one side contains troops of an European country and
+more than 8\LD+2 \Pashas, exceeding troops do not fight (but stays in
+place). After the battle, if there is still too many troops in the province
+(more than the stacking limit), any intercepting or counter-intercepting troop
+may choose (controller's choice) to retreat in the province where it was
+before intercepting. This retreat does not trigger attrition and does not
+counted toward any campaign cost. Any exceeding troops after that are
+destroyed. Such an overstacking typically occurs when many unlikely
+interceptions are declared and they all succeed\ldots
+
+Note that if a stack moves into a province where there is another friendly
+stack (typically in order to merge stacks) and get intercepted, the
+interception battle occurs immediately after entering the province, hence
+\textbf{before} the two phasing stacks actually have a chance to
+meet. Especially, the immobile phasing stack does not participate in battle
+(it may attempt to counter-intercept in order to join the battle). In such a
+case, the intercepting stack must retreat after battle (in the province where
+it came from) even if victorious (this retreat does not trigger attrition and
+does not count toward campaign cost).
+
+\begin{designnote}
+  Fighting separate enemies before they could merge was one of Napoleon's
+  favourite move\ldots
+\end{designnote}
+
+On the other hand, if a moving stack enters a province already containing
+enemy troops, it may be intercepted both by the same enemy alliance and a
+third party alliance. In the later case, the interception battle occurs only
+between the moving and intercepting stacks and the intercepting (third party)
+stack must retreat after it (even in case of victory) while the moving stack,
+if winning, engage battle with the non-moving one (to be resolved as a regular
+battle). In the former case (interception by the same alliance, the
+interceptor may chose to either resolve this as an interception battle
+(including only the troops who successfully intercepted) or as a regular
+battle (including all the troops now in the province, to be resolved later
+thus ``locking'' everything until battle segment).
+
+To resolve an interception, roll a die modified as follows (all modifiers are
+cumulative):
+\begin{modlist}
+\item[\textplusminus?] \Man differential between the commanding leaders
+  (intercepting stack-intercepted stack); in case of counter interception,
+  consider that all the interceptors are merged in a single stack before
+  finding the commanding leader.
+\item[+1] If the intercepting stack has a technology which is at least 6
+  levels above the technology of the intercepted stack.
+\item[+1] If the target province contains a friendly force (other than the
+  intercepting one) or city (even besieged).
+\item[+1] If intercepting in the same province.
+\item[-1] If the target province contains swamps.
+\item[-1] If the intercepting stack is in a swamp province or a flooded
+  province.
+\item[-2] If there is \terme{Bad weather}.
+\item[-2] If the interception occurs across a river or mountain pass.
+\item[-2] If the target province contains an unbesieged enemy force other than
+  the intercepted one.
+\item[-1] If the interceptor is besieging.
+\end{modlist}
+
+If the unmodified die is 10, or if the modified roll is 8 or more, then the
+interception is successful.
+
+\subsection{Sea}
+Non-phasing stacks of countries who made no campaign at all during their
+previous impulse (except during the first round if they had no impulse yet)
+may not intercept at all. Countries who paid only a passive campaign during
+their previous impulse (including, during the first round of each turn, stacks
+that had no impulse yet) may only intercept with stacks containing at most 1
+\FLEET counter.
+
+Phasing stacks may intercept a non-phasing stack as their action, this is
+resolved as a regular interception (exception: if the non-phasing stack is
+blockading, this interception automatically succeeds). As with any action,
+attrition of the moving stack must be resolved first. If successful, both
+stacks are locked into battle (to be resolved later). Especially the
+non-phasing stack may not intercept anymore but is still considered to be
+doing its (previous) action until battle is resolved (\emph{e.g.} blockade is
+maintained). Each non-phasing stack may be successfully intercepted only once
+per impulse (\emph{i.e.} you should merge before attempting a large battle
+while on land it is possible to bring troops to battle little by little).
+
+Non-phasing stacks engaged into battle may not intercept. It is not possible
+to intercept in a port/arsenal (only in a sea zone). It is not possible to
+counter-intercept. Non-phasing stacks that already lost a battle this impulse
+(\emph{i.e.} losing an interception battle) may not intercept anymore.
+
+The correct timing for moving and intercepting is:
+\begin{enumerate}
+\item moving stack enters a zone;
+\item moving stack either declares an action in the zone or decline to do one;
+\item if the moving stack declared an action, it rolls immediately for
+  attrition;
+\item non-phasing stacks declare interceptions;
+\item interceptions are resolved;
+\item interception battle is resolved, if any;
+\item
+  \begin{itemize}
+  \item if the moving stack is victorious, it may either do its action (if it
+    declared any) or continue moving (if it declared no action);
+  \item if the moving stack is defeated, it must retreat; additionally, if it
+    did not roll for attrition (because it declared no action), the distance
+    of the whole movement is added to the distance of the whole retreat for
+    the attrition of the retreat.
+  \end{itemize}
+\end{enumerate}
+
+Note that it is possible to try and intercept a moving stack that just
+declared it will also attempt a battle. In this case (if both stacks want to
+intercept each other), interception is automatic (no roll). Other non-phasing
+stacks may still attempt to join the battle by rolling for interception. In
+this case, the battle is resolved as a regular battle (\emph{i.e.} after all
+moves) even if it does include non-phasing intercepting stacks. This also
+counts as the (active) action of the moving stack.
+
+Several non-phasing stacks may attempt interception. As on land, only one
+alliance may actually succeed. As on land, the stacking limit is only enforced
+after the battle and an optional retreat of exceeding forces, but exceeding
+forces do not take part in the battle.
+
+As on land, interception occurs as soon as the stack enters the sea zone,
+hence before it can merge with other forces here.
+
+If the moving stack attempts to avoid a blockade and roll 5 or less (``Forced
+battle''), then the blockading stack may declare an interception which
+automatically succeed. It must still be allowed to intercept (\emph{i.e.} not
+already engaged into battle), this simply remove the need for rolling.
+
+Unless in case of automatic success, interception is resolved by a die roll
+modified as follows. Cumulative modifiers:
+\begin{modlist}
+\item[\textplusminus?] \Man differential between the commanding leaders
+  (intercepting stack-intercepted stack).
+\item[+1] If the intercepting stack has a technology which is at least 6
+  levels above the technology of the intercepted stack.
+\item[-2] If there is \terme{Bad weather}.
+\item[-1] If the interceptor is blockading.
+\end{modlist}
+Non-cumulative modifiers:
+\begin{modlist}
+\item[+1] If the intercepting stack has technology \TTD or better.
+\item[+1] If intercepting in the same sea zone.
+\item[+2] If the moving stack announced a landing either (i) from the same sea
+  zone as the one where the intercepting stack is; or (ii) in the province
+  where the intercepting stack is stationed at port; or (iii) from a sea zone
+  adjacent to the arsenal where the intercepting stack is stationed.
+\item[-3] If the interceptor is in a port (not arsenal).
+\end{modlist}
+
+Note that the \bonus{+2} in the non-cumulative list is the very reason why
+actions must be declared upon entering zone (and before
+interceptions). Landing close to an intercepting stack can provide huge bonus
+to interception (it is assumed that the battle actually occurs while the
+moving stack is closing the cost and beginning the preparation for landing,
+hence it is much easier to find).
+
+If the modified roll is 8 or more, or if the unmodified roll is 10, the
+interception succeeds.
+
+\begin{exemple}
+  A naval stack at port in \provinceCornwall may intercept in either
+  \seazoneIrlande, \seazoneCeltique or \seazoneManche, all adjacent to the
+  province. It will, however suffer a malus of \bonus{-3} to the roll
+  representing the time it take to actually get out of port (or ports) and
+  regroup for battle. As long as it is at port, it is also protected from
+  enemy attacks (they may not enter the port to fight) but is likely to be
+  blockaded.
+
+  If an enemy stack declares a landing on \provinceCornwall, where the stack
+  is located, interception becomes much easier since the enemy stack is
+  basically staying very close to the actual costs of the province and cannot
+  really try to avoid contact while still attempting to disembark troops\ldots
+  Not only the \bonus{-3} disappears, but it is replaced by a \bonus{+2}.
+
+  \smallskip
+
+  The naval stack may decide to cruise in \seazoneCeltique rather than stay at
+  port in \provinceCornwall. In this case it will have to roll for attrition
+  every round (for staying at sea) and is likely to be attacked by an enemy
+  naval stack. However, it will not only be allowed to intercept in
+  \seazoneIrlande, \seazoneCeltique and \seazoneManche but also in
+  \seazoneGascogne and \seazoneRockall. Moreover, its interceptions no longer
+  have the \bonus{-3} malus for being at port, and may even get a \bonus{+1}
+  for the same sea zone if intercepting in \seazoneCeltique.
+
+  If an enemy stack attempts a landing on \provinceCornwall (or another) from
+  \seazoneCeltique, this \bonus{+1} is replaced by \bonus{+2}, not only the
+  stacks are closed but the enemy is landing. However, if the enemy attempts a
+  landing on \provinceCornwall from \seazoneManche the \bonus{+1} is lost (not
+  the same sea zone) for good (it is assumed that the stack more or less
+  patrols and the enemy has more possibilities to snick in unnoticed).
+
+  \smallskip
+
+  If a stack is stationed in the \villePortsmouth arsenal in
+  \province{Wessex}, it can only intercept in \seazoneManche. However, it has
+  no malus for interception as arsenal are assumed to be designed as military
+  ports built for quick reaction with small unrepresented flotillas running
+  around. Even better, if an enemy attempt to disembark \emph{anywhere} from
+  \seazoneManche (\emph{e.g.} \provinceWessex, \provinceNormandie,
+  \provincePicardie or \provinceKent from a naval stack located in
+  \seazoneManche), then the stack in \villePortsmouth gets the \bonus{+2}
+  bonus for interception. The arsenal is designed to allow any fleet in it
+  extend its control into the neighbouring waters.
+
+  \smallskip
+
+  Now, you should be able to build a ``\emph{Fleet in being}'' strategy.
+\end{exemple}
+
+\subsection{\Presidios and Strait fortifications}
+A \Presidio or Strait fortification can intercept a naval stack. Strait
+fortifications can intercept stacks moving through it. \Presidios can
+intercept stack entering or exiting the port. The interception is decided by
+the controller of the fortress.
+
+Although it it an interception, it is resolved differently than usual ones and
+does not result in battle. It may, however, stop the moving stack and cause
+some automatic loses on it.
+
+The interception is resolved by rolling 1d10 modified by
+\begin{modlist}
+\item[+?] level of the \Presidio;
+\item[+2] strait fortification on the European map;
+\item[+?] half the level (round down) of the fortress controlling the Strait
+  fortification on the \ROTW map;
+\item[+1] if the moving stack contains at least one \FLEET counter.
+\end{modlist}
+
+If the result is 9 or more, then the moving stack must stop moving immediately
+(before crossing the Strait or \Presidio) and roll for attrition as usual. It
+may not attempt any action this round.
+
+Additionally, if the result is 11 or more, the stack loses 1\ND (or 1 side of
+\corsaire) and if the result is 13 or more, the stack loses 1 more \ND (or
+side of \corsaire) (for a total of 2).
+
+\subsection{Convoys}
+\begin{designnote}
+  Do not use if using the experimental system for Revolts, \corsaire and
+  Natives.
+\end{designnote}
+
+Naval stacks carrying gold, most notably convoys, may be intercepted and
+attacked by \corsaire when they enter a sea zone of the \STZ or \CTZ in which
+the \corsaire is acting. Note that this does allows interception by a
+\corsaire which is \textbf{not} adjacent to the entered sea zone (\emph{e.g.}
+a \corsaire in \seazone{Petites Antilles}, acting in \stz{Caraibes}, may
+attack a convoy entering \seazoneMexique; it is assumed that the \corsaire
+acts in the whole \STZ and its location represents its main ports rather than
+its actual zone of activity). These attacks never stop the movement of the
+stack.
+
+In order to attack the \corsaire must be allowed to attack the owner of the
+convoy and must be \Faceplus. \corsaire of \Barbaresques may only attack this
+way stacks that are in the \region{Mediterranee}. Several \corsaire may attack
+the same convoy in the same zone, but only one per alliance. These attacks are
+resolved after the moving stack declared an action (or declined to do one) but
+before regular interceptions are declared. \pays{pirates} \corsaire always
+attack (if \Faceplus) and their attacks are always resolved first, then any
+other in decreasing order of initiative; each attack being resolved before the
+next is declared. If several \corsaire of \pays{pirates} may attack, only the
+one commanded by the highest ranking \LeaderA does (at random in case of
+ties). If several \corsaire of an alliance may attack but their controller do
+not reach an agreement on who should do the attack, none does. \corsaire of
+Neutral minor countries are considered as controlled by the first country in
+their list of controller.
 
 \aparag[Attack Procedure]
-\bparag Roll for naval interception. Pirates with no leader use 2 as
-Manoeuvre.  If successful, reduce the \corsaire to \Facemoins and proceed with
-the attack, else test for the next interception.
-\bparag Before the attack, an accompanying fleet may try to disperse and
-reduce the pirates or privateers by making a roll on the corresponding
-table.  If successful, the \corsaire is not reduced but the attack is aborted.
-\bparag If not aborted, resolve the attack on the  Pirate/Privater raid table.
-\bparag Each level in the column \TradeFLEET\faceplus corresponds to one \NTD
-captured (with 15\ducats).
-\bparag Afterwards, \corsaire goes at port and are finished for the
-turn. However Pirates stay in the \CTZ or \STZ and will attack normally Trade
-Fleets .
-\bparag The \terme{Barbaresque} corsairs cannot attack a Convoy if it is
-not in \region{Mediterranee}.
+\bparag Roll for naval interception by the \corsaire. \corsaire of
+\pays{pirates} with no \LeaderA use 2 as \Man.
+\bparag If the interception fails, the attack stops immediately; if it is
+successful, reduce the \corsaire to \Facemoins and proceed further.
+\bparag The attacked stack may roll on \ref{Table:Reduce Revolt or Piracy}
+(see \ref{chMilitary:Revolt} for details); if successful, do not reduce
+further the \corsaire but stop the attack immediately; if it fails, proceed
+further.
+\bparag Resolve the attack by rolling on \ref{Table:Pirates Natives Raids}
+(see \ref{chRedep:Corsair Attack} for details); read the result in column
+``\TradeFLEET\faceplus'', the number corresponds to the number of \NTD
+captured (each with 15\ducats).
+\bparag Gold captured by \corsaire of minor countries is lost; gold captured by
+\corsaire of major countries is immediately added to
+\lignebudgetlong{Pillages, privateers} of the controller (\emph{i.e.} the gold
+is ``teleported'' in the \RT and may not be intercepted again).
+\bparag After the attack, \corsaire of \pays{pirates} stay in the sea zone and
+may act again. Any other \corsaire must return to port immediately (as if they
+lost an interception battle) and may not act again this turn.
 
-\aparag[Flota de Oro] \label{chMilitary:FlotaDeOroMovement} As soon as the
-\terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
-reappears in a Spanish port on the Atlantic coast.
-
-\section{Exploration}\label{chMilitary:Discoveries}
+\section{Explorations}\label{chMilitary:Discoveries}
+\label{chMilitary:Exploration}
 Each phasing naval stack not engaged in battle (including interception) may
 attempt to explore an adjacent unknown seazone. In case of success, the stack
-automatically moves into the explored zone.
+automatically moves into the explored zone. Exploration is the action of the
+naval stack.
 
 Next, each phasing land stack not engaged in battle (including interception)
+and not carried by a naval stack engaged in battle (including interception)
 may attempt to explore an adjacent unknown province. In case of success, the
 stack automatically moves into the explored province.
 
 Note that a naval stack embarking troops may explore a new seazone from which
 the troops may then disembark to explore a new province.
 
-\subsection{On discoveries [58]}
-\aparag As long as the forces doingthe discoveries have not came back to an
-establishment existing at the beginning of the military phase, the discovery
-are not yet usable by other forces.  Neither is 'rendez-vous' authorized
-between stacks having made independent discoveries (no stacking).
+Any stack may attempt an exploration, but the presence of a \LeaderE, \LeaderC
+or \LeaderGov will greatly reduce the risks encountered. A leader alone may
+also explore but the presence of troops greatly remove the risks of death
+during the exploration.
+
+Exploration is not a movement and thus may not be intercepted and is never
+subject to attrition (but severe loses are usually suffered in the
+process). Notably, a landing during an exploration is never a cause for
+attrition.
+
+Exploration is resolved by rolling on table \ref{table:Discoveries and
+  Attrition}, the result is read \textbf{both} in the ``Discovery'' column
+corresponding to the type of exploration (land or sea) \textbf{and} the
+``\ROTW or sea'' column. The roll is modified by:
+\begin{modlist}
+\item[+4] for all explorations;
+\item[-M] \Man of the commanding \LeaderE, \LeaderC or \LeaderGov
+  \textbf{only}; or \Man of a \LeaderMis in the stack (see below).
+\end{modlist}
+
+For exploration at sea, the roll is further modified by:
+\begin{modlist}
+\item[+X] when exploring a sea zone with malus, add the malus;
+\item[+1] if the exploring stack has technology \TCAR;
+\item[-1] if the exploring stack has technology \TBAT;
+\item[-2] if the exploring stack has technology \TVE or \TTD;
+\item[-3] if the exploring stack has technology \TSF;
+\item[+2] if there is \terme{Bad weather};
+\item[-2] if this is period \period{IV} or later and the sea zone is already
+  known by at least one other country (including minor countries).
+\end{modlist}
+
+% dirty trick
+\newcommand{\myxxa}{\phantom{a}\xxa\xspace}
+\newcommand{\myxxc}{\phantom{a}\xxc\xspace}
+
+Note that \LeaderG or \LeaderA do not use their \Man during exploration (nor
+during a possible further test in case of\myxxa or\myxxc). On the
+other hand, if a \LeaderMis is present in the stack (even if not commanding)
+its \Man may be used instead of the one of the commanding leader.
+
+\LeaderE may explore coastal provinces (with or without troops) and stay in
+the province afterwards; they may never go further inland but may explore a
+coastal province from an adjacent coastal province (they don't need to
+reembark, this represents moves along the coast with smaller ships). On land,
+all their values (especially \Man) are halved (round down).
+
+The result of the exploration is read \textbf{both} in the ``Discovery''
+column \textbf{and} the ``\ROTW or Sea'' column. The later gives a percentage
+of loses that is applied to the stack as if it suffered it from
+attrition.
+
+The ``Discovery'' column contains either a 'S', a 'F' or a '\undemi'; plus
+sometimes a\myxxa or\myxxc.
+\begin{itemize}
+\item 'S' means Success. The exploration succeed. The stack is moved in the
+  newly explored province or sea zone. Exception: if the explored province
+  contains an establishment of a neutral country, the stack stays in
+  place. The discovery is noted on the discovery sheet of the player but
+  cannot be used until being ``brought back home'' (see below).
+\item 'F' means Failure. The stack does not move and the zone is still
+  unknown.
+\item '\undemi' are resolved by rolling an unmodified die on the small table
+  on the right. Treat results of '1--3' as F\xxa; '4--5' as F\xxc; '6--8'
+  as S\xxa; and '9--10' as S\xxc.
+\item If there is a '\xxa', or if there is a '\xxc' and the exploration is
+  done by a leader alone; then the leader (whose \Man was used (either the
+  commanding one or a \LeaderMis in the stack)) must test his death. Roll
+  1d10, if this is strictly more than the \Man (halved for \LeaderE on land as
+  usual), the leader is dead (remove him from the game); otherwise, he
+  survives. Note that \LeaderA or \LeaderG having a \Man of 0 for exploration,
+  they automatically fail this test (and die) if they explore\ldots
+\end{itemize}
+
+If a leader die during exploration and the country falls below its limit of
+\LeaderC or \LeaderE, the new one may be put in the same place as the old one
+only if some counters are still present (a replacement \LeaderA, \LeaderG or
+\LeaderGov must be placed following usual rules). Otherwise, it is assumed
+that the whole expedition has been whipped out and the discoveries it may had
+are lost\ldots
+
+\smallskip
+
+When a discovery is successful, only the stack that made it knows about it (in
+case of a multi-national stack, only the commanding country (and its units)
+carry this knowledge). This means that other stacks of the same country still
+consider that the zone is unknown for all purposes. Typically, they must
+explore again if they want to enter that zone. Even if two stacks know the
+zone (but the country doesn't), they may not merge in it.
+
+As soon as a stack carrying discoveries reaches an establishment (fort, \TP,
+\COL or European province) that was existing at the beginning of the military
+phase, the countries immediately and definitely gains knowledge of the
+discoveries. Any stack of that country also gets that knowledge as soon as it
+is not itself carrying unknown discoveries (\emph{i.e.} either it is wandering
+in known land, possibly enemy or empty, or it has finished its own
+explorations and reached home again).
+
+A stack carrying discoveries may ``meet'' another stack if this happen in a
+zone whose discovery has been brought back \textbf{and} both stacks have
+knowledge of this zone. In that case, if both stacks are of the same country
+(not alliance), they share their discoveries: they may both use the zones
+discovered by the other and any of them is able to bring all these back
+home. Discoveries are never shared that way with another country.
+
+If a stack carrying discoveries is entirely destroyed, its discoveries are
+lost (unless they've already been shared with another stack).
+
+Discoveries carried by stack must be noted and remembered. Once a discovery is
+brought back home, shade out the corresponding zone on the mini-map of the
+player to remember this.
+
+Note that bringing the discoveries home is not a naval action and happens
+automatically as soon as the stack enters an establishment. Thus, typically,
+when exploring seas around one of your \COL, it is possible to move in the
+port of the \COL (bringing discovery of previous round), move out and a bit
+further and then as an action explore an adjacent sea. This makes the move a
+bit longer (thus increasing attrition risk) but greatly reduce the risk of the
+stack being sunk with many discoveries (something you definitely do not want
+to happen).
+
+If two stacks (allied, enemy or neutral) are in the same zone and both of them
+are carrying the discovery without it being brought back home yet, they may
+not interact (fight, merge, \ldots) If one of the stack is from a country who
+already knows of this zone, then this stack may initiate any interaction
+(battle, interception, \ldots) following regular rules.
 
 \aparag[Diffusion of discoveries]
-\bparag[On sea] At the beginning of period IV, all discovered sea zones of
-Atlantique Ocean are known to everyone else at the beginning of the military
-phase of the turn following the discovery. Other discovered sea zones have a
-bonus of {\bf -2} for discoveries by other players.
-\bparag [On land] At the beginning of period IV, all provinces containing a
-\COL or \TP are known to everyone else at the beginning of the military phase
-of the turn following the discovery.
-
+\bparag From period \period{IV} onward, discoveries spread among all players.
+\bparag[Atlantic] At the beginning off turn 25 (period \period{IV}), all sea
+zones without malus in the \region{Atlantic} that are known by at least one
+country (including minor) are immediately known by everybody; from now on, any
+newly explored sea zone without malus from the \region{Atlantic} is known by
+everybody at the beginning of the turn following its discovery by anybody.
+\bparag[On sea] If this is period \period{IV} or later, any sea zone that is
+known by at least one country (including minor) has a bonus of {\bf -2} for
+discoveries by other countries
+\bparag [On land] At the beginning of period \period{IV}, all provinces
+containing a \COL or \TP become known by everybody.
+\bparag [On land] If this is period \period{IV} or later, any province
+containing a \COL or \TP become known by everybody at the beginning of the
+turn following the one were the establishment was created.
+\bparag[Level 6] \COL of level 6 are European provinces and thus known by
+everybody. As soon as a \COL reach level 6 (even during period \period{I}),
+its province becomes immediately known by everybody.
 
 \section{Battles}
+\label{chMilitary:Battles}
+\subsection{Generalities}
 Resolve all non-interception battles caused by the movement, in order of
 choice of the phasing alliance (at random in case of disagreement). Each
 battle must be fully resolve before the next one starts.
+
+Battles caused by interceptions are resolved immediately but follow the same
+procedure as this one.
+
+Land and sea battles follow the same sequence with slight modifications.
+
+Battles are always only fought between two stacks of belligerent
+alliances. There cannot be a three-sided battle. If, for some reason, several
+stacks of the same alliance participate in a battle, they are automatically
+considered merged for the duration of the battle (notably to find the
+commander of the stack).
+
+\textbf{Attacker and defender.} The tables use the terms \terme{attacker} and
+\terme{defender} to design the sides. They are determined as follows: if this
+is an interception battle, then the attacker is the non-phasing alliance and
+the defender is the phasing alliance. If this is not an interception battle,
+then the attacker is the phasing alliance and the defender is the non-phasing
+alliance. Attacker and defender mostly play a role for terrain modifiers. We
+try to avoid these terms in the rules.
+\begin{todo}
+  And to remove them from the table\ldots
+\end{todo}
+
+
+\subsubsection{Battle sequence}
+\aparag Each battle follows this sequence of steps:
+\bparag \xnameref{chMilitary:Battle:Evasion}: non-phasing, non-intercepting
+  stacks may attempt to avoid the battle and retreat before it starts.
+\bparag \xnameref{chMilitary:Battle:Parameters}: determine battle parameters,
+  notably the column of the CRT and DRM to use.
+\bparag \xnameref{chMilitary:Battle:Fight}: each battle can last up to 2
+  \terme{days}. Each day is further split in a \terme{fire} and a
+  \terme{shock} (or \terme{boarding} at sea) roll.
+\bparag \xnameref{chMilitary:Battle:Pursuit}: the winner pursue the loser.
+\bparag \xnameref{chMilitary:Battle:Loss modifications}: actual losses are
+  computed from the battle result.
+\bparag \xnameref{chMilitary:Battle:Retreat}: any non-winning stack retreat.
+\bparag \xnameref{chMilitary:Battle:Cleanup}: determine major victory, test
+  death of leaders, \ldots
+
+\subsection{Evasion test}
+\label{chMilitary:Battle:Evasion}
+\subsection{Battle parameters}
+\label{chMilitary:Battle:Parameters}
+\subsection{2 days of battle}
+\label{chMilitary:Battle:Fight}
+\subsection{Pursuit}
+\label{chMilitary:Battle:Pursuit}
+\subsection{Loss modifications}
+\label{chMilitary:Battle:Loss modifications}
+\subsection{Retreat}
+\label{chMilitary:Battle:Retreat}
+\subsection{Battle cleanup}
+\label{chMilitary:Battle:Cleanup}
+
+
+\iamhere
 
 \subsection{Les batailles}
 \aparag[Victoire majeure]
@@ -1516,6 +2142,7 @@ après le feu quel que soit le résultat adverse et ne font pas de pertes (même
 navires de guerre sont en retrait).
 
 \section{Sieges}
+\label{chMilitary:Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
 Each alliance, in decreasing order of initiative, resolves all of its actions
@@ -1660,6 +2287,7 @@ provenir de la séparation d'un pion armée).
 A new round begin with the \terme{Continuation Roll} segment.
 
 \section{Military cleanup}
+\label{chMilitary:cleanup}
 ???
 
 Normally nothing to do here.
