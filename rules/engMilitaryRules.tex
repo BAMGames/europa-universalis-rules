@@ -266,10 +266,10 @@ naval stack (which may be during the next turn).
   supply any small land stack (up to 5\LD and 1\Pasha);
 \item A stack containing a \FLEET\faceplus counter may supply any land stack.
 \end{itemize}
-This information is summed up in the last two columns of
-table~\ref{table:Naval Supply}: find the size of the naval stack (or smaller)
-in the ``Naval Size'' column and read in the same line in the ``Land
-supplied'' column the size of land stacks that can be supplied.
+This information is summed up in the last two columns of~\ref{table:Naval
+  Supply}: find the size of the naval stack (or smaller) in the ``Naval Size''
+column and read in the same line in the ``Land supplied'' column the size of
+land stacks that can be supplied.
 
 \GTtable{supplysize}
 
@@ -291,7 +291,7 @@ to a port has a \LoS of length 0.
 
 \subsection{Supply Attrition}
 Attrition (in Europe) is obtained by rolling one die, modified as follows, and
-cross-reference the modified result in Table~\ref{table:Discoveries and
+cross-reference the modified result in~\ref{table:Discoveries and
   Attrition} in the ``Land, Europe'' column that corresponds to the size of
 the stack. In the \ROTW, the result is read in the ``\ROTW and Sea''
 column. Note that a result of 5 or less has no effect.
@@ -382,10 +382,10 @@ not too bad technology don't suffer a lot from attrition.
 \smallskip
 
 In the \ROTW, cross reference the percentage obtained with the size of the
-stack in table~\ref{table:Attrition ROTW Remainders}. The resulting number
-indicates the number of \LD still alive after attrition while the 'd'
-indicates one or two \LDE still alive. If there is a \textetoile, then there
-is 50\% chance to lose an extra \LDE.
+stack in~\ref{table:Attrition ROTW Remainders}. The resulting number indicates
+the number of \LD still alive after attrition while the 'd' indicates one or
+two \LDE still alive. If there is a \textetoile, then there is 50\% chance to
+lose an extra \LDE.
 
 Stacks in \COL of level 6 use the Attrition in Europe procedure.
 
@@ -513,8 +513,8 @@ transporting troops suffer loses, troops inside may also suffer some loses.
 \subsection{Land}
 When moving, land stacks expend \MP depending both on the terrain of each
 province they enter and the frontier by which they entered it. The cost of
-each terrain differ in Europe and in the \ROTW and are indicated in
-table~\ref{table:Movement points costs}.
+each terrain differ in Europe and in the \ROTW and are indicated
+in~\ref{table:Movement points costs}.
 
 \GTtable{movecost}
 
@@ -673,10 +673,10 @@ is a regular battle, there was no enemy in the province before the stack
 entered it (and activated them), hence this is still a passive move.
 
 In the \ROTW, a land stack may try to convert natives to its side in each
-province it moves into by rolling on Table~\ref{table:Conquistadors
-  Effects}. It may only attempt to do so if the natives in the province are
-not already activated when it enters it. This roll is made before any
-activation test and will automatically activate the natives.
+province it moves into by rolling on~\ref{table:Conquistadors Effects}. It may
+only attempt to do so if the natives in the province are not already activated
+when it enters it. This roll is made before any activation test and will
+automatically activate the natives.
 
 \GTtable{conquistadors}
 
@@ -710,11 +710,11 @@ Explanation of the results:
 \begin{itemize}
 \item ---: all the natives in the province resist (same as 'R00').
 \item \textdag: no native resist (same as 'R100').
-\item Dxx: apply Table~\ref{table:Attrition ROTW Remainders} with xx\% on the
+\item Dxx: apply~\ref{table:Attrition ROTW Remainders} with xx\% on the
   number of natives in the province. The result is the number of native \LD
   that desert and join the stack. Use \pays{natives} counters to denote them
   (using \ARMY counters to denote 2 or 4 \LD as needed).
-\item Ryy: apply Table~\ref{table:Attrition ROTW Remainders} with yy\% on the
+\item Ryy: apply~\ref{table:Attrition ROTW Remainders} with yy\% on the
   number of natives in the province. The result is the number of native \LD
   that resist and fight.
 \item All natives that neither resist nor desert are eliminated from the
@@ -821,7 +821,7 @@ engaged in battle may not intercept any more. Each non-phasing stack may only
 be attacked by one phasing stack (failed interception do not count as an
 attack even if they do count as an action)
 \bparag[Blockading an enemy port/arsenal.] The naval stack must have
-sufficient size according to \ref{table:Naval Size for Blockade}, depending on
+sufficient size according to~\ref{table:Naval Size for Blockade}, depending on
 the size of the fortress. Note that to blockade a level 2 or 3 fortress, one
 must have have at least a \FLEET\Facemoins counter \textbf{and} 2\ND in the
 stack similarly blockading a level 4/5 fortress requires a \FLEET\Faceplus
@@ -831,7 +831,7 @@ port (if several stacks want to blockade the same port, they are automatically
 merged). Blockade last until the next movement of the naval stack, including
 possibly in the next turn.
 \bparag[Supplying troops.] The naval stack must have sufficient size for
-supplying the troops as indicated in \ref{table:Naval Supply}. Note that a
+supplying the troops as indicated in~\ref{table:Naval Supply}. Note that a
 naval stack is allowed to supply several adjacent land stacks since it acts as
 a \SoS and supply is never ``used up''. Supply last until the next movement of
 the naval stack, including possibly in the next turn.
@@ -905,15 +905,14 @@ combined land and naval stack and finally it is solely land. A naval stack may
 not embark troops if it has already been engaged in a battle this impulse
 (\emph{i.e.} after winning an interception battle).
 
-The naval stack must be large enough to hold the land stack, as indicated in
-Table~\ref{table:Sea Transport for Armies}. Each \ARMY\Faceplus, depending on
-its \terme{army class} and the period, needs a certain number of
-\terme{transport points} as indicated in the table. An \ARMY\Facemoins
-requires half that number, a \LD requires 2 points and a \LDE half a
-point. Conversely, each \NWD or \NGD provides 1 point, each \NTD 3 points and
-each \NDE half a point. The sum of the transport capacity of the naval stack
-must be at least equal to the sum of the transport points required for the
-land stack.
+The naval stack must be large enough to hold the land stack, as indicated
+in~\ref{table:Sea Transport for Armies}. Each \ARMY\Faceplus, depending on its
+\terme{army class} and the period, needs a certain number of \terme{transport
+  points} as indicated in the table. An \ARMY\Facemoins requires half that
+number, a \LD requires 2 points and a \LDE half a point. Conversely, each \NWD
+or \NGD provides 1 point, each \NTD 3 points and each \NDE half a point. The
+sum of the transport capacity of the naval stack must be at least equal to the
+sum of the transport points required for the land stack.
 
 \GTtable{fleettransport}
 
@@ -1014,9 +1013,9 @@ created full of gold and cannot be used to carry more.
 Moving stacks may have to roll for attrition. The procedure is similar on land
 and at sea but with different modifiers and a different way to read the
 table. Attrition is always resolved by cross-referencing a modified die roll
-and the correct column in Table~\ref{table:Discoveries and Attrition}. On sea
-or in the \ROTW, a further read in Table~\ref{table:Attrition ROTW Remainders}
-is required.
+and the correct column in~\ref{table:Discoveries and Attrition}. On sea or in
+the \ROTW, a further read in~\ref{table:Attrition ROTW Remainders} is
+required.
 
 Beware that even if the procedure is very similar to supply or siege
 attrition, the modifiers and the way to implement the results are different.
@@ -1076,12 +1075,12 @@ typically, if the opposing alliance attacks it during the next impulse.
 \smallskip
 
 In the \ROTW, the result is read in the ``\ROTW or Sea'' column. Cross
-reference the percentage obtained with the size of the stack in
-Table~\ref{table:Attrition ROTW Remainders}. The resulting number indicates
-the number of \LD still alive after attrition while the 'd' indicates one or
-two \LDE still alive. If there is a \textetoile, then there is 50\% chance to
-lose an extra \LDE. Repeat this procedure for every set of 10\LD in the stack,
-and for the remainder.
+reference the percentage obtained with the size of the stack
+in~\ref{table:Attrition ROTW Remainders}. The resulting number indicates the
+number of \LD still alive after attrition while the 'd' indicates one or two
+\LDE still alive. If there is a \textetoile, then there is 50\% chance to lose
+an extra \LDE. Repeat this procedure for every set of 10\LD in the stack, and
+for the remainder.
 
 If all the provinces of the movement (including start and end) are European
 (including \COL of level 6), use the Attrition in Europe procedure. If at
@@ -1153,13 +1152,13 @@ zones'' and \textbf{not} ``+1 (or 2)/1 zone''. Thus, a large stack that only
 moves one zone does not have this malus.
 
 The result is read in the ``\ROTW or Sea'' column. Cross reference the
-percentage obtained with the size of the stack in table~\ref{table:Attrition
-  ROTW Remainders}. The resulting number indicates the number of \ND still
-alive after attrition while the 'd' indicates one or two \NDE still alive. If
-there is a \textetoile, then there is 50\% chance to lose an extra \NDE. If
-the stack contains more than 10\ND, apply this procedure for each set of 10\ND
-and for the remaining \ND separately. The controller of the stack chooses
-which \ND are sunk.
+percentage obtained with the size of the stack in~\ref{table:Attrition ROTW
+  Remainders}. The resulting number indicates the number of \ND still alive
+after attrition while the 'd' indicates one or two \NDE still alive. If there
+is a \textetoile, then there is 50\% chance to lose an extra \NDE. If the
+stack contains more than 10\ND, apply this procedure for each set of 10\ND and
+for the remaining \ND separately. The controller of the stack chooses which
+\ND are sunk.
 
 Any \NTD that must suffer at least 1\NDE of loss is entirely destroyed.
 
@@ -1441,7 +1440,7 @@ interception succeeds.
 
   If a stack is stationed in the \villePortsmouth arsenal in
   \province{Wessex}, it can only intercept in \seazoneManche. However, it has
-  no malus for interception as arsenal are assumed to be designed as military
+  no malus for interception as arsenals are assumed to be designed as military
   ports built for quick reaction with small unrepresented flotillas running
   around. Even better, if an enemy attempt to disembark \emph{anywhere} from
   \seazoneManche (\emph{e.g.} \provinceWessex, \provinceNormandie,
@@ -1518,11 +1517,11 @@ their list of controller.
 \pays{pirates} with no \LeaderA use 2 as \Man.
 \bparag If the interception fails, the attack stops immediately; if it is
 successful, reduce the \corsaire to \Facemoins and proceed further.
-\bparag The attacked stack may roll on \ref{Table:Reduce Revolt or Piracy}
+\bparag The attacked stack may roll on~\ref{table:Reduce Revolt or Piracy}
 (see \ref{chMilitary:Revolt} for details); if successful, do not reduce
 further the \corsaire but stop the attack immediately; if it fails, proceed
 further.
-\bparag Resolve the attack by rolling on \ref{Table:Pirates Natives Raids}
+\bparag Resolve the attack by rolling on~\ref{table:Pirates Natives Raids}
 (see \ref{chRedep:Corsair Attack} for details); read the result in column
 ``\TradeFLEET\faceplus'', the number corresponds to the number of \NTD
 captured (each with 15\ducats).
@@ -1559,10 +1558,10 @@ subject to attrition (but severe loses are usually suffered in the
 process). Notably, a landing during an exploration is never a cause for
 attrition.
 
-Exploration is resolved by rolling on table \ref{table:Discoveries and
-  Attrition}, the result is read \textbf{both} in the ``Discovery'' column
-corresponding to the type of exploration (land or sea) \textbf{and} the
-``\ROTW or sea'' column. The roll is modified by:
+Exploration is resolved by rolling on~\ref{table:Discoveries and Attrition},
+the result is read \textbf{both} in the ``Discovery'' column corresponding to
+the type of exploration (land or sea) \textbf{and} the ``\ROTW or sea''
+column. The roll is modified by:
 \begin{modlist}
 \item[+4] for all explorations;
 \item[-M] \Man of the commanding \LeaderE, \LeaderC or \LeaderGov
@@ -1676,6 +1675,11 @@ not interact (fight, merge, \ldots) If one of the stack is from a country who
 already knows of this zone, then this stack may initiate any interaction
 (battle, interception, \ldots) following regular rules.
 
+\subsection{Activation of natives}
+\begin{todo}
+  TODO!
+\end{todo}
+
 \aparag[Diffusion of discoveries]
 \bparag From period \period{IV} onward, discoveries spread among all players.
 \bparag[Atlantic] At the beginning off turn 25 (period \period{IV}), all sea
@@ -1724,6 +1728,10 @@ try to avoid these terms in the rules.
   And to remove them from the table\ldots
 \end{todo}
 
+For the sack of clarity, commanding leaders are always referred as \LeaderG or
+\LeaderA even if (in the \ROTW), they may also be \LeaderC, \LeaderGov or
+\LeaderE. If a \LeaderE happens to fight on land (typically activating the
+natives after an exploration), each of its values is halved (rounded down).
 
 \subsubsection{Battle sequence}
 \aparag Each battle follows this sequence of steps:
@@ -1743,8 +1751,147 @@ try to avoid these terms in the rules.
 
 \subsection{Evasion test}
 \label{chMilitary:Battle:Evasion}
+A non-phasing, non-intercepting stack engaged in battle may attempt to evade
+the battle and retreat before it starts. Evasion is decided by the controller
+of the stack at the time of the battle. Failing an evasion test does not
+entail any penalty.
+
+The evasion test is made by rolling 1d10 and adding the \Man differential
+(non-phasing - phasing) of the leaders, \textbf{only if positive}. If the
+result is 8 or more, the evasion is successful.
+
+If the evasion is successful, the 'battle' is over. Resolve the evasion and
+then proceed to resolve the next battle.
+
+\textbf{At sea}, the evading stack must go to the closest (in number of zones)
+friendly port large enough to hold it (controller's choice if any). It must
+roll for attrition as if this was a move. The phasing stack may pursue and
+blockade said port (only). If it choose to pursue and blockade, the phasing
+stack must also roll for attrition as if it were moving.
+
+\textbf{Automatic success.} If a land stack is in a province with a friendly
+province large enough to hold it (1 level/\LD, including those in \Pashas),
+then it may retreat in the fortress with no test. It may choose to roll to try
+to retreat in another province but doing so forfeit the possibility to retreat
+in the fortress with no test.
+
+\textbf{On land}, the stack may roll for evasion. If successful, it must move
+into an adjacent friendly unbesieged province (\emph{i.e.} a province where it
+could go with a passive campaign). It is not possible to evade battle via
+naval transport. If the province where the battle occurs is friendly, it is
+possible to retreat part of the stack in its fortress and another part in an
+adjacent province. It is not possible to split the stack in any other way. It
+is possible to split even if the whole stack could fit in the fortress.
+
+Land stacks evading do not roll for attrition.
+
+After a successful evasion, as after any battle, the phasing stack is
+considered to besieged an enemy fortress in its province (\emph{i.e.} even if
+it is too small or does not have supply, this will only be checked during the
+Siege segment), especially, the fortress is besieged for all purposes during
+the next impulse in the same round (if any).
+
+Similarly, if the non-phasing stack was besieging before evasion, the siege is
+lifted as soon as there is no enemy troops in the province.
+
 \subsection{Battle parameters}
 \label{chMilitary:Battle:Parameters}
+\subsubsection{Replacements leaders}
+If a stack engaged in battle has no leader (the commanding country has no
+leader in the stack), a replacement leader is rolled.
+
+\GTtable{replacement}
+
+Cross-reference 1d10 (never modified) with the commanding country
+in~\ref{table:Replacement leaders}. The three values correspond to the \Man,
+Fire and Shock of the leader. These values will be used for the whole duration
+of the battle.
+
+Additionally, when rolling for a \POL \LeaderA, subtract 1 from \Man and when
+rolling for a \PRU \LeaderA, subtract 1 from Fire. The 'Native' line is only
+used for natives, not for \ROTW countries (who used the 'Minor' line as any
+minor country).
+
+Note that Replacement leaders are rolled after evasion and hence cannot be
+used to evade battle.
+
+If the stack is commanded by the \TUR Vizier, and if the Vizier was already
+rolled for an evasion test, do not roll him again but use the same values.
+
+\subsubsection{First line ships and Wind Advantage}
+This only happens for sea battles.
+
+If a side is composed of both \NGD and \NWD, it must choose which kind of
+ships will go in battle. The other kind does not take part in the battle. It
+will, however, retreat or pursue with the stack if needed. It may also suffer
+loses if the loses are more than the number of first line ships.
+
+\begin{designnote}
+  While mixed fleet did exists, the battle mechanisms (and parameters) are
+  handled differently in game for galleys and warships. Hence, mixing them in
+  battle would complicated things a lot\ldots Moreover, most of the mixed
+  fleet were using mainly one kind of ships.
+
+  Note that if you have 1\NWD and 10\NGD, you may be tempted to put the \NWD
+  on first line to try and save the \NGD\ldots However, if you suffer more
+  than 1 loss, the extra will carry onto the \NGD.
+\end{designnote}
+
+Next, in a sea battle where at least one stack is not using \NGD as first line
+ships, roll for \terme{Wind Advantage}.
+
+\GTtable{windadvantage}
+
+First, each side cross-reference its technology (line) with the technology of
+its opponent (column) on~\ref{table:Wind Advantage Determination} to find a
+DRM ('-' means no DRM). Only one side has a DRM for \terme{Wind Advantage}.
+(no, \TBAT has no DRM against \TGF, it already has +1 morale and that's a
+large enough bonus\ldots)
+
+Next, each side rolls 1d10 and adds the \Man of its commanding \LeaderA. The
+side with a technological DRM adds it to its result.
+
+The side with the highest modified result has \terme{Wind Advantage} for the
+whole duration of the battle. In case of tie, no side has \terme{Wind
+  Advantage}.
+
+\subsubsection{Morale and CRT column}
+Either~\ref{table:Naval Fire Shock} or~\ref{table:Land Fire Shock} is used to
+determine morale of both sides and the columns of the CRT it will use during
+the whole battle.
+
+\GTtable{navaltech}
+
+\GTtable{landtech}
+
+First, each side finds the line corresponding to its technology and reads in
+the 'Morale' column its morale (between 1 and 4). \terme{Veteran} stacks
+(see~\ref{chMilitary:Veteran Conscripts}) add 1 to this value. Stacks with
+\TTER technology add 1 (cumulative).
+
+A stack with \TREN technology has morale 1 if the enemy has \TMED technology
+and 2 otherwise (+1 if \terme{Veteran}, as usual).
+
+\begin{designnote}
+  \TREN already provides the possibility to fire. Together with an extra
+  morale point, this would give them a devastating advantage against \TMED
+  stacks. This way, the fire step already give \TREN vs \TMED a big advantage
+  to the \TREN stack but the possibility of surprise still exists\ldots
+\end{designnote}
+
+Next, determine the CRT columns to use for the battle. Each side will use
+possibly different columns. Column \textbf{A} is better than Column \textbf{B}
+and so forth.
+
+Each side cross-references its technology (line) with the technology of the
+opponent and find two letters. The first is the \terme{Fire CRT column}, the
+second is the \terme{Shock} (or \terme{Boarding}) \terme{CRT column}. The bold
+letters in the table correspond to the symmetrical situation where both sides
+have the same technology (which happens most of the time).
+
+Stacks with \TMED technology have only one letter in this table. They never
+roll for fire and thus only have a \terme{Shock CRT column}.
+
 \subsection{2 days of battle}
 \label{chMilitary:Battle:Fight}
 \subsection{Pursuit}
