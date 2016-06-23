@@ -1675,10 +1675,9 @@ not interact (fight, merge, \ldots) If one of the stack is from a country who
 already knows of this zone, then this stack may initiate any interaction
 (battle, interception, \ldots) following regular rules.
 
-\subsection{Activation of natives}
-\begin{todo}
-  TODO!
-\end{todo}
+When a land stack enters a province by exploration, test for activation of
+natives as if this was a movement (including the possibility to use the
+Conquistador table and to voluntarily attack the natives).
 
 \aparag[Diffusion of discoveries]
 \bparag From period \period{IV} onward, discoveries spread among all players.
@@ -1731,7 +1730,9 @@ try to avoid these terms in the rules.
 For the sack of clarity, commanding leaders are always referred as \LeaderG or
 \LeaderA even if (in the \ROTW), they may also be \LeaderC, \LeaderGov or
 \LeaderE. If a \LeaderE happens to fight on land (typically activating the
-natives after an exploration), each of its values is halved (rounded down).
+natives after an exploration), each of its values is halved (rounded
+down). Similarly, \terme{Shock} is often used instead of \terme{Boarding} for
+sea battles.
 
 \subsubsection{Battle sequence}
 \aparag Each battle follows this sequence of steps:
@@ -1824,7 +1825,12 @@ This only happens for sea battles.
 If a side is composed of both \NGD and \NWD, it must choose which kind of
 ships will go in battle. The other kind does not take part in the battle. It
 will, however, retreat or pursue with the stack if needed. It may also suffer
-loses if the loses are more than the number of first line ships.
+loses if the loses are more than the number of first line ships. Any \VGD are
+automatically used if (and only if) the first line ships are \NGD.
+
+If a side is composed solely of \NTD (notably, convoys alone), it must use
+them as first line ships. This is the only case where \NTD may be used us
+first line ships.
 
 \begin{designnote}
   While mixed fleet did exists, the battle mechanisms (and parameters) are
@@ -1892,8 +1898,131 @@ have the same technology (which happens most of the time).
 Stacks with \TMED technology have only one letter in this table. They never
 roll for fire and thus only have a \terme{Shock CRT column}.
 
+\subsubsection{Die rolls modifiers}
+Compute DRMs for the battle. Note these DRMs for easy use later on. Unless
+explicitly stated otherwise, all these DRMs are cumulative.
+
+All the modifiers here are computed at the beginning of the battle and are
+valid for its entire duration, even if the conditions to use them are no more
+met (because the stack suffered from loses, typically). The two modifiers that
+appear mid-battle are listed in~\ref{chMilitary:Battle:Fight} (they are:
+morale modifier on sea and failed retreat modifier on land).
+
+\begin{playtip}
+  It is advised to prepare a sheet of blank paper to note the battle results
+  as it unfold. Make two columns (one for each side). On the top of each
+  column, write the DRMs this side will have for the 4 rolls of the battle. Use
+  the rest of the column to write the battle results themselves.
+
+  Modifiers are usually very similar for both days of battle. Hence, it is
+  usually easier to only compute modifiers for the first day and update them
+  at the end of the first day. The four modifiers that are different from one
+  day to the other are the 'second day' modifier, the 'foraging' modifier as
+  well as the two 'crossing' terrain modifiers.
+\end{playtip}
+
+Modifiers that do not change between days are listed here in a 'F/S' format
+where F is applied to both Fire rolls and S to both Shock rolls. Modifiers
+that do change between days are listed in a 'F1/S1//F2/S2' format.
+
+\aparag[General modifiers.] Apply these modifiers during any battle.
+\begin{modlist}
+\item[+F/0] the side with the greatest Fire value (for its leader) adds
+  the differential between Fire of the leaders to all its Fire rolls.
+\item[0/+S] the side with the greatest Shock value (for its leader) adds
+  the differential between Shock of the leaders to all its Shock rolls.
+\item[0/0//-1/-1] always (second day malus).
+\end{modlist}
+
+\aparag[Sea technology modifiers.] Apply these during any sea battle,
+depending on the technologies of the participants and the kind of \terme{first
+  line ships}.
+\begin{modlist}
+\item[+1/0] for a side that has \VGD if the other side has \NGD. Before
+  \TBAT, a side needs two \VGD to gain this modifier. If both side have \VGD
+  in the stack, they may both have this bonus.
+\item[+1/+1] for a side that has \NGD, if both (i) the battle occurs in
+  the \region{Mediterranee}; (ii) the other side has \NWD or \NTD and (iii)
+  this is turn 25 or earlier.
+\item[-1/-1] for a side that has \NGD if both (i) the other side is
+  using \NWD and (ii) this is turn 35 or later.
+\end{modlist}
+
+\aparag[Other sea modifiers.] Apply these during any sea battle.
+\begin{modlist}
+\item[+1/+1] for the side with \terme{Wind Advantage}.
+\item[0/+1] for a side that has at least 1 more \ND than the other side.
+\item[0/+1] for a side that has at least 7 more \ND than the other side
+  (for a total of 0/+2 when combined with previous modifier).
+\item[+1/0] for a side that has at least 3 more \ND than the other side.
+\end{modlist}
+
+\aparag[Other land modifiers.] Apply these during any land battle.
+\begin{modlist}
+\item[-1/-1//0/0] for a side that is \terme{foraging}.
+\item[0/-1] for a side that is \textbf{not} \CAI, \CAIM, \CAII or
+  \CAIIM, if the enemy has \TTER.
+\end{modlist}
+
+\aparag[Terrain modifiers.] Apply these during any land battle.
+\begin{modlist}
+\item[0/0] if the battle occurs in a Plain province.
+\item[-1/-1] if the battle occurs in a Forest (any kind), Swamp or
+  Desert province.
+\item[-1/-1] for the phasing side if the battle occurs in a Mountain
+  province \textbf{and} this is not an interception battle.
+\item[0/0] if the battle occurs in a Mountain province, for everybody but
+  a phasing, non-intercepted side.
+\item[-1/-1//0/0] for the phasing side, it if has crossed a river or a
+  mountain pass to enter the province \textbf{and} this is not an interception
+  battle.
+\item[-2/-3//0/0] for the phasing side, if it has crossed a strait or used
+  naval transport to enter the province, \textbf{including} when being
+  intercepted in a previously friendly province (hence including when being
+  intercepted at the end of a friendly naval transport).
+\end{modlist}
+
+\aparag[Artillery modifiers.] Apply these in any land battle.
+\begin{modlist}
+\item[-1/0] for a stack with no \ARMY counter. Exception: during periods
+  \period{I} to \period{IV}, a stack commanded by a \LeaderC (not a \LeaderGov
+  or a \LeaderE) does not suffer from this malus.
+\item[+1/0] for a stack that contains at least 6 Artillery
+  (check~\ref{chMilitary:Stacks:Artillery} for how to compute Artillery in a
+  stack).
+\end{modlist}
+
+\aparag[Cavalry modifiers.] During any land battle, any stack gain a 0/+1 DRM
+if it contains an \ARMY counter of the indicated country or army class and at
+least one of the following condition is true:
+\begin{modlist}
+\item[All] the stack contain at least 3\LD more than its opponent;
+\item[CAIIM] this is during periods \period{I} to \period{IV} and the battle
+  occurs in a Plain or Sparse Forest province.
+\item[\CAIIIM] this is during periods \period{IV} or \period{V} and the battle
+  occurs in a Plain or Dense Forest province.
+\item[\CAIV] this is period \period{III}, \period{IV} or \period{V} and the
+  battle occurs in a Plain province;
+\item[\SUE] this is during periods \period{III} to \period{VI} and the battle
+  occurs in a Plain or Northern Forest province.
+\item[TUR] before reform M-2, if the battle occur in a Plain or Desert
+  province (\terme{Sipahi} cavalry).
+\end{modlist}
+Whatever the conditions, this bouns may only be claimed once by each side of
+the battle.
+
+Note that since Northern Forest are necessarily Dense Forest and \SUE is of
+class \CAIIIM, the specific \SUE bonus is actually only effective during
+periods \period{III} and \period{VI}.
+
 \subsection{2 days of battle}
 \label{chMilitary:Battle:Fight}
+% \item[0/-1?//-1?/-1?] a side that has lost more morale than the opponent
+%   during the previous rolls of this battle has a \bonus{-1} malus to all its
+%   rolls. The side suffering from this malus is determined before each roll is
+%   made and may vary during battle.
+
+
 \subsection{Pursuit}
 \label{chMilitary:Battle:Pursuit}
 \subsection{Loss modifications}

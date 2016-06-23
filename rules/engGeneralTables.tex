@@ -1674,19 +1674,19 @@
     \GTheader[Fire/Shock // Fire/Shock 2\up{nd} day]{Terrain modifiers}
     \begin{modlist}[13.8em]
     \item[Forest, Swamp, Desert] -1/-1 // -1/-1
-    \item[Mountain: defender, interceptor] 0/0 // 0/0
-    \item[~~~attacker (exc. if has intercepted)]-1/-1 // -1/-1
+    \item[Mountain: non-phasing or intercepted] 0/0 // 0/0
+    \item[~~~phasing and not intercepted]-1/-1 // -1/-1
       % \item[Mountain (defender, interceptor)] 0/0 // 0/0
-    \item[Through river, pass (exc. interceptor)] -1/-1 // 0/0
+    \item[River or pass (phasing, not intercepted)] -1/-1 // 0/0
     \item[Through strait or disembarking] -2/-3 // 0/0
     \end{modlist}
     \GTheader{Land Artillery \terme{Fire} modifiers} %{[TBD]}
     \begin{modlist}
-    \item[-1] if no \ARMY (Exc: Conquistador in \ROTW, pI to pIV)
-    \item[+1] if Artillery at least 6 (as vs. Fortresses)
+    \item[-1] if no \ARMY (Exc: \LeaderC in \ROTW, pI to pIV)
+    \item[+1] if \geq6 Artillery in the stack
     \end{modlist}}
   \GTlegend[caption=captionc,east north=captionb,xsize offset=-4pt,xsize scale=0.33,xsize=(\gtid main.west)(\gtid caption.east)]{
-    \GTheader{Cavalry \terme{Shock} modifiers}{Land battle}
+    \GTheader{Cavalry \terme{Shock} modifiers (max. +1)}{Land battle}
     \emph{At least one \ARMY}\\
     \begin{modlist}[2em]
     \item[All] +1 if at least 3\LD more than enemy % [TDB ?]
@@ -1694,7 +1694,7 @@
     \item[\CAIIIM] +1, p. IV--V in plains and dense forests
     \item[\SUE] +1, p. III--VI in northern forests
     \item[\CAIIM] +1, p. I--IV in plains and sparse forests
-    \item[\TUR] +1 for \terme{Sipahi} cav. (before reform M-2) in plains and deserts
+    \item[\TUR] +1 before reform M-2 in plains and deserts
     \end{modlist}
   }
   \node (\gtid northbox)[inner sep=2pt,fit=(\gtid main)(\gtid title)(\gtid caption)(\gtid captionb)(\gtid captionc)]{\filler};
