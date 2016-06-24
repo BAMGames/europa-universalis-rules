@@ -1276,7 +1276,7 @@ third party alliance. In the later case, the interception battle occurs only
 between the moving and intercepting stacks and the intercepting (third party)
 stack must retreat after it (even in case of victory) while the moving stack,
 if winning, engage battle with the non-moving one (to be resolved as a regular
-battle). In the former case (interception by the same alliance, the
+battle). In the former case (interception by the same alliance), the
 interceptor may chose to either resolve this as an interception battle
 (including only the troops who successfully intercepted) or as a regular
 battle (including all the troops now in the province, to be resolved later
@@ -1737,18 +1737,24 @@ sea battles.
 \subsubsection{Battle sequence}
 \aparag Each battle follows this sequence of steps:
 \bparag \xnameref{chMilitary:Battle:Evasion}: non-phasing, non-intercepting
-  stacks may attempt to avoid the battle and retreat before it starts.
+stacks may attempt to avoid the battle and retreat before it starts.
 \bparag \xnameref{chMilitary:Battle:Parameters}: determine battle parameters,
-  notably the column of the CRT and DRM to use.
+notably the column of the CRT and DRM to use.
 \bparag \xnameref{chMilitary:Battle:Fight}: each battle can last up to 2
-  \terme{days}. Each day is further split in a \terme{fire} and a
-  \terme{shock} (or \terme{boarding} at sea) roll.
+\terme{days}. Each day is further split in a \terme{fire} and a \terme{shock}
+(or \terme{boarding} at sea) roll.
 \bparag \xnameref{chMilitary:Battle:Pursuit}: the winner pursue the loser.
 \bparag \xnameref{chMilitary:Battle:Loss modifications}: actual losses are
-  computed from the battle result.
+computed from the battle result.
 \bparag \xnameref{chMilitary:Battle:Retreat}: any non-winning stack retreat.
 \bparag \xnameref{chMilitary:Battle:Cleanup}: determine major victory, test
-  death of leaders, \ldots
+death of leaders, \ldots
+
+This Battle sequence, and its details explained below, must be followed in
+strict order. Changing the order of some steps will result in incorrect
+results that can have drastic influence, especially because due to the
+threshold on some effects (\emph{e.g.} 'Major Battle'), a small change can
+have a big consequence.
 
 \subsection{Evasion test}
 \label{chMilitary:Battle:Evasion}
@@ -1910,9 +1916,9 @@ morale modifier on sea and failed retreat modifier on land).
 
 \begin{playtip}
   It is advised to prepare a sheet of blank paper to note the battle results
-  as it unfold. Make two columns (one for each side). On the top of each
-  column, write the DRMs this side will have for the 4 rolls of the battle. Use
-  the rest of the column to write the battle results themselves.
+  as it unfolds. Make two columns (one for each side). On the top of each
+  column, write the DRMs this side will have for the 4 rolls of the
+  battle. Use the rest of the column to write the battle results themselves.
 
   Modifiers are usually very similar for both days of battle. Hence, it is
   usually easier to only compute modifiers for the first day and update them
@@ -1927,11 +1933,14 @@ that do change between days are listed in a 'F1/S1//F2/S2' format.
 
 \aparag[General modifiers.] Apply these modifiers during any battle.
 \begin{modlist}
-\item[+F/0] the side with the greatest Fire value (for its leader) adds
-  the differential between Fire of the leaders to all its Fire rolls.
-\item[0/+S] the side with the greatest Shock value (for its leader) adds
-  the differential between Shock of the leaders to all its Shock rolls.
+\item[+F/0] \Fir differential. The side with the greatest \Fire value (for its
+  leader) adds the differential between \Fire of the leaders to all its Fire
+  rolls.
+\item[0/+S] \Shock differential. The side with the greatest \Shock value (for
+  its leader) adds the differential between \Shock of the leaders to all its
+  Shock rolls.
 \item[0/0//-1/-1] always (second day malus).
+\item[0/-2] 'Facing the Ottomans' malus (see~\ref{chTurkey:Facing Ottomans}).
 \end{modlist}
 
 \aparag[Sea technology modifiers.] Apply these during any sea battle,
@@ -1978,15 +1987,17 @@ depending on the technologies of the participants and the kind of \terme{first
   battle.
 \item[-2/-3//0/0] for the phasing side, if it has crossed a strait or used
   naval transport to enter the province, \textbf{including} when being
-  intercepted in a previously friendly province (hence including when being
-  intercepted at the end of a friendly naval transport).
+  intercepted, including in a previously friendly province (hence including
+  when being intercepted at the end of a friendly naval transport).
 \end{modlist}
 
 \aparag[Artillery modifiers.] Apply these in any land battle.
 \begin{modlist}
 \item[-1/0] for a stack with no \ARMY counter. Exception: during periods
   \period{I} to \period{IV}, a stack commanded by a \LeaderC (not a \LeaderGov
-  or a \LeaderE) does not suffer from this malus.
+  or a \LeaderE) does not suffer from this malus. This malus does apply for
+  \ROTW countries; it also applies for natives with less than 2\LD (natives
+  with 2\LD are automatically merged into an \ARMY\Facemoins).
 \item[+1/0] for a stack that contains at least 6 Artillery
   (check~\ref{chMilitary:Stacks:Artillery} for how to compute Artillery in a
   stack).
@@ -1997,7 +2008,7 @@ if it contains an \ARMY counter of the indicated country or army class and at
 least one of the following condition is true:
 \begin{modlist}
 \item[All] the stack contain at least 3\LD more than its opponent;
-\item[CAIIM] this is during periods \period{I} to \period{IV} and the battle
+\item[\CAIIM] this is during periods \period{I} to \period{IV} and the battle
   occurs in a Plain or Sparse Forest province.
 \item[\CAIIIM] this is during periods \period{IV} or \period{V} and the battle
   occurs in a Plain or Dense Forest province.
@@ -2008,12 +2019,12 @@ least one of the following condition is true:
 \item[TUR] before reform M-2, if the battle occur in a Plain or Desert
   province (\terme{Sipahi} cavalry).
 \end{modlist}
-Whatever the conditions, this bouns may only be claimed once by each side of
+Whatever the conditions, this bonus may only be claimed once by each side of
 the battle.
 
-Note that since Northern Forest are necessarily Dense Forest and \SUE is of
-class \CAIIIM, the specific \SUE bonus is actually only effective during
-periods \period{III} and \period{VI}.
+Note that since Northern Forest provinces are necessarily Dense Forest and
+\SUE is of class \CAIIIM, the specific \SUE bonus is actually only effective
+during periods \period{III} and \period{VI}.
 
 \subsection{2 days of battle}
 \label{chMilitary:Battle:Fight}
