@@ -1879,7 +1879,7 @@ the whole battle.
 First, each side finds the line corresponding to its technology and reads in
 the 'Morale' column its morale (between 1 and 4). \terme{Veteran} stacks
 (see~\ref{chMilitary:Veteran Conscripts}) add 1 to this value. Stacks with
-\TTER technology add 1 (cumulative).
+\TTER technology add 1 until \TARQ included (cumulative).
 
 A stack with \TREN technology has morale 1 if the enemy has \TMED technology
 and 2 otherwise (+1 if \terme{Veteran}, as usual).
@@ -1933,7 +1933,7 @@ that do change between days are listed in a 'F1/S1//F2/S2' format.
 
 \aparag[General modifiers.] Apply these modifiers during any battle.
 \begin{modlist}
-\item[+F/0] \Fir differential. The side with the greatest \Fire value (for its
+\item[+F/0] \Fire differential. The side with the greatest \Fire value (for its
   leader) adds the differential between \Fire of the leaders to all its Fire
   rolls.
 \item[0/+S] \Shock differential. The side with the greatest \Shock value (for
@@ -2025,6 +2025,60 @@ the battle.
 Note that since Northern Forest provinces are necessarily Dense Forest and
 \SUE is of class \CAIIIM, the specific \SUE bonus is actually only effective
 during periods \period{III} and \period{VI}.
+
+\begin{exemple}[Battle parameters]
+  This is late period \period{II} and yet another war occurs in Italy between
+  \FRA and \HIS. In the Milanese plains, 1\ARMY\faceplus and 1\LD (total of
+  5\LD) of \terme{Veteran} Spanish Tercios (technologies \TARQ and \TTER)
+  encounter 2\ARMY\faceplus (total of 8\LD) of \terme{Veteran} French troops
+  coming from the Alps (technology \TARQ).
+
+  First, Morale and CRT columns are computed. With \TARQ, each side has a
+  Morale of 2; being \terme{Veteran} each side has a bonus of \bonus{+1} to
+  Morale; having \TTER, \HIS has another \bonus{+1} to Morale. Hence the
+  Morale is 3 (2+1) for \FRA and 4 (2+1+1) for \HIS.
+
+  Cross-referencing the \TARQ line with the \TARQ column, both side find a
+  \textbf{C/B} for the columns to use during this battle. If each side has a
+  different technology, the columns will be different, here with the same
+  technology the same result will obviously be read twice.
+
+  Next, the DRMs are computed. First a comparison is made between the \LeaderG
+  of each stack. Let's suppose that the French troops are lead by a 242
+  \LeaderG while the Spanish are lead by a 323. This result if +2 to Fire for
+  \FRA and +1 to Shock for \HIS. The terrain is Plain and no river or
+  mountain pass was crossed, hence no terrain modifier.
+
+  \HIS has only 1\ARMY\Faceplus, hence little Artillery. On the other hand,
+  \FRA may have enough\ldots In period \period{II}, \FRA has 3 Artillery per
+  \ARMY\Faceplus. However, when computing Artillery for a stack, the second
+  (and subsequent) \ARMY may not add more than 2, hence the French stack has
+  only 5 Artillery which is not enough to get a bonus. Both side has an \ARMY
+  counter, so no malus either.
+
+  \FRA is of class \CAIV. But the cavalry bonus for class \CAIV only appears
+  in period \period{III}. Anyway, \FRA has 3 more \LD than \HIS and thus still
+  gets the \bonus{+1} cavalry bonus (which can only be obtained once).
+
+  \HIS is \TTER, this gives a \bonus{-1} malus to the French Shock.
+
+  Once summed, the total modifiers are:
+  \begin{itemize}
+  \item French Fire: +2 (leader);
+  \item French Shock: +1 (cavalry) -1 (\TTER) = 0;
+  \item Spanish Fire: +0 (nothing);
+  \item Spanish Shock: +1 (leader).
+  \end{itemize}
+
+  Thus, after factoring the second day modifiers, we obtain for \FRA
+  +2/0//+1/-1 and for \HIS 0/+1//-1/0. \FRA has an overall slight advantage
+  with the DRMs but \HIS has 1 more Morale.
+
+  Note that if \FRA only had 7\LD in the Battle, that would cancel its cavalry
+  bonus and result in modifiers of +2/-1//+1/-2 making its overall modifiers
+  on par with the Spanish ones. Don't forget to grab all those \bonus{+1}, in
+  the end they will save the day\ldots
+\end{exemple}
 
 \subsection{2 days of battle}
 \label{chMilitary:Battle:Fight}
