@@ -296,12 +296,7 @@ cross-reference the modified result in~\ref{table:Discoveries and
 the stack. In the \ROTW, the result is read in the ``\ROTW and Sea''
 column. Note that a result of 5 or less has no effect.
 
-\begin{todo}
-  The Attrition table does not want to be included here. I suspect too much
-  dependence with adjacent table in the TikZ code\ldots
-\end{todo}
-
-%\GTtable{discoveriesattrition}
+\GTtable{attritiontableonly}
 
 Modifiers for Supply attrition:
 \begin{modlist}
@@ -1355,7 +1350,7 @@ hence before it can merge with other forces here.
 
 If the moving stack attempts to avoid a blockade and roll 5 or less (``Forced
 battle''), then the blockading stack may declare an interception which
-automatically succeed. It must still be allowed to intercept (\emph{i.e.} not
+automatically succeeds. It must still be allowed to intercept (\emph{i.e.} not
 already engaged into battle), this simply remove the need for rolling.
 
 Unless in case of automatic success, interception is resolved by a die roll
@@ -1702,16 +1697,16 @@ stacks of the same alliance participate in a battle, they are automatically
 considered merged for the duration of the battle (notably to find the
 commander of the stack).
 
-\textbf{Attacker and defender.} The tables use the terms \terme{attacker} and
-\terme{defender} to design the sides. They are determined as follows: if this
-is an interception battle, then the attacker is the non-phasing alliance and
-the defender is the phasing alliance. If this is not an interception battle,
-then the attacker is the phasing alliance and the defender is the non-phasing
-alliance. Attacker and defender mostly play a role for terrain modifiers. We
-try to avoid these terms in the rules.
-\begin{todo}
-  And to remove them from the table\ldots
-\end{todo}
+% \textbf{Attacker and defender.} The tables use the terms \terme{attacker} and
+% \terme{defender} to design the sides. They are determined as follows: if this
+% is an interception battle, then the attacker is the non-phasing alliance and
+% the defender is the phasing alliance. If this is not an interception battle,
+% then the attacker is the phasing alliance and the defender is the non-phasing
+% alliance. Attacker and defender mostly play a role for terrain modifiers. We
+% try to avoid these terms in the rules.
+% \begin{todo}
+%   And to remove them from the table\ldots
+% \end{todo}
 
 For the sack of clarity, commanding leaders are always referred as \LeaderG or
 \LeaderA even if (in the \ROTW), they may also be \LeaderC, \LeaderGov or
@@ -1727,20 +1722,21 @@ stacks may attempt to avoid the battle and retreat before it starts.
 \bparag \xnameref{chMilitary:Battle:Parameters}: determine battle parameters,
 notably the column of the CRT and DRM to use.
 \bparag \xnameref{chMilitary:Battle:Fight}: each battle can last up to 2
-\terme{days}. Each day is further split in a \terme{fire} and a \terme{shock}
-(or \terme{boarding} at sea) roll.
-\bparag \xnameref{chMilitary:Battle:Pursuit}: the winner pursue the loser.
+\terme{days}. Each day is further split in a \terme{Fire} and a \terme{Shock}
+(or \terme{Boarding} at sea) roll.
+\bparag \xnameref{chMilitary:Battle:Pursuit}: the winner (if any) pursues the
+loser.
 \bparag \xnameref{chMilitary:Battle:Loss modifications}: actual losses are
 computed from the battle result.
-\bparag \xnameref{chMilitary:Battle:Retreat}: any non-winning stack retreat.
+\bparag \xnameref{chMilitary:Battle:Retreat}: any non-winning stack retreats.
 \bparag \xnameref{chMilitary:Battle:Cleanup}: determine major victory, test
 death of leaders, \ldots
 
 This Battle sequence, and its details explained below, must be followed in
 strict order. Changing the order of some steps will result in incorrect
-results that can have drastic influence, especially because due to the
-threshold on some effects (\emph{e.g.} 'Major Battle'), a small change can
-have a big consequence.
+results that can have drastic influence, especially because of the threshold
+on some effects (\emph{e.g.} 'Major Battle'), a small change can have a big
+consequence.
 
 \subsection{Evasion test}
 \label{chMilitary:Battle:Evasion}
@@ -1760,21 +1756,22 @@ then proceed to resolve the next battle.
 friendly port large enough to hold it (controller's choice if any). It must
 roll for attrition as if this was a move. The phasing stack may pursue and
 blockade said port (only). If it choose to pursue and blockade, the phasing
-stack must also roll for attrition as if it were moving.
+stack must also roll for attrition as if it were moving again.
 
 \textbf{Automatic success.} If a land stack is in a province with a friendly
-province large enough to hold it (1 level/\LD, including those in \Pashas),
+fortress large enough to hold it (1 level/\LD, including those in \Pashas),
 then it may retreat in the fortress with no test. It may choose to roll to try
-to retreat in another province but doing so forfeit the possibility to retreat
-in the fortress with no test.
+to retreat in another province but doing so forfeit the possibility to
+automatically retreat in the fortress of the province with no test.
 
 \textbf{On land}, the stack may roll for evasion. If successful, it must move
 into an adjacent friendly unbesieged province (\emph{i.e.} a province where it
 could go with a passive campaign). It is not possible to evade battle via
 naval transport. If the province where the battle occurs is friendly, it is
 possible to retreat part of the stack in its fortress and another part in an
-adjacent province. It is not possible to split the stack in any other way. It
-is possible to split even if the whole stack could fit in the fortress.
+adjacent province (but this does require a successful evasion roll). It is not
+possible to split the stack in any other way. It is possible to split even if
+the whole stack could fit in the fortress.
 
 Land stacks evading do not roll for attrition.
 
@@ -1782,7 +1779,7 @@ After a successful evasion, as after any battle, the phasing stack is
 considered to besieged an enemy fortress in its province (\emph{i.e.} even if
 it is too small or does not have supply, this will only be checked during the
 Siege segment), especially, the fortress is besieged for all purposes during
-the next impulse in the same round (if any).
+the next impulses in the same round (if any).
 
 Similarly, if the non-phasing stack was besieging before evasion, the siege is
 lifted as soon as there is no enemy troops in the province.
@@ -1797,11 +1794,11 @@ leader in the stack), a replacement leader is rolled.
 
 Cross-reference 1d10 (never modified) with the commanding country
 in~\ref{table:Replacement leaders}. The three values correspond to the \Man,
-Fire and Shock of the leader. These values will be used for the whole duration
-of the battle.
+\Fire and \Shock of the leader. These values will be used for the whole
+duration of the battle.
 
 Additionally, when rolling for a \POL \LeaderA, subtract 1 from \Man and when
-rolling for a \PRU \LeaderA, subtract 1 from Fire. The 'Native' line is only
+rolling for a \PRU \LeaderA, subtract 1 from \Fire. The 'Natives' line is only
 used for natives, not for \ROTW countries (who used the 'Minor' line as any
 minor country).
 
@@ -1921,26 +1918,27 @@ that do change between days are listed in a 'F1/S1//F2/S2' format.
 \begin{modlist}
 \item[+F/0] \Fire differential. The side with the greatest \Fire value (for its
   leader) adds the differential between \Fire of the leaders to all its Fire
-  rolls.
+  rolls. [TBD: max +3]
 \item[0/+S] \Shock differential. The side with the greatest \Shock value (for
   its leader) adds the differential between \Shock of the leaders to all its
-  Shock rolls.
+  Shock rolls. [TBD: max +3]
 \item[0/0//-1/-1] always (second day malus).
-\item[0/-2] 'Facing the Ottomans' malus (see~\ref{chTurkey:Facing Ottomans}).
+\item[0/-2] if 'Facing the Ottomans' (see~\ref{chTurkey:Facing Ottomans}).
 \end{modlist}
 
 \aparag[Sea technology modifiers.] Apply these during any sea battle,
 depending on the technologies of the participants and the kind of \terme{first
-  line ships}.
+  line ships} used.
 \begin{modlist}
-\item[+1/0] for a side that has \VGD if the other side has \NGD. Before
-  \TBAT, a side needs two \VGD to gain this modifier. If both side have \VGD
-  in the stack, they may both have this bonus.
-\item[+1/+1] for a side that has \NGD, if both (i) the battle occurs in
-  the \region{Mediterranee}; (ii) the other side has \NWD or \NTD and (iii)
-  this is turn 25 or earlier.
-\item[-1/-1] for a side that has \NGD if both (i) the other side is
-  using \NWD and (ii) this is turn 35 or later.
+\item[+1/0] for a side that has \VGD in its stack if the other side uses \NGD
+  as \terme{first line ships}. Before \TBAT, a side needs two \VGD to gain
+  this modifier. If both side have \VGD in their stack, they may both have
+  this bonus.
+\item[+1/+1] for a side that uses \NGD, if both (i) the battle occurs in the
+  \region{Mediterranee}; (ii) the other side uses \NWD or \NTD and (iii) this
+  is turn 25 or earlier.
+\item[-1/-1] for a side that uses \NGD if both (i) the other side is using
+  \NWD and (ii) this is turn 35 or later.
 \end{modlist}
 
 \aparag[Other sea modifiers.] Apply these during any sea battle.
@@ -1951,6 +1949,8 @@ depending on the technologies of the participants and the kind of \terme{first
   (for a total of 0/+2 when combined with previous modifier).
 \item[+1/0] for a side that has at least 3 more \ND than the other side.
 \end{modlist}
+
+Remark: The ``5 more \ND'' step provides a bonus to \terme{Pursuit}.
 
 \aparag[Other land modifiers.] Apply these during any land battle.
 \begin{modlist}
@@ -1995,19 +1995,19 @@ depending on the technologies of the participants and the kind of \terme{first
 \end{modlist}
 
 \aparag[Structural Cavalry modifiers.] During any land battle, any stack gain
-a 0/+1 DRM if it contains an \ARMY counter of the indicated country or army
-class and at least one of the following condition is true:
+a 0/+1 DRM if both (i) it contains an \ARMY counter of the indicated country
+or army class; (ii) this is the indicated periods; and (iii) the battle occurs
+in the indicated terrain.
 \begin{modlist}
-\item[\CAIIM] this is during periods \period{I} to \period{IV} and the battle
-  occurs in a Plain or Sparse Forest province.
-\item[\CAIIIM] this is during periods \period{IV} or \period{V} and the battle
-  occurs in a Plain or Dense Forest province.
-\item[\CAIV] this is period \period{III}, \period{IV} or \period{V} and the
-  battle occurs in a Plain province;
-\item[\SUE] this is during periods \period{III} to \period{VI} and the battle
-  occurs in a Plain or Northern Forest province.
-\item[TUR] before reform M-2, if the battle occur in a Plain or Desert
-  province (\terme{Sipahi} cavalry).
+\item[\CAIIM] during periods \period{I} to \period{IV}, in a Plain or Sparse
+  Forest province.
+\item[\CAIIIM] during periods \period{IV} or \period{V}, in a Plain or Dense
+  Forest province.
+\item[\CAIV] during periods \period{III} to \period{V}, in a Plain province.
+\item[\SUE] during periods \period{III} to \period{VI}, in a Plain or Northern
+  Forest province.
+\item[\TUR] before reform M-2, in a Plain or Desert province (\terme{Sipahi}
+  cavalry).
 \end{modlist}
 Whatever the conditions, this bonus may only be claimed once by each side of
 the battle.
@@ -2018,17 +2018,18 @@ during periods \period{III} and \period{VI}.
 
 \begin{exemple}[Battle parameters]
   This is late period \period{II} and yet another war occurs in Italy between
-  \FRA and \HIS. In the Milanese plains, 1\ARMY\faceplus and 1\LD (total of
-  5\LD) of \terme{Veteran} Spanish Tercios (technologies \TARQ and \TTER)
-  encounter 2\ARMY\faceplus (total of 8\LD) of \terme{Veteran} French troops
-  coming from the Alps (technology \TARQ).
+  \FRA and \HIS. In the Milanese plains (\provinceLombardia), 1\ARMY\faceplus
+  and 1\LD (total of 5\LD) of \terme{Veteran} Spanish Tercios (technologies
+  \TARQ and \TTER) encounter 2\ARMY\faceplus (total of 8\LD) of
+  \terme{Veteran} French troops (technology \TARQ) coming from the Alps
+  (\provinceSavoia).
 
   First, Morale and CRT columns are computed. With \TARQ, each side has a
   Morale of 2; being \terme{Veteran} each side has a bonus of \bonus{+1} to
   Morale; having \TTER, \HIS has another \bonus{+1} to Morale. Hence the
   Morale is 3 (2+1) for \FRA and 4 (2+1+1) for \HIS.
 
-  Cross-referencing the \TARQ line with the \TARQ column, both side find a
+  Cross-referencing the \TARQ line with the \TARQ column, both sides find a
   \textbf{C/B} for the columns to use during this battle. If each side has a
   different technology, the columns will be different, here with the same
   technology the same result will obviously be read twice.
@@ -2043,7 +2044,7 @@ during periods \period{III} and \period{VI}.
   \FRA may have enough\ldots In period \period{II}, \FRA has 3 Artillery per
   \ARMY\Faceplus. However, when computing Artillery for a stack, the second
   (and subsequent) \ARMY may not add more than 2, hence the French stack has
-  only 5 Artillery which is not enough to get a bonus. Both side has an \ARMY
+  only 5 Artillery which is not enough to get a bonus. Each side has an \ARMY
   counter, so no malus either.
 
   \FRA is of class \CAIV. But the cavalry bonus for class \CAIV only appears
@@ -2074,8 +2075,13 @@ during periods \period{III} and \period{VI}.
   save the day\ldots
 \end{exemple}
 
-\subsection{2 days of battle}
+\subsection{Two days of battle}
 \label{chMilitary:Battle:Fight}
+
+\GTtable{crtonly}
+
+See~\ref{table:Combat Results}.
+
 % \item[0/-1?//-1?/-1?] a side that has lost more morale than the opponent
 %   during the previous rolls of this battle has a \bonus{-1} malus to all its
 %   rolls. The side suffering from this malus is determined before each roll is

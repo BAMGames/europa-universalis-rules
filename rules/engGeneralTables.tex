@@ -1058,7 +1058,7 @@
   \GTtextdecorate
 }
 
-\newcommand{\discoveriesattrition}{
+\newcommand{\attritiontable}{
   \GT{discoveriesattrition}{Discoveries and Attrition}
   \GTcontent{
     \graytabular\begin{tabular}{r||cc||c|cccc}
@@ -1077,6 +1077,15 @@
       \geq 15&F\xxa&F\xxa&100\%&1+P&1+P &2+P&3+P\\\ghline
     \end{tabular}%
   }
+}
+
+\newcommand{\attritiontableonly}{
+  \attritiontable
+  \GTdecorate
+}
+
+\newcommand{\discoveriesattrition}{
+  \attritiontable
   \GTlegend[east south,to eastpoint]{
     \GTheader{Results}
     \begin{modlist}
@@ -1456,8 +1465,8 @@
   \GTcontent{
     \graytabular\begin{tabular}{c|cccccccc}
       \textdownarrow Naval     & \multicolumn{7}{c}{Opponent's technology} \\\ghline\noalign{\global\countrow=0}
-      tech.               & GA & CAR& Nau & GAL & BAT& VE & TD & 74s\\ \ghline\hline
-      GA     & na &  - &  - &  - &  - &  - & - & - \\ \ghline
+      tech.               & \NGD & CAR& Nau & GAL & BAT& VE & TD & 74s\\ \ghline\hline
+      \NGD     & na &  - &  - &  - &  - &  - & - & - \\ \ghline
 %      \technologie{Galley}     & na &  - &  - &  - &  - &  - & - \\ \ghline
       CAR    & -3 &  0 &  - &  - &  - &  - & - & - \\ \ghline
 %      \technologie{Carrack}    & -3 &  0 &  - &  - &  - &  - & - \\ \ghline
@@ -1599,7 +1608,7 @@
   \GTdecorate
 }
 
-\newcommand{\combatresults}{
+\newcommand{\crt}{
   \GT[Combat Results]{combatresults}{Combat results (Loss/Morale)}
   \GTcontent{
     \graytabular\begin{tabular}{r|*{5}{>{\global\savecol\countcol}c>{\global\countcol\savecol}l}}
@@ -1620,6 +1629,15 @@
       \geq14& 4 & \textetoilex\textetoilex\textetoilex & 3\td & \textetoilex\textetoilex\textetoilex & 3 & \textetoilex\textetoilex\textetoilex & 2\td & \textetoilex\textetoilex\textetoilex & 2\tu & \textetoilex\textetoilex\textetoilex \\\ghline
     \end{tabular}
   }
+}
+
+\newcommand{\crtonly}{
+  \crt
+  \GTdecorate
+}
+
+\newcommand{\combatresults}{
+  \crt
   \GTlegend[east south,to eastpoint]{
     \GTheader{Fire effects}
     \begin{modlist}[5em]
@@ -1640,7 +1658,6 @@
     \item[+?] Differential of leaders \terme{Fire} or \terme{Shock} if \geq0, max +3 [TBD]
     \item[-1] For the second day
     \item[-1] For the first day if \terme{foraging}
-      % \item[-1] For the day following a failed \terme{retreat during battle}
     \end{modlist}
   }
   \GTlegend[caption=captiona,xsize offset=-4pt,xsize scale=0.3,xsize=(\gtid main.west)(\gtid caption.east)]{
