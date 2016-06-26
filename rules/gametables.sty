@@ -317,8 +317,7 @@
     \draw [fill=white] (\gtid main.north east)--(\gtid main.south east)--(\gtid main.south west)--(\gtid main.north west)--cycle;
   }
 }
-\newcommand{\IGTtitle}[1][main]{ % \gtid title needed for some complex decorate
-\node(\gtid title)[inner sep=2pt,anchor=south] at (\gtid #1.north) {\rule[-1ex]{0pt}{3ex}\textbf{\falsecaption{table}{\gtpname}{\gtname}}\autolabel{table:\gtlabel}};
+\newcommand{\IGTtitle}[1][main]{
   \begin{pgfonlayer}{overground}
     \draw (\gtid main.north east)--(\gtid main.south east)--(\gtid main.south west)--(\gtid main.north west)--cycle;
   \end{pgfonlayer}}
