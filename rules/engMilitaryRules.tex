@@ -757,8 +757,7 @@ avoid certain dangerous sea zones, or to pick up troops for combined move.
 At the end of its movement, a naval stack is allowed to do one naval action
 (some actions are actually composed of several others). This is never
 mandatory. Especially, battle is not mandatory and naval stacks of different
-alliances may coexist in the same sea zone without problem. Moreover, in order
-to engage an enemy naval stack one must first find it.
+alliances may coexist in the same sea zone without problem.
 
 Most actions are active and can only be done as part of an active
 campaign. Some are passive and can be done as part as any campaign. Note that
@@ -813,13 +812,11 @@ moving stack).
 \GTtable{navyblockade}
 
 \aparag[List of active naval actions.]
-\bparag[Battle.] The moving stack declares that it attempts battle. It must
-successfully intercept its target (exception: if the target stack is
-blockading, this interception automatically succeeds). The battle will be
+\bparag[Battle.] The moving stack declares a battle. The battle will be
 resolved during the Battle Segment of the impulse. A non-phasing stack that is
 engaged in battle may not intercept any more. Each non-phasing stack may only
-be attacked by one phasing stack (failed interception do not count as an
-attack even if they do count as an action)
+be attacked by one phasing stack (\emph{i.e.} you need to merge before
+battle).
 \bparag[Blockading an enemy port/arsenal.] The naval stack must have
 sufficient size according to~\ref{table:Naval Size for Blockade}, depending on
 the size of the fortress. Note that to blockade a level 2 or 3 fortress, one
@@ -1315,17 +1312,6 @@ their previous impulse (including, during the first round of each turn, stacks
 that had no impulse yet) may only intercept with stacks containing at most 1
 \FLEET counter.
 
-Phasing stacks may intercept a non-phasing stack as their action, this is
-resolved as a regular interception (exception: if the non-phasing stack is
-blockading, this interception automatically succeeds). As with any action,
-attrition of the moving stack must be resolved first. If successful, both
-stacks are locked into battle (to be resolved later). Especially the
-non-phasing stack may not intercept anymore but is still considered to be
-doing its (previous) action until battle is resolved (\emph{e.g.} blockade is
-maintained). Each non-phasing stack may be successfully intercepted only once
-per impulse (\emph{i.e.} you should merge before attempting a large battle
-while on land it is possible to bring troops to battle little by little).
-
 Non-phasing stacks engaged into battle may not intercept. It is not possible
 to intercept in a port/arsenal (only in a sea zone). It is not possible to
 counter-intercept. Non-phasing stacks that already lost a battle this impulse
@@ -1352,12 +1338,12 @@ The correct timing for moving and intercepting is:
 \end{enumerate}
 
 Note that it is possible to try and intercept a moving stack that just
-declared it will also attempt a battle. In this case (if both stacks want to
-intercept each other), interception is automatic (no roll). Other non-phasing
-stacks may still attempt to join the battle by rolling for interception. In
-this case, the battle is resolved as a regular battle (\emph{i.e.} after all
-moves) even if it does include non-phasing intercepting stacks. This also
-counts as the (active) action of the moving stack.
+declared it will also battle. If a non-phasing stack allied to the attacked
+stack succeed in interception, it may decide to either resolve this
+immediately as an interception battle or to merge with the attacked stack and
+resolve this later as a regular battle. If a non-phasing stack not allied with
+the attacked stack succeed in interception, this must be resolved as an
+interception battle.
 
 Several non-phasing stacks may attempt interception. As on land, only one
 alliance may actually succeed. As on land, the stacking limit is only enforced
@@ -2003,11 +1989,15 @@ depending on the technologies of the participants and the kind of \terme{first
   stack).
 \end{modlist}
 
-\aparag[Cavalry modifiers.] During any land battle, any stack gain a 0/+1 DRM
-if it contains an \ARMY counter of the indicated country or army class and at
-least one of the following condition is true:
+\aparag[Size Cavalry modifier.] Apply this in any land battle.
 \begin{modlist}
-\item[All] the stack contain at least 3\LD more than its opponent;
+\item[0/+1] for a stack with at least 3\LD more than its opponent.
+\end{modlist}
+
+\aparag[Structural Cavalry modifiers.] During any land battle, any stack gain
+a 0/+1 DRM if it contains an \ARMY counter of the indicated country or army
+class and at least one of the following condition is true:
+\begin{modlist}
 \item[\CAIIM] this is during periods \period{I} to \period{IV} and the battle
   occurs in a Plain or Sparse Forest province.
 \item[\CAIIIM] this is during periods \period{IV} or \period{V} and the battle
@@ -2057,8 +2047,8 @@ during periods \period{III} and \period{VI}.
   counter, so no malus either.
 
   \FRA is of class \CAIV. But the cavalry bonus for class \CAIV only appears
-  in period \period{III}. Anyway, \FRA has 3 more \LD than \HIS and thus still
-  gets the \bonus{+1} cavalry bonus (which can only be obtained once).
+  in period \period{III}. \FRA has 3 more \LD than \HIS and thus gets a
+  \bonus{+1} cavalry bonus.
 
   \HIS is \TTER, this gives a \bonus{-1} malus to the French Shock.
 
@@ -2076,8 +2066,12 @@ during periods \period{III} and \period{VI}.
 
   Note that if \FRA only had 7\LD in the Battle, that would cancel its cavalry
   bonus and result in modifiers of +2/-1//+1/-2 making its overall modifiers
-  on par with the Spanish ones. Don't forget to grab all those \bonus{+1}, in
-  the end they will save the day\ldots
+  on par with the Spanish ones. On the other hand, if this was early period
+  \period{III}, \FRA would have a \bonus{+1} structural cavalry bonus (its
+  armies were typically fielding more cavalries than the Spanish one) for
+  final modifiers of +2/+1//+1/0 giving it a very strong advantage in this
+  battle. Don't forget to grab all those \bonus{+1}, in the end they will
+  save the day\ldots
 \end{exemple}
 
 \subsection{2 days of battle}

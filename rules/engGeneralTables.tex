@@ -1686,15 +1686,19 @@
     \item[+1] if \geq6 Artillery in the stack
     \end{modlist}}
   \GTlegend[caption=captionc,east north=captionb,xsize offset=-4pt,xsize scale=0.33,xsize=(\gtid main.west)(\gtid caption.east)]{
-    \GTheader{Cavalry \terme{Shock} modifiers (max. +1)}{Land battle}
-    \emph{At least one \ARMY}\\
-    \begin{modlist}[2em]
-    \item[All] +1 if at least 3\LD more than enemy % [TDB ?]
-    \item[\CAIV] +1, p. III--V in plains
-    \item[\CAIIIM] +1, p. IV--V in plains and dense forests
-    \item[\SUE] +1, p. III--VI in northern forests
-    \item[\CAIIM] +1, p. I--IV in plains and sparse forests
-    \item[\TUR] +1 before reform M-2 in plains and deserts
+    \GTheader{Land Cavalry \terme{Shock} modifiers}
+    \begin{modlist}
+    \item[+1] if at least 3\LD more than enemy
+    \item[+1] \emph{At least one \ARMY} and (max. 1):
+      \begin{modlist}%[2em]
+      \item[\CAIIM] p. \period{I}--\period{IV} in plains and sparse
+        forests
+      \item[\CAIIIM] p. \period{IV}--\period{V} in plains and dense
+        forests
+      \item[\CAIV] p. \period{III}--\period{V} in plains
+      \item[\SUE] p. \period{III}--\period{VI} in northern forests
+      \item[\TUR] before M-2 in plains and deserts
+      \end{modlist}
     \end{modlist}
   }
   \node (\gtid northbox)[inner sep=2pt,fit=(\gtid main)(\gtid title)(\gtid caption)(\gtid captionb)(\gtid captionc)]{\filler};
