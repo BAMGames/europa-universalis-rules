@@ -529,8 +529,11 @@ true:
 \item the stack contains at least 6\LD (not counting those in \Pasha) or at
   least 2 \Pashas, such large stacks roll for attrition even if they don't
   move, ignore this cause between interceptions (see below);
+\item[OR] the stack contains at least 3\LD and this is a campaign without
+  logistic, such large stacks roll for attrition even if they don't move,
+  ignore this cause between interceptions (see below);
 \item the stack moved at least 6\MP;
-\item the stack moved at least 3\MP and this is a campaign without logistic;
+\item the stack moved at least 3\MP and there is \terme{Bad weather};
 \item the stack used ships to make a naval move and at least one of the
   endpoint is not a controlled port/arsenal large enough to hold the
   transporting navy.
@@ -543,6 +546,15 @@ doing this on the frontline can increase the cost of campaign (because coming
 back on a siege is an aggressive move) or offer opportunities for interception
 to your opponents (and thus opportunities to crush your stack half by half),
 so use this trick wisely.
+
+Note also that a campaign without logistic does decrease the ``massed forces''
+threshold but only one ``massed forces'' causes may apply (\emph{i.e.} a 6\LD
+stack moving without logistic has only 1 cause of attrition). On the other
+hand, \terme{Bad weather} creates a new attrition cause, and the normal
+``distance'' cause may also apply (\emph{i.e.} a stack moving 6\MP or more
+during \terme{Bad weather} has two causes of attrition: ``6\MP'' and ``3\MP
+during \terme{Bad weather}'' hence it must roll for attrition and will suffer
+from a ``extra cause'' malus).
 
 In case of interceptions, the conditions for attrition are checked for each
 part of the movement (between the beginning and the first interception;
