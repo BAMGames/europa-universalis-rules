@@ -2533,6 +2533,140 @@ Finally, check if the losing side has any Morale left. If no, then there is a
 
 \subsection{Loss modifications}
 \label{chMilitary:Battle:Loss modifications}
+
+The losses obtained during the battle are correct for similar stacks (in terms
+of actual composition of typical armies of the period) of 8\LD. They must be
+corrected taking two factors into account. Firstly, the losses causes by small
+stacks (less than 8\LD) are reduced; next losses are adjusted to the relative
+structural size of both armies. A similar procedure is used at sea.
+
+\GTtable{lossestables}
+
+\subsubsection{Small stacks}
+Reduced the losses inflicted by any stack with less than 8\LD (or
+6\ND). Firstly, find in sub-Table <L1/S1> of~\ref{table:Losses Tables} the
+column corresponding to the number of \ND (first line) or \LD (second line) in
+the stack. Next, read in the last line (``Mod.'') a modifier to apply to the
+losses inflicted by this stack (with 7\LD, there is only 50\% chances to have
+-\texttu).
+
+Finally:
+\begin{itemize}
+\item on land, losses inflicted are capped by the size of the stack, remove
+  any exceeding loses;
+\item at sea, losses inflicted are capped by twice the size of the stack,
+  remove any exceeding loses; if a side was routed, the losses it suffer are
+  always at least 1\ND, increase them if needed.
+\end{itemize}
+
+\begin{exemple}
+  Suppose that at the end of a battle, 2\LD inflicted 4 losses. First, find
+  the correction for 2\LD which is '-1\texttu', thus the losses are reduced to
+  4-1\texttu = 2\texttd. This is still more than the number of \LD in the
+  stack, hence the losses are capped to 2 before proceeding
+  further. Basically, it is not possible to kill more enemies that you have
+  soldiers.
+\end{exemple}
+
+\subsubsection{Size Comparison}
+Note that the procedure described here to find the \terme{size differential}
+and use it looks more complicated than it actually is\ldots
+
+\GTtable{armyclasses}
+
+\GTtable{armysizes}
+
+First, find the \terme{Army size} of each stack involved into battle. For
+mono-national stacks, cross-reference the nationality or army class with the
+current period in~\ref{table:Army Classes} to find a number between 0 and
+7. For multi-national stacks, check~\ref{chMilitary:Stacking}.
+
+Next, compare the size of both sides. This can be done in two ways. The
+easiest way is to cross-reference both sizes in~\ref{table:Size Comparison} to
+read a \terme{size differential} between -2 and +2. The Table is symmetrical
+hence if one side has, say, a \terme{size differential} of -1 then the other
+automatically has +1. The other way is to directly compute the \terme{size
+  differential} by taking the difference between sizes, dividing by 3 and
+rounding to the closest integer.
+
+Both methods give the exact same result and using one or the other is mostly a
+matter of ease with the computation or the cross-referencing. Note that a
+difference between sizes of 0 or 1 gives a \terme{size differential} of 0, a
+difference of 2, 3 or 4 gives a \terme{size differential} of +1/-1 and a
+difference of 5 or more gives +2/-2.
+
+Note that \terme{size differentials} are \textbf{not} transitive. For example,
+in period \period{I}, \POL has +1 vs \FRA and \FRA has +1 vs \HIS but \POL
+still only has +1 against \HIS.
+
+At sea, a stack with 7 to 12\ND uses a \terme{size differential} of +1, a
+stack of 13 to 18\ND uses +2 and a stack of 19\ND or more uses +3.
+
+\aparag Finally, once the \terme{size differential} is found, adapt losses
+inflicted according to sub-Table <L2/S2> of~\ref{table:Losses Tables}:
+\bparag On the line ``-1/0'', find the number of losses inflicted and use that
+column. If this is not an integer (\emph{e.g.} 2\texttd), find both the number
+of full losses and the number of thirds. If more than 6 losses were inflicted,
+use the last column.
+\bparag Cross-reference the column (or columns) obtained above with the line
+corresponding to the \terme{size differential}. The new number (or sum of
+numbers) is the actual losses inflicted. If more than 6 losses were inflicted,
+you'll find instead a number to add or subtract to the losses.
+
+Note that this last correction is \textbf{not} capped as the previous one. It
+basically represents the fact that, what is represented by a \TUR \LD
+contained actually almost twice as many men as what is represented by a \HIS
+\LD. Thus, during a \TUR-\HIS battle, if \TUR inflicts 1 losses, this roughly
+correspond to 1 of \emph{its} \LD an is a much larger \HIS casualty.
+
+\begin{exemple}
+  Continuing the previous \FRA-\HIS battle. \HIS had 5\LD and inflicted 3
+  losses. \FRA had 8\LD and inflicted 4 losses.
+
+  First, because \HIS has less than 8\LD, its losses are reduced according to
+  <L1>. In the '4/5\LD' column, the last line reads '-\texttd'. Hence, \HIS
+  has only inflicted 3-\texttd=2\texttu losses. This is less than its number
+  of \LD (5), hence it is not capped further. \FRA had 8\LD and its losses do
+  not need to be reduced (they may still need to be capped in extremely bloody
+  battles).
+
+  Next, compute the \terme{size differential}. In period \period{III}, \FRA
+  has a size of 2 and \HIS has a size of 0. Hence the \terme{size
+    differential} is +1/-1 favouring \FRA.
+
+  Lastly, adapt losses according to it. \HIS first looks in the ``0'' line to
+  find the columns corresponding to both '2' (fourth column) and '\texttu'
+  (first column). Next, \HIS has to look at the numbers in this columns in the
+  ``-1'' line. Because the ``-1'' and ``0'' lines are the same (``-1/0''), the
+  same numbers are obviously found. Hence the losses inflicted by \HIS are
+  actually 2\texttu.
+
+  \FRA finds in the ``-1/0'' line the column corresponding to '4' (sixth
+  column). Next, it looks in the ``+1'' line what's written in this column and
+  finds a 4\texttd. These are the losses really inflicted by \FRA.
+
+  Note that the differences in size, both structural (the +1 of \FRA) and
+  conjectural (\HIS only has 5\LD) end up playing a huge role on the final
+  losses. The losses differential was 1 before these computation and has now
+  become 2\texttu!
+\end{exemple}
+
+\begin{exemple}[Size differential]~
+
+  Inflicting 4 losses at -2 results in 3 actual losses.
+
+  Inflicting 3\texttd losses at +1 results in 3\texttd+\texttd=4\texttu.
+
+  Inflicting 2\texttd losses at -2 results in 1\texttu+\texttu=1\texttd.
+
+  Inflicting 7 losses at +2 gives a '\#+2' modifier and results in 7+2=9
+  actual losses.
+
+  Inflicting 8\texttu losses at +3 gives a '\#+4' modifier (the thirds are
+  ignored if more than 6 losses are inflicted, the last column already takes
+  that into account). This results in 12\texttu actual losses.
+\end{exemple}
+
 \subsection{Retreat}
 \label{chMilitary:Battle:Retreat}
 \subsection{Battle cleanup}

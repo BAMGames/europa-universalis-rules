@@ -1590,15 +1590,25 @@
   \GT{armysizes}{Size Comparison}
   \GTcontent{
     \graytabular\begin{tabular}{c|*{8}{c}}
-      &\bf  0&1&\bf 2&\bf 3&\bf 4&5&6&\bf 7 \\\ghline
-      \bf 7&\bf \llap+2&\llap+2&\bf \llap+2& \llap+1&\bf \llap+1&\llap+1&0&\bf 0 \\\ghline
-      6&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0 \\\ghline
-      5&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1 \\\ghline
-      \bf 4&\bf \llap+1&\llap+1&\bf \llap+1&\bf 0&\bf 0&0&\llap-1&\bf \llap-1 \\ \ghline
-      \bf 3&\bf \llap+1&\llap+1&\bf 0&\bf 0&\bf 0&\llap-1&\llap-1&\llap-1 \\ \ghline
-      \bf 2&\bf\llap+1&0&\bf0&\bf 0&\bf \llap-1&\llap-1&\llap-1&\bf \llap-2\\ \ghline
-      1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2\\ \ghline
-      \bf 0&\bf 0&0&\bf \llap-1&\bf \llap-1&\bf \llap-1&\llap-2&\llap-2&\bf \llap-2 \\ \ghline
+      & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\\ghline
+      7&\llap+2&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0 \\ \ghline
+      6&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0 \\ \ghline
+      5&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1 \\ \ghline
+      4&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1&\llap-1 \\ \ghline
+      3&\llap+1&\llap+1&0&0&0&\llap-1&\llap-1&\llap-1 \\ \ghline
+      2&\llap+1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2 \\ \ghline
+      1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2 \\ \ghline
+      0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2&\llap-2 \\ \ghline
+% the bold is a bit confusing and not that visible.
+      % &\bf  0&1&\bf 2&\bf 3&\bf 4&5&6&\bf 7 \\\ghline
+      % \bf 7&\bf \llap+2&\llap+2&\bf \llap+2& \llap+1&\bf \llap+1&\llap+1&0&\bf 0 \\\ghline
+      % 6&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0 \\\ghline
+      % 5&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1 \\\ghline
+      % \bf 4&\bf \llap+1&\llap+1&\bf \llap+1&\bf 0&\bf 0&0&\llap-1&\bf \llap-1 \\ \ghline
+      % \bf 3&\bf \llap+1&\llap+1&\bf 0&\bf 0&\bf 0&\llap-1&\llap-1&\llap-1 \\ \ghline
+      % \bf 2&\bf\llap+1&0&\bf0&\bf 0&\bf \llap-1&\llap-1&\llap-1&\bf \llap-2\\ \ghline
+      % 1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2\\ \ghline
+      % \bf 0&\bf 0&0&\bf \llap-1&\bf \llap-1&\bf \llap-1&\llap-2&\llap-2&\bf \llap-2 \\ \ghline
     \end{tabular}
   }
   \GTlegend[south west,margins,xsize=(\gtid main)(\gtid eastpoint),font=\small]{
@@ -1760,7 +1770,7 @@
   {\gtid main.south west}{0pt,-5ex}{%
     \begin{tabular}{c||c|c||*{6}{c}|c}
       -2	&\tu	&\tu	& \td	&1\tu	&2\tu	&3	&4	&4\td	& \#-2+\td \\\hline
-      -1/0 	&\tu	&\td	&1	& 2	&3	   &4	     &5	&6	& \#=6+ \\\hline
+      -1/0 	&\tu	&\td	&1	& 2	&3	   &4	     &5	&6	& >6 \\\hline
       +1	&\tu	&\td	&1\tu	&2\tu	&3\td   &4\td   &6	&7	& \#+1 \\\hline
       +2	&\td	&1	&1\td	&2\td&4\tu   &5\td   &7	&8	& \#+2 \\\hline
       +3	&\td	&1\tu	&2	&3\tu&5       &7      &9	&10	& \#+4
