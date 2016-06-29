@@ -1698,16 +1698,16 @@ Resolve all non-interception battles caused by the movement, in order of
 choice of the phasing alliance (at random in case of disagreement). Each
 battle must be fully resolve before the next one starts.
 
-Battles caused by interceptions are resolved immediately but follow the same
-procedure as this one.
+Battles caused by interceptions are resolved immediately (during movement) but
+follow the same procedure as this one.
 
 Land and sea battles follow the same sequence with slight modifications.
 
 Battles are always only fought between two stacks of belligerent
 alliances. There cannot be a three-sided battle. If, for some reason, several
 stacks of the same alliance participate in a battle, they are automatically
-considered merged for the duration of the battle (notably to find the
-commander of the stack).
+considered merged before teh battle starts (notably to find the commander of
+the stack) and for its entire duration.
 
 % \textbf{Attacker and defender.} The tables use the terms \terme{attacker} and
 % \terme{defender} to design the sides. They are determined as follows: if this
@@ -1811,8 +1811,8 @@ duration of the battle.
 
 Additionally, when rolling for a \POL \LeaderA, subtract 1 from \Man and when
 rolling for a \PRU \LeaderA, subtract 1 from \Fire. The 'Natives' line is only
-used for natives, not for \ROTW countries (who used the 'Minor' line as any
-minor country).
+used for natives (\pays{natives}), not for \ROTW countries (who use the
+'Minor' line as any minor country).
 
 Note that Replacement leaders are rolled after evasion and hence cannot be
 used to evade battle.
@@ -1863,6 +1863,7 @@ whole duration of the battle. In case of tie, no side has \terme{Wind
   Advantage}.
 
 \subsubsection{Morale and CRT column}
+\label{chMilitary:Battle:Parameters:CRT}
 Either~\ref{table:Naval Fire Shock} or~\ref{table:Land Fire Shock} is used to
 determine morale of both sides and the columns of the CRT it will use during
 the whole battle.
@@ -1882,7 +1883,7 @@ and 2 otherwise (+1 if \terme{Veteran}, as usual).
 \begin{designnote}
   \TREN already provides the possibility to fire. Together with an extra
   morale point, this would give them a devastating advantage against \TMED
-  stacks. This way, the fire step already give \TREN vs \TMED a big advantage
+  stacks. This way, the fire step already gives \TREN vs \TMED a big advantage
   to the \TREN stack but the possibility of surprise still exists\ldots
 \end{designnote}
 
@@ -1891,15 +1892,17 @@ possibly different columns. Column \textbf{A} is better than Column \textbf{B}
 and so forth.
 
 Each side cross-references its technology (line) with the technology of the
-opponent and find two letters. The first is the \terme{Fire CRT column}, the
-second is the \terme{Shock} (or \terme{Boarding}) \terme{CRT column}. The bold
-letters in the table correspond to the symmetrical situation where both sides
-have the same technology (which happens most of the time).
+opponent (column) and find two letters. The first is the \terme{Fire CRT
+  column}, the second is the \terme{Shock} (or \terme{Boarding}) \terme{CRT
+  column}. The bold letters in the table correspond to the symmetrical
+situation where both sides have the same technology (which happens most of the
+time).
 
 Stacks with \TMED technology have only one letter in this table. They never
 roll for fire and thus only have a \terme{Shock CRT column}.
 
 \subsubsection{Die rolls modifiers}
+\label{chMilitary:Battle:Parameters:DRM}
 Compute DRMs for the battle. Note these DRMs for easy use later on. Unless
 explicitly stated otherwise, all these DRMs are cumulative.
 
@@ -1962,7 +1965,13 @@ depending on the technologies of the participants and the kind of \terme{first
 \item[+1/0] for a side that has at least 3 more \ND than the other side.
 \end{modlist}
 
-Remark: The ``5 more \ND'' step provides a bonus to \terme{Pursuit}.
+Remark: The ``5 more \ND'' step will provide a bonus to \terme{Pursuit}.
+
+Remark: count all the \ND used as \terme{first line ship}. Notably, each \NGD
+counts as 1\ND. Because there are usually much more \NGD than \NWD in a stack
+(the stacking limits being twice as big), \NGD vs \NWD often get these
+modifiers. Take that into account when trying to figure out the best time to
+switch from an \NGD navy to a \NWD one\ldots
 
 \aparag[Other land modifiers.] Apply these during any land battle.
 \begin{modlist}
@@ -2048,7 +2057,7 @@ during periods \period{III} and \period{VI}.
 
   Next, the DRMs are computed. First a comparison is made between the \LeaderG
   of each stack. Let's suppose that the French troops are lead by a 242
-  \LeaderG while the Spanish are lead by a 323. This result if +2 to Fire for
+  \LeaderG while the Spanish are lead by a 423. This result if +2 to Fire for
   \FRA and +1 to Shock for \HIS. The terrain is Plain and no river or
   mountain pass was crossed, hence no terrain modifier.
 
@@ -2067,10 +2076,8 @@ during periods \period{III} and \period{VI}.
 
   Once summed, the total modifiers are:
   \begin{itemize}
-  \item French Fire: +2 (leader);
-  \item French Shock: +1 (cavalry) -1 (\TTER) = 0;
-  \item Spanish Fire: +0 (nothing);
-  \item Spanish Shock: +1 (leader).
+  \item French Fire: +2 (leader); \quad French Shock: +1 (cavalry) -1 (\TTER) = 0;
+  \item Spanish Fire: +0 (nothing); \quad Spanish Shock: +1 (leader).
   \end{itemize}
 
   Thus, after factoring the second day modifiers, we obtain for \FRA
@@ -2085,6 +2092,13 @@ during periods \period{III} and \period{VI}.
   final modifiers of +2/+1//+1/0 giving it a very strong advantage in this
   battle. Don't forget to grab all those \bonus{+1}, in the end they will
   save the day\ldots
+
+  The combat result sheet should now looks like:
+  \begin{tabular}{c|c}
+    \FRA & \HIS \\
+    \hline
+    +2/0//+1/-1 & 0/+1//-1/0\\
+  \end{tabular}
 \end{exemple}
 
 \subsection{Two days of battle}
@@ -2092,13 +2106,242 @@ during periods \period{III} and \period{VI}.
 
 \GTtable{crtonly}
 
-See~\ref{table:Combat Results}.
+The battle itself consist in two \terme{days}, each one split in a Fire and
+Shock rolls. Each roll is made on~\ref{table:Combat Results}, by
+cross-referencing the correct column
+(see~\ref{chMilitary:Battle:Parameters:CRT}) with the result of 1d10 modified
+by the correct DRM (see~\ref{chMilitary:Battle:Parameters:DRM}).
 
-% \item[0/-1?//-1?/-1?] a side that has lost more morale than the opponent
-%   during the previous rolls of this battle has a \bonus{-1} malus to all its
-%   rolls. The side suffering from this malus is determined before each roll is
-%   made and may vary during battle.
+The results of each roll can be --- (nothing); a number of \emph{losses} (in
+increment of \texttu); or some \textetoile (\emph{morale losses}). Both the
+losses and morale losses are applied (if any).
 
+Between the rolls, various checks are made to see if the battle ends now
+(\emph{e.g.} if one side is routed or wants to retreat). Again, apply the
+battle sequence described here in strict order.
+
+Losses and morale losses are tallied during the battle. It is advised to note
+them down when they happen to ease the process.
+
+\begin{playtip}
+  On the sheet where you've noted the DRM, you should have some space to note
+  the result. Write in each column the results inflicted by the corresponding
+  side (alternatively, you may write the results suffered by said side, but in
+  any case make a choice and stick to it).
+
+  To handle the full losses and \texttu or \texttd ones, it is convenient to
+  note the full losses as | and the \texttu{s} as dots: one dot for a \texttu
+  (.), a second one for a \texttd (:) and connect them in a | when it becomes
+  a full loss.
+
+  Morale losses can be written as \textetoile. Be sure to leave some space for
+  writing more things as the battle unfolds (it may be convenient to tally the
+  losses on the left-hand part, from right to left (\emph{i.e.} from centre to
+  outside) while the \textetoile are tallied on the right from left to right
+  (\emph{i.e.} from centre to outside), that way you won't run out of space or
+  risk one tallied to ``crash'' into the other).
+\end{playtip}
+
+% Be sure to use the exact same phrasing each time.
+\newcommand{\chMilBattleRoll}[4][]{\bparag[#4.] Both sides roll for #4 of
+  the #2 day. \ifx#1\relax\else At sea, the side that suffered the most
+  \textetoile previously in this battle has a \bonus{-1} DRM (note that this
+  is \textbf{not} necessarily the side with less Morale or less remaining
+  Morale); in case of tie, nobody gets the malus.\fi #3 results.}
+\newcommand{\chMilFireRoll}[3][]{\chMilBattleRoll[#1]{#2}{#3}{Fire}}
+\newcommand{\chMilFireTech}{
+  \bparag[Technology.] A Stack with \TMED technology does not roll for Fire. A
+  stack with \TREN technology only apply the \textetoile. A stack with \TARQ
+  technology only does half (round down to lesser \texttu) the indicated
+  losses. A stack with \NGD and no \VGD only does half (round up to larger
+  \texttu) the indicated losses.}
+\newcommand{\chMilMoraleCheck}{
+  \bparag[Rout.] If one side has suffered more \textetoile than its
+  \terme{Morale}, it is immediately routed. It loses the battle and its
+  opponent wins it. Go to~\ref{chMilitary:Battle:Pursuit}.}
+\newcommand{\chMilWindAdvRetreat}{
+  \bparag[Retreat.] At sea (only), the side with \terme{Wind advantage} may
+  decide to retreat. If it does, it loses the battle and its opponent wins it
+  the but there is no pursuit. Go directly to~\ref{chMilitary:Battle:Loss
+    modifications}.}
+\newcommand{\chMilShockRoll}[1]{\chMilBattleRoll[t]{#1}{Tally}{Shock}}
+
+\newcommand{\chMilFire}[4][]{
+  \aparag[#4 fire]
+  \chMilFireRoll[#1]{#2}{#3}
+  \chMilFireTech
+  \chMilMoraleCheck
+  \chMilWindAdvRetreat
+}
+
+\newcommand{\chMilShock}[2]{
+  \aparag[#2 shock]
+  \chMilShockRoll{#1}
+  \chMilMoraleCheck
+}
+
+\chMilFire{first}{Note}{First}
+
+\chMilShock{first}{First}
+
+\aparag[End of first day: Destruction.] Using the computation described
+at~\ref{chMilitary:Battle:Loss modifications}, check if one side has suffered
+more losses than its size. If so, go to~\ref{chMilitary:Battle:Pursuit} (the
+Pursuit may cause extra Morale loss and turn this into a rout and, possibly, a
+\terme{Major Battle}). The destroyed stack loses the battle and its opponent
+wins it.
+
+\aparag[End of first day: Retreat.] Each side has the possibility to attempt to
+break battle and retreat (thus loosing the battle). If this an interception
+battle, the phasing side decides (and resolves) first, otherwise the
+non-phasing side decides first.
+\bparag To attempt a retreat, one side must roll 1d10 and compare it to the
+sum of the \Man of its commanding leader and its remaining Morale (initial
+Morale minus number of \textetoile suffered).
+\bparag If the result is \leq Morale+\Man, the retreat succeeds. The
+retreating side loses the battle and its opponent wins it. Go
+to~\ref{chMilitary:Battle:Pursuit}.
+\bparag Otherwise, the retreat fail. the opposing side will get a +1/+1
+modifier for 2nd day.
+\bparag It is possible to attempt retreat after a failed retreat by the
+opponent, thus it is possible for both sides to get the +1/+1 modifier for
+failed enemy retreat\ldots
+
+\chMilFire[t]{second}{Tally}{Second}
+
+\chMilShock{second}{Second}
+
+\begin{exemple}
+  During a sea battle, suppose that one side started with a Morale of 4 and
+  suffered from 2\textetoile while the opposing side started with a Morale of
+  only 2 but suffered only 1\textetoile. In that case, the first side will get
+  the \bonus{-1} malus for ``more Morale losses'' even through its remaining
+  Morale (2) is higher than its opponent (1).
+\end{exemple}
+
+\begin{exemple}
+  Continuing the previous \FRA-\HIS battle. \FRA has 8\LD and modifiers of
+  +2/0//+1/-1 with a Morale of 3. \HIS has 5\LD and modifiers of 0/+1//-1/0
+  with a Morale of 4. Both roll on columns \textbf{C/B}.
+
+  \begin{minipage}{0.7\linewidth}
+    \emph{First day, Fire:}
+    \begin{itemize}
+    \item \FRA rolls 10+2 = 12, resulting in
+      2\texttu\textetoile\textetoile. Losses are divided by 2, rounded down
+      (Fire with \TARQ), resulting in 1\textetoile\textetoile.
+    \item \HIS rolls 6+0 = 6 resulting in \texttu divided by 2 gives nothing.
+    \end{itemize}
+  \end{minipage} %
+  \hfill %
+  \begin{minipage}{0.25\linewidth}
+    \begin{tabular}{c|c}
+      \FRA & \HIS \\
+      \hline
+      +2/0//+1/-1 & 0/+1//-1/0\\
+      \textcolor{red}{|\textetoile\textetoile} &
+    \end{tabular}
+  \end{minipage}
+
+  \FRA has not lost any Morale. \HIS has lost 2 Morale, less than its initial
+  4 and thus still has Morale left. Nobody routs, hence the battle goes on.
+
+  \begin{minipage}{0.7\linewidth}
+    \emph{First day, Shock:}
+    \begin{itemize}
+    \item \FRA rolls 6+0 = 6 resulting in \texttd. Its total is now
+      1\texttd\textetoile\textetoile.
+    \item \HIS rolls 7+1 = 8 resulting in 1\texttu\textetoile. Its total is now
+      1\texttu\textetoile.
+    \end{itemize}
+  \end{minipage} %
+  \hfill %
+  \begin{minipage}{0.25\linewidth}
+    \begin{tabular}{c|c}
+      \FRA & \HIS \\
+      \hline
+      +2/0//+1/-1 & 0/+1//-1/0\\
+      \textcolor{red}{\normalfont :}|\textetoile\textetoile
+           & \textcolor{red}{.|\textetoile}
+    \end{tabular}
+  \end{minipage}
+
+  \FRA has lost 1 Morale, less than its initial 3. \HIS has lost 2 Morale,
+  less than its initial 4. Nobody routs, the battle goes on.
+
+  Since this is the end of first day, one check whether one side is completely
+  eliminated. See details of the computation in~\ref{chMilitary:Battle:Loss
+    modifications}. \FRA has actually suffered only \texttd losses
+  (1\texttu-\texttd because \HIS only has 5\LD), less than its initial 8\LD
+  hence he's still alive. \HIS has actually suffered 2 losses (1\texttd
+  becoming 2 because \FRA has +1 size), less than its initial 5\LD hence he's
+  still alive. Since there are still men in both troops the battle goes on.
+
+  Remark: complete elimination of a troop after first day only happens with
+  small troops (3\LD or less) or extreme results (rolling 10 for both Fire and
+  Shock with good modifiers).
+
+  Since this is the end of first day, each side has the possibility to try and
+  retreat. \FRA suffered almost no losses and decide to stay. \HIS has already
+  lost 2\textetoile\textetoile and feels like a major defeat is coming\ldots
+  Since he has 4 in \Man, he decide to try to flee. 4 \Man + 2 remaining
+  Morale, the retreat threshold is 6. \HIS rolls\ldots 7 and fails!
+
+  During the second day, \FRA thus gets a +1/+1 modifier (it basically cancels
+  the -1/-1 for second day) and thus actually stays at +2/0. \HIS, as
+  computed, is now at -1/0.
+
+  Notice that the artillery and cavalry bonus are not recomputed between each
+  day and stay the same than in the beginning of the battle, even if some of
+  the troops were lost. The actual losses are only implemented at the end of
+  the battle and at this stage we still use the initial forces.
+
+  \begin{minipage}{0.7\linewidth}
+    \emph{Second day, Fire:}
+    \begin{itemize}
+    \item \FRA rolls 3+2 = 5 resulting in \texttu divided by 2 gives
+      nothing. Its total is now 1\texttd\textetoile\textetoile.
+    \item \HIS rolls 10-1 = 9 resulting in 1\texttu\textetoile divided by 2,
+      gives \texttd\textetoile. Its total is now 2\textetoile\textetoile.
+    \end{itemize}
+  \end{minipage} %
+  \hfill %
+  \begin{minipage}{0.25\linewidth}
+    \begin{tabular}{c|c}
+      \FRA & \HIS \\
+      \hline
+      +2/0//\textcolor{red}{+2/0} & 0/+1//-1/0\\
+      {\normalfont :}|\textetoile\textetoile
+           & .\hspace{-2.3pt}\textcolor{red}{|}|\textetoile\textcolor{red}{\textetoile}
+    \end{tabular}
+  \end{minipage}
+
+  Since the beginning of the battle, both side suffered from 2 Morale losses,
+  less than their initial Morale. Nobody routs, hence the battle goes on.
+
+  \begin{minipage}{0.7\linewidth}
+    \emph{Second day, Shock:}
+    \begin{itemize}
+    \item \FRA rolls 7+0 = 7 resulting in 1\textetoile. Its total is now
+      2\texttd\textetoile\textetoile\textetoile.
+    \item \HIS rolls 6+0 = 6 resulting in \texttd. Its total is now
+      2\texttd\textetoile\textetoile.
+    \end{itemize}
+  \end{minipage} %
+  \hfill %
+  \begin{minipage}{0.25\linewidth}
+    \begin{tabular}{c|c}
+      \FRA & \HIS \\
+      \hline
+      +2/0//\textcolor{red}{+2/0} & 0/+1//-1/0\\
+      \textcolor{red}{\normalfont :}{\normalfont
+      :}\hspace{-2.15pt}\textcolor{red}{|}|\textetoile\textetoile\textcolor{red}{\textetoile}
+           & \textcolor{red}{\normalfont:}||\textetoile\textetoile
+    \end{tabular}
+  \end{minipage}
+
+  Nobody routs and nobody is completely destroyed.
+\end{exemple}
 
 \subsection{Pursuit}
 \label{chMilitary:Battle:Pursuit}

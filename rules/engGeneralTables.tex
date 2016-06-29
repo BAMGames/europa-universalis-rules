@@ -1680,12 +1680,18 @@
     \item[+1] If after \terme{Fire} segment
     \end{modlist}
     \GTheader[end of day]{Retreat during battle}
-    \GTitem{Land: roll 1d10\leq\Man+Morale}
+    % \GTitem{Land: roll 1d10\leq\Man+Morale}
+    % \begin{modlist}[3em]
+    % \item[Success] Battle lost (pursuit, retreat)
+    % \item[Failure] 2\up{nd} day (enemy has bonus +1)
+    % \end{modlist}
+    % \GTitem{Sea: automatic success}
+    \GTitem{roll 1d10\leq\Man+Morale}
     \begin{modlist}[3em]
     \item[Success] Battle lost (pursuit, retreat)
     \item[Failure] 2\up{nd} day (enemy has bonus +1)
     \end{modlist}
-    \GTitem{Sea: automatic success}
+%    \GTitem{Sea: automatic success}
   }
   \GTlegend[caption=captionb,east north=captiona,xsize offset=-4pt,xsize scale=0.37,xsize=(\gtid main.west)(\gtid caption.east)]{
     \GTheader[Fire/Shock // Fire/Shock 2\up{nd} day]{Terrain modifiers}
