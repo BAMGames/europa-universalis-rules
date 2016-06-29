@@ -2038,19 +2038,21 @@ Note that since Northern Forest provinces are necessarily Dense Forest and
 during periods \period{III} and \period{VI}.
 
 \begin{exemple}[Battle parameters]
-  This is late period \period{II} and yet another war occurs in Italy between
-  \FRA and \HIS. In the Milanese plains (\provinceLombardia), 1\ARMY\faceplus
-  and 1\LD (total of 5\LD) of \terme{Veteran} Spanish Tercios (technologies
-  \TARQ and \TTER) encounter 2\ARMY\faceplus (total of 8\LD) of
-  \terme{Veteran} French troops (technology \TARQ) coming from the Alps
-  (\provinceSavoia).
+  This is late period \period{III} and \HIS tries to helps \pays{sainte-ligue}
+  put the Duke of Guise on the French throne. In the Northern French plains
+  (\provinceArtois), 1\ARMY\faceplus and 1\LD (total of 5\LD) of
+  \terme{Veteran} Spanish Tercios (technologies \TMUS and \TTER) encounter
+  2\ARMY\faceplus (total of 8\LD) of \terme{Veteran} French troops (technology
+  \TMUS) coming from \province{Ile-de-France}.
 
-  First, Morale and CRT columns are computed. With \TARQ, each side has a
-  Morale of 2; being \terme{Veteran} each side has a bonus of \bonus{+1} to
-  Morale; having \TTER, \HIS has another \bonus{+1} to Morale. Hence the
-  Morale is 3 (2+1) for \FRA and 4 (2+1+1) for \HIS.
+  First, Morale and CRT columns are computed. With \TMUS, each side has a
+  Morale of 3; being \terme{Veteran} each side has a bonus of \bonus{+1} to
+  Morale; Hence the Morale is 4 (2+1+1) for both.
 
-  Cross-referencing the \TARQ line with the \TARQ column, both sides find a
+  Remark: \TTER gives no Morale bonus in \TMUS. However, with \TARQ \FRA would
+  have a Morale of 3 (2+1) and \HIS of 4 (2+1+1).
+
+  Cross-referencing the \TMUS line with the \TMUS column, both sides find a
   \textbf{C/B} for the columns to use during this battle. If each side has a
   different technology, the columns will be different, here with the same
   technology the same result will obviously be read twice.
@@ -2068,36 +2070,34 @@ during periods \period{III} and \period{VI}.
   only 5 Artillery which is not enough to get a bonus. Each side has an \ARMY
   counter, so no malus either.
 
-  \FRA is of class \CAIV. But the cavalry bonus for class \CAIV only appears
-  in period \period{III}. \FRA has 3 more \LD than \HIS and thus gets a
-  \bonus{+1} cavalry bonus.
+  \FRA is of class \CAIV. In period \period{III}, with a least one \ARMY
+  counter in the stack and in Plain, this gives a \bonus{+1} cavalry
+  bonus. \FRA has 3 more \LD than \HIS and thus gets another \bonus{+1}
+  cavalry bonus.
 
   \HIS is \TTER, this gives a \bonus{-1} malus to the French Shock.
 
   Once summed, the total modifiers are:
   \begin{itemize}
-  \item French Fire: +2 (leader); \quad French Shock: +1 (cavalry) -1 (\TTER) = 0;
+  \item French Fire: +2 (leader); \quad French Shock: +2 (cavalry) -1 (\TTER)
+    = +1;
   \item Spanish Fire: +0 (nothing); \quad Spanish Shock: +1 (leader).
   \end{itemize}
 
   Thus, after factoring the second day modifiers, we obtain for \FRA
-  +2/0//+1/-1 and for \HIS 0/+1//-1/0. \FRA has an overall slight advantage
-  with the DRMs but \HIS has 1 more Morale.
+  +2/+1//+1/0 and for \HIS 0/+1//-1/0. \FRA has an overall advantage with the
+  DRMs but \HIS has 1 more Morale.
 
-  Note that if \FRA only had 7\LD in the Battle, that would cancel its cavalry
-  bonus and result in modifiers of +2/-1//+1/-2 making its overall modifiers
-  on par with the Spanish ones. On the other hand, if this was early period
-  \period{III}, \FRA would have a \bonus{+1} structural cavalry bonus (its
-  armies were typically fielding more cavalries than the Spanish one) for
-  final modifiers of +2/+1//+1/0 giving it a very strong advantage in this
-  battle. Don't forget to grab all those \bonus{+1}, in the end they will
-  save the day\ldots
+  Note that if \FRA only had 7\LD in the Battle, that would cancel its second
+  cavalry bonus and result in modifiers of +2/0//+1/-1 making its overall
+  advantage slighter on par with the Spanish ones. Don't forget to grab all
+  those \bonus{+1}, in the end they will save the day\ldots
 
-  The combat result sheet should now looks like:
+  The combat result sheet should now look like:
   \begin{tabular}{c|c}
     \FRA & \HIS \\
     \hline
-    +2/0//+1/-1 & 0/+1//-1/0\\
+    +2/+1//+1/0 & 0/+1//-1/0\\
   \end{tabular}
 \end{exemple}
 
@@ -2219,18 +2219,42 @@ failed enemy retreat\ldots
   Morale (2) is higher than its opponent (1).
 \end{exemple}
 
+On land, it may happen that a \ROTW minor or \pays{natives} stack fight with
+more than 8\LD. In that case, the stack rolls, for each roll, 1d10 for each
+group of 8\LD. One of these dice must be designed (before roll) as 'main die'
+and another one as 'last die'. Only count the \textetoile caused by the 'main
+die'. Count the losses of \textbf{all} dice but tally the losses of the 'last
+die' separately (they will be reduced as the 'last die' may correspond to less
+than 8\LD).
+
+Any other stack fights normally, whatever the number of \LD in it (notably,
+\TUR stacks may have more than 8\LD due to \Pashas but nonetheless use the
+normal rules).
+
+\begin{exemple}
+  The Togukawa shogun decides to get ride of the Portuguese traders and the
+  population in \ville{Nagasaki} attacks them. There are 40\LD of Natives in
+  the province. Hence they will use 40/8=5 dice in battle. Only one of them
+  will cause \textetoile but they will all cause losses\ldots
+
+  If, after a first battle, there are only 35\LD of Natives in the province,
+  then they still use 5 dice in battle but now the last one only represent
+  3\LD and not 8 (35 = 4 \textmultiply 8 + 3). Losses caused by this die are
+  tallied separately as they will need to be reduced as any losses caused by
+  'only' 3\LD.
+\end{exemple}
+
 \begin{exemple}
   Continuing the previous \FRA-\HIS battle. \FRA has 8\LD and modifiers of
-  +2/0//+1/-1 with a Morale of 3. \HIS has 5\LD and modifiers of 0/+1//-1/0
+  +2/+1//+1/0 with a Morale of 4. \HIS has 5\LD and modifiers of 0/+1//-1/0
   with a Morale of 4. Both roll on columns \textbf{C/B}.
 
   \begin{minipage}{0.7\linewidth}
     \emph{First day, Fire:}
     \begin{itemize}
-    \item \FRA rolls 10+2 = 12, resulting in
-      2\texttu\textetoile\textetoile. Losses are divided by 2, rounded down
-      (Fire with \TARQ), resulting in 1\textetoile\textetoile.
-    \item \HIS rolls 6+0 = 6 resulting in \texttu divided by 2 gives nothing.
+    \item \FRA rolls 8+2 = 10, resulting in
+      1\texttd\textetoile\textetoile.
+    \item \HIS rolls 6+0 = 6 resulting in \texttu.
     \end{itemize}
   \end{minipage} %
   \hfill %
@@ -2238,8 +2262,8 @@ failed enemy retreat\ldots
     \begin{tabular}{c|c}
       \FRA & \HIS \\
       \hline
-      +2/0//+1/-1 & 0/+1//-1/0\\
-      \textcolor{red}{|\textetoile\textetoile} &
+      +2/+1//+1/0 & 0/+1//-1/0\\
+      \textcolor{red}{{\normalfont :}|\textetoile\textetoile} & \textcolor{red}{.}
     \end{tabular}
   \end{minipage}
 
@@ -2249,10 +2273,10 @@ failed enemy retreat\ldots
   \begin{minipage}{0.7\linewidth}
     \emph{First day, Shock:}
     \begin{itemize}
-    \item \FRA rolls 6+0 = 6 resulting in \texttd. Its total is now
-      1\texttd\textetoile\textetoile.
+    \item \FRA rolls 4+1 = 5 resulting in \texttu. Its total is now
+     2\textetoile\textetoile.
     \item \HIS rolls 7+1 = 8 resulting in 1\texttu\textetoile. Its total is now
-      1\texttu\textetoile.
+      1\texttd\textetoile.
     \end{itemize}
   \end{minipage} %
   \hfill %
@@ -2260,22 +2284,22 @@ failed enemy retreat\ldots
     \begin{tabular}{c|c}
       \FRA & \HIS \\
       \hline
-      +2/0//+1/-1 & 0/+1//-1/0\\
-      \textcolor{red}{\normalfont :}|\textetoile\textetoile
-           & \textcolor{red}{.|\textetoile}
+      +2/+1//+1/0 & 0/+1//-1/0\\
+      {\normalfont :}\hspace{-2.15pt}\textcolor{red}{|}|\textetoile\textetoile
+           & \textcolor{red}{\normalfont :}.\hspace{-2.3pt}\textcolor{red}{|\textetoile}
     \end{tabular}
   \end{minipage}
 
-  \FRA has lost 1 Morale, less than its initial 3. \HIS has lost 2 Morale,
+  \FRA has lost 1 Morale, less than its initial 4. \HIS has lost 2 Morale,
   less than its initial 4. Nobody routs, the battle goes on.
 
   Since this is the end of first day, one check whether one side is completely
   eliminated. See details of the computation in~\ref{chMilitary:Battle:Loss
-    modifications}. \FRA has actually suffered only \texttd losses
-  (1\texttu-\texttd because \HIS only has 5\LD), less than its initial 8\LD
-  hence he's still alive. \HIS has actually suffered 2 losses (1\texttd
-  becoming 2 because \FRA has +1 size), less than its initial 5\LD hence he's
-  still alive. Since there are still men in both troops the battle goes on.
+    modifications}. \FRA has actually suffered only 1 losses (1\texttd-\texttd
+  because \HIS only has 5\LD), less than its initial 8\LD hence he's still
+  alive. \HIS has actually suffered 2\texttd losses (2 becoming 2\texttd
+  because \FRA has +1 size), less than its initial 5\LD hence he's still
+  alive. Since there are still men in both troops the battle goes on.
 
   Remark: complete elimination of a troop after first day only happens with
   small troops (3\LD or less) or extreme results (rolling 10 for both Fire and
@@ -2283,26 +2307,27 @@ failed enemy retreat\ldots
 
   Since this is the end of first day, each side has the possibility to try and
   retreat. \FRA suffered almost no losses and decide to stay. \HIS has already
-  lost 2\textetoile\textetoile and feels like a major defeat is coming\ldots
-  Since he has 4 in \Man, he decide to try to flee. 4 \Man + 2 remaining
-  Morale, the retreat threshold is 6. \HIS rolls\ldots 7 and fails!
+  lost 2\texttd\textetoile\textetoile and feels like a major defeat is
+  coming\ldots Since he has 4 in \Man, he decide to try to flee. 4 \Man + 2
+  remaining Morale, the retreat threshold is 6. \HIS rolls\ldots 7 and fails!
 
   During the second day, \FRA thus gets a +1/+1 modifier (it basically cancels
-  the -1/-1 for second day) and thus actually stays at +2/0. \HIS, as
+  the -1/-1 for second day) and thus actually stays at +2/+1. \HIS, as
   computed, is now at -1/0.
 
-  Notice that the artillery and cavalry bonus are not recomputed between each
-  day and stay the same than in the beginning of the battle, even if some of
-  the troops were lost. The actual losses are only implemented at the end of
-  the battle and at this stage we still use the initial forces.
+  Notice that the artillery and cavalry bonus (or any other) are not
+  recomputed between each day and stay the same than in the beginning of the
+  battle, even if some of the troops were lost. The actual losses are only
+  implemented at the end of the battle and at this stage we still use the
+  initial forces.
 
   \begin{minipage}{0.7\linewidth}
     \emph{Second day, Fire:}
     \begin{itemize}
-    \item \FRA rolls 3+2 = 5 resulting in \texttu divided by 2 gives
-      nothing. Its total is now 1\texttd\textetoile\textetoile.
-    \item \HIS rolls 10-1 = 9 resulting in 1\texttu\textetoile divided by 2,
-      gives \texttd\textetoile. Its total is now 2\textetoile\textetoile.
+    \item \FRA rolls 2+2 = 4 resulting in nothing. Its total is now
+      2\textetoile\textetoile.
+    \item \HIS rolls 9-1 = 8 resulting in 1\textetoile. Its total is
+      now 2\texttd\textetoile\textetoile.
     \end{itemize}
   \end{minipage} %
   \hfill %
@@ -2310,9 +2335,9 @@ failed enemy retreat\ldots
     \begin{tabular}{c|c}
       \FRA & \HIS \\
       \hline
-      +2/0//\textcolor{red}{+2/0} & 0/+1//-1/0\\
-      {\normalfont :}|\textetoile\textetoile
-           & .\hspace{-2.3pt}\textcolor{red}{|}|\textetoile\textcolor{red}{\textetoile}
+      +2/+1//\textcolor{red}{+2/+1} & 0/+1//-1/0\\
+      ||\textetoile\textetoile
+           & \textcolor{red}{\normalfont :}{\normalfont :}\hspace{-2.15pt}\textcolor{red}{|}|\textetoile\textcolor{red}{\textetoile}
     \end{tabular}
   \end{minipage}
 
@@ -2322,10 +2347,10 @@ failed enemy retreat\ldots
   \begin{minipage}{0.7\linewidth}
     \emph{Second day, Shock:}
     \begin{itemize}
-    \item \FRA rolls 7+0 = 7 resulting in 1\textetoile. Its total is now
-      2\texttd\textetoile\textetoile\textetoile.
-    \item \HIS rolls 6+0 = 6 resulting in \texttd. Its total is now
-      2\texttd\textetoile\textetoile.
+    \item \FRA rolls 6+1 = 7 resulting in 1\textetoile. Its total is now
+      3\textetoile\textetoile\textetoile.
+    \item \HIS rolls 5+0 = 5 resulting in \texttu. Its total is now
+      3\textetoile\textetoile.
     \end{itemize}
   \end{minipage} %
   \hfill %
@@ -2333,18 +2358,179 @@ failed enemy retreat\ldots
     \begin{tabular}{c|c}
       \FRA & \HIS \\
       \hline
-      +2/0//\textcolor{red}{+2/0} & 0/+1//-1/0\\
-      \textcolor{red}{\normalfont :}{\normalfont
-      :}\hspace{-2.15pt}\textcolor{red}{|}|\textetoile\textetoile\textcolor{red}{\textetoile}
-           & \textcolor{red}{\normalfont:}||\textetoile\textetoile
+      +2/0//+2/+1 & 0/+1//-1/0\\
+      \textcolor{red}{|}||\textetoile\textetoile\textcolor{red}{\textetoile}
+           & {\normalfont:}\hspace{-2.15pt}\textcolor{red}{|}||\textetoile\textetoile
     \end{tabular}
   \end{minipage}
 
-  Nobody routs and nobody is completely destroyed.
+  Nobody routs. With 3 losses on each side, the battle even looks quite
+  balanced\ldots so far.
+\end{exemple}
+
+\begin{exemple}[Variations]
+  Keeping the previous example, if \HIS was \terme{Conscript} it would have
+  lost its last Morale point and rout during the last Shock. Similarly, if
+  \FRA was \terme{Conscript} (and \HIS \terme{Veteran}), they would both end
+  up with only 1 Morale left, resulting in a tie (see below).
+
+  Don't neglect that extra Morale point for \terme{Veteran} troops, it may
+  cost some upkeep but not paying it will cost much more once the fighting
+  actually start. A good drill makes a good soldier.
+
+  \smallskip
+
+  If both side had \TARQ technology, then the Fire losses are halved (round
+  down) and the final result would be 2\textetoile\textetoile\textetoile for
+  \FRA and 2\textetoile\textetoile for \HIS. A much less deadly result.
 \end{exemple}
 
 \subsection{Pursuit}
 \label{chMilitary:Battle:Pursuit}
+
+\aparag[Determine winner.] If one side has already been declared winner,
+directly roll for Pursuit.
+\bparag Otherwise, the side with the most remaining Morale (starting Morale
+minus number of \textetoile suffered) loses and the other side wins.
+\bparag In case of tie, no side wins. Go to~\ref{chMilitary:Battle:Loss
+  modifications}.
+
+The winner pursues the loser. Pursuit is made by rolling 1d10, modified as
+follows, on column \textbf{E} of the CRT. Exception: use column \textbf{C}
+when pursuing \NTD or \NGD (used as \terme{first line ships} by the loser).
+
+General modifiers (used in any battle):
+\begin{modlist}
+\item[+2] if the battle ended during the First day (including total
+  destruction at the end of the first day).
+\item[+1] if the battle ended after a Fire roll.
+\end{modlist}
+Note that these modifiers are cumulative, hence a Pursuit after First Fire
+will get a \bonus{+3} modifier.
+
+Land modifiers (used in land battles only):
+\begin{modlist}
+\item[+S] \Shock differential. Differential between the \Shock of the pursuing
+  \LeaderG and the pursued \LeaderG, only if positive.
+\item[-1] if the battle did not occurred in Plain terrain.
+\item[+1] for \TUR \terme{Sipahi} cavalry, if (i) there is at least one \TUR
+  \ARMY counter in the pursuing stack; (ii) reform M-2 has not been made; and
+  (iii) the battle occurred in Plain or Desert terrain. This is exactly the
+  same conditions as for getting the Cavalry bonus to Shock and because losses
+  haven't been applied yet, \TUR gets either both or none.
+\end{modlist}
+
+Sea modifiers (used in sea battles only):
+\begin{modlist}
+\item[+M] \Man differential. Differential between the \Man of the pursuing
+  \LeaderA and the pursued \LeaderA, only if positive.
+\item[+1] if the pursuer has at least 5\ND more than its opponent. Note that
+  losses haven't been applied yet, hence this uses the number of \ND each side
+  had at the beginning of the battle.
+\item[+1] if the pursuer has \terme{Wind Advantage}.
+\end{modlist}
+
+The result of the Pursuit is read by cross-referencing the modified roll with
+column \textbf{E} of the CRT. Exception: use column \textbf{C} when pursuing
+\NTD or \NGD. \textetoile and losses obtained are tallied together with the
+ones obtained during the battle. Large \pays{natives} stacks roll one die per
+8\LD as for any roll of the battle.
+
+Additionally, at sea, for each \textetoile obtained the pursuer may choose to
+capture either 1\NWD, 2\NGD, or 2\NTD. These captures may occur on any ships
+in the stack (not only the \terme{first line ships}). Remove them from the
+pursued stack and add the same number to the pursuing one (they may be of any
+nationality already present in that stack, controller's choice). Next:
+\begin{itemize}
+\item If the pursued stack was transporting troops, it must immediately loses
+  a number of troops whose transport points are equal or greater than the
+  transport capacity of the captured ships (only). It is assumed that the
+  pursuit specifically targets those troops-heavy transports that were
+  purposely left out of the battle\ldots
+\item If the \NTD captured were carrying gold, for each \NTD captured 5\ducats
+  are sunk (lost) and 10\ducats are seized by the pursuer. These ducats are
+  immediately tallied in \lignebudgetlong{Gold from ROTW and Convoys}
+  (\emph{i.e.} for the sake of simplicity they are 'teleported' in Europe and
+  we do not handle chain of capture and re-capture of the Gold fleet).
+\end{itemize}
+
+Finally, check if the losing side has any Morale left. If no, then there is a
+\terme{Rout}. Morale left plays no role from now on.
+
+\begin{exemple}
+  In the previous battle, \FRA has 2 Morale left while \HIS has only 1. Hence,
+  \FRA wins the battle and pursues the Spanish. The DRM for Pursuit is here 0
+  (\Shock differential is negative, battle occurred in Plain, battle ended
+  after Second Shock). \FRA rolls 9 which, in column \textbf{E} gives
+  1\textetoile. Now, that fourth \textetoile brings the Spanish Morale down to
+  0 thus transforming an organised Retreat into a Rout!
+
+  The \textetoile can now be forgotten. \FRA suffers from 3 losses. \HIS
+  suffers from 4 loses and a rout.
+
+  \smallskip
+
+  If \FRA had \terme{Conscript}, then both sides would end up with 1 Morale
+  left hence there is no winner. Note that the extra Morale point of
+  \terme{Veteran} saves the Spanish troops!
+
+  \smallskip
+
+  Also, note that \FRA had globally worse rolls than \HIS (8, 4, 2, 6 vs 6, 7,
+  9, 5) but the bonus DRM make them sufficient to fetch victory. Note also
+  that what's important in a battle is to grab those \textetoile (\emph{i.e.}
+  in the usual \textbf{B} or \textbf{C} column to roll 7 or higher, 10 or
+  higher being better). Even if they inflicted the same number of losses
+  during the battle (3 each), \FRA managed to inflict one more \textetoile
+  (thanks to its \bonus{+2} to Fire and its \bonus{+1} to Shock). That's all
+  it need to win the battle! If they had roll the same number of \textetoile,
+  then the battle would end in a draw rather than a French victory\ldots
+
+  Also, note that the failed Spanish retreat is here very costly. The
+  \bonus{+1} to the Second French Shock turns a 6 into a 7, causing the third
+  \textetoile. Globally, the +1/+1 gives 10\% more chances to get
+  \textetoile\textetoile on each roll (at +0, there are three \textetoile and
+  one \textetoile\textetoile; at +1 there are still three \textetoile but two
+  \textetoile\textetoile), hence around 0.4\textetoile. Don't try to retreat
+  without good Morale or good \Man, this is a sure recipe for disaster.
+
+  Lastly, note that in \TMED vs \TMED, with only 1 or 2 Morale (for
+  \terme{Veteran}) and rolling in column \textbf{A} (with
+  \textetoile\textetoile on 9 or more) the battle can end very brutally and
+  any side may rout unexpectedly. On the other hand, once both sides start
+  having a lot of Morale and using columns \textbf{B} or \textbf{C}, the
+  battle cannot anymore end on a single roll and several good results are
+  needed, thus greatly diminishing the luck factor (and giving more weight to
+  the DRM).
+\end{exemple}
+
+\begin{playtip}
+  Don't send \terme{Conscript} stacks into battle. Ever. Don't be cheap with
+  your upkeep and make sure that all your stacks are \terme{Veteran}. Always.
+
+  Don't raise new troops (that will be \terme{Conscript}) close to your
+  opponents (especially if you don't have initiative) as you want to
+  reorganise your stacks into \terme{Veteran} ones before sending them to
+  battle.
+
+  Paying for new troops just to see the opponent march on them and win the
+  battle ``by default'' because they started with 1 more Morale is a painful
+  experience. Seeing the troops you've just payed for being annihilated
+  immediately because they don't know how to fight is very painful. Having
+  your opponent claim a \terme{Major Battle} in the process is an error you
+  normally make only once.
+
+  Before upkeeping and sending \terme{Conscript} into battle, think twice. And
+  then take a break and think again. If you still believe it's a good idea,
+  you're probably wrong. Just pay that extra upkeep and drill your soldiers.
+
+  You may think that a very good general will get sufficient bonus to win
+  despite having untrained soldiers. Alternatively, you may want to give your
+  best troops to your best general that is going in the front lines to
+  destroyed the enemy. Once the enemy has no more troops, it will be time to
+  lay siege with these \terme{Conscript} that survived so far.
+\end{playtip}
+
 \subsection{Loss modifications}
 \label{chMilitary:Battle:Loss modifications}
 \subsection{Retreat}
