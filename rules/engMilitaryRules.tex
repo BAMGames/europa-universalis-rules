@@ -2188,12 +2188,12 @@ them down when they happen to ease the process.
 
 \chMilShock{first}{First}
 
-\aparag[End of first day: Destruction.] Using the computation described
-at~\ref{chMilitary:Battle:Loss modifications}, check if one side has suffered
-more losses than its size. If so, go to~\ref{chMilitary:Battle:Pursuit} (the
-Pursuit may cause extra Morale loss and turn this into a rout and, possibly, a
-\terme{Major Battle}). The destroyed stack loses the battle and its opponent
-wins it.
+\aparag[End of first day: Destruction.] Only do this for land battle. Using
+the computation described at~\ref{chMilitary:Battle:Loss modifications}, check
+if one side has suffered more losses than its size. If so, go
+to~\ref{chMilitary:Battle:Pursuit} (the Pursuit may cause extra Morale loss
+and turn this into a rout and, possibly, a \terme{Major Battle}). The
+destroyed stack loses the battle and its opponent wins it.
 
 \aparag[End of first day: Retreat.] Each side has the possibility to attempt to
 break battle and retreat (thus loosing the battle). If this an interception
@@ -2394,9 +2394,9 @@ normal rules).
 
 \aparag[Determine winner.]
 \bparag First, using the computation described at~\ref{chMilitary:Battle:Loss
-  modifications}, check if one side has suffered more losses than its size. If
-so, that side is declared loser and the other winner, even if a winner and
-loser were already declared during the battle.
+  modifications}, check if one side has suffered more losses than its number
+of \LD. If so, that side is declared loser and the other winner, even if a
+winner and loser were already declared during the battle.
 \bparag Next, if one side has already been declared winner, it wins and the
 other side loses.
 \bparag Otherwise, the side with the most remaining Morale (starting Morale
@@ -2416,7 +2416,35 @@ to~\ref{chMilitary:Battle:Loss modifications}.
   ships.
 \end{designnote}
 
-The winner pursues the loser. Pursuit is made by rolling 1d10, modified as
+\begin{exemple}[Destruction]
+  4\LD of \HIS fight against 8\LD of \TUR in \TARQ. \TUR has a \terme{size
+    differential} of +2. \TUR is \terme{Conscript} (because of its \Timar) and
+  thus only has 2 Morale while \HIS has 4 Morale (\terme{Veteran} and \TTER).
+
+  At the end of the Second Fire, \TUR has suffered
+  \texttd\textetoile\textetoile (modified \HIS rolls were 7, 3 and 7).  At the
+  same time, \HIS has suffered 3\textetoile\textetoile\textetoile (modified
+  \TUR rolls were 9, 7 and 7).
+
+  With \textetoile\textetoile, \TUR breaks and routs. This happens
+  immediately. However, before rolling for Pursuit, a quick check is
+  made. \TUR has actually only suffered 0 losses (\texttd-\texttd because of
+  only 4\LD causing them). \HIS has actually suffered 4\texttu losses (because
+  of the +2 \terme{size differential}). Hence, the Spanish troop is actually
+  entirely destroyed. \TUR wins the battle. The poor state of its troops
+  (rout) does not allow it to pursue the looser (which could turn this in a
+  \terme{Major Battle}), but \TUR nonetheless stays in place and is considered
+  winner for all purposes.
+
+  Basically, the Turks broke during the battle but in the days following it
+  they gathered their troops and discovered that they still had an army. At
+  the same time, between losses in the battle and desertions in the following
+  days, the Spanish could not manage to gather a combat-effective force and
+  simply had to leave.
+\end{exemple}
+
+The winner pursues the loser. Exception: if the winner has been routed during
+the Battle, it does no pursue. Pursuit is made by rolling 1d10, modified as
 follows, on column \textbf{E} of the CRT. Exception: use column \textbf{C}
 when pursuing \NTD or \NGD (used as \terme{first line ships} by the loser).
 
@@ -2555,12 +2583,15 @@ Finally, check if the losing side has any Morale left. If no, then there is a
 
 \subsection{Loss modifications}
 \label{chMilitary:Battle:Loss modifications}
-
 The losses obtained during the battle are correct for similar stacks (in terms
 of actual composition of typical armies of the period) of 8\LD. They must be
 corrected taking two factors into account. Firstly, the losses causes by small
 stacks (less than 8\LD) are reduced; next losses are adjusted to the relative
 structural size of both armies. A similar procedure is used at sea.
+
+In any cases, the modified losses may go below 0. If this should happen for
+any reason, the modified losses becomes 0. (for example, if 1\LD only inflicts
+\texttu losses, this results in 0 losses, not \texttu-2=-1\texttd).
 
 \GTtable{lossestables}
 
@@ -2626,10 +2657,10 @@ stack of 13 to 18\ND uses +2 and a stack of 19\ND or more uses +3.
 
 \aparag Finally, once the \terme{size differential} is found, adapt losses
 inflicted according to sub-Table <L2/S2> of~\ref{table:Losses Tables}:
-\bparag On the line ``-1/0'', find the number of losses inflicted and use that
-column. If this is not an integer (\emph{e.g.} 2\texttd), find both the number
-of full losses and the number of thirds. If more than 6 losses were inflicted,
-use the last column.
+\bparag On the line ``-1/0'' (in bold), find the number of losses inflicted
+and use that column. If this is not an integer (\emph{e.g.} 2\texttd), find
+both the number of full losses and the number of thirds. If more than 6 losses
+were inflicted, use the last column.
 \bparag Cross-reference the column (or columns) obtained above with the line
 corresponding to the \terme{size differential}. The new number (or sum of
 numbers) is the actual losses inflicted. If more than 6 losses were inflicted,
@@ -2689,6 +2720,16 @@ correspond to 1 of \emph{its} \LD an is a much larger \HIS casualty.
   that into account). This results in 12\texttu actual losses.
 \end{exemple}
 
+\begin{designnote}
+  \terme{Size differential} usually does not vary a lot, especially since your
+  favourite enemy won't change. You'll quickly learn against who you have a +1
+  or a -1. Then, the use of table <L2/S2> is much quicker to do than to
+  explain\ldots Find a number (in the correct line) and go up or down one or
+  two lines to find the result. After half a dozen battles, this will become
+  an extremely quick procedure, even if its description in the rules seems
+  very complicated.
+\end{designnote}
+
 \subsubsection{Losses at sea}
 At sea, losses must be split in three categories:
 \begin{itemize}
@@ -2697,10 +2738,15 @@ At sea, losses must be split in three categories:
 \item \terme{Damaged} ships are no more battle effective. They may however be
   refitted later this turn (during the Siege segment) or during a later turn
   (during the Administrative phase). Tally \terme{Damaged} ships on the
-  Colonial Record Sheet. They are grouped per region where the battle
-  occurred (owner's choice in case of a battle in \seazoneHorn).
+  Colonial Record Sheet and remove them from play. They are grouped per region
+  where the battle occurred (owner's choice in case of a battle in
+  \seazoneHorn).
 \item \terme{Destroyed} ships are sunk and removed from play immediately.
 \end{itemize}
+
+\begin{todo}
+  Refitting seem to be missing from the Admin phase.
+\end{todo}
 
 \begin{designnote}
   The \terme{Damaged} ships represent a structural size of the various
@@ -2730,6 +2776,74 @@ losses, round them up to the nearest largest integer.
 \item For any non-winner, the first loss is \terme{Damaged}, the second is
   \terme{Destroyed}, and the third is \terme{Damaged}.
 \end{itemize}
+
+If some ships were captured during Pursuit, reduce the number of
+\terme{Damaged} ships by the same amount (this does not reduce the amount of
+losses suffered).
+
+Losses (whatever the category) must be taken first from the \terme{first line
+  ships}. If there are more losses than \terme{first line ships}, other ships
+suffers from losses. In any cases, the controller of the stack chooses which
+\ND actually suffer the losses (when there is a choice).
+
+If the losses are more than the total number of \ND in the stack, the
+splitting in losses category must still be done entirely. Then, start by
+applying the \terme{Destroyed} losses, next the \terme{Damaged} ones and
+finally the \terme{Refitted} ones.
+
+\begin{exemple}[Applying naval losses]
+  A winning fleet suffers 4 losses. The first is \terme{Damaged}, the second
+  is \terme{Destroyed}, the third is \terme{Refitted}, then, looping back to
+  the start, the fourth is \terme{Damaged}. This results in 2 \terme{Damaged}
+  \ND, 1 \terme{Destroyed}, and 1 \terme{Refitted}. Decrease the number of \ND
+  in the stack by 3 (\terme{Destroyed} and \terme{Damaged}) and tally 2
+  \terme{Damaged} ships in the correct geographical area on the colonial
+  sheet. The number of losses suffered by the stack is still 4 for all
+  purposes (notably for determining if this was a \terme{Major Battle}).
+
+  \smallskip
+
+  A loosing \NWD fleet suffers 5\texttd losses. The first is \terme{Damaged},
+  the second is \terme{Destroyed}, the third is \terme{Damaged}; looping back
+  the fourth is \terme{Damaged}, the fifth is \terme{Destroyed}; there is no
+  full sixth loss, hence the thirds act as a partial sixth loss and are
+  \terme{Damaged}. Reduce the number of \ND in the stack by 5\texttd
+  (\emph{i.e.} 5\ND and 2 \NDE), and note that 3\texttd are \terme{Damaged}.
+
+  \smallskip
+
+  If a \NGD stacks suffers 5\texttu losses, then because there are no
+  thirds of \NGD, the losses are rounded up to 6 and split in the usual way.
+
+  \smallskip
+
+  A winning stack of 5\ND suffers 8 losses. Splitting 8 losses for a winning
+  stack gives 3 \terme{Damaged}, 3 \terme{Destroyed}, and 2
+  \terme{Refitted}. Because the losses exceed the actual size of the stack,
+  the \terme{Destroyed} are applied first (2\ND remain) and next the
+  \terme{Damaged}. This results effectively in 3 \terme{Damaged} and 2
+  \terme{Destroyed}.
+
+  \smallskip
+
+  A stack of 1\NWD and 10\NGD chooses to use its \NWD as \terme{first line
+    ships}. It loses and suffers 8\texttd losses (using \NGD as \terme{first
+    line ships}, its opponent used these +1/+2 bonus for larger fleet with
+  deadly efficiency). Splitting the losses gives 3 \terme{Destroyed} and
+  5\texttd \terme{Damaged}. The \terme{Destroyed} are applied first, on the
+  \terme{first line ships}. Once there are no more \terme{first line ships},
+  the remaining losses (2 \terme{Destroyed} and 5\texttd \terme{Damaged}) are
+  applied to the rest of the stack (here on the \NGD, hence the \texttd is
+  rounded up). If 2\NGD were captured during the Pursuit (\textetoile), then
+  ``only'' 3\texttd are \terme{Damaged} now. The losses suffered stays at
+  8\texttd anyway.
+\end{exemple}
+
+Note that losses on land are \textbf{not} applied yet. They will only be
+applied after the Retreat.
+
+Even if losses are applied now for naval stacks, the commander of the stack
+does not change before the Retreat.
 
 \subsection{Retreat}
 \label{chMilitary:Battle:Retreat}
