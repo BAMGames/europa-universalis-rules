@@ -52,7 +52,7 @@ other are non-phasing.
 
 \subsubsection{Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire. Declare
-new \terme{Exceptional Levies} and use old ones.
+new \terme{Exceptional Levies} and use old ones. Refit \terme{Damaged} ships.
 
 \subsection{New round}
 A new round begin with the \terme{Continuation Roll} segment.
@@ -200,11 +200,15 @@ toward global hierarchy.
 \subsection{Impulses}
 Each alliance, in decreasing order of initiative, plays an impulse. Each
 impulse consists in five steps: supply, choice of campaign, movements (and
-interceptions), exploration, and battles.
+interceptions), exploration, and battles. Check details of these steps below.
 
 The alliance taking its impulse is called the \terme{phasing} alliance. All
 others are non-phasing.
 
+\subsection{Sieges}
+Each alliance, in decreasing order of initiative, resolve its sieges, fights
+against \REVOLT/\REBELLION and \corsaire, declare new \terme{Exceptional
+  Levies} and use old ones, refit \terme{Damaged} ships. Check details below.
 
 \section{Supply}
 \label{chMilitary:Supply}
@@ -2388,12 +2392,29 @@ normal rules).
 \subsection{Pursuit}
 \label{chMilitary:Battle:Pursuit}
 
-\aparag[Determine winner.] If one side has already been declared winner,
-directly roll for Pursuit.
+\aparag[Determine winner.]
+\bparag First, using the computation described at~\ref{chMilitary:Battle:Loss
+  modifications}, check if one side has suffered more losses than its size. If
+so, that side is declared loser and the other winner, even if a winner and
+loser were already declared during the battle.
+\bparag Next, if one side has already been declared winner, it wins and the
+other side loses.
 \bparag Otherwise, the side with the most remaining Morale (starting Morale
 minus number of \textetoile suffered) loses and the other side wins.
-\bparag In case of tie, no side wins. Go to~\ref{chMilitary:Battle:Loss
-  modifications}.
+\bparag In case of tie, no side wins and no Pursuit happens. Go
+to~\ref{chMilitary:Battle:Loss modifications}.
+
+\begin{designnote}[Destruction]
+  It may happen that one side breaks and routs due to no more Morale during
+  the battle. But, at the end of the day and after gathering remaining troops
+  and such, they discover that the other side is actually no more a
+  battle-effective force (total destruction). Thus they can stay and keep the
+  ground. This may indeed change the winner of the battle.
+
+  Entirely destroyed forces are pursued nonetheless because Pursuit can cause
+  a rout (and a \terme{Major Battle}), and because on sea Pursuit can capture
+  ships.
+\end{designnote}
 
 The winner pursues the loser. Pursuit is made by rolling 1d10, modified as
 follows, on column \textbf{E} of the CRT. Exception: use column \textbf{C}
@@ -2458,10 +2479,11 @@ Finally, check if the losing side has any Morale left. If no, then there is a
 \terme{Rout}. Morale left plays no role from now on.
 
 \begin{exemple}
-  In the previous battle, \FRA has 2 Morale left while \HIS has only 1. Hence,
-  \FRA wins the battle and pursues the Spanish. The DRM for Pursuit is here 0
-  (\Shock differential is negative, battle occurred in Plain, battle ended
-  after Second Shock). \FRA rolls 9 which, in column \textbf{E} gives
+  In the previous battle, no side is entirely destroyed at the end of the two
+  days. \FRA has 2 Morale left while \HIS has only 1. Hence, \FRA wins the
+  battle and pursues the Spanish. The DRM for Pursuit is here 0 (\Shock
+  differential is negative, battle occurred in Plain, battle ended after
+  Second Shock). \FRA rolls 9 which, in column \textbf{E} gives
   1\textetoile. Now, that fourth \textetoile brings the Spanish Morale down to
   0 thus transforming an organised Retreat into a Rout!
 
@@ -2666,6 +2688,48 @@ correspond to 1 of \emph{its} \LD an is a much larger \HIS casualty.
   ignored if more than 6 losses are inflicted, the last column already takes
   that into account). This results in 12\texttu actual losses.
 \end{exemple}
+
+\subsubsection{Losses at sea}
+At sea, losses must be split in three categories:
+\begin{itemize}
+\item \terme{Refitted} ships come back into play immediately. They are not
+  actually lost.
+\item \terme{Damaged} ships are no more battle effective. They may however be
+  refitted later this turn (during the Siege segment) or during a later turn
+  (during the Administrative phase). Tally \terme{Damaged} ships on the
+  Colonial Record Sheet. They are grouped per region where the battle
+  occurred (owner's choice in case of a battle in \seazoneHorn).
+\item \terme{Destroyed} ships are sunk and removed from play immediately.
+\end{itemize}
+
+\begin{designnote}
+  The \terme{Damaged} ships represent a structural size of the various
+  navies. Even if numerous ships were actually sunk, powers of that time were
+  usually quick to rebuild a navy of comparable size. Much quicker than they
+  would be to build the same number of ships ``in normal time''. Hence,
+  \terme{Damaged} ships represent ships that are actually sunk but that the
+  power somehow 'think' that they should be rebuilt fast.
+
+  This is typically what happened after Lepanto where the Turkish navy was
+  practically annihilated (loosing more than 80\% of the forces engaged in the
+  battle) but nonetheless quickly rebuilt in the couple of years following the
+  battle.
+\end{designnote}
+
+Losses are split in these categories by group of 3. One loss is affected in
+the first group, one in the second, and one in the third. Then, looping around
+to the first group, remaining losses are affected in the same way. Any thirds
+are always affected as if they were the last loss. When \NWD suffer thirds of
+losses, use \NDE (1\NDE=\texttu\NWD). When \NGD or \NTD suffer thirds of
+losses, round them up to the nearest largest integer.
+
+\begin{itemize}
+\item For the winner of the battle (if any), the first loss is
+  \terme{Damaged}, the second is \terme{Destroyed}, and the third is
+  \terme{Refitted}.
+\item For any non-winner, the first loss is \terme{Damaged}, the second is
+  \terme{Destroyed}, and the third is \terme{Damaged}.
+\end{itemize}
 
 \subsection{Retreat}
 \label{chMilitary:Battle:Retreat}
