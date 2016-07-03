@@ -1802,6 +1802,13 @@ lifted as soon as there is no enemy troops in the province.
 
 \subsection{Battle parameters}
 \label{chMilitary:Battle:Parameters}
+\subsubsection{Sortie}
+If this is a land battle in a province with besieged troops friendly to one
+side, the troops may decide to attempt a sortie and join the battle. In this
+case, they are considered merged into a single stack for the battle (notably
+to determine commanders). It must, however, be remembered which troops come
+from the sortie as they may have to retreat back in the fortress.
+
 \subsubsection{Replacements leaders}
 If a stack engaged in battle has no leader (the commanding country has no
 leader in the stack), a replacement leader is rolled.
@@ -2791,6 +2798,10 @@ splitting in losses category must still be done entirely. Then, start by
 applying the \terme{Destroyed} losses, next the \terme{Damaged} ones and
 finally the \terme{Refitted} ones.
 
+Additionally, if a fleet containing \VGD and using \NGD/\VGD as \terme{first
+  line ships} is routed, then at least one of the losses (either
+\terme{Damaged} or \terme{Destroyed}, controller's choice) must be a \VGD.
+
 \begin{exemple}[Applying naval losses]
   A winning fleet suffers 4 losses. The first is \terme{Damaged}, the second
   is \terme{Destroyed}, the third is \terme{Refitted}, then, looping back to
@@ -2847,6 +2858,218 @@ does not change before the Retreat.
 
 \subsection{Retreat}
 \label{chMilitary:Battle:Retreat}
+Any non winning force must retreat. Any losses suffered during the retreat are
+counted as losses suffered during the battle (notably, to determine if this is
+a \terme{Major Battle}).
+
+\subsubsection{At sea}
+Retreat is done toward the closest (in number of zones), non-blockaded,
+friendly port large enough to hold the remaining fleet (before applying the
+retreat losses).
+
+Retreat is a move and thus any retreating fleet must roll for attrition as for
+any naval move. If a \terme{Replacement} \LeaderA was rolled for the battle,
+he is still available during the retreat (providing its \Man for the attrition
+roll). However, if the fleet was routed during the battle, then the \Man of
+its \LeaderA is considered to be 0 for the retreat.
+
+Any \ND sunk during the retreat counts as 1 loss for the Battle. Any \NDE
+counts as \texttu.
+
+The winning fleet (if any) may decide to follow the retreating fleet and
+blockade the port where it goes (only). This is also a move, hence a following
+fleet must roll for attrition as usual (using the \terme{Replacement} \LeaderA
+if applicable). Any \ND or \NDE sunk during this follow-up are counted as
+battle losses.
+
+The retreat may not be intercepted and is not subject to \Presidios or
+\StraitFort. A possible follow-up may not be intercepted but can be subject of
+\StraitFort.
+
+\subsubsection{On land}
+Any retreating stack must roll on Subtable <L3> of~\ref{table:Losses
+  Tables}. Roll 1d10 and, if the stack was not routed, subtract the \Man of
+the commanding \LeaderG (a \terme{Replacement} leader used during the battle
+still provides its \Man). The resulting losses are added to the current total.
+
+Retreating forces must retreat in one of the following possibilities. These
+possibilities have no priority (controller's choice) and are further
+restricted by the conditions of the battle.
+\begin{itemize}
+\item the province of the battle itself;
+\item the fortress of the province, if friendly to the retreating stack;
+\item an adjacent province with no unbesieged enemy presence (notably, with no
+  unresolved battle).
+\end{itemize}
+
+In some cases, explicitly specified, it is possible (or mandatory) to retreat
+through one or more adjacent neutral provinces and into a further friendly
+province. This is notably the case for a phasing stack that entered the
+province from one where it is not allowed to stay (\emph{e.g.} \HRE, frozen
+Sund).
+
+It is possible to split a retreating stack between the fortress of the
+province and an adjacent province, only. Any other splitting is not allowed.
+
+It may happen that a troop cannot retreat in its entirety or cannot retreat at
+all, usually because the fortress of the province is too small to accommodate
+the troop (1\LD/level) and there is no legal adjacent province. In this case,
+exceeding troops are destroyed and the losses are part of the battle. On the
+other hand, stacking in provinces is only checked after the battle ends and
+any loss due to overstacking is \emph{not} part of the battle.
+
+If this was an interception battle, then the non-phasing side has to retreat
+first (if needed) followed by the phasing side (if needed). If this was a
+regular battle, then the phasing side has to retreat first (if needed)
+followed by the non-phasing side (if needed).
+
+It is only possible to retreat in the province itself if retreating second
+(especially, it is not possible if the other side won and does not retreat).
+
+If the fortress of the province was besieged prior to battle, and only one
+side has to retreat, then the troops that were in the fortress must retreat
+back in it and any other troops must retreat in an adjacent province. In case
+of tie, any friendly troop can retreat in or out of the fortress.
+
+The only adjacent province in which a phasing stack may retreat is the one
+were it come from. If this was a landing, the phasing stack must retreat back
+in the ships and the carrying fleet must move back to a friendly port and roll
+for attrition accordingly; it may not be intercepted during this move and it
+ignores \Presidios and \StraitFort.
+
+The only adjacent provinces in whicĥ a non-phasing stack may retreat after an
+interception battle are the one from which a least one intercepting \LDE came
+from. If interceptors came from several provinces, they may not retreat in
+several province; they must retreat in a single adjacent province (or the
+fortress) as a single stack but can choose in which (among those from where
+interceptors came).
+
+Retreat is not a move. It may not be intercepted and never causes attrition.
+
+\begin{designnote}
+  Most of the time, only one side has to retreat in which case the other
+  (winning) side stays in place and occupy terrain.
+
+  Retreat must be done toward ``where you came from'' which can have various
+  meaning\ldots
+
+  When both sides retreat (tie), then the one who moved into the province
+  first retreats second and thus may decide to stay in place. Basically, the
+  battle is assumed to happen on the frontier of the province and either the
+  invasion force does not manage to enter (regular battle) or interceptors are
+  repulsed. Even if there is no winner, hence this is not really a decisive
+  battle, one side happens to keep control of the land.
+
+  \smallskip
+
+  As said in the Interception, when a phasing stack enters a province where
+  there is a non-phasing stack and gets intercepted by a force of the same
+  alliance, then the interceptor can choose to either resolve this as a
+  separate interception battle or to merge and resolve this as a regular
+  battle. In case of tie, if this is resolved as a regular battle, then the
+  non-phasing (non-intercepting) side was here first and the phasing must
+  retreat first.
+
+  On the other hand, if this is resolved as an interception battle (between
+  phasing and interceptor only) then the phasing stack was here first and the
+  interceptor must win in order to stay in place. If the phasing side stays
+  after such an interception (either winning, or tied and decide to stay),
+  then this is in a province with unbesieged enemy presence, hence the phasing
+  stack must stop movement and will resolve a regular battle against the
+  troops that are still here (\emph{i.e.} the ones that were here before the
+  interception).
+
+  \smallskip
+
+  When a battle happens around a besieged fortress (usually to attempt to lift
+  the siege), then a tie allow to mix and match troops in and out of the
+  fortress during the retreat. The siege is not necessarily lifted (depending
+  on the precise outcome) but in the chaos of the battle troops were able to
+  sneak in or out. On the other hand, if the besieger side wins, then the
+  besieged side must retreat the ``in'' troops in the fortress and the ``out''
+  troops out of tho fortress. And of course, if the besieged side wins, the
+  siege is lifted and the question does not arise anymore.
+\end{designnote}
+
+Lastly, in Europe, round total losses suffered by each side to the closest
+integer. This rounding is part of the losses suffered during the battle.
+
+Each full loss corresponds to 1\LD and each \texttu to 1\LDE. These losses
+must be removed now. As usual, it is possible to break \ARMY (and \LD)
+counters to get the ``change''. The controller of the stack choose which
+troops are killed. If the stack is smaller than the losses, then it is
+destroyed and the losses are considered to be only the size of the stack
+(\emph{i.e.} if a 2\LD stack suffer 6 losses, it is entirely destroyed but it
+is considered that it only suffered 2 losses as only 2\LD are killed).
+
+In some case, there is not enough counters to satisfy the losses (\emph{e.g.}
+if an \ARMY\faceplus suffers from 1 loss but the country has no more \LD
+available). In this case, losses are increased until they can be satisfied
+(\emph{e.g.} rounded up from 1 to 2 and the \ARMY\faceplus is flipped
+\Facemoins). This increased is counted as losses suffered during the battle.
+
+Similarly, if \TUR decides to kill one or more \Pashas that represent more \LD
+than the number of losses, then the total number of \LD killed is counted
+toward the total losses.
+
+\begin{exemple}
+  Continuing the \FRA-\HIS battle. \HIS was routed and suffered 4\texttd
+  losses while \FRA won and suffered 2\texttu losses. Being the only
+  non-winning stack, \HIS must retreat.
+
+  Being routed, \HIS simply roll 1d10 on Sub-table <L3> (\Man is not used
+  after a rout). Luckily, it rolls 2 and this does not cause any extra loss.
+
+  Losses are now rounded because the battle occurred in Europe. \HIS rounds
+  the 4\texttd losses it suffered to 5 (nearest integer) and is actually
+  entirely destroyed!  \FRA rounds the 2\texttu losses it suffered to 2
+  (nearest integer). The final result is that \HIS is routed and suffers 5
+  losses while \FRA only suffers 2 losses.
+
+  The Spanish stack is removed from play. The French stack losses 2\LD
+  (typically, flipping an \ARMY from \Faceplus to \Facemoins).
+\end{exemple}
+
+\begin{exemple}[From an actual gaming session]
+  At the beginning of~\ref{pIV:English Civil War}, \pays{royalistes} controls
+  \provinceCornwall but neither \provinceGloucester nor \provinceWessex. It
+  nonetheless decides to put its newly recruited army (2\ARMY\faceplus,
+  \terme{Conscript}) in \provinceCornwall, commanded by
+  \leaderwithdata{Rupertroy}.
+
+  Due to an early and already finished~\ref{pIV:TYW}, \monarque{Gustav Adolf}
+  has nothing to do and decides to go and save Protestantism in England (maybe
+  hoping to turn that Anglicanism into true Protestantism). The Swedes do a
+  foreign intervention with 1\ARMY\faceplus (\terme{Veteran}) and
+  \leaderwithdata{Gustav-Adolf}.
+
+  The Swedes land in \provinceWessex where \leader{Rupertroy} fails its
+  interception and march onto \provinceCornwall. Being \TBAR vs \TMUS, \SUE
+  rolls in columns \textbf{B/B} and \pays{royalistes} in columns
+  \textbf{D/C}. Moreover, \SUE has 4 Morale and \pays{royalistes} only 3. \SUE
+  fights at +3/+3 (structural cavalry bonus) while \pays{royalistes} is only
+  at +1/+1 (artillery and size cavalry bonus).
+
+  For the first Fire, \leader{Rupertroy} rolls only 5+1=6, causing \texttu. At
+  the same time, \leader{Gustav-Adolf} rolls a lucky 10+3=13 and causes
+  3\textetoile\textetoile\textetoile! Trembling at the mere name of the Lion
+  of the North, the royalists troops flee in panic at the first shots of the
+  \emph{L\"{a}derkanonen}!
+
+  \leader{Gustav-Adolf} now pursues at +5 (+2 \Shock, +2 First Day, +1 after
+  Fire) and rolls 4+5=9 causing 1 more. These 4 losses are
+  reduced to 3\texttu due to the small \SUE stack (4\LD) and the +1
+  \terme{size differential} brings that back to 4. On the other hand, the
+  \texttu losses suffered by \SUE are not modified (8\LD causing them, -1
+  \terme{size differential} does not change anything) but are rounded to 0.
+
+  However, the only retreat possibility for \pays{royalistes} is the fortress
+  of \ville{Plymouth} which can only accommodate 1\LD. Thus, the actual losses
+  suffered by \pays{royalistes} are actually 7\LD (8 initial - 1 who managed
+  to retreat). Note that in this particular case, there is actually no need to
+  roll for the retreat\ldots
+\end{exemple}
+
 \subsection{Battle cleanup}
 \label{chMilitary:Battle:Cleanup}
 
