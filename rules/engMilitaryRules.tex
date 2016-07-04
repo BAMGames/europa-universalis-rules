@@ -2991,8 +2991,9 @@ Retreat is not a move. It may not be intercepted and never causes attrition.
   siege is lifted and the question does not arise anymore.
 \end{designnote}
 
-Lastly, in Europe, round total losses suffered by each side to the closest
-integer. This rounding is part of the losses suffered during the battle.
+Lastly, on the European map, round total losses suffered by each side to the
+closest integer. This rounding is part of the losses suffered during the
+battle.
 
 Each full loss corresponds to 1\LD and each \texttu to 1\LDE. These losses
 must be removed now. As usual, it is possible to break \ARMY (and \LD)
@@ -3085,7 +3086,7 @@ toward the total losses.
 \label{chMilitary:Battle:Cleanup}
 
 \subsubsection{Major Battle}
-A Battle is called a \terme{Major Battle} of all of the following conditions
+A Battle is called a \terme{Major Battle} if all of the following conditions
 are true:
 \begin{modlist}
 \item one side won;
@@ -3098,13 +3099,13 @@ are true:
 \end{modlist}
 
 \begin{designnote}
-  The battle has to be decisive (rout and size differential). If far away
+  The battle has to be decisive (rout and loss differential). If far away
   (\ROTW), it also need to include sufficiently many (\ARMY counter) ``real''
-  (European) troops. Thus, typically, battles between \HIS and \paysAzteque
-  are never \terme{Major Battle} because nobody in Europe cares about killing
-  a bunch of natives. On the other hand, battles like Saratoga or the Plains
-  of Abraham involved European \ARMY counter on the loosing side. They had
-  huge impact on the European politics and population and thus do qualify as
+  (European) troops. Thus, typically, victories of \HIS over \paysAzteque are
+  never \terme{Major Battle} because nobody in Europe cares about killing a
+  bunch of natives. On the other hand, battles like Saratoga or the Plains of
+  Abraham involved European \ARMY counter on the loosing side. They had huge
+  impact on the European politics and population and thus do qualify as
   \terme{Major Battle}. In other words, there may be \terme{Major Battles} in
   the \ROTW but they need sufficiently many European troops to have an impact
   on European population.
@@ -3169,7 +3170,7 @@ If the result is 1 or less, the leader suffered from the battle. Roll 1d10
   will come back (or the 'End' box if this is after W5).
 \end{itemize}
 
-Countries that have less leader than their minimal will get new ones at the
+Countries that have less leaders than their minimal will get new ones at the
 beginning of next round.
 \begin{todo}
   When? Link with example already written. Complete correct part.
@@ -3177,10 +3178,10 @@ beginning of next round.
 
 \begin{designnote}
   Here also, a 'killed' or 'wounded' leader is a game term not to take too
-  seriously. It may mean a disgrace (permanent or temporary) removing the
-  leader from commanding position, or a severe wound causing the leader to
-  stop the military carrier and maybe become minister or ambassador, or
-  retiring in his family castle, \ldots
+  seriously. It may mean a capture, a disgrace (permanent or temporary)
+  removing the leader from commanding position, or a severe wound causing the
+  leader to stop the military carrier and maybe become minister or ambassador,
+  or retiring in his family castle, \ldots
 \end{designnote}
 
 \subsubsection{Aftermath}
@@ -3208,6 +3209,111 @@ Change commanding leaders of stacks according to the new situation.
 If this is an interception battle won by the phasing side, the stack may
 continue its movement. If this is an interception battle, any non-winning side
 may not intercept or counter-intercept again during this impulse.
+
+\begin{exemple}[Ending the \FRA-\HIS battle]
+  \HIS was routed and suffered 5 losses while \FRA won with only 2
+  losses. Thus, the losses differential is 5-2=3 and all the conditions for a
+  \terme{Major Battle} are met. \FRA immediately gains 1 \STAB and 5\VPs while
+  \HIS loses 1 \STAB.
+
+  Once again, note how the seemingly tie after the two days of battle
+  (3\textetoile\textetoile\textetoile vs 3\textetoile\textetoile) turned into a
+  Spanish disaster due to that single additional \textetoile (mostly) aided by
+  the various external factors correcting the losses (\terme{size
+    differential} and small stack).
+
+  Next, leader casualties are checked. \FRA rolls 3, not modified, and nothing
+  happens. \HIS rolls 6 - 1 (loser) - 5 (entirely destroyed) = 0, hence its
+  \LeaderG is part of the casualties. \HIS rolls again to see if he's dead or
+  wounded and obtains 4. It's an even number, hence the general is wounded for
+  4/2=2 rounds. Suppose this was W4, he will come back in two rounds, that is
+  during W5. Put the token on the W5 box of the round tracks.
+
+  \FRA now besiege \villeArras.
+
+  \smallskip
+
+  If the second roll of \HIS was 7, an odd number, then the leader would have
+  been killed and removed from the game. If it was 10, he would be wounded for
+  5 rounds. That is the non-existent 'S7' hence the \LeaderG would be put on
+  the 'End' box and returned at the beginning of next turn
+  (see~\ref{chInter:No lasting wounds}).
+\end{exemple}
+
+\begin{playtip}
+  In order to win battles, you should, in decreasing order of importance:
+  \begin{enumerate}
+  \item roll 10s;
+  \item convince your opponent to roll 1s;
+  \item have a better general;
+  \item have more troops, more artillery, more cavalry, \ldots and catch your
+    opponent crossing a river;
+  \item have a better technology.
+  \end{enumerate}
+  Joke aside, this does not mean that battles are a mere luck-fest, especially
+  in the late game. But the surprise can always arise and if one side roll
+  four 10 while the other roll four 1, there is little doubt on who the victor
+  will be, whatever the other conditions.
+
+  Especially, in the late game, with a lot of Morale, many high rolls are
+  needed to win the battle. A battle in \TMED, even with \terme{Veteran}
+  troops, ends as soon as one side rolls 9 or more and that can indeed feel
+  extremely luck driven (well, Medieval battles tend to be quite
+  unpredictable). On the other hand, after \TMUS, with 4 Morale, and,
+  typically, if rolling at -1 because of Forest, then routing the enemy
+  require 4 rolls of 8 or higher. This is not often achieved by mere luck and
+  usually require a bit more planning and preparation. Typically, in the
+  \SUE-\pays{royalistes} example, even if \SUE got lucky by rolling 10,
+  fighting at \bonus{+3} gives a huge advantage: you only need to roll 4 or
+  more to cause Morale loss.
+
+  As illustrated in the long \FRA-\HIS example, what's important in a battle
+  is not to cause losses but to cause \textetoile. There are linked, but
+  typically, the difference between \texttd and 1\textetoile is huge while the
+  difference between 1\textetoile and 1\texttu\textetoile is almost
+  negligible. When you fight, you need to roll 7 or more to cause those
+  \textetoile. Baring luck and rolling 10s while your opponent rolls 1s, you
+  best possibility is to come with as much positive DRM as possible and give
+  as much negative DRM as possible to your opponent. Crossing a river to
+  attack a troop stationed in Mountain means fighting at -2/-2, now you need 9
+  or more to cause \textetoile while your opponent need 7 or more. A pretty
+  bad situation.
+
+  \smallskip
+
+  The other part of the battle is the losses. That lead to different tactics
+  depending on the situation. Typically, if you have a global advantage on the
+  strategical level, you may want to seek a decisive battle, destroying as
+  many enemy troops as possible to prevent any counter-attack or similar funny
+  move and to start besieging in peace. In that case, you want the battle to
+  happen with as many positive DRM as possible, even if it costs you some more
+  troops. Try to fight in Plains with large stacks.
+
+  On the other hand, if you're on the defensive, then you probably want to
+  keep you troops alive as long as possible. 5\LD can be a good ``army in
+  being'' able to launch a raid to lift a siege close to its end, to cut
+  supply or similar actions, while zero troops are obviously useless. In that
+  case, you want to get as many negative modifiers as possible. Try to fight
+  in Mountain or Forest, to intercept enemy as soon as they cross rivers,
+  \ldots These often lead to inconclusive battles (draw) but that is often
+  enough to delay your opponent for 1 or 2 rounds, which is usually all that
+  you need.
+
+  \smallskip
+
+  An example of successful delay of the ``guerrilla'' side happens during
+  another gaming session. During~\ref{pVII:Independence War}, \ANG tried to
+  bring troops to America and land them in one of the pro-British
+  \COL. However, they got intercepted by \leaderwithdata{Washington} and some
+  patriots. Due to the -2/-3 for disembarking and the -1/-1 of the Forest, the
+  Royal troops couldn't do a lot of damage during the Battle. At the end of
+  the First Day, \leader{Washington} decided to retreat which, with 6 \Man and
+  4 Morale was automatic\ldots The British won the battle and could move on
+  but the American raid costed them maybe \texttu or \texttd, enough to flip
+  one \ARMY counter and remove artillery bonus for the next battle. A
+  perfectly well done raid forcing the \ANG player to think about its next
+  move.
+\end{playtip}
 
 \iamhere
 
