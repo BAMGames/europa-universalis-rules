@@ -2876,11 +2876,11 @@ its \LeaderA is considered to be 0 for the retreat.
 Any \ND sunk during the retreat counts as 1 loss for the Battle. Any \NDE
 counts as \texttu.
 
-The winning fleet (if any) may decide to follow the retreating fleet and
-blockade the port where it goes (only). This is also a move, hence a following
-fleet must roll for attrition as usual (using the \terme{Replacement} \LeaderA
-if applicable). Any \ND or \NDE sunk during this follow-up are counted as
-battle losses.
+If it is large enough, the winning fleet (if any) may decide to follow the
+retreating fleet and blockade the port where it goes (only). This is also a
+move, hence a following fleet must roll for attrition as usual (using the
+\terme{Replacement} \LeaderA if applicable). Any \ND or \NDE sunk during this
+follow-up are counted as battle losses.
 
 The retreat may not be intercepted and is not subject to \Presidios or
 \StraitFort. A possible follow-up may not be intercepted but can be subject of
@@ -3066,16 +3066,148 @@ toward the total losses.
   \leader{Rupert} retreats and roll 3, causing \texttu more. The 4\texttu
   losses are rounded to 4. However, the only retreat possibility for
   \pays{royalistes} is the fortress of \ville{Plymouth} which can only
-  accommodate 1\LD. The rest of the troops are killed trying to get in or
-  simply disband and desert without any possibility to gather them into a
-  fighting force. Thus, the actual losses suffered by \pays{royalistes} are
-  7\LD (8\LD initial - 1\LD who managed to retreat). Note that in this
-  particular case, there was actually no need to roll for the retreat\ldots
+  accommodate 1\LD. The rest of the troops are killed trying to get in, simply
+  disband and desert without any possibility to gather them into a fighting
+  force, and Many of them surrendered to the Swedes. Thus, the actual losses
+  suffered by \pays{royalistes} are 7\LD (8\LD initial - 1\LD who managed to
+  retreat). Note that in this particular case, there was actually no need to
+  roll for the retreat\ldots
 \end{exemple}
+
+\begin{designnote}
+  ``Lost'' troops can be either killed, captured, disbanded, deserting, \ldots
+  In any way, they are no more combat-effective, but a huge casualty does not
+  necessarily means a bloodbath. The game use the term ``kill'' to denote all
+  these casualties for the sake of simplicity.
+\end{designnote}
 
 \subsection{Battle cleanup}
 \label{chMilitary:Battle:Cleanup}
 
+\subsubsection{Major Battle}
+A Battle is called a \terme{Major Battle} of all of the following conditions
+are true:
+\begin{modlist}
+\item one side won;
+\item[AND] the loosing side was routed;
+\item[AND] (on land) the loss differential is at least 3\LD, or 4\LD if the
+  winning side has a \terme{size differential} of +2;
+\item[AND] (at sea) the loss differential is at least 5\NWD or 8\NGD.
+\item[AND] (on land, in the \ROTW) the loosing side had at least one \ARMY
+  counter from an European country at the start of the battle;
+\end{modlist}
+
+\begin{designnote}
+  The battle has to be decisive (rout and size differential). If far away
+  (\ROTW), it also need to include sufficiently many (\ARMY counter) ``real''
+  (European) troops. Thus, typically, battles between \HIS and \paysAzteque
+  are never \terme{Major Battle} because nobody in Europe cares about killing
+  a bunch of natives. On the other hand, battles like Saratoga or the Plains
+  of Abraham involved European \ARMY counter on the loosing side. They had
+  huge impact on the European politics and population and thus do qualify as
+  \terme{Major Battle}. In other words, there may be \terme{Major Battles} in
+  the \ROTW but they need sufficiently many European troops to have an impact
+  on European population.
+
+  Even if the \emph{looser} needs an European \ARMY, it is not the case for
+  the winner. If a large Spanish invasion force happen to be crushed in the
+  New World, this will have a huge impact on the Spanish (and European)
+  population, maybe slow down the conquest a bit (``It's too dangerous to go
+  there, it's not worth it''), \ldots Similarly, a few lone \LD may sometimes
+  score a \terme{Major Victory}.
+\end{designnote}
+
+\aparag In case of \terme{Major Battle}, apply all the following effects:
+\bparag the loosing side loose 1 \STAB (no penalty if already at -3);
+\bparag the winning side wins 1 \STAB (no bonus if already at +3);
+\bparag the winning side wins 5\VPs.
+
+Minor countries never gain or loss \STAB or \VPs. It is, however, possible to
+gain or loss \STAB or \VPs when fighting against a minor country. In case of
+multi-national stacks, the gain or losses are for the country which commanded
+the troops during the battle.
+
+\begin{designnote}
+  Note that because a side may not suffer more losses than it has troops
+  (exceeding losses are not counted), it is never possible to have a
+  \terme{Major Defeat} if the loosing side has only 2\LD involved. Also, keep
+  in mind that a rout is necessarily for a \terme{Major Battle}.
+\end{designnote}
+
+\subsubsection{Death of leaders}
+Any \terme{Replacement} leader used during the battle is now forgotten. It's
+not needed any more and a new \terme{Replacement} leader will be rolled the
+next time it's needed.
+
+Every commanding leader has to test a possible casualty in battle. roll 1d10,
+modified as follows:
+\begin{modlist}
+\item[-1] for any non-winning side;
+\item[-5] for a side entirely destroyed during the battle;
+\item[-1] if the leader has a value of 6 in either \Fire or \Shock (exception:
+  \leader{Marlborough} and \leader{Friedrich II} do not have this malus, this
+  is hinted on the tokens with their names and stats in white instead of black
+  or yellow).
+\end{modlist}
+
+Exception: if the opposing side had strictly less than 3\LD at the beginning
+of the battle, do not roll for leader casualty.
+
+\begin{designnote}
+  If you don't risk \terme{Major Defeat}, you can't kill the enemy leader
+  either (this prevents a gamey technique).
+\end{designnote}
+
+If the result is 1 or less, the leader suffered from the battle. Roll 1d10
+(never modified) to check the result:
+\begin{itemize}
+\item if this result is odd, the leader is killed, remove it from play;
+\item if this result is even, the leader is merely wounded. The wounds will
+  last for a number of rounds equal to half the result of the die. Count
+  rounds on the Round track using the longest possible path (S1, W1, S2, W2,
+  \ldots) and place the leader in the box corresponding to the round when it
+  will come back (or the 'End' box if this is after W5).
+\end{itemize}
+
+Countries that have less leader than their minimal will get new ones at the
+beginning of next round.
+\begin{todo}
+  When? Link with example already written. Complete correct part.
+\end{todo}
+
+\begin{designnote}
+  Here also, a 'killed' or 'wounded' leader is a game term not to take too
+  seriously. It may mean a disgrace (permanent or temporary) removing the
+  leader from commanding position, or a severe wound causing the leader to
+  stop the military carrier and maybe become minister or ambassador, or
+  retiring in his family castle, \ldots
+\end{designnote}
+
+\subsubsection{Aftermath}
+If the winning side is now in a province with an enemy fortress, the fortress
+is considered besieged for all purpose (even if the winning side lacks
+sufficient troops, this will only be check during the Siege segment). If the
+fortress was already besieged, the siege merely continue from the same
+situation (yes, this does allow to ``steal'' a siege in three-sided wars).
+
+On the other side, blockade is not automatic and can only be started if the
+fleet is large enough.
+
+If the fortress of the province was besieged and the province now contains
+only friendly troops, the siege is now lifted. Remove any \USURE counter there
+might be here, move besieged troops out of the fortress and merge them with
+the stack here.
+
+If one of the stack involved in the battle is now overstacked (normally due to
+retreat in an already crowded province or lifting a siege without taking any
+loss), exceeding troops are removed. This is not part of battle casualties and
+thus does not count toward \terme{Major Battle}.
+
+Change commanding leaders of stacks according to the new situation.
+
+If this is an interception battle won by the phasing side, the stack may
+continue its movement. If this is an interception battle, any non-winning side
+may not intercept or counter-intercept again during this impulse.
 
 \iamhere
 
