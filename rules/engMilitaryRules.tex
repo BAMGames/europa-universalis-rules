@@ -1263,32 +1263,13 @@ counted toward any campaign cost. Any exceeding troops after that are
 destroyed. Such an overstacking typically occurs when many unlikely
 interceptions are declared and they all succeed\ldots
 
-Note that if a stack moves into a province where there is another friendly
-stack (typically in order to merge stacks) and get intercepted, the
-interception battle occurs immediately after entering the province, hence
-\textbf{before} the two phasing stacks actually have a chance to
-meet. Especially, the immobile phasing stack does not participate in battle
-(it may attempt to counter-intercept in order to join the battle). In such a
-case, the intercepting stack must retreat after battle (in the province where
-it came from) even if victorious (this retreat does not trigger attrition and
-does not count toward campaign cost).
-
-\begin{designnote}
-  Fighting separate enemies before they could merge was one of Napoleon's
-  favourite move\ldots
-\end{designnote}
-
-On the other hand, if a moving stack enters a province already containing
-enemy troops, it may be intercepted both by the same enemy alliance and a
-third party alliance. In the later case, the interception battle occurs only
-between the moving and intercepting stacks and the intercepting (third party)
-stack must retreat after it (even in case of victory) while the moving stack,
-if winning, engage battle with the non-moving one (to be resolved as a regular
-battle). In the former case (interception by the same alliance), the
-interceptor may chose to either resolve this as an interception battle
-(including only the troops who successfully intercepted) or as a regular
-battle (including all the troops now in the province, to be resolved later
-thus ``locking'' everything until battle segment).
+If a stack moves into a province where there are already forces (whether
+friendly or enemy) and get intercepted, then the interceptor can choose to
+either resolve this immediately as an interception battle, hence only between
+the moving and intercepting troops; or to resolve this later as a regular
+battle, hence merging all the troops in the province prior to battle and
+``locking'' everybody into battle (but the phasing side may decide to bring
+more troops).
 
 To resolve an interception, roll a die modified as follows (all modifiers are
 cumulative):
@@ -1841,8 +1822,10 @@ loses if the loses are more than the number of first line ships. Any \VGD are
 automatically used if (and only if) the first line ships are \NGD.
 
 If a side is composed solely of \NTD (notably, convoys alone), it must use
-them as first line ships. This is the only case where \NTD may be used us
-first line ships.
+them as first line ships. This is the only case where \NTD may be used us
+first line ships. In this case, the opponent automatically gets \terme{Wind
+  Advantage}, \NTD do not roll during the battle and they automatically break
+and rout after the First Fire (they have 0 Morale).
 
 \begin{designnote}
   While mixed fleet did exists, the battle mechanisms (and parameters) are
@@ -2161,11 +2144,12 @@ them down when they happen to ease the process.
   Morale); in case of tie, nobody gets the malus.\fi #3 results.}
 \newcommand{\chMilFireRoll}[3][]{\chMilBattleRoll[#1]{#2}{#3}{Fire}}
 \newcommand{\chMilFireTech}{
-  \bparag[Technology.] A Stack with \TMED technology does not roll for Fire. A
-  stack with \TREN technology only apply the \textetoile. A stack with \TARQ
-  technology only does half (round down to lesser \texttu) the indicated
-  losses. A stack with \NGD and no \VGD only does half (round up to larger
-  \texttu) the indicated losses.}
+  \bparag[Technology.] A Stack with \TMED technology does not roll for
+  Fire. On the European map, stack with \TREN technology and no \ARMY counter
+  does not roll for Fire. A stack with \TREN technology only apply the
+  \textetoile. A stack with \TARQ technology only does half (round down to
+  lesser \texttu) the indicated losses. A stack with \NGD and no \VGD only
+  does half (round up to larger \texttu) the indicated losses.}
 \newcommand{\chMilMoraleCheck}{
   \bparag[Rout.] If one side has suffered more \textetoile than its
   \terme{Morale}, it is immediately routed. It loses the battle and its
@@ -2192,6 +2176,8 @@ them down when they happen to ease the process.
 }
 
 \chMilFire{first}{Note}{First}
+\bparag \NTD do not roll for Fire and automatically routs at the end of First
+fire.
 
 \chMilShock{first}{First}
 
@@ -2615,7 +2601,7 @@ Finally:
 \item on land, losses inflicted are capped by the size of the stack, remove
   any exceeding loses;
 \item at sea, losses inflicted are capped by twice the size of the stack,
-  remove any exceeding loses; if a side was routed, the losses it suffer are
+  remove any exceeding loses; if a side was routed, the losses it suffers are
   always at least 1\ND, increase them if needed.
 \end{itemize}
 
@@ -2627,6 +2613,12 @@ Finally:
   further. Basically, it is not possible to kill more enemies that you have
   soldiers.
 \end{exemple}
+
+A native force that rolled more than one die has to apply this procedure for
+the losses caused by its 'last die' (only), using the number of \LD
+represented by that die. After that, all the losses caused by that force can
+be added together. Other forces with more than 8\LD (\emph{e.g.} \TUR with
+\Pashas) can simply keep this step.
 
 \subsubsection{Size Comparison}
 Note that the procedure described here to find the \terme{size differential}
@@ -2880,7 +2872,11 @@ If it is large enough, the winning fleet (if any) may decide to follow the
 retreating fleet and blockade the port where it goes (only). This is also a
 move, hence a following fleet must roll for attrition as usual (using the
 \terme{Replacement} \LeaderA if applicable). Any \ND or \NDE sunk during this
-follow-up are counted as battle losses.
+follow-up are counted as battle losses. A winning stack may decide to split
+and only part of it follows (typically, after an interception to allow the
+rest to carry on with its move and action). The part that follows must be
+large enough to blockade the port and usual hierarchy rules are enforced when
+splitting the stack.
 
 The retreat may not be intercepted and is not subject to \Presidios or
 \StraitFort. A possible follow-up may not be intercepted but can be subject of
@@ -3151,8 +3147,9 @@ modified as follows:
   or yellow).
 \end{modlist}
 
-Exception: if the opposing side had strictly less than 3\LD at the beginning
-of the battle, do not roll for leader casualty.
+Exception: if the battle occurs on the European map and the opposing side had
+strictly less than 3\LD at the beginning of the battle, do not roll for leader
+casualty.
 
 \begin{designnote}
   If you don't risk \terme{Major Defeat}, you can't kill the enemy leader
@@ -3240,7 +3237,7 @@ may not intercept or counter-intercept again during this impulse.
   (see~\ref{chInter:No lasting wounds}).
 \end{exemple}
 
-\begin{playtip}
+\begin{playtip}[Winning battles]
   In order to win battles, you should, in decreasing order of importance:
   \begin{enumerate}
   \item roll 10s;
@@ -3278,9 +3275,9 @@ may not intercept or counter-intercept again during this impulse.
   attack a troop stationed in Mountain means fighting at -2/-2, now you need 9
   or more to cause \textetoile while your opponent need 7 or more. A pretty
   bad situation.
+\end{playtip}
 
-  \smallskip
-
+\begin{playtip}[Losses]
   The other part of the battle is the losses. That lead to different tactics
   depending on the situation. Typically, if you have a global advantage on the
   strategical level, you may want to seek a decisive battle, destroying as
@@ -3315,396 +3312,14 @@ may not intercept or counter-intercept again during this impulse.
   move.
 \end{playtip}
 
-\iamhere
-
-\subsection{Les batailles}
-\aparag[Victoire majeure]
-Elle est obtenue aux conditions suivantes
-\bparag Sur terre en Europe : déroute du perdant et différence des
-pertes égale à 3\LD ou plus
-\bparag Sur terre en \ROTW : déroute du perdant, perdant avait au moins
-un pion \ARMY européen et différence des pertes égale à 3\LD ou plus
-\bparag Sur mer : déroute du perdant et différence des pertes
-d'au moins 5\ND ou 8 DGa.
-
-\subsubsection{Les batailles terrestres}
-\aparag[Organisation des armées et cavaleries] Valable si au moins un pion armée
-de la classe en question.
-\bparag[\terme{Sipahi}]  TUR (avant réforme M-2) a +1 en choc et poursuite plaine/désert
-\bparag[iim]  bonus +1 au choc en I-IV en plaine/forêt orientale
-\bparag[tercios] toutes les autres armées ont un malus -1 en choc contre eux sauf
-       i, im, ii et iim en I-V
-\bparag[iiim] bonus +1 au choc en IV-V en plaine et forêts occidentales,
-\bparag[SUE] bonus de +1 au choc en II-VI en forêts nordiques
-\bparag[iv] bonus +1 en III-V en plaines et forêts occidentales
-
-\aparag[Test de survie des généraux]
-En Europe, sur terre, on ne teste pas le général d'un camp si son adversaire
-n'a pas au moins 3 \LD.
-
-\subsubsection{Les batailles navales}
-\aparag Deux jours au maximum en cumulant les pertes jusqu'à la fuite (volontaire
-ou obligatoire) d'un camp.
-\bparag Fuite obligatoire
-       si le moral arrive à 0, ou
-       si le nombre de pertes reçues est > nbre de D de la flotte
-               (tenir compte ici des modificateurs finaux aux pertes).
-     Dans les deux cas c'est une déroute (avec poursuite, etc.).
-\bparag Fin 2e jour si egalité en moral ;
-peuvent choisir de retourner à un port (au choix) ou rester en mer (attaquant
-d'abord).
-\bparag Les flottes continue leur action si elles ont gagné la bataille, sinon
-elles ont fini pour le tour (devant soit retourner auport, soit choisir de rester en mer
-en cas d'égalité mais sans rien faire de plus).
-Exception : on ne peut débuter un transport maritime après une bataille, même gagnée.
-
-\aparag[Effet de la différence de taille des forces] Modificateurs au dé de bataille
-\bparag Si la flotte est de taille >= à (taille+1) adverse, +1 au choc
-\bparag Si la flotte est de taille >= à (taille+3) adverse, +1 aux feu, choc
-\bparag Si la flotte est de taille >= à (taille+5) adverse, +1 aux feu, choc et poursuite
-\bparag Si la flotte est de taille >= à (taille+7) adverse, +1 aux feu,  +2 choc et +1 poursuite
-\bparag Si le moral perdu est > moral adverse perdu, -1 aux feu et choc
-
-\aparag[Effet de la taille des forces]
-Appliquer variation des pertes:
-\bparag Si moins de 6 \ND : réduction des pertes \\
-Si plus de 6 \ND (ne pas compter les \NDE):
-line +1 if 7 to 12\DN; +2 if 13 to 18\DN; +3 if 19+\DN
-de la table 'Size Comparison'.
-
-\bparag Si l'adversaire a dérouté, les pertes sont minimales sont 1.
-\bparag Le max de pertes que peut faire une flotte est le double de sa taille
-       (1 si 'de' seul).
-
-
-\aparag[Répartition des pertes]
-\bparag  Integer {\bf losses split} evenly in \terme{Damaged}, \terme{Destroyed} and \terme{At port}, in units of \ND.
-\bparag {Winner:} 1st \ND\ lost  \terme{Damaged}, 2nd \terme{Destroyed} and 3rd refitted (then loop over).
-\bparag {Loser (or equality.):} 1st \ND\ lost  \terme{Damaged}, 2nd \terme{Destroyed} and 3rd \terme{Damaged}.
-\bparag Fractions (\tu or \td) vs. \NGD or \NTD are  rounded up. Fractions vs. \ND are applied as \NDE or 2\NDE  in the next category of loss.
-\bparag Examples 2: 3\td losses against losing \ND: 2\ND+2\NDE {Damaged}, 1 \terme{Destroyed}\bparag Examples 2: 4\tu losses against winning \NGD = 5 losses: 2  \terme{Damaged}, 2 \terme{Destroyed} (one immediately refitted fo no effect).
-
-
-\aparag[Pertes en poursuite] En plus des pertes normales, elles permettent
-de capturer ou attaquer les transports. Le niveau de capture est égal
-au nombre d'étoiles.
-\bparag Capture de navires de guerre = le gagnant peut capturer un DN ou
-2 DGa par * en poursuite        (pris d'abord sur les Imm, puis les End, puis les autres)
-\bparag Couler Transports = 2 DTr coulé par * de poursuite dédiée à ceci
-       une force terrestre transportée au minimum égale à ce que
-       ces DTr perdus transportent doivent être détruits.
-\bparag Capturer Or = 2 DTr par * de poursuite dédiée à ceci avec 5 ors perdus, 10 \ducats capturés.
-Les transports sont gardés avec la flotte (et peuvent être repris, attaqué par pirates etc)
-jusqu'à un port de la métropole où ils disparaissent (et or dans le RT).
-
-\aparag[Damaged ships] \terme{Damaged} \ND are written down globally by naval zones:
-Mediterranean Sea, Atlantic in Europe, Atlantic in \ROTW, Indian, Asian and East Pacific.
-They are refitted for usage:
-\bparag cost = 0.5*coût achat DN à un round suivant pour les remettre en état.
-               Effet = remet tout de suite en jeu les DN voulus.
-\bparag gratuit au début du tour suivant si on entretient la flotte;
-\bparag on peut la garder \terme{Damaged} pour un coût d'entretien divisé par 2 ;
-\bparag On les remet en priorité dans un Arsenal de la zone, sinon dans un
-port capable de les contenir.
-
-\aparag[Convoy in battles] If a battle occurs between two naval forces,
-one of them containing a convoy or Transports, the convoy does not take
-part in the battle, nor incurs losses during it.
-\bparag However, at the end of the battle, the pursuit \textetoilex\
-result may apply to the convoy or the Transports if the winner decides
-so.
-\bparag Each \textetoilex\ captures 2 \NTD with corresponding transports
-points sunk if loaded with troops, or 10 \ducats captured and 5 \ducats
-sunk for \NTD loaded of Gold.
-\bparag The rest of the convoy is kept by the loser.
-
-\subsubsection{Séquence de la bataille}
--- NE PAS PRENDRE EN COMPTE --
-
-\noindent
-La bataille commence après les tentatives éventuelles d'interception, de
-retraite avant combat, et les jets d'attrition des forces qui ont
-bougé. \\
-{\bf A.} Les rounds de combat, simultanés.
-Si à la fin d'un des 4 rounds, une armée a craqué au moral (aussi appelé déroute,
-c'est-à-dire est arrivé à 0 ou moins au moral), \textit{passer directement en C.1} \\
-1. Premier round de feu~: chaque camp lance un dé modifié sous la colonne de feu. On retient les
-pertes faites par les deux camps. \\
-2. Premier round de choc~: chaque camp lance un dé modifié sous la colonne de choc. On ajoute les
-résultat aux pertes faites par chaque camp. \\
-{\bf B.} Possibilité de rompre le combat, défenseur puis attaquant. Si les
-pertes sont à ce moment suffisantes pour que, une fois modifiées par les pertes variables,
-un camp soit éliminé, le combat cesse et on passe au C. \\
-3. Second round de feu~: chaque camp lance un dé modifié sous la colonne de feu, avec -1 au dé.
-On ajoute le résultat aux pertes faites par chaque camp. \\
-4. Second round de choc~: chaque camp lance un dé modifié sous la colonne de choc, avec -1 au dé.
-On ajoute le résultat aux pertes faites par chaque camp. \\
-{\bf C.1} Si une armée a craqué au moral et pas l'autre, effectuer un jet de poursuite (colonne E). \\
-{\bf C.2} Si une armée a moins de moral restant que l'autre mais n'est pas en déroute, elle perd le combat.
-\textit{Le vainqueur fait une poursuite qui peut causer une déroute}. \\
-{\bf C.3} Si les deux armées ont le même moral final ou que les deux ont craqué au moral,
-chaque camp retourne d'où il vient, on ne fait pas de poursuite et personne ne gagne \\
-{\bf D.} On totalise les pertes de chaque camp (des 4 rounds et la poursuite) qui sont modifiées
-en fonction de la taille de l'armée causant les pertes,
-\textit{ensuite de sa classe comparée à celle de
-l'armée prenant les pertes}. \\
-{\bf E.} Le perdant du combat (qui doit retraiter) fait un test d'attrition au cours de la retraite
-qui peut accroître ses pertes de $1/2$ ou 1. La man{\oe}uvre du général est utilisée
-si la force n'est pas en déroute. \\
-{\bf F.} Les pertes sont arrondies à l'entier inférieur (sauf 1/2 qui devient 1).\\
-{\bf G.} Les tests de perte des généraux sont faits (règle usuelle). On regarde si
-il y a eu bataille majeure. \\
-
-\subsubsection{Pendant les rounds de combat}
--- NE PAS PRENDRE EN COMPTE --
-
-
-\paragraph{1. Technologie et feu.}
-- Une armée en Médiéval ne lance pas de jet de feu. \\
-%- \textbf{version de Bertrand :} Une force en Renaissance utilise toujours la table de feu, même
-%si il n'y a que des DT (selon la clarification des Q\&A). Elle ne fait que les pertes au moral \\
-%- \textbf{version de Pierre :}  Une armée en Renaissance ne fait
-%que les pertes de moral indiqués par le feu ; si il n'y a que des D, pas de test de feu
-%(selon la règle de combat rapide de P. Thibaut).  \\
-- En Renaissance, une force utilise le table de feu si elle contient des pions armées, ou bien
-si elle n'a que des DT, quand elle combat des indigènes ou pays non européens en Médiéval.
-Dans les deux cas elle ne fait que les pertes au moral. \\
-- En Arquebuse, les pertes obtenues sur la table doivent être divisées par deux
-(arrondies à l'inférieur). \\
-- Pour toutes les technologies après Arquebuse,  les pertes sont celles indiquées.
-
-\paragraph{2. Modificateurs.}
-Ils sont indiqués à côté de la table de combat (terrain; -1 au second round;
-effet des généraux).
-
-
-\paragraph{3. Avantage de cavalerie.}
-Chaque pile contient un nombre de cavalerie qui dépend de sa taille et
-de la quantité de cavalerie par équivalent détachement. Une valeur \textit{qui dépend
-de la nationalité de l'armée en question (voir ci-dessous)} est multipliée par
-le nombre d'équivalent de détachement et donne ainsi la quantité de cavalerie
-dans la force. Les DT contiennent autant de cavalerie  par détachement que les A.
-
-Si un camp a au moins deux fois plus de cavalerie que son adversaire,
-il a +1 au dé pour le choc et la poursuite si la bataille est en plaine
-(qu'il soit défenseur ou attaquant), désert, ou dans les forêts orientales (voir
-\ref{foretOrientale}, pour certaines technologies seulement).
-
-
-\paragraph{4. Poursuite.}
-Les jets de poursuite sont affectés par le différentiel de choc,
-le terrain, l'avantage de cavalerie et la condition à la fin du combat : \\
-+1 si l'adversaire a craqué au feu, \\
-+2 si l'adversaire a craqué à un des 2 premiers rounds (cumulable avec le précédent).
-
-\paragraph{5. Rompre le combat.}\label{RetraiteEnBataille}
-Lors du segment B. de la bataille, entre les 2 premiers rounds de feu puis choc et les
-deux derniers, une armée peut décider de rompre le combat.
-Le défenseur a la possibilité de le faire et, si il décline ou échoue, l'attaquant
-peut le tenter.
-
-Un jet de dé inférieur à la man{\oe}uvre du général plus le moral restant à l'armée
-permet de finir la bataille tout de suite ;
-celui qui rompt le combat est le perdant. On finit le combat par le segment  C.2
-et les suivants. Si le test est échoué, le combat continuera et l'adversaire a un
-bonus de +2 à son jet de feu subséquent.
-
-
-\subsubsection{Variation des pertes}
--- NE PAS PRENDRE EN COMPTE --
-
-\label{PertesVariables}
-Le résultat des pertes est le total de ce qui est fait aux différents tests de feu,
-choc et éventuellement poursuite (mais sans la retraite) donnant un nombre d'équivalent
-détachement encaissé par
-l'armée adversaire. Cependant la table est prévue pour donner le nombre de
-pertes faites par une pile de 2 A+ à une armée de même taille. Notez
-qu'avoir plus de 8 DT dans une pile (pour la Turquie avec les pachas) ne
-donne aucun avantage : pas de pertes supplémentaires (à la différence
-du traitement des indigènes, voir \textit{infra}).
-
-{\bf 1.} Pour tenir compte de la taille réelle de l'armée, on consulte la table des
-pertes variables (voir tables de combat) qui indique combien de perte enlever pour obtenir le nombre
-de pertes final. \textbf{On applique une limitation importante à ce stade :
-le total des
-perte ne peut être supérieur à la taille de l'armée causant les pertes, comptée
-en équivalent détachement}.
-
-{\bf 2.}
-\textit{On compare ensuite le type de chaque armée.} Il y a 5 groupe d'armée qui sont
-les suivants, leur taille étant indiquée pour les sept périodes (la répartition précise est
-indiquée dans les annexes pour les mineurs et sur les tableaux des majeurs) :
-
-
-Le tableau suivant (à droite) permet alors de déterminer le différentiel selon la taille de
-chaque armée. On a mis en caractère gras les lignes et colonnes qui servent
-usuellement, en caractères normaux celles où des armées
-de tailles différentes sont mélangées (colonne 1, 5 et 6).
-%Le différentiel est variable selon les périodes ; après ce chiffre
-%sont indiquées les périodes de validité du modificateur.
-L'armée qui subit les
-dommages est prise en ordonnée sur une colonne, celle qui les inflige sur une
-ligne ; le tableau est
-symétrique avec un changement de signe par rapport à la diagonale.
-
-
-\textit{Algorithme : diviser la différence de taille entre l'armée la plus grande et la plus
-petite par 3 et arrondir au modificateur le plus proche pour obtenir le +?
-accordé à l'armée de taille plus grande.}
-
-
-{\bf 3.}
-Les pertes véritablement infligées sont alors celles données par le tableau
-ci-dessus, la ligne 0 correspondant au nombre de perte calculé à l'étape A,
-avant le modificateur
-dû à la comparaison des classes d'armée.
-
-
-{\bf 4.}
-On ajoute à la valeur obtenue le nombre de pertes données par la table de
-retraite (qui n'est pas modifié donc par le point {\bf 3}).
-Les pertes obtenue sont arrondies à l'unité inférieure (sauf \f\ qui donne 1)
-et donnent la valeur en équivalent détachement du nombre de pertes effectuées.
-
-{\bf 5.}
-Si une force indigène compte au final plus de 8 équivalent DT, elle inflige une fois
-des pertes par fraction de 8 DT complète et une de plus pour la fraction restante
-en lançant plusieurs dés sur la table de combat (un par 8 DT ou fraction).
-Cette dernière fraction fera des dégats diminués par la table des pertes variables.
-
-
-
-\subsubsection{Qui gagne le combat}
--- NE PAS PRENDRE EN COMPTE --
-
-
-Les différentes issues du combat sont données dans la séquence des batailles et
-détaillées ici.
-%\newpage\null%\newpage
-
-\textbf{Le vainqueur de la bataille.}
-
-{\bf C.1} Si une armée seule armée craque au moral (arrive à 0 ou moins) et pas l'autre à la fin
-d'un round, l'adversaire gagne le combat. Il effectue une poursuite, on ajuste les
-pertes. Le perdant recule dans une zone amie adjacente et fait un test d'attrition
-sans soustraire la man{\oe}uvre du général. Les PVs normaux sont accordés.
-
-{\bf C.2} Si aucune armée n'a craqué au moral après les 4 rounds, l'armée qui a le moins de moral restant perd
-le combat. \textit{Le vainqueur fait une poursuite.} Les pertes dues à la poursuite
-peuvent entraîner une déroute du perdant, en quel cas la fin de la procédure est la même
-que C.1. Autrement, le perdant recule dans une zone amie adjacente et fait un test d'attrition
-modifié par la man{\oe}uvre du général. Des PVs réduits de moitié sont accordés.
-
-{\bf C.3} Si les deux armées ont le même moral final, ou si les deux ont dérouté,
-chaque camp retourne d'où il vient. C'est-à-dire qu'un siège continue à être maintenu, qu'une
-armée qui vient de se déplacer ou d'intercepter retourne dans la zone où elle était juste
-avant le combat. Il n'y a pas de poursuite; IL Y A ATTRITION de retraite et personne ne gagne
-ni ne marque de PV.\\
-
-Une \textbf{victoire majeure} est accordée si le perdant a effectivement perdu
-\textbf{3} détachements
-de plus que le vainqueur (après modifications de la classe, retraite et arrondis),
-ou \textbf{4} DT si le perdant avait un modificateur de comparaison de taille
-égal à -2.
-
-Les pertes sont réparties par celui qui les subit comme il le veut parmi ses forces.
-Il peut détruire des pions armées (une A+ = 4D) par exemple ou faire tout son
-possible pour en garder (par exemple 2 A+ subissant 4 pertes peuvent rester sous
-forme de 1 A+ ou 2 A- ou encore 4D -- ce qui poserait des problèmes d'empilement...)
-
-\subsubsection{Bataille navales rapides}
--- NE PAS PRENDRE EN COMPTE --
-
-\paragraph{a. Séquence de bataille.}
-Les batailles navales sont résolues sur un système de combat accéléré
-qui utilise la table des résultats des batailles rapides. Le combat peut
-se poursuivre sur plusieurs jours selon la séquence suivante.
-\begin{enumerate}
-\item Décider du type de navires (Nav, Ga ou Tr) mis en avant (et en déduire le moral,
-les colonnes utilisées, et les modificateurs pour l'avantage du vent) ; ils
-doivent constituer au moins 1/4 des détachements de la pile.
-\item Déterminer l'avantage du vent (sauf dans un combat de galères
-contre galères).
-\item Segment de feu ; noter les pertes. Elles sont réduites de moitié
-si des Ga sont en 1e ligne. Si un camp craque au moral,
-aller directement en 7.
-\item Retraite optionnel du camp sous le vent, sans poursuite (mais avec
-suivi et attrition).
-\item Segment d'abordage ; noter les pertes.
-\item Ajouter les pertes de 3 et 5 et les ajuster en fonction du nombre de DN
-présents. Les retirer des forces navales.
-\item Si un camp est à 0 en moral, il rompt le combat et se réfugie au port
-(un des ports amis les plus proches), avec poursuite si l'autre camp n'a
-pas craqué au moral, et suivi éventuel pour établir un blocus.
-\item Si personne n'a craqué au moral, les deux joueurs choisissent en secret
-de rester ou de se replier au port. Si seule une force se replie, l'autre peut suivre
-au port pour mettre le blocus. Si les deux forces restent, reprendre une journée
-de combat au segment 2 en utilisant les valeurs de moral restant
-(contrairement aux batailles terrestres, le combat n'est pas limité à deux
-journées, le modificateur -1 s'appliquant à partir du 2\up{e} jour).
-Si jamais les DN du type de navires mis en avant sont tous détruits, il
-faut choisir un nouveau type et le moral est le minimum entre celui après la journée
-de combat et celui du nouveau type de navire en 1e ligne.
-\end{enumerate}
-
-\paragraph{b. Effet des pertes.}
-Les pertes obtenues en 3 et 5 sont ajoutées et modifiées alors
-par un pourcentage dépendant du nombre de DN dans la flotte
-qui fait les pertes (les DE comptent comme une moitié de DN mais
-l'arrondi est fait vers le bas). Voir le \textbf{tableau des modificateurs des
-taille de flottes}. On arrondi les fractions du résultat au demi supérieur,
-sauf si le résultat est $\le 0,3$ qui est réduit à 0.
-
-Ensuite ces pertes sont réparties entre des détachements coulés,
-immobilisés (reviennent au tour suivant dans un port ami à
-décider immédiatement) et endommagés (reviennent au round suivant dans cette
-flotte) en consultant la \textbf{table de répartition des pertes navales}.
-Si les pertes sont plus que 3 D, utiliser plusieurs fois la table pour chaque
-tranche de 3 D et le reste.
-Les DE se combinent ici selon l'équivalence 1DN=3DE.
-
-Les pertes affectent d'abord les détachements des navires mis en avant,
-ensuite sur les autres navires.
-
-
-\paragraph{c. Poursuite ou suivi au port.} La poursuite est un jet de perte
-sur la colonne E. Les pertes sont modifiées par la taille de la force navale
-qui poursuit (après les pertes du combat) et se répartissent pour moitié (arrondie
-à l'inférieur) comme des vaisseaux capturés et endommagés (reviennent rou
-round suivant dans un port ami au choix), et le restant comme des vaisseaux
-coulés.
-
-Ensuite une force navale est parfois autorisée à suivre son adversaire qui
-retraite pour mettre le blocus devant le port atteint. Elle peut ne suivre qu'avec
-une partie de la flotte (qui cesse son mouvement en blocus, après attrition
-pour le déplacement) tandis que le restant de la flotte continue son
-mouvement si le combat résultait d'une interception, ou fera une autre
-action navale dans la mer ensuite (blocus, lutte contre des pirates, etc).
-
-\paragraph{d. Galères et galéasses.} Les DGa et DGal comptent en empilement
-dans les pions F comme un demi-DN. Ainsi les flottes de galères sont en général
-plus importantes. Cependant elle font des pertes réduites de moitié à l'étape 3
-de feu (arrondir les fractions 1/4 vers le bas), ceci avant de les modifier par la taille.
-
-Venise peut avoir jusqu'à deux détachements de galéasses. La présence
-d'un détachement de galéasses en combat contre des galères (uniquement) permet d'utiliser
-les pertes complètes au feu ; la présence de 2 DGal fait que le feu se fait
-en plus avec +1 au dé de feu.
-Contre des vaisseaux, les galéasses combattent comme des galères.
-
-\paragraph{e. Transports en combat.}
-Les DTr ne comptent pas du tout en combat maritime et prennent des pertes si les
-navires de guerre qui les accompagnent sont déjà perdus.
-Des DTr mis en avant au début d'un jour de combat rompent toujours au moral
-après le feu quel que soit le résultat adverse et ne font pas de pertes (même si des
-navires de guerre sont en retrait).
-
 \section{Sieges}
 \label{chMilitary:Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
 Each alliance, in decreasing order of initiative, resolves all of its actions
 in an order of its choice (at random in case of disagreement).
+
+\iamhere
 
 \aparag[Blocus]
 Il faut avoir au moins la force navale voulue selon le niveau de forteresse
