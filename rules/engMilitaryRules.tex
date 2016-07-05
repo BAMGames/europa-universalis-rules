@@ -51,8 +51,11 @@ The alliance taking its impulse is called the \terme{phasing} alliance. All
 other are non-phasing.
 
 \subsubsection{Sieges}
-Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire. Declare
-new \terme{Exceptional Levies} and use old ones. Refit \terme{Damaged} ships.
+Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
+
+\subsubsection{End of round}
+Declare new \terme{Exceptional Levies} and use old ones. Refit \terme{Damaged}
+ships.
 
 \subsection{New round}
 A new round begin with the \terme{Continuation Roll} segment.
@@ -207,8 +210,11 @@ others are non-phasing.
 
 \subsection{Sieges}
 Each alliance, in decreasing order of initiative, resolve its sieges, fights
-against \REVOLT/\REBELLION and \corsaire, declare new \terme{Exceptional
-  Levies} and use old ones, refit \terme{Damaged} ships. Check details below.
+against \REVOLT/\REBELLION and \corsaire. Check details below.
+
+\subsection{End of round}
+Each alliance, in order of initiative, declare new \terme{Exceptional Levies}
+and use old ones, refit \terme{Damaged} ships. Check details below.
 
 \section{Supply}
 \label{chMilitary:Supply}
@@ -1691,7 +1697,7 @@ Land and sea battles follow the same sequence with slight modifications.
 Battles are always only fought between two stacks of belligerent
 alliances. There cannot be a three-sided battle. If, for some reason, several
 stacks of the same alliance participate in a battle, they are automatically
-considered merged before teh battle starts (notably to find the commander of
+considered merged before the battle starts (notably to find the commander of
 the stack) and for its entire duration.
 
 % \textbf{Attacker and defender.} The tables use the terms \terme{attacker} and
@@ -1717,7 +1723,7 @@ sea battles.
 \bparag \xnameref{chMilitary:Battle:Evasion}: non-phasing, non-intercepting
 stacks may attempt to avoid the battle and retreat before it starts.
 \bparag \xnameref{chMilitary:Battle:Parameters}: determine battle parameters,
-notably the column of the CRT and DRM to use.
+notably the columns of the CRT and DRM to use.
 \bparag \xnameref{chMilitary:Battle:Fight}: each battle can last up to 2
 \terme{days}. Each day is further split in a \terme{Fire} and a \terme{Shock}
 (or \terme{Boarding} at sea) roll.
@@ -1731,7 +1737,7 @@ death of leaders, \ldots
 
 This Battle sequence, and its details explained below, must be followed in
 strict order. Changing the order of some steps will result in incorrect
-results that can have drastic influence, especially because of the threshold
+results that can have drastic influence. Especially, because of the threshold
 on some effects (\emph{e.g.} 'Major Battle'), a small change can have a big
 consequence.
 
@@ -1747,13 +1753,14 @@ The evasion test is made by rolling 1d10 and adding the \Man differential
 result is 8 or more, the evasion is successful.
 
 If the evasion is successful, the 'battle' is over. Resolve the evasion and
-then proceed to resolve the next battle.
+then proceed with~\xnameref{chMilitary:Battle:Cleanup:Aftermath}.
 
 \textbf{At sea}, the evading stack must go to the closest (in number of zones)
-friendly port large enough to hold it (controller's choice if any). It must
-roll for attrition as if this was a move. The phasing stack may pursue and
-blockade said port (only). If it choose to pursue and blockade, the phasing
-stack must also roll for attrition as if it were moving again.
+friendly port large enough to hold it (controller's choice if any). This is a
+move, hence it must roll for attrition. If it's large enough, the phasing
+stack may follow and blockade said port (only). If it choose to follow and
+blockade, this is also a move, hence the phasing stack must also roll for
+attrition.
 
 \textbf{Automatic success.} If a land stack is in a province with a friendly
 fortress large enough to hold it (1 level/\LD, including those in \Pashas),
@@ -1772,14 +1779,14 @@ the whole stack could fit in the fortress.
 
 Land stacks evading do not roll for attrition.
 
-After a successful evasion, as after any battle, the phasing stack is
-considered to besieged an enemy fortress in its province (\emph{i.e.} even if
-it is too small or does not have supply, this will only be checked during the
-Siege segment), especially, the fortress is besieged for all purposes during
-the next impulses in the same round (if any).
+% After a successful evasion, as after any battle, the phasing stack is
+% considered to besieged an enemy fortress in its province (\emph{i.e.} even if
+% it is too small or does not have supply, this will only be checked during the
+% Siege segment), especially, the fortress is besieged for all purposes during
+% the next impulses in the same round (if any).
 
-Similarly, if the non-phasing stack was besieging before evasion, the siege is
-lifted as soon as there is no enemy troops in the province.
+% Similarly, if the non-phasing stack was besieging before evasion, the siege is
+% lifted as soon as there is no enemy troops in the province.
 
 \subsection{Battle parameters}
 \label{chMilitary:Battle:Parameters}
@@ -1802,9 +1809,7 @@ in~\ref{table:Replacement leaders}. The three values correspond to the \Man,
 duration of the battle.
 
 Additionally, when rolling for a \POL \LeaderA, subtract 1 from \Man and when
-rolling for a \PRU \LeaderA, subtract 1 from \Fire. The 'Natives' line is only
-used for natives (\pays{natives}), not for \ROTW countries (who use the
-'Minor' line as any minor country).
+rolling for a \PRU \LeaderA, subtract 1 from \Fire.
 
 Note that Replacement leaders are rolled after evasion and hence cannot be
 used to evade battle.
@@ -1831,7 +1836,13 @@ and rout after the First Fire (they have 0 Morale).
   While mixed fleet did exists, the battle mechanisms (and parameters) are
   handled differently in game for galleys and warships. Hence, mixing them in
   battle would complicated things a lot\ldots Moreover, most of the mixed
-  fleet were using mainly one kind of ships.
+  fleet were using mainly one kind of ships (the other kind being in much
+  smaller quantities and often mostly used as support ship). This is also the
+  reason why in game \NGD are only allowed in the \region{Mediterranee} and
+  the \region{Baltique}: even if Galleys were also used elsewhere, it was
+  mostly as second line ships and North Sea fleet (for example) were composed
+  mostly of warships plus some galleys (that are thus represented as part of
+  the counters).
 
   Note that if you have 1\NWD and 10\NGD, you may be tempted to put the \NWD
   on first line to try and save the \NGD\ldots However, if you suffer more
@@ -3182,11 +3193,12 @@ beginning of next round.
 \end{designnote}
 
 \subsubsection{Aftermath}
-If the winning side is now in a province with an enemy fortress, the fortress
-is considered besieged for all purpose (even if the winning side lacks
-sufficient troops, this will only be check during the Siege segment). If the
-fortress was already besieged, the siege merely continue from the same
-situation (yes, this does allow to ``steal'' a siege in three-sided wars).
+\label{chMilitary:Battle:Cleanup:Aftermath}
+If any side is now in a province with an enemy fortress, the fortress is
+considered besieged for all purpose (even if the winning side lacks sufficient
+troops, this will only be check during the Siege segment). If the fortress was
+already besieged, the siege merely continue from the same situation (yes, this
+does allow to ``steal'' a siege in three-sided wars).
 
 On the other side, blockade is not automatic and can only be started if the
 fleet is large enough.
@@ -3318,6 +3330,14 @@ Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
 Each alliance, in decreasing order of initiative, resolves all of its actions
 in an order of its choice (at random in case of disagreement).
+
+\subsection{Sieges}
+\subsubsection{Sapping}
+\subsubsection{Assault}
+
+\subsection{Fight against \REVOLT}
+
+\subsection{Fight against \corsaire}
 
 \iamhere
 
@@ -3454,7 +3474,11 @@ sauf si le nouvel occupant décide immédiatement de mettre un
 garnison. Il doit pour cela utiliser un DT qui est perdu (le DT peut
 provenir de la séparation d'un pion armée).
 
+\section{End of round}
+\label{chMilitary:End of round}
+\subsection{Exceptional levies}
 
+\subsection{Refit}
 
 \section{New round}
 A new round begin with the \terme{Continuation Roll} segment.
