@@ -1779,15 +1779,6 @@ the whole stack could fit in the fortress.
 
 Land stacks evading do not roll for attrition.
 
-% After a successful evasion, as after any battle, the phasing stack is
-% considered to besieged an enemy fortress in its province (\emph{i.e.} even if
-% it is too small or does not have supply, this will only be checked during the
-% Siege segment), especially, the fortress is besieged for all purposes during
-% the next impulses in the same round (if any).
-
-% Similarly, if the non-phasing stack was besieging before evasion, the siege is
-% lifted as soon as there is no enemy troops in the province.
-
 \subsection{Battle parameters}
 \label{chMilitary:Battle:Parameters}
 \subsubsection{Sortie}
@@ -1840,9 +1831,11 @@ and rout after the First Fire (they have 0 Morale).
   smaller quantities and often mostly used as support ship). This is also the
   reason why in game \NGD are only allowed in the \region{Mediterranee} and
   the \region{Baltique}: even if Galleys were also used elsewhere, it was
-  mostly as second line ships and North Sea fleet (for example) were composed
+  mostly as second line ships and North Sea fleets (for example) were composed
   mostly of warships plus some galleys (that are thus represented as part of
   the counters).
+
+  \smallskip
 
   Note that if you have 1\NWD and 10\NGD, you may be tempted to put the \NWD
   on first line to try and save the \NGD\ldots However, if you suffer more
@@ -1864,12 +1857,12 @@ Next, each side rolls 1d10 and adds the \Man of its commanding \LeaderA. The
 side with a technological DRM adds it to its result.
 
 The side with the highest modified result has \terme{Wind Advantage} for the
-whole duration of the battle. In case of tie, no side has \terme{Wind
-  Advantage}.
+whole duration of the battle. In case of tie (or in a battle where both side
+use \NGD), no side has \terme{Wind Advantage}.
 
 \subsubsection{Morale and CRT column}
 \label{chMilitary:Battle:Parameters:CRT}
-Either~\ref{table:Naval Fire Shock} or~\ref{table:Land Fire Shock} is used to
+Use either~\ref{table:Naval Fire Shock} or~\ref{table:Land Fire Shock} to
 determine morale of both sides and the columns of the CRT it will use during
 the whole battle.
 
@@ -1952,7 +1945,8 @@ depending on the technologies of the participants and the kind of \terme{first
 \begin{modlist}
 \item[+1/0] for a side that has \VGD in its stack if the other side uses \NGD
   as \terme{first line ships}. Before \TBAT, a side needs two \VGD to gain
-  this modifier. If both side have \VGD in their stack, they may both have
+  this modifier; starting with \TBAT, all \NGD stacks are considered to
+  contain \VGD. If both side have \VGD in their stack, they may both have
   this bonus.
 \item[+1/+1] for a side that uses \NGD, if both (i) the battle occurs in the
   \region{Mediterranee}; (ii) the other side uses \NWD or \NTD and (iii) this
@@ -1970,7 +1964,7 @@ depending on the technologies of the participants and the kind of \terme{first
 \item[+1/0] for a side that has at least 3 more \ND than the other side.
 \end{modlist}
 
-Remark: The ``5 more \ND'' step will provide a bonus to \terme{Pursuit}.
+Remark: The ``5 more \ND'' tier will provide a bonus to \terme{Pursuit}.
 
 Remark: count all the \ND used as \terme{first line ship}. Notably, each \NGD
 counts as 1\ND. Because there are usually much more \NGD than \NWD in a stack
@@ -2022,8 +2016,8 @@ switch from an \NGD navy to a \NWD one\ldots
 
 \aparag[Structural Cavalry modifiers.] During any land battle, any stack gain
 a 0/+1 DRM if both (i) it contains an \ARMY counter of the indicated country
-or army class; (ii) this is the indicated periods; and (iii) the battle occurs
-in the indicated terrain.
+or army class; and (ii) this is the indicated periods; and (iii) the battle
+occurs in the indicated terrain.
 \begin{modlist}
 \item[\CAIIM] during periods \period{I} to \period{IV}, in a Plain or Sparse
   Forest province.
@@ -2054,8 +2048,8 @@ during periods \period{III} and \period{VI}.
   Morale of 3; being \terme{Veteran} each side has a bonus of \bonus{+1} to
   Morale; Hence the Morale is 4 (2+1+1) for both.
 
-  Remark: \TTER gives no Morale bonus in \TMUS. However, with \TARQ \FRA would
-  have a Morale of 3 (2+1) and \HIS of 4 (2+1+1).
+  Remark: \TTER gives no Morale bonus in \TMUS. However, with \TARQ\ \FRA
+  would have a Morale of 3 (2+1) and \HIS of 4 (2+1+1).
 
   Cross-referencing the \TMUS line with the \TMUS column, both sides find a
   \textbf{C/B} for the columns to use during this battle. If each side has a
@@ -2069,7 +2063,7 @@ during periods \period{III} and \period{VI}.
   mountain pass was crossed, hence no terrain modifier.
 
   \HIS has only 1\ARMY\Faceplus, hence little Artillery. On the other hand,
-  \FRA may have enough\ldots In period \period{II}, \FRA has 3 Artillery per
+  \FRA may have enough\ldots In period \period{III}, \FRA has 3 Artillery per
   \ARMY\Faceplus. However, when computing Artillery for a stack, the second
   (and subsequent) \ARMY may not add more than 2, hence the French stack has
   only 5 Artillery which is not enough to get a bonus. Each side has an \ARMY
@@ -2091,7 +2085,7 @@ during periods \period{III} and \period{VI}.
 
   Thus, after factoring the second day modifiers, we obtain for \FRA
   +2/+1//+1/0 and for \HIS 0/+1//-1/0. \FRA has an overall advantage with the
-  DRMs but \HIS has 1 more Morale.
+  DRMs.
 
   Note that if \FRA only had 7\LD in the Battle, that would cancel its second
   cavalry bonus and result in modifiers of +2/0//+1/-1 making its overall
@@ -2118,8 +2112,8 @@ cross-referencing the correct column
 by the correct DRM (see~\ref{chMilitary:Battle:Parameters:DRM}).
 
 The results of each roll can be --- (nothing); a number of \emph{losses} (in
-increment of \texttu); or some \textetoile (\emph{morale losses}). Both the
-losses and morale losses are applied (if any).
+increment of \texttu); or some \textetoile (\emph{Morale losses}). Both the
+losses and Morale losses are applied (if any).
 
 Between the rolls, various checks are made to see if the battle ends now
 (\emph{e.g.} if one side is routed or wants to retreat). Again, apply the
@@ -2137,14 +2131,22 @@ them down when they happen to ease the process.
   To handle the full losses and \texttu or \texttd ones, it is convenient to
   note the full losses as | and the \texttu{s} as dots: one dot for a \texttu
   (.), a second one for a \texttd (:) and connect them in a | when it becomes
-  a full loss.
+  a full loss (see example below).
 
   Morale losses can be written as \textetoile. Be sure to leave some space for
   writing more things as the battle unfolds (it may be convenient to tally the
   losses on the left-hand part, from right to left (\emph{i.e.} from centre to
   outside) while the \textetoile are tallied on the right from left to right
   (\emph{i.e.} from centre to outside), that way you won't run out of space or
-  risk one tallied to ``crash'' into the other).
+  risk one tally to ``crash'' into the other).
+
+  \smallskip
+
+  The first few battles you play will probably be a bit slow to unfold
+  cautiously. After a handful of battles (that is, usually, one turn of war),
+  you'll lean the process and thinks will move smoothly. Beware that land
+  battles are more frequent, so be sure to check the small differences when
+  handling the less frequent sea battles.
 \end{playtip}
 
 % Be sure to use the exact same phrasing each time.
@@ -2155,15 +2157,14 @@ them down when they happen to ease the process.
   Morale); in case of tie, nobody gets the malus.\fi #3 results.}
 \newcommand{\chMilFireRoll}[3][]{\chMilBattleRoll[#1]{#2}{#3}{Fire}}
 \newcommand{\chMilFireTech}{
-  \bparag[Technology.] A Stack with \TMED technology does not roll for
-  Fire. On the European map, stack with \TREN technology and no \ARMY counter
-  does not roll for Fire. A stack with \TREN technology only apply the
-  \textetoile. A stack with \TARQ technology only does half (round down to
-  lesser \texttu) the indicated losses. A stack with \NGD and no \VGD only
-  does half (round up to larger \texttu) the indicated losses.}
+  \bparag[Technology.] On the European map, stack with \TREN technology and no
+  \ARMY counter does not roll for Fire. A stack with \TREN technology only
+  apply the \textetoile. A stack with \TARQ technology only does half (round
+  down to lesser \texttu) the indicated losses. A stack with \NGD and no \VGD
+  only does half (round up to larger \texttu) the indicated losses.}
 \newcommand{\chMilMoraleCheck}{
-  \bparag[Rout.] If one side has suffered more \textetoile than its
-  \terme{Morale}, it is immediately routed. It loses the battle and its
+  \bparag[Rout.] If one side has suffered at least as many \textetoile than
+  its \terme{Morale}, it is immediately routed. It loses the battle and its
   opponent wins it. Go to~\ref{chMilitary:Battle:Pursuit}.}
 \newcommand{\chMilWindAdvRetreat}{
   \bparag[Retreat.] At sea (only), the side with \terme{Wind advantage} may
@@ -2187,8 +2188,6 @@ them down when they happen to ease the process.
 }
 
 \chMilFire{first}{Note}{First}
-\bparag \NTD do not roll for Fire and automatically routs at the end of First
-fire.
 
 \chMilShock{first}{First}
 
@@ -2526,7 +2525,7 @@ Finally, check if the losing side has any Morale left. If no, then there is a
 
   If \FRA had \terme{Conscript}, then both sides would end up with 1 Morale
   left hence there is no winner. Note that the extra Morale point of
-  \terme{Veteran} saves the Spanish troops!
+  \terme{Veteran} gives the victory to \FRA!
 
   \smallskip
 
@@ -2593,9 +2592,9 @@ corrected taking two factors into account. Firstly, the losses causes by small
 stacks (less than 8\LD) are reduced; next losses are adjusted to the relative
 structural size of both armies. A similar procedure is used at sea.
 
-In any cases, the modified losses may go below 0. If this should happen for
-any reason, the modified losses becomes 0. (for example, if 1\LD only inflicts
-\texttu losses, this results in 0 losses, not \texttu-2=-1\texttd).
+In any cases, the modified losses may not go below 0. If this should happen
+for any reason, the modified losses becomes 0. (for example, if 1\LD only
+inflicts \texttu losses, this results in 0 losses, not \texttu-2=-1\texttd).
 
 \GTtable{lossestables}
 
@@ -2668,7 +2667,7 @@ stack of 13 to 18\ND uses +2 and a stack of 19\ND or more uses +3.
 \aparag Finally, once the \terme{size differential} is found, adapt losses
 inflicted according to sub-Table <L2/S2> of~\ref{table:Losses Tables}:
 \bparag On the line ``-1/0'' (in bold), find the number of losses inflicted
-and use that column. If this is not an integer (\emph{e.g.} 2\texttd), find
+and use that column. If this is not an integer (\emph{e.g.} 2\td), find
 both the number of full losses and the number of thirds. If more than 6 losses
 were inflicted, use the last column.
 \bparag Cross-reference the column (or columns) obtained above with the line
@@ -2680,7 +2679,7 @@ Note that this last correction is \textbf{not} capped as the previous one. It
 basically represents the fact that, what is represented by a \TUR \LD
 contained actually almost twice as many men as what is represented by a \HIS
 \LD. Thus, during a \TUR-\HIS battle, if \TUR inflicts 1 losses, this roughly
-correspond to 1 of \emph{its} \LD an is a much larger \HIS casualty.
+correspond to 1 of \emph{its} \LD and is a much larger \HIS casualty.
 
 \begin{exemple}
   Continuing the previous \FRA-\HIS battle. \HIS had 5\LD and inflicted 3
@@ -2746,8 +2745,8 @@ At sea, losses must be split in three categories:
 \item \terme{Refitted} ships come back into play immediately. They are not
   actually lost.
 \item \terme{Damaged} ships are no more battle effective. They may however be
-  refitted later this turn (during the Siege segment) or during a later turn
-  (during the Administrative phase). Tally \terme{Damaged} ships on the
+  refitted later this turn (during the End of round segment) or during a later
+  turn (during the Administrative phase). Tally \terme{Damaged} ships on the
   Colonial Record Sheet and remove them from play. They are grouped per region
   where the battle occurred (owner's choice in case of a battle in
   \seazoneHorn).
@@ -2849,8 +2848,7 @@ Additionally, if a fleet containing \VGD and using \NGD/\VGD as \terme{first
   the remaining losses (2 \terme{Destroyed} and 5\texttd \terme{Damaged}) are
   applied to the rest of the stack (here on the \NGD, hence the \texttd is
   rounded up). If 2\NGD were captured during the Pursuit (\textetoile), then
-  ``only'' 3\texttd are \terme{Damaged} now. The losses suffered stays at
-  8\texttd anyway.
+  ``only'' 4 are \terme{Damaged} now. The losses suffered stays at 9 anyway.
 \end{exemple}
 
 Note that losses on land are \textbf{not} applied yet. They will only be
@@ -2900,7 +2898,7 @@ the commanding \LeaderG (a \terme{Replacement} leader used during the battle
 still provides its \Man). The resulting losses are added to the current total.
 
 Retreating forces must retreat in one of the following possibilities. These
-possibilities have no priority (controller's choice) and are further
+possibilities have no priority (controller's choice) but are further
 restricted by the conditions of the battle.
 \begin{itemize}
 \item the province of the battle itself;
@@ -2942,10 +2940,10 @@ The only adjacent province in which a phasing stack may retreat is the one
 were it come from. If this was a landing, the phasing stack must retreat back
 in the ships and the carrying fleet must move back to a friendly port and roll
 for attrition accordingly; it may not be intercepted during this move and it
-ignores \Presidios and \StraitFort.
+is not subject to \Presidios and \StraitFort.
 
 The only adjacent provinces in whicĥ a non-phasing stack may retreat after an
-interception battle are the one from which a least one intercepting \LDE came
+interception battle are the ones from which a least one intercepting \LDE came
 from. If interceptors came from several provinces, they may not retreat in
 several province; they must retreat in a single adjacent province (or the
 fortress) as a single stack but can choose in which (among those from where
@@ -2994,7 +2992,7 @@ Retreat is not a move. It may not be intercepted and never causes attrition.
   on the precise outcome) but in the chaos of the battle troops were able to
   sneak in or out. On the other hand, if the besieger side wins, then the
   besieged side must retreat the ``in'' troops in the fortress and the ``out''
-  troops out of tho fortress. And of course, if the besieged side wins, the
+  troops out of the fortress. And of course, if the besieged side wins, the
   siege is lifted and the question does not arise anymore.
 \end{designnote}
 
@@ -3014,7 +3012,7 @@ In some case, there is not enough counters to satisfy the losses (\emph{e.g.}
 if an \ARMY\faceplus suffers from 1 loss but the country has no more \LD
 available). In this case, losses are increased until they can be satisfied
 (\emph{e.g.} rounded up from 1 to 2 and the \ARMY\faceplus is flipped
-\Facemoins). This increased is counted as losses suffered during the battle.
+\Facemoins). This increase is counted as losses suffered during the battle.
 
 Similarly, if \TUR decides to kill one or more \Pashas that represent more \LD
 than the number of losses, then the total number of \LD killed is counted
@@ -3071,12 +3069,12 @@ toward the total losses.
   \texttu losses suffered by \SUE are not modified (8\LD causing them, -1
   \terme{size differential} does not change anything) but are rounded to 0.
 
-  \leader{Rupert} retreats and roll 3, causing \texttu more. The 4\texttu
+  \leader{Rupertroy} retreats and roll 3, causing \texttu more. The 4\texttu
   losses are rounded to 4. However, the only retreat possibility for
   \pays{royalistes} is the fortress of \ville{Plymouth} which can only
   accommodate 1\LD. The rest of the troops are killed trying to get in, simply
   disband and desert without any possibility to gather them into a fighting
-  force, and Many of them surrendered to the Swedes. Thus, the actual losses
+  force, and many of them surrendered to the Swedes. Thus, the actual losses
   suffered by \pays{royalistes} are 7\LD (8\LD initial - 1\LD who managed to
   retreat). Note that in this particular case, there was actually no need to
   roll for the retreat\ldots
@@ -3100,9 +3098,10 @@ are true:
 \item[AND] the loosing side was routed;
 \item[AND] (on land) the loss differential is at least 3\LD, or 4\LD if the
   winning side has a \terme{size differential} of +2;
-\item[AND] (at sea) the loss differential is at least 5\NWD or 8\NGD.
+\item[AND] (at sea) the loss differential is at least 5 (if winner used \NWD)
+  or 8 (if winner used \NGD);
 \item[AND] (on land, in the \ROTW) the loosing side had at least one \ARMY
-  counter from an European country at the start of the battle;
+  counter from an European country at the start of the battle.
 \end{modlist}
 
 \begin{designnote}
@@ -3163,8 +3162,8 @@ strictly less than 3\LD at the beginning of the battle, do not roll for leader
 casualty.
 
 \begin{designnote}
-  If you don't risk \terme{Major Defeat}, you can't kill the enemy leader
-  either (this prevents a gamey technique).
+  In Europe, if you don't risk \terme{Major Defeat}, you can't kill the enemy
+  leader either (this prevents a gamey technique).
 \end{designnote}
 
 If the result is 1 or less, the leader suffered from the battle. Roll 1d10
@@ -3186,10 +3185,10 @@ beginning of next round.
 
 \begin{designnote}
   Here also, a 'killed' or 'wounded' leader is a game term not to take too
-  seriously. It may mean a capture, a disgrace (permanent or temporary)
-  removing the leader from commanding position, or a severe wound causing the
-  leader to stop the military carrier and maybe become minister or ambassador,
-  or retiring in his family castle, \ldots
+  seriously. It may mean a capture, a disgrace removing the leader from
+  commanding position (permanently or temporarily), or a severe wound causing
+  the leader to stop the military carrier and maybe become minister or
+  ambassador, or retiring in his family castle, \ldots
 \end{designnote}
 
 \subsubsection{Aftermath}
@@ -3277,7 +3276,7 @@ may not intercept or counter-intercept again during this impulse.
   more to cause Morale loss.
 
   As illustrated in the long \FRA-\HIS example, what's important in a battle
-  is not to cause losses but to cause \textetoile. There are linked, but
+  is not to cause losses but to cause \textetoile. They are linked, but
   typically, the difference between \texttd and 1\textetoile is huge while the
   difference between 1\textetoile and 1\texttu\textetoile is almost
   negligible. When you fight, you need to roll 7 or more to cause those
@@ -3310,7 +3309,7 @@ may not intercept or counter-intercept again during this impulse.
 
   \smallskip
 
-  An example of successful delay of the ``guerrilla'' side happens during
+  An example of successful delay of the ``guerrilla'' side happened during
   another gaming session. During~\ref{pVII:Independence War}, \ANG tried to
   bring troops to America and land them in one of the pro-British
   \COL. However, they got intercepted by \leaderwithdata{Washington} and some
@@ -3320,8 +3319,8 @@ may not intercept or counter-intercept again during this impulse.
   4 Morale was automatic\ldots The British won the battle and could move on
   but the American raid costed them maybe \texttu or \texttd, enough to flip
   one \ARMY counter and remove artillery bonus for the next battle. A
-  perfectly well done raid forcing the \ANG player to think about its next
-  move.
+  perfectly well done raid disrupting the \ANG move and forcing the player to
+  think a bit more about what to do.
 \end{playtip}
 
 \section{Sieges}

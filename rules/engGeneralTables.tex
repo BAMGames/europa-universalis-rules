@@ -1466,27 +1466,19 @@
     \graytabular\begin{tabular}{c|cccccccc}
     & \multicolumn{8}{c}{Opponent's technology} \\
     \ghline\noalign{\global\countrow=0}
-      \textdownarrow tech. & \NGD & CAR& Nau & GAL & BAT& VE & TD & 74s\\ \ghline\hline
+      \textdownarrow tech. & \NGD & \STCAR& \STGLN & \STGF & \STBAT& \STVE & \STTD & \STSF\\ \ghline\hline
       \NTD & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply\\ \ghline
       \NGD     & na &  - &  - &  - &  - &  - & - & - \\ \ghline
-%      \technologie{Galley}     & na &  - &  - &  - &  - &  - & - \\ \ghline
-      CAR    & -3 &  0 &  - &  - &  - &  - & - & - \\ \ghline
-%      \technologie{Carrack}    & -3 &  0 &  - &  - &  - &  - & - \\ \ghline
-      Nau    & -1 &  +2 &  0 &  - &  - &  - & - & - \\ \ghline
-%      \technologie{Nao-Galeon}    & -1 &  +2 &  0 &  - &  - &  - & - \\ \ghline
-      GAL & +2 & +3 & +2 &  0 &  - &  - & - & - \\ \ghline
-%      \technologie{Galleon-Fluyt}& +2 & +3 & +2 &  0 &  - &  - & - \\ \ghline
-      BAT    & +2 & +3 & +3 &  0 &  0 &  - & - & - \\ \ghline
-%      \technologie{Battery}    & +2 & +3 & +3 &  0 &  0 &  - & - \\ \ghline
-      VE     & +3 & +4 & +3 & +2 & +1 &  0 & - & - \\ \ghline
-%      \technologie{Vessel}     & +3 & +4 & +3 & +2 & +1 &  0 & - \\ \ghline
-      TD & +4& +6 & +4 & +3 & +2 & +1 & 0 & - \\ \ghline
-%      \technologie{Three-Decker}& +4& +6 & +4 & +3 & +2 & +1 & 0 \\ \ghline
-      74s & +4& +6 & +4 & +3 & +2 & +1 & +1 & 0 \\ \ghline
+      \STCAR    & -3 &  0 &  - &  - &  - &  - & - & - \\ \ghline
+      \STGLN    & -1 &  +2 &  0 &  - &  - &  - & - & - \\ \ghline
+      \STGF & +2 & +3 & +2 &  0 &  - &  - & - & - \\ \ghline
+      \STBAT    & +2 & +3 & +3 &  0 &  0 &  - & - & - \\ \ghline
+      \STVE     & +3 & +4 & +3 & +2 & +1 &  0 & - & - \\ \ghline
+      \STTD & +4& +6 & +4 & +3 & +2 & +1 & 0 & - \\ \ghline
+      \STSF & +4& +6 & +4 & +3 & +2 & +1 & +1 & 0 \\ \ghline
     \end{tabular}
   }
   \GTlegend{
-%    \technologie{74s}: same as \technologie{Three-Decker}, except +1 against \technologie{Three-Decker}.\\
     Each side rolls 1d10+\Man of {\LeaderA}+the tech. factor above.
     Highest score takes the advantage. No test in \technologie{Galley} vs. \technologie{Galley}.
     No advantage in case of equality. \terme{Wind advantage} allows to break after Fire.
@@ -1499,21 +1491,20 @@
   \GT[Naval Fire Shock]{navaltech}{Naval Technology Table (Fire/Boarding)}
   \GTcontent{
     \graytabular\begin{tabular}{l|*{8}{c}|c}
-      % \textdownarrow Naval     & \multicolumn{8}{c|}{Opponent's technology\global\countcol=0} & Morale\\\ghline\noalign{\global\countrow=0}
-      \textdownarrow you / opp. \textrightarrow  &   GA  &  CAR  &  Nao  &  GAL   &  BAT  &  VE   &  TD & 74s  &  Morale \\ \ghline\hline
+      \textdownarrow you / opp. \textrightarrow  &   \STGA  &  \STCAR  &  \STGLN  &  \STGF   &  \STBAT  &  \STVE   &  \STTD & \STSF  &  Morale \\ \ghline\hline
       \NTD & --/-- & --/-- & --/-- & --/-- & --/-- & --/-- & --/-- & --/-- & 0\\ \ghline
-      \technologie{Galley}  \textetoile   &\bf E/A&  E/A  &  E/B  &  E/B  &  E/B  & E/C & E/D & E/E  & 2\textdag \\ \ghline
-      \technologie{Carrack}    &  E/E  &\bf D/C&  D/C  &  E/C  &  E/D  &  E/E  & E/E & E/E & 1 \\ \ghline
-      \technologie{Nao-Galeon}    &  C/C  &  C/C  &\bf D/B&  C/C  &  C/C  &  D/C  &  E/D  & E/D & 2 \\ \ghline
-      \technologie{Galleon-Fluyt}&  B/B  &  B/B  &  B/C  &\bf C/C &  C/C  &  D/D  &  E/D  & E/D & 2 \\ \ghline
-      \technologie{Battery} \textetoile   &  B/B  &  A/A  &  A/B  &  B/B  &\bf B/C&  C/C  &  D/D & D/D  & 3 \\ \ghline
-      \technologie{Vessel}     &  B/B  &  A/A  &  A/A  &  B/B  &  B/B  &\bf B/B&  C/C & C/C & 3 \\ \ghline
-      \technologie{Three-Decker}     &  B/B  &  A/A  &  A/A  &  A/A  &  A/B  & B/B & \bf B/B&  C/C  & 3\textdag \\ \ghline
-      \technologie{74s}& A/B  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  & B/B &\bf B/B & 3\textdag \\\ghline
+      \TGA  \textetoile   &\bf E/A&  E/A  &  E/B  &  E/B  &  E/B  & E/C & E/D & E/E  & 2\textdag \\ \ghline
+      \TCAR    &  E/E  &\bf D/C&  D/C  &  E/C  &  E/D  &  E/E  & E/E & E/E & 1 \\ \ghline
+      \TGLN    &  C/C  &  C/C  &\bf D/B&  C/C  &  C/C  &  D/C  &  E/D  & E/D & 2 \\ \ghline
+      \TGF &  B/B  &  B/B  &  B/C  &\bf C/C &  C/C  &  D/D  &  E/D  & E/D & 2 \\ \ghline
+      \TBAT \textetoile   &  B/B  &  A/A  &  A/B  &  B/B  &\bf B/C&  C/C  &  D/D & D/D  & 3 \\ \ghline
+      \TVE     &  B/B  &  A/A  &  A/A  &  B/B  &  B/B  &\bf B/B&  C/C & C/C & 3 \\ \ghline
+      \TTD     &  B/B  &  A/A  &  A/A  &  A/A  &  A/B  & B/B & \bf B/B&  C/C  & 3\textdag \\ \ghline
+      \TSF & A/B  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  & B/B &\bf B/B & 3\textdag \\\ghline
     \end{tabular}
   }
   \GTlegend{
-    \textetoile \TBAT: all \NGD contains Galleasses; \hfill \textdag: Morale +1 if \terme{Veteran}
+    \textetoile \TBAT: all \NGD contains \VGD; \hfill \textdag: Morale +1 if \terme{Veteran}
   }
   \GTdecorate
 }
@@ -1522,15 +1513,14 @@
   \GT[Land Fire Shock]{landtech}{Land Technology Table (Fire/Shock)}
   \GTcontent{
     \graytabular\begin{tabular}{l|*{7}{c}|c}
-%      \textdownarrow Land      & \multicolumn{7}{c|}{Opponent's technology\global\countcol=0} & Morale \\\ghline\noalign{\global\countrow=0}
-      \textdownarrow you / opp. \textrightarrow               &  MED  &  REN  &  ARQ  &  MUS  &  BAR  &  MAN  &   L   & Morale \\ \ghline\hline
-      \technologie{Medieval}   & --/\bf A & --/B & --/B & --/C & --/C & --/D & --/E & 1 \\ \ghline
-      \technologie{Renaissance}&  C/A  &\bf C/A&  C/B  &  D/C  &  E/D  &  E/E  &  E/E  & 1\textetoile/2\rlap\textdag \\ \ghline
-      \technologie{Arquebus}   &  B/A  &  C/A  &\bf C/B&  C/B  &  D/D  &  E/E  &  E/E  & 2\rlap\textdag \\ \ghline
-      \technologie{Muskets}    &  A/A  &  B/A  &  B/B  &\bf C/B&  D/C  &  D/D  &  E/E  & 3 \\ \ghline
-      \technologie{Baroque}    &  A/A  &  B/A  &  B/A  &  B/B  &\bf B/B&  D/B  &  D/C  & 3 \\ \ghline
-      \technologie{Manoeuvre}  &  A/A  &  A/A  &  A/A  &  B/A  &  B/B  &\bf C/C&  C/C  & 3 \\ \ghline
-      \technologie{Lace}       &  A/A  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  &\bf B/B& 3 \\ \ghline
+      \textdownarrow you / opp. \textrightarrow &  \STMED  &  \STREN  &  \STARQ  &  \STMUS  &  \STBAR  &  \STMAN  &   \STL   & Morale \\ \ghline\hline
+      \TMED & --/\bf A & --/B & --/B & --/C & --/C & --/D & --/E & 1 \\ \ghline
+      \TREN &  C/A  &\bf C/A&  C/B  &  D/C  &  E/D  &  E/E  &  E/E  & 1\textetoile/2\rlap\textdag \\ \ghline
+      \TARQ &  B/A  &  C/A  &\bf C/B&  C/B  &  D/D  &  E/E  &  E/E  & 2\rlap\textdag \\ \ghline
+      \TMUS &  A/A  &  B/A  &  B/B  &\bf C/B&  D/C  &  D/D  &  E/E  & 3 \\ \ghline
+      \TBAR &  A/A  &  B/A  &  B/A  &  B/B  &\bf B/B&  D/B  &  D/C  & 3 \\ \ghline
+      \TMAN &  A/A  &  A/A  &  A/A  &  B/A  &  B/B  &\bf C/C&  C/C  & 3 \\ \ghline
+      \TL   &  A/A  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  &\bf B/B& 3 \\ \ghline
     \end{tabular}
   }
   \GTlegend{
