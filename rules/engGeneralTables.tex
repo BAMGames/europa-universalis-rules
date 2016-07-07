@@ -1965,9 +1965,11 @@
   \GT{artillerybonus}{Artillery bonus against Fortresses}
   \GTcontent{
     \begin{tabular}{l|*{6}{l|}l}
-      F level & 0  & 1 & 2 & 3 & 4 & 5 & bonus \\ \hline
+      \fortress level & 0  & 1 & 2 & 3 & 4 & 5 & bonus \\ \hline
       & 1 & 1 & 2 & 4 & 5 & 6 & +1 \\
-      \raisebox{1ex}{\tikz[overlay]\node[anchor=north,draw,text centered,text width=7ex,transform shape,rotate=90,font=\small]{Artillery value \geq};}
+      \raisebox{1ex}{\tikz[overlay]\node[anchor=north,draw,text
+      centered,text width=7ex,transform
+      shape,rotate=90,font=\small,inner sep=2pt]{Artillery value \geq};}
       & 3 & 3 & 4 & 5 & 6 & 7 & +2 \\
       & 5 & 6 & 7 & 7 & 7 & 8 & +3 \\
     \end{tabular}
@@ -1988,7 +1990,7 @@
 }
 
 \newcommand{\siege}{
-  \GT{siege}{Siegeworks}
+  \GT{siege}{Undermining}
   \GTcontent{
     \graytabular\begin{tabular}{c|c}
       1d10 & Result\\\ghline\hline
@@ -2002,16 +2004,17 @@
   }
   \GTlegend[east north,yoffset=4ex,to eastpoint]{
     \GTheader{Siege impossible}
-    \GTitem{If \#\LD<Fortress level, before roll $\rightarrow$ forced redeployment}
+    \GTitem{If \#\LD<Fortress level, before roll \textrightarrow Siege
+    attrition}
     \GTheader{Siege results}
     \begin{modlist}
     \item[\textbf{S}] Put a \terme{Siegeworks} counter (2\facemoins=1\faceplus, max. 2 counters)
     \item[\textbf{B}] \terme{Breach}: the besieger may attempt an immediate assault
-    \item[\textbf{WH}] War Honor: fortress falls and besieged gains 1\LD
+    \item[\textbf{WH}] War Honour: fortress falls and besieged gains 1\LD
     \item[\textbf{R}] Rendition: the fortress falls, no survivors
     \end{modlist}
-    \GTitem{The falling fortress loses 2 levels (1 if 1\LD is given by the besieger)}
-    \GTitem{The minimum level is one, even if it is lower than the map}
+    \GTitem{A falling fortress loses 2 levels (1 if 1\LD is given by the besieger)}
+    \GTitem{In Europe, minimum level is 1 (even if lower than the map)}
   }
   \GTlegend[caption=captiona,south west,xsize scale=0.6,xsize offset=-2pt,xsize=(\gtid main)(\gtid caption)]{
     \GTheader{Siege modifiers}

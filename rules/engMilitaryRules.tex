@@ -1438,11 +1438,11 @@ interception succeeds.
   Now, you should be able to build a ``\emph{Fleet in being}'' strategy.
 \end{exemple}
 
-\subsection{\Presidios and Strait fortifications}
-A \Presidio or Strait fortification can intercept a naval stack. Strait
-fortifications can intercept stacks moving through it. \Presidios can
-intercept stack entering or exiting the port. The interception is decided by
-the controller of the fortress.
+\subsection{\Presidios and \StraitFort}
+A \Presidio or \StraitFort can intercept a naval stack. \StraitFort can
+intercept stacks moving through it. \Presidios can intercept stack entering or
+exiting the port. The interception is decided by the controller of the
+fortress.
 
 Although it it an interception, it is resolved differently than usual ones and
 does not result in battle. It may, however, stop the moving stack and cause
@@ -1451,9 +1451,9 @@ some automatic loses on it.
 The interception is resolved by rolling 1d10 modified by
 \begin{modlist}
 \item[+?] level of the \Presidio;
-\item[+2] strait fortification on the European map;
-\item[+?] half the level (round down) of the fortress controlling the Strait
-  fortification on the \ROTW map;
+\item[+2] \StraitFort on the European map;
+\item[+?] half the level (round down) of the fortress controlling the
+  \StraitFort on the \ROTW map;
 \item[+1] if the moving stack contains at least one \FLEET counter.
 \end{modlist}
 
@@ -1464,6 +1464,11 @@ may not attempt any action this round.
 Additionally, if the result is 11 or more, the stack loses 1\ND (or 1 side of
 \corsaire) and if the result is 13 or more, the stack loses 1 more \ND (or
 side of \corsaire) (for a total of 2).
+
+If a naval stack carrying troops is stopped by a \Presidio or \StraitFort, it
+must go back to the closest (in number of zones) friendly port large enough to
+hold it, ignoring ports that are behind a \Presidio or \StraitFort. This is a
+move, hence a cause of attrition, and may be intercepted.
 
 \subsection{Convoys}
 \begin{designnote}
@@ -3207,6 +3212,9 @@ only friendly troops, the siege is now lifted. Remove any \USURE counter there
 might be here, move besieged troops out of the fortress and merge them with
 the stack here.
 
+Similarly, if a blockading naval stack is now too small to blockade, the
+blockade is immediately lifted and the stack stays in the sea.
+
 If one of the stack involved in the battle is now overstacked (normally due to
 retreat in an already crowded province or lifting a siege without taking any
 loss), exceeding troops are removed. This is not part of battle casualties and
@@ -3327,14 +3335,247 @@ may not intercept or counter-intercept again during this impulse.
 \label{chMilitary:Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
-Each alliance, in decreasing order of initiative, resolves all of its actions
-in an order of its choice (at random in case of disagreement).
+If a land stack is in a province with an enemy fortress and has less than 1\LD
+per level of the fortress, it must roll for \terme{Siege Attrition} (see
+below). If, for some reason, a blockading naval stack is too small to blockade
+the fortress (what did you do wrong?), the blockade is lifted and the stack
+stays in the sea.
+
+Next, each alliance, in decreasing order of initiative, resolves all of its
+actions in an order of its choice (at random in case of disagreement).
+
+Naval stacks whose action is to fight \corsaire resolve it now. Land stacks in
+a province with either an enemy fortress or an enemy \REVOLT/\REBELLION must
+either besiege or fight the \REVOLT/\REBELLION. If a stack is in a province
+with both an enemy fortress and an enemy \REVOLT/\REBELLION, it cannot both
+besiege and fight. It must do one of the two but the controller of the stack
+chooses which.
 
 \subsection{Sieges}
-\subsubsection{Sapping}
+A besieging stack may either \terme{Undermine} the fortress or \terme{Assault}
+it. In order to undermine, a stack must have at least as many \LD as the level
+of the fortress. It is possible to decline the possibility to assault, not to
+undermine (that is, a too small stack may decide to do nothing because the
+assault is too risky but a large enough stack must do something).
+
+Note that if the stack is too small to undermine, it must already have rolled
+for \terme{Siege Attrition} at the beginning of the Siege Segment.
+
+\begin{designnote}
+  A very small stack managing to assault a very large fortress represents a
+  surprise attack with troops managing to storm the fortress before its gates
+  are closed or similar heroic action.
+\end{designnote}
+
+\GTtable{artillerybonus}
+
+Both undermining and assault use an \terme{Artillery bonus} against
+fortresses. To obtain it, find in~\ref{table:Artillery bonus against
+  Fortresses} the column corresponding to the level of the fortress (column
+'0' corresponds to forts). In that column, find the largest number that is
+still less or equal than the number of Artillery in the besieger stack
+(check~\ref{chMilitary:Stacks:Artillery} for how to compute Artillery in a
+stack). In the line corresponding to that number, find in the last column the
+\terme{Artillery bonus}.
+
+\begin{exemple}
+  Again, this is a computation which is more complicated to explain than to
+  perform\ldots
+
+  A stack with 4 Artillery besiege a fortress of level 1. In the '1' column,
+  the numbers are '1', '3' and '6'. The stack has less than 6 Artillery, hence
+  it cannot claim that bonus. It has more than 3, hence it can claim that
+  bonus. This is the '+2' line, thus its \terme{Artillery bonus} is
+  \bonus{+2}.
+
+  Against a fortress of level 2, this stack still has \bonus{+2} but against a
+  fortress of level 3 it only has \bonus{+1} and no bonus against a fortress
+  of level 4 or 5.
+\end{exemple}
+
+\subsubsection{Undermining}
+To resolve the undermining, roll 1d10. The roll is modified in two different
+ways, thus giving two different results. The first one is used to check the
+effect of the undermining on the fortress (usually adding some \USURE); the
+second one is used to check if the besieger suffer from \terme{Siege
+  Attrition}. It is possible to both suffer from attrition and force the
+fortress to surrender.
+
+\GTtable{siege}
+
+Effect on fortress modifiers:
+\begin{modlist}
+\item[-N] level of the fortress;
+\item[+?] \terme{Artillery bonus};
+\item[-?] terrain malus (see details below), non cumulative:
+  \begin{modlist}
+  \item[-2] Europe, non-Plain, no port;
+  \item[-2] Europe, non-Plain, blockaded port;
+  \item[-2] Europe, Plain, non-blockaded/supplied port;
+  \item[-3] Europe, non-Plain, non-blockaded/supplied port;
+  \item[-2] \ROTW, non-blockaded/supplied port;
+  \item[-2] \ROTW, non-Plain, no port;
+  \item[-1] fort, non-blockaded/supplied port;
+  \item[-1] fort, non-Plain, no port;
+  \item[-0] all other cases;
+  \end{modlist}
+\item[+2] if a \terme{Breach} was obtained previously this turn;
+\item[+1/+3] for each \USURE\facemoins/\faceplus on the fortress;
+\item[-S] \terme{Siege} value of one besieged leader;
+\item[+S] \terme{Siege} value of one besieger or [BLP] blockading leader;
+\item[+1] if there are troops inside the fortress, but no \ARMY counter;
+\item[+3] if there is an \ARMY counter inside the fortress.
+\end{modlist}
+
+When using \terme{Siege} value of leaders, only one leader in each side may
+provides its value but he does not need to be the commanding leader. In any
+case, always use the largest \terme{Siege} value available in the stack.
+
+\begin{todo}
+  'Breach' counters?
+\end{todo}
+
+\aparag[Terrain malus.] Depending on the terrain of the province (Plain or
+not), the presence of a port (and its blockade status) and whether the siege
+happens in Europe (including European provinces in the \ROTW, including \COL
+of level 6) or in the \ROTW, a terrain malus is applied to the roll.
+\bparag This malus is \bonus{-2} if either the terrain is not Plain or there
+is a non-blockaded port in the province.
+\bparag It is \bonus{-3} (only) if both the conditions are true (non-Plain,
+non-blockaded port).
+\bparag If undermining a \ROTW province with a port (blockaded or not), the
+terrain is always considered to be Plain. Hence the malus cannot be
+\bonus{-3}.
+\bparag If undermining a fort, the malus is only \bonus{-1} whenever
+applicable.
+\bparag If a blockaded port received supply during this round (this is an
+active naval action), then it is considered to be non-blockaded for this round
+(only).
+\bparag Explicit detailed lists of all possible cases follows
+
+\aparag[Terrain malus in Europe.] When undermining an European province,
+including a European province in the \ROTW and including \COL of level 6:
+\bparag if the terrain is not Plain and there is a non-blockaded or resupplied
+port in the province, the malus is \bonus{-3};
+\bparag if the terrain is not Plain and there is no port in the province, the
+malus is \bonus{-2};
+\bparag if the terrain is not Plain and there is a blockaded port in the
+province, the malus is \bonus{-2};
+\bparag if the terrain is Plain and there is a non-blockaded or resupplied
+port in the province, the malus is \bonus{-2};
+\bparag if the terrain is Plain and there is no port in the province, the
+malus is \bonus{-0};
+\bparag if the terrain is Plain and there is a blockaded port in the
+province, the malus is \bonus{-0}.
+
+\aparag[Terrain malus in the \ROTW.] When undermining a non-fort fortress in
+the \ROTW (including cities in the \ROTW but excluding European provinces in
+the \ROTW):
+\bparag if there is a non-blockaded or resupplied port in the province, the
+malus is \bonus{-2};
+\bparag if there is a blockaded port in the province, the malus is \bonus{-0};
+\bparag if there is no port in the province and the terrain is not Plain, the
+malus is \bonus{-2};
+\bparag if there is no port in the province and the terrain is Plain, the
+malus is \bonus{-0}.
+\bparag Remember that any coastal \COL or \TP automatically includes a port.
+
+\aparag[Terrain malus for forts.] When besieging a fort (including missions or
+\COL/\TP that have not been fortified further):
+\bparag if there is a non-blockaded or resupplied port in the province, the
+malus is \bonus{-1};
+\bparag if there is a blockaded port in the province, the malus is \bonus{-0};
+\bparag if there is no port in the province and the terrain is not Plain, the
+malus is \bonus{-1};
+\bparag if there is no port in the province and the terrain is Plain, the
+malus is \bonus{-0}.
+
+\begin{designnote}[Ports and terrain]
+  Difficult terrain makes the siege harder. It is not easy to bring the
+  desired amount of weapons and supplies (howitzers, guns, gunpowder,
+  cannonballs, \ldots) to the siege site through mountains or
+  swamps. Unblockaded ports don't make the siege more difficult \emph{per se}
+  but they allow for an easier supply of the besieged garrison and population,
+  thus reinforcing their fighting spirit. However, both malus are not
+  cumulative as the same city can hardly be hidden in the mountain and a large
+  sea port receiving supply\ldots
+
+  \smallskip
+
+  In Europe, even if each province only contains one city (hence one fortress)
+  in game terms, this actually represents several cities spread in it. On the
+  other hand, in the \ROTW, a \COL or \TP often represent a single small
+  establishment. Thus, it is assumed that a coastal \COL or \TP is actually
+  built really close to the sea, probably in a natural harbour, and does not
+  really take advantage of the inland terrain to protect itself. For this
+  reason, it is always considered to be in Plain, while taking a port in
+  Europe require both to capture the actual port cities and the ones hidden
+  further away in the mountain, hence both port and terrain act. Note that
+  blockading the port does not remove this, the fortress is still considered
+  to be in Plain, hence there is no malus.
+
+  Once a coastal \COL reaches level 6, it becomes an European province and
+  thus its terrain matters again. The \COL is now large enough to have spread
+  inland and to actually contains more than a handful of villages. On the
+  other hand, \ROTW cities are still \ROTW fortresses because European control
+  in these areas was usually very focused on controlling only the port and the
+  cost and did not extend further.
+
+  Forts are very small fortification, hence the malus for port or terrain is
+  smaller.
+\end{designnote}
+
+The effect of undermining is read in~\ref{table:Undermining}. The various
+possible effects are:
+\begin{modlist}
+\item[\textbf{S}\facemoins] add a \USURE\facemoins counter. If there are now
+  two \USURE\facemoins counters, immediately merge them in a
+  \USURE\faceplus. If there are three or more \USURE, only keep the largest
+  two.
+\item[\textbf{S}\faceplus] add a \USURE\faceplus counter. If there are three
+  or more \USURE, only keep the largest two.
+\item[\textbf{B}] The walls have been breached. The besieged may immediately
+  attempt an \terme{Assault} using the (more favourable) \terme{Breach}
+  condition. This \terme{Assault} is not mandatory. This is the only case
+  where both undermining and assault can be done on the same fortress in the
+  same round. If the besieger does not assault, the presence of at least one
+  \terme{Breach} still makes further undermining easier.
+\item[\textbf{B} or \textbf{WH}] The besieger must decide to either apply the
+  \textbf{B} result or to give \terme{War Honour} to the besieged. If giving
+  \terme{War Honour}, the fortress falls and any troops inside the fortress,
+  plus 1\LD (representing the garrison) are ``given back'' to the besieged who
+  must immediately place them in any unbesieged friendly province (they may be
+  split in different provinces).
+\item[\textbf{R}] The fortress surrender. It falls and troops inside it are
+  destroyed (captured, likely, as executing defenders after the fall was not a
+  common practise), any leader inside is ``given back'' to the besieged who
+  must immediately place them in any unbesieged friendly province. Exception:
+  if a \terme{Monarch} happen to be trapped in a surrendering fortress, it is
+  captured.
+\end{modlist}
+
+When a fortress falls, first put a control marker of the besieged (of the
+country of the commander) on the fortress. This fortress is now controlled by
+that country. Next, the new controlled must choose to either man the fortress
+again or not. If the fortress is manned again, the besieger must loose 1\LD
+and the fortress loses 1 level; otherwise, the fortress loses 2 level. In the
+\ROTW, fortresses may be entirely destroyed that way. In Europe (including
+European provinces in the \ROTW and \COL of level 6), the minimal level a
+fortress may have after this is 1. Fortress may ``fall down'' to level 1 even
+if the minimal level on the map is 2, in which case a white level 1 fortress
+is used to denote this.
+
+\begin{playtip}
+  Free tip: when taking a fortress of level 1 or 2, whether you re-man it or
+  not, it will end up level 1. Don't waste a \LD for nothing\ldots When taking
+  a fortress of higher level, the question arises.
+\end{playtip}
+
 \subsubsection{Assault}
 
-\subsection{Fight against \REVOLT}
+\subsection{Siege Attrition}
+
+\subsection{Fight against \REVOLT/\REBELLION}
 
 \subsection{Fight against \corsaire}
 
