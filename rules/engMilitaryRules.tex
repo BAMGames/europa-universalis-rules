@@ -224,7 +224,7 @@ enough to avoid this destruction.
 
 Each phasing land stack which has no supply or is in weak supply must roll for
 \terme{supply attrition}. Additionally, each phasing besieged land stack must
-roll for \terme{siege attrition} (exception: if the fortress was supplied
+roll for \terme{Siege Attrition} (exception: if the fortress was supplied
 during the previous round (see naval movement), the besieged stack does not
 roll for attrition and is considered in full supply (even if it should
 normally be only in weak supply)). Naval stacks never roll for attrition
@@ -233,7 +233,7 @@ attrition during this segment, which has a similar procedure as supply
 attrition but with slightly different modifiers.
 
 If a besieged stack is also in weak supply, it does not roll for supply
-attrition. The siege attrition replaces this roll.
+attrition. The \terme{Siege Attrition} replaces this roll.
 
 \begin{todo}
   Supply markers for besieged fortresses?
@@ -2239,9 +2239,11 @@ die'. Count the losses of \textbf{all} dice but tally the losses of the 'last
 die' separately (they will be reduced as the 'last die' may correspond to less
 than 8\LD).
 
-Any other stack fights normally, whatever the number of \LD in it (notably,
+Any other stack fights normally, whatever the number of \LD in it. Notably,
 \TUR stacks may have more than 8\LD due to \Pashas but nonetheless use the
-normal rules).
+normal rules. Similarly, this rule only apply for \ROTW countries (including
+\pays{natives}) and thus stacks with \LeaderC that ``converted'' natives to
+their side may contain a large number of \LD but still fight normally.
 
 \begin{exemple}
   The Togukawa shogun decides to get ride of the Portuguese traders and the
@@ -3344,9 +3346,10 @@ Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
 If a land stack is in a province with an enemy fortress and has less than 1\LD
 per level of the fortress, it must roll for \terme{Siege Attrition} (see
-below). If, for some reason, a blockading naval stack is too small to blockade
-the fortress (what did you do wrong?), the blockade is lifted and the stack
-stays in the sea.
+below). If a land stack is in a province with an enemy fortress and has no
+\LoS, it must also roll for \terme{Siege Attrition}. If, for some reason, a
+blockading naval stack is too small to blockade the fortress (what did you do
+wrong?), the blockade is lifted and the stack stays in the sea.
 
 Next, each alliance, in decreasing order of initiative, resolves all of its
 actions (sieges, fight against \REVOLT/\REBELLION an \corsaire) in an order of
@@ -3357,8 +3360,9 @@ a province with either an enemy fortress or an enemy \REVOLT/\REBELLION must
 either besiege or fight the \REVOLT/\REBELLION. If a stack is in a province
 with both an enemy fortress and an enemy \REVOLT/\REBELLION, it cannot both
 besiege and fight. It must do one of the two but the controller of the stack
-chooses which; if it is too small to undermine, it may not fight the
-\REVOLT/\REBELLION either (\emph{i.e.} it must either assault or redeploy).
+chooses which; if it has no \LoS or is too small to undermine, it may not
+fight the \REVOLT/\REBELLION either (\emph{i.e.} it must either assault or
+redeploy).
 
 \begin{designnote}
   Order of resolution is rarely relevant. Sieges, \REVOLT/\REBELLION and
@@ -3371,9 +3375,10 @@ chooses which; if it is too small to undermine, it may not fight the
 
 \subsection{Sieges}
 A besieging stack may either \terme{Undermine} the fortress, \terme{Assault}
-it, or \terme{Redeploy}. In order to undermine, a stack must have at least as
-many \LD as the level of the fortress. Besieging stacks must do one (and only
-one) of the three actions listed above. It is not possible to do nothing.
+it, or \terme{Redeploy}. In order to undermine, a stack must have a \LoS and
+at least as many \LD as the level of the fortress. Besieging stacks must do
+one (and only one) of the three actions listed above. It is not possible to do
+nothing.
 
 If a stack chooses to \terme{Redeploy}, it abandon the siege (remove any
 \USURE on the fortress) and goes back to a friendly unbesieged province using
@@ -3382,9 +3387,9 @@ the \terme{Redeployment} procedure (see~\ref{chRedep:Redeployment}). These
 the decision is taken); they may happen by sea at the usual conditions for
 \terme{Redeployment}; they are cause of attrition as normal
 \terme{Redeployments}. A stack may choose to redeploy even if it can
-undermine. A too small stack that redeploys rolls twice for \terme{Attrition}
-(one \terme{Siege Attrition} because it is too small and one \terme{Movement
-  Attrition} because of the redeployment).
+undermine. A too small stack (or a stack with no \LoS) that redeploys rolls
+twice for \terme{Attrition} (one \terme{Siege Attrition} because it is too
+small and one \terme{Movement Attrition} because of the redeployment).
 
 \begin{designnote}
   A very small stack managing to assault a very large fortress represents a
@@ -3467,6 +3472,8 @@ Effect on fortress modifiers:
   \item[-1] fort, non-Plain, no port;
   \item[-0] all other cases;
   \end{modlisti}
+\item[+1] [TBD] if there has been no \terme{Breach} this turn, but an assault
+  that managed to cause at least 1 loss;
 \item[+2] if a \terme{Breach} was obtained previously this turn;
 \item[+1/+3] for each \USURE\facemoins/\faceplus on the fortress;
 \item[-S] \terme{Siege} value of one besieged leader;
@@ -3480,7 +3487,7 @@ provides its value but he does not need to be the commanding leader. In any
 case, always use the largest \terme{Siege} value available in the stack.
 
 \begin{todo}
-  'Breach' counters?
+  'Assault +1'/'Breach +2' counters?
 \end{todo}
 
 The effect of undermining is read in~\ref{table:Undermining}. The various
@@ -3550,9 +3557,174 @@ to denote this.
   to blockade it (typically, when \SUE wants to defend against \RUS or \POL).
 \end{playtip}
 
+Attrition check modifiers:
+\begin{modlist}
+\item[+4] if this is the first round of siege this turn for this fortress;
+\item[-2] if the siege is continuing from a previous turn;
+\item[-S] siege value of one besieged leader;
+\item[-?] number of \LD in the fortress (\ARMY\facemoins = 2\LD,
+  \ARMY\faceplus = 4\LD).
+\end{modlist}
+
+If the result is strictly smaller than the distance (in \MP) from a \SoS, then
+the stack must roll for \terme{Siege Attrition}.
+
+There is no adverse effect of using a weak supply source for this test. Thus,
+it is possible to choose, during the Supply Segment, a full \SoS that is, say
+5\MP away (and thus avoid \terme{Supply Attrition}) and to choose for this
+check a weak \SoS that is only 2\MP away (and thus possibly also avoid
+\terme{Siege Attrition}). Basically, there is no memory of which \SoS was used
+previously and as long as the stack is not too far away from a \SoS,
+everything is fine.
+
+Note also that the \SoS is only checked when needed. Because sieges are
+actually resolved in a chosen order, it may happen that a first siege succeed
+and thus create a now \SoS (the fortress is now controlled) to use for the
+next siege.
+
 \subsubsection{Assault}
+Assault looks like a simplified battle. It has many concepts in common, but a
+few specificities. Notably: there are less columns in the CRT; there is only
+one day of fight; there are no terrain modifiers; losses modifications are
+simpler (no \terme{size differential} to compute); \ldots As for Battles, the
+sequence described here must nonetheless be strictly followed.
+
+\GTtable{assault}
+
+\textbf{Assault parameter.} If one side has no leader, draw a
+\terme{Replacement} general. Next, depending on its technology, find the
+\terme{Morale} of each side (besieged are always \terme{Veteran}, even if
+there is a lot of \terme{Conscript} troops in the fortress).
+
+\textbf{CRT column.} The besieger always use the ``\textsc{Besieger}'' columns
+of~\ref{table:Assault Results}. The columns used by the besieged depends
+whether there has been a \terme{Breach} or not. Note that the Morale losses
+column (\textetoile) is always the same. If this assault \emph{immediately}
+follows a \textbf{B} result during an undermining, then the besieged uses the
+``\emph{Breach}'' columns of the Table, otherwise, it use the ``Fire/Shock''
+columns (even if a previous \terme{Breach} was obtained, hasty reparation have
+cancelled most of its effect). Note that the ``\emph{Breach}'' columns do
+always exactly 1 less loss than their counterpart, that is, assaulting after a
+\terme{Breach} is much less dangerous.
+
+\aparag[DRMs for the besieged:]~\\
+\begin{modlist}
+\item[+F/0] \Fire differential, if positive;
+\item[0/+S] \Shock differential, if positive.
+\end{modlist}
+
+\aparag[DRMs for the besieger:]~\\
+\begin{modlist}
+\item[+F/0] \Fire differential, if positive;
+\item[0/+S] \Shock differential, if positive;
+\item[+1/+1] if the besieged has \TMED technology;
+\item[-1/-1] if the besieged has \TARQ technology or better;
+\item[-N/-N] level of the fortress (0 for forts);
+\item[+?/+?] \terme{Artillery bonus} against the fortress;
+\item[+1/+1] [TBD] if a previous assault caused at least 1 loss.
+\end{modlist}
+
+\textbf{Fire.} Both sides roll for Fire and tally both the losses and
+\textetoile they inflict. The besieged always Fire at full power (heavy siege
+artillery is stored in the fortress). Besieger stacks with \TMED technology do
+not Fire; besieger stacks with \TREN technology only counts the \textetoile
+and besieger stacks with \TARQ technology halve the losses they cause (round
+to the nearest lesser \texttu).
+
+\textbf{Shock.} If a side has been routed during Fire, the other side rolls
+for Shock anyway. If no side has been routed, both sides roll for Shock. Tally
+losses and \textetoile.
+
+\textbf{Losses modifications for besieger.} If the besieger has less than
+8\LD, the losses it causes are modified as follows (cumulative):
+\begin{modlist}
+\item[-\texttu] if 6\LD or less;
+\item[-\texttu] if 4\LD or less (hence -\texttd when combined with the
+  previous one);
+\item[-\texttd] if there is no \ARMY counter.
+\end{modlist}
+Next, add \texttd if the besieger stack contains at least one \ARMY\faceplus
+(not 2\ARMY\facemoins !) of \POL (during periods \period{I} or \period{II}),
+\RUS (during periods \period{I} to \period{III}), or \TUR \Janissaire (before
+M-1a, during periods \period{I} to \period{III}).
+
+\textbf{Losses modifications for besieged.} Cap the losses caused by the
+besieged to twice the resistance of the fortress (read in Subtable
+``Fortresses Resistance'') plus the number of \LD inside (\ARMY\facemoins =
+2\LD, \ARMY\faceplus=4\LD). Next, add \texttd if the besieger has been
+routed.
+
+\textbf{Result of the assault.} If the besieged has suffered as least as many
+\textetoile as its Morale, the fortress fall. Otherwise, losses caused by the
+besieger are first used to kill troops inside the fortress. If the remaining
+losses are at least equal to the resistance of the fortress, it falls. Losses
+suffered by the besieger are rounded to the nearest integer in Europe and then
+simply remove the corresponding number of \LD from the stack.
+
+\textbf{Resistance} of the fortress depends on its level and whether the
+assault immediately follows a \textbf{B} result or not. As for the use of the
+``\emph{Breach}'' column, use the lesser resistance only if the assault
+immediately follows a \textbf{B}. Use this resistance both for capping
+besieged losses and to determine if the fortress falls.
+
+\textbf{Aftermath.} If the fortress didn't fall, nothing happens. It regain
+all its \terme{Resistance} for any future \terme{Assault}. If the fortress has
+fallen due to lack of Morale, troops inside are removed (captured or killed)
+and any leader inside are given back to the besieged who must immediately
+place them in an unbesieged friendly province (exception: monarchs are
+captured).
+
+When a fortress falls (no more Morale or Resistance), first put a control
+marker of the besieged (of the country of the commander) on the fortress. This
+fortress is now controlled by that country. Next, the new controller must
+choose to either man the fortress again or not. If the fortress is manned
+again, the besieger must loose 1\LD (from the besieging stack) and the
+fortress loses 1 level; otherwise, the fortress loses 2 levels. In the \ROTW,
+fortresses may be entirely destroyed that way. In Europe (including European
+provinces in the \ROTW and \COL of level 6), the minimal level a fortress may
+have after this is 1. Fortress may ``fall down'' to level 1 even if the
+minimal level on the map is 2, in which case a white level 1 fortress is used
+to denote this.
 
 \subsection{Siege Attrition}
+\terme{Siege Attrition} is resolved as any attrition by cross-referencing a
+modified 1d10 on the correct column of~\ref{table:Discoveries and
+  Attrition}. Use the ``Land, Europe'' column corresponding to the size of the
+stack if the siege is in Europe, and the \ROTW column +~\ref{table:Attrition
+  ROTW Remainders} if the siege is in the \ROTW.
+
+Note that besieged roll for \terme{Siege Attrition} during the Supply Segment
+while besieger roll for it (sometimes) during the Siege Segment.
+
+Modifiers for \terme{Siege Attrition} (besieger):
+\begin{modlist}
+\item[+2] if the stack has no \LoS;
+\item[+2] if the stack contains 6\LD or more;
+\item[+2] if there is \terme{Bad weather};
+\item[+?] if the stack is supplied by a naval stack, and the \LoS of this
+  naval stack goes through one or more \StraitFort, add the DRM of all the
+  \StraitFort along this path (2 in Europe, level/2 in the \ROTW);
+\item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
+  (+0 to +2 depending on the \Area);
+\item[+1] per \PILLAGE\facemoins, \REVOLT\facemoins or unfriendly
+  \REBELLION\facemoins in the province
+\item[+2] per \PILLAGE\faceplus, \REVOLT\faceplus or unfriendly
+  \REBELLION\faceplus in the province
+\item[-S] siege value of one besieger or blockading leader; even land stacks
+  may use the siege value of one blockading \LeaderA;
+\item[+S] siege value of one besieged leader;
+\end{modlist}
+
+Note that there is no \bonus{+2} for being in an enemy province as the
+besieger more or less already has control of the countryside, the fields,
+and the roads. Thus, it can easily take part of its supply on the spot. In the
+Table, the \bonus{+2} is cancelled by a specific \bonus{-2} for the
+besieger\ldots
+
+Result for \terme{Siege Attrition} is read as usual. As for \terme{Supply
+  Attrition}, \terme{foraging} has no effect here (so we don't have to
+remember which stack was or wasn't foraging a long time ago) and thus can be
+ignored.
 
 \subsection{Fight against \REVOLT/\REBELLION}
 
