@@ -309,7 +309,7 @@ cross-reference the modified result in~\ref{table:Discoveries and
 the stack. In the \ROTW, the result is read in the ``\ROTW and Sea''
 column. Note that a result of 5 or less has no effect.
 
-\GTtable{attritiontableonly}
+\GTtable{discoveriesattritiononly}
 
 Modifiers for Supply attrition:
 \begin{modlist}
@@ -1853,7 +1853,7 @@ and rout after the First Fire (they have 0 Morale).
 Next, in a sea battle where at least one stack is not using \NGD as first line
 ships, roll for \terme{Wind Advantage}.
 
-\GTtable{windadvantage}
+\GTtable{windadvantageonly}
 
 First, each side cross-reference its technology (line) with the technology of
 its opponent (column) on~\ref{table:Wind Advantage Determination} to find a
@@ -2111,7 +2111,7 @@ during periods \period{III} and \period{VI}.
 \subsection{Two days of battle}
 \label{chMilitary:Battle:Fight}
 
-\GTtable{crtonly}
+\GTtable{combatresultsonly}
 
 The battle itself consist in two \terme{days}, each one split in a Fire and
 Shock rolls. Each roll is made on~\ref{table:Combat Results}, by
@@ -2606,15 +2606,14 @@ In any cases, the modified losses may not go below 0. If this should happen
 for any reason, the modified losses becomes 0. (for example, if 1\LD only
 inflicts \texttu losses, this results in 0 losses, not \texttu-2=-1\texttd).
 
-\GTtable{lossestables}
-
 \subsubsection{Small stacks}
+\GTtable{lossestablesonly}
+
 Reduced the losses inflicted by any stack with less than 8\LD (or
-6\ND). Firstly, find in sub-Table <L1/S1> of~\ref{table:Losses Tables} the
-column corresponding to the number of \ND (first line) or \LD (second line) in
-the stack. Next, read in the last line (``Mod.'') a modifier to apply to the
-losses inflicted by this stack (with 7\LD, there is only 50\% chances to have
--\texttu).
+6\ND). Firstly, find in~\ref{table:Losses Tables} the column corresponding to
+the number of \ND (first line) or \LD (second line) in the stack. Next, read
+in the last line (``Mod.'') a modifier to apply to the losses inflicted by
+this stack (with 7\LD, there is only 50\% chances to have -\texttu).
 
 Finally:
 \begin{itemize}
@@ -2646,7 +2645,7 @@ and use it looks more complicated than it actually is\ldots
 
 \GTtable{armyclasses}
 
-\GTtable{armysizes}
+\GTtable{armysizesonly}
 
 First, find the \terme{Army size} of each stack involved into battle. For
 mono-national stacks, cross-reference the nationality or army class with the
@@ -2674,8 +2673,10 @@ still only has +1 against \HIS.
 At sea, a stack with 7 to 12\ND uses a \terme{size differential} of +1, a
 stack of 13 to 18\ND uses +2 and a stack of 19\ND or more uses +3.
 
+\GTtable{sizeonly}
+
 \aparag Finally, once the \terme{size differential} is found, adapt losses
-inflicted according to sub-Table <L2/S2> of~\ref{table:Losses Tables}:
+inflicted according to~\ref{table:size}:
 \bparag On the line ``-1/0'' (in bold), find the number of losses inflicted
 and use that column. If this is not an integer (\emph{e.g.} 2\td), find
 both the number of full losses and the number of thirds. If more than 6 losses
@@ -2908,10 +2909,12 @@ The retreat may not be intercepted and is not subject to \Presidios or
 \StraitFort.
 
 \subsubsection{On land}
-Any retreating stack must roll on Subtable <L3> of~\ref{table:Losses
-  Tables}. Roll 1d10 and, if the stack was not routed, subtract the \Man of
-the commanding \LeaderG (a \terme{Replacement} leader used during the battle
-still provides its \Man). The resulting losses are added to the current total.
+\GTtable{retreatonly}
+
+Any retreating stack must roll on~\ref{table:retreat}. Roll 1d10 and, if the
+stack was not routed, subtract the \Man of the commanding \LeaderG (a
+\terme{Replacement} leader used during the battle still provides its
+\Man). The resulting losses are added to the current total.
 
 Retreating forces must retreat in one of the following possibilities. These
 possibilities have no priority (controller's choice) but are further
@@ -3360,12 +3363,11 @@ its choice (at random in case of disagreement).
 
 Naval stacks whose action is to fight \corsaire resolve it now. Land stacks in
 a province with either an enemy fortress or an enemy \REVOLT/\REBELLION must
-either besiege or fight the \REVOLT/\REBELLION. If a stack is in a province
-with both an enemy fortress and an enemy \REVOLT/\REBELLION, it cannot both
-besiege and fight. It must do one of the two but the controller of the stack
-chooses which; if it has no \LoS or is too small to undermine, it may not
-fight the \REVOLT/\REBELLION either (\emph{i.e.} it must either assault or
-redeploy).
+besiege or fight the \REVOLT/\REBELLION. If a stack is in a province with both
+an enemy fortress and an enemy \REVOLT/\REBELLION, it cannot both besiege and
+fight. It must do one of the two but the controller of the stack chooses
+which; if it has no \LoS or is too small to undermine, it may not fight the
+\REVOLT/\REBELLION either (\emph{i.e.} it must either assault or redeploy).
 
 \begin{designnote}
   Order of resolution is rarely relevant. Sieges, \REVOLT/\REBELLION and

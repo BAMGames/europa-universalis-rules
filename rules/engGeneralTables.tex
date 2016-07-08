@@ -5,8 +5,41 @@
 % \totoonly -> Table only without legends but with \GTdecorate, for
 %              the rules (DRM and legends are in the running text)
 % \toto -> Table + legends + complex decorate, for the Player's aid
+
 % \table@@toto -> sutables, included via \GTmorecontent, require
 %                 special treatment
+% \alias@@toto, \title@@toto -> args for the \GT
+%         used to make sure the name is the same everywhere.
+
+% creates \totoonly from \table@toto
+\newcommand{\make@only}[1]{
+  \csdef{#1only}{\csname table@#1\endcsname\GTdecorate}}
+
+% creates \totoonly from \table@@toto, \alias@@toto, \title@@toto
+% use \make@@all !
+\newcommand{\make@@only}[2]{
+  \csdef{#2only}{
+    \ifx#1\relax\relax % we should rather test \ifdef \alias@@#2
+    \GT{#2}{\csname title@@#2\endcsname}
+    \else
+    \GT[\csname alias@@#2\endcsname]{#2}{\csname title@@#2\endcsname}
+    \fi
+    \GTcontent{\csname table@@#2\endcsname}
+    \GTdecorate
+  } }
+
+% creates \more@@toto to include in \toto
+% ##1, ##2 and ##3 are positioning args for \GTmorecontent
+% use \make@@all !
+\newcommand{\make@@more}[2]{
+  \csdef{more@@#2}##1##2##3{
+    \GTmorecontent{#2}{##1}{##2}{##3}{\csname table@@#2\endcsname}
+    \GTmoretitle{#2}{\csname title@@#2\endcsname}
+    \GTdecorate
+  }
+}
+
+\newcommand{\make@@all}[2][]{\make@@only{#1}{#2}\make@@more{#1}{#2}}
 
 \newcommand{\monarchduration}{
   \GT{monarchduration}{Reign}
@@ -1066,7 +1099,7 @@
   \GTtextdecorate
 }
 
-\newcommand{\table@attrition}{
+\newcommand{\table@discoveriesattrition}{
   \GT{discoveriesattrition}{Discoveries and Attrition}
   \GTcontent{
     \graytabular\begin{tabular}{r||cc||c|cccc}
@@ -1087,13 +1120,10 @@
   }
 }
 
-\newcommand{\attritiontableonly}{
-  \table@attrition
-  \GTdecorate
-}
+\make@only{discoveriesattrition}
 
 \newcommand{\discoveriesattrition}{
-  \table@attrition
+  \table@discoveriesattrition
   \GTlegend[east south,to eastpoint]{
     \GTheader{Results}
     \begin{modlist}
@@ -1220,10 +1250,7 @@
   }
 }
 
-\newcommand{\attritionlossesonly}{
-  \table@attritionlosses
-  \GTdecorate
-}
+\make@only{attritionlosses}
 
 \newcommand{\attritionlosses}{
   \table@attritionlosses
@@ -1433,10 +1460,7 @@
   }
 }
 
-\newcommand{\conquistadorsonly}{
-  \table@conquistadors
-  \GTdecorate
-}
+\make@only{conquistadors}
 
 \newcommand{\conquistadors}{
   \table@conquistadors
@@ -1487,7 +1511,7 @@
   \GTdecorate
 }
 
-\newcommand{\windadvantage}{
+\newcommand{\table@windadvantage}{
   \GT{windadvantage}{Wind Advantage Determination}
   \GTcontent{
     \graytabular\begin{tabular}{c|cccccccc}
@@ -1505,6 +1529,12 @@
       \STSF & +4& +6 & +4 & +3 & +2 & +1 & +1 & 0 \\ \ghline
     \end{tabular}
   }
+}
+
+\make@only{windadvantage}
+
+\newcommand{\windadvantage}{
+  \table@windadvantage
   \GTlegend{
     Each side rolls 1d10+\Man of {\LeaderA}+the tech. factor above.
     Highest score takes the advantage. No test in \technologie{Galley} vs. \technologie{Galley}.
@@ -1606,7 +1636,7 @@
   \GTdecorate
 }
 
-\newcommand{\armysizes}{
+\newcommand{\table@armysizes}{
   \GT{armysizes}{Size Comparison}
   \GTcontent{
     \graytabular\begin{tabular}{c|*{8}{c}}
@@ -1631,6 +1661,12 @@
       % \bf 0&\bf 0&0&\bf \llap-1&\bf \llap-1&\bf \llap-1&\llap-2&\llap-2&\bf \llap-2 \\ \ghline
     \end{tabular}
   }
+}
+
+\make@only{armysizes}
+
+\newcommand{\armysizes}{
+  \table@armysizes
   \GTlegend[south west,margins,xsize=(\gtid main)(\gtid eastpoint),font=\small]{
     Compute the average size of each \LD (number between 0 and 7).
     Compute the difference \emph{X} between one army and the other, divide it by 3 and round it to the nearest integer.
@@ -1638,7 +1674,7 @@
   \GTdecorate
 }
 
-\newcommand{\table@crt}{
+\newcommand{\table@combatresults}{
   \GT[Combat Results]{combatresults}{Combat results (Loss/Morale)}
   \GTcontent{
     \graytabular\begin{tabular}{r|*{5}{>{\global\savecol\countcol}c>{\global\countcol\savecol}l}}
@@ -1661,13 +1697,10 @@
   }
 }
 
-\newcommand{\crtonly}{
-  \table@crt
-  \GTdecorate
-}
+\make@only{combatresults}
 
 \newcommand{\combatresults}{
-  \table@crt
+  \table@combatresults
   \GTlegend[east south,to eastpoint]{
     \GTheader{Fire effects}
     \begin{modlist}[5em]
@@ -1772,45 +1805,55 @@
   }
 }
 
-\newcommand{\lossestables}{%
+\newcommand{\table@lossestables}{ % L1/S1
   \GT[Losses Tables]{lossestables}{<L1/S1> Loss modification for small stacks}
   \GTcontent{
     \begin{tabular}{l|*{8}{c|}c}
       \multicolumn{3}{l|}{\#\ND (\NDE ignored)}&0&1&2&3&4&5&\\\hline
       \#\LD&\LDE&2\LDE&1&1+\LDE&2&3&4/5&6&7: 1d10\\\hline
       Mod.&-3&-2\tu&-2&-1\td&-1\tu&-1&-\td&-\tu&-\tu\ if odd
-    \end{tabular} }
+    \end{tabular}
+  }
+}
+
+\newcommand{\table@@size}{ % L2/S2
+  \begin{tabular}{c||c|c||*{6}{c}|c}
+    -2 & \tu & \tu & \td & 1\tu & 2\tu & 3 & 4 & 4\td & \#-2+\td \\\hline
+    \bf-1/0 & \bf\tu & \bf\td & \bf1 & \bf2 & \bf3 & \bf4 & \bf5 & \bf6  & \bf >6 \\\hline
+    +1 & \tu & \td & 1\tu & 2\tu & 3\td & 4\td & 6 & 7 & \#+1 \\\hline
+    +2 & \td & 1 & 1\td & 2\td & 4\tu & 5\td & 7 & 8 & \#+2 \\\hline
+    +3 & \td & 1\tu & 2 & 3\tu & 5 & 7 & 9 & 10 & \#+4
+    \end{tabular}
+}
+\newcommand{\title@@size}{<L2/S2> Loss Modification by Size}
+
+\newcommand{\table@@retreat}{ % L3
+    \begin{tabular}{c|cccc}
+      1d10-M & 1--2  & 3--4  & 5--6 & 7--10 \\\hline
+      Losses    & ---   & +\tu & +\td  & +1
+    \end{tabular}
+}
+\newcommand{\title@@retreat}{<L3> Retreat}
+
+\make@only{lossestables}
+\make@@all{size}
+\make@@all{retreat}
+
+\newcommand{\lossestables}{%
+  \table@lossestables
   \GTlegend[east south,to eastpoint,font=\small]{
     \textbf{Cap losses after mod.:}\\
     Land: to size\\
     Sea: to 2\textmultiply size (1\ND if only \NDE). If routed,
     min. losses 1\ND.
   }
-  \GTmorecontent{size}{north west}%
-  {\gtid main.south west}{0pt,-5ex}{%
-    \begin{tabular}{c||c|c||*{6}{c}|c}
-      -2	&\tu	&\tu	& \td	&1\tu	&2\tu	&3	&4	&4\td	& \#-2+\td \\\hline
-      \bf-1/0 	&\bf\tu	&\bf\td	&\bf1	& \bf2	&\bf3&\bf4 &\bf5&\bf6&\bf >6 \\\hline
-      +1	&\tu	&\td	&1\tu	&2\tu	&3\td   &4\td   &6	&7	& \#+1 \\\hline
-      +2	&\td	&1	&1\td	&2\td&4\tu   &5\td   &7	&8	& \#+2 \\\hline
-      +3	&\td	&1\tu	&2	&3\tu&5       &7      &9	&10	& \#+4
-    \end{tabular}
-  }
-  \GTmoretitle{size}{<L2/S2> Loss Modification by Size}
+  \more@@size{north west}{\gtid main.south west}{0pt,-5ex}
   % Push 8pt to the left instead of usual 2pt, because of title shape
   \GTlegend[caption=captionsize,east south=sizetitle,xsize offset=-8pt,xoffset=8pt,xsize=(\gtid sizetitle.east)(\gtid caption.east)]{
     % Lookup loss in line 0\textrightarrow line obtained by \emph{Size comparison}.
     Modify \textbf{both} the \tu{} or \td{} and the full \GD.
   }
-  \GTmorecontent{retreat}{north east}%
-  {\gtid captionsize.south east}{0pt,-4ex-2pt}{%
-    \begin{tabular}{c|cccc}
-      1d10-M & 1--2  & 3--4  & 5--6 & 7--10 \\\hline
-      Losses    & ---   & +\tu & +\td  & +1
-    \end{tabular}
-  }
-  \GTmoretitle{retreat}{<L3> Retreat}
-
+  \more@@retreat{north east}{\gtid captionsize.south east}{0pt,-4ex-2pt}
   \GTlegend[caption=captionretreat,south west=retreat]{
     M=\Man of leader unless routed
   }
@@ -1890,12 +1933,9 @@
     If \terme{Breach} & \tu & \td & \td & 1 & 1\tu & 1\td
   \end{tabular}
 }
+\newcommand{\title@@resistance}{Fortresses Resistance}
 
-\newcommand{\resistanceonly}{
-  \GT{resistance}{Fortresses Resistance}
-  \GTcontent{\table@@resistance}
-  \GTdecorate
-}
+\make@@all{resistance}
 
 \newcommand{\assault}{
   \table@assault
@@ -1932,12 +1972,7 @@
     \end{modlist}
   }
 
-  \GTmorecontent{fortresses}{north east}{\gtid caption.south east}{0pt,-6pt}%
-  {
-    \table@@resistance
-  }
-  \GTmoretitle{fortresses}{Fortresses Resistance}
-  \GTdecorate
+  \more@@resistance{north east}{\gtid caption.south east}{0pt,-6pt}%
 }
 
 \newcommand{\artilleryvalue}{
