@@ -293,10 +293,11 @@ Supply is never used up. Thus a \SoS can supply several stacks if it can
 supply each of them individually.
 
 \subsubsection{At sea}
-A naval \SoS is a controlled port or arsenal large enough ot hold the naval
-stack. Fort and mission can only supply \ND; \TP, \COL and regular ports can
-supply stacks with at most 1\FLEET counter; arsenals can supply any naval
-stack.
+A naval \SoS is a controlled, non-blockaded port or arsenal large enough ot
+hold the naval stack. Fort and mission can only supply \ND; \TP, \COL and
+regular ports can supply stacks with at most 1\FLEET counter; arsenals can
+supply any naval stack. \Presidios and \USURE do not blockade ports, only
+enemy naval stacks may do so.
 
 A naval \LoS goes from the \SoS to the stack. Its length is the number of sea
 zones \emph{crossed} (both entered and exited). Thus, a naval stack adjacent
@@ -1441,11 +1442,12 @@ interception succeeds.
   Now, you should be able to build a ``\emph{Fleet in being}'' strategy.
 \end{exemple}
 
-\subsection{\Presidios and \StraitFort}
-A \Presidio or \StraitFort can intercept a naval stack. \StraitFort can
-intercept stacks moving through it. \Presidios can intercept stack entering or
-exiting the port. The interception is decided by the controller of the
-fortress.
+\subsection{\Presidios, \StraitFort and \USURE}
+A \Presidio, \StraitFort or \USURE can intercept a naval stack (in case of
+\USURE, this represent progress made by the besiegers to attack the
+port). \StraitFort can intercept stacks moving through it. \Presidios and
+\USURE can intercept stack entering or exiting the port. The interception is
+decided by the controller of the \Presidio, \StraitFort or \USURE.
 
 Although it it an interception, it is resolved differently than usual ones and
 does not result in battle. It may, however, stop the moving stack and cause
@@ -1455,23 +1457,30 @@ The interception is resolved by rolling 1d10 modified by
 \begin{modlist}
 \item[+?] level of the \Presidio;
 \item[+2] \StraitFort on the European map;
+\item[+1] per \USURE\faceplus;
 \item[+?] half the level (round down) of the fortress controlling the
   \StraitFort on the \ROTW map;
 \item[+1] if the moving stack contains at least one \FLEET counter.
 \end{modlist}
 
 If the result is 9 or more, then the moving stack must stop moving immediately
-(before crossing the Strait or \Presidio) and roll for attrition as usual. It
-may not attempt any action this round.
+(before crossing the Strait, \Presidio or \USURE) and roll for attrition as
+usual. It may not attempt any action this round.
 
 Additionally, if the result is 11 or more, the stack loses 1\ND (or 1 side of
 \corsaire) and if the result is 13 or more, the stack loses 1 more \ND (or
 side of \corsaire) (for a total of 2).
 
-If a naval stack carrying troops is stopped by a \Presidio or \StraitFort, it
-must go back to the closest (in number of zones) friendly port large enough to
-hold it, ignoring ports that are behind a \Presidio or \StraitFort. This is a
-move, hence a cause of attrition, and may be intercepted.
+If a naval stack carrying troops is stopped by a \Presidio, \USURE or
+\StraitFort, it must go back to the closest (in number of zones) friendly port
+large enough to hold it, ignoring ports that are behind a \Presidio or
+\StraitFort or have \USURE. This is a move, hence a cause of attrition, and
+may be intercepted.
+
+Note that even if they may stop naval stakcs going through them, neither
+\StraitFort nor \Presidios nor \USURE are actually blockading the port for any
+purpose (especially when undermining the fortress or when finding \SoS for
+naval stacks).
 
 \subsection{Convoys}
 \begin{designnote}
@@ -3203,6 +3212,17 @@ beginning of next round.
   When? Link with example already written. Complete correct part.
 \end{todo}
 
+If a monarch was commanding a stack that is entirely destroyed and he is part
+of the casualties (first roll \leq 1), do not test his death. Instead, he is
+captured by the winning side and will be ransomed at the end of the
+turn (see~\ref{chPeace:Ransoms}). Remove its counter from the map and keep it
+close to the capturing country (captured monarchs may not evade or get freed
+in anyway and must be ransomed at the end of the turn).
+
+If a monarch is killed or captured in battle, his country cannot uses his
+values anymore. Instead, the country is considered to be ruled by a 3/3/3
+monarch until either the ransom or the determination of a new monarch.
+
 \begin{designnote}
   Here also, a 'killed' or 'wounded' leader is a game term not to take too
   seriously. It may mean a capture, a disgrace removing the leader from
@@ -3351,11 +3371,11 @@ may not intercept or counter-intercept again during this impulse.
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
 If a land stack is in a province with an enemy fortress and has less than 1\LD
-per level of the fortress, it must roll for \terme{Siege Attrition} (see
-below). If a land stack is in a province with an enemy fortress and has no
-\LoS, it must also roll for \terme{Siege Attrition}. If, for some reason, a
-blockading naval stack is too small to blockade the fortress (what did you do
-wrong?), the blockade is lifted and the stack stays in the sea.
+per level of the fortress, it must roll for \terme{Siege Attrition}. If a land
+stack is in a province with an enemy fortress and has no \LoS, it must also
+roll for \terme{Siege Attrition}. If, for some reason, a blockading naval
+stack is too small to blockade the fortress (what did you do wrong?), the
+blockade is lifted and the stack stays in the sea.
 
 Next, each alliance, in decreasing order of initiative, resolves all of its
 actions (sieges, fight against \REVOLT/\REBELLION an \corsaire) in an order of
@@ -3370,13 +3390,55 @@ which; if it has no \LoS or is too small to undermine, it may not fight the
 \REVOLT/\REBELLION either (\emph{i.e.} it must either assault or redeploy).
 
 \begin{designnote}
-  Order of resolution is rarely relevant. Sieges, \REVOLT/\REBELLION and
-  \corsaire may usually be resolved in any order. Use the precise order here
-  only if there are disagreements. Especially, when there are separate wars,
-  it is normally possible to resolve sieges simultaneously in each war
-  (notably if they are waged by different players) rather than waiting
-  pointlessly.
+  Order of resolution between alliances is rarely relevant. Sieges,
+  \REVOLT/\REBELLION and \corsaire may usually be resolved in any order. Use
+  the precise order here only if there are disagreements. Especially, when
+  there are separate wars, it is normally possible to resolve sieges
+  simultaneously in each war (notably if they are waged by different players)
+  rather than waiting pointlessly.
 \end{designnote}
+
+\subsection{Siege Attrition}
+\terme{Siege Attrition} is resolved as any attrition by cross-referencing a
+modified 1d10 on the correct column of~\ref{table:Discoveries and
+  Attrition}. Use the ``Land, Europe'' column corresponding to the size of the
+stack if the siege is in Europe, and the \ROTW column +~\ref{table:Attrition
+  ROTW Remainders} if the siege is in the \ROTW.
+
+Note that besieged roll for \terme{Siege Attrition} during the Supply Segment
+while besieger roll for it (sometimes) during the Siege Segment.
+
+Modifiers for \terme{Siege Attrition} (besieger):
+\begin{modlist}
+\item[+2] if the stack has no \LoS;
+\item[+2] if the stack contains 6\LD or more;
+\item[+2] if there is \terme{Bad weather};
+\item[+?] if the stack is supplied by a naval stack, and the \LoS of this
+  naval stack goes through one or more \StraitFort, add the DRM of all the
+  \StraitFort along this path (2 in Europe, level/2 in the \ROTW);
+\item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
+  (+0 to +2 depending on the \Area);
+\item[+1] per \PILLAGE\facemoins, \REVOLT\facemoins or unfriendly
+  \REBELLION\facemoins in the province
+\item[+2] per \PILLAGE\faceplus, \REVOLT\faceplus or unfriendly
+  \REBELLION\faceplus in the province
+\item[-S] siege value of one besieger or blockading leader; even land stacks
+  may use the siege value of one blockading \LeaderA;
+\item[+S] siege value of one besieged leader;
+\end{modlist}
+
+Note that there is no \bonus{+2} for being in an enemy province as the
+besieger more or less already has control of the countryside, the fields,
+and the roads. Thus, it can easily take part of its supply on the spot. In the
+Table, the \bonus{+2} is cancelled by a specific \bonus{-2} for the
+besieger\ldots Also, the \terme{Bad weather} and \terme{Massed force}
+modifiers are not recalled in the table and are considered part of the ``per
+extra cause'' modifier.
+
+Result for \terme{Siege Attrition} is read as usual. As for \terme{Supply
+  Attrition}, \terme{foraging} has no effect here (so we don't have to
+remember which stack was or wasn't foraging a long time ago) and thus can be
+ignored.
 
 \subsection{Sieges}
 A besieging stack may either \terme{Undermine} the fortress, \terme{Assault}
@@ -3391,10 +3453,11 @@ the \terme{Redeployment} procedure (see~\ref{chRedep:Redeployment}). These
 \terme{Redeployments} are not simultaneous (they are resolved immediately when
 the decision is taken); they may happen by sea at the usual conditions for
 \terme{Redeployment}; they are cause of attrition as normal
-\terme{Redeployments}. A stack may choose to redeploy even if it can
-undermine. A too small stack (or a stack with no \LoS) that redeploys rolls
-twice for \terme{Attrition} (one \terme{Siege Attrition} because it is too
-small and one \terme{Movement Attrition} because of the redeployment).
+\terme{Redeployments}; they are never voluntarily (even if the stack is large
+may undermine). A stack may choose to redeploy even if it may undermine. A too
+small stack (or a stack with no \LoS) that redeploys rolls twice for
+\terme{Attrition} (one \terme{Siege Attrition} because it is too small and one
+\terme{Movement Attrition} because of the redeployment).
 
 \begin{designnote}
   A very small stack managing to assault a very large fortress represents a
@@ -3478,7 +3541,7 @@ Effect on fortress modifiers:
   \item[-0] all other cases;
   \end{modlisti}
 \item[+1] [TBD] if there has been no \terme{Breach} this turn, but an assault
-  that managed to cause at least 1 loss;
+  that managed to cause at least 1 loss; % before country modif
 \item[+2] if a \terme{Breach} was obtained previously this turn;
 \item[+1/+3] for each \USURE\facemoins/\faceplus on the fortress;
 \item[-S] \terme{Siege} value of one besieged leader;
@@ -3512,11 +3575,13 @@ possible effects are:
   \terme{Breach} still makes further undermining easier.
 \item[\textbf{B} or \textbf{WH}] The besieger must decide to either apply the
   \textbf{B} result or to give \terme{War Honour} to the besieged. If giving
-  \terme{War Honour}, the fortress falls and any troops inside the fortress,
-  plus 1\LD (representing the garrison) are ``given back'' to the besieged who
-  must immediately place them in any unbesieged friendly province (they may be
-  split in different provinces, they may 'teleport' at the other end of the
-  World for the sake of rules simplicity).
+  \terme{War Honour}, the fortress falls and any troops and leaders inside the
+  fortress, plus 1\LD (representing the garrison) are ``given back'' to the
+  besieged who must immediately place them in any unbesieged friendly province
+  (they may be split in different provinces, they may 'teleport' at the other
+  end of the World for the sake of rules simplicity). Exception: if a
+  \terme{Monarch} happen to be trapped in a fortress given \terme{War Honour},
+  he is captured.
 \item[\textbf{R}] The fortress surrenders. It falls and troops inside it are
   destroyed (captured, likely, as executing defenders after the fall was not a
   common practise), any leader inside is ``given back'' to the besieged who
@@ -3583,8 +3648,8 @@ previously and as long as the stack is not too far away from a \SoS,
 everything is fine.
 
 Note also that the \SoS is only checked when needed. Because sieges are
-actually resolved in a chosen order, it may happen that a first siege succeed
-and thus create a now \SoS (the fortress is now controlled) to use for the
+actually resolved in a chosen order, it may happen that a first siege succeeds
+and thus creates a new \SoS (the fortress is now controlled) to use for the
 next siege.
 
 \subsubsection{Assault}
@@ -3607,10 +3672,22 @@ whether there has been a \terme{Breach} or not. Note that the Morale losses
 column (\textetoile) is always the same. If this assault \emph{immediately}
 follows a \textbf{B} result during an undermining, then the besieged uses the
 ``\emph{Breach}'' columns of the Table, otherwise, it use the ``Fire/Shock''
-columns (even if a previous \terme{Breach} was obtained, hasty reparation have
-cancelled most of its effect). Note that the ``\emph{Breach}'' columns do
+columns (even if a previous \terme{Breach} was obtained, hasty reparations
+have cancelled most of its effect). Note that the ``\emph{Breach}'' columns do
 always exactly 1 less loss than their counterpart, that is, assaulting after a
 \terme{Breach} is much less dangerous.
+
+\begin{designnote}
+  No, the ``only'' \textetoile\textetoile on line 11 is not an error. It's a
+  statistical feature: the probability to obtain
+  \textetoile\textetoile\textetoile is 10\% both if rolling at \bonus{+0} or
+  \bonus{+1} and you need to manage to get a \bonus{+2} (hence a very good
+  leader) to have 20\% of \textetoile\textetoile\textetoile.
+\end{designnote}
+
+Note that the columns used by the besieged are quite brutal when compared to
+the battle CRT. \textetoile tend to happen very fast and high casualties are
+common.
 
 \aparag[DRMs for the besieged:]~\\
 \begin{modlist}
@@ -3624,9 +3701,11 @@ always exactly 1 less loss than their counterpart, that is, assaulting after a
 \item[0/+S] \Shock differential, if positive;
 \item[+1/+1] if the besieged has \TMED technology;
 \item[-1/-1] if the besieged has \TARQ technology or better;
-\item[-N/-N] level of the fortress (0 for forts);
+\item[-N/-N] if the assault does not immediately follows a \terme{Breach},
+  subtract the level of the fortress (0 for forts);
 \item[+?/+?] \terme{Artillery bonus} against the fortress;
-\item[+1/+1] [TBD] if a previous assault caused at least 1 loss.
+\item[+1/+1] [TBD] if a previous assault caused at least 1 loss. % before
+                                % country modif
 \end{modlist}
 
 \textbf{Fire.} Both sides roll for Fire and tally both the losses and
@@ -3636,9 +3715,9 @@ not Fire; besieger stacks with \TREN technology only counts the \textetoile
 and besieger stacks with \TARQ technology halve the losses they cause (round
 to the nearest lesser \texttu).
 
-\textbf{Shock.} If a side has been routed during Fire, the other side rolls
-for Shock anyway. If no side has been routed, both sides roll for Shock. Tally
-losses and \textetoile.
+\textbf{Shock.} If a side has been routed during Fire (suffered at least as
+many \textetoile as its Morale), the other side rolls for Shock anyway. If no
+side has been routed, both sides roll for Shock. Tally losses and \textetoile.
 
 \textbf{Losses modifications for besieger.} If the besieger has less than
 8\LD, the losses it causes are modified as follows (cumulative):
@@ -3646,7 +3725,8 @@ losses and \textetoile.
 \item[-\texttu] if 6\LD or less;
 \item[-\texttu] if 4\LD or less (hence -\texttd when combined with the
   previous one);
-\item[-\texttd] if there is no \ARMY counter.
+\item[-\texttd] if there is no \ARMY counter (hence -1\texttu when combining
+  all three).
 \end{modlist}
 Next, add \texttd if the besieger stack contains at least one \ARMY\faceplus
 (not 2\ARMY\facemoins !) of \POL (during periods \period{I} or \period{II}),
@@ -3659,20 +3739,25 @@ M-1a, during periods \period{I} to \period{III}).
 besieged to twice the resistance of the fortress (read
 in~\ref{table:Fortresses Resistance}) plus the number of \LD inside
 (\ARMY\facemoins = 2\LD, \ARMY\faceplus=4\LD). Next, add \texttd if the
-besieger has been routed.
+besieger has been routed (has suffered as least as many \textetoile as its
+Morale).
 
-\textbf{Result of the assault.} If the besieged has suffered as least as many
-\textetoile as its Morale, the fortress fall. Otherwise, losses caused by the
-besieger are first used to kill troops inside the fortress. If the remaining
-losses are at least equal to the resistance of the fortress, it falls. Losses
-suffered by the besieger are rounded to the nearest integer in Europe and then
-simply remove the corresponding number of \LD from the stack.
+\textbf{Result of the assault.} If the besieger is entirely destroyed, the
+fortress does not fall, whatever the other conditions. If the besieged has
+suffered as least as many \textetoile as its Morale, the fortress
+fall. Otherwise, losses caused by the besieger are first used to kill troops
+inside the fortress. If the remaining losses are at least equal to the
+resistance of the fortress, it falls. Losses suffered by the besieger are
+rounded to the nearest integer in Europe and then simply remove the
+corresponding number of \LD (and \LDE in the \ROTW) from the stack.
 
 \textbf{Resistance} of the fortress depends on its level and whether the
 assault immediately follows a \textbf{B} result or not. As for the use of the
 ``\emph{Breach}'' column, use the lesser resistance only if the assault
 immediately follows a \textbf{B}. Use this resistance both for capping
 besieged losses and to determine if the fortress falls.
+
+\textbf{Death of leaders.} Check death of leaders as after a battle.
 
 \textbf{Aftermath.} If the fortress didn't fall, nothing happens. It regain
 all its \terme{Resistance} for any future \terme{Assault}. If the fortress has
@@ -3693,184 +3778,11 @@ have after this is 1. Fortress may ``fall down'' to level 1 even if the
 minimal level on the map is 2, in which case a white level 1 fortress is used
 to denote this.
 
-\subsection{Siege Attrition}
-\terme{Siege Attrition} is resolved as any attrition by cross-referencing a
-modified 1d10 on the correct column of~\ref{table:Discoveries and
-  Attrition}. Use the ``Land, Europe'' column corresponding to the size of the
-stack if the siege is in Europe, and the \ROTW column +~\ref{table:Attrition
-  ROTW Remainders} if the siege is in the \ROTW.
-
-Note that besieged roll for \terme{Siege Attrition} during the Supply Segment
-while besieger roll for it (sometimes) during the Siege Segment.
-
-Modifiers for \terme{Siege Attrition} (besieger):
-\begin{modlist}
-\item[+2] if the stack has no \LoS;
-\item[+2] if the stack contains 6\LD or more;
-\item[+2] if there is \terme{Bad weather};
-\item[+?] if the stack is supplied by a naval stack, and the \LoS of this
-  naval stack goes through one or more \StraitFort, add the DRM of all the
-  \StraitFort along this path (2 in Europe, level/2 in the \ROTW);
-\item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
-  (+0 to +2 depending on the \Area);
-\item[+1] per \PILLAGE\facemoins, \REVOLT\facemoins or unfriendly
-  \REBELLION\facemoins in the province
-\item[+2] per \PILLAGE\faceplus, \REVOLT\faceplus or unfriendly
-  \REBELLION\faceplus in the province
-\item[-S] siege value of one besieger or blockading leader; even land stacks
-  may use the siege value of one blockading \LeaderA;
-\item[+S] siege value of one besieged leader;
-\end{modlist}
-
-Note that there is no \bonus{+2} for being in an enemy province as the
-besieger more or less already has control of the countryside, the fields,
-and the roads. Thus, it can easily take part of its supply on the spot. In the
-Table, the \bonus{+2} is cancelled by a specific \bonus{-2} for the
-besieger\ldots
-
-Result for \terme{Siege Attrition} is read as usual. As for \terme{Supply
-  Attrition}, \terme{foraging} has no effect here (so we don't have to
-remember which stack was or wasn't foraging a long time ago) and thus can be
-ignored.
-
 \subsection{Fight against \REVOLT/\REBELLION}
 
 \subsection{Fight against \corsaire}
 
 \iamhere
-
-\aparag[Blocus]
-Il faut avoir au moins la force navale voulue selon le niveau de forteresse
-(voir table ou supra).
-\bparag Coupe le bonus de -3 au test de ravitaillement des assiégés ;
-\bparag Flotte qui veut sortir ou entrer : doit faire un test pour échapper au blocus
-(ou attaquer la flotte en blocus)
-
-\subsection{Les sièges}
-\aparag Pour la sape, effet du terrain (non cumulatif)
-\bparag           -2      Port sans blocus, terrain clair
-\bparag           -3      Port sans blocus, terrain autre que clair
-\bparag -2 Terrain accidenté (montagne, marais, forêt, désert) sans port
-ou blocus
-
-\aparag[TBD] si un assaut a causé au moins 1 perte (sans modif de
-taille ni bonus ``grosse armée'' dans le tour : +1 à la sape et à
-l'assaut (max +1, non cumulatif avec le +2 de brèche).
-
-
-\aparag Les tables sont à jour !
-
-\aparag[Expérimental]
-Un assaut qui a obtenu au moins 1 pertes (sans compter les bonus
-de Janissaires, \RUS, \POL) sans prendre la forteresse donnera un
-bonus de {\bf +1} aux jets de sappe et aux assauts suivants du tour.
-
-\aparag[Port Siegeworks]
-Ports that are besieged with at least one level of Siegework are
-submitted to a fire from the siegework that works the same way as the
-Presidios, with a {\bf +1} per counter Siegework\faceplus.  {\bf But the
- port is not blockaded.}
-
-\aparag[Impossibilité de tenir un siège]
-Ceci est regardé au début de la phase de siège (nbre de DT >= niveau) ;
-si impossible, mvt de rédéploiement forcé vers chez soi \\
-- en fin de tour: si pas Usure\faceplus, redéploiement forcé.
-
-
-\subsection{Les sièges}
--- NE PAS PRENDRE EN COMPTE --
-
-%Les règles ne sont quasiment pas changées par rapport au combat rapide de la 2nde extension.
-
-\subsubsection{L'assaut}
--- NE PAS PRENDRE EN COMPTE --
-
-
-\paragraph{Les rounds d'assaut.}
-L'assaut se fait en deux jets, un de feu puis un de choc sauf que
-le choc n'est pas fait par un camp qui a craqué au moral .
-Les tables de combat montrent une colonne spécifique à l'assiégé et une pour l'assiégeant.
-Noter que l'assiégé fait une perte en moins au feu et au choc si le combat est
-suite à une \textbf{brèche}.
-
-
-\paragraph{Modificateurs.}
-L'assiégeant ajoute 1 si le défenseur est médiéval, soustrait 1 si le défenseur est en arquebuse
-ou mieux, à son feu et son choc.
-L'assiégeant soustrait aussi le niveau de la forteresse aux deux si il n'y a pas eu de
-brèche. Enfin, l'artillerie ajoute  +1 en assaut si l'assiégeant a au moins
-4 fois le niveau de la forteresse en artillerie (sauf contre un fort).
-
-\paragraph{Les ajustements aux pertes.}
-\begin{itemize}
-\item 1- si l'assiégeant n'a pas 2 A+, le tableau des pertes variables réduit
-ce qu'il inflige ;
-\item 2- la Turquie et la Russie jusqu'en 1614, et la Pologne jusqu'en 1559 augmentent
-les pertes faites en assaut de 1/2 par A+ présente ;
-\item 3- l'assiégeant prend une demie-perte en plus si il a craqué au moral.
-\item 4- les pertes de l'assiégeant sont limitées au nombre de DT dans la
-fortification plus 2 fois la résistance de
-la forteresse (ajustée par la brèche).
-\end{itemize}
-
-\paragraph{Résistance de la forteresse.}
-Les pertes faites à l'assiégé sont d'abord prises sur les unités enfermées dans
-la forteresse, puis sur la résistance de celle-ci. Cette résistance est égale à
-son niveau, mais est réduite en cas de brèche. Elle revient à son niveau
-maximum après chaque assaut.
-
-\paragraph{La victoire.} Elle revient au camp selon l'ordre de priorité suivant~:
-\begin{enumerate}
-\item Assiégé, si l'assiégeant est éliminé ;
-\item Assiégeant, si les troupes à l'intérieur sont éliminées et la résistance atteint 0,
-ou si l'assiégé craque au moral
-(même si l'assiégeant déroute) ;
-\item Assiégé, si l'assiégeant seul ou si personne ne craque au moral.
-\end{enumerate}
-
-
-\subsubsection{La sape}
--- NE PAS PRENDRE EN COMPTE --
-
-\paragraph{Mettre le siège.}
-%\begin{minipage}[b]{0.5\linewidth}
-Le siège par usure n'est presque pas modifié. Un pion armée  contient toujours
-un nombre d'artillerie égal à celui de la contenance maximum de sa nation à la période en cours.
-Une armée sur la face - contient l'artillerie de l'armée + divisée par 2 et arrondie
-à l'inférieur.
-
-Il faut pour maintenir le siège devant une forteresse disposer d'au moins autant
-d'équivalent détachement que le niveau de la forteresse.
-Si l'assiégeant ne peut maintenir le siège en fin de round (après un assaut ou une
-bataille), il doit immédiatement retraiter dans une province amie (avant de pouvoir
-piller) et jouer l'attrition.
-Si il choisit de maintenir le siège, il doit soit lancer un assaut, soit faire
-un test dur la table de sape (qui peut être suivi d'un assaut en cas de brèche).
-
-Le propriétaire de la forteresse peut laisser des troupes dans celle-ci.
-L'empilement dans une forteresse est d'au plus 2DT par niveau de la
-forteresse, ou d'un DT dans les forts. Ces forces subissent une attrition
-à chaque fin de phase de mouvement si le siège est déjà
-établi. Une fois enfermés dans une forteresse, une force ne peut
-en sortir qu'en fin de siège (victorieux ou non) et n'a pas le
-droit s'attaquer les assiégeants.
-
-\paragraph{Résolution de la sape.} On utilise la table des annexes,
-avec les modificateurs indiqués.
-
-Les pertes assiégeantes obtenues sur la table des sièges se résolvent
-en lançant 1d10, diminué des valeurs en siège des généraux
-et augmenté de 1 par DT (ou équivalent) en défense dans la forteresse.
-Si le résultat est inférieur (strictement) au nombre de round
-de siège écoulé, l'assiégeant doit faire un test d'attrition sur la table
-adéquante (Europe ou non) avec les modificateurs indiqués.
-
-\subsubsection{Prise des forteresse}
-Une forteresse qui tombe par assaut ou sape perd 2 niveaux de
-fortification (avec la valeur mise sur la carte en tant que minimum),
-sauf si le nouvel occupant décide immédiatement de mettre un
-garnison. Il doit pour cela utiliser un DT qui est perdu (le DT peut
-provenir de la séparation d'un pion armée).
 
 \section{End of round}
 \label{chMilitary:End of round}
