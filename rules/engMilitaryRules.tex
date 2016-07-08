@@ -272,14 +272,17 @@ naval stack (which may be during the next turn).
 \item A stack containing only \NDE may supply stacks of at most 1\LD;
 \item A stack containing only \ND may supply stacks of at most 3\LD and no
   \ARMY counter;
-\item A stack with a \FLEET\facemoins (but no \FLEET\faceplus) counter may
-  supply any small land stack (up to 5\LD and 1\Pasha);
-\item A stack containing a \FLEET\faceplus counter may supply any land stack.
+\item A stack with a \FLEET\facemoins (but no \FLEET\faceplus) counter and at
+  least 2\ND in the stack may supply any small land stack (up to 5\LD and
+  1\Pasha);
+\item A stack containing a \FLEET\faceplus counter and at least 3\ND may
+  supply any land stack.
 \end{itemize}
-This information is summed up in the last two columns of~\ref{table:Naval
-  Supply}: find the size of the naval stack (or smaller) in the ``Naval Size''
-column and read in the same line in the ``Land supplied'' column the size of
-land stacks that can be supplied.
+\NTD in Convoys are not counted when checking Supply capacity of a naval
+stack. This information is summed up in the last two columns
+of~\ref{table:Naval Supply}: find the size of the naval stack (or smaller) in
+the ``Naval Size'' column and read in the same line in the ``Land supplied''
+column the size of land stacks that can be supplied.
 
 \GTtable{supplysize}
 
@@ -394,7 +397,7 @@ lose an extra \LDE.
 
 Stacks in \COL of level 6 use the Attrition in Europe procedure.
 
-\GTtable{attritionlosses}
+\GTtable{attritionlossesonly}
 
 \section{Choice of campaign}
 \label{chMilitary:Choice of campaign}
@@ -695,7 +698,7 @@ only attempt to do so if the natives in the province are not already activated
 when it enters it. This roll is made before any activation test and will
 automatically activate the natives.
 
-\GTtable{conquistadors}
+\GTtable{conquistadorsonly}
 
 \aparag[Conquistador table]
 The Conquistador table may be used only:
@@ -3453,7 +3456,7 @@ second one is used to check if the besieger suffer from \terme{Siege
   Attrition}. It is possible to both suffer from attrition and force the
 fortress to surrender (especially toward the end of long sieges).
 
-\GTtable{siege}
+\GTtable{underminingonly}
 
 Effect on fortress modifiers:
 \begin{modlist}
@@ -3589,7 +3592,7 @@ one day of fight; there are no terrain modifiers; losses modifications are
 simpler (no \terme{size differential} to compute); \ldots As for Battles, the
 sequence described here must nonetheless be strictly followed.
 
-\GTtable{assault}
+\GTtable{assaultonly}
 
 \textbf{Assault parameter.} If one side has no leader, draw a
 \terme{Replacement} general. Next, depending on its technology, find the
@@ -3648,11 +3651,13 @@ Next, add \texttd if the besieger stack contains at least one \ARMY\faceplus
 \RUS (during periods \period{I} to \period{III}), or \TUR \Janissaire (before
 M-1a, during periods \period{I} to \period{III}).
 
+\GTtable{resistanceonly}
+
 \textbf{Losses modifications for besieged.} Cap the losses caused by the
-besieged to twice the resistance of the fortress (read in Subtable
-``Fortresses Resistance'') plus the number of \LD inside (\ARMY\facemoins =
-2\LD, \ARMY\faceplus=4\LD). Next, add \texttd if the besieger has been
-routed.
+besieged to twice the resistance of the fortress (read
+in~\ref{table:Fortresses Resistance}) plus the number of \LD inside
+(\ARMY\facemoins = 2\LD, \ARMY\faceplus=4\LD). Next, add \texttd if the
+besieger has been routed.
 
 \textbf{Result of the assault.} If the besieged has suffered as least as many
 \textetoile as its Morale, the fortress fall. Otherwise, losses caused by the
