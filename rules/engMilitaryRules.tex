@@ -130,42 +130,6 @@ Each round is labelled by a letter indicating the \terme{season} ('S'ummer or
   and South hemispheres\ldots)
 \end{designnote}
 
-\subsection{Continuation roll}
-\label{chMilitary:Rounds:Continuation roll}
-Do not perform this segment at the first round of a turn.
-
-Roll a die, modified by \bonus{+2} in case of \ref{eco:Poor weather} and
-\bonus{-1} if this is period \period{VI} or \period{VII}. Follow the arrows on
-the rounds display to determine the new round.
-
-If the new round is the 'End' box, then the rounds stop immediately. Proceed
-with \terme{Wintering} then \terme{Military cleanup}.
-
-If the followed arrow is red (modified roll of 1-5 after a Summer round), then
-the new round is played with an extended campaign. See choice of campaign for
-the implications.
-
-If there is an extended campaign after a (unmodified) continuation roll of
-'1', '3' or '5', then the round is played with \terme{Bad weather}.
-
-If \ref{eco:Poor weather} happened this turn, then each Winter round is played
-with \terme{Bad weather}, no matter what was rolled (included after a
-Winter/Winter transition). Additionally, in this case, if there is a Winter
-after an unmodified roll of '1', the Sund is frozen (see \ref{eco:Poor
-  weather}).
-
-\begin{playtip}
-  End of the Military phase may happen somewhat brutally. You should always
-  check the probabilities before planning long term actions (sieges) in years
-  4 or 5.
-
-  Given the shape of the rounds track, at least one round in each column must
-  happen. Thus, the minimum number of rounds left to play is the number of
-  columns and the maximum is twice that number. Moreover, long Military phase
-  implies lot of extended campaigns. Take that into account when planning both
-  long term actions (sieges) and expenses for the rest of the phase.
-\end{playtip}
-
 \subsection{Wintering}
 \label{chMilitary:Rounds:Wintering}
 If the current year is different than the year of the previous round, then a
@@ -211,6 +175,40 @@ others are non-phasing.
 \subsection{Sieges}
 Each alliance, in decreasing order of initiative, resolve its sieges, fights
 against \REVOLT/\REBELLION and \corsaire. Check details below.
+
+\subsection{Continuation roll}
+\label{chMilitary:Rounds:Continuation roll}
+Roll a die, modified by \bonus{+2} in case of \ref{eco:Poor weather} and
+\bonus{-1} if this is period \period{VI} or \period{VII}. Follow the arrows on
+the rounds display to determine the new round.
+
+If the new round is the 'End' box, then the rounds stop immediately. Proceed
+with one last \terme{Wintering} then \terme{Military cleanup}.
+
+If the followed arrow is red (modified roll of 1-5 after a Summer round), then
+the new round is played with an extended campaign. See choice of campaign for
+the implications.
+
+If there is an extended campaign after a (unmodified) continuation roll of
+'1', '3' or '5', then the round is played with \terme{Bad weather}.
+
+If \ref{eco:Poor weather} happened this turn, then each Winter round is played
+with \terme{Bad weather}, no matter what was rolled (included after a
+Winter/Winter transition). Additionally, in this case, if there is a Winter
+after an unmodified roll of '1', the Sund is frozen (see \ref{eco:Poor
+  weather}).
+
+\begin{playtip}
+  End of the Military phase may happen somewhat brutally. You should always
+  check the probabilities before planning long term actions (sieges) in years
+  4 or 5.
+
+  Given the shape of the rounds track, at least one round in each column must
+  happen. Thus, the minimum number of rounds left to play is the number of
+  columns and the maximum is twice that number. Moreover, long Military phase
+  implies lot of extended campaigns. Take that into account when planning both
+  long term actions (sieges) and expenses for the rest of the phase.
+\end{playtip}
 
 \subsection{End of round}
 Each alliance, in order of initiative, declare new \terme{Exceptional Levies}
@@ -3783,7 +3781,7 @@ to denote this.
   Changed with the experimental fight against \RevReb/\corsaire.
 \end{designnote}
 
-Each troops fighting against à \REVOLT or \REBELLION resolves this by rolling
+Each troops fighting against a \REVOLT or \REBELLION resolves this by rolling
 1d10 modified as follows. If the natural roll is 10 or if the modified result
 is 8 or more, this is a success: the controlled of the troops removes one side
 of \RevReb (either removing a \Facemoins one or flipping a \Faceplus one to
@@ -3793,7 +3791,8 @@ List of modifiers:
 \begin{modlist}
 \item[+1] for each \LD (\ARMY\facemoins = 2\LD, \ARMY\faceplus=4\LD) in the
   stack;
-\item[+1] for each \Pasha in the stack;
+\item[+1] for each \Pasha in the stack (whatever the number of \LD in the
+  \Pasha);
 \item[+M] \Man of the leader commanding the stack;
 \item[-M] \Man of the leader commanding the \RevReb;
 \item[-N] level of the fortress of the province, if it is friendly to the
@@ -3856,16 +3855,135 @@ side with no leader has a \Man of 0.
 If a \STZ contains no \TradeFLEET of major countries, any \pays{pirates}
 \corsaire there are automatically removed (by the local countries).
 
-\iamhere
-
 \section{End of round}
 \label{chMilitary:End of round}
 \subsection{Exceptional levies}
+\label{chMilitary:Exceptional Levies}
+
+\aparag[Declaring Exceptional Levies]
+\bparag Any country who (i) is fully involved in a regular war (not a civil,
+religious, or oversea war, not a limited or foreign intervention); and (ii)
+suffered a major defeat in a land battle this round may declare
+\terme{Exceptional levies}.
+\bparag The country immediately loses 1 \STAB. Levies may be declared by a
+country already at -3 \STAB, at no additional cost.
+\bparag Once declared, levies are available for the rest of the turn. It is
+not possible to declare Exceptional Levies several times during the same
+turn.
+\bparag[Exception:] \SUE and \PRU may declare levies after any defeat in a land
+battle (not necessarily major). Moreover, one of them may declare levies after
+a \textbf{major} defeat without paying 1 \STAB.
+\bparag[Exception:] \POR may declare Exceptional Levies during \terme{Overseas
+  Wars}, if it has a Vice Roy alive. There are specific conditions for these
+levies, see~\ref{chSpecific:Portugal:Viceroys}.
+
+\aparag At the moment exceptional levies are declared, the number of \LD
+recruited this turn by the country is reseted to 0.
+
+\aparag[Recruitment after Exceptional Levies]
+\bparag If this is not the last round, any country that has declared
+\terme{Exceptional levies} (this round or previously) may recruit land troops.
+\bparag The recruitment limit is halved (rounded up) and all \LD recruited
+with \terme{Exceptional levies} are counted toward the same limit (even if not
+recruited during the same round, the count is reseted only once).
+\bparag Recruitment due to exceptional levies follows the normal recruitment
+rules, with this new limit.
+\bparag The cost of recruitment is written in \lignebudget{Exceptional
+  recruitments}.
+\bparag \SUE and \PRU do not recruit \terme{Veteran} troops with Exceptional
+Levies.
+
+\begin{exemple}
+  During Period \period{IV}, \HIS has a land recruitment limit of
+  5\LD. Exhausted by the Thirty Years War, it suddenly has to face \FRA in
+  addition to the Protestants! Thus, it decides to recruit 6\LD (one at double
+  cost) during the administrative phase. \HIS has a \STAB of only 0, due to
+  the already long war. Its technology is \TBAR.
+
+  Alas! At Rocroy, the Spaniards are hopelessly crushed by \leader{Grand
+    Conde}, a major defeat. \HIS loses 1 \STAB because of the defeat (thus
+  going to -1) and then decides that there are way too many blue counters on
+  the map and that adding some yellow ones is required. Thus, it declares
+  exceptional levies. This brings the \STAB down to -2.
+
+  Now, \HIS may recruit troops anew. The limit is halved (to 3\LD), but the
+  number of troops recruited so far is reseted. \HIS decides to recruit an
+  \ARMY\Faceplus, that is 4\LD. Since the limit is 3\LD, the fourth is doubled
+  for a cost of 50 + 25 + 2 \textmultiply 25 = 125\ducats.
+
+  \smallskip
+
+  On the next round, \HIS manages to avoid the main French armies and wage a
+  war of attrition, thus suffering no new major defeat but still loosing some
+  troops in skirmishes. Since levies are declared for the full turn, it may
+  still recruit troop at the end of this round. The treasure fleet made its
+  way safely from \continentAmerica, thus \HIS decides to raise another
+  \ARMY\Faceplus, that is 4 new \LD. Since it has already recruited 4\LD last
+  round with exceptional levies, and the limit is only 3\LD, that means that
+  2\LD are below twice the limit and the last 2 are at triple price, for a
+  cost of 2 \textmultiply 50 + 3 \textmultiply 50 = 250\ducats! Hopefully,
+  disagreement within the French nobility will prevent this war from lasting
+  too long\ldots
+
+  \smallskip
+
+  Later this turn \HIS suffers yet another major defeat at
+  N\"{o}rdlingen. Since 8\LD were already recruited with Exceptional Levies,
+  it is possible to recruit only one more. Thus, \HIS would very much like to
+  declare Exceptional Levies a second time to reset the count of recruited
+  troops. However, this is not possible and \HIS has to hold for the rest of
+  the turn with what is left of its armies.
+\end{exemple}
+
+% Jym, 12/12:
+% I don't think this is necessary anymore. RT can be <0, so there is no need
+% to raise taxes in order to do levies (above).
+% Moreover, this is a lot of exceptional rules (esp. with respect to Domestic
+% operations) to express this correctly. Thus, I remove.
+
+% \aparag[Exceptional Money Taxes]
+% In addition to Loans or Gold transported during the round, a power may raise
+% in a limited way money at the end of each round.
+% \bparag If it lost a Major Defeat in a battle (land or at sea) during the
+% round, or has declared Exceptional Levies, and if the Power has not taken
+% \terme{Exceptional taxes} during the Administrative Phase, it may proceed to
+% raise \terme{Exceptional taxes} during the turn. The rules followed are
+% exactly those of~\ref{chLogistic:Exceptional Taxes}; the Stability of the
+% Power can not be at -3 level; the Power immediately loses 1 \STAB level, note
+% the current modifier and will receive money based on the test described
+% in~\ref{chLogistic:Exceptional Taxes} at the "États au vrai" segment.
+% \bparag Only one \terme{Exceptional taxes} may be raised during a given turn
+% (be that during the Income Phase or the Military Phase).  If
+% \terme{Exceptional taxes} are raised during the Military Phase, it would
+% preclude any further Domestic operations on the next turn.
+
+%%%%%%%%%%%%%%%
+
 
 \subsection{Refit}
+Any country with \terme{Damaged} \ND may decide to refit them. It is not
+possible to refit \ND that were \terme{Damaged} this round, only ones that
+were \terme{Damaged} during a previous round. The country must pay half the
+recruitment price of each \ND it wants to refit, there is no special price for
+refitting \FLEET, there is no limit to the number of \ND refitted in a round
+or turn.
+
+\terme{Damaged} \ND are grouped by naval regions (\region{Mediterranee},
+all other European seas (``Atlantic (EU)''), \region{Atlantic},
+\region{Indian} and \region{Pacific}). Refitted \ND must be placed
+preferentially in a controlled arsenal in the corresponding region (with
+enough room to hold them, possibly immediately creating new \FLEET counter);
+if this is not possible, they must be placed in any controlled port of the
+region (with enough room); if this is still not possible, they may be placed
+in any controlled port.
+
+When refitting \ND, simply decrease the number of \terme{Damaged} \ND and
+place the corresponding counters on the map. As always with naval counters,
+they may be immediately (before stacking is enforced) merged into an existing
+\FLEET counter or used to create a new one.
 
 \section{New round}
-A new round begin with the \terme{Continuation Roll} segment.
+A new round begin with the \terme{Wintering} segment.
 
 \section{Military cleanup}
 \label{chMilitary:cleanup}
