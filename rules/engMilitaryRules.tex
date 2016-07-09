@@ -826,7 +826,8 @@ If the result is 5 or less, the stack did not manage to escape blockade (as
 above). Additionally, the blockading stack may choose to immediately engage
 the moving stack. This is treated as an interception battle (\emph{i.e.} the
 blockading stack automatically succeeds any interception attempt against the
-moving stack).
+moving stack). If the moving stack was a \corsaire, there is no battle but it
+immediately loses one side.
 
 \GTtable{navyblockade}
 
@@ -2683,7 +2684,7 @@ stack of 13 to 18\ND uses +2 and a stack of 19\ND or more uses +3.
 \GTtable{sizeonly}
 
 \aparag Finally, once the \terme{size differential} is found, adapt losses
-inflicted according to~\ref{table:size}:
+inflicted according to~\ref{table:<L2/S2> Loss Modification by Size}:
 \bparag On the line ``-1/0'' (in bold), find the number of losses inflicted
 and use that column. If this is not an integer (\emph{e.g.} 2\td), find
 both the number of full losses and the number of thirds. If more than 6 losses
@@ -2882,10 +2883,13 @@ counted as losses suffered during the battle (notably, to determine if this is
 a \terme{Major Battle}).
 
 A winning stack may also decide to retreat (typically, because it is now too
-small to besiege a fortress), but this is never mandatory. If it retreats, it
-has too follow the whole procedure here (including the roll and losses); this
-does not change the winner of the battle (the stack is still winning the
-battle and may still claim a \terme{Major Victory}).
+small to besiege a fortress), but this is never mandatory; it is only possible
+if the province of the battle contains no unbesieged enemy forces that were
+not part of the battle (\emph{e.g.} not after intercepting a phasing stack
+that was trying to merge with immobile troops, you'll have to fight the rest
+later). If it retreats, it has too follow the whole procedure here (including
+the roll and losses); this does not change the winner of the battle (the stack
+is still winning the battle and may still claim a \terme{Major Victory}).
 
 \subsubsection{At sea}
 Retreat is done toward the closest (in number of zones), non-blockaded,
@@ -2918,8 +2922,8 @@ The retreat may not be intercepted and is not subject to \Presidios or
 \subsubsection{On land}
 \GTtable{retreatonly}
 
-Any retreating stack must roll on~\ref{table:retreat}. Roll 1d10 and, if the
-stack was not routed, subtract the \Man of the commanding \LeaderG (a
+Any retreating stack must roll on~\ref{table:<L3> Retreat}. Roll 1d10 and, if
+the stack was not routed, subtract the \Man of the commanding \LeaderG (a
 \terme{Replacement} leader used during the battle still provides its
 \Man). The resulting losses are added to the current total.
 
@@ -3982,14 +3986,25 @@ place the corresponding counters on the map. As always with naval counters,
 they may be immediately (before stacking is enforced) merged into an existing
 \FLEET counter or used to create a new one.
 
+\subsection{Building forts}
+A stack containing at least 1\LD may decide to build a fort in the \ROTW. The
+counter is placed on its ``under construction'' side. Building a fort costs
+nothing. At least 1 \LD must stay in the province for 3 rounds and the fort is
+built at the end of the third rounds (\emph{e.g.} when beginning construction,
+place the counter upside down on its construction side, at the end of next
+round place it in the correct direction on its construction side and at the
+end of the third round flip it on its fort side).
+
+If a fort under construction is with less than 1\LD of the country, it is
+immediately destroyed.
+
 \section{New round}
 A new round begin with the \terme{Wintering} segment.
 
 \section{Military cleanup}
 \label{chMilitary:cleanup}
-???
-
-Normally nothing to do here.
+Forts that were not finished during the turn are immediately finished: flip
+any fort under construction on their fort side.
 
 % Local Variables:
 % fill-column: 78
