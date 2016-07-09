@@ -3779,8 +3779,82 @@ minimal level on the map is 2, in which case a white level 1 fortress is used
 to denote this.
 
 \subsection{Fight against \REVOLT/\REBELLION}
+\begin{designnote}
+  Changed with the experimental fight against \RevReb/\corsaire.
+\end{designnote}
+
+Each troops fighting against à \REVOLT or \REBELLION resolves this by rolling
+1d10 modified as follows. If the natural roll is 10 or if the modified result
+is 8 or more, this is a success: the controlled of the troops removes one side
+of \RevReb (either removing a \Facemoins one or flipping a \Faceplus one to
+\Facemoins).
+
+List of modifiers:
+\begin{modlist}
+\item[+1] for each \LD (\ARMY\facemoins = 2\LD, \ARMY\faceplus=4\LD) in the
+  stack;
+\item[+1] for each \Pasha in the stack;
+\item[+M] \Man of the leader commanding the stack;
+\item[-M] \Man of the leader commanding the \RevReb;
+\item[-N] level of the fortress of the province, if it is friendly to the
+  \RevReb;
+\item[-1] for each \LD (\ARMY\facemoins = 2\LD, \ARMY\faceplus=4\LD) in the
+  fortress, if it is friendly to the \RevReb;
+\item[-3] if the province is not Plain;
+\item[-2] for each \RevReb\faceplus counter.
+\end{modlist}
+
+Note that \terme{Replacement} leaders are never rolled for this, hence if the
+stack or the \RevReb has no leader, it uses a \Man of 0.
+
+A \RevReb in a minor country that is not active will be automatically removed
+at the end of the turn (see~\ref{chRedep:Revolts:Minors}). \RevReb in other
+minors must be fought.
 
 \subsection{Fight against \corsaire}
+\begin{designnote}
+  Changed with the experimental fight against \RevReb/\corsaire.
+\end{designnote}
+
+Land troops fighting against \corsaire that are raiding use the exact same
+procedure as fight against \RevReb.
+
+Naval stacks fighting against \corsaire at sea use a similar procedure but
+with different DRMs. Roll 1d10, modified as follows, on a natural 10 or a
+modified 8 or more, reduce the \corsaire by one side.
+
+List of modifiers:
+\begin{modlist}
+\item[+1] if the stack has naval technology \TSF;
+\item[+2] per \FLEET\facemoins in the stack;
+\item[+4] per \FLEET\faceplus in the stack;
+\item[+1] if the stack contains no \FLEET counter but at least on 1\NDE, \NWD
+  or \NGD;
+\item[+M] \Man of the leader commanding the stack;
+\item[-M] \Man of the leader commanding the \corsaire;
+\item[-2] for each \corsaire\faceplus in the sea;
+\item[-2] if the \corsaire has a non-blockaded friendly port in the sea zone;
+\item[-2] for the \pays{chevaliers} \corsaire, if there is a non-blockaded
+  Christian port in the sea zone;
+\item[-2] for a \pays{pirates} \corsaire, if there is a \terme{Pirate Haven}
+  in the \STZ;
+\item[-1] if there has been a naval battle in the sea zone this turn;
+\item[-?] if there are in the sea zone naval forces enemy to the one fighting
+  the \corsaire (even if there are not friendly to the \corsaire),
+  non-cumulative:
+  \begin{modlisti}
+  \item[-4] if there is an enemy \FLEET\faceplus;
+  \item[-2] if there is an enemy \FLEET\facemoins;
+  \item[-1] if there is an enemy \NDE, \NWD or \NGD.
+  \end{modlisti}
+\end{modlist}
+
+If there are several \corsaire with several \LeaderP, always use the largest
+\Man. \terme{Replacement} leader are never rolled for fighting \corsaire, a
+side with no leader has a \Man of 0.
+
+If a \STZ contains no \TradeFLEET of major countries, any \pays{pirates}
+\corsaire there are automatically removed (by the local countries).
 
 \iamhere
 
