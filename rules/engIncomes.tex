@@ -47,7 +47,7 @@ gains or losses in \lignebudget{Event}.
   Add partial ERS to the examples.
 \end{todo}
 
-\begin{exemple}
+\begin{exemple}[Land income]
   All along, the examples will details the income phase of the first
   turn for \POR.
 
@@ -113,7 +113,7 @@ research ; \RES{Art} \MNU help increase \STAB ; \RES{Cloth} and \RES{Wine}
 the income from domestic trade ; \RES{Salt}, \RES{Fish} and \RES{Wood}
 \MNU produce resources of Salt, Fish or Wood.
 
-\begin{exemple}
+\begin{exemple}[\MNU income]
   At turn 1, \POR has two \MNU. The \RES{Instruments} \MNU in
   \provinceTejo has an income of 7\ducats while the \RES{Wine} \MNU in
   \province{Tras-os-Montes} has an of 4\ducats.
@@ -139,7 +139,7 @@ and owns a \TP in \granderegion{Cotedor}, it exploits two gold mines
 as European mines (for a total of 40\ducats). Destruction or loss of
 ownership of this \TP definitely cancels this effect.
 
-\begin{exemple}
+\begin{exemple}[European gold]
   As per Specific rules, \POR can exploit two gold mines in
   \construction{Elmina} as if it were European gold (see above
   and~\ref{chSpecific:Portugal:African Gold}). Thus, its \terme{European
@@ -151,7 +151,7 @@ ownership of this \TP definitely cancels this effect.
 \aparag The sum of all these incomes is put in \lignebudget{Industrial
   income}.
 
-\begin{exemple}
+\begin{exemple}[Industrial income]
   The \terme{Industrial income} of \POR is 11+40=51\ducats.
 \end{exemple}
 
@@ -177,7 +177,7 @@ only.
 
 \GTtable{domestictrade}
 
-\begin{exemple}
+\begin{exemple}[Domestic trade income]
   The \terme{Total provinces income} of \POR is 29+0=29\ducats (the
   revolt in \provinceBeira does not change it). Since \POR has no
   \RES{Cereals} \MNU, it stays unchanged. Thus, \POR will look in line
@@ -231,58 +231,10 @@ revolts in the colonies of other countries than \ANG).
 the column corresponding to the \FTI of the country gives the
 \terme{Foreign trade income}, to be put in \lignebudget{Foreign trade
   income}.
-%\bparag The \terme{Blocked trade} is obtained by adding the value of the
-%Inaccessible trade due to the Domestic market (see~\ref{table:Foreign
-%  Trade Income}), to trade refusals (i.e. the sum of \terme{Gross Land
-%  Income} of all opponents), and to Vassal incomes.
-%\bparag The \terme{Blocked trade} is then reduced by \MNU; each level of
-%  \RES{Cloth} or \RES{Wine} \MNU subtracts 50\ducats to the
-%  \terme{Blocked trade}.
-%\bparag The result of the table is put in \lignebudget{Foreign trade income}.
-
-%\bparag The \terme{Base trade} is obtained by make the difference
-%between a \terme{Fixed  Base Trade} (that depends of the country, see
-%\tableref{commerceexterieur}) the land income of all vassals
-%(\lignebudget{9}), the trade refusal (either due to wars or events),
-%and other values due to events.
-%\aparag The \terme{Fixed Base trade} can be decreased for some countries if
-%some conditions are filled, i.e. that they own (or have vassalized) at least a
-%certain number of provinces in minor countries that exist in 1492:
-%\bparag \SPA if at least two among: 4 or more provinces in \pays{bourgogne}, 3
-%or more provinces in \pays{provincesne}, 2 or more in \pays{naples}.
-%\bparag \AUT if at least two among: 4 or more provinces (initially) in
-%\pays{bourgogne}, 2 or more provinces in \pays{boheme} or 6 or more in \pays{hongrie}.
-%\bparag \TUR if at least two among: 6 or more provinces in \pays{hongrie},
-%\pays{damas} was conquered, \pays{mamelouks} was conquered and has not
-%revolted yet.
-%\bparag \RUS if at least three khanates or cossack tribes were conquered
-%(\pays{astrakhan}, \pays{kazan}, \pays{crimee}, \pays{cosaquesdon},
-%\pays{kazan}, \pays{steppes}, \pays{siberie}, \pays{ukraine}).
-%\bparag For all these countries, they begin with the trade value of the line
-%above their name.
-%\bparag The result is put in \lignebudget{18}
-%\begin{tablehere}
-%{\graytabular\countrow=-1\begin{tabular}{|p{25mm}|c|*{4}{r}r|} \hline
-%Country	& Trade \global\countcol=0& \multicolumn{5}{c|}{\FTI} \\\hline\ghline
-%
-%                             &200& 1	& 2	& 3	& 4	& 5 \\\ghline
-%			     &400& 3	& 6	& 9	& 12	& 15 \\\ghline
-%			     &600& 5	& 10	& 15	& 20	& 25 \\\ghline
-%			     &800& 7	& 15	& 20	& 30	& 35 \\\ghline
-%			     &1000& 10	& 20	& 30	& 40	& 50 \\\ghline
-%			     &1150& 13	& 25	& 40	& 50	& 65 \\\ghline
-%\FRA                         &1250& 16	& 30	& 50	& 60	& 80 \\\ghline
-%\TUR \ENG                    &1350& 20	& 40	& 60	& 80	& 110 \\\ghline
-%\small\SPA \AUT \POL \SUE \HOL     &1400& 25	& 45	& 70	& 90	& 135 \\\ghline
-%\RUS \VEN \PRU \POR          &1450& 30	& 50	& 80	& 100	& 150 \\\ghline
-%\hline
-%\end{tabular}}
-%\caption{External trade}
-%\end{tablehere}
 
 \GTtable{foreigntrade}
 
-\begin{exemple}
+\begin{exemple}[Foreign trade income]
   \POR has a \terme{Basic blocked trade} of 0. Let's suppose it declared
   war on \paysMaroc on turn 1 and \TUR chose to defend \paysMaroc\ldots
   Then \paysMaroc is refusing trade to \POR, creating an \terme{Extra
@@ -342,7 +294,7 @@ brings an income of 2\ducats, as if it were a \CTZ.
 %fleet level. Furthermore, it is bound to specific rules bound to the
 %Sund taxes, see \ruleref{chSpecific:Sund Levies}.
 
-\begin{exemple}
+\begin{exemple}[\TradeFLEET level income]
   At turn 1, \POR has a \TradeFLEET of level 3 in \stz{Canarias},
   bringing 3\ducats of \terme{Level income} (1\ducats per level in \STZ)
   and a \TradeFLEET of level 1 in \stz{Guinee} for another 1\ducats of
@@ -376,7 +328,7 @@ monopolies they have in Trade Zones as these bring \VPs. This is
 recorded in \lignebudget{Partial/Total monopolies (trade)}. This is used
 for \VPs computation.
 
-\begin{exemple}
+\begin{exemple}[Monopolies income]
   \POR has no monopoly. However, it has \TradeFLEET in two \STZ and
   still gets a presence bonus equal to the number in small print in
   these \STZ. For \stz{Canarias}, this is 4\ducats while for
@@ -560,7 +512,7 @@ exploits the most of the following resources: \RES{Silk}, \RES{Product
 \aparag The sum of all these incomes is put in \lignebudget{Trade
   income}.
 
-\begin{exemple}
+\begin{exemple}[Trade income]
   \POR does not own any Trade centre at the beginning of the game, so it
   has nothing to write in lines \ERSshort{Trade centres income} and
   \ERSshort{Trade centre losses}.
@@ -603,7 +555,7 @@ immediately gives an \OCB to the owner of the establishment.
 \bparag Establishment behind closed Straits do not bring any income
 this turn. Neither regular income or resource income.
 
-\begin{exemple}
+\begin{exemple}[Colonial income]
   At turn 1, \POR has a \COL of level 3 in \province{Cabo Verde}
   bringing an income of 3 (level) + 1 (one time the income of the
   \granderegion{Cabo Verde} area) = 4\ducats written in line
@@ -626,7 +578,7 @@ resource (computed as per~\ref{chAdministration:ExoticResourcesPrices})
 \bparag Players exploiting sufficiently many resource can speculate to
 try and increase the price. See~\ref{chAdministration:Speculation}.
 
-\begin{exemple}
+\begin{exemple}[Exotic resources income]
   At turn 1, the \TP in \construction{Elmina} can exploit 3 \RES{Slaves}
   as it is level 3 (and does so even if it produces gold as per
   Portuguese special rule). The initial price of \RES{Slaves} is
@@ -834,7 +786,7 @@ the \Area where it was produced or an adjacent one.
   Per\'u}. Each \NTD can carry up to 15\ducats worth of gold (each
 Transport point is worth 5\ducats).
 
-\begin{exemple}
+\begin{exemple}[\ROTW income]
   Since \POR has a specific rule for its gold in \constructionElmina,
   there is no \ROTW gold for it.
 
@@ -949,7 +901,7 @@ Exotic Resources exploitation, but not \ROTW gold.
 \bparag[Stability] The Gross Income has an effect on \STAB at the end of
 the turn (see \ruleref{chBudget:Prosperity}).
 
-\begin{exemple}
+\begin{exemple}[Gross income]
   Thus, for \POR at turn 1 (with a \REVOLT in \provinceBeira and a war
   against \paysMaroc and \TUR), the results were :
   \begin{itemize}
@@ -964,24 +916,6 @@ the turn (see \ruleref{chBudget:Prosperity}).
   empire expands. Maybe that war against \paysMaroc and \TUR is not such
   a great way to start the game\ldots
 \end{exemple}
-
-%\subsection{Net income}
-%\aparag The gross income is then modified by the Stability of the
-%player. There can be a gain or an income loss.
-%\bparag The player earns or loses income according to its Stability
-%level, in the following percentage amounts: Stability +3: +10\%,
-%Stability 0: -10\%, Stability -1: -25\%, Stability -2: -33\%, Stability
-%-3: -50\%.
-%\bparag Round gains up and losses down. The gain or the loss of income
-%is registered in \lignebudget{29}.
-%\bparag After this, the loans income and expenses (for reimbursement) is
-%registered in the following lines, as well as the exception taxes
-%(see~\ruleref{chIncomes:OtherIncomes})
-%\aparag The \terme{Net Income} is the sum of the \terme{Gross Income},
-%the stability bonus, the loans and the exceptional taxes. It is then
-%added to the \RT at the end of the diplomatic phase, already modified by
-%the expenses of the diplomatic and event phase. It forms the \RT at the
-%end of the income phase, reported in \lignebudget{34}.
 
 % LocalWords:  addtolist compte pdf inexploitable AgriculturalCrisis ROTW
 % LocalWords:  MineDepletion interphase

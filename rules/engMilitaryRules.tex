@@ -1,9 +1,5 @@
 % -*- mode: LaTeX; -*-
 
-\newcommand{\iamhere}{\begin{todo} The following is copy of older stuff and de
-    facto cease to be relevant before I reread and rewrite it.
-\end{todo}}
-
 \definechapterbackground{Military Rules}{military}
 \chapter{Military Rules}\label{chapter:MilitaryRules}
 
@@ -465,7 +461,7 @@ or all stacks with at most 1\FLEET counter may do active actions.
 \aparag When moving both at sea and on land, the cost of both campaigns is
 computed separately and only the maximum cost is paid.
 
-\begin{exemple}
+\begin{exemple}[Major campaign]
   A Major campaign allows to both:
   \begin{itemize}
   \item attack with one naval stack of 3\FLEET ;
@@ -583,7 +579,7 @@ one and only one final attrition is resolved at the end of the movement (thus,
 possibly after a lost interception battle). For this final check, being a
 large stack is a cause for attrition as usual.
 
-\begin{exemple}
+\begin{exemple}[Attrition and Interception]
   A small stack moves 6\MP and is intercepted. Since 6\MP is a cause of
   attrition, it resolves it immediately. If the stack wins the battle, it may
   move on. It moves 6 more \MP (for a total of 12) and thus rolls for
@@ -750,7 +746,7 @@ technology or moral. They must stay stacked with the \LeaderC that used the
 table and cannot use naval transport. They are automatically disbanded if the
 \LeaderC is wounded or killed, leave land, or at the end of the turn.
 
-\begin{exemple}
+\begin{exemple}[Conquistadors Table]
   If there are 6\LD of natives in the province and the result is 'R30/D80' the
   by cross-referencing 80\% with 6\LD we see that there is 1\LD of natives
   joining the \LeaderC and by cross-referencing 30\% with 6\LD, we see that
@@ -1116,7 +1112,7 @@ movement (including start and end) and look at their difficulties; next reduce
 the difficulty of any sea zone with a \SoS for the stack (\emph{i.e.} friendly
 large enough port) by 2; lastly take the greatest of these modified values.
 
-\begin{exemple}
+\begin{exemple}[Sea difficulty]
   If a naval stack moves from a sea zone of difficulty 5 with a port into a
   sea zone of difficulty 4 without port, then its greatest sea difficulty is
   4.
@@ -1390,7 +1386,7 @@ hence it is much easier to find).
 If the modified roll is 8 or more, or if the unmodified roll is 10, the
 interception succeeds.
 
-\begin{exemple}
+\begin{exemple}[Naval interception modifiers]
   A naval stack at port in \provinceCornwall may intercept in either
   \seazoneIrlande, \seazoneCeltique or \seazoneManche, all adjacent to the
   province. It will, however suffer a malus of \bonus{-3} to the roll
@@ -2235,7 +2231,7 @@ failed enemy retreat\ldots
 
 \chMilShock{second}{Second}
 
-\begin{exemple}
+\begin{exemple}[Morale at sea]
   During a sea battle, suppose that one side started with a Morale of 4 and
   suffered from 2\textetoile while the opposing side started with a Morale of
   only 2 but suffered only 1\textetoile. In that case, the first side will get
@@ -2257,7 +2253,7 @@ normal rules. Similarly, this rule only apply for \ROTW countries (including
 \pays{natives}) and thus stacks with \LeaderC that ``converted'' natives to
 their side may contain a large number of \LD but still fight normally.
 
-\begin{exemple}
+\begin{exemple}[Large natives stacks]
   The Togukawa shogun decides to get ride of the Portuguese traders and the
   population in \ville{Nagasaki} attacks them. There are 40\LD of Natives in
   the province. Hence they will use 40/8=5 dice in battle. Only one of them
@@ -2270,7 +2266,7 @@ their side may contain a large number of \LD but still fight normally.
   'only' 3\LD.
 \end{exemple}
 
-\begin{exemple}
+\begin{exemple}[2 days of battle]
   Continuing the previous \FRA-\HIS battle. \FRA has 8\LD and modifiers of
   +2/+1//+1/0 with a Morale of 4. \HIS has 5\LD and modifiers of 0/+1//-1/0
   with a Morale of 4. Both roll on columns \textbf{C/B}.
@@ -2528,7 +2524,7 @@ nationality already present in that stack, controller's choice). Next:
 Finally, check if the losing side has any Morale left. If no, then there is a
 \terme{Rout}. Morale left plays no role from now on.
 
-\begin{exemple}
+\begin{exemple}[Pursuit]
   In the previous battle, no side is entirely destroyed at the end of the two
   days. \FRA has 2 Morale left while \HIS has only 1. Hence, \FRA wins the
   battle and pursues the Spanish. The DRM for Pursuit is here 0 (\Shock
@@ -2633,7 +2629,7 @@ Finally:
   always at least 1\ND, increase them if needed.
 \end{itemize}
 
-\begin{exemple}
+\begin{exemple}[No negative losses]
   Suppose that at the end of a battle, 2\LD inflicted 4 losses. First, find
   the correction for 2\LD which is '-1\texttu', thus the losses are reduced to
   4-1\texttu = 2\texttd. This is still more than the number of \LD in the
@@ -2701,7 +2697,7 @@ contained actually almost twice as many men as what is represented by a \HIS
 \LD. Thus, during a \TUR-\HIS battle, if \TUR inflicts 1 losses, this roughly
 correspond to 1 of \emph{its} \LD and is a much larger \HIS casualty.
 
-\begin{exemple}
+\begin{exemple}[Losses modifications]
   Continuing the previous \FRA-\HIS battle. \HIS had 5\LD and inflicted 3
   losses. \FRA had 8\LD and inflicted 4 losses.
 
@@ -3050,7 +3046,7 @@ Similarly, if \TUR decides to kill one or more \Pashas that represent more \LD
 than the number of losses, then the total number of \LD killed is counted
 toward the total losses.
 
-\begin{exemple}
+\begin{exemple}[Retreat]
   Continuing the \FRA-\HIS battle. \HIS was routed and suffered 4\texttd
   losses while \FRA won and suffered 2\texttu losses. Being the only
   non-winning stack, \HIS must retreat.
@@ -3210,10 +3206,7 @@ If the result is 1 or less, the leader suffered from the battle. Roll 1d10
 \end{itemize}
 
 Countries that have less leaders than their minimal will get new ones at the
-beginning of next round.
-\begin{todo}
-  When? Link with example already written. Complete correct part.
-\end{todo}
+beginning of next round. See~\ref{chMilitary:Leaders:Below limit}.
 
 If a monarch was commanding a stack that is entirely destroyed and he is part
 of the casualties (first roll \leq 1), do not test his death. Instead, he is
@@ -3479,7 +3472,7 @@ still less or equal than the number of Artillery in the besieger stack
 stack). In the line corresponding to that number, find in the last column the
 \terme{Artillery bonus}.
 
-\begin{exemple}
+\begin{exemple}[Artillery bonus]
   Again, this is a computation which is more complicated to explain than to
   perform\ldots
 
@@ -3914,7 +3907,7 @@ rules, with this new limit.
 \bparag \SUE and \PRU do not recruit \terme{Veteran} troops with Exceptional
 Levies.
 
-\begin{exemple}
+\begin{exemple}[Exceptional levies]
   During Period \period{IV}, \HIS has a land recruitment limit of
   5\LD. Exhausted by the Thirty Years War, it suddenly has to face \FRA in
   addition to the Protestants! Thus, it decides to recruit 6\LD (one at double

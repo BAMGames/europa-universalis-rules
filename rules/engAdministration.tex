@@ -97,11 +97,8 @@ countries).
 actions (usually \TradeFLEET implementation, sometimes colonisation) that are
 handled by their diplomatic patron.
 
-\aparag[Administrative limits] \label{chAdministration:Administrative Limits} Each
-player is entitled to a certain number of actions:
-% \bparag Domestic operations cannot be done if \terme{Exceptional taxes} were
-% levied this turn or during Military Phase of the previous one.  Only one
-% such operation can be done per turn.
+\aparag[Administrative limits] \label{chAdministration:Administrative Limits}
+Each player is entitled to a certain number of actions:
 \bparag Domestic operations are mutually exclusive. Each country can attempt
 at most one each turn.
 \bparag The limitations for the external operations and (normal) competition
@@ -114,12 +111,14 @@ but only one may have an investment higher than a \terme{Basic investment}.
 (e.g. Colonisation or Competition), he can choose between either several
 separate attempts or a multiple attempt on the same objective (or any
 combination).
-\begin{exemple}
+
+\begin{exemple}[Administration limits]
   With 2 actions of Colonisation per turn in period \period{VI} (1700-1759),
   the English player can make 2 attempts on the same Colony or 1 attempt each
   on 2 different Colonies, in the same turn\ldots or no attempt at all since
   the actions are not mandatory.
 \end{exemple}
+
 \bparag Some players are entitled to actions with specific restrictions
 (e.g. \SPA may have actions restricted to \POR administration while
 \eventref{pIII:Portuguese Annexation} is in effect).
@@ -307,7 +306,7 @@ empty, an international loan ends this turn. Write in \lignebudget{Mandatory
   loan refund} the amount in \lignebudget{International loans refunds}.
 \bparag National loans don't need to be refunded\ldots
 
-\begin{exemple}
+\begin{exemple}[Loan interests]
   At turn 1, \POR contracts an international loan of 70\ducats. It must pay
   7\ducats interest at turns 2, 3 and 4 and refund the loan no later than turn
   4.
@@ -441,7 +440,7 @@ turns.
     A} of the next 5 turns.
 \end{playtip}
 
-\begin{exemple}
+\begin{exemple}[Bankruptcy]
   At turn 10, with 150\ducats of national loan, more than its income, \RUS
   tries a bankruptcy. The monarch is \monarque{Ivan IV} who is not afraid to
   take money from its boyars without asking; he has an \ADM of 6. \RUS decides
@@ -756,9 +755,8 @@ not own sufficiently many provinces.
 \bparag Relocating a \MNU is possible only if the province is ceded or
 conquered. In this case, simply take the counter and place it in another legal
 province.
-% Jym : ??  , but it loses one level doing this.
 
-\begin{exemple}
+\begin{exemple}[Developing \MNU]
   At turn 1, \POR wants to develop a \MNU (either to switch one of the two
   existing one from side \Facemoins to side \Faceplus or to create a new
   one). It has a \DTI of 3 and the monarch has an \ADM of 8. Thus, the base
@@ -792,7 +790,7 @@ province.
   Medium investments and 2.28 with Small investments.
 \end{designnote}
 
-\begin{exemple}[continued]
+\begin{exemple}[Developing \MNU (continued)]
   So, \POR decides not to spend too much money at once and do a Small
   investment, resulting in a column of 2, with a final DRM of +3 for \STAB. He
   rolls the die for a result of 3, modified to 6. In \ref{table:Administrative
@@ -810,17 +808,7 @@ province.
   turn, before the administrative phase. Thus, at the last turn of a period,
   if your limit in \MNU increase in the following period, you may attempt a
   \MNU creation at no risk.
-
-  % (jym) MNU objective does not exist any more.
-  % The \MNU period objectives require you to have more \MNU than the limit for
-  % the period. This can be done in two ways: (i) stay in the line all along and
-  % create an extra \MNU at the last turn of the period, but there is a risk of
-  % failure and unmet objective ; (ii) try to create the extra \MNU earlier to
-  % diminish the risk of last turn failure, but there is a risk in case of early
-  % success followed by a revolt\ldots
 \end{designnote}
-
-
 
 \subsection{Trade index improvement}
 
@@ -855,7 +843,7 @@ improvement action.
 \bparag Conversely, if the special \FTI is already at its maximum, increasing
 the regular \FTI does not change it.
 
-\begin{exemple}
+\begin{exemple}[Increasing \FTI]
   At turn 1, \RUS has a \FTI of 1. Since this is also its limit for the first
   period, it may not increase it. However, \RUS has a special \FTI with a
   limit of 3 for period \period{I}. Thus it may attempt to increase its
@@ -875,29 +863,11 @@ the regular \FTI does not change it.
   not change.
 \end{exemple}
 
-% \aparag[Limits of Domestic operations]\label{chAdministration:Domestic Limits}
-% There is a limit on the number of \MNU counters, \FTI and \DTI per country
-% specific to the current period.
-% \bparag The limit of \MNU (only) \emph{can} be overridden by a country, but
-% there is a risk of catastrophe. See~\ref{chThePowers:Exceeding Limits}.
-% % \bparag In case a revolt happens in a province of the player and the die
-% % used to determine the strength of the revolt is even, then the player
-% % immediately loses 1 level of \DTI, 1 level of \FTI, 1 \MNU, 2 \STAB
-% % (usually
-% % during the event phase).
-% \bparag There is an absolute limit:
-% % Jym: Now, no more exceeding FTI/DTI.
-% % the \FTI and \DTI must not exceed 5 or the current limit+2, and
-% the number of \MNU counters must not exceed the number of available counters
-% nor the current limit+2.
-
 \begin{playtip}
   Since the \DTI improves the column for \MNU creation, it is easier to first
   improve \DTI and then try to improve \MNU. But \MNU provide more advantages
   than simply money and you may want then asap.
 \end{playtip}
-
-
 
 \subsection{Exceptional taxes}\label{chAdministration:Exceptional Taxes}
 
@@ -1060,7 +1030,7 @@ level 6.
 equal than \FTI (use special \FTI if allowed), treat as ``S'', otherwise,
 treat as ``F''.
 
-\begin{exemple}
+\begin{exemple}[\TradeFLEET implementation]
   At turn 1, \ANG wants to increase its trade in the Baltic sea and attempts a
   \TFI in \stz{Baltique}. The base column is 2 (\FTI) - 4 (for the presence of
   4 others \TradeFLEET : \paysHollande, \paysDanemark, \paysHanse and
@@ -1153,7 +1123,7 @@ enemy fort or \TP in the province is destroyed.
 \bparag There is a rule to transform a \TP in a \COL if a city is present in
 the province. See below.
 
-\begin{exemple}
+\begin{exemple}[Developing \COL]
   At turn 1, \POR wants to raise its \COL of \construction{La Praya} in
   \granderegion{Cabo Verde}. The Difficulty is 3, the \FTI of \POR is 5
   (special \FTI for the \ROTW) and \POR chooses to make only a small
@@ -1385,7 +1355,7 @@ already exists.
   sufficiently well.
 \end{designnote}
 
-\begin{exemple}
+\begin{exemple}[Access to \stz{Canarias}]
   Notice that even if \stz{Canarias} touches Europe and European provinces on
   the \ROTW (\provinceAcores and \province{Cabo Verde}), this is not
   sufficient to increase its trade there. A \COL/\TP (such as \construction{La
@@ -1398,22 +1368,6 @@ already exists.
 
 
 \subsubsection{Pioneering [TBD]}\label{chAdministration:Pioneering}
-% \begin{designnote}
-%   Choose either old style or new style. New style is [TBD] and may be vetoed
-%   by Pierre at any time.
-% \end{designnote}
-% \aparag[old style] Except for \COL producing gold and one extra \COL per
-% country, a \COL in an \Area of \continent{America} that has only resources
-% that don't exist yet cannot exceed level 2.
-% % , except if it produces gold.
-% \bparag For \HIS, the \COL of free level must be in \continent{Caraibes}.
-% \bparag In addition, in each \Area producing \RES{Wood}, one \COL per
-% country may be raised at any level, but it must exploit \RES{Wood} as soon
-% as possible.
-% \bparag Change of ownership of a \COL does not decrease its level, even if
-% this causes a country to have more than one ``unproductive'' \COL of high
-% level.
-
 \aparag During periods \period{I}-\period{V}, a province with a \COL of level
 2 or 3 may not be the target of colonisation attempts unless one of the
 following conditions is verified.
@@ -1547,7 +1501,7 @@ box.
 Naval). If a technology marker exactly reaches the box where a goal is, then
 it gains one extra level for free and is put just after the goal.
 
-\begin{exemple}
+\begin{exemple}[Technological advancement: bonus box]
   At turn 11, the Land technology of \FRA is at level 20 and the goal \TARQ at
   level 21. \FRA manages to gain 1 level of Land technology, thus reaching
   level 21. Since the marker for \FRA may not stack with the marker for \TARQ,
@@ -1575,7 +1529,7 @@ the Latin group ; \POL is \textbf{both} in the Latin and Orthodox groups ;
 \RUS is in the Orthodox group and also in the Latin group after its reform ;
 \TUR is in the Muslim group.
 
-\begin{exemple}
+\begin{exemple}[Technology: Cultural group adjustment]
   At turn 11, the Land technology for \FRA is at 20 and for the Latin group at
   15. \FRA manages to raise its technology to 22. Latin do not increase
   normally at turn 11. However, at the end of the administrative phase, the
@@ -1628,7 +1582,7 @@ down by one level.
 % as many boxes as the difference between the turn on the marker and the
 % current turn, until it reaches a technology counter.
 
-\begin{exemple}
+\begin{exemple}[Technological goals: Time adjustment]
   At turn 21, after technology improvement, suppose that the best Land
   technology of countries and groups is 27. Since \TMUS is available at turn
   21 and at level 30, it decreases to level 29. If nobody manages to raise its
@@ -1640,7 +1594,7 @@ down by one level.
   as soon as somebody acquires it).
 \end{exemple}
 
-\begin{exemple}
+\begin{exemple}[Technological goals: Blocked by another goal]
   Suppose that the \ROTW Land technology is at level 2, the \TREN at level 3
   and \TARQ was adjusted down at level 5 per Goal adjustment. Since \TARQ is
   available, it should move down due to Time adjustment. However, it is still
@@ -1912,7 +1866,7 @@ until the technology is available for everybody.
 \TBAR, representing \emph{L\"{a}derkanonen} and other innovations);
 \bparag due to \monarque{Friedrich II} (\TL, representing the Oblique order).
 
-\begin{exemple}
+\begin{exemple}[Spreading technological revolutions]
   At turn 27, \ref{pIV:Bohemian Revolt} occurs and at turn 28, it degenerates
   into \ref{pIV:TYW}. At turn 29, \SUE enters the war and, as per event
   description, it benefits form a Military Revolution on each turn of the war.
@@ -2054,7 +2008,7 @@ countries always free the resources that currently cost less, in case of
 equality the resource whose maximum price is the smallest (at random in case
 of further equality).
 
-\begin{exemple}
+\begin{exemple}[Freed exotic resources]
   At turn 2, \leader{Da Gama}, in a brief war against \paysGujerat, manages to
   seize the \TP in \province{Malabar S} and thus exploits the \RES{Spice} and
   the \RES{PO} that it exploits. During turn 3, \POR wants to seize the other
@@ -2144,7 +2098,7 @@ one level of \TradeFLEET.
 \bparag Repeat the procedure until the conditions for competition do not exist
 anymore.
 
-\begin{exemple}
+\begin{exemple}[Mandatory competition of \TradeFLEET]
   Suppose, that during period \period{V}, the \ctz{France} contains a
   \TradeFLEET of level 6 of \HOL (\FTI 5), a \TradeFLEET of level 4 of \FRA
   (\DTI 2, \FTI 4) and a \TradeFLEET of level 2 of \ANG (\FTI 5). Since there
@@ -2254,9 +2208,10 @@ of exploitation for the turn. A \TP reaching level 0 is destroyed.
 % % case.
 % It is never mandatory to try to exploit as many resources as possible.
 
-\begin{exemple}\HOL, \ENG and \FRA are competing for the exploitation of
-  two \RES{Spices} resources. \HOL and \FRA both have enough levels to exploit
-  one and \ANG can exploit both. \ANG and \HOL have \TP while \FRA has a \COL.
+\begin{exemple}[Automatic competition for exotic resources]
+  \HOL, \ENG and \FRA are competing for the exploitation of two \RES{Spices}
+  resources. \HOL and \FRA both have enough levels to exploit one and \ANG can
+  exploit both. \ANG and \HOL have \TP while \FRA has a \COL.
 
   After one roll, nobody lost and the situation is unchanged. \ANG does not
   want to risk its levels and says it agree to leave the competition if the
