@@ -10,7 +10,7 @@
 % Narrow typesetting
 \parindent=0cm
 
-%%%% TOC
+%%%% TOC, LOF, LOT
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -35,6 +35,10 @@
 % Set level of numbering
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{6}
+
+\renewcommand*\l@figure{\@dottedtocline{2}{0em}{3.5em}}
+\renewcommand*\l@table{\@dottedtocline{2}{0em}{3.5em}}
+
 
 % taken from report.cls around line 592
 % remove the @mkboth
