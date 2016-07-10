@@ -1482,6 +1482,7 @@ purpose (especially when undermining the fortress or when finding \SoS for
 naval stacks).
 
 \subsection{Convoys}
+\label{chMilitary:Convoys}
 \begin{designnote}
   Do not use if using the experimental system for Revolts, \corsaire and
   Natives.
@@ -1517,8 +1518,8 @@ their list of controller.
 \pays{pirates} with no \LeaderA use 2 as \Man.
 \bparag If the interception fails, the attack stops immediately; if it is
 successful, reduce the \corsaire to \Facemoins and proceed further.
-\bparag The attacked stack may roll on~\ref{table:Reduce Revolt or Piracy}
-(see \ref{chMilitary:Revolt} for details); if successful, do not reduce
+\bparag The attacked stack may roll as for fighting \corsaire
+(see \ref{chMilitary:Corsairs} for details); if successful, do not reduce
 further the \corsaire but stop the attack immediately; if it fails, proceed
 further.
 \bparag Resolve the attack by rolling on~\ref{table:Pirates Natives Raids}
@@ -3815,6 +3816,7 @@ at the end of the turn (see~\ref{chRedep:Revolts:Minors}). \RevReb in other
 minors must be fought.
 
 \subsection{Fight against \corsaire}
+\label{chMilitary:Corsairs}
 \begin{designnote}
   Changed with the experimental fight against \RevReb/\corsaire.
 \end{designnote}
@@ -3856,8 +3858,23 @@ If there are several \corsaire with several \LeaderP, always use the largest
 \Man. \terme{Replacement} leader are never rolled for fighting \corsaire, a
 side with no leader has a \Man of 0.
 
-If a \STZ contains no \TradeFLEET of major countries, any \pays{pirates}
-\corsaire there are automatically removed (by the local countries).
+\aparag[Minor countries against Piracy]
+\bparag Minor countries at war can use their naval forces against \corsaire in
+\STZ or \CTZ where they have a \TradeFLEET of their own (only).
+\bparag Christian Minor countries whose \TradeFLEET are attacked by \corsaire
+of \Barbaresques may also use their naval forces to fight against those
+privateers (Patron's choice to move their forces), even if at peace. They may
+stack with their Patron's naval unit to fight those \corsaire but will not
+take part in any other battle.
+\bparag Remember that minors at peace have only Passive campaigns each turn,
+thus the Patron must pay for moving (when entering the zone where \corsaire
+are located).
+\bparag Against \pays{pirates}, minor countries at peace fight in an abstract
+way in the \STZ where there are no major country \TradeFLEET (usually in
+\continent{Asia} in the early game): each round, roll 1d10 for each \STZ with
+\pays{pirates} \corsaire and no major \TradeFLEET and add 1 for each side of
+commercial fleet of a minor country.  If the result is 8 or higher, one
+side of \corsaire is eliminated.
 
 \section{End of round}
 \label{chMilitary:End of round}
