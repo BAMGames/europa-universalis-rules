@@ -242,14 +242,15 @@ as many stacks as wanted.
 The Line of Supply (\LoS) goes from a Source of Supply to the stack. The \MP
 cost is counted as if the stack itself was doing this movement (typically, \LD
 in the \ROTW compute the length of their LoS using the special \MP costs for
-\LD).
+\LD). A \LoS has a maximum length of 12\MP.
 
 A stack is in weak supply if at least one of the following condition is true:
 \begin{itemize}
 \item its Line of Supply is as least 6\MP long (exception: in the \ROTW, \LD
   do not check this condition);
 \item its Line of Supply goes through desert;
-\item its Source of Supply is not owned by the same alliance;
+\item its Source of Supply is not owned by a member of its alliance (only
+  controlled);
 \item it is supplied by a naval stack that is not adjacent to a port or
   arsenal able to supply it (exception: in the \ROTW, \LD do not check this
   condition).
@@ -461,6 +462,15 @@ or all stacks with at most 1\FLEET counter may do active actions.
 \aparag When moving both at sea and on land, the cost of both campaigns is
 computed separately and only the maximum cost is paid.
 
+\aparag[List of active naval actions.] See~\ref{chMilitary:Moves:Active Naval}
+for details:\\
+Battle, Blockade, Supply, Fight \corsaire, Naval Transport.
+
+\aparag[List of passive naval actions.] See~\ref{chMilitary:Moves:Passive Naval}
+for details:\\
+Exploration, Continue Blockade/Supply/Fight against \corsaire, Friendly Naval
+Transport.
+
 \begin{exemple}[Major campaign]
   A Major campaign allows to both:
   \begin{itemize}
@@ -534,12 +544,15 @@ controlled port/arsenal large enough to contain the naval stack.
 A land stack must roll for attrition if at least one of the following cases is
 true:
 \begin{itemize}
-\item the stack contains at least 6\LD (not counting those in \Pasha) or at
-  least 2 \Pashas, such large stacks roll for attrition even if they don't
-  move, ignore this cause between interceptions (see below);
-\item[OR] the stack contains at least 3\LD and this is a campaign without
-  logistic, such large stacks roll for attrition even if they don't move,
-  ignore this cause between interceptions (see below);
+\item the stack is \terme{Massed force}, that is
+  \begin{itemize}
+  \item either the stack contains at least 6\LD (not counting those in \Pasha)
+    or at least 2 \Pashas;
+  \item or the stack contains at least 3\LD and this is a campaign without
+    logistic.
+  \end{itemize}
+  \terme{Massed Forces} roll for attrition even if they don't move, ignore
+  this cause between interceptions (see below);
 \item the stack moved at least 6\MP;
 \item the stack moved at least 3\MP and there is \terme{Bad weather};
 \item the stack used ships to make a naval move and at least one of the
@@ -666,9 +679,9 @@ forces friendly to the moving one (including besieged forces), the overrun is
 only possible if the non-phasing forces contains at least four time as many
 \LD as the moving one.
 
-Phasing stacks may not enter provinces with presence (even besieged) of
-neutral countries (that are neither at war with (allied) nor against (enemy)
-the phasing alliance). In the \ROTW, provinces that do not explicitly belong to
+Phasing stacks may not enter provinces with presence of unbesieged neutral
+countries (that are neither at war with (allied) nor against (enemy) the
+phasing alliance). In the \ROTW, provinces that do not explicitly belong to
 minors are not concerned by this restriction.
 
 In the \ROTW, each time a land stack enters a province whose natives are not
@@ -827,7 +840,7 @@ immediately loses one side.
 
 \GTtable{navyblockade}
 
-\aparag[List of active naval actions.]
+\aparag[List of active naval actions.]\label{chMilitary:Moves:Active Naval}
 \bparag[Battle.] The moving stack declares a battle. The battle will be
 resolved during the Battle Segment of the impulse. A non-phasing stack that is
 engaged in battle may not intercept any more. Each non-phasing stack may only
@@ -840,9 +853,10 @@ must have have at least a \FLEET\Facemoins counter \textbf{and} 2\ND in the
 stack similarly blockading a level 4/5 fortress requires a \FLEET\Faceplus
 counter \textbf{and} 3\ND in the stack. Put the stack close to the blocked
 port/arsenal. Blockade makes siege easier. Only one stack may blockade each
-port (if several stacks want to blockade the same port, they are automatically
-merged). Blockade last until the next movement of the naval stack, including
-possibly in the next turn.
+port (if several allied stacks want to blockade the same port, they are
+automatically merged; it is not allowed to blockade a port already blockaded
+by a third party). Blockade last until the next movement of the naval stack,
+including possibly in the next turn.
 \bparag[Supplying troops.] The naval stack must have sufficient size for
 supplying the troops as indicated in~\ref{table:Naval Supply}. Note that a
 naval stack is allowed to supply several adjacent land stacks since it acts as
@@ -881,7 +895,7 @@ and/or supply of the invaded province (or reinforced fortress) only.
 % (Jym): No. F acting after disembarking means 2 stacks allowed to move at the
 % same time. It's bad.
 
-\aparag[List of passive naval actions.]
+\aparag[List of passive naval actions.]\label{chMilitary:Moves:Passive Naval}
 \bparag[Exploration.] Resolved during next step.
 \bparag[Continuing blockade and/or supply.] The naval stack may not move and
 must have already been blockading the same port (or supplying from the same
@@ -1037,22 +1051,23 @@ attrition, the modifiers and the way to implement the results are different.
 Check the movement rules to determine when a moving land stack has to roll for
 attrition. The modifiers are:
 \begin{modlist}
-\item[+2] per cause of attrition above the first
-\item[-M] MAN of the commanding leader
-\item[+2] if the stack had no \LoS at the beginning of its move
+\item[+2] per cause of attrition above the first;
+\item[-M] MAN of the commanding leader;
+\item[+2] if the stack had no \LoS at the beginning of its move;
 \item[+?] if, at the beginning of its movement, the stack is supplied by a
   naval stack, and the \LoS of this naval stack goes through one or more
   \StraitFort, add the DRM of all the closed \StraitFort along this \LoS (2 in
-  Europe, level/2 in the \ROTW)
+  Europe, level/2 in the \ROTW);
 \item[+2] if the stack \emph{enters} at least one enemy province during its
-  movement (\emph{i.e.}  not when exiting enemy territory)
+  movement (\emph{i.e.}  not when exiting enemy territory); or if it stays in
+  enemy territory without moving,
 \item[+1/+2] per \PILLAGE\Facemoins/\Faceplus, \REVOLT\Facemoins/\Faceplus and
   unfriendly \REBELLION\Facemoins/\Faceplus in each province exited or entered
   during the move (\emph{i.e.} count all the \PILLAGE, \REVOLT and unfriendly
-  \REBELLION along the path, including in the start and end provinces)
+  \REBELLION along the path, including in the start and end provinces);
 \item[+?] for each uncontrolled province of the \ROTW cold area exited or
   entered during the move, add the number of Snowflakes ``resource'' (+0 to +2
-  depending on the \Area)
+  depending on the \Area).
 \end{modlist}
 
 In Europe, cross-reference the result with the ``Land, Europe'' column of the
@@ -1171,9 +1186,11 @@ after attrition while the 'd' indicates one or two \NDE still alive. If there
 is a \textetoile, then there is 50\% chance to lose an extra \NDE. If the
 stack contains more than 10\ND, apply this procedure for each set of 10\ND and
 for the remaining \ND separately. The controller of the stack chooses which
-\ND are sunk.
+\ND are sunk (and which ones are turned into \NDE).
 
-Any \NTD that must suffer at least 1\NDE of loss is entirely destroyed.
+Any \NTD or \NGD that suffers only 1\NDE of loss (\emph{i.e.} '2d' remaining)
+is left untouched, any \NTD or \NGD that suffers 2\NDE of losses (\emph{i.e.}
+'d' remaining) is destroyed.
 
 \section{Interceptions}
 \label{chMilitary:interceptions}
@@ -1314,25 +1331,24 @@ to intercept in a port/arsenal (only in a sea zone). It is not possible to
 counter-intercept. Non-phasing stacks that already lost a battle this impulse
 (\emph{i.e.} losing an interception battle) may not intercept anymore.
 
-The correct timing for moving and intercepting is:
-\begin{enumerate}
-\item moving stack enters a zone;
-\item moving stack either declares an action in the zone or decline to do one;
-\item if the moving stack declared an action, it rolls immediately for
-  attrition;
-\item non-phasing stacks declare interceptions;
-\item interceptions are resolved;
-\item interception battle is resolved, if any;
-\item
-  \begin{itemize}
-  \item if the moving stack is victorious, it may either do its action (if it
-    declared any) or continue moving (if it declared no action);
-  \item if the moving stack is defeated, it must retreat; additionally, if it
-    did not roll for attrition (because it declared no action), the distance
-    of the whole movement is added to the distance of the whole retreat for
-    the attrition of the retreat.
-  \end{itemize}
-\end{enumerate}
+\aparag The correct timing for moving and intercepting is:
+\bparag a moving stack enters a zone;
+\bparag the moving stack either declares an action in the zone or decline to
+do one;
+\bparag if the moving stack declared an action, it rolls immediately for
+attrition;
+\bparag non-phasing stacks declare interceptions;
+\bparag interceptions are resolved;
+\bparag interception battle is resolved, if any;
+\bparag after the battle:
+\begin{itemize}
+\item if the moving stack is victorious, it may either do its action (if it
+  declared any) or continue moving (if it declared no action);
+\item if the moving stack is defeated, it must retreat; additionally, if it
+  did not roll for attrition (because it declared no action), the distance of
+  the whole movement is added to the distance of the whole retreat for the
+  attrition of the retreat.
+\end{itemize}
 
 Note that it is possible to try and intercept a moving stack that just
 declared it will also battle. If a non-phasing stack allied to the attacked
@@ -2880,13 +2896,20 @@ counted as losses suffered during the battle (notably, to determine if this is
 a \terme{Major Battle}).
 
 A winning stack may also decide to retreat (typically, because it is now too
-small to besiege a fortress), but this is never mandatory; it is only possible
-if the province of the battle contains no unbesieged enemy forces that were
-not part of the battle (\emph{e.g.} not after intercepting a phasing stack
-that was trying to merge with immobile troops, you'll have to fight the rest
-later). If it retreats, it has too follow the whole procedure here (including
-the roll and losses); this does not change the winner of the battle (the stack
-is still winning the battle and may still claim a \terme{Major Victory}).
+small to besiege a fortress), but this is usually mandatory; it is only
+possible if the province of the battle contains no unbesieged enemy forces
+that were not part of the battle (\emph{e.g.} not after intercepting a phasing
+stack that was trying to merge with immobile troops, you'll have to fight the
+rest later). If it retreats, it has too follow the whole procedure here
+(including the roll and losses); this does not change the winner of the battle
+(the stack is still winning the battle and may still claim a \terme{Major
+  Victory}).
+
+In some cases, the winner is not allowed to stay in the province of the Battle
+and hence must choose to either retreat or continue its movement (in case of
+interception). Typically, after an interception in a neutral province of the
+\HRE, or when attacking a stack besieging a third party country (it is not
+possible to stay in a province containing a neutral fortress).
 
 \subsubsection{At sea}
 Retreat is done toward the closest (in number of zones), non-blockaded,
