@@ -27,6 +27,21 @@
 
 %%%% Full text ref basics
 
+% For \namedref providing link text
+\def\jymFTR#1#2{%
+  \expandafter\ifx\csname r@#1\endcsname\relax\@missingref{#1}\else%
+  \expandafter\jymFTR@helper\csname r@#1\endcsname{#2}}
+\def\jymFTR@helper#1#2{\expandafter\jymFTR@@helper#1\@nil#2\@jymnill}
+\def\jymFTR@@helper#1#2#3#4#5\@nil#6\@jymnill{%
+  {\global\XNRpageswitchfalse%
+    \hyperlink{#4}{%
+      #6
+    }%
+    \ifXNRpageswitch\XNRpagefalse\fi\ifXNRpage\fulltext@pagehelper#2\@nil\fi%
+  }%
+}
+
+
 % test whether the ref exists or not. If it does, evaluate args (two stages).
 
 \def\XNRfulltextref#1{%
@@ -293,6 +308,10 @@
   \let\ifXNRshortref\@ifXNRshortref%
   \let\ifXNRofsection\@ifXNRofsection%
 }}
+
+%%% named: #1: label, #2: text to display
+% Probably way sub-optimal compared to the rest
+\let\namedref\jymFTR
 
 %%%% TODO
 %%% Open questions
