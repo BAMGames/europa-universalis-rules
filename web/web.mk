@@ -88,7 +88,7 @@ $(WEBDIR)/players-changelog.txt: $(BINDIR)/changelog $(HOMEDIR)/doc/changelog.db
 	@$(BINDIR)/changelog --text --category _rules_events_maps_text_ $(HOMEDIR)/doc/changelog.db > $@
 
 $(WEBDIR)/index.html:
-	@NAME=$$(whoami);case "$$NAME" in jcdubacq) FULLNAME="Jean-Christophe Dubacq";; jym|*moyen) FULLNAME="Jean-Yves Moyen"; NAME=moyen;; pborgnat) FULLNAME="Pierre Borgnat";;esac;cat $(HOMEDIR)/doc/index.html|sed -e "s/XXXX/Updated for release $$($(BINDIR)/displayrelease) on $$(date -u '+%F %T %Z') by $$FULLNAME./g;s/YYYY/$$($(BINDIR)/displaybranch 'Europa Universalis 8' 'Europa Universalis 8 (%s branch)')/g" > $@
+	@NAME=$$(whoami);case "$$NAME" in jcdubacq) FULLNAME="Jean-Christophe Dubacq";; jym|*moyen) FULLNAME="Jean-Yves Moyen"; NAME=moyen;; pborgnat) FULLNAME="Pierre Borgnat";;esac;cat $(HOMEDIR)/doc/index.html|sed -e "s/XXXX/Updated for release $$($(BINDIR)/displayrelease) on $$(date -u '+%F %T %Z') by $$FULLNAME./g;s/YYYY/$$($(BINDIR)/displaybranch 'Europa Universalis 9' 'Europa Universalis 9 (%s branch)')/g" > $@
 .PHONY: $(WEBDIR)/index.html
 
 $(WEBDIR)/contours.js: $(CARTEDIR)/traces.js $(CARTEDIR)/moretraces.js $(ROTWDIR)/moretraces.js

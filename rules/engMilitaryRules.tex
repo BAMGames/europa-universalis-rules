@@ -1803,19 +1803,21 @@ blockade, this is also a move, hence the phasing stack must also roll for
 attrition.
 
 \textbf{Automatic success.} If a land stack is in a province with a friendly
-fortress large enough to hold it (1 level/\LD, including those in \Pashas),
-then it may retreat in the fortress with no test. It may choose to roll to try
-to retreat in another province but doing so forfeit the possibility to
-automatically retreat in the fortress of the province with no test.
+fortress then it may, with no test, retreat in the fortress as many \LD as it
+can hold (1/level), the rest (if any) must then stay outside and fight. It may
+choose to roll to try to retreat in another province but doing so forfeit the
+possibility to automatically retreat in the fortress of the province with no
+test.
 
 \textbf{On land}, the stack may roll for evasion. If successful, it must move
 into an adjacent friendly unbesieged province (\emph{i.e.} a province where it
 could go with a passive campaign). It is not possible to evade battle via
 naval transport. If the province where the battle occurs is friendly, it is
 possible to retreat part of the stack in its fortress and another part in an
-adjacent province (but this does require a successful evasion roll). It is not
-possible to split the stack in any other way. It is possible to split even if
-the whole stack could fit in the fortress.
+adjacent province (but this does require a successful evasion roll). It is
+possible to split even if the whole stack could fit in the fortress. It is not
+possible to retreat part of the stack in another province and let another part
+fight.
 
 Land stacks evading do not roll for attrition.
 
@@ -1858,10 +1860,11 @@ loses if the loses are more than the number of first line ships. Any \VGD are
 automatically used if (and only if) the first line ships are \NGD.
 
 If a side is composed solely of \NTD (notably, convoys alone), it must use
-them as first line ships. This is the only case where \NTD may be used us
+them as first line ships. This is the only case where \NTD may be used as
 first line ships. In this case, the opponent automatically gets \terme{Wind
-  Advantage}, \NTD do not roll during the battle and they automatically break
-and rout after the First Fire (they have 0 Morale).
+  Advantage} (even if they are using \NGD as \terme{first line ships}), \NTD
+do not roll during the battle and they automatically break and rout after the
+First Fire (they have 0 Morale).
 
 \begin{designnote}
   While mixed fleet did exists, the battle mechanisms (and parameters) are
@@ -1988,11 +1991,11 @@ depending on the technologies of the participants and the kind of \terme{first
   this modifier; starting with \TBAT, all \NGD stacks are considered to
   contain \VGD. If both side have \VGD in their stack, they may both have
   this bonus.
-\item[+1/+1] for a side that uses \NGD, if both (i) the battle occurs in the
-  \region{Mediterranee}; (ii) the other side uses \NWD or \NTD and (iii) this
-  is turn 25 or earlier.
+\item[+1/+1] for a side that uses \NGD, if (i) the battle occurs in the
+  \region{Mediterranee}; and (ii) the other side uses \NWD or \NTD; and (iii)
+  this is turn 25 or earlier.
 \item[-1/-1] for a side that uses \NGD if both (i) the other side is using
-  \NWD and (ii) this is turn 35 or later.
+  \NWD; and (ii) this is turn 35 or later.
 \end{modlist}
 
 \aparag[Other sea modifiers.] Apply these during any sea battle.
@@ -2015,8 +2018,8 @@ switch from an \NGD navy to a \NWD one\ldots
 \aparag[Other land modifiers.] Apply these during any land battle.
 \begin{modlist}
 \item[-1/-1//0/0] for a side that is \terme{foraging}.
-\item[0/-1] for a side that is \textbf{not} \CAI, \CAIM, \CAII or
-  \CAIIM, if the enemy has \TTER.
+\item[0/-1] for a side that does \textbf{not} have an \ARMY counter of class
+  either \CAI, \CAIM, \CAII or \CAIIM, if the enemy has \TTER.
 \end{modlist}
 
 \aparag[Terrain modifiers.] Apply these during any land battle.
@@ -2055,8 +2058,8 @@ switch from an \NGD navy to a \NWD one\ldots
 \end{modlist}
 
 \aparag[Structural Cavalry modifiers.] During any land battle, any stack gain
-a 0/+1 DRM if both (i) it contains an \ARMY counter of the indicated country
-or army class; and (ii) this is the indicated periods; and (iii) the battle
+a 0/+1 DRM if (i) it contains an \ARMY counter of the indicated country or
+army class; and (ii) this is the indicated periods; and (iii) the battle
 occurs in the indicated terrain.
 \begin{modlist}
 \item[\CAIIM] during periods \period{I} to \period{IV}, in a Plain or Sparse
@@ -2086,7 +2089,7 @@ during periods \period{III} and \period{VI}.
 
   First, Morale and CRT columns are computed. With \TMUS, each side has a
   Morale of 3; being \terme{Veteran} each side has a bonus of \bonus{+1} to
-  Morale; Hence the Morale is 4 (2+1+1) for both.
+  Morale; Hence the Morale is 4 (3+1) for both.
 
   Remark: \TTER gives no Morale bonus in \TMUS. However, with \TARQ\ \FRA
   would have a Morale of 3 (2+1) and \HIS of 4 (2+1+1).
