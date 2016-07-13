@@ -1486,7 +1486,10 @@ If a naval stack carrying troops is stopped by a \Presidio, \USURE or
 \StraitFort, it must go back to the closest (in number of zones) friendly port
 large enough to hold it, ignoring ports that are behind a \Presidio or
 \StraitFort or have \USURE. This is a move, hence a cause of attrition, and
-may be intercepted.
+may be intercepted. In the rare case where there are no ports reachable
+without going through a \Presidio, \StraitFort or \USURE, the naval stack may
+cross them and the attrition rolls suffers a malus of \bonus{+2} per
+\Presidio, \StraitFort or \USURE crossed.
 
 Note that even if they may stop naval stakcs going through them, neither
 \StraitFort nor \Presidios nor \USURE are actually blockading the port for any
@@ -1530,10 +1533,9 @@ their list of controller.
 \pays{pirates} with no \LeaderA use 2 as \Man.
 \bparag If the interception fails, the attack stops immediately; if it is
 successful, reduce the \corsaire to \Facemoins and proceed further.
-\bparag The attacked stack may roll as for fighting \corsaire
-(see \ref{chMilitary:Corsairs} for details); if successful, do not reduce
-further the \corsaire but stop the attack immediately; if it fails, proceed
-further.
+\bparag The attacked stack rolls as for fighting \corsaire (see
+\ref{chMilitary:Corsairs} for details); if successful, do not reduce further
+the \corsaire but stop the attack immediately; if it fails, proceed further.
 \bparag Resolve the attack by rolling on~\ref{table:Pirates Natives Raids}
 (see \ref{chRedep:Corsair Attack} for details); read the result in column
 ``\TradeFLEET\faceplus'', the number corresponds to the number of \NTD (or
@@ -2923,13 +2925,16 @@ possible to stay in a province containing a neutral fortress).
 \subsubsection{At sea}
 Retreat is done toward the closest (in number of zones), non-blockaded,
 friendly port large enough to hold the remaining fleet (before applying the
-retreat losses).
+retreat losses), ignoring ports that are behind a \Presidio or \StraitFort or
+have \USURE. In the rare case where there are no ports reachable without going
+through a \Presidio, \StraitFort or \USURE, the naval stack may cross them.
 
 Retreat is a move and thus any retreating fleet must roll for attrition as for
-any naval move. If a \terme{Replacement} \LeaderA was rolled for the battle,
-he is still available during the retreat (providing its \Man for the attrition
-roll). However, if the fleet was routed during the battle, then the \Man of
-its \LeaderA is considered to be 0 for the retreat.
+any naval move and the attrition rolls suffers a malus of \bonus{+2} per
+\Presidio, \StraitFort or \USURE crossed.. If a \terme{Replacement} \LeaderA
+was rolled for the battle, he is still available during the retreat (providing
+its \Man for the attrition roll). However, if the fleet was routed during the
+battle, then the \Man of its \LeaderA is considered to be 0 for the retreat.
 
 Any \ND sunk during the retreat counts as 1 loss for the Battle. Any \NDE
 counts as \texttu.
