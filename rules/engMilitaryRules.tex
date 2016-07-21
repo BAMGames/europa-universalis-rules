@@ -3339,8 +3339,8 @@ may not intercept or counter-intercept again during this impulse.
   \item have a better technology.
   \end{enumerate}
   Joke aside, this does not mean that battles are a mere luck-fest, especially
-  in the late game. But the surprise can always arise and if one side roll
-  four 10 while the other roll four 1, there is little doubt on who the victor
+  in the late game. But a surprise can always arise and if one side roll four
+  10s while the other roll four 1s, there is little doubt on who the victor
   will be, whatever the other conditions.
 
   Especially, in the late game, with a lot of Morale, many high rolls are
@@ -3361,10 +3361,10 @@ may not intercept or counter-intercept again during this impulse.
   difference between 1\textetoile and 1\texttu\textetoile is almost
   negligible. When you fight, you need to roll 7 or more to cause those
   \textetoile. Baring luck and rolling 10s while your opponent rolls 1s, you
-  best possibility is to come with as much positive DRM as possible and give
-  as much negative DRM as possible to your opponent. Crossing a river to
+  best possibility is to come with as much positive DRMs as possible and give
+  as much negative DRMs as possible to your opponent. Crossing a river to
   attack a troop stationed in Mountain means fighting at -2/-2, now you need 9
-  or more to cause \textetoile while your opponent need 7 or more. A pretty
+  or more to cause \textetoile while your opponent needs 7 or more. A pretty
   bad situation.
 \end{playtip}
 
@@ -3397,8 +3397,8 @@ may not intercept or counter-intercept again during this impulse.
   Royal troops couldn't do a lot of damage during the Battle. At the end of
   the First Day, \leader{Washington} decided to retreat which, with 6 \Man and
   4 Morale was automatic\ldots The British won the battle and could move on
-  but the American raid costed them maybe \texttu or \texttd, enough to flip
-  one \ARMY counter and remove artillery bonus for the next battle. A
+  but the American raid costed them maybe only \texttu or \texttd, enough to
+  flip one \ARMY counter and remove artillery bonus for the next battle. A
   perfectly well done raid disrupting the \ANG move and forcing the player to
   think a bit more about what to do.
 \end{playtip}
@@ -3415,8 +3415,8 @@ stack is too small to blockade the fortress (what did you do wrong?), the
 blockade is lifted and the stack stays in the sea.
 
 Next, each alliance, in decreasing order of initiative, resolves all of its
-actions (sieges, fight against \REVOLT/\REBELLION an \corsaire) in an order of
-its choice (at random in case of disagreement).
+actions (sieges, fight against \REVOLT/\REBELLION and \corsaire) in any order
+of its choice (at random in case of disagreement).
 
 Naval stacks whose action is to fight \corsaire resolve it now. Land stacks in
 a province with either an enemy fortress or an enemy \REVOLT/\REBELLION must
@@ -3439,8 +3439,9 @@ which; if it has no \LoS or is too small to undermine, it may not fight the
 \terme{Siege Attrition} is resolved as any attrition by cross-referencing a
 modified 1d10 on the correct column of~\ref{table:Discoveries and
   Attrition}. Use the ``Land, Europe'' column corresponding to the size of the
-stack if the siege is in Europe, and the \ROTW column +~\ref{table:Attrition
-  ROTW Remainders} if the siege is in the \ROTW.
+stack if the siege is in Europe (including European provinces in the \ROTW,
+including \COL of level 6), and the \ROTW column +~\ref{table:Attrition ROTW
+  Remainders} if the siege is in the \ROTW.
 
 Note that besieged roll for \terme{Siege Attrition} during the Supply Segment
 while besieger roll for it (sometimes) during the Siege Segment.
@@ -3534,7 +3535,7 @@ stack). In the line corresponding to that number, find in the last column the
   (such as the famous 20 years long siege of \ville{Candia}), most sieges of
   the time were rather short (\leader{Vauban}, in his \emph{Traité sur
     l'attaque des places} and \emph{Traité sur la défense des places},
-  consider that a correctly defended fortress can hold 48 days against a
+  considers that a correctly defended fortress can hold 48 days against a
   correct siege). Hence, besieging a city for more than one round is not
   ``realistic''.
 
@@ -3554,7 +3555,7 @@ stack). In the line corresponding to that number, find in the last column the
 To resolve the undermining, roll 1d10. The roll is modified in two different
 ways, thus giving two different results. The first one is used to check the
 effect of the undermining on the fortress (usually adding some \USURE); the
-second one is used to check if the besieger suffer from \terme{Siege
+second one is used to check if the besieger suffers from \terme{Siege
   Attrition}. It is possible to both suffer from attrition and force the
 fortress to surrender (especially toward the end of long sieges).
 
@@ -3598,6 +3599,7 @@ case, always use the largest \terme{Siege} value available in the stack.
 The effect of undermining is read in~\ref{table:Undermining}. The various
 possible effects are:
 \begin{modlist}
+\item[---] nothing;
 \item[\textbf{S}\facemoins] add a \USURE\facemoins counter. If there are now
   two \USURE\facemoins counters, immediately merge them in a
   \USURE\faceplus. If, after that, there are three or more \USURE, only keep
@@ -3621,10 +3623,11 @@ possible effects are:
   he is captured.
 \item[\textbf{R}] The fortress surrenders. It falls and troops inside it are
   destroyed (captured, likely, as executing defenders after the fall was not a
-  common practise), any leader inside is ``given back'' to the besieged who
-  must immediately place them in any unbesieged friendly province. Exception:
-  if a \terme{Monarch} happen to be trapped in a surrendering fortress, he is
-  captured.
+  common practise), any leader inside is considered wounded until the end of
+  the turn: place the counter on the 'End' box of the rounds track (the leader
+  is actually captured and freed later, that is at the end of the turn).
+  Exception: if a \terme{Monarch} happen to be trapped in a surrendering
+  fortress, he is captured.
 \end{modlist}
 
 When a fortress falls (\textbf{WH} or \textbf{R}), first put a control marker
@@ -3633,11 +3636,12 @@ fortress is now controlled by that country. Next, the new controller must
 choose to either man the fortress again or not. If the fortress is manned
 again, the besieger must loose 1\LD (from the besieging stack) and the
 fortress loses 1 level; otherwise, the fortress loses 2 levels. In the \ROTW,
-fortresses may be entirely destroyed that way. In Europe (including European
-provinces in the \ROTW and \COL of level 6), the minimal level a fortress may
-have after this is 1. Fortress may ``fall down'' to level 1 even if the
-minimal level on the map is 2, in which case a white level 1 fortress is used
-to denote this.
+non-cities fortresses may be entirely destroyed that way. In Europe (including
+European provinces in the \ROTW and \COL of level 6) and for \ROTW cities, the
+minimal level a fortress may have after this is 1. Fortress may ``fall down''
+to level 1 even if the minimal level on the map is 2, in which case a white
+level 1 fortress is used to denote this (and the level will automatically rise
+to 2 after one turn of peace).
 
 \begin{playtip}
   Free tip: when taking a fortress of level 1 or 2, whether you re-man it or
@@ -3715,7 +3719,7 @@ next siege.
 
   \smallskip
 
-  Assuming that nothing change, during the next round, the undermining DRM
+  Assuming that nothing changes, during the next round, the undermining DRM
   becomes \bonus{+1} (due to the \bonus{+3} of the \USURE\faceplus) while the
   attrition check DRM becomes \bonus{0}. This time, \FRA rolls only 5. This is
   still enough to avoid attrition and the undermining result is 5+1=6
@@ -3742,8 +3746,8 @@ next siege.
   better). Stockpiling \USURE is only useful as long as it allows you to reach
   10. That means that as long as the undermining DRM is negative, the fortress
   cannot fall (and, typically, does not need a relief force). As soon as a
-  siege reaches this \bonus{0} DRM, it becomes likely to fall on a lucky
-  roll\ldots
+  siege reaches this \bonus{0} DRM threshold, it becomes likely to fall on a
+  lucky roll\ldots
 
   Also, it is often quite difficult to overcome an initial negative DRM and it
   may take some time, but then the siege goes faster (at \bonus{+4}, \FRA has
@@ -3757,7 +3761,6 @@ next siege.
 \end{playtip}
 
 \subsubsection{Assault}
-
 Assault looks like a simplified battle. It has many concepts in common, but a
 few specificities. Notably: there are less columns in the CRT; there is only
 one day of fight; there are no terrain modifiers; losses modifications are
