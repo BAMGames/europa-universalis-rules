@@ -3491,16 +3491,16 @@ the \terme{Redeployment} procedure (see~\ref{chRedep:Redeployment}). These
 the decision is taken); they may happen by sea at the usual conditions for
 \terme{Redeployment}; they are cause of attrition as normal
 \terme{Redeployments}; they are never voluntarily (even if the stack is large
-may undermine). A stack may choose to redeploy even if it may undermine. A too
-small stack (or a stack with no \LoS) that redeploys rolls twice for
-\terme{Attrition} (one \terme{Siege Attrition} because it is too small and one
-\terme{Movement Attrition} because of the redeployment).
+enough to undermine). A stack may choose to redeploy even if it may
+undermine. A too small stack (or a stack with no \LoS) that redeploys rolls
+twice for \terme{Attrition} (one \terme{Siege Attrition} because it is too
+small and one \terme{Movement Attrition} because of the redeployment).
 
-\begin{designnote}
-  A very small stack managing to assault a very large fortress represents a
-  surprise attack with troops managing to storm the fortress before its gates
-  are closed or similar heroic action.
-\end{designnote}
+% \begin{designnote}
+%   A very small stack managing to assault a very large fortress represents a
+%   surprise attack with troops managing to storm the fortress before its gates
+%   are closed or similar heroic action.
+% \end{designnote}
 
 \GTtable{artillerybonus}
 
@@ -3688,6 +3688,73 @@ Note also that the \SoS is only checked when needed. Because sieges are
 actually resolved in a chosen order, it may happen that a first siege succeeds
 and thus creates a new \SoS (the fortress is now controlled) to use for the
 next siege.
+
+\begin{exemple}[Undermining]
+  After the previous battle, \FRA is besieging \villeArras in
+  \provinceArtois. Having forseen that possibility, \HIS previously raised the
+  fortress to level 3. Since \FRA has 6\LD in its stack, it does not need to
+  roll for \terme{Siege Attrition} and may undermine. \FRA decides to
+  undermine.
+
+  In period \period{III}, \FRA has 3 artillery per \ARMY\faceplus, hence only
+  1 per \ARMY\facemoins. Its stack of 6\LD (\ARMY\faceplus, \ARMY\facemoins)
+  thus has 4 artillery. That gives an \terme{Artillery bonus} of only
+  \bonus{+1}. Neither \FRA nor \HIS has a leader with a siege value. Thus, the
+  DRM for undermining is -3 (level of the fortress) +1 (artillery bonus) +0
+  (plain, no port) = -2. At the same time, the DRM for attrition check is +4
+  (first round), and the \LoS length is 2\MP from \villeParis.
+
+  \FRA rolls a lucky 10. The undermining result is 10-2=8 resulting in a
+  \USURE\faceplus. At the same time, the attrition check is 10+4=14, way more
+  than the \LoS length.
+
+  Note that if the fortress were still level 2, then the \terme{Artillery
+    bonus} would be \bonus{+2} completely cancelling the level malus, with the
+  same roll \FRA would have obtained a \terme{Breach} and could have taken the
+  fortress in a single round\ldots
+
+  \smallskip
+
+  Assuming that nothing change, during the next round, the undermining DRM
+  becomes \bonus{+1} (due to the \bonus{+3} of the \USURE\faceplus) while the
+  attrition check DRM becomes \bonus{0}. This time, \FRA rolls only 5. This is
+  still enough to avoid attrition and the undermining result is 5+1=6
+  resulting in a \USURE\facemoins.
+
+  At the third round, with \USURE\faceplus, \USURE\facemoins, the undermining
+  DRM is now \bonus{+2}. \FRA rolls 7+2=9, resulting in another
+  \USURE\faceplus. Since only two \USURE may co-exist, only the two \Faceplus
+  are kept.
+
+  At the fourth round, \FRA rolls 8+4=12 and decides to grant \HIS \terme{War
+    Honour} (rather than risk an \terme{Assault}, even on a
+  \terme{Breach}). \HIS gets 1\LD back. \FRA puts a control marker in the
+  province. Finally, \FRA decides to loses 1\LD to man the fortress, hence it
+  only loses 1 level down to level 2.
+\end{exemple}
+
+\begin{playtip}
+  Note that even with lucky rolls (10, 5, 7, 8), taking a fortress may take a
+  long time (4 rounds) if it is correctly fortified (at level 2, the fortress
+  would have fallen immediately). Plan this during your wars.
+
+  Note also that you need at least 10 to take a fortress (\terme{Breach} or
+  better). Stockpiling \USURE is only useful as long as it allows you to reach
+  10. That means that as long as the undermining DRM is negative, the fortress
+  cannot fall (and, typically, does not need a relief force). As soon as a
+  siege reaches this \bonus{0} DRM, it becomes likely to fall on a lucky
+  roll\ldots
+
+  Also, it is often quite difficult to overcome an initial negative DRM and it
+  may take some time, but then the siege goes faster (at \bonus{+4}, \FRA has
+  50\% chances (6 or more) to get a \terme{Breach}).
+
+  Starting a siege at \bonus{-2} is still reasonable. Starting a siege at
+  \bonus{-4} is usually a waste of time. Starting a siege at \bonus{-6} means
+  that even if you manage to get two \USURE\faceplus on it, you'll still need
+  a lucky 10 to get a \terme{Breach}. There are certainly better uses of your
+  troops.
+\end{playtip}
 
 \subsubsection{Assault}
 Assault looks like a simplified battle. It has many concepts in common, but a
