@@ -1940,39 +1940,52 @@
 \newcommand{\assault}{
   \table@assault
   \GTlegend[east north,yoffset=4ex,to eastpoint]{
-    \GTitem{One \terme{Fire}, one \terme{Shock}}
-    \GTitem{Any side routed during \terme{Fire} does not roll for \terme{Shock}}
-    \GTitem{A fortress is \terme{Veteran}; use a replacement leader if needed}
-    \GTitem{Fortress falls if the besieged has no more resistance or morale. Losses are first taken on the troops inside the fortress.}
-    \GTheader{Fire stage (besieger)}
+    \GTitem{A fortress is always \terme{Veteran}.}
+    \GTitem{One \terme{Fire}, one \terme{Shock} (not if routed).}
+%    \GTitem{Any side routed during \terme{Fire} does not roll for \terme{Shock}}
+    \GTitem{Fortress falls if the besieged has no more resistance or
+      morale.}
+    \GTitem{Losses are first taken on the troops inside the fortress.}
+    \GTheader{Fire (besieger) (besieged always use full Fire)}
     \begin{modlist}
     \item[\technologie{Medieval}] no \terme{Fire}
-    \item[\technologie{Renaissance}] only if \ARMY\ present or against \ROTW, no losses
+    \item[\technologie{Renaissance}] only if \ARMY\ present or against
+      \ROTW, only \textetoile
     \item[\technologie{Arquebus}] Divide losses by two (round to lesser \tu)
     \end{modlist}
+    % \GTheader{Losses modifiers}
+    % \textbf{Besieger size:}\leq6\LD: -\tu\ or  \leq 4\LD: -\td;
+    % \textbf{no \ARMY}: -\td\ (cumulative);
+    % \textbf{One \ARMY\faceplus of} \CAI\ or \POL (pI--II), \RUS
+    % (pI--III), \TUR \Janissaire (before M-1a , pI-III): +\td\par
+    % \textbf{Besieged:} cap by 2\textmultiply res.+\#\LD, next  +\td\ if
+    % besieger routed\par
+  }
+  \GTlegend[caption=captiona,south west,xsize scale=1,xsize offset=-2pt,xsize=(\gtid main)]{
     \GTheader{Losses modifiers}
-    \textbf{Besieger size}\leq6\LD: -\tu\ or  \leq 4\LD: -\td; \textbf{no \ARMY}: -\td\ (cumulative); \textbf{One \ARMY\faceplus of}
-    \CAI\ or \POL (pI--II), \RUS (pI--III), \TUR \Janissaire (before M-1a , pI-III): +\td\par
-    Besieged: cap by 2\textmultiply resistance+\#\LD inside, then add \td\ if besieger is routed\par
+    \textbf{Besieged:} cap by 2\textmultiply res.+\#\LD, next  +\td\ if
+    besieger routed\par
+    \textbf{Besieger size:}\leq6\LD: -\tu\ or  \leq 4\LD: -\td;
+    \textbf{no \ARMY}: -\td\ (cumulative);\par
+    \textbf{One \ARMY\faceplus of} \CAI\ or \POL (pI--II), \RUS
+    (pI--III), \TUR \Janissaire (before M-1a , pI-III): +\td\par
+    % \GTheader{Modifiers for the besieger}
+    % \begin{modlist}
+    % \item[+1] if besieged is \technologie{Medieval}
+    % \item[-1] if besieged is \technologie{Arquebus} or better
+    % \item[-N] level of the fortress, unless \terme{Breach}
+    % \item[+?] Artillery bonus against fortress
+    % \end{modlist}
   }
-  \GTlegend[caption=captiona,south west,xsize scale=0.5,xsize offset=-2pt,xsize=(\gtid main)]{
-    \GTheader{Modifiers for the besieger}
-    \begin{modlist}
-    \item[+1] if besieged is \technologie{Medieval}
-    \item[-1] if besieged is \technologie{Arquebus} or better
-    \item[-N] level of the fortress, unless \terme{Breach}
-    \item[+?] Artillery bonus against fortress
-    \end{modlist}
-  }
-  \GTlegend[caption=captionb,south east,xsize scale=0.5,xsize offset=-2pt,xsize=(\gtid main)]{
-    \GTheader{Modifiers for all sides}
-    \begin{modlist}
-    \item[+?] \terme{Fire} differential during Fire if \geq0
-    \item[+?] \terme{Shock} differential during Shock if \geq\rlap{0}
-    \end{modlist}
-  }
+  % \GTlegend[caption=captionb,south east,xsize scale=0.5,xsize offset=-2pt,xsize=(\gtid main)]{
+  %   \GTheader{Modifiers for all sides}
+  %   \begin{modlist}
+  %   \item[+F/0] \terme{Fire} differential if \geq 0
+  %   \item[0/+S] \terme{Shock} differential if \geq 0
+  %   \end{modlist}
+  % }
 
-  \more@@resistance{north east}{\gtid caption.south east}{0pt,-6pt}%
+  \more@@resistance{north east}{\gtid caption.south east}{-35pt,-18pt}%
 }
 
 \newcommand{\artilleryvalue}{
