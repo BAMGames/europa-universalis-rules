@@ -2444,14 +2444,18 @@ their side may contain a large number of \LD but still fight normally.
 \aparag[Determine winner.]
 \bparag First, using the computation described at~\ref{chMilitary:Battle:Loss
   modifications}, check if one side has suffered more losses than its number
-of \LD. If so, that side is declared loser and the other winner, even if a
-winner and loser were already declared during the battle.
+of \LD.
+\bparag If only one side is destroyed, that side is declared loser and the
+other winner, even if a winner and loser were already declared during the
+battle.
+\bparag If both sides are destroyed, there is no winner (even if one was
+already declared). Go to~\ref{chMilitary:Battle:Loss modifications}.
 \bparag Next, if one side has already been declared winner, it wins and the
 other side loses.
 \bparag Otherwise, the side with the most remaining Morale (starting Morale
 minus number of \textetoile suffered) loses and the other side wins.
-\bparag In case of tie, no side wins and no Pursuit happens. Go
-to~\ref{chMilitary:Battle:Loss modifications}.
+\bparag In case of tie (including if both sides are routed), no side wins and
+no Pursuit happens. Go to~\ref{chMilitary:Battle:Loss modifications}.
 
 \begin{designnote}[Destruction]
   It may happen that one side breaks and routs due to no more Morale during
@@ -2534,22 +2538,27 @@ column \textbf{E} of the CRT. Exception: use column \textbf{C} when pursuing
 ones obtained during the battle. Large \pays{natives} stacks roll one die per
 8\LD as for any roll of the battle.
 
-Additionally, at sea, for each \textetoile obtained the pursuer may choose to
-capture either 1\NWD, 2\NGD, or 2\NTD. These captures may occur on any ships
-in the stack (not only the \terme{first line ships}). Remove them from the
-pursued stack and add the same number to the pursuing one (they may be of any
-nationality already present in that stack, controller's choice). Next:
+Additionally, at sea, for each \textetoile obtained during the pursuit, the
+pursuer may choose to capture either 1\NWD, 2\NGD, or 2\NTD. These captures
+may occur on any ships in the stack (not only the \terme{first line
+  ships}). Remove them from the pursued stack and add the same number to the
+pursuing one (they may be of any nationality already present in that stack,
+controller's choice). Next:
 \begin{itemize}
 \item If the pursued stack was transporting troops, it must immediately loses
   a number of troops whose transport points are equal or greater than the
   transport capacity of the captured ships (only). It is assumed that the
   pursuit specifically targets those troops-heavy transports that were
   purposely left out of the battle\ldots
-\item If the \NTD captured were carrying gold, for each \NTD captured 5\ducats
-  are sunk (lost) and 10\ducats are seized by the pursuer. These ducats are
-  immediately tallied in \lignebudgetlong{Gold from ROTW and Convoys}
-  (\emph{i.e.} for the sake of simplicity they are 'teleported' in Europe and
-  we do not handle chain of capture and re-capture of the Gold fleet).
+\item If the pursued stack was carrying gold then, for each \NTD captured,
+  5\ducats are sunk (lost) and 10\ducats are seized by the pursuer. These
+  ducats are immediately tallied in \lignebudgetlong{Gold from ROTW and
+    Convoys} (\emph{i.e.} for the sake of simplicity they are 'teleported' in
+  Europe and we do not handle chain of capture and re-capture of the Gold
+  fleet).
+
+  If the stack was carrying gold and has no more \NTD, then for each \NWD or
+  \NGD captured, 5\ducats are also captured.
 \end{itemize}
 
 Finally, check if the losing side has any Morale left. If no, then there is a
@@ -2716,7 +2725,8 @@ inflicted according to~\ref{table:<L2/S2> Loss Modification by Size}:
 \bparag On the line ``-1/0'' (in bold), find the number of losses inflicted
 and use that column. If this is not an integer (\emph{e.g.} 2\td), find
 both the number of full losses and the number of thirds. If more than 6 losses
-were inflicted, use the last column.
+were inflicted, use the last column (and do not use the \texttu/\texttd
+columns).
 \bparag Cross-reference the column (or columns) obtained above with the line
 corresponding to the \terme{size differential}. The new number (or sum of
 numbers) is the actual losses inflicted. If more than 6 losses were inflicted,
@@ -2835,7 +2845,8 @@ losses, round them up to the nearest largest integer.
 
 If some ships were captured during Pursuit, reduce the number of
 \terme{Damaged} ships by the same amount (this does not reduce the amount of
-losses suffered).
+losses suffered). If there are not enough \terme{Damaged} ships, reduce also
+the \terme{Destroyed} ones.
 
 Losses (whatever the category) must be taken first from the \terme{first line
   ships}. If there are more losses than \terme{first line ships}, other ships
@@ -2881,16 +2892,16 @@ Additionally, if a fleet containing \VGD and using \NGD/\VGD as \terme{first
   stack gives 3 \terme{Damaged}, 3 \terme{Destroyed}, and 2
   \terme{Refitted}. Because the losses exceed the actual size of the stack,
   the \terme{Destroyed} are applied first (2\ND remain) and next the
-  \terme{Damaged}. This results effectively in 3 \terme{Damaged} and 2
+  \terme{Damaged}. This results effectively in 2 \terme{Damaged} and 3
   \terme{Destroyed}.
 
   \smallskip
 
   A stack of 1\NWD and 10\NGD chooses to use its \NWD as \terme{first line
-    ships}. It loses and suffers 8\texttd losses (using \NGD as \terme{first
-    line ships}, its opponent used these +1/+2 bonus for larger fleet with
-  deadly efficiency). Splitting the losses gives 3 \terme{Destroyed} and
-  5\texttd \terme{Damaged}. The \terme{Destroyed} are applied first, on the
+    ships}. It loses and suffers 8\texttd losses (its opponent used \NGD as
+  \terme{first line ships}, and the +1/+2 bonus for larger fleet was
+  deadly). Splitting the losses gives 3 \terme{Destroyed} and 5\texttd
+  \terme{Damaged}. The \terme{Destroyed} are applied first, on the
   \terme{first line ships}. Once there are no more \terme{first line ships},
   the remaining losses (2 \terme{Destroyed} and 5\texttd \terme{Damaged}) are
   applied to the rest of the stack (here on the \NGD, hence the \texttd is
@@ -2951,7 +2962,9 @@ follow-up are counted as battle losses. A winning stack may decide to split
 and only part of it follows (typically, after an interception to allow the
 rest to carry on with its move and action). The part that follows must be
 large enough to blockade the port and usual hierarchy rules are enforced when
-splitting the stack.
+splitting the stack. It is not possible to follow-up with troops on board (it
+is possible to split if the remaining stack can carry the troops, it is not
+possible to voluntary kill troops to allow the follow-up).
 
 The retreat may not be intercepted and is not subject to \Presidios or
 \StraitFort. A possible follow-up may not be intercepted but can be subject of
@@ -3211,12 +3224,8 @@ the troops during the battle.
 \end{designnote}
 
 \subsubsection{Death of leaders}
-Any \terme{Replacement} leader used during the battle is now forgotten. It's
-not needed any more and a new \terme{Replacement} leader will be rolled the
-next time it's needed.
-
-Every commanding leader has to test a possible casualty in battle. roll 1d10,
-modified as follows:
+Every commanding leader (inlcuding \terme{Replacement} ones) has to test a
+possible casualty in battle. roll 1d10, modified as follows:
 \begin{modlist}
 \item[-1] for any non-winning side;
 \item[-5] for a side entirely destroyed during the battle;
@@ -3244,6 +3253,9 @@ If the result is 1 or less, the leader suffered from the battle. Roll 1d10
   rounds on the Round track using the longest possible path (S1, W1, S2, W2,
   \ldots) and place the leader in the box corresponding to the round when it
   will come back (or the 'End' box if this is after W5).
+
+  \anonyme leaders of major countries are never wounded and always killed if
+  the initial test is 1 or less.
 \end{itemize}
 
 Countries that have less leaders than their minimal will get new ones at the
@@ -3267,6 +3279,14 @@ monarch until either the ransom or the determination of a new monarch.
   the leader to stop the military carrier and maybe become minister or
   ambassador, or retiring in his family castle, \ldots
 \end{designnote}
+
+Any \terme{Replacement} leader used during the battle is now forgotten. It's
+not needed any more and a new \terme{Replacement} leader will be rolled the
+next time it's needed.
+
+Note that testing death of \terme{Replacement} leaders is only useful when
+fighting minors (it may influence the peace) and can be forgotten for battle
+between majors.
 
 \subsubsection{Aftermath}
 \label{chMilitary:Battle:Cleanup:Aftermath}
@@ -3583,7 +3603,8 @@ Effect on fortress modifiers:
 \item[+2] if a \terme{Breach} was obtained previously this turn;
 \item[+1/+3] for each \USURE\facemoins/\faceplus on the fortress;
 \item[-S] \terme{Siege} value of one besieged leader;
-\item[+S] \terme{Siege} value of one besieger or [BLP] blockading leader;
+\item[+S] \terme{Siege} value of one besieger or [BLP] allied blockading
+  leader;
 \item[+1] if there are troops inside the fortress, but no \ARMY counter;
 \item[+3] if there is an \ARMY counter inside the fortress.
 \end{modlist}
@@ -3869,10 +3890,9 @@ besieged losses and to determine if the fortress falls.
 
 \textbf{Aftermath.} If the fortress didn't fall, nothing happens. It regain
 all its \terme{Resistance} for any future \terme{Assault}. If the fortress has
-fallen due to lack of Morale, troops inside are removed (captured or killed)
-and any leader inside are given back to the besieged who must immediately
-place them in an unbesieged friendly province (exception: monarchs are
-captured).
+fallen, troops inside (if any) are removed (captured or killed) and any leader
+inside are given back to the besieged who must immediately place them in an
+unbesieged friendly province (exception: monarchs are captured).
 
 When a fortress falls (no more Morale or Resistance), first put a control
 marker of the besieged (of the country of the commander) on the fortress. This
@@ -3997,7 +4017,7 @@ country already at -3 \STAB, at no additional cost.
 not possible to declare Exceptional Levies several times during the same
 turn.
 \bparag[Exception:] \SUE and \PRU may declare levies after any defeat in a land
-battle (not necessarily major). Moreover, one of them may declare levies after
+battle (not necessarily major). Moreover, they may declare levies after
 a \textbf{major} defeat without paying 1 \STAB.
 \bparag[Exception:] \POR may declare Exceptional Levies during \terme{Overseas
   Wars}, if it has a Vice Roy alive. There are specific conditions for these
