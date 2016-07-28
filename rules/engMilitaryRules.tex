@@ -3427,12 +3427,11 @@ may not intercept or counter-intercept again during this impulse.
 \label{chMilitary:Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 
-If a land stack is in a province with an enemy fortress and has less than 1\LD
-per level of the fortress, it must roll for \terme{Siege Attrition}. If a land
-stack is in a province with an enemy fortress and has no \LoS, it must also
-roll for \terme{Siege Attrition}. If, for some reason, a blockading naval
-stack is too small to blockade the fortress (what did you do wrong?), the
-blockade is lifted and the stack stays in the sea.
+If a land stack is in a province with an enemy fortress and either has less
+than 1\LD per level of the fortress or has no \LoS , it must roll for
+\terme{Siege Attrition}. If, for some reason, a blockading naval stack is too
+small to blockade the fortress (what did you do wrong?), the blockade is
+lifted and the stack stays in the sea.
 
 Next, each alliance, in decreasing order of initiative, resolves all of its
 actions (sieges, fight against \REVOLT/\REBELLION and \corsaire) in any order
@@ -3466,9 +3465,10 @@ including \COL of level 6), and the \ROTW column +~\ref{table:Attrition ROTW
 Note that besieged roll for \terme{Siege Attrition} during the Supply Segment
 while besieger roll for it (sometimes) during the Siege Segment.
 
-Modifiers for \terme{Siege Attrition} (besieger):
+Modifiers for \terme{Siege Attrition} (besieger), cumulative:
 \begin{modlist}
 \item[+2] if the stack has no \LoS;
+\item[+2] if the stack has no \LoS and is too small to undermine;
 \item[+2] if the stack contains 6\LD or more;
 \item[+2] if there is \terme{Bad weather};
 \item[+?] if the stack is supplied by a naval stack, and the \LoS of this
@@ -3499,6 +3499,28 @@ remember which stack was or wasn't foraging a long time ago) and thus can be
 ignored.
 
 \subsection{Sieges}
+\begin{designnote}
+  As usual, game terms used here must not be interpreted too strictly when
+  figuring out what is happening. Even if some very long sieges did happen
+  (such as the famous 20 years long siege of \ville{Candia}), most sieges of
+  the time were rather short (\leader{Vauban}, in his \emph{Traité sur
+    l'attaque des places} and \emph{Traité sur la défense des places},
+  considers that a correctly defended fortress can hold 48 days against a
+  correct siege). Hence, besieging a city for more than one round is not
+  ``realistic''.
+
+  However, actual provinces contain much more than a single city. The ``city''
+  in a province actually represents the whole defence system of the province
+  consisting not only in many fortified cities, but also various other
+  fortresses spread over the land and along roads. Thus, a \USURE token, even
+  if it uses the standard one-city siege vocabulary may actually represent the
+  fall of one or more of these fortifications and the whole ``siege'' of a
+  province corresponds to many actual sieges in the same area.
+
+  As usual, game terms and mechanisms should not be strictly interpreted. They
+  provide a good macro effect suitable for our level of abstraction.
+\end{designnote}
+
 A besieging stack may either \terme{Undermine} the fortress, \terme{Assault}
 it, or \terme{Redeploy}. In order to undermine, a stack must have a \LoS and
 at least as many \LD as the level of the fortress. Besieging stacks must do
@@ -3523,7 +3545,7 @@ small and one \terme{Movement Attrition} because of the redeployment).
 %   are closed or similar heroic action.
 % \end{designnote}
 
-\GTtable{artillerybonus}
+\smallskip
 
 Both undermining and assault use an \terme{Artillery bonus} against
 fortresses. To obtain it, find in~\ref{table:Artillery bonus against
@@ -3533,6 +3555,8 @@ still less or equal than the number of Artillery in the besieger stack
 (check~\ref{chMilitary:Stacks:Artillery} for how to compute Artillery in a
 stack). In the line corresponding to that number, find in the last column the
 \terme{Artillery bonus}.
+
+\GTtable{artillerybonus}
 
 \begin{exemple}[Artillery bonus]
   Again, this is a computation which is more complicated to explain than to
@@ -3548,28 +3572,6 @@ stack). In the line corresponding to that number, find in the last column the
   fortress of level 3 it only has \bonus{+1} and no bonus against a fortress
   of level 4 or 5.
 \end{exemple}
-
-\begin{designnote}
-  As usual, game terms used here must not be interpreted too strictly when
-  figuring out what is happening. Even if some very long sieges did happen
-  (such as the famous 20 years long siege of \ville{Candia}), most sieges of
-  the time were rather short (\leader{Vauban}, in his \emph{Traité sur
-    l'attaque des places} and \emph{Traité sur la défense des places},
-  considers that a correctly defended fortress can hold 48 days against a
-  correct siege). Hence, besieging a city for more than one round is not
-  ``realistic''.
-
-  However, actual provinces contain much more than a single city. The ``city''
-  in a province actually represents the whole defence system of the province
-  consisting not only in many fortified cities, but also various other
-  fortresses spread over the land and along roads. Thus, a \USURE token, even
-  if it uses the standard one-city siege vocabulary may actually represent the
-  fall of one or more of these fortifications and the whole ``siege'' of a
-  province corresponds to many actual sieges in the same area.
-
-  As usual, game terms and mechanisms should not be strictly interpreted. They
-  provide a good macro effect suitable for our level of abstraction.
-\end{designnote}
 
 \subsubsection{Undermining}
 To resolve the undermining, roll 1d10. The roll is modified in two different
@@ -3609,9 +3611,9 @@ Effect on fortress modifiers:
 \item[+3] if there is an \ARMY counter inside the fortress.
 \end{modlist}
 
-When using \terme{Siege} value of leaders, only one leader in each side may
+When using \terme{Siege} value of leaders, only one leader of each side may
 provides its value but he does not need to be the commanding leader. In any
-case, always use the largest \terme{Siege} value available in the stack.
+case, always use the largest \terme{Siege} value available for each side.
 
 \begin{todo}
   'Assault +1'/'Breach +2' counters?
@@ -3761,7 +3763,8 @@ next siege.
 \begin{playtip}
   Note that even with lucky rolls (10, 5, 7, 8), taking a fortress may take a
   long time (4 rounds) if it is correctly fortified (at level 2, the fortress
-  would have fallen immediately). Plan this during your wars.
+  could have fallen immediately after the \terme{Breach}). Plan this during
+  your wars.
 
   Note also that you need at least 10 to take a fortress (\terme{Breach} or
   better). Stockpiling \USURE is only useful as long as it allows you to reach
@@ -3890,9 +3893,12 @@ besieged losses and to determine if the fortress falls.
 
 \textbf{Aftermath.} If the fortress didn't fall, nothing happens. It regain
 all its \terme{Resistance} for any future \terme{Assault}. If the fortress has
-fallen, troops inside (if any) are removed (captured or killed) and any leader
-inside are given back to the besieged who must immediately place them in an
-unbesieged friendly province (exception: monarchs are captured).
+fallen, troops inside (if any, after a fall due to no more Morale) are removed
+(captured or killed) and any leader inside is considered wounded until the end
+of the turn: place the counter on the 'End' box of the rounds track (the
+leader is actually captured and freed later, that is at the end of the turn).
+Exception: if a \terme{Monarch} happen to be trapped in a falling fortress, he
+is captured.
 
 When a fortress falls (no more Morale or Resistance), first put a control
 marker of the besieged (of the country of the commander) on the fortress. This
@@ -3963,11 +3969,10 @@ List of modifiers:
 \item[+M] \Man of the leader commanding the stack;
 \item[-M] \Man of the leader commanding the \corsaire;
 \item[-2] for each \corsaire\faceplus in the sea;
-\item[-2] if the \corsaire has a non-blockaded friendly port in the sea zone;
-\item[-2] for the \pays{chevaliers} \corsaire, if there is a non-blockaded
-  Christian port in the sea zone;
-\item[-2] for a \pays{pirates} \corsaire, if there is a \terme{Pirate Haven}
-  in the \STZ;
+\item[-2] if the \corsaire has a non-blockaded friendly port in the sea zone
+  (for the \pays{chevaliers} \corsaire, any Christian port is considered
+  friendly; for a \pays{pirates} \corsaire, any \terme{Pirate Haven} is
+  friendly);
 \item[-1] if there has been a naval battle in the sea zone this turn;
 \item[-?] if there are in the sea zone naval forces enemy to the one fighting
   the \corsaire (even if there are not friendly to the \corsaire),
@@ -4020,8 +4025,8 @@ turn.
 battle (not necessarily major). Moreover, they may declare levies after
 a \textbf{major} defeat without paying 1 \STAB.
 \bparag[Exception:] \POR may declare Exceptional Levies during \terme{Overseas
-  Wars}, if it has a Vice Roy alive. There are specific conditions for these
-levies, see~\ref{chSpecific:Portugal:Viceroys}.
+  Wars}, if it has a \terme{Vice Roy} alive. There are specific conditions for
+these levies, see~\ref{chSpecific:Portugal:Viceroys}.
 
 \aparag At the moment exceptional levies are declared, the number of \LD
 recruited this turn by the country is reseted to 0.
@@ -4114,14 +4119,15 @@ recruitment price of each \ND it wants to refit, there is no special price for
 refitting \FLEET, there is no limit to the number of \ND refitted in a round
 or turn.
 
-\terme{Damaged} \ND are grouped by naval regions (\region{Mediterranee},
-all other European seas (``Atlantic (EU)''), \region{Atlantic},
-\region{Indian} and \region{Pacific}). Refitted \ND must be placed
-preferentially in a controlled arsenal in the corresponding region (with
-enough room to hold them, possibly immediately creating new \FLEET counter);
-if this is not possible, they must be placed in any controlled port of the
-region (with enough room); if this is still not possible, they may be placed
-in any controlled port.
+\terme{Damaged} \ND are grouped by naval regions (\region{Mediterranee}, all
+other European seas (``Atlantic (EU)''), \region{Atlantic}, \region{Indian}
+and \region{Pacific}). Refitted \ND must be placed preferentially in
+controlled arsenals in the corresponding region (with enough room to hold
+them, possibly immediately creating new \FLEET counter); if this is not
+possible, they must be placed in any controlled ports of the region (with
+enough room); if this is still not possible, they may be placed in any
+controlled ports. It is possible to place refitted \ND in the same or
+different locations.
 
 When refitting \ND, simply decrease the number of \terme{Damaged} \ND and
 place the corresponding counters on the map. As always with naval counters,
