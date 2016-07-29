@@ -117,7 +117,7 @@ counters are in unlimited quantity.
 \aparag Each country has an \terme{Army Class} written in roman numerals on
 its counters.
 \bparag The class of a country determines three factors: its \terme{Size}, its
-\terme{Cavalry} and its \terme{Artillery}.
+\terme{Cavalry} and its \terme{Artillery value}.
 \bparag Some countries (mostly majors) belong to one army class but have
 special cases for artillery and cavalry.
 \bparag The army class of each country can be read in~\ref{table:Army
@@ -149,39 +149,41 @@ countries with smaller size.
 \aparag[Cavalry] is abstractly represented by giving a small bonus in battle
 to certain classes of armies during certain periods of the game.
 
-\aparag[Artillery.] Each \ARMY\facemoins and \ARMY\faceplus contains a certain
-number of artillery. This number is an abstract representation (rather than an
-actual number of guns and howitzers) of the amount and efficiency of field and
-siege artillery.
-\bparag The number of artillery per \ARMY\faceplus can be read
+\aparag[Artillery value.] Each \ARMY\facemoins and \ARMY\faceplus has a
+certain \terme{Artillery value}. This value is an abstract representation
+(rather than an actual number of guns and howitzers) of the amount and
+efficiency of field and siege artillery.
+\bparag The \terme{Artillery value} of an \ARMY\faceplus can be read
 in~\ref{table:Artillery Per Army} by cross-referencing the country (or class)
 with the current period.
-\bparag An \ARMY\facemoins always contains half the number of artillery of an
-\ARMY\faceplus (rounded down).
+\bparag The \terme{Artillery value} of an \ARMY\facemoins is always half the
+\terme{Artillery value} of an \ARMY\faceplus (rounded down).
 
 \GTtable{artilleryvalue}
 
-\aparag[Artillery of stacks.]\label{chMilitary:Stacks:Artillery}
-When two (or more) \ARMY are stacked together,
-their artillery numbers do not simply add. Instead, use the following
-computation:
-\bparag Take the artillery value of one \ARMY in the stack (the larger the
-better); add \bonus{+2} if there is another \ARMY with 2 or more artillery
-otherwise, add \bonus{+1} if there is another \ARMY with 1 artillery.
+\aparag[Artillery value of stacks.]\label{chMilitary:Stacks:Artillery}
+When two (or more) \ARMY are stacked together, their \terme{Artillery values}
+do not simply add. Instead, use the following computation:
+\bparag Take the \terme{Artillery value} of one \ARMY in the stack (the larger
+the better); add \bonus{+2} if there is another \ARMY with an \terme{Artillery
+  value} of 2 or more; otherwise, add \bonus{+1} if there is another \ARMY
+with an \terme{Artillery value} of 1.
 
 \begin{exemple}[Military doctrine]
   \FRA is of class \CAIV (``majors''). In periods \period{I} to \period{IV},
   it has a size of 2, then 3 in period \period{V} and 4 afterwards.
 
-  In period \period{II}, \FRA has 3 artillery per \ARMY\faceplus. Thus, it has
-  only 1 artillery per \ARMY\facemoins (3/2, rounded down). A stack with
-  2\ARMY\faceplus of \FRA is thus considered to have 3 (first \ARMY) + 2
-  (second \ARMY with 2 or more artillery) = 5 artillery for all game purposes
-  (battles and sieges). A stack of \ARMY\faceplus \ARMY\facemoins has 3 + 1
-  (second \ARMY with only 1 artillery) = 4 artillery. Lastly, a stack of 3
-  \ARMY\facemoins of \FRA only has 1 (first \ARMY) + 1 (second \ARMY with 1
-  artillery) = 2 artillery (\emph{i.e.} the third \ARMY counter does not add
-  any artillery to the stack).
+  In period \period{II}, \FRA has an \terme{Artillery value} of 3 per
+  \ARMY\faceplus. Thus, it has only an \terme{Artillery value} of 1 per
+  \ARMY\facemoins (3/2, rounded down). A stack with 2\ARMY\faceplus of \FRA is
+  thus considered to have 3 (first \ARMY) + 2 (second \ARMY with
+  \terme{Artillery value} of 2 or more) = 5 \terme{Artillery value} for all
+  game purposes (battles and sieges). A stack of \ARMY\faceplus
+  \ARMY\facemoins has 3 + 1 (second \ARMY with \terme{Artillery value} of only
+  1) = 4 \terme{Artillery value}. Lastly, a stack of 3 \ARMY\facemoins of \FRA
+  only has 1 (first \ARMY) + 1 (second \ARMY with \terme{Artillery value} of
+  1) = 2 \terme{Artillery value} (\emph{i.e.}  the third \ARMY counter does
+  not add anything to the \terme{Artillery value}).
 \end{exemple}
 
 
@@ -246,9 +248,9 @@ into a new size \FLEET\Facemoins\ldots
 \bparag Similarly, several \ND can be merged into a \FLEET (or incorporated
 into an existing one) at any time. \FLEET counters may be created this way.
 \bparag Even if it does not provides a direct military advantage (such as the
-artillery for \ARMY), using \FLEET rather than \ND usually decrease
-maintenance cost and allows for more concentration of forces (because of
-stacking limits).
+\terme{Artillery value} for \ARMY), using \FLEET rather than \ND usually
+decrease maintenance cost and allows for more concentration of forces (because
+of stacking limits).
 
 \aparag[Detachments of Exploration.] One \NDE represents roughly one or two
 warships (one third of a \NWD).
