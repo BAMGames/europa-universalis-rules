@@ -1,3 +1,5 @@
+% -*- mode: LaTeX; -*-
+
 % Page 1
 
 \makeatletter
@@ -1904,8 +1906,9 @@
   \GT{assault}{Assault Results}
   \GTcontent{
     \graytabular\begin{tabular}{c|clc|clc|cl|cl}
-      & \multicolumn{6}{c|}{\sc Besieged} &  \multicolumn{4}{c}{\sc Besieger}\\\ghline\hline\noalign{\global\countrow=0}
-      1d10 &  Fire &  &\terme{Breach} &  Shock &   & \terme{Breach} &
+      & \multicolumn{6}{c|}{\sc Besieged} &  \multicolumn{4}{c}{\sc Besieger}\\\ghline
+      & \multicolumn{3}{c|}{Fire} & \multicolumn{3}{c|}{Shock}\\\ghline\hline\noalign{\global\countrow=0}
+      1d10 &  &  &\terme{Breach} &  &   & \terme{Breach} &
       \multicolumn{2}{c|}{Fire} & \multicolumn{2}{c}{Shock} \\\ghline\hline
       \leq3 & --- &  & --- & --- &  & --- & --- &  & --- & \\\ghline
       4  & \tu &  & --- & \tu & & --- & \tu &  &  \tu & \\\ghline
@@ -1941,7 +1944,7 @@
   \table@assault
   \GTlegend[east north,yoffset=4ex,to eastpoint]{
     \GTitem{A fortress is always \terme{Veteran}.}
-    \GTitem{One \terme{Fire}, one \terme{Shock} (not if routed).}
+    \GTitem{One \terme{Fire}, one \terme{Shock} (not for routed side).}
 %    \GTitem{Any side routed during \terme{Fire} does not roll for \terme{Shock}}
     \GTitem{Fortress falls if the besieged has no more resistance or
       morale.}
@@ -1953,39 +1956,35 @@
       \ROTW, only \textetoile
     \item[\technologie{Arquebus}] Divide losses by two (round to lesser \tu)
     \end{modlist}
-    % \GTheader{Losses modifiers}
-    % \textbf{Besieger size:}\leq6\LD: -\tu\ or  \leq 4\LD: -\td;
-    % \textbf{no \ARMY}: -\td\ (cumulative);
-    % \textbf{One \ARMY\faceplus of} \CAI\ or \POL (pI--II), \RUS
-    % (pI--III), \TUR \Janissaire (before M-1a , pI-III): +\td\par
-    % \textbf{Besieged:} cap by 2\textmultiply res.+\#\LD, next  +\td\ if
-    % besieger routed\par
   }
   \GTlegend[caption=captiona,south west,xsize scale=1,xsize offset=-2pt,xsize=(\gtid main)]{
     \GTheader{Losses modifiers}
-    \textbf{Besieged:} cap by 2\textmultiply res.+\#\LD, next  +\td\ if
+    \textbf{Besieged:} cap by 2\textmultiply res.+\#\LD; next  +\td\ if
     besieger routed\par
-    \textbf{Besieger size:}\leq6\LD: -\tu\ or  \leq 4\LD: -\td;
-    \textbf{no \ARMY}: -\td\ (cumulative);\par
-    \textbf{One \ARMY\faceplus of} \CAI\ or \POL (pI--II), \RUS
-    (pI--III), \TUR \Janissaire (before M-1a , pI-III): +\td\par
-    % \GTheader{Modifiers for the besieger}
-    % \begin{modlist}
-    % \item[+1] if besieged is \technologie{Medieval}
-    % \item[-1] if besieged is \technologie{Arquebus} or better
-    % \item[-N] level of the fortress, unless \terme{Breach}
-    % \item[+?] Artillery bonus against fortress
-    % \end{modlist}
+    \textbf{Besieger size (cumulative).} \leq 6\LD: -\tu; \leq 4\LD: -\tu;
+    \textbf{no \ARMY}: -\td;\par
+    \textbf{\ARMY\faceplus of} \CAI\ or \POL (pI--II), \RUS
+    (pI--III), \Janissaire (no M-1a , pI-III): +\td\par
   }
-  % \GTlegend[caption=captionb,south east,xsize scale=0.5,xsize offset=-2pt,xsize=(\gtid main)]{
-  %   \GTheader{Modifiers for all sides}
-  %   \begin{modlist}
-  %   \item[+F/0] \terme{Fire} differential if \geq 0
-  %   \item[0/+S] \terme{Shock} differential if \geq 0
-  %   \end{modlist}
-  % }
-
-  \more@@resistance{north east}{\gtid caption.south east}{-35pt,-18pt}%
+  \GTlegend[caption=captionb,south west=caption,xsize scale=0.3, xsize
+  offset=2pt, xsize=(\gtid main)(\gtid caption)]{
+    \GTheader{Modifiers for the besieger}
+    \begin{modlist}
+    \item[+1] if besieged is \technologie{Medieval}
+    \item[-1] if besieged is \technologie{Arquebus} or better
+    \item[-N] level of the fortress, unless \terme{Breach}
+    \item[+?] Artillery bonus against fortress
+    \end{modlist}
+  }
+  \GTlegend[caption=captionc,south east=caption,xsize scale=0.18,
+  xsize offset=2pt, xsize=(\gtid main)(\gtid caption), xoffset=5pt]{
+    \GTheader{Modifiers for both}
+    \begin{modlist}
+    \item[+F/0] \terme{Fire} diff. if \geq 0
+    \item[0/+S] \terme{Shock} diff. if \geq 0
+    \end{modlist}
+  }
+  \more@@resistance{north}{\gtid captionb.south}{18pt,-18pt}%
 }
 
 \newcommand{\artilleryvalue}{
@@ -2090,10 +2089,6 @@
     \GTheader{Siege modifiers}
     \begin{modlist}
     \item[-N] Fortress level
-      % \item[-1] Fort not port+rough or unblockaded port\xm{notabenea}
-      % \item[-2] ROTW not port+rough or unblockaded port\xm{notabeneb}
-      % \item[-3] Europe rough and unblockaded port\xm{notabenec}
-      % \item[-2] Europe rough or unblockaded port\xm{notabened}
     \item[-2] If port (plain, no blockade) or non-plain terrain
     \item[-3] Any other terrain with port (no blockade)
     \item[Exc.:] \ROTW= terrain does not count if port
@@ -2715,6 +2710,14 @@
 }
 
 \makeatother
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
 
 % LocalWords:  Condottieri monarchduration Surv Succ xsize Reroll pIII
 % LocalWords:  reroll monarchvalue FWR endogamy monarchmilitary swpa
