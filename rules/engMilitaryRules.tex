@@ -28,12 +28,10 @@ Setup for the military phase.
 \subsection{Rounds}
 The military phase is split in a certain number of \terme{rounds} (between 3
 and 11). During each round, each alliance, in decreasing order of initiative,
-has an \terme{impulse} where it can moves its troop and fight. Some matters
+has an \terme{impulse} where it can move its troops and fight. Some matters
 are resolved before any alliance has its impulse (continuation, wintering) and
 some after each had its one (siege, piracy, revolt). After that, a new round
 begins.
-\subsubsection{Continuation roll}
-Determine the new round to be played.
 
 \subsubsection{Wintering}
 Stacks may suffer from attrition, leaders may be redeployed.
@@ -48,6 +46,9 @@ other are non-phasing.
 
 \subsubsection{Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
+
+\subsubsection{Continuation roll}
+Determine the new round to be played (if any).
 
 \subsubsection{End of round}
 Declare new \terme{Exceptional Levies} and use old ones. Refit \terme{Damaged}
@@ -291,8 +292,8 @@ supply each of them individually.
 A naval \SoS is a controlled, non-blockaded port or arsenal large enough ot
 hold the naval stack. Fort and mission can only supply \ND; \TP, \COL and
 regular ports can supply stacks with at most 1\FLEET counter; arsenals can
-supply any naval stack. \Presidios and \USURE do not blockade ports, only
-enemy naval stacks may do so.
+supply any naval stack. \Presidios and \USURE do not prevent ports from being
+\SoS (only enemy naval stacks blockading the port may do so).
 
 A naval \LoS goes from the \SoS to the stack. Its length is the number of sea
 zones \emph{crossed} (both entered and exited). Thus, a naval stack adjacent
@@ -357,7 +358,7 @@ Modifiers for Siege attrition (besieged):
 
 \subsection{Result of attrition}
 In Europe, the result of attrition is either nothing (---), a number
-(between 1 and 3), a 'P' or both a number and a 'P'.
+(between 1 and 3), a 'P', or both a number and a 'P'.
 
 The number indicates how many \LD are lost immediately. The controller of the
 stack chooses which.
@@ -520,8 +521,8 @@ Combined land and sea movement is possible and it is the only case where two
 stacks (one naval and one land) move at the same time. The land stack must
 start in a coastal province and embark immediately but may continue moving
 after disembarking. The naval stack, however, can move before picking up the
-land stack but is constrained in what it does after. If a naval stack
-transporting troops suffer loses, troops inside may also suffer some loses.
+land stack but not after. If a naval stack transporting troops suffer loses,
+troops inside may also suffer some loses.
 
 \subsection{Land}
 When moving, land stacks expend \MP depending both on the terrain of each
@@ -575,7 +576,7 @@ hand, \terme{Bad weather} creates a new attrition cause, and the normal
 ``distance'' cause may also apply (\emph{i.e.} a stack moving 6\MP or more
 during \terme{Bad weather} has two causes of attrition: ``6\MP'' and ``3\MP
 during \terme{Bad weather}'' hence it must roll for attrition and will suffer
-from a ``extra cause'' malus).
+from an ``extra cause'' malus).
 
 In case of interceptions, the conditions for attrition are checked for each
 part of the movement (between the beginning and the first interception;
@@ -677,7 +678,7 @@ Similarly, if a moving stack enters a province with 4 or 8 times as many enemy
 need for interception (it is automatic). If the province already contains
 forces friendly to the moving one (including besieged forces), the overrun is
 only possible if the non-phasing forces contains at least four time as many
-\LD as the moving one.
+\LD as all the phasing forces.
 
 Phasing stacks may not enter provinces with presence of unbesieged neutral
 countries (that are neither at war with (allied) nor against (enemy) the
@@ -984,9 +985,9 @@ stack may continue its move after such an automatic landing (it did not loose
 an interception battle, only the naval stack did).
 
 As an exception, in the \ROTW, a land stack that do not contain any \ARMY
-counter may stay inside ships at the end of movement and even from one round
-to the next. If it starts the round in the naval stack, it is considered to
-have embarked in a controlled port for all purposes.
+counter may stay inside ships at the end of movement and even from one turn to
+the next. If it starts the round in the naval stack, it is considered to have
+embarked in a controlled port for all purposes.
 
 If the naval stack suffers attrition or losses during exploration, then the
 land stack suffers the exact same percentage of loses (one cannot choose which
@@ -1011,7 +1012,9 @@ If the land stack fights in the province where it lands, whatever the cause
 disembarking malus on the 1st day of battle. This includes both the case where
 the land stack disembarks in a besieged controlled fortress and immediately
 attempts a sortie against the besieger and the case where a landing is
-intercepted in a previously completely friendly province.
+intercepted in a previously completely friendly province (in both cases, the
+troops do not take time to properly organise and set up camp and rush into
+battle faster than usual).
 
 Gold can be carried as land forces. It requires 1 transport point for every
 5\ducats. Gold can only be embarked in a controlled port and is immediately
@@ -1021,7 +1024,7 @@ one round to another. It does suffer attritions and exploration loses in the
 same proportion than the carrying stack. During battle (especially during the
 retreat), gold can be specifically targeted by the enemy. The \terme{Flota del
   Oro} and \terme{Flota del Per\'u} convoys may also be used to carry gold (it
-is tere only purpose). On the other hand, the others convoys are already
+is there only purpose). On the other hand, the others convoys are already
 created full of gold and cannot be used to carry more.
 
 % Autre limite, un pion naval ne peut en général transporter qu'un seul pion
@@ -1072,8 +1075,8 @@ attrition. The modifiers are:
 
 In Europe, cross-reference the result with the ``Land, Europe'' column of the
 Table that corresponds to the size of the stack. The result of attrition is
-either nothing (---), a number (between 1 and 3), a 'P' or both a number and a
-'P'.
+either nothing (---), a number (between 1 and 3), a 'P', or both a number and
+a 'P'.
 
 The number indicates how many \LD are lost immediately. The controller of the
 stack chooses which.
@@ -1114,7 +1117,7 @@ If all the provinces of the movement (including start and end) are European
 (including \COL of level 6), use the Attrition in Europe procedure. If at
 least one is a \ROTW province, use the Attrition in the \ROTW province. Note
 that only the land provinces are considered for this. Sea zones crossed during
-a naval transport play no role in deciding whether to use attrition in EUrope
+a naval transport play no role in deciding whether to use attrition in Europe
 or in the \ROTW.
 
 \subsection{Sea}
@@ -1133,10 +1136,10 @@ large enough port) by 2; lastly take the greatest of these modified values.
   4.
 \end{exemple}
 
-When computing both distance moved and distance to port, remember that only
-the number of zones (either ports or sea zones) \emph{entered} counts. Thus a
-naval stack adjacent to its port has a \LoS length of 0 and a naval stack that
-simply moves from a port to the adjacent sea zone has a move length of 1.
+When computing distance to port, remember that only the number of zones
+(either ports or sea zones) \emph{crossed} counts. Thus a naval stack adjacent
+to its port has a \LoS length of 0 and a naval stack that simply moves from a
+port to the adjacent sea zone has a move length of 1.
 
 List of naval attrition modifiers:
 \begin{modlist}
