@@ -28,12 +28,10 @@ Setup for the military phase.
 \subsection{Rounds}
 The military phase is split in a certain number of \terme{rounds} (between 3
 and 11). During each round, each alliance, in decreasing order of initiative,
-has an \terme{impulse} where it can moves its troop and fight. Some matters
-are resolved before any alliance has its impulse (continuation, wintering) and
-some after each had its one (siege, piracy, revolt). After that, a new round
-begins.
-\subsubsection{Continuation roll}
-Determine the new round to be played.
+has an \terme{impulse} where it can moves its troops and fight. Some matters
+are resolved before any alliance has its impulse (wintering) and some after
+each had its one (siege, piracy, revolt, continuation). After that, a new
+round begins.
 
 \subsubsection{Wintering}
 Stacks may suffer from attrition, leaders may be redeployed.
@@ -41,10 +39,11 @@ Stacks may suffer from attrition, leaders may be redeployed.
 \subsubsection{Impulses}
 Each alliance, in decreasing order of initiative, plays an impulse. Each
 impulse consists in five steps: supply, choice of campaign, movements (and
-interceptions), exploration, and battles.
+interceptions), exploration, and battles. Attrition occurs both during supply
+and during movement.
 
 The alliance taking its impulse is called the \terme{phasing} alliance. All
-other are non-phasing.
+others are non-phasing.
 
 \subsubsection{Sieges}
 Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
@@ -53,8 +52,10 @@ Resolve all sieges, fights against \REVOLT/\REBELLION and \corsaire.
 Declare new \terme{Exceptional Levies} and use old ones. Refit \terme{Damaged}
 ships.
 
-\subsection{New round}
-A new round begin with the \terme{Wintering} segment.
+\subsection{Continuation roll}
+Determine if a new round is played.
+
+If needed, a new round begins with the \terme{Wintering} segment.
 
 \subsection{Military cleanup}
 Compute the final cost of all campaigns paid this turn.
@@ -63,7 +64,7 @@ Compute the final cost of all campaigns paid this turn.
   Most of the time, there are separate wars that cannot affect each other
   (typically, with different antagonists in each), or even separate actions
   for a given alliance (typically action in the \ROTW and in Europe). In this
-  case, the resolution of the impulses do not need to be as strictly
+  case, the resolution of the impulses does not need to be as strictly
   sequential as explained in the rules. The military phase is long enough and,
   typically, a FRA-HIS war and a RUS-POL war can be played simultaneously in
   order to make things a little faster.
@@ -207,8 +208,8 @@ after an unmodified roll of '1', the Sund is frozen (see \ref{eco:Poor
 \end{playtip}
 
 \subsection{End of round}
-Each alliance, in order of initiative, declare new \terme{Exceptional Levies}
-and use old ones, refit \terme{Damaged} ships. Check details below.
+Each alliance, in order of initiative, may declare new \terme{Exceptional
+  Levies}, use old ones, and refit \terme{Damaged} ships. Check details below.
 
 \section{Supply}
 \label{chMilitary:Supply}
@@ -300,10 +301,10 @@ to a port has a \LoS of length 0.
 
 \subsection{Supply Attrition}
 Attrition (in Europe) is obtained by rolling one die, modified as follows, and
-cross-reference the modified result in~\ref{table:Discoveries and
-  Attrition} in the ``Land, Europe'' column that corresponds to the size of
-the stack. In the \ROTW, the result is read in the ``\ROTW and Sea''
-column. Note that a result of 5 or less has no effect.
+cross-referencing the modified result in~\ref{table:Discoveries and Attrition}
+in the ``Land, Europe'' column that corresponds to the size of the stack. In
+the \ROTW, the result is read in the ``\ROTW and Sea'' column. Note that a
+result of 5 or less has no effect.
 
 \GTtable{discoveriesattritiononly}
 
@@ -713,7 +714,7 @@ The Conquistador table may be used only:
 \bparag in \continent{America} and \continent{Africa}, by any \LeaderC and
 \LeaderE (half sum of values, round down) ;
 \bparag in \continent{Indonesia} by \leader{Coen}, \leader{van Diemen} and
-\leader{Maetsuycker} only ;
+\leader{Maetsuycker} only (Dutch leaders with red symbol);
 \bparag in \continent{India} by all \LeaderC restricted to \continent{Asia}
 (@). Namely, \leader{Clive}, \leader{Dupleix}, \leader{Bussy} and the minimum
 \LeaderC@ of \FRA and \ANG in period VII.
@@ -984,9 +985,9 @@ stack may continue its move after such an automatic landing (it did not loose
 an interception battle, only the naval stack did).
 
 As an exception, in the \ROTW, a land stack that do not contain any \ARMY
-counter may stay inside ships at the end of movement and even from one round
-to the next. If it starts the round in the naval stack, it is considered to
-have embarked in a controlled port for all purposes.
+counter may stay inside ships at the end of movement and even from one turn to
+the next. If it starts the round in the naval stack, it is considered to have
+embarked in a controlled port for all purposes.
 
 If the naval stack suffers attrition or losses during exploration, then the
 land stack suffers the exact same percentage of loses (one cannot choose which
@@ -1021,7 +1022,7 @@ one round to another. It does suffer attritions and exploration loses in the
 same proportion than the carrying stack. During battle (especially during the
 retreat), gold can be specifically targeted by the enemy. The \terme{Flota del
   Oro} and \terme{Flota del Per\'u} convoys may also be used to carry gold (it
-is tere only purpose). On the other hand, the others convoys are already
+is their only purpose). On the other hand, the others convoys are already
 created full of gold and cannot be used to carry more.
 
 % Autre limite, un pion naval ne peut en général transporter qu'un seul pion
