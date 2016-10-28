@@ -296,8 +296,8 @@ supply any naval stack. \Presidios and \USURE do not blockade ports, only
 enemy naval stacks may do so.
 
 A naval \LoS goes from the \SoS to the stack. Its length is the number of sea
-zones \emph{crossed} (both entered and exited). Thus, a naval stack adjacent
-to a port has a \LoS of length 0.
+zones \emph{entered}. Thus, a naval stack adjacent to a port has a \LoS of
+length 1.
 
 \subsection{Supply Attrition}
 Attrition (in Europe) is obtained by rolling one die, modified as follows, and
@@ -1113,9 +1113,9 @@ for the remainder.
 
 If all the provinces of the movement (including start and end) are European
 (including \COL of level 6), use the Attrition in Europe procedure. If at
-least one is a \ROTW province, use the Attrition in the \ROTW province. Note
+least one is a \ROTW province, use the Attrition in the \ROTW procedure. Note
 that only the land provinces are considered for this. Sea zones crossed during
-a naval transport play no role in deciding whether to use attrition in EUrope
+a naval transport play no role in deciding whether to use attrition in Europe
 or in the \ROTW.
 
 \subsection{Sea}
@@ -1134,10 +1134,11 @@ large enough port) by 2; lastly take the greatest of these modified values.
   4.
 \end{exemple}
 
-When computing both distance moved and distance to port, remember that only
-the number of zones (either ports or sea zones) \emph{entered} counts. Thus a
-naval stack adjacent to its port has a \LoS length of 0 and a naval stack that
-simply moves from a port to the adjacent sea zone has a move length of 1.
+When computing both distance moved and distance to port (\LoS length),
+remember that only the number of zones (either ports or sea zones)
+\emph{entered} counts. Thus a naval stack adjacent to its port has a \LoS
+length of 1 and a naval stack that simply moves from a port to the adjacent
+sea zone has a move length of 1.
 
 List of naval attrition modifiers:
 \begin{modlist}
@@ -1160,13 +1161,13 @@ List of naval attrition modifiers:
   counters [BLP]
 \item[+4] per 2 zones entered (round down), if the stack contains 3 \FLEET
   counters [BLP]
-\item[-1] if the stack contains several \FLEET counters and moves from an
-  arsenal to another arsenal
-\item[+3] if the stack starts its movement 1 sea zone away from its port
+\item[-1] if the stack contains several \FLEET counters and moves from a
+  friendly arsenal to another friendly arsenal
+\item[+3] if the stack starts its movement 2 sea zones away from its port
   (\emph{ie} not adjacent to port)
-\item[+6] if the stack starts its movement 2, 3 or 4 sea zones away from its
+\item[+6] if the stack starts its movement 3, 4 or 5 sea zones away from its
   port
-\item[+9] if the stack starts its movement 5 or more sea zones away from its
+\item[+9] if the stack starts its movement 6 or more sea zones away from its
   port
 \item[+1/+2] per unfriendly \corsaire\Facemoins/\Faceplus in each sea zone
   exited or entered during the move (\emph{i.e.} count all the \corsaire along
@@ -1243,12 +1244,12 @@ Interceptions are resolved by a modified die roll. These rolls are similar on
 land and at sea but with different modifiers. \Man plays a huge role in these.
 
 \subsection{Land}
-Non-phasing stacks of countries who made no campaign at all during their
-previous impulse (except during the first round if they had no impulse yet)
-may not intercept at all. Non-phasing stacks commanded by countries who paid
-only a passive campaign during their previous impulse (including, during the
-first round of each turn, stacks that had no impulse yet) can only intercept
-in a friendly province (no enemy presence, even besieged).
+Non-phasing stacks commanded by countries who made no campaign at all during
+their previous impulse (except during the first round if they had no impulse
+yet) may not intercept at all. Non-phasing stacks commanded by countries who
+paid only a passive campaign during their previous impulse (including, during
+the first round of each turn, stacks that had no impulse yet) can only
+intercept in a friendly province (no enemy presence, even besieged).
 
 A non-phasing stack which is in the same province as a non-besieged,
 non-moving phasing stack is engaged into battle and cannot intercept. Thus,
