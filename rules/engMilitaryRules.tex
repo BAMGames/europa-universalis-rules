@@ -1282,9 +1282,9 @@ more than 8\LD+2 \Pashas, exceeding troops do not fight (but stays in
 place). After the battle, if there is still too many troops in the province
 (more than the stacking limit), any intercepting or counter-intercepting troop
 may choose (controller's choice) to retreat in the province where it was
-before intercepting. This retreat does not trigger attrition and does not
-counted toward any campaign cost. Any exceeding troops after that are
-destroyed. Such an overstacking typically occurs when many unlikely
+before intercepting. This retreat does not trigger attrition or interception
+and does not counted toward any campaign cost. Any exceeding troops after that
+are destroyed. Such an overstacking typically occurs when many unlikely
 interceptions are declared and they all succeed\ldots
 
 If a stack moves into a province where there are already forces (whether
@@ -1302,7 +1302,7 @@ cumulative):
   (intercepting stack-intercepted stack); in case of counter interception,
   consider that all the interceptors are merged in a single stack before
   finding the commanding leader.
-\item[+1] If the intercepting stack has a technology which is at least 6
+\item[+1] If the intercepting stack has a land technology which is at least 6
   levels above the technology of the intercepted stack.
 \item[+1] If the target province contains a friendly force (other than the
   intercepting one) or city (even besieged).
@@ -1378,7 +1378,7 @@ modified as follows. Cumulative modifiers:
 \begin{modlist}
 \item[\textplusminus?] \Man differential between the commanding leaders
   (intercepting stack-intercepted stack).
-\item[+1] If the intercepting stack has a technology which is at least 6
+\item[+1] If the intercepting stack has a naval technology which is at least 6
   levels above the technology of the intercepted stack.
 \item[-2] If there is \terme{Bad weather}.
 \item[-1] If the interceptor is blockading.
@@ -1399,11 +1399,11 @@ Note that the \bonus{+2} in the non-cumulative list is the very reason why
 actions must be declared upon entering zone (and before
 interceptions). Landing close to an intercepting stack can provide huge bonus
 to interception (it is assumed that the battle actually occurs while the
-moving stack is closing the cost and beginning the preparation for landing,
+moving stack is closing the coast and beginning the preparations for landing,
 hence it is much easier to find).
 
-If the modified roll is 8 or more, or if the unmodified roll is 10, the
-interception succeeds.
+If the unmodified die is 10, or if the modified roll is 8 or more, then the
+interception is successful.
 
 \begin{exemple}[Naval interception modifiers]
   A naval stack at port in \provinceCornwall may intercept in either
@@ -1416,9 +1416,9 @@ interception succeeds.
 
   If an enemy stack declares a landing on \provinceCornwall, where the stack
   is located, interception becomes much easier since the enemy stack is
-  basically staying very close to the actual costs of the province and cannot
+  basically staying very close to the actual coasts of the province and cannot
   really try to avoid contact while still attempting to disembark troops\ldots
-  Not only the \bonus{-3} disappears, but it is replaced by a \bonus{+2}.
+  Not only the \bonus{-3} disappears, but it is replaced by a \bonus{+2}!
 
   \smallskip
 
@@ -1433,10 +1433,11 @@ interception succeeds.
 
   If an enemy stack attempts a landing on \provinceCornwall (or another) from
   \seazoneCeltique, this \bonus{+1} is replaced by \bonus{+2}, not only the
-  stacks are closed but the enemy is landing. However, if the enemy attempts a
-  landing on \provinceCornwall from \seazoneManche the \bonus{+1} is lost (not
-  the same sea zone) for good (it is assumed that the stack more or less
-  patrols and the enemy has more possibilities to snick in unnoticed).
+  stacks are close but the enemy is landing and thus can hardly
+  evade. However, if the enemy attempts a landing on \provinceCornwall from
+  \seazoneManche the \bonus{+1} is lost (not the same sea zone) for good (it
+  is assumed that the stack more or less patrols all of \seazoneCeltique and
+  the enemy has more possibilities to snick in unnoticed from far away).
 
   \smallskip
 
@@ -1448,7 +1449,7 @@ interception succeeds.
   \seazoneManche (\emph{e.g.} \provinceWessex, \provinceNormandie,
   \provincePicardie or \provinceKent from a naval stack located in
   \seazoneManche), then the stack in \villePortsmouth gets the \bonus{+2}
-  bonus for interception. The arsenal is designed to allow any fleet in it
+  bonus for interception. The arsenal is designed to allow any fleet in it to
   extend its control into the neighbouring waters.
 
   \smallskip
@@ -1463,7 +1464,7 @@ port). \StraitFort can intercept stacks moving through it. \Presidios and
 \USURE can intercept stack entering or exiting the port. The interception is
 decided by the controller of the \Presidio, \StraitFort or \USURE.
 
-Although it it an interception, it is resolved differently than usual ones and
+Although it is an interception, it is resolved differently than usual ones and
 does not result in battle. It may, however, stop the moving stack and cause
 some automatic loses on it.
 
@@ -1471,9 +1472,9 @@ The interception is resolved by rolling 1d10 modified by
 \begin{modlist}
 \item[+?] level of the \Presidio;
 \item[+2] \StraitFort on the European map;
-\item[+1] per \USURE\faceplus;
 \item[+?] half the level (round down) of the fortress controlling the
   \StraitFort on the \ROTW map;
+\item[+1] per \USURE\faceplus;
 \item[+1] if the moving stack contains at least one \FLEET counter.
 \end{modlist}
 
@@ -1491,10 +1492,10 @@ large enough to hold it, ignoring ports that are behind a \Presidio or
 \StraitFort or have \USURE. This is a move, hence a cause of attrition, and
 may be intercepted. In the rare case where there are no ports reachable
 without going through a \Presidio, \StraitFort or \USURE, the naval stack may
-cross them and the attrition rolls suffers a malus of \bonus{+2} per
-\Presidio, \StraitFort or \USURE crossed.
+cross them (without triggering interception from them) and the attrition rolls
+suffers a malus of \bonus{+2} per \Presidio, \StraitFort or \USURE crossed.
 
-Note that even if they may stop naval stakcs going through them, neither
+Note that even if they may stop naval stacks going through them, neither
 \StraitFort nor \Presidios nor \USURE are actually blockading the port for any
 purpose (especially when undermining the fortress or when finding \SoS for
 naval stacks).
@@ -1502,7 +1503,7 @@ naval stacks).
 \subsection{Convoys}
 \label{chMilitary:Convoys}
 \begin{designnote}
-  Do not use if using the experimental system for Revolts, \corsaire and
+  Do not use if using the experimental system for \REVOLT, \corsaire and
   Natives.
 \end{designnote}
 
@@ -1529,7 +1530,7 @@ one commanded by the highest ranking \LeaderA does (at random in case of
 ties). If several \corsaire of an alliance may attack but their controller do
 not reach an agreement on who should do the attack, none does. \corsaire of
 Neutral minor countries are considered as controlled by the first country in
-their list of controller.
+their list of controllers.
 
 \aparag[Attack Procedure]
 \bparag Roll for naval interception by the \corsaire. \corsaire of
@@ -1618,7 +1619,7 @@ all their values (especially \Man) are halved (round down).
 The result of the exploration is read \textbf{both} in the ``Discovery''
 column \textbf{and} the ``\ROTW or Sea'' column. The later gives a percentage
 of loses that is applied to the stack as if it suffered it from
-attrition.
+attrition (nobaly, embarked troops also die).
 
 The ``Discovery'' column contains either a 'S', a 'F' or a '\undemi'; plus
 sometimes a\myxxa or\myxxc.
@@ -1634,19 +1635,20 @@ sometimes a\myxxa or\myxxc.
   on the right. Treat results of '1--3' as F\xxa; '4--5' as F\xxc; '6--8'
   as S\xxa; and '9--10' as S\xxc.
 \item If there is a '\xxa', or if there is a '\xxc' and the exploration is
-  done by a leader alone; then the leader (whose \Man was used (either the
-  commanding one or a \LeaderMis in the stack)) must test his death. Roll
-  1d10, if this is strictly more than the \Man (halved for \LeaderE on land as
-  usual), the leader is dead (remove him from the game); otherwise, he
-  survives. Note that \LeaderA or \LeaderG having a \Man of 0 for exploration,
-  they automatically fail this test (and die) if they explore\ldots
+  done by leaders alone (no troops); then the leader (whose \Man was used
+  (either the commanding one or a \LeaderMis in the stack)) must test his
+  death. Roll 1d10, if this is strictly more than the \Man (halved for
+  \LeaderE on land as usual), the leader is dead (remove him from the game);
+  otherwise, he survives. Note that \LeaderA or \LeaderG having a \Man of 0
+  for exploration, they automatically fail this test (and die) if they
+  explore\ldots
 \end{itemize}
 
 If a leader die during exploration and the country falls below its limit of
 \LeaderC or \LeaderE, the new one may be put in the same place as the old one
 only if some counters are still present (a replacement \LeaderA, \LeaderG or
 \LeaderGov must be placed following usual rules). Otherwise, it is assumed
-that the whole expedition has been whipped out and the discoveries it may had
+that the whole expedition has been wiped out and the discoveries it may had
 are lost\ldots
 
 \smallskip
@@ -1671,7 +1673,9 @@ zone whose discovery has been brought back \textbf{and} both stacks have
 knowledge of this zone. In that case, if both stacks are of the same country
 (not alliance), they share their discoveries: they may both use the zones
 discovered by the other and any of them is able to bring all these back
-home. Discoveries are never shared that way with another country.
+home. Discoveries are never shared that way with another country (even if the
+players want it, countries of that time were \textbf{very} secretive
+concerning their charts).
 
 If a stack carrying discoveries is entirely destroyed, its discoveries are
 lost (unless they've already been shared with another stack). Note, however,
@@ -1874,7 +1878,7 @@ First Fire (they have 0 Morale).
   handled differently in game for galleys and warships. Hence, mixing them in
   battle would complicated things a lot\ldots Moreover, most of the mixed
   fleet were using mainly one kind of ships (the other kind being in much
-  smaller quantities and often mostly used as support ship). This is also the
+  smaller quantities and often mostly used as support ships). This is also the
   reason why in game \NGD are only allowed in the \region{Mediterranee} and
   the \region{Baltique}: even if Galleys were also used elsewhere, it was
   mostly as second line ships and North Sea fleets (for example) were composed
@@ -2066,7 +2070,8 @@ switch from an \NGD navy to a \NWD one\ldots
 \aparag[Structural Cavalry modifiers.] During any land battle, any stack gain
 a 0/+1 DRM if (i) it contains an \ARMY counter of the indicated country or
 army class; and (ii) this is the indicated periods; and (iii) the battle
-occurs in the indicated terrain.
+occurs in the indicated terrain. Whatever the conditions, this bonus may only
+be claimed once by each side of the battle.
 \begin{modlist}
 \item[\CAIIM] during periods \period{I} to \period{IV}, in a Plain or Sparse
   Forest province.
@@ -2078,8 +2083,6 @@ occurs in the indicated terrain.
 \item[\TUR] before reform M-2, in a Plain or Desert province (\terme{Sipahi}
   cavalry).
 \end{modlist}
-Whatever the conditions, this bonus may only be claimed once by each side of
-the battle.
 
 Note that since Northern Forest provinces are necessarily Dense Forest and
 \SUE is of class \CAIIIM, the specific \SUE bonus is actually only effective
@@ -2296,11 +2299,11 @@ their side may contain a large number of \LD but still fight normally.
   the province. Hence they will use 40/8=5 dice in battle. Only one of them
   will cause \textetoile but they will all cause losses\ldots
 
-  If, after a first battle, there are only 35\LD of Natives in the province,
-  then they still use 5 dice in battle but now the last one only represent
-  3\LD and not 8 (35 = 4 \textmultiply 8 + 3). Losses caused by this die are
-  tallied separately as they will need to be reduced as any losses caused by
-  'only' 3\LD.
+  If, after a first battle, there are only 35\LD of Natives left in the
+  province, then they still use 5 dice in battle but now the last one only
+  represent 3\LD and not 8 (35 = 4 \textmultiply 8 + 3). Losses caused by this
+  die are tallied separately as they will need to be reduced as any losses
+  caused by 'only' 3\LD.
 \end{exemple}
 
 \begin{exemple}[2 days of battle]
@@ -2400,7 +2403,7 @@ their side may contain a large number of \LD but still fight normally.
     \end{tabular}
   \end{minipage}
 
-  Since the beginning of the battle, both side suffered from 2 Morale losses,
+  Since the beginning of the battle, both sides suffered from 2 Morale losses,
   less than their initial Morale. Nobody routs, hence the battle goes on.
 
   \begin{minipage}{0.7\linewidth}
@@ -2439,7 +2442,7 @@ their side may contain a large number of \LD but still fight normally.
 
   \smallskip
 
-  If both side had \TARQ technology, then the Fire losses are halved (round
+  If both sides had \TARQ technology, then the Fire losses are halved (round
   down) and the final result would be 2\textetoile\textetoile\textetoile for
   \FRA and 2\textetoile\textetoile for \HIS. A much less deadly result.
 \end{exemple}
@@ -2541,8 +2544,8 @@ Sea modifiers (used in sea battles only):
 The result of the Pursuit is read by cross-referencing the modified roll with
 column \textbf{E} of the CRT. Exception: use column \textbf{C} when pursuing
 \NTD or \NGD. \textetoile and losses obtained are tallied together with the
-ones obtained during the battle. Large \pays{natives} stacks roll one die per
-8\LD as for any roll of the battle.
+ones obtained during the battle. Large \ROTW stacks roll one die per 8\LD as
+for any roll of the battle.
 
 Additionally, at sea, for each \textetoile obtained during the pursuit, the
 pursuer may choose to capture either 1\NWD, 2\NGD, or 2\NTD. These captures
@@ -2722,21 +2725,24 @@ in period \period{I}, \POL has +1 vs \FRA and \FRA has +1 vs \HIS but \POL
 still only has +1 against \HIS.
 
 At sea, a stack with 7 to 12\ND uses a \terme{size differential} of +1, a
-stack of 13 to 18\ND uses +2 and a stack of 19\ND or more uses +3.
+stack of 13 to 18\ND uses +2 and a stack of 19\ND or more uses +3 (and thus,
+both sides may have a positive \terme{size differential} during huge battles).
 
 \GTtable{sizeonly}
 
 \aparag Finally, once the \terme{size differential} is found, adapt losses
 inflicted according to~\ref{table:<L2/S2> Loss Modification by Size}:
 \bparag On the line ``-1/0'' (in bold), find the number of losses inflicted
-and use that column. If this is not an integer (\emph{e.g.} 2\td), find
+% mbox to prevent lone parenthesis at start of line
+and use that column. If this is not an integer (\emph{e.g.} \mbox{2\td)}, find
 both the number of full losses and the number of thirds. If more than 6 losses
-were inflicted, use the last column (and do not use the \texttu/\texttd
+were inflicted, use the last column (and do not use the \texttu or \texttd
 columns).
 \bparag Cross-reference the column (or columns) obtained above with the line
-corresponding to the \terme{size differential}. The new number (or sum of
-numbers) is the actual losses inflicted. If more than 6 losses were inflicted,
-you'll find instead a number to add or subtract to the losses.
+corresponding to the \terme{size differential} (as indicated by the first
+column). The new number (or sum of numbers) is the actual losses inflicted. If
+more than 6 losses were inflicted, you'll find instead a number to add or
+subtract to the losses.
 
 Note that this last correction is \textbf{not} capped as the previous one. It
 basically represents the fact that, what is represented by a \TUR \LD
@@ -2800,6 +2806,9 @@ correspond to 1 of \emph{its} \LD and is a much larger \HIS casualty.
   two lines to find the result. After half a dozen battles, this will become
   an extremely quick procedure, even if its description in the rules seems
   very complicated.
+
+  \terme{Size differential} of +2 is quite rare (it requires an \terme{Army
+    size} of 7) and +3 can only happen at sea.
 \end{designnote}
 
 \subsubsection{Losses at sea}
@@ -2808,7 +2817,7 @@ At sea, losses must be split in three categories:
 \item \terme{Refitted} ships come back into play immediately. They are not
   actually lost.
 \item \terme{Damaged} ships are no more battle effective. They may however be
-  refitted later this turn (during the End of round segment) or during a later
+  refitted later this turn (during an End of round segment) or during a later
   turn (during the Administrative phase). Tally \terme{Damaged} ships on the
   Colonial Record Sheet and remove them from play. They are grouped per region
   where the battle occurred (owner's choice in case of a battle in
@@ -2839,7 +2848,8 @@ the first group, one in the second, and one in the third. Then, looping around
 to the first group, remaining losses are affected in the same way. Any thirds
 are always affected as if they were the last loss. When \NWD suffer thirds of
 losses, use \NDE (1\NDE=\texttu\NWD). When \NGD or \NTD suffer thirds of
-losses, round them up to the nearest largest integer.
+losses, round them up to the nearest largest integer (these are counted as
+part of the losses of the battle for all purposes).
 
 \begin{itemize}
 \item For the winner of the battle (if any), the first loss is
@@ -2899,7 +2909,8 @@ Additionally, if a fleet containing \VGD and using \NGD/\VGD as \terme{first
   \terme{Refitted}. Because the losses exceed the actual size of the stack,
   the \terme{Destroyed} are applied first (2\ND remain) and next the
   \terme{Damaged}. This results effectively in 2 \terme{Damaged} and 3
-  \terme{Destroyed}.
+  \terme{Destroyed}. The losses suffered are still considered 8 for all
+  other purposes.
 
   \smallskip
 
@@ -2928,14 +2939,14 @@ counted as losses suffered during the battle (notably, to determine if this is
 a \terme{Major Battle}).
 
 A winning stack may also decide to retreat (typically, because it is now too
-small to besiege a fortress), but this is usually mandatory; it is only
-possible if the province of the battle contains no unbesieged enemy forces
-that were not part of the battle (\emph{e.g.} not after intercepting a phasing
-stack that was trying to merge with immobile troops, you'll have to fight the
-rest later). If it retreats, it has too follow the whole procedure here
-(including the roll and losses); this does not change the winner of the battle
-(the stack is still winning the battle and may still claim a \terme{Major
-  Victory}).
+small to besiege a fortress, or to go back to port), but this is usually not
+mandatory; it is only possible if the province of the battle contains no
+unbesieged enemy forces that were not part of the battle (\emph{e.g.} not
+after intercepting a phasing stack that was trying to merge with immobile
+troops, you'll have to fight the rest later). If it retreats, it has to follow
+the whole procedure here (including the roll and losses); this does not change
+the winner of the battle (the stack is still winning the battle and may still
+claim a \terme{Major Victory}).
 
 In some cases, the winner is not allowed to stay in the province of the Battle
 and hence must choose to either retreat or continue its movement (in case of
@@ -2944,11 +2955,12 @@ interception). Typically, after an interception in a neutral province of the
 possible to stay in a province containing a neutral fortress).
 
 \subsubsection{At sea}
-Retreat is done toward the closest (in number of zones), non-blockaded,
-friendly port large enough to hold the remaining fleet (before applying the
-retreat losses), ignoring ports that are behind a \Presidio or \StraitFort or
-have \USURE. In the rare case where there are no ports reachable without going
-through a \Presidio, \StraitFort or \USURE, the naval stack may cross them.
+Retreat is done toward the closest (in number of zones, commander's choice if
+any), non-blockaded, friendly port large enough to hold the remaining fleet
+(before applying the retreat losses), ignoring ports that are behind a
+\Presidio or \StraitFort or have \USURE. In the rare case where there are no
+ports reachable without going through a \Presidio, \StraitFort or \USURE, the
+naval stack may cross them (and they may not attempt to intercept it).
 
 Retreat is a move and thus any retreating fleet must roll for attrition as for
 any naval move and the attrition rolls suffers a malus of \bonus{+2} per
@@ -2957,12 +2969,18 @@ was rolled for the battle, he is still available during the retreat (providing
 its \Man for the attrition roll). However, if the fleet was routed during the
 battle, then the \Man of its \LeaderA is considered to be 0 for the retreat.
 
+If the retreat is done by a phasing stack that did not roll for attrition yet
+(\emph{i.e.} loosing an interception before declaring an action), the distance
+of the move is added to the distance of the retreat to resolve this
+attrition.
+
 Any \ND sunk during the retreat counts as 1 loss for the Battle. Any \NDE
 counts as \texttu.
 
 If it is large enough, the winning fleet (if any) may decide to follow the
-retreating fleet and blockade the port where it goes (only). This is also a
-move, hence a following fleet must roll for attrition as usual (using the
+retreating fleet and blockade the port where it goes (only); this does not
+count as an action (it's a free blockade). This is also a move, hence a
+following fleet must roll for attrition as usual (using the
 \terme{Replacement} \LeaderA if applicable). Any \ND or \NDE sunk during this
 follow-up are counted as battle losses. A winning stack may decide to split
 and only part of it follows (typically, after an interception to allow the
@@ -2970,11 +2988,12 @@ rest to carry on with its move and action). The part that follows must be
 large enough to blockade the port and usual hierarchy rules are enforced when
 splitting the stack. It is not possible to follow-up with troops on board (it
 is possible to split if the remaining stack can carry the troops, it is not
-possible to voluntary kill troops to allow the follow-up).
+possible to voluntary kill troops to allow the follow-up). If, after the
+follow-up, the stack is no more big enough to blockade, it must stay at sea.
 
-The retreat may not be intercepted and is not subject to \Presidios or
-\StraitFort. A possible follow-up may not be intercepted but can be subject of
-\StraitFort.
+The retreat may not be intercepted and is not subject to \Presidios,
+\StraitFort or \USURE. A possible follow-up may not be intercepted but can be
+subject of \StraitFort (and must stay at sea if successfully blocked).
 
 \subsubsection{On land}
 \GTtable{retreatonly}
@@ -3017,18 +3036,20 @@ followed by the non-phasing side (if needed). Exception: if the winning side
 decides to retreat, it always retreat second.
 
 It is only possible to retreat in the province itself if retreating second
-(especially, it is not possible if the other side won and does not retreat).
+(especially, it is not possible if the other side won).
 
-If the fortress of the province was besieged prior to battle, and only one
-side has to retreat, then the troops that were in the fortress must retreat
-back in it and any other troops must retreat in an adjacent province. In case
-of tie, any friendly troop can retreat in or out of the fortress.
+If the fortress of the province was besieged prior to battle, and only the
+besieged side has to retreat, then the troops that were in the fortress must
+retreat back in it and any other troops must retreat in an adjacent
+province. In case of tie, any friendly troop can retreat in or out of the
+fortress.
 
 The only adjacent province in which a phasing stack may retreat is the one
 were it come from. If this was a landing, the phasing stack must retreat back
 in the ships and the carrying fleet must move back to a friendly port and roll
 for attrition accordingly; it may not be intercepted during this move and it
-is not subject to \Presidios and \StraitFort.
+is not subject to \Presidios, \StraitFort and \USURE; but if possible it must
+go back to port without crossing any of these.
 
 The only adjacent provinces in whicĥ a non-phasing stack may retreat after an
 interception battle are the ones from which a least one intercepting \LDE came
@@ -3065,12 +3086,11 @@ Retreat is not a move. It may not be intercepted and never causes attrition.
 
   On the other hand, if this is resolved as an interception battle (between
   phasing and interceptor only) then the phasing stack was here first and the
-  interceptor must win in order to stay in place. If the phasing side stays
-  after such an interception (either winning, or tied and decide to stay),
-  then this is in a province with unbesieged enemy presence, hence the phasing
-  stack must stop movement and will resolve a regular battle against the
-  troops that are still here (\emph{i.e.} the ones that were here before the
-  interception).
+  interceptor must win in order to stay in place. If the phasing side does not
+  win but nonetheless decides to stay after such an interception, then this is
+  in a province with unbesieged enemy presence, hence the phasing stack must
+  stop movement and will resolve a regular battle against the troops that are
+  still here (\emph{i.e.} the ones that were here before the interception).
 
   \smallskip
 
@@ -3376,7 +3396,7 @@ may not intercept or counter-intercept again during this impulse.
   unpredictable). On the other hand, after \TMUS, with 4 Morale, and,
   typically, if rolling at -1 because of Forest, then routing the enemy
   require 4 rolls of 8 or higher. This is not often achieved by mere luck and
-  usually require a bit more planning and preparation. Typically, in the
+  usually requires a bit more planning and preparation. Typically, in the
   \SUE-\pays{royalistes} example, even if \SUE got lucky by rolling 10,
   fighting at \bonus{+3} gives a huge advantage: you only need to roll 4 or
   more to cause Morale loss.
@@ -3399,7 +3419,7 @@ may not intercept or counter-intercept again during this impulse.
   depending on the situation. Typically, if you have a global advantage on the
   strategical level, you may want to seek a decisive battle, destroying as
   many enemy troops as possible to prevent any counter-attack or similar funny
-  move and to start besieging in peace. In that case, you want the battle to
+  move and to start besieging safely. In that case, you want the battle to
   happen with as many positive DRM as possible, even if it costs you some more
   troops. Try to fight in Plains with large stacks.
 
@@ -3409,7 +3429,7 @@ may not intercept or counter-intercept again during this impulse.
   supply or similar actions, while zero troops are obviously useless. In that
   case, you want to get as many negative modifiers as possible. Try to fight
   in Mountain or Forest, to intercept enemy as soon as they cross rivers,
-  \ldots These often lead to inconclusive battles (draw) but that is often
+  \ldots These often lead to inconclusive battles (tie) but that is often
   enough to delay your opponent for 1 or 2 rounds, which is usually all that
   you need.
 
