@@ -3330,8 +3330,8 @@ only friendly troops, the siege is now lifted. Remove any \USURE counter there
 might be here, move besieged troops out of the fortress and merge them with
 the stack here.
 
-Similarly, if a blockading naval stack is now too small to blockade, the
-blockade is immediately lifted and the stack stays in the sea.
+If a blockading naval stack is now too small to blockade, the blockade is
+immediately lifted and the stack stays in the sea.
 
 If one of the stack involved in the battle is now overstacked (normally due to
 retreat in an already crowded province or lifting a siege without taking any
@@ -3442,11 +3442,12 @@ may not intercept or counter-intercept again during this impulse.
   patriots. Due to the -2/-3 for disembarking and the -1/-1 of the Forest, the
   Royal troops couldn't do a lot of damage during the Battle. At the end of
   the First Day, \leader{Washington} decided to retreat which, with 6 \Man and
-  4 Morale was automatic\ldots The British won the battle and could move on
-  but the American raid costed them maybe only \texttu or \texttd, enough to
-  flip one \ARMY counter and remove artillery bonus for the next battle. A
-  perfectly well done raid disrupting the \ANG move and forcing the player to
-  think a bit more about what to do.
+  4 Morale was automatic\ldots The British won the battle, even killing some
+  minutemen during the retreat, and could move on but the American raid costed
+  them maybe only \texttu or \texttd losses, enough to flip one \ARMY counter
+  and remove artillery bonus for the next battle (and siege). A perfectly well
+  done raid disrupting the \ANG move and forcing the player to think a bit
+  more about what to do.
 \end{playtip}
 
 \section{Sieges}
@@ -3471,14 +3472,14 @@ fight. It must do one of the two but the controller of the stack chooses
 which; if it has no \LoS or is too small to undermine, it may not fight the
 \REVOLT/\REBELLION either (\emph{i.e.} it must either assault or redeploy).
 
-\begin{designnote}
+\begin{playtip}
   Order of resolution between alliances is rarely relevant. Sieges,
   \REVOLT/\REBELLION and \corsaire may usually be resolved in any order. Use
   the precise order here only if there are disagreements. Especially, when
   there are separate wars, it is normally possible to resolve sieges
   simultaneously in each war (notably if they are waged by different players)
   rather than waiting pointlessly.
-\end{designnote}
+\end{playtip}
 
 \subsection{Siege Attrition}
 \terme{Siege Attrition} is resolved as any attrition by cross-referencing a
@@ -3559,11 +3560,12 @@ the \terme{Redeployment} procedure (see~\ref{chRedep:Redeployment}). These
 \terme{Redeployments} are not simultaneous (they are resolved immediately when
 the decision is taken); they may happen by sea at the usual conditions for
 \terme{Redeployment}; they are cause of attrition as normal
-\terme{Redeployments}; they are never voluntarily (even if the stack is large
-enough to undermine). A stack may choose to redeploy even if it may
-undermine. A too small stack (or a stack with no \LoS) that redeploys rolls
-twice for \terme{Attrition} (one \terme{Siege Attrition} because it is too
-small and one \terme{Movement Attrition} because of the redeployment).
+\terme{Redeployments}; they are never considered as voluntarily
+\terme{Redeployments} (even if the stack fas a LoS and is large enough to
+undermine). A stack may choose to redeploy even if it may undermine. A too
+small stack (or a stack with no \LoS) that redeploys rolls twice for
+\terme{Attrition} (one \terme{Siege Attrition} because it is too small and one
+\terme{Movement Attrition} because of the redeployment).
 
 % \begin{designnote}
 %   A very small stack managing to assault a very large fortress represents a
@@ -3680,17 +3682,18 @@ possible effects are:
 \end{modlist}
 
 When a fortress falls (\textbf{WH} or \textbf{R}), first put a control marker
-of the besieged (of the country of the commander) on the fortress. This
+of the besieger (of the country of the commander) on the fortress. This
 fortress is now controlled by that country. Next, the new controller must
 choose to either man the fortress again or not. If the fortress is manned
-again, the besieger must loose 1\LD (from the besieging stack) and the
-fortress loses 1 level; otherwise, the fortress loses 2 levels. In the \ROTW,
-non-cities fortresses may be entirely destroyed that way. In Europe (including
-European provinces in the \ROTW and \COL of level 6) and for \ROTW cities, the
-minimal level a fortress may have after this is 1. Fortress may ``fall down''
-to level 1 even if the minimal level on the map is 2, in which case a white
-level 1 fortress is used to denote this (and the level will automatically rise
-to 2 after one turn of peace).
+again, the besieger must loose 1\LD (from the besieging stack, but it does not
+need to be from the controller's country in case of a multi-national stack)
+and the fortress loses 1 level; otherwise, the fortress loses 2 levels. In the
+\ROTW, non-cities fortresses may be entirely destroyed that way (remove the
+counter). In Europe (including European provinces in the \ROTW and \COL of
+level 6) and for \ROTW cities, the minimal level a fortress may have after
+this is 1. Fortress may ``fall down'' to level 1 even if the minimal level on
+the map is 2, in which case a white level 1 fortress is used to denote this
+(and the level will automatically rise to 2 after one turn of peace).
 
 \begin{playtip}
   Free tip: when taking a fortress of level 1 or 2, whether you re-man it or
@@ -3788,10 +3791,10 @@ next siege.
 \end{exemple}
 
 \begin{playtip}
-  Note that even with lucky rolls (10, 5, 7, 8), taking a fortress may take a
-  long time (4 rounds) if it is correctly fortified (at level 2, the fortress
-  could have fallen immediately after the \terme{Breach}). Plan this during
-  your wars.
+  Note that in the example, even with rather lucky rolls (10, 5, 7, 8), taking
+  a fortress may take a long time (4 rounds) if it is correctly fortified (at
+  level 2, the fortress could have fallen immediately after the
+  \terme{Breach}). Plan this during your wars.
 
   Note also that you need at least 10 to take a fortress (\terme{Breach} or
   better). Stockpiling \USURE is only useful as long as it allows you to reach
@@ -3830,11 +3833,11 @@ of~\ref{table:Assault Results}. The columns used by the besieged depends
 whether there has been a \terme{Breach} or not. Note that the Morale losses
 column (\textetoile) is always the same. If this assault \emph{immediately}
 follows a \textbf{B} result during an undermining, then the besieged uses the
-``\emph{Breach}'' columns of the Table, otherwise, it use the left
-columns (even if a previous \terme{Breach} was obtained, hasty reparations
-have cancelled most of its effect). Note that the ``\emph{Breach}'' columns do
-always exactly 1 less loss than their counterpart, that is, assaulting after a
-\terme{Breach} is much less dangerous.
+``\emph{Breach}'' columns of the Table, otherwise, it use the left columns
+(even if a \terme{Breach} was obtained in a previous round, hasty reparations
+have cancelled most of its effect). Note that the ``\emph{Breach}'' columns
+always do exactly 1 less loss than their counterpart, that is, assaulting
+after a \terme{Breach} is much less dangerous.
 
 \begin{designnote}
   No, the ``only'' \textetoile\textetoile on line 11 is not an error. It's a
@@ -4120,8 +4123,9 @@ country already at -3 \STAB, at no additional cost.
 not possible to declare Exceptional Levies several times during the same
 turn.
 \bparag[Exception:] \SUE and \PRU may declare levies after any defeat in a land
-battle (not necessarily major). Moreover, they may declare levies after
-a \textbf{major} defeat without paying 1 \STAB.
+battle (not necessarily major).
+\bparag[Exception:] If \SUE or \PRU declare levies after a \textbf{major}
+defeat, they do not pay 1 \STAB.
 \bparag[Exception:] \POR may declare Exceptional Levies during \terme{Overseas
   Wars}, if it has a \terme{Vice Roy} alive. There are specific conditions for
 these levies, see~\ref{chSpecific:Portugal:Viceroys}.
@@ -4235,7 +4239,8 @@ they may be immediately (before stacking is enforced) merged into an existing
 \subsection{Building forts}
 A stack containing at least 1\LD may decide to build a fort in the \ROTW. The
 counter is placed on its ``under construction'' side. Building a fort costs
-nothing. At least 1 \LD must stay in the province for 3 rounds and the fort is
+nothing. At least 1 \LD must be in the province for 3 consecutive ``End of
+round'' Segments and the fort is
 built at the end of the third rounds (\emph{e.g.} when beginning construction,
 place the counter upside down on its construction side, at the end of next
 round place it in the correct direction on its construction side and at the
