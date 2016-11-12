@@ -52,7 +52,7 @@ corresponding to various size of land forces: \terme{Army} (\ARMY),
 \bparag The basic count unit is one \LD.
 
 \aparag[Detachments.] One \LD represent some infantry and cavalry. The precise
-number of them depends on the country and the period. \LD are abstract
+number of them depends on the country and the period. \LD are an abstract
 representation of small field forces and consists roughly in 1000 to 10000
 soldiers.
 
@@ -81,17 +81,19 @@ counter is to buy it during the Administrative phase (logistic segment).
 \ARMY\facemoins nor to break an \ARMY\faceplus into two \ARMY\facemoins.
 \bparag On the other hand, it is possible to reinforce an \ARMY\facemoins with
 two \LD (in one stack) and turn it into an \ARMY\faceplus. This can be done at
-any time in the game.
+any time in the game (notably before stacking limits are enforced).
 \bparag It is also possible to merge two \ARMY\facemoins into one
 \ARMY\faceplus.
 
 \aparag[Special armies.] The armies of \pays{saint-empire} and \pays{croises}
-act as containers. Each may contain up to 4\LD of some nationality and can be
-created at any point during the turn. The precise contents of these armies
+act as containers. Each may contain up to 4\LD of some nationalities and can
+be created at any point during the turn. The precise contents of these armies
 must be written done in order to give back the \LD to their owners when the
 army is broken.
 \bparag As an exception to normal rules, these \ARMY can be created during the
-military rounds.
+military rounds as soon as 2 or more \LD of correct nationalities are
+together. The creation of the \ARMY counters happen immediately (before
+stacking limits are enforced).
 
 \aparag[Detachments of Exploration.] One \LDE represents roughly one third of
 a \LD.
@@ -99,18 +101,17 @@ a \LD.
 the \ROTW map). As soon as one \LDE enters the European map, it is immediately
 destroyed.
 \bparag One \LD can be split in 3 \LDE at any time (especially to satisfy
-losses in the \ROTW). 3 \LDE stacked together must be turned into 1\LD after
-movement.
+losses in the \ROTW). 3 \LDE stacked together must be turned into 1\LD (that
+is, you may only split 1\LD to satisfy loss or just before actually separating
+the resulting \LDE).
 \bparag For maintenance and purchase, 1\LDE costs as much as half a \LD.
-\bparag \LDE are never counted in stacking and supply limits.
+\bparag \LDE are never counted in stacking limits.
 
 \aparag[Natives.] Each \ROTW \Area holds a certain number of natives per
 province. They are written on the \ROTW map in number of \LD or \LDE.
 \bparag Counters (from the \pays{natives} ``country'') are provided to
-remember losses of natives in each province. You may use
-\ARMY\faceplus/\facemoins to represent 4/2 \LD of natives but this is for
-convenience only: they are not considered as \ARMY for game purposes. These
-counters are in unlimited quantity.
+remember losses of natives in each province. Every set of 2/4 \LD corresponds
+to one \ARMY\facemoins/\faceplus. These counters are in unlimited quantity.
 
 
 \subsubsection{Military doctrine}
@@ -126,6 +127,8 @@ and the list of countries belonging to it on the right.
 \bparag Most minor countries are grouped according to their cultural groups.
 \bparag The army class of minor countries can also be found in their
 description in the appendices under the name ``Military doctrine''.
+\bparag When in doubt (typically when several cases in the Table could apply),
+always check the appendices.
 \bparag Note that when these values change (with a new period), each existing
 land counter is automatically updated to the new values.
 
@@ -237,7 +240,7 @@ written down. There is space for this on the colonial record sheet of each
 country.
 \bparag Note that when the capacity change (with a new period), existing
 \FLEET counters are not automatically ``topped up'' to their new
-capacity. They keep the same number of \ND and nez ones must be brought. It is
+capacity. They keep the same number of \ND and new ones must be brought. It is
 however possible that the content of a not full \FLEET\Faceplus suddenly fits
 into a new size \FLEET\Facemoins\ldots
 
@@ -256,10 +259,11 @@ of stacking limits).
 warships (one third of a \NWD).
 \bparag \NDE can exists both on the \ROTW and European maps.
 \bparag One \NWD (only) can be split in 3 \NDE at any time (especially to
-satisfy losses). 3 \NDE stacked together must be turned into 1\NWD after
-movement.
+satisfy losses). 3 \NDE stacked together must be turned into 1\NWD (that is,
+you may only split 1\LD to satisfy loss or just before actually separating the
+resulting \LDE).
 \bparag For maintenance and purchase, 1\NDE costs as much as half a \NWD.
-\bparag \NDE are never counted in stacking and supply limits.
+\bparag \NDE are never counted in stacking limits.
 
 \aparag[Pirates.] The last naval forces are pirates and privateers. They
 represent independent sailors that attack trade fleets. Privateers (\corsaire)
@@ -331,38 +335,6 @@ on them. These are \terme{arsenals}.
 \construction{Gibraltar}, \construction{Sebastopol} and
 \construction{Saint-Petersbourg}).
 
-\subsubsection{Fortifications as Supply sources}
-\aparag[Land Supply.]
-\bparag Forts may only supply detachments (\LD or \LDE).
-\bparag Other fortresses can supply any number of land troops, whatever the
-level of the fortress.
-\bparag \COL and \TP, although they only have a fort, are supply sources for
-any number of land troops (that is, the establishment has more supply capacity
-that its intrinsic fort).
-
-\aparag[Naval Supply.]
-\bparag Forts may only supply detachments (\ND or \NDE).
-\bparag Regular (non-arsenal) ports can supply any number of naval stacks
-containing at most one \FLEET counter (each), whatever the level of the
-fortress.
-\bparag Arsenal can supply any number of naval forces of any size.
-\bparag \COL and \TP, although they only have a fort, are supply sources as
-regular ports: each can supply any number of naval stacks containing at most
-one \FLEET counter (that is, the establishment has more supply capacity that
-its intrinsic fort).
-
-\begin{designnote}
-  Note that supply limits are cumulative. That is, a single fortress may
-  supply as many stacks (land or naval) as wanted, as long as it can supply
-  each of them individually. There is no ``using up'' of the supply capacity.
-
-  The ``extra supply capacity'' of \COL or \TP (with respect to their
-  fortification level) is reminded in the size of the counter: they use big
-  counters because they have a lot of food.
-\end{designnote}
-
-
-
 \subsection{Veteran and Conscripts}
 \label{chMilitary:Veteran Conscripts}
 
@@ -409,8 +381,8 @@ or \terme{Conscript}. Newly recruited units are \terme{Conscripts}.
 
 \aparag[Navy] Naval forces are \terme{Veterans} if they are maintained from a
 previous turn, or \terme{Conscripts} if there are newly recruited this turn.
-\bparag The difference only occurs for Naval technologies \terme{Vessel} and
-\terme{Three-decker}.% \terme{Veteran} naval forces have morale 4 instead of 3.
+\bparag The difference only occurs for Naval technologies \terme{Vessel},
+\terme{Three-decker}, and [BLP] for \TUR Galleys.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -556,6 +528,38 @@ Fear this!
 
 \section{Supply}
 Source of Supply, Line of Supply, Supply by naval stacks, ports, arsenals.
+
+\subsubsection{Fortifications as Supply sources}
+\aparag[Land Supply.]
+\bparag Forts may only supply detachments (\LD or \LDE).
+\bparag Other fortresses can supply any number of land troops, whatever the
+level of the fortress.
+\bparag \COL and \TP, although they only have a fort, are supply sources for
+any number of land troops (that is, the establishment has more supply capacity
+that its intrinsic fort).
+
+\aparag[Naval Supply.]
+\bparag Forts may only supply detachments (\ND or \NDE).
+\bparag Regular (non-arsenal) ports can supply any number of naval stacks
+containing at most one \FLEET counter (each), whatever the level of the
+fortress.
+\bparag Arsenal can supply any number of naval forces of any size.
+\bparag \COL and \TP, although they only have a fort, are supply sources as
+regular ports: each can supply any number of naval stacks containing at most
+one \FLEET counter (that is, the establishment has more supply capacity that
+its intrinsic fort).
+
+\begin{designnote}
+  Note that supply limits are cumulative. That is, a single fortress may
+  supply as many stacks (land or naval) as wanted, as long as it can supply
+  each of them individually. There is no ``using up'' of the supply capacity.
+
+  The ``extra supply capacity'' of \COL or \TP (with respect to their
+  fortification level) is reminded in the size of the counter: they use big
+  counters because they have a lot of food.
+\end{designnote}
+
+
 
 \subsubsection{Sources of Supply, Lines of Supply}
 
