@@ -313,7 +313,7 @@ result of 5 or less has no effect.
 
 Modifiers for Supply attrition:
 \begin{modlist}
-\item[+2] per cause of attrition above the first
+\item[+2] per cause of weak supply above the first
 \item[+2] in case of \terme{massed forces} (the stack contains more than 5\LD
   and 1\Pasha)
 \item[+2] if the stack has no \LoS
@@ -322,8 +322,6 @@ Modifiers for Supply attrition:
 \item[+?] if the stack is supplied by a naval stack, and the \LoS of this
   naval stack goes through one or more \StraitFort, add the DRM of all the
   \StraitFort along this path (2 in Europe, level/2 in the \ROTW)
-% \item[+6] if the fortress of the province is controlled by allies or if there
-%   is no fortress in the province (in the \ROTW)
 \item[+1] per \PILLAGE\facemoins, \REVOLT\facemoins or unfriendly
   \REBELLION\facemoins in the province
 \item[+2] per \PILLAGE\faceplus, \REVOLT\faceplus or unfriendly
@@ -349,9 +347,8 @@ Modifiers for Supply attrition:
 
 Modifiers for Siege attrition (besieged):
 \begin{modlist}
-%\item[+6] always (friendly fortress)
-% \item[+?] in the \ROTW cold area, add the number of Snowflakes ``resource''
-%   (+0 to +2 depending on the \Area)
+\item[+2] in case of \terme{massed forces} (the stack contains more than 5\LD
+  and 1\Pasha)
 \item[-S] siege value of one besieged leader
 \item[+S] siege value of one besieger or blockading leader
 \item[-3] if besieged in an unblocked port
@@ -772,7 +769,8 @@ table and cannot use naval transport. They are automatically disbanded if the
   are activated and fight following usual rules.
 
   Note that due to the way the table is read, 'R30/D80' actually means that
-  there is 100-80=20\% of the natives that desert and 100-30=70\% that resist.
+  there is 100-80=20\% of the natives that desert and 100-30=70\% that
+  resist. Thus, it is better to roll low on this Table.
 \end{exemple}
 
 \subsection{Sea}
@@ -855,12 +853,15 @@ sufficient size according to~\ref{table:Naval Size for Blockade}, depending on
 the size of the fortress. Note that to blockade a level 2 or 3 fortress, one
 must have have at least a \FLEET\Facemoins counter \textbf{and} 2\ND in the
 stack similarly blockading a level 4/5 fortress requires a \FLEET\Faceplus
-counter \textbf{and} 3\ND in the stack. Put the stack close to the blocked
-port/arsenal. Blockade makes siege easier. Only one stack may blockade each
-port (if several allied stacks want to blockade the same port, they are
-automatically merged; it is not allowed to blockade a port already blockaded
-by a third party). Blockade last until the next movement of the naval stack,
-including possibly in the next turn.
+counter \textbf{and} 3\ND in the stack (these \ND may be inside the \FLEET
+counter, but, for example, a Polish \FLEET\Facemoins in period \period{I}
+contains only 1\ND and thus requires an extra \ND to blockade a fortress of
+level 2). Put the stack close to the blocked port/arsenal. Blockade makes
+siege easier. Only one stack may blockade each port (if several allied stacks
+want to blockade the same port, they are automatically merged; it is not
+allowed to blockade a port already blockaded by a third party). Blockade last
+until the next movement of the naval stack, including possibly in the next
+turn.
 \bparag[Supplying troops.] The naval stack must have sufficient size for
 supplying the troops as indicated in~\ref{table:Naval Supply}. Note that a
 naval stack is allowed to supply several adjacent land stacks since it acts as
@@ -969,10 +970,10 @@ interception and resulting battle (and thus only if victorious).
 
 If both endpoints contains a large enough controlled port or arsenal, then the
 transport is a passive action. Otherwise, it is an active action. If the
-combined stack contains a \LeaderE, \LeaderC or \LeaderGov, then any province
-with no enemy presence (activated natives, enemy troops, enemy city or
-establishment (even besieged), \ldots) is considered to contain a controlled
-port (not arsenal) (both for embarking and disembarking).
+combined stack contains a \LeaderE, \LeaderC or \LeaderGov and no \ARMY
+counter, then any province with no enemy presence (activated natives, enemy
+troops, enemy city or establishment (even besieged), \ldots) is considered to
+contain a controlled port (not arsenal) (both for embarking and disembarking).
 
 Note that disembarking troops in a besieged fortress is actually a passive
 action since the port is controlled. However, if the fortress is resupplied as
@@ -1134,9 +1135,9 @@ the difficulty of any sea zone with a \SoS for the stack (\emph{i.e.} friendly
 large enough port) by 2; lastly take the greatest of these modified values.
 
 \begin{exemple}[Sea difficulty]
-  If a naval stack moves from a sea zone of difficulty 5 with a port into a
-  sea zone of difficulty 4 without port, then its greatest sea difficulty is
-  4.
+  If a naval stack moves from a sea zone of difficulty 5 with a port
+  (effective difficulty 3) into a sea zone of difficulty 4 without port, then
+  its greatest sea difficulty is 4.
 \end{exemple}
 
 When computing both distance moved and distance to port (\LoS length),
@@ -1667,7 +1668,7 @@ zone (but the country doesn't), they may not merge in it.
 
 As soon as a stack carrying discoveries reaches an establishment (fort, \TP,
 \COL or European province) that was existing at the beginning of the military
-phase, the countries immediately and definitely gains knowledge of the
+phase, the country immediately and definitely gains knowledge of the
 discoveries. Any stack of that country also gets that knowledge as soon as it
 is not itself carrying unknown discoveries (\emph{i.e.} either it is wandering
 in known land, possibly enemy or empty, or it has finished its own
@@ -1717,7 +1718,7 @@ Conquistador table and to voluntarily attack the natives).
 
 \aparag[Diffusion of discoveries]
 \bparag From period \period{IV} onward, discoveries spread among all players.
-\bparag[Atlantic] At the beginning off turn 25 (period \period{IV}), all sea
+\bparag[Atlantic] At the beginning of turn 25 (period \period{IV}), all sea
 zones without malus in the \region{Atlantic} that are known by at least one
 country (including minor) are immediately known by everybody; from now on, any
 newly explored sea zone without malus from the \region{Atlantic} is known by
@@ -2507,7 +2508,9 @@ no Pursuit happens. Go to~\ref{chMilitary:Battle:Loss modifications}.
   they gathered their troops and discovered that they still had an army. At
   the same time, between losses in the battle and desertions in the following
   days, the Spanish could not manage to gather a combat-effective force and
-  simply had to leave.
+  simply had to leave. This might actually represent a Pyrrhic Spanish
+  victory in the field which cannot be exploited on the strategic level and
+  turns into slow Turkish gains in the following months.
 \end{exemple}
 
 The winner pursues the loser. Exception: if the winner has been routed during
@@ -2840,7 +2843,9 @@ At sea, losses must be split in three categories:
   usually quick to rebuild a navy of comparable size. Much quicker than they
   would be to build the same number of ships ``in normal time''. Hence,
   \terme{Damaged} ships represent ships that are actually sunk but that the
-  power somehow 'think' that they should be rebuilt fast.
+  power somehow 'think' that they should be rebuilt fast. This is also linked
+  to the manpower available for each country, and thus the number of sailors
+  and rowers that it may enrol.
 
   This is typically what happened after Lepanto where the Turkish navy was
   practically annihilated (loosing more than 80\% of the forces engaged in the
@@ -3056,14 +3061,15 @@ for attrition accordingly; it may not be intercepted during this move and it
 is not subject to \Presidios, \StraitFort and \USURE; but if possible it must
 go back to port without crossing any of these.
 
-The only adjacent provinces in whicĥ a non-phasing stack may retreat after an
+The only adjacent provinces in which a non-phasing stack may retreat after an
 interception battle are the ones from which a least one intercepting \LDE came
 from. If interceptors came from several provinces, they may not retreat in
 several province; they must retreat in a single adjacent province (or the
 fortress) as a single stack but can choose in which (among those from where
 interceptors came).
 
-Retreat is not a move. It may not be intercepted and never causes attrition.
+Retreat on Land is not a move. It may not be intercepted and never causes
+attrition.
 
 \begin{designnote}
   Most of the time, only one side has to retreat in which case the other
@@ -3397,7 +3403,7 @@ may not intercept or counter-intercept again during this impulse.
   Especially, in the late game, with a lot of Morale, many high rolls are
   needed to win the battle. A battle in \TMED, even with \terme{Veteran}
   troops, ends as soon as one side rolls 9 or more and that can indeed feel
-  extremely luck driven (well, Medieval battles tend to be quite
+  extremely luck driven (well, Medieval battles tended to be quite
   unpredictable). On the other hand, after \TMUS, with 4 Morale, and,
   typically, if rolling at -1 because of Forest, then routing the enemy
   require 4 rolls of 8 or higher. This is not often achieved by mere luck and
@@ -3959,14 +3965,13 @@ to denote this.
   the fortress) +1/+1 (\terme{Artillery bonus}) = 0/-2. Both of them are
   \terme{Veteran} for 4 Morale.
 
-  For Fire, \HIS rolls 7 resulting in 1\textetoile while \FRA also rolls 7
-  giving 1\textetoile, the French loss is halved to \texttu due to the \TARQ
-  technology. Nobody routs, hence they both roll during Shock. For Shock, \HIS
-  rolls 8 giving 1\texttd\textetoile\textetoile and a grand total of
-  2\texttd\textetoile\textetoile\textetoile. At the same time, \FRA rolls only
-  6-2=4 giving only \texttu.
+  For Fire, \HIS rolls 7 resulting in 1\textetoile while \FRA rolls 8 giving
+  1\texttu\textetoile. Nobody routs, hence they both roll during Shock. For
+  Shock, \HIS rolls 8 giving 1\texttd\textetoile\textetoile and a grand total
+  of 2\texttd\textetoile\textetoile\textetoile. At the same time, \FRA rolls
+  only 4-2=2 giving nothing.
 
-  Nobody routs. The fortress suffered only \texttd and holds. \FRA suffered
+  Nobody routs. The fortress suffered only 1\texttu and holds. \FRA suffered
   2\texttd rounded to 3 in Europe. A costly assault for nothing\ldots
 
   Lastly, \FRA has to test death of its leader (\HIS also, but since it is a
@@ -3977,23 +3982,22 @@ to denote this.
   If the fortress was only level 2 and not 3, then the DRM for \FRA would have
   been +3/+1 -1/-1 -2/-2 (level 2) +2/+2 (\terme{Artillery bonus}) = +2/0,
   much better! The same rolls for \FRA gives 8+2=10 for Fire
-  (2\textetoile\textetoile reduced to 1\textetoile\textetoile) and 6 for Shock
-  (1). Thus, the total of losses caused by \FRA is 2, just enough to break the
-  resistance and the fortress falls. Moreover, at the same time the 2\texttd
-  losses caused by the fortress are capped to 2. Not only is the assault
-  successful, but it is also less deadly.
+  (2\textetoile\textetoile) and 4 for Shock (\texttu). Thus, the total of
+  losses caused by \FRA is 2\texttu, enough to break the resistance and the
+  fortress falls. Moreover, at the same time the 2\texttd losses caused by the
+  fortress are capped to 2. Not only is the assault successful, but it is also
+  less deadly.
 
   \smallskip
 
   If \FRA waits for the \terme{Breach} before assaulting (instead of giving
   \terme{War Honour}), then its DRM are +3/+1 -1/-1 0/0 (no malus after a
   \terme{Breach}) +1/+1 (\terme{Artillery bonus} remains) = +3/+1. The same
-  rolls result in 8+3=11 for 2\textetoile\textetoile reduced to 1 and 6+1=7
-  for 1\texttu\textetoile. While 2\texttu is smaller than 3, the
-  \terme{Breach} also reduce the resistance of the fortress to 1. Hence the
-  fortress falls. At the same time, \HIS uses the much less deadly
-  \terme{Breach} columns and only causes 0+\texttd=\texttd losses, rounded to
-  1.
+  rolls result in 8+3=11 for 2\textetoile\textetoile and 4+1=5 for
+  \texttd\textetoile. While 2\texttd is smaller than 3, the \terme{Breach}
+  also reduce the resistance of the fortress to 1. Hence the fortress
+  falls. At the same time, \HIS uses the much less deadly \terme{Breach}
+  columns and only causes 0+\texttd=\texttd losses, rounded to 1.
 
   \smallskip
 
@@ -4001,21 +4005,24 @@ to denote this.
   cause 1\texttu\textetoile\textetoile + 1\texttd\textetoile\textetoile =
   3\textetoile\textetoile\textetoile\textetoile. Whether the fortress falls
   (level 2) or not (level 3), \FRA is routed and loss an additional \texttd
-  after capping. Thus, a level 2 fortress would cause 2 (capped) \texttd
-  rounded to 3 (and falls) while a level 3 would cause 3\texttd rounded to 4,
-  basically whipping out the French troops and still holding. After a
-  \terme{Breach}, with the same rolls, the losses would be only
-  \texttu+\texttd=1, equal to the cap, and the \texttd of the rout is added
-  after for a final result of 2 losses.
+  after capping. Thus, a level 2 fortress would cause 2 (capped) + \texttd
+  losses, hence 2\texttd rounded to 3 (and falls) while a level 3 would cause
+  3\texttd rounded to 4, basically whipping out the French troops and still
+  holding. After a \terme{Breach}, with the same rolls, the losses would be
+  only \texttu+\texttd=1, equal to the cap, and the \texttd of the rout is
+  added after for a final result of 2 losses.
 
   \smallskip
 
-  Even if \FRA had rolled 10 and 10-2=8, that would only cause
-  1\textetoile\textetoile (losses halved) + 1\texttd\textetoile =
-  2\texttd\textetoile\textetoile\textetoile. Not enough to break the fortress
-  Morale and still less than its resistance. Even with the worse possible \HIS
-  \LeaderG and the best possible rolls, \FRA simply could not assault that
-  fortress in \TARQ (it would have worked in \TMUS)\ldots
+  If \FRA only had \TARQ, it could not even hope to take the fortress of level
+  3 by assaulting it (because the Fire losses are halved). Even rolling 10 and
+  10-2=8 would only cause 1\textetoile\textetoile (losses halved) +
+  1\texttd\textetoile = 2\texttd\textetoile\textetoile\textetoile. Not enough
+  to break the fortress Morale and still less than its resistance. Even with
+  the worse possible \HIS \LeaderG and the best possible rolls, \FRA simply
+  cannot assault that fortress in \TARQ. It could be possible with an even
+  better \FRA \LeaderG, but even then the odds are extremely small and the
+  assault will anyway cost many lives\ldots
 \end{exemple}
 
 \subsection{Fight against \REVOLT/\REBELLION}
@@ -4122,6 +4129,9 @@ side of \corsaire is eliminated.
 religious, or oversea war, not a limited or foreign intervention); and (ii)
 suffered a major defeat in a land battle this round may declare
 \terme{Exceptional levies}.
+\bparag If involved both in a regular war and other, the actual war in which
+the major defeat occurred does not matter. It is sufficient to be involved in
+at least one war and to suffer a major defeat, no matter against whom.
 \bparag The country immediately loses 1 \STAB. Levies may be declared by a
 country already at -3 \STAB, at no additional cost.
 \bparag Once declared, levies are available for the rest of the turn. It is
@@ -4140,7 +4150,8 @@ recruited this turn by the country is reseted to 0.
 
 \aparag[Recruitment after Exceptional Levies]
 \bparag If this is not the last round, any country that has declared
-\terme{Exceptional levies} (this round or previously) may recruit land troops.
+\terme{Exceptional levies} this turn (this round or previously) may recruit
+land troops.
 \bparag The recruitment limit is halved (rounded up) and all \LD recruited
 with \terme{Exceptional levies} are counted toward the same limit (even if not
 recruited during the same round, the count is reseted only once).
@@ -4245,11 +4256,11 @@ they may be immediately (before stacking is enforced) merged into an existing
 A stack containing at least 1\LD may decide to build a fort in the \ROTW. The
 counter is placed on its ``under construction'' side. Building a fort costs
 nothing. At least 1 \LD must be in the province for 3 consecutive ``End of
-round'' Segments and the fort is
-built at the end of the third rounds (\emph{e.g.} when beginning construction,
-place the counter upside down on its construction side, at the end of next
-round place it in the correct direction on its construction side and at the
-end of the third round flip it on its fort side).
+round'' Segments and the fort is built at the end of the third round
+(\emph{e.g.} when beginning construction, place the counter upside down on its
+construction side, at the end of next round place it in the correct direction
+on its construction side and at the end of the third round flip it on its fort
+side).
 
 If a fort under construction is with less than 1\LD of the country, it is
 immediately destroyed.
