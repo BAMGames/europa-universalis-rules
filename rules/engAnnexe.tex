@@ -54,34 +54,43 @@ created by \HAB: \FEforeachlist{listofminorshab}%
 {\theminorreligionshort{\loopitem}~\pays{\loopitem}}{, }
 
 \aparag Some not-so-evident countries names:
+% Keep them in (English) alphabetical order as the most common use for that is
+% probably English -> game name.
+% Game name -> English can be read in the country's description.
+%
+% We mostly need to keep the one who don't start with the same letter (and
+% hence can be hard to find). Plus those really strange.
 
-\begin{multicols}{3}
+\vspace{-\baselineskip}
+
+\begin{multicols}{2}
   \begin{description}
-  \item[\paysegypte] Egypt
-  \item[\paysberg] Kleve/Berg
-  \item[\payscosaquesdon] Cossacks of the Don
-  \item[\pays{teutoniques1}] Teutonic Knights
-  \item[\pays{teutoniques2}] Livonian Knights
-  \item[\paysbade] Baden
-  \item[\payssuisse] Switzerland
-  \item[\paysliege] Liège
-  \item[\payslorraine] Lorraine
-  \item[\paysmaroc] Morocco
-  \item[\paysirak] Iraq
-  \item[\paysmayence] Mainz
-  \item[\paysmodene] Modena
-  \item[\payschevaliers] Knights (of Malta)
-  \item[\paysryazan] Ryazan
-  \item[\payssavoie] Savoy
-  \item[\payspapaute] Papacy
-  \item[\paysecosse] Scotland
-  \item[\paysprovincesne] Low countries
-  \item[\paysnaples] Naples
-  \item[\paysoman] Oman
-  \item[\paysgujarat] Gujarat
-  \item[\paysvijayanagar] Vijayanagar
-  \item[\paysjapon] Japan
-  \item[\paysafghans] Afghanistan
+  \item Afghanistan: \paysafghans
+  \item Baden: \paysbade
+  \item Berg (and Kleve): \paysberg
+  \item Cossacks of the Don: \payscosaquesdon
+  \item Egypt: \paysegypte
+%  \item Gujarat: \paysgujarat
+  \item Iraq: \paysirak
+  \item Japan: \paysjapon
+  \item Kleve (and Berg): \paysberg
+  \item Knights of Malta: \payschevaliers
+  \item Liège: \paysliege
+  \item Livonian Knights (part of Teutonic Knights): \pays{teutoniques2}
+  \item Lorraine: \payslorraine
+  \item Low countries (before annexion by \HIS): \paysprovincesne
+  \item Mainz: \paysmayence
+  \item Modena: \paysmodene
+  \item Morocco: \paysmaroc
+  \item Naples: \paysnaples
+  \item Oman: \paysoman
+  \item Papacy (Holy see): \payspapaute
+  \item Ryazan: \paysryazan
+  \item Savoy: \payssavoie
+%  \item Scotland: \paysecosse
+  \item Switzerland: \payssuisse
+  \item Teutonic (and Livonian) Knights: \pays{teutoniques1} and \pays{teutoniques2}
+  \item Vijayanagar: \paysvijayanagar
   \end{description}
 \end{multicols}
 \vfill
