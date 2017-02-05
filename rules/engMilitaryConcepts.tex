@@ -3,6 +3,24 @@
 \definechapterbackground{Military Concepts}{TitianCarlosV}
 \chapter{Military Concepts}\label{chapter:MilitaryConcepts}
 
+\newcommand{\StackArtillery}[1][]{%
+% used both in Description of forces and in stacking
+% #1: label, only in stacking.
+  \aparag[Artillery value of stacks.]#1
+  When two (or more) \ARMY are stacked together, their \terme{Artillery
+    values} do not simply add. Instead, use the following computation:
+  \bparag Take the \terme{Artillery value} of one \ARMY in the stack (the
+  larger the better); add \bonus{+2} if there is another \ARMY with an
+  \terme{Artillery value} of 2 or more; otherwise, add \bonus{+1} if there is
+  another \ARMY with an \terme{Artillery value} of 1.}
+
+\newcommand{\StackMorale}[1]{%
+% used both in Description of Morale and in Stacking.
+% #1: \aparag name
+  \aparag[#1] A force formed by stacking or merging several units is
+  \terme{Veteran} only if more than half of the \LD composing the units are
+  \terme{Veteran}.}
+
 \begin{designnote}
   This Chapter describes the main concepts and common rules used
   during the Military phase, such as stacking limits, handling of
@@ -164,13 +182,7 @@ with the current period.
 
 \GTtable{artilleryvalue}
 
-\aparag[Artillery value of stacks.]\label{chMilitary:Stacks:Artillery}
-When two (or more) \ARMY are stacked together, their \terme{Artillery values}
-do not simply add. Instead, use the following computation:
-\bparag Take the \terme{Artillery value} of one \ARMY in the stack (the larger
-the better); add \bonus{+2} if there is another \ARMY with an \terme{Artillery
-  value} of 2 or more; otherwise, add \bonus{+1} if there is another \ARMY
-with an \terme{Artillery value} of 1.
+\StackArtillery
 
 \begin{exemple}[Military doctrine]
   \FRA is of class \CAIV (``majors''). In periods \period{I} to \period{IV},
@@ -358,9 +370,7 @@ peace), all land forces are maintained as \terme{Veteran} forces, using the
 beginning of turn can be maintained (unit by unit) as either \terme{Veteran}
 or \terme{Conscript}. Newly recruited units are \terme{Conscripts}.
 
-\aparag[Mixed stacks.] A force formed by stacking or merging several units is
-\terme{Veteran} only if more than half of the \LD composing the units are
-\terme{Veteran}.
+\StackMorale{Mixed stacks.}
 
 \begin{exemple}[Veteran or Conscript?]
   An \ARMY\faceplus composed by the merging of 1 \terme{Veteran} \LD and 1
@@ -401,19 +411,22 @@ Initiative of a minor alone controlled by a country otherwise at war.
 particuliers) : indiqué sur le pion forteresse) peuvent accueillir 2 ou 3
 \FLEET.  Les forts ne peuvent accueillir que des \DN ou \NDE.
 
-La \textbf{taille} d'une pile militaire est donnée par la moyenne,
-arrondie à l'inférieure, des tailles de chaque unité. Cette moyenne
-est comptabilisée en équivalents détachements (donc une A+
-compte pour 4 fois plus qu'un DT) et arrondie strictement à l'inférieur.
+\aparag[Size] La \textbf{taille} d'une pile militaire est donnée par la
+moyenne, arrondie à l'inférieure, des tailles de chaque unité. Cette moyenne
+est comptabilisée en équivalents détachements (donc une A+ compte pour 4 fois
+plus qu'un DT) et arrondie strictement à l'inférieur.
 
-\textbf{Exception:} Si des pachas accompagnent l'armée, le moral est forcément
+\StackMorale{Morale of a stack.}
+\bparag[Exception:] Si des pachas accompagnent l'armée, le moral est forcément
 conscrit. Le restant (taille et technologie) est déterminé selon la règle
 normale.
+
+\StackArtillery[\label{chMilitary:Stacks:Artillery}]
 
 + techno d'une pile (médiane). ATTENTION, besoin d'une valeur numérique pour
 l'interception (arg).
 
-+ bouger ici moral d'une pile ? artilleries d'une pile ? taille d'une pile.
++ taille d'une pile.
 
 + bouger ici commandement d'une pile multinationale ? (implique de bouger
 avant la section commandement pour def de ``commandement immédiat'')
