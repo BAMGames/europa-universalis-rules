@@ -1155,7 +1155,7 @@
 %    \textbf{All:} -M Leader \Man (except during sieges)\\
     \GTheader{Land Attrition (supply/mvt/siege/redeployment)}
     \begin{modlist}
-    \item[+2] if entering or in at least one enemy province
+    \item[+2] if entering or in at least one enemy province (unless besieger)
 %    \item[+6] if entering or in friendly provinces only
     \item[+2] if no \LoS
     \item[+1/+2] per \PILLAGE \facemoins/\faceplus\GTnb{a}
@@ -1169,14 +1169,14 @@
     \item[+S] Siege of one enemy leader
     \item[-3] if besieged in port and no blockade
     \item[+1/+3] if besieged, per \USURE \facemoins/\faceplus
-    \item[-2] for besieger
+%    \item[-2] for besieger
     \end{modlist}
   }
   \GTnotabene{text width=20mm}{(unless\\besieged)}
   \GTlegend[caption=captionc,east north=captionb,xsize offset=-2pt,xsize scale=0.5,xsize=(\gtid main.west)(\gtid caption.east)]{
     \GTheader{Sea Movement Attrition \hspace{13mm} (Always at -6)}
     \begin{modlist}
-    \item[+?] Greatest sea difficulty (or difficulty-2 if port)
+    \item[+?] Greatest sea difficulty (-2 if port)
     \item[+1] per 4 zones entered (1\FLEET or less) [BLP]
     \item[+2/4] per 2 zones (2/3\FLEET) [BLP]
     \item[-1] if 2 or 3\FLEET, arsenal to arsenal [BLP]
@@ -1191,7 +1191,7 @@
     \GTheader{Exploration \hspace{28mm} (Always at +4)}
     \begin{modlist}
     \item[-2] if sea zone already known (by anyone) in pIV+
-    \item[-M] MAN of \LeaderE/\LeaderC/\LeaderGov
+    \item[-M] MAN of \LeaderE/\LeaderC/\LeaderGov \textbf{only}
 %    \item[+4] For all explorations (land or sea)
     \end{modlist}
   }
@@ -1200,7 +1200,7 @@
     \GTheader{All Attritions}
     \begin{modlist}
     \item[+2] Per extra cause
-    \item[-M] MAN of Leader (except for sieges)
+    \item[-M] MAN of Leader (except siege, explo.)
     \item[+?] LoS crossing \StraitFort
     \end{modlist}
     \GTheader{At sea (Exploration or Attrition)}

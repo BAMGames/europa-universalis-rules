@@ -347,8 +347,9 @@ Modifiers for Supply attrition:
 
 Modifiers for Siege attrition (besieged):
 \begin{modlist}
-\item[+2] in case of \terme{massed forces} (the stack contains more than 5\LD
-  and 1\Pasha)
+% massed forces cannot be besieged…
+% \item[+2] in case of \terme{massed forces} (the stack contains more than 5\LD
+%   and 1\Pasha)
 \item[-S] siege value of one besieged leader
 \item[+S] siege value of one besieger or blockading leader
 \item[-3] if besieged in an unblocked port
@@ -367,7 +368,8 @@ A 'P' is interpreted differently according to the technology of the stack.
 \begin{itemize}
 \item If the technology is \TMED, \TREN or \TARQ, then 1 more \LD is lost and
   a \PILLAGE\facemoins is placed into the province (and immediately merged
-  into a \PILLAGE\faceplus if there was already another one here).
+  into a \PILLAGE\faceplus if there was already another \PILLAGE\facemoins
+  here).
 \item If the technology is \TMUS or better, then the controller chooses to
   either loss one more \LD or place a \PILLAGE\facemoins (note that
   \terme{foraging} has no effect during siege or supply attritions).
@@ -390,7 +392,8 @@ In the \ROTW, cross reference the percentage obtained with the size of the
 stack in~\ref{table:Attrition ROTW Remainders}. The resulting number indicates
 the number of \LD still alive after attrition while the 'd' indicates one or
 two \LDE still alive. If there is a \textetoile, then there is 50\% chance to
-lose an extra \LDE.
+lose an extra \LDE. If the result was 100\% (modified roll of 15 or more), the
+stack is entirely destroyed.
 
 Stacks in \COL of level 6 use the Attrition in Europe procedure.
 
@@ -465,7 +468,7 @@ computed separately and only the maximum cost is paid.
 
 \aparag[List of active naval actions.] See~\ref{chMilitary:Moves:Active Naval}
 for details:\\
-Battle, Blockade, Supply, Fight \corsaire, Naval Transport.
+Battle, Initiate Blockade/Supply/Fight against \corsaire, Naval Transport.
 
 \aparag[List of passive naval actions.] See~\ref{chMilitary:Moves:Passive Naval}
 for details:\\
@@ -511,18 +514,18 @@ be understood as ``no \textbf{further} restriction''.
 The moving stack may pick up and drop units along its movement, however all
 these units are considered as having moved and may not move again. Since each
 movement has to be completed before starting the next, this \emph{de facto}
-prevents two stacks from rendezvousing, merging, and continue movement
+prevents two stacks from moving, rendezvousing, merging, and continue movement
 together. Moreover, the distance moved is the total (even if no single unit
 did its totality) and in case of attrition the size of the stack is considered
 to be the total number of all troops that took part in the movement (and they
 may all suffer from attrition).
 
-Combined land and sea movement is possible and it is the only case where two
-stacks (one naval and one land) move at the same time. The land stack must
-start in a coastal province and embark immediately but may continue moving
-after disembarking. The naval stack, however, can move before picking up the
-land stack but not after. If a naval stack transporting troops suffer loses,
-troops inside may also suffer some loses.
+Combined land and sea movement (transport) is possible and it is the only case
+where two stacks (one naval and one land) move at the same time. The land
+stack must start in a coastal province and embark immediately but may continue
+moving after disembarking. The naval stack, however, can move before picking
+up the land stack but not after. If a naval stack transporting troops suffer
+loses, troops inside may also suffer some loses.
 
 \subsection{Land}
 When moving, land stacks expend \MP depending both on the terrain of each
@@ -565,7 +568,7 @@ Note that large stacks must roll for attrition even if they don't move. Thus,
 it is usually better to have half of the stack doing a back and forth move so
 that none of the part has to test attrition. While this is harmless at home,
 doing this on the frontline can increase the cost of campaign (because coming
-back on a siege is an aggressive move) or offer opportunities for interception
+back on a siege is an active move) or offer opportunities for interception
 to your opponents (and thus opportunities to crush your stack half by half),
 so use this trick wisely.
 
@@ -579,14 +582,14 @@ during \terme{Bad weather}'' hence it must roll for attrition and will suffer
 from an ``extra cause'' malus).
 
 In case of interceptions, the conditions for attrition are checked for each
-part of the movement (between the beginning and the first interception;
-between each interception; between the last interception and the end). If one
-part of the movement triggers attrition, it is resolved immediately before the
-interception battle occurs and its results (especially \terme{foraging}) are
-applied and effective for the next battle only. Exception: being a large stack
-is not enough to trigger attrition between interceptions, only at the end of
-movement. It is, however, still considered an extra cause of attrition with
-the corresponding malus.
+part of the movement (between the beginning and the first successful
+interception; between each successful interception; between the last
+successful interception and the end). If one part of the movement triggers
+attrition, it is resolved immediately before the interception battle occurs
+and its results (especially \terme{foraging}) are applied and effective for
+the next battle. Exception: being a large stack is not enough to trigger
+attrition between interceptions, only at the end of movement. It is, however,
+still considered an extra cause of attrition with the corresponding malus.
 
 If none of the parts trigger interception but the whole movement does, then
 one and only one final attrition is resolved at the end of the movement (thus,
@@ -599,7 +602,8 @@ large stack is a cause for attrition as usual.
   move on. It moves 6 more \MP (for a total of 12) and thus rolls for
   attrition again. If it has a regular battle at the end of the movement, then
   any \terme{foraging} result obtained during the first interception is
-  ``used'' by the first battle and no more effective.
+  ``used'' by the first battle and no more effective. \terme{Foraging} due to
+  the second attrition apply as usual.
 
   \smallskip
 
@@ -628,6 +632,8 @@ large stack is a cause for attrition as usual.
   at the end of movement it has been a large stack moving, a cause for
   attrition, and thus must resolve it.
 
+  \smallskip
+
   A large stack lands in enemy territory and is intercepted. The movement is
   enough to trigger attrition and the ``large stack'' will count as an extra
   causes and gives \bonus{+2} to the roll. If it loses the battle, since it
@@ -653,7 +659,7 @@ even if it does not start adjacent to sea, and it does not need a naval stack
 to be carried (the leader sails on some non represented ships). On sea, a
 leader alone cannot enter sea zones with malus and has (for the land leaders)
 a \Man of 0. A leader alone dies immediately if he enters a province with
-unbesieged enemy forces (and no friendly force) or if he is
+unbesieged enemy forces (and no unbesieged friendly force) or if he is
 intercepted. Moving leaders alone can help enforce hierarchy or quickly change
 your frontline. It is considered a passive moves even if the leader enters a
 province with enemy force (typically to take command of a stack). Note that
@@ -739,11 +745,11 @@ Explanation of the results:
 \begin{itemize}
 \item ---: all the natives in the province resist (same as 'R00').
 \item \textdag: no native resist (same as 'R100').
-\item Dxx: apply~\ref{table:Attrition ROTW Remainders} with xx\% on the
-  number of natives in the province. The result is the number of native \LD
-  that desert and join the stack. Use \pays{natives} counters to denote them
+\item Dxx: apply~\ref{table:Attrition ROTW Remainders} with xx\% on the number
+  of natives in the province. The result is the number of native \LD that
+  desert and join the conquistador. Use \pays{natives} counters to denote them
   (using \ARMY counters to denote 2 or 4 \LD as needed).
-\item Ryy: apply~\ref{table:Attrition ROTW Remainders} with yy\% on the
+\item Ryy: apply~\ref{table:Attrition ROTW Remainders} with yy\% on the total
   number of natives in the province. The result is the number of native \LD
   that resist and fight.
 \item All natives that neither resist nor desert are eliminated from the
@@ -752,7 +758,7 @@ Explanation of the results:
 \end{itemize}
 
 Next, a battle occurs between the resisting native and the stack (including
-the new recruits). Treat this as an interception made by the resisting
+the new 'recruits'). Treat this as an interception made by the resisting
 natives.
 
 Natives in a stack never count toward stacking limit and do not hamper
@@ -789,7 +795,7 @@ At the end of its movement, a naval stack is allowed to do one naval action
 mandatory. Especially, battle is not mandatory and naval stacks of different
 alliances may coexist in the same sea zone without problem.
 
-Most actions are active and can only be done as part of an active
+Some actions are active and can only be done as part of an active
 campaign. Some are passive and can be done as part as any campaign. Note that
 many passive actions are simply ``continuing the active action from previous
 round without moving.''
@@ -811,7 +817,8 @@ whole movement of the stack, whatever the number of interception battles that
 may have occurred during it. If a naval stack is intercepted and looses
 battle, roll for attrition only once (for both movement and retreat), taking
 into account the whole movement (\emph{e.g.} the distance moved is the total
-of what was moved before the battle and during the retreat).
+of what was moved before the battle and during the retreat). Same goes in case
+of victory and pursuit.
 
 Each time it tries to enter or exit a blockaded port, a stack must roll to
 escape blockade. Roll 1d10 modified as follows:
@@ -830,8 +837,8 @@ the blockade and may pursue its movement as wanted.
 If the result is 6 or 7, the stack did not manage to escape blockade. If it
 was trying to exit a port, it must stays in (and its movement ends). If it was
 trying to enter it, it may either stop moving or return to the closest
-friendly port/arsenal (at choice, if any), in both cases it may not do any
-action.
+friendly unblockaded) port/arsenal (at choice, if any), in both cases it may
+not do any action.
 
 If the result is 5 or less, the stack did not manage to escape blockade (as
 above). Additionally, the blockading stack may choose to immediately engage
@@ -909,8 +916,8 @@ round). Conditions on stack size and on combined blockade+supply are still
 enforced.
 \bparag[Continuing fight against \corsaire.] The naval stack may not move and
 must have already fighting \corsaire from the same sea zone on previous
-round. Only one stack per alliance may fight against \corsaire in a given sea
-zone.
+round. It may, however, fight a different \corsaire counter. Only one stack
+per alliance may fight against \corsaire in a given sea zone.
 \bparag[Friendly naval transport.] If both endpoints of the naval transport
 are friendly, the transport is a passive action. Additionally, in the \ROTW,
 if the combined stack contains a \LeaderE, \LeaderC or \LeaderGov and no \ARMY
@@ -925,7 +932,7 @@ considered as a friendly port (not arsenal).
 
 \aparag[Flota de Oro] \label{chMilitary:FlotaDeOroMovement} As soon as the
 \terme{Flota de Oro} (and only this convoy) is sunk or reaches Europe, it
-reappears in a Spanish port on the Atlantic coast.
+reappears in a Spanish port on the Atlantic coast of \continentAmerica.
 
 \subsection{Combined move}
 A combined move, or naval transport, happens when a naval stack carries a land
@@ -971,9 +978,10 @@ interception and resulting battle (and thus only if victorious).
 If both endpoints contains a large enough controlled port or arsenal, then the
 transport is a passive action. Otherwise, it is an active action. If the
 combined stack contains a \LeaderE, \LeaderC or \LeaderGov and no \ARMY
-counter, then any province with no enemy presence (activated natives, enemy
-troops, enemy city or establishment (even besieged), \ldots) is considered to
-contain a controlled port (not arsenal) (both for embarking and disembarking).
+counter, then any \ROTW province with no enemy presence (activated natives,
+enemy troops, enemy city or establishment (even besieged), \ldots) is
+considered to contain a controlled port (not arsenal) (both for embarking and
+disembarking).
 
 Note that disembarking troops in a besieged fortress is actually a passive
 action since the port is controlled. However, if the fortress is resupplied as
@@ -991,7 +999,7 @@ an interception battle, only the naval stack did).
 As an exception, in the \ROTW, a land stack that do not contain any \ARMY
 counter may stay inside ships at the end of movement and even from one turn to
 the next. If it starts the round in the naval stack, it is considered to have
-embarked in a controlled port for all purposes.
+embarked from a controlled port for all purposes.
 
 If the naval stack suffers attrition or losses during exploration, then the
 land stack suffers the exact same percentage of loses (one cannot choose which
@@ -1289,7 +1297,7 @@ place). After the battle, if there is still too many troops in the province
 (more than the stacking limit), any intercepting or counter-intercepting troop
 may choose (controller's choice) to retreat in the province where it was
 before intercepting. This retreat does not trigger attrition or interception
-and does not counted toward any campaign cost. Any exceeding troops after that
+and does not count toward any campaign cost. Any exceeding troops after that
 are destroyed. Such an overstacking typically occurs when many unlikely
 interceptions are declared and they all succeed\ldots
 
@@ -1562,10 +1570,10 @@ remember this).
 
 \section{Explorations}\label{chMilitary:Discoveries}
 \label{chMilitary:Exploration}
-Each phasing naval stack not engaged in battle (including interception) may
-attempt to explore an adjacent unknown seazone. In case of success, the stack
-automatically moves into the explored zone. Exploration is the action of the
-naval stack.
+Each phasing naval stack not engaged in battle (including after winning an
+interception) may attempt to explore an adjacent unknown seazone. In case of
+success, the stack automatically moves into the explored zone. Exploration is
+the action of the naval stack.
 
 Next, each phasing land stack not engaged in battle (including interception)
 and not carried by a naval stack engaged in battle (including interception)
@@ -1764,7 +1772,7 @@ the stack) and for its entire duration.
 %   And to remove them from the table\ldots
 % \end{todo}
 
-For the sack of clarity, commanding leaders are always referred as \LeaderG or
+For the sake of clarity, commanding leaders are always referred as \LeaderG or
 \LeaderA even if (in the \ROTW), they may also be \LeaderC, \LeaderGov or
 \LeaderE. If a \LeaderE happens to fight on land (typically activating the
 natives after an exploration), each of its values is halved (rounded
@@ -1827,10 +1835,10 @@ into an adjacent friendly unbesieged province (\emph{i.e.} a province where it
 could go with a passive campaign). It is not possible to evade battle via
 naval transport. If the province where the battle occurs is friendly, it is
 possible to retreat part of the stack in its fortress and another part in an
-adjacent province (but this does require a successful evasion roll). It is
-possible to split even if the whole stack could fit in the fortress. It is not
-possible to retreat part of the stack in another province and let another part
-fight.
+adjacent province (but this does require a successful evasion roll and in case
+of failure the whole stack stays here). It is possible to split even if the
+whole stack could fit in the fortress. It is not possible to retreat part of
+the stack in another province and let another part fight.
 
 Land stacks evading do not roll for attrition.
 
@@ -2216,8 +2224,8 @@ them down when they happen to ease the process.
   Morale); in case of tie, nobody gets the malus.\fi #3 results.}
 \newcommand{\chMilFireRoll}[3][]{\chMilBattleRoll[#1]{#2}{#3}{Fire}}
 \newcommand{\chMilFireTech}{
-  \bparag[Technology.] On the European map, stack with \TREN technology and no
-  \ARMY counter does not roll for Fire. A stack with \TREN technology only
+  \bparag[Technology.] On the European map, a stack with \TREN technology and
+  no \ARMY counter does not roll for Fire. A stack with \TREN technology only
   apply the \textetoile. A stack with \TARQ technology only does half (round
   down to lesser \texttu) the indicated losses. A stack with \NGD and no \VGD
   only does half (round up to larger \texttu) the indicated losses.}
@@ -2228,7 +2236,7 @@ them down when they happen to ease the process.
 \newcommand{\chMilWindAdvRetreat}{
   \bparag[Retreat.] At sea (only), the side with \terme{Wind advantage} may
   decide to retreat. If it does, it loses the battle and its opponent wins it
-  the but there is no pursuit. Go directly to~\ref{chMilitary:Battle:Loss
+  but there is no pursuit. Go directly to~\ref{chMilitary:Battle:Loss
     modifications}.}
 \newcommand{\chMilShockRoll}[1]{\chMilBattleRoll[t]{#1}{Tally}{Shock}}
 
@@ -2467,7 +2475,7 @@ battle.
 already declared). Go to~\ref{chMilitary:Battle:Loss modifications}.
 \bparag Next, if one side has already been declared winner, it wins and the
 other side loses.
-\bparag Otherwise, the side with the most remaining Morale (starting Morale
+\bparag Otherwise, the side with the less remaining Morale (starting Morale
 minus number of \textetoile suffered) loses and the other side wins.
 \bparag In case of tie (including if both sides are routed), no side wins and
 no Pursuit happens. Go to~\ref{chMilitary:Battle:Loss modifications}.
@@ -2699,7 +2707,7 @@ A native force that rolled more than one die has to apply this procedure for
 the losses caused by its 'last die' (only), using the number of \LD
 represented by that die. After that, all the losses caused by that force can
 be added together. Other forces with more than 8\LD (\emph{e.g.} \TUR with
-\Pashas) can simply keep this step.
+\Pashas) can simply skip this step.
 
 \subsubsection{Size Comparison}
 Note that the procedure described here to find the \terme{size differential}
@@ -3256,7 +3264,7 @@ the troops during the battle.
 \begin{designnote}
   Note that because a side may not suffer more losses than it has troops
   (exceeding losses are not counted), it is never possible to have a
-  \terme{Major Defeat} if the loosing side has only 2\LD involved. Also, keep
+  \terme{Major Battle} if the loosing side has only 2\LD involved. Also, keep
   in mind that a rout is necessarily for a \terme{Major Battle}.
 \end{designnote}
 
@@ -3277,7 +3285,7 @@ strictly less than 3\LD at the beginning of the battle, do not roll for leader
 casualty.
 
 \begin{designnote}
-  In Europe, if you don't risk \terme{Major Defeat}, you can't kill the enemy
+  In Europe, if you don't risk \terme{Major Battle}, you can't kill the enemy
   leader either (this prevents a gamey technique).
 \end{designnote}
 
@@ -3307,7 +3315,8 @@ in anyway and must be ransomed at the end of the turn).
 
 If a monarch is killed or captured in battle, his country cannot uses his
 values anymore. Instead, the country is considered to be ruled by a 3/3/3
-monarch until either the ransom or the determination of a new monarch.
+monarch until either the ransom or the determination of a new monarch. This,
+however, do not change the initiative of the country.
 
 \begin{designnote}
   Here also, a 'killed' or 'wounded' leader is a game term not to take too
@@ -3525,11 +3534,10 @@ Modifiers for \terme{Siege Attrition} (besieger), cumulative:
 
 Note that there is no \bonus{+2} for being in an enemy province as the
 besieger more or less already has control of the countryside, the fields,
-and the roads. Thus, it can easily take part of its supply on the spot. In the
-Table, the \bonus{+2} is cancelled by a specific \bonus{-2} for the
-besieger\ldots Also, the \terme{Bad weather} and \terme{Massed force}
-modifiers are not recalled in the table and are considered part of the ``per
-extra cause'' modifier.
+and the roads. Thus, it can easily take part of its supply on the spot.
+
+The \terme{Bad weather} and \terme{Massed force} modifiers are not recalled in
+the table and are considered part of the ``per extra cause'' modifier.
 
 Result for \terme{Siege Attrition} is read as usual. As for \terme{Supply
   Attrition}, \terme{foraging} has no effect here (so we don't have to
@@ -3572,7 +3580,7 @@ the \terme{Redeployment} procedure (see~\ref{chRedep:Redeployment}). These
 the decision is taken); they may happen by sea at the usual conditions for
 \terme{Redeployment}; they are cause of attrition as normal
 \terme{Redeployments}; they are never considered as voluntarily
-\terme{Redeployments} (even if the stack fas a LoS and is large enough to
+\terme{Redeployments} (even if the stack has a LoS and is large enough to
 undermine). A stack may choose to redeploy even if it may undermine. A too
 small stack (or a stack with no \LoS) that redeploys rolls twice for
 \terme{Attrition} (one \terme{Siege Attrition} because it is too small and one
@@ -3614,11 +3622,12 @@ find in the last column the \terme{Artillery bonus}.
 
 \subsubsection{Undermining}
 To resolve the undermining, roll 1d10. The roll is modified in two different
-ways, thus giving two different results. The first one is used to check the
-effect of the undermining on the fortress (usually adding some \USURE); the
-second one is used to check if the besieger suffers from \terme{Siege
-  Attrition}. It is possible to both suffer from attrition and force the
-fortress to surrender (especially toward the end of long sieges).
+ways, thus giving two different results, and both results are applied. The
+first one is used to check the effect of the undermining on the fortress
+(usually adding some \USURE); the second one is used to check if the besieger
+suffers from \terme{Siege Attrition}. It is possible to both suffer from
+attrition and force the fortress to surrender (especially toward the end of
+long sieges).
 
 \GTtable{underminingonly}
 
@@ -3740,8 +3749,8 @@ Attrition check modifiers:
   \ARMY\faceplus = 4\LD).
 \end{modlist}
 
-If the result is strictly smaller than the distance (in \MP) from a \SoS, then
-the stack must roll for \terme{Siege Attrition}.
+If the result is strictly smaller than the length of the stack \LoS, then the
+stack must roll for \terme{Siege Attrition}.
 
 There is no adverse effect of using a weak supply source for this test. Thus,
 it is possible to choose, during the Supply Segment, a full \SoS that is, say
@@ -4127,7 +4136,7 @@ side of \corsaire is eliminated.
 \aparag[Declaring Exceptional Levies]
 \bparag Any country who (i) is fully involved in a regular war (not a civil,
 religious, or oversea war, not a limited or foreign intervention); and (ii)
-suffered a major defeat in a land battle this round may declare
+suffered a major defeat in a land battle this round, may declare
 \terme{Exceptional levies}.
 \bparag If involved both in a regular war and other, the actual war in which
 the major defeat occurred does not matter. It is sufficient to be involved in
@@ -4173,7 +4182,8 @@ Levies.
     Conde}, a major defeat. \HIS loses 1 \STAB because of the defeat (thus
   going to -1) and then decides that there are way too many blue counters on
   the map and that adding some yellow ones is required. Thus, it declares
-  exceptional levies. This brings the \STAB down to -2.
+  exceptional levies. This brings the \STAB down to -2 as the population does
+  not welcome too kindly the constant flow of recruiting officers.
 
   Now, \HIS may recruit troops anew. The limit is halved (to 3\LD), but the
   number of troops recruited so far is reseted. \HIS decides to recruit an
