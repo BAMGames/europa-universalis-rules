@@ -223,19 +223,18 @@ enough to avoid this destruction.
 Each phasing land stack which has no supply or is in weak supply must roll for
 \terme{supply attrition}. Additionally, each phasing besieged land stack must
 roll for \terme{Siege Attrition} (exception: if the fortress was supplied
-during the previous round (see naval movement), the besieged stack does not
-roll for attrition and is considered in full supply (even if it should
-normally be only in weak supply)). Naval stacks never roll for attrition
-during the supply segment. Beware that besieged stacks roll for \textbf{siege}
-attrition during this segment, which has a similar procedure as supply
-attrition but with slightly different modifiers.
+during the previous round and has a ``Supplied'' counter (see naval movement),
+the besieged stack does not roll for attrition and is considered in full
+supply (even if it should normally be only in weak supply)). Naval stacks
+never roll for attrition during the supply segment. Beware that besieged
+stacks roll for \textbf{siege} attrition during this segment, which has a
+similar procedure as supply attrition but with slightly different modifiers.
 
 If a besieged stack is also in weak supply, it does not roll for supply
 attrition. The \terme{Siege Attrition} replaces this roll.
 
-\begin{todo}
-  Supply markers for besieged fortresses?
-\end{todo}
+Once Supply Attrition has been resolved, remove all ``Supplied'' markers from
+fortresses controlled by the phasing alliance.
 
 \subsection{\SoS, \LoS, weak supply}
 \subsubsection{At land}
@@ -880,14 +879,14 @@ the province of the port/arsenal it is blockading.
 \bparag[Supplying a besieged port.] The stack must have exited a non-blocked
 friendly port (either starting from it or moving in and out) during its
 movement and entered the besieged port. Moreover, it must be a stack large
-enough to blockade the supplied port. This will remove the ``blockade''
-situation of the port for the siege segment of this round (only) and remove
-any attrition roll for troops inside for the next supply step (only). Note
-that this is mostly useful if the port is blockaded and thus require escaping
-it\ldots Moreover, the stack will end its movement in the supplied port as
-actions end movement. It is possible to decline the possibility to supply in
-order to continue moving (for example to embark besieged troops and retreat
-them before the fortress falls).
+enough to blockade the supplied port. Place a ``Supplied'' marker on the
+fortress. This will remove the ``blockade'' situation of the port for the
+siege segment of this round (only) and remove any attrition roll for troops
+inside for the next supply step (only). Note that this is mostly useful if the
+port is blockaded and thus require escaping it\ldots Moreover, the stack will
+end its movement in the supplied port as actions end movement. It is possible
+to decline the possibility to supply in order to continue moving (for example
+to embark besieged troops and retreat them before the fortress falls).
 \bparag[Fight \corsaire.] The stack can initiate fight against \corsaire from
 the sea zone it is in. The \corsaire counter (or counters) targeted by the
 stack must be in the same sea zone. Only one stack per alliance may fight
