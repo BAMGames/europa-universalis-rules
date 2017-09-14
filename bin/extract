@@ -256,6 +256,18 @@ foreach $k (@infoROI) {
     }
 }
 delete $info{"ROI"};
+foreach $k (@infoROIPAIRE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name1"});
+	$command.=str($k->{"Name2"});
+	$command.=" dessineROIPAIRE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"ROIPAIRE"};
 foreach $k (@infoSTABILITE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;

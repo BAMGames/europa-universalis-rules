@@ -641,6 +641,26 @@ def
     blasonsmallright
     endpion
 }def
+/dessineROIPAIRE{
+    /name2 exch def /name1 exch def /pays exch def
+    /nompion mark (King ) countryname ( <Konge>)concatall def
+    /filepion (King_)pays ! def
+    2 beginpion
+    name1 10 0 80 30 cadredefondrm
+    countryname 0 80 100 20 cadredefondit
+    .83 25 30 begints fga_ sc fga_ fc
+    (generalroi) xobject
+    endts
+    blasonsmallright
+    autreface
+    name2 10 0 80 30 cadredefondrm
+    countryname 0 80 100 20 cadredefondit
+    .83 25 30 begints fga_ sc fga_ fc
+    (generalroi) xobject
+    endts
+    blasonsmallright
+    endpion
+}def
 
 /dessineSTABILITE{
     /pays exch def
