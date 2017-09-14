@@ -320,6 +320,12 @@ foreach $k (@infoOWNERCONTROL) {
 	$command.=" dessineOCCUPATION\n";
 	sendit($k,$command);
     }
+    $count=$k->{"Intervention"};
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=" dessineINTERVENTION\n";
+	sendit($k,$command);
+    }
 }
 delete $info{"OWNERCONTROL"};
 foreach $k (@infoMANUFACTURE) {
@@ -632,4 +638,3 @@ print $footer;
 foreach $k (sort keys %info) {
     print STDERR "%$k was not treated\n\n";
 }
-

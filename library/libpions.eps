@@ -770,7 +770,7 @@ def
 /dessineOCCUPATION {
     /pays exch def
     /nompion (Occupation )countryname ! def
-    /filepion (Occupationr_)pays ! def
+    /filepion (Occupation_)pays ! def
     5 beginpion
     countryname 0 80 100 20 cadredefondit
     blasoncentre
@@ -781,6 +781,22 @@ def
     endalpha
     black fc
     (Occupation) 50 41 100 18 (FontArialNarrow-Bold) centertext
+    endpion
+}def
+/dessineINTERVENTION {
+    /pays exch def
+    /nompion (Intervention )countryname ! def
+    /filepion (Intervention_)pays ! def
+    5 beginpion
+    countryname 0 80 100 20 cadredefondit
+    blasoncentre
+    0.85 beginalpha
+    white fc black sc
+    ( 0 40 100 20 re )
+    dup out(f )out out (S )out
+    endalpha
+    red fc
+    (Intervention) 50 41 100 18 (FontArialNarrow-Bold) centertext
     endpion
 }def
 
@@ -1780,9 +1796,11 @@ def
     black fc nameX 50 80 100 20 (FontArialNarrow-Bold) centertext
     (img:canon) 2 23 1 putimage
     (1 1 0 )out sc (faceplus) xobject
+    (1 1 0 ) out fc (+3) 15 0 25 25 (FontArialNarrow-Bold) centertext
     [.5 .5 .5][1 1 1] autreface
     black fc nameX 50 80 100 20 (FontArialNarrow-Bold) centertext
     (img:canon) 2 23 1 putimage (1 1 1 )out sc (facemoins) xobject
+    white fc (+1) 15 0 25 25 (FontArialNarrow-Bold) centertext
     endpion
 }def
 
@@ -2034,4 +2052,3 @@ produits {/pays exch def
 }def
 /lastanonymous()def
 /lastanonymoustype()def
-
