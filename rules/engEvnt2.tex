@@ -1,6 +1,8 @@
 % -*- mode: LaTeX; -*-
-
-\section{Period II}\label{events:pII}
+\definechapterbackground{Political Events of Period II}{CranachLuther}
+\chapter{Political Events of Period II}
+%\section{Period II}
+\label{events:pII}
 
 
 
@@ -11,16 +13,16 @@
   \begin{tabular}{|l|*{6}{c}|l|}
     \hline
     1\up{st}\textarrow& 1-3 & 4-5 & 6 & 7 & 8 & 9 & 10 \\ \hline
-    1 & 2  & 1  & 10  & 13  & 1  & 1   & \textbullet~1--2:   \\
-    2 & 3  & R2 & 11  & R14 & 2  & R8  & +1 then\\
-    3 & R4 & 3  & 12  & R15 & R3 & R2  & \nameref{events:pI} \\
-    4 & 5  & 4  & 15  & 16  & R4 & 11  & \textbullet~3--10:  \\
-    5 & 6  & 8  & 16  & 17  & R5 & 12  & \nameref{events:pI} \\
+    1 & 2  & 1  & 10  & 13  & 1  & 1   & \\
+    2 & 3  & R2 & 11  & R14 & 2  & R8  & \textbullet~1--2:\\
+    3 & R4 & 3  & 12  & R15 & R3 & R2  & +1 then\\
+    4 & 5  & 4  & 15  & 16  & R4 & 11  & \periodref{I}\\
+    5 & 6  & 8  & 16  & 17  & R5 & 12  & \\
     6 & 7  & 9  & 17  & R18 & 7  & 13  & \\
-    7 & 8  & 11 & R18 & R21 & R8 & R19 & \\
-    8 & 10 & 12 & R8  & 1   & R9 & R21 & \\
+    7 & 8  & 11 & R18 & R21 & R8 & R19 & \textbullet~3--10:\\
+    8 & 10 & 12 & R8  & 1   & R9 & R21 & \periodref{I}\\
     9 & R9 & 21 & R21 & 19  & 14 & R20 & \\ \hline
-    10 & \multicolumn{7}{l|}{\nameref{events:pIII}} \\ \hline
+    10 & \multicolumn{7}{l|}{Roll in \periodref{III}} \\ \hline
   \end{tabular}
 \end{eventstable}
 \begin{eventstablespec}[Habsburg Hungary]
@@ -71,24 +73,32 @@
 % \condition{Takes only place if the event \ref{pI:Reformation2} has already
 % occurred. Otherwise re-roll and do not mark off.}
 
-\condition{Takes place when rolled for, or when \monarque{Henry VIII} dies.}
+\condition{Takes place when rolled for, or when \monarque{Henry VIII}
+  dies. May not happen before \monarque{Henry VIII}.}
 
 \phevnt
+\aparag[] [BLP] \ANG may not place occupations in France anymore. If \ANG and
+\FRA are at war, replace any English occupation on French territory by
+control. If they are at peace, remove these.
+
 \aparag \ENG has to choose its Heir, in accordance with its current religion.
 \bparag[Catholic/No Reform] Mary I Tudor, or Edward VI
 \bparag[\CATHCR] Mary I Tudor, or Edward VI
-\bparag[\CATHCO] Edward VI, Jane Grey
-\bparag[Protestantism] Jane Grey
+\bparag[\CATHCO] Edward VI or Jane Grey
+\bparag[\PROTPUR] Jane Grey
+
+\aparag When the chosen heir ascend throne, apply the following effects,
+depending on the heir.
 
 \aparag[Marie I Tudor] \ENG is forced to be \CATHCR.  If it has changed, both
 general and particular effects of \ref{pI:Reformation2} are applied
 immediately.
-\bparag It has a mandatory Dynastic (Defensive and Offensive) Alliance with
+\bparag \ANG has a mandatory Dynastic (Defensive and Offensive) Alliance with
 \SPA for 3 turns.  If at war, \SPA and \ENG make an immediate white peace.
 \bparag Roll for 2 \REVOLT in \ENG in the table, using 1d10-2 for
 localisation.
 
-\aparag[Lady Jane Grey] \ENG is forced to be Protestant.  If it has changed,
+\aparag[Lady Jane Grey] \ENG is forced to be \PROTPUR.  If it has changed,
 both general and particular effects of \ref{pI:Reformation2} are applied
 immediately.
 \bparag Alliance between \ENG and \SPA are forbidden for 3 turns.
@@ -297,32 +307,31 @@ duration of this war.
 
 \event{pII:Algeria Vassalisation}{II-6 (1)}{Turkish Vassalisation of
   Algeria}{1}{Risto}
+\condition{[BLP] Apply~\ref{pI:Turkish Diplomatic Pressure}}
+% \history{1519}
 
-\history{1519}
+% \condition{Takes place only if leader \leaderBarbaros is alive. Otherwise mark
+%   as played, but do not re-roll.}
 
-\condition{Takes place only if leader \leaderBarbaros is alive. Otherwise mark
-  as played, but do not re-roll.}
-
-\phevnt
-\aparag \paysAlgerie is immediately placed on \VASSAL of \TUR.
-\aparag \leaderBarbaros is now also a Turkish leader, and as long as he is
-alive, \paysAlgerie is permanent Vassal of \TUR not subject to diplomacy.
-\aparag At the death of \leaderBarbaros, the {\bf -3} malus for \TUR to all
-diplomacy attempts against all \terme{Barbaresque} countries is cancelled.
+% \phevnt
+% \aparag \paysAlgerie is immediately placed on \VASSAL of \TUR.
+% \aparag \leaderBarbaros is now also a Turkish leader, and as long as he is
+% alive, \paysAlgerie is permanent Vassal of \TUR not subject to diplomacy.
+% \aparag At the death of \leaderBarbaros, the {\bf -3} malus for \TUR to all
+% diplomacy attempts against all \terme{Barbaresque} countries is cancelled.
 
 
 
 \event{pII:Alignment of Barbaresques}{II-6 (2)}{Alignment of
   Barbaresques}{1}{Risto}
+\condition{[BLP] Apply~\ref{pI:Turkish Diplomatic Pressure}}
+% \history{1540}
 
-\history{1540}
-
-\phevnt
-\aparag From now on, the {\bf -3} malus for \TUR to all diplomacy attempts
-against all \terme{Barbaresque} countries is cancelled.
-\aparag \paysTunisie is immediately placed on \VASSAL of \TUR if \leaderDragut
-is alive.
-
+% \phevnt
+% \aparag From now on, the {\bf -3} malus for \TUR to all diplomacy attempts
+% against all \terme{Barbaresque} countries is cancelled.
+% \aparag \paysTunisie is immediately placed on \VASSAL of \TUR if \leaderDragut
+% is alive.
 
 
 \event{pII:War Poland Turkey}{II-7}{War between Poland and Turkey}{1}{PB}
@@ -379,11 +388,10 @@ if there is one.
 
 \phdipl
 \aparag The Emperor has a permanent \CB against the League. This \CB is free
-if the Emperor is The Sole Defender of Catholic Faith (free \CB also if the
-\HAB are Emperors for the Austrian branch and Defender of the Catholic Faith
-for the Spanish branch). A war against any country of the League is called a
-war against the League; it is a \terme{war of Religion} (so external
-intervention is constrained).
+if the Emperor is the \SDCF (free \CB also if the \HAB are Emperors for the
+Austrian branch and \SDCF for the Spanish branch). A war against any country
+of the League is called a war against the League; it is a \terme{war of
+  Religion} (so external intervention is constrained).
 \bparag \SPA may ask for limited or full intervention of the \HAB in this war.
 \aparag The Emperor may grant the \terme{Truce of Augsburg} regarding the
 liberty of belief in the \HRE. Such a decision costs {\bf 1} \STAB and 20 \VP.
@@ -404,7 +412,8 @@ an ally of the League.
 and the Emperor. This test is modified by {\bf +4}. See \ref{pIV:TYW} for the
 result of the test and the possibility of this Religious War. If no such war
 occurs, peace can be made on the following conditions.
-\aparag Each minor country obeys to the usual rules for peace. As they are
+\aparag Each minor country obeys to the usual rules for peace (except that it
+is not possible to annex provinces of minors during this war). As they are
 allied, a peace against only one country is a separate peace.
 \aparag A minor country forced to sign an unconditional surrender breaks from
 the League for ever. This replace all the peace conditions.
@@ -448,7 +457,10 @@ different countries).
 
 \phdipl
 \aparag \TUR has an overseas \CB against \POR at this turn. \TUR gains the
-discoveries of \seazone{Mascate} and \seazone{Indus}
+discoveries of \seazoneMascate and \seazoneKutch
+
+\phadm
+\POR does not get the incomes (exotic resources) from the revolted countries.
 
 \phmil
 \aparag The Natives of the region \granderegionOman or \granderegionAden are
@@ -472,8 +484,8 @@ redeployed immediately).
 are at war, they are allied.
 \aparag \TUR has an oversea \CB against \POR at this turn, to enter the war as
 an ally of \paysOman or/and \paysAden and it gains the discoveries of
-\seazone{Mascate} and \seazone{Indus}.  If the \CB is used, \TUR gains a
-Treaty with \paysOman or/and \paysAden.
+\seazoneMascate and \seazoneKutch.  If the \CB is used, \TUR gains a Treaty
+with \paysOman or/and \paysAden.
 
 \phadm
 \aparag \paysOman or/and \paysAden at war receive(s) Naval Reinforcement at
@@ -499,8 +511,8 @@ non-European minor countries at this turn.
 action.
 \aparag \POR receives a shift of one column to its favour in the actions
 results table for all its \COL/\TP placement attempts this turn.
-\aparag \POR may ignore restriction of~\ref{chExpenses:Pioneering} for this
-turn.
+\aparag \POR may ignore restriction of~\ref{chAdministration:Pioneering} for
+this turn.
 
 
 
@@ -516,8 +528,8 @@ non-European minor countries at this turn.
 action.
 \aparag \SPA receives a shift of one column in its favour in the actions
 results table for all its \COL/\TP placement attempts this turn.
-\aparag \SPA may ignore restriction of~\ref{chExpenses:Pioneering} for this
-turn.
+\aparag \SPA may ignore restriction of~\ref{chAdministration:Pioneering} for
+this turn.
 
 
 
@@ -786,7 +798,7 @@ the resolution will wait the end of the turn. The \paysMogol is not
 (technically speaking) at war with countries having \TP/\COL or regions in the
 aimed regions. The invasion attempt will be resolved at the end of the
 military phases. Thus, the expansion does not interfere with other kinds of
-war that can take place and involve the \paysMogol.
+war that can take place and involve the \paysMogol
 
 \phinter
 \aparag[European resistance to invasion]
@@ -808,7 +820,7 @@ plenty of time to muster reserves).
 one \ARMY\faceplus.
 \bparag The current leader of the \paysMogol is used in each battle.
 \bparag Depending on the winner of the battle, the invasion test will be
-modified to improve or lower the chance of conquest by the \paysMogol. Note
+modified to improve or lower the chance of conquest by the \paysMogol Note
 that no resistance is not as bad as a failed resistance.
 \aparag[Invasion tests] For each invaded region, a test is made on the
 following table, by rolling 1d10 added to modifiers.
@@ -865,7 +877,10 @@ destroyed immediately. It may reappear later due to new events.
 
 
 
-\event{pII:Crusade}{II-B}{Call to Crusade}{*}{JymMod}
+\event{pII:Crusade}{II-B}{Call for Crusade}{*}{JymMod}
+% google battle:
+% "call to crusade" -> 9,320,00
+% "call for crusade" -> 19,200,000    WINNER!
 
 \history{Did not happen}
 \dure{Until the end of the war.}
@@ -875,9 +890,8 @@ destroyed immediately. It may reappear later due to new events.
 \phevnt
 \aparag[Call to crusade] Each Catholic country has a mandatory free \CB
 against \TUR to be used immediately.
-\bparag As an exception, the \terme{Sole Defender of the Catholic Faith} must
-decide first to use it or not. Then, these \CB are resolved in initiative
-order.
+\bparag As an exception, the \SDCF must decide first to use it or not. Then,
+these \CB are resolved in initiative order.
 \bparag All countries that use this \CB are call crusaders and are
 automatically allied against \TUR.
 
@@ -894,8 +908,7 @@ is at war is not an excuse for avoiding the Crusade.
 \aparag[Refusing to participate] Any Catholic country that either refused to
 participate or rejected the mediation of the Pope suffers from the following
 effects:
-\bparag Loss of 1\STAB (2\STAB for the \terme{Sole Defender of the Catholic
-  Faith}).
+\bparag Loss of 1 \STAB (2 \STAB for the \SDCF).
 \bparag Loss of the diplomatic control of \paysPapaute.
 \bparag All other Catholic majors have a normal \CB against this country this
 turn.
@@ -911,9 +924,9 @@ a Crusade.
 \bparag If they are on the diplomatic track of a crusader, they are
 immediately raised in \EW (if not already higher).
 \bparag Otherwise, they are temporarily put in \EW of the first crusader (the
-first country that declared war on \TUR, either the \terme{Sole Defender of
-  the Catholic Faith} or the one with higher initiative). They will return
-back to the \Neutral box at the end of the crusade.
+first country that declared war on \TUR, either the \SDCF or the one with
+higher initiative). They will return back to the \Neutral box at the end of
+the crusade.
 
 \aparag Other Catholic minors may participate if controlled by the crusader,
 using the normal rules.
@@ -949,7 +962,7 @@ same time, the modifier value for \SUB on \paysPapaute becomes -150.
 \aparag[Crusader army] The crusaders, whether major or minor, may used the
 Crusader \ARMY counters to hold troops of any crusader country.
 \bparag Whatever the actual content of these counters, they are considered to
-be of class \CAIII and have all the features of this class.
+be of class \CAIII\ and have all the features of this class.
 \bparag Track the nationalities of the \LD in these \ARMY in order to give
 them back to their owner.
 % Jym, adding:
@@ -989,16 +1002,16 @@ procedure.
 \end{designnote}
 \aparag[Participating to the crusade] At the end of the first military round
 of each turn of the Crusade, each major crusader country must design one of
-its stack with at least 3\LD or \ND (or 6\NGD) belonging to it as a ``main
+its stack with at least 3\LD or \NWD (or 6\NGD) belonging to it as a ``main
 crusading stack''.
 
 \aparag At the end of each following round, each crusader major country loss
-1\STAB unless at least one of the following conditions is true.
+1\STAB unless at least one of the following conditions is true:
 \bparag All his troops initially in his main crusading stack (they may split)
 have been destroyed (reinforcing the crusading stack does not prevent the
 destruction of the initial troops).
-\bparag All his troops initially in the crusading stack moved this round and
-end up closer to the territory of \TUR or its allies.
+\bparag All his troops initially in the main crusading stack moved this round
+and end up closer to the territory of \TUR or its allies.
 \bparag Troops of this country (any troops) have participated this round in at
 least one battle (land or sea) or siege (besieger or besieged) against \TUR or
 its allies.
@@ -1030,7 +1043,7 @@ by \TUR (the most recent conquest first) ; \provinceMoreas , \provinceHellas,
 \bparag Only provinces controlled by crusaders may be chosen.
 \bparag These provinces are given back to their 1492 owner (if Christian),
 even if he did not participate in the Crusade and recreating it if it was
-destroyed. Provinces initially belonging to an non-Christian country are given
+destroyed. Provinces initially belonging to a non-Christian country are given
 to \paysChevaliers.
 % Jym: let's avoid creating a "Latin states of Orient" minor...
 \bparag Provinces of the \regionBalkans that are automatically annexed by

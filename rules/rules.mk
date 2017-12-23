@@ -6,9 +6,15 @@ endif
 
 # Automatic section
 TEXTFIGFILES = $(addprefix $(FIGDIR)/,\
+ amiral.pdf\
  autrereligion.pdf\
  catholique.pdf\
+ conquistador.pdf\
  etoile.pdf\
+ explorateur.pdf\
+ general.pdf\
+ gouverneur.pdf\
+ monarque.pdf\
  orthodoxe.pdf\
  protestant.pdf)
 TEXTRECORDSFILES = $(addprefix $(RECORDSDIR)/,\
@@ -41,6 +47,7 @@ TEXTSRCFILES = $(addprefix $(RULESDIR)/,\
  unicodetricks.sty\
  xnameref.sty)
 TEXFIGFILES = $(addprefix $(FIGDIR)/,\
+ amiral.pdf\
  anchor.png\
  anchor2.png\
  anchor3.png\
@@ -56,18 +63,29 @@ TEXFIGFILES = $(addprefix $(FIGDIR)/,\
  catholique.pdf\
  chess.jpg\
  chiite.pdf\
+ conquistador.pdf\
+ corsaire.pdf\
+ default.jpg\
  diplomacy.jpg\
+ doge.pdf\
  economicalevents.jpg\
  etoile.pdf\
  events.jpg\
  expenses.jpg\
+ explorateur.pdf\
+ general.pdf\
+ gouverneur.pdf\
  incomes.jpg\
+ ingenieur.pdf\
+ interphase.jpg\
  military.jpg\
  mine.png\
+ monarque.pdf\
  orthodoxe.pdf\
- politicalevents.jpg\
+ pacha.pdf\
  powers.jpg\
  protestant.pdf\
+ redeployment.jpg\
  scenarios.jpg\
  sel.png\
  specificrules.jpg\
@@ -118,9 +136,11 @@ TEXBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
  shield_bourgogne.png\
  shield_brandebourg.png\
  shield_brunswick.png\
+ shield_caraibes.png\
  shield_catalogne.png\
  shield_chevaliers.png\
  shield_chine.png\
+ shield_chineespagne.png\
  shield_cologne.png\
  shield_corse.png\
  shield_cosaquesdon.png\
@@ -185,6 +205,7 @@ TEXBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
  shield_prusse.png\
  shield_pskov.png\
  shield_rebelles.png\
+ shield_revolutionnaires.png\
  shield_royalistes.png\
  shield_russie.png\
  shield_ryazan.png\
@@ -200,12 +221,14 @@ TEXBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
  shield_teutoniques1.png\
  shield_teutoniques2.png\
  shield_thuringe.png\
+ shield_tordesillas.png\
  shield_toscane.png\
  shield_transylvanie.png\
  shield_treves.png\
  shield_tripoli.png\
  shield_tunisie.png\
  shield_turquie.png\
+ shield_turquievenise.png\
  shield_ukraine.png\
  shield_usa.png\
  shield_valachie.png\
@@ -216,10 +239,12 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  EUevents.sty\
  EUtheme.sty\
  barlist.sty\
+ engAdministration.tex\
  engAlpha.tex\
  engAnnexe.tex\
  engAustria.tex\
  engBasic.tex\
+ engBudget.tex\
  engCommandes.tex\
  engCopyleft.tex\
  engCorpsMineurs.tex\
@@ -240,24 +265,25 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engEvnt5.tex\
  engEvnt6.tex\
  engEvnt7.tex\
+ engEvntDiploRev.tex\
  engEvntEco.tex\
  engEvntFWR.tex\
  engEvntGen.tex\
  engEvntRules.tex\
  engEvntTYW.tex\
- engExpAdmin.tex\
- engExpLogistic.tex\
- engExpenses.tex\
+ engExpFinal.tex\
  engFrance.tex\
  engGameSequence.tex\
  engGeneralTables.tex\
  engGreatCampaign.tex\
  engHolland.tex\
  engIncomes.tex\
+ engInterphase.tex\
  engIntroduction.tex\
  engLeaders.tex\
- engMilitary.tex\
- engMilitaryFrench.tex\
+ engLogistic.tex\
+ engMilitaryConcepts.tex\
+ engMilitaryRules.tex\
  engMinorCountries.tex\
  engObjectives.tex\
  engPeace.tex\
@@ -266,6 +292,7 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  engPoliticalRules.tex\
  engPortugal.tex\
  engPrussia.tex\
+ engRedeployment.tex\
  engRussia.tex\
  engScenarios.tex\
  engSpain.tex\
@@ -290,10 +317,14 @@ TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  unicodetricks.sty\
  xnameref.sty)
 TEXHFIGFILES = $(addprefix $(FIGDIR)/,\
+ amiral.pdf\
  autrereligion.pdf\
  catholique.pdf\
  chiite.pdf\
+ conquistador.pdf\
  etoile.pdf\
+ explorateur.pdf\
+ general.pdf\
  orthodoxe.pdf\
  protestant.pdf\
  sunnite.pdf)
@@ -419,7 +450,7 @@ for xtarget in euTables.pdf:TEXT engAlpha.pdf:TEX euMinors.pdf:TEXH euObjectives
 root=$${xtarget#*:};\
 rm -f $(RULESDIR)/$${target} 2>&1 > /dev/null;\
 DEPENDS=1 make -s $(RULESDIR)/$$target;\
-grep -v ENOENT /tmp/eu8depends.txt |grep O_RDONLY|cut -f2 -d\"|grep -v ^/|sort|uniq>/tmp/eu8depends2.txt;\
+grep -v ENOENT /tmp/eu8depends.txt |grep O_RDONLY|cut -f2 -d\"|grep -v ^/|LC_ALL=C sort|uniq>/tmp/eu8depends2.txt;\
 echo -n "$${root}FIGFILES" '= $$(addprefix $$(FIGDIR)/,' >> $(RULESDIR)/rules.mk2;\
 grep ^$${figdir} /tmp/eu8depends2.txt|sed -e "s|^$${figdir}/||g"|xargs -n 1 echo -ne '\\\n' >> $(RULESDIR)/rules.mk2;\
 echo ")" >> $(RULESDIR)/rules.mk2;\
@@ -446,7 +477,7 @@ $(RULESDIR)/view: $(RULESDIR)/engAlpha.pdf
 	@$(BINDIR)/acroread $^
 
 $(RULESDIR)/errors:
-	@(if [ -f "$(RULESDIR)/engAlpha.log" ]; then cat $(RULESDIR)/engAlpha.log ; else tar xzOf $(RULESDIR)/engAlpha.tgz engAlpha.log;fi)|perl -e 'BEGIN {$$DISPLAY=0;$$BUF="";$$currpage=0} while (<>) {chomp; s/\x9f/\xC2\xA7/g; $$currpage=sprintf("%03d",$$1+1) if (/^Page:(.*)$$/); $$DISPLAY=1 if (/(^..Package.*Warning)|(^LaTeX War)|(^pdfTeX war)|(^Overfull)|(^Underfull)|(^Missing character:)/ || s/^.*(pdfTeX war.*)$$/$$1/g);next unless ($$DISPLAY);$$BUF.=$$_;next unless (/^$$/ or /^Missing character:/);if ($$BUF=~ /^Overfull/ or $$BUF=~/^Underfull/) {$$BUF=~s/\\LUC[^T]*/~~~\\T/g;$$BUF=~s/[\\\\][A-Z][^ ]* /\xC2\xB7/g;$$BUF=~s/\xC2\xB7//g};printf "%s: %s\n",$$currpage,$$BUF;$$BUF="";$$DISPLAY=0;};'|sort
+	@(if [ -f "$(RULESDIR)/engAlpha.log" ]; then cat $(RULESDIR)/engAlpha.log ; else tar xzOf $(RULESDIR)/engAlpha.tgz engAlpha.log;fi)|perl -e 'BEGIN {$$DISPLAY=0;$$BUF="";$$currpage=0} while (<>) {chomp; s/\x9f/\xC2\xA7/g; $$currpage=sprintf("%03d",$$1+1) if (/^Page:(.*)$$/); $$DISPLAY=1 if (/(^..Package.*Warning)|(^LaTeX War)|(^pdfTeX war)|(^Overfull)|(^Underfull)|(^Missing character:)/ || s/^.*(pdfTeX war.*)$$/$$1/g);next unless ($$DISPLAY);$$BUF.=$$_;next unless (/^$$/ or /^Missing character:/);if ($$BUF=~ /^Overfull/ or $$BUF=~/^Underfull/) {$$BUF=~s/\\LUC[^T]*/~~~\\T/g;$$BUF=~s/[\\\\][A-Z][^ ]* /\xC2\xB7/g;$$BUF=~s/\xC2\xB7//g};printf "%s: %s\n",$$currpage,$$BUF;$$BUF="";$$DISPLAY=0;};'|LC_ALL=C sort
 
 $(RULESDIR)/reformat:
 	@cd $(RULESDIR);for i in engAlpha.tex engEvnt*.tex engAnnexe.tex engVictories.tex engDiplomacyAlliance.tex engThePowers.tex engDiplomacy.tex engDiplomacyMinor.tex engExpenses.tex engExpAdmin.tex engExpLogistic.tex engDiplomacyWar.tex engPoliticalRules.tex engBasic.tex engObjectives.tex euObjectives.tex; do ../bin/reformattex $$i; done

@@ -145,9 +145,14 @@ copyfile
 
 /zm {(img:bateau) zmc}def
 /zp {(img:bateau) zpc}def
-/zmg {(img:flandrebrabant) 3 index 3 index 8 3 roll (img:bateau) zmc putsymbol}def
-/zph {(img:oresund) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
-/zpg {(img:flandrebrabant) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+%/zmg {(img:flandrebrabant) 3 index 3 index 8 3 roll (img:bateau) zmc putsymbol}def
+%/zph {(img:oresund) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+%/zpg {(img:flandrebrabant) 3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
+
+% (img:foo) added in bottom left corner.
+/zmshield {3 index 3 index 8 3 roll (img:bateau) zmc putsymbol} def
+/zmshieldup {3 index 5 add 3 index 110 add 8 3 roll (img:bateau) zmc putsymbol} def
+/zpshield {3 index 3 index 11 3 roll (img:bateau) zpc putsymbol}def
 
 %X begindetroit
 %X [x1 y1 a1 x2 y2 a2 tension] detroit
@@ -160,7 +165,7 @@ copyfile
 /detroit { aload pop
      /ra 10 def /cxx 3 def /impulsion exch cxx mul def
      /a2 exch def /y2 exch def /x2 exch def
-     /a1 exch def /y1 exch def /x1 exch def 
+     /a1 exch def /y1 exch def /x1 exch def
     /t1 ra a1 cos mul def /u1 ra a1 sin mul def
     /t2 ra a2 cos mul def /u2 ra a2 sin mul def
     (S\n)
@@ -246,7 +251,7 @@ copyfile
 	resspos provcode get 3 get{(\n)search{exch pop exch}{exit}ifelse}loop
     ] def
     40 (FontArialNarrow-Bold) setbasefont
-    /provw0 0 provname {_ stringwidth 2 copy lt{exch}if pop}forall 
+    /provw0 0 provname {_ stringwidth 2 copy lt{exch}if pop}forall
 	provmax 2 copy gt {exch} if pop def
     40 (FontArialNarrow) setbasefont
     /provw1 provcarac1 _ stringwidth def
@@ -272,7 +277,7 @@ copyfile
   by
   200
   40 (FontArialNarrow) lefttext
-  
+
   provcarac2
   bx provw3 add 2 provwspace mul add provw1 add
   by
@@ -288,7 +293,7 @@ copyfile
   by 40 add
   provwidth provw3 sub 15 sub
   40 (FontArialNarrow) lefttext
-  
+
   provcarac2
   bx provw3 add 5 add
   by
@@ -329,7 +334,7 @@ copyfile
 }def
 /provinceh {
     /provmax 230 def
-    provincesetup 
+    provincesetup
     /provwidth
       provw0
       provw1 5 provw2 add add
@@ -337,7 +342,7 @@ copyfile
     provw3 15 add add def
     /provwspace provwidth provw3 5 add provw1 add provw2 add sub 3 div def
     /provht 80 def
-    provres length 45 mul provinceframe 
+    provres length 45 mul provinceframe
     provname 0 get provx provwidth provw3 sub 5 sub 2 div add provw3 add 5 add
     provy 40 sub provmax 40
     (FontArialNarrow-Bold) centertext
@@ -404,6 +409,13 @@ copyfile
 
 %X (img:truc) (region) tordesillas
 /tordesillas {/pays exch def resspos pays get dup 0 get 25 sub exch 1 get 60 sub resspos pays get 2 get not {80 sub}if putsymbol} def
+
+% (img:truc) (region) offset tordesillasoffset
+/tordesillasoffset {/offset exch def /pays exch def resspos pays get dup 0 get 25 sub exch 1 get offset sub resspos pays get 2 get not {80 sub}if putsymbol} def
+
+/tordesillasup {/pays exch def resspos pays get dup 0 get 25 sub exch 1 get 38 sub resspos pays get 2 get not {80 sub}if putsymbol} def
+/tordesillasdown {/pays exch def resspos pays get dup 0 get 25 sub exch 1 get 82 sub resspos pays get 2 get not {80 sub}if putsymbol} def
+
 
 /shadepen (0 0 0) def
 /shaderatio 1 def

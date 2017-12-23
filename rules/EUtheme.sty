@@ -10,7 +10,23 @@
 % Narrow typesetting
 \parindent=0cm
 
-%%%% TOC
+%%%% TOC, LOF, LOT
+\renewcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{2.5em}% changed from 1.5em to 2.5em to allow
+                               % long numbers
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
 \renewcommand*\l@section{\@dottedtocline{1}{0em}{3em}}
 \renewcommand*\l@subsection{\@dottedtocline{2}{0em}{4em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{0em}{5em}}
@@ -19,6 +35,10 @@
 % Set level of numbering
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{6}
+
+\renewcommand*\l@figure{\@dottedtocline{2}{0em}{3.5em}}
+\renewcommand*\l@table{\@dottedtocline{2}{0em}{3.5em}}
+
 
 % taken from report.cls around line 592
 % remove the @mkboth
@@ -60,7 +80,7 @@
 % Taken from report.cls around line 339
 % Change pagestyle
 \newcommand\THMchapter{\if@openright\cleardoublepage\else\clearpage\fi
-  \pagestyle{rules}% 
+  \pagestyle{rules}%
   \global\@topnum\z@
   \@afterindentfalse
   \secdef\@chapter\@schapter}
@@ -316,9 +336,9 @@
 \newenvironment{todo}[1][\relax]
 {\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla}\textbf{TODO: #1}}
     {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{black}{todo}{\usebox{\fmbox}}\smallskip}
-\newenvironment{oldcompta}[1][\relax]
-{\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla} \textbf{Accounting v1:\ifx\relax#1\else#1\fi}\par}%
-    {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{histoire}{histoire}{\usebox{\fmbox}}\smallskip}
+% \newenvironment{oldcompta}[1][\relax]
+% {\setlength{\bla}{\columnwidth}\addtolength{\bla}{-2\fboxsep}\addtolength{\bla}{-2\fboxrule}\begin{lrbox}{\fmbox}\begin{minipage}{\bla} \textbf{Accounting v1:\ifx\relax#1\else#1\fi}\par}%
+%     {\end{minipage}\end{lrbox}\par\smallskip\fcolorbox{histoire}{histoire}{\usebox{\fmbox}}\smallskip}
 
 
 
@@ -343,7 +363,7 @@
 \renewcommand\subitem{\@idxitem \hspace*{10\p@}}
 \renewcommand\subsubitem{\@idxitem \hspace*{20\p@}}
 
-% To get all decorations 
+% To get all decorations
 % grep '^.def\\.*decoration#1{' *cls *sty|cut -f1 -d\#|cut -f3 -d\\|sort -u
 % The decorations should take one arg, and display it in a box size linewidth
 % For sections etc. the counter is already included

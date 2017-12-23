@@ -4,13 +4,21 @@ if [ "$1" = "--tex" ]; then
     shift
 fi
 if [ "$TEX" = 1 ]; then
-    printf '\\global\\def\\release{r. '
+    printf '\\global\\def\\release{'
 fi
-grep ^release= "${HOMEDIR}/doc/release.txt"|cut -f2 -d=|xargs printf
-printf "%s" .
-LC_ALL=C git rev-parse --verify HEAD|xargs printf "%s"
+BRANCH=$(${BINDIR}/displaybranch)
+DATE=$(date +%F)
+if [ -n "$BRANCH" ]; then
+    printf "%s -- %s" "$BRANCH" "$DATE"
+#    LC_ALL=C git rev-parse --verify HEAD|xargs printf "%s.%s" "$BRANCH"
 #a=$(svn status ${HOMEDIR}|grep -v \?|wc -l |xargs printf); if [ "$a" -gt 0 ]; then printf "+$a"; fi
-${BINDIR}/displaybranch
+else
+    printf "%s -- %s" "Unknown branch" "$DATE"
+#    grep ^release= "${HOMEDIR}/doc/release.txt"|cut -f2 -d=|xargs printf
+#    if [ "$TEX" = 1 ]; then printf '%s' '{\tiny~';fi
+#    LC_ALL=C git rev-parse --verify HEAD|cut -c1-4|tr '0-9' 'ghiklmnopq'|xargs printf "%s"
+#    if [ "$TEX" = 1 ]; then printf '%s' '} ';fi
+fi
 if [ "$TEX" = 1 ]; then
     printf '}'
 fi

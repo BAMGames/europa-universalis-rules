@@ -7,7 +7,7 @@ IMG 3454 2428 anchor2
 IMG 3479 2370 drapeauplaine
 PROVCURVE 3443 2413 80 -85 115 "Islas Canarias" J
 VALUE X 3480 2396 2 J
-ECU X 3423 2328 protoespagne 
+ECU X 3423 2328 protoespagne
 ; ----------------------------------------------------
 NOM gD "Saõ Miguel" N
 CITE 3206 2638 ville1
@@ -66,6 +66,7 @@ CITE 6963 2590 villechine1
 NOM gU  "廣州" L
 ALTNOM gD  "Guǎngzhōu" L
 CITE 6607 2220 villechine1
+ECU X 6500 2290 protochineespagne
 ; ----------------------------------------------------
 NOM gU  "福州" J
 ALTNOM gD  "Fuzhōu" L
@@ -82,7 +83,7 @@ CITE 6808 2443 villechine1
 NOM gU  "南京" L
 ALTNOM gD  "Nánjīng" L
 CITE 6758 2493 villechine1
-
+ECU X 6590 2450 protochineespagne
 
 ; ----------------------------------------------------
 NOM dU  "札幌市" J
@@ -161,6 +162,7 @@ CITE 5720 0312 villeinde1
 NOM dU "" N
 ALTNOM dD "Mysūru" N
 CITE 5766 0365 villeinde1
+ECU X 5810 0310 protomysore
 ; ----------------------------------------------------
 NOM h "Sài Gòn" N
 CITE 6466 1922 villechine1
@@ -220,11 +222,12 @@ IMG 6912 1947 drapeauforet
 IMG 6813 2258 drapeauplaine
 IMG 5160 1974 drapeauplaine
 IMG 5198 1550 drapeauplaine
-IMG 2392 0265 drapeauforet
+; Malouines
+IMG 2392 0265 drapeauplaine
 IMG 3688 1266 drapeauplaine
 IMG 1832 1195 drapeauforet
 RAW [(banda)(ternate)(puertorico)(stmartin)(guadeloupe)(martinique)(barbade)(trinidad)] {carredict exch get 1 2 getinterval aload pop /iy exch def /ix exch def (img:rocher) ix 3 sub iy 3 sub putsymbol (img:drapeauforet) ix 17 sub iy 2 sub putsymbol}forall
-RAW [(hawai)(mariannes)(tahiti)(zanzibar)(fernandopo)(maurice)(reunion)] {carredict exch get 1 2 getinterval aload pop /iy exch def /ix exch def (img:rocher) ix 3 sub iy 3 sub putsymbol (img:drapeauplaine) ix 15 sub iy 2 sub putsymbol}forall
+RAW [(hawai)(gilbert)(tahiti)(zanzibar)(fernandopo)(maurice)(reunion)] {carredict exch get 1 2 getinterval aload pop /iy exch def /ix exch def (img:rocher) ix 3 sub iy 3 sub putsymbol (img:drapeauplaine) ix 15 sub iy 2 sub putsymbol}forall
 ; ---------------------------
 IMG 0573 3134 drapeauforet
 IMG 1848 2226 drapeauforet
@@ -235,3 +238,7 @@ IMG 2089 2139 drapeauforet
 IMG 5381 2209 rocher
 IMG 5384 2212 drapeauplaine
 ;IMG 5227 2358 anchor4
+; ---------------------------
+; Zanzibar
+ECU X 4875 1445 protooman
+

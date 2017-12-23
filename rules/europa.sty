@@ -50,7 +50,7 @@
   \begin{scope}
     \path[clip] (da)--(db)--(eb)--(ea)--cycle;
     \fill [line width=0pt,top color=#1#6,bottom color=#2#6] (tlA) rectangle (blB);
-  \end{scope} 
+  \end{scope}
   \begin{scope}
     \path[clip] (tlA)--(tlB)--(TlB)--(TlA)--cycle;
     \draw [#8,color=#1#6] (0,#3)--(b)--(a);
@@ -229,7 +229,7 @@
 
 %%% Army classes
 
-\newcommand{\classearmee}[1]{\textsc{#1}}
+\newcommand{\classearmee}[1]{\textsc{#1}\xspace}
 \newcommand {\CAI}{\classearmee{I}}
 \newcommand{\CAII}{\classearmee{II}}
 \newcommand{\CAIII}{\classearmee{III}}
@@ -298,8 +298,8 @@
 
 %%% Counters, Ressources, Dynastic actions
 
-\newcommand{\countermark}[1]{\SRTonemi{#1}} 
-\newcommand{\RES}[1]{\SGTonemi{#1}} 
+\newcommand{\countermark}[1]{\SRTonemi{#1}}
+\newcommand{\RES}[1]{\SGTonemi{#1}}
 \newcommand{\dynasticaction}[2]{dynastic action \underline{#1-#2}\xspace}
 \newcommand{\shortdynasticaction}[2]{\underline{#1-#2}\xspace}
 
@@ -419,7 +419,7 @@
   \EUstore{minor@H#1@blason}{shield_#1}%
   \minordiplospecial{H#1}{Can be created by Habsburg power (\AUS or \SPA), can only be a Habsburg vassal}%
   \minorreligion{H#1}{catholique}}
- 
+
 %%% Shields (setting and getting)
 \def\theminorblason#1{\expandafter\includeblason\expandafter{\csname minor@#1@blason\endcsname}}
 \def\includeblason{\includegraphics[width=24bp]}
@@ -556,8 +556,8 @@
 \def\minorsubevent#1#2{\FEappend{minor@#1@ref}{#2}}
 
 %%% Abbreviations
-\def\minorindep#1#2{\minorspecial{#1}{May be created by {\csname#2\endcsname} after a succesful rebellion (\ruleref{chPeace:Peace:Independence Revolt}).}}
-\def\minorindeptwo#1#2#3{\minorspecial{#1}{May be created by {\csname#2\endcsname} or  {\csname#3\endcsname} after a succesful rebellion (\ruleref{chPeace:Peace:Independence Revolt}).}%
+\def\minorindep#1#2{\minorspecial{#1}{May be created by {\csname#2\endcsname} after a succesful rebellion (\ruleref{chSpecific:Peace:Independence Revolt}).}}
+\def\minorindeptwo#1#2#3{\minorspecial{#1}{May be created by {\csname#2\endcsname} or  {\csname#3\endcsname} after a succesful rebellion (\ruleref{chSpecific:Peace:Independence Revolt}).}%
   \minorspecial{#1}{If a minor country of the same name does already exist, the two countries are merged as one.}}
 
 %%%% Leaders
@@ -603,6 +603,9 @@
 %%% List leaders
 \def\listleader#1{\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}}
 \def\listleadernolink#1{\bgroup\let\anchorleader\strongleader\ifvmode\relax\else\par\fi\FEforeachlist{#1}{\displayleader{\loopitem}}{}\egroup}
+
+\def\listleadershort#1{\FEforeachlist{#1}{\leader{\loopitem}}{, }}
+
 
 %%% Display leader
 %% Leader data
@@ -651,7 +654,11 @@
 %%% Turns management
 
 \def\EUaffecteturns#1#2#3{\expandafter\gdef\csname leaders@#1@turns\expandafter\endcsname\expandafter{\EUaffecteturnshelper{#2};{#3}\endbogoturns}}
-\def\EUaffecteturnshelper#1;#2\endbogoturns{\ifx\relax#2\relax[]\else\ifx\relax#1\relax[Event #2]\else[T#1--T#2]\fi\fi}
+% (jym) :
+% Leaders with no turns are pseudo-anonymous (Shah, ...), Carl XII and
+% La Valette. I prefer to remove the empty [] from the text.
+%\def\EUaffecteturnshelper#1;#2\endbogoturns{\ifx\relax#2\relax[]\else\ifx\relax#1\relax[Event #2]\else[T#1--T#2]\fi\fi}
+\def\EUaffecteturnshelper#1;#2\endbogoturns{\ifx\relax#2\relax\else\ifx\relax#1\relax[Event #2]\else[T#1--T#2]\fi\fi}
 % \def\displaysecondturn#1 #2 {[T#1--T#2]}
 % \def\displayeventturn(#1)#2\endbogo{[Event #1-#2]}
 
@@ -677,27 +684,67 @@
   \fi%
   \expandafter\g@addto@macro\csname listanonyme#2\endcsname{\displayanonyme{#1}{#3}{#4}}}
 
+%%% Pseudo-Anonymous leaders management (pachas, HIS missionaries)
+% name, type, stats, comment
+\def\displaypseudoanonyme#1#2#3#4{\strongleader{#1}\space\ifx#2M\else\displaytype{#2}\fi\space#3\space#4}
+%% Pachas. name, country, type, stats, comments
+\def\leaderpseudoanonyme(#1)[](#2)(#3)(#4)(#5){%
+  \expandafter\ifx\csname listpseudoanonyme#2\endcsname\relax%
+  \expandafter\gdef\csname listpseudoanonyme#2\endcsname{\par}\else%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{,\quad }%
+  \fi%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{\displaypseudoanonyme{#1}{#3}{#4}{#5}}}
+%% Missionaries. name, country, type, stats, comments
+\def\leaderpseudoanonymepar(#1)[](#2)(#3)(#4)(#5){%
+  \expandafter\ifx\csname listpseudoanonyme#2\endcsname\relax%
+  \expandafter\gdef\csname listpseudoanonyme#2\endcsname{\par}\else%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{\par}%
+  \fi%
+  \expandafter\g@addto@macro\csname listpseudoanonyme#2\endcsname{\displaypseudoanonyme{#1}{#3}{#4}{#5}}}
+
 %%%% Objectives
 %%% Setters
+\newcounter{EU@obj@num}
 \def\EUcurrentcountry#1{\gdef\EUcurrcoun{#1}}
-\def\EUcurrentperiod#1{\gdef\EUcurrper{#1}}
-\def\EUobjective#1#2#3#4#5#6#7{% Num letters short score letters desc
+\def\EUcurrentperiod#1{\gdef\EUcurrper{#1}\setcounter{EU@obj@num}{0}}
+% \def\EUobjective#1#2#3#4#5#6#7{% Num letters short per score max desc
+%   \ifx\relax#2\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@letters}{#2}%
+%   \fi%
+%   \ifx\relax#3\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@short}{#3}%
+%   \fi%
+%   \ifx\relax#4\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@per}{#4}%
+%   \fi%
+%   \ifx\relax#5\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@score}{#5}%
+%   \fi%
+%   \ifx\relax#6\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@max}{#6}%
+%   \fi%
+%   \ifx\relax#7\relax\else%
+%   \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@desc}{#7}%
+%   \fi%
+% }
+\def\EUobjective#1#2#3#4#5#6{% letters short per score max desc
+  \stepcounter{EU@obj@num}%
+  \ifx\relax#1\relax\else%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @letters}{#1}%
+  \fi%
   \ifx\relax#2\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@letters}{#2}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @short}{#2}%
   \fi%
   \ifx\relax#3\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@short}{#3}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @per}{#3}%
   \fi%
   \ifx\relax#4\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@per}{#4}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @score}{#4}%
   \fi%
   \ifx\relax#5\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@score}{#5}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @max}{#5}%
   \fi%
   \ifx\relax#6\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@max}{#6}%
-  \fi%
-  \ifx\relax#7\relax\else%
-  \EUstore{objective@\EUcurrcoun @\EUcurrper @#1@desc}{#7}%
+  \EUstore{objective@\EUcurrcoun @\EUcurrper @\theEU@obj@num @desc}{#6}%
   \fi%
 }

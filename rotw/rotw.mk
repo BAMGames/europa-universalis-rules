@@ -7,7 +7,7 @@ ROTWCLASS=Building depends
 endif
 ROTWGSEXTRA += -SCURRENTDIR=$(ROTWDIR)
 # Automatic section
-ROTWBLASONS = aden afghans angleterre azteque chine espagne france gujarat habsbourg hollande hyderabad inca iroquois japon mogol mysore oman perse pologne portugal prusse russie siberie soudan suede tordesillas turquie venise vijayanagar
+ROTWBLASONS = aden afghans angleterre azteque chine espagne france gujarat habsbourg hollande hyderabad inca iroquois japon mogol mysore oman perse pologne portugal prusse russie siberie soudan suede tordesillas turquie venise vijayanagar chineespagne caraibes
 ROTWSHADOWS = america anchor anchor2 anchor3 areacold bateau blocus bois coton drapeauforet drapeauplaine epices esclaves indigene00 indigene01 indigene02 indigene03 indigene04 indigene05 indigene06 indigene07 indigene08 indigene09 indigene10 indigene11 indigene12 indigene13 indigene14 indigene15 indigene16 indigene17 indigene18 indigene19 indigene20 indigene21 indigene22 indigene23 inflation mine orient peaux peche rocher sel soie sucre ville1 villechine1 villechine2 villeinde1 villeinde2
 # End automatic
 ROTWCOLORMAPEXTFILES=$(addprefix $(BLASONSDIR)/shield_,$(addsuffix .pnm,$(ROTWBLASONS))) $(addprefix $(SHADOWDIR)/,$(addsuffix .pnm,$(ROTWSHADOWS))) $(addprefix $(SHADOWDIR)/,$(addsuffix .pgm,$(ROTWSHADOWS)))
@@ -57,7 +57,7 @@ $(ROTWDIR)/ressource.eps: $(ROTWCOMMON) $(BINDIR)/createressources.pl $(RULESDIR
 $(ROTWDIR)/activation.eps: $(ROTWCOMMON) $(RULESDIR)/engCorpsMineurs.tex
 	@$(DISP) "$(ROTWCLASS)" "activations"
 	@echo '/activationdict <<' > $@
-	@grep ^.minoractivation $^|perl -pe 's/^.*minoractivation{([a-z]*)}{?([0-9]*)}?%? ?(.*)$$/\/\1 (\2\3)/g;s/ormus/perse/g;' >>$@
+	@grep ^.minoractivation $^|perl -pe 's+^.*minoractivation\{([a-z]*)\}\{?([0-9/]*)\}?%? ?(.*)$$+/\1 (\2\3)+g;s/ormus/perse/g;' >>$@
 	@echo '>> def' >>$@
 
 $(ROTWDIR)/clipped.pdf: $(ROTWCOMMON) $(GSCOLORMAPCOMMON) $(addprefix $(ROTWDIR)/,source.eps activation.eps carres.eps fonddecarte.clp clip1.clp clip2.clp clip3.clp images.eps portsandmines.eps ressource.eps text.eps) $(ROTWCOLORMAPEXTFILES)

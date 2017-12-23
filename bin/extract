@@ -257,6 +257,18 @@ foreach $k (@infoROI) {
     }
 }
 delete $info{"ROI"};
+foreach $k (@infoROIPAIRE) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Name1"});
+	$command.=str($k->{"Name2"});
+	$command.=" dessineROIPAIRE\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"ROIPAIRE"};
 foreach $k (@infoSTABILITE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -313,6 +325,18 @@ foreach $k (@infoOWNERCONTROL) {
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
 	$command.=" dessineCONTROLE\n";
+	sendit($k,$command);
+    }
+    $count=$k->{"Occupation"};
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=" dessineOCCUPATION\n";
+	sendit($k,$command);
+    }
+    $count=$k->{"Intervention"};
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=" dessineINTERVENTION\n";
 	sendit($k,$command);
     }
 }
@@ -451,11 +475,15 @@ foreach $k (@infoESTABLISHMENT) {
     }
 }
 delete $info{"ESTABLISHMENT"};
+$pacha_number=1;
 foreach $k (@infoPACHA) {
     $command=str($k->{"Country"});
-    $command.=str($k->{"Name"});
+    $command.="(".$k->{"NameB"};
+    $command.=" (".$k->{"NameC"}.")" if $k->{"NameC"};
+    $command.=")";
     $command.=str($k->{"LD"});
-    $command.=str($k->{"Number"});
+    $command.=str($pacha_number);
+    $pacha_number+=1;
     $command.=str($k->{"Stats"});
     $command.=" dessinePACHA\n";
     sendit($k,$command);
@@ -523,8 +551,10 @@ foreach $k (@infoLEADERANONYMOUS) {
     $command=str("Anonymous-".$subcode);
     $command.=str($k->{"Country"});
     $command.=str($k->{"Number"});
-    $command.=str("");
-    $command.=str("");
+    $command.=str($k->{"First turn"});
+    $command.=str($k->{"Last turn"});
+#    $command.=str("");
+#    $command.=str("");
     $command.=str(substr($k->{"Leader Type"},0,1));
     $command.=str(substr($k->{"Leader Type"},1));
     $command.=str($k->{"Stats"});
@@ -559,30 +589,38 @@ foreach $k (@infoLEADERANONYMOUSDOUBLE) {
 }
 delete $info{"LEADERANONYMOUSDOUBLE"};
 foreach $k (@infoMISSIONNAIRE) {
-    $count=$k->{"Count"};
-    $count=~ s/^x//;
-    foreach $i (1..$count) {
-	$command=str($k->{"Country"});
-	$command.=str($k->{"Name"});
-	$command.=str($k->{"First turn"});
-	$command.=str($k->{"Last turn"});
-	$command.=str("@ 3.0.0 +".$k->{"bonus"});
-	$command.=" dessineMISSIONNAIRE\n";
-	sendit($k,$command);
-    }
+    $command=str($k->{"Country"});
+    $command.=str($k->{"NameC"});
+    $command.=str($k->{"First turn"});
+    $command.=str($k->{"Last turn"});
+    $command.=str("@ ".$k->{"carac"}." +".$k->{"bonus"});
+    $command.=" dessineMISSIONNAIRE\n";
+    sendit($k,$command);
 }
 delete $info{"MISSIONNAIRE"};
-foreach $k (@infoMISSIONspecial) {
+foreach $k (@infoMISSIONNAIREanonyme) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+        $command=str($k->{"Country"});
+        $command.=str($k->{"Name"});
+        $command.=str("@ 2.0.0 +".$k->{"bonus"});
+        $command.=" dessineMISSIONNAIREanonyme\n";
+        sendit($k,$command);
+    }
+}
+delete $info{"MISSIONNAIREanonyme"};
+foreach $k (@infoMISSION) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
 	$command.=str($k->{"Name"});
-	$command.=" dessineMISSIONspecial\n";
+	$command.=" dessineMISSION\n";
 	sendit($k,$command);
     }
 }
-delete $info{"MISSIONspecial"};
+delete $info{"MISSION"};
 foreach $k (@infoRaw) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -611,6 +649,5 @@ dropit();
 print $footer;
 
 foreach $k (sort keys %info) {
-    print STDERR "%$k was not treated\n";
+    print STDERR "%$k was not treated\n\n";
 }
-

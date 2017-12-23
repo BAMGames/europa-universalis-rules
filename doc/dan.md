@@ -1,6 +1,4 @@
-<meta>
-Title: The great adventures of the kingdom of Denmark
-</meta>
+Something is rotten in the state of Denmark
 
 # TODO
 
@@ -204,7 +202,7 @@ Baltic Kontors:
 North Sea Kontors:
 
  * Vlaanderen
- * Oldenburg
+ * Frisia (aka Oldenburg)
  * Vestfold (historically, remained very late)
  * Köln
  * Slesvig (in fact the Dithmarshen republic)
@@ -378,7 +376,19 @@ Becomes swamp terrain. Receives new MNU side (+) Metal (large) (20).
 
 ### Oldenburg
 
-Oldenburg: now protodanemark
+Oldenburg: now a minor without a capital. Very reliable. Starts as
+annexed by DAN.
+
+    \minorcountry{oldenburg}{County of Oldenburg}{Frisia}
+    \minorreligion{oldenburg}{protestant}
+    \minordiplo{oldenburg}{8}{40}{1}{2}{3}{*}{2}
+    \minorpref{oldenburg}{\ENG, \HOL, \SUE, \FRA, \AUS, \RUS, \POL, \PRU, \POR, \VEN, \SPA, \TUR}
+    \minorfid{oldenburg}{17}
+    \minorprovince{oldenburg}{Oldenburg}3
+    \minorbasicforces{oldenburg}{\LD}
+    \minorarmyclass{oldenburg}{Latin}{III}
+    \minorHRE{oldenburg}
+    \minorforces{oldenburg}{1 \LD}
 
 ### Jämtland
 
@@ -404,9 +414,10 @@ maximal income: +4+1-20+6+2+4+1(+2?)= -1 to +1, one less side of MNU to raise
 ## Initial situation
 
 Trøndelag switches to 3.
-DAN owns Västergotland, Skåne, Oldenburg, Gotland+current national territory.
+DAN owns Västergotland, Skåne, Gotland+current national territory.
+**Frisia** is annexed by DAN (3).
 Norway owns Jämtland (5).
-Kontors in Danish territory: Slesvig (4), Oldenburg (3), Skåne (5).
+Kontors in Danish territory: Slesvig (4), Frisia (3), Skåne (5).
 
 Colonies: Godthåb;Reykjavík
 Trading-Post: Vinland
@@ -714,8 +725,9 @@ every round, and SDoCF can pay for more expensive types of campaigns.
 
 ## Thirty Years' War
 
-After dissolving the HANSA, all Kontors are removed.
-
+After dissolving the HANSA, all Kontors are removed, and all provinces
+owned by **Hansa** at the beginning of the peace phase get a Kontor
+instead.
 
 # Minor Denmark
 

@@ -23,9 +23,8 @@ IMAGEDIR regimagedir
 >> def
 
 /countrylist [
-(aden) (oman) (perse) (japon) (chine) (soudan) (afghans) (inca)
-(azteque) (iroquois) (gujarat) (hyderabad) (mysore) (mogol) (vijayanagar) (siberie)
-(tordesillas) ecunames {exch pop}forall
+(aden) (oman) (perse) (japon) (chine) (chineespagne) (soudan) (afghans) (inca)
+(azteque) (iroquois) (gujarat) (hyderabad) (mysore) (mogol) (vijayanagar) (siberie) (caraibes) (tordesillas) ecunames {exch pop}forall
 ]def
 
 /regimage { /tmp exch def
@@ -38,7 +37,7 @@ SHADOWDIR regimagedir
 << /Filename BLASONDIR(/templates/blason.pgm)! >> (sdw:blason) defimage
 << /Filename BLASONDIR(/templates/protoblason.pgm)! >> (sdw:protoblason) defimage
 
-[(espagne)(portugal)(perse)(tordesillas)]
+[(espagne)(portugal)(perse)(tordesillas)(caraibes)(chine)(chineespagne)(oman)(aden)(aceh)(azteque)(inca)(mysore)(hyderabad)(siberie)(afghans)(gujarat)(japon)]
 {/pays exch def
     <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
 	/Alpha (sdw:protoblason)>> (img:) (proto)pays ! ! defimage

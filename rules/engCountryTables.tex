@@ -31,7 +31,7 @@
   }{
     \TCAR & 35  & 80  & --- & --- & 40 & 15 & 25 & 55 \\
     \TGLN & 35  & 90  & --- & --- & 40 & 15 & 30 & 70 \\
-    \TLS  & 40  & 105 & --- & --- & 40 & 20 & 35 & 80 \\
+    \TGF  & 40  & 105 & --- & --- & 40 & 20 & 35 & 80 \\
     \TBAT & 50  & 120 & --- & --- & 40 & 25 & 40 & 90 \\
   }
 }
@@ -92,7 +92,7 @@
   }{
     \TCAR & 35 & 70  & 10 &  50 & 50 & 15 & 25 &  55 \\
     \TGLN & 40 & 80  & 10 &  60 & 50 & 17 & 35 &  80 \\
-    \TLS  & 50 & 120 & 15 &  70 & 50 & 20 & 40 &  90 \\
+    \TGF  & 50 & 120 & 15 &  70 & 50 & 20 & 40 &  90 \\
     \TBAT & 55 & 150 & 15 &  90 & 50 & 25 & 45 & 100 \\
     \TVE  & 60 & 190 & 20 & 100 & 50 & 30 & 50 & 110 \\
     \TTD  & 70 & 230 & 20 & 120 & 50 & 35 & 60 & 130 \\
@@ -153,7 +153,7 @@
   }{
     \TCAR & 50 &  80 & 10 & 40 & 40 & 20 & 30 &  75 \\
     \TGLN & 55 &  90 & 10 & 50 & 40 & 25 & 45 & 110 \\
-    \TLS  & 60 & 150 & 10 & 60 & 40 & 25 & 50 & 115 \\
+    \TGF  & 60 & 150 & 10 & 60 & 40 & 25 & 50 & 115 \\
     \TBAT & 65 & 170 & 10 & 70 & 40 & 30 & 60 & 130 \\
     \TVE  & 70 & 225 & 15 & 90 & 40 & 35 & 65 & 140 \\
     \TTD  & 80 & 270 & 20 &110 & 40 & 40 & 70 & 160 \\
@@ -184,18 +184,22 @@
     1520-1559 II & 2 & 1 & 1\xxa & 1\xxa & 1 & \ARMY\facemoins\xxd\FLEET\faceplus & 4\ND/4\LD & 1\LeaderG/2\LeaderA/(1\LeaderE\xxb) \\
     1560-1614 III& 3 & 2 & 1\xxc & 1\xxa\xxe & 1 & \ARMY\facemoins\xxd\FLEET\faceplus & 4\ND/3\LD & 1\LeaderG/1\LeaderA/1\LeaderE \\
     1615-1664 IV & 2 & 2 & 2\xxc & 2\xxa & 2 & \ARMY\facemoins\FLEET\faceplus & 6\ND/3\LD & 1\LeaderG/2\LeaderA/1\LeaderC \\
-    1665-1699 V  & 4 & 3 & 2\xxc & 2\xxc & 2 & \ARMY\facemoins\FLEET\faceplus\FLEET\facemoins & 6\ND/3\LD & 1\LeaderG/2\LeaderA/1\LeaderC \\
-    1700-1749 VI & 5 & 4 & 2     & 2     & 3 & \ARMY\facemoins2\FLEET\faceplus& 7\ND/3\LD & 1\LeaderG/2\LeaderA/1\LeaderGov \\
-    1750-1799 VII& 6 & 5 & 2     & 2     & 3 & \ARMY\faceplus2\FLEET\faceplus & 7\ND/3\LD & 1\LeaderG/2\LeaderA/1\LeaderC$\!$@ \\
+% [BLP] : 2A -> 3A
+    1665-1699 V  & 4 & 3 & 2\xxc & 2\xxc & 2 & \ARMY\facemoins\FLEET\faceplus\FLEET\facemoins & 6\ND/3\LD & 1\LeaderG/3\LeaderA/1\LeaderC \\
+% [BLP] : 2A -> 4A
+    1700-1749 VI & 5 & 4 & 2     & 2     & 3 & \ARMY\facemoins2\FLEET\faceplus& 7\ND/3\LD & 1\LeaderG/4\LeaderA/1\LeaderGov \\
+% [BLP] : 2A -> 5A
+    1750-1799 VII& 6 & 5 & 2     & 2     & 3 & \ARMY\faceplus2\FLEET\faceplus & 7\ND/3\LD & 1\LeaderG\xxf/5\LeaderA/1\LeaderC$\!$@ \\
   }
   \GTlegend[caption=captiona,text width=59mm]{
     \xxc\ -1 if Counter-Reform\hspace*{3mm}
     \xxa\ -1 if Catholic\\
-    \xxb\ only if protestant/Anglican
+    \xxb\ only if \PROTANG
   }
   \GTlegend[south east,text width=71mm]{
     \xxe\ +1 after the creation of the \emph{East Indian Company}\\
-    \xxd\ becomes \ARMY\faceplus if Counter-reform
+    \xxd\ \ARMY\faceplus if Counter-Reform\hspace*{3mm}
+    \xxf At least 1\LeaderG in Europe
   }
 }
 
@@ -212,7 +216,7 @@
   }{
     \TCAR & 30 &  60 & --- & --- & 40 & 12 & 20 &  45 \\
     \TGLN & 35 &  70 & --- & --- & 40 & 15 & 30 &  70 \\
-    \TLS  & 40 & 100 & --- & --- & 40 & 18 & 35 &  80 \\
+    \TGF  & 40 & 100 & --- & --- & 40 & 18 & 35 &  80 \\
     \TBAT & 50 & 130 & --- & --- & 40 & 20 & 40 &  90 \\
     \TVE  & 55 & 160 & --- & --- & 40 & 25 & 45 & 100 \\
     \TTD  & 60 & 200 & --- & --- & 40 & 30 & 55 & 120 \\
@@ -239,14 +243,20 @@
 
 \newcommand{\FranceTurn}{
   \stdTurn{
-    1492-1519 I  & 2 & 1     & 0\xxa  & 0       & 1    & \ARMY\faceplus1\GD       & 2\ND/4\LD & 2\LeaderG \\
-    1520-1559 II & 3 & 1     & 0\xxa  & 0       & 1    & \ARMY\faceplus\ARMY\facemoins\GD\xxe  & 3\ND/4\LD & 3\LeaderG/(1\LeaderE\xxb) \\
-    1560-1614 III& 2 & 1     & 0\xxa\xxe  & 0       & 1    & \ARMY\faceplus\ARMY\facemoins\GD\xxe  & 4\ND/4\LD & 2\LeaderG/(1\LeaderE\xxb) \\
+% [BLP] Add 1A
+    1492-1519 I  & 2 & 1     & 0\xxa  & 0       & 1    & \ARMY\faceplus1\GD       & 2\ND/4\LD & 2\LeaderG/1\LeaderA \\
+% [BLP] Add 1A
+    1520-1559 II & 3 & 1     & 0\xxa  & 0       & 1    & \ARMY\faceplus\ARMY\facemoins\GD\xxe  & 3\ND/4\LD & 3\LeaderG/1\LeaderA/(1\LeaderE\xxb) \\
+% [BLP] Add 1A
+    1560-1614 III& 2 & 1     & 0\xxa\xxe  & 0       & 1    & \ARMY\faceplus\ARMY\facemoins\GD\xxe  & 4\ND/4\LD & 2\LeaderG/1\LeaderA/(1\LeaderE\xxb) \\
     1615-1664 IV & 3 & 2     & 1\xxa  & 1\xxa   & 1\xxc& \ARMY\faceplus\ARMY\facemoins\FLEET\facemoins\xxd & 5\ND/4\LD & 3\LeaderG/1\LeaderA/1\LeaderC/(1\LeaderE\xxb) \\
+% [BLP] : 2A -> 2A
     1665-1699 V  & 5 & 2\xxc&1\xxa\xxc&1\xxa\xxc& 2\xxc& 2\ARMY\faceplus\ARMY\facemoins\FLEET\faceplus\xxd& 6\ND/4\LD & 3\LeaderG/2\LeaderA/1\LeaderC/1\LeaderE \\
-    1700-1749 VI & 6 & 3\xxc & 1      &1\xxa\xxc& 2\xxc& 2\ARMY\faceplus\FLEET\faceplus\FLEET\facemoins    & 7\ND/4\LD & 3\LeaderG/2\LeaderA \\
+% [BLP] : 2A -> 3A
+    1700-1749 VI & 6 & 3\xxc & 1      &1\xxa\xxc& 2\xxc& 2\ARMY\faceplus\FLEET\faceplus\FLEET\facemoins    & 7\ND/4\LD & 3\LeaderG/3\LeaderA \\
+% [BLP] : 2A -> 4A
     1750-1799 VII& 6 & 3\xxc & 1      & 1\xxa   & 2\xxc&
-    2\ARMY\faceplus\FLEET\faceplus\FLEET\facemoins    & 7\ND/4\LD & 3\LeaderG/2\LeaderA/1\LeaderC$\!$@ \\
+    2\ARMY\faceplus\FLEET\faceplus\FLEET\facemoins    & 7\ND/4\LD & 3\LeaderG/4\LeaderA/1\LeaderC$\!$@ \\
   }
   \GTlegend[caption=captiona,text width=63mm]{
     If \terme{Colbertian Mercantilism}:\ \xxc\ +1 and \null\xxd\ add \FLEET\facemoins\\
@@ -270,7 +280,7 @@
   }{
     \TCAR & 35 &  70 & 10 &  50 & 40 & 15 & 25 &  55 \\
     \TGLN & 40 &  85 & 15 &  60 & 40 & 17 & 35 &  80 \\
-    \TLS  & 45 & 110 & 20 &  80 & 40 & 20 & 40 &  90 \\
+    \TGF  & 45 & 110 & 20 &  80 & 40 & 20 & 40 &  90 \\
     \TBAT & 55 & 140 & 20 &  90 & 40 & 25 & 45 & 100 \\
     \TVE  & 60 & 180 & 25 & 120 & 40 & 30 & 50 & 110 \\
     \TTD  & 65 & 220 & 25 & 140 & 40 & 35 & 60 & 130 \\
@@ -281,19 +291,28 @@
 \newcommand{\EspagneTurn}{
   \stdTurn{
     1492-1519 I  & 3 & 1              & 2          & 0    & 1 & \ARMY\faceplus 3\GD & 4\ND/5\LD & 1\LeaderG/1\LeaderA/1\LeaderC/1\LeaderE \\
-    1520-1559 II & 3 & 1              & 2          & \xxd & 1 & 2\ARMY\faceplus 3\GD\xxe & 6\ND/5\LD & 2\LeaderG/1\LeaderA/1\LeaderC/1\LeaderE  \\
-    1560-1614 III& 4 & 1{\bf[+1]}\xxa & 2{\bf[+2]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus\xxe & 7\ND/5\LD & 2\LeaderG/2\LeaderA/1\LeaderC \\
-    1615-1664 IV & 4 & 1{\bf[+1]}\xxa & 1{\bf[+2]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus\xxe & 7\ND/5\LD & 2\LeaderG/2\LeaderA \\
-    1665-1699 V  & 4 & 1\xxb\xxa      & 1{\bf[+1]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus & 5\ND/4\LD & 2\LeaderG/2\LeaderA\\
-    1700-1749 VI & 3 & 1\xxb          & 1 {\bf[+1]}         & 1    & 1 & \ARMY\faceplus \ARMY\facemoins \FLEET\faceplus & 4\ND/3\LD & 1\LeaderG/1\LeaderA/\LeaderG$\!$\$ \\
-    1750-1799 VII& 2 & 1              & 1  {\bf[+1]}         & 1    & 1 &\ARMY\faceplus \FLEET\faceplus1\GD& 4\ND/3\LD & 1\LeaderG/1\LeaderA/1\LeaderG$\!$\$ \\
+% [BLP] : 1A for flotta del oro.
+    1520-1559 II & 3 & 1              & 2          & \xxd & 1 & 2\ARMY\faceplus 3\GD\xxe & 6\ND/5\LD & 2\LeaderG/1\LeaderA\xxc/1\LeaderC/1\LeaderE  \\
+% [BLP] : 1A for flotta del oro.
+    1560-1614 III& 4 & 1{\bf[+1]}\xxa & 2{\bf[+2]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus\xxe & 7\ND/5\LD & 2\LeaderG/2\LeaderA\xxc/1\LeaderC \\
+% [BLP] : 1A for flotta del oro.
+    1615-1664 IV & 4 & 1{\bf[+1]}\xxa & 1{\bf[+2]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus\xxe & 7\ND/5\LD & 2\LeaderG/2\LeaderA\xxc \\
+% [BLP] : 2A -> 2A
+% [BLP] : 1A for flotta del oro.
+    1665-1699 V  & 4 & 1\xxb\xxa      & 1{\bf[+1]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus & 5\ND/4\LD & 2\LeaderG/2\LeaderA\xxc\\
+% [BLP] : 1A -> 2A
+% [BLP] : 1A for flotta del oro.
+    1700-1749 VI & 3 & 1\xxb          & 1 {\bf[+1]}         & 1    & 1 & \ARMY\faceplus \ARMY\facemoins \FLEET\faceplus & 4\ND/3\LD & 1\LeaderG/2\LeaderA\xxc/\LeaderG$\!$\$ \\
+% [BLP] : 1A -> 3A
+    1750-1799 VII& 2 & 1              & 1  {\bf[+1]}         & 1    & 1 &\ARMY\faceplus \FLEET\faceplus1\GD& 4\ND/3\LD & 1\LeaderG/3\LeaderA/1\LeaderG$\!$\$ \\
   }
   \GTlegend{
     Use \textbf{[X]} only for \pays{Portugal}, while in annexion; add basic force \textbf{[3\GD{}]} and purchase \textbf{[1\LD/1{\ND}]}\\
     \xxa\ +1 if conciliant\hspace*{4mm}
     \xxe\ Add \FLEET\facemoins if \province{Campania} is controlled.\hspace*{4mm}
     \xxb\ +1 as long as the \terme{Asiento} remains Spanish\\
-    \xxd\ 1 \COL may serve as 1 \TP per turn (either for \SPA or \pays{portugal})
+    \xxd\ 1 \COL may serve as 1 \TP per turn (either for \SPA or \pays{portugal})\hspace*{4mm}
+    \xxc\ +\LeaderA for Flota de oro
   }
 }
 
@@ -326,7 +345,7 @@
   }{
     \TCAR & 35 &  70 & 10 &  50 & 40 & 14 & 25 &  55 \\
     \TGLN & 40 &  80 & 10 &  60 & 40 & 17 & 35 &  80 \\
-    \TLS  & 50 & 120 & 15 &  80 & 40 & 20 & 40 & 100 \\
+    \TGF  & 50 & 120 & 15 &  80 & 40 & 20 & 40 & 100 \\
     \TBAT & 55 & 150 & 20 &  90 & 40 & 25 & 50 & 110 \\
     \TVE  & 60 & 190 & 20 & 100 & 40 & 30 & 55 & 120 \\
     \TTD  & 65 & 220 & 20 & 120 & 40 & 35 & 60 & 140 \\
@@ -353,21 +372,28 @@
   \def\Jan{\emph{Jan}}
   \def\Tim{\emph{Tim}}
   \expTurn{\Tim}{\Jan}{\FLEET}{
-    1492-1519 I  & 3 & 1  & 0   & 0   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb&\FLEET\facemoins    & 5\ND/4\LD\xxc & 2\LeaderG/1\LeaderA\\
-    1520-1559 II & 4 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET \faceplus& 7\ND/4\LD\xxc & 3\LeaderG/2\LeaderA/1\LeaderE\\
-    1560-1614 III& 3 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& 2\FLEET\faceplus& 9\ND/5\LD\xxc & 4\LeaderG/3\LeaderA\\
-    1615-1664 IV & 3 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus\FLEET\facemoins & 9\ND/5\LD\xxc & 3\LeaderG/2\LeaderA\\
-    1665-1699 V  & 3 & 1  &1\xxa &1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus   & 8\ND/4\LD\xxc & 3\LeaderG/2\LeaderA\\
-    1700-1749 VI & 3 & 1  & 0   & 1 \xxa   & 2 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus     & 6\ND/4\LD\xxc & 3\LeaderG/1\LeaderA\\
-    1750-1799 VII& 2 & 1  & 0   & 0   & 2 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus & 5\ND/4\LD\xxc & 2\LeaderG/1\LeaderA\\
+% [BLP] : 2G -> 1G
+    1492-1519 I  & 3 & 1  & 0   & 0   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb&\FLEET\facemoins    & 5\ND/4\LD\xxc & 1\LeaderG\xxd/1\LeaderA\\
+% [BLP] : 3G -> 1G
+    1520-1559 II & 4 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET \faceplus& 7\ND/4\LD\xxc & 1\LeaderG\xxd/2\LeaderA/1\LeaderE\\
+% [BLP] : 4G -> 2G
+    1560-1614 III& 3 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& 2\FLEET\faceplus& 9\ND/5\LD\xxc & 2\LeaderG\xxd/3\LeaderA\\
+% [BLP] : 3G -> 1G
+    1615-1664 IV & 3 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus\FLEET\facemoins & 9\ND/5\LD\xxc & 1\LeaderG\xxd/2\LeaderA\\
+% [BLP] : 3G -> 1G
+    1665-1699 V  & 3 & 1  &1\xxa &1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus   & 8\ND/4\LD\xxc & 1\LeaderG\xxd/2\LeaderA\\
+% [BLP] : 3G -> 1G
+    1700-1749 VI & 3 & 1  & 0   & 1 \xxa   & 2 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus     & 6\ND/4\LD\xxc & 1\LeaderG\xxd/1\LeaderA\\
+% [BLP] : 2G -> 1G
+    1750-1799 VII& 2 & 1  & 0   & 0   & 2 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus & 5\ND/4\LD\xxc & 1\LeaderG\xxd/1\LeaderA\\
   }
   \GTlegend{
     \xxa  Only for existing counters\hspace*{5mm}
     \ARMY \Jan/\Tim available: 1492: 2/4; M-1a: 4/2; M-2: 6/0\hspace*{5mm}
     \xxc\ reform M-1a: -1\LD\\
     \xxb\ reform M-1a = \Tim: -\ARMY\faceplus and \Jan: +\ARMY\facemoins;
-    reform M-1b = \Tim: -\ARMY\faceplus; reform M-2 = no \Tim;
-
+    reform M-1b = \Tim: -\ARMY\faceplus; reform M-2 = no \Tim;\hspace*{4mm}
+    \xxd M-2: +2\LeaderG
   }
 }
 
@@ -383,7 +409,7 @@
   }{
     \TCAR & 50 &  80 & 15 & 50 & 50 & 10 & 40 &  80 \\
     \TGLN & 55 & 110 & 15 & 50 & 50 & 20 & 45 & 100 \\
-    \TLS  & 60 & 155 & 15 & 60 & 50 & 25 & 50 & 110 \\
+    \TGF  & 60 & 155 & 15 & 60 & 50 & 25 & 50 & 110 \\
     \TBAT & 65 & 175 & 15 & 70 & 50 & 30 & 55 & 115 \\
     \TVE  & 70 & 200 & 15 & 90 & 50 & 35 & 60 & 125 \\
     \TTD  & 80 & 220 & 15 & 90 & 50 & 40 & 65 & 180 \\
@@ -405,13 +431,16 @@
 
 \newcommand{\VeniseTurn}{
   \stdTurn{
-    1492-1519 I  & 1 & 1  & 0  & 0     & 2     & \FLEET\facemoins3\GD & 4\ND/4\LD & 2\LeaderG/1\LeaderA\\
-    1520-1559 II & 3 & 1  & 0  & 0     & 2     & \FLEET\faceplus3\GD  & 6\ND/5\LD & 1\LeaderG/2\LeaderA\\
+% [BLP] 2nd G only if Italia e San Marco
+    1492-1519 I  & 1 & 1  & 0  & 0     & 2     & \FLEET\facemoins3\GD & 4\ND/4\LD & 1\LeaderG\xxb/1\LeaderA\\
+% [BLP] 2nd G if Italia e San Marco
+    1520-1559 II & 3 & 1  & 0  & 0     & 2     & \FLEET\faceplus3\GD  & 6\ND/5\LD & 1\LeaderG\xxb/2\LeaderA\\
     1560-1614 III& 3 & 1  & 0  & 1\xxa   & 1\xxa & \FLEET\faceplus3\GD  & 6\ND/4\LD & 1\LeaderG/1\LeaderA/1 \LeaderA (or \LeaderE\xxa)\\
     1615-1664 IV & 2 & 1  & 0  & 1\xxa & 1\xxa & \FLEET\faceplus2\GD  & 6\ND/3\LD & 1\LeaderG/1\LeaderA/1 \LeaderA (or \LeaderE\xxa)\\
   }
   \GTlegend{
-    \xxa\ Only if \pays{venise} is still a \MAJ
+    \xxa\ Only if \pays{venise} is still a \MAJ \quad \xxb +1 \LeaderG
+    if Policy of Italian Dominance is active
   }
 }
 
@@ -424,7 +453,7 @@
   }{
     \TCAR & 45 &  75 & 10 & 30 & 40 & 16 & 30 &  60 \\
     \TGLN & 50 &  90 & 10 & 30 & 40 & 20 & 35 &  90 \\
-    \TLS  & 55 & 120 & 15 & 45 & 40 & 30 & 40 & 100 \\
+    \TGF  & 55 & 120 & 15 & 45 & 40 & 30 & 40 & 100 \\
     \TBAT & 60 & 150 & 15 & 60 & 40 & 30 & 50 & 110 \\
   }
 }
@@ -449,13 +478,16 @@
   \expTurn{}{\terme{Stadhouder}}{\terme{Parliament}}{
     1560-1614 III& 4 & 2\xxc & 1    & 1/2\xxa & 2\xxc & &\ARMY\faceplus\FLEET\facemoins1\GD\corsaire& \FLEET\faceplus1\GD& 8\ND/5\LD & 1\LeaderG\xxe/2\LeaderA/1\LeaderE/(1\LeaderC\xxa) \\
     1615-1664 IV & 4 & 2\xxc & 2    & 2       & 2\xxc & &\ARMY\faceplus\FLEET\facemoins1\GD\corsaire& \FLEET\faceplus1\GD & 7\ND/4\LD & 1\LeaderG\xxe/2\LeaderA/1\LeaderE/1\LeaderC \\
-    1665-1699 V  & 5 & 2\xxc & 1    & 2       & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD\corsaire& \FLEET\faceplus2\GD & 7\ND/3\LD & 1\LeaderG\xxe/1\LeaderA\xxe/1\LeaderE/1\LeaderC\\
-    1700-1749 VI & 3 & 2\xxc & 1\xxd& 1\xxd   & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD& \FLEET\faceplus2\GD & 5\ND/3\LD & 1\LeaderG\xxe/1\LeaderA\xxe/1\LeaderGov \\
-    1750-1799 VII& 2 & 2\xxc & 1\xxd& 1\xxd   & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD& \FLEET\faceplus2\GD  & 5\ND/3\LD & 1\LeaderG/1\LeaderA/1\LeaderGov \\
+% [BLP] : 1A -> 1A
+    1665-1699 V  & 5 & 2\xxc & 1    & 2       & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD\corsaire& \FLEET\faceplus2\GD & 7\ND/3\LD & 1\LeaderG\xxe/2\LeaderA\xxe/1\LeaderE/1\LeaderC\\
+% [BLP] : 1A -> 2A
+    1700-1749 VI & 3 & 2\xxc & 1\xxd& 1\xxd   & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD& \FLEET\faceplus2\GD & 5\ND/3\LD & 1\LeaderG\xxe/3\LeaderA\xxe/1\LeaderGov \\
+% [BLP] : 1A -> 2A
+    1750-1799 VII& 2 & 2\xxc & 1\xxd& 1\xxd   & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD& \FLEET\faceplus2\GD  & 5\ND/3\LD & 1\LeaderG/2\LeaderA/1\LeaderGov \\
   }
   \GTlegend[caption=captiona,text width=83mm]{
     \xxc\ +1 if \terme{Parliament} government (in CC Indian if VOC created)\\
-    \xxe\ 2\LeaderG if \terme{Stadhouder} government; 2\LeaderA if \terme{Parliament} government
+    \xxe\ +1\LeaderG if \terme{Stadhouder} government; +1\LeaderA if \terme{Parliament} government
   }
   \GTlegend[south east,text width=73mm]{
     \xxa\ If VOC created\hspace*{5mm}\xxd\ Only if \pays{Hollande} is still a \MAJ\\
@@ -473,7 +505,7 @@
     \TL   & 50 & 100 & 20/9 & 50/30 & 80/50 & 30 & 70 & 110 \\
   }{
     \TGLN & 35 &  70 & --- & --- & 40 & 15 & 30 &  60 \\
-    \TLS  & 40 & 105 & --- & --- & 40 & 20 & 35 &  75 \\
+    \TGF  & 40 & 105 & --- & --- & 40 & 20 & 35 &  75 \\
     \TBAT & 50 & 135 & --- & --- & 40 & 25 & 40 &  90 \\
     \TVE  & 55 & 170 & --- & --- & 40 & 30 & 50 & 110 \\
     \TTD  & 60 & 210 & --- & --- & 40 & 35 & 60 & 130 \\
@@ -529,7 +561,7 @@
   }{
     \TCAR & 50 &  80 & 15 & 50 & 50 & 15 & 25 &  55 \\
     \TGLN & 55 & 110 & 15 & 50 & 50 & 17 & 35 &  80 \\
-    \TLS  & 60 & 155 & 20 & 60 & 50 & 20 & 40 &  90 \\
+    \TGF  & 60 & 155 & 20 & 60 & 50 & 20 & 40 &  90 \\
     \TBAT & 65 & 175 & 20 & 70 & 50 & 25 & 45 & 100 \\
     \TVE  & 70 & 200 & 25 & 90 & 50 & 30 & 50 & 110 \\
     \TTD  & 80 & 220 & 25 & 90 & 50 & 40 & 60 & 130 \\
@@ -599,7 +631,7 @@
   }{
     \TCAR & 50 &  80 & 15 & 50 & 50 & 15 & 25 &  55 \\
     \TGLN & 55 & 110 & 15 & 50 & 50 & 17 & 35 &  80 \\
-    \TLS  & 60 & 155 & 15 & 60 & 50 & 20 & 40 &  90 \\
+    \TGF  & 60 & 155 & 15 & 60 & 50 & 20 & 40 &  90 \\
     \TBAT & 65 & 175 & 20 & 70 & 50 & 25 & 45 & 100 \\
     \TVE  & 70 & 200 & 20 & 90 & 50 & 30 & 50 & 110 \\
     \TTD  & 80 & 220 & 20 & 90 & 50 & 40 & 60 & 130 \\
@@ -633,7 +665,7 @@
   }{
     \TCAR & 50 &  80 & 15 & 50 & 50 & 15 & 25 &  55 \\
     \TGLN & 55 & 110 & 15 & 50 & 50 & 17 & 35 &  80 \\
-    \TLS  & 60 & 155 & 15 & 60 & 50 & 20 & 40 &  90 \\
+    \TGF  & 60 & 155 & 15 & 60 & 50 & 20 & 40 &  90 \\
     \TBAT & 65 & 175 & 20 & 70 & 50 & 25 & 45 & 100 \\
     \TVE  & 70 & 200 & 20 & 90 & 50 & 30 & 50 & 110 \\
     \TTD  & 80 & 220 & 20 & 90 & 50 & 40 & 60 & 130 \\
@@ -780,7 +812,7 @@
     \GTitemitem{on the Donets river (in \province{Donets}) or the Don river (in \province{Don}) acting as a port on \seazone{Noire W} only;}
     \GTitemitem{on the Dniepr river (in \province{Zaporozhye}) acting as a port on \seazone{Noire E} only;}
     \GTitemitem{or  on the Volga river (in \province{Samara}) acting as a port on \seazone{Caspienne} only.}
-    \GTitem{This \FLEET can only go in the target sea zone for naval interceptions and battles or put blockade on \ville{Azov}, \ville{Odessa} or \ville{Astragan} until it gains a regular port.}
+    \GTitem{This \FLEET can only go in the target sea zone for naval interceptions and battles or put blockade on \shortville{Azov}, \shortville{Odessa} or \shortville{Astragan} until it gains a regular port.}
   }
   \EffectOfWood
   \ROTWRecruitment
@@ -1015,7 +1047,8 @@
       \GTitem{\longmonarque{Bayezid II}: at start.}
       \GTitem{\longmonarque{Suleyman}: first Sultan of period II.}
       \GTitem{\longmonarque{Selim I}: successor of \shortmonarque{Bayezid II} in period I.}
-      \GTitem{\longministre{Sadri Azam}: always available as general \leaderwithdata{Sadri Azam}.}
+      \GTitem{\longministre{Sadrazam}: either a named one or the
+        generic counter.}
     }
   }
   \simpleHelpBox{europeandiplomacy}{European Diplomacy}{
@@ -1029,7 +1062,7 @@
   }
   \simpleHelpBox{barbaresque}{Barbaresques Pirates}{
     \GTitem{Test to hold them: 1d10<\#period+dipl. bonus.}
-    \GTitem{\pays{Algerie}\textrightarrow\seazone{Mediterranee W} (both \ctz{Espagne} and \stz{Lion}) or \stz{Lion};}
+    \GTitem{\pays{Algerie}\textrightarrow\seazone{Levantin} (both \ctz{Espagne} and \stz{Lion}) or \stz{Lion};}
     \GTitem{\pays{Tripoli} and \pays{Cyrenaique}\textrightarrow\stz{Ionienne} or \ctz{Venise}}
     \GTitem{\pays{Tunisie}\textrightarrow\stz{Lion} or \stz{Ionienne}}
     \GTitem{\pays{Maroc}\textrightarrow\ctz{Espagne}.}
@@ -1039,7 +1072,7 @@
   }
   \simpleHelpBox[kings]{orientaltrade}{Oriental Policy}{
     \GTheader{Great Orient CC}
-    \GTitem{100\ducats+10\ducats per 3 non-european \COL/\TP\up{(1)}-10\ducats per 5 Christian \COL/\TP\up{(2)}-10\ducats per 5 Christian \TradeFLEET in \stz{Oman} or \stz{Indien}+10\ducats for each of \shortprovince{Ormus}, \shortprovince{Socotra}, \shortprovince{Malacca S}/\shortprovince{Sumatra C}\up{(3)}.}
+    \GTitem{100\ducats+10\ducats per 3 non-european \COL/\TP\up{(1)}-10\ducats per 5 Christian \COL/\TP\up{(2)}-10\ducats per 5 Christian \TradeFLEET in \stz{Arabie} or \stz{Indien}+10\ducats for each of \shortprovince{Ormus}, \shortprovince{Socotra}, \shortprovince{Malacca S}/\shortprovince{Sumatra C}\up{(3)}.}
     \GTitem{\up{(1)}: not in \dipAT with other than \TUR or \VEN; \up{(2)}: in \continent{Asia} not in \continent{Siberia};}
     \GTitem{\up{(3)}: \TUR \TP/\COL or no Christian \TP/\COL and owner in \dipAT of \TUR.}
     \GTitem{If \CCs{Grand Orient} in \pays{egypte}, half of it for \TUR if owns \shortprovince{Syrie} or diplomatic control of \pays{Damas} not at war.}
@@ -1049,7 +1082,7 @@
     \GTitem{Given to controller of \CCs{Mediterranee} (\CB else) or any \MAJ with port on \region{Mediterranee} not in Trade Refusal.}
     \GTheader{Development}
     \GTitem{May only place \COL by land contact (or straits).}
-    \GTitem{pIII/pIV: one Admiral can go in \continent{Asia} (if any \TP; not \textbf{m} of lowest rank).}
+    \GTitem{one \LeaderA can go in \region{Indian} (if any \TP; not \textbf{m} of lowest rank).}
   }
   \simpleHelpBox{military}{Military}{
     \GTitem{Recruitment area limited to \province{Trakya} and \province{Angora}.}
@@ -1086,7 +1119,7 @@
         Malus\geq& Arq.\xxa & Musk.\xxa& Musk.\xxa & Bar.\xxa &---\\\hline
         Naval cap& Bat.     & Bat.     & Vessel    & TD & 74s\\
         Malus\geq& Car\xxa  & Car.\xxa & Car.\xxa  & Bat.\xxa & --- \\
-      \end{tabular}   
+      \end{tabular}
     }
     \GTnotitle{table}{Effect on Military technology}
     \GTlegend[east south=main,xsize=(\gtid table.east)(\gtid main.east)]{\xxa -1 if current tech. this or better}
@@ -1120,7 +1153,7 @@
   }
   \simpleHelpBox{tradepolicy}{Trade Policy}{
     \GTheader{Great Orient CC}
-    \GTitem{100\ducats+10\ducats per 3 non-european \COL/\TP\up{(1)}-10\ducats per 5 Christian \COL/\TP\up{(2)}-10\ducats per 5 Christian \TradeFLEET in \stz{Oman} or \stz{Indien}+10\ducats for each of \shortprovince{Ormus}, \shortprovince{Socotra}, \shortprovince{Malacca S}/\shortprovince{Sumatra C}\up{(3)}.}
+    \GTitem{100\ducats+10\ducats per 3 non-european \COL/\TP\up{(1)}-10\ducats per 5 Christian \COL/\TP\up{(2)}-10\ducats per 5 Christian \TradeFLEET in \stz{Arabie} or \stz{Indien}+10\ducats for each of \shortprovince{Ormus}, \shortprovince{Socotra}, \shortprovince{Malacca S}/\shortprovince{Sumatra C}\up{(3)}.}
     \GTitem{\up{(1)}: not in \dipAT with other than \TUR or \VEN; \up{(2)}: in \continent{Asia} not in \continent{Siberia};}
     \GTitem{\up{(3)}: \TUR \TP/\COL or no Christian \TP/\COL and owner in \dipAT of \TUR.}
     \GTitem{If \CCs{Grand Orient} in \pays{egypte}, half of it for \VEN if diplomatic control of \pays{Egypte} not at war.}
@@ -1142,6 +1175,34 @@
     \GTitem{Each turn, roll 1d10\textrightarrow number of \HOL \TradeFLEET to be placed by\\ \VEN [TBD?].}
     \GTitem{1-2 none ; 3-5 one ; 6-8 two; 9-10 three (1 in Mediterranean Sea).}
   }
+  \helpBox{orientincome}{Orient Income}{
+    \GTcontent[eastpoint]{
+      \newlength{\OIboxlength}\setlength{\OIboxlength}{1cm}
+      % 1cm is miraculously correct! It should actually depend on
+      % \linewidth or something similar.
+      %
+      % I don't know why the table background isn't white.
+      % Or how to put pII/pIII halfway between both their lines.
+      \begin{tabular}{c||p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}}
+        p\period{I} & T1: & T2: & T3: & T4: & T5: & T6: \\
+        \hline
+        p\period{II} & T7: & T8: & T9: & T10: & \multicolumn{2}{l}{Total
+          p\period{I}:} \\
+        \hline
+        & T11: & T12: & T13: & T14: & \multicolumn{2}{l}{Total
+          p\period{II}:}\\
+        \hline
+        p\period{III} & T15: & T16: & T17: & T18: & T19: & T20:\\
+        \hline
+        & T21: & T22: & T23: & T24: & T25: & Tot:\\
+      \end{tabular}
+    }
+    \GTlegend{\CCs{Grand Orient}, \CCs{Tempete}, convoys of \bazar{Izmir}
+      or \terme{East Indies}, resources exploited with \dipAT, \COL/\TP
+      producing \RES{PO}, \RES{Spice} or \RES{Silk}, \TradeFLEET in
+      \CCs{Tempete}.}
+    \GTdecorate
+  }
   \simpleMarkerBox[period]{doctrine}{Italia e San Marco}{5cm}\null
 }
 
@@ -1152,7 +1213,8 @@
     \GTtextcontent[eastpoint]{
       \GTitem{\shortmonarque{Willem I}: at start of the rebellion, 7 turns, 7/9/9,\\ Stadhouder. Also \leaderwithdata{Willem I}.}
       \GTitem{\shortmonarque{Oldenbarnevelt}: T19--26, 9/7/7, Parliament.}
-      \GTitem{\shortmonarque{Maurits}: T20--27, 7/7/9, Stadhouder. Also \leaderwithdata{Nassau}.}
+      \GTitem{\shortmonarque{Maurits}: T20--27, 7/7/9,
+        Stadhouder. Also \leaderwithdata{M Nassau}.}
       \GTitem{\shortmonarque{Frederik Hendrik}: T27--32, Stadhouder, 8/7/9. Also \leaderwithdata{Frederik Hendrik}.}
       \GTitem{\ministre{de Witt}: by \xeventref{pV:de Witt}{V-10}, random duration, 9/7/9, Parliament or minister of a Stadhouder. Adds \FLEET\facemoins and \ARMY\faceplus to \terme{Basic forces} when at war.}
       \GTitem{\shortmonarque{Willem III}: T37-43, 7/9/7, Stadhouder, see \xeventref{pV:Glorious Revolution}{V-3}. Adds \ARMY\faceplus to \terme{Basic forces}, also \leaderwithdata{Willem III}.}

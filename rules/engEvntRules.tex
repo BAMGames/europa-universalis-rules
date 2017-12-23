@@ -1,9 +1,9 @@
 % -*- mode: LaTeX; -*-
 
-\definechapterbackground{Events}{events}
+\definechapterbackground{Events}{IngresDeathOfDaVinci}
 \chapter{Events}\label{chapter:Events}
 
-% \section{The events phase}\label{chEvents:Events:Events Phase}
+\section{The events phase}\label{chEvents:Events:Events Phase}
 
 \aparag[Overview.] During the event phase, all players simultaneously
 check for monarch survival. If the previous monarch is dead (either
@@ -34,7 +34,8 @@ turn roll for monarch survival.
 the first few turns of their reign. Check the specific rules of each
 country for details. If such a monarch is currently ruling a country,
 the corresponding player does not roll for monarch survival.
-\aparag Some events give a modifier for survival tests.
+\aparag Some events give a modifier for survival tests. These modifiers
+are cumulative.
 \bparag Countries with negative stability have a \bonus{+1} modifier for
 survival tests.
 \bparag Monarch with \terme{fragile health} have a \bonus{+1} modifier
@@ -65,6 +66,7 @@ there is an automatic dynastic crisis when rolling for the new sultan.
 check for dynastic crisis as well as reign length.
 \bparag Some countries have die roll modifier for this die. Check the
 specific rules of each country.
+
 \aparag[Dynastic Crisis]\label{chEvents:Dynastic Crisis} If the result
 is 1 or less, a dynastic crisis occurs.
 \bparag The country immediately loses 2 \STAB and the values of the new
@@ -74,12 +76,18 @@ another major country, a succession war may occur as per
 \ref{chSpecific:War of Succession}.
 \bparag A new die as to be rolled to determine reign length. Neither
 dynastic crisis nor fragile health may occur this second time.
-\aparag If the result is 10, the new monarch will have \terme{fragile
-  health}.
+
+\aparag[Fragile health] If the result is 10, the new monarch will have
+\terme{fragile health}.
 \bparag A monarch suffering of \terme{fragile health} has a \bonus{+1}
 modifier for all its survival tests.
 \bparag A new die has to be rolled to determine reign length. Neither
 dynastic crisis nor fragile health may occur this second time.
+
+\aparag If the result is neither 1 nor 10, or if this is the second
+roll (after a 1 or 10), read the 'age' and 'reign length' columns of
+the table.
+
 \aparag The scheduled reign duration of the new monarch is found in the
 ``reign length'' column of the table.
 \bparag On a result of 8 or more, the new monarch is young and will have
@@ -119,7 +127,7 @@ monarchs are always rolled on the base column of the country.
 monarch can also be used as a general (or admiral for \VEN) and lead
 troops in battle. However, the exact values of monarchs as military
 leaders are not known precisely before they actually fight a
-battle. Instead, only a ``military average'' is known which give a
+battle. Instead, only a ``military average'' is known which gives a
 global indication whether the monarch will be a good or bad leader, but
 surprises may arise.
 \bparag Once the characteristic of a monarch are known, roll 1d10 and
@@ -193,7 +201,7 @@ characteristics by a roll on~\ref{table:Monarchs Military Skills}
   known. \VEN rolls two dice, getting respectively 2 and 10 for
   modifiers of \bonus{-1} and \bonus{+2} from the military average.
 
-  So, as an admiral, the Doge is a leader 325. Quite a good new for a
+  So, as an admiral, the Doge is a leader 325. Quite good news for a
   galleys admiral in this age of boarding.
 \end{exemple}
 
@@ -215,6 +223,7 @@ leave office).
 
 \aparag Each player rolls for an economical event during the
 ``Economical events'' segment of the Event phase.
+
 \aparag To roll for an economical event, each player rolls two dices and
 look for the result on~\tableref{table:Random economical events}.
 \bparag The first die gives a column. The second die gives a line. By
@@ -222,28 +231,68 @@ crossing the column and line, the number of an economical event is
 found.
 \bparag The effect of the event applies
 immediately. Check~\ref{chapter:Events:Eco} for the description.
+
 \aparag Unless explicitly specified in the description, each economical
 event only affects the player rolling it.
 
-
+\aparag In case of disagreement, economical events are rolled in
+decreasing order of initiative and resolved as soon as rolled.
 
 
 \section{Economic situation}
-
 \label{chEvents:Economic situation}
-\aparag A die is rolled for both the global economic situation and raise
-of piracy.
+
+\begin{todo}
+  [TBD] Moves to the end of the Diplomatic phase if Economical Event
+  Pirates is removed.
+\end{todo}
+
+\aparag[Economic Situation] A die is rolled for both the global economic
+situation and raise of piracy.
 \bparag Combined with the \ref{eco:Piracy}, it is now possible to place
 \emph{Piracy} on the map.
+\bparag Place the \terme{Economic situation} marker on the track on the
+\ROTW map to remember the result of the roll. It will be used during the
+Administrative phase to handle the variation of prices of exotic
+resources. See~\ref{chAdministration:ExoticResourcesPrices}.
+
+\aparag[Inflation] \label{chEvents:Inflation}
+\bparag If ``Inflation'' is obtained (1 or 10), increase the level of
+inflation by 1, that is move the marker one box to the right (without
+exceeding the maximum level). This is the same effect as
+\ref{eco:Inflation} except that it can happen the same turn as another
+\ref{eco:Inflation} or \ref{eco:Deflation}.
+% Jym : not sure about the cumulativeness of this with the eco events...
 
 
+\begin{designnote}
+  The die roll for economic situation must be made during the event
+  phase as it has an influence on piracy (see below). However, variation
+  of prices must be made after the diplomatic phase as speculation has
+  an effect on prices and is declared during diplomacy. Thus, the result
+  of this die must be kept and reused later in the turn.
+
+  In practice, speculation is rare and the important point is that
+  prices variation occurs once per turn.
+\end{designnote}
 
 
 \section{Piracy}\label{chEvents:Piracy}
 
+\begin{todo}
+  [TBD] Moves to the end of the Diplomatic phase if Economical Event
+  Pirates is removed.
+\end{todo}
 
+\begin{todo}
+  [TBD] Make Piracy appear more frequently if Economical Event Pirates
+  is removed. For example, for line 3 and 6, keep the Piracy whether
+  there is a named Pirate or not.
+\end{todo}
 
-\subsection{Raise of the Piracy}
+\GTtable{ecopiracypiracy}
+
+\subsection{Raise of Piracy}
 
 \aparag The roll for economic situation, read in \tableref{table:Random
   Piracy and Economy Roll}, may cause the apparition of some \PIRATE
@@ -252,14 +301,9 @@ named pirate in play at this turn, see~\ref{chEvents:Named Pirates}.
 \bparag A \PIRATE \corsaire\facemoins or \PIRATE \corsaire\faceplus is
 placed in the target \STZ according to the table, unless a result of 1
 or 10 was obtained, in which case the procedure below is used.
-\bparag If ``Inflation'' is obtained, increase the level of inflation by
-1 (without exceeding the maximum level). This is the same effect as
-\ref{eco:Inflation} except that it can happen the same turn as another
-\ref{eco:Inflation} or \ref{eco:Deflation}.
-% Jym : not sure about the cumulativeness of this with the eco events...
 
 \aparag If the economical situation roll was 1 or 10 (or 3 or 6 and a
-named \pays{pirates} \LeaderA is alive) or if~\ref{eco:Piracy} was
+named \pays{pirates} \LeaderP is alive) or if~\ref{eco:Piracy} was
 obtained this turn, several \PIRATE may appear. Determine the target of
 piracy for the turn.
 \bparag If there are two or more causes for piracy, then the target is
@@ -270,33 +314,33 @@ target is indicated in the table.
 the target is rolled at random: 1--5: America ; 6--10: Asia.
 
 \aparag For each \STZ in the target, in the order indicated below (this
-is relevant for named pirates), roll on die. If the die is higher than
-the appearance threshold of the \STZ, place a \PIRATE\facemoins there.
+is relevant for named pirates), roll on die. If the die is greater or
+equal than the appearance threshold of the \STZ, place a
+\PIRATE\facemoins there.
 \bparag In a \STZ with several \PIRATE\faceplus, or with a named pirate,
 check whether they stay at see or try and loot an establishment.
 
 \aparag[Targets of piracy] Depending on the target, roll for the \STZ
 indicated, in order.
-\bparag Everywhere: \seazoneCaraibes, \seazone{Atlantique W},
-\seazoneIndien, \seazoneOman, \seazoneGuinee, \seazoneRecife,
-\seazonePerou, \seazoneFormose, \seazonePatagonie, \seazoneTempetes,
+\bparag Everywhere: \stz{Caraibes}, \stz{Amerique}, \stz{Indien},
+\stz{Arabie}, \stz{Guinee}, \stz{Recife}, \stz{Perou}, \stz{Chine},
+\stz{Patagonie}, \stz{Aiguilles}, \stz{Canarias}.
+\bparag America: \stz{Caraibes}, \stz{Amerique}, \stz{Guinee},
+\stz{Recife}, \stz{Patagonie}, \stz{Aiguilles}, \stz{Canarias}.
+\bparag Asia: \stz{Indien}, \stz{Arabie}, \stz{Perou}, \stz{Chine},
 \stz{Canarias}.
-\bparag America: \seazoneCaraibes, \seazone{Atlantique W},
-\seazoneGuinee, \seazoneRecife, \seazonePatagonie, \seazoneTempetes,
-\stz{Canarias}.
-\bparag Asia: \seazoneIndien, \seazoneOman, \seazonePerou,
-\seazoneFormose, \stz{Canarias}.
+% It's not a bug, it's a feature.
 \bparag Yes, \stz{Canarias} is both for piracy in America and in
-Asia. Yes \seazoneGuinee and \seazoneTempetes are only for America. Yes,
-\seazonePerou is for Asia.
+Asia. Yes \stz{Guinee} and \stz{Aiguilles} are only for America. Yes,
+\stz{Perou} is for Asia.
 
 \aparag[Appearance threshold]\label{chEvents:Piracy Level}
 The appearance threshold for \PIRATE for each \ROTW \STZ is written on
 the right-hand-side of the \STZ symbol.
-\bparag Some \STZ have several thresholds. Use the higher one if only
+\bparag Some \STZ have several thresholds. Use the largest one if only
 one country has \COL/\TP bordering the \STZ; use the second number if
-two countries have \COL/\TP bordering the \STZ and use the lowest number
-if three or more countries have \COL/\TP bordering the \STZ.
+two countries have \COL/\TP bordering the \STZ and use the smallest
+number if three or more countries have \COL/\TP bordering the \STZ.
 \bparag Remember that the \STZ contains the seazone where the symbol is
 located as well as all adjacent seazones. Thus, an establishment borders
 the \STZ if it is coastal and touch any of these zones.
@@ -314,7 +358,7 @@ coexist in a single \STZ.
 
 \subsection{Named Pirates}\label{chEvents:Named Pirates}
 
-\aparag Some famous pirates appear as named \pays{pirates} \LeaderA and
+\aparag Some famous pirates appear as named \pays{pirates} \LeaderP and
 are treated like other named leaders.
 \bparag If a named pirate is alive and not yet on the map, he will take
 command of the first \PIRATE that appears in his area of action
@@ -373,7 +417,9 @@ number of an event or a 'R' followed by the number of an event.
 \aparag Each turn, 4 political events are rolled. It may happen that a
 fifth event is required. No more than 5 political events can happen on
 the same turn.
+
 \aparag To roll for an event, roll two dices.
+
 \aparag If the first result is 10, the second die indicates what to do
 according to the ``10'' column in the table.
 \bparag A result of ``+1'' (event) indicates that a fifth event will be
@@ -381,15 +427,18 @@ rolled this turn.
 \bparag A period number (either the previous or next one) indicates that
 this event will be rolled on the table of the given period instead of
 the current one.
+
 \aparag If the second result is 10, the last line of the table indicates
 what to do.
 \bparag Usually, this event will have to be redrawn in either the next
 or previous period. A third roll might be needed to decide between next
 and previous period.
+
 \aparag In no case can more than 5 events occur in the same turn. If the
 ``+1'' result is obtained more than once, this only means that the
 corresponding event will be rolled on another period table, as
 indicated.
+
 \aparag In no case events of a period other than the current, next or
 previous one can occur.
 \bparag In such cases (double-next or double-previous), restart from the
@@ -398,6 +447,7 @@ current period table.
 % must be rolled in period II, where another $10$ indicates that the
 % event should be rolled in period III. The event is instead rolled in
 % period I.
+
 \aparag If none of the die roll is '10', proceed as follows:
 \bparag The first die gives a column in the table.
 \bparag The second die determines the precise event.
@@ -408,6 +458,7 @@ in the next column (wrap around to the first column if the last column
 with events of the table was already reached).
 \bparag When the count reaches the second die, the result reached by the
 count will be applied.
+
 \begin{designnote}
   This counting down is slightly more complicated than a simple
   cross-referencing of two numbers (as done for the economical
@@ -420,11 +471,18 @@ count will be applied.
   the size of its column, thus events at the top of the following column
   become more probable.
 
+  Moreover, once an event is marked off, say, in the first column then
+  the one on top of the second column can be reached in two different
+  ways: either by rolling in the second column (and '1' for second
+  die) or by rolling in the first column and '9' for second die. Thus
+  it becomes really more likely.
+
   Hence, in a given period, events of the first columns are likely to
   occur early in the period while events in the last columns are
   unlikely to occur early but become more and more likely to occur as
   time goes.
 \end{designnote}
+
 \aparag Once the result is found, if the corresponding event can be
 applied, mark the result off in the table as it must be skipped in
 future counts.
@@ -434,7 +492,8 @@ corresponding result in the table. Check the precise event description
 for details.
 \bparag Most events can only happen a given number of time (usually,
 only once). If an event is drawn after already occurring its maximum
-number of time, mark off the result in the table but play \RD instead.
+number of time, mark off the result in the table but play \RD instead
+(see below).
 \bparag Some events share the same number in the events list for the
 period, such as~\ref{pI:End Golden Horde} and~\ref{pI:Pskov Ryazan}. If
 this number is obtained in the table, apply these events in order. It is
@@ -444,28 +503,31 @@ if this number is rolled several time in the table.
 % 'R*' results cause \RD if no previous \RD.  Rerolling a one-time event
 % causes \RD.  Events causing revolts (civil wars, ...) cause \REVOLT,
 % not \RD, hence don't prevent further \RD.
-\aparag[Revolts] If the result if 'R' followed by a number, a \RD
+
+\aparag[Revolts] If the result is 'R' followed by a number, a \RD
 (\REVOLT/Diplomacy event) may occur.
 \bparag If no \RD occurred this turn (either by another 'R' result or
 because a specific event description told to apply a \RD event), then a
 \REVOLT/Diplomacy event (\RD) happens as per~\ruleref{chEvents:Revolts}
-and~\ruleref{chEvents:diplomacy}.
-\bparag If one or more revolts already occurred this turn, then the
-event given by the number occurs.
-\bparag Events creating revolts without explicitly applying a \RD event
-(eg \ref{pI:Revolt Comuneros}) are not considered as a \RD and thus do
-not prevent further 'R' result to be treated as a \RD rather than a
-number.
-\aparag If the result is a number, the corresponding event occurs
+and~\ruleref{chEvents:diplomacy}. Mark off the box.
+\bparag If one or more \RD already occurred this turn, then the
+event given by the number may occur. Consider that the box only
+contains the number and proceed as described above.
+\bparag Events creating revolts or rebellions without explicitly
+applying a \RD event (eg \ref{pI:Revolt Comuneros}) are not considered
+as a \RD and thus do not prevent further 'R' result to be treated as a
+\RD rather than a number.
+
+\aparag If the result is a number, the corresponding event may occur.
 \bparag Check the event description for effects and applicability.
 
 \begin{exemple}[Rolling for events]
   It is the first turn of the first period. Political events are thus
-  rolled on \ref{events:pI}. The first die roll is 9. The second is
-  6. In the column 9 of the event table for period I, we look at the
-  sixth non marked off number. It is ``R6''. Since no revolt has been
-  rolled this turn, the first event will be \RD and this box of the
-  table is marked off.
+  rolled on the Table of \ref{events:pI}. The first die roll is 9. The
+  second is 6. In the column 9 of the event table for period I, we
+  look at the sixth non marked off number. It is ``R6''. Since no
+  revolt has been rolled this turn, the first event will be \RD and
+  this box of the table is marked off.
 
   Then, for the second event, the rolls are 10 and 1. This indicates
   that there will be 5 events this turn.
@@ -510,7 +572,7 @@ number.
   marked off and \xref{pII:War Poland Turkey} will happen.
 
   So, to sum up, there will be 5 events this turn (instead of 4) and
-  these will be:\par
+  these will be, in order:\par
   R/D, \ref{pI:War Italy Napoli}, \ref{pI:End Golden Horde},
   \ref{pI:Hungarian Freedom}, \ref{pII:War Poland Turkey}.
 
@@ -530,12 +592,12 @@ number.
   they are known, the event-keeper should read (aloud) the events
   descriptions for all to hear.
 
-  Since the precise order in which the events are resolved is not an
-  issue, the events-keeper can read them in an order different from the
-  one they were rolled. Especially, it is advised to first announce all
-  the events names and then read the descriptions. It is also often
-  preferable to start reading small events with few specific rules and
-  finish with the big stuff.
+  Since the precise order in which the events are resolved is usually
+  not an issue, the events-keeper can read them in an order different
+  from the one they were rolled. Especially, it is advised to first
+  announce all the events names and then read the descriptions. It is
+  also often preferable to start reading small events with few
+  specific rules and finish with the big stuff.
 
   Then while players start to discuss the new diplomatic situation
   created by the events, the events-keeper can ask another player to
@@ -545,93 +607,6 @@ number.
   on the same table and are best rolled by the event-keeper with another
   player near the diplomatic track to implement the results.
 \end{playtip}
-
-
-
-
-\section{Diplomatic events}\label{chEvents:diplomacy}
-
-\begin{designnote}
-  Description and meaning of diplomatic status of minors can be found
-  in~\ref{chapter:Diplo}.
-\end{designnote}
-
-\aparag Every time a \RD occurs, both a \REVOLT and a Diplomacy event
-occur.
-\bparag Diplomacy events do not occur when revolts are rolled as per a
-specific event description or special rule. Only the \RD event (result
-'R' in the table) triggers a Diplomacy event.
-\bparag In some conditions an event cannot be played (\emph{e.g.}
-because it was already played) and is resolved as a \RD result
-instead. Hence there may be several Diplomacy events in a given turn.
-\aparag If Diplomacy event occurs, a first die is rolled to know which
-religion suffers from troubles.
-\bparag Even if several Diplomacy events occur, only one religion will
-suffer from troubles.
-\bparag The troubled religion is rolled in \ref{table:diplomatic event
-  religion}.
-\bparag On some results, an additional check for
-\ref{chEvents:diplomacy:uprising} will be made.
-\aparag Then, for each Diplomacy event, roll for a group of minors to
-test in \ref{table:diplomatic event}.
-\bparag For each minor country in the group, add 2 dice (+3 if the minor
-is of the troubled religion).
-\bparag If the result is higher than the fidelity of the minor, the
-diplomatic status of the minor is lowered by one for each extra point
-(the marker goes one box to the left toward \Neutral).
-\bparag For \ROTW minors, if the roll is 2 or more than the fidelity,
-then all \dipFR are broken to \dipNR while \dipAT go to \dipFR ; if the
-result is 5 or more than the fidelity, all \dipAT and \dipFR are broken
-to \dipNR.
-\bparag If the fidelity of the minor is higher than the result, nothing
-happens.
-\bparag Countries that either do not exist (yet or any more) or are
-still/already a major country are not tested even if they do appear in
-the table.
-
-\aparag[Uprising of a conquered minor
-province] \label{chEvents:diplomacy:uprising} If a result of 1, 4 or 7
-was obtained for the first die (troubled religion), check for the
-autonomous uprising of a province of a Minor country that would be owned
-by another power.
-\bparag The group affected is chosen by first rolling for a group of
-countries in \ref{table:diplomatic event}. Then, in order of the
-group(s) obtained, find the first (still existing) minor country that
-does not own all its National territory or that has a \Presidio in its
-territory. A group is defined by a name in bold (2 groups are sometimes
-obtained on a given result).
-% (Jym). Seem to be easier that way. Could be uprising of natives in an
-% area previously owned.
-\bparag \ROTW countries are never subject of uprising.% [TDB?].
-\bparag This minor immediately takes back the ownership of one of these
-territories, or destroy a \Presidio (chosen at random) and a state of
-war is considered to exist between this Minor and the previous owner of
-the province (or a state of overseas war if a \Presidio was destroyed
-this way). This is not a declaration of wars \emph{per se} (more like a
-revolt) so there is no proper Call to allies (only as if continuing an
-existing war, the diplomatic patron of a minor involved can choose to
-% (Jym). Don't leave small minors (especially barbaresques) alone
-% without a chance to get major help or they likely end up crushed
-% again.
-enter the war (with a \CB) or stay out (with no penalty)) and there can
-be no generalisation of war this turn if this is an overseas war.
-
-\aparag[Minor declares a war] If a result of 10 was obtained for the
-first die, a random minor declares war to a random neighbour.
-\bparag The minor is chosen by first rolling for a group of countries in
-the table above and then randomly choosing one existing minor of this
-group.
-\bparag The chosen minor declares war to one of its neighbours, chosen
-randomly.
-\bparag Usual calls for allies happen during Diplomacy phase, for all
-countries involved in this war.
-\bparag If the minor is a \ROTW country, its neighbours are other minors
-countries owning areas adjacent to its own areas, as well as countries
-having a \TP or \COL in its areas or adjacent ones.
-\bparag If the minor is a \ROTW country, the war is an overseas war.
-\bparag In case of \paysPerse/\paysOrmus, it is considered as a single
-country with neighbours both in Europa and in the \ROTW but will only
-declare war (regular or overseas) to one of its neighbours.
 
 
 
@@ -646,15 +621,18 @@ test for \TUR may require to roll for a \REVOLT in \paysmajeurTurquie).
 \aparag If the \REVOLT was rolled as an event (\RD), a Diplomacy event
 also happens as per~\ruleref{chEvents:diplomacy}.
 \aparag For each \REVOLT , dies are rolled in order to determine:
-\bparag The country where the \REVOLT occurs (unless already specified
-elsewhere).
+\bparag The country where the \REVOLT occurs.
 \bparag The province where the \REVOLT happens.
-\bparag The strength of the \REVOLT .
+\bparag The strength of the \REVOLT.
+\bparag Some times, some of these dice are not needed as per
+description of the effect thatcauses the \REVOLT (\emph{e.g.} \REVOLT
+caused by the survival roll of TUR always happen in \paysmajeurTurquie
+and there is no need to roll for the country where it occurs\ldots)
 
-\aparag Roll 2d10 and read the revolted country in the column of the
-current period on \ref{table:alt-revolt-global}. The target country may
-be a \MIN or other abstract entity in which case a pseudo-stability is
-provided in brackets.
+\aparag[Country] Roll 2d10 and read the revolted country in the column
+of the current period on \ref{table:alt-revolt-global}. The target
+country may be a \MIN or other abstract entity in which case a
+pseudo-stability is provided in brackets.
 \bparag Decrease this pseudo-stability of minors in the table by
 \bonus{-1} if:
 \begin{itemize}
@@ -667,11 +645,10 @@ provided in brackets.
 always use the column of the current period for determining the target
 country or area.
 
-\aparag Roll 1d10+the \STAB of the target (or modified pseudo-stability)
-on the target country's table (\ref{chapter:events:revolt:Country
-  tables}) and read the result in the column corresponding to the
-current period (for some countries, there is only one column to use for
-all periods).
+\aparag[Location] Roll 1d10+the \STAB of the target (or modified
+pseudo-stability) on the target country's table and read the result in
+the column corresponding to the current period (for some countries,
+there is only one column to use for all periods).
 \bparag Even if the \REVOLT was caused by an event from another period,
 always use the column of the current period for determining the revolted
 province.
@@ -694,7 +671,7 @@ the minor stays inactive for one full turn. Otherwise, they do expand as
 usual and hamper supply or income as well as \STAB of the diplomatic
 patron.
 
-\aparag Lastly, roll 2d10 in the last column of
+\aparag[Strength] Lastly, roll 2d10 in the last column of
 \ref{table:alt-revolt-global} to find the strength of the revolt.
 \bparag There may be any of the following: \REVOLT counter (either\
 \facemoins or \Faceplus), troops (\LD or \ARMY\facemoins), \LeaderG and
@@ -722,14 +699,158 @@ instead of a \REVOLT. Ignore the troops or capture of the city if any
 and use a \LeaderA instead of a \LeaderG. The \PIRATE attacks all
 \TradeFLEET in the \CTZ/\STZ.
 
+\subsection{Revolts and Rebellions}
+\aparag Revolts may occurs both from \RD events or during civil wars
+events. In the second case, they are called Rebellions.
+\bparag Both of these case may put \REVOLT (or \REBELLION) counters as
+well as \ARMY or \LD in play.
+\bparag Unless specified otherwise, use counters labelled ``Rebellion''
+when they come from a political event and counters labelled ``Revolt''
+in all other cases (\RD, \TUR survival roll, \ldots)
+
+\aparag ``Revolt'' and ``Rebellion'' counters are not considered
+friendly to one another. That is, if a \RD occurs during a civil war, it
+is considered to be a peasants revolting against any and all factions at
+war.
+\bparag As a general rule, ``Revolt'' counters (either troops or
+\REVOLT) are friendly only with other ``Revolt'' counters in the same
+province (but typically not with ``Revolt'' counters from another
+province) while all ``Rebellion'' counters within the same country or
+entity are friendly one to another and they may be friendly to other
+powers.
+
+\aparag Apart from this, \REVOLT and \REBELLION work in the same
+way. Especially for rolling dice to determine where it occurs and at
+which strength.
+\bparag Unless otherwise specified, rules applying to \REVOLT also apply
+to \REBELLION.
 
 
 
-\section{Technology adjustment}\label{chEvents:Technology}
+\section{Diplomatic events}\label{chEvents:diplomacy}
 
-\aparag If the technology levels of some major or cultural group were
-moved during the event phase:
-\bparag Adjust the cultural groups markers
-per~\ref{chExpenses:Technology:Cultural Adjustment} ;
-\bparag adjust the goal markers per~\ref{chExpenses:Technology:Goals
-  Adjustment}.
+\begin{designnote}
+  Description and meaning of diplomatic status of minors can be found
+  in~\ref{chapter:Diplo}.
+\end{designnote}
+
+\aparag Every time a \RD occurs, both a \REVOLT and a Diplomacy event
+occur.
+\bparag Diplomacy events do not occur when revolts are rolled as per a
+specific event description or special rule. Only the \RD event (result
+'R' in the table) triggers a Diplomacy event.
+\bparag In some conditions an event cannot be played (\emph{e.g.}
+because it was already played) and is resolved as a \RD result
+instead. Hence there may be several Diplomacy events in a given turn.
+
+\aparag[Troubled religion] When a Diplomacy event occurs, a first die
+is rolled to know which religion suffers from troubles.
+\bparag Even if several Diplomacy events occur, only one religion will
+suffer from troubles.
+\bparag The troubled religion is rolled in \ref{table:diplomatic event
+  religion}.
+\bparag On some results, an additional check for
+\ref{chEvents:diplomacy:uprising} will be made.
+
+\aparag[Troubled minors] Then, for each Diplomacy event, roll for a
+group of minors to test in \ref{table:diplomatic event}.
+\bparag For each minor country in the group, roll 2d10 (+3 if the
+minor is of the troubled religion).
+\bparag If the result is higher than the fidelity of the minor, the
+diplomatic status of the minor is lowered by one for each extra point
+(the marker goes one box to the left toward \Neutral).
+\bparag For \ROTW minors, if the roll is 2 more than the fidelity,
+then all \dipFR are broken to \dipNR while \dipAT go to \dipFR ; if
+the result is 5 more than the fidelity, all \dipAT and \dipFR are
+broken to \dipNR.
+\bparag If the fidelity of the minor is higher than the result, nothing
+happens.
+\bparag Countries that either do not exist (yet or any more) or are
+still/already a major country are not tested even if they do appear in
+the table.
+
+\aparag[Uprising of a conquered minor
+province] \label{chEvents:diplomacy:uprising} If a result of 1, 4 or 7
+was obtained for the first die (troubled religion), check for the
+autonomous uprising of a province of a Minor country that would be owned
+by another power.
+\bparag The group or groups affected is obtained by rolling 1d10 in
+\ref{table:diplomatic event}. A group is defined by a name in bold (2
+groups are sometimes obtained on a given result leading to 2 possible
+uprisings).
+\bparag Then, in each group, in the order written, find the first
+(still existing) minor country that either (i) does not own all its
+National territory (non-blurred shield) or (ii) has a \Presidio in a
+province it owns or (iii) has an \dipAT with somebody.
+\bparag There is no priority between the conditions above. The first
+minor in the group that meets one of them is affected, whatever the
+condition met or the situation of other minors in the group.
+\bparag Note that only one minor is affected in each group, even if
+several fulfil the conditions. And they are always checked in the
+order written.
+
+\aparag[Effect of the uprising]
+\bparag An uprising minor immediately takes control and ownership of
+one of its national province (non-blurred shield) it currently does
+not owns. If it owns all its national provinces, a \Presidio on its
+territory is immediately destroyed. If its a \ROTW minor, it breaks
+one (and only one) \dipAT to \dipNR.
+\bparag Troops in a province that changes ownership that way may
+retreat immediately, using the peace evacuation procedure of
+\ref{chPeace:Evacuation}; they may also decide to stay in the
+province.
+\bparag The province, \Presidio or \dipAT is chosen at random if
+needed.
+\bparag This creates an immediate state of war (oversea if a \Presidio
+or \dipAT was destroyed) between the minor and the former owner of the
+province (or \Presidio, or \dipAT).
+\bparag This is not a declaration of war \emph{per se} and no effects
+of declaration of wars are applied.
+\bparag Diplomatic announcements concerning this war are allowed as if
+it was continued from previous turn, except that an oversea war cannot
+be generalised this turn.
+\bparag The major victim of the uprising may decide to sign
+immediately a white peace with the minor, thus forfeiting the uprising
+province. This cancels the rest of the effect.
+
+\aparag[Uprising and allies]
+\bparag A neutral uprising minor will not call for allies.
+\bparag If a non-neutral minor uprises, its patron has a \CB (or \OCB)
+to enter the war, to be used immediately. There is no penalty in non
+using it.
+\bparag If the uprising of a minor is against its diplomatic patron,
+then the patron choose to either sign an immediate white peace
+(forfeiting the province but keeping the minor ally) or to fight back
+(in which case the minor immediately becomes neutral).
+
+\aparag[Minor declares a war] If a result of 10 was obtained for the
+first die, a random minor declares war to a random neighbour.
+\bparag The minor is chosen by first rolling 1d10 for a set of
+countries in the \ref{table:diplomatic event} and then randomly
+choosing one existing minor of this set. For this purpose, consider
+each result as a single set even if there are two names in bold (two
+groups).
+\bparag The chosen minor declares war to one of its neighbours, chosen
+randomly.
+\bparag If the minor is a \ROTW country, its neighbours are other minors
+countries owning areas adjacent to its own areas, as well as countries
+having a \TP or \COL in its areas or adjacent ones.
+\bparag If the minor is a \ROTW country, the war is an overseas war.
+\bparag Usual calls for allies happen during Diplomacy phase, for all
+countries involved in this war.
+\bparag In case of \paysPerse/\paysOrmus, it is considered as a single
+country with neighbours both in Europa and in the \ROTW but will only
+declare war (regular or overseas) to one of its neighbours.
+\bparag If the war is waged only between minors, it will end in a
+white peace at the end of the turn.
+
+% Jym, 03/2014.
+% Hum, why? Let's keep only one adjustment per turn.
+% \section{Technology adjustment}\label{chEvents:Technology}
+
+% \aparag If the technology levels of some major or cultural group were
+% moved during the event phase:
+% \bparag Adjust the cultural groups markers
+% per~\ref{chAdministration:Technology:Cultural Adjustment} ;
+% \bparag adjust the goal markers per~\ref{chAdministration:Technology:Goals
+%   Adjustment}.

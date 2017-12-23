@@ -4,19 +4,19 @@
   \bparag \xnameref{chEvents:Economic situation}
   \bparag \xnameref{chEvents:Piracy}
   \bparag \xnameref{chEvents:political-events}
-  \bparag \xnameref{chEvents:diplomacy}
   \bparag \xnameref{chEvents:Revolts}
-  \bparag \xnameref{chEvents:Technology} % adjustment
+  \bparag \xnameref{chEvents:diplomacy}
+%  \bparag \xnameref{chEvents:Technology} % adjustment
 }
 \newcommand{\EventsPhase}{%
-  \aparag \xnameref{chapter:Events}
+  \aparag {\bf \xnameref{chapter:Events}}
   \EventsDetails
 }
 
 \newcommand{\DiploDetails}{%
+  \bparag Declarations of Wars caused by events, and induced Reactions
   \bparag Negotiations between Players
   \bparag Announcements of Alliances
-  \bparag Declarations of Wars caused by events, and induced Reactions
   \bparag Other Announcements: Agreements, Trade Refusal,...
   \bparag Declarations of War, and Reactions
   \bparag Diplomacy on Minor Countries
@@ -25,105 +25,135 @@
   \bparag Activation of \ROTW minors, and reactions
 }
 \newcommand{\DiploPhase}{%
-  \aparag Diplomatic phase
+  \aparag {\bf \xnameref{chapter:Diplo}}
   \DiploDetails
 }
 
-%\newcommand{\IncomeDetails}{%
-%  \bparag Income computation for each player
-%  \bparag Bankruptcy declaration, Refund loans
-%}
-%\newcommand{\IncomePhase}{%
-%  \aparag Income phase
-%  \IncomeDetails
-%}
-
 \newcommand{\AdminDetails}{%
-  \bparag Income computation
-  \bparag \TradeFLEET adjustment, mandatory loan refund, interests,
-  bankruptcy
-  \bparag Choice of actions (incl. Exceptional taxes and logistic)
-  \bparag Maintenance of fortresses and troops, optional refunds
-  \bparag Purchase of forces
-  \bparag Resolution of administrative operations
-  \bparag Administrative action of minors (incl. recruitment)
-  \bparag Automatic competition, attribution of resources
-  \bparag Exotic resources price variations
-  \bparag Technology adjustment
+  \bparag \xnameref{chIncomes:Summary}
+  \bparag \xnameref{chAdministration:Mandatory} % loan refund, ...
+  \bparag \xnameref{chAdministration:Choice of actions}
+  \bparag \xnameref{chLogistic:Maintenance}
+  \bparag \xnameref{chLogistic:Recruitment}
+  \bparag \xnameref{chAdministration:Resolution of actions}
+  \bparag \xnameref{chAdministration:Administration Minor}
+  \bparag \xnameref{chLogistic:Leaders}
+  % Placement \& Death of Military Leaders
+  \bparag \xnameref{chAdministration:Automatic Competition}
+  \bparag \xnameref{chAdministration:Variation}
+  \bparag Technology adjustment (\numberref{chAdministration:Technology})
 }
 \newcommand{\AdminPhase}{%
-  \aparag Administrative phase
-  \AdminDetails
+  \aparag {\bf \xnameref{chapter:Incomes}}, {\bf
+    \xnameref{chapter:Administration}} and {\bf
+    \xnameref{chapter:Logistic}}
+  \AdminDetails }
+
+
+\newcounter{militaryround}
+\newcounter{militarydetails}
+\makeatletter
+\newenvironment{jymlist}[2]{\ifhmode\par\else\fi%
+    \begin{list}{#1{#2}}{%
+        \usecounter{#2}
+        \labelsep.3em\labelwidth.7em\squeezedlist
+        \advance\leftmargin1pt%
+        \def\makelabel{\hskip 1pt\@mklab}
+      }}{%
+    \end{list}}
+\makeatother
+\newcommand{\outeritem}[1]{\arabic{#1}.}
+\newcommand{\inneritem}[1]{(\alph{#1})}
+
+\newcommand{\MilitaryImpulse}{%
+  \item \xnameref{chMilitary:Supply}
+  \item \xnameref{chMilitary:Choice of campaign}
+  \item \xnameref{chMilitary:Movements}, \xnameref{chMilitary:interceptions}
+  \item \xnameref{chMilitary:Exploration}
+  \item \xnameref{chMilitary:Battles}
 }
 
-
+\newcommand{\MilitaryRound}{%
+  \item \xnameref{chMilitary:Rounds:Wintering}
+  \item Impulse (per alliance):
+  \begin{jymlist}{\inneritem}{militaryround}
+    \MilitaryImpulse
+  \end{jymlist}
+  \item \xnameref{chMilitary:Sieges} % + revolts, piracy
+  \item \xnameref{chMilitary:Rounds:Continuation roll}
+  \item \xnameref{chMilitary:End of round} % levies, refit, \ldots
+}
 \newcommand{\MilitaryDetails}{%
-  \bparag Phase end test
-  \bparag Movement and battle, for each alliance:
-  \begin{enumerate}
-  \item Hierarchy adjustment
-  \item Choice of campaign
-  \item Movement \& Discovery
-  \item Attrition
-  \item Battles
-  \end{enumerate}
-  \bparag Sieges
-  \bparag Fights against Piracy and Natives
-  \bparag End of round
+  \bparag \xnameref{chMilitary:Military setup} % initiative, starting round
+  \bparag For each round (\numberref{chMilitary:Rounds}):
+  \begin{jymlist}{\outeritem}{militarydetails}
+    \MilitaryRound
+  \end{jymlist}
+  \bparag \xnameref{chMilitary:cleanup}
 }
 \newcommand{\MilitaryPhase}{%
-  \aparag Military phase (for each military round)
+  \aparag {\bf \xnameref{chapter:MilitaryRules}}
   \MilitaryDetails
 }
 
-
 \newcommand{\RedepDetails}{%
-  \bparag Attacks by Natives
-  \bparag Attacks of Pirates \& Privateers
-  \bparag Military Looting
-  \bparag Extension of Revolts
-  \bparag Mandatory Retreat in Sieges, \Presidios
-  \bparag Return to port or Attrition of Fleets at sea
-  \bparag Collection of all Gold Repatriated
+  \bparag \xnameref{chRedep:Native Attack}
+  \bparag \xnameref{chRedep:Corsair Attack}
+  \bparag \xnameref{chRedep:Revolts} % Extension of Revolts
+  \bparag \xnameref{chRedep:Looting} % Military Looting
+  \bparag \xnameref{chRedep:Presidios}
+  \bparag \xnameref{chRedep:Redeployment}
+  % Mandatory Redeployment in Sieges
+  \bparag \xnameref{chRedep:Return port}
+  % Return to port or Attrition of Fleets at sea
+  \bparag \xnameref{chRedep:Gold Repatriation}
 }
 \newcommand{\RedepPhase}{%
-  \aparag Redeployment phase
+  \aparag {\bf \xnameref{chapter:Redep}}
   \RedepDetails
 }
 
+\newcommand{\ExchequerDetails}{%
+  \bparag \xnameref{chBudget:Exceptional taxes}
+  \bparag \xnameref{chBudget:Exchequer test} % including Loans
+  \bparag \xnameref{chBudget:Budget} % including wealth
+  \bparag \xnameref{chBudget:Stability Improvement}
+}
+\newcommand{\ExchequerPhase}{%
+  \aparag {\bf \xnameref{chapter:Budget}}
+  \ExchequerDetails
+}
+
 \newcommand{\PeaceDetails}{%
-  \bparag Exceptional Taxes
-  \bparag Exchequer test (including National Loans)
-  \bparag International Loans
-  \bparag Stability action investment
-  \bparag Action of Stability resolution
-  \bparag Peace offers and discussions
-  \bparag Test for Crusade
+  \bparag \xnameref{chPeace:Ransoms}
+  \bparag \xnameref{chPeace:Peace offers}
+  \bparag \xnameref{chPeace:Stability} % losses for wars & such
+  \bparag \xnameref{chPeace:Inflation}
+  \bparag \xnameref{chPeace:Crusade} % Test for Crusade
 }
 \newcommand{\PeacePhase}{%
-  \aparag Peace phase
+  \aparag {\bf \xnameref{chapter:Peace}}
   \PeaceDetails
 }
 
 \newcommand{\InterDetails}{%
-%  \bparag Prosperity and Stability adjustment
-  \bparag Placement \& Death of Military Leaders
-  \bparag Inflation
-  \bparag Moving the Trade Centres and Convoys
-  \bparag Calculation of end of turn \VP.
+  \bparag \xnameref{chInter:Trade Centres}
+  % Moving the Trade Centres and Convoys
+  \bparag \xnameref{chInter:Natives, Militias, Fortresses}
+  \bparag \xnameref{chVictories:Turn VP} % Calculation of end of turn \VP.
 }
 \newcommand{\InterPhase}{%
-  \aparag Interphase
+  \aparag {\bf \xnameref{chapter:Inter}}
   \InterDetails
 }
 
 \newcommand{\GameSequence}{%
-  \EventsPhase
-  \DiploPhase
-%  \IncomePhase
-  \AdminPhase
-  \MilitaryPhase
-  \RedepPhase
-  \PeacePhase
-  \InterPhase
+  \EventsPhase %
+  \DiploPhase %
+  \AdminPhase %
+  \MilitaryPhase %
+  \RedepPhase %
+  \ExchequerPhase %
+  \PeacePhase %
+  \InterPhase %
 }

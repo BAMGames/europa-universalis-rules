@@ -88,7 +88,7 @@ $(WEBDIR)/players-changelog.txt: $(BINDIR)/changelog $(HOMEDIR)/doc/changelog.db
 	@$(BINDIR)/changelog --text --category _rules_events_maps_text_ $(HOMEDIR)/doc/changelog.db > $@
 
 $(WEBDIR)/index.html:
-	@NAME=$$(whoami);case "$$NAME" in jcdubacq) FULLNAME="Jean-Christophe Dubacq";; jym|*moyen) FULLNAME="Jean-Yves Moyen"; NAME=moyen;; pborgnat) FULLNAME="Pierre Borgnat";;esac;cat $(HOMEDIR)/doc/index.html|sed -e "s/XXXX/Updated for release $$($(BINDIR)/displayrelease) on $$(date -u '+%F %T %Z') by $$FULLNAME./g;s/YYYY/$$($(BINDIR)/displaybranch 'Europa Universalis 8' 'Europa Universalis 8 (%s branch)')/g" > $@
+	@NAME=$$(whoami);case "$$NAME" in jcdubacq) FULLNAME="Jean-Christophe Dubacq";; jym|*moyen) FULLNAME="Jean-Yves Moyen"; NAME=moyen;; pborgnat) FULLNAME="Pierre Borgnat";;esac;cat $(HOMEDIR)/doc/index.html|sed -e "s/XXXX/Updated for release $$($(BINDIR)/displayrelease) on $$(date -u '+%F %T %Z') by $$FULLNAME./g;s/YYYY/$$($(BINDIR)/displaybranch 'Europa Universalis 9' 'Europa Universalis 9 (%s branch)')/g" > $@
 .PHONY: $(WEBDIR)/index.html
 
 $(WEBDIR)/contours.js: $(CARTEDIR)/traces.js $(CARTEDIR)/moretraces.js $(ROTWDIR)/moretraces.js
@@ -105,4 +105,4 @@ $(WEBDIR)/script.ftp: $(BINDIR)/ftpscript $(WEBDIR)/web.mk $(HOMEDIR)/conf.mk
 
 $(WEBDIR)/depends: $(WEBDIR)/index.html
 	@$(DISP) "Building depends" "web"
-	@sed -ne '1,/^# Automatic section/ p' < $(WEBDIR)/web.mk > $(WEBDIR)/depends.txt;x="";for a in $$(grep 'a href' $(WEBDIR)/index.html|fmt -w 1|grep href|cut -f2 -d\"|grep -v /|sort); do b=""; for i in '(HOMEDIR)/doc:doc' '(ROTWDIR):rotw' "(CARTEDIR):carte" "(RULESDIR):rules" "(RECORDSDIR):records" '(PIONSDIR):pions' '(PRINTDIR):print' ; do c=$${i#*:}; if [ -z "$$b" ]&&[ -f "$(WEBDIR)/../$$c/$$a" ]; then b=$${i%:*}; fi; done ; if [ -n "$$b" ]; then echo "\$$(WEBDIR)/$$a: \$$$$b/$$a">> $(WEBDIR)/depends.txt;echo "FTPOTHERFILES+=$$a">> $(WEBDIR)/depends.txt;else x="$$x $$a";fi; done; echo "# Not found: $$x">> $(WEBDIR)/depends.txt ;sed -ne '/^# End automatic/,$$ p' < $(WEBDIR)/web.mk >> $(WEBDIR)/depends.txt; mv $(WEBDIR)/depends.txt $(WEBDIR)/web.mk
+	@sed -ne '1,/^# Automatic section/ p' < $(WEBDIR)/web.mk > $(WEBDIR)/depends.txt;x="";for a in $$(grep 'a href' $(WEBDIR)/index.html|fmt -w 1|grep href|cut -f2 -d\"|grep -v /|LC_ALL=C sort); do b=""; for i in '(HOMEDIR)/doc:doc' '(ROTWDIR):rotw' "(CARTEDIR):carte" "(RULESDIR):rules" "(RECORDSDIR):records" '(PIONSDIR):pions' '(PRINTDIR):print' ; do c=$${i#*:}; if [ -z "$$b" ]&&[ -f "$(WEBDIR)/../$$c/$$a" ]; then b=$${i%:*}; fi; done ; if [ -n "$$b" ]; then echo "\$$(WEBDIR)/$$a: \$$$$b/$$a">> $(WEBDIR)/depends.txt;echo "FTPOTHERFILES+=$$a">> $(WEBDIR)/depends.txt;else x="$$x $$a";fi; done; echo "# Not found: $$x">> $(WEBDIR)/depends.txt ;sed -ne '/^# End automatic/,$$ p' < $(WEBDIR)/web.mk >> $(WEBDIR)/depends.txt; mv $(WEBDIR)/depends.txt $(WEBDIR)/web.mk

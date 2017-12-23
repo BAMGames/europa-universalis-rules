@@ -1,6 +1,8 @@
 % -*- mode: LaTeX; -*-
-
-\section{Period VI}\label{events:pVI}
+\definechapterbackground{Political Events of Period VI}{MorierBattleCulloden}
+\chapter{Political Events of Period VI}
+%\section{Period VI}
+\label{events:pVI}
 
 
 
@@ -11,16 +13,16 @@
   \begin{tabular}{|l|*{5}{c}|l|}
     \hline
     1\up{st}\textarrow& 1-4 & 5-6 & 7 & 8 & 9 & 10 \\ \hline
-    1 & 1  & 4  & 4  & R16 & 3   & \textbullet~1--2 \\
-    2 & 2  & 5  & 18 & 17  & 4   &  +1 then \\
-    3 & 3  & 9  & R1 & 18  & 5   & \nameref{events:pV}\\
-    4 & 6  & 10 & 2  & 19  & 6   & \textbullet~3--10: \\
-    5 & 7  & 15 & 11 & 8   & R7  & \nameref{events:pV}\\
+    1 & 1  & 4  & 4  & R16 & 3   & \\
+    2 & 2  & 5  & 18 & 17  & 4   & \textbullet~1--2 \\
+    3 & 3  & 9  & R1 & 18  & 5   &  +1 then \\
+    4 & 6  & 10 & 2  & 19  & 6   & \periodref{V}\\
+    5 & 7  & 15 & 11 & 8   & R7  & \\
     6 & 8  & 16 & R12& R11 & 15  & \\
-    7 & 11 & 17 & 13 & 12  & 9   & \\
-    8 & 12 & 1  & 14 & R13 & R10 & \\
+    7 & 11 & 17 & 13 & 12  & 9   & \textbullet~3--10: \\
+    8 & 12 & 1  & 14 & R13 & R10 & \periodref{V}\\
     9 & 13 & R2 & 7  & 1   & R18 & \\ \hline
-    10 & \multicolumn{6}{l|}{1--6 \nameref{events:pVII}, 7--10 \nameref{events:pV}} \\ \hline
+    10 & \multicolumn{6}{l|}{1--6 \periodref{VII}, 7--10 \periodref{V}} \\ \hline
   \end{tabular}
 \end{eventstable}
 
@@ -46,6 +48,12 @@
   pVI:Last Great Mughals|,%
   pVI:Wars India|T{A}/T{B}/T{C},%
   pVI:Mazepa|,%
+  pVI:WoJE|,%
+  pVI:Comuneros|,%
+  pVI:WoQA|,%
+  pVI:Alberoni|,%
+  pVI:Bulavin Rebellion|,%
+  pVI:Africa|E/E,%
   pVI:Camisards|,%
   pVI:Barbaresques|,%
 }
@@ -127,6 +135,10 @@ and the protector of \paysukraine to be used during the next turn.
 % (Jym) In \PPI, the \CB was against enemies of \SUE if \TUR used it. Here,
 % \TUR already has a \CB because of the revolt of \leaderMazepa and it gives a
 % double \CB to \TUR (against either \RUS or \SUE). Easier to write like that
+
+% (Jym), notes Pierre, small civil war even if absolutism:
+\aparag Fortress owned by \POL and controlled by \SUE gives full supply to
+\SUE.
 
 \phpaix
 \aparag[Starting the Revolt of Mazepa] If there is any \ARMY counter of \SUE
@@ -344,6 +356,12 @@ expansion was chosen earlier.
 
 \event{pVI:WoSS}{VI-2}{The War of Spanish Succession}{1}{PBMod}
 
+\begin{todo}
+  Add possibility to gives ``compensations'' to some minors to ``buy'' them in
+  the war and make them change side. Historically: Sicily for \paysSavoie and
+  bid on the imperial throne for \paysBaviere.
+\end{todo}
+
 \condition{This event is the same as \ref{pV:WoSS} which happens now if it did
   not occur yet. Else, treat as \RD and mark off.}
 
@@ -375,13 +393,19 @@ conditions. Apply the rules hereafter, but read initial placement in
   Charlie}.
 
 \phdipl
+\aparag The rebellion is controlled by \FRA if Catholic, otherwise by \HIS.
 \aparag If \FRA is \CATHCR, it has a \CB to make a full intervention at the
 side of \paysecosse.
 \bparag If \FRA is Catholic, it can make a limited intervention at the side of
 \paysecosse.
 \bparag If \FRA is Protestant, it can make a limited intervention at the side
 of \ANG.
+\aparag \HOL can make a limited intervention at the side of \ANG.
 \aparag \HIS can make a limited intervention at the side of \paysecosse.
+\begin{todo}
+  Intervention only if Alberoni is or was minister. Need to write Alberoni
+  before enforcing this condition.
+\end{todo}
 \aparag Other countries can make foreign intervention as per normal religious
 wars rules (see \ref{chDiplo:Religious Civil War}). \paysecosse is considered
 to be Catholic during this war.
@@ -438,8 +462,8 @@ his successor.
 long as the war lasts (for incomes or victory condition purpose).
 \aparag Place a \REVOLT \facemoins in each of the following provinces:
 \provinceHighlands, \provinceMoray and \provinceAlba.
-\bparag Place a \ARMY\facemoins of \paysecosse in one of the revolted
-provinces.
+%\bparag Place a \ARMY\facemoins of \paysecosse in one of the revolted
+%provinces.
 
 
 \subevent[pVI:Jacobite:Bonny Prince Charlie]{Bonny Prince Charlie}
@@ -449,9 +473,9 @@ provinces.
 \aparag If \paysecosse was allied to \ANG, remove all its troops from the map.
 \bparag \paysecosse is not considered to be \VASSAL or \ANNEXION by \ANG as
 long as the war lasts (for incomes or victory condition purpose).
-\aparag Place a \REVOLT \faceplus in each of the following provinces:
+\aparag Place a \REVOLT \facemoins in each of the following provinces:
 \provinceHighlands, \provinceMoray and \provinceAlba.
-\bparag Place a \ARMY\facemoins of \paysecosse and general \leader{Prince
+\bparag Place a \ARMY\faceplus of \paysecosse and general \leader{Prince
   Charles} in one of the revolted provinces.
 
 
@@ -520,15 +544,15 @@ and play \RD instead as per normal rules.
 if \numberref{pIV:Portuguese Revolt} already occurred and was won by \HIS).
 % (Jym) Choice of \PORmin if at war breaking its alliance vs event waiting the
 % peace, I chose the former because it's funnier.
-\aparag If \ENG is at war with \paysportugal allied to a \MAJ, \paysportugal
+\aparag If \ENG is at war against \paysportugal allied to a \MAJ, \paysportugal
 breaks its alliance, sign a white peace with \ENG, becomes neutral and the
 event occurs.
 \bparag Allies of \ENG have the choice to either sign a white peace with
 \paysportugal or break their alliance with \ENG and stay at war with
 \paysportugal.
 % (Jym) event several times in the table, so giving a penalty.
-\bparag If \ENG is at war with \paysportugal (not allied to a \MAJ), then the
-event cannot occur. Mark-off and play \RD instead.
+\bparag If \ENG is at war against \paysportugal (not allied to a \MAJ), then
+the event cannot occur. Mark-off and play \RD instead.
 
 \phdipl
 \aparag \ENG receives a bonus of \bonus{+5} for its diplomacy on \paysportugal
@@ -536,7 +560,7 @@ for this turn only.
 
 \effetlong
 \aparag From now on \paysportugal always gives rights to trade to \ENG as per
-\ref{chExpenses:Limited Access:Giving Rights}, even if it is not on the
+\ref{chAdministration:Limited Access:Giving Rights}, even if it is not on the
 English diplomatic track.
 
 
@@ -565,8 +589,8 @@ diplomacy on \paysportugal for this turn only.
 
 \effetlong
 \aparag From now on \paysportugal always gives rights to trade to the \MAJ
-triggering the event as per \ref{chExpenses:Limited Access:Giving Rights},
-even if it is not on its diplomatic track.
+triggering the event as per \ref{chAdministration:Limited Access:Giving
+  Rights}, even if it is not on its diplomatic track.
 
 
 
@@ -614,7 +638,9 @@ national provinces of \ENG.
 
 
 \event{pVI:Bill Test}{VI-9}{Bill of Test}{1}{Risto}
-
+\begin{todo}
+  Change!
+\end{todo}
 \history{1673}
 
 \effetlong
@@ -966,7 +992,7 @@ does not exist.
 \phevnt
 \aparag Roll 1d10 for each power having \COL in areas \granderegionCuba,
 \granderegionHaiti and/or \granderegionAntilles. On a result of 7 or more, a
-\REVOLT\facemoins is placed in one randomly chosen \COL of the power.
+\REVOLT\faceplus is placed in one randomly chosen \COL of the power.
 
 
 
@@ -974,9 +1000,15 @@ does not exist.
 
 \history{No precise date}
 
+\begin{todo}
+  May represent the early Xhosa wars starting in 1779 but should then be
+  pushed in VII. Otherwise, could be removed.
+\end{todo}
+
 \phevnt
-\aparag Natives of area \granderegionNatal and the two provinces bordering it
-are activated for this turn and shall attack all \COL/\TP in these provinces.
+\aparag Natives of area \granderegionNatal and the two coastal provinces
+bordering it are activated for this turn and shall attack all \COL/\TP in
+these provinces.
 
 \phadm
 \aparag The strength of the natives activated by this event is always 6\LD
@@ -1011,9 +1043,6 @@ respective specific rules.
 \event{pVI:Wars India}{VI-18}{Wars in India}{3}{PBnew}
 
 \condition{}
-% (Jym) added
-\aparag If \ref{pVI:Last Great Mughals} has not happened yet, apply it
-instead.
 \aparag Roll 1d10 and apply the correct subevents.
 \bparag 1-4 = A) War between \paysmogol and \paysperse. Apply
 \xnameref{pVI:India:Mughal Persian War}.
@@ -1022,14 +1051,18 @@ instead.
   Safavids}.
 \bparag 9-10 = C) War between \paysafghans and \paysmogol. Apply both
 \xnameref{pVI:India:Afghan Empire} and \xnameref{pVI:India:Rise Marathi}. This
-case may not happen before either case A above, re-roll another case if
-needed.
+case may not happen before either~\ref{pVI:Last Great Mughals}, re-roll
+another case if needed.
+
 \aparag Each of the three previous cases can only happen once. If it already
 happen, re-roll another case.
+
 \aparag Each of the following sub-event can only happen
 once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 (B and C). The second time, ignore it and only plays the other sub-event.
 
+\aparag In each of the three case, natives in one random province in
+\continentIndia are activated.
 
 \subevent[pVI:India:Mughal Persian War]{\paysmogol-\paysperse War}
 \history{1739}
@@ -1039,8 +1072,11 @@ once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 \granderegionAoudh, \granderegionBengale, \granderegionGondwana and
 \granderegionOrissa.
 \aparag Lower the difficulty and tolerance (for \COL and \TP implantation) by
-2 in every province controlled by \paysmogol.
+2 in every province controlled by \paysmogol
 \aparag \paysperse gets the general \leaderwithdata{Nadir Shah} for 5 turns.
+
+\phdipl
+\aparag Test fidelity of \paysPerse and \paysOrmus.
 
 
 \subevent[pVI:India:Afghan Empire]{Afghan Empire}
@@ -1048,7 +1084,7 @@ once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 
 \phevnt
 \aparag The minor country \paysafghans is created and owns area
-\granderegionAfghanistan.
+\granderegionAfghanistan except \provinceHerat if owned by \paysPerse.
 
 
 \subevent[pVI:India:Fall Persian Safavids]{Fall of the Persian Safavids}
@@ -1056,7 +1092,10 @@ once. \xnameref{pVI:India:Afghan Empire} may occur due to two different cases
 
 \phevnt
 \aparag The lasting effect of \ref{pIII:Persian Safavids} are cancelled.
+\aparag \provinceHerat is annexed by \paysafghans
 
+\phdipl
+\aparag Test fidelity of \paysPerse and \paysOrmus.
 
 \subevent[pVI:India:Rise Marathi]{Rise of the Marathi}
 \history{1746-1761}
@@ -1111,7 +1150,7 @@ last 4 turns.
 \ARMY\facemoins instead.
 \bparag ``King ranked'' generals are those bearing the king symbol, namely
 monarchs, \leader{Carl XII} as an heir to the throne
-(\ref{chSpecific:Sweden:Charles XII}) or \leader{Sadri Azam} and other Viziers
+(\ref{chSpecific:Sweden:Charles XII}) or any Turkish Vizier
 (\ref{chSpecific:Turkey:Vizier}).
 \aparag The revolt is considered active as long as \leaderMazepa is alive and
 at least one \REVOLT exists in one of the provinces of \regionUkraine.
@@ -1155,10 +1194,60 @@ the provinces still belonging to the minor after the peace is signed).
 
 % (Jym), Placeholders
 
+\event{pVI:WoJE}{VI-s}{War of Jenkins' ear}{1}{PBNotEvenWritten}
+\history{1739-1748}
+\begin{todo}
+  \ANG vs \HIS in America. Later part of~\ref{pVI:WoAS}.
+\end{todo}
 
+
+\event{pVI:Comuneros}{VI-t}{Revolt of the Comuneros}{1}{PBNotEvenWritten}
+\history{1721-1735}
+\begin{todo}
+  Revolt in Paraguay. Maybe doable via revolt tables only.
+\end{todo}
+
+\event{pVI:WoQA}{VI-u}{War of the Quadruple Alliance}{1}{PBNotEvenWritten}
+\history{1718-1720}
+\begin{todo}
+  \SPA vs \paysNaples.
+\end{todo}
+
+\event{pVI:Alberoni}{VI-v}{Alberoni}{1}{PBNotEvenWritten}
+\history{1711-1719}
+\begin{todo}
+  Excellent (?) minister for \HIS. Should be VI-2(2). Could be related
+  to~\ref{pVI:WoQA}.
+\end{todo}
+
+\event{pVI:Bulavin Rebellion}{VI-w}{Bulavin's Rebellion}{1}{PBNotEvenWritten}
+\history{1707-1708}
+\begin{todo}
+  Revolt in \paysAstrakhan.
+\end{todo}
+
+
+\event{pVI:Africa}{VI-x}{Troubles in Africa}{*}{JymNew}
+\history{No precise date. Hypothetical clashes with inland African empires.}
+
+\begin{todo}
+  Should replace~\ref{pVI:Bantu Raids}.
+\end{todo}
+
+\phevnt
+\aparag Roll one die on the following table: 1. \granderegionSenegal ;
+2. \granderegionCotedivoire ; 3. \granderegionCotedor ;
+4. \granderegionCameroun (except \province{Fernando Po}); 5. \granderegionGabon
+; 6. \granderegionCongo ; 7. \granderegionAngola ; 8. \granderegionNyasa (two
+Southern provinces) ; 9. \granderegionNyasa (two Northern provinces) ;
+10. \granderegionKenya.
+\bparag The natives in the two provinces designed are activated. They have a
+strength of 4\LD and one \LeaderG, whatever the printed value.
 
 \event{pVI:Camisards}{VI-y}{Revolt of the Camisards}{1}{JymNew}
-
+\begin{todo}
+  Maybe should be V-6 (2).
+\end{todo}
 \history{1702-1711}
 
 \condition{If \ref{pV:Expulsion French Protestants} %
@@ -1174,16 +1263,14 @@ the provinces still belonging to the minor after the peace is signed).
 
 \event{pVI:Barbaresques}{VI-z}{End of the Ottoman rule in North
   Africa}{1}{PBNotEvenWritten}
-
 \history{17??}
 \dure{Until the end of the game}
 
 \effetlong
 \aparag If \ref{pIV:Morocco} did not happen yet, apply it immediately in
 addition to this event.
-\aparag \TUR has a malus of \bonus{-3} to diplomacy with all
-\terme{Barbaresques} countries (\paysCyrenaique, \paysTripoli, \paysTunisie,
-\paysAlgerie and \paysMaroc).
+\aparag \TUR has a malus of \bonus{-3} to diplomacy with all \Barbaresques
+(\paysCyrenaique, \paysTripoli, \paysTunisie, \paysAlgerie and \paysMaroc).
 \bparag This malus supersedes the malus on \paysmaroc given by
 \numberref{pIV:Morocco} and is not cumulative with it.
 
@@ -1202,3 +1289,4 @@ addition to this event.
 % LocalWords: Leszinski Poniatowski PBMod RistoMod offensive Jym malus Quo
 % LocalWords: pIV Risto Theresia PBnew JCD TODO von Sachsen Mughal pII Sadri
 % LocalWords: subevents Safavids Azam JymNew PBNotEvenWritten GNW PPI
+%  LocalWords:  Comuneros

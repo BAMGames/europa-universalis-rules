@@ -22,7 +22,9 @@
 }
 
 % Define parts
-\newcommand{\rulepart}[2]{\cleardoublepage\pageprefix{#1}\@tempswafalse\null\vfil\secdef\@part\@spart{#2}}
+% - Empty left page for \cleardoublepage
+\newcommand{\mycleardoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+\newcommand{\rulepart}[2]{\mycleardoublepage\pageprefix{#1}\@tempswafalse\null\vfil\secdef\@part\@spart{#2}}
 
 % This adds the [LOCALPAGETITLE] in front of the page number.
 \def\xxpage{}

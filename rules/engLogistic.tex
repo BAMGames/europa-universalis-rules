@@ -1,0 +1,1309 @@
+% -*- mode: LaTeX; -*-
+
+\definechapterbackground{Logistic}{ColletRecruitingSergeant}
+\chapter{Logistic}\label{chapter:Logistic}
+\begin{designnote}
+  This Chapter describes the Logistic aspects of the Administrative phase:
+  Maintenance of old forces, buying new ones and Leaders management.
+
+  Beware that most of this is interleaved with administrative actions
+  (described in the previous Chapter). Logistic rules are grouped here for
+  easier reference.
+\end{designnote}
+
+
+
+
+
+\section{Maintenance}\label{chLogistic:Maintenance}
+
+\aparag Each turn, forces existing from a previous turn must be maintained or
+disbanded. Maintaining troops costs money.
+
+
+
+\subsection{Basic forces}
+
+\aparag Depending on the period, each major country is entitled to some
+\terme{basic forces}. These forces are maintained for free. \terme{Basic
+  forces} can be found in the player's aids.
+\bparag The units maintained as part of the \terme{basic forces} are
+maintained as \terme{Veteran}.
+
+\aparag The basic forces comes in three kinds: specific land forces (such as
+\ARMY\faceplus, \ARMY\facemoins, 3\LD), specific naval forces (such as
+\FLEET\faceplus, 1\ND, etc.) or generic detachments (\GD) that can either
+serve as \LD or \ND.
+\bparag In some cases (see below), it is possible to convert basic forces from
+one denomination to another. For these conversions (only), use the
+equivalences: 1\ARMY\Facemoins=2\LD, 1\ARMY\Faceplus=2\ARMY\Facemoins=4\LD ;
+1\FLEET\Facemoins=2\ND, 1\FLEET\Faceplus=2\FLEET\Facemoins=4\ND. Note that for
+naval forces this can be sensibly different from the actual content of \FLEET.
+
+\aparag If possible, the \terme{basic forces} must be used to maintain (fully
+or partially) counters that are the same size or larger than them.
+% (by combination), using 2\LD=\ARMY\facemoins and
+% 2\ARMY\facemoins=\ARMY\faceplus.
+
+\aparag If all \terme{basic forces} cannot be used to maintain counters that
+are the same size or larger than them, then the rest can be converted to \LD
+(or \ND) and used to maintain forces of any size.
+
+\aparag At most one land counter and one naval counter may be partially
+maintained with the \terme{basic forces} (due to the fact that already
+deployed forces are larger than the \terme{basic forces}).
+\bparag The units partially maintained with \terme{basic forces} will have to
+be maintained with a \terme{Veteran} maintenance.
+
+\aparag Some \terme{basic forces} include \corsaire counters. These forces
+cannot be converted to anything else. If no \corsaire is used, the basic force
+is lost.
+
+\aparag[Effect of Wood.]\label{chLogistic:Effect of Wood Maintenance} Each
+\RES{Wood} resource, that can be either bought or produced by a \MAJ,
+increases the \terme{basic forces} by 1 \ND.
+\bparag A \MAJ may use up to 3 \RES{Wood} each turn (thus gaining up to 3\ND
+of basic force).
+
+
+
+\subsection{Extra Maintenance}
+
+\aparag All the units that are not maintained by \terme{basic forces} must be
+payed for in order to be kept.
+\bparag If a unit is partially maintained, the part which is not maintained is
+disbanded (destroyed).
+\bparag Maintenance costs depends both on the technology and the country. They
+can be found in the player's aids.
+
+\aparag The maintenance cost for land units also depends on the state of war
+of the \MAJ.
+\bparag A country at peace (including if it is only engaged in \terme{Overseas
+  Wars} (see \ref{chDiplo:Overseas Wars}) and limited interventions (see
+\ref{chDiplo:InterventionLimitee})) uses the \terme{Peace maintenance} and its
+land forces are automatically \terme{Veterans}.
+\bparag A country at war must choose, for each counter, whether it is
+maintained as \terme{Veteran} or \terme{Conscript} and use the corresponding
+price.
+\bparag A counter cannot be maintained partially as \terme{Veteran} and
+partially as \terme{Conscripts}.
+
+\aparag the maintenance price is found by cross-referencing the country's
+technology with the kind of maintenance used (size of counter and
+Veterans/Conscripts status).
+
+\aparag A counter must be maintained as a whole. That is, it is not possible
+to maintain one \ARMY\Facemoins for the price of two \LD.
+\bparag However, it is possible to partially maintain a counter and have the
+rest destroyed. That is, one \ARMY\Facemoins may be broken before maintenance
+and only one of the two \LD maintained (and the other is destroyed).
+
+\aparag For troops partially maintained by \terme{basic force}, use the
+conversion of \terme{basic forces} to determine what is left to be payed.
+\bparag Example: if a \FLEET\Faceplus is partially maintained by 3\ND
+(=\FLEET\Facemoins, \ND) of \terme{basic force}, only 1\ND is missing and must
+be payed as extra maintenance (whatever the actual content of the \FLEET).
+
+\aparag \corsaire that are not included in \terme{basic forces} may not be
+maintained. They can, however, be recruited anew.
+
+
+\aparag the sum of all extra maintenance costs is written in \lignebudget{Unit
+  maintenance}.
+
+\begin{exemple}[Maintenance of forces]
+  \SPA is with technologies \TREN\ and \TGLN, at war, during period II. It has
+  a basic force in period II of 2\ARMY\faceplus and 3\GD. Its existing troops
+  are 2\ARMY\faceplus, 1\FLEET\faceplus and 4\LD and it wants to maintain all
+  of them.
+
+  Since basic forces must first be used to maintain unit of the same or larger
+  size, the 2\ARMY\Faceplus of basic forces must be used to maintain the
+  2\ARMY\Faceplus counters (\emph{i.e.} they may not be used to maintain the
+  \LD). However, the 3\GD may be used either to maintain some \LD and/or (part
+  of) the \FLEET.
+
+  \SPA may choose to use the 3\GD to maintain 3\LD. This leaves 1\LD and
+  1\FLEET\Faceplus to pay for. The \LD may be maintained as either Veteran
+  (7\ducats) or Conscript (4\ducats) while the \FLEET\Faceplus costs 80\ducats
+  to maintain.
+
+  The less expensive solution however is to use the 3\GD to partially maintain
+  the \FLEET. Since, for maintenance purpose, 1\FLEET\Faceplus is considered
+  to be 4\ND, this leaves only 1\ND to maintain (17\ducats) and the 4\LD must
+  also be maintained (for 4 or 7 \ducats each, depending on their status).
+
+  It is also possible to use 2\GD to maintain \FLEET\Facemoins and the third
+  to maintain one \LD. This leave 3\LD and \FLEET\Facemoins to maintain.
+
+  \smallskip
+
+  If \SPA only has 1\ARMY\Faceplus, 4\LD and 1\FLEET\Faceplus, then it is
+  possible to use the second \ARMY\faceplus of basic force to maintain the the
+  4\LD (because there is no counter of same or larger size, thus the remaining
+  \ARMY\Faceplus of basic forces is turned into 4\LD).
+
+  \smallskip
+
+  If \SPA only has 2\ARMY\Faceplus and 3 \ARMY\Facemoins (and no naval
+  forces), then the 2\ARMY\Faceplus of basic forces must be used to maintain
+  the 2\ARMY\Faceplus of actual troops. Then, the 3\ARMY\Facemoins will use
+  the 3\GD. However, since at most 1 land counter may be partially maintained
+  by basic forces, it is not possible to use each \GD to partially maintain
+  1\ARMY\Facemoins (leaving 3\LD to pay). Thus, \SPA must use 2\GD to maintain
+  1\ARMY\Facemoins, then 1\GD to partially maintain the second
+  \ARMY\Facemoins. This leaves 1\LD (7\ducats, since it is a partially
+  maintained counter, it must be maintained as Veteran) and 1\ARMY\Facemoins
+  (12 or 8 \ducats) to pay for.
+\end{exemple}
+
+\begin{designnote}
+  Since all administrative actions must be planned (and payed) before any is
+  resolved, troops are always maintained using the cost for the technology
+  that the country had at the beginning of the Administrative phase. Indeed,
+  maintenance is planned and payed at the same time as administrative actions,
+  thus it is not known whether a new technology will be reached or not.
+\end{designnote}
+
+
+
+\subsection{Maintenance of fortresses}
+
+\aparag All fortresses that are not at their basic level have to be maintained
+in activity (including \Presidios). The cost of maintaining a fortress is
+indicated in the last column of~\ref{table:Cost of Fortresses}.
+\bparag The maintenance cost of a fortress is payed by its controller.
+\bparag The maintenance cost of a fortress in Europe is its level.
+\bparag Maintenance is doubled in the \ROTW. A fort or Mission requires a
+maintenance of 1\ducats.
+\bparag Maintenance is doubled for fortresses of level 3 before obtaining the
+technology \TARQ (representing the spreading of the ``\emph{trace italienne}''
+during the Wars in Italy).
+\bparag Maintenance is doubled for fortresses of level 4 before Turn 40
+(representing the spreading of the ideas of \leader{Vauban}).
+\bparag The free forts given by \TP or \COL do not need any maintenance. The
+ones given by missions do, even if the local fort/fortress is of a higher
+level. The free level 1 fortress of a level 6 \COL also remains free.
+\bparag The level of a fortress can be lowered by its owner if he controls
+it. A lowered fort is destroyed.
+
+\aparag[Arsenals] An arsenal is maintained at the same cost as a fortress of
+the same level.
+
+\aparag the sum of all maintenance costs of fortifications is written in
+\lignebudget{Fort. and presidios maintenance}.
+
+\GTtable{fortresses}
+
+
+
+\subsection{Maintenance of Minor Powers}
+\label{chLogistic:Maintenance of minors}
+\aparag[At peace] a \MIN maintains up to its \terme{basic forces}. Extra
+forces (troops, navy, fortifications) are destroyed.
+% \bparag If a \MIN is at peace during one full turn, its \terme{basic forces}
+% are automatically recruited to their maximum.
+\bparag Exception: a \MAJ may pay to maintain fortresses of a \VASSAL. [TBD:
+remove]
+\bparag Exception: former \MAJ (\paysPortugal, \paysVenise and \paysPologne)
+maintain all their fortresses for free (unless otherwise specified, typically
+for non-absolutist \paysPologne).
+
+\aparag[At war] a \MIN maintains up to its \terme{basic forces}.
+\bparag The diplomatic Patron of a \MIN fully involved in a war, may maintain
+any or all forces above the \terme{basic forces} of the \MIN, up to its
+counter allowance.
+\bparag The costs are the same as those of the \MAJ for the Technology of the
+\MIN.
+\bparag A \MAJ may pay to maintain fortresses of a \VASSAL. [TBD: remove]
+\bparag Other minors (non \VASSAL) at war maintains all their fortifications
+in addition to their \terme{basic forces}. [TBD: remove]
+\bparag Minors fully at war without \MAJ allies maintain all the forces they
+have.
+
+\aparag[Moral] Troops maintained by minors are always \terme{Veteran}.
+\bparag Troops maintained by the diplomatic patron are either \terme{Veteran}
+or \terme{Conscript}, depending on the cost payed.
+
+\begin{designnote}[Cost of maintenance] The cost may vary according to the
+  technologies and to the countries, but the cost per \LD is usually higher
+  for the \ARMY\facemoins, then the \LD, then the \ARMY\faceplus. That is, the
+  cost for 1\ARMY\Facemoins is usually more than twice the cost for 1\LD while
+  the cost for 1\ARMY\Faceplus is usually less than the cost of 4\LD. To
+  achieve the cheapest maintenance (but it may not be always the best due to
+  the \terme{Veteran} distinction), it is better to try and use basic forces
+  to maintain those in this order.
+
+  Similarly, the cost per \ND (on the basis of 1\FLEET\facemoins=2\ND) is
+  usually \FLEET\facemoins, \ND, \FLEET\faceplus. However, a \FLEET\facemoins
+  contains more than 2\ND (sometimes a lot more), so fleets are usually a
+  better way to maintain the naval forces (if they are regrouped enough). As
+  for the \GD, they are usually best used as \ND (costing much more than \LD
+  to pay), unless the naval forces are few enough to be covered by the naval
+  allowance.
+\end{designnote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Recruitment}\label{chLogistic:Recruitment}
+
+
+
+\subsection{Land forces}
+
+
+\subsubsection{Land recruitment in Europe}
+\aparag[Limit]
+\bparag Each country has a recruitment \terme{limit}, expressed in \LD,
+varying by periods (and some specific conditions).
+\bparag It can be found in the player's aid of each country, in the column
+``Troops purchase''.
+\bparag It is also summarised in~\ref{table:Recruitment per Country} (first
+line for each country).
+\bparag Each turn, it is possible to recruit up to 3 times this limit.
+
+\aparag[Costs]
+\bparag Each country has a recruitment cost, for \LD and \ARMY\Facemoins,
+varying with its current technology.
+\bparag It can be found in the player's aid of each country, in the columns
+``Land Purchase''.
+\bparag The cost for one \ARMY\Facemoins is usually the cost of 2\LD
+(exception: \RUS).
+\bparag In order to buy an \ARMY\Faceplus, a country usually buys
+1\ARMY\Facemoins and 2\LD and immediately (during the administrative phase)
+merge them into 1\ARMY\Faceplus. It is also possible to do so by buying
+2\ARMY\Facemoins but it is usually more expensive and requires two \ARMY
+counters instead of one.
+
+\aparag[Recruitment area.] Each country has a \terme{Recruitment area}. Unless
+specified in its specific rules, it is all the provinces in its national
+territory.
+\bparag Exceptions: \HIS, \TUR, \RUS and \SUE.
+
+\aparag[Recruitment.] Each country decides how many troops it wants to
+purchase, where it wants them recruited and under which form (counters). Then
+it computes the cost for these.
+\bparag Recruitment can only takes place in owned, controlled, not besieged
+and not revolted provinces.
+\bparag The cost is written in \lignebudget{Units purchase} (together with the
+cost of newly brought navies).
+\bparag The new units are put on the map when resolving administrative
+actions.
+
+\aparag[Multipliers.] Counters are brought in order chosen by the player. The
+total number of \LD recruited so far is tallied and compared with the
+\terme{limit} to compute the exact price of the counter.
+\bparag Any counter that can fully be recruited under the limit is paid at the
+cost listed in the tables.
+\bparag Any counter that cannot be recruited under the limit but can be
+recruited under twice the limit is paid at twice the price listed.
+\bparag Any counter that cannot be recruited under twice the limit but can be
+recruited under thrice the limit is paid at thrice the price listed.
+\bparag Any counter that cannot be recruited under thrice the limit cannot be
+brought.
+\bparag Any counter recruited out of the \terme{Recruitment area} has its cost
+doubled.
+\bparag These multipliers are cumulative.
+
+\begin{playtip}
+  The order of recruitment can be important in some cases. Because of the
+  multipliers, it can change the price one pays for the counters (see the
+  examples below).
+
+  Do not put new counters immediately on map. Recruitment is supposed to be
+  simultaneous, that is all countries plan which troops they want to buy and
+  then put them on the map. If you put your troops on the map before your
+  opponent has finished planning his actions, don't complain that he changes
+  his mind and decide to recruit more (or less) troops\ldots
+
+  When buying \ARMY\Faceplus or reinforcing \ARMY\Facemoins by buying 2\LD for
+  them, you can directly put the \ARMY\Faceplus counter on the map (rather
+  than placing 1\ARMY\Facemoins, 2\LD and immediately turning them into
+  1\ARMY\Faceplus). Especially, stacking limits are not enforced between the
+  purchase and the conversion.
+\end{playtip}
+
+\aparag[Moral.] The newly recruited troops are always \terme{Conscripts}
+(except for \SUE and \PRU).
+
+\GTtable{recruitment}
+
+\begin{exemple}[Under the limit]
+  \HIS is \TARQ in period \period{III} (recruitment of 5\LD), and wishes to
+  recruit 1\ARMY\Faceplus in its recruitment area. Since 1\ARMY\Faceplus is
+  4\LD, this is less than the limit and can be recruited at simple cost. \HIS
+  recruits 1\ARMY\Facemoins and 2\LD for 60\ducats and immediately turn them
+  into 1\ARMY\Faceplus. Actually, it is easier to directly put the
+  \ARMY\Faceplus in play to save time and manipulations.
+\end{exemple}
+
+\begin{exemple}[Limit and whole counters]
+  \HIS wants to buy 3\ARMY\facemoins with its 5\LD recruitment limit.  The
+  first two correspond to 4\LD total and can thus be recruited at simple cost
+  for 30 + 30\ducats. The third one, however, makes the total goes to 6\LD,
+  over the limit but under twice the limit. So, it must be recruited at double
+  cost (for another 2\textmultiply 30\ducats). Even if 1\LD of the third
+  \ARMY\facemoins is still within the limit, the whole counter price is
+  doubled because it makes the total number of \LD recruited go over the
+  limit.
+
+  \HIS, however, could choose to buy 2\ARMY\facemoins and 2\LD. In this case,
+  both \ARMY\facemoins and the first \LD are within the limit and only the
+  last \LD is payed at double cost. This, however, produce fewer \ARMY
+  counters and hence might not be the wisest solution.
+\end{exemple}
+
+\begin{exemple}[Small limits and big counters]
+  In period \period{II}, \POR has 3\LD of limit and is at technology \TREN. It
+  wants to recruits 1\ARMY\Faceplus in \provinceTejo (in the recruitment
+  area). \POR does so by recruiting 1\ARMY\Facemoins and 1\LD under the limit
+  for 24 + 12 \ducats and another \LD above the limit for 2 \textmultiply
+  12\ducats. The total is thus 60\ducats and \POR can directly put the
+  \ARMY\Faceplus in play.
+
+  Note that if \POR wanted to recruit its \ARMY\Faceplus by merging
+  2\ARMY\Facemoins instead of 1\ARMY\Facemoins and 2\LD, then the second
+  \ARMY\Facemoins does not fit within the limit and thus has to be paid
+  entirely at double cost bringing the total to 24 + 2 \textmultiply 24 =
+  72\ducats. Moreover, this is simply impossible because it would require
+  2\ARMY counters and \POR has only one (even if the \ARMY\Faceplus can be
+  directly put on the map, the two \ARMY\Facemoins are virtually here at some
+  point during the process).
+\end{exemple}
+
+\begin{exemple}[When order matters]
+  In period \period{I}, \POR has 2\LD of limit and is at technology \TMED. It
+  wants to recruits 2 \LD in \provinceTejo (in the recruitment area) and 2 in
+  \provinceTanger (out of the recruitment area).
+
+  \POR may chose to first recruit the 2\LD in \provinceTejo. Since they are
+  below the limit and in recruitment area, the cost is not multiplied and they
+  cost 10 + 10 = 20\ducats. Then , \POR recruits the 2\LD in
+  \provinceTanger. Since they are above the limit, their cost is
+  doubled. Since they are recruited out of the recruitment area, their cost is
+  doubled a second time. Thus, they cost 2 \textmultiply 2 \textmultiply (10 +
+  10) = 80\ducats. The total cost is 100\ducats.
+
+  On the other hand, \POR could first recruit the \LD in
+  \provinceTanger. Thus, they are below the limit and the cost is only doubled
+  once (for being recruited out of the area) for 2 \textmultiply 20 =
+  40\ducats. Then \POR recruits the \LD in \provinceTejo. Since they are above
+  the limit, their cost is doubled for 40\ducats. But the total is only
+  80\ducats.
+
+  Because multipliers are cumulative, the order in which troops are recruited
+  may change the final price.
+\end{exemple}
+
+\begin{exemple}[Big computation]
+  \HIS is \TARQ in period \period{III} (recruitment of 5\LD), and wishes to
+  recruit 2\ARMY\facemoins, 1\ARMY\faceplus and 3\LD, 2 of which are not in
+  its \terme{Recruitment Area}. The \ARMY\faceplus is bought with
+  1\ARMY\facemoins and 2\LD, which brings the total to 3\ARMY\Facemoins and
+  5\LD.  The cheapest way to purchase this is to purchase 2\ARMY and 1\LD (out
+  of \terme{Recruitment Area}) under the limit (for the cost of
+  30+30+2\textmultiply 15), 1 \ARMY, the second double-cost \LD and two other
+  \LD under twice the limit (for 2\textmultiply30+4\textmultiply
+  15+2\textmultiply 15+2\textmultiply 15) and the last \LD for 3\textmultiply
+  15, which brings the total to 315\ducats. This is big, even for the Spanish
+  treasury!
+\end{exemple}
+
+\begin{playtip}
+  Even if it was frequent in the examples, recruiting above the limit is
+  uncommon and recruiting at thrice the price is a very rare
+  occurrence. Especially, when there are very few troops above the limit, it
+  is often better to simply recruit a bit less and wait for next
+  turn. Typically, in the last example, the 11th \LD cost 45\ducats alone and
+  it would probably be better to simply not recruit it right now.
+
+  This means that recruitment sometimes has to be planned a bit in
+  advance. Especially for countries with small limits (typically, \ANG). If
+  you plan to go on war, you may want to recruit one turn in
+  advance. Obviously, that would cost the maintenance for one turn, but that
+  will lower the recruitment cost at the crucial time and save money for
+  campaigning (maintenance is lower than recruitment, especially at
+  war). Moreover, that allows more troops to become veteran.
+
+  On the other hand, sometimes you just suffer several defeats and lose many
+  troops and need to raise them asap if the war goes on. Recruiting above the
+  limit when at peace is rarely a good idea. Similarly, maintaining a large
+  army at peace is very costly and it is cheaper to demobilise it. But raising
+  it again will require a bit of planning if one wants all its troop at the
+  right time\ldots
+\end{playtip}
+
+
+\subsubsection{Land recruitment in the \ROTW}
+\aparag Recruitment in the \ROTW is even more restricted than in European
+provinces that are not part of the recruitment area.
+\bparag European provinces in the \ROTW are considered as European provinces.
+\bparag Even if they are usually considered as European provinces, recruitment
+in level 6 \COL is also restricted.
+\bparag Troops recruited in the \ROTW are tallied against the limit, and their
+price might be doubled or tripled, just like other troops. This is the same
+limit as in Europe: both recruitment in Europe and in the \ROTW are added to
+know if the limit has been reached.
+
+\aparag[\COL level 6.] In a \COL of level 6, it is possible to recruit each
+turn up to 2\LD (at normal cost) or 1\ARMY\Facemoins at double cost.
+
+\aparag[Other Establishments.] In other \COL/\TP, it is possible to recruit
+either 1\LDE at normal cost or 1\LD at double cost.
+\bparag It is not possible to recruit in a mission or a fort.
+
+\aparag[Exploration.] A \LDE count as half a \LD for recruitment purposes: its
+price is half the price of 1\LD, rounded up ; and it is considered as half a
+\LD in the recruitment limit.
+
+\begin{exemple}[Recruitment in the \ROTW]
+  During period \period{I}, \POR is \TREN and has a recruitment limit of
+  2\LD. \POR wants to recruit 1\ARMY\Facemoins in \construction{Goa} (a level
+  6 \COL), 2\LD in \provinceTejo (in the recruitment area) and 1\LD in
+  \continentBrazil (in level 2 \COL in the \ROTW).
+
+  \POR can choose to recruit first the \LD in Europe for 12 + 12 = 24\ducats,
+  then the \ARMY\Facemoins at quadruple cost (doubled because it is an
+  \ARMY\Facemoins in a \COL of level 6 and doubled because it is above the
+  limit) for 2 \textmultiply 2 \textmultiply 24 = 96\ducats, and lastly the
+  \LD in \continentBrazil at 6 times the cost (thrice for being above twice
+  the limit and doubled for recruiting 1\LD in the \ROTW) for 3 \textmultiply
+  2 \textmultiply 12 = 72\ducats for a grand total of 24 + 96 + 72 =
+  192\ducats.
+
+  By recruiting first the \ARMY\Facemoins, then the Brazilian \LD and lastly
+  the European \LD, \POR would have paid only 156\ducats.
+
+  If \POR wants to recruit 1\LD in Europe and 3\LDE in 3 different \ROTW
+  establishments, the cheapest way is to recruit first the \LD for 12\ducats,
+  then the first 2\LDE at normal cost for (12/2) + (12/2) = 12\ducats and
+  lastly the third \LDE is above the limit (even if a \LDE represent a third
+  of a \LD, it takes half of an \LD in recruitment limit), thus at double cost
+  for another 12\ducats. The total is thus 36\ducats. If \POR starts by
+  recruiting the 3 \LDE at simple cost, then part of the \LD is above the
+  limit and it must be payed at double cost for a total of 42\ducats.
+
+  Note that it is not allowed, during a single turn, to recruit several \LDE
+  at the same place ; or to recruit 3\LD or more (including 1\ARMY\Faceplus)
+  in a \COL of level 6.
+\end{exemple}
+
+
+
+\subsection{Purchasing fortresses}
+
+\aparag[Generalities.] Fortresses can be raised above the level indicated on
+the map, up to level 5.
+\bparag Each turn, the level of each fortress may only increase by 1.
+\bparag Fortresses of high level may only be built in the late game when the
+corresponding land technology is reached.
+\bparag A fortress may only be built in a controlled, not besieged and not
+revolted province. Note that ownership of the province is not required.
+\bparag \Presidios are not built as other fortresses.
+\bparag The ``fortress'' counters can be exchanged at will (they are two-sided
+counters, and not always equivalent). A combination of counters with the
+desired levels has to exist to be allowed to build fortresses.
+
+\aparag[Technology.] In order to raise a fortress to a given level, a country
+must have at least the land technology indicated in the ``Required
+Technology'' column of~\ref{table:Cost of Fortresses}. Note that since all
+administrative actions are planned before any is resolved, that means that one
+cannot increase a fortress on the same turn it reaches the required
+technology.
+\bparag In addition, no fortress of level 5 may be built before turn 40.
+
+\aparag[Cost.] The cost for each level of fortress is indicated in the
+``Cost'' column of~\ref{table:Cost of Fortresses}.
+\bparag The first number is the cost to build a fortress of this level in
+Europe (usually, 25\ducats per starting level of the fortress). The second is
+the cost to build a fortress of this level in the \ROTW (usually, twice more).
+\bparag The cost of all fortresses of level 3 is doubled for countries that do
+not have the land technology \TARQ (representing the spreading of the
+``\emph{trace italienne}'' during the Wars in Italy).
+\bparag the cost of all fortresses of level 4 is doubled before turn 40
+(representing the spreading of the ideas of \leader{Vauban}).
+\bparag The total cost for building fortresses is recorded in
+\lignebudget{Fort. purchase}.
+
+\aparag[\ROTW.] \COL of level 6 are treated like European provinces for
+building fortresses.
+\bparag In other provinces, it is not possible to build a fortress of level
+higher than 2, unless it is an arsenal.
+\bparag Fortresses of level 1 can be build in any \COL or \TP.
+
+\aparag[Arsenals]\label{chLogistic:Build Arsenals} are built instead of
+a fortress of the same level. That is, instead of building a fortress of a
+given level, one can build an arsenal of the same level. All conditions (and
+price) for building this level of fortress must be met (or paid).
+\bparag Except for the named arsenals of \construction{Gibraltar},
+\construction{Malta}, \construction{Saint-Petersbourg} and
+\construction{Sebastopol}, arsenals may only be built in a coastal \TP or
+\COL (including \COL of level 6).
+\bparag The named arsenal \construction{Brazilie} can only be built in
+\continent{Brazil}.
+\bparag The named arsenal \construction{Overseas} can only be built if \SUE
+has a policy of Overseas expansion.
+\bparag The named arsenal \construction{Gibraltar} can only be built in
+\province{Gibraltar} or \province{Tanger}.
+\bparag The named arsenal \construction{Malta} can only be built in
+\provinceMalta, and only if this province is owned by \TUR.
+\bparag The city \ville{Saint-Petersbourg} is also an arsenal
+\construction{Saint-Petersbourg} with specific rules attached to its
+construction (see~\ruleref{chSpecific:Russia:St-Petersburg}).
+\bparag The named arsenal \construction{Sebastopol} can only be built in a
+province bordering the \regionNoire.
+
+\aparag[Forts] are built during the military or redeployment phases.
+\bparag A \LD is required and the construction takes 2 rounds.
+\bparag A \LeaderMis can be transformed in a Mission during the redeployment
+phase.
+
+\aparag[Wasteland]\label{chLogistic:Fortresses Wasteland} In the Wasteland (see
+\ruleref{chBasics:Wasteland}), until 1615 (periods \period{I}--\period{III}),
+fortresses may not be more than 1 level higher than the basic level on map
+(\emph{i.e.} the maximum level is 2 on provinces with a basic level of 1 and 3
+in provinces with a basic level of 2).
+\bparag After 1615 (periods \period{IV}--\period{VII}) and until the
+construction of \ville{Saint-Petersbourg}, the limit becomes 2 levels higher
+than the one on the map.
+\bparag After the construction of \ville{Saint-Petersbourg}, all limits are
+removed.
+% \bparag This does not remove other conditions on fortresses level (such as
+% Land Technology level).
+
+\aparag[\Presidios] are built only according to rule \ref{chRedep:Presidios},
+during the redeployment phase of the turn. The maximum level of any \Presidio
+is 3.
+% \bparag
+% Yet, an existing \Presidio (not a Blockading \Presidio) can not be increased
+% at the Logistic Phase; it can only be increased if at war and besieging or
+% controling the enemy fortress, by means of rule
+% \ref{chRedep:Presidios}.
+\bparag As an exception to fortress building, \Presidio can be constructed
+directly at any level. The cost is the sum of cost for all intermediary
+levels.
+% \bparag It is not possible to recruit forces in a \Presidio.
+
+\begin{exemple}[Building fortresses]
+  At turn 3, \FRA has \TREN and, being at war against \HIS, wants to fortify
+  its Southern border. \FRA would like to build fortresses of level 3 both in
+  \provinceBearn and \provinceLanguedoc. However, since the current fortress
+  of \provinceLanguedoc is only of level 1 (the default level for this
+  province), it is not possible to go directly to level 3.
+
+  So, \FRA decides to increase by one level the fortresses of \provinceBearn
+  and \provinceLanguedoc. In \provinceLanguedoc, \FRA builds a fortress of
+  level 2 (on top of the existing level 1) for 25 \ducats. In \provinceBearn,
+  \FRA build a fortress of level 3. Since \FRA is not \TARQ yet, the cost is
+  doubled for 100\ducats. The total is 125\ducats, to be written in
+  \lignebudget{Fort. purchase}. \FRA now has to find the proper counters in
+  its counters mix to put on the map (this should be easy at this point).
+
+  In turn 4, the war is still going on, so \FRA wants to increase the fortress
+  of \provinceLanguedoc. Since there is already a fortress of level 2, it is
+  possible to build a level 3 here, for 100 \ducats (since \FRA is still not
+  \TARQ).
+\end{exemple}
+
+\subsection{Naval forces}\label{chLogistic:Naval Purchase}
+\subsubsection{Naval recruitment in Europe}
+\aparag[Limit]
+\bparag Each country has a recruitment \terme{limit}, expressed in \ND,
+varying by periods (and some specific conditions).
+\bparag It can be found in the player's aid of each country, in the column
+``Troops purchase''.
+\bparag It is also summarised in~\ref{table:Recruitment per Country} (second
+line, first number).
+\bparag Each turn, it is possible to recruit up to this limit. Contrary to
+land recruitment, it is not possible to recruit more than the naval
+limit.
+\bparag \NGD and \NDE count as half a \ND for this limit. \NTD and \VGD count
+as a full \ND.
+
+\aparag[Increasing the limit]
+\label{chLogistic:Effect of Wood Purchase}
+\label{chLogistic:Effect of Fish Monopoly Purchase}
+\bparag Each \RES{Wood} brought or produced increase the naval recruitment
+limit by 1\ND, up to a maximum augmentation of 3\ND.
+\bparag In addition, a country having a partial or total monopoly on
+\RES{Fish} adds 1\ND to its naval recruitment limit.
+
+\aparag[Navy size]
+\bparag Each country has a maximum number of \ND allowed on map at the same
+time, varying by periods. This counts both \ND counters and \ND in \FLEET
+counters.
+\bparag It can be found in the player's aid of each country, in the column
+``Max. \ND''.
+\bparag It is also summarised in~\ref{table:Recruitment per Country} (second
+line, second number).
+\bparag \NGD and \NDE count as half a \ND toward this limit. \NTD and \VGD
+count as a full \ND.
+
+\aparag[Costs]
+\bparag Each country has a recruitment cost, for \NWD, \NTD, \FLEET\Facemoins,
+and sometimes also for \NGD and \FLEET\Facemoins of \NGD, varying with its
+current technology.
+\bparag It can be found in the player's aid of each country, in the columns
+``Navy Purchase'' and ``Purchase (other)''.
+\bparag The cost for one \FLEET\Facemoins is the cost for a full counter, up
+to its countenance.
+\bparag Beware! Countries with small recruitment limit (\emph{e.g.} \POL or
+\RUS) may not recruit a \FLEET\Facemoins in one turn unless they first
+increase their limit. That is, the existence of a price for a counter does not
+remove other conditions for buying it.
+\bparag Even if they do not benefit from the technologies, the cost of \NGD
+varies with them.
+\bparag \NDE cost half the price of a \ND, rounded up.
+
+\aparag[Recruitment area.] There is no specific recruitment area for
+navies. They can be brought in any European province with a port, including
+European provinces in the \ROTW and (coastal) \COL of level 6.
+
+\aparag[Recruitment.] Each country decides how many ships it wants to
+purchase, where it wants them recruited and under which form (counters). Then
+it computes the cost for these.
+\bparag The cost is written in \lignebudget{Units purchase} (together with the
+cost of newly brought armies).
+\bparag The new units are put on the map when resolving administrative
+actions.
+\bparag Since \FLEET counters are containers, it is possible to recruit some
+\ND directly ``inside'' them (if there is still room left for them) without
+physically putting the \ND counter on the map.
+
+\begin{exemple}[Naval recruitment]
+  In Period~\period{IV}, the recruitment limit of \SUE is 4\ND. Since its
+  \FLEET\Faceplus contains 5\ND and 2\NTD, \SUE may not buy one of them in one
+  turn.
+
+  If the naval technology of \SUE is \TBAT, \SUE can in on turn buy one
+  \FLEET\Facemoins (containing 2\ND and 1\NTD) for 150\ducats, plus an
+  additional \NWD at 55\ducats. This makes a total of 4\ND, the recruitment
+  limit for a given turn. The \NWD may be directly incorporated within the
+  \FLEET, since a \FLEET\Facemoins is too small to contain 3\ND, the counter
+  is turned ~\faceplus (and will require maintenance of a full
+  \FLEET\Faceplus, thus it might be way cheaper to keep this stack as
+  1\FLEET\Facemoins and 1\ND). On the next turn, \SUE may buy another
+  \FLEET\Facemoins and merge all of this into a full \FLEET\Faceplus.
+\end{exemple}
+
+\begin{exemple}[Wood]
+  Continuing the previous example, suppose that \SUE has one \RES{Wood} \MNU
+  of level 1 and also buys a second \RES{Wood} from \ANG. Each of these
+  \RES{Wood} increases its limit by 1\ND to a total of 6\ND. Thus, \SUE may
+  now recruit 2\FLEET\Facemoins on the same turn (but still not a full
+  \FLEET\Faceplus).
+
+  If \SUE exploits \RES{Wood} in the \ROTW and has the possibility to buy
+  another \RES{Wood} from \POL, that would make a total of 4 \RES{Wood}
+  available. However, the limit may only be increased by 3\ND. That is, the
+  fourth (and subsequent) \RES{Wood} is useless and, in this case, buying it
+  is a waste of money.
+\end{exemple}
+
+\begin{exemple}[Galleys]
+  In Period~\period{III}, \TUR may ``only'' recruit 9\ND per turn. However,
+  \NGD count as half, so \TUR may recruit up to 18\NGD per turn! Its
+  \FLEET\Faceplus can hold up to 5\ND and 1\NTD, that is 10\NGD and
+  1\NTD. Thus, \TUR can largely buy 1\FLEET\Faceplus and 1\FLEET\Facemoins
+  each turn\ldots
+
+  This is, typically, what happened after Lepanto where the Turkish navy was
+  crushed but rebuilt in a couple of years. Given the high cost of both
+  building and upkeeping navies, it is very rare to buy that much \ND during a
+  given turn and things are usually more evenly spread over time.
+\end{exemple}
+
+\subsubsection{Naval Recruitment in the ROTW}
+\aparag[Level 6 \COL] are considered as European provinces and follow the
+normal rules for naval recruitment.
+
+\aparag[Other establishments.] Each \ND (or \NTD) built in a \COL (of level
+5 or less) or \TP costs twice the normal price and counts as 2\ND in the
+recruitment limit.
+\bparag When building \FLEET\Facemoins in the \ROTW, make sure that the
+recruitment limit is high enough!
+\bparag It is not possible to build navies in forts or missions (alone).
+
+\aparag[Fisheries]\label{chLogistic:Effect of Fish Purchase} In a \COL
+(including of level 6) where \RES{Fish} is exploited, up to 1\NDE per two
+levels of \RES{Fish} exploited can be built outside of the construction limit,
+at normal cost.
+
+\begin{exemple}[Naval recruitment in the \ROTW]
+  In Period~\period{IV}, \FRA has a \COL of level 4 in
+  \granderegion{Terre-Neuve}, exploiting 4 \RES{Fish}. Thus, it may build
+  there 2\NDE that do not count toward the recruitment limit (of 5\ND). If
+  \FRA wants to build 2\ND there, that is 3\NDE plus 1\ND, the first two \NDE
+  do not count toward the limit, but the third counts twice (thus, as a full
+  \ND) and the \ND also counts twice, so this takes 3\ND of recruitment.
+
+  If the technology of \FRA is \TBAT, this would cost 23\ducats (22.5 rounded
+  up) for each of the first two \NDE, then the cost of the rest is
+  doubled. This brings the total to 23 + 23 + 2 \textmultiply 23 + 2
+  \textmultiply 55 = 167\ducats.
+\end{exemple}
+
+\subsubsection{Privateers}\label{chLogistic:Recruiting Privateers}
+\aparag \corsaire may be recruited in any controlled and owned port, including
+in the \ROTW.
+\bparag Each side cost 10\ducats and counts as 1\ND toward recruitment limit.
+\bparag When \corsaire are included in \terme{basic forces}, they are rebuilt
+for free (both cost and limit) if destroyed (up to the basic forces).
+\bparag Some \corsaire are also obtained via specific rules (see rules dealing
+with each power, especially~\ref{chSpecific:France:Privateers}
+and~\ref{chSpecific:Ragusa}). These are free of the costs mentioned here (both
+in \ducats and construction limit) but the specific rules may entail specific
+costs.
+
+% \subsection{Leaders}
+% \aparag Leaders have a limited redeployment to allow command of newly
+% recruited troops.
+
+% \aparag Each leader may be moved by its controller to any stack that has no
+% leader of the same nationality.
+% \bparag Exception: besieged leaders must stay in place.
+% \bparag These movement are done in decreasing order of initiative and, for
+% each country, in decreasing rank of leaders.
+% \bparag Each leader may only move once this way.
+% \bparag Hierarchy must be respected after these movements.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Recruitment of Minor Powers}
+\label{chLogistic:Recruitment of minors}
+\subsubsection{Going to war}
+\aparag When a minor country enter wars, immediately (during the Diplomacy
+phase) put all its basic force in play. Especially the ``one more fortress
+level per turn'' rule do not apply for basic forces (only for
+reinforcements).
+\bparag Former majors may have some fortress already in play (maintained from
+previous turns). These levels are subtracted from any level of fortress they
+have in basic forces. That is, basic forces is the minimum the country has
+upon entering war, not the amount it gains.
+\bparag Basic forces are only received if the country was fully at peace and
+enters war. No basic forces are received in the middle of a war, even if the
+basic forces of the country change (due to some events, usually).
+
+\aparag Next, during the Administrative phase, minor receive reinforcement as
+described below.
+
+\begin{exemple}[Minors basic forces]
+  \paysVenise has a basic force of 4 \fortress. If there already are 5 extra
+  levels of fortress on the map when war occurs, \paysVenise do not receive
+  any more. If there are 3 extra levels on the map, then \paysVenise would
+  only receive 1 level as basic force (to reach the total to 4).
+
+  Before~\ref{pIV:Great Elector}, the basic forces of \paysBrandebourg are
+  \ARMY\facemoins, \LD. After, they switch to \ARMY\faceplus, \LD. If this
+  event occurs while \paysBrandebourg is at war and only as \ARMY\faceplus in
+  play (more than the old basic force, but less than the new one),
+  \paysBrandebourg do not gain any new forces (it will roll for reinforcement
+  as usual). That is, the country needs one turn of peace to recruit its
+  troops up to its basic forces.
+\end{exemple}
+
+\subsubsection{Minors fully at peace}
+\aparag[Troops and Navies] A minor which is fully at peace (no war, overseas
+war or Limited intervention) recruits up to its basic forces.
+\bparag Remember that troops in excess of the basic forces are disbanded
+(except some fortresses), see~\ref{chLogistic:Maintenance of minors}.
+\bparag Thus, it is not necessarily to put these counters on map. Once a minor
+is at peace during the Administrative phase, all its counters (except some
+fortresses) may be removed from the map. The next time the minor goes to war,
+it will receive its basic forces.
+
+\aparag[Fortresses]
+\bparag [[TBD]] A minor country with Land Technology \TBAR or higher has an
+extra basic force of one level of fortress for every two provinces it owns.
+\bparag [[TBD]] A minor country with Land Technology \TMAN or higher has an
+extra basic force of one level of fortress for every province it owns.
+\bparag [[TBD]] These levels do not need to be evenly spread over the
+provinces and may be grouped into the same province.
+\bparag In addition, during periods \period{V}-\period{VII}, each minor
+country with an \terme{Income} of 16 or more gets one extra level of fortress
+in its basic forces.
+\bparag Before \TARQ, a fortress of level 3 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 2.
+\bparag Before turn 40, a fortress of level 4 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 3.
+
+\begin{exemple}[Fortresses]
+  \paysAlgerie normally owns 6 provinces and has an Income of 17. If its
+  technology is \TBAR, in period \period{IV}, it receives 3 levels of
+  \fortress as \terme{Basic forces} and may choose to put 2 of them in
+  \provinceAlgerie (thus reaching level 3) and 1 in \provinceOran (going to
+  level 2). Note that it is not possible to put a level 4 fortress in
+  \provinceAlgerie as the fourth level (above a level 3) itself costs two
+  levels before turn 40.
+
+  In period \period{V}, \paysAlgerie gains a fourth level of fortress as
+  \terme{Basic force} due to its high Income. It may now put a level 4
+  fortress in \provinceAlgerie (if allowed by technology). However, before
+  turn 40, that would cost the four levels as going from level 3 to level 4
+  cost two levels.
+
+  If \paysAlgerie reaches technology \TMAN, it now has a total of 7 level of
+  fortress when going to war (1 per province plus 1 for high Income) and may
+  choose to barricade the cost with level 3 fortresses in \provinceOran and
+  \provinceAnnabah, and a level 4 in \provinceAlgerie.
+\end{exemple}
+
+\subsubsection{Minors in Limited Intervention or Overseas wars}
+\aparag[Maximum recruitment]
+\bparag A \MIN which is doing a \terme{Limited Intervention} or is involved in
+an \terme{Overseas War} (and is not fully at war in some other war) recruits
+troop if it has less than its \terme{Basic forces}.
+\bparag Troops recruited during \terme{Limited Interventions} or
+\terme{Overseas Wars} may not raise the total number of troops above the
+\terme{Basic Forces}.
+\bparag If the allowed reinforcement would bring the total number of troops
+above the \terme{Basic Forces} of the country, then it only recruits up to its
+\terme{Basic Forces} and excess reinforcement is lost.
+
+\aparag[Recruitment of non-\VASSAL]
+\bparag A \MIN which is either \Neutral, \RM, \SUB or \MA may recruit its
+\terme{Basic Reinforcement} (indicated in the country description in the
+Appendices).
+\bparag A \MIN in \CE or \EW may recruit its \terme{Basic Reinforcement} plus
+one \LD or \ND (controller's choice).
+\bparag These recruitment do not cost anything to anybody. There are
+considered as payed by the minor, whatever its actual income may be.
+
+\aparag[Recruitment of \VASSAL]
+\bparag A \MIN in \VASSAL gains no free reinforcement each turn.
+\bparag Instead, the Patron may pay for reinforcements, on his own treasury,
+to raise troops up to the basic forces of the country.
+\bparag The cost are those of the Controller, with the technology of the
+minor.
+\bparag These troops are not counted toward the recruitment limit of the
+major.
+\bparag The maximal reinforcements raised this way are the \terme{basic
+  reinforcements}, plus 2 detachments (\LD or \ND).
+
+\aparag[Moral]
+\bparag All land reinforcements of \MIN are \terme{Conscripts}, except:
+\bparag \paysSuede recruits all its new forces as \terme{Veteran};
+\bparag \paysSuisse recruits its new forces as \terme{Veteran} if its Land
+Technology is \TMUS or less;
+\bparag \paysPerse recruits half of its new forces as \terme{Veteran} (round
+down).
+
+\aparag[Campaigns]
+\bparag \Neutral minors in overseas wars or interventions have 1 active campaign
+each round.
+\bparag Countries that are neither \Neutral nor \VASSAL receive 1 passive
+campaign each round, plus one active campaign for the turn. The controller may
+pay for larger campaigns (paying the difference between the chosen campaign
+and the passive one).
+\bparag \VASSAL in overseas wars or interventions have no campaign. All their
+campaign cost must be payed by their diplomatic patron. The patron may either
+chose to move the minor's troops with its own campaign or pay a whole new
+campaign only for the minor (in addition to the one used for its troops).
+
+\subsubsection{Minors fully at War}
+\aparag[Generalities]
+\bparag Minor fully at war, whatever their diplomatic status, receive
+reinforcements according to a \terme{Reinforcement roll}.
+\bparag These roll are made during the \textbf{Administrative action of minors
+  (incl. recruitment)} segment.
+\bparag In case the order is relevant, each \MAJ, in decreasing order of
+initiative, roll for reinforcements of its minors.
+\bparag The reinforcement roll provides troops, campaigns, fortress levels and
+leaders.
+
+\aparag[Attitude]
+\bparag Before rolling for reinforcements, the controlling player chooses an
+\terme{Attitude} for each minor.
+\bparag The choice is usually free (but may be constrained by
+events). Typically, a minors that was declared war upon can choose an
+\terme{Offensive} attitude.
+\bparag The attitude chosen may change at each turn of the war.
+\bparag Some attitudes entail constraints on the moves the country will be
+allowed to do during the turn.
+
+\aparag[List of attitudes]
+\bparag[Offensive:] this attitude gives more troops and campaigns
+% (Jym) too complicated to force players to do this without creating loopholes
+% everywhere.
+%
+%  the minor country has to move at least a stack into enemy
+% territory (i.e. the enemy player territory or the territory of one of the
+% controlled minors of the assailant), if the concerned enemy territory is
+% adjacent to the minor country territory, or within possible reach of same
+% (i.e. maximum 12 MP away). The minor's move must be effective during the 1st
+% or the 2nd round of the Military phase.
+\bparag[Defensive:] the troops of the minor country may only move in provinces
+that it owns or owned at some point in the game, as well as provinces adjacent
+to the ones it currently owns. This is the best attitude for getting
+fortresses.
+\bparag[Naval:] this attitude may only be chosen for a minor country that has
+naval counters at its disposal. It is the only attitude that gives naval
+forces.
+% (Jym) too complicated to force players to do this without creating loopholes
+% everywhere.
+%
+% the minor must move at least one naval stack to undertake an
+% attack against an enemy naval stack; or to establish a blockade or also to
+% undertake transportation and/or landing of its land units into enemy
+% territory.
+
+\GTtable{minorforcesaw}
+
+%\ref{table:Minor Reinforcements}
+
+\aparag[Reinforcement roll]
+\bparag Roll 1d10, add some modifiers as indicated on the right of the table
+and cross reference the result in \ref{table:Minor Reinforcements} with the
+attitude chosen.
+\bparag This die roll gives troops, fortress levels, campaigns and a leader
+value (in the last column).
+\bparag[Political] There is a Political modifier specific to some minor
+countries and periods (or events). These modifiers are indicated on the right
+of \ref{table:Minor Reinforcements}, and also in the country's description in
+the Appendix.
+\bparag[Incomes] There is also an Economical modifier depending on the income
+of the country. This modifier is used for all minors and is cumulative with
+the Political modifier. It is based on the income of the provinces that are
+owned and controlled by the minor, and neither besieged, revolted or pillaged
+at the time the roll is made (\emph{i.e.} the provinces that would count in
+the \terme{Land income} if this was a major country). Industrial income
+(gold), Commercial income (\TradeFLEET, Monopolies) and \ROTW income (exotic
+resources, \COL, \TP) also count toward this total for the few minors
+concerned.
+\bparag The initial income of each minor is written in the appendices. The
+actual figure has to be recomputed each time it is needed, the figure in the
+appendices is only the initial income of the country and typically varies if
+it loses or gain provinces.
+
+\aparag[Troops]
+\bparag The reinforcement roll can give some \LD and \ND to the minor. The new
+troops must be placed in owned and controlled provinces that are neither
+besieged nor revolted.
+\bparag \LD may be freely converted into \ARMY as the usual rate of
+2\LD=1\ARMY\facemoins, 4\LD=1\ARMY\faceplus.
+\bparag \ND may be used for either 1 \NWD, 1 \NTD, 1 \VGD or 2 \NGD.
+\bparag Naval forces can be included into \FLEET, according to the fleet size
+of the minor.
+\bparag There is no limit to the amount of recruited troops other than the
+counter limit for the country.
+
+\aparag[Moral]
+\bparag All land reinforcements of \MIN are \terme{Conscripts}, except:
+\bparag \paysSuede recruits all its new forces as \terme{Veteran};
+\bparag \paysSuisse recruits its new forces as \terme{Veteran} if its Land
+Technology is \TMUS or less;
+\bparag \paysPerse recruits half of its new forces as \terme{Veteran} (round
+down).
+
+\aparag[Fortresses.] Some levels of fortresses are obtained by the
+Reinforcement Roll. The new levels must be placed in controlled provinces that
+are neither besieged nor revolted.
+% \bparag In addition, during periods \period{V}-\period{VII}, each minor
+% country with an \terme{Income} of 16 or more gets one extra level of fortress
+% in its \terme{Basic Forces}.
+\bparag A given fortress can not be improved by Reinforcements by more than
+one level at a given turn. This rule does not constrain the fortresses that
+are in the \terme{Basic Forces}.
+\bparag Before \TARQ, a fortress of level 3 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 2.
+\bparag Before turn 40, a fortress of level 4 can only be placed by minor
+countries at the cost of 2 levels of fortress on top of an existing level 3.
+
+\aparag[Campaigns]
+\bparag Each minor fully at war gets 1 active campaign each round.
+\bparag In addition, it may receive multiple campaigns (MC) per reinforcement
+roll.
+\bparag The diplomatic patron may pay for more campaigns (paying the
+difference between the chosen campaign and the active one).
+
+\aparag[Military Leaders of Minors: basic forces]
+\bparag If there is a living named leader of the country, he automatically
+comes into play.
+\bparag Some minors have military leaders in their \terme{basic forces}. If
+there are not enough named leaders to reach this limit, the minor receive
+\anonyme\ leaders. If possible, take these among the minor country pool,
+otherwise among the generic grey leaders (of ``country'' \textsc{Quidam}).
+\bparag Contrary to major countries, \anonyme\ leaders of minors are not
+changed each turn. They are only removed when the country is fully at
+peace. If, due to death, the country falls below its basic forces (in number
+of leaders), it immediately receive a new one.
+
+\aparag[Military Leaders of Minors: reinforcements]
+\bparag By cross-referencing the (modified) reinforcement roll with the last
+column in~\ref{table:Minor Reinforcements}, one gets a \terme{Leader value}.
+\bparag 1d10 is rolled. If less or equal than this value, the minor receive a
+leader for the duration of the war. This does not change its basic forces
+(that is, no replacement if the leader is killed).
+\bparag If the attitude of the minor is \terme{Naval}, then it receives either
+a \anonyme\LeaderA or a \anonyme\LeaderG (controller's choice). Otherwise, it
+receives a \anonyme\LeaderG.
+\bparag This leader is taken at random among those of the minor, if some exist
+and among the generic grey ones otherwise.
+\bparag Like other \anonyme\ leaders of minor, the leader will be available
+for this minor until it is fully at peace.
+
+\aparag[Military Leaders of Minors: double-sided monarchs]
+\bparag Several Minors have generic double-sided monarchs. These leaders are
+usually in the basic forces of the minor.
+\bparag These are treated like \anonyme\ leaders. That is, one of the side is
+chosen (at random) when the minor is activated and it is kept until the minor
+is fully at peace (or until the death of the leader).
+\bparag List of concerned leaders (and countries):
+\leader{Burji1}/\leader{Burji2} (\paysMamelouks), \leader{Giray} (\paysCrimee)
+and \leader{Shah} (\paysPerse).
+\bparag Note that \leader{Grand Maitre} (\paysChevaliers) is not concerned as
+it is the same leader that may serve either as \LeaderG or \LeaderA.
+
+\aparag[Military Leaders of Minors: named and generic monarchs]
+\bparag Some minors have two (or more) different counters for their monarch,
+usually an unnamed one (as above) and a named one.
+\bparag The named one replace the unnamed one when he is alive. He enters game
+either at a given turn or following certain rules or event.
+\bparag As long as a named monarch is available for a minor, the unnamed one
+is not available and may not enter game (even through reinforcements).
+\bparag List of concerned leaders (and countries): \leader{La Valette}
+replaces \leader{Grand Maitre} (\paysChevaliers), \leader{Abbas Shah} and
+\leader{Nadir Shah} both replace \leader{Shah} (\paysPerse) and \leader{Akbar}
+replaces \leader{Great Mughal} (\paysMogol).
+\bparag Note that the \anonyme\LeaderG of \paysDanemark and \paysUSA are not
+concerned. They are always available for these countries as reinforcement
+leaders even if there are some named leaders alive.
+
+\begin{exemple}[Minor reinforcements]
+  At turn 10, \paysAlgerie is at peace. Thus, whatever it had left on previous
+  turn, it rebuilds and keeps only its basic forces of \ARMY\facemoins and
+  \FLEET\facemoins (the \corsaire is left out of this example). There is no
+  need to keep these counters on map. The technology of \paysAlgerie is \TREN
+  and \paysAlgerie is a \VASSAL of \TUR.
+
+  At turn 11, \ref{pIII:Revolt Grenade} occurs (earlier than historically) and
+  \TUR decides to go to war, together with its ally \paysAlgerie.
+
+  \textbf{Basic forces.} First, the basic forces of \paysAlgerie are put on
+  map. \TUR puts the \ARMY\facemoins and the \FLEET\facemoins both in
+  \provinceAlgerie. Then, since \leader{Barbaros2} is still alive, he is also
+  put in play (or, probably, kept).
+
+  \textbf{Reinforcements.} Next, \TUR rolls for reinforcements of its minor
+  (after all majors have finished their administrative actions, especially
+  after \TUR and \HIS both have brought their own troops). Since \paysAlgerie
+  is one of the \Barbaresques, it gets a \bonus{+1} political DRM (in periods
+  \period{I}-\period{III}). Since its total income is 17\ducats (it still own
+  all its original provinces and no more), it also gets a \bonus{+1}
+  economical DRM (for income between 16 and 30\ducats).
+
+  \TUR chooses a \terme{Naval} attitude for \paysAlgerie as it wants to try
+  and invade Spain. The roll is 5, modified to 7. Thus, \paysAlgerie gets
+  1\LD, 1 level of fortress and 1\ND. The leader value is 2. \TUR rerolls on
+  die for the leader and gets a 2, smaller than the leader value, thus
+  \paysAlgerie gets an extra leader for the duration of the war. Since it
+  already has an \LeaderA (\leader{Barbaros2}), \TUR chooses to take a
+  \LeaderG for \paysAlgerie (at random among the grey \anonyme\LeaderG). Then,
+  \TUR raise the fortress of \provinceAlgerie to level 2. As for the troops,
+  \TUR chooses to take 2\NGD instead of 1\ND and put them directly in the
+  \FLEET (and note on its record sheet the exact content of the Algerian
+  \FLEET). The \LD is put in \provinceAlgerie, waiting to board for an
+  invasion of Spain\ldots
+\end{exemple}
+
+\section{Removal and Placement of leaders}
+\label{chLogistic:Leaders}
+\begin{designnote}
+  Note that removal of leaders must physically occur before placement of new
+  ones because it is possible that the same \anonyme counter is immediately
+  reused (at the same place or elsewhere). However, they are considered to
+  happen simultaneously, especially for the replacement of \LeaderC/\LeaderE
+  in the \ROTW.
+\end{designnote}
+
+\subsection{Removal of leaders}
+\aparag[Death]
+Each named leader whose last turn of activity has passed is removed from the
+game.
+\bparag For leaders with turns on the counter, it happens if this turn is the
+after the second turn written on the counter.
+\bparag For leaders with event on the counter, or other special conditions,
+check the description of the event to known how long the leader lasts.
+\bparag Named major monarchs are removed during the Monarch Survival phase
+(\ref{chEvents:Survival}) at the time where the Monarch dies.
+\bparag Note that leaders may be removed earlier due to death in battles.
+
+\begin{designnote}
+  Turns of ``life'' may either represent the actual life of historical people
+  or their period of military activity. ``Death'' of a leader (whether
+  scheduled or during battle) may be either actual death, retirement of old
+  age or after a severe wound, change of career (often to become minister),
+  fall in disgrace, \ldots
+
+  Turns of life are sometimes longer than the actual life of the historical
+  leader. This may happen for several reasons, mostly because the actual
+  historical character died early (in battle) and the counter allows for a
+  ``what if he didn't die'' or for game balance reasons. A leader may last one
+  or two turns more than its historical counterpart to ensure that a given
+  country has a good enough leader at a crucial period. Typically, leaders
+  active in one war are often given ``extended'' lifetime over the following
+  peace as the in-game wars and peace won't match the historical ones and
+  there are no great historical generals during peaces\ldots
+\end{designnote}
+
+\begin{exemple}[Removing named leaders]
+  It is Administrative phase of turn 47. \leaderwithdata{Marlborough} is
+  scheduled to live for turns 43-46. Since his last turn of activity (turn 46)
+  has passed, his counter is removed from the game (historically, he died in
+  1722, in the middle of turn 47).
+
+  \smallskip
+
+  At the beginning of turn 26, \ref{pIV:Bohemian Revolt} occurs. As per Event
+  description, \paysBaviere receives \leaderwithdata{Tilly} for 4 turns. Thus,
+  he is considered as having turns 26-29 on his counter. At the Administrative
+  phase of turn 30, if he is still alive, \leaderTilly is removed from game
+  (historically, he died facing \leader{Gustav-Adolf} at the battle of Rain in
+  1632, during turn 29).
+\end{exemple}
+
+\aparag[Anonymous]
+\bparag All \anonyme leaders of major countries return to their respective
+pool.
+\bparag Exception: besieged leaders stay on the map.
+\bparag All mercenaries leaders return to the pool of mercenaries.
+\bparag \anonyme leaders of minors countries fully at peace return to their
+respective pool.
+\bparag \anonyme leaders of minors at war stay on the map.
+
+\aparag[Free redeployment]
+Each player may choose to redeploy any of its named leader still alive. The
+counter is removed from the map and will be replaced immediately as a new
+leader arriving this turn.
+\bparag Exception: besieged leaders must stay on the map.
+\bparag Exception: Leaders in the \ROTW with unknown discoveries must stay in
+place (hint: you should have redeploy them to an establishment during
+voluntary redeployment of previous turn).
+
+\begin{playtip}
+  In other words, named leaders have a free ``teleportation'' movement at this
+  point. Use this either to change your frontlines or to ensure hierarchy is
+  respected. This is also the occasion to redeploy \LeaderGov to other \Areas.
+\end{playtip}
+
+\subsection{Placement of leaders}
+\aparag[New leaders]
+Each leader who is schedule to be active starting this turn is placed on the
+map by its controller.
+\bparag Each leader that was removed due to free redeployment is also placed.
+\bparag Leaders that were wounded but did not recover during the previous turn
+are also placed.
+
+\begin{exemple}[New leader]
+  This is the Administration phase of turn 43. \leaderwithdata{Marlborough} is
+  active starting with turn 43, thus he is placed on the map now. \ANG chooses
+  where to place him (see some restriction below).
+\end{exemple}
+
+\aparag[Anonymous] Major countries check their minimum leader limit.
+\bparag For each category of leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC,
+\LeaderGov) where a country has less leaders than its minimum, draw as many
+\anonyme leaders as necessary to reach the minimal value (among those of the
+country).
+\bparag If a country has more leaders than its minimal value, none is
+received but none is lost either.
+\bparag Note that \anonyme leaders that are besieged and thus stay on map are
+counted toward the limit.
+
+\begin{exemple}[Minimum leaders]
+  At turn 2, \RUS has one \LeaderG (\leaderwithdata{Shchenya}, provided he did
+  not die during turn 1) but (for period \period{I}), \RUS has a minimum limit
+  of 2\LeaderG. So, \RUS gets one \anonyme\LeaderG at the Administrative phase
+  of turn 2.
+
+  \smallskip
+
+  At turn 4, suppose \leaderShchenya is still alive. \RUS receives
+  \leaderwithdata{I Vorotynsky} as he is scheduled for turn 4. Thus, \RUS now
+  has 2 \LeaderG, equal to its minimum limit, and does not receive any
+  \anonyme\LeaderG.
+\end{exemple}
+
+\aparag[Missionaries] Some countries receive \LeaderMis. Check the specific
+rules of the country to know when.
+\bparag If this is the case, new \LeaderMis are placed now.
+
+\aparag[Placement] All leaders deemed to be placed at a given turn are placed
+simultaneously. That is, one first draws all its \anonyme leaders before
+placing any.
+
+\aparag[Where to place?]
+\bparag \LeaderMis must be place in an owned, controlled and unbesieged
+province of the European map.
+\bparag \LeaderGov must be place in an owned, controlled and unbesieged
+establishment (\COL, \TP or fort) in the \ROTW, possibly in a \COL of level
+6. The \Area in which they are placed will restrict their possible movement.
+\bparag Other leaders (\LeaderG, \LeaderA, \LeaderE, \LeaderC) may be placed
+either with any unbesieged troop of the same country or in any owned,
+controlled and unbesieged province. Note that they may be placed with troops
+in enemy territory if a war is going on.
+\bparag Additionally, \LeaderE and \LeaderC may be placed in any province or
+seazone where another leader of the same category was just removed, even if
+there are no more counter of the country here and even if the discovery of
+this province or seazone has still not been brought back home (the expedition
+is too small to be represented, but there are still some members to take the
+lead once the initial leader is dead).
+\bparag Note that \LeaderE or \LeaderC may be placed either in Europe or in
+the \ROTW.
+
+\begin{exemple}[Replacing a \LeaderC]
+  At the end of turn 3, \HIS decides to let the lone \leaderwithdata{Colon} in
+  \granderegionCuba. At turn 4, \leaderColon dies and the counter is removed
+  from game. The province is now empty. However, \leaderwithdata{Solis} is
+  scheduled to arrive at turn 4, hence he is placed now. Since both are
+  \LeaderE, \leaderSolis may be placed exactly where \leaderColon
+  was.
+
+  \smallskip
+
+  \ANG leaves a lone \anonyme\LeaderC on the cost of \continentAmerica. Since
+  this is an \anonyme leader, it must be removed at the end of turn. However,
+  \ANG receives another \anonyme \LeaderC for the next turn and may choose to
+  place him at the same place. Note that since \ANG has only 3
+  \anonyme\LeaderC, there is 33\% chance that the new one is the same as the
+  old one.
+\end{exemple}
+
+\aparag[Geographic restrictions] Some leaders have Geographic restrictions as
+where to be placed (America, Asia or Mediterranean).
+\bparag In addition to other rules, these leaders must be placed in a province
+or seazone where they are allowed.
+\bparag That is, \emph{e.g.}, a \LeaderG with a \$ (America) restriction must
+be place with a stack or establishment in \continentAmerica and may not be
+placed in Europe or Asia.
+\bparag Note that leaders without capacity to go in the \ROTW are \emph{de
+  facto} restricted to Europe and thus must be placed on the European map.
+
+\aparag[Hierarchy]
+After placement of leaders, hierarchy must be respected.
+\bparag If not, you should probably have use free redeployment to solve the
+problem.
+
+\aparag[\Pashas]
+\TUR receives new \Pashas each turn as
+per~\ref{chSpecific:Turkey:Pashas}. They are placed now.
+\bparag The correct procedure of placement is (i) decide a province where a
+\Pasha will be placed ; (ii) draw a random \Pasha and place it here ; (iii)
+repeat until all new \Pashas are place.
+\bparag That is, \TUR may not wait to see the actual values of a new \Pasha
+before deciding where to place him.
+\bparag Placement of \Pashas may break hierarchy.
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
+
+% LocalWords: Carrack Tercios Galleass Boyars

@@ -1,6 +1,8 @@
 % -*- mode: LaTeX; -*-
-
-\section{Period IV}\label{events:pIV}
+\definechapterbackground{Political Events of Period IV}{vanLeydenRaidMedway}
+\chapter{Political Events of Period IV}
+%\section{Period IV}
+\label{events:pIV}
 
 
 
@@ -11,16 +13,16 @@
   \begin{tabular}{|l|*{6}{c}|l|}
     \hline
     1\up{st}\textarrow& 1-3 & 4-5 & 6 & 7 & 8 & 9 & 10 \\ \hline
-    1 & 1  &  1 & 13 & R4 & R19 & 7   & \textbullet~1--2: \\
-    2 & 12 & 14 & 15 & R5 & 18  & 8   & +1 then\\
-    3 & 17 & 15 & 9  & 6  & 17  & R9  & \nameref{events:pIII}\\
-    4 & 18 & 16 & 10 & R7 & 16  & R17 & \textbullet~3--10:\\
-    5 & 10 &  4 & R11& 8  & 14  & R18 & \nameref{events:pIII}\\
+    1 & 1  &  1 & 13 & R4 & R19 & 7   & \\
+    2 & 12 & 14 & 15 & R5 & 18  & 8   & \textbullet~1--2: \\
+    3 & 17 & 15 & 9  & 6  & 17  & R9  & +1 then\\
+    4 & 18 & 16 & 10 & R7 & 16  & R17 & \periodref{III}\\
+    5 & 10 &  4 & R11& 8  & 14  & R18 & \\
     6 & 3  &  2 & 12 & 9  & 1   & 19  & \\
-    7 & 7  &  6 & 1  & 11 & R5  & R20 & \\
-    8 & 22 & R4 & 2  & 12 & 21  & R4  & \\
+    7 & 7  &  6 & 1  & 11 & R5  & R20 & \textbullet~3--10:\\
+    8 & 22 & R4 & 2  & 12 & 21  & R4  & \periodref{III}\\
     9 & 5  & R7 & 3  & 13 & R22 & 8   & \\ \hline
-    10 & \multicolumn{7}{l|}{\nameref{events:pV}} \\ \hline
+    10 & \multicolumn{7}{l|}{Roll in \periodref{V}} \\ \hline
   \end{tabular}
 \end{eventstable}
 
@@ -31,6 +33,7 @@
   pIV:Unity HRE|,%
   pIV:War Persia Turkey|,%
   pIV:Persian Safavids|O{pIII:Persian Safavids},%
+  % Change to Morocco/Portuguese Revolt ?
   pIV:Portuguese Revolt|,%
   pIV:Morocco|,%
   pIV:Act Navigation|,%
@@ -47,7 +50,7 @@
   pIV:Union Poland Sweden|O{pIII:Union Poland Sweden},%
   pIV:Torstensson|,%
   pIV:Swedish Nobles Unrest|,%
-  pIV:La Rochelle|,%
+  pIV:La Rochelle|E/O{pIV:Morocco},%
   pIV:Richelieu|,%
   pIV:Fronde|,%
   pIV:Times of Troubles|,%
@@ -58,6 +61,8 @@
   pIV:China Colonial Attitude|O{pIII:China Colonial
     Attitude}/S{pIV:CCA:Vassalisation Korea},%
   pIV:Japan Colonial Attitude|,%
+  pIV:Deluge|,%
+  pIV:Koprulu|,%
   O|,%
   pIV:TYW|,%
   pIV:Polish Civil War|,%
@@ -92,12 +97,12 @@ controlled by \MAJHAB.
 \bparag \SPA is allowed a limited intervention in the war as an ally of
 \HAB. Other countries are constrained by usual rules.
 
-\aparag[The Revolt of Gabor]
+\aparag[The Revolt of Bethlén]
 \bparag A \REVOLT \faceplus is placed in a randomly chosen province belonging
 to \HAB in \paysHongrie. It controls the city. The \REVOLT is controlled by
 \RUS.
-\bparag The military forces of the Revolt of Gabor can use up to 1 \ARMY and 2
-\LD of the Hungarian counters (and the \HAB can use at most one \ARMY and 2
+\bparag The military forces of the Revolt of Bethlén can use up to 1 \ARMY and
+2 \LD of the Hungarian counters (and the \HAB can use at most one \ARMY and 2
 \LD from Hungarian counters).
 \aparag \TUR cannot declare war against \HAB at this turn.
 
@@ -107,18 +112,20 @@ to \HAB in \paysHongrie. It controls the city. The \REVOLT is controlled by
 and is commanded by \leaderwithdata{Tilly} (lasting 4 turns).  It has 2
 Multiple Campaigns. \paysBaviere has 2 \ARMY counters at its disposition
 during the whole length of this event.
+\bparag[Tilly's training] [BLP] Troops of \paysBaviere (not its allies)
+stacked with \leaderTilly are always \TTER.
 \aparag \paysBoheme has 1 \ARMY \faceplus, 1 \LD (Conscripts) and 1 \fortress.
 \aparag \paysPalatinat has 1 \ARMY \faceplus (Veterans) leaded by
 \leaderwithdata{Mansfeld} (lasting 3 turns). It has 1 Multiple Campaign.
-\aparag The Revolt of Gabor consists of one Hungarian \ARMY \faceplus
-(Conscripts) and \leaderwithdata{Gabor} (lasting 4 turns) placed in the
+\aparag The Revolt of Bethlén consists of one Hungarian \ARMY \faceplus
+(Conscripts) and \leaderwithdata{Bethlen} (lasting 4 turns) placed in the
 province of the \REVOLT .
 \aparag None of \paysBaviere, \paysBoheme, \paysPalatinat and the Revolt of
-Gabor receive reinforcements on the first turn. They receive normal
+Bethlén receive reinforcements on the first turn. They receive normal
 reinforcements beginning with the second turn of the war.
-\aparag The reinforcements of the Revolt of Gabor are based only on the
+\aparag The reinforcements of the Revolt of Bethlén are based only on the
 provinces in \payshongrie that he controls or that are in \REVOLT . If there
-are none, or if \leader{Gabor} is not in play (dead or wounded), it receives
+are none, or if \leaderBethlen is not in play (dead or wounded), it receives
 no reinforcements.
 
 \phmil
@@ -134,26 +141,32 @@ are disbanded and its provinces not yet military controlled by \HAB are
 considered controlled by rebels (use Control markers of \paysBoheme); they
 surrender as soon as an \ARMY \faceplus besieges them, or by regular siege
 with smaller forces.
-\aparag[Gabor]
-\bparag The forces of \leaderGabor are always in restricted supply in the
-national provinces of \paysHongrie. They use the \REVOLT in \paysHongrie and
-the cities they control as regular supply sources.
-\bparag A force lead by \leaderGabor can withdraw in \paysTransylvanie or
+
+\aparag[Bethlén]
+\bparag The forces of \leaderBethlen are always in restricted supply in the
+national provinces of \paysHongrie (provinces with Hungarian shield). They use
+the \REVOLT in \paysHongrie and the cities they control as regular supply
+sources.
+\bparag A force lead by \leaderBethlen can withdraw in \paysTransylvanie or
 national provinces of \payshongrie owned by \TUR (by retreat or movement). If
 he retreats there, he must stay there until the end of turn but may go out on
 any following turn.
-\bparag As long as \leaderGabor and/or its forces are in \paysTransylvanie or
-national provinces of \payshongrie owned by \TUR, \TUR has a free \CB against
-\leaderGabor. If \TUR uses it, the forces of \leaderGabor are also at war
-against \TUR and \TUR may enter, besiege and attack any force in national
-provinces of \payshongrie.
+\bparag If \leaderBethlen and/or its forces are in \paysTransylvanie
+or national provinces of \payshongrie owned by \TUR, \TUR may make a foreign
+intervention against both the revolt of \leaderBethlen and \HAB. Declaring the
+intervention cost 1\STAB to \TUR.
+% \bparag As long as \leaderBethlen and/or its forces are in \paysTransylvanie
+% or national provinces of \payshongrie owned by \TUR, \TUR has a free \CB
+% against \leaderBethlen. If \TUR uses it, the forces of \leaderBethlen are
+% also at war against \TUR and \TUR may enter, besiege and attack any force in
+% national provinces of \payshongrie.
 
 \phpaix
 \aparag Before any peace is made, roll a test for the possible breakout of a
 Religious war, according to \ref{pIV:TYW}.  A \bonus{-2} is applied to this
 roll.
 \aparag Add a Revolt \facemoins in a national province of \payshongrie if
-\leaderGabor is therein.
+\leaderBethlen is therein.
 \aparag[Survival of \paysBoheme]\label{pIV:BR:Survival} If no such war occurs
 and \villeVienne is controlled by the enemies of \HAB, the war end as a
 victory of \paysBoheme.  The minor country is fully recreated ; \HAB has a
@@ -164,7 +177,7 @@ right to make the complete conquest of \paysBoheme.  \paysBoheme and
 \aparag \HAB and \paysBoheme stop war only when \paysBoheme is destroyed or if
 \villeVienne is occupied by enemies.  Other countries use normal peace rules
 (but are allied to \HAB and \paysBoheme and subjects to Separate Peace
-modifiers).
+modifiers if any).
 \aparag[Victory conditions if the war becomes the TYW]
 \bparag if the \nameref{pIV:TYW:Peace Prague} favours the \alliance and they
 control \villeVienne, apply \ref{pIV:BR:Survival} if \paysBoheme still exists.
@@ -246,10 +259,10 @@ the \GE.
   Augsburg}
 
 \phevnt
-\aparag The Emperor of the HRE has the possibility to revoke this Truce. If he
-declines to do so, his country loses {\bf 2 \STAB} and the event terminates.
-If the Truce of Augsburg is revoked, alliances are created in the \HRE and the
-\HRE is in Civil War.
+\aparag The Emperor of the HRE has the possibility to revoke this Truce (even
+if it was not given in game terms). If he declines to do so, his country loses
+{\bf 2 \STAB} and the event terminates.  If the Truce of Augsburg is revoked,
+alliances are created in the \HRE and the \HRE is in Civil War.
 \aparag[Northern Alliance] If a Northern Alliance already exists, skip this
 paragraph.
 \bparag A Northern Alliance of countries of the \HRE is created.  The
@@ -307,7 +320,7 @@ last after the war at the condition of \ref{pIV:TYW:Southern HRE Alliance}.
     Revocation} and another time because of \xnameref{pIV:Unity HRE}}
 
 \phevnt
-\aparag \AUS, \HOL and \SPA rolls for one \REVOLT .
+\aparag \AUS, \HOL and \HIS rolls for one \REVOLT .
 \aparag The effect of a diplomatic event is made on every minor country that
 is part of the \HRE (fidelity/religion):
 \FEforeachlist{listofminorsHRE}{\pays{\loopitem}
@@ -492,6 +505,18 @@ nullified.
 \event{pIV:Portuguese Revolt}{IV-4 (1)}{National Revolt of the
   Portugal}{1}{Risto}
 
+\begin{todo}
+  Province Tanger should go to Morocco. Helper of POR should gain a predisio
+  on Tanger + a \TP of POR in case of victory (no reannexion). HIS should not
+  be able to attack if at war otherwise. Helper should be first in order at
+  Methuen. Helper should be Catholic?
+
+  Maybe swap Portuguese revolt with Alaouite dynasty and re-add Portuguese
+  revolt as secondary event in pV (typically of WoSS which is four times in
+  the table). The real war only started in 1660, the turning point between pIV
+  and pV.
+\end{todo}
+
 \history{1640-1668}
 
 \condition{Occurs only if \xnameref{pIII:POR Ann.:Portugal Annexed} is
@@ -502,7 +527,7 @@ mark off and re-roll.
 
 \phevnt
 \aparag All effects of the \xnameref{pIII:POR Ann.:Portugal Annexed} are
-cancelled and \paysPortugal returns to play as a minor country.  \paysPortugal
+cancelled and \paysPortugal returns to play as a minor country. \paysPortugal
 receives the same provinces it had at the time of its annexation to \SPA
 notwithstanding who currently owns such provinces. It also receives all
 Portuguese \COL/\TP, missions, forts/fortresses, commercial fleets etc. that
@@ -523,7 +548,7 @@ then to \SUE; if no country accepts, it remains neutral.
 \aparag All players who are forced to cede provinces to Portugal by this event
 receive a temporary free \CB to be used this turn.
 \aparag Players who want to fight against Portuguese \REVOLT in their own \COL
-have to declare an Overseas war against \paysPortugal and have a free \CB to
+have to declare an Overseas war against \paysPortugal and have a free \OCB to
 do so.  Else, their \COL is freely given to \paysportugal (no loss of \STAB or
 \VPs).
 \aparag \SPA receives a free \CB that lasts until the end of the next period
@@ -556,7 +581,11 @@ gains \provinceTanger if the province was Portuguese.
 
 
 \event{pIV:Morocco}{IV-4 (2)}{Alaouite dynasty in
-  \paysmaroc}{1}{PBNotEvenWritten}
+  \paysmaroc}{1}{PB+JymNew}
+
+\begin{todo}
+  Maybe here for giving back Tangier (except presidio?) to Morocco?
+\end{todo}
 
 \history{1631}
 \dure{Until the end of the game}
@@ -592,8 +621,8 @@ levels). All powers that lose their counters as a result of this, receive a
 period.
 
 \phadm
-\aparag \ENG may ignore restriction of~\ref{chExpenses:Pioneering} for this
-turn.
+\aparag \ENG may ignore restriction of~\ref{chAdministration:Pioneering} for
+this turn.
 
 \phpaix
 \aparag If a \CB against \ENG received through this event has been used by a
@@ -642,6 +671,7 @@ with every other \MAJ (\MIN automatically accept an Armistice).
 \phevnt
 \aparag A Religious Civil War (\ref{chDiplo:Religious Civil War}) erupts in
 \ENG between the \parl and the \paysRoyalists.
+
 \aparag[Which side is played ?]
 \bparag If \ENG is \CATHCR by choice in \ref{pI:Reformation2}, the player
 keeps playing \royal.
@@ -655,13 +685,17 @@ before the event (and he can be used as a general). The \parl are ruled by a
 Monarch \monarque{Parliament} of values 5/8/8 that makes no test of Survival.
 It gives a bonus of \bonus{+2} to the rolls for all administrative actions
 (except exceptional taxes). It may not be used as a general.
+
 \aparag If not played by \ENG, \parl is played by the first Protestant country
 in the list: \HOL, \FRA, \SUE or else by \POL.
+
 \aparag Three \REVOLT are rolled for in \ENG. These \REVOLT are hostile to
 both sides and controlled by \TUR.
+
 \aparag If not played by \ENG, \royal are played by the first \CATHCR \MAJ in
 the list: \SPA, \FRA, \HOL, \VEN else by the first Catholic \MAJ in the list:
 \SPA, \FRA, \VEN, \SUE, \POR, \POL.  Failing that it is played by \RUS.
+
 \aparag[Initial position]
 \bparag \royal control \provinceMidlands, \provinceCornwall, \provinceDurham
 and 1d10/3 (round down) provinces adjacent to \provinceMidlands (to be chosen
@@ -672,13 +706,17 @@ provinces in \regionIrlande.
 \bparag \royal and the \parl receive up to the equivalent of basic land forces
 of \ENG; the Rebels take the forces before (so they can take everything is
 there is not enough). Additional forces are removed.
+\bparag The Rebels add 1\LD (Veteran) in any controlled province, and 1\LD
+(Conscript) in \provinceDurham (if \royal) or \provinceWessex (if \parl).
 \bparag \ENG loses 1 \ND, and the rest is controlled by the \parl.
 \bparag All named leaders in play are controlled by the \parl.
+
 \aparag[Economic consequences]
 \bparag \ENG loses one-third of its treasury, and at least 50\ducats (this
 might cause a Bankruptcy).
 \bparag Two \PIRATE\faceplus are placed in \CTZ England.
 \bparag All \TP, \COL, \TradeFLEET, etc., remain under the control of \ENG.
+
 \aparag If \ref{pIV:Union Scotland} is in effect, apply \xnameref{pIV:ECW:War
   Scotland} in addition.
 
@@ -703,12 +741,12 @@ provinces they control, with a maximum of \bonus{+4}.
 \bparag The Rebels have as many counters as \ENG available.
 \aparag \ENG uses normal purchase rules, except that its purchase limits are
 doubled during the Civil War.
-\aparag The \royal receive the general \leaderwithdata{Rupert} on the first
-turn of the war; he will last 7 turns. He has a double usage as an admiral.
+\aparag The \royal receive the general \leaderwithdata{Rupertroy} on the first
+turn of the war; he will last 7 turns.% He has a double usage as an admiral.
 \aparag The \parl receive the general \leaderwithdata{Cromwell} at the end of
 the first turn of the war (before the Peace Segment).  He will last for the 5
 following turns. The \parl benefits from a Military Revolution at that point
-(\textit{The New Model Army}, see rules \ruleref{chExpenses:Military
+(\textit{The New Model Army}, see rules \ruleref{chAdministration:Military
   Revolutions}, that is to take immediately any Land Technology available at
 most in 4 turns, and in the mean time, is raised to the highest Technology
 available at that time).
@@ -725,8 +763,9 @@ National provinces with at least 3 ports.
 \bparag Elimination of all enemy army counters, or at least two major
 victories against them.
 \aparag If the \royal win, \ENG is ruled by its previous Monarch and becomes
-\CATHCR (exception: if \ENG was \CATHCO, it remains so). \leaderRupert is kept
-as a general; land technology of \ENG is at the level reached by the \royal.
+\CATHCR (exception: if \ENG was \CATHCO, it remains so). \leaderRupertroy is
+kept as a general; land technology of \ENG is at the level reached by the
+\royal.
 % (JCD): I added (or remains)
 \aparag If the \parl wins and \ENG was Catholic or \PROTANG, \ENG becomes (or
 remains) \PROTANG.  It is ruled by the \monarque{Parliament}
@@ -740,11 +779,13 @@ of one \ARMY\faceplus.
 \bparag When \leaderCromwell dies, or at the beginning of the sixth turn after
 the end of the Civil War, apply \ref{pIV:English Restoration} as one of the
 event of the turn.
-\bparag \leaderRupert becomes an admiral only, kept by \ENG as one of its own.
+\bparag \leaderRupertang becomes an admiral only, kept by \ENG as one of its
+own.
+
 \aparag If \ENG was Protestant (not \PROTANG) and the \parl wins, \ENG remains
 so. It is rules by the \monarque{Parliament} (see~\ref{pIV:ECW:Monarchs}).
 \bparag If \leaderCromwell is in play at the end of the war, he stays as a
-general only. \leaderRupert is not used by \ENG.
+general only. \leaderRupertang is not used by \ENG.
 \bparag At the beginning of the sixth turn after the end of the Civil War,
 roll for a new Monarch on columns 9 for the three values. \ENG is ruled by a
 Protestant Republic lead by some strong Lord Protector of the Commonwealth
@@ -756,11 +797,10 @@ from now on.
 \subevent[pIV:ECW:War Scotland]{War with Scotland}
 
 \phevnt
-\aparag \paysecosse declares war against the \royal and becomes neutral.  If
-\ref{pIV:Union Scotland} was in effect, it is cancelled.  \paysecosse is
-controlled by \FRA, but no allies can ever take part in this war. This
-declaration of war does not trigger a truce in the civil war as per normal
-rules.
+\aparag \paysecosse declares war against the \royal and becomes neutral.
+\paysecosse is controlled by \FRA, but no allies can ever take part in this
+war. This declaration of war does not trigger a truce in the civil war as per
+normal rules.
 
 \phadm
 \aparag \paysecosse rolls for reinforcements in offensive status.  It has a
@@ -827,6 +867,9 @@ we choose to ignore this and separate the general from the king).
 .
 \bparag \SPA, if \CATHCR, has a free \CB against \ENG.
 \aparag[Refusal]
+\begin{todo}
+  ``CHANGE'' (Pierre's notes).
+\end{todo}
 \bparag Apply \ref{pV:Glorious Revolution} now (with worsened consequences).
 
 
@@ -891,21 +934,27 @@ not occur later.
     Company}. Mark the one that is chosen.}
 
 \phadm
-\aparag \ENG may ignore restriction of~\ref{chExpenses:Pioneering} for this
-turn.
+\aparag \ENG may ignore restriction of~\ref{chAdministration:Pioneering} for
+this turn.
 
 \effetlong
-\aparag \ENG can from now on lend 150\ducats in the Diplomacy phase, plus
-100\ducats during the turn (instead of 100\ducats plus 50\ducats).
-\aparag \ENG has more money available for international loans.
-\begin{oldcompta}
-  \aparag From now on \ENG receives a bonus equal to its \DTI to all die-rolls
-  on international loan amount and interest (not length) in the loans table
-  % (Jym) Table just said "international" and usually more up to date
-  \aparag \ENG is also more resistant to Bankrupt and more tolerant to
-  trespassing of commercial limits.
-  % (Jym) According to the rule of chapter 3, it is actually less resilient
-\end{oldcompta}
+\aparag \ENG can from now on lend 250\ducats per turn to other countries.
+% in the Diplomacy phase, plus 100\ducats during the turn (instead of
+% 100\ducats plus 50\ducats).
+
+\aparag From now on, \ANG receives a bonus for its International Loan rolls
+and Bankruptcy rolls.
+
+\aparag From now on, \ANG is more resilient to exceeding limits in \MNU.
+
+% \begin{oldcompta}
+%   \aparag From now on \ENG receives a bonus equal to its \DTI to all die-rolls
+%   on international loan amount and interest (not length) in the loans table
+%   % (Jym) Table just said "international" and usually more up to date
+%   \aparag \ENG is also more resistant to Bankrupt and more tolerant to
+%   trespassing of commercial limits.
+%   % (Jym) According to the rule of chapter 3, it is actually less resilient
+% \end{oldcompta}
 
 
 
@@ -935,8 +984,8 @@ actions made on countries from the \ROTW map.
 \aparag \HOL receives an additional and free strong \TP placement attempt.
 \aparag For this turn \HOL receives a bonus of \bonus{+1} to all
 administrative actions made in \ROTW map.
-\aparag \HOL may ignore restriction of~\ref{chExpenses:Pioneering} for this
-turn.
+\aparag \HOL may ignore restriction of~\ref{chAdministration:Pioneering} for
+this turn.
 
 
 
@@ -1038,7 +1087,6 @@ place the \REVOLT if not inside \SUE, but do not reroll either) and a Revolted
 \aparag The resulting \REVOLT are controlled by \SPA.
 
 
-
 \event{pIV:La Rochelle}{IV-14}{Revolt of La Rochelle}{1}{RistoMod}
 
 \history{1626}
@@ -1047,14 +1095,17 @@ place the \REVOLT if not inside \SUE, but do not reroll either) and a Revolted
 
 \condition{}
 \aparag If \ref{pIII:FWR} is not finished yet, do not mark off and re-roll.
-\aparag If the owner of \provincePoitou is Protestant, one Revolt \faceplus is
-put in the province.  The event is maked off and considered as played.
+\aparag If the owner of \provincePoitou is Protestant, roll on its Revolt
+table and place a \REVOLT\Faceplus if this is a Catholic province, and a
+\REVOLT\Facemoins otherwise. The event is marked off and considered as played.
 
 \phevnt
 \aparag Place 2 \REVOLT \faceplus and a \LD in \provincePoitou.  Retreat all
 other units from the province.
-\aparag Place 2 Revolts \facemoins in other protestant provinces (randomly),
-or in Protestant or Mixed provinces if \FRA is \CATHCR.
+\bparag Roll for two Revolts in \FRA. Place a \REVOLT\Facemoins if the
+province is Protestant (or mixed if \FRA is \CATHCR) and nothing otherwise.
+% \aparag Place 2 Revolts \facemoins in other protestant provinces (randomly),
+% or in Protestant or Mixed provinces if \FRA is \CATHCR.
 \aparag The fortress of La Rochelle is controlled by the Rebels and upgraded
 to the highest level available to the owner of the province.
 \aparag Place a \PIRATE\faceplus in \CTZ of \FRA.
@@ -1107,8 +1158,8 @@ for a random length of Excellent Minister, see \ref{eco:Excellent Minister}.
 \phadm
 \aparag As long as \ministre{Richelieu} lives, \FRA has a bonus of \bonus{+2}
 to any die-roll for External Administrative Actions and to improve its \FTI.
-\aparag \FRA may ignore restriction of~\ref{chExpenses:Pioneering} for this
-turn (only).
+\aparag \FRA may ignore restriction of~\ref{chAdministration:Pioneering} for
+this turn (only).
 
 \phinter
 \aparag When \FRA monarch dies, his successor is \monarque{Louis XIV}.
@@ -1255,7 +1306,7 @@ not withdraw any force sent in Russia.
 \aparag Rebels receive offensive reinforcements at each turn, using the
 provinces they own.
 
-\aparag Rebels have the general \leaderDimitri (until he dies) for 5 turns.
+\aparag Rebels have the general \leaderDmitry (until he dies) for 5 turns.
 
 \phpaix
 
@@ -1272,7 +1323,7 @@ the new monarch 6/5/6; as this monarch represents the whole family, do not
 roll for his survival (it is automatic).
 
 \aparag if \monarque{Boris Godunov} is dead (on this turn or a previous one),
-\leaderDimitri also rolls for survival with a \bonus{+3} as sole modifier
+\leaderDmitry also rolls for survival with a \bonus{+3} as sole modifier
 during the event.
 
 \aparag As long as the event continues, roll for 3 \REVOLT in \RUS (that occur
@@ -1281,7 +1332,7 @@ only is in a Russian owned province).
 \phdipl
 
 \aparag \POL may make a full or limited intervention as ally of the Rebels. It
-has a \CB to do so, or a free \CB is \leaderDimitri is alive. This
+has a \CB to do so, or a free \CB is \leaderDmitry is alive. This
 intervention is not affected by excessive foreign intervention.
 
 \aparag If \POL was involved in this war on the previous turn and \SUE is
@@ -1302,14 +1353,14 @@ consequences.
 
 \aparag A side fulfils the military condition of victory if it won a major
 victory against the enemy or if it controls all cities in national provinces,
-or if the enemy (not their foreign allies) has no forces left.
+or if the enemy (not their foreign allies) has no \ARMY left.
 
 \aparag The event ends as a victory for the Rebels or the Loyalists under the
 following conditions.
 
 \bparag Rebels win if \monarque{Boris Godunov} is dead and they control
-\villeMoscou and they fulfil the military condition of victory; or they +win
-if \monarque{Boris Godunov} is dead and Loyalists surrender willingfully.
+\villeMoscou and they fulfil the military condition of victory; or they win if
+\monarque{Boris Godunov} is dead and Loyalists surrender willingfully.
 
 \bparag The Loyalists win if all the \REVOLT are eliminated in owned national
 provinces and they fulfil the military condition of victory.
@@ -1320,7 +1371,7 @@ destroyed.
 \bparag The intervention of \SUE ends; \RUS has now a free \CB (one use)
 against \SUE until the end of the period.
 
-\aparag If the Loyalists win, \leaderDimitri is eliminated.
+\aparag If the Loyalists win, \leaderDmitry is eliminated.
 
 \bparag If \monarque{Boris Godunov} is alive, he is now legitimate ruler of
 Russia. He has now values 6/8/5.  \RUS gains 10\PV.
@@ -1330,13 +1381,13 @@ values 6/5/6. Russian \STAB is increased by 1.
 
 \aparag If the Rebels win, \monarque{Boris Godunov} is eliminated.
 
-\bparag If \leaderDimitri is alive, he becomes tsar \monarqueDimitri with
+\bparag If \leaderDmitry is alive, he becomes tsar \monarqueDimitri with
 values 4/7/5 (and the turns left). \RUS loses 3 in \STAB.  If \POL is still
 intervening in the war, \RUS is now in mandatory defensive alliance with \POL
 during \monarqueDimitri's reign. In addition, \POL gains one province in \RUS
 that it currently controls or occupies (its choice).
 
-\bparag If \leaderDimitri is dead, the new ruler is \monarqueRomanov for 5
+\bparag If \leaderDmitry is dead, the new ruler is \monarqueRomanov for 5
 turns, with values 6/5/6. Russian \STAB is decreased by 2.  If \POL is still
 intervening in the war, it gains one province in \RUS that it currently
 controls or occupies (its choice).
@@ -1356,29 +1407,38 @@ controls or occupies (its choice).
 \tour{Turn 1}
 
 \phevnt
-\aparag One province of \paysukraine belonging to \POL (if none, belonging to
+\aparag One province of \paysUkraine belonging to \POL (if none, belonging to
 \HAB) secedes and create the new minor \paysukraine. The province is
-\provincePoltava if available, else, the closest to this one. Units of other
-countries inside are immediately redeployed.
+\provincePoltava if available, else, the closest to this one (chosen by the
+new protector or controller of \paysUkraine). Units of other countries inside
+are immediately redeployed.
 \aparag The new minor is a special \VASSAL of its protector. No diplomacy is
 allowed on it.
 \bparag The protector stops being protector if it declares war to
 \paysukraine. The next possible protector in the list becomes the new
 protector.
 % (Jym) Originally also if does not come to help, but vassal means war to the
-% minor is war to the major, so no way no to help
-\aparag \paysukraine never makes a separate peace without its protector and
+% minor is war to the major, so no way not to help
+\aparag \paysUkraine never makes a separate peace without its protector and
 must be included in the same peace treaty.
 \aparag Possible protectors are (in order): \POL (if Orthodox), \RUS, \TUR,
-\POL (if not Orthodox). If there are no (more) protectors, \paysukraine
+\POL (if not Orthodox). If there are no (more) protectors, \paysUkraine
 becomes a normal minor country.
 
 \phdipl
-\aparag \POL has a free \CB against \paysukraine if it loses at least one
+\aparag \POL has a free \CB against \paysUkraine if it loses at least one
 province during the formation of that country.
 % (JCD): the event does not happen if \POL is orthodox! removing
 % \aparag If \POL is Orthodox and does not declare the war, roll for two
 % \REVOLT in \POL and ignore the rest of the event.
+\aparag If \paysUkraine (as a special Polish \VASSAL) owns a province of
+\paysCrimee (a province with a Crimean shield, even blurred), then \POL may
+ask for a limited intervention of \paysCrimee in this war.
+\bparag This does not change the diplomatic status of \paysCrimee nor its
+controller. \paysCrimee is played by its usual controller decided by the usual
+rules.
+\bparag If \POL wins after an intervention of \paysCrimee, it must give one
+province back to it.
 
 \phadm
 \aparag If \POL is at war against another \MAJ during the event, \HAB can make
@@ -1477,7 +1537,8 @@ have to confront the Natives if they react.
 
 \phpaix
 \aparag If a \TP has survived, \pays{Chine} concedes a new \dipAT to the owner
-of the \TP, if it didn't have any.
+of the \TP, if it didn't have any. The owner still has to pay as for usual
+\dipAT with \paysChine.
 
 
 
@@ -1550,6 +1611,25 @@ more Japanese or destroyed, normal activation rules for Natives apply.
 \aparag If \paysJapon does not lose the war and there is no \TP in any of the
 3 provinces claimed, it places a \TP in there of level 1.
 
+% Jym, 05/2013, Pierre's notes (2007).
+\event{pIV:Deluge}{IV-y}{Swedish Deluge}{1}{PBNotEvenWritten}
+
+\history{1648 (Khmelnytsky Uprising)-1667 (Truce  of
+  Andrusovo)}[Russo-Swedo-Polish wars, Second Northern war]
+\dure{2 turns.}
+
+If \POL is at war, fortresses in \paysLithuanie let enemy supply go through
+their province.
+
+Should appear either during IV-17(2), or as IV-10(2).
+
+
+% Jym, 05/2013, Pierre's notes (2007).
+\event{pIV:Koprulu}{IV-z}{\ministreKoprulu}{1}{RistoMod}
+
+Same as~\ref{pV:Koprulu}. Should appear late in the table only. (Jym):
+Possibly as IV-17(3) or IV-11(2).
+
 \vfill \pagebreak
 
 \input{engEvntTYW.tex}
@@ -1578,9 +1658,9 @@ enter a full war against any of the side: \RUS, \SUE, \HAB, \PRU.
 rules.
 \aparag \textbf{Economic and Political crisis}: The \RT of \POL is diminished
 by half and loses at least 50\ducats. \POL loses 2 \STAB.
-\begin{oldcompta}
-  \bparag Do not take into account the minimal loss of 50\ducats.
-\end{oldcompta}
+% \begin{oldcompta}
+%   \bparag Do not take into account the minimal loss of 50\ducats.
+% \end{oldcompta}
 \aparag The Rebels control the following provinces:
 \bparag \provinceMalopolska, \provinceLietuva ;
 \bparag one other province randomly chosen in \paysmajeurPologne;
@@ -1696,7 +1776,7 @@ of initiative).
 
 % LocalWords: pIV TYW HRE offensive reroll minister Olivares Safavids pIII pV
 % LocalWords: Liberum Oxenstierna Torstensson Moghol Singala CCA PBNew JCD de
-% LocalWords: Vassalisation Gabor Mansfeld Westphalie Ausgsburg Schmalkaldic
+% LocalWords: Vassalisation Bethlén Mansfeld Westphalie Ausgsburg Schmalkaldic
 % LocalWords: malus Risto Espagne HOL Ormus POR Jym reannexed Reannexation
 % LocalWords: RistoMod Angleterre ECW Montrose Duche Prusse Pommern Ost JCA
 % LocalWords: Torstensson's Fyodor defensive Formose pII Alaouite pVI pVII

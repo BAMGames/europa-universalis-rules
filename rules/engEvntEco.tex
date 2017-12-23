@@ -1,4 +1,10 @@
 % -*- mode: LaTeX; -*-
+\definechapterbackground{Economical events}{economicalevents}
+% Suggestion: one of Turner's storm (bad weather).  See
+% http://www.william-turner.org/
+
+\chapter{Economical events}
+\label{chapter:Events:Eco}
 
 \section{Event Table of economical random events}
 
@@ -178,18 +184,19 @@ are no such ports.
 \phevnt
 Reduce the Royal treasury by 20\% of its absolute value (min. is 20\ducats)
 this turn (from \lignebudget{RT at start of turn} to \lignebudget{RT after
-  Events}). Furthermore, if \TUR receives this event, he has to check for
+  Events}).
+% [BLP] : only one
+ Furthermore, if \TUR receives this event, he has to check for
 Pashas' corruption.
-
 
 \digression[eco:Fiscal:Pashas Corruption]{Corruption of Pashas}
 
 \phevnt
-\aparag Two \xnameref{chSpecific:Turkey:Pashas} become corrupted (turn the
-counters on their corrupted side). These Pashas are chosen by The Sole
-defender of the Catholic Faith (or \MAJHAB is there is none).  Those pashas
-must be in owned Turkish provinces; if none are available, displace the newly
-corrupted pashas in any province (except the capital).
+\aparag One \xnameref{chSpecific:Turkey:Pashas} becomes corrupted (turn the
+counters on their corrupted side). This Pasha is chosen by the \SDCF (or
+\MAJHAB is there is none). This pasha must be in owned Turkish provinces; if
+none are available, displace the newly corrupted pashas in any province
+(except the capital).
 
 
 
@@ -199,8 +206,6 @@ corrupted pashas in any province (except the capital).
 All costs of purchase double this turn (reinforcements and campaigns). Costs
 of maintenance increase by 10\% (rounded up). In addition, \TUR suffers the
 effects described in \ref{eco:Fiscal:Pashas Corruption}.
-
-
 
 \event{eco:Technological advance}{E-9}{Technological advance}{4}{Orig}
 
@@ -237,30 +242,12 @@ in all other cases.
 
 
 \event{eco:Piracy}{E-12}{Pirates}{2}{JymMod}
-
+\begin{todo}
+  [TBD] Replace the two Pirates events by minor country colonisation.
+\end{todo}
 \phevnt
-\aparag This event is only resolved at during the economic situation segment
+\aparag This event is only resolved during the economic situation segment
 of the event phase.
-\aparag Count the number of piracy events that must occur this turn, including
-the one that may arise via the economic situation roll.
-\bparag If there are two or more, then the target is ``Everywhere''.
-\bparag If there is only one, and the target is not precised, roll one die:
-1--5: America, 6--10: Asia.
-
-\aparag For each \STZ in the target, in the order listed below, roll one die
-and place a \PIRATE\facemoins if it is higher than the piracy level of the
-\STZ. See~\ruleref{chEvents:Piracy Level} and following for the details of
-piracy placements.
-
-\aparag List of targeted \STZ and order of test:
-\bparag Everywhere: \seazoneCaraibes, \seazone{Atlantique W}, \seazoneIndien,
-\seazoneOman, \seazoneGuinee, \seazoneRecife, \seazonePerou, \seazoneFormose,
-\seazonePatagonie, \seazoneTempetes, \stz{Canarias}.
-\bparag America: \seazoneCaraibes, \seazone{Atlantique W}, \seazoneGuinee,
-\seazoneRecife, \seazonePatagonie, \seazoneTempetes, \stz{Canarias}.
-\bparag Asia: \seazoneIndien, \seazoneOman, \seazonePerou, \seazoneFormose,
-\stz{Canarias}.
-
 
 
 \event{eco:Development of warships}{E-13}{Development of warships}{2}{Orig}
@@ -323,7 +310,7 @@ This event gives a bonus of \bonus{+3} to the die-roll of \COLaction, as well
 as a supplementary and free \COLaction with small investment (30\ducats),
 usable this turn or any other turn of the current period (lost if not used
 before the end of the current period). Moreover, the country may ignore
-restrictions of~\ref{chExpenses:Pioneering} for this turn.
+restrictions of~\ref{chAdministration:Pioneering} for this turn.
 
 If this is not period \period{I} also apply~\ref{eco:Rush:Minor colony}.
 
@@ -362,7 +349,7 @@ unused Minor establishment, turn this into a \terme{Increase of one Minor
 
 \aparag[Creation of a Pirate haven.] If one already exists in the specified
 provinces, it is turned on level 2 (nothing happens if it is already level 2).
-\bparag If there is not Pirate haven in the specified provinces, select an
+\bparag If there is no Pirate haven in the specified provinces, select an
 empty one at random and put a Pirate haven of level 1 in it.
 \bparag For \granderegionMadagascar, do not select the province at random. Use
 \province{Madagascar N} if empty and \province{Madagascar S} otherwise.
@@ -525,9 +512,10 @@ nearest to the national territory of the player in term of number of provinces
 
 \event{eco:Inflation}{E-32}{Inflation}{1}{JymMod}
 
-Increase the level of inflation by 1 (without exceeding the maximum level). At
-most one event among \xnameref{eco:Inflation} and \xnameref{eco:Deflation} can
-take place in a single turn (treat as no event if a second one is rolled).
+Increase the level of inflation by 1, that is move the marker one box to the
+right (without exceeding the maximum level). At most one event among
+\xnameref{eco:Inflation} and \xnameref{eco:Deflation} can take place in a
+single turn (treat as no event if a second one is rolled).
 
 
 
@@ -543,7 +531,7 @@ minor of his choice (to be decided immediately).
 A minor vassal that is not a special vassal (i.e. on which diplomacy is
 possible) breaks its vassalisation and remains only an ally. The player has a
 temporary \CB against this minor. Move the marker of the minor from the
-\VASSAL box to the \MA box.
+\VASSAL box to the \RM box.
 
 
 
@@ -648,9 +636,10 @@ reaching the \SUB diplomatic level. Any subsidies will yield at least
 
 \event{eco:Deflation}{E-45}{Deflation}{4}{Orig}
 
-Reduce the level of inflation by 1 (without exceeding the minimum level). At
-most one event among \xnameref{eco:Inflation} and \xnameref{eco:Deflation} can
-take place in a single turn (treat as no event if a second one is rolled).
+Reduce the level of inflation by 1, that is move the marker one box to the
+left (without exceeding the minimum level). At most one event among
+\xnameref{eco:Inflation} and \xnameref{eco:Deflation} can take place in a
+single turn (treat as no event if a second one is rolled).
 
 
 

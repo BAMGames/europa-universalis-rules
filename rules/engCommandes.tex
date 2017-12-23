@@ -1,10 +1,10 @@
 % Structure generale :
 % \chapter{Titre}		I	saut page
 % \section{Titre}		I.1	parfois saut page
-% \subsection{Titre}		I.1.1	titre separe	
+% \subsection{Titre}		I.1.1	titre separe
 % \subsubsection[Titre]		I.1.1.1	titre sur la ligne
 % \aparag[Titre]		A.	nouveau parag si titre,meme par sinon
-% \bparag			A.1	
+% \bparag			A.1
 
 % Sauf pour les evenements :
 % \chapter{Evenements}
@@ -32,7 +32,7 @@
 % \defsubevent{Something} resets the phase counter (and all subhierarchical
 %        ones, puts a \bfintercale{Something}. 1st style subevent.
 %        Changes \thephase to {\thesubevent\thephase}
-% \begin{setsevent} \  Defines a set of subevents, second style. If used as 
+% \begin{setsevent} \  Defines a set of subevents, second style. If used as
 % \end{setsevent}   /  as \begin{setother}[Something], puts a \bfintercale.
 % \defsubeventbis{Something} Defines a subevent. PHASE is kept, where as
 %        EVPARA and SUBEVPARA are saved, reset, and restored at end.
@@ -78,7 +78,7 @@
 % Pour un majeur, liste est une variation sur le nom du pays
 %\leaderdef(Cle)[Tours](liste)(Type)(Caracs){Commentaires}
 
-%Tableau grise: 
+%Tableau grise:
 %{\graytabular \begin{tabular}...\endtabular}
 
 %Graphiques
@@ -115,6 +115,7 @@
 \TUabbrevdefs[VASSAL]{VA}
 \TUabbrevdefs[ANNEXION]{AN}
 \TUabbrevdefs{MP}
+\TUabbrevdefs{SoS}
 \TUabbrevdefs{LoS}
 \TUabbrevdef[ARMY]{A}{\bbold{A}}
 \TUabbrevdef[FLEET]{F}{\bbold{F}}
@@ -127,7 +128,7 @@
 \TUabbrevdef{NWD}{NW\bbold{D}}   % Naval Warships Detachment
 \TUabbrevdef{NGD}{NG\bbold{D}}   % Naval Galley Detachment
 \TUabbrevdef{NTD}{NT\bbold{D}}   % Naval Transport Detachment
-\TUabbrevdef[VGD]{Venetian GD}{Venetian G\bbold{D}} % Venetian Galeasses Detachments
+\TUabbrevdef{VGD}{VG\bbold{D}} % Venetian Galeasses Detachments
 \TUabbrevdef[LDND]{LD/ND}{L\bbold{D}/N\bbold{D}}
 \TUabbrevdef[LDENDE]{LDE/NDE}{L\bbold{D}E/N\bbold{D}E}
 
@@ -155,20 +156,24 @@
 %Nouveaux acronymes a ajouter ici
 \TUabbrevdef[fortress]{f}{\bbold{f}}
 
-\TUabbrevdef[LeaderA]{A}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{A}}}
-\TUabbrevdef[LeaderC]{C}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{C}}}
-\TUabbrevdef[LeaderG]{G}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G}}}
-\TUabbrevdef[LeaderE]{E}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E}}}
-\TUabbrevdef[LeaderMis]{Mis}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{M\kern -0.1em i\kern -0.1em s}}}
-\TUabbrevdef[LeaderGov]{Gov}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G\kern -0.1em o\kern -0.1em v}}}
-\TUabbrevdef[Leaderd]{D}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{D}}}
-\TUabbrevdef[LeaderI]{Eng}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E\fontfamily{eur}\selectfont\kern -0.1em n\kern -0.1em g}}}
-\TUabbrevdef[LeaderK]{K}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{K}}}
-\TUabbrevdef[LeaderP]{P}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{P}}}
-\let\Leaderg\LeaderGov
+% Moved.
+% \TUabbrevdef[LeaderA]{A}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{A}}}
+% \TUabbrevdef[LeaderC]{C}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{C}}}
+% \TUabbrevdef[LeaderG]{G}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G}}}
+% \TUabbrevdef[LeaderE]{E}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E}}}
+% \TUabbrevdef[LeaderMis]{Mis}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{M\kern -0.1em i\kern -0.1em s}}}
+% \TUabbrevdef[LeaderGov]{Gov}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G\kern -0.1em o\kern -0.1em v}}}
+% \TUabbrevdef[Leaderd]{D}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{D}}}
+% \TUabbrevdef[LeaderI]{Eng}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E\fontfamily{eur}\selectfont\kern -0.1em n\kern -0.1em g}}}
+% \TUabbrevdef[LeaderK]{K}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{K}}}
+% \TUabbrevdef[LeaderP]{P}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{P}}}
+% \let\Leaderg\LeaderGov
 
 %Abreviations simples
-\def\Man{Manoeuvre\xspace}
+\def\Man{\terme{Manoeuvre}\xspace}
+\def\Fire{\terme{Fire}\xspace} % leader value
+\def\Shock{\terme{Shock}\xspace} % leader value
+\def\Boarding{\terme{Boarding}\xspace} % leader value
 \newcommand{\Timar}{\terme{T{\i}marlar}\xspace}
 \newcommand{\Janissaire}{\terme{Yeni\c{c}eriler}\xspace}
 \newcommand{\Pasha}{\terme{Pasha}\xspace}
@@ -177,16 +182,20 @@
 \newcommand{\Presidio}{\terme{Pr\ae sidio}\xspace}
 \newcommand{\StraitFort}{\terme{Strait fortifications}\xspace}
 \newcommand{\Area}{\terme{Area}\xspace}
+\newcommand{\Areas}{\terme{Areas}\xspace}
 \newcommand{\STAB}{Stability\xspace}
 \newcommand{\CONC}{Concurrency\xspace}
 \newcommand{\TPaction}{\TP placement\xspace}
 \newcommand{\COLaction}{\COL placement\xspace}
-\newcommand{\hug}{\pays{Huguenots}\xspace}
-\newcommand{\lig}{\pays{Ligue}\xspace}
+\newcommand{\hug}{\pays{Huguenots}\xspace} % FWR
+\newcommand{\lig}{\pays{Ligue}\xspace} % FWR
 \newcommand{\parl}{\pays{parliament}\xspace}	% for English Civil War
 \newcommand{\royal}{\pays{Royalists}\xspace}		% for English Civil War
-\newcommand{\alliance}{\textsc{Alliance}\xspace}
-\newcommand{\ligue}{\textsc{League}\xspace}
+% \newcommand{\alliance}{\textsc{Alliance}\xspace}
+% "alliance" being a game term is not a good name for something else.
+\newcommand{\alliance}{\textsc{Union}\xspace} % TYW
+% TODO \alliance -> \union
+\newcommand{\ligue}{\textsc{League}\xspace} % TYW
 \newcommand{\stz}{\STZ~\seazone}
 \newcommand{\ctz}{\CTZ~\paysmajeur}
 \newcommand{\POSPICE}{\RES{PO} or \RES{Spices}\xspace}
@@ -241,8 +250,14 @@
 \TUabbrevdef[Facemoins]{(-)}{\facemoinsx}
 \TUabbrevdef[anonyme]{(?)}{\anonymex}
 \TUabbrevdef[REVOLT]{\{Revolt\}}{\countermark{Revolt}}
+\TUabbrevdef[REBELLION]{\{Rebellion\}}{\countermark{Rebellion}}
+\newcommand{\RevReb}{\REVOLT/\REBELLION}
 \TUabbrevdef[PIRATE]{\{Pirate\}}{\countermark{Pirate}}
 \TUabbrevdef[PILLAGE]{\{Pillage\}}{\countermark{Pillage}}
+\TUabbrevdef[USURE]{\{Siegework\}}{\countermark{Siegework}}
+\TUabbrevdef[SUPPLY]{\{Supplied\}}{\countermark{Supplied}}
+\TUabbrevdef[ASSAULT]{\{Assault\}}{\countermark{Assault}}
+\TUabbrevdef[BREACH]{\{Breach\}}{\countermark{Breach}}
 
 \def\xducats{\Ducatsnsp}
 \def\ducats{\Ducatsusp}
@@ -255,26 +270,43 @@
 \def\f{\textonehalf}
 \def\tu{\textonethird}
 \def\td{\texttwothird}
+\def\texttu{\textonethird\xspace}
+\def\texttd{\texttwothird\xspace}
 
 \def\TTER{\technologie{Tercios}\xspace}
+\def\STTER{\technologie{TER}\xspace} % 'S'hort TTER
 \def\TMED{\technologie{Medieval}\xspace}
+\def\STMED{\technologie{MED}\xspace}
 \def\TREN{\technologie{Renaissance}\xspace}
+\def\STREN{\technologie{REN}\xspace}
 \def\TARQ{\technologie{Arquebus}\xspace}
+\def\STARQ{\technologie{ARQ}\xspace}
 \def\TMUS{\technologie{Muskets}\xspace}
+\def\STMUS{\technologie{MUS}\xspace}
 \def\TBAR{\technologie{Baroque}\xspace}
+\def\STBAR{\technologie{BAR}\xspace}
 \def\TMAN{\technologie{Manoeuvre}\xspace}
+\def\STMAN{\technologie{MAN}\xspace}
 \def\TL{\technologie{Lace}\xspace}
+\def\STL{\technologie{L}\xspace}
 
 \def\TVGA{\technologie{Galleasses}\xspace}
 \def\TGA{\technologie{Galley}\xspace}
+\def\STGA{\technologie{GA}\xspace}
 \def\TCAR{\technologie{Carrack}\xspace}
-\def\TGLN{\technologie{Nao-Galeon}\xspace}
+\def\STCAR{\technologie{CAR}\xspace}
+\def\TGLN{\technologie{Nau-Galeon}\xspace} % Por: Nau / Esp: Nao
+\def\STGLN{\technologie{Nau}\xspace}
 \def\TGF{\technologie{Galleon-Fluyt}\xspace}
-\def\TLS{\TGF} % Latin Sail. TODO: track and replace.
+\def\STGF{\technologie{GAL}\xspace}
 \def\TBAT{\technologie{Battery}\xspace}
+\def\STBAT{\technologie{BAT}\xspace}
 \def\TVE{\technologie{Vessel}\xspace}
+\def\STVE{\technologie{VE}\xspace}
 \def\TTD{\technologie{Three-decker}\xspace}
+\def\STTD{\technologie{TD}\xspace}
 \def\TSF{\technologie{74's guns}\xspace}
+\def\STSF{\technologie{74s}\xspace}
 
 % Jym, aout 2010
 % Symbole de religion pour inclure dans les regles et pas seulement dans les
@@ -315,7 +347,7 @@
 % POR VEN ...
 % => displayed as POR VEN ... and are MAJ
 % MAJHAB
-% => displayed as [AUS/SPA] and designates the controller of \pays{autriche} 
+% => displayed as [AUS/SPA] and designates the controller of \pays{autriche}
 % hab = AUSmin, HABmin=AUSmin, HABMin=AUSMin
 
 \newcommand{\PORmin}{minor \pays{portugal}\xspace}
@@ -384,12 +416,91 @@
 \def\CATHCR{Catholic/Counter-Reformation\xspace}
 \def\CATHCO{Catholic/Conciliatory\xspace}
 \def\PROTANG{Protestant/Anglican\xspace}
+\def\PROTPUR{Protestant/Puritan\xspace}
 \def\PROTRIG{Protestant/Rigorous\xspace}
 \def\PROTTOL{Protestant/Tolerant\xspace}
+\def\ORTHCHA{Orthodox/Champion\xspace}
+\def\ORTHTol{Orthodox/Tolerant\xspace}
 
 \def\Veteran{\emph{Veterans}\xspace}
 \def\Conscripts{\emph{Conscsripts}\xspace}
 
-% Jym, août 2012
 % short commande for blason inclusion in section titles
-\newcommand{\blasonJ}[1]{\includegraphics[width=12bp]{shield_#1}}
+\newcommand{\blason}[1]{\includegraphics[width=12bp]{shield_#1.png}}
+\usepackage{calc} % \heightof
+\newcommand{\blasonsmall}[1]{\includegraphics[height=\totalheightof{Ap}]{shield_#1}}
+
+\newcommand{\SDCF}{\xnameref{chSpecific:Catholic Faith}\xspace}
+\newcommand{\Barbaresques}{\xnameref{chSpecific:Barbaresques}\xspace}
+
+% diagonal strike adapted from
+% http://tex.stackexchange.com/questions/20643/diagonal-strikeout-starting-too-low-and-ending-too-high
+\newcommand{\hcancel}[2][black]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#2};
+        \draw[#1] (tocancel.south west) -- (tocancel.north east);
+    }%
+}%
+
+% Jym
+\makeatletter
+\usepackage{etoolbox} % \csdef
+\newcommand{\leader@icon}[1]{%
+        \csdef{X#1}{\includegraphics[height=0.8em]{#1.pdf}}%
+        \csdef{Y#1}[##1]{%
+        \textcolor{##1}{\includegraphics[height=0.8em]{#1.pdf}}} %
+}%
+\leader@icon{amiral}
+\leader@icon{conquistador}
+\leader@icon{corsaire}
+\leader@icon{doge}
+\leader@icon{explorateur}
+\leader@icon{general}
+\leader@icon{gouverneur}
+\leader@icon{ingenieur}
+\leader@icon{monarque}
+\leader@icon{pacha}
+\makeatother
+
+
+
+% \TUabbrevdef[LeaderA]{A}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{A}}}
+\TUabbrevdef[LeaderA]{A}{\Xamiral}
+% \TUabbrevdef[LeaderC]{C}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{C}}}
+\TUabbrevdef[LeaderC]{C}{\Xconquistador}
+% \TUabbrevdef[LeaderG]{G}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G}}}
+\TUabbrevdef[LeaderG]{G}{\Xgeneral}
+% \TUabbrevdef[LeaderE]{E}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E}}}
+\TUabbrevdef[LeaderE]{E}{\Xexplorateur}
+\TUabbrevdef[LeaderMis]{Mis}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{M\kern -0.1em i\kern -0.1em s}}}
+%\TUabbrevdef[Leader]{}{\X}
+% \TUabbrevdef[LeaderGov]{Gov}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{G\kern -0.1em o\kern -0.1em v}}}
+\TUabbrevdef[LeaderGov]{Gov}{\Xgouverneur}
+% \TUabbrevdef[Leaderd]{D}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{D}}}
+\TUabbrevdef[Leaderd]{D}{\Xdoge}
+% \TUabbrevdef[LeaderI]{Eng}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{E\fontfamily{eur}\selectfont\kern -0.1em n\kern -0.1em g}}}
+\TUabbrevdef[LeaderI]{Eng}{\Xingenieur}
+% \TUabbrevdef[LeaderK]{K}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{K}}}
+\TUabbrevdef[LeaderK]{K}{\Xmonarque}
+% \TUabbrevdef[LeaderP]{P}{{\fontencoding{U}\fontfamily{eur}\fontseries{m}\selectfont{P}}}
+\TUabbrevdef[LeaderP]{P}{\Xcorsaire}
+\TUabbrevdef[LeaderPac]{Pac}{\Xpacha}
+%% aliases for handling 1 letter code from pions/leaders.txt
+\let\Leaderg\LeaderGov
+\let\LeaderM\LeaderMis
+\let\Leaderz\LeaderPac
+
+% Chinese text
+% use one of bsmi(trad Chinese), gbsn(simp Chinese), min(Japanese), mj(Korean);
+\newcommand{\cntext}[1]{\begin{CJK}{UTF8}{bsmi}#1\end{CJK}}
+\newcommand{\cnamiot}{\cntext{錢德明}}
+\newcommand{\cnbouvet}{\cntext{白晋}}
+\newcommand{\cnbouvetcourtesy}{\cntext{明远}}
+
+% Different font but I don't know how to do it correctly.
+\newcommand{\vnrhodes}{%
+ \fontencoding{T5}\selectfont%
+ A-Lịch-Sơn Đắc-Lộ\xspace%
+ \fontencoding{T1}\selectfont%
+}
+% A-Lịch-Sơn Đắc-Lộ

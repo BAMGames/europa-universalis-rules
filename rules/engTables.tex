@@ -1,5 +1,5 @@
 % FIRST PAGE: MONARCH SURVIVAL, DIPLOMACY
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{GTpage}
   \GTpagetitle{T1}{Monarch Survival, Diplomacy}
   \GTid{monarchduration}
@@ -46,7 +46,7 @@
   \diplorotw
 \end{GTpage}
 % SECOND PAGE: INCOME, REINFORCEMENTS, GENERAL EXPENSES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{GTpage}
   \GTpagetitle{T2}{Income, Reinforcements, General Expenses}
   \GTid{foreigntrade}
@@ -111,7 +111,7 @@
 \end{GTpage}
 
 % THIRD PAGE: ADMINISTRATIVE ACTIONS, EXCHEQUER TEST, PIRACY AND ECONOMY
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{GTpage}
   \GTpagetitle{T3}{Administrative Actions, Exchequer test, Piracy and Economy}
 
@@ -136,11 +136,11 @@
 \end{GTpage}
 
 % FOURTH PAGE: MOVEMENT, ATTRITION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{GTpage}
   \GTpagetitle{T4}{Movement, Attrition}
-  
+
   % First column is 55mm wide (including padding)
   \coordinate (splitpoint) at ($ (west border|-pagepage.south)+(55mm,-2pt) $);
 
@@ -182,19 +182,19 @@
 \end{GTpage}
 
 % FIFTH PAGE: INTERCEPTION, EVASION, BATTLE PREPARATION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{GTpage}
   \GTpagetitle{T5}{Interception, Evasion, Battle Preparation}
 
   \GTid{interception}
   \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
   \interception
-  
+
   \GTid{conquistadors}
   \GTpos{lastbox.north east}{2pt,0pt}{north west}
   \GTcoord{\gtid east}{east border|-\gtid point}
   \conquistadors
-  
+
   \GTid{windadvantage}
   \GTpos{west border|-interceptionbox.south}{0pt,-2pt}{north west}
   \windadvantage
@@ -222,7 +222,7 @@
 \end{GTpage}
 
 % SIXTH PAGE: BATTLE
-%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%
 \begin{GTpage}
   \GTpagetitle{T6}{Battle}
   \GTid{armyclasses}
@@ -233,7 +233,7 @@
   \GTpos{lastbox.north east}{2pt,0pt}{north west}
   \GTcoord{\gtid east}{east border|-\gtid point}
   \armysizes
-  
+
   \GTid{combatresults}
   \GTpos{lastbox.south-|west border}{0pt,-2pt}{north west}
   \GTcoord{\gtid east}{east border|-\gtid point}
@@ -257,9 +257,9 @@
 
 
 % SEVENTH PAGE: SIEGE, REVOLTS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{GTpage}
-  \GTpagetitle{T7}{Siege, Revolts -- End of round}
+  \GTpagetitle{T7}{Sieges, Revolts -- End of round}
   \GTid{assault}
   \GTpos{west border|-pagepage.south}{0pt,-2pt}{north west}
   \GTcoord{\gtid east}{east border|-\gtid point}
@@ -277,10 +277,10 @@
   \GTpos{lastbox.north east}{2pt,0pt}{north west}
   \navyblockade
 
-  \GTid{siege}
+  \GTid{undermining}
   \GTpos{artilleryvaluebox.east|-artillerybonusbox.south}{2pt,-2pt}{north west}
   \GTcoord{\gtid east}{east border|-\gtid point}
-  \siege
+  \undermining
 
   \GTid{revoltpiracy}
   \GTpos{lastbox.south-|west border}{0pt,-2pt}{north west}
@@ -292,7 +292,7 @@
   \attackconvoy
 \end{GTpage}
 % EIGHTH PAGE: PEACE, REDEPLOYMENT, INTERPHASE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{GTpage}
   \GTpagetitle{T8}{Peace, redeployment, interphase -- End of turn}
   \GTid{atendofturnattacks}
@@ -326,7 +326,7 @@
 \end{GTpage}
 
 % ALTERNATE PAGES
-%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%
 \alternatetablealternate
 \begin{GTpage}
   \GTpagetitle{T7'}{Sieges, Revolts, Pirates, Privateers and Natives -- End of round}
@@ -347,10 +347,10 @@
   \GTpos{lastbox.north east}{2pt,0pt}{north west}
   \navyblockade
 
-  \GTid{siege}
+  \GTid{undermining}
   \GTpos{artilleryvaluebox.east|-artillerybonusbox.south}{2pt,-2pt}{north west}
   \GTcoord{\gtid east}{east border|-\gtid point}
-  \siege
+  \undermining
 
   \GTid{rppn}
   \GTpos{lastbox.south-|west border}{0pt,-2pt}{north west}
@@ -403,7 +403,7 @@
 \end{GTpage}
 
 % LOCAL PAGES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pageLocale{Portugal}{POR}{Portugal}
 \pageLocale{Suede}{SUE}{Sweden}
 \pageLocale{Russie}{RUS}{Russia}

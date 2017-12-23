@@ -1,0 +1,509 @@
+% -*- mode: LaTeX; -*-
+
+\definechapterbackground{Exchequer test and budget}{Exchequer}
+\chapter{Exchequer test and budget}\label{chapter:Budget}
+
+\section{Overview of the phase}
+
+% RaW: [50]
+\aparag[Administration] At the end of the turn, final administrative actions
+are resolved and budgets must be completed. First, exceptional taxes that were
+scheduled during the administrative phase are resolved. Then comes the
+exchequer test. At this point, players roll to determine how well the funds
+were collected this turn and to discover their precise income. If the income
+is not enough to cover for the expenses, loans must be contracted, either from
+the people of your country or from international bankers. Last but not least,
+countries may try to improve their \STAB.
+
+\aparag[Sequence.]
+\ExchequerDetails
+
+\section{Exceptional taxes}\label{chBudget:Exceptional taxes}
+\aparag[Exceptional taxes] Exceptional taxes are scheduled during the
+Administrative phase. See~\ref{chAdministration:Exceptional Taxes} for details
+(and examples). They are resolved at this point only. That is, until the end
+of the turn (and after most expenses have been planned), players won't know
+exactly the amount of collected taxes.
+\bparag Note that Exceptional taxes must be planned during Administrative
+phase. If a country forfeited the possibility to do so, it is to late now to
+decide to raise taxes.
+
+\aparag[Resolution of the taxes]
+\bparag Each country which has planned taxes should have written a modifier in
+\lignebudget{Exceptional taxes modifier A} (copied from
+\lignebudget{Exceptional taxes modifier B}). This modifier was \ADM + 3
+$\times$ \STAB (at the time of the Administrative phase).
+\bparag Roll 1d10, add the modifier and multiply the result by 10. This is the
+amount of taxes (in \ducats).
+\bparag Write this amount in \lignebudget{Exceptional taxes}. It may well be
+negative if the modifier was negative. In this case, the country will actually
+lose money because of the taxes. It is not possible to refuse a ``tax'' once
+the amount is known.
+
+\aparag[\RT before Exchequer test]
+\bparag Players can know compute their \RT before resolving the Exchequer
+test.
+\bparag This is the sum of lines \ERSlong{RT after Diplomacy} +
+\ERSlong{Pillages, privateers} + \ERSlong{Gold from ROTW and Convoys} +
+\ERSlong{Exceptional taxes} of \EcoRS. It is written in \lignebudgetlong{RT
+  before Exchequer}.
+\bparag Players should also copy \lignebudgetlong{Gross income B} in
+\lignebudgetlong{Gross income A} and \lignebudgetlong{Total expenses} in
+\lignebudgetlong{Expenses}.
+
+\section{Exchequer test}\label{chBudget:Exchequer test}
+\subsection{Gross Income}
+\begin{designnote}
+  We explain here the technical rules of the economical system. For a
+  description of the spirit of these rules, see~\ref{chThePowers:Exchequer}.
+
+  The rules here are quite ``algorithmic'' in order to have them as precise as
+  possible and avoid misinterpretations. Thus, there are not well suited to
+  understand the whys of the system (only the hows). These rules are meant to
+  be closely followed step by step. Check~\ref{chThePowers:Exchequer} in order
+  to understand what should happen, as well as read some examples.
+\end{designnote}
+
+\aparag[Exchequer test] Each country roll a die on~\ref{table:Administrative
+  Actions} modified as follows (cumulative):
+\begin{modlist}
+\item[+2] If completely at Peace (no war (including civil or overseas wars),
+  no intervention (limited or foreign)).
+\item[-1 ] per full 100\ducats of National Loan (drop smaller amounts).
+\item[-1] per ongoing International Loan (whatever the amount, including the
+  ones that are partially refunded).
+\item[-1 ] per bankruptcy in the last 5 turns.
+\item[-1] per loan treaty broken in the last 5 turns.
+\end{modlist}
+\bparag Find the result by cross-referencing the line of the modified result
+with the column equal to the \STAB of the country.
+\bparag The result may be either F\textetoile, F, \undemi, \undemi\textetoile,
+S or S\textetoile.
+
+\begin{playtip}
+  Bankruptcies and broken loan treaties should be noted by a small \textetoile
+  in \lignebudget{Gross income A} for the turns where they affect the
+  Exchequer test.
+\end{playtip}
+
+\aparag[Percentages] By cross-referencing this result with the first three
+columns of~\ref{table:Exchequer test}, countries obtain three percentages for
+``Regular Income'', ``Prestige Income'' and ``National Loan''.
+\bparag Add 10 to the ``National Loan'' of countries that are not completely
+at peace.
+\bparag Add 10 (cumulative) to the ``National Loan'' of \HIS if it has
+declared a policy of expulsions (see~\ref{chSpecific:Spain:Expulsion}).
+\bparag It is possible and intended that these percentages sum up to more or
+less than 100\%.
+
+\aparag[Incomes] Apply each of the three percentages to the whole Gross Income
+(\lignebudget{Gross income A}), rounding down, to obtain three incomes.
+\bparag Copy these incomes in \lignebudgetlong{Regular income},
+\lignebudgetlong{Prestige income} and \lignebudgetlong{Max. national loan}.
+
+\begin{playtip}
+  It is often convenient to cut these three boxes in half (diagonally). After
+  rolling the exchequer test, immediately copy the percentages in the top-left
+  halves, this avoid forgetting the result. Next you can take your time to
+  compute the actual value and write it in the bottom-right halves.
+\end{playtip}
+
+\GTtable{etatsauvrai}
+
+\subsection{International Loans}\label{chBudget:International loans}
+\aparag[Available money] The total amount of available money for international
+loans is:
+\bparag 50\ducats from the start (unspecified bankers).
+\bparag Always add 50\ducats, or 100\ducats for the emperor (German bankers).
+\bparag Always add 50\ducats, or 100\ducats for the diplomatic patron of
+\paysGenes (Genoese bankers).
+\bparag After~\ref{pIII:Amsterdam Stock Exchange} add 50\ducats, or 100\ducats
+for \HOL.
+\bparag After~\ref{pIV:London Stock Exchange} add 50\ducats, or 100\ducats
+for \ANG.
+\bparag Thus, the total available money will be between 150 and
+350\ducats. Note that it does depend on the country, that is all the countries
+have different loan capacities.
+
+\aparag[International Loans test] Each country may roll a die
+on~\ref{table:Administrative Actions} modified as follows:
+\begin{modlist}
+\item[+2] If completely at Peace (no war (including civil or overseas wars),
+  no intervention (limited or foreign)).
+\item[-1 ] per 100\ducats of National Loan.
+\item[-1] per International Loan.
+\item[-1 ] per bankruptcy in the last 5 turns.
+\item[-1] per loan treaty broken in the last 5 turns.
+\item[+1 ] if the country has a Stock Exchange (\HOL after~\ref{pIII:Amsterdam
+    Stock Exchange} and \ANG after~\ref{pIV:London Stock Exchange}).
+\end{modlist}
+\bparag Find the result by cross-referencing the line of the modified result
+with the column equal to the \STAB of the country.
+\bparag The result may be either F\textetoile, F, \undemi, \undemi\textetoile,
+S or S\textetoile.
+\bparag Note that even is modifiers look alike, this roll is different from
+the Exchequer test. Do not use the same roll for both the Exchequer test and
+the International Loans test as this would increase the chances of extremely
+bad results.
+
+\aparag[International Loan] By cross-referencing this result with the last
+column of~\ref{table:Exchequer test}, countries obtain one percentages for
+``International Loan''.
+\bparag Apply this percentage to the total available money and copy the result
+in \lignebudgetlong{Max. international loan}.
+
+\begin{playtip}
+  Often, International loans are not necessarily and this step may be skipped
+  by most countries. It may be useful to start computing your budget (next
+  step) before deciding whether to take an international loan or not. Hence,
+  it is sometimes more fluent to start computing your budget and then possibly
+  come back to looking at international loans. Since there is no new knowledge
+  gained between the Exchequer test and the Budget, this does not change
+  anything.
+
+  If you wish to follow closely the order of the steps, you should, however,
+  always roll for international loan preventively, thus avoiding bad
+  surprises.
+
+  Rolling for international loan do not force to take one. It is always
+  possible to decline a new international loan after rolling the die and
+  seeing the available amount.
+\end{playtip}
+
+\section{Budget}\label{chBudget:Budget}
+\subsection{Expenses}
+\aparag[Regular income] Write in \lignebudget{Remaining expenses} the
+difference between \lignebudget{Expenses} and \lignebudget{Regular income}.
+\bparag This may be a negative number in the rare case where the Regular
+income is larger than the total expenses.
+
+\aparag[Prestige income] Write in \lignebudget{from Prestige} any non-negative
+number smaller than both \lignebudget{Prestige income} and
+\lignebudget{Remaining expenses} (if positive).
+\bparag This must be 0 in case \lignebudget{Remaining expenses} is 0 or less
+(\emph{i.e.} if there is nothing more to pay, you must spend as much as
+possible in prestige).
+\bparag Small value means that more money is spent for prestige \VPs and less
+for day-to-day expenses. Those will be covered by loans or debt.
+
+\begin{designnote}
+  You cannot spend additional money for prestige (it must be non-negative).
+  You cannot take more from prestige than the ``Prestige Income'' (smaller
+  than \lignebudget{Prestige income}).  You cannot take more from prestige
+  than what is left to pay after the regular income is spent (smaller than
+  \lignebudget{Remaining expenses}).
+\end{designnote}
+
+\aparag[National Loans] Write in \lignebudget{from N. loan} any non-negative
+number smaller than \lignebudget{Max. national loan}.
+\bparag Copy this number in \lignebudget{New National loans}.
+
+\begin{designnote}
+  National Loans are not limited by expenses. However, you'll have to pay
+  interest for them and maybe even refund your people someday.
+\end{designnote}
+
+\aparag[International Loans]\label{chBudget:Budget:I. Loans}
+ Write in \lignebudget{from I. loan} any
+non-negative number smaller than \lignebudget{Max. international loan}.
+\bparag Copy this number in \lignebudget{New International loan}.
+\bparag Copy this number in \lignebudget{International loans refunds},
+\textbf{three turns} after the current one.
+\bparag Copy 10\% of this number (round up) in \lignebudget{International
+  loans interests} for the \textbf{next three turns}. If there is already a
+number in one of these boxes, add the new value to it.
+\bparag That is, you should write 3 interests (for the next three turns), and
+one refund (for the same turn as the last interest).
+
+\begin{playtip}
+  International loans are usually a bad idea because of the scheduled
+  mandatory refund. Use them only when in need.
+\end{playtip}
+
+\begin{exemple}[Multiple international loans]
+  A correctly filled new international loan (of 100\ducats, at turn $n$, in
+  red) over an existing one (of 200\ducats, from turn $n-2$, in black):\\
+  \begin{tabular}{|c|l|r|r|r|r|r|r|}
+    \hline
+    & Turn & $n-2$ & $n-1$ & $n$ & $n+1$ & $n+2$ & $n+3$\\
+    \hline
+    1 & New International loan & 200 & & \color{red}{100} & & &\\
+    \hline
+    2 & I. loan interest & & 20 & 20 & \hcancel[red]{20}\color{red}{30} &
+    \color{red}{10} & \color{red}{10}\\
+    \hline
+    3 & I. loan refunds & & & & 200 & & \color{red}{100}\\
+    \hline
+  \end{tabular}\\
+  See also \ref{chAdministration:Refund} for more detailed examples on how to
+  fill the loan management record.
+\end{exemple}
+
+\aparag[New \RT]
+\bparag Write in \lignebudget{RT balance} the sum of \lignebudget{from
+  Prestige} + \lignebudget{from N. loan} + \lignebudget{from I. loan}
+\textbf{minus} \lignebudget{Remaining expenses}. It may be negative if
+\lignebudget{Remaining expenses} is too big.
+\bparag Write in \lignebudget{RT after Exchequer test} the sum of
+\lignebudget{RT before Exchequer} + \lignebudget{RT balance}.
+
+\begin{designnote}
+  \lignebudgetlong{Remaining expenses} depict \textbf{expenses} that are left
+  to be paid after using the Regular income. Hence it is subtracted from the
+  \RT while other lines are added (they are money taken from prestige or loan
+  in order to fill the treasury).
+
+  If \lignebudget{Remaining expenses} is \emph{negative}, regular income was
+  enough to cover all expenses. Then, the surplus is added to the treasury (as
+  subtracting a negative number results in an addition).
+\end{designnote}
+
+\begin{designnote}
+  All in all, do not try to understand all the steps here while reading the
+  rules. After a couple of turns of computing your budget, things will become
+  more natural. Note that if you are having a ``teaching session'', you should
+  try several ``stupid'' things with your budget to see the consequences.
+\end{designnote}
+
+\begin{playtip}
+  When planning expenses, it is obviously a good idea to keep an eye on the
+  possible income\ldots Too many expenses results in bankruptcy while too few
+  results in money ``wasted'' for prestige (instead of being use for buying
+  troops or waging war).
+
+  Here are some guidelines in preparing your budget:
+
+  First, check in the administrative actions table what are the possible and
+  plausible results with respect to your current (and expected) \STAB. You may
+  discard very unlikely results (with only 10\% chance of happening) but you
+  know you take a risk doing so. It is especially important to take into
+  account the worse possible result you may obtain if you want to limit risks.
+
+  Second, check in the Exchequer test table the sum of percentages these
+  results produce. Check separately the sum of Regular + Prestige income
+  (income without debt) and the sum of the three percentages (income with
+  debt). Applying these percentage to your Gross Income will give some amount
+  of money.
+
+  Do not spend more than your best income with debt, obviously, doing so
+  will result in problems. Spending more than the worse income with debt means
+  taking risks. Estimate the risks (Is it a 10\% or 30\% chance of getting the
+  worse result?) compared to the situation (Do you have lot of money in your
+  \RT to handle the loss?) and the expected gain (Will the extra expense allow
+  you to win the war?)
+
+  Spending less than the worse income without debt means that some money will
+  necessarily go into Prestige \VPs. Are you sure it won't be better used for
+  troops, economical development, \ldots? Spending less that the best income
+  without debt means that you may get Prestige \VPs but they are not
+  guaranteed either.
+
+  The good cases is when the worst income with debt is roughly equal (or
+  larger) to the best income without debt. Spending that amount of money means
+  that the worse that can happen is to take a new loan (that can be handled
+  later) and that you won't waste too much money on Prestige. Note that you
+  have to plan your administrative actions and loan refund before the military
+  phase, thus without knowing precisely how long the turn will last and how
+  much you'll spend for moving troops (especially if at war). Thus, there is
+  often some risk involved\ldots
+
+  \smallskip
+
+  Remember that the economical system works best if you have some loan that
+  you refund and recontract immediately (for a net effect of transferring
+  Prestige income into the \RT). If you plan to use this loan trick, then the
+  amount of loan involved is not really a debt, that is increase you income
+  without debt by this amount when planning your expenses.
+
+  \smallskip
+
+  Remember that the worse that can happen is a \RT collapse. But even for that
+  you need several turns of bad luck, bad management, or bad wars. Thus, don't
+  be afraid of making too big errors with the economical system. You should
+  get the hand of it before catastrophic results occur\ldots
+
+  \smallskip
+
+  Note also that the malus to the Exchequer test is for loans still going on
+  during the test. Thus, if you have 299\ducats of national loan at the start
+  of the turn, and refund 100\ducats of them during the administrative phase,
+  you're left with 199\ducats of loan before the test, thus only a \bonus{-1}
+  malus (because that's not two ``full 100\ducats''). Sometimes, it is better
+  to refund a bit more that what you'd naturally do because avoiding a
+  \bonus{-1} DRM can be an extremely good idea.
+\end{playtip}
+
+\begin{exemple}[Planning your budget]
+  If your \STAB is +2 and you are at peace (\bonus{+2} to Exchequer test),
+  then you'll likely to get \undemi\textetoile, S or S\textetoile (with only
+  10\% chance of \undemi). \undemi\textetoile has 100\% income with debt while
+  S\textetoile has 100\% income without debt. Thus, by spending as much as
+  your Gross income, you're almost guaranteed to be able to cover your
+  expenses, maybe with some new loans. There is a small risk (10\%) of a bad
+  result (\undemi) that will leave you with only 80\% income. Estimate the
+  risk versus gain for the last 20\% of expenses. On the other hand, a good
+  result gives you up to 120\% with debt, hence some choice on whether to
+  contract loan in order to get more Prestige.
+
+  \smallskip
+
+  If your \STAB is -2 and you roll at \bonus{-3} due to heavy loans or
+  previous bankruptcies, then the likely result are F\textetoile, F or
+  \undemi\ (disregarding the unlikely \undemi\textetoile). If you are at war,
+  the income with debt for F\textetoile is 80\%, and the income with debt of
+  \undemi\ is 90\%. Thus by spending around 80\% of your Gross Income, you're
+  sure to be able to fill your budget with some loan. But you're also sure to
+  need some new loan\ldots (and a good surprise may arise in the form of
+  \undemi\textetoile).
+
+  \smallskip
+
+  Note that the true difference in the table is between \undemi\ (only 50/80\%
+  of the total) and \undemi\textetoile (70/100\%). Especially, being at peace
+  with a \STAB of +3 guarantees a good result.
+\end{exemple}
+
+\subsection{Loan Management}
+\aparag Players must then correctly take care of their loans for the next
+turn.
+
+\aparag[International loans]
+\bparag Since the interests are not changed by partial refund of the capital,
+management of the international loans is entirely done during the
+administrative phase (when bankrupting or refunding) and the budget segment
+(for new loans).
+
+\aparag[National loans]
+\bparag Compute in \lignebudget{National loans at end} the difference between
+\lignebudget{National loans at start}, minus \lignebudget{National loans
+  bankruptcy}, minus \lignebudget{National loans refunds} and add
+\lignebudget{New National loans}.
+\bparag Report this number in \lignebudget{National loans at start} of the
+next turn.
+
+\subsection{Prestige and Wealth}\label{chBudget:Prestige and Wealth}
+\aparag[Wealth] During each period, a global wealth is computed for each
+country. Wealth represent the overall economical situation of the country, as
+well as exceptionally good management (in the form of Prestige).
+\bparag At the end of each period, wealth is converted into \VPs. Each country
+has a different rate of exchange of wealth for \VPs as each country has
+different typical economical situation.
+\bparag All in all, each country is expected to score around 100\VPs for
+wealth each period, give or take a few dozens if this is supposed to be a
+period of glory or decay.
+
+\aparag[Prestige] Write in \lignebudget{Prestige VPs} the difference between
+\lignebudgetlong{Prestige income} minus \lignebudgetlong{from Prestige}. That
+is the remaining Prestige income that was not spend for covering daily
+expenses.
+
+\aparag[Wealth] Turn wealth is the sum of the Gross income and the Prestige
+\VPs. Period wealth is the sum of all turn wealth over all the period.
+\bparag Write in \lignebudget{Wealth} the sum of \lignebudget{Gross income A}
+and \lignebudget{Prestige VPs}.
+\bparag Write in \lignebudget{Period wealth} the sum of \lignebudget{Period
+  wealth} of the previous turn and \lignebudget{Wealth} of the current turn.
+\bparag Exception: If this is the first turn of a period, simply copy
+\lignebudget{Wealth} into {Period wealth}. That is, period wealth is reseted
+at each period.
+
+\section{Stability Improvement}\label{chBudget:Stability Improvement}
+\aparag[Stability] A country may attempt to improve its Stability, but this is
+never mandatory. As many actions, Stability improvement requires an investment
+and is resolved by a die roll. Beware that in some situations the result may
+be negative and cannot be forfeited once the die has been rolled.
+\bparag Countries whose monarch was just overthrown due to revolts (see
+\ref{chRedep:Execution Monarch by Revolts}) may not do a \STAB improvement
+action this turn.
+
+\aparag[Investment] Each player wanting to improve the Stability of his
+country first chooses an investment and writes its cost in
+\lignebudget{Stability improvement}. As for administrative actions, higher
+investments give bonuses to the roll.
+\bparag The investment are:
+\begin{modlist}
+  \item Basic Investment: 30 \ducats
+  \item Medium (\bonus{+2} to the die-roll): 50 \ducats
+  \item Strong (\bonus{+5} to the die-roll): 100 \ducats
+\end{modlist}
+
+\aparag[Procedure]
+This action is resolved without requiring a table.  The player rolls a die
+modified as follows (all modifiers are cumulative):
+\begin{modlist}
+  \item[+?] \ADM monarch.
+  \item[+2/5] if medium/strong investment.
+  \item[+2] if the country was victim of a declaration of war this turn
+    without having broken an alliance or declared a war itself.
+  \item[-3] if the country is at war with at least one major country
+    (including overseas wars but excluding interventions).
+  \item[-2] if the country is at war with at least one minor country and no
+    major country (including overseas wars but excluding interventions).
+  \item[-5] if an enemy \ARMY counter is in an owned national province and
+    controls the city (not applicable during a Religious/Civil War, do not
+    count revolt and rebel troops).
+  \item[-3] Exception: for \SPA, the malus for having an enemy \ARMY counter
+    controling the city, is -3 only, however it applies for any owned
+    territory (not only its national territory). This specificity ends with
+    \eventref{pIV:Olivares} (if effects are applied), or with
+    \eventref{pV:WoSS} (whatever the choices and outcomes).
+  \item[+3] for a Prosperous Power (see below).
+  \item[-3] for an Anti-Prosperous Power (see below).
+  \item[$\pm$?] by event.
+\end{modlist}
+
+\begin{designnote}[Spanish empire]
+  The early Spanish empire was more of a multicultural empire including both
+  Spain, Italy and the Netherlands than a modern country. Hence, occupying
+  any part of the empire will hurt some people (and hamper Stability). There
+  is no real notion of national territory to defend at all cost opposed to
+  more distant vassals and ``colony''. However, only part of the empire is
+  shocked by the war, thus the malus is smaller. Olivares policies recentred
+  the empire on Spain, making it more like other European powers of the time.
+\end{designnote}
+
+\aparag[Result] If the modified result is equal to:
+\begin{modlist}
+  \item[5-] the Stability \textbf{decreases} by 1.
+  \item[6-10] Nothing changes.
+  \item[11-14] the Stability increases by 1.
+  \item[15-17] the Stability increases by 2.
+  \item[18+] the Stability increases by 3.
+\end{modlist}
+\bparag Reminder: Stability varies from -3 to +3. It is not possible to
+decline the result (especially the loss of Stability) once the die has been
+rolled.
+\bparag Stability is recorded on the Stability track on the \ROTW map. Move
+the Stability marker according to the result of the action.
+
+\aparag[Prosperity]\label{chBudget:Prosperity} tracks the evolution of the
+Gross income (as recorded in \lignebudget{Gross income A}). A regular increase
+of the Gross income will make people happy and ease Stability improvement, a
+regular decrease will make people unhappy.
+\bparag[Prosperous Power] A country is \terme{Prosperous} if its Gross income
+has not decreased during the last 2 consecutive turns and increased during at
+least one of those turns.
+\bparag[Anti-Prosperous Power:] A country is \terme{Anti-Prosperous} if its
+Gross Income has decreased 2 consecutive turns.
+
+\begin{exemple}[Prosperity]
+  If the Gross income for the last two turns and the current one are:
+  \begin{itemize}
+  \item 100, 110, 120: the country is prosperous.
+  \item 100, 100, 101: the country is prosperous (no decrease, at least one
+    increase).
+  \item 100, 110, 109: nothing (one decrease prevents prosperity even if the
+    final result is higher than two turns earlier)
+  \item 100, 99, 98: the country is anti-prosperous.
+  \item 100, 99, 99: nothing (one stagnation prevents anti-prosperity).
+  \end{itemize}
+
+\end{exemple}
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:

@@ -132,6 +132,9 @@ valachie\
 venise\
 vijayanagar\
 wurtemberg\
+chineespagne\
+turquievenise\
+caraibes\
 # End automatic
 
 
@@ -159,4 +162,4 @@ $(BLASONSDIR)/all: $(GIMPITDEP)
 
 $(BLASONSDIR)/depends:
 	@$(DISP) "Building depends" "blasons"
-	@sed -ne '1,/^# Automatic section/ p' < $(BLASONSDIR)/blasons.mk > $(BLASONSDIR)/depends.txt;echo "BLASONSSTEMS=\\" >> $(BLASONSDIR)/depends.txt; ls $(BLASONSDIR)/src/shield_*.xcf|cut -f2 -d_|cut -f1 -d.|sed -e 's/$$/\\/g'>> $(BLASONSDIR)/depends.txt; sed -ne '/^# End automatic/,$$ p' < $(BLASONSDIR)/blasons.mk >> $(BLASONSDIR)/depends.txt; mv $(BLASONSDIR)/depends.txt $(BLASONSDIR)/blasons.mk
+	@sed -ne '1,/^# Automatic section/ p' < $(BLASONSDIR)/blasons.mk > $(BLASONSDIR)/depends.txt;echo "BLASONSSTEMS=\\" >> $(BLASONSDIR)/depends.txt; ls $(BLASONSDIR)/src/shield_*.xcf|cut -f2 -d_|cut -f1 -d.|sed -e 's/$$/\\/g'|LC_ALL=C sort>> $(BLASONSDIR)/depends.txt; sed -ne '/^# End automatic/,$$ p' < $(BLASONSDIR)/blasons.mk >> $(BLASONSDIR)/depends.txt; mv $(BLASONSDIR)/depends.txt $(BLASONSDIR)/blasons.mk

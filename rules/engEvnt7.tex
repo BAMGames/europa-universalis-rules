@@ -1,6 +1,8 @@
 % -*- mode: LaTeX; -*-
-
-\section{Period VII}\label{events:pVII}
+\definechapterbackground{Political Events of Period VII}{DunsmoreValleyForge}
+\chapter{Political Events of Period VII}
+%\section{Period VII}
+\label{events:pVII}
 
 
 
@@ -11,16 +13,16 @@
   \begin{tabular}{|l|*{5}{c}|l|}
     \hline
     1\up{st}\textarrow& 1-4 & 5-6 & 7 & 8 & 9 & 10 \\ \hline
-    1 & 1  & 8  & 12 & 1  & R3  & \textbullet~1--2: \\
-    2 & 2  & 9  & 19 & R18& 4	& +1 then \\
-    3 & 3  & 10 & 2  & 10 & 5   & \nameref{events:pVI}\\
-    4 & 4  & 11 & 18 & 11 & R12 & \textbullet~3--10: \\
-    5 & 6  & 14 & 20 & 5  & R13 & \nameref{events:pVI}\\
+    1 & 1  & 8  & 12 & 1  & R3  & \\
+    2 & 2  & 9  & 19 & R18& 4	& \textbullet~1--2: \\
+    3 & 3  & 10 & 2  & 10 & 5   & +1 then \\
+    4 & 4  & 11 & 18 & 11 & R12 & \periodref{VI}\\
+    5 & 6  & 14 & 20 & 5  & R13 & \\
     6 & 7  & 15& R5  & R6 & 4 	& \\
-    7 & 13 & 16& 1   &  7 & 15  & \\
-    8 & 19 & 21& 17  &  8 & 16  & \\
+    7 & 13 & 16& 1   &  7 & 15  & \textbullet~3--10: \\
+    8 & 19 & 21& 17  &  8 & 16  & \periodref{VI}\\
     9 & 1  & 4  & R8 &  9 & 7  	& \\ \hline
-    10 & \multicolumn{6}{l|}{\nameref{events:pVI}} \\ \hline
+    10 & \multicolumn{6}{l|}{Roll in \periodref{VI}} \\ \hline
   \end{tabular}
 \end{eventstable}
 
@@ -49,6 +51,8 @@
   pVII:Vassalisation Hanover|O{pVI:Vassalisation Hanover},%
   pVII:William Pitt|,%
   pVII:Kaunitz|,%
+  pVII:Comuneros|,%
+  pVII:Xhosa|E/E,%
   pVII:USA-Morocco|,%
 } \newpage\startevents
 
@@ -85,7 +89,7 @@ war without need to sign a formal alliance.
 % II took the initiative by attacking Saxony, but it's really \FRA attacking
 % \ANG in Europe (taking Minorque with the naval victory of La Galissonniere
 % over Byng then attack on Hanover by d'Estree (the "Forward" of Clash of
-% Monarchs).
+% Monarchs)).
 \aparag As a reaction to \FRA declaring war to \PRU, \ENG has a free \CB
 against \FRA.
 \bparag If \ENG uses this \CB, \ENG and \PRU are considered allied in the war
@@ -96,6 +100,9 @@ duration of the war.
 side in the war without need to sign a formal alliance.
 \aparag Normal calls for allies may occur as a reaction to any of these
 declarations of war.
+
+\aparag As long as the event last, \RUS as a malus of \bonus{+3} to the
+survival rolls of its monarch before \monarque{Pierre II}.
 
 \phdipl
 \aparag If \paysSaxe is at war against \PRU but its controller is not,
@@ -421,7 +428,8 @@ least three turns (as soon as possible)
 \condition{}
 \aparag If none of the following already occurred, do not mark off and
 re-roll:
-\bparag \ref{pVII:SYW:French Indian War}.
+\bparag \ref{pVII:SYW:French Indian War} (only if the war is already
+finished).
 \bparag \ref{pVII:William Pitt}.
 \bparag \ref{pVII:French Revolution}
 % (Jym) I split in three separate events, it is easier this way. Just getting
@@ -644,13 +652,13 @@ are crushed.
 \bparag End of \xnameref{pVII:Seven Years War}.
 \bparag Beginning of \xnameref{pVII:Independence War} (the revolt must have
 started).
-\bparag Beginning of \xnameref{pVII:Batavian Revolution}.
+\bparag \xnameref{pVII:Batavian Revolution} is finished and was successful.
 \aparag The first time, apply \xnameref{pVII:Revolution:Bastille}. The second
 time, apply \xnameref{pVII:Revolution:Terror}.
 \begin{designnote}
   \textit{``\`{A} partir de la R\'{e}volution, les r\`{e}gles de bon sens
     cessent de s'appliquer.''}\\
-  ~\hfill (Pierre, August 2007).
+  ~(Pierre, August 2007).
 \end{designnote}
 
 
@@ -679,7 +687,9 @@ it loses 3 \STAB.
 the game: \ENG, \AUS, \PRU, \HIS, \HOL (unless if \ref{pVII:Batavian
   Revolution} was won by the rebels).
 \bparag \FRA has a normal \CB until the end of the game against each major
-country and each minor country adjacent to its territory.
+country and against each minor country adjacent to its territory.
+\bparag These \CB can be used as diplomatic reaction to any other diplomatic
+announcement.
 \aparag \textbf{Economical crisis}
 \bparag \FRA loses 100\ducats. Then its Royal Treasure is halved %
 % (Jym) RT<0 possible
@@ -690,9 +700,7 @@ with a minimum loss of 50\ducats.
 \continentAmerica.
 
 \phdipl
-\aparag The \CB provided above can be used as diplomatic reaction to any other
-diplomatic announcement.
-\bparag If \payspologne is a special \EG of \FRA (per \ref{pVI:WoPS:Polish
+\aparag If \payspologne is a special \EG of \FRA (per \ref{pVI:WoPS:Polish
   Victory}), as soon as another \MAJ declares war on \FRA, so does
 \payspologne. Troops of \payspologne are allowed to cross the \HRE.
 \aparag At the end of each diplomatic phase, test for a change of government
@@ -706,7 +714,7 @@ in \paysmajeurFrance. Roll 1d10 modified as follows:
 \item[\bonus{+2}] if \nameref{pVII:Independence War} is finished and \paysusa
   has been created;
 \item[\bonus{+2}] if \FRA used this turn a \CB provided by this event;
-\item[\bonus{+4}] if \FRA is at war without declaring any war;
+\item[\bonus{+4}] if \FRA is at war without declaring any war this turn;
   % (Jym) Next bonus just for the destitution turn? Not very good. Once a King
   % died, the end is not far.
 \item[\bonus{+6}] if the king of \FRA died during this event.
@@ -728,15 +736,16 @@ be at war elsewhere and nonetheless be allied (and stack together or intercept
 French troops attacking the other country,\ldots) fighting \FRA.
 % (Jym) from memory
 \aparag Countries at war against \FRA are limited to 1 stack inside the
-territory of \FRA.
-\bparag They are not limited if fighting out of \FRA.
+national territory of \FRA.
+\bparag They are not limited if fighting out of the national territory of
+\FRA.
 \bparag The \ARMY provided by \xnameref{pVII:Revolution:Nobles} does not count
 toward this limit. It is always allowed inside \FRA.
 
 \phpaix
 \aparag If \villeParis is controlled by the enemies of \FRA and there are no
-more \ARMY of \FRA in play, the Revolution is crushed and a new king is put on
-the throne of \FRA.
+Revolutionary \ARMY of \FRA in play, the Revolution is crushed and a new king
+is put on the throne of \FRA.
 \bparag The game ends at the end of this turn.
 \bparag Each country at war against \FRA wins 30 \VPs.
 \bparag \FRA wins 15 \VPs at the end of the game if the revolution has not
@@ -806,8 +815,8 @@ been crushed.
   \aparag The first country at war against \FRA in the following list gets the
   benefits of the \'Emigr\'es: \AUS, \PRU, \HIS, \ENG, \payspologne (and its
   controller).
-  \aparag The \MAJ gets a French Royal \ARMY\facemoins with an unnamed
-  general.
+  \aparag The \MAJ gets a French Royal \ARMY\facemoins with a \LeaderG\anonyme
+  of \FRA.
   % (Jym) adding
   \bparag This \ARMY can appear in any province owned by \FRA or by the \MAJ
   receiving it.
@@ -818,18 +827,18 @@ been crushed.
   \aparag This \ARMY can be reinforced (or recreated if destroyed) at the cost
   of the French royal troops.
   % (Jym) adding
-  \bparag If destroyed, this \ARMY can be raised again in any province owned
-  by the \MAJ receiving it or any French province either in \REVOLT or
-  controlled by another country.
+  \bparag This \ARMY can be raised again or receive reinforcements in any
+  province owned by the \MAJ receiving it or any French province either in
+  \REBELLION or \REVOLT or controlled by another country.
   % (Jym) adding
   \aparag This \ARMY is freely maintained in veteran (new troops are
   conscripts as per normal rules).
   % (Jym) adding
   \aparag This \ARMY must fight against \FRA. If in \FRA it cannot leave the
-  provinces in or adjacent to \FRA and if created out of \FRA it must goes to
-  \FRA by the shortest path. It is considered allied with all countries except
-  \FRA. It can co-exist with troops all countries but \FRA and will never take
-  part in any battle except against \FRA.
+  provinces in or adjacent to \FRA national territory and if created out of
+  \FRA it must goes to \FRA by the shortest path. It is considered allied with
+  all countries except \FRA. It can co-exist with troops all countries but
+  \FRA and will never take part in any battle except against \FRA.
 
 
   \digression[pVII:Revolution:Chouans]{Chouans and Royalist Uprisings}
@@ -837,22 +846,24 @@ been crushed.
   \phdipl
   \aparag \terme{Chouans} are played by \ENG (even if not at war against
   \FRA).
-  \aparag Place a \REVOLT \facemoins in each \provincePoitou and
+  \aparag Place a \REBELLION \facemoins in each \provincePoitou and
   \provinceVendee.
   \bparag French troops in these provinces must retreat.
   \aparag Place a rebel \ARMY\faceplus and a general in one of these
   provinces.
 
   \phadm
-  \aparag As long as a \REVOLT exists in either \provincePoitou,
+  \aparag As long as a \REBELLION exists in either \provincePoitou,
   \provinceVendee, \provinceMorbihan, \provinceArmor or \provinceFinistere,
   the \terme{Chouans} get 1\LD in reinforcement (except the first turn).
 
   \phmil
   \aparag Instead of moving, 1\LD may ``hide'' in \provinceVendee (only). It
   does not count as military presence any more but gives a malus of \bonus{-2}
-  to suppress the \REVOLT .
-  \bparag If the \REVOLT is suppressed, this \LD is destroyed.
+  to suppress the \REBELLION .
+  \bparag If the \REBELLION is suppressed, this \LD is destroyed.
+  \aparag These \REBELLION are friendly to any enemy of
+  \FRA. \REBELLION\Faceplus are also supply sources for any enemy of \FRA.
 
 
   \digression[pVII:Revolution:Natural Frontiers]{Natural Frontiers}
@@ -868,10 +879,18 @@ been crushed.
   \provinceTrier, \provinceKoln, \provinceLimburg, \provinceUtrecht and
   \provinceZeeland.
 
-  \phpaix
-  \aparag \FRA automatically annexes any province within its Natural Frontier
-  that it militarily controls during peace phase, unless they belong to
-  Patriotic \HOL (see~\ref{pVII:Batavian Revolution}).
+  \phadm
+  \aparag \FRA automatically gets income from any province within its Natural
+  Frontier that it militarily controls, unless the province is besieged, in
+  revolt, flooded, or any other situation that normally prevents income.
+  \bparag Exception: provinces that belong to Patriotic \HOL
+  (see~\ref{pVII:Batavian Revolution}) and are occupied by \FRA still give
+  their income to \HOL, even if occupied provinces normally provide no
+  income.
+  % \phpaix
+  % \aparag \FRA automatically annexes any province within its Natural Frontier
+  % that it militarily controls during peace phase, unless they belong to
+  % Patriotic \HOL (see~\ref{pVII:Batavian Revolution}).
 
 
   \digression[pVII:Revolution:Armies]{Revolutionary Armies}
@@ -883,13 +902,28 @@ been crushed.
   destroyed or disbanded.
   \bparag \FRA may not have more than 6 \ARMY counters in play at the same
   time.
+  \bparag Both the royal counters (of \FRA) and the new revolutionary counters
+  (labelled ``Révolutionnaires'') belong to the same country for all purpose
+  of leadership.
+
   \aparag Recruitment and upkeep cost of Revolutionary \ARMY is halved (upkeep
   of royal \ARMY is unchanged).
+
   \aparag Land recruitment limit is doubled.
+
   \aparag Naval recruitment cost is doubled.
+
   \aparag \FRA may not used Licensed privateers as described in
   \ruleref{chSpecific:France:Privateers}.
 
+  \aparag[Revolutionary leaders] [BLP]
+  \bparag All leaders of \FRA are dismissed. \FRA now uses the revolutionary
+  leaders (excluding \leaderBonaparte).
+  \bparag The leaders limits for \FRA is now 3\LeaderG/1\LeaderA.
+  % En pVII : 3G, 4A, 1C@
+  \bparag The revolutionary leaders are treated as \anonyme leaders rather
+  than named ones. That is, \FRA draws them at random in order to reach
+  its limits and they change every turn.
 
   \digression[pVII:Revolution:Levee Masse]{``La Patrie en danger''}
   All the effects of \xnameref{pVII:Revolution:Armies} are applied. In
@@ -897,10 +931,21 @@ been crushed.
 
   \phdipl
   \aparag All French \ARMY are immediately replaced by Revolutionary \ARMY.
+
   \aparag \FRA may have up to 8 \ARMY counters in play.
-  \aparag Remove all named leaders of \FRA. \FRA gets 5 unnamed generals and 1
-  unnamed admiral (who can go in the \ROTW) (these are the new limits for
-  \FRA).
+
+  % \aparag Remove all named leaders of \FRA. \FRA gets 5 unnamed generals and 1
+  % unnamed admiral (who can go in the \ROTW) (these are the new limits for
+  % \FRA).
+  \aparag[Revolutionary leaders] [BLP]
+  \bparag All leaders of \FRA are dismissed. \FRA now uses the revolutionary
+  leaders.
+  \bparag The leaders limits for \FRA is now 5\LeaderG/1\LeaderA.
+  % En pVII : 3G, 4A, 1C@
+  \bparag The revolutionary leaders are treated as \anonyme leaders rather
+  than named ones. That is, \FRA draws them at random in order to reach
+  its limits and they change every turn.
+
   \aparag General \leaderwithdata{Bonaparte} is available for \FRA during the
   first turn of \monarqueTerror, starting with the first round after
   W2. % (Jym) : S3 or later
@@ -1262,7 +1307,7 @@ provinces annexed.
 \aparag \FRA, \ENG, \HOL and \HIS have a permanent \CB against \paysmamelouks.
 % (Jym) adding
 \bparag If several of them use this \CB without being formally allied, they
-can fight inside the territory of \paysmamelouks and \seazone{Mediterranee E}
+can fight inside the territory of \paysmamelouks and \seazone{Levantin}
 even if not at war elsewhere.
 
 \aparag If, at the beginning of a peace phase, one of them controls the
@@ -1334,7 +1379,7 @@ minor countries currently belonging to \RUS: \payskazan, \paysastrakhan,
 and all \ROTW provinces adjacent to \RUS European territory that have \RUS
 \COL/\TP in them. Roll for two additional \REVOLT in \RUS. If the result is
 outside \RUS territory, ignore and do not re-roll.
-\aparag Place a revolt \ARMY\facemoins and general \leaderPugatchev in any
+\aparag Place a revolt \ARMY\facemoins and general \leaderPugachev in any
 revolted province (he can either lead the \ARMY or a \REVOLT ).
 \bparag The class of rebels armies is the same as \RUS.
 
@@ -1378,7 +1423,10 @@ replenish one or another.
 \dure{as long as \strongministre{Potemkine} remains the excellent minister}
 
 \condition{\RUS can refuse this event if it so wishes. In that case mark off
-  as played.}
+  as played.
+
+If \monarque{Pierre II} rules Russia, \RUS may choose to postpone the event
+for one turn.}
 \aparag \RUS can freely dismiss \ministrePotemkine at the end of any following
 monarch survival phase and the event terminates.
 
@@ -1398,7 +1446,11 @@ of \bonus{+1} to all attempts to suppress \REVOLT .
 
 
 \event{pVII:War Crimea}{VII-15}{War in Crimea}{2}{PBnew}
-
+\begin{todo}
+  Add something about Orlov's revolt in the first occurrence of the
+  event. Plus probably something to allow \RUS to go out of Black sea and help
+  the Greek revolt.
+\end{todo}
 \history{1768-1774, 1787-1792}
 % (Jym) one occurrence only? Present twice in the table.
 
@@ -1472,6 +1524,10 @@ monarch survival phase and the event terminates.
 He will last for a random length for Minister, see \ref{eco:Excellent
   Minister}.
 
+\phdipl
+\aparag \ANG may send \VASSAL troops in the \ROTW without paying the \STAB
+indicated in~\ref{chSpecific:England:Minors at war}.
+
 \phadm
 \aparag \ANG basic forces are increased by \FLEET\facemoins and \ARMY\faceplus
 during every turn where \ANG is engaged in a war (including oversea war) and
@@ -1494,9 +1550,23 @@ monarch survival phase and the event terminates.
 9/8/7.  He will last for a random length for Minister, see \ref{eco:Excellent
   Minister}.
 
-% (Jym), Placeholder, potential veto
+% (Jym), Placeholder
 
+\event{pVII:Comuneros}{VII-x}{Revolt of the Comuneros}{1}{JymNotEvenWritten}
+\history{1779-1781}
+\begin{todo}
+  Revolt in New Granada. Probably useless (handle by revolt tables).
+\end{todo}
 
+\event{pVII:Xhosa}{VII-y}{Xhosa wars}{1}{JymNotReallyWritten}
+\history{1779-1781/1789-1793/1799-1803}
+
+\begin{todo}
+  These may be the true intention of the ``Bantu raids'' of pVI. May
+  replace~\ref{pVII:Revolt Indonesia} since it moved in \REVOLT tables.
+
+  Same effect as~\ref{pVI:Bantu Raids}.
+\end{todo}
 
 \event{pVII:USA-Morocco}{VII-z}{Moroccan-American Treaty of
   Friendship}{1}{JymVetoPending}
@@ -1507,8 +1577,8 @@ monarch survival phase and the event terminates.
 \dure{Until the end of the game}
 
 \effetlong
-\aparag Place one level of \TradeFLEET of \paysusa in \stz{lion}.
-\bparag The reference level for \paysusa in \stz{lion} is now 1.
+\aparag Place one level of \TradeFLEET of \paysusa in \stz{Lion}.
+\bparag The reference level for \paysusa in \stz{Lion} is now 1.
 % (Jym) http://en.wikipedia.org/wiki/Moroccan-American_Treaty_of_Friendship +
 % Barbaresques piracy degenerated in war with the \paysusa in 1801 and 1815:
 % http://en.wikipedia.org/wiki/Barbary_Wars
@@ -1528,4 +1598,4 @@ monarch survival phase and the event terminates.
 % LocalWords: artilleries Chouans Patrie subevent Duche Prusse Preussen NRP
 % LocalWords: Kosciuszko Mediterranee Risto Safavids JymVetoPending reroll IW
 % LocalWords: Jym SYW Orangists VOC Stadhouder Emigr Mughal Barbaresques http
-% LocalWords: Potemkine
+% LocalWords: Potemkine Comuneros

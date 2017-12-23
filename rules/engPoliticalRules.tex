@@ -2,7 +2,7 @@
 
 \section{General Political Rules}
 
-\subsectionJ{Instability of the \sectionregion{Balkans}}{\blasonJ{balkans}}
+\subsectionJ{Instability of the \sectionregion{Balkans}}{\blason{balkans}}
 \label{chSpecific:Balkans}
 
 \aparag The following provinces are affected by specific rules:
@@ -29,6 +29,7 @@ against any Christian countries without declaring war.  Conversely, Christian
 countries may fight against those Privateers.
 \aparag The provinces of the \region{Balkans} are in the zone allowed to
 prosecute Overseas Wars.
+
 \aparag[End of the Specific Status]
 \bparag This rule ends when the period II ends or if \pays{Hongrie} falls
 apart according to \eventref{pI:Fall Hungary} (but not if only
@@ -39,6 +40,18 @@ power that controls it. Independent provinces are given to \pays{Hongrie}, or
   Hungary} happened.
 
 
+\subsection{Nordic wars [BLP]}
+\aparag If two countries among \POL, \RUS and \SUE are continuing a
+war from the previous turn, then the third has a free \CB against each of
+them.
+\bparag If the \CB is used against one of them only, then the new belligerent
+is automatically allied with the former.
+\bparag This include change of alliances in 2v1 wars.
+
+\begin{designnote}
+  Alliances around the Baltic were often fragile and opportunistic attack
+  happened more than often.
+\end{designnote}
 
 \subsection{The Religious Struggles}
 
@@ -47,20 +60,20 @@ victory objectives for the players. The following rules give explanations to
 that part of the game.
 
 
-\subsubsection{The Sole Defender of Catholic Faith}\label{chSpecific:Catholic
+\subsubsection{Sole Defender of Catholic Faith}\label{chSpecific:Catholic
   Faith}
 \aparag That title is also a period objective for some Catholic countries and
 is defined as follows.
 
 \aparag If \FRA, \SPA, \ENG or \POL is the only Catholic major country (do not
-count \POR or \VEN), it is automatically the \terme{Sole Defender of the
-  Catholic faith}.
+count \POR or \VEN), it is automatically the Sole Defender of the Catholic
+faith.
 \bparag Alternatively, if there is only one Catholic \MAJ that is
-Counter-Reformation, it is automatically the \terme{Sole Defender of the
-  Catholic Faith}.
+Counter-Reformation, it is automatically the Sole Defender of the Catholic
+Faith.
 
 \aparag Else, if more than one country is Catholic, a Catholic \MAJ becomes
-the \terme{Sole Defender of the Catholic Faith} when the conditions below are
+the Sole Defender of the Catholic Faith when the conditions below are
 fulfilled:
 \bparag Control of the \pays{Papaute} diplomatic marker for at least 3 turns
 in the last 5 turns just elapsed.
@@ -73,12 +86,11 @@ turns, with at least one Simple Campaign per round and no separate peace with
 % \TUR, until the End of Religious Struggles.
 
 \aparag[Restoration of Catholicism after the Reform] Each time a player
-(either \SPA (if Counter-Reformation) or the \terme{Sole Defender of the
-  Catholic Faith}) declares war on a Protestant country and obtains an
-unconditional peace from this country, the player may decide to abandon all
-province(s) transfer and ask as sole peace condition the restoration of
-Catholicism (of the same attitude of the power imposing Catholicism) in this
-country.
+(either \SPA (if Counter-Reformation) or the Sole Defender of the Catholic
+Faith) declares war on a Protestant country and obtains an unconditional peace
+from this country, the player may decide to abandon all province(s) transfer
+and ask as sole peace condition the restoration of Catholicism (of the same
+attitude of the power imposing Catholicism) in this country.
 \bparag This clause is mandatory if the power is Counter-Reformation.
 
 \bparag[Gain on Conversions]
@@ -128,40 +140,14 @@ countries.
 \aparag \TUR can make no diplomacy on \pays{Perse} or \pays{Ormus} until 1615
 (turn 26, period III).
 
-\subsectionJ{The Ottoman advance}{\blasonJ{turquie}}
+\subsectionJ{The Ottoman advance}{\blason{turquie}}
 \label{chSpecific:Crusades and Vienna}
 
 
 \subsubsection{Crusades}\label{chSpecific:Crusades}
-\aparag Until 1614 (Interphase of turn 25 and 26, beginning of period IV),
-each time the Turkish player conquers or annexes a Christian province during
-the Peace phase, there can be a call to the Crusade launched by the Pope. From
-period IV onwards, the call to the Crusade ceases.
-
-\aparag[Call to the Crusade]
-The call to the Crusade takes place immediately during Peace Phase. If there
-is a Crusade, it will be resolved during the next event phase.
-\bparag To know if there is a Crusade, it is necessary to obtain on 1d10 a
-modified result of 10 or more.  A net unmodified 10 result on the die-roll is
-always a success, whatever the modifiers.
-
-\bparag Modifiers (the maximum modifier value is limited to +5 in all cases):
-\begin{modlist}
-\item[+1] for each annexed or conquered Christian province by \TUR since the
-  start of the current period;
-\item[-2] for each Catholic player at war against another country (\TUR
-  excepted).
-\item[-3] if the event \eventref{pI:Reformation} has occurred at least once,
-  including this turn.
-\item[+5] if \ville{Vienne} or \ville{Roma} is captured by the Turks;
-\end{modlist}
-\bparag If \ville{Roma} falls to the Turks before the end of period II, an
-automatic call to the Crusade is launched by the Pope.
-
-\aparag If successful, consider that \eventref{pII:Crusade} is rolled as a
-fifth event on the following turn. There may be only 4 other political events
-(no extra event).
-
+\aparag During periods \period{I}-\period{III}, each turn \TUR annexes a
+Christian province, a test for Crusade occurs at the end of the turn.
+\bparag See~\ref{chPeace:Crusade} for the details.
 
 \subsubsection{Turkish Capture of \sectionville{Wien}}\label{chSpecific:Fall
   Vienna}
@@ -173,7 +159,7 @@ activated:
 on the side of \HAB if not at war against them, on no \STAB loss.
 \bparag If the Turks still hold the city at the end of the turn, \VEN, \FRA,
 \ENG, \SPA, \AUT and \POL (if Catholic) lose 1 \STAB level each.  Other
-countries are not affected.  \TUR receives 25 VP more for the capture a,d
+countries are not affected.  \TUR receives 25 VP more for the capture and
 holding of \ville{Vienne}, but only once in a game and \HAB loses 25 VP
 because of the same event.
 
@@ -218,15 +204,13 @@ immediate call for Crusade in periods \period{I} and \period{II} and gives a
 bonus of \bonus{+5} to the Crusade die-roll afterwards.
 
 \aparag[Turkish Control of  \villeRoma]
-Each turn where \villeRoma stays under Turkish control, the sole defender of
-the catholic faith loses 1 \STAB level per turn in addition to all other
-losses of turn-end.
+Each turn where \villeRoma stays under Turkish control, the \SDCF loses 1
+\STAB level per turn in addition to all other losses of turn-end.
 
 \aparag[Transfer of the pope]
 If the province \provinceLazio is ceded to \TUR, the pope is transferred to
 \VENven, see~\ruleref{chSpecific:Venice:Pope Venice}.
-\bparag If so, the sole defender of the catholic faith ceases to lose 1
-Stability level per turn.
+\bparag If so, the \SDCF ceases to lose 1 Stability level per turn.
 \bparag \villeRoma become automatically and immediately the capital of
 \payspapaute again if the province of \province{Lazio} is re-conquered by any
 Catholic power. The province is immediately annexed without need for Peace.
@@ -344,11 +328,17 @@ made among the highest bidders. In case of a second equality, the mercenary is
 no more available.
 \bparag The mercenaries are revealed only after all mercenaries have been
 sold.
+
 \aparag It is also possible to recruit a mercenary explorer or
 conquistador. For each of both, all the interested countries have to follow
 the same procedure as for the generals.
 \bparag However, the number of explorer or conquistador is at most 1
 (see~\tableref{table:Condottieri}).  \GTtable{mercenariestable}
+
+\aparag[] [BLP] Named mercenaries (\leader{J. Cabot} and \leader{S. Cabot})
+are added to the pool of mercenaries during their lifetime. Thus, if no
+mercenary \LeaderE is available this turn, they are absent.
+
 % \begin{tablehere}\centering
 %   \mercenaire
 % \end{tablehere}
@@ -356,71 +346,83 @@ the same procedure as for the generals.
 
 
 \subsection{Use of Missions and Missionaries}\rulelabel{chSpecific:Missions}
-
-
 \subsubsection{Availability}
-\aparag \SPA, \POR, \FRA and \ANG receive Missionaries that help them in
-colonial activities. See the specific rules of each power for the number of
-Missionaries.
-\bparag Missionaries always make the appearance in Europe during the
-Interphase.
-\aparag Each Missionary is a leader with values [3.0.0] and a bonus (from 1 to
-3). He has no turn limit. Missionaries have no stacking limits but their
-bonuses are not cumulative.
-\bparag A Missionary can lead units in the \ROTW (to employ his \Man) and be
-used for movements and exploration; but a replacement general should be rolled
-for if a battle happens. He does not obey the Hierarchy and can only be used
-if there is no other leader to command the stack. A Missionary always test for
-possible death when involve in a battle.
-\aparag A Missionary can set a Mission at the phase of Redeployment. The
-counter is returned to its ``Mission'' face in the province where it is and
-will never revert back to the Missionary face.
-\bparag There can only be one Mission in each province. A Mission can not be
-set in a province where there are enemy \COL, \TP, forts or Missions. If a
-Mission set in a province where there is a friendly fort, this fort is
-removed.
-
+\aparag \SPA, \POR, \FRA and \ANG receive \LeaderMis and \terme{Missions} that
+help them in colonial activities. See the specific rules of each power for the
+number of \LeaderMis and \terme{Missions} available.
+\bparag Most \LeaderMis have turns of life like regular leaders. They appear
+and disappear following the normal rules.
+\bparag \HIS has four unnamed \LeaderMis with no turns of availability. See
+the specific Spanish rules for details.
 
 \subsubsection{Missionaries}
-\aparag A Missionary gives a modifier equal to their modifier (+1 to +3) to
-any \TP/\COL placement attempt in the province they are if there is no
-established settlement on \Faceplus.
+\aparag[Missionaries as leaders.] Each \LeaderMis is a leader with values and
+a bonus (from +1 to +3). \LeaderMis have no stacking limits but their bonuses
+are not cumulative.
+\bparag a \LeaderMis has no Hierarchic rank and may never lead a stack.
+\bparag However, a stack with a \LeaderMis may choose to use its \Man for
+either movement or exploration in the \ROTW, even if there is another leader
+commanding the stack.
+\bparag If a stack with \LeaderMis fight, each \LeaderMis in the stack must
+test for death at the end of the battle (with the usual modifiers, as if the
+\LeaderMis was actually commanding).
+
+\aparag[Colonisation.] A \LeaderMis gives a modifier equal to his bonus (+1 to
++3) to any \TP/\COL placement attempt in the province he is if the settlement
+is not \Faceplus (either no settlement or a \Facemoins one).
 \bparag This bonus is not cumulative with the effects of Conquistadors,
 Governors or Missions.
-\aparag A Missionary gives a bonus of {\bf -1} when rolling on the
-Conquistador table against Natives.
 
+\aparag[Conquistadors.] A stack with a \LeaderMis has a bonus of {\bf -1} when
+rolling on the Conquistador table against Natives.
 
 \subsubsection{Missions}
-\aparag A Mission is a kind of fort with inherent colonial militia, and cannot
+\aparag A \LeaderMis can set a Mission at the phase of Redeployment. The
+\LeaderMis is remove from game (even if it's one of the unnamed \HIS
+\LeaderMis) and a Mission is put in the province.
+% returned to its ``Mission'' face in the province where it is and
+% will never revert back to the Missionary face.
+\bparag There can only be one Mission in each province. A Mission can not be
+set in a province where there are enemy \COL, \TP, forts or Missions. If a
+Mission is set in a province where there is a friendly fort, this fort is
+removed.
+
+\aparag A Mission is a fort with inherent colonial militia, and cannot
 move. As it is a fort, a Mission cost 1\ducats to be maintained each turn.
 \bparag In \COL, a Mission gives a \LDE added to the colonial militia.
 \bparag If there is no other kind of fortification in the settlement, the fort
 of the Mission has to be conquered in order to control the settlement.
+\bparag As a fort, a mission is a port for \ND and a supply source for \LD.
+
 \aparag A Mission gives a bonus of {\bf +1} to every \TP/\COL placement
-attempt in the Area they are set in.
+attempt in its \Area.
 \bparag This bonus is not cumulative with the effects of Conquistadors,
 Governors or Missionaries.
+
 \aparag A Mission gives a bonus of {\bf +1} when testing for a possible
-reaction of Natives of Minor countries in the area for their country.
+reaction of Natives of Minor countries in the \Area.
 \aparag A \TP with a Mission may be transform in a \COL (even if there is no
-city), according to \ruleref{chExpenses:TP to Col}.
+city), according to \ruleref{chAdministration:TP to Col}.
 \aparag A Mission that is not deployed on a \COL may be destroyed voluntarily
-by their owner at the Phase of Redeployment. The now free counter could be
-used on the next turn (but not this one).
+by its owner at the Phase of Redeployment.
 \bparag A Mission may also be destroyed when conquered by a country of a
-different religion.
+different religion. Contrary to regular forts, destruction of a Mission is not
+automatic upon conquest.
 \bparag If a colonial settlement is destroyed by natives or minor countries, a
 Mission therein is destroyed.
 \bparag If a colonial settlement is annexed by another power of the same
-religion, it may replaced it by one of its own. If by a power with a different
-religion, the Mission is destroyed.
+religion, any Mission may be replaced by one of its own. If by a power with a
+different religion, the Mission is destroyed.
+\bparag Exception: \construction{Kaaba} stays in place at all time and may
+even co-exist with an establishment of another country.
 
+\aparag If a mission is destroyed, it is returned to the force pool of its
+country and may be used again.
+\bparag Exception: \construction{Kongo} is removed from game if destroyed.
 
-
-\subsection{Commercial specifics}
-
-\subsubsectionJ{Levies of the Sund}{\blasonJ{oresund}}
+\subsection{Commercial specificities}
+\label{chSpecific:Commercial specificities}
+\subsubsectionJ{Levies of the Sund}{\blason{oresund}}
 \label{chSpecific:Sund Levies}
 \begin{designnote}
   The fight for the commercial levies collected on trade fleets crossing the
@@ -438,8 +440,8 @@ lose one \STAB.
 military controls one province among \province{Skane},
 \province{Vastergotland} or \province{Sjaelland}.
 \bparag A minor country that has the Rights on the Levies on the Sund, will
-take them if it is fully at war. It may take them if it makes a limited
-intervention (controller's choice).
+take them if it is fully at war. It may take them at controller's choice in
+others cases.
 \aparag[Effects of the Levies]
 \bparag A \MAJ earns 5\ducats plus 1\ducats for each level of Commercial Fleet
 in \stz{Baltique}.
@@ -481,7 +483,7 @@ each other.
 \aparag This effect is not applied to any country that is involved in this war
 (because this is then already accounted for).
 
-\subsubsectionJ{Control of the Scheldt (L'Escaut)}{\blasonJ{flandrebrabant}}
+\subsubsectionJ{Control of the Scheldt (L'Escaut)}{\blason{flandrebrabant}}
 \rulelabel{chSpecific:Scheldt} %L'Escaut
 \aparag If a \MAJ owns and controls militarily \province{Vlaanderen} and
 \province{Brabant}, the \ctz{Hollande} is considered as a \CTZ for him.
@@ -497,7 +499,8 @@ provinces.
 \end{designnote}
 
 
-\subsubsection{Ragusa}\label{chSpecific:Ragusa}
+\subsubsectionJ{Ragusa}{\blason{turquievenise}}
+\label{chSpecific:Ragusa}
 \aparag Until the end of period III, the owner of \province{Montenegro} (or
 controller before the End of \ruleref{chSpecific:Balkans}), has one of the
 following advantages due to the commercial fleet of \ville{Ragusa} (player's
@@ -509,20 +512,22 @@ the Ragusa counter), only in \seazone{Adriatique} (to attack trade in
 (\terme{Basic investment} only) in any \STZ or \CTZ of the Mediterranean Sea.
 
 
-\subsubsection{Occupation of the
-  Caribbean}\label{chSpecific:Occupation:Caribbean}
-\aparag A Power may decide to stay and continue an occupation of a \COL or \TP
-in \continent{Caraibes}, and even after a Peace ends the war when it took
-control of the place. This is possible only it the power controls the \COL or
-\TP and it must leave at least one \LD there else the occupation is
-discontinued an voided immediately (with any \de destroyed).
-\bparag When occupied, a \TP or \COL counts exactly as if owned by its
-occupant (for incomes, monopolies,...)
-\bparag The legitimate owner has a free Overseas \CB against the occupying
-power.
+\subsubsectionJ{Occupation of the Caribbean}{\blason{caraibes}}
+\label{chSpecific:Occupation:Caribbean}
+\aparag[] [BLP] Any power may place occupation markers in \continentCaraibes.
+% \aparag A Power may decide to stay and continue an occupation of a \COL or \TP
+% in \continent{Caraibes}, and even after a Peace ends the war when it took
+% control of the place. This is possible only it the power controls the \COL or
+% \TP and it must leave at least one \LD there else the occupation is
+% discontinued an voided immediately (with any \de destroyed).
+% \bparag When occupied, a \TP or \COL counts exactly as if owned by its
+% occupant (for incomes, monopolies,...)
+% \bparag The legitimate owner has a free Overseas \CB against the occupying
+% power.
 
 
-\subsubsection{The Manila Galleon}\label{chSpecific:Manila Galleon}
+\subsubsectionJ{The Manila Galleon}{\blason{chineespagne}}
+\label{chSpecific:Manila Galleon}
 \aparag In order to benefit from the \terme{Manila Galleon}, a \MAJ must
 fulfil all five following conditions:
 \bparag Event \ref{pIII:CCA:Closure China} has been played.
@@ -530,7 +535,7 @@ fulfil all five following conditions:
 \bparag The \MAJ has a \COL exploiting gold in \continent{America}.
 \bparag The \MAJ knows a path between these two \COL through
 \seazone{Pacifique} and no enemy-controlled provinces.
-\bparag The \stz{Formose} must contain a \TradeFLEET (any level) of either the
+\bparag The \stz{Chine} must contain a \TradeFLEET (any level) of either the
 \MAJ or \paysChine.
 
 \aparag Only one power can have the Galleon. If several countries claim the
