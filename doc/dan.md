@@ -145,12 +145,14 @@ time: 25, max 50) M
 4. Fish monopoly (4 turns out of 6) (30)
 
 5. Colony established in America (25)
+TP ?
 
 [^prov] There are not that many provinces annexable around Denmark. One
 way to fulfil objective 3 could be to preempt some territory in Livonia
 (before period III, historic). Another way would be to grab land on the
 south Baltic shore (hard). A last way may be to build a level 6 colony
 (transforming Iceland in an almost European zone).
+COL6 impossible if starts at 1+1/2 turns. Could be "COL+ = 1/2 prov".
 
 ### Period II
 
