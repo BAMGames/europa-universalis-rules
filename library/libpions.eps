@@ -1,6 +1,8 @@
 /defaultvalue{1 index where {pop pop pop}{def}ifelse}def
-/pagewidth 595 defaultvalue
-/pageheight 842 defaultvalue
+%/pagewidth 595 defaultvalue
+%/pageheight 842 defaultvalue
+/pagewidth 612 defaultvalue
+/pageheight 792 defaultvalue
 
 HOMEDIR(/library/library.eps)! include
 HOMEDIR(/library/common.eps)! include
@@ -48,14 +50,16 @@ CURRENTDIR(/images.eps)! include
     /face exch def /grandspions exch def /doubleface exch def
     /format doubleface{grandspions{0}{2}ifelse face not{1 add}if}
 	{grandspions{4}{5}ifelse}ifelse def
-    /taillepions grandspions {45}{36}ifelse def
-%    /taillepions grandspions {54}{36}ifelse def
-    /nbpions [12 12 14 14 12 15]format get def
-%    /nbpions [10 10 14 14 10 15]format get def
+%    /taillepions grandspions {45}{36}ifelse def
+    /taillepions grandspions {53}{36}ifelse def
+%    /nbpions [12 12 14 14 12 15]format get def
+    /nbpions [10 10 14 14 10 14]format get def
     /comptepions nbpions def
     cparray format page put
-    /Ymin 842 20 sub taillepions sub def
-    /Xmin 595 nbpions taillepions 1 add mul sub 2 div def
+    /Ymin pageheight 20 sub taillepions sub def
+    /Xmin pagewidth nbpions taillepions 1 add mul sub 2 div def
+%    /Ymin 842 20 sub taillepions sub def
+%    /Xmin 10 def
     /rangeefinie true def
     (0 G 0.9 g 1 w\n)out %initialisation état graphique
 }def
@@ -72,8 +76,8 @@ counteralone {
     /face exch def /grandspions exch def /doubleface exch def
     /format doubleface{grandspions{0}{2}ifelse face not{1 add}if}
         {grandspions{4}{5}ifelse}ifelse def
-    /taillepions grandspions {45}{36}ifelse def
-%    /taillepions grandspions {54}{36}ifelse def
+%    /taillepions grandspions {45}{36}ifelse def
+    /taillepions grandspions {53}{36}ifelse def
     /nbpions [1 1 1 1 1 1]format get def
     /comptepions nbpions def
     cparray format page put
@@ -86,7 +90,8 @@ counteralone {
 /beginrangee {% en fait, beginrangee, plutôt
     % necessité de commencer une nouvelle page
     /comptepions nbpions def
-    Ymin 20 lt {
+%    Ymin 20 lt {
+    Ymin 10 lt {
 	endpage doubleface grandspions face beginpage
 	doubleface {
 	    cparray format 1 add get loadpage
