@@ -44,20 +44,23 @@ CURRENTDIR(/images.eps)! include
     [ (0) (I) (II) (III) (IV) (V) (VI) (VII) (VIII) (IX) (X) ]
     exch get } bind def
 /pagelocalvariables [/Ymin /nbpions /taillepions
-    /Xmin /face /doubleface /grandspions /format /rangeefinie /comptepions
+                     /Xmin /face /doubleface /grandspions /format /rangeefinie /comptepions
+                     /Xspace /Yspace
 ]def
 /beginpagehook {
     /face exch def /grandspions exch def /doubleface exch def
     /format doubleface{grandspions{0}{2}ifelse face not{1 add}if}
 	{grandspions{4}{5}ifelse}ifelse def
 %    /taillepions grandspions {45}{36}ifelse def
-    /taillepions grandspions {53}{36}ifelse def
+        /taillepions grandspions {53}{35}ifelse def
+        /Yspace grandspions {0}{9}ifelse def
+        /Xspace grandspions {0}{9}ifelse def
 %    /nbpions [12 12 14 14 12 15]format get def
-    /nbpions [10 10 14 14 10 14]format get def
+    /nbpions [10 10 13 13 10 13]format get def
     /comptepions nbpions def
     cparray format page put
     /Ymin pageheight 20 sub taillepions sub def
-    /Xmin pagewidth nbpions taillepions 1 add mul sub 2 div def
+    /Xmin pagewidth nbpions taillepions 1 add Xspace add mul Xspace sub sub 2 div def
 %    /Ymin 842 20 sub taillepions sub def
 %    /Xmin 10 def
     /rangeefinie true def
@@ -119,7 +122,7 @@ counteralone {
     }if
 }def
 /endrangee {
-    /Ymin Ymin taillepions 1 add sub def
+    /Ymin Ymin taillepions 1 add sub Yspace sub def
     /rangeefinie true def
 }def
 /pionstyles
@@ -152,7 +155,7 @@ def
 % nouvelle rangee ?
 %    (% pion ") out nompion out ("\n) out
 % calcul de xpion et ypion
-    /xpion Xmin 0.5 add taillepions 1 add
+    /xpion Xmin 0.5 add taillepions 1 add Xspace add
     face{nbpions comptepions sub}{comptepions 1 sub}ifelse mul add def
     anonymous(face+)! nompion currentpage (outline)!
     [ currentpage R /FitR
@@ -189,7 +192,7 @@ def
     cparray format 1 add get loadpage
 %    (% pion ") out nompion out ("\n) out
 % calcul de xpion et ypion
-    /xpion Xmin 0.5 add taillepions 1 add
+    /xpion Xmin 0.5 add taillepions 1 add Xspace add
     face{nbpions comptepions sub}{comptepions 1 sub}ifelse mul add def
     anonymous(face+)! nompion currentpage (outline)!
     [ currentpage R /FitR
