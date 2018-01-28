@@ -3,10 +3,6 @@ FTPGENFILES = index.html changelog.txt players-changelog.txt contours.js counter
 FTPOTHERFILES=
 FTPSTATICFILES=js css map.html img
 # Automatic section
-$(WEBDIR)/Combat-rapide-fr.txt: $(HOMEDIR)/doc/Combat-rapide-fr.txt
-FTPOTHERFILES+=Combat-rapide-fr.txt
-$(WEBDIR)/Fast-battle-en.txt: $(HOMEDIR)/doc/Fast-battle-en.txt
-FTPOTHERFILES+=Fast-battle-en.txt
 $(WEBDIR)/accounting-economic.pdf: $(RECORDSDIR)/accounting-economic.pdf
 FTPOTHERFILES+=accounting-economic.pdf
 $(WEBDIR)/booklet.pdf: $(PRINTDIR)/booklet.pdf
