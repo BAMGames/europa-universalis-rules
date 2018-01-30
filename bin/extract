@@ -384,6 +384,17 @@ foreach $k (@infoVASSALITY) {
     }
 }
 delete $info{"VASSALITY"};
+foreach $k (@infoKALMAR) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Superior country"});
+	$command.=" dessineKALMAR\n";
+	sendit($k,$command);
+    }
+}
+delete $info{"KALMAR"};
 foreach $k (@infoROTWTREATY) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
