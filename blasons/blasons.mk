@@ -28,9 +28,11 @@ bourgogne\
 brandebourg\
 bretagne\
 brunswick\
+caraibes\
 catalogne\
 chevaliers\
 chine\
+chineespagne\
 cologne\
 corse\
 cosaquesdon\
@@ -126,15 +128,14 @@ treves\
 tripoli\
 tunisie\
 turquie\
+turquievenise\
 ukraine\
 usa\
 valachie\
 venise\
 vijayanagar\
+westphalia\
 wurtemberg\
-chineespagne\
-turquievenise\
-caraibes\
 # End automatic
 
 

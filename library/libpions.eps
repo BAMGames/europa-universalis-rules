@@ -595,7 +595,7 @@ def
     endpion
 }def
 /dessineFORTERESSEX {
-    /niveau exch def /typeX () def /pays exch def
+    /niveau exch def /typeX exch def /pays exch def
     /nompion (Fortress ) niveau 1 string cvs ! def
     /filepion (Fortress_blanc_1) def
     5 beginpion
@@ -998,7 +998,7 @@ def
     [	(Land Tech. +1*)(Land Tech. +2*)(Metal)4
 	(img:manumetal) 2 21 0.2 ]
     (metalsilesie)
-    [	(Land Tech. +1*)(Land Tech. +2*)(Metal \(Schlesien\))5
+    [	(Land Tech. +1*)(Land Tech. +2*)(Metal \(Special\))5
 	(img:manumetal) 2 21 0.2]
     (vin)
     [	(For. Trade +50)(For. Trade +100)(Wine)2
@@ -1132,6 +1132,67 @@ def
     countryname_dict typeX get 0 0 100 20 cadredefondrm
     autreface
     true commundiplo
+    countryname_dict typeX get 0 0 100 20 cadredefondrm
+    endpion
+}def
+
+/dessineKALMARUNION {
+    /typeX exch def
+    /pays exch def
+    /nameX countryname_dict typeX get def
+    /nompion mark(Kalmar Union Status of )countryname concatall def
+    /filepion mark(Kalmar_Union)pays(_)typeX concatall def
+    0 beginpion
+    countryname 0 80 100 20 cadredefondit
+    blasoncentre
+    0.85 beginalpha
+    black fc white sc
+    (0 40 100 20 re f )out
+    (0 40 100 20 re S )out
+    endalpha
+    white fc
+    (Weak Union) 50 40 100 20 (FontArialNarrow-Bold) centertext
+    countryname_dict typeX get 0 0 100 20 cadredefondrm
+    autreface
+    countryname 0 80 100 20 cadredefondit
+    blasoncentre
+    0.85 beginalpha
+    black fc white sc
+    (0 40 100 20 re f )out
+    (0 40 100 20 re S )out
+    endalpha
+    white fc
+    (Strong Union) 50 40 100 20 (FontArialNarrow-Bold) centertext
+    countryname_dict typeX get 0 0 100 20 cadredefondrm
+    endpion
+}def
+/dessineKALMARDISSIDENCE {
+    /typeX exch def
+    /pays exch def
+    /nameX countryname_dict typeX get def
+    /nompion mark(Kalmar Dissidence Status of )countryname concatall def
+    /filepion mark(Kalmar_Dissidence)pays(_)typeX concatall def
+    0 beginpion
+    countryname 0 80 100 20 cadredefondit
+    blasoncentre
+    0.85 beginalpha
+    red fc white sc
+    (0 40 100 20 re f )out
+    (0 40 100 20 re S )out
+    endalpha
+    white fc
+    (Rebellion) 50 40 100 20 (FontArialNarrow-Bold) centertext
+    countryname_dict typeX get 0 0 100 20 cadredefondrm
+    autreface
+    countryname 0 80 100 20 cadredefondit
+    blasoncentre
+    0.85 beginalpha
+    white fc red sc
+    (0 40 100 20 re f )out
+    (0 40 100 20 re S )out
+    endalpha
+    red fc
+    (Dissidence) 50 40 100 20 (FontArialNarrow-Bold) centertext
     countryname_dict typeX get 0 0 100 20 cadredefondrm
     endpion
 }def
