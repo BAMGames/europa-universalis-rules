@@ -390,7 +390,11 @@ foreach $k (@infoKALMAR) {
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
 	$command.=str($k->{"Superior country"});
-	$command.=" dessineKALMAR\n";
+	$command.=" dessineKALMARUNION\n";
+	sendit($k,$command);
+	$command=str($k->{"Country"});
+	$command.=str($k->{"Superior country"});
+	$command.=" dessineKALMARDISSIDENCE\n";
 	sendit($k,$command);
     }
 }
