@@ -11,9 +11,22 @@
 /taillegrandspions 45 defaultvalue
 /taillepetitspions 36 defaultvalue
 /nbgrandspions 12 defaultvalue
-/nbpetitspions 15 defaultvalue
+/nbpetitspions 10 defaultvalue
 
 /topmargin 20 defaultvalue
+/bottommargin 20 defaultvalue
+
+% space between counters
+/grandspionsXspace 0 defaultvalue
+/petitspionsXspace 10 defaultvalue
+/grandspionsYspace 0 defaultvalue
+/petitspionsYspace 10 defaultvalue
+
+% add the above space after that number of counters
+/grandspionsXfreq 1 defaultvalue
+/grandspionsYfreq 1 defaultvalue
+/petitspionsXfreq 4 defaultvalue
+/petitspionsYfreq 2 defaultvalue
 
 /pagewidth a4 {a4width} {letterwidth} ifelse defaultvalue
 /pageheight a4 {a4height} {letterheight} ifelse defaultvalue
@@ -58,48 +71,88 @@ CURRENTDIR(/images.eps)! include
     [ (0) (I) (II) (III) (IV) (V) (VI) (VII) (VIII) (IX) (X) ]
     exch get } bind def
 /pagelocalvariables [/Ymin /nbpions /taillepions
-    /Xmin /face /doubleface /grandspions /format /rangeefinie /comptepions
+                     /Xmin /face /doubleface /grandspions /format /rangeefinie /comptepions
+                     /Xspace /Yspace /Xfreq /Yfreq /nbrangee
 ]def
 /beginpagehook {
     /face exch def /grandspions exch def /doubleface exch def
     /format doubleface{grandspions{0}{2}ifelse face not{1 add}if}
 	{grandspions{4}{5}ifelse}ifelse def
     /taillepions grandspions {taillegrandspions}{taillepetitspions}ifelse def
+    /Xspace grandspions {grandspionsXspace}{petitspionsXspace}ifelse def
+    /Yspace grandspions {grandspionsYspace}{petitspionsYspace}ifelse def
+    /nbrangee 0 def
+    /Xfreq grandspions {grandspionsXfreq}{petitspionsXfreq}ifelse def
+    /Yfreq grandspions {grandspionsYfreq}{petitspionsYfreq}ifelse def
     /nbpions grandspions {nbgrandspions} {nbpetitspions} ifelse def
     /comptepions nbpions def
     cparray format page put
     /Ymin pageheight topmargin sub taillepions sub def
-    /Xmin pagewidth nbpions taillepions 1 add mul sub 2 div def
+    /Xmin pagewidth nbpions taillepions 1 add Xspace add mul Xspace sub sub 2 div def
     /rangeefinie true def
     (0 G 0.9 g 1 w\n)out %initialisation état graphique
 }def
 /counteralone false defaultvalue
 counteralone {
-/listelog {
-    /LISTE CURRENTDIR(/counters.txt)!(w) file def
-    /log {
-	STDERR 1 index writestring STDERR flushfile
-	LISTE exch writestring LISTE flushfile
-    } bind def
-} def
-/beginpagehook {
-    /face exch def /grandspions exch def /doubleface exch def
-    /format doubleface{grandspions{0}{2}ifelse face not{1 add}if}
+    /listelog {
+        /LISTE CURRENTDIR(/counters.txt)!(w) file def
+        /log {
+	    STDERR 1 index writestring STDERR flushfile
+	    LISTE exch writestring LISTE flushfile
+        } bind def
+    } def
+    /beginpagehook {
+        /face exch def /grandspions exch def /doubleface exch def
+        /format doubleface{grandspions{0}{2}ifelse face not{1 add}if}
         {grandspions{4}{5}ifelse}ifelse def
-    /taillepions grandspions {taillegrandspiond}{taillepetitspions}ifelse def
-    /nbpions [1 1 1 1 1 1]format get def
-    /comptepions nbpions def
-    cparray format page put
-    /Ymin pageheight topmargin sub taillepions sub def
-    /Xmin pagewidth nbpions taillepions 1 add mul sub 2 div def
-    /rangeefinie true def
-    (0 G 0.9 g 1 w\n)out %initialisation état graphique
-}def
+        /taillepions grandspions {taillegrandspiond}{taillepetitspions}ifelse def
+        /nbpions [1 1 1 1 1 1]format get def
+        /comptepions nbpions def
+        cparray format page put
+        /Ymin pageheight topmargin sub taillepions sub def
+        /Xmin pagewidth nbpions taillepions 1 add mul sub 2 div def
+        /rangeefinie true def
+        (0 G 0.9 g 1 w\n)out %initialisation état graphique
+    }def
 }if
+/drawgreybackground {
+    % drawing the background grey rectangle
+    Xmin display space % X
+    Ymin display space % Y
+    nbpions taillepions 1 add mul
+    % Xspace is added nbpions/Xfreq times
+    % But we don't want to finish by an Xspace, so -1 time if modulo is 0
+    nbpions Xfreq idiv nbpions Xfreq mod 0 eq {1 sub} if Xspace mul
+    add display space % width
+    taillepions 1 add display % height
+    ( re B\n) out % draw
+} def
+/drawshortline {
+    dup display space Ymin display( m )out display space
+    Ymin taillepions 1 add add display ( l\n)out
+} def
+/drawbackground {
+    drawgreybackground
+    /pionsfaits 0 def % number of right sides drawn
+    Xmin % start
+    { nbpions pionsfaits lt {exit} if % everything's done
+      dup drawshortline % draw one right side
+      /pionsfaits pionsfaits 1 add def % one more done
+      taillepions add 1 add % move to left side
+
+      face {pionsfaits Xfreq mod 0 eq} % Xspace every Xfreq counters
+      { pionsfaits nbpions Xfreq mod sub Xfreq mod 0 eq % drop the mod if spacing backward
+        pionsfaits nbpions lt and}
+      ifelse
+
+      {dup drawshortline Xspace add} % draw the left side and move after the Xspace
+      if
+    } loop pop % clean
+} def
 /beginrangee {% en fait, beginrangee, plutôt
     % necessité de commencer une nouvelle page
     /comptepions nbpions def
-    Ymin 20 lt {
+    Ymin bottommargin lt {
 	endpage doubleface grandspions face beginpage
 	doubleface {
 	    cparray format 1 add get loadpage
@@ -108,31 +161,38 @@ counteralone {
 	}if
     }if
     /comptepions nbpions def /rangeefinie false def
-    Xmin display space Ymin display space nbpions taillepions 1 add mul
-    display space taillepions 1 add display ( re B\n) out
-    Xmin taillepions 1 add Xmin taillepions 1 add nbpions mul 1 sub add
-    { dup display space Ymin display( m )out display space
-    Ymin taillepions 1 add add display ( l\n)out} for
+    drawbackground
     (S\n) out
     doubleface {
 	cparray format 1 add get loadpage
 	/comptepions nbpions def /rangeefinie false def
-	Xmin display space Ymin display space nbpions taillepions 1 add mul
-	display space taillepions 1 add display ( re B\n) out
-	Xmin taillepions 1 add Xmin taillepions 1 add nbpions mul 1 sub add
-	{ dup display space Ymin display( m )out display space
-	Ymin taillepions 1 add add display ( l\n)out} for
+        drawbackground
 	(S\n) out
 	cparray format 1 sub get loadpage
     }if
 }def
 /endrangee {
-    /Ymin Ymin taillepions 1 add sub def
+    /nbrangee nbrangee 1 add def
+    /Ymin Ymin taillepions 1 add sub
+    nbrangee Yfreq eq {/nbrangee 0 def Yspace sub} if def
     /rangeefinie true def
 }def
 /pionstyles
 [/stylepion1 /stylepion2]
 def
+/getxpion {
+    /pionsagauche face
+    {nbpions comptepions sub}
+    {comptepions 1 sub}
+    ifelse def
+    /numspace face
+    {pionsagauche Xfreq idiv}
+    {pionsagauche Xfreq add nbpions Xfreq mod sub Xfreq idiv}
+    ifelse def
+    Xmin 0.5 add % start
+    taillepions 1 add pionsagauche mul add % +(taillepions*pionsagauche)
+    numspace Xspace mul add % +(Xspace*numspace)
+} def
 % param of beginpion:
 % 0 -> big, double sided (A, F)
 % 2 -> small, double sided
@@ -149,7 +209,7 @@ def
     cparray localformat get loadpage
     % Vérifie si la rangée précédente est terminée
     rangeefinie {beginrangee}if
-% determination du nom du pion
+    % determination du nom du pion
     /pions pions 1 add def
     nompion length 0 eq {/nompion (Pion ) pions 20 string cvs ! def}if
     filepion length 0 eq {/filepion (Unknown_) pions 20 string cvs ! def}if
@@ -157,11 +217,10 @@ def
     mark (#)filepion(#)concatall log
     nompion log (\n)log
     logOUT
-% nouvelle rangee ?
-%    (% pion ") out nompion out ("\n) out
-% calcul de xpion et ypion
-    /xpion Xmin 0.5 add taillepions 1 add
-    face{nbpions comptepions sub}{comptepions 1 sub}ifelse mul add def
+    % nouvelle rangee ?
+    % (% pion ") out nompion out ("\n) out
+    % calcul de xpion et ypion
+    /xpion getxpion def
     anonymous(face+)! nompion currentpage (outline)!
     [ currentpage R /FitR
     xpion 10 sub Ymin 9.5 sub xpion taillepions add 10 add
@@ -195,10 +254,9 @@ def
     autrefacefaite{(Warning: autreface deja faite.\n)print}if
     /autrefacefaite true def
     cparray format 1 add get loadpage
-%    (% pion ") out nompion out ("\n) out
-% calcul de xpion et ypion
-    /xpion Xmin 0.5 add taillepions 1 add
-    face{nbpions comptepions sub}{comptepions 1 sub}ifelse mul add def
+    % (% pion ") out nompion out ("\n) out
+    % calcul de xpion et ypion
+    /xpion getxpion def
     anonymous(face+)! nompion currentpage (outline)!
     [ currentpage R /FitR
     xpion 10 sub Ymin 9.5 sub xpion taillepions add 10 add
