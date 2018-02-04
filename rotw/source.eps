@@ -264,6 +264,7 @@ CURRENTDIR(/ressource.eps)! include
     (kansas)		[1603 2746 true (Kansas)]
     (manitoba)		[1129 3439 false(Manitoba)]
     (hudson)		[1176 3527 true (Hudson)]
+    (groenland)		[2850 3457 true (Grønland)]
     (labrador)		[2030 3285 true (Labrador)]
     (terre-neuve)	[2570 3020 true (Terre-Neuve)]
     (siberie)		[5000 3500 false(Sibérie\n(Сибирь)){1.5 5286 3420 link}]
@@ -391,6 +392,7 @@ resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse
 (img:portugal) (belem)  tordesillas
 (img:portugal) (recife)  tordesillas
 (img:portugal) (rio)  tordesillas
+(img:danemark) (groenland)  tordesillas
 
 % Manilla Galleon reminder
 (img:chineespagne) (philippines)  tordesillasup
@@ -811,9 +813,9 @@ asiaincome
 3 0 ducats 0 1 ducats 0 2 ducats 1 2 ducats 3 2 ducats 1 3 ducats 3 3 ducats
 
 /shadepen (0.5 0.5 0.5) def
-/shaderatio 2 def
+/shaderatio 2 168 mul 155 div def
 /shadeskip 1 def
-/size 168 def
+/size 155 def
 /ystart 3765 size sub def
 /majorsdiploname <<
     (sue) (Suecia)
@@ -828,9 +830,10 @@ asiaincome
     (tur) (Turcia)
     (fra) (Francia)
     (rus) (Russia)
+    (dan) (Dania)
 >> def
 /majorsdiplolevels [(RM) (Su) (MA) (EC) (EW) (Va) (An)] def
-[(sue)(por)(spa)(hab)(hol)(ven)(pru)(pol)(eng)(tur)(fra)(rus)]{
+[(dan)(sue)(por)(spa)(hab)(hol)(ven)(pru)(pol)(eng)(tur)(fra)(rus)]{
     /pays exch def /level 0 def
     (z) pays ! dup cvx exec exch (2) ! cvx exec exch
     5347 ystart size add 9 size
@@ -866,6 +869,7 @@ asiaincome
 
 (Charte diplomatique européenne)@ 4820 memy 2000 110 ab righttext
 2 4840 memy 37.5 add begints (rtriangle) xobject endts
+/size 168 def
 [1 0 0][0 1 1]2800 4420 7 245 {
     i 4 sub 2 string cvs i 4 gt{(+) exch !}if
     (Stability:) 1 index ! xtrace ytrace xsize size writetrace

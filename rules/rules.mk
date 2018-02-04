@@ -234,6 +234,7 @@ TEXBLASONSFILES = $(addprefix $(BLASONSDIR)/,\
  shield_valachie.png\
  shield_venise.png\
  shield_vijayanagar.png\
+ shield_westphalia.png\
  shield_wurtemberg.png)
 TEXSRCFILES = $(addprefix $(RULESDIR)/,\
  EUevents.sty\
