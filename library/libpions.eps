@@ -1,6 +1,6 @@
 /defaultvalue{1 index where {pop pop pop}{def}ifelse}def
 
-/a4 true def
+/a4 false def
 
 /a4width 595 defaultvalue
 /a4height 842 defaultvalue
@@ -11,22 +11,22 @@
 /taillegrandspions 45 defaultvalue
 /taillepetitspions 36 defaultvalue
 /nbgrandspions 12 defaultvalue
-/nbpetitspions 10 defaultvalue
+/nbpetitspions 14 defaultvalue
 
 /topmargin 20 defaultvalue
 /bottommargin 20 defaultvalue
 
 % space between counters
 /grandspionsXspace 0 defaultvalue
-/petitspionsXspace 10 defaultvalue
+/petitspionsXspace 5 defaultvalue
 /grandspionsYspace 0 defaultvalue
-/petitspionsYspace 10 defaultvalue
+/petitspionsYspace 36 defaultvalue
 
 % add the above space after that number of counters
 /grandspionsXfreq 1 defaultvalue
 /grandspionsYfreq 1 defaultvalue
-/petitspionsXfreq 4 defaultvalue
-/petitspionsYfreq 2 defaultvalue
+/petitspionsXfreq 2 defaultvalue
+/petitspionsYfreq 10 defaultvalue
 
 /pagewidth a4 {a4width} {letterwidth} ifelse defaultvalue
 /pageheight a4 {a4height} {letterheight} ifelse defaultvalue
@@ -88,7 +88,11 @@ CURRENTDIR(/images.eps)! include
     /comptepions nbpions def
     cparray format page put
     /Ymin pageheight topmargin sub taillepions sub def
-    /Xmin pagewidth nbpions taillepions 1 add Xspace add mul Xspace sub sub 2 div def
+    /Xmin pagewidth % total width minus
+    nbpions taillepions 1 add mul % size taken by counters
+    nbpions Xfreq idiv Xspace mul add % and size taken by spaces
+    sub
+    2 div def % halved to be same on both margins
     /rangeefinie true def
     (0 G 0.9 g 1 w\n)out %initialisation état graphique
 }def
@@ -133,17 +137,17 @@ counteralone {
 } def
 /drawbackground {
     drawgreybackground
-    /pionsfaits 0 def % number of right sides drawn
+    /pionsfaits 0 def % number of left sides drawn
     Xmin % start
     { nbpions pionsfaits lt {exit} if % everything's done
-      dup drawshortline % draw one right side
+      dup drawshortline % draw one left side
       /pionsfaits pionsfaits 1 add def % one more done
-      taillepions add 1 add % move to left side
+      taillepions add 1 add % move to right side
 
       face {pionsfaits Xfreq mod 0 eq} % Xspace every Xfreq counters
-      { pionsfaits nbpions Xfreq mod sub Xfreq mod 0 eq % drop the mod if spacing backward
-        pionsfaits nbpions lt and}
+      { pionsfaits nbpions Xfreq mod sub Xfreq mod 0 eq pionsfaits 2 ge and} % drop the mod if spacing backward
       ifelse
+      pionsfaits nbpions lt and
 
       {dup drawshortline Xspace add} % draw the left side and move after the Xspace
       if
@@ -187,7 +191,12 @@ def
     ifelse def
     /numspace face
     {pionsagauche Xfreq idiv}
-    {pionsagauche Xfreq add nbpions Xfreq mod sub Xfreq idiv}
+    { nbpions Xfreq mod pionsagauche le % if more counters to the left than the modulo
+      {pionsagauche nbpions Xfreq mod sub Xfreq idiv 1 add} % then space equal to 1 + (pionsagauche-mod)/freq
+      {0} % else, no space
+      ifelse
+      nbpions Xfreq mod 0 eq {1 sub} if % if the modulo is 0, remove the very first space.
+    }
     ifelse def
     Xmin 0.5 add % start
     taillepions 1 add pionsagauche mul add % +(taillepions*pionsagauche)
