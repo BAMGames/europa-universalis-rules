@@ -1,7 +1,7 @@
 # Local defs
 RECORDSGSEXTRA = -SCURRENTDIR=$(RECORDSDIR)
 RECORDSCOLSTEMS=spanishcolonies colonies monarch
-RECORDSACCSTEMS=accounting-rt accounting-income accounting-economic
+RECORDSACCSTEMS=accounting-rt accounting-income
 RECORDSTEXSTEMS=exoticresources tradefleets
 COLRECORDSFILES=$(addprefix $(RECORDSDIR)/,$(addsuffix .pdf,$(RECORDSCOLSTEMS)))
 ACCRECORDSFILES=$(addprefix $(RECORDSDIR)/,$(addsuffix .pdf,$(RECORDSACCSTEMS)))
