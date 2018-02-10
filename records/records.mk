@@ -7,7 +7,7 @@ RECORDSCOUNTRYMONSTEM=$(addprefix monarch-,$(RECORDSCOUNTRY))
 
 RECORDSGSEXTRA = -SCURRENTDIR=$(RECORDSDIR)
 
-RECORDSCOLSTEMS=spanishcolonies colonies monarch monarch-start $(RECORDSCOUNTRYMONSTEM)
+RECORDSCOLSTEMS=spanishcolonies colonies colonies-POR monarch monarch-start $(RECORDSCOUNTRYMONSTEM)
 RECORDSACCSTEMS=accounting-rt accounting-income accounting-rt-start accounting-income-start $(RECORDSCOUNTRYINCSTEM) $(RECORDSCOUNTRYRTSTEM)
 RECORDSTEXSTEMS=exoticresources tradefleets
 
