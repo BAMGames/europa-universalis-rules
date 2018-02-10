@@ -3,9 +3,11 @@ RECORDSCOUNTRY = ANG DAN FRA HIS POL POR RUS TUR VEN
 RECORDSCOUNTRYINCSTEM=$(addprefix accounting-income-,$(RECORDSCOUNTRY))
 RECORDSCOUNTRYRTSTEM=$(addprefix accounting-rt-,$(RECORDSCOUNTRY))
 
+RECORDSCOUNTRYMONSTEM=$(addprefix monarch-,$(RECORDSCOUNTRY))
+
 RECORDSGSEXTRA = -SCURRENTDIR=$(RECORDSDIR)
 
-RECORDSCOLSTEMS=spanishcolonies colonies monarch monarch-start
+RECORDSCOLSTEMS=spanishcolonies colonies monarch monarch-start $(RECORDSCOUNTRYMONSTEM)
 RECORDSACCSTEMS=accounting-rt accounting-income accounting-rt-start accounting-income-start $(RECORDSCOUNTRYINCSTEM) $(RECORDSCOUNTRYRTSTEM)
 RECORDSTEXSTEMS=exoticresources tradefleets
 
