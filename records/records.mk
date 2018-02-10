@@ -5,7 +5,7 @@ RECORDSCOUNTRYINCSTEM=$(addprefix accounting-income-,$(RECORDSCOUNTRY))
 RECORDSGSEXTRA = -SCURRENTDIR=$(RECORDSDIR)
 
 RECORDSCOLSTEMS=spanishcolonies colonies monarch
-RECORDSACCSTEMS=accounting-rt accounting-income accounting-income-start $(RECORDSCOUNTRYINCSTEM)
+RECORDSACCSTEMS=accounting-rt accounting-income accounting-rt-start accounting-income-start $(RECORDSCOUNTRYINCSTEM)
 RECORDSTEXSTEMS=exoticresources tradefleets
 
 COLRECORDSFILES=$(addprefix $(RECORDSDIR)/,$(addsuffix .pdf,$(RECORDSCOLSTEMS)))
