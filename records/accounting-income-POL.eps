@@ -1,0 +1,64 @@
+%!PS
+BOOTFILE (r) file run
+HOMEDIR(/library/librecord.eps)! include
+<< /Title ((Economic record Sheet B - Incomes)) >> infochunk
+begindocument
+beginpage
+(Economic record sheet B - Income) recordsheettitle
+[48 72 237 31 547{}for ] recordmodel
+
+(Turn number) ntitle
+(Provinces income) () () nnntitle    %B1
+(Vassal provinces income) () () nnntitle %B2
+(Occupation, Pillages, Revolts, …) () () nnntitle %B3
+(Event) (±) () nnntitle %B4
+(Land income) (1+2-3+4) () gggtitle %B5
+(Manufactures) () () nnntitle %B6
+(European mines) () () nnntitle %B7
+(Industrial income) (6+7) () gggtitle %B8
+(Domestic trade income) (~(1+2)) () nnntitle %B9
+(Foreign trade income) () () nnntitle %B10
+(STZ+CTZ level income) () () nnntitle %B11
+(STZ+CTZ monopoly income) () () nnntitle %B12
+(Partial/Total monopolies) (#/#) () nnntitle %B13
+(Trade centres income) () () nnntitle %B14
+(Trade centre losses) () () nnntitle %B15
+(Trade income) (9+10+11+12+14-15) () gggtitle %B16
+(Colonies) () () nnntitle %B17
+(Trading posts) () () nnntitle %B18
+(Exotic resources) () () nnntitle %B19
+(Partial/Total monopolies) (#/#) () nnntitle %B20
+(ROTW income) (17+18+19) () gggtitle %B21
+(Special income) () () nnntitle %B22
+(Income) (5+8+16+21+22) () GGGtitle %B23
+(Events) (±) () nnntitle %B24
+(Gross income) (23+24) () bbbtitle %B25
+(Loan interests) (C2+C6) () nnntitle %B26
+(Mandatory loan refund) (cf C3) () nnntitle %B27
+(RT Collapse ?) (A8+25-26-27 <0) () bbbntitle %B28
+(Optional loan refunds) ((C3)+C8) () nnntitle %B29
+(Unit maintenance) () () nnntitle %B30
+(Fort. & presidios maintenance) () () nnntitle %B31
+(Missions maintenance) () () nnntitle %B32
+(Units purchase) () () nnntitle %B33
+(Fort. purchase) () () nnntitle %B34
+(Administrative actions) () () nnntitle %B35
+(Administrative reactions) () () nnntitle %B36
+(Other expenses) () () nnntitle %B37
+(Adm. total) (26+27+∑(29,37)) () gggtitle %B38
+(Exceptional taxes modifier) () () bbbtitle %B39
+(Passive campaigns) (x10D$) () nnntitle %B40
+(Active campaigns) (x20D$) () nnntitle %B41
+(Major campaigns) (x50D$) () nnntitle %B42
+(Multiple campaigns) (x100D$) () nnntitle %B43
+(Exceptional recruitments) () () nnntitle %B44
+(Naval refit) () () nnntitle %B45
+(Presidios build) () () nntitle %B46
+(Military expenses) (∑(40,46)) () gggtitle %B47
+(Total expenses) (38+47) () bbbtitle %B48
+recordgrid
+1 turnnumber
+() countryname
+endpage
+enddocument
+quit
