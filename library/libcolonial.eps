@@ -27,7 +27,7 @@ HOMEDIR(/library/library.eps)! include
 	} for
 	{(f\n) out}if
 	false
-	0 0 2 headers length 2 sub { /i exch def 
+	0 0 2 headers length 2 sub { /i exch def
 	    headers i get add
 	    i 3 mod 0 eq {
 		exch pop true exch ( )out
@@ -46,11 +46,11 @@ HOMEDIR(/library/library.eps)! include
     1 1 lines { /i exch def
 	i processnumber headers 0 get headers 2 get 2 div add topbox lineheight
 	i mul sub headers 2 get lineheight xfontname centertext
-    } for 
+    } for
     1 1 lines { /i exch def
 	headers 0 get display ( ) out topbox lineheight i mul sub dup display
 	( m ) out headers 0 get width add display ( ) out display ( l\n) out
-    } for 
+    } for
     (S\n) out
     /linetop ( ) topbox 10 string cvs ( m ) ! ! def
     /linebot ( ) bottom 10 string cvs ( l\n) ! ! def
@@ -72,7 +72,7 @@ HOMEDIR(/library/library.eps)! include
     /linebot ( ) bottom 10 string cvs ( l\n) ! ! def
     0 1 xboxes {20 mul bwidth add startx add dup
 	display linetop out display linebot out
-    } for 
+    } for
     [startx bottom bwidth xboxes 20 mul add lineheight]dup{display( )out}forall
     ( re B\n) out aload pop 4 -1 roll bwidth 2 div add 4 1 roll
     (0 G 0 g\n) out
@@ -150,3 +150,38 @@ def
 %    def
 %    fleetrows {fleetbox}repeat
 }def
+
+/printvalue {50 15 (FontArialNarrow) righttext} def
+
+/monarchname {
+    20 770 150 15 (FontArialNarrow) lefttext
+} def
+
+/monarchvalues {
+    [570 530 490 450 410 380 330 280 240 200]
+    {770 printvalue} forall
+    monarchname
+} def
+
+/periodvalues {
+    [572 550 530 490 450 425 399 373 347 317 287 257 230 190 110]
+    {662 printvalue} forall
+} def
+
+/dipstart 542 def
+/dipy dipstart def
+/nextdip {/dipy dipy 15.8 sub def} def
+/dipvalues {
+    [220 180 140 50] {dipy printvalue} forall
+    nextdip
+} def
+
+/actstart 632 def
+/acty actstart def
+/nextact {/acty acty 15.8 sub def} def
+/actvalues {
+    [530 490 450 410 300] {acty printvalue} forall
+    nextact
+} def
+
+/countryname {20 812 50 15 (FontArialNarrow-Bold) lefttext} def
