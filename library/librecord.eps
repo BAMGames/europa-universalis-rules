@@ -11,7 +11,7 @@ HOMEDIR(/library/library.eps)! include
 /yystart yyinit def /smallstep 8 def
 /yy yyinit def
 /lineinc {
-    line 0 eq {(#)}{line 2 string cvs}ifelse
+    line 0 eq {(#)}{line 2 string cvs	}ifelse
     60 yy 24 ystep (FontArialNarrow) centertext
     /line line 1 add def /yy yy ystep sub def
 }def
@@ -21,9 +21,18 @@ HOMEDIR(/library/library.eps)! include
 /darkgrayset {/firstgray /secondgray 0.75 def 0.85 def}def
 /verydarkgrayset {/firstgray /secondgray 0.7 def 0.8 def}def
 /row 0 def
+/xxxtitle {
+    3 1 roll
+    234 yy 159 ystep mycurrentfont righttext
+    75 yy 155 ystep mycurrentfont lefttext
+    rm
+    261 yy 30 ystep mycurrentfont righttext
+    lineinc
+} def
 /xxtitle {
     234 yy 159 ystep mycurrentfont righttext
-    75 yy 155 ystep mycurrentfont lefttext lineinc } def
+    75 yy 155 ystep mycurrentfont lefttext lineinc
+} def
 /xtitle { 75 yy 159 ystep mycurrentfont lefttext lineinc } def
 /bband {
 %    /gray false def
@@ -58,16 +67,21 @@ HOMEDIR(/library/library.eps)! include
 }def
 /gtitle {/row 0 def darkgrayset nband xtitle}def
 /ggtitle {/row 0 def darkgrayset nband xxtitle}def
+/gggtitle {/row 0 def darkgrayset nband xxxtitle}def
 /Gtitle {/row 0 def verydarkgrayset nband xtitle}def
 /GGtitle {/row 0 def verydarkgrayset nband xxtitle}def
+/GGGtitle {/row 0 def verydarkgrayset nband xxxtitle}def
 /ntitle {/row row 1 add def grayset nband xtitle}def
 /nntitle {/row row 1 add def grayset nband xxtitle}def
+/nnntitle {/row row 1 add def grayset nband xxxtitle}def
 /stitle {/row row 1 add def grayset sband xtitle}def
 /sstitle {/row row 1 add def grayset sband xxtitle}def
 /btitle {/row 0 def bband xtitle}def
 /bbtitle {/row 0 def bband xxtitle}def
+/bbbtitle {/row 0 def bband xxxtitle}def
 /bntitle {/row row 1 add def grayset bnband xtitle}def
 /bbntitle {/row row 1 add def grayset bnband xxtitle}def
+/bbbntitle {/row row 1 add def grayset bnband xxxtitle}def
 /recordsheettitle {
     (0 G 0 g 1 w\n)out
 (0 g 48 )out yy ystep add display ( 499 20 re B 1 g )out
@@ -88,6 +102,21 @@ HOMEDIR(/library/library.eps)! include
     (S\n) out
 } def
 /recordskip {
-/yy exch yy exch ystep add sub def
-/yyinit yy def
+    /yy exch yy exch ystep add sub def
+    /yyinit yy def
 }def
+
+/turnnumber { % does ot work for number larger than 100...
+    bf
+    dup 9 add 1 exch % start setp end
+    { dup dup 10 lt {1}{2} ifelse % length
+      string cvs % to write
+      exch 31 mul 230 add % xpos
+      yystart 25 ystep mycurrentfont righttext
+    } for
+} def
+
+/countryname {
+    bf
+    40 yystart ystep add 25 ystep mycurrentfont righttext
+} def
