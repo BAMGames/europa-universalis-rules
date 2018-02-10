@@ -1,10 +1,16 @@
 # Local defs
+RECORDSCOUNTRY = ANG DAN FRA HIS POL POR RUS TUR VEN
+RECORDSCOUNTRYINCSTEM=$(addprefix accounting-income-,$(RECORDSCOUNTRY))
+
 RECORDSGSEXTRA = -SCURRENTDIR=$(RECORDSDIR)
+
 RECORDSCOLSTEMS=spanishcolonies colonies monarch
-RECORDSACCSTEMS=accounting-rt accounting-income accounting-income-start
+RECORDSACCSTEMS=accounting-rt accounting-income accounting-income-start $(RECORDSCOUNTRYINCSTEM)
 RECORDSTEXSTEMS=exoticresources tradefleets
+
 COLRECORDSFILES=$(addprefix $(RECORDSDIR)/,$(addsuffix .pdf,$(RECORDSCOLSTEMS)))
 ACCRECORDSFILES=$(addprefix $(RECORDSDIR)/,$(addsuffix .pdf,$(RECORDSACCSTEMS)))
+
 $(COLRECORDSFILES): $(LIBDIR)/libcolonial.eps
 $(ACCRECORDSFILES): $(LIBDIR)/librecord.eps
 
