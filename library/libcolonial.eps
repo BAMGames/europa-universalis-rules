@@ -151,15 +151,19 @@ def
 %    fleetrows {fleetbox}repeat
 }def
 
+/ystep 15.8 def
 /printvalue {50 15 (FontArialNarrow) righttext} def
+/linevalues {
+    { yline printvalue } forall
+    /yline yline ystep add def
+} def
 
 /monarchname {
     20 770 150 15 (FontArialNarrow) lefttext
 } def
-
-/monarchvalues {
+    /monarchvalues {
     [570 530 490 450 410 380 330 280 240 200]
-    {770 printvalue} forall
+    /yline 770 def linevalues
     monarchname
 } def
 
@@ -184,4 +188,12 @@ def
     nextact
 } def
 
-/countryname {20 812 50 15 (FontArialNarrow-Bold) lefttext} def
+/countryname {16 812 50 15 (FontArialNarrow-Bold) lefttext} def
+
+/tpstart 770 def
+/tpy tpstart def
+/nexttp {/tpy tpy 15.8 sub def} def
+/tpvalues {
+    [300 250 100] {tpy printvalue} forall
+    nexttp
+} def

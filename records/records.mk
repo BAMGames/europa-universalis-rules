@@ -1,13 +1,13 @@
 # Local defs
 RECORDSCOUNTRY = ANG DAN FRA HIS POL POR RUS TUR VEN
-RECORDSCOUNTRYINCSTEM=$(addprefix accounting-income-,$(RECORDSCOUNTRY))
-RECORDSCOUNTRYRTSTEM=$(addprefix accounting-rt-,$(RECORDSCOUNTRY))
+RECORDSCOUNTRYINCSTEM=$(addprefix tutorial/accounting-income-,$(RECORDSCOUNTRY))
+RECORDSCOUNTRYRTSTEM=$(addprefix tutorial/accounting-rt-,$(RECORDSCOUNTRY))
 
-RECORDSCOUNTRYMONSTEM=$(addprefix monarch-,$(RECORDSCOUNTRY))
+RECORDSCOUNTRYMONSTEM=$(addprefix tutorial/monarch-,$(RECORDSCOUNTRY))
 
 RECORDSGSEXTRA = -SCURRENTDIR=$(RECORDSDIR)
 
-RECORDSCOLSTEMS=spanishcolonies colonies colonies-start monarch monarch-start $(RECORDSCOUNTRYMONSTEM)
+RECORDSCOLSTEMS=spanishcolonies colonies tutorial/colonies-start monarch tutorial/monarch-start $(RECORDSCOUNTRYMONSTEM)
 RECORDSACCSTEMS=accounting-rt accounting-income accounting-rt-start accounting-income-start $(RECORDSCOUNTRYINCSTEM) $(RECORDSCOUNTRYRTSTEM)
 RECORDSTEXSTEMS=exoticresources tradefleets
 
