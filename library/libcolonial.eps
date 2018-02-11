@@ -151,9 +151,9 @@ def
 %    fleetrows {fleetbox}repeat
 }def
 
-/ystep 15.8 def
+/ystep 15 def
 /printvalueright {50 15 (FontArialNarrow) righttext} def
-/printvalueleft {50 15 (FontArialNarrow) righttext} def
+/printvalueleft {50 15 (FontArialNarrow) lefttext} def
 /linevalues {
     { yline printvalueright } forall
     /yline yline ystep sub def
@@ -190,6 +190,29 @@ def
 /firsttp true def
 /tpvalues {
     firsttp {/yline 781 def /firsttp false def} if
-    280 yline printvalueright
-    [280 240 135] linevalues
+    282 yline printvalueright
+    150 yline printvalueleft
+    40 yline printvalueleft
+    /yline yline ystep sub def
+} def
+
+/firstcol true def
+/colvalues {
+    firstcol {/yline 586 def /firstcol false def} if
+    150 yline printvalueleft
+    40 yline printvalueleft
+    [282 263 244] linevalues
+} def
+
+/firsttf true def
+/tfvalues {
+    firsttf {/yline 316 def /firsttf false def} if
+    {
+        (146 ) out yline 1 add display (m ) out
+        (166 ) out yline ystep add 1 add display (l ) out
+        (146 ) out yline ystep add 1 add display (m ) out
+        (166 ) out yline 1 add display (l S\n) out
+    } if
+    40 yline printvalueleft
+    /yline yline ystep sub def
 } def
