@@ -152,10 +152,11 @@ def
 }def
 
 /ystep 15.8 def
-/printvalue {50 15 (FontArialNarrow) righttext} def
+/printvalueright {50 15 (FontArialNarrow) righttext} def
+/printvalueleft {50 15 (FontArialNarrow) righttext} def
 /linevalues {
-    { yline printvalue } forall
-    /yline yline ystep add def
+    { yline printvalueright } forall
+    /yline yline ystep sub def
 } def
 
 /monarchname {
@@ -164,36 +165,31 @@ def
     /monarchvalues {
     [570 530 490 450 410 380 330 280 240 200]
     /yline 770 def linevalues
-    monarchname
+    20 770 printvalueleft
 } def
 
 /periodvalues {
     [572 550 530 490 450 425 399 373 347 317 287 257 230 190 110]
-    {662 printvalue} forall
+    /yline 662 def linevalues
 } def
 
-/dipstart 542 def
-/dipy dipstart def
-/nextdip {/dipy dipy 15.8 sub def} def
+/firstdip true def
 /dipvalues {
-    [220 180 140 50] {dipy printvalue} forall
-    nextdip
+    firstdip {/yline 542 def /firstdip false def} if
+    [220 180 140 50] linevalues
 } def
 
-/actstart 632 def
-/acty actstart def
-/nextact {/acty acty 15.8 sub def} def
+/firstact true def
 /actvalues {
-    [530 490 450 410 300] {acty printvalue} forall
-    nextact
+    firstact {/yline 632 def /firstact false def} if
+    [530 490 450 410 300] linevalues
 } def
 
 /countryname {16 812 50 15 (FontArialNarrow-Bold) lefttext} def
 
-/tpstart 770 def
-/tpy tpstart def
-/nexttp {/tpy tpy 15.8 sub def} def
+/firsttp true def
 /tpvalues {
-    [300 250 100] {tpy printvalue} forall
-    nexttp
+    firsttp {/yline 781 def /firsttp false def} if
+    280 yline printvalueright
+    [280 240 135] linevalues
 } def
