@@ -98,7 +98,7 @@ HOMEDIR(/library/library.eps)! include
 }def
 
 /tablecol {
-[ 16 (#) 20 (Colony Name) 110 (Area) 80 (Dif.) 20 (Tol.) 20 (Base) 20 (Level) 30 (Inc) 20 (Gold) 20 (†) 10 (Wo) 20 (Sa) 20 (PO) 20 (Sp) 20 (Fu) 20 (Sl) 20 (Si) 20 (PA) 20 (Su) 20 (Co) 20 (Fi) 20 ]
+[ 16 (#) 20 (Colony Name) 110 (Area) 80 (Base) 20 (Dif.) 20 (Tol.) 20 (Level) 30 (Inc) 20 (Gold) 20 (†) 10 (Wo) 20 (Sa) 20 (PO) 20 (Sp) 20 (Fu) 20 (Sl) 20 (Si) 20 (PA) 20 (Su) 20 (Co) 20 (Fi) 20 ]
 {2 string cvs} 3 -1 roll bottom true box
 }def
 
@@ -152,8 +152,8 @@ def
 }def
 
 /ystep 15 def
-/printvalueright {50 15 (FontArialNarrow) righttext} def
-/printvalueleft {50 15 (FontArialNarrow) lefttext} def
+/printvalueright {100 15 (FontArialNarrow) righttext} def
+/printvalueleft {100 15 (FontArialNarrow) lefttext} def
 /linevalues {
     { yline printvalueright } forall
     /yline yline ystep sub def
