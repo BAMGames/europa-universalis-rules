@@ -18,9 +18,9 @@ PIONSEXTFILES=$(GSCOMMON) $(GSLIBCOMMON) $(GSCOMCOMMON) $(LIBDIR)/libpions.eps $
 
 # Local targets
 PIONSVIRTUALS=view bitmaprelease bitmapdownload
-PIONSFINALTARGETS=pions.pdf planchecontact.pdf
+PIONSFINALTARGETS=pions.pdf planchecontact.pdf pionsSS.pdf pionsSD.pdf pionsBS.pdf pionsBD.pdf
 PIONSNOTALLTARGETS=pions-ops.eps pions-ops.pdf
-PIONSTARGETS=pions.eps manifest.txt
+PIONSTARGETS=pions.eps manifest.txt pionsSS.eps pionsSD.eps pionsBS.eps pionsBD.eps
 PIONSDEBUGTARGETS=pions.mk2 depends.txt targets bitmap
 PIONSSLOWTARGETS=pions.eps bitmap
 
@@ -32,7 +32,7 @@ PIONSDEBUGTARGETS+=bitmap-lowres bitmap-highres
 # This method updates counters.txt when building pions-ops.pdf
 # Building pions-ops.pdf is long (>30')
 
-$(PIONSDIR)/pions.pdf $(PIONSDIR)/planchecontact.pdf $(PIONSDIR)/pions-ops.pdf: $(PIONSDIR)/%.pdf: $(PIONSCOMMON) $(PIONSDIR)/%.eps $(PIONSEXTFILES)
+$(PIONSDIR)/pions.pdf $(PIONSDIR)/pionsSS.pdf $(PIONSDIR)/pionsSD.pdf $(PIONSDIR)/pionsBS.pdf $(PIONSDIR)/pionsBD.pdf $(PIONSDIR)/planchecontact.pdf $(PIONSDIR)/pions-ops.pdf: $(PIONSDIR)/%.pdf: $(PIONSCOMMON) $(PIONSDIR)/%.eps $(PIONSEXTFILES)
 	@-if [ ! -d "$(PIONSDIR)/targets" ]; then mkdir $(PIONSDIR)/targets; fi
 	@l=$$(wc -l $(PIONSDIR)/$*.eps|cut -f1 -d' ');l=$$((l-10));a=$$($(DISP) "multiple" "$(PIONSCLASS)" "0000/0000");$(DISP) "$(PIONSCLASS)" "$*:_init:0000/0000";$(GSEXEC) $(PIONSGSEXTRA) -sSUFFIX="/$$l" -sPREFIX="$$a[$*:" -sOutput=$@ -DPDFOUTPUT $(PIONSDIR)/$*.eps 2>> $(LOGFILE)
 	@$(RMTARGETS) $(PIONSDIR)/targets
@@ -41,7 +41,19 @@ $(PIONSDIR)/pions.pdf $(PIONSDIR)/planchecontact.pdf $(PIONSDIR)/pions-ops.pdf: 
 
 $(PIONSDIR)/pions.eps: $(PIONSCOMMON) $(BINDIR)/extract $(PIONSNUMERIC)
 	@$(DISP) "$(PIONSCLASS)" "template"
-	@$(BINDIR)/extract $(PIONSNUMERIC) > $@
+	@$(BINDIR)/extract "all" "all" $(PIONSNUMERIC) > $@
+$(PIONSDIR)/pionsSS.eps: $(PIONSCOMMON) $(BINDIR)/extract $(PIONSNUMERIC)
+	@$(DISP) "$(PIONSCLASS)" "template"
+	@$(BINDIR)/extract "small" "single" $(PIONSNUMERIC) > $@
+$(PIONSDIR)/pionsSD.eps: $(PIONSCOMMON) $(BINDIR)/extract $(PIONSNUMERIC)
+	@$(DISP) "$(PIONSCLASS)" "template"
+	@$(BINDIR)/extract "small" "double" $(PIONSNUMERIC) > $@
+$(PIONSDIR)/pionsBS.eps: $(PIONSCOMMON) $(BINDIR)/extract $(PIONSNUMERIC)
+	@$(DISP) "$(PIONSCLASS)" "template"
+	@$(BINDIR)/extract "big" "single" $(PIONSNUMERIC) > $@
+$(PIONSDIR)/pionsBD.eps: $(PIONSCOMMON) $(BINDIR)/extract $(PIONSNUMERIC)
+	@$(DISP) "$(PIONSCLASS)" "template"
+	@$(BINDIR)/extract "big" "double" $(PIONSNUMERIC) > $@
 $(PIONSDIR)/pions-ops.eps: $(PIONSCOMMON) $(BINDIR)/extract $(PIONSNUMERIC) $(PIONSNOTPRINTED)
 	@$(DISP) "$(PIONSCLASS)" "OPS template"
 	@echo "%!PS" > $@
@@ -95,4 +107,3 @@ $(PIONSDIR)/update-$(1)res: $(PIONSDIR)/pions-ops.pdf $(PIONSDIR)/manifest.txt
 endef
 
 $(foreach res,high low,$(eval $(call RES_template,$(res))))
-

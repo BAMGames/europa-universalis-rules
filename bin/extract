@@ -1,5 +1,11 @@
 #!/usr/bin/perl
 @files=@ARGV;
+$sizes=shift(@files);
+$sides=shift(@files);
+if ($sizes eq "all" || $sizes eq "big") {$big=true}
+if ($sizes eq "all" || $sizes eq "small") {$small=true}
+if ($sides eq "all" || $sides eq "single") {$single=true}
+if ($sides eq "all" || $sides eq "double") {$double=true}
 %info=();
 @roman=("0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX");
 foreach $file (@files) {
@@ -59,6 +65,7 @@ sub dropit {
 	print $commands{$k};
     }
 }
+if ($big && $double) {
 foreach $k (@infoARMY) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -73,8 +80,9 @@ foreach $k (@infoARMY) {
 	$command.=" dessineARMY\n";
  	sendit($k,$command);
    }
-}
+}}
 delete $info{"ARMY"};
+if ($big && $double) {
 foreach $k (@infoFLEET) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -89,8 +97,9 @@ foreach $k (@infoFLEET) {
 	$command.=" dessineFLEET\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"FLEET"};
+if ($small && $single) {
 foreach $k (@infoLD) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -106,8 +115,9 @@ foreach $k (@infoLD) {
 	$command.=" dessineLD\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"LD"};
+if ($small && $double) {
 foreach $k (@infoLDND) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -124,8 +134,9 @@ foreach $k (@infoLDND) {
 	$command.=" dessineLDND\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"LDND"};
+if ($small && $single) {
 foreach $k (@infoND) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -145,8 +156,9 @@ foreach $k (@infoND) {
 	$command.=" dessineND\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"ND"};
+if ($small && $double) {
 foreach $k (@infoLDENDE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -163,8 +175,9 @@ foreach $k (@infoLDENDE) {
 	$command.=" dessineLDENDE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"LDENDE"};
+if ($small && $single) {
 foreach $k (@infoLDE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -180,8 +193,9 @@ foreach $k (@infoLDE) {
 	$command.=" dessineLDE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"LDE"};
+if ($small && $single) {
 foreach $k (@infoNDE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;$index=$k->{"First index"};
@@ -197,8 +211,9 @@ foreach $k (@infoNDE) {
 	$command.=" dessineNDE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"NDE"};
+if ($small && $double) {
 foreach $k (@infoPIRATE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -208,8 +223,9 @@ foreach $k (@infoPIRATE) {
 	$command.=" dessinePIRATE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"PIRATE"};
+if ($small && $double) {
 foreach $k (@infoARSENAL) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -220,8 +236,9 @@ foreach $k (@infoARSENAL) {
 	$command.=" dessineARSENAL\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"ARSENAL"};
+if ($small && $double) {
 foreach $k (@infoFORTERESSE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -231,8 +248,9 @@ foreach $k (@infoFORTERESSE) {
 	$command.=" dessineFORTERESSE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"FORTERESSE"};
+if ($small && $double) {
 foreach $k (@infoFORTERESSEX) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -243,8 +261,9 @@ foreach $k (@infoFORTERESSEX) {
 	$command.=" dessineFORTERESSEX\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"FORTERESSEX"};
+if ($small && $single) {
 foreach $k (@infoROI) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -255,8 +274,9 @@ foreach $k (@infoROI) {
 	$command.=" dessineROI\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"ROI"};
+if ($small && $double) {
 foreach $k (@infoROIPAIRE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -267,8 +287,9 @@ foreach $k (@infoROIPAIRE) {
 	$command.=" dessineROIPAIRE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"ROIPAIRE"};
+if ($big && $single) {
 foreach $k (@infoSTABILITE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -277,8 +298,9 @@ foreach $k (@infoSTABILITE) {
 	$command.=" dessineSTABILITE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"STABILITE"};
+if ($big && $single) {
 foreach $k (@infoTECHNOLOGIE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -288,8 +310,9 @@ foreach $k (@infoTECHNOLOGIE) {
 	$command.=" dessineTECHNOLOGIE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"TECHNOLOGIE"};
+if ($small && $single) {
 foreach $k (@infoPOSSESSION) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -300,8 +323,9 @@ foreach $k (@infoPOSSESSION) {
 	$command.=" dessinePOSSESSION\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"POSSESSION"};
+if ($big) {
 foreach $k (@infoCONTROLEREGION) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -310,10 +334,16 @@ foreach $k (@infoCONTROLEREGION) {
 	$command.=str($k->{"Name"});
 	$command.=boolnum($k->{"Length"})."0";
 	$command.=" dessineCONTROLEREGION\n";
-	sendit($k,$command);
+        if ($single && ($k->{"Name"} eq "")) {
+            sendit($k,$command);
+        }
+        if ($double && ($k->{"Name"} ne "")) {
+            sendit($k,$command);
+        }
     }
-}
+}}
 delete $info{"CONTROLEREGION"};
+if ($small && $single) {
 foreach $k (@infoOWNERCONTROL) {
     $count=$k->{"Ownership"};
     foreach $i (1..$count) {
@@ -339,8 +369,9 @@ foreach $k (@infoOWNERCONTROL) {
 	$command.=" dessineINTERVENTION\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"OWNERCONTROL"};
+if ($big && $double) {
 foreach $k (@infoMANUFACTURE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -351,8 +382,9 @@ foreach $k (@infoMANUFACTURE) {
 	$command.=" dessineMANUFACTURE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"MANUFACTURE"};
+if ($big && $double) {
 foreach $k (@infoDIPLOMATIE) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -371,8 +403,9 @@ foreach $k (@infoDIPLOMATIE) {
 	$command.=" dessineDIPLOMATIE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"DIPLOMATIE"};
+if ($big && $double) {
 foreach $k (@infoVASSALITY) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -382,8 +415,9 @@ foreach $k (@infoVASSALITY) {
 	$command.=" dessineVASSALITY\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"VASSALITY"};
+if ($big && $double) {
 foreach $k (@infoKALMAR) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -397,8 +431,9 @@ foreach $k (@infoKALMAR) {
 	$command.=" dessineKALMARDISSIDENCE\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"KALMAR"};
+if ($big && $double) {
 foreach $k (@infoROTWTREATY) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -407,8 +442,9 @@ foreach $k (@infoROTWTREATY) {
 	$command.=" dessineROTWTREATY\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"ROTWTREATY"};
+if ($small && $double) {
 foreach $k (@infoTRADEFLEET) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -422,41 +458,52 @@ foreach $k (@infoTRADEFLEET) {
 	$command.=" dessineTRADEFLEET\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"TRADEFLEET"};
 foreach $k (@infoVIRTUAL) {
     $command="";
     if (($k->{"Active"} & 1)==1) {
+        if ($big && $double) {
 	$command.=str($k->{"Country"});
 	$command.="(Army I)";
 	$command.=str($k->{"Country"});
 	$command.=" dessineARMY\n";
+        }
 	foreach $i (1..2) {
+            if ($small && $single) {
 	    $command.=str($k->{"Country"});
 	    $command.="true";
 	    $command.=str($i);
 	    $command.=str($k->{"Country"});
 	    $command.=" dessineLD\n";
+            }
 	}
     }
     if (($k->{"Active"} & 2)==2) {
+        if ($big && $double) {
         $command.=str($k->{"Country"});
         $command.=str($k->{"Religion"});
         $command.="(4)(50)(2)(4)(5)(8)(*)(10)(Indep) dessineDIPLOMATIE\n";
+        }
     }
     $count=$k->{"Ownership"};
     foreach $i (1..$count) {
+        if ($small && $single) {
 	$command.=str($k->{"Country"});
 	$command.="()0 dessinePOSSESSION\n";
+        }
     }
     $count=$k->{"Control"};
     foreach $i (1..$count) {
+        if ($small && $single) {
 	$command.=str($k->{"Country"});
 	$command.=" dessineCONTROLE\n";
+        }
     }
     sendit($k,$command);
 }
 delete $info{"VIRTUAL"};
+if ($big && $double) {
 foreach $k (@infoCOLONY) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -466,8 +513,9 @@ foreach $k (@infoCOLONY) {
 	$command.=" dessineCOLONY\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"COLONY"};
+if ($big && $double) {
 foreach $k (@infoTRADINGPOST) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -477,8 +525,9 @@ foreach $k (@infoTRADINGPOST) {
 	$command.=" dessineTRADINGPOST\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"TRADINGPOST"};
+if ($big && $double) {
 foreach $k (@infoESTABLISHMENT) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -488,9 +537,10 @@ foreach $k (@infoESTABLISHMENT) {
 	$command.=" dessineESTABLISHMENT\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"ESTABLISHMENT"};
 $pacha_number=1;
+if ($small && $double) {
 foreach $k (@infoPACHA) {
     $command=str($k->{"Country"});
     $command.="(".$k->{"NameB"};
@@ -502,8 +552,9 @@ foreach $k (@infoPACHA) {
     $command.=str($k->{"Stats"});
     $command.=" dessinePACHA\n";
     sendit($k,$command);
-}
+}}
 delete $info{"PACHA"};
+if ($small && $single) {
 foreach $k (@infoLEADER) {
     $code=$k->{"NameA"};$code=~s/ /-/g;
     $command=str($code);
@@ -516,8 +567,9 @@ foreach $k (@infoLEADER) {
     $command.=str($k->{"Stats"});
     $command.=" dessineLEADER\n";
     sendit($k,$command);
-}
+}}
 delete $info{"LEADER"};
+if ($small && $double) {
 foreach $k (@infoLEADERDOUBLE) {
     $code=$k->{"NameA"};$code=~s/ /-/g;
     $command=str($code);
@@ -533,8 +585,9 @@ foreach $k (@infoLEADERDOUBLE) {
     $command.=str($k->{"Stats 2"});
     $command.=" dessineLEADERDOUBLE\n";
     sendit($k,$command);
-}
+}}
 delete $info{"LEADERDOUBLE"};
+if ($small && $double) {
 foreach $k (@infoLEADERPAIRE) {
     $code=$k->{"NameA"}.'|'.$k->{"NameA 2"};$code=~s/ /-/g;
     $command=str($code);
@@ -554,8 +607,9 @@ foreach $k (@infoLEADERPAIRE) {
     $command.=str($k->{"Stats"});
     $command.=" dessineLEADERPAIRE\n";
     sendit($k,$command);
-}
+}}
 delete $info{"LEADERPAIRE"};
+if ($small && $single) {
 foreach $k (@infoLEADERANONYMOUS) {
     if (substr($k->{"Leader Type"},0,1) eq "P") {
 	$subcode="A";
@@ -575,8 +629,9 @@ foreach $k (@infoLEADERANONYMOUS) {
     $command.=str($k->{"Stats"});
     $command.=" dessineLEADER\n";
     sendit($k,$command);
-}
+}}
 delete $info{"LEADERANONYMOUS"};
+if ($small && $double) {
 foreach $k (@infoLEADERANONYMOUSDOUBLE) {
     if (substr($k->{"Leader Type"},0,1) eq "P") {
 	$subcode="A";
@@ -601,8 +656,9 @@ foreach $k (@infoLEADERANONYMOUSDOUBLE) {
     $command.=str($k->{"Stats"});
     $command.=" dessineLEADERPAIRE\n";
     sendit($k,$command);
-}
+}}
 delete $info{"LEADERANONYMOUSDOUBLE"};
+if ($small && $double) {
 foreach $k (@infoMISSIONNAIRE) {
     $command=str($k->{"Country"});
     $command.=str($k->{"NameC"});
@@ -611,8 +667,9 @@ foreach $k (@infoMISSIONNAIRE) {
     $command.=str("@ ".$k->{"carac"}." +".$k->{"bonus"});
     $command.=" dessineMISSIONNAIRE\n";
     sendit($k,$command);
-}
+}}
 delete $info{"MISSIONNAIRE"};
+if ($small && $double) {
 foreach $k (@infoMISSIONNAIREanonyme) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -623,8 +680,9 @@ foreach $k (@infoMISSIONNAIREanonyme) {
         $command.=" dessineMISSIONNAIREanonyme\n";
         sendit($k,$command);
     }
-}
+}}
 delete $info{"MISSIONNAIREanonyme"};
+if ($small && $double) {
 foreach $k (@infoMISSION) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
@@ -634,9 +692,11 @@ foreach $k (@infoMISSION) {
 	$command.=" dessineMISSION\n";
 	sendit($k,$command);
     }
-}
+}}
 delete $info{"MISSION"};
-foreach $k (@infoRaw) {
+
+if ($small && $double) {
+foreach $k (@infoRawSD) {
     $count=$k->{"Count"};
     $count=~ s/^x//;
     foreach $i (1..$count) {
@@ -647,19 +707,64 @@ foreach $k (@infoRaw) {
 	$command.="%RAW\n";
 	sendit($k,$command);
     }
-}
-delete $info{"Raw"};
+}}
+delete $info{"RawSD"};
+if ($small && $single) {
+foreach $k (@infoRawSS) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command="";
+	foreach $j (1..8) {
+	    $command.=" ".$k->{"Argument ".$j};
+	}
+	$command.="%RAW\n";
+	sendit($k,$command);
+    }
+}}
+delete $info{"RawSS"};
+if ($big && $double) {
+foreach $k (@infoRawBD) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command="";
+	foreach $j (1..8) {
+	    $command.=" ".$k->{"Argument ".$j};
+	}
+	$command.="%RAW\n";
+	sendit($k,$command);
+    }
+}}
+delete $info{"RawBD"};
+if ($big && $single) {
+foreach $k (@infoRawBS) {
+    $count=$k->{"Count"};
+    $count=~ s/^x//;
+    foreach $i (1..$count) {
+	$command="";
+	foreach $j (1..8) {
+	    $command.=" ".$k->{"Argument ".$j};
+	}
+	$command.="%RAW\n";
+	sendit($k,$command);
+    }
+}}
+delete $info{"RawBS"};
 
-$header="%!PS
+$header1="%!PS
 BOOTFILE (r) file run
 /compress true def
-/translation true def
-HOMEDIR(/library/libpions.eps)! include
+/translation true def\n";
+if ($small) {$header2="/big false def\n"} else {$header2="/big true def\n"}
+$header3="HOMEDIR(/library/libpions.eps)! include
 << /Title ((Europa 8 counters)) >> infochunk
 listelog
 begindocument initpages\n";
 $footer="%(-----\\n)log count {50 string cvs (\\n)! log} repeat (-----\\n)log\n closepages enddocument quit\n";
-print $header;
+print $header1;
+print $header2;
+print $header3;
 dropit();
 print $footer;
 

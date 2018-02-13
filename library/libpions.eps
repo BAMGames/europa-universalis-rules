@@ -1,7 +1,7 @@
 /defaultvalue{1 index where {pop pop pop}{def}ifelse}def
 
-/big false def
-%/big true def
+%/big false defaultvalue
+/big true defaultvalue
 
 /bigwidth 396 defaultvalue
 /bigheight 612 defaultvalue
@@ -17,7 +17,7 @@
 /nbgrandspions 8 defaultvalue
 /nbpetitspions 14 defaultvalue
 
-/topmargin 20 defaultvalue
+/topmargin big{37}{20}ifelse defaultvalue
 %/topmargin 37 defaultvalue
 /bottommargin 10 defaultvalue
 
@@ -673,8 +673,10 @@ def
     /niveau exch def /typeX exch def /pays exch def
     /nompion (Fortress ) niveau 1 string cvs ! def
     /filepion (Fortress_blanc_1) def
-    5 beginpion
+    2 beginpion % hacky, should be 5
     communforteresse
+    autreface % hacky
+    communforteresse % hacky
     endpion
 }def
 /dessineARSENAL {
@@ -1426,8 +1428,9 @@ def
     /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
     nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
     lastturn length 0 ne {(-) lastturn}if concatall def
-    5 beginpion
+    2 beginpion % hacky, should be 5
     communchef
+    autreface % hacky
     endpion
 } def
 /dessineMISSIONNAIREanonyme {
@@ -1444,8 +1447,9 @@ def
     /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
     nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
     lastturn length 0 ne {(-) lastturn}if concatall def
-    5 beginpion
+    2 beginpion % hacky, should be 5
     communchef
+    autreface % hacky
     endpion
 } def
 
@@ -1454,12 +1458,13 @@ def
     /pays exch def
     /nompion mark(Mission )countryname( <)nameX(>)concatall def
     /filepion mark (Mission_)pays(_)nameX concatall def
-    5 beginpion
+    2 beginpion % hacky, should be 5
     blasonsmallright
     nameX communnomchef
     (img:mission) 23 5 0.35
     pays (turquie) eq { pop (img:mecca) 23 5 0.35 }if
     putimage
+    autreface % hacky
     endpion
 } def
 
@@ -1994,9 +1999,11 @@ def
     /nompion (Counter Supply) def /pays (neutre) def
     [1  1  1 ][1  1  1]
     /style 1 def
-    5 beginpion
+    2 beginpion % hacky, should be 5
     black fc nameX 50 80 100 20 (FontArialNarrow-Bold) centertext
     (img:peche) 32 17 1 putimage
+    [1  1  1 ][1  1  1]
+    autreface
     endpion
 }def
 
@@ -2112,8 +2119,9 @@ produits {/pays exch def
     /nompion mark(Technology Goal <)nameX(:)niveau 2 string cvs
     (:)case 2 string cvs(:)naval{(Naval)}{(Land)}ifelse(>)concatall def
     /style 1 def
-    typeX{[1 1 1][.75 .75 .75]}{[.75 .75 1][.6 .6 .75]}ifelse
-    4 beginpion
+%    typeX{[1 1 1][.75 .75 .75]}{[.75 .75 1][.6 .6 .75]}ifelse
+    [.75 .75 1][.6 .6 .75] % hacky
+    0 beginpion % hacky, should be 4
     black fc black sc
     nameX 50 70 96 28 (FontArialNarrow-Bold) centertext
     (Box ) case 2 string cvs !
@@ -2122,6 +2130,8 @@ produits {/pays exch def
     50 2 96 18 (FontArialNarrow-Bold) centertext
     50 20 96 18 (FontArialNarrow-Italic) centertext
     naval {(ancremarine)}{(epees)}ifelse 0.5 35 40 begints xobject endts
+    [.75 .75 1][.6 .6 .75] % hacky
+    autreface % hacky
     endpion
 }def
 
