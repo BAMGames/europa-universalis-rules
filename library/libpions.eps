@@ -1,35 +1,35 @@
 /defaultvalue{1 index where {pop pop pop}{def}ifelse}def
 
-/a4 false def
+/big false def
 
-/a4width 595 defaultvalue
-/a4height 842 defaultvalue
-/letterwidth 612 defaultvalue
-/letterheight 792 defaultvalue
+/bigwidth 396 defaultvalue
+/bigheight 612 defaultvalue
+/smallwidth 612 defaultvalue
+/smallheight 792 defaultvalue
+
+/pagewidth big {bigwidth} {smallwidth} ifelse defaultvalue
+/pageheight big {bigheight} {smallheight} ifelse defaultvalue
 
 % 1/2" => 36, 5/8" => 45, 3/4" => 54
 /taillegrandspions 45 defaultvalue
-/taillepetitspions 36 defaultvalue
-/nbgrandspions 12 defaultvalue
+/taillepetitspions 35 defaultvalue
+/nbgrandspions 8 defaultvalue
 /nbpetitspions 14 defaultvalue
 
-/topmargin 20 defaultvalue
-/bottommargin 20 defaultvalue
+/topmargin 37 defaultvalue
+/bottommargin 10 defaultvalue
 
 % space between counters
 /grandspionsXspace 0 defaultvalue
-/petitspionsXspace 5 defaultvalue
-/grandspionsYspace 0 defaultvalue
+/petitspionsXspace 10 defaultvalue
+/grandspionsYspace 9 defaultvalue
 /petitspionsYspace 36 defaultvalue
 
 % add the above space after that number of counters
 /grandspionsXfreq 1 defaultvalue
-/grandspionsYfreq 1 defaultvalue
+/grandspionsYfreq 2 defaultvalue
 /petitspionsXfreq 2 defaultvalue
 /petitspionsYfreq 10 defaultvalue
-
-/pagewidth a4 {a4width} {letterwidth} ifelse defaultvalue
-/pageheight a4 {a4height} {letterheight} ifelse defaultvalue
 
 HOMEDIR(/library/library.eps)! include
 HOMEDIR(/library/common.eps)! include
@@ -90,7 +90,8 @@ CURRENTDIR(/images.eps)! include
     /Ymin pageheight topmargin sub taillepions sub def
     /Xmin pagewidth % total width minus
     nbpions taillepions 1 add mul % size taken by counters
-    nbpions Xfreq idiv Xspace mul add % and size taken by spaces
+    nbpions 1 sub Xfreq idiv Xspace mul add % and size taken by spaces
+    % (nbpions-1)/Xfreq, -1 to avoid counting space if mod=0
     sub
     2 div def % halved to be same on both margins
     /rangeefinie true def
