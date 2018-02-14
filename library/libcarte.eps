@@ -64,7 +64,7 @@ copyfile
     /name2 exch def
     /col1 exch def
     /col0 exch def
-    deffunlin
+%    deffunlin
     deffunlin
     objdict (ShadingSquare)toto ! known not {
 	<</Coords [30 30 50 170] /Extend [true true] /Function
@@ -86,19 +86,29 @@ copyfile
     /name exch def
     /value2 exch 8 string cvs def
     /value exch 5 string cvs def
+    % global variables used to define /toto in deffunlin !!!
     /col1 exch def
     /col0 exch def
+    % met dans /toto col0 et col1 avec leurs RGB séparés par des ':'
+    % puis def un dict (FunctionLin:toto)
     deffunlin
-    objdict (ShadingCircle)toto ! known not {
-	<</Coords [60 140 0 100 100 100] /Function (FunctionLin)
-	toto ! R /ShadingType 3 /ColorSpace /DeviceRGB >>
+    % test pour redéfinir le dict (ShadingCircle:toto)
+    objdict (ShadingCircle)toto ! known not { % if not already defined
+	<</Coords [50 170 30 30] /Extend [true true] /Function (FunctionLin)
+	toto ! R /ShadingType 2 /ColorSpace /DeviceRGB >>
 	(ShadingCircle)toto ! defobj
-    }if
+    } if
     (ShadingCircle)toto ! /pageshadings push
-   1 x y begints
-   (200 100 m 200 155.228333 155.228333 200 100 200 c 44.7732086 200\n)out
-   (0 155.228333 0 100 c 0 44.7732086 44.7732086 0 100 0 c 155.228333 0\n)out
-   (200 44.7732086 200 100 c /ShadingCircle)out toto out( sh n\n)out
+    1 x y begints
+    % move
+    (200 100 m \n) out
+    % draw a circle as four quarter, using Bezier curves…
+    (200 155.228333 155.228333 200 100 200 c \n) out
+    (44.7732086 200 0 155.228333 0 100 c \n) out
+    (0 44.7732086 44.7732086 0 100 0 c \n) out
+    (155.228333 0 200 44.7732086 200 100 c \n) out
+    % use the circle as a clipping path (W n) and use the shading to fill it.
+    (W n /ShadingCircle) toto ! ( sh n\n) ! out
    ximage 1 65 38 begints useimage endts
    pen display ( g )out
    name 100 10 110 30 (FontArialNarrow) centertext

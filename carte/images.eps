@@ -6,6 +6,7 @@
 
 IMAGEDIR regimagedir
 
+% full shield needed
 /countrylist [
 (algerie)(alsace)(angleterre)(arabie)(astrakhan)(bade)(balkans)
 (baviere)(berg)(boheme)(bourgogne)(brandebourg)(brunswick)
@@ -32,7 +33,8 @@ SHADOWDIR regimagedir
 << /Filename BLASONDIR(/templates/blason.pgm)! >> (sdw:blason) defimage
 << /Filename BLASONDIR(/templates/protoblason.pgm)! >> (sdw:protoblason) defimage
 
-[(baviere)(bourgogne)(catalogne)(corse)(courlande)(crimee)(espagne)(finlande)(grenade)(habsbourg)(hanse)(huguenots)(irlande)(ligue)(maroc)(naples)(norvege)(perse)(pologne)(prusse)(russie)(savoie)(transylvanie)(turquie)(ukraine)(venise)(turquievenise)]
+% blurred shield needed
+[(baviere)(bourgogne)(catalogne)(corse)(courlande)(crimee)(danemark)(espagne)(finlande)(grenade)(habsbourg)(hanse)(huguenots)(irlande)(ligue)(maroc)(naples)(norvege)(perse)(pologne)(prusse)(russie)(savoie)(transylvanie)(turquie)(ukraine)(venise)(turquievenise)]
 {/pays exch def
     <<  /Filename BLASONDIR(/shield_)! pays !(.pnm)!
 	/Alpha (sdw:protoblason)>> (img:) (proto)pays ! ! defimage
