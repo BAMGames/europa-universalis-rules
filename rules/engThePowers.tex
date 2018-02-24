@@ -689,7 +689,7 @@ the required type.
 new ones are drawn if needed.
 \bparag The monarch leader as well as the Turkish Vizier and Swedish heirs are
 never counted in this limit (they all bore a ``monarch'' symbol (crown)).
-\bparag If a country as more named leader than its limit, then no unnamed one
+\bparag If a country has more named leader than its limit, then no unnamed one
 is drawn.
 \bparag Should a country fall below its limit during the turn (due to death in
 battle), a new \anonyme\ leader is drawn at the beginning of the next round in
@@ -743,41 +743,6 @@ order to reach the limit again.
 
 
 \section{Estates of a Power}
-
-% RaW: [25, 26, 27, 28, 30, 31]
-
-% \subsection{Provinces}
-% \aparag[National Provinces]\label{chThePowers:National Provinces}
-% Jym: Is in chapter 1.
-
-% \subsection{Monarch survival phase}
-% RaW: 28 This phase is played simultaneously, each player testing the
-% survival of his monarch, and determining if needed the characteristics of
-% its successor.
-
-% The player represents the monarch of his country. The monarch possesses 3
-% values: Administrative (\ADM), Diplomatic (\DIP) and Military (\MIL). These
-% values are used for administrative and diplomatic operations of the country
-% and in a lesser measures in the military domain.
-
-% The different characteristics of a monarch are used for administrative
-% operations, diplomatic operations on minor countries and also to improve the
-% technological level of the player's country. In a lesser measure, the \MIL
-% characteristic may directly affect combat (if the monarch leaves in person
-% to conduct the war).
-
-% Every monarch has also a maximum life duration determined upon his arrival
-% on the throne (i.e. in play). When he dies, characteristics of the successor
-% are determined randomly.
-
-% \aparag The Monarch survival sub-phase consists in the following operations
-% (conducted simultaneously by each player):
-% \bparag Monarchs Survival test
-% \bparag Successor values determination (when required)
-% \bparag Initiative calculation
-
-
-
 \subsection{The monarch}
 
 \aparag The player represents the monarch of the country he is in charge
@@ -786,11 +751,9 @@ reign has a limited duration.
 
 \aparag[Reign Length] A monarch has a reign length evaluated in number of
 turns. A monarch must undergo a survival test each turn, and if he succeeds
-them all successively, he dies at the beginning of the turn following its last
+them all successively, he dies at the beginning of the turn written as its last
 turn of reign. The reign length of a monarch is determined at the moment of
-his advent.%, on the reign table (note that
-% reign length of the first monarch in play is given for each campaign
-% scenario).
+his advent.
 \bparag Monarchs may die earlier than scheduled due to failure of the survival
 test.
 
@@ -805,7 +768,6 @@ stated.
 
 \aparag Each one of these characteristics is determined only once, at the time
 a new monarch ascends the throne (after the death of the precedent).
-% , thanks to the Monarch Values Table~\tableref{table:Reign}
 
 \aparag[Administrative Value] \ADM is the main modifier for most
 administrative operations, either for the choice of the column, or for
@@ -893,7 +855,6 @@ operation at the end of turn (see~\ruleref{chBudget:Stability
 events.
 
 \subsection{Technology}\label{chThepowers:Technology}
-
 \aparag Technology is an abstract representation of the weapons, army
 discipline, military doctrine and such.
 
@@ -905,7 +866,7 @@ some other entities, has a technology level between 1 and 70.
 war. They also have a level between 1 and 70.
 \bparag Whenever the level of a country is higher than the level of a goal,
 the country possess the corresponding technology.
-\bparag These level are recorded with counters on the technology track (on the
+\bparag These levels are recorded with counters on the technology track (on the
 \ROTW map).
 \bparag The initial level of each technological goal is written on its counter
 (or specified in the scenario). The initial level of majors and groups is
@@ -926,9 +887,6 @@ of its cultural group.
 \bparag Major countries also belong to cultural groups. Whenever the
 technology of a major increase, the technology of its groups may also
 increase.
-% \bparag See~\ref{chThePowers:List of religions} for a list of cultural
-% groups.
-
 
 \subsubsection{Technological goals}
 \aparag[Mobile markers] Mobile markers are used to record the level of the
@@ -962,10 +920,10 @@ reached.
 \end{exemple}
 
 \aparag[Stacking of counters.] Two technological goals counters (of the same
-kind: Land or Sea) may never be at the same level (or in the same box of the
-track) and must always have at least one free level between them. If a goal
-should move to the same level as another, or to the level immediately above,
-it stops two levels ahead.
+kind: Land or Sea) may never be at the same or adjacent levels and must always
+have at least one free level between them. If a goal should move to the same
+level as another, or to the level immediately above, it stops two levels
+ahead.
 \bparag The technology marker of a country (or group) may never be exactly at
 the same level as a technological goal (of the same kind). If it stop on it,
 it gains a one level bonus. Conversely, if a goal drops, it stops one level
@@ -1039,19 +997,19 @@ historical occurrence of the technology (typically, \SUE gets \TBAR in the
 \section{Troubles at land and sea}
 \subsection{Revolts}
 % RaW: 30
-A revolt is determined randomly, concerning where and when it occurs. A revolt
-usually brings a drop in the \STAB level of the victim country. This country
-has to crush the revolt as quickly as possible otherwise taking the risk to
-witness an extension of that revolt (that can go as far as overthrowing the
-country's monarch).
+\aparag A revolt is determined randomly, concerning where and when it
+occurs. A revolt usually brings a drop in the \STAB level of the victim
+country. This country has to crush the revolt as quickly as possible otherwise
+taking the risk to witness an extension of that revolt (that can go as far as
+overthrowing the country's monarch).
 
-Revolts are generated by events. The revolt tables indicate the strength and
-location of the revolt, according to the period in play. The revolt tables are
-located at the start of the Events handbook.
+\bparag Revolts are generated by events. The revolt tables indicate the
+strength and location of the revolt, according to the period in play. The
+revolt tables are located at the start of the Events handbook.
 
-One table is used to determine the victim country. Another group of tables
-(one per country) helps determining the revolting province. Finally a table
-gives the strength of the revolt.
+\bparag One table is used to determine the victim country. Another group of
+tables (one per country) helps determining the revolting province. Finally a
+table gives the strength of the revolt.
 
 \aparag[Resolving Revolts] Revolts are rolled for when required per the
 political events. See~\ruleref{chEvents:Revolts} for full details on the
@@ -1060,7 +1018,7 @@ procedure.
 \aparag[Revolt and Income] Provinces in revolt bring no income during the
 country's income phase. Rather than recomputing the income of unrevolted
 provinces each turn, this is recorded as a loss on the Economic Record Sheet
-(line \ERS{Pillages, Revolts, Pashas}).
+(line \ERS{Occupation, Pillages, Revolts}).
 
 \aparag[City control] Unless specified by the event causing the revolt or by
 the strength of the revolt, the city in a revolted province is still
@@ -1088,8 +1046,9 @@ revolts in the \HRE.
 (after~\eventref{pVI:Act Union}) to fight all its revolts and troops of
 \pays{hanovre} (after~\eventref{pVI:Vassalisation Hanover}) to fight revolts
 inside his or \pays{hanovre}'s territory.
-\bparag Exception: during religious or civil war, any country at war or in
-intervention may fight revolts allied to the other side.
+% These are rebellions, not revolts
+% \bparag Exception: during religious or civil war, any country at war or in
+% intervention may fight revolts allied to the other side.
 
 \aparag[Revolts and \STAB] At the end of turn, existing revolts cause loss of
 \STAB as indicated in~\ruleref{chRedep:Revolts Stability}.
@@ -1243,7 +1202,7 @@ line \ERS{Gross income B} and copied back on line \ERS{Gross income A}.
 
 
 \subsubsection{Expenses}
-\aparag Expenses come in two kind:
+\aparag Expenses come in two kinds:
 \bparag The administrative expenses are used to maintain troops and buy new
 ones and to develop commercially or industrially a country.
 \bparag The military expenses are used to move troops during wars. This
@@ -1838,7 +1797,7 @@ state may arise and agreements at this point are purely verbal.
 \end{designnote}
 
 \begin{todo}
-  Turn the names into links to the corresponding chapter/section.
+  Turn the names into links to the corresponding chapter/section (Diplo).
 \end{todo}
 
 \begin{multicols}{2}
