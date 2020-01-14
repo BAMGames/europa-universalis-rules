@@ -43,7 +43,7 @@ RESOLUTION=low
 # GS common definitions
 
 GSDEFS=-SHOMEDIR=$(HOMEDIR) -SBOOTFILE=$(LIBDIR)/bootstrap.eps
-GSEXEC=gs -dEPSCrop -r20x20 -sDEVICE=ppm -SOutputFile=/dev/null -DBATCH -DNOPAUSE -q $(GSDEFS)
+GSEXEC=gs -dNOSAFER -dEPSCrop -r20x20 -sDEVICE=ppm -SOutputFile=/dev/null -DBATCH -DNOPAUSE -q $(GSDEFS)
 
 GSCOMMON=$(HOMEDIR)/.stamp-gs $(LIBDIR)/bootstrap.eps
 GSCHEMINCOMMON=$(GSCOMMON) $(LIBDIR)/libchemin.eps
