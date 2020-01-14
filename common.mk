@@ -126,7 +126,7 @@ include $(RECORDSDIR)/records.mk
 include $(FIGDIR)/figures.mk
 include $(RULESDIR)/rules.mk
 include $(PRINTDIR)/print.mk
-include $(WEBDIR)/web.mk
+#include $(WEBDIR)/web.mk
 
 # Global targets
 
