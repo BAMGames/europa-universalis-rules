@@ -431,6 +431,25 @@ foreach $k (@infoLEADERANONYMOUS) {
     sendit($k,$command);
 }
 delete $info{"LEADERANONYMOUS"};
+foreach $k (@infoLEADERREPLACEMENT) {
+    if (substr($k->{"Leader Type"},0,1) eq "P") {
+	$subcode="A";
+    } else {
+	$subcode=substr($k->{"Leader Type"},0,1);
+    }
+    $subcode.=substr $k->{"Number"},1;
+    $command=str("Replacement-".$subcode);
+    $command.=str($k->{"Country"});
+    $command.=str($k->{"Number"});
+    $command.=str($k->{"First turn"});
+    $command.=str($k->{"Last turn"});
+    $command.=str(substr($k->{"Leader Type"},0,1));
+    $command.=str(substr($k->{"Leader Type"},1));
+    $command.=str($k->{"Stats"});
+    $command.=" dessineLEADER\n";
+    sendit($k,$command);
+}
+delete $info{"LEADERREPLACEMENT"};
 foreach $k (@infoLEADERANONYMOUSDOUBLE) {
     if (substr($k->{"Leader Type"},0,1) eq "P") {
 	$subcode="A";
