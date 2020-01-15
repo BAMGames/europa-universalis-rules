@@ -393,11 +393,15 @@ def
 /dessineFLEET {
     /typeX exch def /armyname exch def /pays exch def
     /filepion mark (Fleet_)
-    typeX (galere) eq {(Galleys_)} {(Warships_)} ifelse
+    typeX (galere) eq {(Galleys_)}
+    {typeX (transport) eq {(Transport_)} {(Warships_)} ifelse}
+    ifelse
     pays(_)armyname(Fleet )search
     {pop pop}if concatall def
     /nompion mark (Fleet )
-    typeX (galere) eq {(Galleys )} {(Warships )} ifelse
+    typeX (galere) eq {(Galleys_)}
+    {typeX (transport) eq {(Transport_)} {(Warships_)} ifelse}
+    ifelse
     countryname
     ( <)armyname(>)concatall def
     typeX findfleettech
