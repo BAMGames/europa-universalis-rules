@@ -60,39 +60,31 @@ sub dropit {
     }
 }
 foreach $k (@infoARMY) {
-    $count=$k->{"Count"};
-    $count=~ s/^x//;$index=$k->{"First index"};
-    foreach $i ($index..$index+$count-1) {
-	$command=str($k->{"Country"});
-	if ($k->{"Name"}) {
-	    $command.=str($k->{"Name"});
-	} else {
-	    $command.="(Army ".$roman[$i].")";
-	}
-	$command.=str($k->{"Class"});
-	$command.=" dessineARMY\n";
- 	sendit($k,$command);
-   }
+    $command=str($k->{"Country"});
+    if ($k->{"Name"}) {
+        $command.=str($k->{"Name"});
+    } else {
+        $command.="(Army)";
+    }
+    $command.=str($k->{"Class"});
+    $command.=" dessineARMY\n";
+    sendit($k,$command);
 }
 delete $info{"ARMY"};
 foreach $k (@infoFLEET) {
-    $count=$k->{"Count"};
-    $count=~ s/^x//;$index=$k->{"First index"};
-    foreach $i ($index..$index+$count-1) {
-	$command=str($k->{"Country"});
-	if ($k->{"Name"}) {
-	    $command.=str($k->{"Name"});
-	} else {
-	    $command.="(Fleet ".$roman[$i].")";
-	}
-	$command.=str($k->{"Class 2"});
-	$command.=" dessineFLEET\n";
-	sendit($k,$command);
+    $command=str($k->{"Country"});
+    if ($k->{"Name"}) {
+        $command.=str($k->{"Name"});
+    } else {
+        $command.="(Fleet)";
     }
+    $command.=str($k->{"Class 2"});
+    $command.=" dessineFLEET\n";
+    sendit($k,$command);
 }
 delete $info{"FLEET"};
 foreach $k (@infoLD) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;$index=$k->{"First index"};
     foreach $i ($index..$index+$count-1) {
 	$command=str($k->{"Country"});
@@ -109,7 +101,7 @@ foreach $k (@infoLD) {
 }
 delete $info{"LD"};
 foreach $k (@infoLDND) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;$index=$k->{"First index"};
     foreach $i ($index..$index+$count-1) {
 	$command=str($k->{"Country"});
@@ -127,7 +119,7 @@ foreach $k (@infoLDND) {
 }
 delete $info{"LDND"};
 foreach $k (@infoND) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;$index=$k->{"First index"};
     foreach $i ($index..$index+$count-1) {
 	$command=str($k->{"Country"});
@@ -148,7 +140,7 @@ foreach $k (@infoND) {
 }
 delete $info{"ND"};
 foreach $k (@infoLDENDE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;$index=$k->{"First index"};
     foreach $i ($index..$index+$count-1) {
 	$command=str($k->{"Country"});
@@ -166,7 +158,7 @@ foreach $k (@infoLDENDE) {
 }
 delete $info{"LDENDE"};
 foreach $k (@infoLDE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;$index=$k->{"First index"};
     foreach $i ($index..$index+$count-1) {
 	$command=str($k->{"Country"});
@@ -183,7 +175,7 @@ foreach $k (@infoLDE) {
 }
 delete $info{"LDE"};
 foreach $k (@infoNDE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;$index=$k->{"First index"};
     foreach $i ($index..$index+$count-1) {
 	$command=str($k->{"Country"});
@@ -200,7 +192,7 @@ foreach $k (@infoNDE) {
 }
 delete $info{"NDE"};
 foreach $k (@infoPIRATE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -211,7 +203,7 @@ foreach $k (@infoPIRATE) {
 }
 delete $info{"PIRATE"};
 foreach $k (@infoARSENAL) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -223,7 +215,7 @@ foreach $k (@infoARSENAL) {
 }
 delete $info{"ARSENAL"};
 foreach $k (@infoFORTERESSE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -234,7 +226,7 @@ foreach $k (@infoFORTERESSE) {
 }
 delete $info{"FORTERESSE"};
 foreach $k (@infoFORTERESSEX) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -245,7 +237,7 @@ foreach $k (@infoFORTERESSEX) {
 }
 delete $info{"FORTERESSEX"};
 foreach $k (@infoROI) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -257,7 +249,7 @@ foreach $k (@infoROI) {
 }
 delete $info{"ROI"};
 foreach $k (@infoROIPAIRE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -269,7 +261,7 @@ foreach $k (@infoROIPAIRE) {
 }
 delete $info{"ROIPAIRE"};
 foreach $k (@infoSTABILITE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -279,7 +271,7 @@ foreach $k (@infoSTABILITE) {
 }
 delete $info{"STABILITE"};
 foreach $k (@infoTECHNOLOGIE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -290,7 +282,7 @@ foreach $k (@infoTECHNOLOGIE) {
 }
 delete $info{"TECHNOLOGIE"};
 foreach $k (@infoPOSSESSION) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -302,7 +294,7 @@ foreach $k (@infoPOSSESSION) {
 }
 delete $info{"POSSESSION"};
 foreach $k (@infoCONTROLEREGION) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -341,7 +333,7 @@ foreach $k (@infoOWNERCONTROL) {
 }
 delete $info{"OWNERCONTROL"};
 foreach $k (@infoMANUFACTURE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -353,7 +345,7 @@ foreach $k (@infoMANUFACTURE) {
 }
 delete $info{"MANUFACTURE"};
 foreach $k (@infoDIPLOMATIE) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -373,7 +365,7 @@ foreach $k (@infoDIPLOMATIE) {
 }
 delete $info{"DIPLOMATIE"};
 foreach $k (@infoVASSALITY) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -384,7 +376,7 @@ foreach $k (@infoVASSALITY) {
 }
 delete $info{"VASSALITY"};
 foreach $k (@infoROTWTREATY) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -394,7 +386,7 @@ foreach $k (@infoROTWTREATY) {
 }
 delete $info{"ROTWTREATY"};
 foreach $k (@infoTRADEFLEET) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -442,7 +434,7 @@ foreach $k (@infoVIRTUAL) {
 }
 delete $info{"VIRTUAL"};
 foreach $k (@infoCOLONY) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -453,7 +445,7 @@ foreach $k (@infoCOLONY) {
 }
 delete $info{"COLONY"};
 foreach $k (@infoTRADINGPOST) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -464,7 +456,7 @@ foreach $k (@infoTRADINGPOST) {
 }
 delete $info{"TRADINGPOST"};
 foreach $k (@infoESTABLISHMENT) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -602,7 +594,7 @@ foreach $k (@infoMISSIONNAIRE) {
 }
 delete $info{"MISSIONNAIRE"};
 foreach $k (@infoMISSIONNAIREanonyme) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
         $command=str($k->{"Country"});
@@ -614,7 +606,7 @@ foreach $k (@infoMISSIONNAIREanonyme) {
 }
 delete $info{"MISSIONNAIREanonyme"};
 foreach $k (@infoMISSION) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command=str($k->{"Country"});
@@ -625,7 +617,7 @@ foreach $k (@infoMISSION) {
 }
 delete $info{"MISSION"};
 foreach $k (@infoRaw) {
-    $count=$k->{"Count"};
+    $count=1;
     $count=~ s/^x//;
     foreach $i (1..$count) {
 	$command="";
