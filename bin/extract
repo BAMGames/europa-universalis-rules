@@ -476,7 +476,9 @@ foreach $k (@infoESTABLISHMENT) {
 delete $info{"ESTABLISHMENT"};
 $pacha_number=1;
 foreach $k (@infoPACHA) {
-    $command=str($k->{"Country"});
+    $code=$k->{"NameA"};$code=~s/ /-/g;
+    $command=str($code);
+    $command.=str($k->{"Country"});
     $command.="(".$k->{"NameB"};
     $command.=" (".$k->{"NameC"}.")" if $k->{"NameC"};
     $command.=")";
@@ -588,7 +590,9 @@ foreach $k (@infoLEADERANONYMOUSDOUBLE) {
 }
 delete $info{"LEADERANONYMOUSDOUBLE"};
 foreach $k (@infoMISSIONNAIRE) {
-    $command=str($k->{"Country"});
+    $code=$k->{"NameA"};$code=~s/ /-/g;
+    $command=str($code);
+    $command.=str($k->{"Country"});
     $command.=str($k->{"NameC"});
     $command.=str($k->{"First turn"});
     $command.=str($k->{"Last turn"});

@@ -392,9 +392,14 @@ def
 }def
 /dessineFLEET {
     /typeX exch def /armyname exch def /pays exch def
-    /filepion mark (Fleet_)pays(_)armyname(Fleet )search
+    /filepion mark (Fleet_)
+    typeX (galere) eq {(Galleys_)} {(Warships_)} ifelse
+    pays(_)armyname(Fleet )search
     {pop pop}if concatall def
-    /nompion mark (Fleet )countryname( <)armyname(>)concatall def
+    /nompion mark (Fleet )
+    typeX (galere) eq {(Galleys )} {(Warships )} ifelse
+    countryname
+    ( <)armyname(>)concatall def
     typeX findfleettech
     0 beginpion
     countryname 0 80 100 20 cadredefondit
@@ -1225,8 +1230,9 @@ def
     /dts exch def
     /nameX exch def
     /pays exch def
-    /filepion (Pacha_timar_)nameX ! def
-    /nompion mark(Timar <)nameX(:)dts(:)caracs(:)numeroX(>)concatall def
+    /code exch def
+    /filepion (Pacha_timar_)code ! def
+    /nompion mark(Timar <)code(:)dts(:)caracs(:)numeroX(>)concatall def
     2 beginpion
     communpacha
     dts 80 25 20 30 cadredefondbf
@@ -1277,10 +1283,11 @@ def
     /firstturn exch def
     /nameX exch def
     /pays exch def
+    /code exch def
     /nompion mark(Missionnaire )countryname( <)nameX(:)caracs 9 1 getinterval
     firstturn length 0 ne{(:)firstturn(:)lastturn}if(>)concatall def
     /filepion mark (Missionnaire_)pays(_)caracs 9 1 getinterval(_)
-    nameX misstransdict translitt firstturn length 0 ne {(-) firstturn}if
+    code misstransdict translitt firstturn length 0 ne {(-) firstturn}if
     lastturn length 0 ne {(-) lastturn}if concatall def
     5 beginpion
     communchef
@@ -1308,8 +1315,10 @@ def
 /dessineMISSION {
     /nameX exch def
     /pays exch def
-    /nompion mark(Mission )countryname( <)nameX(>)concatall def
-    /filepion mark (Mission_)pays(_)nameX concatall def
+    % the only TUR mission is Ka'aba and I don’t want to match on that…
+    pays (turquie) eq {(Kaaba)} {nameX} ifelse /missionName exch def
+    /nompion mark(Mission )countryname( <)missionName(>)concatall def
+    /filepion mark (Mission_)pays(_)missionName concatall def
     5 beginpion
     blasonsmallright
     nameX communnomchef
