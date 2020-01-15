@@ -93,7 +93,6 @@ foreach $k (@infoLD) {
 	} else {
 	    $command.="true";
 	}
-	$command.=str($i);
 	$command.=str($k->{"Class"});
 	$command.=" dessineLD\n";
 	sendit($k,$command);
@@ -101,94 +100,65 @@ foreach $k (@infoLD) {
 }
 delete $info{"LD"};
 foreach $k (@infoLDND) {
-    $count=1;
-    $count=~ s/^x//;$index=$k->{"First index"};
-    foreach $i ($index..$index+$count-1) {
-	$command=str($k->{"Country"});
-	if ($k->{"Name"}) {
-	    $command.=str($k->{"Name"});
-	} else {
-	    $command.="true";
-	}
-	$command.=str($i);
-	$command.=str($k->{"Class"});
-	$command.=str($k->{"Class 2"});
-	$command.=" dessineLDND\n";
-	sendit($k,$command);
+    $command=str($k->{"Country"});
+    if ($k->{"Name"}) {
+        $command.=str($k->{"Name"});
+    } else {
+        $command.="true";
     }
+    $command.=str($k->{"Class"});
+    $command.=str($k->{"Class 2"});
+    $command.=" dessineLDND\n";
+    sendit($k,$command);
 }
 delete $info{"LDND"};
 foreach $k (@infoND) {
-    $count=1;
-    $count=~ s/^x//;$index=$k->{"First index"};
-    foreach $i ($index..$index+$count-1) {
-	$command=str($k->{"Country"});
-	if ($k->{"Name"}) {
-	    $command.=str($k->{"Name"});
-	} else {
-	    $command.="true";
-	}
-	if ($k->{"Class 2"} eq 'transport') {
-	    $command.=str($roman[$i]);
-	} else {
-	    $command.=str($i);
-	}
-	$command.=str($k->{"Class 2"});
-	$command.=" dessineND\n";
-	sendit($k,$command);
+    $command=str($k->{"Country"});
+    if ($k->{"Name"}) {
+        $command.=str($k->{"Name"});
+    } else {
+        $command.="true";
     }
+    $command.=str($k->{"Class 2"});
+    $command.=" dessineND\n";
+    sendit($k,$command);
 }
 delete $info{"ND"};
 foreach $k (@infoLDENDE) {
-    $count=1;
-    $count=~ s/^x//;$index=$k->{"First index"};
-    foreach $i ($index..$index+$count-1) {
-	$command=str($k->{"Country"});
-	if ($k->{"Name"}) {
-	    $command.=str($k->{"Name"});
-	} else {
-	    $command.="true";
-	}
-	$command.=str(chr(64+$i));
-	$command.=str($k->{"Class"});
-	$command.=str($k->{"Class 2"});
-	$command.=" dessineLDENDE\n";
-	sendit($k,$command);
+    $command=str($k->{"Country"});
+    if ($k->{"Name"}) {
+        $command.=str($k->{"Name"});
+    } else {
+        $command.="true";
     }
+    $command.=str($k->{"Class"});
+    $command.=str($k->{"Class 2"});
+    $command.=" dessineLDENDE\n";
+    sendit($k,$command);
 }
 delete $info{"LDENDE"};
 foreach $k (@infoLDE) {
-    $count=1;
-    $count=~ s/^x//;$index=$k->{"First index"};
-    foreach $i ($index..$index+$count-1) {
-	$command=str($k->{"Country"});
-	if ($k->{"Name"}) {
-	    $command.=str($k->{"Name"});
-	} else {
-	    $command.="true";
-	}
-	$command.=str(chr(64+$i));
-	$command.=str($k->{"Class"});
-	$command.=" dessineLDE\n";
-	sendit($k,$command);
+    $command=str($k->{"Country"});
+    if ($k->{"Name"}) {
+        $command.=str($k->{"Name"});
+    } else {
+        $command.="true";
     }
+    $command.=str($k->{"Class"});
+    $command.=" dessineLDE\n";
+    sendit($k,$command);
 }
 delete $info{"LDE"};
 foreach $k (@infoNDE) {
-    $count=1;
-    $count=~ s/^x//;$index=$k->{"First index"};
-    foreach $i ($index..$index+$count-1) {
-	$command=str($k->{"Country"});
-	if ($k->{"Name"}) {
-	    $command.=str($k->{"Name"});
-	} else {
-	    $command.="true";
-	}
-	$command.=str(chr(64+$i));
-	$command.=str($k->{"Class"});
-	$command.=" dessineNDE\n";
-	sendit($k,$command);
+    $command=str($k->{"Country"});
+    if ($k->{"Name"}) {
+        $command.=str($k->{"Name"});
+    } else {
+        $command.="true";
     }
+    $command.=str($k->{"Class"});
+    $command.=" dessineNDE\n";
+    sendit($k,$command);
 }
 delete $info{"NDE"};
 foreach $k (@infoPIRATE) {
@@ -407,13 +377,10 @@ foreach $k (@infoVIRTUAL) {
 	$command.="(Army I)";
 	$command.=str($k->{"Country"});
 	$command.=" dessineARMY\n";
-	foreach $i (1..2) {
-	    $command.=str($k->{"Country"});
-	    $command.="true";
-	    $command.=str($i);
-	    $command.=str($k->{"Country"});
-	    $command.=" dessineLD\n";
-	}
+        $command.=str($k->{"Country"});
+        $command.="true";
+        $command.=str($k->{"Country"});
+        $command.=" dessineLD\n";
     }
     if (($k->{"Active"} & 2)==2) {
         $command.=str($k->{"Country"});
