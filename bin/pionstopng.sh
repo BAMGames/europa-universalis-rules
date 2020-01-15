@@ -154,6 +154,7 @@ if [ "$CRUSH" -gt 0 ]; then
     done
     rm -rf crush${xname}
 fi
+cd $cwd
 cd $xname
 for z in $(seq $zoomlevel -1 $minzoomlevel); do
     $STATE "$CLASS" "manifest (zoom $z)"
