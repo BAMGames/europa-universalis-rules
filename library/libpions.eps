@@ -420,10 +420,10 @@ def
 /setdetachement {
     /typeX exch def /numeroX exch def exch /pays exch def
     dup true eq {countryname exch pop}if /armyname exch def
-    /nompion mark nature ( ) countryname ( <)numeroX
+    /nompion mark nature ( ) countryname ( <)
     typeX pays ne countryname armyname ne or {(:)armyname(:)typeX}if(>)
     concatall def
-    /filepion mark nature(_)pays(_)numeroX
+    /filepion mark nature(_)pays(_)
     /xdict
 	<<
 	    (Québec) (Quebec)
@@ -445,7 +445,6 @@ def
 }def
 /commundetachement {
     armyname 0 80 100 20 cadredefondit
-    numeroX 80 60 20 20 cadredefondrm
     dictelement aload pop
     dup type /arraytype eq{
 	/cccca exch def /ccccb exch def /ccccc exch def
