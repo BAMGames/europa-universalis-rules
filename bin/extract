@@ -543,10 +543,9 @@ foreach $k (@infoLEADERPAIRE) {
 }
 delete $info{"LEADERPAIRE"};
 foreach $k (@infoLEADERANONYMOUS) {
-    if (substr($k->{"Leader Type"},0,1) eq "P") {
-	$subcode="A";
-    } else {
-	$subcode=substr($k->{"Leader Type"},0,1);
+    $subcode=substr($k->{"Leader Type"},0,1);
+    if ($subcode eq "g") { # governors
+        $subcode="Gouv";
     }
     $subcode.=substr $k->{"Number"},1;
     $command=str("Anonymous-".$subcode);
@@ -562,10 +561,9 @@ foreach $k (@infoLEADERANONYMOUS) {
 }
 delete $info{"LEADERANONYMOUS"};
 foreach $k (@infoLEADERANONYMOUSDOUBLE) {
-    if (substr($k->{"Leader Type"},0,1) eq "P") {
-	$subcode="A";
-    } else {
-	$subcode=substr($k->{"Leader Type"},0,1);
+    $subcode=substr($k->{"Leader Type"},0,1);
+    if ($subcode eq "g") { # governors
+        $subcode="Gouv";
     }
     $subcode.=substr $k->{"Number"},1;
     $command=str("Anonymous-".$subcode);
